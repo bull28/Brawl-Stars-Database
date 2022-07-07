@@ -1,0 +1,3 @@
+- Feel free to change any colors to whatever you want. For the rest of the concepts, any exceptions (colors which are not
+supposed to be changed) will be listed.
+- "Coming Soon" buttons will eventually be renamed and have their own menu.
