@@ -25,11 +25,12 @@ type SkinData = {
     limited: boolean,
     group: {
         name: string,
-        image: string
+        image: string,
+        icon: string
     },
     rating: number,
     image: string,
-    highresImage: {exists: boolean, image: string}
+    altImage: {exists: boolean, image: string}
 }
 
 export default function BrawlerImage({ brawler, skin }: BrawlerImageProps) {
@@ -41,9 +42,7 @@ export default function BrawlerImage({ brawler, skin }: BrawlerImageProps) {
                 setData(res.data)
             })
     }, [brawler, skin])
-    //match group to tag color (ask)
-    //add modal for features
-    //add icon for limited
+
   return (
     <>
     {data && Object.keys(data).length !== 0 && 
@@ -53,7 +52,7 @@ export default function BrawlerImage({ brawler, skin }: BrawlerImageProps) {
                 <Image objectFit={'cover'} src={`/image/${data.image}`} alt={data.displayName}/>
             </Flex>
             <Flex alignItems={'center'} alignSelf={'center'} mt={3}>
-                {data.group.name && <Tag mr={2} colorScheme={'red'}>{data.group.name}</Tag>}
+                {(data.group.icon !== 'misc/skingroups/icons/icon_default.png') &&<Image src={`/image/${data.group.icon}`} w={7} mr={3}/>}
                 <Text fontSize={['md','lg','xl']} fontWeight={'bold'} >{data.displayName}</Text>    
             </Flex>
             

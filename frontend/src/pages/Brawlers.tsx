@@ -22,7 +22,6 @@ export default function Brawlers() {
         axios.get('/brawler')
             .then((res) => {
                 setData(res.data)
-                console.log(res.data)
             })
             
     }, [])
