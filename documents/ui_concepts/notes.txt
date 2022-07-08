@@ -1,3 +1,32 @@
+General
 - Feel free to change any colors to whatever you want. For the rest of the concepts, any exceptions (colors which are not
 supposed to be changed) will be listed.
 - "Coming Soon" buttons will eventually be renamed and have their own menu.
+
+Events Menu
+
+Main Page
+- When the events menu is opened up, a screen similar to events_main_page.png will be displayed.
+- This page will display events at a specific time. The user can decide what time they want to display events at, using
+the menu on the left.
+- The colors of the events should be the ones provided from the API. The field "backgroundColor" should be used for the
+background of the currently active event. The field "textColor" should be used for the text which displays which event is
+starting next.
+- The banners of the events should be available in the API soon.
+- There are 4 ways of choosing a time: Current, Upcoming, Season Time, and World Time. The circles to the left of them
+indicate a multiple choice menu. Only one option can be chosen at a time.
+- The Current, Upcoming, and Season Time choices are already supported by the API. If you are able to accept a date and time
+and convert it to "seconds after January 1, 1970", then the World Time option can be added.
+- The "Update" button refreshes the timers on the events. If the web page is able to refresh automatically without much delay,
+this button can be removed.
+- The "Search for a specific map" button will redirect the user to the Map Search Page.
+
+Map Search Page
+- This page will allow the user to view the image of a specific map.
+- By default, all the maps in the game will be displayed in the search result box. There is currently not a feature in the
+API which provides all the maps, but one should be added soon.
+- If the user wishes to do so, they can narrow their search by game mode by checking the boxes on the left. Unlike the
+multiple choice option on the Main Page, this page allows the user to select more than one choice.
+- Clicking on a map will open up a pop-up which displays the image of the map as well as the time until it appears next.
+Refer to event_popup.png to see an example of this. If the pop-up is not possible, redirect the user to a new page containing
+the pop-up's content.
