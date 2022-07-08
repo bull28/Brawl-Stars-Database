@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { Flex, Image, Tag, Text, Button, Modal,
+import { Flex, Image, Text, Modal,
     ModalContent,
     ModalHeader,
     ModalFooter,
@@ -8,8 +8,11 @@ import { Flex, Image, Tag, Text, Button, Modal,
     ModalCloseButton,
     useDisclosure,
     Divider,
-    ModalOverlay, } from '@chakra-ui/react'
+    ModalOverlay,
+    Spinner
+    } from '@chakra-ui/react'
 import CurrencyIcon from './CurrencyIcon'
+import Label from './Label'
 
 type BrawlerImageProps = {
     brawler: string,
@@ -47,12 +50,11 @@ export default function BrawlerImage({ brawler, skin }: BrawlerImageProps) {
     <>
     {data && Object.keys(data).length !== 0 && 
         <>
-
             <Flex w={'100%'} h={'100%'} bgImage={`/image/${data.group.image}`} borderRadius={'lg'} onClick={onOpen}>
-                <Image objectFit={'cover'} src={`/image/${data.image}`} alt={data.displayName}/>
+                <Image objectFit={'cover'} src={`/image/${data.image}`} alt={data.displayName} fallback={<Spinner/>}/>
             </Flex>
             <Flex alignItems={'center'} alignSelf={'center'} mt={3}>
-                {(data.group.icon !== 'misc/skingroups/icons/icon_default.png') &&<Image src={`/image/${data.group.icon}`} w={7} mr={3}/>}
+                    {(data.group.icon !== 'misc/skingroups/icons/icon_default.png') && <Label label={data.group.name}><Image src={`/image/${data.group.icon}`} w={7} mr={3}/></Label>}            
                 <Text fontSize={['md','lg','xl']} fontWeight={'bold'} >{data.displayName}</Text>    
             </Flex>
             
