@@ -3,8 +3,7 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import Home from './pages/Home'
 import Brawlers from './pages/Brawlers'
 import Brawler from './pages/Brawler'
-import Maps from './pages/Maps'
-import Modes from './pages/Modes'
+import Events from './pages/Events'
 import NotFound from './pages/NotFound'
 
 function App() {
@@ -15,8 +14,7 @@ function App() {
           <Route path="/" element={<Home/>}/>
           <Route path="/brawlers" element={<Brawlers/>}/>
           <Route path="brawlers/:brawler" element={<Brawler/>}/>
-          <Route path="/maps" element={<Maps/>}/>
-          <Route path="/modes" element={<Modes/>}/>
+          <Route path="/events" element={<Events/>}/>
           <Route path="*" element={<NotFound/>}/>
         </Routes>
       </BrowserRouter>
