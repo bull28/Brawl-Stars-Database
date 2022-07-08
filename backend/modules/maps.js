@@ -599,7 +599,8 @@ function getEventInformation(event, seasonTime){
     for (var x in thisGameMode){
         if (x == "data"){
             // "" tells the function to remove the image
-            thisEvent["gameMode"][x] = copyMapData(thisGameMode[x], "");
+            //thisEvent["gameMode"][x] = copyMapData(thisGameMode[x], "");
+            thisEvent["gameMode"][x] = thisGameMode[x];
         }
         //else if (x != "maps" && x != "rotationTime"){
         else if (!(excludeFromGameMode.includes(x))){
@@ -616,20 +617,6 @@ function getEventInformation(event, seasonTime){
     thisEvent.timeLeft = event.getEventTimeLeft(seasonTime);
 
     return thisEvent;
-}
-
-function copyMapData(data, image){
-    var dataCopy = {};
-    for (var y in data){
-        if (y == "image"){
-            if (image != ""){
-                dataCopy[y] = image;
-            }
-        } else{
-            dataCopy[y] = data[y];
-        }
-    }
-    return dataCopy;
 }
 
 /**
@@ -673,6 +660,64 @@ function getAllUpcomingEvents(eventList, seasonTime){
     return upcomingEvents;
 }
 
+/**
+ * Adds the imagePath and bannerPath file paths to the appropriate image
+ * file names in a map object.
+ * @param {Object} data 
+ * @param {String} imagePath 
+ * @param {String} bannerPath 
+ * @returns json object of the map with the file paths added
+ */
+function addPathMap(data, imagePath, bannerPath){
+    var resultData = {};
+    for (var x in data){
+        if (x == "image"){
+            resultData[x] = imagePath + data.gameMode + "/" + data.image;
+        } else if (x == "bannerImage"){
+            resultData[x] = bannerPath + data.bannerImage;
+        } else{
+            resultData[x] = data[x];
+        }
+    }
+    return resultData;
+}
+
+/**
+ * Adds the filePath to the image file name of a game mode.
+ * @param {Object} data 
+ * @param {String} filePath 
+ * @returns json object of the game mode with the file path added.
+ */
+function addPathGameMode(data, filePath){
+    var resultData = {};
+    for (var x in data){
+        // when getting to the data of data, use the image file
+        // to determine which image to get later
+        if (x == "data"){
+            // if for some reason this image doesn't exist, the file will point
+            // to something unknown which will throw error later on
+            if (data[x].hasOwnProperty("image")){
+                filePath = filePath + data[x].image;
+            }
+
+            
+            // copy all pieces of data and add the image file path
+            var dataCopy = {};
+            for (var y in data[x]){
+                if (y == "image"){
+                    dataCopy[y] = filePath;
+                } else{
+                    dataCopy[y] = data[x][y];
+                }
+            }
+            resultData[x] = dataCopy;
+        } else{
+            resultData[x] = data[x];
+        }
+    }
+    return resultData;
+}
+
 const MAP_CYCLE_HOURS=336;
 const MAP_CYCLE_SECONDS=1209600;
 const SEASON_SECONDS=2419200;
@@ -693,9 +738,10 @@ exports.addSeasonTimes = addSeasonTimes;
 exports.getModeInformation = getModeInformation;
 exports.getMapInformation = getMapInformation;
 exports.getMapStartDelay = getMapStartDelay;
-exports.copyMapData = copyMapData;
 exports.getAllActiveEvents = getAllActiveEvents;
 exports.getAllUpcomingEvents = getAllUpcomingEvents;
+exports.addPathMap = addPathMap;
+exports.addPathGameMode = addPathGameMode;
 
 
 /*

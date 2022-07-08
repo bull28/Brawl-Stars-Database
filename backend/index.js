@@ -26,8 +26,14 @@ const SKINGROUP_IMAGE_DIR = "misc/skingroups/backgrounds/";
 const SKINGROUP_ICON_DIR = "misc/skingroups/icons/";
 const GAMEMODE_IMAGE_DIR = "gamemodes/";
 const MAP_IMAGE_DIR = "maps/";
+const MAP_BANNER_DIR = "maps/banners/";
 
 
+/**
+ * Checks whether a json object is empty.
+ * @param {Object} x 
+ * @returns true if empty, false otherwise
+ */
 function isEmpty(x){
     var isEmpty = true;
     for (var y in x){
@@ -36,6 +42,15 @@ function isEmpty(x){
     return isEmpty;
 }
 
+/**
+ * Checks whether a time expressed as a string can be correctly
+ * converted to an integer. If any of the expressions given for hour,
+ * minute, and second are invalid, the function returns false.
+ * @param {String} hour 
+ * @param {String} minute 
+ * @param {String} second 
+ * @returns true if valid, false otherwise
+ */
 function isValidTime(hour, minute, second){
     var valid = true;
     if (isNaN(hour)){
@@ -48,6 +63,14 @@ function isValidTime(hour, minute, second){
     return valid;
 }
 
+/**
+ * Some skin images have an alternative image. This function checks
+ * whether a skin has one and if so, return the path to it. The field
+ * "exists" is also returned in the result, indicating whether the
+ * image exists and the file path is valid.
+ * @param {String} skinFile 
+ * @returns json object
+ */
 function altImageExists(skinFile){
     var data = {
         "exists": false,
@@ -60,6 +83,18 @@ function altImageExists(skinFile){
         data.image = checkFile;
     }
     return data;
+}
+
+/**
+ * Goes through an array of event data and adds the correct directory
+ * paths to all image files in each event.
+ * @param {Array} events 
+ */
+function addAllPaths(events){
+    for (x of events){
+        x.gameMode = maps.addPathGameMode(x.gameMode, GAMEMODE_IMAGE_DIR);
+        x.map = maps.addPathMap(x.map, MAP_IMAGE_DIR, MAP_BANNER_DIR);
+    }
 }
 
 
@@ -91,20 +126,6 @@ fs.readFile("assets/data/maps_data.json", "utf8", (err, data) => {
 app.get("/", (req, res) => {
     res.send("frank bul el golm whac a king ash much fun");
 });
-
-/*
-//app.use("/static", express.static(path.join("assets", "images")));
-app.get("/image/:bull", (req, res) => {
-    const bul = req.params.bull;
-    const path1 = path.join(__dirname, "assets", "images", "portraits", bul);
-
-    console.log(path1);
-
-    res.send("whakc a king");
-});
-*/
-
-
 
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -300,43 +321,14 @@ app.get("/gamemode", (req, res) => {
 app.get("/gamemode/:gamemode", (req, res) => {
     const gameMode = req.params.gamemode;
 
-    // 1. Get the data
-
     let gameModeData = maps.getModeInformation(eventList, gameMode);
     if (isEmpty(gameModeData)){
         res.status(404).send("Game mode not found.");
         return;
     }
 
-    // 2. Copy data and find the file name
-
-    var gameModeInfo = {};
-    var gameModeFile = GAMEMODE_IMAGE_DIR;
-
-    // copy gameModeData into gameModeInfo
-    for (var x in gameModeData){
-        // when getting to the data of gameModeData, use the image file
-        // to determine which image to get later
-        if (x == "data"){
-            // if for some reason this image doesn't exist, the file will point
-            // to something unknown which will throw error later on
-            if (gameModeData[x].hasOwnProperty("image")){
-                gameModeFile = gameModeFile + gameModeData[x].image;
-            }
-
-            // copy all pieces of data except the image file name
-            gameModeInfo[x] = maps.copyMapData(gameModeData[x], gameModeFile);
-        } else{
-            gameModeInfo[x] = gameModeData[x];
-        }
-        
-    }
-
-    // 3. Modify any additional data elements (this step is not necesssary here)
-
-    // 4. Set the image (this must be done last)
-
-    // 5. Send the json data
+    // copy gameModeData into gameModeInfo while adding the image's file path
+    var gameModeInfo = maps.addPathGameMode(gameModeData, GAMEMODE_IMAGE_DIR);
 
     res.json(gameModeInfo);
 });
@@ -348,7 +340,6 @@ app.get("/map/:map", (req, res) => {
 
     const currentTime = maps.realToTime(Date.now());
 
-    // 1. Get the data
     
     let mapData = maps.getMapInformation(eventList, map);
     if (isEmpty(mapData)){
@@ -359,21 +350,11 @@ app.get("/map/:map", (req, res) => {
         return;
     }
 
-    // 2. Copy data and find the file name
 
-    var mapInfo = {};
-    var mapFile = MAP_IMAGE_DIR;
+    // copy mapData into mapInfo while adding the image and banner's file paths
+    var mapInfo = maps.addPathMap(mapData, MAP_IMAGE_DIR, MAP_BANNER_DIR);
 
-    for (var x in mapData){
-        if (x == "image"){
-            mapFile = mapFile + mapData.gameMode + "/" + mapData.image;
-        } else{
-            mapInfo[x] = mapData[x];
-        }
-    }
-
-    // 3. Modify any additional data elements
-
+    // Add the next appearance time
     const mapTime = maps.getMapStartDelay(eventList, map, currentTime);
 
     if (mapTime.season > 0){
@@ -382,11 +363,6 @@ app.get("/map/:map", (req, res) => {
     }
     mapInfo["next"] = mapTime;
 
-    // 4. Set the image (this must be done last)
-
-    mapInfo["image"] = mapFile;
-
-    // 5. Send the json data
 
     res.json(mapInfo);
 });
@@ -398,7 +374,8 @@ app.get("/event/current", (req, res) => {
 
     var eventsInfo = {};
 
-    const activeEvents = maps.getAllActiveEvents(eventList, currentTime);
+    let activeEvents = maps.getAllActiveEvents(eventList, currentTime);
+    addAllPaths(activeEvents);
 
     eventsInfo["time"] = currentTime;
     eventsInfo["events"] = activeEvents;
@@ -413,7 +390,8 @@ app.get("/event/upcoming", (req, res) => {
 
     var eventsInfo = {};
 
-    const activeEvents = maps.getAllUpcomingEvents(eventList, currentTime);
+    let activeEvents = maps.getAllUpcomingEvents(eventList, currentTime);
+    addAllPaths(activeEvents);
 
     eventsInfo["time"] = currentTime;
     eventsInfo["events"] = activeEvents;
@@ -441,7 +419,8 @@ app.get("/event/time/:hour/:minute/:second", (req, res) => {
     time.minute = maps.mod(parseInt(minuteString), 60);
     time.second = maps.mod(parseInt(secondString), 60);
 
-    const activeEvents = maps.getAllActiveEvents(eventList, time);
+    let activeEvents = maps.getAllActiveEvents(eventList, time);
+    addAllPaths(activeEvents);
 
     eventsInfo["time"] = time;
     eventsInfo["events"] = activeEvents;
@@ -475,7 +454,8 @@ app.get("/event/later/:hour/:minute/:second", (req, res) => {
 
     deltaTime = maps.addSeasonTimes(currentTime, deltaTime);
 
-    const activeEvents = maps.getAllActiveEvents(eventList, deltaTime);
+    let activeEvents = maps.getAllActiveEvents(eventList, deltaTime);
+    addAllPaths(activeEvents);
 
     eventsInfo["time"] = deltaTime;
     eventsInfo["events"] = activeEvents;
