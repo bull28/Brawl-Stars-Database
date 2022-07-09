@@ -7,20 +7,26 @@ export interface time {
     maxSeasons: number
 }
   
+interface eventData {
+  gameMode: {
+    name: string,
+    displayName: string,
+    data: {
+      image: string,
+      backgroundColor: string,
+      textColor: string
+    }
+  },
+  
+  map: {
+    name: string,
+    displayName: string,
+    bannerImage: string
+  }
+}
+
 export interface event {
-    gameMode: {
-      name: string,
-      displayName: string,
-      data: {
-        image: string,
-        backgroundColor: string,
-        textColor: string
-      }
-    },
-    map: {
-      name: string,
-      displayName: string,
-      bannerImage: string
-    },
+    current: eventData,
+    upcoming: eventData,
     timeLeft: time
 }
