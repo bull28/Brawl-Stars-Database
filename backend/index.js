@@ -31,7 +31,7 @@ const MAP_BANNER_DIR = "maps/banners/";
 
 /**
  * Checks whether a json object is empty.
- * @param {Object} x 
+ * @param {Object} x the object
  * @returns true if empty, false otherwise
  */
 function isEmpty(x){
@@ -68,7 +68,7 @@ function isValidTime(hour, minute, second){
  * whether a skin has one and if so, return the path to it. The field
  * "exists" is also returned in the result, indicating whether the
  * image exists and the file path is valid.
- * @param {String} skinFile 
+ * @param {String} skinFile file path to the skin's default file
  * @returns json object
  */
 function altImageExists(skinFile){
@@ -86,17 +86,35 @@ function altImageExists(skinFile){
 }
 
 /**
- * Goes through an array of event data and adds the correct directory
- * paths to all image files in each event.
- * @param {Array} events 
+ * Accepts an array of events which each consist of a current game mode and map.
+ * Then, goes through an event's game mode and map and applies the proper file
+ * paths to any of their images. Finally, adds the season time provided and
+ * returns a json object.
+ * @param {Array} events list of EventSlot objects
+ * @param {SeasonTime} seasonTime time used in the calculation of current and upcoming events
+ * @returns json object
  */
-function addAllPaths(events){
-    for (x of events){
-        x.gameMode = maps.addPathGameMode(x.gameMode, GAMEMODE_IMAGE_DIR);
-        x.map = maps.addPathMap(x.map, MAP_IMAGE_DIR, MAP_BANNER_DIR);
-    }
-}
+function formatEvents(events, seasonTime){
+    var eventsInfo = {};
 
+    // events is an array of event objects
+    for (let x of events){
+        // y iterates through the individual event objects, going through their
+        // "current", "upcoming", and "timeLeft". do not add images for the "timeLeft".
+        for (let y in x){
+            if (y == "current" || y == "upcoming"){
+                //console.log(x[y]);
+                x[y].gameMode = maps.addPathGameMode(x[y].gameMode, GAMEMODE_IMAGE_DIR);
+                x[y].map = maps.addPathMap(x[y].map, MAP_IMAGE_DIR, MAP_BANNER_DIR);
+            }
+        }
+    }
+
+    eventsInfo["time"] = seasonTime;
+    eventsInfo["events"] = events;
+
+    return eventsInfo;
+}
 
 
 // Load the skins json object
@@ -371,44 +389,22 @@ app.get("/map/:map", (req, res) => {
 // Get currently active events
 app.get("/event/current", (req, res) => {
     const currentTime = maps.realToTime(Date.now());
-
-    var eventsInfo = {};
-
-    let activeEvents = maps.getAllActiveEvents(eventList, currentTime);
-    addAllPaths(activeEvents);
-
-    eventsInfo["time"] = currentTime;
-    eventsInfo["events"] = activeEvents;
+    
+    let activeEvents = maps.getAllEvents(eventList, currentTime);
+    let eventsInfo = formatEvents(activeEvents, currentTime);
 
     res.json(eventsInfo);
 });
 
 
-// Get the next event starting in every event slot
-app.get("/event/upcoming", (req, res) => {
-    const currentTime = maps.realToTime(Date.now());
-
-    var eventsInfo = {};
-
-    let activeEvents = maps.getAllUpcomingEvents(eventList, currentTime);
-    addAllPaths(activeEvents);
-
-    eventsInfo["time"] = currentTime;
-    eventsInfo["events"] = activeEvents;
-
-    res.json(eventsInfo);
-});
-
-
-// Get events active at any time in the season
-app.get("/event/time/:hour/:minute/:second", (req, res) => {
+// Get events active using a season time
+app.get("/event/seasontime/:hour/:minute/:second", (req, res) => {
     const hourString = req.params.hour;
     const minuteString = req.params.minute;
     const secondString = req.params.second;
 
     var time = new maps.SeasonTime(0, 0, 0, 0);
 
-    var eventsInfo = {};
 
     if (isValidTime(hourString, minuteString, secondString) == false){
         res.status(400).send("Invalid input.");
@@ -419,11 +415,8 @@ app.get("/event/time/:hour/:minute/:second", (req, res) => {
     time.minute = maps.mod(parseInt(minuteString), 60);
     time.second = maps.mod(parseInt(secondString), 60);
 
-    let activeEvents = maps.getAllActiveEvents(eventList, time);
-    addAllPaths(activeEvents);
-
-    eventsInfo["time"] = time;
-    eventsInfo["events"] = activeEvents;
+    let activeEvents = maps.getAllEvents(eventList, time);
+    let eventsInfo = formatEvents(activeEvents, time);
 
     res.json(eventsInfo);
 });
@@ -437,8 +430,6 @@ app.get("/event/later/:hour/:minute/:second", (req, res) => {
 
     const currentTime = maps.realToTime(Date.now());
     var deltaTime = new maps.SeasonTime(0, 0, 0, 0);
-
-    var eventsInfo = {};
 
     if (isValidTime(hourString, minuteString, secondString) == false){
         res.status(400).send("Invalid input.");
@@ -454,11 +445,26 @@ app.get("/event/later/:hour/:minute/:second", (req, res) => {
 
     deltaTime = maps.addSeasonTimes(currentTime, deltaTime);
 
-    let activeEvents = maps.getAllActiveEvents(eventList, deltaTime);
-    addAllPaths(activeEvents);
+    let activeEvents = maps.getAllEvents(eventList, deltaTime);
+    let eventsInfo = formatEvents(activeEvents, deltaTime);
 
-    eventsInfo["time"] = deltaTime;
-    eventsInfo["events"] = activeEvents;
+    res.json(eventsInfo);
+});
+
+
+// Get currently active events
+app.get("/event/worldtime/:second", (req, res) => {
+    const realSeconds = req.params.second;
+
+    if (isNaN(realSeconds)){
+        res.status(400).send("Invalid input.");
+        return;
+    }
+
+    const time = maps.realToTime(realSeconds * 1000);
+
+    let activeEvents = maps.getAllEvents(eventList, time);
+    let eventsInfo = formatEvents(activeEvents, time);
 
     res.json(eventsInfo);
 });

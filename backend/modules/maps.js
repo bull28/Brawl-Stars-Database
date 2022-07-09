@@ -392,11 +392,11 @@ function mod(x, y){
 /**
  * Converts time after January 1, 1970 to a time after the map rotation reset.
  * @param {Number} real 
- * @returns array in format [seasons, hours, minutes, seconds]
+ * @returns SeasonTime
  */
 function realToTime(real){
     real = Math.floor(real / 1000);
-    return secondsToTime((real - first_season_time) % SEASON_SECONDS);
+    return secondsToTime(mod((real - first_season_time), SEASON_SECONDS));
 }
 
 /**
@@ -582,7 +582,7 @@ function getEventInformation(event, seasonTime){
 
     thisEvent["gameMode"] = {};
     thisEvent["map"] = {};
-    thisEvent["timeLeft"] = new SeasonTime(0, 0, 0, 0);
+    //thisEvent["timeLeft"] = new SeasonTime(0, 0, 0, 0);//this is now included in getAllEvents
 
     // only finding this once and reusing its values
     const thisGameMode = event.getCurrentGameMode(seasonTime);
@@ -614,50 +614,32 @@ function getEventInformation(event, seasonTime){
         }
     }
     
-    thisEvent.timeLeft = event.getEventTimeLeft(seasonTime);
+    //thisEvent.timeLeft = event.getEventTimeLeft(seasonTime);
 
     return thisEvent;
 }
 
 /**
- * Gets all the events currently active at a time
+ * For each event slot, get the currently active and upcoming 
+ * map and game mode in the slot.
  * @param {Array} eventList list of EventSlot objects
- * @param {SeasonTime} seasonTime time at which to get events at
- * @returns array of json objects for the maps
+ * @param {SeasonTime} seasonTime time to use in the calculation of current and upcoming events
+ * @returns array of json objects for the events
  */
-function getAllActiveEvents(eventList, seasonTime){
-    var activeEvents = [];
+function getAllEvents(eventList, seasonTime){
+    var allEvents = [];
 
     for (var x = 0; x < eventList.length; x++){
         var thisEvent = {};
         
-        thisEvent = getEventInformation(eventList[x], seasonTime);
+        thisEvent["current"] = getEventInformation(eventList[x], seasonTime);
+        thisEvent["upcoming"] = getEventInformation(eventList[x], addSeasonTimes(seasonTime, new SeasonTime(0, eventList[x].eventDuration, 0, 0)));
+        thisEvent["timeLeft"] = eventList[x].getEventTimeLeft(seasonTime);
 
-        activeEvents.push(thisEvent);
+        allEvents.push(thisEvent);
     }
 
-    return activeEvents;
-}
-
-/**
- * Gets the next events starting in every event slot at a time
- * @param {Array} eventList list of EventSlot objects
- * @param {SeasonTime} seasonTime time at which to calculate event start time from
- * @returns array of json objects for the maps
- */
-function getAllUpcomingEvents(eventList, seasonTime){
-    var upcomingEvents = [];
-
-    for (var x = 0; x < eventList.length; x++){
-        var thisEvent = {};
-        
-        //const newTime = ;
-        thisEvent = getEventInformation(eventList[x], addSeasonTimes(seasonTime, new SeasonTime(0, eventList[x].eventDuration, 0, 0)));
-
-        upcomingEvents.push(thisEvent);
-    }
-
-    return upcomingEvents;
+    return allEvents;
 }
 
 /**
@@ -738,8 +720,7 @@ exports.addSeasonTimes = addSeasonTimes;
 exports.getModeInformation = getModeInformation;
 exports.getMapInformation = getMapInformation;
 exports.getMapStartDelay = getMapStartDelay;
-exports.getAllActiveEvents = getAllActiveEvents;
-exports.getAllUpcomingEvents = getAllUpcomingEvents;
+exports.getAllEvents = getAllEvents;
 exports.addPathMap = addPathMap;
 exports.addPathGameMode = addPathGameMode;
 
