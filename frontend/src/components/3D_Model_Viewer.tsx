@@ -37,8 +37,7 @@ const ModelViewer = ({ modelPath, hover, scale = 40, position = [0, -2.2, 0] }: 
       <Suspense fallback={null}>
         <GltfModel modelPath={modelPath} hover={hover} scale={scale} position={position} />
         <OrbitControls />
-      </Suspense>
-      <Sky distance={450} sunPosition={[0, 1, 0]} inclination={0} azimuth={0.25} />
+      </Suspense> 
     </Canvas>
   );
 };
