@@ -15,6 +15,7 @@ const port = 6969;
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.text());
 app.use(bodyParser.json());
 
 app.use("/image", express.static(path.join("assets", "images")));
@@ -156,22 +157,14 @@ app.get("/brawler", (req, res) => {
 
     for (let x of allSkins){
         // copy over the entire brawler's data, except for their skins
-        // call /brawler/:brawler to get the skin list (too much data here)
+        // call /brawler/:brawler to get the skin list and description (too much data here)
         var brawlerData = {};
         for (let y in x){
-            if (y != "skins"){
+            if (y != "skins" && y != "description"){
                 brawlerData[y] = x[y];
             }
         }
         allBrawlers.push(brawlerData);
-        /*
-        if (x.hasOwnProperty("name") && x.hasOwnProperty("displayName")){
-            allBrawlers.push({
-                "name": x.name,
-                "displayName": x.displayName
-            });
-        }
-        */
     }
     res.json(allBrawlers);
 });
@@ -359,7 +352,7 @@ app.get("/map/:map", (req, res) => {
     const currentTime = maps.realToTime(Date.now());
 
     
-    let mapData = maps.getMapInformation(eventList, map);
+    let mapData = maps.getMapInformation(eventList, map, currentTime);
     if (isEmpty(mapData)){
         res.status(404).send("Map not found.");
         return;
@@ -372,17 +365,18 @@ app.get("/map/:map", (req, res) => {
     // copy mapData into mapInfo while adding the image and banner's file paths
     var mapInfo = maps.addPathMap(mapData, MAP_IMAGE_DIR, MAP_BANNER_DIR);
 
-    // Add the next appearance time
-    const mapTime = maps.getMapStartDelay(eventList, map, currentTime);
+    res.json(mapInfo);
+});
 
-    if (mapTime.season > 0){
-        res.status(404).send("Map either does not exist or never appears.");
+
+// Search for a specific map by its name
+app.post("/mapsearch", (req, res) => {
+    if (req.get("Content-Type") != "text/plain"){
+        res.status(400).send("Map search query must be plain text.");
         return;
     }
-    mapInfo["next"] = mapTime;
-
-
-    res.json(mapInfo);
+    const searchResult = maps.searchForMapName(eventList, req.body);
+    res.json(searchResult);
 });
 
 
@@ -468,6 +462,7 @@ app.get("/event/worldtime/:second", (req, res) => {
 
     res.json(eventsInfo);
 });
+
 
 //----------------------------------------------------------------------------------------------------------------------
 // Error handler for missing and invalid files
