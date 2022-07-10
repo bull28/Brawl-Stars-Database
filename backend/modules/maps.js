@@ -110,47 +110,8 @@ class EventSlot{
     }
 
     /**
-     * Get the times in a season that a specific map will appear.
-     * @param {String} mapName name of the map
-     * @returns array with all the start times and durations of the appearances
-     */
-    getMapStartTimes(mapName){
-        var gameModeIndex = -1;
-        var mapIndex = -1;
-        var validStartTimes = [];
-
-        // search through all the game modes in this event slot to see if the map appears in one of them
-        for (var x = 0; x < this.gameModes.length; x++){
-            let mapSearchResult = this.gameModes[x].findMapIndex(mapName);
-            if (mapSearchResult >= 0){
-                gameModeIndex = x;
-                mapIndex = mapSearchResult;
-            }
-        }
-
-        // if gameModeIndex >= 0 then mapIndex is guaranteed to be >= 0 and the map does exist in this event slot
-        if (gameModeIndex >= 0){
-            var theGameMode = this.gameModes[gameModeIndex];
-
-            // get the list of all possible start times for that map
-            var startTime = theGameMode.getTimeAtMap(mapIndex, this.offset, this.eventDuration);
-            
-            // go through all the start times and only keep those which are valid
-            // (the event actually appears at that time)
-            const thisEventDuration = new SeasonTime(0, this.eventDuration, 0, 0);
-            for (var x = 0; x < startTime.length; x++){
-                const thisTime = new SeasonTime(0, startTime[x], 0, 0);
-                if (this.getCurrentGameMode(thisTime) == theGameMode){
-                    validStartTimes.push({"start":thisTime, "duration":thisEventDuration});
-                }
-            }
-        }
-
-        return validStartTimes;
-    }
-
-    /**
-     * Get the soonest time a map will appear in this event slot.
+     * Get all the times a map will appear in this event slot, the soonest
+     * time a map will appear, and the duration that the map is active for.
      * If a map appears multiple times within a season, currentTime is used
      * to determine the least amount of time until the next appearance of the
      * map. If the map does not appear at all in this event slot, the time
@@ -161,11 +122,10 @@ class EventSlot{
      */
     getNextStartTime(mapName, currentTime){
         // if the map is currently active, return 0 because "it can be played right now"
-        if (this.getCurrentGameMap(currentTime).name == mapName){
-            return new SeasonTime(0, 0, 0, 0);
-        }
 
         // if the map is not active, search to see if it exists in this slot
+        var result = {};
+        var validStartTimes = [];
         var gameModeIndex = -1;
         var mapIndex = -1;
 
@@ -197,7 +157,8 @@ class EventSlot{
                 // also, the maximum difference between a start time and the current time is
                 // guaranteed to be 1 season because all events that do appear are guaranteed
                 // to appear at least once per season
-                const thisTime = new SeasonTime(currentTime.season, startTime[x], 0, -1);
+                const thisTime = new SeasonTime(currentTime.season, startTime[x], 0, 0);
+
                 if (seasonTimesLessThan(thisTime, currentTime)){
                     thisTime.season += 1;
                 }
@@ -209,12 +170,24 @@ class EventSlot{
                     if (seasonTimesLessThan(timeDiff, lowestStartTime)){
                         lowestStartTime = timeDiff;
                     }
+
+                    // also add the start time to validStartTimes because whether or not the
+                    // game mode is active has already been checked
+                    validStartTimes.push(new SeasonTime(0, startTime[x], 0, 0));
                 }
             }
-            //lowestStartTime = subtractSeasonTimes(lowestStartTime, new SeasonTime(0, 0, 0, 1));
         }
 
-        return lowestStartTime;
+        result["all"] = validStartTimes;
+        if (this.getCurrentGameMap(currentTime).name == mapName){
+            result["next"] = new SeasonTime(0, 0, 0, 0);
+        } else{
+            result["next"] = subtractSeasonTimes(lowestStartTime, new SeasonTime(0, 0, 0, 1));
+        }
+        result["duration"] = new SeasonTime(0, this.eventDuration, 0, 0);
+        
+
+        return result;
     }
 }
 
@@ -513,9 +486,10 @@ function getModeInformation(eventList, modeName){
  * it will only count the first event.
  * @param {Array} eventList list of EventSlot objects
  * @param {String} mapName name of the map
+ * @param {SeasonTime} currentTime time used to calculate next appearance of the map
  * @returns json object of the map
  */
-function getMapInformation(eventList, mapName){
+function getMapInformation(eventList, mapName, currentTime){
     var result = {};
 
     var x = 0;
@@ -538,40 +512,13 @@ function getMapInformation(eventList, mapName){
             for (var y in mapInThisSlot){
                 result[y] = mapInThisSlot[y];
             }
-            result["times"] = eventList[x].getMapStartTimes(mapName);
+            result["times"] = eventList[x].getNextStartTime(mapName, currentTime);
             
         }
         x++;
     }
 
     return result;
-}
-
-/**
- * Get the soonest time a map will appear in any event slot.
- * Checks all possible appearances of a map in all the event
- * slots and returns the soonest one. If the map is not found
- * in any event slot, [1, 0, 0, 0] is returned.
- * @param {Array} eventList list of EventSlot objects
- * @param {String} mapName name of the map
- * @param {SeasonTime} currentTime the time at which to start the search
- * @returns SeasonTime
- */
-function getMapStartDelay(eventList, mapName, currentTime){
-    var lowestStartTime = new SeasonTime(1, 0, 0, 0);
-
-    for (var x = 0; x < eventList.length; x++){
-        // this returns [1, 0, 0, 0] if not found
-        // no need to spend extra time checking to see if the map exists
-        // in this slot becuase it is already done in this function
-        const timeDiff = eventList[x].getNextStartTime(mapName, currentTime);
-
-        if (seasonTimesLessThan(timeDiff, lowestStartTime)){
-            var lowestStartTime = timeDiff;
-        }
-    }
-
-    return lowestStartTime;
 }
 
 /**
@@ -778,12 +725,10 @@ exports.realToTime = realToTime;
 exports.addSeasonTimes = addSeasonTimes;
 exports.getModeInformation = getModeInformation;
 exports.getMapInformation = getMapInformation;
-exports.getMapStartDelay = getMapStartDelay;
+exports.searchForMapName = searchForMapName;
 exports.getAllEvents = getAllEvents;
 exports.addPathMap = addPathMap;
 exports.addPathGameMode = addPathGameMode;
-
-exports.searchForMapName = searchForMapName;
 
 
 /*

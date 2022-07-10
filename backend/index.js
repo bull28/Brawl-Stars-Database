@@ -360,7 +360,7 @@ app.get("/map/:map", (req, res) => {
     const currentTime = maps.realToTime(Date.now());
 
     
-    let mapData = maps.getMapInformation(eventList, map);
+    let mapData = maps.getMapInformation(eventList, map, currentTime);
     if (isEmpty(mapData)){
         res.status(404).send("Map not found.");
         return;
@@ -373,17 +373,18 @@ app.get("/map/:map", (req, res) => {
     // copy mapData into mapInfo while adding the image and banner's file paths
     var mapInfo = maps.addPathMap(mapData, MAP_IMAGE_DIR, MAP_BANNER_DIR);
 
-    // Add the next appearance time
-    const mapTime = maps.getMapStartDelay(eventList, map, currentTime);
+    res.json(mapInfo);
+});
 
-    if (mapTime.season > 0){
-        res.status(404).send("Map either does not exist or never appears.");
+
+// Search for a specific map by its name
+app.post("/mapsearch", (req, res) => {
+    if (req.get("Content-Type") != "text/plain"){
+        res.status(400).send("Map search query must be plain text.");
         return;
     }
-    mapInfo["next"] = mapTime;
-
-
-    res.json(mapInfo);
+    const searchResult = maps.searchForMapName(eventList, req.body);
+    res.json(searchResult);
 });
 
 
@@ -468,16 +469,6 @@ app.get("/event/worldtime/:second", (req, res) => {
     let eventsInfo = formatEvents(activeEvents, time);
 
     res.json(eventsInfo);
-});
-
-
-app.post("/mapsearch", (req, res) => {
-    if (req.get("Content-Type") != "text/plain"){
-        res.status(400).send("Map search query must be plain text.");
-        return;
-    }
-    const searchResult = maps.searchForMapName(eventList, req.body);
-    res.json(searchResult);
 });
 
 
