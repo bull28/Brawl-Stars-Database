@@ -15,6 +15,7 @@ const port = 6969;
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.text());
 app.use(bodyParser.json());
 
 app.use("/image", express.static(path.join("assets", "images")));
@@ -468,6 +469,17 @@ app.get("/event/worldtime/:second", (req, res) => {
 
     res.json(eventsInfo);
 });
+
+
+app.post("/mapsearch", (req, res) => {
+    if (req.get("Content-Type") != "text/plain"){
+        res.status(400).send("Map search query must be plain text.");
+        return;
+    }
+    const searchResult = maps.searchForMapName(eventList, req.body);
+    res.json(searchResult);
+});
+
 
 //----------------------------------------------------------------------------------------------------------------------
 // Error handler for missing and invalid files

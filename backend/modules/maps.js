@@ -521,11 +521,15 @@ function getMapInformation(eventList, mapName){
     var x = 0;
     var found = false;
     while (x < eventList.length && found == false){
-        const mapInThisSlot = eventList[x].searchForMap(mapName);
-
+        //const mapInThisSlot = eventList[x].searchForMap(mapName);
+        var mapInThisSlot = {};
         var isEmpty = true;
-        for (var y in mapInThisSlot){
-            isEmpty = false;
+        for (var y = 0; y < eventList[x].gameModes.length; y++){
+            let mapSearchResult = eventList[x].gameModes[y].findMapIndex(mapName);
+            if (mapSearchResult >= 0){
+                mapInThisSlot = eventList[x].gameModes[y].getMap(mapSearchResult);
+                isEmpty = false;
+            }
         }
         
         if (isEmpty == false){
@@ -568,6 +572,61 @@ function getMapStartDelay(eventList, mapName, currentTime){
     }
 
     return lowestStartTime;
+}
+
+/**
+ * Searches the entire list of maps and returns those whose
+ * display names contain the query. Maps whose display name
+ * are a closer match to the query are at the beginning of the
+ * result array.
+ * @param {Array} eventList list of EventSlot objects to search through
+ * @param {String} query search query
+ * @returns array containing the search results
+ */
+function searchForMapName(eventList, query){
+    var result = [];
+    var exactMatch = [];
+    var startsWith = [];
+    var onlyContains = [];
+    for (let event of eventList){
+        for (let mode of event.gameModes){
+            for (let map of mode.maps){
+                query = query.toLowerCase();
+                const thisMapName = map.displayName.toLowerCase();
+
+                // some characters like "." are special parameters to the
+                // string search so they may produce unintended results.
+                // check whether the query is actually in the string
+                // before adding it. The queryIndex only determines the
+                // order they are added in.
+                const queryIndex = thisMapName.search(query);
+                const includes = thisMapName.includes(query);
+
+                if (includes){
+                    if (thisMapName == query){
+                        exactMatch.push({"name":map.name, "displayName":map.displayName});
+                    } else if (queryIndex == 0){
+                        startsWith.push({"name":map.name, "displayName":map.displayName});
+                    } else if (queryIndex > 0){
+                        onlyContains.push({"name":map.name, "displayName":map.displayName});
+                    }
+                }
+                 
+            }
+        }
+    }
+
+    // search results which are closest to the query first will
+    // appear earlier in the result array
+    for (let x of exactMatch){
+        result.push(x);
+    } for (let x of startsWith){
+        result.push(x);
+    } for (let x of onlyContains){
+        result.push(x);
+    }
+    
+    return result;
 }
 
 /**
@@ -723,6 +782,8 @@ exports.getMapStartDelay = getMapStartDelay;
 exports.getAllEvents = getAllEvents;
 exports.addPathMap = addPathMap;
 exports.addPathGameMode = addPathGameMode;
+
+exports.searchForMapName = searchForMapName;
 
 
 /*
