@@ -157,22 +157,14 @@ app.get("/brawler", (req, res) => {
 
     for (let x of allSkins){
         // copy over the entire brawler's data, except for their skins
-        // call /brawler/:brawler to get the skin list (too much data here)
+        // call /brawler/:brawler to get the skin list and description (too much data here)
         var brawlerData = {};
         for (let y in x){
-            if (y != "skins"){
+            if (y != "skins" && y != "description"){
                 brawlerData[y] = x[y];
             }
         }
         allBrawlers.push(brawlerData);
-        /*
-        if (x.hasOwnProperty("name") && x.hasOwnProperty("displayName")){
-            allBrawlers.push({
-                "name": x.name,
-                "displayName": x.displayName
-            });
-        }
-        */
     }
     res.json(allBrawlers);
 });
