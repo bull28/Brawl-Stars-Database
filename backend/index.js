@@ -23,6 +23,7 @@ app.use("/image", express.static(path.join("assets", "images")));
 // base directories of different files
 const PORTRAIT_IMAGE_DIR = "portraits/";
 const SKIN_IMAGE_DIR = "skins/";
+const SKIN_MODEL_DIR = "models/";
 const SKINGROUP_IMAGE_DIR = "misc/skingroups/backgrounds/";
 const SKINGROUP_ICON_DIR = "misc/skingroups/icons/";
 const GAMEMODE_IMAGE_DIR = "gamemodes/";
@@ -65,20 +66,22 @@ function isValidTime(hour, minute, second){
 }
 
 /**
- * Some skin images have an alternative image. This function checks
- * whether a skin has one and if so, return the path to it. The field
- * "exists" is also returned in the result, indicating whether the
- * image exists and the file path is valid.
- * @param {String} skinFile file path to the skin's default file
+ * Some skins have a 3D model available. This function checks whether
+ * a skin has one and if so, return the path to it. The field "exists"
+ * is also returned in the result, indicating whether the model exists
+ * and the file path is valid. If it does not exist, the file path
+ * will be empty.
+ * @param {String} skinFile file path to the skin's model
  * @returns json object
  */
-function altImageExists(skinFile){
+function skinModelExists(skinFile){
     var data = {
         "exists": false,
         "image": ""
     };
 
-    const checkFile = skinFile.replace(".png", "_alt.png");
+    //const checkFile = skinFile.replace(".png", "_alt.png");
+    const checkFile = skinFile;
     data.exists = fs.existsSync("assets/images/" + checkFile);
     if (data.exists){
         data.image = checkFile;
@@ -155,12 +158,14 @@ app.get("/", (req, res) => {
 app.get("/brawler", (req, res) => {
     var allBrawlers = [];
 
+    const includeInBrawler = ["name", "displayName", "rarity", "portrait"];
+
     for (let x of allSkins){
         // copy over the entire brawler's data, except for their skins
         // call /brawler/:brawler to get the skin list and description (too much data here)
         var brawlerData = {};
         for (let y in x){
-            if (y != "skins" && y != "description"){
+            if (includeInBrawler.includes(y)){
                 brawlerData[y] = x[y];
             }
         }
@@ -174,34 +179,35 @@ app.get("/brawler", (req, res) => {
 app.get("/brawler/:brawler", (req, res) => {
     const brawler = req.params.brawler;
 
-
-    // 1. Get the data
-
     let brawlerData = skins.getBrawler(allSkins, brawler);
     if (isEmpty(brawlerData)){
         res.status(404).send("Brawler not found.");
         return;
     }
-
     
-    // 2. Copy data and find the file name
     
     // since the skins array has to be modified, a copy of the brawlerData
     // must be created so that the original is not modified
     var brawlerInfo = {};
-    var portraitFile = PORTRAIT_IMAGE_DIR;//, "assets", "images");
+    var portraitFile = PORTRAIT_IMAGE_DIR;
+    var modelFile = SKIN_MODEL_DIR;
 
     for (var x in brawlerData){
         // the user can't do anything with the portrait file so don't send it
         if (x == "portrait"){
             portraitFile = portraitFile + brawlerData[x];
+        } else if (x == "model"){
+            // this model file is the one for the default skin
+            modelFile = modelFile + brawlerData["name"] + "/" + brawlerData[x];
         }
         else if (x != "skins"){
             brawlerInfo[x] = brawlerData[x];
         }
     }
 
-    // 3. Modify any additional data elements
+    brawlerInfo["image"] = portraitFile;
+    brawlerInfo["model"] = modelFile;
+
 
     // all information is copied from the original brawlerData to the new one
     // except for skins which will be added in below
@@ -220,12 +226,6 @@ app.get("/brawler/:brawler", (req, res) => {
         }
     }
 
-    // 4. Set the image (this must be done last)
-
-    brawlerInfo["image"] = portraitFile;
-
-    // 5. Send the json data
-
     res.send(brawlerInfo);
 });
 
@@ -234,8 +234,6 @@ app.get("/brawler/:brawler", (req, res) => {
 app.get("/skin/:brawler/:skin", (req, res) => {
     const brawler = req.params.brawler;
     const skin = req.params.skin;
-
-    // 1. Get the data
 
     // first, search through the json to see if the brawler name is valid
     let brawlerData = skins.getBrawler(allSkins, brawler);
@@ -254,17 +252,20 @@ app.get("/skin/:brawler/:skin", (req, res) => {
         return;
     }
 
-    // 2. Copy data and find the file name
     
     var skinInfo = {};
     var skinFile = SKIN_IMAGE_DIR;
+    var skinModelFile = SKIN_MODEL_DIR;
     var groupData = {};
 
     for (var x in skinData){
-        // do not copy the image, instead add it to the file path
+        // do not copy the image or model, instead add it to the file path
         if (x == "image"){
             skinFile = skinFile + brawlerData.name + "/" + skinData.image;
+        } else if (x == "model"){
+            skinModelFile = skinModelFile + brawlerData.name + "/" + skinData.model;
         }
+
         // for the group, go into the group object and change its image to match the path
         else if (x == "group"){
             for (var y in skinData[x]){
@@ -277,19 +278,15 @@ app.get("/skin/:brawler/:skin", (req, res) => {
                 }
             }
             skinInfo[x] = groupData;
-        } else{
+        }
+        
+        else{
             skinInfo[x] = skinData[x];
         }
     }
 
-    // 3. Modify any additional data elements (this step is not necesssary here)
-
-    // 4. Set the image (this must be done last)
-
     skinInfo["image"] = skinFile;
-    skinInfo["altImage"] = altImageExists(skinFile);
-
-    // 5. Send the json data
+    skinInfo["model"] = skinModelExists(skinModelFile);
 
     res.json(skinInfo);
 });

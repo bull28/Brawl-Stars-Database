@@ -24,6 +24,7 @@
                 },
                 "limited": false,
                 "image": "banditgirldefault.png",
+                "model": "banditgirldefault.glb",
                 "rating": 0
             },
             {
@@ -41,6 +42,7 @@
                 },
                 "limited": false,
                 "image": "banditgirlbandita.png",
+                "model": "banditgirlbandita.glb",
                 "rating": 0
             },
             {
@@ -59,6 +61,7 @@
                 },
                 "limited": true,
                 "image": "banditgirlprereg.png",
+                "model": "banditgirlprereg.glb",
                 "rating": 0
             },
             {
@@ -79,6 +82,7 @@
                 },
                 "limited": true,
                 "image": "shotgungirlwitch.png",
+                "model": "shotgungirlwitch.glb",
                 "rating": 0
             },
             {
@@ -97,6 +101,7 @@
                 },
                 "limited": false,
                 "image": "shotgungirlfootball.png",
+                "model": "shotgungirlfootball.glb",
                 "rating": 0
             },
             {
@@ -115,6 +120,7 @@
                 },
                 "limited": false,
                 "image": "shotgungirlgold.png",
+                "model": "shotgungirlgold.glb",
                 "rating": 0
             },
             {
@@ -133,6 +139,7 @@
                 },
                 "limited": false,
                 "image": "shotgungirlsilver.png",
+                "model": "shotgungirlsilver.glb",
                 "rating": 0
             },
             {
@@ -151,6 +158,7 @@
                 },
                 "limited": true,
                 "image": "shotgungirlbocajuniors.png",
+                "model": "shotgungirlbocajuniors.glb",
                 "rating": 0
             },
             {
@@ -169,6 +177,7 @@
                 },
                 "limited": true,
                 "image": "shotgungirlamerica.png",
+                "model": "shotgungirlamerica.glb",
                 "rating": 0
             },
             {
@@ -187,6 +196,7 @@
                 },
                 "limited": true,
                 "image": "shotgungirludechile.png",
+                "model": "shotgungirludechile.glb",
                 "rating": 0
             },
             {
@@ -207,6 +217,7 @@
                 },
                 "limited": true,
                 "image": "shotgungirlprincess.png",
+                "model": "shotgungirlprincess.glb",
                 "rating": 0
             }
         ]
@@ -236,6 +247,7 @@
                 },
                 "limited": false,
                 "image": "shamandefault.png",
+                "model": "shamandefault.glb",
                 "rating": 0
             },
             {
@@ -254,6 +266,7 @@
                 },
                 "limited": false,
                 "image": "shamanpanda.png",
+                "model": "shamanpanda.glb",
                 "rating": 0
             },
             {
@@ -272,6 +285,7 @@
                 },
                 "limited": true,
                 "image": "shamanreindeer.png",
+                "model": "shamanreindeer.glb",
                 "rating": 0
             },
             {
@@ -293,6 +307,7 @@
                 },
                 "limited": false,
                 "image": "shamanshiba.png",
+                "model": "shamanshiba.glb",
                 "rating": 0
             },
             {
@@ -310,6 +325,7 @@
                 },
                 "limited": false,
                 "image": "shamankoala.png",
+                "model": "shamankoala.glb",
                 "rating": 0
             },
             {
@@ -328,6 +344,7 @@
                 },
                 "limited": false,
                 "image": "shamangold.png",
+                "model": "shamangold.glb",
                 "rating": 0
             },
             {
@@ -346,6 +363,7 @@
                 },
                 "limited": false,
                 "image": "shamansilver.png",
+                "model": "shamansilver.glb",
                 "rating": 0
             },
             {
@@ -367,6 +385,7 @@
                 },
                 "limited": false,
                 "image": "shamansummer.png",
+                "model": "shamansummer.glb",
                 "rating": 0
             },
             {
@@ -386,6 +405,7 @@
                 },
                 "limited": true,
                 "image": "shamandragon.png",
+                "model": "shamandragon.glb",
                 "rating": 0
             }
         ]
@@ -415,6 +435,7 @@
                 },
                 "limited": false,
                 "image": "gunslingerdefault.png",
+                "model": "gunslingerdefault.glb",
                 "rating": 0
             },
             {
@@ -432,6 +453,7 @@
                 },
                 "limited": false,
                 "image": "gunslingerrockstar.png",
+                "model": "gunslingerrockstar.glb",
                 "rating": 0
             },
             {
@@ -451,6 +473,7 @@
                 },
                 "limited": true,
                 "image": "gunslingerhanbok.png",
+                "model": "gunslingerhanbok.glb",
                 "rating": 0
             },
             {
@@ -468,6 +491,7 @@
                 },
                 "limited": false,
                 "image": "gunslingeroutlaw.png",
+                "model": "gunslingeroutlaw.glb",
                 "rating": 0
             },
             {
@@ -487,6 +511,7 @@
                 },
                 "limited": true,
                 "image": "gunslingerpirate.png",
+                "model": "gunslingerpirate.glb",
                 "rating": 0
             },
             {
@@ -507,6 +532,7 @@
                 },
                 "limited": true,
                 "image": "gunslingerplayer.png",
+                "model": "gunslingerplayer.glb",
                 "rating": 0
             },
             {
@@ -525,6 +551,7 @@
                 },
                 "limited": true,
                 "image": "gunslingerbadass.png",
+                "model": "gunslingerbadass.glb",
                 "rating": 0
             },
             {
@@ -543,6 +570,7 @@
                 },
                 "limited": true,
                 "image": "gunslingerriverplate.png",
+                "model": "gunslingerriverplate.glb",
                 "rating": 0
             },
             {
@@ -561,6 +589,7 @@
                 },
                 "limited": true,
                 "image": "gunslingercerroporteno.png",
+                "model": "gunslingercerroporteno.glb",
                 "rating": 0
             },
             {
@@ -579,6 +608,7 @@
                 },
                 "limited": true,
                 "image": "gunslingeratlnacional.png",
+                "model": "gunslingeratlnacional.glb",
                 "rating": 0
             },
             {
@@ -597,6 +627,7 @@
                 },
                 "limited": true,
                 "image": "gunslingerclubamerica.png",
+                "model": "gunslingerclubamerica.glb",
                 "rating": 0
             },
             {
@@ -615,6 +646,7 @@
                 },
                 "limited": false,
                 "image": "gunslingertruegold.png",
+                "model": "gunslingertruegold.glb",
                 "rating": 0
             },
             {
@@ -633,6 +665,7 @@
                 },
                 "limited": false,
                 "image": "gunslingertruesilver.png",
+                "model": "gunslingertruesilver.glb",
                 "rating": 0
             },
             {
@@ -652,6 +685,7 @@
                 },
                 "limited": false,
                 "image": "gunslingerheist.png",
+                "model": "gunslingerheist.glb",
                 "rating": 0
             },
             {
@@ -672,6 +706,7 @@
                 },
                 "limited": true,
                 "image": "gunslingerpaintball.png",
+                "model": "gunslingerpaintball.glb",
                 "rating": 0
             }
         ]
@@ -701,6 +736,7 @@
                 },
                 "limited": false,
                 "image": "bullguydefault.png",
+                "model": "bullguydefault.glb",
                 "rating": 0
             },
             {
@@ -718,6 +754,7 @@
                 },
                 "limited": true,
                 "image": "bullguyhair.png",
+                "model": "bullguyhair.glb",
                 "rating": 0
             },
             {
@@ -735,6 +772,7 @@
                 },
                 "limited": true,
                 "image": "bullguyfootbull.png",
+                "model": "bullguyfootbull.glb",
                 "rating": 0
             },
             {
@@ -752,6 +790,7 @@
                 },
                 "limited": false,
                 "image": "bulldudefootbullblue.png",
+                "model": "bulldudefootbullblue.glb",
                 "rating": 0
             },
             {
@@ -772,6 +811,7 @@
                 },
                 "limited": true,
                 "image": "bulldudebarbking.png",
+                "model": "bulldudebarbking.glb",
                 "rating": 0
             },
             {
@@ -790,6 +830,7 @@
                 },
                 "limited": false,
                 "image": "bulldudegold.png",
+                "model": "bulldudegold.glb",
                 "rating": 0
             },
             {
@@ -808,6 +849,7 @@
                 },
                 "limited": false,
                 "image": "bulldudesilver.png",
+                "model": "bulldudesilver.glb",
                 "rating": 0
             },
             {
@@ -829,6 +871,7 @@
                 },
                 "limited": true,
                 "image": "bulldudeox.png",
+                "model": "bulldudeox.glb",
                 "rating": 0
             },
             {
@@ -849,6 +892,7 @@
                 },
                 "limited": true,
                 "image": "bulldudeterminator.png",
+                "model": "bulldudeterminator.glb",
                 "rating": 0
             },
             {
@@ -869,6 +913,7 @@
                 },
                 "limited": false,
                 "image": "bulldudelion.png",
+                "model": "bulldudelion.glb",
                 "rating": 0
             },
             {
@@ -889,6 +934,7 @@
                 },
                 "limited": false,
                 "image": "bulldudemang.png",
+                "model": "bulldudemang.glb",
                 "rating": 0
             }
         ]
@@ -918,6 +964,7 @@
                 },
                 "limited": false,
                 "image": "mechanicdefault.png",
+                "model": "mechanicdefault.glb",
                 "rating": 0
             },
             {
@@ -938,6 +985,7 @@
                 },
                 "limited": false,
                 "image": "mechanicknight.png",
+                "model": "mechanicknight.glb",
                 "rating": 0
             },
             {
@@ -957,6 +1005,7 @@
                 },
                 "limited": false,
                 "image": "mechanicsummer.png",
+                "model": "mechanicsummer.glb",
                 "rating": 0
             },
             {
@@ -977,6 +1026,7 @@
                 },
                 "limited": false,
                 "image": "mechanicknightdark.png",
+                "model": "mechanicknightdark.glb",
                 "rating": 0
             },
             {
@@ -997,6 +1047,7 @@
                 },
                 "limited": false,
                 "image": "mechanictanuki.png",
+                "model": "mechanictanuki.glb",
                 "rating": 0
             },
             {
@@ -1016,6 +1067,7 @@
                 },
                 "limited": true,
                 "image": "mechanicreddragon.png",
+                "model": "mechanicreddragon.glb",
                 "rating": 0
             },
             {
@@ -1034,6 +1086,7 @@
                 },
                 "limited": false,
                 "image": "mechanicgold.png",
+                "model": "mechanicgold.glb",
                 "rating": 0
             },
             {
@@ -1052,6 +1105,7 @@
                 },
                 "limited": false,
                 "image": "mechanicsilver.png",
+                "model": "mechanicsilver.glb",
                 "rating": 0
             },
             {
@@ -1072,6 +1126,7 @@
                 },
                 "limited": true,
                 "image": "mechanicthief.png",
+                "model": "mechanicthief.glb",
                 "rating": 0
             }
         ]
@@ -1101,6 +1156,7 @@
                 },
                 "limited": false,
                 "image": "rocketgirldefault.png",
+                "model": "rocketgirldefault.glb",
                 "rating": 0
             },
             {
@@ -1120,6 +1176,7 @@
                 },
                 "limited": false,
                 "image": "rocketgirlbeach.png",
+                "model": "rocketgirlbeach.glb",
                 "rating": 0
             },
             {
@@ -1137,6 +1194,7 @@
                 },
                 "limited": true,
                 "image": "rocketgirlboombox.png",
+                "model": "rocketgirlboombox.glb",
                 "rating": 0
             },
             {
@@ -1156,6 +1214,7 @@
                 },
                 "limited": true,
                 "image": "rocketgirlcny.png",
+                "model": "rocketgirlcny.glb",
                 "rating": 0
             },
             {
@@ -1174,6 +1233,7 @@
                 },
                 "limited": true,
                 "image": "rocketgirlhotrod.png",
+                "model": "rocketgirlhotrod.glb",
                 "rating": 0
             },
             {
@@ -1192,6 +1252,7 @@
                 },
                 "limited": true,
                 "image": "rocketgirlranger.png",
+                "model": "rocketgirlranger.glb",
                 "rating": 0
             },
             {
@@ -1210,6 +1271,7 @@
                 },
                 "limited": true,
                 "image": "rocketgirlog.png",
+                "model": "rocketgirlog.glb",
                 "rating": 0
             },
             {
@@ -1228,6 +1290,7 @@
                 },
                 "limited": false,
                 "image": "rocketgirlsilver.png",
+                "model": "rocketgirlsilver.glb",
                 "rating": 0
             },
             {
@@ -1246,6 +1309,7 @@
                 },
                 "limited": false,
                 "image": "rocketgirlgold.png",
+                "model": "rocketgirlgold.glb",
                 "rating": 0
             },
             {
@@ -1266,6 +1330,7 @@
                 },
                 "limited": true,
                 "image": "rocketgirldelivery.png",
+                "model": "rocketgirldelivery.glb",
                 "rating": 0
             }
         ]
@@ -1295,6 +1360,7 @@
                 },
                 "limited": false,
                 "image": "tntguydefault.png",
+                "model": "tntguydefault.glb",
                 "rating": 0
             },
             {
@@ -1313,6 +1379,7 @@
                 },
                 "limited": true,
                 "image": "tntguysanta.png",
+                "model": "tntguysanta.glb",
                 "rating": 0
             },
             {
@@ -1331,6 +1398,7 @@
                 },
                 "limited": true,
                 "image": "tntguychef.png",
+                "model": "tntguychef.glb",
                 "rating": 0
             },
             {
@@ -1352,6 +1420,7 @@
                 },
                 "limited": false,
                 "image": "tntdudemecha.png",
+                "model": "tntdudemecha.glb",
                 "rating": 0
             },
             {
@@ -1372,6 +1441,7 @@
                 },
                 "limited": false,
                 "image": "tntdudefootball.png",
+                "model": "tntdudefootball.glb",
                 "rating": 0
             },
             {
@@ -1391,6 +1461,7 @@
                 },
                 "limited": true,
                 "image": "tntdudesnowtel.png",
+                "model": "tntdudesnowtel.glb",
                 "rating": 0
             },
             {
@@ -1411,6 +1482,7 @@
                 },
                 "limited": false,
                 "image": "tntdudepsg.png",
+                "model": "tntdudepsg.glb",
                 "rating": 0
             },
             {
@@ -1431,6 +1503,7 @@
                 },
                 "limited": true,
                 "image": "tntdudeflamengo.png",
+                "model": "tntdudeflamengo.glb",
                 "rating": 0
             },
             {
@@ -1451,6 +1524,7 @@
                 },
                 "limited": true,
                 "image": "tntdudelduquito.png",
+                "model": "tntdudelduquito.glb",
                 "rating": 0
             },
             {
@@ -1471,6 +1545,7 @@
                 },
                 "limited": true,
                 "image": "tntdudechivas.png",
+                "model": "tntdudechivas.glb",
                 "rating": 0
             },
             {
@@ -1491,6 +1566,7 @@
                 },
                 "limited": false,
                 "image": "tntdudetoxic.png",
+                "model": "tntdudetoxic.glb",
                 "rating": 0
             },
             {
@@ -1509,6 +1585,7 @@
                 },
                 "limited": false,
                 "image": "tntdudegold.png",
+                "model": "tntdudegold.glb",
                 "rating": 0
             },
             {
@@ -1527,6 +1604,7 @@
                 },
                 "limited": false,
                 "image": "tntdudesilver.png",
+                "model": "tntdudesilver.glb",
                 "rating": 0
             },
             {
@@ -1545,6 +1623,7 @@
                 },
                 "limited": true,
                 "image": "tntduderetro.png",
+                "model": "tntduderetro.glb",
                 "rating": 0
             }
         ]
@@ -1574,6 +1653,7 @@
                 },
                 "limited": false,
                 "image": "bowdudedefault.png",
+                "model": "bowdudedefault.glb",
                 "rating": 0
             },
             {
@@ -1595,6 +1675,7 @@
                 },
                 "limited": false,
                 "image": "bomecha.png",
+                "model": "bomecha.glb",
                 "rating": 0
             },
             {
@@ -1616,6 +1697,7 @@
                 },
                 "limited": false,
                 "image": "bowdudemechawhite.png",
+                "model": "bowdudemechawhite.glb",
                 "rating": 0
             },
             {
@@ -1637,6 +1719,7 @@
                 },
                 "limited": false,
                 "image": "bowdudemechagold.png",
+                "model": "bowdudemechagold.glb",
                 "rating": 0
             },
             {
@@ -1657,6 +1740,7 @@
                 },
                 "limited": false,
                 "image": "bowdudehorus.png",
+                "model": "bowdudehorus.glb",
                 "rating": 0
             },
             {
@@ -1677,6 +1761,7 @@
                 },
                 "limited": false,
                 "image": "bowdudedemonic.png",
+                "model": "bowdudedemonic.glb",
                 "rating": 0
             },
             {
@@ -1695,6 +1780,7 @@
                 },
                 "limited": false,
                 "image": "bowdudewarrior.png",
+                "model": "bowdudewarrior.glb",
                 "rating": 0
             },
             {
@@ -1713,6 +1799,7 @@
                 },
                 "limited": false,
                 "image": "bowdudegold.png",
+                "model": "bowdudegold.glb",
                 "rating": 0
             },
             {
@@ -1731,6 +1818,7 @@
                 },
                 "limited": false,
                 "image": "bowdudesilver.png",
+                "model": "bowdudesilver.glb",
                 "rating": 0
             },
             {
@@ -1751,6 +1839,7 @@
                 },
                 "limited": true,
                 "image": "bowdudesanta.png",
+                "model": "bowdudesanta.glb",
                 "rating": 0
             },
             {
@@ -1771,6 +1860,7 @@
                 },
                 "limited": true,
                 "image": "bowdudewasp.png",
+                "model": "bowdudewasp.glb",
                 "rating": 0
             }
         ]
@@ -1800,6 +1890,7 @@
                 },
                 "limited": false,
                 "image": "clusterbombdefault.png",
+                "model": "clusterbombdefault.glb",
                 "rating": 0
             },
             {
@@ -1820,6 +1911,7 @@
                 },
                 "limited": false,
                 "image": "clusterbombmonster.png",
+                "model": "clusterbombmonster.glb",
                 "rating": 0
             },
             {
@@ -1840,6 +1932,7 @@
                 },
                 "limited": true,
                 "image": "clusterbombdudesnowman.png",
+                "model": "clusterbombdudesnowman.glb",
                 "rating": 0
             },
             {
@@ -1858,6 +1951,7 @@
                 },
                 "limited": false,
                 "image": "clusterbombdudegold.png",
+                "model": "clusterbombdudegold.glb",
                 "rating": 0
             },
             {
@@ -1876,6 +1970,7 @@
                 },
                 "limited": false,
                 "image": "clusterbombdudesilver.png",
+                "model": "clusterbombdudesilver.glb",
                 "rating": 0
             },
             {
@@ -1895,6 +1990,7 @@
                 },
                 "limited": false,
                 "image": "clusterbombdudeshooky.png",
+                "model": "clusterbombdudeshooky.glb",
                 "rating": 0
             }
         ]
@@ -1924,6 +2020,7 @@
                 },
                 "limited": false,
                 "image": "arcadedefault.png",
+                "model": "arcadedefault.glb",
                 "rating": 0
             },
             {
@@ -1941,6 +2038,7 @@
                 },
                 "limited": false,
                 "image": "arcadeclassic.png",
+                "model": "arcadeclassic.glb",
                 "rating": 0
             },
             {
@@ -1962,6 +2060,7 @@
                 },
                 "limited": true,
                 "image": "arcadevirus.png",
+                "model": "arcadevirus.glb",
                 "rating": 0
             },
             {
@@ -1983,6 +2082,7 @@
                 },
                 "limited": true,
                 "image": "arcadepiano.png",
+                "model": "arcadepiano.glb",
                 "rating": 0
             },
             {
@@ -2001,6 +2101,7 @@
                 },
                 "limited": false,
                 "image": "arcadesilver.png",
+                "model": "arcadesilver.glb",
                 "rating": 0
             },
             {
@@ -2019,6 +2120,7 @@
                 },
                 "limited": false,
                 "image": "arcadegold.png",
+                "model": "arcadegold.glb",
                 "rating": 0
             },
             {
@@ -2039,6 +2141,7 @@
                 },
                 "limited": true,
                 "image": "arcaderetropolis.png",
+                "model": "arcaderetropolis.glb",
                 "rating": 0
             }
         ]
@@ -2068,6 +2171,7 @@
                 },
                 "limited": false,
                 "image": "mummydefault.png",
+                "model": "mummydefault.glb",
                 "rating": 0
             },
             {
@@ -2086,6 +2190,7 @@
                 },
                 "limited": false,
                 "image": "mummycollege.png",
+                "model": "mummycollege.glb",
                 "rating": 0
             },
             {
@@ -2104,6 +2209,7 @@
                 },
                 "limited": false,
                 "image": "mummygold.png",
+                "model": "mummygold.glb",
                 "rating": 0
             },
             {
@@ -2122,6 +2228,7 @@
                 },
                 "limited": false,
                 "image": "mummysilver.png",
+                "model": "mummysilver.glb",
                 "rating": 0
             },
             {
@@ -2142,6 +2249,7 @@
                 },
                 "limited": false,
                 "image": "mummygiftshop.png",
+                "model": "mummygiftshop.glb",
                 "rating": 0
             },
             {
@@ -2162,6 +2270,7 @@
                 },
                 "limited": false,
                 "image": "mummydj.png",
+                "model": "mummydj.glb",
                 "rating": 0
             }
         ]
@@ -2191,6 +2300,7 @@
                 },
                 "limited": false,
                 "image": "rollerdefault.png",
+                "model": "rollerdefault.glb",
                 "rating": 0
             },
             {
@@ -2208,6 +2318,7 @@
                 },
                 "limited": false,
                 "image": "rollerwhite.png",
+                "model": "rollerwhite.glb",
                 "rating": 0
             },
             {
@@ -2226,6 +2337,7 @@
                 },
                 "limited": false,
                 "image": "rollerpunk.png",
+                "model": "rollerpunk.glb",
                 "rating": 0
             },
             {
@@ -2246,6 +2358,7 @@
                 },
                 "limited": true,
                 "image": "rollerheadless.png",
+                "model": "rollerheadless.glb",
                 "rating": 0
             },
             {
@@ -2264,6 +2377,7 @@
                 },
                 "limited": false,
                 "image": "rollergold.png",
+                "model": "rollergold.glb",
                 "rating": 0
             },
             {
@@ -2282,6 +2396,7 @@
                 },
                 "limited": false,
                 "image": "rollersilver.png",
+                "model": "rollersilver.glb",
                 "rating": 0
             }
         ]
@@ -2311,6 +2426,7 @@
                 },
                 "limited": false,
                 "image": "luchadordefault.png",
+                "model": "luchadordefault.glb",
                 "rating": 0
             },
             {
@@ -2330,6 +2446,7 @@
                 },
                 "limited": false,
                 "image": "luchadorrudo.png",
+                "model": "luchadorrudo.glb",
                 "rating": 0
             },
             {
@@ -2349,6 +2466,7 @@
                 },
                 "limited": false,
                 "image": "luchadorrey.png",
+                "model": "luchadorrey.glb",
                 "rating": 0
             },
             {
@@ -2368,6 +2486,7 @@
                 },
                 "limited": false,
                 "image": "luchadorbrown.png",
+                "model": "luchadorbrown.glb",
                 "rating": 0
             },
             {
@@ -2386,6 +2505,7 @@
                 },
                 "limited": false,
                 "image": "luchadorgold.png",
+                "model": "luchadorgold.glb",
                 "rating": 0
             },
             {
@@ -2404,6 +2524,7 @@
                 },
                 "limited": false,
                 "image": "luchadorsilver.png",
+                "model": "luchadorsilver.glb",
                 "rating": 0
             },
             {
@@ -2423,6 +2544,7 @@
                 },
                 "limited": false,
                 "image": "luchadoratomic.png",
+                "model": "luchadoratomic.glb",
                 "rating": 0
             },
             {
@@ -2441,6 +2563,7 @@
                 },
                 "limited": true,
                 "image": "luchadoruniversitario.png",
+                "model": "luchadoruniversitario.glb",
                 "rating": 0
             },
             {
@@ -2459,6 +2582,7 @@
                 },
                 "limited": true,
                 "image": "luchadorclubnacional.png",
+                "model": "luchadorclubnacional.glb",
                 "rating": 0
             },
             {
@@ -2477,6 +2601,7 @@
                 },
                 "limited": true,
                 "image": "luchadorcorinthians.png",
+                "model": "luchadorcorinthians.glb",
                 "rating": 0
             },
             {
@@ -2497,6 +2622,7 @@
                 },
                 "limited": false,
                 "image": "luchadordragon.png",
+                "model": "luchadordragon.glb",
                 "rating": 0
             },
             {
@@ -2517,6 +2643,7 @@
                 },
                 "limited": false,
                 "image": "luchadordragonchroma.png",
+                "model": "luchadordragonchroma.glb",
                 "rating": 0
             },
             {
@@ -2537,6 +2664,7 @@
                 },
                 "limited": true,
                 "image": "luchadortiger.png",
+                "model": "luchadortiger.glb",
                 "rating": 0
             },
             {
@@ -2556,6 +2684,7 @@
                 },
                 "limited": false,
                 "image": "luchadorcorazon.png",
+                "model": "luchadorcorazon.glb",
                 "rating": 0
             }
         ]
@@ -2585,6 +2714,7 @@
                 },
                 "limited": false,
                 "image": "barkeepdefault.png",
+                "model": "barkeepdefault.glb",
                 "rating": 0
             },
             {
@@ -2603,6 +2733,7 @@
                 },
                 "limited": false,
                 "image": "barkeepgold.png",
+                "model": "barkeepgold.glb",
                 "rating": 0
             },
             {
@@ -2623,6 +2754,7 @@
                 },
                 "limited": false,
                 "image": "barkeepwizard.png",
+                "model": "barkeepwizard.glb",
                 "rating": 0
             },
             {
@@ -2642,6 +2774,7 @@
                 },
                 "limited": true,
                 "image": "barkeepms.png",
+                "model": "barkeepms.glb",
                 "rating": 0
             },
             {
@@ -2660,6 +2793,7 @@
                 },
                 "limited": false,
                 "image": "barkeepmaple.png",
+                "model": "barkeepmaple.glb",
                 "rating": 0
             },
             {
@@ -2677,6 +2811,7 @@
                 },
                 "limited": false,
                 "image": "barkeepwizardred.png",
+                "model": "barkeepwizardred.glb",
                 "rating": 0
             },
             {
@@ -2695,6 +2830,7 @@
                 },
                 "limited": false,
                 "image": "barkeeptruegold.png",
+                "model": "barkeeptruegold.glb",
                 "rating": 0
             },
             {
@@ -2713,6 +2849,7 @@
                 },
                 "limited": false,
                 "image": "barkeeptruesilver.png",
+                "model": "barkeeptruesilver.glb",
                 "rating": 0
             },
             {
@@ -2733,6 +2870,7 @@
                 },
                 "limited": false,
                 "image": "barkeepunicorn.png",
+                "model": "barkeepunicorn.glb",
                 "rating": 0
             },
             {
@@ -2753,6 +2891,7 @@
                 },
                 "limited": true,
                 "image": "barkeepdrunken.png",
+                "model": "barkeepdrunken.glb",
                 "rating": 0
             }
         ]
@@ -2782,6 +2921,7 @@
                 },
                 "limited": false,
                 "image": "deadmariachidefault.png",
+                "model": "deadmariachidefault.glb",
                 "rating": 0
             },
             {
@@ -2800,6 +2940,7 @@
                 },
                 "limited": false,
                 "image": "pocovalentine.png",
+                "model": "pocovalentine.glb",
                 "rating": 0
             },
             {
@@ -2818,6 +2959,7 @@
                 },
                 "limited": true,
                 "image": "pocopirate.png",
+                "model": "pocopirate.glb",
                 "rating": 0
             },
             {
@@ -2836,6 +2978,7 @@
                 },
                 "limited": true,
                 "image": "pocostarr.png",
+                "model": "pocostarr.glb",
                 "rating": 0
             },
             {
@@ -2857,6 +3000,7 @@
                 },
                 "limited": false,
                 "image": "deadmariachipunk.png",
+                "model": "deadmariachipunk.glb",
                 "rating": 0
             },
             {
@@ -2875,6 +3019,7 @@
                 },
                 "limited": false,
                 "image": "deadmariachigold.png",
+                "model": "deadmariachigold.glb",
                 "rating": 0
             },
             {
@@ -2893,6 +3038,7 @@
                 },
                 "limited": false,
                 "image": "deadmariachisilver.png",
+                "model": "deadmariachisilver.glb",
                 "rating": 0
             }
         ]
@@ -2922,6 +3068,7 @@
                 },
                 "limited": false,
                 "image": "rosadefault.png",
+                "model": "rosadefault.glb",
                 "rating": 0
             },
             {
@@ -2941,6 +3088,7 @@
                 },
                 "limited": true,
                 "image": "rosarosabrawloween.png",
+                "model": "rosarosabrawloween.glb",
                 "rating": 0
             },
             {
@@ -2961,6 +3109,7 @@
                 },
                 "limited": false,
                 "image": "rosacoco.png",
+                "model": "rosacoco.glb",
                 "rating": 0
             },
             {
@@ -2981,6 +3130,7 @@
                 },
                 "limited": true,
                 "image": "rosabp.png",
+                "model": "rosabp.glb",
                 "rating": 0
             },
             {
@@ -2999,6 +3149,7 @@
                 },
                 "limited": false,
                 "image": "rosagold.png",
+                "model": "rosagold.glb",
                 "rating": 0
             },
             {
@@ -3017,6 +3168,7 @@
                 },
                 "limited": false,
                 "image": "rosasilver.png",
+                "model": "rosasilver.glb",
                 "rating": 0
             },
             {
@@ -3037,6 +3189,7 @@
                 },
                 "limited": false,
                 "image": "rosamantis.png",
+                "model": "rosamantis.glb",
                 "rating": 0
             }
         ]
@@ -3066,6 +3219,7 @@
                 },
                 "limited": false,
                 "image": "trickshotdefault.png",
+                "model": "trickshotdefault.glb",
                 "rating": 0
             },
             {
@@ -3084,6 +3238,7 @@
                 },
                 "limited": false,
                 "image": "trickshotgold.png",
+                "model": "trickshotgold.glb",
                 "rating": 0
             },
             {
@@ -3102,6 +3257,7 @@
                 },
                 "limited": false,
                 "image": "trickshotpopcorn.png",
+                "model": "trickshotpopcorn.glb",
                 "rating": 0
             },
             {
@@ -3119,6 +3275,7 @@
                 },
                 "limited": true,
                 "image": "trickshotdudetotal.png",
+                "model": "trickshotdudetotal.glb",
                 "rating": 0
             },
             {
@@ -3140,6 +3297,7 @@
                 },
                 "limited": false,
                 "image": "trickshotdudebazaar.png",
+                "model": "trickshotdudebazaar.glb",
                 "rating": 0
             },
             {
@@ -3158,6 +3316,7 @@
                 },
                 "limited": false,
                 "image": "trickshotdudetruegold.png",
+                "model": "trickshotdudetruegold.glb",
                 "rating": 0
             },
             {
@@ -3176,6 +3335,7 @@
                 },
                 "limited": false,
                 "image": "trickshotdudesilver.png",
+                "model": "trickshotdudesilver.glb",
                 "rating": 0
             },
             {
@@ -3196,6 +3356,7 @@
                 },
                 "limited": false,
                 "image": "trickshotdudechicken.png",
+                "model": "trickshotdudechicken.glb",
                 "rating": 0
             },
             {
@@ -3216,6 +3377,7 @@
                 },
                 "limited": true,
                 "image": "trickshotdudefirefly.png",
+                "model": "trickshotdudefirefly.glb",
                 "rating": 0
             }
         ]
@@ -3245,6 +3407,7 @@
                 },
                 "limited": false,
                 "image": "barrelbotdefault.png",
+                "model": "barrelbotdefault.glb",
                 "rating": 0
             },
             {
@@ -3264,6 +3427,7 @@
                 },
                 "limited": true,
                 "image": "barrelbotcny.png",
+                "model": "barrelbotcny.glb",
                 "rating": 0
             },
             {
@@ -3284,6 +3448,7 @@
                 },
                 "limited": true,
                 "image": "barrelbotfootball.png",
+                "model": "barrelbotfootball.glb",
                 "rating": 0
             },
             {
@@ -3302,6 +3467,7 @@
                 },
                 "limited": false,
                 "image": "barrelbotgold.png",
+                "model": "barrelbotgold.glb",
                 "rating": 0
             },
             {
@@ -3320,6 +3486,7 @@
                 },
                 "limited": false,
                 "image": "barrelbotsilver.png",
+                "model": "barrelbotsilver.glb",
                 "rating": 0
             },
             {
@@ -3339,6 +3506,7 @@
                 },
                 "limited": true,
                 "image": "barrelbotlaser.png",
+                "model": "barrelbotlaser.glb",
                 "rating": 0
             },
             {
@@ -3359,6 +3527,7 @@
                 },
                 "limited": true,
                 "image": "barrelbotmegabox.png",
+                "model": "barrelbotmegabox.glb",
                 "rating": 0
             },
             {
@@ -3379,6 +3548,7 @@
                 },
                 "limited": true,
                 "image": "barrelbotcrash.png",
+                "model": "barrelbotcrash.glb",
                 "rating": 0
             }
         ]
@@ -3408,6 +3578,7 @@
                 },
                 "limited": false,
                 "image": "artillerygaldefault.png",
+                "model": "artillerygaldefault.glb",
                 "rating": 0
             },
             {
@@ -3427,6 +3598,7 @@
                 },
                 "limited": true,
                 "image": "artillerygalelf.png",
+                "model": "artillerygalelf.glb",
                 "rating": 0
             },
             {
@@ -3446,6 +3618,7 @@
                 },
                 "limited": false,
                 "image": "artillerygalbunny.png",
+                "model": "artillerygalbunny.glb",
                 "rating": 0
             },
             {
@@ -3464,6 +3637,7 @@
                 },
                 "limited": false,
                 "image": "artillerydudedarkbunny.png",
+                "model": "artillerydudedarkbunny.glb",
                 "rating": 0
             },
             {
@@ -3483,6 +3657,7 @@
                 },
                 "limited": true,
                 "image": "artillerydudesmuggler.png",
+                "model": "artillerydudesmuggler.glb",
                 "rating": 0
             },
             {
@@ -3501,6 +3676,7 @@
                 },
                 "limited": false,
                 "image": "artillerydudegold.png",
+                "model": "artillerydudegold.glb",
                 "rating": 0
             },
             {
@@ -3519,6 +3695,7 @@
                 },
                 "limited": false,
                 "image": "artillerydudesilver.png",
+                "model": "artillerydudesilver.glb",
                 "rating": 0
             }
         ]
@@ -3548,6 +3725,7 @@
                 },
                 "limited": false,
                 "image": "whirlwinddefault.png",
+                "model": "whirlwinddefault.glb",
                 "rating": 0
             },
             {
@@ -3566,6 +3744,7 @@
                 },
                 "limited": true,
                 "image": "whirlwindrr.png",
+                "model": "whirlwindrr.glb",
                 "rating": 0
             },
             {
@@ -3583,6 +3762,7 @@
                 },
                 "limited": false,
                 "image": "whirlwindhogrider.png",
+                "model": "whirlwindhogrider.glb",
                 "rating": 0
             },
             {
@@ -3601,6 +3781,7 @@
                 },
                 "limited": false,
                 "image": "whirlwindleonard.png",
+                "model": "whirlwindleonard.glb",
                 "rating": 0
             },
             {
@@ -3620,6 +3801,7 @@
                 },
                 "limited": true,
                 "image": "whirlwindpirate.png",
+                "model": "whirlwindpirate.glb",
                 "rating": 0
             },
             {
@@ -3640,6 +3822,7 @@
                 },
                 "limited": false,
                 "image": "whirlwinddarktide.png",
+                "model": "whirlwinddarktide.glb",
                 "rating": 0
             },
             {
@@ -3660,6 +3843,7 @@
                 },
                 "limited": true,
                 "image": "whirlwindsurfer.png",
+                "model": "whirlwindsurfer.glb",
                 "rating": 0
             },
             {
@@ -3678,6 +3862,7 @@
                 },
                 "limited": false,
                 "image": "whirlwindgold.png",
+                "model": "whirlwindgold.glb",
                 "rating": 0
             },
             {
@@ -3696,6 +3881,7 @@
                 },
                 "limited": false,
                 "image": "whirlwindsilver.png",
+                "model": "whirlwindsilver.glb",
                 "rating": 0
             },
             {
@@ -3716,6 +3902,7 @@
                 },
                 "limited": true,
                 "image": "whirlwindbiker.png",
+                "model": "whirlwindbiker.glb",
                 "rating": 0
             }
         ]
@@ -3745,6 +3932,7 @@
                 },
                 "limited": false,
                 "image": "drillerdefault.png",
+                "model": "drillerdefault.glb",
                 "rating": 0
             },
             {
@@ -3763,6 +3951,7 @@
                 },
                 "limited": false,
                 "image": "drillerconstructor.png",
+                "model": "drillerconstructor.glb",
                 "rating": 0
             },
             {
@@ -3784,6 +3973,7 @@
                 },
                 "limited": false,
                 "image": "drillermonster.png",
+                "model": "drillermonster.glb",
                 "rating": 0
             },
             {
@@ -3805,6 +3995,7 @@
                 },
                 "limited": true,
                 "image": "drillerjetski.png",
+                "model": "drillerjetski.glb",
                 "rating": 0
             },
             {
@@ -3824,6 +4015,7 @@
                 },
                 "limited": true,
                 "image": "drillergift.png",
+                "model": "drillergift.glb",
                 "rating": 0
             },
             {
@@ -3842,6 +4034,7 @@
                 },
                 "limited": false,
                 "image": "drillergold.png",
+                "model": "drillergold.glb",
                 "rating": 0
             },
             {
@@ -3860,6 +4053,7 @@
                 },
                 "limited": false,
                 "image": "drillersilver.png",
+                "model": "drillersilver.glb",
                 "rating": 0
             },
             {
@@ -3880,6 +4074,7 @@
                 },
                 "limited": false,
                 "image": "drillercooky.png",
+                "model": "drillercooky.glb",
                 "rating": 0
             }
         ]
@@ -3909,6 +4104,7 @@
                 },
                 "limited": false,
                 "image": "sniperdefault.png",
+                "model": "sniperdefault.glb",
                 "rating": 0
             },
             {
@@ -3926,6 +4122,7 @@
                 },
                 "limited": false,
                 "image": "sniperpink.png",
+                "model": "sniperpink.glb",
                 "rating": 0
             },
             {
@@ -3945,6 +4142,7 @@
                 },
                 "limited": true,
                 "image": "sniperrose.png",
+                "model": "sniperrose.glb",
                 "rating": 0
             },
             {
@@ -3964,6 +4162,7 @@
                 },
                 "limited": false,
                 "image": "snipervalentines.png",
+                "model": "snipervalentines.glb",
                 "rating": 0
             },
             {
@@ -3982,6 +4181,7 @@
                 },
                 "limited": false,
                 "image": "snipergold.png",
+                "model": "snipergold.glb",
                 "rating": 0
             },
             {
@@ -4000,6 +4200,7 @@
                 },
                 "limited": false,
                 "image": "snipersilver.png",
+                "model": "snipersilver.glb",
                 "rating": 0
             },
             {
@@ -4019,6 +4220,7 @@
                 },
                 "limited": false,
                 "image": "sniperline.png",
+                "model": "sniperline.glb",
                 "rating": 0
             },
             {
@@ -4039,6 +4241,7 @@
                 },
                 "limited": false,
                 "image": "snipermoon.png",
+                "model": "snipermoon.glb",
                 "rating": 0
             }
         ]
@@ -4068,6 +4271,7 @@
                 },
                 "limited": false,
                 "image": "minigundudedefault.png",
+                "model": "minigundudedefault.glb",
                 "rating": 0
             },
             {
@@ -4088,6 +4292,7 @@
                 },
                 "limited": false,
                 "image": "minigundudesummer.png",
+                "model": "minigundudesummer.glb",
                 "rating": 0
             },
             {
@@ -4109,6 +4314,7 @@
                 },
                 "limited": false,
                 "image": "minigundudequeen.png",
+                "model": "minigundudequeen.glb",
                 "rating": 0
             },
             {
@@ -4127,6 +4333,7 @@
                 },
                 "limited": false,
                 "image": "minigundudegold.png",
+                "model": "minigundudegold.glb",
                 "rating": 0
             },
             {
@@ -4145,6 +4352,7 @@
                 },
                 "limited": false,
                 "image": "minigundudesilver.png",
+                "model": "minigundudesilver.glb",
                 "rating": 0
             }
         ]
@@ -4174,6 +4382,7 @@
                 },
                 "limited": false,
                 "image": "frankdefault.png",
+                "model": "frankdefault.glb",
                 "rating": 0
             },
             {
@@ -4191,6 +4400,7 @@
                 },
                 "limited": true,
                 "image": "frankcaveman.png",
+                "model": "frankcaveman.glb",
                 "rating": 0
             },
             {
@@ -4210,6 +4420,7 @@
                 },
                 "limited": false,
                 "image": "hammerdudedj.png",
+                "model": "hammerdudedj.glb",
                 "rating": 0
             },
             {
@@ -4228,6 +4439,7 @@
                 },
                 "limited": false,
                 "image": "hammerdudegold.png",
+                "model": "hammerdudegold.glb",
                 "rating": 0
             },
             {
@@ -4246,6 +4458,7 @@
                 },
                 "limited": false,
                 "image": "hammerdudesilver.png",
+                "model": "hammerdudesilver.glb",
                 "rating": 0
             },
             {
@@ -4266,6 +4479,7 @@
                 },
                 "limited": true,
                 "image": "hammerdudexmas.png",
+                "model": "hammerdudexmas.glb",
                 "rating": 0
             }
         ]
@@ -4295,6 +4509,7 @@
                 },
                 "limited": false,
                 "image": "baseballdefault.png",
+                "model": "baseballdefault.glb",
                 "rating": 0
             },
             {
@@ -4315,6 +4530,7 @@
                 },
                 "limited": true,
                 "image": "baseballgamer.png",
+                "model": "baseballgamer.glb",
                 "rating": 0
             },
             {
@@ -4334,6 +4550,7 @@
                 },
                 "limited": false,
                 "image": "baseballzombibi.png",
+                "model": "baseballzombibi.glb",
                 "rating": 0
             },
             {
@@ -4353,6 +4570,7 @@
                 },
                 "limited": false,
                 "image": "baseballvigilante.png",
+                "model": "baseballvigilante.glb",
                 "rating": 0
             },
             {
@@ -4371,6 +4589,7 @@
                 },
                 "limited": false,
                 "image": "baseballwarrior.png",
+                "model": "baseballwarrior.glb",
                 "rating": 0
             },
             {
@@ -4389,6 +4608,7 @@
                 },
                 "limited": false,
                 "image": "baseballgold.png",
+                "model": "baseballgold.glb",
                 "rating": 0
             },
             {
@@ -4407,6 +4627,7 @@
                 },
                 "limited": false,
                 "image": "baseballsilver.png",
+                "model": "baseballsilver.glb",
                 "rating": 0
             },
             {
@@ -4427,6 +4648,7 @@
                 },
                 "limited": false,
                 "image": "baseballrj.png",
+                "model": "baseballrj.glb",
                 "rating": 0
             }
         ]
@@ -4456,6 +4678,7 @@
                 },
                 "limited": false,
                 "image": "beesniperdefault.png",
+                "model": "beesniperdefault.glb",
                 "rating": 0
             },
             {
@@ -4473,6 +4696,7 @@
                 },
                 "limited": false,
                 "image": "beesniperladybug.png",
+                "model": "beesniperladybug.glb",
                 "rating": 0
             },
             {
@@ -4494,6 +4718,7 @@
                 },
                 "limited": false,
                 "image": "beesnipermonster.png",
+                "model": "beesnipermonster.glb",
                 "rating": 0
             },
             {
@@ -4514,6 +4739,7 @@
                 },
                 "limited": false,
                 "image": "beesnipercat.png",
+                "model": "beesnipercat.glb",
                 "rating": 0
             },
             {
@@ -4534,6 +4760,7 @@
                 },
                 "limited": false,
                 "image": "beesnipercatgold.png",
+                "model": "beesnipercatgold.glb",
                 "rating": 0
             },
             {
@@ -4553,6 +4780,7 @@
                 },
                 "limited": false,
                 "image": "beesniperarchvillain.png",
+                "model": "beesniperarchvillain.glb",
                 "rating": 0
             },
             {
@@ -4571,6 +4799,7 @@
                 },
                 "limited": false,
                 "image": "beesnipergold.png",
+                "model": "beesnipergold.glb",
                 "rating": 0
             },
             {
@@ -4589,6 +4818,7 @@
                 },
                 "limited": false,
                 "image": "beesnipersilver.png",
+                "model": "beesnipersilver.glb",
                 "rating": 0
             }
         ]
@@ -4618,6 +4848,7 @@
                 },
                 "limited": false,
                 "image": "controllerdefault.png",
+                "model": "controllerdefault.glb",
                 "rating": 0
             },
             {
@@ -4636,6 +4867,7 @@
                 },
                 "limited": false,
                 "image": "controllerretro.png",
+                "model": "controllerretro.glb",
                 "rating": 0
             },
             {
@@ -4657,6 +4889,7 @@
                 },
                 "limited": false,
                 "image": "controllerline.png",
+                "model": "controllerline.glb",
                 "rating": 0
             },
             {
@@ -4675,6 +4908,7 @@
                 },
                 "limited": false,
                 "image": "controllergold.png",
+                "model": "controllergold.glb",
                 "rating": 0
             },
             {
@@ -4693,6 +4927,7 @@
                 },
                 "limited": false,
                 "image": "controllersilver.png",
+                "model": "controllersilver.glb",
                 "rating": 0
             }
         ]
@@ -4722,6 +4957,7 @@
                 },
                 "limited": false,
                 "image": "enragerdefault.png",
+                "model": "enragerdefault.glb",
                 "rating": 0
             },
             {
@@ -4742,6 +4978,7 @@
                 },
                 "limited": false,
                 "image": "enragerduel.png",
+                "model": "enragerduel.glb",
                 "rating": 0
             },
             {
@@ -4762,6 +4999,7 @@
                 },
                 "limited": true,
                 "image": "enragersnake.png",
+                "model": "enragersnake.glb",
                 "rating": 0
             },
             {
@@ -4782,6 +5020,7 @@
                 },
                 "limited": false,
                 "image": "enragervine.png",
+                "model": "enragervine.glb",
                 "rating": 0
             },
             {
@@ -4802,6 +5041,7 @@
                 },
                 "limited": false,
                 "image": "enragertata.png",
+                "model": "enragertata.glb",
                 "rating": 0
             }
         ]
@@ -4831,6 +5071,7 @@
                 },
                 "limited": false,
                 "image": "assaultshotgundefault.png",
+                "model": "assaultshotgundefault.glb",
                 "rating": 0
             },
             {
@@ -4851,6 +5092,7 @@
                 },
                 "limited": true,
                 "image": "assaultshotgunsled.png",
+                "model": "assaultshotgunsled.glb",
                 "rating": 0
             }
         ]
@@ -4880,6 +5122,7 @@
                 },
                 "limited": false,
                 "image": "crossbomberdefault.png",
+                "model": "crossbomberdefault.glb",
                 "rating": 0
             },
             {
@@ -4900,6 +5143,7 @@
                 },
                 "limited": false,
                 "image": "crossbombereaster.png",
+                "model": "crossbombereaster.glb",
                 "rating": 0
             },
             {
@@ -4918,6 +5162,7 @@
                 },
                 "limited": false,
                 "image": "crossbombergold.png",
+                "model": "crossbombergold.glb",
                 "rating": 0
             },
             {
@@ -4936,6 +5181,7 @@
                 },
                 "limited": false,
                 "image": "crossbombersilver.png",
+                "model": "crossbombersilver.glb",
                 "rating": 0
             }
         ]
@@ -4965,6 +5211,7 @@
                 },
                 "limited": false,
                 "image": "cannongirldefault.png",
+                "model": "cannongirldefault.glb",
                 "rating": 0
             },
             {
@@ -4985,6 +5232,7 @@
                 },
                 "limited": false,
                 "image": "cannongirlvillain.png",
+                "model": "cannongirlvillain.glb",
                 "rating": 0
             },
             {
@@ -5003,6 +5251,7 @@
                 },
                 "limited": false,
                 "image": "cannongirlgold.png",
+                "model": "cannongirlgold.glb",
                 "rating": 0
             },
             {
@@ -5021,6 +5270,7 @@
                 },
                 "limited": false,
                 "image": "cannongirlsilver.png",
+                "model": "cannongirlsilver.glb",
                 "rating": 0
             }
         ]
@@ -5050,6 +5300,7 @@
                 },
                 "limited": false,
                 "image": "undertakerdefault.png",
+                "model": "undertakerdefault.glb",
                 "rating": 0
             },
             {
@@ -5068,6 +5319,7 @@
                 },
                 "limited": true,
                 "image": "undertakergreaser.png",
+                "model": "undertakergreaser.glb",
                 "rating": 0
             },
             {
@@ -5085,6 +5337,7 @@
                 },
                 "limited": false,
                 "image": "undertakerhat.png",
+                "model": "undertakerhat.glb",
                 "rating": 0
             },
             {
@@ -5103,6 +5356,7 @@
                 },
                 "limited": false,
                 "image": "undertakernightwitch.png",
+                "model": "undertakernightwitch.glb",
                 "rating": 0
             },
             {
@@ -5124,6 +5378,7 @@
                 },
                 "limited": false,
                 "image": "undertakerbazaar.png",
+                "model": "undertakerbazaar.glb",
                 "rating": 0
             },
             {
@@ -5142,6 +5397,7 @@
                 },
                 "limited": false,
                 "image": "undertakerhatgold.png",
+                "model": "undertakerhatgold.glb",
                 "rating": 0
             },
             {
@@ -5160,6 +5416,7 @@
                 },
                 "limited": false,
                 "image": "undertakergold.png",
+                "model": "undertakergold.glb",
                 "rating": 0
             },
             {
@@ -5178,6 +5435,7 @@
                 },
                 "limited": false,
                 "image": "undertakerhatsilver.png",
+                "model": "undertakerhatsilver.glb",
                 "rating": 0
             },
             {
@@ -5196,6 +5454,7 @@
                 },
                 "limited": false,
                 "image": "undertakersilver.png",
+                "model": "undertakersilver.glb",
                 "rating": 0
             },
             {
@@ -5214,6 +5473,7 @@
                 },
                 "limited": false,
                 "image": "undertakerbeach.png",
+                "model": "undertakerbeach.glb",
                 "rating": 0
             }
         ]
@@ -5243,6 +5503,7 @@
                 },
                 "limited": false,
                 "image": "blackholedefault.png",
+                "model": "blackholedefault.glb",
                 "rating": 0
             },
             {
@@ -5260,6 +5521,7 @@
                 },
                 "limited": false,
                 "image": "blackholeblue.png",
+                "model": "blackholeblue.glb",
                 "rating": 0
             },
             {
@@ -5280,6 +5542,7 @@
                 },
                 "limited": true,
                 "image": "blackholestreetninja.png",
+                "model": "blackholestreetninja.glb",
                 "rating": 0
             },
             {
@@ -5298,6 +5561,7 @@
                 },
                 "limited": false,
                 "image": "blackholegold.png",
+                "model": "blackholegold.glb",
                 "rating": 0
             },
             {
@@ -5316,6 +5580,7 @@
                 },
                 "limited": false,
                 "image": "blackholesilver.png",
+                "model": "blackholesilver.glb",
                 "rating": 0
             },
             {
@@ -5336,6 +5601,7 @@
                 },
                 "limited": false,
                 "image": "blackholemisfortune.png",
+                "model": "blackholemisfortune.glb",
                 "rating": 0
             },
             {
@@ -5356,6 +5622,7 @@
                 },
                 "limited": false,
                 "image": "blackholedevious.png",
+                "model": "blackholedevious.glb",
                 "rating": 0
             }
         ]
@@ -5385,6 +5652,7 @@
                 },
                 "limited": false,
                 "image": "hookdefault.png",
+                "model": "hookdefault.glb",
                 "rating": 0
             },
             {
@@ -5402,6 +5670,7 @@
                 },
                 "limited": true,
                 "image": "hookpirate.png",
+                "model": "hookpirate.glb",
                 "rating": 0
             },
             {
@@ -5424,6 +5693,7 @@
                 },
                 "limited": false,
                 "image": "hookdudebazaar.png",
+                "model": "hookdudebazaar.glb",
                 "rating": 0
             },
             {
@@ -5442,6 +5712,7 @@
                 },
                 "limited": false,
                 "image": "hookdudegold.png",
+                "model": "hookdudegold.glb",
                 "rating": 0
             },
             {
@@ -5460,6 +5731,7 @@
                 },
                 "limited": false,
                 "image": "hookdudesilver.png",
+                "model": "hookdudesilver.glb",
                 "rating": 0
             },
             {
@@ -5480,6 +5752,7 @@
                 },
                 "limited": true,
                 "image": "hookdudeswamp.png",
+                "model": "hookdudeswamp.glb",
                 "rating": 0
             }
         ]
@@ -5509,6 +5782,7 @@
                 },
                 "limited": false,
                 "image": "speedydefault.png",
+                "model": "speedydefault.glb",
                 "rating": 0
             },
             {
@@ -5526,6 +5800,7 @@
                 },
                 "limited": false,
                 "image": "speedygt.png",
+                "model": "speedygt.glb",
                 "rating": 0
             },
             {
@@ -5544,6 +5819,7 @@
                 },
                 "limited": false,
                 "image": "speedytracksuit.png",
+                "model": "speedytracksuit.glb",
                 "rating": 0
             },
             {
@@ -5564,6 +5840,7 @@
                 },
                 "limited": false,
                 "image": "speedyline.png",
+                "model": "speedyline.glb",
                 "rating": 0
             },
             {
@@ -5583,6 +5860,7 @@
                 },
                 "limited": false,
                 "image": "speedyhermes.png",
+                "model": "speedyhermes.glb",
                 "rating": 0
             },
             {
@@ -5601,6 +5879,7 @@
                 },
                 "limited": false,
                 "image": "speedysilver.png",
+                "model": "speedysilver.glb",
                 "rating": 0
             },
             {
@@ -5619,6 +5898,7 @@
                 },
                 "limited": false,
                 "image": "speedygold.png",
+                "model": "speedygold.glb",
                 "rating": 0
             }
         ]
@@ -5648,6 +5928,7 @@
                 },
                 "limited": false,
                 "image": "spawnerdudedefault.png",
+                "model": "spawnerdudedefault.glb",
                 "rating": 0
             },
             {
@@ -5666,6 +5947,7 @@
                 },
                 "limited": false,
                 "image": "spawnerdudeagentp.png",
+                "model": "spawnerdudeagentp.glb",
                 "rating": 0
             },
             {
@@ -5684,6 +5966,7 @@
                 },
                 "limited": false,
                 "image": "spawnerdudetruegold.png",
+                "model": "spawnerdudetruegold.glb",
                 "rating": 0
             },
             {
@@ -5702,6 +5985,7 @@
                 },
                 "limited": false,
                 "image": "spawnerdudetruesilver.png",
+                "model": "spawnerdudetruesilver.glb",
                 "rating": 0
             },
             {
@@ -5722,6 +6006,7 @@
                 },
                 "limited": true,
                 "image": "spawnerdudedracula.png",
+                "model": "spawnerdudedracula.glb",
                 "rating": 0
             },
             {
@@ -5742,6 +6027,7 @@
                 },
                 "limited": false,
                 "image": "spawnerdudefly.png",
+                "model": "spawnerdudefly.glb",
                 "rating": 0
             },
             {
@@ -5762,6 +6048,7 @@
                 },
                 "limited": false,
                 "image": "spawnerdudedaruma.png",
+                "model": "spawnerdudedaruma.glb",
                 "rating": 0
             }
         ]
@@ -5791,6 +6078,7 @@
                 },
                 "limited": false,
                 "image": "wallydefault.png",
+                "model": "wallydefault.glb",
                 "rating": 0
             },
             {
@@ -5809,6 +6097,7 @@
                 },
                 "limited": false,
                 "image": "wallyhawaii.png",
+                "model": "wallyhawaii.glb",
                 "rating": 0
             },
             {
@@ -5829,6 +6118,7 @@
                 },
                 "limited": false,
                 "image": "wallymoon.png",
+                "model": "wallymoon.glb",
                 "rating": 0
             },
             {
@@ -5848,6 +6138,7 @@
                 },
                 "limited": false,
                 "image": "wallyprince.png",
+                "model": "wallyprince.glb",
                 "rating": 0
             },
             {
@@ -5867,6 +6158,7 @@
                 },
                 "limited": false,
                 "image": "wallyprincechroma.png",
+                "model": "wallyprincechroma.glb",
                 "rating": 0
             },
             {
@@ -5887,6 +6179,7 @@
                 },
                 "limited": false,
                 "image": "wallyweirdplant.png",
+                "model": "wallyweirdplant.glb",
                 "rating": 0
             },
             {
@@ -5905,6 +6198,7 @@
                 },
                 "limited": false,
                 "image": "wallygold.png",
+                "model": "wallygold.glb",
                 "rating": 0
             },
             {
@@ -5923,6 +6217,7 @@
                 },
                 "limited": false,
                 "image": "wallysilver.png",
+                "model": "wallysilver.glb",
                 "rating": 0
             }
         ]
@@ -5952,6 +6247,7 @@
                 },
                 "limited": false,
                 "image": "snakeoildefault.png",
+                "model": "snakeoildefault.glb",
                 "rating": 0
             },
             {
@@ -5972,6 +6268,7 @@
                 },
                 "limited": true,
                 "image": "snakeoilwizard.png",
+                "model": "snakeoilwizard.glb",
                 "rating": 0
             },
             {
@@ -5992,6 +6289,7 @@
                 },
                 "limited": false,
                 "image": "snakeoilvillain.png",
+                "model": "snakeoilvillain.glb",
                 "rating": 0
             }
         ]
@@ -6021,6 +6319,7 @@
                 },
                 "limited": false,
                 "image": "stickybombdefault.png",
+                "model": "stickybombdefault.glb",
                 "rating": 0
             },
             {
@@ -6041,6 +6340,7 @@
                 },
                 "limited": false,
                 "image": "stickybombpotato.png",
+                "model": "stickybombpotato.glb",
                 "rating": 0
             },
             {
@@ -6061,6 +6361,7 @@
                 },
                 "limited": true,
                 "image": "stickybombghost.png",
+                "model": "stickybombghost.glb",
                 "rating": 0
             }
         ]
@@ -6090,6 +6391,7 @@
                 },
                 "limited": false,
                 "image": "cactusdefault.png",
+                "model": "cactusdefault.glb",
                 "rating": 0
             },
             {
@@ -6108,6 +6410,7 @@
                 },
                 "limited": false,
                 "image": "cactuspink.png",
+                "model": "cactuspink.glb",
                 "rating": 0
             },
             {
@@ -6128,6 +6431,7 @@
                 },
                 "limited": false,
                 "image": "cactusmecha.png",
+                "model": "cactusmecha.glb",
                 "rating": 0
             },
             {
@@ -6146,6 +6450,7 @@
                 },
                 "limited": false,
                 "image": "cactusmask.png",
+                "model": "cactusmask.glb",
                 "rating": 0
             },
             {
@@ -6166,6 +6471,7 @@
                 },
                 "limited": true,
                 "image": "cactuslord.png",
+                "model": "cactuslord.glb",
                 "rating": 0
             },
             {
@@ -6184,6 +6490,7 @@
                 },
                 "limited": false,
                 "image": "cactusgold.png",
+                "model": "cactusgold.glb",
                 "rating": 0
             },
             {
@@ -6202,6 +6509,7 @@
                 },
                 "limited": false,
                 "image": "cactussilver.png",
+                "model": "cactussilver.glb",
                 "rating": 0
             },
             {
@@ -6221,6 +6529,7 @@
                 },
                 "limited": true,
                 "image": "cactuslog.png",
+                "model": "cactuslog.glb",
                 "rating": 0
             },
             {
@@ -6241,6 +6550,7 @@
                 },
                 "limited": false,
                 "image": "cactusfireproof.png",
+                "model": "cactusfireproof.glb",
                 "rating": 0
             }
         ]
@@ -6270,6 +6580,7 @@
                 },
                 "limited": false,
                 "image": "crowdefault.png",
+                "model": "crowdefault.glb",
                 "rating": 0
             },
             {
@@ -6288,6 +6599,7 @@
                 },
                 "limited": false,
                 "image": "crowwhite.png",
+                "model": "crowwhite.glb",
                 "rating": 0
             },
             {
@@ -6307,6 +6619,7 @@
                 },
                 "limited": false,
                 "image": "crowpheonix.png",
+                "model": "crowpheonix.glb",
                 "rating": 0
             },
             {
@@ -6328,6 +6641,7 @@
                 },
                 "limited": false,
                 "image": "crowmecha.png",
+                "model": "crowmecha.glb",
                 "rating": 0
             },
             {
@@ -6349,6 +6663,7 @@
                 },
                 "limited": false,
                 "image": "crowmechagold.png",
+                "model": "crowmechagold.glb",
                 "rating": 0
             },
             {
@@ -6370,6 +6685,7 @@
                 },
                 "limited": false,
                 "image": "crowmechanight.png",
+                "model": "crowmechanight.glb",
                 "rating": 0
             },
             {
@@ -6388,6 +6704,7 @@
                 },
                 "limited": false,
                 "image": "crowgold.png",
+                "model": "crowgold.glb",
                 "rating": 0
             },
             {
@@ -6406,6 +6723,7 @@
                 },
                 "limited": false,
                 "image": "crowsilver.png",
+                "model": "crowsilver.glb",
                 "rating": 0
             },
             {
@@ -6426,6 +6744,7 @@
                 },
                 "limited": false,
                 "image": "crowsuper.png",
+                "model": "crowsuper.glb",
                 "rating": 0
             }
         ]
@@ -6455,6 +6774,7 @@
                 },
                 "limited": false,
                 "image": "ninjadefault.png",
+                "model": "ninjadefault.glb",
                 "rating": 0
             },
             {
@@ -6472,6 +6792,7 @@
                 },
                 "limited": false,
                 "image": "ninjashark.png",
+                "model": "ninjashark.glb",
                 "rating": 0
             },
             {
@@ -6492,6 +6813,7 @@
                 },
                 "limited": true,
                 "image": "ninjawolf.png",
+                "model": "ninjawolf.glb",
                 "rating": 0
             },
             {
@@ -6510,6 +6832,7 @@
                 },
                 "limited": false,
                 "image": "ninjasally.png",
+                "model": "ninjasally.glb",
                 "rating": 0
             },
             {
@@ -6528,6 +6851,7 @@
                 },
                 "limited": false,
                 "image": "ninjagold.png",
+                "model": "ninjagold.glb",
                 "rating": 0
             },
             {
@@ -6546,6 +6870,7 @@
                 },
                 "limited": false,
                 "image": "ninjasilver.png",
+                "model": "ninjasilver.glb",
                 "rating": 0
             },
             {
@@ -6566,6 +6891,7 @@
                 },
                 "limited": false,
                 "image": "ninjadino.png",
+                "model": "ninjadino.glb",
                 "rating": 0
             }
         ]
@@ -6595,6 +6921,7 @@
                 },
                 "limited": false,
                 "image": "sandstormdefault.png",
+                "model": "sandstormdefault.glb",
                 "rating": 0
             },
             {
@@ -6612,6 +6939,7 @@
                 },
                 "limited": false,
                 "image": "sandstormsleepy.png",
+                "model": "sandstormsleepy.glb",
                 "rating": 0
             },
             {
@@ -6632,6 +6960,7 @@
                 },
                 "limited": false,
                 "image": "sandstormgiftshop.png",
+                "model": "sandstormgiftshop.glb",
                 "rating": 0
             },
             {
@@ -6652,6 +6981,7 @@
                 },
                 "limited": false,
                 "image": "sandstormlantern.png",
+                "model": "sandstormlantern.glb",
                 "rating": 0
             },
             {
@@ -6670,6 +7000,7 @@
                 },
                 "limited": false,
                 "image": "sandstormgold.png",
+                "model": "sandstormgold.glb",
                 "rating": 0
             },
             {
@@ -6688,6 +7019,7 @@
                 },
                 "limited": false,
                 "image": "sandstormsilver.png",
+                "model": "sandstormsilver.glb",
                 "rating": 0
             },
             {
@@ -6708,6 +7040,7 @@
                 },
                 "limited": false,
                 "image": "sandstormkoya.png",
+                "model": "sandstormkoya.glb",
                 "rating": 0
             }
         ]
@@ -6737,6 +7070,7 @@
                 },
                 "limited": false,
                 "image": "firedudedefault.png",
+                "model": "firedudedefault.glb",
                 "rating": 0
             },
             {
@@ -6757,6 +7091,7 @@
                 },
                 "limited": false,
                 "image": "firedudemasked.png",
+                "model": "firedudemasked.glb",
                 "rating": 0
             },
             {
@@ -6775,6 +7110,7 @@
                 },
                 "limited": false,
                 "image": "firedudegold.png",
+                "model": "firedudegold.glb",
                 "rating": 0
             },
             {
@@ -6793,6 +7129,7 @@
                 },
                 "limited": false,
                 "image": "firedudesilver.png",
+                "model": "firedudesilver.glb",
                 "rating": 0
             }
         ]
@@ -6822,6 +7159,7 @@
                 },
                 "limited": false,
                 "image": "mechadudedefault.png",
+                "model": "mechadudedefault.glb",
                 "rating": 0
             },
             {
@@ -6842,6 +7180,7 @@
                 },
                 "limited": false,
                 "image": "mechaduderhino.png",
+                "model": "mechaduderhino.glb",
                 "rating": 0
             },
             {
@@ -6862,6 +7201,7 @@
                 },
                 "limited": false,
                 "image": "mechadudemonstertruck.png",
+                "model": "mechadudemonstertruck.glb",
                 "rating": 0
             },
             {
@@ -6880,6 +7220,7 @@
                 },
                 "limited": false,
                 "image": "mechadudegold.png",
+                "model": "mechadudegold.glb",
                 "rating": 0
             },
             {
@@ -6898,6 +7239,7 @@
                 },
                 "limited": false,
                 "image": "mechadudesilver.png",
+                "model": "mechadudesilver.glb",
                 "rating": 0
             }
         ]
@@ -6927,6 +7269,7 @@
                 },
                 "limited": false,
                 "image": "blowerdefault.png",
+                "model": "blowerdefault.glb",
                 "rating": 0
             },
             {
@@ -6947,6 +7290,7 @@
                 },
                 "limited": true,
                 "image": "blowertrader.png",
+                "model": "blowertrader.glb",
                 "rating": 0
             },
             {
@@ -6967,6 +7311,7 @@
                 },
                 "limited": false,
                 "image": "blowernutcracker.png",
+                "model": "blowernutcracker.glb",
                 "rating": 0
             },
             {
@@ -6985,6 +7330,7 @@
                 },
                 "limited": false,
                 "image": "blowersilver.png",
+                "model": "blowersilver.glb",
                 "rating": 0
             },
             {
@@ -7003,6 +7349,7 @@
                 },
                 "limited": false,
                 "image": "blowergold.png",
+                "model": "blowergold.glb",
                 "rating": 0
             },
             {
@@ -7023,6 +7370,7 @@
                 },
                 "limited": false,
                 "image": "blowerbusters.png",
+                "model": "blowerbusters.glb",
                 "rating": 0
             }
         ]
@@ -7052,6 +7400,7 @@
                 },
                 "limited": false,
                 "image": "powerlevelerdefault.png",
+                "model": "powerlevelerdefault.glb",
                 "rating": 0
             },
             {
@@ -7070,6 +7419,7 @@
                 },
                 "limited": true,
                 "image": "powerlevelerknight.png",
+                "model": "powerlevelerknight.glb",
                 "rating": 0
             },
             {
@@ -7089,6 +7439,7 @@
                 },
                 "limited": false,
                 "image": "powerlevelerdiy.png",
+                "model": "powerlevelerdiy.glb",
                 "rating": 0
             },
             {
@@ -7109,6 +7460,7 @@
                 },
                 "limited": false,
                 "image": "powerlevelerkong.png",
+                "model": "powerlevelerkong.glb",
                 "rating": 0
             },
             {
@@ -7127,6 +7479,7 @@
                 },
                 "limited": false,
                 "image": "powerlevelergold.png",
+                "model": "powerlevelergold.glb",
                 "rating": 0
             },
             {
@@ -7145,6 +7498,7 @@
                 },
                 "limited": false,
                 "image": "powerlevelersilver.png",
+                "model": "powerlevelersilver.glb",
                 "rating": 0
             }
         ]
@@ -7174,6 +7528,7 @@
                 },
                 "limited": false,
                 "image": "percenterdefault.png",
+                "model": "percenterdefault.glb",
                 "rating": 0
             },
             {
@@ -7194,6 +7549,7 @@
                 },
                 "limited": true,
                 "image": "percentertrixie.png",
+                "model": "percentertrixie.glb",
                 "rating": 0
             },
             {
@@ -7213,6 +7569,7 @@
                 },
                 "limited": true,
                 "image": "percentercrew.png",
+                "model": "percentercrew.glb",
                 "rating": 0
             },
             {
@@ -7233,6 +7590,7 @@
                 },
                 "limited": false,
                 "image": "percentergladiator.png",
+                "model": "percentergladiator.glb",
                 "rating": 0
             },
             {
@@ -7251,6 +7609,7 @@
                 },
                 "limited": false,
                 "image": "percentergold.png",
+                "model": "percentergold.glb",
                 "rating": 0
             },
             {
@@ -7269,6 +7628,7 @@
                 },
                 "limited": false,
                 "image": "percentersilver.png",
+                "model": "percentersilver.glb",
                 "rating": 0
             }
         ]
@@ -7298,6 +7658,7 @@
                 },
                 "limited": false,
                 "image": "icedudedefault.png",
+                "model": "icedudedefault.glb",
                 "rating": 0
             },
             {
@@ -7318,6 +7679,7 @@
                 },
                 "limited": true,
                 "image": "icedudeking.png",
+                "model": "icedudeking.glb",
                 "rating": 0
             },
             {
@@ -7338,6 +7700,7 @@
                 },
                 "limited": false,
                 "image": "icedudecrooner.png",
+                "model": "icedudecrooner.glb",
                 "rating": 0
             },
             {
@@ -7357,6 +7720,7 @@
                 },
                 "limited": false,
                 "image": "icedudeburger.png",
+                "model": "icedudeburger.glb",
                 "rating": 0
             },
             {
@@ -7375,6 +7739,7 @@
                 },
                 "limited": false,
                 "image": "icedudegold.png",
+                "model": "icedudegold.glb",
                 "rating": 0
             },
             {
@@ -7393,6 +7758,7 @@
                 },
                 "limited": false,
                 "image": "icedudesilver.png",
+                "model": "icedudesilver.glb",
                 "rating": 0
             }
         ]
@@ -7422,6 +7788,7 @@
                 },
                 "limited": false,
                 "image": "ruffsdefault.png",
+                "model": "ruffsdefault.glb",
                 "rating": 0
             },
             {
@@ -7442,6 +7809,7 @@
                 },
                 "limited": true,
                 "image": "ruffsronin.png",
+                "model": "ruffsronin.glb",
                 "rating": 0
             },
             {
@@ -7461,6 +7829,7 @@
                 },
                 "limited": false,
                 "image": "ruffsmarshall.png",
+                "model": "ruffsmarshall.glb",
                 "rating": 0
             },
             {
@@ -7479,6 +7848,7 @@
                 },
                 "limited": false,
                 "image": "ruffsgold.png",
+                "model": "ruffsgold.glb",
                 "rating": 0
             },
             {
@@ -7497,6 +7867,7 @@
                 },
                 "limited": false,
                 "image": "ruffssilver.png",
+                "model": "ruffssilver.glb",
                 "rating": 0
             },
             {
@@ -7517,6 +7888,7 @@
                 },
                 "limited": false,
                 "image": "ruffschimmy.png",
+                "model": "ruffschimmy.glb",
                 "rating": 0
             }
         ]
@@ -7546,6 +7918,7 @@
                 },
                 "limited": false,
                 "image": "electrosniperdefault.png",
+                "model": "electrosniperdefault.glb",
                 "rating": 0
             },
             {
@@ -7566,6 +7939,7 @@
                 },
                 "limited": true,
                 "image": "electrosniperboss.png",
+                "model": "electrosniperboss.glb",
                 "rating": 0
             },
             {
@@ -7586,6 +7960,7 @@
                 },
                 "limited": false,
                 "image": "electrosniperplanthunter.png",
+                "model": "electrosniperplanthunter.glb",
                 "rating": 0
             },
             {
@@ -7604,6 +7979,7 @@
                 },
                 "limited": false,
                 "image": "electrosnipergold.png",
+                "model": "electrosnipergold.glb",
                 "rating": 0
             },
             {
@@ -7622,6 +7998,7 @@
                 },
                 "limited": false,
                 "image": "electrosnipersilver.png",
+                "model": "electrosnipersilver.glb",
                 "rating": 0
             },
             {
@@ -7642,6 +8019,7 @@
                 },
                 "limited": false,
                 "image": "electrosnipercoral.png",
+                "model": "electrosnipercoral.glb",
                 "rating": 0
             }
         ]
@@ -7671,6 +8049,7 @@
                 },
                 "limited": false,
                 "image": "ropedudedefault.png",
+                "model": "ropedudedefault.glb",
                 "rating": 0
             },
             {
@@ -7692,6 +8071,7 @@
                 },
                 "limited": true,
                 "image": "ropedudepunk.png",
+                "model": "ropedudepunk.glb",
                 "rating": 0
             },
             {
@@ -7712,6 +8092,7 @@
                 },
                 "limited": true,
                 "image": "ropedudedirector.png",
+                "model": "ropedudedirector.glb",
                 "rating": 0
             },
             {
@@ -7730,6 +8111,7 @@
                 },
                 "limited": false,
                 "image": "ropedudegold.png",
+                "model": "ropedudegold.glb",
                 "rating": 0
             },
             {
@@ -7748,6 +8130,7 @@
                 },
                 "limited": false,
                 "image": "ropedudesilver.png",
+                "model": "ropedudesilver.glb",
                 "rating": 0
             }
         ]
@@ -7777,6 +8160,7 @@
                 },
                 "limited": false,
                 "image": "knightdefault.png",
+                "model": "knightdefault.glb",
                 "rating": 0
             },
             {
@@ -7797,6 +8181,7 @@
                 },
                 "limited": true,
                 "image": "knightninja.png",
+                "model": "knightninja.glb",
                 "rating": 0
             },
             {
@@ -7815,6 +8200,7 @@
                 },
                 "limited": false,
                 "image": "knightgold.png",
+                "model": "knightgold.glb",
                 "rating": 0
             },
             {
@@ -7833,6 +8219,7 @@
                 },
                 "limited": false,
                 "image": "knightsilver.png",
+                "model": "knightsilver.glb",
                 "rating": 0
             }
         ]
@@ -7862,6 +8249,7 @@
                 },
                 "limited": false,
                 "image": "duplicatordefault.png",
+                "model": "duplicatordefault.glb",
                 "rating": 0
             },
             {
@@ -7882,6 +8270,7 @@
                 },
                 "limited": true,
                 "image": "duplicatorchola.png",
+                "model": "duplicatorchola.glb",
                 "rating": 0
             },
             {
@@ -7902,6 +8291,7 @@
                 },
                 "limited": false,
                 "image": "duplicatorvillain.png",
+                "model": "duplicatorvillain.glb",
                 "rating": 0
             },
             {
@@ -7920,6 +8310,7 @@
                 },
                 "limited": false,
                 "image": "duplicatorgold.png",
+                "model": "duplicatorgold.glb",
                 "rating": 0
             },
             {
@@ -7938,6 +8329,7 @@
                 },
                 "limited": false,
                 "image": "duplicatorsilver.png",
+                "model": "duplicatorsilver.glb",
                 "rating": 0
             }
         ]
@@ -7967,6 +8359,7 @@
                 },
                 "limited": false,
                 "image": "kickerdudedefault.png",
+                "model": "kickerdudedefault.glb",
                 "rating": 0
             },
             {
@@ -7987,6 +8380,7 @@
                 },
                 "limited": true,
                 "image": "kickerdudefurious.png",
+                "model": "kickerdudefurious.glb",
                 "rating": 0
             },
             {
@@ -8007,6 +8401,7 @@
                 },
                 "limited": false,
                 "image": "kickerdudeocto.png",
+                "model": "kickerdudeocto.glb",
                 "rating": 0
             },
             {
@@ -8025,6 +8420,7 @@
                 },
                 "limited": false,
                 "image": "kickerdudegold.png",
+                "model": "kickerdudegold.glb",
                 "rating": 0
             },
             {
@@ -8043,6 +8439,7 @@
                 },
                 "limited": false,
                 "image": "kickerdudesilver.png",
+                "model": "kickerdudesilver.glb",
                 "rating": 0
             }
         ]
@@ -8072,6 +8469,7 @@
                 },
                 "limited": false,
                 "image": "fleadefault.png",
+                "model": "fleadefault.glb",
                 "rating": 0
             },
             {
@@ -8092,6 +8490,7 @@
                 },
                 "limited": true,
                 "image": "fleaspacecactus.png",
+                "model": "fleaspacecactus.glb",
                 "rating": 0
             },
             {
@@ -8110,6 +8509,7 @@
                 },
                 "limited": false,
                 "image": "fleagold.png",
+                "model": "fleagold.glb",
                 "rating": 0
             },
             {
@@ -8128,6 +8528,7 @@
                 },
                 "limited": false,
                 "image": "fleasilver.png",
+                "model": "fleasilver.glb",
                 "rating": 0
             }
         ]
@@ -8157,6 +8558,7 @@
                 },
                 "limited": false,
                 "image": "jetpackgirldefault.png",
+                "model": "jetpackgirldefault.glb",
                 "rating": 0
             },
             {
@@ -8177,6 +8579,7 @@
                 },
                 "limited": true,
                 "image": "jetpackgirlvalkyrie.png",
+                "model": "jetpackgirlvalkyrie.glb",
                 "rating": 0
             },
             {
@@ -8195,6 +8598,7 @@
                 },
                 "limited": false,
                 "image": "jetpackgirlgold.png",
+                "model": "jetpackgirlgold.glb",
                 "rating": 0
             },
             {
@@ -8213,6 +8617,7 @@
                 },
                 "limited": false,
                 "image": "jetpackgirlsilver.png",
+                "model": "jetpackgirlsilver.glb",
                 "rating": 0
             }
         ]
@@ -8242,6 +8647,7 @@
                 },
                 "limited": false,
                 "image": "silencerdefault.png",
+                "model": "silencerdefault.glb",
                 "rating": 0
             },
             {
@@ -8262,6 +8668,7 @@
                 },
                 "limited": true,
                 "image": "silencerpharaoh.png",
+                "model": "silencerpharaoh.glb",
                 "rating": 0
             }
         ]
