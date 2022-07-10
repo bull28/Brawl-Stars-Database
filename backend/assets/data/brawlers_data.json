@@ -8,6 +8,7 @@
             "color": "#A2D5F1"
         },
         "portrait": "portrait_shelly.png",
+        "model": "banditgirldefault.glb",
         "description": "Shelly's spread-fire shotgun blasts the other team with buckshot. Her Super destroys cover and keeps her opponents at a distance!",
         "skins": [
             {
@@ -219,6 +220,7 @@
             "color": "#A2D5F1"
         },
         "portrait": "portrait_nita.png",
+        "model": "shamandefault.glb",
         "description": "Nita strikes her enemies with a thunderous shockwave. Her Super summons a massive bear to fight by her side!",
         "skins": [
             {
@@ -397,6 +399,7 @@
             "color": "#A2D5F1"
         },
         "portrait": "portrait_colt.png",
+        "model": "gunslingerdefault.glb",
         "description": "An unlikely hero that often finds himself in the wrong place at the right time. He's not one to shy away from a mirror and is simply brimming with confidence!",
         "skins": [
             {
@@ -682,6 +685,7 @@
             "color": "#A2D5F1"
         },
         "portrait": "portrait_bull.png",
+        "model": "bullguydefault.glb",
         "description": "Bull deals massive damage up close with his shotgun. For his Super move, he charges through barriers and knocks back enemies!",
         "skins": [
             {
@@ -898,6 +902,7 @@
             "color": "#A2D5F1"
         },
         "portrait": "portrait_jessie.png",
+        "model": "mechanicdefault.glb",
         "description": "Jessie's Shock Rifle shoots energy orbs that bounce between enemies. Her Super deploys a cute but deadly gun turret!",
         "skins": [
             {
@@ -1080,6 +1085,7 @@
             "color": "#A2D5F1"
         },
         "portrait": "portrait_brock.png",
+        "model": "rocketgirldefault.glb",
         "description": "When Brock's not lighting up the battle with rockets, he's lighting up the dance floor with his smooth moves.",
         "skins": [
             {
@@ -1273,6 +1279,7 @@
             "color": "#A2D5F1"
         },
         "portrait": "portrait_dynamike.png",
+        "model": "tntguydefault.glb",
         "description": "Long thought lost deep down a mine. Mad Dynamike is back - and he's still itching to blow everything to smithereens!",
         "skins": [
             {
@@ -1551,6 +1558,7 @@
             "color": "#A2D5F1"
         },
         "portrait": "portrait_bo.png",
+        "model": "bowdudedefault.glb",
         "description": "Bo fires three explosive arrows toward his targets. His Super ability places a trio of hidden, explosive mines on the ground!",
         "skins": [
             {
@@ -1776,6 +1784,7 @@
             "color": "#A2D5F1"
         },
         "portrait": "portrait_tick.png",
+        "model": "clusterbombdefault.glb",
         "description": "Tick is a metal ball of barely controlled excitement and energy - explosive energy! He throws mines, and his Super makes his head detach, seek a target and explode.",
         "skins": [
             {
@@ -1899,6 +1908,7 @@
             "color": "#A2D5F1"
         },
         "portrait": "portrait_8bit.png",
+        "model": "arcadedefault.glb",
         "description": "8-Bit lumbers along like an arcade cabinet on legs. He shoots Blaster Beams and his Super boosts friendlies' damage!",
         "skins": [
             {
@@ -2042,6 +2052,7 @@
             "color": "#A2D5F1"
         },
         "portrait": "portrait_emz.png",
+        "model": "mummydefault.glb",
         "description": "Emz attacks with blasts of hair spray that deal damage over time, and slows down opponents with her Super.",
         "skins": [
             {
@@ -2164,6 +2175,7 @@
             "color": "#A2D5F1"
         },
         "portrait": "portrait_stu.png",
+        "model": "rollerdefault.glb",
         "description": "Stu is a stunt driver extraordinaire with gasoline in his veins! He makes a big entrance, burning serious rubber all over the stage.",
         "skins": [
             {
@@ -2283,6 +2295,7 @@
             "color": "#6CDA47"
         },
         "portrait": "portrait_elprimo.png",
+        "model": "luchadordefault.glb",
         "description": "El Primo throws a flurry of punches at his enemies. His Super is a leaping elbow drop that deals damage to all caught underneath!",
         "skins": [
             {
@@ -2556,6 +2569,7 @@
             "color": "#6CDA47"
         },
         "portrait": "portrait_barley.png",
+        "model": "barkeepdefault.glb",
         "description": "Barley readily serves up the finest beverages in Starr Park. Dirty his bar though and steam comes out and bottles start flying!",
         "skins": [
             {
@@ -2752,6 +2766,7 @@
             "color": "#6CDA47"
         },
         "portrait": "portrait_poco.png",
+        "model": "deadmariachidefault.glb",
         "description": "Poco fires damaging sound waves at enemies. His Super can heal both Poco himself and his teammates!",
         "skins": [
             {
@@ -2891,6 +2906,7 @@
             "color": "#6CDA47"
         },
         "portrait": "portrait_rosa.png",
+        "model": "rosadefault.glb",
         "description": "This boxing botanist will plant her feet and go toe to toe! Her Super gives her tough, vegan protective gear.",
         "skins": [
             {
@@ -3034,6 +3050,7 @@
             "color": "#3A85F2"
         },
         "portrait": "portrait_rico.png",
+        "model": "trickshotdefault.glb",
         "description": "Rico fires a burst of bullets that bounce off walls. His Super burst is a long barrage of bouncy bullets that pierce targets!",
         "skins": [
             {
@@ -3212,6 +3229,7 @@
             "color": "#3A85F2"
         },
         "portrait": "portrait_darryl.png",
+        "model": "barrelbotdefault.glb",
         "description": "Darryl has a powerful double-shotgun attack. His Super move is a reckless roll inside his bouncy barrel!",
         "skins": [
             {
@@ -3374,6 +3392,7 @@
             "color": "#3A85F2"
         },
         "portrait": "portrait_penny.png",
+        "model": "artillerygaldefault.glb",
         "description": "A rebel without a cause, mischievous Penny rules the high seas. She's a bonafide menace on the lookout for adventure and will stop at nothing for plunder.",
         "skins": [
             {
@@ -3513,6 +3532,7 @@
             "color": "#3A85F2"
         },
         "portrait": "portrait_carl.png",
+        "model": "whirlwinddefault.glb",
         "description": "Carl throws his Pickaxe like a boomerang. His Super is a crazy cart spin that clobbers anyone around him.",
         "skins": [
             {
@@ -3709,6 +3729,7 @@
             "color": "#3A85F2"
         },
         "portrait": "portrait_jacky.png",
+        "model": "drillerdefault.glb",
         "description": "Jacky works her Jackhammer to shake up the ground and nearby enemies. Her Super pulls in nearby foes, leaving them in the dust!",
         "skins": [
             {
@@ -3872,6 +3893,7 @@
             "color": "#A229E3"
         },
         "portrait": "portrait_piper.png",
+        "model": "sniperdefault.glb",
         "description": "Piper's sniper shots do more damage the farther they travel. Her Super drops grenades at her feet, while Piper herself leaps away!",
         "skins": [
             {
@@ -4030,6 +4052,7 @@
             "color": "#A229E3"
         },
         "portrait": "portrait_pam.png",
+        "model": "minigundudedefault.glb",
         "description": "Pam shoots from the hip, peppering targets with shrapnel. Her Super is a healing turret that restores her and teammates' health!",
         "skins": [
             {
@@ -4135,6 +4158,7 @@
             "color": "#A229E3"
         },
         "portrait": "portrait_frank.png",
+        "model": "frankdefault.glb",
         "description": "Frank swings his hammer at enemies, sending a shockwave. His Super is an especially powerful blow that stuns enemies!",
         "skins": [
             {
@@ -4255,6 +4279,7 @@
             "color": "#A229E3"
         },
         "portrait": "portrait_bibi.png",
+        "model": "baseballdefault.glb",
         "description": "Batter up! Bibi's got a sweet swing that can knock back enemies when her Home Run bar is charged. Her Super is a bouncing ball of gum that deals damage.",
         "skins": [
             {
@@ -4415,6 +4440,7 @@
             "color": "#A229E3"
         },
         "portrait": "portrait_bea.png",
+        "model": "beesniperdefault.glb",
         "description": "Bea loves bugs and hugs. She shoots her mechanical drones at range, and her Super sends forth an angry army of swarming bees!",
         "skins": [
             {
@@ -4576,6 +4602,7 @@
             "color": "#A229E3"
         },
         "portrait": "portrait_nani.png",
+        "model": "controllerdefault.glb",
         "description": "Nani loves her friends and looks over them with a watchful lens. She handles threats with angled shots, and her Super allows Nani to commandeer her pal Peep, who goes out with a bang!",
         "skins": [
             {
@@ -4679,6 +4706,7 @@
             "color": "#A229E3"
         },
         "portrait": "portrait_edgar.png",
+        "model": "enragerdefault.glb",
         "description": "Edgy and with a hands-off attitude, Edgar prefers to throw punches with his scarf. With his Super, Edgar jumps into the fray swinging his scarf around himself.",
         "skins": [
             {
@@ -4787,6 +4815,7 @@
             "color": "#A229E3"
         },
         "portrait": "portrait_griff.png",
+        "model": "assaultshotgundefault.glb",
         "description": "Griff is the proprietor of Starr Park's gift shop. Business is bad, but he still throws coins away - from his employees' tip jar!",
         "skins": [
             {
@@ -4835,6 +4864,7 @@
             "color": "#A229E3"
         },
         "portrait": "portrait_grom.png",
+        "model": "crossbomberdefault.glb",
         "description": "Watchman Grom's priority is to keep guard. He throws his trusty radio at his enemies. His Super is a big bad bomb that breaks walls and pushes back enemies!",
         "skins": [
             {
@@ -4919,6 +4949,7 @@
             "color": "#A229E3"
         },
         "portrait": "portrait_bonnie.png",
+        "model": "cannongirldefault.glb",
         "description": "Bonnie and her inanimate cannon Clyde are usually up to no good. Who would have thought that this cute little girl would cause so much mayhem?",
         "skins": [
             {
@@ -5003,6 +5034,7 @@
             "color": "#EA3331"
         },
         "portrait": "portrait_mortis.png",
+        "model": "undertakerdefault.glb",
         "description": "Mortis dashes forward with each swing of his shovel. As his Super attack, he sends a cloud of bats to damage enemies and heal himself!",
         "skins": [
             {
@@ -5195,6 +5227,7 @@
             "color": "#EA3331"
         },
         "portrait": "portrait_tara.png",
+        "model": "blackholedefault.glb",
         "description": "What's in the cards for you? This mystic from a far land has come to read your fortune. It says simply: DEFEAT!",
         "skins": [
             {
@@ -5336,6 +5369,7 @@
             "color": "#EA3331"
         },
         "portrait": "portrait_gene.png",
+        "model": "hookdefault.glb",
         "description": "Gene uses his magic lamp to shoot a splitting projectile. His super is a magical hand that grabs and pulls enemies close!",
         "skins": [
             {
@@ -5459,6 +5493,7 @@
             "color": "#EA3331"
         },
         "portrait": "portrait_max.png",
+        "model": "speedydefault.glb",
         "description": "Max goes fast! Her attack is a fast-firing blaster. Her Super speeds up her and allies!",
         "skins": [
             {
@@ -5597,6 +5632,7 @@
             "color": "#EA3331"
         },
         "portrait": "portrait_mrp.png",
+        "model": "spawnerdudedefault.glb",
         "description": "Mr. P is a disgruntled luggage handler who angrily hurls suitcases at opponents. His Super calls robo-porters to help him.",
         "skins": [
             {
@@ -5739,6 +5775,7 @@
             "color": "#EA3331"
         },
         "portrait": "portrait_sprout.png",
+        "model": "wallydefault.glb",
         "description": "Sprout was built to plant life, launching bouncy Seed Bombs with reckless love. Its Super creates a plant-based obstacle!",
         "skins": [
             {
@@ -5899,6 +5936,7 @@
             "color": "#EA3331"
         },
         "portrait": "portrait_byron.png",
+        "model": "snakeoildefault.glb",
         "description": "Byron deals with potent medicaments, but never call him a snake oil salesman!",
         "skins": [
             {
@@ -5967,6 +6005,7 @@
             "color": "#EA3331"
         },
         "portrait": "portrait_squeak.png",
+        "model": "stickybombdefault.glb",
         "description": "As Col. Ruff's accidental creation, Squeak was born to play fetch!",
         "skins": [
             {
@@ -6035,6 +6074,7 @@
             "color": "#FDF155"
         },
         "portrait": "portrait_spike.png",
+        "model": "cactusdefault.glb",
         "description": "Spike throws cactus grenades that send needles flying, and a show-stopping Super: a field of cactus spines that slows down and damages enemies!",
         "skins": [
             {
@@ -6214,6 +6254,7 @@
             "color": "#FDF155"
         },
         "portrait": "portrait_crow.png",
+        "model": "crowdefault.glb",
         "description": "This enigmatic creature just appeared in town one day. Nobody dares to ruffle his feathers - not anymore.",
         "skins": [
             {
@@ -6398,6 +6439,7 @@
             "color": "#FDF155"
         },
         "portrait": "portrait_leon.png",
+        "model": "ninjadefault.glb",
         "description": "Leon shoots a quick salvo of blades at his target. His Super trick is a smoke bomb that makes him invisible for a little while!",
         "skins": [
             {
@@ -6537,6 +6579,7 @@
             "color": "#FDF155"
         },
         "portrait": "portrait_sandy.png",
+        "model": "sandstormdefault.glb",
         "description": "Sandy is a sleep-deprived Brawler with powerful control over sand: casting sharp pebbles at enemies, and summoning a sandstorm to hide teammates.",
         "skins": [
             {
@@ -6678,6 +6721,7 @@
             "color": "#FDF155"
         },
         "portrait": "portrait_amber.png",
+        "model": "firedudedefault.glb",
         "description": "Amber has always been a firebug. She loves to light up the world and any opponents that come at her!",
         "skins": [
             {
@@ -6762,6 +6806,7 @@
             "color": "#FDF155"
         },
         "portrait": "portrait_meg.png",
+        "model": "mechadudedefault.glb",
         "description": "Meg has a basic form and an advanced form where she hops inside her trusted Mecha suit. The suit gradually loses health, returning Meg to her basic form when the Mecha suit is destroyed.",
         "skins": [
             {
@@ -6866,6 +6911,7 @@
             "color": "#E87D3E"
         },
         "portrait": "portrait_gale.png",
+        "model": "blowerdefault.glb",
         "description": "Gale is a tireless handyman who gets no rest. With his blower, he blasts foes with a wide shot of wind and snow, while his Super pushes them back with a forceful blizzard!",
         "skins": [
             {
@@ -6990,6 +7036,7 @@
             "color": "#E87D3E"
         },
         "portrait": "portrait_surge.png",
+        "model": "powerlevelerdefault.glb",
         "description": "He's a Protector with a penchant for parties. Surge attacks foes with energy drink blasts that split in two on contact. His Super upgrades his stats in 3 stages and comes complete with totally awesome body mods!",
         "skins": [
             {
@@ -7111,6 +7158,7 @@
             "color": "#E87D3E"
         },
         "portrait": "portrait_colette.png",
+        "model": "percenterdefault.glb",
         "description": "Colette is going to get you! She taxes opponents' health and has fancy moves to boot.",
         "skins": [
             {
@@ -7234,6 +7282,7 @@
             "color": "#E87D3E"
         },
         "portrait": "portrait_lou.png",
+        "model": "icedudedefault.glb",
         "description": "Lou is a cool guy, literally! He can dole out all kinds of chill stuff. But watch your step on the ice, and be careful not to get brain freeze!",
         "skins": [
             {
@@ -7357,6 +7406,7 @@
             "color": "#E87D3E"
         },
         "portrait": "portrait_ruffs.png",
+        "model": "ruffsdefault.glb",
         "description": "Ruffs' twin-laser bounces off walls multiple times. They can hit opponents behind cover.",
         "skins": [
             {
@@ -7480,6 +7530,7 @@
             "color": "#E87D3E"
         },
         "portrait": "portrait_belle.png",
+        "model": "electrosniperdefault.glb",
         "description": "Belle inspires adoration in her gang, while her Electo-Rifle brings shock and awe to any opponent!",
         "skins": [
             {
@@ -7604,6 +7655,7 @@
             "color": "#E87D3E"
         },
         "portrait": "portrait_buzz.png",
+        "model": "ropedudedefault.glb",
         "description": "Buzz is the lifeguard at Velocirapids. He constantly scans for folks in trouble he can throw his torpedo buoy to, but his throws are rather overenthusiastic.",
         "skins": [
             {
@@ -7709,6 +7761,7 @@
             "color": "#E87D3E"
         },
         "portrait": "portrait_ash.png",
+        "model": "knightdefault.glb",
         "description": "Ash easily gets furious about all the junk he has to clean up. Dealing or receiving blows, even more so. The Fury makes him faster and more dangerous, but eventually he cools down.",
         "skins": [
             {
@@ -7793,6 +7846,7 @@
             "color": "#E87D3E"
         },
         "portrait": "portrait_lola.png",
+        "model": "duplicatordefault.glb",
         "description": "Part guide and part actress and full diva, Lola is THE leading lady of Brawlywood. She attacks with her scarf and her Super is a channeled manifestation of her Ego.",
         "skins": [
             {
@@ -7897,6 +7951,7 @@
             "color": "#E87D3E"
         },
         "portrait": "portrait_fang.png",
+        "model": "kickerdudedefault.glb",
         "description": "Fang kicks first and he kicks fast. His main attack is a hefty kick that sends his shoe flying! Fang's Super is a powerful kick that will chain hit multiple enemies who are close together.",
         "skins": [
             {
@@ -8001,6 +8056,7 @@
             "color": "#E87D3E"
         },
         "portrait": "portrait_eve.png",
+        "model": "fleadefault.glb",
         "description": "Eve believes that everyone can be valuable... as a resource for her babies.",
         "skins": [
             {
@@ -8085,6 +8141,7 @@
             "color": "#E87D3E"
         },
         "portrait": "portrait_janet.png",
+        "model": "jetpackgirldefault.glb",
         "description": "Janet is the star of the show, and she's not afraid to let everyone around her know about it. If only her sister Bonnie wouldn't constantly get into trouble...",
         "skins": [
             {
@@ -8169,6 +8226,7 @@
             "color": "#E87D3E"
         },
         "portrait": "portrait_otis.png",
+        "model": "silencerdefault.glb",
         "description": "Otis is a street artist who chills in the deep with his starfish pal Cil. Together they throw up graffiti pieces all over Starr Park.",
         "skins": [
             {
