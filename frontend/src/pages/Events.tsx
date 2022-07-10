@@ -34,12 +34,12 @@ export default function Maps() {
   return (
     <Flex flexDir={'column'} justifyContent={'space-between'} w={'100%'}>
       <Flex w={'100%'} textAlign={'center'} justifyContent={'center'}>
-        <Text fontSize={'3xl'}>Events</Text>  
+        <Text fontSize={'3xl'} fontWeight={'bold'}>Events</Text>  
       </Flex>
       <Flex flexDir={'row'}>
         <EventSideBar/>
         <Flex flexDir={'column'} mt={10}>
-          <SimpleGrid columns={[1,2]} spacing={5}>
+          <SimpleGrid columns={[1,2,3]} spacing={5} w={'100%'}>
             {data?.events.map((event) => (
               <EventView event={event}/>
           ))}

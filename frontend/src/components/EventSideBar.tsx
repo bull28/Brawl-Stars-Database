@@ -5,19 +5,20 @@ import { Flex, Text, Divider, Icon, RadioGroup, Stack, Radio, Input, Select, Inp
     DrawerOverlay,
     DrawerContent,
     DrawerCloseButton,
-    useDisclosure, } from "@chakra-ui/react";
+    useDisclosure,
+    FormControl, } from "@chakra-ui/react";
 import { HamburgerIcon, SearchIcon } from '@chakra-ui/icons'
 import { useState } from "react";
 
 
-
 export default function EventSideBar(){
     const [choice, setChoice] = useState<string>("current")
+    const [searchText, setSearchText] = useState<string>("")
     const query = useMediaQuery('(min-width: 400px)')[0]
     const { isOpen, onOpen, onClose } = useDisclosure() 
 
     const search = () => {
-        console.log('Search!')
+        console.log(searchText)
     }
 
     if (query){
@@ -37,9 +38,8 @@ export default function EventSideBar(){
                             <Input type={'number'}/>
                         </Stack>
                         <Select>
-                            <option value='option1'>Option 1</option>
-                            <option value='option2'>Option 2</option>
-                            <option value='option3'>Option 3</option>
+                            <option value='at_time'>At Time</option>
+                            <option value='from_now'>From Now</option>                            
                         </Select>
                         <Radio value='world time'>World Time</Radio>
                         <Input type={'datetime-local'}/>
@@ -49,12 +49,17 @@ export default function EventSideBar(){
     
                 <Divider color={'black'} opacity={0} my={10} orientation={'horizontal'}/>
                 <Flex alignItems={'center'} alignContent={'center'} textAlign={'center'} mb={4} position={'absolute'} bottom={0}>
-                    <InputGroup>
-                        <Input type={'text'}/>
-                        <InputRightElement>
-                            <Icon as={SearchIcon} onClick={search} cursor={'pointer'}/>
-                        </InputRightElement>
-                    </InputGroup>
+                    <form onSubmit={e => {
+                        e.preventDefault();
+                        search()}
+                    }>
+                        <InputGroup>
+                            <Input type={'text'} value={searchText} onChange={e => setSearchText(e.target.value)}/>
+                            <InputRightElement>
+                                <Icon as={SearchIcon} onClick={search} cursor={'pointer'} fontSize={'xl'}/>
+                            </InputRightElement>
+                        </InputGroup>
+                    </form>
                 </Flex>
                     
                 

@@ -9,7 +9,7 @@ interface MapViewProps {
 export default function MapView({ event }: MapViewProps){
 
     return (
-          <Flex flexDir={'column'} key={event.current.map.name}>
+          <Flex flexDir={'column'} key={event.current.map.name} bgColor={'gray.200'} p={3} borderRadius={'lg'}>
             <Flex flexDir={'row'} bgColor={event.current.gameMode.data.backgroundColor}>
               <Image src={`/image/${event.current.gameMode.data.image}`}/>
               <Flex h={'100%'} alignItems={'center'} textAlign={'center'} w={'100%'} justifyContent={'center'}>
@@ -17,7 +17,7 @@ export default function MapView({ event }: MapViewProps){
               </Flex>
             </Flex>
             <Image src={`/image/${event.current.map.bannerImage}`}/>
-            <Flex color={event.current.gameMode.data.textColor} w={'100%'} justifyContent={'space-between'} bgColor={'blue.100'}>
+            <Flex color={event.upcoming.gameMode.data.textColor} w={'100%'} justifyContent={'space-between'} bgColor={'black'}>
               <Text>{`Next: ${event.upcoming.map.displayName}`}</Text>
               <Text>{`${event.timeLeft.hour}h ${event.timeLeft.minute}m ${event.timeLeft.second}s`}</Text>
             </Flex>
