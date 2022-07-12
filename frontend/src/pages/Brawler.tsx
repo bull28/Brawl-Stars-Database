@@ -33,7 +33,7 @@ export default function Brawler() {
                     <Text w={'60%'}>{data.description}</Text>
                 </Flex>
                 <Flex justifyContent={'center'} alignItems={'center'} textAlign={'center'} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} h={'100%'} w={'50%'} bgImage={'/image/misc/skingroups/backgrounds/bg_default.png'}>
-                    <ModelViewer scale={(window.innerWidth < 960) ? 0.35 : 0.5} modelPath={"/test2.glb"} hover={hover}/>
+                    <ModelViewer scale={(window.innerWidth < 960) ? 0.35 : 0.5} modelPath={`/image/${data.model}`} hover={hover}/>
                 </Flex>
             </Flex>
             

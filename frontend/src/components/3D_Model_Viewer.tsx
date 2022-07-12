@@ -1,7 +1,7 @@
 import { useRef, Suspense } from "react";
 import { useLoader, useFrame, Canvas } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { OrbitControls, Sky } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
 
 interface ModelViewerProps {
   modelPath: string,
@@ -33,7 +33,6 @@ const ModelViewer = ({ modelPath, hover, scale = 40, position = [0, -2.2, 0] }: 
     <Canvas>
       <ambientLight />
       <spotLight position={[10, 10, 10]} />
-      <pointLight position={[-100, -100, 100]} intensity={1.5} />
       <Suspense fallback={null}>
         <GltfModel modelPath={modelPath} hover={hover} scale={scale} position={position} />
         <OrbitControls />

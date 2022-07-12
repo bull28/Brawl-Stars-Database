@@ -33,7 +33,7 @@ type SkinData = {
     },
     rating: number,
     image: string,
-    altImage: {exists: boolean, image: string}
+    model: {exists: boolean, image: string}
 }
 
 export default function BrawlerImage({ brawler, skin }: BrawlerImageProps) {

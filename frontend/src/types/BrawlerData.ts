@@ -4,5 +4,6 @@ export type BrawlerData = {
     rarity: {value: number, name: string, color: string},
     skins: [{name: string, displayName: string}],
     image: string,
+    model: string,
     description: string
 }
