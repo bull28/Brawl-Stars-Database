@@ -2680,7 +2680,7 @@
                 "group": {
                     "name": "Brawlentines",
                     "image": "bg_brawlentines.png",
-                    "icon": "icon_brawlentines.png.png"
+                    "icon": "icon_brawlentines.png"
                 },
                 "limited": false,
                 "image": "luchadorcorazon.png",
@@ -2936,7 +2936,7 @@
                 "group": {
                     "name": "Brawlentines",
                     "image": "bg_brawlentines.png",
-                    "icon": "icon_brawlentines.png.png"
+                    "icon": "icon_brawlentines.png"
                 },
                 "limited": false,
                 "image": "pocovalentine.png",
@@ -4158,7 +4158,7 @@
                 "group": {
                     "name": "Brawlentines",
                     "image": "bg_brawlentines.png",
-                    "icon": "icon_brawlentines.png.png"
+                    "icon": "icon_brawlentines.png"
                 },
                 "limited": false,
                 "image": "snipervalentines.png",
@@ -7696,7 +7696,7 @@
                 "group": {
                     "name": "Brawlentines",
                     "image": "bg_brawlentines.png",
-                    "icon": "icon_brawlentines.png.png"
+                    "icon": "icon_brawlentines.png"
                 },
                 "limited": false,
                 "image": "icedudecrooner.png",
