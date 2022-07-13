@@ -796,8 +796,8 @@
             {
                 "name": "bulldudebarbking",
                 "displayName": "Barbarian King Bull",
-                "cost": 79,
-                "currency": "Gems",
+                "cost": 0,
+                "currency": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -1053,8 +1053,8 @@
             {
                 "name": "mechanicreddragon",
                 "displayName": "Red Dragon Jessie",
-                "cost": 79,
-                "currency": "Gems",
+                "cost": 0,
+                "currency": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -1258,8 +1258,8 @@
             {
                 "name": "rocketgirlog",
                 "displayName": "Old School Brock",
-                "cost": 79,
-                "currency": "Gems",
+                "cost": 0,
+                "currency": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -1610,8 +1610,8 @@
             {
                 "name": "tntduderetro",
                 "displayName": "Classic Dynamike",
-                "cost": 149,
-                "currency": "Gems",
+                "cost": 0,
+                "currency": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -3263,8 +3263,8 @@
             {
                 "name": "trickshotdudetotal",
                 "displayName": "Ricochet",
-                "cost": 79,
-                "currency": "Gems",
+                "cost": 0,
+                "currency": "",
                 "features": [
                     "Brawler Model"
                 ],
@@ -3512,8 +3512,8 @@
             {
                 "name": "barrelbotmegabox",
                 "displayName": "Mega Box Darryl",
-                "cost": 149,
-                "currency": "Gems",
+                "cost": 0,
+                "currency": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -5384,8 +5384,8 @@
             {
                 "name": "undertakerhatgold",
                 "displayName": "True Gold Top Hat Mortis",
-                "cost": 25000,
-                "currency": "Coins",
+                "cost": 0,
+                "currency": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -5403,8 +5403,8 @@
             {
                 "name": "undertakergold",
                 "displayName": "True Gold Mortis",
-                "cost": 0,
-                "currency": "",
+                "cost": 25000,
+                "currency": "Coins",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -5422,8 +5422,8 @@
             {
                 "name": "undertakerhatsilver",
                 "displayName": "True Silver Top Hat Mortis",
-                "cost": 10000,
-                "currency": "Coins",
+                "cost": 0,
+                "currency": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -5441,8 +5441,8 @@
             {
                 "name": "undertakersilver",
                 "displayName": "True Silver Mortis",
-                "cost": 0,
-                "currency": "",
+                "cost": 10000,
+                "currency": "Coins",
                 "features": [
                     "Brawler Model",
                     "Texture"
