@@ -1,4 +1,0 @@
-https://www.npmjs.com/package/@react-three/fiber
-https://www.npmjs.com/package/@react-three/drei
-https://victordibia.com/blog/blender-to-react/
-https://levelup.gitconnected.com/rendering-3d-objects-and-animation-in-react-using-three-fiber-bf0255e642be
