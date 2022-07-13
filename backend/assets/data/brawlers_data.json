@@ -400,7 +400,7 @@
                 ],
                 "group": {
                     "name": "Power League",
-                    "image": "bg_default.png",
+                    "image": "bg_ranked.png",
                     "icon": "icon_ranked.png"
                 },
                 "limited": true,
@@ -908,7 +908,7 @@
                 ],
                 "group": {
                     "name": "Club League",
-                    "image": "bg_default.png",
+                    "image": "bg_clubleague.png",
                     "icon": "icon_clubleague.png"
                 },
                 "limited": false,
@@ -1325,7 +1325,7 @@
                 ],
                 "group": {
                     "name": "Power League",
-                    "image": "bg_default.png",
+                    "image": "bg_ranked.png",
                     "icon": "icon_ranked.png"
                 },
                 "limited": true,
@@ -1561,7 +1561,7 @@
                 ],
                 "group": {
                     "name": "Club League",
-                    "image": "bg_default.png",
+                    "image": "bg_clubleague.png",
                     "icon": "icon_clubleague.png"
                 },
                 "limited": false,
@@ -1855,7 +1855,7 @@
                 ],
                 "group": {
                     "name": "Power League",
-                    "image": "bg_default.png",
+                    "image": "bg_ranked.png",
                     "icon": "icon_ranked.png"
                 },
                 "limited": true,
@@ -2077,7 +2077,7 @@
                 ],
                 "group": {
                     "name": "Power League",
-                    "image": "bg_default.png",
+                    "image": "bg_ranked.png",
                     "icon": "icon_ranked.png"
                 },
                 "limited": true,
@@ -3351,7 +3351,7 @@
                 ],
                 "group": {
                     "name": "Club League",
-                    "image": "bg_default.png",
+                    "image": "bg_clubleague.png",
                     "icon": "icon_clubleague.png"
                 },
                 "limited": false,
@@ -3543,7 +3543,7 @@
                 ],
                 "group": {
                     "name": "Power League",
-                    "image": "bg_default.png",
+                    "image": "bg_ranked.png",
                     "icon": "icon_ranked.png"
                 },
                 "limited": true,
@@ -3652,7 +3652,7 @@
                 ],
                 "group": {
                     "name": "Power League",
-                    "image": "bg_default.png",
+                    "image": "bg_ranked.png",
                     "icon": "icon_ranked.png"
                 },
                 "limited": true,
@@ -3990,7 +3990,7 @@
                 ],
                 "group": {
                     "name": "Power League",
-                    "image": "bg_default.png",
+                    "image": "bg_ranked.png",
                     "icon": "icon_ranked.png"
                 },
                 "limited": true,
@@ -6263,7 +6263,7 @@
                 ],
                 "group": {
                     "name": "Power League",
-                    "image": "bg_default.png",
+                    "image": "bg_ranked.png",
                     "icon": "icon_ranked.png"
                 },
                 "limited": true,
@@ -6335,7 +6335,7 @@
                 ],
                 "group": {
                     "name": "Club League",
-                    "image": "bg_default.png",
+                    "image": "bg_clubleague.png",
                     "icon": "icon_clubleague.png"
                 },
                 "limited": false,
@@ -8087,7 +8087,7 @@
                 ],
                 "group": {
                     "name": "Power League",
-                    "image": "bg_default.png",
+                    "image": "bg_ranked.png",
                     "icon": "icon_ranked.png"
                 },
                 "limited": true,
