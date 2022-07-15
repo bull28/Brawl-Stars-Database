@@ -70,7 +70,7 @@ export default function BrawlerImage({ brawler, skin }: BrawlerImageProps) {
                     <Divider/>
                     <ModalBody>
                         {(data.features.length > 0) ? data.features.map((feature) => (
-                            <Text>•  {feature}</Text>
+                            <Text key={feature}>•  {feature}</Text>
                         )) : <Text>This skin has no extra features.</Text>}
                     </ModalBody>
                     <ModalFooter/>
