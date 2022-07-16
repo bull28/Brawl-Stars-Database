@@ -15,7 +15,8 @@ const GltfModel = ({ modelPath, hover, scale = 1.0, position = [0, 0, 0] }: Mode
     const ref: any = useRef();
     const gltf: any = useLoader(GLTFLoader, modelPath);
 
-    useFrame(() => (ref.current.rotation.y += (hover? 0 : 0.003490658)));
+    //turning off spinning animation for testing
+    //useFrame(() => (ref.current.rotation.y += (hover? 0 : 0.003490658)));
 
     const BARBARIAN_KING: any = useThree();//i am allowed to have 1 bad variable name
     const camera: Camera = BARBARIAN_KING.camera;

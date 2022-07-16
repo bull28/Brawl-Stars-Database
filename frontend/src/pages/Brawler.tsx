@@ -11,6 +11,9 @@ export default function Brawler() {
     const params = useParams()
     const [data, setData] = useState<BrawlerData>()
     const [hover, setHover] = useState<boolean>(false)
+    //to test the new camera, the model path was hardcoded to a specific file
+    //once all the 3d models have been updated with cameras, switch it back
+    //to `/image/${data.model}`
 
     useEffect(() => {
         axios.get(`/brawler/${params.brawler}`)
@@ -33,7 +36,7 @@ export default function Brawler() {
                     <Text w={'60%'}>{data.description}</Text>
                 </Flex>
                 <Flex justifyContent={'center'} alignItems={'center'} textAlign={'center'} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} h={'100%'} w={'50%'} bgImage={'/image/misc/skingroups/backgrounds/bg_default.png'}>
-                    <ModelViewer scale={(window.innerWidth < 960) ? 0.35 : 0.5} modelPath={`/image/${data.model}`} hover={hover} position={[0, -2.5, 0]}/>
+                    <ModelViewer scale={(window.innerWidth < 960) ? 0.35 : 0.4} modelPath={"/image/misc/test7.glb"} hover={hover} position={[0, 0, 0]}/>
                 </Flex>
             </Flex>
             
