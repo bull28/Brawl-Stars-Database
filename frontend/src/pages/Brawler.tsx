@@ -35,7 +35,7 @@ export default function Brawler() {
                     <Image src={'/image/'+data.image} borderRadius={'lg'} fallback={<Spinner/>} objectFit={'contain'} h={'80%'}/>                
                     <Text w={'60%'}>{data.description}</Text>
                 </Flex>
-                <Flex justifyContent={'center'} alignItems={'center'} textAlign={'center'} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} h={'100%'} w={'50%'} bgImage={'/image/misc/skingroups/backgrounds/bg_default.png'}>
+                <Flex justifyContent={'center'} alignItems={'center'} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} h={'100%'} w={'50%'} bgImage={"/image/misc/bg_3d_model.png"} backgroundPosition={"center"} backgroundSize={"cover"} backgroundRepeat={"no-repeat"}>
                     <ModelViewer scale={(window.innerWidth < 960) ? 0.35 : 0.4} modelPath={"/image/misc/test8.glb"} hover={hover} position={[0, 0, 0]}/>
                 </Flex>
             </Flex>

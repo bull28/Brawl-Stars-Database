@@ -54,7 +54,7 @@ export default function BrawlerImage({ brawler, skin }: BrawlerImageProps) {
                 <Image objectFit={'cover'} src={`/image/${data.image}`} alt={data.displayName} fallback={<Spinner/>}/>
             </Flex>
             <Flex alignItems={'center'} alignSelf={'center'} mt={3}>
-                    {(data.group.icon !== 'misc/skingroups/icons/icon_default.png') && <Label label={data.group.name}><Image src={`/image/${data.group.icon}`} w={7} mr={3}/></Label>}            
+                    {(data.group.icon !== 'skingroups/icons/icon_default.png') && <Label label={data.group.name}><Image src={`/image/${data.group.icon}`} w={7} mr={3}/></Label>}            
                 <Text fontSize={['md','lg','xl']} fontWeight={'bold'} >{data.displayName}</Text>    
             </Flex>
             
