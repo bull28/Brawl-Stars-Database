@@ -5,28 +5,38 @@ supposed to be changed) will be listed.
 
 Events Menu
 
-Main Page
+Main Page (Completed)
 - When the events menu is opened up, a screen similar to events_main_page.png will be displayed.
 - This page will display events at a specific time. The user can decide what time they want to display events at, using
 the menu on the left.
 - The colors of the events should be the ones provided from the API. The field "backgroundColor" should be used for the
 background of the currently active event. The field "textColor" should be used for the text which displays which event is
 starting next.
-- The banners of the events should be available in the API soon.
-- There are 4 ways of choosing a time: Current, Upcoming, Season Time, and World Time. The circles to the left of them
+- There are 4 ways of choosing a time: Current, Season Time, and World Time. The circles to the left of them
 indicate a multiple choice menu. Only one option can be chosen at a time.
-- The Current, Upcoming, and Season Time choices are already supported by the API. If you are able to accept a date and time
-and convert it to "seconds after January 1, 1970", then the World Time option can be added.
 - The "Update" button refreshes the timers on the events. If the web page is able to refresh automatically without much delay,
 this button can be removed.
-- The "Search for a specific map" button will redirect the user to the Map Search Page.
 
-Map Search Page
+Map Search Page (In progress)
 - This page will allow the user to view the image of a specific map.
-- By default, all the maps in the game will be displayed in the search result box. There is currently not a feature in the
-API which provides all the maps, but one should be added soon.
-- If the user wishes to do so, they can narrow their search by game mode by checking the boxes on the left. Unlike the
-multiple choice option on the Main Page, this page allows the user to select more than one choice.
-- Clicking on a map will open up a pop-up which displays the image of the map as well as the time until it appears next.
-Refer to event_popup.png to see an example of this. If the pop-up is not possible, redirect the user to a new page containing
-the pop-up's content.
+- There will be a box where the user can enter a search query. Once the user starts the search, all the maps which match their
+search will be displayed.
+- Clicking on a map from the search results will open a pop-up which contains information about the map.
+- If there is exactly one search result, the pop-up automatically opens without the user needing to click on a map.
+- In the pop-up, the image of the map is displayed, as well as the time until the map will appear next.
+- Optional: Show the time in the season when the map appears. The format of this can be similar to how events are shown in a
+calendar app.
+
+Brawler Page
+- Move portrait and description to the left side.
+- Move 3D model to the center. The 3D model viewer's window size should be the same aspect ratio on all brawlers.
+- Add a section showing the brawler's available pins to the right side.
+- Add a button next to any skins which have a 3D model available. Clicking this button switches the model in the 3D viewer
+to that skin's model. All default skins have a 3D model, so clicking the button next to the default skin switches the model
+back to the default.
+- Skins which are limited should have a golden (or any other special color) border.
+- Fix some free skins being displayed as default skins.
+- Move the skin image background to the center of the box.
+
+Brawl Box
+- See the issue for more details...

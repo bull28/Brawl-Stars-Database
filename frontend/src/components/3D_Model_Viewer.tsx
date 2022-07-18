@@ -1,22 +1,18 @@
 import { useRef, Suspense } from "react";
-import { useLoader, useThree, useFrame, Canvas } from "@react-three/fiber";
+import { useLoader, useThree, Canvas } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { OrbitControls } from "@react-three/drei";
 import { DirectionalLight, AmbientLight, Object3D, Color, PerspectiveCamera, Camera, Scene } from "three";
 
 interface ModelViewerProps {
     modelPath: string,
-    hover: boolean,
     scale?: number,
     position?: [number, number, number]
 }
 
-const GltfModel = ({ modelPath, hover, scale = 1.0, position = [0, 0, 0] }: ModelViewerProps) => {
+const GltfModel = ({ modelPath, scale = 1.0, position = [0, 0, 0] }: ModelViewerProps) => {
     const ref: any = useRef();
     const gltf: any = useLoader(GLTFLoader, modelPath);
-
-    //turning off spinning animation for testing
-    //useFrame(() => (ref.current.rotation.y += (hover? 0 : 0.003490658)));
 
     const BARBARIAN_KING: any = useThree();//i am allowed to have 1 bad variable name
     const camera: Camera = BARBARIAN_KING.camera;
@@ -24,7 +20,7 @@ const GltfModel = ({ modelPath, hover, scale = 1.0, position = [0, 0, 0] }: Mode
 
     
     for (let x in scene.children){
-        if (scene.children[x].name != ""){//THE KING HARD CODES AGAIN
+        if (scene.children[x].name !== ""){//THE KING HARD CODES AGAIN
             scene.children[x].traverse((object: Object3D) => {object.frustumCulled = false;});
         }
     }
@@ -150,7 +146,7 @@ const GltfModel = ({ modelPath, hover, scale = 1.0, position = [0, 0, 0] }: Mode
     );
 };
 
-const ModelViewer = ({ modelPath, hover, scale = 1.0, position = [0, 0, 0] }: ModelViewerProps) => {
+const ModelViewer = ({ modelPath, scale = 1.0, position = [0, 0, 0] }: ModelViewerProps) => {
     const gltf: any = useLoader(GLTFLoader, modelPath);//maybe there's a way to avoid using the loader again here???
     
     var camera: PerspectiveCamera = new PerspectiveCamera();
@@ -178,7 +174,7 @@ const ModelViewer = ({ modelPath, hover, scale = 1.0, position = [0, 0, 0] }: Mo
     return (
         <Canvas camera={{ fov: camera.fov, position: cameraObj.position}}>
             <Suspense fallback={null}>
-                <GltfModel modelPath={modelPath} hover={hover} scale={scale} position={position} />
+                <GltfModel modelPath={modelPath} scale={scale} position={position} />
                 <OrbitControls/>
             </Suspense> 
         </Canvas>

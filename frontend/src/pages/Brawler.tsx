@@ -10,7 +10,7 @@ import ModelViewer from '../components/3D_Model_Viewer'
 export default function Brawler() {
     const params = useParams()
     const [data, setData] = useState<BrawlerData>()
-    const [hover, setHover] = useState<boolean>(false)
+    //const [hover, setHover] = useState<boolean>(false)
 
     useEffect(() => {
         axios.get(`/brawler/${params.brawler}`)
@@ -32,8 +32,8 @@ export default function Brawler() {
                     <Image src={'/image/'+data.image} borderRadius={'lg'} fallback={<Spinner/>} objectFit={'contain'} h={'80%'}/>                
                     <Text w={'60%'}>{data.description}</Text>
                 </Flex>
-                <Flex justifyContent={'center'} alignItems={'center'} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} h={'100%'} w={'50%'} bgImage={"/image/misc/bg_3d_model.webp"} backgroundPosition={"center"} backgroundSize={"cover"} backgroundRepeat={"no-repeat"}>
-                    <ModelViewer scale={1.0} modelPath={`/image/${data.model}`} hover={hover} position={[0, 0, 0]}/>
+                <Flex justifyContent={'center'} alignItems={'center'} h={'100%'} w={'50%'} bgImage={"/image/misc/bg_3d_model.webp"} backgroundPosition={"center"} backgroundSize={"cover"} backgroundRepeat={"no-repeat"}>
+                    <ModelViewer scale={1.0} modelPath={`/image/${data.model}`} position={[0, 0, 0]}/>
                 </Flex>
             </Flex>
             
