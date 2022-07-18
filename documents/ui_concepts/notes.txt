@@ -5,7 +5,7 @@ supposed to be changed) will be listed.
 
 Events Menu
 
-Main Page (Completed)
+Main Page
 - When the events menu is opened up, a screen similar to events_main_page.png will be displayed.
 - This page will display events at a specific time. The user can decide what time they want to display events at, using
 the menu on the left.
@@ -17,17 +17,25 @@ indicate a multiple choice menu. Only one option can be chosen at a time.
 - The "Update" button refreshes the timers on the events. If the web page is able to refresh automatically without much delay,
 this button can be removed.
 
-Map Search Page (In progress)
+------------------------------------------------------------------------------------------------------------------------------
+Last updated here
+------------------------------------------------------------------------------------------------------------------------------
+
+Map Search Page - example in map_view.png
 - This page will allow the user to view the image of a specific map.
 - There will be a box where the user can enter a search query. Once the user starts the search, all the maps which match their
 search will be displayed.
 - Clicking on a map from the search results will open a pop-up which contains information about the map.
 - If there is exactly one search result, the pop-up automatically opens without the user needing to click on a map.
 - In the pop-up, the image of the map is displayed, as well as the time until the map will appear next.
-- Optional: Show the time in the season when the map appears. The format of this can be similar to how events are shown in a
-calendar app.
 
-Brawler Page
+Optional: Full map rotation screen - refer to map_rotation_page.png
+- Accessed from the Events Menu, Main Page
+- Displays the full map rotation in a similar format to a calendar application.
+- The user can scroll down the page to view more maps (the entire image will not be on the screen all at once).
+- A thin line indicates the current time.
+
+Brawler Page - example in brawler_view.png
 - Move portrait and description to the left side.
 - Move 3D model to the center. The 3D model viewer's window size should be the same aspect ratio on all brawlers.
 - Add a section showing the brawler's available pins to the right side.
