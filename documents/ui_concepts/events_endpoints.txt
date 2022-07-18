@@ -1,0 +1,5 @@
+/event/current
+/event/seasontime/:hour/:minute/:second
+/event/later/:hour/:minute/:second
+/event/worldtime/:second
+/mapsearch (this one is a post request that accepts a string)
