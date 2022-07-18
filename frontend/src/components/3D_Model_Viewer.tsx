@@ -21,6 +21,13 @@ const GltfModel = ({ modelPath, hover, scale = 1.0, position = [0, 0, 0] }: Mode
     const BARBARIAN_KING: any = useThree();//i am allowed to have 1 bad variable name
     const camera: Camera = BARBARIAN_KING.camera;
     const scene: Scene = BARBARIAN_KING.scene;
+
+    
+    for (let x in scene.children){
+        if (scene.children[x].name != ""){//THE KING HARD CODES AGAIN
+            scene.children[x].traverse((object: Object3D) => {object.frustumCulled = false;});
+        }
+    }
     
     /*
     Note to self on how I got these hardcoded values///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -128,7 +135,7 @@ const GltfModel = ({ modelPath, hover, scale = 1.0, position = [0, 0, 0] }: Mode
     camera.add(light1Pos);
     camera.add(light2);
     camera.add(light2Pos);
-
+    
     scene.add(camera);
   
     return (
@@ -169,10 +176,10 @@ const ModelViewer = ({ modelPath, hover, scale = 1.0, position = [0, 0, 0] }: Mo
     }
 
     return (
-        <Canvas camera={{ fov: camera.fov/2, position: cameraObj.position}}>
+        <Canvas camera={{ fov: camera.fov, position: cameraObj.position}}>
             <Suspense fallback={null}>
                 <GltfModel modelPath={modelPath} hover={hover} scale={scale} position={position} />
-            <OrbitControls />
+                <OrbitControls/>
             </Suspense> 
         </Canvas>
     );
