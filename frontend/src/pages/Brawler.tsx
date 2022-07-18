@@ -11,9 +11,6 @@ export default function Brawler() {
     const params = useParams()
     const [data, setData] = useState<BrawlerData>()
     const [hover, setHover] = useState<boolean>(false)
-    //to test the new camera, the model path was hardcoded to a specific file
-    //once all the 3d models have been updated with cameras, switch it back
-    //to `/image/${data.model}`
 
     useEffect(() => {
         axios.get(`/brawler/${params.brawler}`)
@@ -35,8 +32,8 @@ export default function Brawler() {
                     <Image src={'/image/'+data.image} borderRadius={'lg'} fallback={<Spinner/>} objectFit={'contain'} h={'80%'}/>                
                     <Text w={'60%'}>{data.description}</Text>
                 </Flex>
-                <Flex justifyContent={'center'} alignItems={'center'} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} h={'100%'} w={'50%'} bgImage={"/image/misc/bg_3d_model.png"} backgroundPosition={"center"} backgroundSize={"cover"} backgroundRepeat={"no-repeat"}>
-                    <ModelViewer scale={(window.innerWidth < 960) ? 0.35 : 0.4} modelPath={"/image/misc/test8.glb"} hover={hover} position={[0, 0, 0]}/>
+                <Flex justifyContent={'center'} alignItems={'center'} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} h={'100%'} w={'50%'} bgImage={"/image/misc/bg_3d_model.webp"} backgroundPosition={"center"} backgroundSize={"cover"} backgroundRepeat={"no-repeat"}>
+                    <ModelViewer scale={(window.innerWidth < 960) ? 0.35 : 0.4} modelPath={`/image/${data.model}`} hover={hover} position={[0, 0, 0]}/>
                 </Flex>
             </Flex>
             
