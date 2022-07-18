@@ -23,11 +23,6 @@ export default function Maps() {
 
   useEffect(() => {
     fetchData();
-
-    setInterval(() => {
-      fetchData();
-    }, 5000)
-
   }, [])
 
 
@@ -37,7 +32,7 @@ export default function Maps() {
         <Text fontSize={'3xl'} fontWeight={'bold'}>Events</Text>  
       </Flex>
       <Flex flexDir={'row'}>
-        <EventSideBar/>
+        <EventSideBar changeData={setData}/>
         <Flex flexDir={'column'} mt={10}>
           <SimpleGrid columns={[1,2,3]} spacing={5} w={'100%'}>
             {data?.events.map((event) => (

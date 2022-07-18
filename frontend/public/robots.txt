@@ -1,3 +1,9 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+
+Disallow: /brawler/
+Disallow: /skin/
+Disallow: /gamemode/
+Disallow: /map/
+Disallow: /mapsearch/
+Disallow: /event/

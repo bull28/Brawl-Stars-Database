@@ -5,20 +5,81 @@ import { Flex, Text, Divider, Icon, RadioGroup, Stack, Radio, Input, Select, Inp
     DrawerOverlay,
     DrawerContent,
     DrawerCloseButton,
-    useDisclosure,
-    FormControl, } from "@chakra-ui/react";
+    useDisclosure, 
+    useToast} from "@chakra-ui/react";
+
 import { HamburgerIcon, SearchIcon } from '@chakra-ui/icons'
 import { useState } from "react";
+import axios from 'axios';
 
 
-export default function EventSideBar(){
-    const [choice, setChoice] = useState<string>("current")
-    const [searchText, setSearchText] = useState<string>("")
+export default function EventSideBar({ changeData }: {changeData: any}){
+    const [choice, setChoice] = useState<string>("current");
+    const [select, setSelect] = useState<string>("at_time");
+    const [time, setTime] = useState<string[]>(["", "", ""]);
+    const [searchText, setSearchText] = useState<string>("");
+    const [date, setDate] = useState<string>("");
+
     const query = useMediaQuery('(min-width: 400px)')[0]
     const { isOpen, onOpen, onClose } = useDisclosure() 
+    const toast = useToast()
+
+    const handleTimeChange = (value: string, index: number) => {
+        if (String(value).length < 4){
+            let tempArr = [...time];
+            tempArr[index] = value;
+    
+            setTime(tempArr);
+        }
+    }
+
+    const getSeconds = (date: string): number => {
+        return Math.floor((new Date(date)).getTime()/1000)
+    }
+
 
     const search = () => {
         console.log(searchText)
+    }
+
+    const update = () => {
+        let endpoint = "";
+
+        if (choice === "current"){
+            endpoint = "/event/current"
+
+        } else if (choice === "season_time" && !time.includes("")){
+            if (select === "at_time"){
+                endpoint = `/event/seasontime/${time[0]}/${time[1]}/${time[2]}`
+            } else if (select === "from_now"){
+                endpoint = `/event/later/${time[0]}/${time[1]}/${time[2]}`
+            }
+
+        } else if (choice === "world_time" && date !== ""){
+            endpoint = `/event/worldtime/${getSeconds(date)}`
+        }
+        
+        if (endpoint !== ""){
+
+            axios.get(endpoint)
+                .then((res) => {
+                    changeData(res.data)
+
+                    if (choice === "season_time" && select === "at_time"){
+                        setTime([res.data.time.hour, res.data.time.minute, res.data.time.second])
+                    }
+                })
+            
+            
+        } else {
+            toast({
+                title: 'Please Enter a Valid Time.',
+                status: 'error',
+                duration: 3000,
+                isClosable: true
+            })
+        }
+        
     }
 
     if (query){
@@ -29,21 +90,21 @@ export default function EventSideBar(){
                 <RadioGroup onChange={setChoice} value={choice}>
                     <Stack direction={'column'} spacing={[5, 10]}>
                         <Radio value='current'>Current</Radio>
-                        <Radio value='season time'>Season Time</Radio>
+                        <Radio value='season_time'>Season Time</Radio>
                         <Stack direction={'row'} alignItems={'center'}>
-                            <Input type={'number'}/>
+                            <Input type={'number'} onChange={(e) => handleTimeChange(e.target.value, 0)} value={time[0]}/>
                             <Text>:</Text>
-                            <Input type={'number'}/>
+                            <Input type={'number'} onChange={(e) => handleTimeChange(e.target.value, 1)} value={time[1]}/>
                             <Text>:</Text>
-                            <Input type={'number'}/>
+                            <Input type={'number'} onChange={(e) => handleTimeChange(e.target.value, 2)} value={time[2]}/>
                         </Stack>
-                        <Select>
+                        <Select onChange={(e) => setSelect(e.target.value)} value={select}>
                             <option value='at_time'>At Time</option>
                             <option value='from_now'>From Now</option>                            
                         </Select>
-                        <Radio value='world time'>World Time</Radio>
-                        <Input type={'datetime-local'}/>
-                        <Button type={'button'} colorScheme={'facebook'}>Update</Button>
+                        <Radio value='world_time'>World Time</Radio>
+                        <Input type={'datetime-local'} onChange={(e) => setDate(e.target.value)} value={date}/>
+                        <Button type={'button'} colorScheme={'facebook'} onClick={update}>Update</Button>
                     </Stack>
                 </RadioGroup>
     
@@ -81,20 +142,19 @@ export default function EventSideBar(){
                                 <Radio value='current'>Current</Radio>
                                 <Radio value='season time'>Season Time</Radio>
                                 <Stack direction={'row'} alignItems={'center'}>
-                                    <Input type={'number'}/>
+                                    <Input type={'number'} onChange={(e) => handleTimeChange(e.target.value, 0)} value={time[0]}/>
                                     <Text>:</Text>
-                                    <Input type={'number'}/>
+                                    <Input type={'number'} onChange={(e) => handleTimeChange(e.target.value, 1)} value={time[1]}/>
                                     <Text>:</Text>
-                                    <Input type={'number'}/>
+                                    <Input type={'number'} onChange={(e) => handleTimeChange(e.target.value, 2)} value={time[2]}/>
                                 </Stack>
-                                <Select>
-                                    <option value='option1'>Option 1</option>
-                                    <option value='option2'>Option 2</option>
-                                    <option value='option3'>Option 3</option>
+                                <Select onChange={(e) => setSelect(e.target.value)} value={select}>
+                                    <option value='at_time'>At Time</option>
+                                    <option value='from_now'>From Now</option>                            
                                 </Select>
                                 <Radio value='world time'>World Time</Radio>
-                                <Input type={'datetime-local'}/>
-                                <Button type={'button'} colorScheme={'facebook'}>Update</Button>
+                                <Input type={'datetime-local'} onChange={(e) => setDate(e.target.value)} value={date}/>
+                                <Button type={'button'} colorScheme={'facebook'} onClick={() => {update(); onClose();}}>Update</Button>
                             </Stack>
                             </RadioGroup>
                         </DrawerBody>
