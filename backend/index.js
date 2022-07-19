@@ -389,10 +389,10 @@ app.get("/event/current", (req, res) => {
 
 
 // Get events active using a season time
-app.get("/event/seasontime/:hour/:minute/:second", (req, res) => {
-    const hourString = req.params.hour;
-    const minuteString = req.params.minute;
-    const secondString = req.params.second;
+app.get("/event/seasontime", (req, res) => {
+    const hourString = req.query.hour;
+    const minuteString = req.query.minute;
+    const secondString = req.query.second;
 
     var time = new maps.SeasonTime(0, 0, 0, 0);
 
@@ -414,10 +414,10 @@ app.get("/event/seasontime/:hour/:minute/:second", (req, res) => {
 
 
 // Get events active a time interval later in the season
-app.get("/event/later/:hour/:minute/:second", (req, res) => {
-    const hourString = req.params.hour;
-    const minuteString = req.params.minute;
-    const secondString = req.params.second;
+app.get("/event/later", (req, res) => {
+    const hourString = req.query.hour;
+    const minuteString = req.query.minute;
+    const secondString = req.query.second;
 
     const currentTime = maps.realToTime(Date.now());
     var deltaTime = new maps.SeasonTime(0, 0, 0, 0);
@@ -444,8 +444,8 @@ app.get("/event/later/:hour/:minute/:second", (req, res) => {
 
 
 // Get currently active events
-app.get("/event/worldtime/:second", (req, res) => {
-    const realSeconds = req.params.second;
+app.get("/event/worldtime", (req, res) => {
+    const realSeconds = req.query.second;
 
     if (isNaN(realSeconds)){
         res.status(400).send("Invalid input.");
