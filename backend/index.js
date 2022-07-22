@@ -394,17 +394,15 @@ app.get("/event/seasontime", (req, res) => {
     const minuteString = req.query.minute;
     const secondString = req.query.second;
 
-    var time = new maps.SeasonTime(0, 0, 0, 0);
-
-
     if (isValidTime(hourString, minuteString, secondString) == false){
         res.status(400).send("Invalid input.");
         return;
     }
 
-    time.hour = maps.mod(parseInt(hourString), maps.MAP_CYCLE_HOURS);
-    time.minute = maps.mod(parseInt(minuteString), 60);
-    time.second = maps.mod(parseInt(secondString), 60);
+    const time = maps.addSeasonTimes(
+        new maps.SeasonTime(0, 0, 0, 0), 
+        new maps.SeasonTime(0, parseInt(hourString), parseInt(minuteString), parseInt(secondString))
+    );
 
     let activeEvents = maps.getAllEvents(eventList, time);
     let eventsInfo = formatEvents(activeEvents, time);
