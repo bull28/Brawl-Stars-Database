@@ -539,11 +539,11 @@ function searchForMapName(eventList, search){
     var query = "";
     if (search.hasOwnProperty("search")){
         query = search.search;
+        query = query.toLowerCase();
     }
     for (let event of eventList){
         for (let mode of event.gameModes){
             for (let map of mode.maps){
-                //query = query.toLowerCase();
                 const thisMapName = map.displayName.toLowerCase();
 
                 // some characters like "." are special parameters to the
