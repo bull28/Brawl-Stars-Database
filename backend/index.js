@@ -15,8 +15,16 @@ const port = 6969;
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.text());
-app.use(bodyParser.json());
+
+app.use((req, res, next) => {
+    bodyParser.json()(req, res, err => {
+        if (err) {
+            res.status(400).send("Incorrectly formatted json.");
+            return;
+        }
+        next();
+    });
+});
 
 app.use("/image", express.static(path.join("assets", "images")));
 
@@ -107,7 +115,6 @@ function formatEvents(events, seasonTime){
         // "current", "upcoming", and "timeLeft". do not add images for the "timeLeft".
         for (let y in x){
             if (y == "current" || y == "upcoming"){
-                //console.log(x[y]);
                 x[y].gameMode = maps.addPathGameMode(x[y].gameMode, GAMEMODE_IMAGE_DIR);
                 x[y].map = maps.addPathMap(x[y].map, MAP_IMAGE_DIR, MAP_BANNER_DIR);
             }
@@ -368,11 +375,10 @@ app.get("/map/:map", (req, res) => {
 
 // Search for a specific map by its name
 app.post("/mapsearch", (req, res) => {
-    if (req.get("Content-Type") != "text/plain"){
-        res.status(400).send("Map search query must be plain text.");
-        return;
-    }
-    const searchResult = maps.searchForMapName(eventList, req.body);
+    var search = req.body;
+    //if the json is not formatted correctly, error will be thrown above
+    
+    const searchResult = maps.searchForMapName(eventList, search);
     res.json(searchResult);
 });
 

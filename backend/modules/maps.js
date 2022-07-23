@@ -527,18 +527,23 @@ function getMapInformation(eventList, mapName, currentTime){
  * are a closer match to the query are at the beginning of the
  * result array.
  * @param {Array} eventList list of EventSlot objects to search through
- * @param {String} query search query
+ * @param {Object} search search query
  * @returns array containing the search results
  */
-function searchForMapName(eventList, query){
+function searchForMapName(eventList, search){
     var result = [];
     var exactMatch = [];
     var startsWith = [];
     var onlyContains = [];
+
+    var query = "";
+    if (search.hasOwnProperty("search")){
+        query = search.search;
+    }
     for (let event of eventList){
         for (let mode of event.gameModes){
             for (let map of mode.maps){
-                query = query.toLowerCase();
+                //query = query.toLowerCase();
                 const thisMapName = map.displayName.toLowerCase();
 
                 // some characters like "." are special parameters to the
