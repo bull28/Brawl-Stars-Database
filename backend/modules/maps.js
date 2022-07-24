@@ -456,7 +456,14 @@ function getModeInformation(eventList, modeName){
                 // these are properties of a GameMode object so they have to exist
                 result.name = thisGameMode.name;
                 result.displayName = thisGameMode.displayName;
-                result.data = thisGameMode.data;
+
+                // must copy the data because the function which adds the image path
+                // modifies this object directly
+                var dataCopy = {};
+                for (let i in thisGameMode.data){
+                    dataCopy[i] = thisGameMode.data[i];
+                }
+                result.data = dataCopy;
 
                 // only add the list of map names and not the entire json data
                 const allMaps = thisGameMode.maps;
@@ -499,19 +506,32 @@ function getMapInformation(eventList, mapName, currentTime){
         var mapInThisSlot = {};
         var isEmpty = true;
         for (var y = 0; y < eventList[x].gameModes.length; y++){
-            let mapSearchResult = eventList[x].gameModes[y].findMapIndex(mapName);
+            let thisGameMode = eventList[x].gameModes[y];
+            let mapSearchResult = thisGameMode.findMapIndex(mapName);
             if (mapSearchResult >= 0){
                 mapInThisSlot = eventList[x].gameModes[y].getMap(mapSearchResult);
-                isEmpty = false;
+                
+                for (let i in mapInThisSlot){
+                    if (i == "gameMode"){
+                        // add the data (colors, images, ...) from the game mode
+                        var mapSlotData = {};
+                        mapSlotData["name"] = thisGameMode.name;
+                        for (let i in thisGameMode.data){
+                            mapSlotData[i] = thisGameMode.data[i];
+                        }
+                        result["gameMode"] = mapSlotData;
+                    } else {
+                        result[i] = mapInThisSlot[i];
+                    }
+                }
+                
+                isEmpty = false;//if it is empty don't try to add times
             }
         }
         
         if (isEmpty == false){
             found = true;
 
-            for (var y in mapInThisSlot){
-                result[y] = mapInThisSlot[y];
-            }
             result["times"] = eventList[x].getNextStartTime(mapName, currentTime);
             
         }
@@ -598,6 +618,11 @@ function getEventInformation(event, seasonTime){
     // only finding this once and reusing its values
     const thisGameMode = event.getCurrentGameMode(seasonTime);
     const thisMap = event.getCurrentGameMapFast(thisGameMode, seasonTime);
+    
+    // **IMPORTANT////////////////****make sure to make a copy of thisMap if fields are added which contain
+    // objects as opposed to just strings and numbers
+    ////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////
 
     // take the properties from the map and copy them to the json
     // object that gets returned
@@ -609,9 +634,14 @@ function getEventInformation(event, seasonTime){
     
     for (var x in thisGameMode){
         if (x == "data"){
-            // "" tells the function to remove the image
-            //thisEvent["gameMode"][x] = copyMapData(thisGameMode[x], "");
-            thisEvent["gameMode"][x] = thisGameMode[x];
+            // copy all pieces of data and add the image file path
+            // otherwise functions which modify this object will be referencing
+            // the object directly and future calls will keep stacking the modifications
+            var dataCopy = {};
+            for (var y in thisGameMode[x]){
+                dataCopy[y] = thisGameMode[x][y];
+            }
+            thisEvent["gameMode"][x] = dataCopy;
         }
         //else if (x != "maps" && x != "rotationTime"){
         else if (!(excludeFromGameMode.includes(x))){
@@ -656,59 +686,42 @@ function getAllEvents(eventList, seasonTime){
 /**
  * Adds the imagePath and bannerPath file paths to the appropriate image
  * file names in a map object.
- * @param {Object} data 
- * @param {String} imagePath 
- * @param {String} bannerPath 
+ * @param {Object} data map data to modify
+ * @param {String} imagePath path to the map image
+ * @param {String} bannerPath path to the map banner
+ * @param {String} gameModeIconPath path to the game mode icon
  * @returns json object of the map with the file paths added
  */
-function addPathMap(data, imagePath, bannerPath){
-    var resultData = {};
+function addPathMap(data, imagePath, bannerPath, gameModeIconPath){
     for (var x in data){
         if (x == "image"){
-            resultData[x] = imagePath + data.gameMode + "/" + data.image;
+            data[x] = imagePath + data.gameMode.name + "/" + data.image;
         } else if (x == "bannerImage"){
-            resultData[x] = bannerPath + data.bannerImage;
-        } else{
-            resultData[x] = data[x];
+            data[x] = bannerPath + data.bannerImage;
+        } else if (x == "gameMode"){
+            console.log(data[x]);
+            // this does not execute unless it is called with a specific map
+            if (data[x].hasOwnProperty("image")){
+                data[x]["image"] = gameModeIconPath + data[x]["image"];
+            }
         }
     }
-    return resultData;
+    return data;
 }
 
 /**
  * Adds the filePath to the image file name of a game mode.
- * @param {Object} data 
- * @param {String} filePath 
+ * @param {Object} data game mode data to modify
+ * @param {String} filePath path to the game mode icon
  * @returns json object of the game mode with the file path added.
  */
 function addPathGameMode(data, filePath){
-    var resultData = {};
-    for (var x in data){
-        // when getting to the data of data, use the image file
-        // to determine which image to get later
-        if (x == "data"){
-            // if for some reason this image doesn't exist, the file will point
-            // to something unknown which will throw error later on
-            if (data[x].hasOwnProperty("image")){
-                filePath = filePath + data[x].image;
-            }
-
-            
-            // copy all pieces of data and add the image file path
-            var dataCopy = {};
-            for (var y in data[x]){
-                if (y == "image"){
-                    dataCopy[y] = filePath;
-                } else{
-                    dataCopy[y] = data[x][y];
-                }
-            }
-            resultData[x] = dataCopy;
-        } else{
-            resultData[x] = data[x];
+    if (data.hasOwnProperty("data")){
+        if (data.data.hasOwnProperty("image")){
+            data.data.image = filePath + data.data.image;
         }
     }
-    return resultData;
+    return data;
 }
 
 const MAP_CYCLE_HOURS=336;
