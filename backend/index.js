@@ -115,8 +115,10 @@ function formatEvents(events, seasonTime){
         // "current", "upcoming", and "timeLeft". do not add images for the "timeLeft".
         for (let y in x){
             if (y == "current" || y == "upcoming"){
+                // these should all be copies of the original data so modifying them directly
+                // should not cause any problems...
                 x[y].gameMode = maps.addPathGameMode(x[y].gameMode, GAMEMODE_IMAGE_DIR);
-                x[y].map = maps.addPathMap(x[y].map, MAP_IMAGE_DIR, MAP_BANNER_DIR);
+                x[y].map = maps.addPathMap(x[y].map, MAP_IMAGE_DIR, MAP_BANNER_DIR, GAMEMODE_IMAGE_DIR);
             }
         }
     }
@@ -342,7 +344,7 @@ app.get("/gamemode/:gamemode", (req, res) => {
         return;
     }
 
-    // copy gameModeData into gameModeInfo while adding the image's file path
+    // directly modify gameModeData by adding the image's file path
     var gameModeInfo = maps.addPathGameMode(gameModeData, GAMEMODE_IMAGE_DIR);
 
     res.json(gameModeInfo);
@@ -365,9 +367,8 @@ app.get("/map/:map", (req, res) => {
         return;
     }
 
-
-    // copy mapData into mapInfo while adding the image and banner's file paths
-    var mapInfo = maps.addPathMap(mapData, MAP_IMAGE_DIR, MAP_BANNER_DIR);
+    // directly modify mapData by adding the image and banner's file paths
+    var mapInfo = maps.addPathMap(mapData, MAP_IMAGE_DIR, MAP_BANNER_DIR, GAMEMODE_IMAGE_DIR);
 
     res.json(mapInfo);
 });
