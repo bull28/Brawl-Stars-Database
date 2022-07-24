@@ -6,12 +6,25 @@ import { Flex, Text, Divider, Icon, RadioGroup, Stack, Radio, Input, Select, Inp
     DrawerContent,
     DrawerCloseButton,
     useDisclosure, 
-    useToast} from "@chakra-ui/react";
+    useToast,
+    Image,
+    Spinner} from "@chakra-ui/react";
 
 import { HamburgerIcon, SearchIcon } from '@chakra-ui/icons'
 import { useEffect, useRef, useState } from "react";
 import MapView from './MapView';
 import axios from 'axios';
+
+interface MapData {
+    name: string,
+    displayName: string,
+    gameModeData: {
+        name: string,
+        image: string,
+        backgroundColor: string,
+        textColor: string
+    }
+}
 
 
 export default function EventSideBar({ changeData }: {changeData: any}){
@@ -20,7 +33,7 @@ export default function EventSideBar({ changeData }: {changeData: any}){
     const [time, setTime] = useState<string[]>(["", "", ""]);
     const [searchText, setSearchText] = useState<string>("");
     const [date, setDate] = useState<string>("");
-    const [maps, setMaps] = useState<{name: string, displayName: string}[]>([]);
+    const [maps, setMaps] = useState<MapData[]>([]);
     const [map, setMap] = useState<string>("");
     const mapViewRef = useRef<{ open: () => void}>(null)
 
@@ -100,7 +113,7 @@ export default function EventSideBar({ changeData }: {changeData: any}){
 
     if (query){
         return (
-            <Flex flexDir={'column'} minH={"80vh"} style={{caretColor: "transparent"}} border={'1px'} borderRadius={'md'} borderColor={'gray.200'} w={'25%'} maxW={'350px'} justifyContent={'space-around'} px={5} mr={10} ml={3} boxShadow={'rgba(99, 99, 99, 0.2) 0px 1px 4px 0px'}>
+            <Flex flexDir={'column'} minH={"80vh"} style={{caretColor: "transparent"}} border={'1px'} borderRadius={'md'} borderColor={'gray.200'} w={'28%'} maxW={'350px'} justifyContent={'space-around'} px={5} mr={10} ml={3} boxShadow={'rgba(99, 99, 99, 0.2) 0px 1px 4px 0px'}>
                 <Text fontSize={"2xl"} fontWeight={'bold'} my={8}>Event Menu</Text>
                 <Divider color={'black'} opacity={1} pr={5} mb={6}/>
                 <RadioGroup onChange={setChoice} value={choice}>
@@ -133,7 +146,7 @@ export default function EventSideBar({ changeData }: {changeData: any}){
                             <Icon as={SearchIcon} onClick={search} cursor={'pointer'} fontSize={'xl'}/>
                         </InputRightElement>
                     </InputGroup>
-                    <Stack overflow={'auto'} maxH={'130px'} mt={1} spacing={0} w={'100%'} sx={{
+                    <Stack overflow={'auto'} overflowX={'hidden'} maxH={'130px'} mt={1} spacing={0} w={'100%'} sx={{
                         '&::-webkit-scrollbar': {
                         width: '16px',
                         borderRadius: '8px',
@@ -145,7 +158,7 @@ export default function EventSideBar({ changeData }: {changeData: any}){
                         },
                     }}>
                     {maps.map((m) => (
-                        <Button key={m.name} onClick={() => {openMapView(m.name)}} fontSize={'lg'} bgColor={'white'} py={2}>{m.displayName}</Button>
+                        <Button key={m.name} onClick={() => {openMapView(m.name)}} fontSize={['xs', 'xs', 'md', 'lg']} bgColor={'white'} py={2}><Image src={`/image/${m.gameModeData.image}`} h={'100%'} mr={1} fallback={<Spinner/>}></Image>{m.displayName}</Button>
                     ))}
                     </Stack>
                     
