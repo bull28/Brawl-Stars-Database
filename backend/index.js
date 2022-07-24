@@ -379,7 +379,7 @@ app.post("/mapsearch", (req, res) => {
     var search = req.body;
     //if the json is not formatted correctly, error will be thrown above
     
-    const searchResult = maps.searchForMapName(eventList, search);
+    const searchResult = maps.searchForMapName(eventList, search, GAMEMODE_IMAGE_DIR);
     res.json(searchResult);
 });
 

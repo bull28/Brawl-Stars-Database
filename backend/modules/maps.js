@@ -548,9 +548,10 @@ function getMapInformation(eventList, mapName, currentTime){
  * result array.
  * @param {Array} eventList list of EventSlot objects to search through
  * @param {Object} search search query
+ * @param {String} filePath path to the game mode icon
  * @returns array containing the search results
  */
-function searchForMapName(eventList, search){
+function searchForMapName(eventList, search, filePath){
     var result = [];
     var exactMatch = [];
     var startsWith = [];
@@ -575,12 +576,30 @@ function searchForMapName(eventList, search){
                 const includes = thisMapName.includes(query);
 
                 if (includes){
+                    // copy over the game mode's data, and include its name
+                    var mapSlotData = {};
+                    mapSlotData["name"] = mode.name;
+                    for (let i in mode.data){
+                        if (i == "image"){
+                            mapSlotData[i] = filePath + mode.data[i];
+                        } else{
+                            mapSlotData[i] = mode.data[i];
+                        }
+                    }
+
+                    let resultObject = {
+                        "name":map.name,
+                        "displayName":map.displayName,
+                        "gameModeData":mapSlotData
+                    }
+                    
+
                     if (thisMapName == query){
-                        exactMatch.push({"name":map.name, "displayName":map.displayName});
+                        exactMatch.push(resultObject);
                     } else if (queryIndex == 0){
-                        startsWith.push({"name":map.name, "displayName":map.displayName});
+                        startsWith.push(resultObject);
                     } else if (queryIndex > 0){
-                        onlyContains.push({"name":map.name, "displayName":map.displayName});
+                        onlyContains.push(resultObject);
                     }
                 }
                  
@@ -638,7 +657,7 @@ function getEventInformation(event, seasonTime){
             // otherwise functions which modify this object will be referencing
             // the object directly and future calls will keep stacking the modifications
             var dataCopy = {};
-            for (var y in thisGameMode[x]){
+            for (let y in thisGameMode[x]){
                 dataCopy[y] = thisGameMode[x][y];
             }
             thisEvent["gameMode"][x] = dataCopy;
@@ -699,7 +718,6 @@ function addPathMap(data, imagePath, bannerPath, gameModeIconPath){
         } else if (x == "bannerImage"){
             data[x] = bannerPath + data.bannerImage;
         } else if (x == "gameMode"){
-            console.log(data[x]);
             // this does not execute unless it is called with a specific map
             if (data[x].hasOwnProperty("image")){
                 data[x]["image"] = gameModeIconPath + data[x]["image"];
