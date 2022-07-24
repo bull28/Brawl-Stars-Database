@@ -17,13 +17,6 @@ const GltfModel = ({ modelPath, scale = 1.0, position = [0, 0, 0] }: ModelViewer
     const BARBARIAN_KING: any = useThree();//i am allowed to have 1 bad variable name
     const camera: Camera = BARBARIAN_KING.camera;
     const scene: Scene = BARBARIAN_KING.scene;
-
-    
-    for (let x in scene.children){
-        if (scene.children[x].name !== ""){//THE KING HARD CODES AGAIN
-            scene.children[x].traverse((object: Object3D) => {object.frustumCulled = false;});
-        }
-    }
     
     /*
     Note to self on how I got these hardcoded values///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -148,6 +141,7 @@ const GltfModel = ({ modelPath, scale = 1.0, position = [0, 0, 0] }: ModelViewer
 
 const ModelViewer = ({ modelPath, scale = 1.0, position = [0, 0, 0] }: ModelViewerProps) => {
     const gltf: any = useLoader(GLTFLoader, modelPath);//maybe there's a way to avoid using the loader again here???
+    gltf.scene.traverse((object: Object3D) => {object.frustumCulled = false;});//force all objects to render
     
     var camera: PerspectiveCamera = new PerspectiveCamera();
     var cameraObj: Object3D = new Object3D();
