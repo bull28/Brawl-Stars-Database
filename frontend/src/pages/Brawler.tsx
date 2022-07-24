@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { Flex, Text, SimpleGrid, Image, Icon, Link, Spinner } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
-import BrawlerImage from '../components/SkinView'
+import SkinView from '../components/SkinView'
 import { ArrowBackIcon } from '@chakra-ui/icons'
 import { BrawlerData } from '../types/BrawlerData'
 import ModelViewer from '../components/3D_Model_Viewer'
@@ -10,12 +10,13 @@ import ModelViewer from '../components/3D_Model_Viewer'
 export default function Brawler() {
     const params = useParams()
     const [data, setData] = useState<BrawlerData>()
-    //const [hover, setHover] = useState<boolean>(false)
+    const [model, setModel] = useState<string | null>(null)
 
     useEffect(() => {
         axios.get(`/brawler/${params.brawler}`)
             .then((res) => {
                 setData(res.data)
+                setModel(`/image/${res.data.model}`)
             })
     }, [params])
   return (
@@ -33,7 +34,9 @@ export default function Brawler() {
                     <Text w={'60%'}>{data.description}</Text>
                 </Flex>
                 <Flex justifyContent={'center'} alignItems={'center'} h={'100%'} w={'50%'} bgImage={"/image/misc/bg_3d_model.webp"} backgroundPosition={"center"} backgroundSize={"cover"} backgroundRepeat={"no-repeat"}>
-                    <ModelViewer scale={1.0} modelPath={`/image/${data.model}`} position={[0, 0, 0]}/>
+                    <Suspense fallback={<Spinner/>}>
+                        {model && <ModelViewer scale={1.0} modelPath={model} position={[0, 0, 0]}/>}
+                    </Suspense>
                 </Flex>
             </Flex>
             
@@ -41,7 +44,7 @@ export default function Brawler() {
             
             <SimpleGrid spacing={5} columns={[1,2,2,3,4]}>{(data.skins).map((skin) => (
                 <Flex key={skin.name} flexDir={'column'} m={3}>
-                    <BrawlerImage skin={skin.name} brawler={data.name}></BrawlerImage>
+                    <SkinView skin={skin.name} brawler={data.name} setModel={setModel}></SkinView>
                 </Flex>
             ))}
             </SimpleGrid>

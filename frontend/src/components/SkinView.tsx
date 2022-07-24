@@ -9,14 +9,18 @@ import { Flex, Image, Text, Modal,
     useDisclosure,
     Divider,
     ModalOverlay,
+    Icon,
     Spinner
     } from '@chakra-ui/react'
+import { RepeatIcon } from '@chakra-ui/icons'
 import CurrencyIcon from './CurrencyIcon'
 import Label from './Label'
+import { animateScroll as scroll } from 'react-scroll'
 
 type BrawlerImageProps = {
     brawler: string,
-    skin: string
+    skin: string,
+    setModel: any
 }
 
 type SkinData = {
@@ -36,9 +40,10 @@ type SkinData = {
     model: {exists: boolean, image: string}
 }
 
-export default function BrawlerImage({ brawler, skin }: BrawlerImageProps) {
+export default function BrawlerImage({ brawler, skin, setModel }: BrawlerImageProps) {
     const [data, setData] = useState<SkinData>()
     const { isOpen, onOpen, onClose } = useDisclosure()
+    
     useEffect(() => {
         axios.get(`/skin/${brawler}/${skin}`)
             .then((res) => {
@@ -50,12 +55,13 @@ export default function BrawlerImage({ brawler, skin }: BrawlerImageProps) {
     <>
     {data && Object.keys(data).length !== 0 && 
         <>
-            <Flex w={'100%'} h={'100%'} bgImage={`/image/${data.group.image}`} borderRadius={'lg'} onClick={onOpen}>
+            <Flex w={'100%'} h={'100%'} bgImage={`/image/${data.group.image}`} borderRadius={'lg'} onClick={onOpen} border={data.limited ? '4px solid gold' : 'none'}>
                 <Image objectFit={'cover'} src={`/image/${data.image}`} alt={data.displayName} fallback={<Spinner/>}/>
             </Flex>
             <Flex alignItems={'center'} alignSelf={'center'} mt={3}>
-                    {(data.group.icon !== 'skingroups/icons/icon_default.png') && <Label label={data.group.name}><Image src={`/image/${data.group.icon}`} w={7} mr={3}/></Label>}            
+                    {(data.group.icon !== 'skingroups/icons/icon_default.webp') && <Label label={data.group.name}><Image src={`/image/${data.group.icon}`} w={7} mr={3}/></Label>}            
                 <Text fontSize={['md','lg','xl']} fontWeight={'bold'} >{data.displayName}</Text>    
+                {(data.model.exists) && <Icon as={RepeatIcon} ml={3} fontSize={'24px'} cursor={'pointer'} onClick={() => {setModel(`/image/${data.model.image}`); scroll.scrollToTop()}}/>}
             </Flex>
             
             <Flex alignItems={'center'} alignSelf={'center'}>
