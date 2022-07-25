@@ -60,12 +60,12 @@ export default function BrawlerImage({ brawler, skin, setModel }: BrawlerImagePr
             </Flex>
             <Flex alignItems={'center'} alignSelf={'center'} mt={3}>
                     {(data.group.icon !== 'skingroups/icons/icon_default.webp') && <Label label={data.group.name}><Image src={`/image/${data.group.icon}`} w={7} mr={3}/></Label>}            
-                <Text fontSize={['md','lg','xl']} fontWeight={'bold'} >{data.displayName}</Text>    
-                {(data.model.exists) && <Icon as={RepeatIcon} ml={3} fontSize={'24px'} cursor={'pointer'} onClick={() => {setModel(`/image/${data.model.image}`); scroll.scrollToTop()}}/>}
+                <Text fontSize={['md','lg','xl']} fontWeight={'bold'} color={'white'}>{data.displayName}</Text>    
+                {(data.model.exists) && <Icon as={RepeatIcon} ml={3} fontSize={'24px'} cursor={'pointer'} color={'white'} onClick={() => {setModel(`/image/${data.model.image}`); scroll.scrollToTop()}}/>}
             </Flex>
             
             <Flex alignItems={'center'} alignSelf={'center'}>
-                <Text fontSize={'xl'} mr={1}>{data.cost === 0 ? 'Default' : data.group.name === 'Brawl Pass' ? 'Included in Brawl Pass' : data.cost}</Text>
+                <Text fontSize={'xl'} mr={1} color={'white'}>{data.cost === 0 ? 'Default' : data.group.name === 'Brawl Pass' ? 'Included in Brawl Pass' : data.cost}</Text>
                 <CurrencyIcon type={data.group.name !== 'Brawl Pass' ? data.currency : ""}/>
             </Flex>
             <Modal isOpen={isOpen} onClose={onClose}>
