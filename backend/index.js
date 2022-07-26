@@ -34,6 +34,7 @@ const SKIN_IMAGE_DIR = "skins/";
 const SKIN_MODEL_DIR = "models/";
 const SKINGROUP_IMAGE_DIR = "skingroups/backgrounds/";
 const SKINGROUP_ICON_DIR = "skingroups/icons/";
+const PIN_IMAGE_DIR = "pins/";
 const GAMEMODE_IMAGE_DIR = "gamemodes/";
 const MAP_IMAGE_DIR = "maps/";
 const MAP_BANNER_DIR = "maps/banners/";
@@ -209,7 +210,7 @@ app.get("/brawler/:brawler", (req, res) => {
             // this model file is the one for the default skin
             modelFile = modelFile + brawlerData["name"] + "/" + brawlerData[x];
         }
-        else if (x != "skins"){
+        else if (x != "skins" && x != "pins"){
             brawlerInfo[x] = brawlerData[x];
         }
     }
@@ -219,7 +220,7 @@ app.get("/brawler/:brawler", (req, res) => {
 
 
     // all information is copied from the original brawlerData to the new one
-    // except for skins which will be added in below
+    // except for skins and pins which will be added in below
     brawlerInfo["skins"] = [];
     
     if (brawlerData.hasOwnProperty("skins")){
@@ -232,6 +233,26 @@ app.get("/brawler/:brawler", (req, res) => {
                     "displayName": brawlerSkins[x].displayName
                 });
             }
+        }
+    }
+
+    // for the pins, since there is not as much data for them compared to skins,
+    // all the data will be contained within a call to this endpoint so also
+    // add the image paths here
+    brawlerInfo["pins"] = [];
+
+    if (brawlerData.hasOwnProperty("pins")){
+        let brawlerPins = brawlerData.pins;
+        for (var x = 0; x < brawlerPins.length; x++){
+            var thisPin = {};
+            for (let y in brawlerPins[x]){
+                thisPin[y] = brawlerPins[x][y];
+            }
+
+            if (thisPin.hasOwnProperty("image")){
+                thisPin.image = PIN_IMAGE_DIR + brawlerData["name"] + "/" + thisPin.image;
+            }
+            brawlerInfo["pins"].push(thisPin);
         }
     }
 
