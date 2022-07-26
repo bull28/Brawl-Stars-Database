@@ -15,7 +15,7 @@ const LargeTile = ({ link, children }: {link: string, children: React.ReactNode}
     redirect(link)
   }
   return (
-    <Box fontSize={'2xl'} bgColor={'blue.200'} fontWeight={'bold'} borderRadius={'lg'} p={5} border={'2px'} onClick={handleRedirect} cursor={'pointer'}>{children}</Box>
+    <Box fontSize={'2xl'} bgColor={'blue.200'} className={'heading-2xl'} borderRadius={'lg'} p={5} border={'2px'} onClick={handleRedirect} cursor={'pointer'}>{children}</Box>
   )
 }
 
@@ -26,7 +26,7 @@ const SmallTile = ({ link, children }: {link: string, children: React.ReactNode}
     redirect(link)
   }
   return (
-    <Box fontSize={'xl'} bgColor={'purple.400'} fontWeight={'bold'} borderRadius={'lg'} p={5} border={'2px'} onClick={handleRedirect} cursor={'pointer'}>{children}</Box>
+    <Box fontSize={'xl'} bgColor={'purple.400'} className={'heading-xl'} borderRadius={'lg'} p={5} border={'2px'} onClick={handleRedirect} cursor={'pointer'}>{children}</Box>
   )
 }
 
@@ -36,14 +36,14 @@ export default function Home() {
     <Image w={'100vw'} h={'100vh'} position={'absolute'} objectFit={'cover'} src={require('../assets/backround.webp')} zIndex={'-1'} fallbackSrc={require('../assets/backround.png')}/>
     <Flex position={'absolute'} width={'100%'} justifyContent={'right'}>
       <Flex m={5} alignItems={'center'}>
-        <Text mr={5} fontSize={'xl'} fontWeight={'bold'}>15:30</Text>
+        <Text mr={5} fontSize={'xl'} className={'heading-xl'}>15:30</Text>
         <Box w={'70px'} h={'70px'} bgColor={'white'}></Box>
       </Flex>
 
     </Flex>
       <Flex w={'100%'} flexDir={'column'} textAlign={'center'} justifyContent={'center'} alignItems={'center'}>
       
-        <Text fontSize={'4xl'} color={'rgb(255,0,0)'} fontWeight={'bold'} textShadow={'-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000'} mt={'5%'} mb={20}>
+        <Text fontSize={'4xl'} color={'rgb(255,0,0)'} className={'heading-4xl'} mt={'5%'} mb={20}>
             Brawl Stars Database
         </Text>
 

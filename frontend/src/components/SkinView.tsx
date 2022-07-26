@@ -60,7 +60,7 @@ export default function BrawlerImage({ brawler, skin, setModel }: BrawlerImagePr
             </Flex>
             <Flex alignItems={'center'} alignSelf={'center'} mt={3}>
                     {(data.group.icon !== 'skingroups/icons/icon_default.webp') && <Label label={data.group.name}><Image src={`/image/${data.group.icon}`} w={7} mr={3}/></Label>}            
-                <Text fontSize={['md','lg','xl']} fontWeight={'bold'} color={'white'}>{data.displayName}</Text>    
+                <Text fontSize={['md','lg','xl']} className={'heading-lg'} color={'white'}>{data.displayName}</Text>    
                 {(data.model.exists) && <Icon as={RepeatIcon} ml={3} fontSize={'24px'} cursor={'pointer'} color={'white'} onClick={() => {setModel(`/image/${data.model.image}`); scroll.scrollToTop()}}/>}
             </Flex>
             

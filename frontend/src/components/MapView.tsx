@@ -83,7 +83,7 @@ const MapView = React.forwardRef<{open: () => void}, Props>((props, ref) => {
               <Image maxH={'80px'} objectFit={'fill'} src={`/image/${data?.bannerImage}`} borderRadius={'lg'} fallback={<Spinner/>}/>
               <Flex position={'absolute'} left={'50%'} top={'50%'} transform={'translate(-50%,-50%)'} w={'100%'} justifyContent={'center'} alignItems={'center'}>
                 <Image src={`/image/${data?.gameMode.image}`} mr={3}/>
-                <Text textShadow={'-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'} color={'white'} fontSize={'3xl'} fontWeight={'bold'} noOfLines={1}>{data?.displayName}</Text>
+                <Text color={'white'} fontSize={'3xl'} className={'heading-3xl'} noOfLines={1}>{data?.displayName}</Text>
               </Flex>
             </Flex>
 
@@ -94,7 +94,7 @@ const MapView = React.forwardRef<{open: () => void}, Props>((props, ref) => {
             <Image src={`/image/${data?.image}`} fallback={<Spinner/>}/>
             {data?.times.next && 
             <Flex alignItems={'center'}>
-              <Text fontSize={'2xl'} color={'white'} fontWeight={'bold'} textShadow={'-0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000'}>{(data?.times.next.hour === 0 && data.times.next.minute === 0 && data.times.next.season === 0) ? "On Now" : `Starts in ${Math.floor(data?.times.next.hour/24)}d ${data?.times.next.hour % 24}h ${data?.times.next.minute}m ${data?.times.next.second}s`}</Text>
+              <Text fontSize={'2xl'} color={'white'} className={'heading-2xl'} textShadow={'-0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000'}>{(data?.times.next.hour === 0 && data.times.next.minute === 0 && data.times.next.season === 0) ? "On Now" : `Starts in ${Math.floor(data?.times.next.hour/24)}d ${data?.times.next.hour % 24}h ${data?.times.next.minute}m ${data?.times.next.second}s`}</Text>
               {data.powerLeagueMap && <Image h={'35px'} ml={2} src={'/image/skingroups/icons/icon_ranked.webp'}/>}
             </Flex>
             }

@@ -1,5 +1,5 @@
 import { Suspense, useEffect, useState } from 'react'
-import { Flex, Text, SimpleGrid, Image, Icon, Link, Spinner, Box } from '@chakra-ui/react'
+import { Flex, Text, SimpleGrid, Image, Icon, Link, Spinner } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import SkinView from '../components/SkinView'
@@ -25,14 +25,14 @@ export default function Brawler() {
         <Flex flexDir={'column'} w={'100%'} justifyContent={'center'} textAlign={'center'} alignItems={'center'} bgColor={data.rarity.color}>
             <Link position={'absolute'} left={'10'} top={'5'} href={'/brawlers'}><Icon as={ArrowBackIcon} fontSize={'3xl'} color={'white'}/></Link>
             <Flex w={'100%'} justifyContent={'center'} mt={3} mb={5}>
-                <Text fontSize={'3xl'} fontWeight={'bold'} color={'white'} textShadow={'-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'}>{data.displayName}</Text>
+                <Text fontSize={'3xl'} className={'heading-3xl'} color={'white'}>{data.displayName}</Text>
             </Flex>
                 
             <Flex flexDir={'row'} h={'60vh'} w={'100%'} alignItems={'center'} justifyContent={'space-around'} mb={5}>
                 
                 <Flex flexDir={'column'} textAlign={'center'} h={'100%'} justifyContent={'center'} alignItems={'center'} w={'33%'}>
                     <Image src={'/image/'+data.image} borderRadius={'sm'} fallback={<Spinner/>} objectFit={'contain'} h={'60%'} border={'8px solid black'}/>                
-                    <Text w={'60%'} color={'white'} fontWeight={'bold'} textShadow={'-0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000'}>{data.description}</Text>
+                    <Text w={'60%'} color={'white'} className={'heading-md'}>{data.description}</Text>
                 </Flex>
 
                 <Flex justifyContent={'center'} alignItems={'center'} h={'100%'} w={'33%'} bgImage={"/image/misc/bg_3d_model.webp"} backgroundPosition={"center"} backgroundSize={"cover"} backgroundRepeat={"no-repeat"} border={'3px solid white'}>
