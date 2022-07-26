@@ -4,7 +4,7 @@ const cors = require("cors");
 const path = require("path");
 const fs = require("fs");
 
-// functions to search for brawlers and skins in json data
+// functions to search for brawlers, skins, and pins in json data
 const skins = require("./modules/skins.js");
 
 // functions to load the map rotation and create EventSlot objects
@@ -80,20 +80,17 @@ function isValidTime(hour, minute, second){
  * is also returned in the result, indicating whether the model exists
  * and the file path is valid. If it does not exist, the file path
  * will be empty.
- * @param {String} skinFile file path to the skin's model
- * @returns json object
+ * @param {Object} data object including the file path to test
+ * @returns data, modified with the correct values
  */
-function skinModelExists(skinFile){
-    var data = {
-        "exists": false,
-        "image": ""
-    };
-
+function skinModelExists(data){
     //const checkFile = skinFile.replace(".png", "_alt.png");
-    const checkFile = skinFile;
-    data.exists = fs.existsSync("assets/images/" + checkFile);
-    if (data.exists){
-        data.image = checkFile;
+    if (!(data.hasOwnProperty("image"))){
+        return;
+    }
+    data.exists = fs.existsSync("assets/images/" + data.image);
+    if (!(data.exists)){
+        data.image = "";
     }
     return data;
 }
@@ -195,68 +192,14 @@ app.get("/brawler/:brawler", (req, res) => {
         return;
     }
     
-    
-    // since the skins array has to be modified, a copy of the brawlerData
-    // must be created so that the original is not modified
-    var brawlerInfo = {};
-    var portraitFile = PORTRAIT_IMAGE_DIR;
-    var modelFile = SKIN_MODEL_DIR;
+    let brawlerInfo = skins.formatBrawlerData(
+        brawlerData, 
+        PORTRAIT_IMAGE_DIR, 
+        SKIN_MODEL_DIR, 
+        PIN_IMAGE_DIR
+    );
 
-    for (var x in brawlerData){
-        // the user can't do anything with the portrait file so don't send it
-        if (x == "portrait"){
-            portraitFile = portraitFile + brawlerData[x];
-        } else if (x == "model"){
-            // this model file is the one for the default skin
-            modelFile = modelFile + brawlerData["name"] + "/" + brawlerData[x];
-        }
-        else if (x != "skins" && x != "pins"){
-            brawlerInfo[x] = brawlerData[x];
-        }
-    }
-
-    brawlerInfo["image"] = portraitFile;
-    brawlerInfo["model"] = modelFile;
-
-
-    // all information is copied from the original brawlerData to the new one
-    // except for skins and pins which will be added in below
-    brawlerInfo["skins"] = [];
-    
-    if (brawlerData.hasOwnProperty("skins")){
-        // go through all the brawler's skins and add their name to the brawler's skin list
-        let brawlerSkins = brawlerData.skins;
-        for (var x = 0; x < brawlerSkins.length; x++){
-            if (brawlerSkins[x].hasOwnProperty("name") && brawlerSkins[x].hasOwnProperty("displayName")){
-                brawlerInfo["skins"].push({
-                    "name": brawlerSkins[x].name,
-                    "displayName": brawlerSkins[x].displayName
-                });
-            }
-        }
-    }
-
-    // for the pins, since there is not as much data for them compared to skins,
-    // all the data will be contained within a call to this endpoint so also
-    // add the image paths here
-    brawlerInfo["pins"] = [];
-
-    if (brawlerData.hasOwnProperty("pins")){
-        let brawlerPins = brawlerData.pins;
-        for (var x = 0; x < brawlerPins.length; x++){
-            var thisPin = {};
-            for (let y in brawlerPins[x]){
-                thisPin[y] = brawlerPins[x][y];
-            }
-
-            if (thisPin.hasOwnProperty("image")){
-                thisPin.image = PIN_IMAGE_DIR + brawlerData["name"] + "/" + thisPin.image;
-            }
-            brawlerInfo["pins"].push(thisPin);
-        }
-    }
-
-    res.send(brawlerInfo);
+    res.json(brawlerInfo);
 });
 
 
@@ -282,41 +225,19 @@ app.get("/skin/:brawler/:skin", (req, res) => {
         return;
     }
 
-    
-    var skinInfo = {};
-    var skinFile = SKIN_IMAGE_DIR;
-    var skinModelFile = SKIN_MODEL_DIR;
-    var groupData = {};
+    let skinInfo = skins.formatSkinData(
+        skinData, 
+        brawlerData.name, 
+        SKIN_IMAGE_DIR, 
+        SKIN_MODEL_DIR, 
+        SKINGROUP_IMAGE_DIR, 
+        SKINGROUP_ICON_DIR
+    );
 
-    for (var x in skinData){
-        // do not copy the image or model, instead add it to the file path
-        if (x == "image"){
-            skinFile = skinFile + brawlerData.name + "/" + skinData.image;
-        } else if (x == "model"){
-            skinModelFile = skinModelFile + brawlerData.name + "/" + skinData.model;
-        }
-
-        // for the group, go into the group object and change its image to match the path
-        else if (x == "group"){
-            for (var y in skinData[x]){
-                if (y == "image"){
-                    groupData[y] = SKINGROUP_IMAGE_DIR + skinData[x][y];
-                } else if (y == "icon"){
-                    groupData[y] = SKINGROUP_ICON_DIR + skinData[x][y];
-                } else{
-                    groupData[y] = skinData[x][y];
-                }
-            }
-            skinInfo[x] = groupData;
-        }
-        
-        else{
-            skinInfo[x] = skinData[x];
-        }
-    }
-
-    skinInfo["image"] = skinFile;
-    skinInfo["model"] = skinModelExists(skinModelFile);
+    // when it is returned, the exists field of the model data will be set to false
+    // this function will test to see if the model exists and set exists accordingly.
+    // if it turns out to not exist, the model path will also be set to the empty string.
+    skinInfo["model"] = skinModelExists(skinInfo["model"]);
 
     res.json(skinInfo);
 });
