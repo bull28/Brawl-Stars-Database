@@ -220,6 +220,88 @@
                 "model": "shotgungirlprincess.glb",
                 "rating": 0
             }
+        ],
+        "pins": [
+            {
+                "image": "shelly_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "shelly_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "shelly_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "shelly_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "shelly_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "shelly_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "shelly_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "shelly_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "shelly_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "shelly_brawloween.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            }
         ]
     },
     {
@@ -407,6 +489,96 @@
                 "image": "shamandragon.webp",
                 "model": "shamandragon.glb",
                 "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "image": "nita_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "nita_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "nita_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "nita_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "nita_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "nita_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "nita_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "nita_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "nita_brawlidays_2018.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "nita_ranked.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "nita_goldenweek.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
             }
         ]
     },
@@ -709,6 +881,88 @@
                 "model": "gunslingerpaintball.glb",
                 "rating": 0
             }
+        ],
+        "pins": [
+            {
+                "image": "colt_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "colt_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "colt_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "colt_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "colt_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "colt_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "colt_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "colt_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "colt_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "colt_deepsea.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            }
         ]
     },
     {
@@ -937,6 +1191,80 @@
                 "model": "bulldudemang.glb",
                 "rating": 0
             }
+        ],
+        "pins": [
+            {
+                "image": "bull_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "bull_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "bull_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "bull_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "bull_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "bull_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "bull_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "bull_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "bull_bt21.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            }
         ]
     },
     {
@@ -1128,6 +1456,80 @@
                 "image": "mechanicthief.webp",
                 "model": "mechanicthief.glb",
                 "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "image": "jessie_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "jessie_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "jessie_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "jessie_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "jessie_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "jessie_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "jessie_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "jessie_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "jessie_goldenweek.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
             }
         ]
     },
@@ -1332,6 +1734,88 @@
                 "image": "rocketgirldelivery.webp",
                 "model": "rocketgirldelivery.glb",
                 "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "image": "brock_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "brock_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "brock_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "brock_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "brock_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "brock_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "brock_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "brock_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "brock_retropolis.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "brock_ranked.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
             }
         ]
     },
@@ -1626,6 +2110,88 @@
                 "model": "tntduderetro.glb",
                 "rating": 0
             }
+        ],
+        "pins": [
+            {
+                "image": "dynamike_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "dynamike_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "dynamike_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "dynamike_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "dynamike_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "dynamike_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "dynamike_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "dynamike_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "dynamike_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "dynamike_brawlidays_2018.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            }
         ]
     },
     {
@@ -1863,6 +2429,96 @@
                 "model": "bowdudewasp.glb",
                 "rating": 0
             }
+        ],
+        "pins": [
+            {
+                "image": "bo_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "bo_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "bo_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "bo_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "bo_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "bo_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "bo_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "bo_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "bo_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "bo_brawlidays.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "bo_biodome.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            }
         ]
     },
     {
@@ -1992,6 +2648,88 @@
                 "image": "clusterbombdudeshooky.webp",
                 "model": "clusterbombdudeshooky.glb",
                 "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "image": "tick_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "tick_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "tick_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "tick_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "tick_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "tick_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "tick_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "tick_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "tick_brawlidays.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "tick_bt21.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
             }
         ]
     },
@@ -2144,6 +2882,80 @@
                 "model": "arcaderetropolis.glb",
                 "rating": 0
             }
+        ],
+        "pins": [
+            {
+                "image": "8bit_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "8bit_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "8bit_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "8bit_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "8bit_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "8bit_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "8bit_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "8bit_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "8bit_retropolis.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            }
         ]
     },
     {
@@ -2273,6 +3085,80 @@
                 "model": "mummydj.glb",
                 "rating": 0
             }
+        ],
+        "pins": [
+            {
+                "image": "emz_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "emz_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "emz_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "emz_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "emz_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "emz_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "emz_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "emz_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "emz_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            }
         ]
     },
     {
@@ -2398,6 +3284,88 @@
                 "image": "rollersilver.webp",
                 "model": "rollersilver.glb",
                 "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "image": "stu_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "stu_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "stu_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "stu_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "stu_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "stu_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "stu_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "stu_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "stu_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "stu_brawloween.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
             }
         ]
     },
@@ -2687,6 +3655,112 @@
                 "model": "luchadorcorazon.glb",
                 "rating": 0
             }
+        ],
+        "pins": [
+            {
+                "image": "elprimo_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "elprimo_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "elprimo_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "elprimo_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "elprimo_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "elprimo_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "elprimo_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "elprimo_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "elprimo_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "elprimo_dragon.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "elprimo_dragonchroma.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "elprimo_lny22.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "elprimo_brawlentines.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            }
         ]
     },
     {
@@ -2894,6 +3968,96 @@
                 "model": "barkeepdrunken.glb",
                 "rating": 0
             }
+        ],
+        "pins": [
+            {
+                "image": "barley_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "barley_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "barley_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "barley_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "barley_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "barley_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "barley_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "barley_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "barley_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "barley_retropolis.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "barley_lny22.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            }
         ]
     },
     {
@@ -3040,6 +4204,88 @@
                 "image": "deadmariachisilver.webp",
                 "model": "deadmariachisilver.glb",
                 "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "image": "poco_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "poco_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "poco_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "poco_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "poco_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "poco_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "poco_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "poco_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "poco_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "poco_brawlentines.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
             }
         ]
     },
@@ -3191,6 +4437,168 @@
                 "image": "rosamantis.webp",
                 "model": "rosamantis.glb",
                 "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "image": "rosa_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "rosa_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "rosa_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "rosa_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "rosa_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "rosa_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "rosa_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "rosa_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "rosa_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "rosa_rosabrawloween_default.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "rosa_rosabrawloween_happy.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "rosa_rosabrawloween_sad.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "rosa_rosabrawloween_angry.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "rosa_rosabrawloween_gg.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "rosa_rosabrawloween_clap.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "rosa_rosabrawloween_thanks.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "rosa_rosabrawloween_sweat.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "rosa_rosabrawloween_special.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "rosa_lny22.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "rosa_biodome.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
             }
         ]
     },
@@ -3380,6 +4788,80 @@
                 "model": "trickshotdudefirefly.glb",
                 "rating": 0
             }
+        ],
+        "pins": [
+            {
+                "image": "rico_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "rico_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "rico_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "rico_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "rico_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "rico_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "rico_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "rico_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "rico_biodome.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            }
         ]
     },
     {
@@ -3551,6 +5033,96 @@
                 "model": "barrelbotcrash.glb",
                 "rating": 0
             }
+        ],
+        "pins": [
+            {
+                "image": "darryl_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "darryl_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "darryl_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "darryl_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "darryl_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "darryl_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "darryl_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "darryl_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "darryl_megabox.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "darryl_megabox_02.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "darryl_ranked.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            }
         ]
     },
     {
@@ -3697,6 +5269,88 @@
                 "image": "artillerydudesilver.webp",
                 "model": "artillerydudesilver.glb",
                 "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "image": "penny_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "penny_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "penny_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "penny_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "penny_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "penny_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "penny_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "penny_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "penny_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "penny_brawlidays_2018.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
             }
         ]
     },
@@ -3905,6 +5559,96 @@
                 "model": "whirlwindbiker.glb",
                 "rating": 0
             }
+        ],
+        "pins": [
+            {
+                "image": "carl_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "carl_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "carl_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "carl_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "carl_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "carl_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "carl_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "carl_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "carl_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "carl_retropolis.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "carl_stuntshow.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            }
         ]
     },
     {
@@ -4077,6 +5821,96 @@
                 "model": "drillercooky.glb",
                 "rating": 0
             }
+        ],
+        "pins": [
+            {
+                "image": "jacky_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "jacky_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "jacky_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "jacky_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "jacky_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "jacky_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "jacky_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "jacky_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "jacky_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "jacky_brawlidays.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "jacky_bt21.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            }
         ]
     },
     {
@@ -4244,6 +6078,96 @@
                 "model": "snipermoon.glb",
                 "rating": 0
             }
+        ],
+        "pins": [
+            {
+                "image": "piper_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "piper_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "piper_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "piper_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "piper_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "piper_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "piper_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "piper_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "piper_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "piper_brawloween.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "piper_brawlentines.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            }
         ]
     },
     {
@@ -4354,6 +6278,72 @@
                 "image": "minigundudesilver.webp",
                 "model": "minigundudesilver.glb",
                 "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "image": "pam_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "pam_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "pam_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "pam_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "pam_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "pam_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "pam_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "pam_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
             }
         ]
     },
@@ -4481,6 +6471,80 @@
                 "image": "hammerdudexmas.webp",
                 "model": "hammerdudexmas.glb",
                 "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "image": "frank_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "frank_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "frank_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "frank_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "frank_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "frank_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "frank_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "frank_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "frank_brawlidays.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
             }
         ]
     },
@@ -4650,6 +6714,80 @@
                 "image": "baseballrj.webp",
                 "model": "baseballrj.glb",
                 "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "image": "bibi_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "bibi_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "bibi_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "bibi_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "bibi_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "bibi_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "bibi_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "bibi_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "bibi_bt21.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
             }
         ]
     },
@@ -4821,6 +6959,96 @@
                 "model": "beesnipersilver.glb",
                 "rating": 0
             }
+        ],
+        "pins": [
+            {
+                "image": "bea_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "bea_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "bea_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "bea_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "bea_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "bea_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "bea_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "bea_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "bea_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "bea_goldenweek.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "bea_goldenweek_02.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            }
         ]
     },
     {
@@ -4929,6 +7157,80 @@
                 "image": "controllersilver.webp",
                 "model": "controllersilver.glb",
                 "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "image": "nani_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "nani_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "nani_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "nani_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "nani_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "nani_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "nani_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "nani_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "nani_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
             }
         ]
     },
@@ -5044,6 +7346,104 @@
                 "model": "enragertata.glb",
                 "rating": 0
             }
+        ],
+        "pins": [
+            {
+                "image": "edgar_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "edgar_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "edgar_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "edgar_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "edgar_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "edgar_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "edgar_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "edgar_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "edgar_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "edgar_lny22.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "edgar_biodome.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "edgar_bt21.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            }
         ]
     },
     {
@@ -5094,6 +7494,88 @@
                 "image": "assaultshotgunsled.webp",
                 "model": "assaultshotgunsled.glb",
                 "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "image": "griff_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "griff_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "griff_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "griff_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "griff_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "griff_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "griff_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "griff_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "griff_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "griff_brawlidays.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
             }
         ]
     },
@@ -5184,6 +7666,80 @@
                 "model": "crossbombersilver.glb",
                 "rating": 0
             }
+        ],
+        "pins": [
+            {
+                "image": "grom_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "grom_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "grom_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "grom_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "grom_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "grom_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "grom_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "grom_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "grom_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            }
         ]
     },
     {
@@ -5272,6 +7828,88 @@
                 "image": "cannongirlsilver.webp",
                 "model": "cannongirlsilver.glb",
                 "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "image": "bonnie_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "bonnie_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "bonnie_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "bonnie_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "bonnie_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "bonnie_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "bonnie_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "bonnie_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "bonnie_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "bonnie_villains.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
             }
         ]
     },
@@ -5476,6 +8114,80 @@
                 "model": "undertakerbeach.glb",
                 "rating": 0
             }
+        ],
+        "pins": [
+            {
+                "image": "mortis_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "mortis_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "mortis_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "mortis_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "mortis_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "mortis_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "mortis_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "mortis_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "mortis_retropolis.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            }
         ]
     },
     {
@@ -5625,6 +8337,88 @@
                 "model": "blackholedevious.glb",
                 "rating": 0
             }
+        ],
+        "pins": [
+            {
+                "image": "tara_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "tara_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "tara_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "tara_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "tara_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "tara_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "tara_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "tara_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "tara_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "tara_lantern.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            }
         ]
     },
     {
@@ -5754,6 +8548,88 @@
                 "image": "hookdudeswamp.webp",
                 "model": "hookdudeswamp.glb",
                 "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "image": "gene_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "gene_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "gene_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "gene_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "gene_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "gene_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "gene_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "gene_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "gene_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "gene_brawloween.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
             }
         ]
     },
@@ -5900,6 +8776,72 @@
                 "image": "speedygold.webp",
                 "model": "speedygold.glb",
                 "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "image": "max_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "max_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "max_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "max_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "max_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "max_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "max_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "max_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
             }
         ]
     },
@@ -6050,6 +8992,104 @@
                 "image": "spawnerdudedaruma.webp",
                 "model": "spawnerdudedaruma.glb",
                 "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "image": "mrp_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "mrp_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "mrp_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "mrp_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "mrp_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "mrp_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "mrp_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "mrp_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "mrp_brawloween.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "mrp_biodome.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "mrp_goldenweek.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "mrp_goldenweek_02.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
             }
         ]
     },
@@ -6220,6 +9260,96 @@
                 "model": "wallysilver.glb",
                 "rating": 0
             }
+        ],
+        "pins": [
+            {
+                "image": "sprout_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "sprout_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "sprout_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "sprout_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "sprout_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "sprout_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "sprout_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "sprout_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "sprout_prince.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "sprout_princechroma.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "sprout_biodome.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            }
         ]
     },
     {
@@ -6292,6 +9422,88 @@
                 "model": "snakeoilvillain.glb",
                 "rating": 0
             }
+        ],
+        "pins": [
+            {
+                "image": "byron_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "byron_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "byron_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "byron_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "byron_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "byron_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "byron_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "byron_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "byron_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "byron_villains.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            }
         ]
     },
     {
@@ -6363,6 +9575,88 @@
                 "image": "stickybombghost.webp",
                 "model": "stickybombghost.glb",
                 "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "image": "squeak_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "squeak_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "squeak_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "squeak_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "squeak_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "squeak_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "squeak_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "squeak_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "squeak_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "squeak_brawloween.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
             }
         ]
     },
@@ -6552,6 +9846,112 @@
                 "image": "cactusfireproof.webp",
                 "model": "cactusfireproof.glb",
                 "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "image": "spike_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "spike_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "spike_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "spike_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "spike_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "spike_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "spike_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "spike_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "spike_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "spike_pink.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "spike_lord.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "spike_brawlidays.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "spike_stuntshow.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
             }
         ]
     },
@@ -6747,6 +10147,72 @@
                 "model": "crowsuper.glb",
                 "rating": 0
             }
+        ],
+        "pins": [
+            {
+                "image": "crow_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "crow_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "crow_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "crow_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "crow_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "crow_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "crow_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "crow_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            }
         ]
     },
     {
@@ -6893,6 +10359,80 @@
                 "image": "ninjadino.webp",
                 "model": "ninjadino.glb",
                 "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "image": "leon_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "leon_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "leon_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "leon_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "leon_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "leon_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "leon_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "leon_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "leon_brawloween.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
             }
         ]
     },
@@ -7043,6 +10583,88 @@
                 "model": "sandstormkoya.glb",
                 "rating": 0
             }
+        ],
+        "pins": [
+            {
+                "image": "sandy_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "sandy_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "sandy_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "sandy_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "sandy_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "sandy_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "sandy_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "sandy_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "sandy_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "sandy_bt21.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            }
         ]
     },
     {
@@ -7131,6 +10753,80 @@
                 "image": "firedudesilver.webp",
                 "model": "firedudesilver.glb",
                 "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "image": "amber_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "amber_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "amber_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "amber_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "amber_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "amber_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "amber_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "amber_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "amber_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
             }
         ]
     },
@@ -7241,6 +10937,96 @@
                 "image": "mechadudesilver.webp",
                 "model": "mechadudesilver.glb",
                 "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "image": "meg_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "meg_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "meg_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "meg_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "meg_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "meg_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "meg_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "meg_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "meg_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "meg_biodome.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "meg_stuntshow.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
             }
         ]
     },
@@ -7373,6 +11159,136 @@
                 "model": "blowerbusters.glb",
                 "rating": 0
             }
+        ],
+        "pins": [
+            {
+                "image": "gale_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "gale_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "gale_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "gale_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "gale_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "gale_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "gale_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "gale_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "gale_trader_default.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "gale_trader_happy.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "gale_trader_sad.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "gale_trader_angry.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "gale_trader_gg.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "gale_trader_clap.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "gale_trader_thanks.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "gale_trader_sweat.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            }
         ]
     },
     {
@@ -7500,6 +11416,152 @@
                 "image": "powerlevelersilver.webp",
                 "model": "powerlevelersilver.glb",
                 "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "image": "surge_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "surge_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "surge_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "surge_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "surge_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "surge_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "surge_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "surge_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "surge_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "surge_knight_default.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "surge_knight_happy.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "surge_knight_sad.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "surge_knight_angry.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "surge_knight_gg.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "surge_knight_clap.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "surge_knight_thanks.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "surge_knight_sweat.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "surge_knight_special.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
             }
         ]
     },
@@ -7631,6 +11693,144 @@
                 "model": "percentersilver.glb",
                 "rating": 0
             }
+        ],
+        "pins": [
+            {
+                "image": "colette_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "colette_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "colette_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "colette_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "colette_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "colette_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "colette_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "colette_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "colette_trixie_default.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "colette_trixie_happy.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "colette_trixie_sad.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "colette_trixie_angry.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "colette_trixie_gg.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "colette_trixie_clap.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "colette_trixie_thanks.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "colette_trixie_sweat.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "colette_trixie_special.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            }
         ]
     },
     {
@@ -7761,6 +11961,160 @@
                 "model": "icedudesilver.glb",
                 "rating": 0
             }
+        ],
+        "pins": [
+            {
+                "image": "lou_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "lou_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "lou_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "lou_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "lou_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "lou_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "lou_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "lou_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "lou_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "lou_king_default.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "lou_king_happy.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "lou_king_sad.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "lou_king_angry.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "lou_king_gg.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "lou_king_clap.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "lou_king_thanks.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "lou_king_sweat.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "lou_king_special.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "lou_brawlentines.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            }
         ]
     },
     {
@@ -7890,6 +12244,160 @@
                 "image": "ruffschimmy.webp",
                 "model": "ruffschimmy.glb",
                 "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "image": "ruffs_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "ruffs_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "ruffs_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "ruffs_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "ruffs_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "ruffs_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "ruffs_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "ruffs_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "ruffs_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "ruffs_ronin_default.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "ruffs_ronin_happy.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "ruffs_ronin_sad.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "ruffs_ronin_angry.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "ruffs_ronin_gg.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "ruffs_ronin_clap.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "ruffs_ronin_thanks.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "ruffs_ronin_sweat.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "ruffs_ronin_special.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "ruffs_bt21.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
             }
         ]
     },
@@ -8022,6 +12530,168 @@
                 "model": "electrosnipercoral.glb",
                 "rating": 0
             }
+        ],
+        "pins": [
+            {
+                "image": "belle_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "belle_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "belle_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "belle_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "belle_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "belle_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "belle_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "belle_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "belle_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "belle_boss_default.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "belle_boss_happy.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "belle_boss_sad.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "belle_boss_angry.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "belle_boss_gg.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "belle_boss_clap.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "belle_boss_thanks.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "belle_boss_sweat.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "belle_boss_special.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "belle_biodome.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "belle_deepsea.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            }
         ]
     },
     {
@@ -8133,6 +12803,152 @@
                 "model": "ropedudesilver.glb",
                 "rating": 0
             }
+        ],
+        "pins": [
+            {
+                "image": "buzz_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "buzz_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "buzz_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "buzz_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "buzz_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "buzz_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "buzz_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "buzz_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "buzz_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "buzz_punk_default.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "buzz_punk_happy.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "buzz_punk_sad.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "buzz_punk_angry.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "buzz_punk_gg.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "buzz_punk_clap.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "buzz_punk_thanks.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "buzz_punk_sweat.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "buzz_punk_special.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            }
         ]
     },
     {
@@ -8221,6 +13037,152 @@
                 "image": "knightsilver.webp",
                 "model": "knightsilver.glb",
                 "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "image": "ash_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "ash_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "ash_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "ash_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "ash_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "ash_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "ash_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "ash_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "ash_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "ash_ninja_default.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "ash_ninja_happy.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "ash_ninja_sad.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "ash_ninja_angry.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "ash_ninja_gg.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "ash_ninja_clap.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "ash_ninja_thanks.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "ash_ninja_sweat.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "ash_ninja_special.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
             }
         ]
     },
@@ -8332,6 +13294,160 @@
                 "model": "duplicatorsilver.glb",
                 "rating": 0
             }
+        ],
+        "pins": [
+            {
+                "image": "lola_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "lola_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "lola_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "lola_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "lola_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "lola_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "lola_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "lola_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "lola_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "lola_chola_default.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "lola_chola_happy.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "lola_chola_sad.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "lola_chola_angry.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "lola_chola_gg.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "lola_chola_clap.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "lola_chola_thanks.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "lola_chola_sweat.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "lola_chola_special.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "lola_villains.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            }
         ]
     },
     {
@@ -8442,6 +13558,160 @@
                 "model": "kickerdudesilver.glb",
                 "rating": 0
             }
+        ],
+        "pins": [
+            {
+                "image": "fang_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "fang_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "fang_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "fang_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "fang_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "fang_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "fang_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "fang_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "fang_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "fang_furious_default.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "fang_furious_happy.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "fang_furious_sad.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "fang_furious_angry.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "fang_furious_gg.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "fang_furious_clap.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "fang_furious_thanks.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "fang_furious_sweat.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "fang_furious_special.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "fang_deepsea.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            }
         ]
     },
     {
@@ -8530,6 +13800,152 @@
                 "image": "fleasilver.webp",
                 "model": "fleasilver.glb",
                 "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "image": "eve_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "eve_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "eve_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "eve_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "eve_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "eve_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "eve_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "eve_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "eve_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "eve_spacecactus_default.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "eve_spacecactus_happy.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "eve_spacecactus_sad.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "eve_spacecactus_angry.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "eve_spacecactus_gg.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "eve_spacecactus_clap.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "eve_spacecactus_thanks.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "eve_spacecactus_sweat.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "eve_spacecactus_special.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
             }
         ]
     },
@@ -8620,6 +14036,152 @@
                 "model": "jetpackgirlsilver.glb",
                 "rating": 0
             }
+        ],
+        "pins": [
+            {
+                "image": "janet_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "janet_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "janet_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "janet_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "janet_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "janet_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "janet_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "janet_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "janet_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "janet_valkyrie_default.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "janet_valkyrie_happy.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "janet_valkyrie_sad.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "janet_valkyrie_angry.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "janet_valkyrie_gg.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "janet_valkyrie_clap.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "janet_valkyrie_thanks.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "janet_valkyrie_sweat.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "janet_valkyrie_special.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            }
         ]
     },
     {
@@ -8670,6 +14232,152 @@
                 "image": "silencerpharaoh.webp",
                 "model": "silencerpharaoh.glb",
                 "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "image": "otis_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "otis_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "otis_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "otis_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "image": "otis_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "otis_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "image": "otis_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "otis_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "otis_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "image": "otis_pharaoh_default.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "otis_pharaoh_happy.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "otis_pharaoh_sad.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "otis_pharaoh_angry.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "otis_pharaoh_gg.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "otis_pharaoh_clap.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "otis_pharaoh_thanks.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "otis_pharaoh_sweat.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "image": "otis_pharaoh_special.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Exclusive",
+                    "color": "#FDF155"
+                }
             }
         ]
     }
