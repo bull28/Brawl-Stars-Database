@@ -13,7 +13,7 @@ export default function MapView({ event }: MapViewProps){
             <Flex flexDir={'row'} bgColor={event.current.gameMode.data.backgroundColor}>
               <Image src={`/image/${event.current.gameMode.data.image}`}/>
               <Flex h={'100%'} alignItems={'center'} textAlign={'center'} w={'100%'} justifyContent={'center'}>
-                <Text fontSize={'2xl'} className={'heading-2xl'}>{event.current.map.displayName}</Text>
+                <Text fontSize={'2xl'} className={'heading-2xl'} color={'#fff'}>{event.current.map.displayName}</Text>
               </Flex>
             </Flex>
             <Image src={`/image/${event.current.map.bannerImage}`}/>

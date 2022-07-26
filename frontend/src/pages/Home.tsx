@@ -15,7 +15,7 @@ const LargeTile = ({ link, children }: {link: string, children: React.ReactNode}
     redirect(link)
   }
   return (
-    <Box fontSize={'2xl'} bgColor={'blue.200'} className={'heading-2xl'} borderRadius={'lg'} p={5} border={'2px'} onClick={handleRedirect} cursor={'pointer'}>{children}</Box>
+    <Box fontSize={'2xl'} bgColor={'blue.200'} className={'heading-2xl'} borderRadius={'lg'} p={5} border={'2px'} onClick={handleRedirect} cursor={'pointer'} color={'#fff'} borderColor={'#000'}>{children}</Box>
   )
 }
 
@@ -26,7 +26,7 @@ const SmallTile = ({ link, children }: {link: string, children: React.ReactNode}
     redirect(link)
   }
   return (
-    <Box fontSize={'xl'} bgColor={'purple.400'} className={'heading-xl'} borderRadius={'lg'} p={5} border={'2px'} onClick={handleRedirect} cursor={'pointer'}>{children}</Box>
+    <Box fontSize={'xl'} bgColor={'purple.400'} className={'heading-xl'} borderRadius={'lg'} p={5} border={'2px'} onClick={handleRedirect} cursor={'pointer'} color={'#fff'} borderColor={'#000'}>{children}</Box>
   )
 }
 
