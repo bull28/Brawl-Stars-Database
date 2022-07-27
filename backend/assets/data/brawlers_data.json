@@ -5888,14 +5888,6 @@
                 }
             },
             {
-                "image": "jacky_special.webp",
-                "rarity": {
-                    "value": 2,
-                    "name": "Epic",
-                    "color": "#A229E3"
-                }
-            },
-            {
                 "image": "jacky_brawlidays.webp",
                 "rarity": {
                     "value": 3,
@@ -9907,14 +9899,6 @@
             },
             {
                 "image": "spike_sweat.webp",
-                "rarity": {
-                    "value": 2,
-                    "name": "Epic",
-                    "color": "#A229E3"
-                }
-            },
-            {
-                "image": "spike_special.webp",
                 "rarity": {
                     "value": 2,
                     "name": "Epic",
