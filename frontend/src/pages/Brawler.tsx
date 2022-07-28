@@ -31,8 +31,8 @@ export default function Brawler() {
             <Flex flexDir={'row'} h={'60vh'} w={'100%'} alignItems={'center'} justifyContent={'space-around'} mb={5}>
                 
                 <Flex flexDir={'column'} textAlign={'center'} h={'100%'} justifyContent={'center'} alignItems={'center'} w={'33%'}>
-                    <Image src={'/image/'+data.image} borderRadius={'sm'} fallback={<Spinner/>} objectFit={'contain'} h={'60%'} border={'8px solid black'}/>                
-                    <Text w={'60%'} color={'white'} className={'heading-md'}>{data.description}</Text>
+                    <Image src={'/image/'+data.image} borderRadius={'sm'} fallback={<Spinner/>} objectFit={'contain'} h={'60%'} border={'8px solid black'} mb={3}/>                
+                    <Text w={'60%'} color={'white'} fontSize={['x-small', 'sm', 'md']} className={'heading-md'}>{data.description}</Text>
                 </Flex>
 
                 <Flex justifyContent={'center'} alignItems={'center'} h={'100%'} w={'33%'} bgImage={"/image/misc/bg_3d_model.webp"} backgroundPosition={"center"} backgroundSize={"cover"} backgroundRepeat={"no-repeat"} border={'3px solid white'}>
@@ -41,8 +41,15 @@ export default function Brawler() {
                     </Suspense>
                 </Flex>
 
-                <Flex w={'33%'} h={'40vh'} bgColor={'black'}>
-                    <Text color={'white'}>Pins Unlocked 6/12</Text>
+                <Flex w={'33%'} flexDir={'column'} justifyContent={'center'} alignItems={'center'}>
+                    <Text color={'white'} fontSize={'2xl'} className={'heading-2xl'}>Pins Unlocked 6/12</Text>
+                    <SimpleGrid columns={[1,2,2,3,3,4]} spacing={3} bgColor={'black'} p={3} borderRadius={'md'} w={'90%'} border={'1px solid rgba(255,255,255,0.8)'} overflow={'auto'}>
+                        {data.pins.map((pin) => (
+                            <Flex bgColor={pin.rarity.color} borderRadius={'lg'} p={1} key={pin.image} border={'1px solid rgba(255,255,255,0.5)'}>
+                                <Image src={`/image/${pin.image}`} fallback={<Spinner/>}/>
+                            </Flex>
+                        ))}
+                    </SimpleGrid>
                 </Flex>
             </Flex>
             
