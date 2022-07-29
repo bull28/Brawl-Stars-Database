@@ -36,7 +36,7 @@ export default function Home() {
     <Image w={'100vw'} h={'100vh'} position={'absolute'} objectFit={'cover'} src={require('../assets/backround.webp')} zIndex={'-1'} fallbackSrc={require('../assets/backround.png')}/>
     <Flex position={'absolute'} width={'100%'} justifyContent={'right'}>
       <Flex m={5} alignItems={'center'}>
-        <Text mr={5} fontSize={'xl'} className={'heading-xl'} color={'pink.400'}>{`${new Date().getHours()}:${new Date().getMinutes()}`}</Text>
+        <Text mr={5} fontSize={'xl'} className={'heading-xl'} color={'pink.400'}>{`${new Date().getHours()}:${String(new Date().getMinutes()).length === 2 ? new Date().getMinutes() : "0"+new Date().getMinutes()}`}</Text>
         <Box w={'70px'} h={'70px'} bgColor={'white'}></Box>
       </Flex>
 
