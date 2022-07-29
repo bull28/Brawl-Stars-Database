@@ -41,9 +41,19 @@ export default function Brawler() {
                     </Suspense>
                 </Flex>
 
-                <Flex w={'33%'} flexDir={'column'} justifyContent={'center'} alignItems={'center'}>
+                <Flex w={'33%'} flexDir={'column'} justifyContent={'center'} alignItems={'center'} maxH={'60vh'}>
                     <Text color={'white'} fontSize={'2xl'} className={'heading-2xl'}>Pins Unlocked 6/12</Text>
-                    <SimpleGrid columns={[1,2,2,3,3,4]} spacing={3} bgColor={'black'} p={3} borderRadius={'md'} w={'90%'} border={'1px solid rgba(255,255,255,0.8)'} overflow={'auto'}>
+                    <SimpleGrid columns={[1,2,2,3,3,4]} spacing={3} bgColor={'black'} p={3} borderRadius={'md'} w={'90%'} border={'1px solid rgba(255,255,255,0.8)'} overflowY={'scroll'} sx={{
+                        '&::-webkit-scrollbar': {
+                        width: '10px',
+                        borderRadius: '8px',
+                        backgroundColor: `rgba(255, 255, 255, 0.5)`,
+                        },
+                        '&::-webkit-scrollbar-thumb': {
+                        backgroundColor: `rgba(255, 255, 255, 1)`,
+                        borderRadius: `6px`,
+                        },
+                    }}>
                         {data.pins.map((pin) => (
                             <Flex bgColor={pin.rarity.color} borderRadius={'lg'} p={1} key={pin.image} border={'1px solid rgba(255,255,255,0.5)'}>
                                 <Image src={`/image/${pin.image}`} fallback={<Spinner/>}/>
