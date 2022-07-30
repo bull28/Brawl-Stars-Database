@@ -38,6 +38,9 @@ const theme: any = extendTheme({
             '.heading-4xl': {
                 textShadow: "-0.9px -0.9px 0 #000, -0.9px -0.5px 0 #000, -0.9px -0.1px 0 #000, -0.9px 0.3px 0 #000, -0.9px 0.7px 0 #000, -0.9px 1.1px 0 #000, -0.9px 1.5px 0 #000, -0.9px 1.9px 0 #000, -0.9px 2.3px 0 #000, -0.9px 2.7px 0 #000, -0.9px 3.1px 0 #000, -0.9px 3.5px 0 #000, -0.9px 3.6px 0 #000, 0px -0.9px 0 #000, 0px -0.5px 0 #000, 0px -0.1px 0 #000, 0px 0.3px 0 #000, 0px 0.7px 0 #000, 0px 1.1px 0 #000, 0px 1.5px 0 #000, 0px 1.9px 0 #000, 0px 2.3px 0 #000, 0px 2.7px 0 #000, 0px 3.1px 0 #000, 0px 3.5px 0 #000, 0px 3.6px 0 #000, 0.9px -0.9px 0 #000, 0.9px -0.5px 0 #000, 0.9px -0.1px 0 #000, 0.9px 0.3px 0 #000, 0.9px 0.7px 0 #000, 0.9px 1.1px 0 #000, 0.9px 1.5px 0 #000, 0.9px 1.9px 0 #000, 0.9px 2.3px 0 #000, 0.9px 2.7px 0 #000, 0.9px 3.1px 0 #000, 0.9px 3.5px 0 #000, 0.9px 3.6px 0 #000"
             },
+            '*': {
+                caretColor: 'transparent'
+            }
 
         }
     }
