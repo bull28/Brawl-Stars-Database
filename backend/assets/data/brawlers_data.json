@@ -1215,7 +1215,7 @@
                 "group": {
                     "name": "BT21",
                     "image": "bg_bt21.webp",
-                    "icon": "icon_default.webp"
+                    "icon": "icon_bt21.webp"
                 },
                 "limited": false,
                 "image": "bulldudemang.webp",
@@ -2712,7 +2712,7 @@
             {
                 "name": "clusterbombdudeshooky",
                 "displayName": "Tick Shooky",
-                "cost": 79,
+                "cost": 149,
                 "currency": "Gems",
                 "features": [
                     "Texture",
@@ -2722,7 +2722,7 @@
                 "group": {
                     "name": "BT21",
                     "image": "bg_bt21.webp",
-                    "icon": "icon_default.webp"
+                    "icon": "icon_bt21.webp"
                 },
                 "limited": false,
                 "image": "clusterbombdudeshooky.webp",
@@ -6027,7 +6027,7 @@
                 "group": {
                     "name": "BT21",
                     "image": "bg_bt21.webp",
-                    "icon": "icon_default.webp"
+                    "icon": "icon_bt21.webp"
                 },
                 "limited": false,
                 "image": "drillercooky.webp",
@@ -6951,7 +6951,7 @@
                 "group": {
                     "name": "BT21",
                     "image": "bg_bt21.webp",
-                    "icon": "icon_default.webp"
+                    "icon": "icon_bt21.webp"
                 },
                 "limited": false,
                 "image": "baseballrj.webp",
@@ -7611,7 +7611,7 @@
                 "group": {
                     "name": "BT21",
                     "image": "bg_bt21.webp",
-                    "icon": "icon_default.webp"
+                    "icon": "icon_bt21.webp"
                 },
                 "limited": false,
                 "image": "enragertata.webp",
@@ -10990,7 +10990,7 @@
                 "group": {
                     "name": "BT21",
                     "image": "bg_bt21.webp",
-                    "icon": "icon_default.webp"
+                    "icon": "icon_bt21.webp"
                 },
                 "limited": false,
                 "image": "sandstormkoya.webp",
@@ -12752,7 +12752,7 @@
                 "group": {
                     "name": "BT21",
                     "image": "bg_bt21.webp",
-                    "icon": "icon_default.webp"
+                    "icon": "icon_bt21.webp"
                 },
                 "limited": false,
                 "image": "ruffschimmy.webp",
