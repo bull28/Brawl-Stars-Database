@@ -2,9 +2,10 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const path = require("path");
+require("dotenv").config();
 
 const app = express();
-const port = 6969;
+const port = process.env.PORT || 6969;
 
 const brawler = require("./routes/brawler");
 const map = require("./routes/map");
@@ -40,6 +41,5 @@ app.use((error, req, res, next) => {
     
     next();
 });
-
 
 app.listen(port, () => console.log(port));
