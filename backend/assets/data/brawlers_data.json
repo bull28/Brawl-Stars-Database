@@ -223,6 +223,7 @@
         ],
         "pins": [
             {
+                "name": "shelly_default",
                 "image": "shelly_default.webp",
                 "rarity": {
                     "value": 0,
@@ -231,6 +232,7 @@
                 }
             },
             {
+                "name": "shelly_happy",
                 "image": "shelly_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -239,6 +241,7 @@
                 }
             },
             {
+                "name": "shelly_sad",
                 "image": "shelly_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -247,6 +250,7 @@
                 }
             },
             {
+                "name": "shelly_angry",
                 "image": "shelly_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -255,6 +259,7 @@
                 }
             },
             {
+                "name": "shelly_gg",
                 "image": "shelly_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -263,6 +268,7 @@
                 }
             },
             {
+                "name": "shelly_clap",
                 "image": "shelly_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -271,6 +277,7 @@
                 }
             },
             {
+                "name": "shelly_thanks",
                 "image": "shelly_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -279,6 +286,7 @@
                 }
             },
             {
+                "name": "shelly_sweat",
                 "image": "shelly_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -287,6 +295,7 @@
                 }
             },
             {
+                "name": "shelly_special",
                 "image": "shelly_special.webp",
                 "rarity": {
                     "value": 2,
@@ -295,6 +304,7 @@
                 }
             },
             {
+                "name": "shelly_brawloween",
                 "image": "shelly_brawloween.webp",
                 "rarity": {
                     "value": 3,
@@ -493,6 +503,7 @@
         ],
         "pins": [
             {
+                "name": "nita_default",
                 "image": "nita_default.webp",
                 "rarity": {
                     "value": 0,
@@ -501,6 +512,7 @@
                 }
             },
             {
+                "name": "nita_happy",
                 "image": "nita_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -509,6 +521,7 @@
                 }
             },
             {
+                "name": "nita_sad",
                 "image": "nita_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -517,6 +530,7 @@
                 }
             },
             {
+                "name": "nita_angry",
                 "image": "nita_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -525,6 +539,7 @@
                 }
             },
             {
+                "name": "nita_gg",
                 "image": "nita_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -533,6 +548,7 @@
                 }
             },
             {
+                "name": "nita_clap",
                 "image": "nita_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -541,6 +557,7 @@
                 }
             },
             {
+                "name": "nita_thanks",
                 "image": "nita_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -549,6 +566,7 @@
                 }
             },
             {
+                "name": "nita_sweat",
                 "image": "nita_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -557,6 +575,7 @@
                 }
             },
             {
+                "name": "nita_brawlidays_2018",
                 "image": "nita_brawlidays_2018.webp",
                 "rarity": {
                     "value": 3,
@@ -565,6 +584,7 @@
                 }
             },
             {
+                "name": "nita_ranked",
                 "image": "nita_ranked.webp",
                 "rarity": {
                     "value": 3,
@@ -573,6 +593,7 @@
                 }
             },
             {
+                "name": "nita_goldenweek",
                 "image": "nita_goldenweek.webp",
                 "rarity": {
                     "value": 3,
@@ -884,6 +905,7 @@
         ],
         "pins": [
             {
+                "name": "colt_default",
                 "image": "colt_default.webp",
                 "rarity": {
                     "value": 0,
@@ -892,6 +914,7 @@
                 }
             },
             {
+                "name": "colt_happy",
                 "image": "colt_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -900,6 +923,7 @@
                 }
             },
             {
+                "name": "colt_sad",
                 "image": "colt_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -908,6 +932,7 @@
                 }
             },
             {
+                "name": "colt_angry",
                 "image": "colt_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -916,6 +941,7 @@
                 }
             },
             {
+                "name": "colt_gg",
                 "image": "colt_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -924,6 +950,7 @@
                 }
             },
             {
+                "name": "colt_clap",
                 "image": "colt_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -932,6 +959,7 @@
                 }
             },
             {
+                "name": "colt_thanks",
                 "image": "colt_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -940,6 +968,7 @@
                 }
             },
             {
+                "name": "colt_sweat",
                 "image": "colt_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -948,6 +977,7 @@
                 }
             },
             {
+                "name": "colt_special",
                 "image": "colt_special.webp",
                 "rarity": {
                     "value": 2,
@@ -956,6 +986,7 @@
                 }
             },
             {
+                "name": "colt_deepsea",
                 "image": "colt_deepsea.webp",
                 "rarity": {
                     "value": 3,
@@ -1194,6 +1225,7 @@
         ],
         "pins": [
             {
+                "name": "bull_default",
                 "image": "bull_default.webp",
                 "rarity": {
                     "value": 0,
@@ -1202,6 +1234,7 @@
                 }
             },
             {
+                "name": "bull_happy",
                 "image": "bull_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -1210,6 +1243,7 @@
                 }
             },
             {
+                "name": "bull_sad",
                 "image": "bull_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -1218,6 +1252,7 @@
                 }
             },
             {
+                "name": "bull_angry",
                 "image": "bull_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -1226,6 +1261,7 @@
                 }
             },
             {
+                "name": "bull_gg",
                 "image": "bull_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -1234,6 +1270,7 @@
                 }
             },
             {
+                "name": "bull_clap",
                 "image": "bull_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -1242,6 +1279,7 @@
                 }
             },
             {
+                "name": "bull_thanks",
                 "image": "bull_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -1250,6 +1288,7 @@
                 }
             },
             {
+                "name": "bull_sweat",
                 "image": "bull_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -1258,6 +1297,7 @@
                 }
             },
             {
+                "name": "bull_bt21",
                 "image": "bull_bt21.webp",
                 "rarity": {
                     "value": 3,
@@ -1460,6 +1500,7 @@
         ],
         "pins": [
             {
+                "name": "jessie_default",
                 "image": "jessie_default.webp",
                 "rarity": {
                     "value": 0,
@@ -1468,6 +1509,7 @@
                 }
             },
             {
+                "name": "jessie_happy",
                 "image": "jessie_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -1476,6 +1518,7 @@
                 }
             },
             {
+                "name": "jessie_sad",
                 "image": "jessie_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -1484,6 +1527,7 @@
                 }
             },
             {
+                "name": "jessie_angry",
                 "image": "jessie_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -1492,6 +1536,7 @@
                 }
             },
             {
+                "name": "jessie_gg",
                 "image": "jessie_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -1500,6 +1545,7 @@
                 }
             },
             {
+                "name": "jessie_clap",
                 "image": "jessie_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -1508,6 +1554,7 @@
                 }
             },
             {
+                "name": "jessie_thanks",
                 "image": "jessie_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -1516,6 +1563,7 @@
                 }
             },
             {
+                "name": "jessie_sweat",
                 "image": "jessie_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -1524,6 +1572,7 @@
                 }
             },
             {
+                "name": "jessie_goldenweek",
                 "image": "jessie_goldenweek.webp",
                 "rarity": {
                     "value": 3,
@@ -1738,6 +1787,7 @@
         ],
         "pins": [
             {
+                "name": "brock_default",
                 "image": "brock_default.webp",
                 "rarity": {
                     "value": 0,
@@ -1746,6 +1796,7 @@
                 }
             },
             {
+                "name": "brock_happy",
                 "image": "brock_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -1754,6 +1805,7 @@
                 }
             },
             {
+                "name": "brock_sad",
                 "image": "brock_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -1762,6 +1814,7 @@
                 }
             },
             {
+                "name": "brock_angry",
                 "image": "brock_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -1770,6 +1823,7 @@
                 }
             },
             {
+                "name": "brock_gg",
                 "image": "brock_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -1778,6 +1832,7 @@
                 }
             },
             {
+                "name": "brock_clap",
                 "image": "brock_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -1786,6 +1841,7 @@
                 }
             },
             {
+                "name": "brock_thanks",
                 "image": "brock_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -1794,6 +1850,7 @@
                 }
             },
             {
+                "name": "brock_sweat",
                 "image": "brock_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -1802,6 +1859,7 @@
                 }
             },
             {
+                "name": "brock_retropolis",
                 "image": "brock_retropolis.webp",
                 "rarity": {
                     "value": 3,
@@ -1810,6 +1868,7 @@
                 }
             },
             {
+                "name": "brock_ranked",
                 "image": "brock_ranked.webp",
                 "rarity": {
                     "value": 3,
@@ -2113,6 +2172,7 @@
         ],
         "pins": [
             {
+                "name": "dynamike_default",
                 "image": "dynamike_default.webp",
                 "rarity": {
                     "value": 0,
@@ -2121,6 +2181,7 @@
                 }
             },
             {
+                "name": "dynamike_happy",
                 "image": "dynamike_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -2129,6 +2190,7 @@
                 }
             },
             {
+                "name": "dynamike_sad",
                 "image": "dynamike_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -2137,6 +2199,7 @@
                 }
             },
             {
+                "name": "dynamike_angry",
                 "image": "dynamike_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -2145,6 +2208,7 @@
                 }
             },
             {
+                "name": "dynamike_gg",
                 "image": "dynamike_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -2153,6 +2217,7 @@
                 }
             },
             {
+                "name": "dynamike_clap",
                 "image": "dynamike_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -2161,6 +2226,7 @@
                 }
             },
             {
+                "name": "dynamike_thanks",
                 "image": "dynamike_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -2169,6 +2235,7 @@
                 }
             },
             {
+                "name": "dynamike_sweat",
                 "image": "dynamike_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -2177,6 +2244,7 @@
                 }
             },
             {
+                "name": "dynamike_special",
                 "image": "dynamike_special.webp",
                 "rarity": {
                     "value": 2,
@@ -2185,6 +2253,7 @@
                 }
             },
             {
+                "name": "dynamike_brawlidays_2018",
                 "image": "dynamike_brawlidays_2018.webp",
                 "rarity": {
                     "value": 3,
@@ -2432,6 +2501,7 @@
         ],
         "pins": [
             {
+                "name": "bo_default",
                 "image": "bo_default.webp",
                 "rarity": {
                     "value": 0,
@@ -2440,6 +2510,7 @@
                 }
             },
             {
+                "name": "bo_happy",
                 "image": "bo_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -2448,6 +2519,7 @@
                 }
             },
             {
+                "name": "bo_sad",
                 "image": "bo_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -2456,6 +2528,7 @@
                 }
             },
             {
+                "name": "bo_angry",
                 "image": "bo_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -2464,6 +2537,7 @@
                 }
             },
             {
+                "name": "bo_gg",
                 "image": "bo_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -2472,6 +2546,7 @@
                 }
             },
             {
+                "name": "bo_clap",
                 "image": "bo_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -2480,6 +2555,7 @@
                 }
             },
             {
+                "name": "bo_thanks",
                 "image": "bo_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -2488,6 +2564,7 @@
                 }
             },
             {
+                "name": "bo_sweat",
                 "image": "bo_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -2496,6 +2573,7 @@
                 }
             },
             {
+                "name": "bo_special",
                 "image": "bo_special.webp",
                 "rarity": {
                     "value": 2,
@@ -2504,6 +2582,7 @@
                 }
             },
             {
+                "name": "bo_brawlidays",
                 "image": "bo_brawlidays.webp",
                 "rarity": {
                     "value": 3,
@@ -2512,6 +2591,7 @@
                 }
             },
             {
+                "name": "bo_biodome",
                 "image": "bo_biodome.webp",
                 "rarity": {
                     "value": 3,
@@ -2652,6 +2732,7 @@
         ],
         "pins": [
             {
+                "name": "tick_default",
                 "image": "tick_default.webp",
                 "rarity": {
                     "value": 0,
@@ -2660,6 +2741,7 @@
                 }
             },
             {
+                "name": "tick_happy",
                 "image": "tick_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -2668,6 +2750,7 @@
                 }
             },
             {
+                "name": "tick_sad",
                 "image": "tick_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -2676,6 +2759,7 @@
                 }
             },
             {
+                "name": "tick_angry",
                 "image": "tick_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -2684,6 +2768,7 @@
                 }
             },
             {
+                "name": "tick_gg",
                 "image": "tick_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -2692,6 +2777,7 @@
                 }
             },
             {
+                "name": "tick_clap",
                 "image": "tick_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -2700,6 +2786,7 @@
                 }
             },
             {
+                "name": "tick_thanks",
                 "image": "tick_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -2708,6 +2795,7 @@
                 }
             },
             {
+                "name": "tick_sweat",
                 "image": "tick_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -2716,6 +2804,7 @@
                 }
             },
             {
+                "name": "tick_brawlidays",
                 "image": "tick_brawlidays.webp",
                 "rarity": {
                     "value": 3,
@@ -2724,6 +2813,7 @@
                 }
             },
             {
+                "name": "tick_bt21",
                 "image": "tick_bt21.webp",
                 "rarity": {
                     "value": 3,
@@ -2885,6 +2975,7 @@
         ],
         "pins": [
             {
+                "name": "8bit_default",
                 "image": "8bit_default.webp",
                 "rarity": {
                     "value": 0,
@@ -2893,6 +2984,7 @@
                 }
             },
             {
+                "name": "8bit_happy",
                 "image": "8bit_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -2901,6 +2993,7 @@
                 }
             },
             {
+                "name": "8bit_sad",
                 "image": "8bit_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -2909,6 +3002,7 @@
                 }
             },
             {
+                "name": "8bit_angry",
                 "image": "8bit_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -2917,6 +3011,7 @@
                 }
             },
             {
+                "name": "8bit_gg",
                 "image": "8bit_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -2925,6 +3020,7 @@
                 }
             },
             {
+                "name": "8bit_clap",
                 "image": "8bit_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -2933,6 +3029,7 @@
                 }
             },
             {
+                "name": "8bit_thanks",
                 "image": "8bit_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -2941,6 +3038,7 @@
                 }
             },
             {
+                "name": "8bit_sweat",
                 "image": "8bit_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -2949,6 +3047,7 @@
                 }
             },
             {
+                "name": "8bit_retropolis",
                 "image": "8bit_retropolis.webp",
                 "rarity": {
                     "value": 3,
@@ -3088,6 +3187,7 @@
         ],
         "pins": [
             {
+                "name": "emz_default",
                 "image": "emz_default.webp",
                 "rarity": {
                     "value": 0,
@@ -3096,6 +3196,7 @@
                 }
             },
             {
+                "name": "emz_happy",
                 "image": "emz_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -3104,6 +3205,7 @@
                 }
             },
             {
+                "name": "emz_sad",
                 "image": "emz_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -3112,6 +3214,7 @@
                 }
             },
             {
+                "name": "emz_angry",
                 "image": "emz_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -3120,6 +3223,7 @@
                 }
             },
             {
+                "name": "emz_gg",
                 "image": "emz_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -3128,6 +3232,7 @@
                 }
             },
             {
+                "name": "emz_clap",
                 "image": "emz_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -3136,6 +3241,7 @@
                 }
             },
             {
+                "name": "emz_thanks",
                 "image": "emz_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -3144,6 +3250,7 @@
                 }
             },
             {
+                "name": "emz_sweat",
                 "image": "emz_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -3152,6 +3259,7 @@
                 }
             },
             {
+                "name": "emz_special",
                 "image": "emz_special.webp",
                 "rarity": {
                     "value": 2,
@@ -3288,6 +3396,7 @@
         ],
         "pins": [
             {
+                "name": "stu_default",
                 "image": "stu_default.webp",
                 "rarity": {
                     "value": 0,
@@ -3296,6 +3405,7 @@
                 }
             },
             {
+                "name": "stu_happy",
                 "image": "stu_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -3304,6 +3414,7 @@
                 }
             },
             {
+                "name": "stu_sad",
                 "image": "stu_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -3312,6 +3423,7 @@
                 }
             },
             {
+                "name": "stu_angry",
                 "image": "stu_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -3320,6 +3432,7 @@
                 }
             },
             {
+                "name": "stu_gg",
                 "image": "stu_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -3328,6 +3441,7 @@
                 }
             },
             {
+                "name": "stu_clap",
                 "image": "stu_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -3336,6 +3450,7 @@
                 }
             },
             {
+                "name": "stu_thanks",
                 "image": "stu_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -3344,6 +3459,7 @@
                 }
             },
             {
+                "name": "stu_sweat",
                 "image": "stu_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -3352,6 +3468,7 @@
                 }
             },
             {
+                "name": "stu_special",
                 "image": "stu_special.webp",
                 "rarity": {
                     "value": 2,
@@ -3360,6 +3477,7 @@
                 }
             },
             {
+                "name": "stu_brawloween",
                 "image": "stu_brawloween.webp",
                 "rarity": {
                     "value": 3,
@@ -3658,6 +3776,7 @@
         ],
         "pins": [
             {
+                "name": "elprimo_default",
                 "image": "elprimo_default.webp",
                 "rarity": {
                     "value": 0,
@@ -3666,6 +3785,7 @@
                 }
             },
             {
+                "name": "elprimo_happy",
                 "image": "elprimo_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -3674,6 +3794,7 @@
                 }
             },
             {
+                "name": "elprimo_sad",
                 "image": "elprimo_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -3682,6 +3803,7 @@
                 }
             },
             {
+                "name": "elprimo_angry",
                 "image": "elprimo_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -3690,6 +3812,7 @@
                 }
             },
             {
+                "name": "elprimo_gg",
                 "image": "elprimo_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -3698,6 +3821,7 @@
                 }
             },
             {
+                "name": "elprimo_clap",
                 "image": "elprimo_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -3706,6 +3830,7 @@
                 }
             },
             {
+                "name": "elprimo_thanks",
                 "image": "elprimo_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -3714,6 +3839,7 @@
                 }
             },
             {
+                "name": "elprimo_sweat",
                 "image": "elprimo_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -3722,6 +3848,7 @@
                 }
             },
             {
+                "name": "elprimo_special",
                 "image": "elprimo_special.webp",
                 "rarity": {
                     "value": 2,
@@ -3730,6 +3857,7 @@
                 }
             },
             {
+                "name": "elprimo_dragon",
                 "image": "elprimo_dragon.webp",
                 "rarity": {
                     "value": 3,
@@ -3738,6 +3866,7 @@
                 }
             },
             {
+                "name": "elprimo_dragonchroma",
                 "image": "elprimo_dragonchroma.webp",
                 "rarity": {
                     "value": 3,
@@ -3746,6 +3875,7 @@
                 }
             },
             {
+                "name": "elprimo_lny22",
                 "image": "elprimo_lny22.webp",
                 "rarity": {
                     "value": 3,
@@ -3754,6 +3884,7 @@
                 }
             },
             {
+                "name": "elprimo_brawlentines",
                 "image": "elprimo_brawlentines.webp",
                 "rarity": {
                     "value": 3,
@@ -3971,6 +4102,7 @@
         ],
         "pins": [
             {
+                "name": "barley_default",
                 "image": "barley_default.webp",
                 "rarity": {
                     "value": 0,
@@ -3979,6 +4111,7 @@
                 }
             },
             {
+                "name": "barley_happy",
                 "image": "barley_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -3987,6 +4120,7 @@
                 }
             },
             {
+                "name": "barley_sad",
                 "image": "barley_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -3995,6 +4129,7 @@
                 }
             },
             {
+                "name": "barley_angry",
                 "image": "barley_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -4003,6 +4138,7 @@
                 }
             },
             {
+                "name": "barley_gg",
                 "image": "barley_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -4011,6 +4147,7 @@
                 }
             },
             {
+                "name": "barley_clap",
                 "image": "barley_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -4019,6 +4156,7 @@
                 }
             },
             {
+                "name": "barley_thanks",
                 "image": "barley_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -4027,6 +4165,7 @@
                 }
             },
             {
+                "name": "barley_sweat",
                 "image": "barley_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -4035,6 +4174,7 @@
                 }
             },
             {
+                "name": "barley_special",
                 "image": "barley_special.webp",
                 "rarity": {
                     "value": 2,
@@ -4043,6 +4183,7 @@
                 }
             },
             {
+                "name": "barley_retropolis",
                 "image": "barley_retropolis.webp",
                 "rarity": {
                     "value": 3,
@@ -4051,6 +4192,7 @@
                 }
             },
             {
+                "name": "barley_lny22",
                 "image": "barley_lny22.webp",
                 "rarity": {
                     "value": 3,
@@ -4208,6 +4350,7 @@
         ],
         "pins": [
             {
+                "name": "poco_default",
                 "image": "poco_default.webp",
                 "rarity": {
                     "value": 0,
@@ -4216,6 +4359,7 @@
                 }
             },
             {
+                "name": "poco_happy",
                 "image": "poco_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -4224,6 +4368,7 @@
                 }
             },
             {
+                "name": "poco_sad",
                 "image": "poco_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -4232,6 +4377,7 @@
                 }
             },
             {
+                "name": "poco_angry",
                 "image": "poco_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -4240,6 +4386,7 @@
                 }
             },
             {
+                "name": "poco_gg",
                 "image": "poco_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -4248,6 +4395,7 @@
                 }
             },
             {
+                "name": "poco_clap",
                 "image": "poco_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -4256,6 +4404,7 @@
                 }
             },
             {
+                "name": "poco_thanks",
                 "image": "poco_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -4264,6 +4413,7 @@
                 }
             },
             {
+                "name": "poco_sweat",
                 "image": "poco_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -4272,6 +4422,7 @@
                 }
             },
             {
+                "name": "poco_special",
                 "image": "poco_special.webp",
                 "rarity": {
                     "value": 2,
@@ -4280,6 +4431,7 @@
                 }
             },
             {
+                "name": "poco_brawlentines",
                 "image": "poco_brawlentines.webp",
                 "rarity": {
                     "value": 3,
@@ -4441,6 +4593,7 @@
         ],
         "pins": [
             {
+                "name": "rosa_default",
                 "image": "rosa_default.webp",
                 "rarity": {
                     "value": 0,
@@ -4449,6 +4602,7 @@
                 }
             },
             {
+                "name": "rosa_happy",
                 "image": "rosa_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -4457,6 +4611,7 @@
                 }
             },
             {
+                "name": "rosa_sad",
                 "image": "rosa_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -4465,6 +4620,7 @@
                 }
             },
             {
+                "name": "rosa_angry",
                 "image": "rosa_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -4473,6 +4629,7 @@
                 }
             },
             {
+                "name": "rosa_gg",
                 "image": "rosa_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -4481,6 +4638,7 @@
                 }
             },
             {
+                "name": "rosa_clap",
                 "image": "rosa_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -4489,6 +4647,7 @@
                 }
             },
             {
+                "name": "rosa_thanks",
                 "image": "rosa_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -4497,6 +4656,7 @@
                 }
             },
             {
+                "name": "rosa_sweat",
                 "image": "rosa_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -4505,6 +4665,7 @@
                 }
             },
             {
+                "name": "rosa_special",
                 "image": "rosa_special.webp",
                 "rarity": {
                     "value": 2,
@@ -4513,6 +4674,7 @@
                 }
             },
             {
+                "name": "rosa_rosabrawloween_default",
                 "image": "rosa_rosabrawloween_default.webp",
                 "rarity": {
                     "value": 3,
@@ -4521,6 +4683,7 @@
                 }
             },
             {
+                "name": "rosa_rosabrawloween_happy",
                 "image": "rosa_rosabrawloween_happy.webp",
                 "rarity": {
                     "value": 3,
@@ -4529,6 +4692,7 @@
                 }
             },
             {
+                "name": "rosa_rosabrawloween_sad",
                 "image": "rosa_rosabrawloween_sad.webp",
                 "rarity": {
                     "value": 3,
@@ -4537,6 +4701,7 @@
                 }
             },
             {
+                "name": "rosa_rosabrawloween_angry",
                 "image": "rosa_rosabrawloween_angry.webp",
                 "rarity": {
                     "value": 3,
@@ -4545,6 +4710,7 @@
                 }
             },
             {
+                "name": "rosa_rosabrawloween_gg",
                 "image": "rosa_rosabrawloween_gg.webp",
                 "rarity": {
                     "value": 3,
@@ -4553,6 +4719,7 @@
                 }
             },
             {
+                "name": "rosa_rosabrawloween_clap",
                 "image": "rosa_rosabrawloween_clap.webp",
                 "rarity": {
                     "value": 3,
@@ -4561,6 +4728,7 @@
                 }
             },
             {
+                "name": "rosa_rosabrawloween_thanks",
                 "image": "rosa_rosabrawloween_thanks.webp",
                 "rarity": {
                     "value": 3,
@@ -4569,6 +4737,7 @@
                 }
             },
             {
+                "name": "rosa_rosabrawloween_sweat",
                 "image": "rosa_rosabrawloween_sweat.webp",
                 "rarity": {
                     "value": 3,
@@ -4577,6 +4746,7 @@
                 }
             },
             {
+                "name": "rosa_rosabrawloween_special",
                 "image": "rosa_rosabrawloween_special.webp",
                 "rarity": {
                     "value": 3,
@@ -4585,6 +4755,7 @@
                 }
             },
             {
+                "name": "rosa_lny22",
                 "image": "rosa_lny22.webp",
                 "rarity": {
                     "value": 3,
@@ -4593,6 +4764,7 @@
                 }
             },
             {
+                "name": "rosa_biodome",
                 "image": "rosa_biodome.webp",
                 "rarity": {
                     "value": 3,
@@ -4791,6 +4963,7 @@
         ],
         "pins": [
             {
+                "name": "rico_default",
                 "image": "rico_default.webp",
                 "rarity": {
                     "value": 0,
@@ -4799,6 +4972,7 @@
                 }
             },
             {
+                "name": "rico_happy",
                 "image": "rico_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -4807,6 +4981,7 @@
                 }
             },
             {
+                "name": "rico_sad",
                 "image": "rico_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -4815,6 +4990,7 @@
                 }
             },
             {
+                "name": "rico_angry",
                 "image": "rico_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -4823,6 +4999,7 @@
                 }
             },
             {
+                "name": "rico_gg",
                 "image": "rico_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -4831,6 +5008,7 @@
                 }
             },
             {
+                "name": "rico_clap",
                 "image": "rico_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -4839,6 +5017,7 @@
                 }
             },
             {
+                "name": "rico_thanks",
                 "image": "rico_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -4847,6 +5026,7 @@
                 }
             },
             {
+                "name": "rico_sweat",
                 "image": "rico_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -4855,6 +5035,7 @@
                 }
             },
             {
+                "name": "rico_biodome",
                 "image": "rico_biodome.webp",
                 "rarity": {
                     "value": 3,
@@ -5036,6 +5217,7 @@
         ],
         "pins": [
             {
+                "name": "darryl_default",
                 "image": "darryl_default.webp",
                 "rarity": {
                     "value": 0,
@@ -5044,6 +5226,7 @@
                 }
             },
             {
+                "name": "darryl_happy",
                 "image": "darryl_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -5052,6 +5235,7 @@
                 }
             },
             {
+                "name": "darryl_sad",
                 "image": "darryl_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -5060,6 +5244,7 @@
                 }
             },
             {
+                "name": "darryl_angry",
                 "image": "darryl_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -5068,6 +5253,7 @@
                 }
             },
             {
+                "name": "darryl_gg",
                 "image": "darryl_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -5076,6 +5262,7 @@
                 }
             },
             {
+                "name": "darryl_clap",
                 "image": "darryl_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -5084,6 +5271,7 @@
                 }
             },
             {
+                "name": "darryl_thanks",
                 "image": "darryl_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -5092,6 +5280,7 @@
                 }
             },
             {
+                "name": "darryl_sweat",
                 "image": "darryl_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -5100,6 +5289,7 @@
                 }
             },
             {
+                "name": "darryl_megabox",
                 "image": "darryl_megabox.webp",
                 "rarity": {
                     "value": 3,
@@ -5108,6 +5298,7 @@
                 }
             },
             {
+                "name": "darryl_megabox_02",
                 "image": "darryl_megabox_02.webp",
                 "rarity": {
                     "value": 3,
@@ -5116,6 +5307,7 @@
                 }
             },
             {
+                "name": "darryl_ranked",
                 "image": "darryl_ranked.webp",
                 "rarity": {
                     "value": 3,
@@ -5273,6 +5465,7 @@
         ],
         "pins": [
             {
+                "name": "penny_default",
                 "image": "penny_default.webp",
                 "rarity": {
                     "value": 0,
@@ -5281,6 +5474,7 @@
                 }
             },
             {
+                "name": "penny_happy",
                 "image": "penny_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -5289,6 +5483,7 @@
                 }
             },
             {
+                "name": "penny_sad",
                 "image": "penny_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -5297,6 +5492,7 @@
                 }
             },
             {
+                "name": "penny_angry",
                 "image": "penny_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -5305,6 +5501,7 @@
                 }
             },
             {
+                "name": "penny_gg",
                 "image": "penny_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -5313,6 +5510,7 @@
                 }
             },
             {
+                "name": "penny_clap",
                 "image": "penny_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -5321,6 +5519,7 @@
                 }
             },
             {
+                "name": "penny_thanks",
                 "image": "penny_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -5329,6 +5528,7 @@
                 }
             },
             {
+                "name": "penny_sweat",
                 "image": "penny_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -5337,6 +5537,7 @@
                 }
             },
             {
+                "name": "penny_special",
                 "image": "penny_special.webp",
                 "rarity": {
                     "value": 2,
@@ -5345,6 +5546,7 @@
                 }
             },
             {
+                "name": "penny_brawlidays_2018",
                 "image": "penny_brawlidays_2018.webp",
                 "rarity": {
                     "value": 3,
@@ -5562,6 +5764,7 @@
         ],
         "pins": [
             {
+                "name": "carl_default",
                 "image": "carl_default.webp",
                 "rarity": {
                     "value": 0,
@@ -5570,6 +5773,7 @@
                 }
             },
             {
+                "name": "carl_happy",
                 "image": "carl_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -5578,6 +5782,7 @@
                 }
             },
             {
+                "name": "carl_sad",
                 "image": "carl_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -5586,6 +5791,7 @@
                 }
             },
             {
+                "name": "carl_angry",
                 "image": "carl_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -5594,6 +5800,7 @@
                 }
             },
             {
+                "name": "carl_gg",
                 "image": "carl_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -5602,6 +5809,7 @@
                 }
             },
             {
+                "name": "carl_clap",
                 "image": "carl_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -5610,6 +5818,7 @@
                 }
             },
             {
+                "name": "carl_thanks",
                 "image": "carl_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -5618,6 +5827,7 @@
                 }
             },
             {
+                "name": "carl_sweat",
                 "image": "carl_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -5626,6 +5836,7 @@
                 }
             },
             {
+                "name": "carl_special",
                 "image": "carl_special.webp",
                 "rarity": {
                     "value": 2,
@@ -5634,6 +5845,7 @@
                 }
             },
             {
+                "name": "carl_retropolis",
                 "image": "carl_retropolis.webp",
                 "rarity": {
                     "value": 3,
@@ -5642,6 +5854,7 @@
                 }
             },
             {
+                "name": "carl_stuntshow",
                 "image": "carl_stuntshow.webp",
                 "rarity": {
                     "value": 3,
@@ -5824,6 +6037,7 @@
         ],
         "pins": [
             {
+                "name": "jacky_default",
                 "image": "jacky_default.webp",
                 "rarity": {
                     "value": 0,
@@ -5832,6 +6046,7 @@
                 }
             },
             {
+                "name": "jacky_happy",
                 "image": "jacky_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -5840,6 +6055,7 @@
                 }
             },
             {
+                "name": "jacky_sad",
                 "image": "jacky_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -5848,6 +6064,7 @@
                 }
             },
             {
+                "name": "jacky_angry",
                 "image": "jacky_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -5856,6 +6073,7 @@
                 }
             },
             {
+                "name": "jacky_gg",
                 "image": "jacky_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -5864,6 +6082,7 @@
                 }
             },
             {
+                "name": "jacky_clap",
                 "image": "jacky_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -5872,6 +6091,7 @@
                 }
             },
             {
+                "name": "jacky_thanks",
                 "image": "jacky_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -5880,6 +6100,7 @@
                 }
             },
             {
+                "name": "jacky_sweat",
                 "image": "jacky_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -5888,6 +6109,7 @@
                 }
             },
             {
+                "name": "jacky_brawlidays",
                 "image": "jacky_brawlidays.webp",
                 "rarity": {
                     "value": 3,
@@ -5896,6 +6118,7 @@
                 }
             },
             {
+                "name": "jacky_bt21",
                 "image": "jacky_bt21.webp",
                 "rarity": {
                     "value": 3,
@@ -6073,6 +6296,7 @@
         ],
         "pins": [
             {
+                "name": "piper_default",
                 "image": "piper_default.webp",
                 "rarity": {
                     "value": 0,
@@ -6081,6 +6305,7 @@
                 }
             },
             {
+                "name": "piper_happy",
                 "image": "piper_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -6089,6 +6314,7 @@
                 }
             },
             {
+                "name": "piper_sad",
                 "image": "piper_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -6097,6 +6323,7 @@
                 }
             },
             {
+                "name": "piper_angry",
                 "image": "piper_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -6105,6 +6332,7 @@
                 }
             },
             {
+                "name": "piper_gg",
                 "image": "piper_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -6113,6 +6341,7 @@
                 }
             },
             {
+                "name": "piper_clap",
                 "image": "piper_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -6121,6 +6350,7 @@
                 }
             },
             {
+                "name": "piper_thanks",
                 "image": "piper_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -6129,6 +6359,7 @@
                 }
             },
             {
+                "name": "piper_sweat",
                 "image": "piper_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -6137,6 +6368,7 @@
                 }
             },
             {
+                "name": "piper_special",
                 "image": "piper_special.webp",
                 "rarity": {
                     "value": 2,
@@ -6145,6 +6377,7 @@
                 }
             },
             {
+                "name": "piper_brawloween",
                 "image": "piper_brawloween.webp",
                 "rarity": {
                     "value": 3,
@@ -6153,6 +6386,7 @@
                 }
             },
             {
+                "name": "piper_brawlentines",
                 "image": "piper_brawlentines.webp",
                 "rarity": {
                     "value": 3,
@@ -6274,6 +6508,7 @@
         ],
         "pins": [
             {
+                "name": "pam_default",
                 "image": "pam_default.webp",
                 "rarity": {
                     "value": 0,
@@ -6282,6 +6517,7 @@
                 }
             },
             {
+                "name": "pam_happy",
                 "image": "pam_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -6290,6 +6526,7 @@
                 }
             },
             {
+                "name": "pam_sad",
                 "image": "pam_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -6298,6 +6535,7 @@
                 }
             },
             {
+                "name": "pam_angry",
                 "image": "pam_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -6306,6 +6544,7 @@
                 }
             },
             {
+                "name": "pam_gg",
                 "image": "pam_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -6314,6 +6553,7 @@
                 }
             },
             {
+                "name": "pam_clap",
                 "image": "pam_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -6322,6 +6562,7 @@
                 }
             },
             {
+                "name": "pam_thanks",
                 "image": "pam_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -6330,6 +6571,7 @@
                 }
             },
             {
+                "name": "pam_sweat",
                 "image": "pam_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -6467,6 +6709,7 @@
         ],
         "pins": [
             {
+                "name": "frank_default",
                 "image": "frank_default.webp",
                 "rarity": {
                     "value": 0,
@@ -6475,6 +6718,7 @@
                 }
             },
             {
+                "name": "frank_happy",
                 "image": "frank_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -6483,6 +6727,7 @@
                 }
             },
             {
+                "name": "frank_sad",
                 "image": "frank_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -6491,6 +6736,7 @@
                 }
             },
             {
+                "name": "frank_angry",
                 "image": "frank_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -6499,6 +6745,7 @@
                 }
             },
             {
+                "name": "frank_gg",
                 "image": "frank_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -6507,6 +6754,7 @@
                 }
             },
             {
+                "name": "frank_clap",
                 "image": "frank_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -6515,6 +6763,7 @@
                 }
             },
             {
+                "name": "frank_thanks",
                 "image": "frank_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -6523,6 +6772,7 @@
                 }
             },
             {
+                "name": "frank_sweat",
                 "image": "frank_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -6531,6 +6781,7 @@
                 }
             },
             {
+                "name": "frank_brawlidays",
                 "image": "frank_brawlidays.webp",
                 "rarity": {
                     "value": 3,
@@ -6710,6 +6961,7 @@
         ],
         "pins": [
             {
+                "name": "bibi_default",
                 "image": "bibi_default.webp",
                 "rarity": {
                     "value": 0,
@@ -6718,6 +6970,7 @@
                 }
             },
             {
+                "name": "bibi_happy",
                 "image": "bibi_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -6726,6 +6979,7 @@
                 }
             },
             {
+                "name": "bibi_sad",
                 "image": "bibi_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -6734,6 +6988,7 @@
                 }
             },
             {
+                "name": "bibi_angry",
                 "image": "bibi_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -6742,6 +6997,7 @@
                 }
             },
             {
+                "name": "bibi_gg",
                 "image": "bibi_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -6750,6 +7006,7 @@
                 }
             },
             {
+                "name": "bibi_clap",
                 "image": "bibi_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -6758,6 +7015,7 @@
                 }
             },
             {
+                "name": "bibi_thanks",
                 "image": "bibi_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -6766,6 +7024,7 @@
                 }
             },
             {
+                "name": "bibi_sweat",
                 "image": "bibi_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -6774,6 +7033,7 @@
                 }
             },
             {
+                "name": "bibi_bt21",
                 "image": "bibi_bt21.webp",
                 "rarity": {
                     "value": 3,
@@ -6954,6 +7214,7 @@
         ],
         "pins": [
             {
+                "name": "bea_default",
                 "image": "bea_default.webp",
                 "rarity": {
                     "value": 0,
@@ -6962,6 +7223,7 @@
                 }
             },
             {
+                "name": "bea_happy",
                 "image": "bea_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -6970,6 +7232,7 @@
                 }
             },
             {
+                "name": "bea_sad",
                 "image": "bea_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -6978,6 +7241,7 @@
                 }
             },
             {
+                "name": "bea_angry",
                 "image": "bea_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -6986,6 +7250,7 @@
                 }
             },
             {
+                "name": "bea_gg",
                 "image": "bea_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -6994,6 +7259,7 @@
                 }
             },
             {
+                "name": "bea_clap",
                 "image": "bea_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -7002,6 +7268,7 @@
                 }
             },
             {
+                "name": "bea_thanks",
                 "image": "bea_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -7010,6 +7277,7 @@
                 }
             },
             {
+                "name": "bea_sweat",
                 "image": "bea_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -7018,6 +7286,7 @@
                 }
             },
             {
+                "name": "bea_special",
                 "image": "bea_special.webp",
                 "rarity": {
                     "value": 2,
@@ -7026,6 +7295,7 @@
                 }
             },
             {
+                "name": "bea_goldenweek",
                 "image": "bea_goldenweek.webp",
                 "rarity": {
                     "value": 3,
@@ -7034,6 +7304,7 @@
                 }
             },
             {
+                "name": "bea_goldenweek_02",
                 "image": "bea_goldenweek_02.webp",
                 "rarity": {
                     "value": 3,
@@ -7153,6 +7424,7 @@
         ],
         "pins": [
             {
+                "name": "nani_default",
                 "image": "nani_default.webp",
                 "rarity": {
                     "value": 0,
@@ -7161,6 +7433,7 @@
                 }
             },
             {
+                "name": "nani_happy",
                 "image": "nani_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -7169,6 +7442,7 @@
                 }
             },
             {
+                "name": "nani_sad",
                 "image": "nani_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -7177,6 +7451,7 @@
                 }
             },
             {
+                "name": "nani_angry",
                 "image": "nani_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -7185,6 +7460,7 @@
                 }
             },
             {
+                "name": "nani_gg",
                 "image": "nani_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -7193,6 +7469,7 @@
                 }
             },
             {
+                "name": "nani_clap",
                 "image": "nani_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -7201,6 +7478,7 @@
                 }
             },
             {
+                "name": "nani_thanks",
                 "image": "nani_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -7209,6 +7487,7 @@
                 }
             },
             {
+                "name": "nani_sweat",
                 "image": "nani_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -7217,6 +7496,7 @@
                 }
             },
             {
+                "name": "nani_special",
                 "image": "nani_special.webp",
                 "rarity": {
                     "value": 2,
@@ -7341,6 +7621,7 @@
         ],
         "pins": [
             {
+                "name": "edgar_default",
                 "image": "edgar_default.webp",
                 "rarity": {
                     "value": 0,
@@ -7349,6 +7630,7 @@
                 }
             },
             {
+                "name": "edgar_happy",
                 "image": "edgar_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -7357,6 +7639,7 @@
                 }
             },
             {
+                "name": "edgar_sad",
                 "image": "edgar_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -7365,6 +7648,7 @@
                 }
             },
             {
+                "name": "edgar_angry",
                 "image": "edgar_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -7373,6 +7657,7 @@
                 }
             },
             {
+                "name": "edgar_gg",
                 "image": "edgar_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -7381,6 +7666,7 @@
                 }
             },
             {
+                "name": "edgar_clap",
                 "image": "edgar_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -7389,6 +7675,7 @@
                 }
             },
             {
+                "name": "edgar_thanks",
                 "image": "edgar_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -7397,6 +7684,7 @@
                 }
             },
             {
+                "name": "edgar_sweat",
                 "image": "edgar_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -7405,6 +7693,7 @@
                 }
             },
             {
+                "name": "edgar_special",
                 "image": "edgar_special.webp",
                 "rarity": {
                     "value": 2,
@@ -7413,6 +7702,7 @@
                 }
             },
             {
+                "name": "edgar_lny22",
                 "image": "edgar_lny22.webp",
                 "rarity": {
                     "value": 3,
@@ -7421,6 +7711,7 @@
                 }
             },
             {
+                "name": "edgar_biodome",
                 "image": "edgar_biodome.webp",
                 "rarity": {
                     "value": 3,
@@ -7429,6 +7720,7 @@
                 }
             },
             {
+                "name": "edgar_bt21",
                 "image": "edgar_bt21.webp",
                 "rarity": {
                     "value": 3,
@@ -7490,6 +7782,7 @@
         ],
         "pins": [
             {
+                "name": "griff_default",
                 "image": "griff_default.webp",
                 "rarity": {
                     "value": 0,
@@ -7498,6 +7791,7 @@
                 }
             },
             {
+                "name": "griff_happy",
                 "image": "griff_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -7506,6 +7800,7 @@
                 }
             },
             {
+                "name": "griff_sad",
                 "image": "griff_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -7514,6 +7809,7 @@
                 }
             },
             {
+                "name": "griff_angry",
                 "image": "griff_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -7522,6 +7818,7 @@
                 }
             },
             {
+                "name": "griff_gg",
                 "image": "griff_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -7530,6 +7827,7 @@
                 }
             },
             {
+                "name": "griff_clap",
                 "image": "griff_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -7538,6 +7836,7 @@
                 }
             },
             {
+                "name": "griff_thanks",
                 "image": "griff_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -7546,6 +7845,7 @@
                 }
             },
             {
+                "name": "griff_sweat",
                 "image": "griff_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -7554,6 +7854,7 @@
                 }
             },
             {
+                "name": "griff_special",
                 "image": "griff_special.webp",
                 "rarity": {
                     "value": 2,
@@ -7562,6 +7863,7 @@
                 }
             },
             {
+                "name": "griff_brawlidays",
                 "image": "griff_brawlidays.webp",
                 "rarity": {
                     "value": 3,
@@ -7661,6 +7963,7 @@
         ],
         "pins": [
             {
+                "name": "grom_default",
                 "image": "grom_default.webp",
                 "rarity": {
                     "value": 0,
@@ -7669,6 +7972,7 @@
                 }
             },
             {
+                "name": "grom_happy",
                 "image": "grom_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -7677,6 +7981,7 @@
                 }
             },
             {
+                "name": "grom_sad",
                 "image": "grom_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -7685,6 +7990,7 @@
                 }
             },
             {
+                "name": "grom_angry",
                 "image": "grom_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -7693,6 +7999,7 @@
                 }
             },
             {
+                "name": "grom_gg",
                 "image": "grom_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -7701,6 +8008,7 @@
                 }
             },
             {
+                "name": "grom_clap",
                 "image": "grom_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -7709,6 +8017,7 @@
                 }
             },
             {
+                "name": "grom_thanks",
                 "image": "grom_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -7717,6 +8026,7 @@
                 }
             },
             {
+                "name": "grom_sweat",
                 "image": "grom_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -7725,6 +8035,7 @@
                 }
             },
             {
+                "name": "grom_special",
                 "image": "grom_special.webp",
                 "rarity": {
                     "value": 2,
@@ -7824,6 +8135,7 @@
         ],
         "pins": [
             {
+                "name": "bonnie_default",
                 "image": "bonnie_default.webp",
                 "rarity": {
                     "value": 0,
@@ -7832,6 +8144,7 @@
                 }
             },
             {
+                "name": "bonnie_happy",
                 "image": "bonnie_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -7840,6 +8153,7 @@
                 }
             },
             {
+                "name": "bonnie_sad",
                 "image": "bonnie_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -7848,6 +8162,7 @@
                 }
             },
             {
+                "name": "bonnie_angry",
                 "image": "bonnie_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -7856,6 +8171,7 @@
                 }
             },
             {
+                "name": "bonnie_gg",
                 "image": "bonnie_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -7864,6 +8180,7 @@
                 }
             },
             {
+                "name": "bonnie_clap",
                 "image": "bonnie_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -7872,6 +8189,7 @@
                 }
             },
             {
+                "name": "bonnie_thanks",
                 "image": "bonnie_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -7880,6 +8198,7 @@
                 }
             },
             {
+                "name": "bonnie_sweat",
                 "image": "bonnie_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -7888,6 +8207,7 @@
                 }
             },
             {
+                "name": "bonnie_special",
                 "image": "bonnie_special.webp",
                 "rarity": {
                     "value": 2,
@@ -7896,6 +8216,7 @@
                 }
             },
             {
+                "name": "bonnie_villains",
                 "image": "bonnie_villains.webp",
                 "rarity": {
                     "value": 3,
@@ -8109,6 +8430,7 @@
         ],
         "pins": [
             {
+                "name": "mortis_default",
                 "image": "mortis_default.webp",
                 "rarity": {
                     "value": 0,
@@ -8117,6 +8439,7 @@
                 }
             },
             {
+                "name": "mortis_happy",
                 "image": "mortis_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -8125,6 +8448,7 @@
                 }
             },
             {
+                "name": "mortis_sad",
                 "image": "mortis_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -8133,6 +8457,7 @@
                 }
             },
             {
+                "name": "mortis_angry",
                 "image": "mortis_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -8141,6 +8466,7 @@
                 }
             },
             {
+                "name": "mortis_gg",
                 "image": "mortis_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -8149,6 +8475,7 @@
                 }
             },
             {
+                "name": "mortis_clap",
                 "image": "mortis_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -8157,6 +8484,7 @@
                 }
             },
             {
+                "name": "mortis_thanks",
                 "image": "mortis_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -8165,6 +8493,7 @@
                 }
             },
             {
+                "name": "mortis_sweat",
                 "image": "mortis_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -8173,6 +8502,7 @@
                 }
             },
             {
+                "name": "mortis_retropolis",
                 "image": "mortis_retropolis.webp",
                 "rarity": {
                     "value": 3,
@@ -8332,6 +8662,7 @@
         ],
         "pins": [
             {
+                "name": "tara_default",
                 "image": "tara_default.webp",
                 "rarity": {
                     "value": 0,
@@ -8340,6 +8671,7 @@
                 }
             },
             {
+                "name": "tara_happy",
                 "image": "tara_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -8348,6 +8680,7 @@
                 }
             },
             {
+                "name": "tara_sad",
                 "image": "tara_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -8356,6 +8689,7 @@
                 }
             },
             {
+                "name": "tara_angry",
                 "image": "tara_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -8364,6 +8698,7 @@
                 }
             },
             {
+                "name": "tara_gg",
                 "image": "tara_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -8372,6 +8707,7 @@
                 }
             },
             {
+                "name": "tara_clap",
                 "image": "tara_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -8380,6 +8716,7 @@
                 }
             },
             {
+                "name": "tara_thanks",
                 "image": "tara_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -8388,6 +8725,7 @@
                 }
             },
             {
+                "name": "tara_sweat",
                 "image": "tara_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -8396,6 +8734,7 @@
                 }
             },
             {
+                "name": "tara_special",
                 "image": "tara_special.webp",
                 "rarity": {
                     "value": 2,
@@ -8404,6 +8743,7 @@
                 }
             },
             {
+                "name": "tara_lantern",
                 "image": "tara_lantern.webp",
                 "rarity": {
                     "value": 3,
@@ -8544,6 +8884,7 @@
         ],
         "pins": [
             {
+                "name": "gene_default",
                 "image": "gene_default.webp",
                 "rarity": {
                     "value": 0,
@@ -8552,6 +8893,7 @@
                 }
             },
             {
+                "name": "gene_happy",
                 "image": "gene_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -8560,6 +8902,7 @@
                 }
             },
             {
+                "name": "gene_sad",
                 "image": "gene_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -8568,6 +8911,7 @@
                 }
             },
             {
+                "name": "gene_angry",
                 "image": "gene_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -8576,6 +8920,7 @@
                 }
             },
             {
+                "name": "gene_gg",
                 "image": "gene_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -8584,6 +8929,7 @@
                 }
             },
             {
+                "name": "gene_clap",
                 "image": "gene_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -8592,6 +8938,7 @@
                 }
             },
             {
+                "name": "gene_thanks",
                 "image": "gene_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -8600,6 +8947,7 @@
                 }
             },
             {
+                "name": "gene_sweat",
                 "image": "gene_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -8608,6 +8956,7 @@
                 }
             },
             {
+                "name": "gene_special",
                 "image": "gene_special.webp",
                 "rarity": {
                     "value": 2,
@@ -8616,6 +8965,7 @@
                 }
             },
             {
+                "name": "gene_brawloween",
                 "image": "gene_brawloween.webp",
                 "rarity": {
                     "value": 3,
@@ -8772,6 +9122,7 @@
         ],
         "pins": [
             {
+                "name": "max_default",
                 "image": "max_default.webp",
                 "rarity": {
                     "value": 0,
@@ -8780,6 +9131,7 @@
                 }
             },
             {
+                "name": "max_happy",
                 "image": "max_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -8788,6 +9140,7 @@
                 }
             },
             {
+                "name": "max_sad",
                 "image": "max_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -8796,6 +9149,7 @@
                 }
             },
             {
+                "name": "max_angry",
                 "image": "max_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -8804,6 +9158,7 @@
                 }
             },
             {
+                "name": "max_gg",
                 "image": "max_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -8812,6 +9167,7 @@
                 }
             },
             {
+                "name": "max_clap",
                 "image": "max_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -8820,6 +9176,7 @@
                 }
             },
             {
+                "name": "max_thanks",
                 "image": "max_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -8828,6 +9185,7 @@
                 }
             },
             {
+                "name": "max_sweat",
                 "image": "max_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -8988,6 +9346,7 @@
         ],
         "pins": [
             {
+                "name": "mrp_default",
                 "image": "mrp_default.webp",
                 "rarity": {
                     "value": 0,
@@ -8996,6 +9355,7 @@
                 }
             },
             {
+                "name": "mrp_happy",
                 "image": "mrp_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -9004,6 +9364,7 @@
                 }
             },
             {
+                "name": "mrp_sad",
                 "image": "mrp_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -9012,6 +9373,7 @@
                 }
             },
             {
+                "name": "mrp_angry",
                 "image": "mrp_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -9020,6 +9382,7 @@
                 }
             },
             {
+                "name": "mrp_gg",
                 "image": "mrp_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -9028,6 +9391,7 @@
                 }
             },
             {
+                "name": "mrp_clap",
                 "image": "mrp_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -9036,6 +9400,7 @@
                 }
             },
             {
+                "name": "mrp_thanks",
                 "image": "mrp_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -9044,6 +9409,7 @@
                 }
             },
             {
+                "name": "mrp_sweat",
                 "image": "mrp_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -9052,6 +9418,7 @@
                 }
             },
             {
+                "name": "mrp_brawloween",
                 "image": "mrp_brawloween.webp",
                 "rarity": {
                     "value": 3,
@@ -9060,6 +9427,7 @@
                 }
             },
             {
+                "name": "mrp_biodome",
                 "image": "mrp_biodome.webp",
                 "rarity": {
                     "value": 3,
@@ -9068,6 +9436,7 @@
                 }
             },
             {
+                "name": "mrp_goldenweek",
                 "image": "mrp_goldenweek.webp",
                 "rarity": {
                     "value": 3,
@@ -9076,6 +9445,7 @@
                 }
             },
             {
+                "name": "mrp_goldenweek_02",
                 "image": "mrp_goldenweek_02.webp",
                 "rarity": {
                     "value": 3,
@@ -9255,6 +9625,7 @@
         ],
         "pins": [
             {
+                "name": "sprout_default",
                 "image": "sprout_default.webp",
                 "rarity": {
                     "value": 0,
@@ -9263,6 +9634,7 @@
                 }
             },
             {
+                "name": "sprout_happy",
                 "image": "sprout_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -9271,6 +9643,7 @@
                 }
             },
             {
+                "name": "sprout_sad",
                 "image": "sprout_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -9279,6 +9652,7 @@
                 }
             },
             {
+                "name": "sprout_angry",
                 "image": "sprout_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -9287,6 +9661,7 @@
                 }
             },
             {
+                "name": "sprout_gg",
                 "image": "sprout_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -9295,6 +9670,7 @@
                 }
             },
             {
+                "name": "sprout_clap",
                 "image": "sprout_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -9303,6 +9679,7 @@
                 }
             },
             {
+                "name": "sprout_thanks",
                 "image": "sprout_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -9311,6 +9688,7 @@
                 }
             },
             {
+                "name": "sprout_sweat",
                 "image": "sprout_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -9319,6 +9697,7 @@
                 }
             },
             {
+                "name": "sprout_prince",
                 "image": "sprout_prince.webp",
                 "rarity": {
                     "value": 3,
@@ -9327,6 +9706,7 @@
                 }
             },
             {
+                "name": "sprout_princechroma",
                 "image": "sprout_princechroma.webp",
                 "rarity": {
                     "value": 3,
@@ -9335,6 +9715,7 @@
                 }
             },
             {
+                "name": "sprout_biodome",
                 "image": "sprout_biodome.webp",
                 "rarity": {
                     "value": 3,
@@ -9417,6 +9798,7 @@
         ],
         "pins": [
             {
+                "name": "byron_default",
                 "image": "byron_default.webp",
                 "rarity": {
                     "value": 0,
@@ -9425,6 +9807,7 @@
                 }
             },
             {
+                "name": "byron_happy",
                 "image": "byron_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -9433,6 +9816,7 @@
                 }
             },
             {
+                "name": "byron_sad",
                 "image": "byron_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -9441,6 +9825,7 @@
                 }
             },
             {
+                "name": "byron_angry",
                 "image": "byron_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -9449,6 +9834,7 @@
                 }
             },
             {
+                "name": "byron_gg",
                 "image": "byron_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -9457,6 +9843,7 @@
                 }
             },
             {
+                "name": "byron_clap",
                 "image": "byron_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -9465,6 +9852,7 @@
                 }
             },
             {
+                "name": "byron_thanks",
                 "image": "byron_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -9473,6 +9861,7 @@
                 }
             },
             {
+                "name": "byron_sweat",
                 "image": "byron_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -9481,6 +9870,7 @@
                 }
             },
             {
+                "name": "byron_special",
                 "image": "byron_special.webp",
                 "rarity": {
                     "value": 2,
@@ -9489,6 +9879,7 @@
                 }
             },
             {
+                "name": "byron_villains",
                 "image": "byron_villains.webp",
                 "rarity": {
                     "value": 3,
@@ -9571,6 +9962,7 @@
         ],
         "pins": [
             {
+                "name": "squeak_default",
                 "image": "squeak_default.webp",
                 "rarity": {
                     "value": 0,
@@ -9579,6 +9971,7 @@
                 }
             },
             {
+                "name": "squeak_happy",
                 "image": "squeak_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -9587,6 +9980,7 @@
                 }
             },
             {
+                "name": "squeak_sad",
                 "image": "squeak_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -9595,6 +9989,7 @@
                 }
             },
             {
+                "name": "squeak_angry",
                 "image": "squeak_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -9603,6 +9998,7 @@
                 }
             },
             {
+                "name": "squeak_gg",
                 "image": "squeak_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -9611,6 +10007,7 @@
                 }
             },
             {
+                "name": "squeak_clap",
                 "image": "squeak_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -9619,6 +10016,7 @@
                 }
             },
             {
+                "name": "squeak_thanks",
                 "image": "squeak_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -9627,6 +10025,7 @@
                 }
             },
             {
+                "name": "squeak_sweat",
                 "image": "squeak_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -9635,6 +10034,7 @@
                 }
             },
             {
+                "name": "squeak_special",
                 "image": "squeak_special.webp",
                 "rarity": {
                     "value": 2,
@@ -9643,6 +10043,7 @@
                 }
             },
             {
+                "name": "squeak_brawloween",
                 "image": "squeak_brawloween.webp",
                 "rarity": {
                     "value": 3,
@@ -9842,6 +10243,7 @@
         ],
         "pins": [
             {
+                "name": "spike_default",
                 "image": "spike_default.webp",
                 "rarity": {
                     "value": 0,
@@ -9850,6 +10252,7 @@
                 }
             },
             {
+                "name": "spike_happy",
                 "image": "spike_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -9858,6 +10261,7 @@
                 }
             },
             {
+                "name": "spike_sad",
                 "image": "spike_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -9866,6 +10270,7 @@
                 }
             },
             {
+                "name": "spike_angry",
                 "image": "spike_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -9874,6 +10279,7 @@
                 }
             },
             {
+                "name": "spike_gg",
                 "image": "spike_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -9882,6 +10288,7 @@
                 }
             },
             {
+                "name": "spike_clap",
                 "image": "spike_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -9890,6 +10297,7 @@
                 }
             },
             {
+                "name": "spike_thanks",
                 "image": "spike_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -9898,6 +10306,7 @@
                 }
             },
             {
+                "name": "spike_sweat",
                 "image": "spike_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -9906,6 +10315,7 @@
                 }
             },
             {
+                "name": "spike_pink",
                 "image": "spike_pink.webp",
                 "rarity": {
                     "value": 3,
@@ -9914,6 +10324,7 @@
                 }
             },
             {
+                "name": "spike_lord",
                 "image": "spike_lord.webp",
                 "rarity": {
                     "value": 3,
@@ -9922,6 +10333,7 @@
                 }
             },
             {
+                "name": "spike_brawlidays",
                 "image": "spike_brawlidays.webp",
                 "rarity": {
                     "value": 3,
@@ -9930,6 +10342,7 @@
                 }
             },
             {
+                "name": "spike_stuntshow",
                 "image": "spike_stuntshow.webp",
                 "rarity": {
                     "value": 3,
@@ -10134,6 +10547,7 @@
         ],
         "pins": [
             {
+                "name": "crow_default",
                 "image": "crow_default.webp",
                 "rarity": {
                     "value": 0,
@@ -10142,6 +10556,7 @@
                 }
             },
             {
+                "name": "crow_happy",
                 "image": "crow_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -10150,6 +10565,7 @@
                 }
             },
             {
+                "name": "crow_sad",
                 "image": "crow_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -10158,6 +10574,7 @@
                 }
             },
             {
+                "name": "crow_angry",
                 "image": "crow_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -10166,6 +10583,7 @@
                 }
             },
             {
+                "name": "crow_gg",
                 "image": "crow_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -10174,6 +10592,7 @@
                 }
             },
             {
+                "name": "crow_clap",
                 "image": "crow_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -10182,6 +10601,7 @@
                 }
             },
             {
+                "name": "crow_thanks",
                 "image": "crow_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -10190,6 +10610,7 @@
                 }
             },
             {
+                "name": "crow_sweat",
                 "image": "crow_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -10347,6 +10768,7 @@
         ],
         "pins": [
             {
+                "name": "leon_default",
                 "image": "leon_default.webp",
                 "rarity": {
                     "value": 0,
@@ -10355,6 +10777,7 @@
                 }
             },
             {
+                "name": "leon_happy",
                 "image": "leon_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -10363,6 +10786,7 @@
                 }
             },
             {
+                "name": "leon_sad",
                 "image": "leon_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -10371,6 +10795,7 @@
                 }
             },
             {
+                "name": "leon_angry",
                 "image": "leon_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -10379,6 +10804,7 @@
                 }
             },
             {
+                "name": "leon_gg",
                 "image": "leon_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -10387,6 +10813,7 @@
                 }
             },
             {
+                "name": "leon_clap",
                 "image": "leon_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -10395,6 +10822,7 @@
                 }
             },
             {
+                "name": "leon_thanks",
                 "image": "leon_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -10403,6 +10831,7 @@
                 }
             },
             {
+                "name": "leon_sweat",
                 "image": "leon_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -10411,6 +10840,7 @@
                 }
             },
             {
+                "name": "leon_brawloween",
                 "image": "leon_brawloween.webp",
                 "rarity": {
                     "value": 3,
@@ -10570,6 +11000,7 @@
         ],
         "pins": [
             {
+                "name": "sandy_default",
                 "image": "sandy_default.webp",
                 "rarity": {
                     "value": 0,
@@ -10578,6 +11009,7 @@
                 }
             },
             {
+                "name": "sandy_happy",
                 "image": "sandy_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -10586,6 +11018,7 @@
                 }
             },
             {
+                "name": "sandy_sad",
                 "image": "sandy_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -10594,6 +11027,7 @@
                 }
             },
             {
+                "name": "sandy_angry",
                 "image": "sandy_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -10602,6 +11036,7 @@
                 }
             },
             {
+                "name": "sandy_gg",
                 "image": "sandy_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -10610,6 +11045,7 @@
                 }
             },
             {
+                "name": "sandy_clap",
                 "image": "sandy_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -10618,6 +11054,7 @@
                 }
             },
             {
+                "name": "sandy_thanks",
                 "image": "sandy_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -10626,6 +11063,7 @@
                 }
             },
             {
+                "name": "sandy_sweat",
                 "image": "sandy_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -10634,6 +11072,7 @@
                 }
             },
             {
+                "name": "sandy_special",
                 "image": "sandy_special.webp",
                 "rarity": {
                     "value": 2,
@@ -10642,6 +11081,7 @@
                 }
             },
             {
+                "name": "sandy_bt21",
                 "image": "sandy_bt21.webp",
                 "rarity": {
                     "value": 3,
@@ -10741,6 +11181,7 @@
         ],
         "pins": [
             {
+                "name": "amber_default",
                 "image": "amber_default.webp",
                 "rarity": {
                     "value": 0,
@@ -10749,6 +11190,7 @@
                 }
             },
             {
+                "name": "amber_happy",
                 "image": "amber_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -10757,6 +11199,7 @@
                 }
             },
             {
+                "name": "amber_sad",
                 "image": "amber_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -10765,6 +11208,7 @@
                 }
             },
             {
+                "name": "amber_angry",
                 "image": "amber_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -10773,6 +11217,7 @@
                 }
             },
             {
+                "name": "amber_gg",
                 "image": "amber_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -10781,6 +11226,7 @@
                 }
             },
             {
+                "name": "amber_clap",
                 "image": "amber_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -10789,6 +11235,7 @@
                 }
             },
             {
+                "name": "amber_thanks",
                 "image": "amber_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -10797,6 +11244,7 @@
                 }
             },
             {
+                "name": "amber_sweat",
                 "image": "amber_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -10805,6 +11253,7 @@
                 }
             },
             {
+                "name": "amber_special",
                 "image": "amber_special.webp",
                 "rarity": {
                     "value": 2,
@@ -10925,6 +11374,7 @@
         ],
         "pins": [
             {
+                "name": "meg_default",
                 "image": "meg_default.webp",
                 "rarity": {
                     "value": 0,
@@ -10933,6 +11383,7 @@
                 }
             },
             {
+                "name": "meg_happy",
                 "image": "meg_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -10941,6 +11392,7 @@
                 }
             },
             {
+                "name": "meg_sad",
                 "image": "meg_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -10949,6 +11401,7 @@
                 }
             },
             {
+                "name": "meg_angry",
                 "image": "meg_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -10957,6 +11410,7 @@
                 }
             },
             {
+                "name": "meg_gg",
                 "image": "meg_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -10965,6 +11419,7 @@
                 }
             },
             {
+                "name": "meg_clap",
                 "image": "meg_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -10973,6 +11428,7 @@
                 }
             },
             {
+                "name": "meg_thanks",
                 "image": "meg_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -10981,6 +11437,7 @@
                 }
             },
             {
+                "name": "meg_sweat",
                 "image": "meg_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -10989,6 +11446,7 @@
                 }
             },
             {
+                "name": "meg_special",
                 "image": "meg_special.webp",
                 "rarity": {
                     "value": 2,
@@ -10997,6 +11455,7 @@
                 }
             },
             {
+                "name": "meg_biodome",
                 "image": "meg_biodome.webp",
                 "rarity": {
                     "value": 3,
@@ -11005,6 +11464,7 @@
                 }
             },
             {
+                "name": "meg_stuntshow",
                 "image": "meg_stuntshow.webp",
                 "rarity": {
                     "value": 3,
@@ -11146,6 +11606,7 @@
         ],
         "pins": [
             {
+                "name": "gale_default",
                 "image": "gale_default.webp",
                 "rarity": {
                     "value": 0,
@@ -11154,6 +11615,7 @@
                 }
             },
             {
+                "name": "gale_happy",
                 "image": "gale_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -11162,6 +11624,7 @@
                 }
             },
             {
+                "name": "gale_sad",
                 "image": "gale_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -11170,6 +11633,7 @@
                 }
             },
             {
+                "name": "gale_angry",
                 "image": "gale_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -11178,6 +11642,7 @@
                 }
             },
             {
+                "name": "gale_gg",
                 "image": "gale_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -11186,6 +11651,7 @@
                 }
             },
             {
+                "name": "gale_clap",
                 "image": "gale_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -11194,6 +11660,7 @@
                 }
             },
             {
+                "name": "gale_thanks",
                 "image": "gale_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -11202,6 +11669,7 @@
                 }
             },
             {
+                "name": "gale_sweat",
                 "image": "gale_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -11210,6 +11678,7 @@
                 }
             },
             {
+                "name": "gale_trader_default",
                 "image": "gale_trader_default.webp",
                 "rarity": {
                     "value": 3,
@@ -11218,6 +11687,7 @@
                 }
             },
             {
+                "name": "gale_trader_happy",
                 "image": "gale_trader_happy.webp",
                 "rarity": {
                     "value": 3,
@@ -11226,6 +11696,7 @@
                 }
             },
             {
+                "name": "gale_trader_sad",
                 "image": "gale_trader_sad.webp",
                 "rarity": {
                     "value": 3,
@@ -11234,6 +11705,7 @@
                 }
             },
             {
+                "name": "gale_trader_angry",
                 "image": "gale_trader_angry.webp",
                 "rarity": {
                     "value": 3,
@@ -11242,6 +11714,7 @@
                 }
             },
             {
+                "name": "gale_trader_gg",
                 "image": "gale_trader_gg.webp",
                 "rarity": {
                     "value": 3,
@@ -11250,6 +11723,7 @@
                 }
             },
             {
+                "name": "gale_trader_clap",
                 "image": "gale_trader_clap.webp",
                 "rarity": {
                     "value": 3,
@@ -11258,6 +11732,7 @@
                 }
             },
             {
+                "name": "gale_trader_thanks",
                 "image": "gale_trader_thanks.webp",
                 "rarity": {
                     "value": 3,
@@ -11266,6 +11741,7 @@
                 }
             },
             {
+                "name": "gale_trader_sweat",
                 "image": "gale_trader_sweat.webp",
                 "rarity": {
                     "value": 3,
@@ -11404,6 +11880,7 @@
         ],
         "pins": [
             {
+                "name": "surge_default",
                 "image": "surge_default.webp",
                 "rarity": {
                     "value": 0,
@@ -11412,6 +11889,7 @@
                 }
             },
             {
+                "name": "surge_happy",
                 "image": "surge_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -11420,6 +11898,7 @@
                 }
             },
             {
+                "name": "surge_sad",
                 "image": "surge_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -11428,6 +11907,7 @@
                 }
             },
             {
+                "name": "surge_angry",
                 "image": "surge_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -11436,6 +11916,7 @@
                 }
             },
             {
+                "name": "surge_gg",
                 "image": "surge_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -11444,6 +11925,7 @@
                 }
             },
             {
+                "name": "surge_clap",
                 "image": "surge_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -11452,6 +11934,7 @@
                 }
             },
             {
+                "name": "surge_thanks",
                 "image": "surge_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -11460,6 +11943,7 @@
                 }
             },
             {
+                "name": "surge_sweat",
                 "image": "surge_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -11468,6 +11952,7 @@
                 }
             },
             {
+                "name": "surge_special",
                 "image": "surge_special.webp",
                 "rarity": {
                     "value": 2,
@@ -11476,6 +11961,7 @@
                 }
             },
             {
+                "name": "surge_knight_default",
                 "image": "surge_knight_default.webp",
                 "rarity": {
                     "value": 3,
@@ -11484,6 +11970,7 @@
                 }
             },
             {
+                "name": "surge_knight_happy",
                 "image": "surge_knight_happy.webp",
                 "rarity": {
                     "value": 3,
@@ -11492,6 +11979,7 @@
                 }
             },
             {
+                "name": "surge_knight_sad",
                 "image": "surge_knight_sad.webp",
                 "rarity": {
                     "value": 3,
@@ -11500,6 +11988,7 @@
                 }
             },
             {
+                "name": "surge_knight_angry",
                 "image": "surge_knight_angry.webp",
                 "rarity": {
                     "value": 3,
@@ -11508,6 +11997,7 @@
                 }
             },
             {
+                "name": "surge_knight_gg",
                 "image": "surge_knight_gg.webp",
                 "rarity": {
                     "value": 3,
@@ -11516,6 +12006,7 @@
                 }
             },
             {
+                "name": "surge_knight_clap",
                 "image": "surge_knight_clap.webp",
                 "rarity": {
                     "value": 3,
@@ -11524,6 +12015,7 @@
                 }
             },
             {
+                "name": "surge_knight_thanks",
                 "image": "surge_knight_thanks.webp",
                 "rarity": {
                     "value": 3,
@@ -11532,6 +12024,7 @@
                 }
             },
             {
+                "name": "surge_knight_sweat",
                 "image": "surge_knight_sweat.webp",
                 "rarity": {
                     "value": 3,
@@ -11540,6 +12033,7 @@
                 }
             },
             {
+                "name": "surge_knight_special",
                 "image": "surge_knight_special.webp",
                 "rarity": {
                     "value": 3,
@@ -11680,6 +12174,7 @@
         ],
         "pins": [
             {
+                "name": "colette_default",
                 "image": "colette_default.webp",
                 "rarity": {
                     "value": 0,
@@ -11688,6 +12183,7 @@
                 }
             },
             {
+                "name": "colette_happy",
                 "image": "colette_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -11696,6 +12192,7 @@
                 }
             },
             {
+                "name": "colette_sad",
                 "image": "colette_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -11704,6 +12201,7 @@
                 }
             },
             {
+                "name": "colette_angry",
                 "image": "colette_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -11712,6 +12210,7 @@
                 }
             },
             {
+                "name": "colette_gg",
                 "image": "colette_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -11720,6 +12219,7 @@
                 }
             },
             {
+                "name": "colette_clap",
                 "image": "colette_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -11728,6 +12228,7 @@
                 }
             },
             {
+                "name": "colette_thanks",
                 "image": "colette_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -11736,6 +12237,7 @@
                 }
             },
             {
+                "name": "colette_sweat",
                 "image": "colette_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -11744,6 +12246,7 @@
                 }
             },
             {
+                "name": "colette_trixie_default",
                 "image": "colette_trixie_default.webp",
                 "rarity": {
                     "value": 3,
@@ -11752,6 +12255,7 @@
                 }
             },
             {
+                "name": "colette_trixie_happy",
                 "image": "colette_trixie_happy.webp",
                 "rarity": {
                     "value": 3,
@@ -11760,6 +12264,7 @@
                 }
             },
             {
+                "name": "colette_trixie_sad",
                 "image": "colette_trixie_sad.webp",
                 "rarity": {
                     "value": 3,
@@ -11768,6 +12273,7 @@
                 }
             },
             {
+                "name": "colette_trixie_angry",
                 "image": "colette_trixie_angry.webp",
                 "rarity": {
                     "value": 3,
@@ -11776,6 +12282,7 @@
                 }
             },
             {
+                "name": "colette_trixie_gg",
                 "image": "colette_trixie_gg.webp",
                 "rarity": {
                     "value": 3,
@@ -11784,6 +12291,7 @@
                 }
             },
             {
+                "name": "colette_trixie_clap",
                 "image": "colette_trixie_clap.webp",
                 "rarity": {
                     "value": 3,
@@ -11792,6 +12300,7 @@
                 }
             },
             {
+                "name": "colette_trixie_thanks",
                 "image": "colette_trixie_thanks.webp",
                 "rarity": {
                     "value": 3,
@@ -11800,6 +12309,7 @@
                 }
             },
             {
+                "name": "colette_trixie_sweat",
                 "image": "colette_trixie_sweat.webp",
                 "rarity": {
                     "value": 3,
@@ -11808,6 +12318,7 @@
                 }
             },
             {
+                "name": "colette_trixie_special",
                 "image": "colette_trixie_special.webp",
                 "rarity": {
                     "value": 3,
@@ -11948,6 +12459,7 @@
         ],
         "pins": [
             {
+                "name": "lou_default",
                 "image": "lou_default.webp",
                 "rarity": {
                     "value": 0,
@@ -11956,6 +12468,7 @@
                 }
             },
             {
+                "name": "lou_happy",
                 "image": "lou_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -11964,6 +12477,7 @@
                 }
             },
             {
+                "name": "lou_sad",
                 "image": "lou_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -11972,6 +12486,7 @@
                 }
             },
             {
+                "name": "lou_angry",
                 "image": "lou_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -11980,6 +12495,7 @@
                 }
             },
             {
+                "name": "lou_gg",
                 "image": "lou_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -11988,6 +12504,7 @@
                 }
             },
             {
+                "name": "lou_clap",
                 "image": "lou_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -11996,6 +12513,7 @@
                 }
             },
             {
+                "name": "lou_thanks",
                 "image": "lou_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -12004,6 +12522,7 @@
                 }
             },
             {
+                "name": "lou_sweat",
                 "image": "lou_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -12012,6 +12531,7 @@
                 }
             },
             {
+                "name": "lou_special",
                 "image": "lou_special.webp",
                 "rarity": {
                     "value": 2,
@@ -12020,6 +12540,7 @@
                 }
             },
             {
+                "name": "lou_king_default",
                 "image": "lou_king_default.webp",
                 "rarity": {
                     "value": 3,
@@ -12028,6 +12549,7 @@
                 }
             },
             {
+                "name": "lou_king_happy",
                 "image": "lou_king_happy.webp",
                 "rarity": {
                     "value": 3,
@@ -12036,6 +12558,7 @@
                 }
             },
             {
+                "name": "lou_king_sad",
                 "image": "lou_king_sad.webp",
                 "rarity": {
                     "value": 3,
@@ -12044,6 +12567,7 @@
                 }
             },
             {
+                "name": "lou_king_angry",
                 "image": "lou_king_angry.webp",
                 "rarity": {
                     "value": 3,
@@ -12052,6 +12576,7 @@
                 }
             },
             {
+                "name": "lou_king_gg",
                 "image": "lou_king_gg.webp",
                 "rarity": {
                     "value": 3,
@@ -12060,6 +12585,7 @@
                 }
             },
             {
+                "name": "lou_king_clap",
                 "image": "lou_king_clap.webp",
                 "rarity": {
                     "value": 3,
@@ -12068,6 +12594,7 @@
                 }
             },
             {
+                "name": "lou_king_thanks",
                 "image": "lou_king_thanks.webp",
                 "rarity": {
                     "value": 3,
@@ -12076,6 +12603,7 @@
                 }
             },
             {
+                "name": "lou_king_sweat",
                 "image": "lou_king_sweat.webp",
                 "rarity": {
                     "value": 3,
@@ -12084,6 +12612,7 @@
                 }
             },
             {
+                "name": "lou_king_special",
                 "image": "lou_king_special.webp",
                 "rarity": {
                     "value": 3,
@@ -12092,6 +12621,7 @@
                 }
             },
             {
+                "name": "lou_brawlentines",
                 "image": "lou_brawlentines.webp",
                 "rarity": {
                     "value": 3,
@@ -12232,6 +12762,7 @@
         ],
         "pins": [
             {
+                "name": "ruffs_default",
                 "image": "ruffs_default.webp",
                 "rarity": {
                     "value": 0,
@@ -12240,6 +12771,7 @@
                 }
             },
             {
+                "name": "ruffs_happy",
                 "image": "ruffs_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -12248,6 +12780,7 @@
                 }
             },
             {
+                "name": "ruffs_sad",
                 "image": "ruffs_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -12256,6 +12789,7 @@
                 }
             },
             {
+                "name": "ruffs_angry",
                 "image": "ruffs_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -12264,6 +12798,7 @@
                 }
             },
             {
+                "name": "ruffs_gg",
                 "image": "ruffs_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -12272,6 +12807,7 @@
                 }
             },
             {
+                "name": "ruffs_clap",
                 "image": "ruffs_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -12280,6 +12816,7 @@
                 }
             },
             {
+                "name": "ruffs_thanks",
                 "image": "ruffs_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -12288,6 +12825,7 @@
                 }
             },
             {
+                "name": "ruffs_sweat",
                 "image": "ruffs_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -12296,6 +12834,7 @@
                 }
             },
             {
+                "name": "ruffs_special",
                 "image": "ruffs_special.webp",
                 "rarity": {
                     "value": 2,
@@ -12304,6 +12843,7 @@
                 }
             },
             {
+                "name": "ruffs_ronin_default",
                 "image": "ruffs_ronin_default.webp",
                 "rarity": {
                     "value": 3,
@@ -12312,6 +12852,7 @@
                 }
             },
             {
+                "name": "ruffs_ronin_happy",
                 "image": "ruffs_ronin_happy.webp",
                 "rarity": {
                     "value": 3,
@@ -12320,6 +12861,7 @@
                 }
             },
             {
+                "name": "ruffs_ronin_sad",
                 "image": "ruffs_ronin_sad.webp",
                 "rarity": {
                     "value": 3,
@@ -12328,6 +12870,7 @@
                 }
             },
             {
+                "name": "ruffs_ronin_angry",
                 "image": "ruffs_ronin_angry.webp",
                 "rarity": {
                     "value": 3,
@@ -12336,6 +12879,7 @@
                 }
             },
             {
+                "name": "ruffs_ronin_gg",
                 "image": "ruffs_ronin_gg.webp",
                 "rarity": {
                     "value": 3,
@@ -12344,6 +12888,7 @@
                 }
             },
             {
+                "name": "ruffs_ronin_clap",
                 "image": "ruffs_ronin_clap.webp",
                 "rarity": {
                     "value": 3,
@@ -12352,6 +12897,7 @@
                 }
             },
             {
+                "name": "ruffs_ronin_thanks",
                 "image": "ruffs_ronin_thanks.webp",
                 "rarity": {
                     "value": 3,
@@ -12360,6 +12906,7 @@
                 }
             },
             {
+                "name": "ruffs_ronin_sweat",
                 "image": "ruffs_ronin_sweat.webp",
                 "rarity": {
                     "value": 3,
@@ -12368,6 +12915,7 @@
                 }
             },
             {
+                "name": "ruffs_ronin_special",
                 "image": "ruffs_ronin_special.webp",
                 "rarity": {
                     "value": 3,
@@ -12376,6 +12924,7 @@
                 }
             },
             {
+                "name": "ruffs_bt21",
                 "image": "ruffs_bt21.webp",
                 "rarity": {
                     "value": 3,
@@ -12517,6 +13066,7 @@
         ],
         "pins": [
             {
+                "name": "belle_default",
                 "image": "belle_default.webp",
                 "rarity": {
                     "value": 0,
@@ -12525,6 +13075,7 @@
                 }
             },
             {
+                "name": "belle_happy",
                 "image": "belle_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -12533,6 +13084,7 @@
                 }
             },
             {
+                "name": "belle_sad",
                 "image": "belle_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -12541,6 +13093,7 @@
                 }
             },
             {
+                "name": "belle_angry",
                 "image": "belle_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -12549,6 +13102,7 @@
                 }
             },
             {
+                "name": "belle_gg",
                 "image": "belle_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -12557,6 +13111,7 @@
                 }
             },
             {
+                "name": "belle_clap",
                 "image": "belle_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -12565,6 +13120,7 @@
                 }
             },
             {
+                "name": "belle_thanks",
                 "image": "belle_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -12573,6 +13129,7 @@
                 }
             },
             {
+                "name": "belle_sweat",
                 "image": "belle_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -12581,6 +13138,7 @@
                 }
             },
             {
+                "name": "belle_special",
                 "image": "belle_special.webp",
                 "rarity": {
                     "value": 2,
@@ -12589,6 +13147,7 @@
                 }
             },
             {
+                "name": "belle_boss_default",
                 "image": "belle_boss_default.webp",
                 "rarity": {
                     "value": 3,
@@ -12597,6 +13156,7 @@
                 }
             },
             {
+                "name": "belle_boss_happy",
                 "image": "belle_boss_happy.webp",
                 "rarity": {
                     "value": 3,
@@ -12605,6 +13165,7 @@
                 }
             },
             {
+                "name": "belle_boss_sad",
                 "image": "belle_boss_sad.webp",
                 "rarity": {
                     "value": 3,
@@ -12613,6 +13174,7 @@
                 }
             },
             {
+                "name": "belle_boss_angry",
                 "image": "belle_boss_angry.webp",
                 "rarity": {
                     "value": 3,
@@ -12621,6 +13183,7 @@
                 }
             },
             {
+                "name": "belle_boss_gg",
                 "image": "belle_boss_gg.webp",
                 "rarity": {
                     "value": 3,
@@ -12629,6 +13192,7 @@
                 }
             },
             {
+                "name": "belle_boss_clap",
                 "image": "belle_boss_clap.webp",
                 "rarity": {
                     "value": 3,
@@ -12637,6 +13201,7 @@
                 }
             },
             {
+                "name": "belle_boss_thanks",
                 "image": "belle_boss_thanks.webp",
                 "rarity": {
                     "value": 3,
@@ -12645,6 +13210,7 @@
                 }
             },
             {
+                "name": "belle_boss_sweat",
                 "image": "belle_boss_sweat.webp",
                 "rarity": {
                     "value": 3,
@@ -12653,6 +13219,7 @@
                 }
             },
             {
+                "name": "belle_boss_special",
                 "image": "belle_boss_special.webp",
                 "rarity": {
                     "value": 3,
@@ -12661,6 +13228,7 @@
                 }
             },
             {
+                "name": "belle_biodome",
                 "image": "belle_biodome.webp",
                 "rarity": {
                     "value": 3,
@@ -12669,6 +13237,7 @@
                 }
             },
             {
+                "name": "belle_deepsea",
                 "image": "belle_deepsea.webp",
                 "rarity": {
                     "value": 3,
@@ -12790,6 +13359,7 @@
         ],
         "pins": [
             {
+                "name": "buzz_default",
                 "image": "buzz_default.webp",
                 "rarity": {
                     "value": 0,
@@ -12798,6 +13368,7 @@
                 }
             },
             {
+                "name": "buzz_happy",
                 "image": "buzz_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -12806,6 +13377,7 @@
                 }
             },
             {
+                "name": "buzz_sad",
                 "image": "buzz_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -12814,6 +13386,7 @@
                 }
             },
             {
+                "name": "buzz_angry",
                 "image": "buzz_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -12822,6 +13395,7 @@
                 }
             },
             {
+                "name": "buzz_gg",
                 "image": "buzz_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -12830,6 +13404,7 @@
                 }
             },
             {
+                "name": "buzz_clap",
                 "image": "buzz_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -12838,6 +13413,7 @@
                 }
             },
             {
+                "name": "buzz_thanks",
                 "image": "buzz_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -12846,6 +13422,7 @@
                 }
             },
             {
+                "name": "buzz_sweat",
                 "image": "buzz_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -12854,6 +13431,7 @@
                 }
             },
             {
+                "name": "buzz_special",
                 "image": "buzz_special.webp",
                 "rarity": {
                     "value": 2,
@@ -12862,6 +13440,7 @@
                 }
             },
             {
+                "name": "buzz_punk_default",
                 "image": "buzz_punk_default.webp",
                 "rarity": {
                     "value": 3,
@@ -12870,6 +13449,7 @@
                 }
             },
             {
+                "name": "buzz_punk_happy",
                 "image": "buzz_punk_happy.webp",
                 "rarity": {
                     "value": 3,
@@ -12878,6 +13458,7 @@
                 }
             },
             {
+                "name": "buzz_punk_sad",
                 "image": "buzz_punk_sad.webp",
                 "rarity": {
                     "value": 3,
@@ -12886,6 +13467,7 @@
                 }
             },
             {
+                "name": "buzz_punk_angry",
                 "image": "buzz_punk_angry.webp",
                 "rarity": {
                     "value": 3,
@@ -12894,6 +13476,7 @@
                 }
             },
             {
+                "name": "buzz_punk_gg",
                 "image": "buzz_punk_gg.webp",
                 "rarity": {
                     "value": 3,
@@ -12902,6 +13485,7 @@
                 }
             },
             {
+                "name": "buzz_punk_clap",
                 "image": "buzz_punk_clap.webp",
                 "rarity": {
                     "value": 3,
@@ -12910,6 +13494,7 @@
                 }
             },
             {
+                "name": "buzz_punk_thanks",
                 "image": "buzz_punk_thanks.webp",
                 "rarity": {
                     "value": 3,
@@ -12918,6 +13503,7 @@
                 }
             },
             {
+                "name": "buzz_punk_sweat",
                 "image": "buzz_punk_sweat.webp",
                 "rarity": {
                     "value": 3,
@@ -12926,6 +13512,7 @@
                 }
             },
             {
+                "name": "buzz_punk_special",
                 "image": "buzz_punk_special.webp",
                 "rarity": {
                     "value": 3,
@@ -13025,6 +13612,7 @@
         ],
         "pins": [
             {
+                "name": "ash_default",
                 "image": "ash_default.webp",
                 "rarity": {
                     "value": 0,
@@ -13033,6 +13621,7 @@
                 }
             },
             {
+                "name": "ash_happy",
                 "image": "ash_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -13041,6 +13630,7 @@
                 }
             },
             {
+                "name": "ash_sad",
                 "image": "ash_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -13049,6 +13639,7 @@
                 }
             },
             {
+                "name": "ash_angry",
                 "image": "ash_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -13057,6 +13648,7 @@
                 }
             },
             {
+                "name": "ash_gg",
                 "image": "ash_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -13065,6 +13657,7 @@
                 }
             },
             {
+                "name": "ash_clap",
                 "image": "ash_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -13073,6 +13666,7 @@
                 }
             },
             {
+                "name": "ash_thanks",
                 "image": "ash_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -13081,6 +13675,7 @@
                 }
             },
             {
+                "name": "ash_sweat",
                 "image": "ash_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -13089,6 +13684,7 @@
                 }
             },
             {
+                "name": "ash_special",
                 "image": "ash_special.webp",
                 "rarity": {
                     "value": 2,
@@ -13097,6 +13693,7 @@
                 }
             },
             {
+                "name": "ash_ninja_default",
                 "image": "ash_ninja_default.webp",
                 "rarity": {
                     "value": 3,
@@ -13105,6 +13702,7 @@
                 }
             },
             {
+                "name": "ash_ninja_happy",
                 "image": "ash_ninja_happy.webp",
                 "rarity": {
                     "value": 3,
@@ -13113,6 +13711,7 @@
                 }
             },
             {
+                "name": "ash_ninja_sad",
                 "image": "ash_ninja_sad.webp",
                 "rarity": {
                     "value": 3,
@@ -13121,6 +13720,7 @@
                 }
             },
             {
+                "name": "ash_ninja_angry",
                 "image": "ash_ninja_angry.webp",
                 "rarity": {
                     "value": 3,
@@ -13129,6 +13729,7 @@
                 }
             },
             {
+                "name": "ash_ninja_gg",
                 "image": "ash_ninja_gg.webp",
                 "rarity": {
                     "value": 3,
@@ -13137,6 +13738,7 @@
                 }
             },
             {
+                "name": "ash_ninja_clap",
                 "image": "ash_ninja_clap.webp",
                 "rarity": {
                     "value": 3,
@@ -13145,6 +13747,7 @@
                 }
             },
             {
+                "name": "ash_ninja_thanks",
                 "image": "ash_ninja_thanks.webp",
                 "rarity": {
                     "value": 3,
@@ -13153,6 +13756,7 @@
                 }
             },
             {
+                "name": "ash_ninja_sweat",
                 "image": "ash_ninja_sweat.webp",
                 "rarity": {
                     "value": 3,
@@ -13161,6 +13765,7 @@
                 }
             },
             {
+                "name": "ash_ninja_special",
                 "image": "ash_ninja_special.webp",
                 "rarity": {
                     "value": 3,
@@ -13281,6 +13886,7 @@
         ],
         "pins": [
             {
+                "name": "lola_default",
                 "image": "lola_default.webp",
                 "rarity": {
                     "value": 0,
@@ -13289,6 +13895,7 @@
                 }
             },
             {
+                "name": "lola_happy",
                 "image": "lola_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -13297,6 +13904,7 @@
                 }
             },
             {
+                "name": "lola_sad",
                 "image": "lola_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -13305,6 +13913,7 @@
                 }
             },
             {
+                "name": "lola_angry",
                 "image": "lola_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -13313,6 +13922,7 @@
                 }
             },
             {
+                "name": "lola_gg",
                 "image": "lola_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -13321,6 +13931,7 @@
                 }
             },
             {
+                "name": "lola_clap",
                 "image": "lola_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -13329,6 +13940,7 @@
                 }
             },
             {
+                "name": "lola_thanks",
                 "image": "lola_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -13337,6 +13949,7 @@
                 }
             },
             {
+                "name": "lola_sweat",
                 "image": "lola_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -13345,6 +13958,7 @@
                 }
             },
             {
+                "name": "lola_special",
                 "image": "lola_special.webp",
                 "rarity": {
                     "value": 2,
@@ -13353,6 +13967,7 @@
                 }
             },
             {
+                "name": "lola_chola_default",
                 "image": "lola_chola_default.webp",
                 "rarity": {
                     "value": 3,
@@ -13361,6 +13976,7 @@
                 }
             },
             {
+                "name": "lola_chola_happy",
                 "image": "lola_chola_happy.webp",
                 "rarity": {
                     "value": 3,
@@ -13369,6 +13985,7 @@
                 }
             },
             {
+                "name": "lola_chola_sad",
                 "image": "lola_chola_sad.webp",
                 "rarity": {
                     "value": 3,
@@ -13377,6 +13994,7 @@
                 }
             },
             {
+                "name": "lola_chola_angry",
                 "image": "lola_chola_angry.webp",
                 "rarity": {
                     "value": 3,
@@ -13385,6 +14003,7 @@
                 }
             },
             {
+                "name": "lola_chola_gg",
                 "image": "lola_chola_gg.webp",
                 "rarity": {
                     "value": 3,
@@ -13393,6 +14012,7 @@
                 }
             },
             {
+                "name": "lola_chola_clap",
                 "image": "lola_chola_clap.webp",
                 "rarity": {
                     "value": 3,
@@ -13401,6 +14021,7 @@
                 }
             },
             {
+                "name": "lola_chola_thanks",
                 "image": "lola_chola_thanks.webp",
                 "rarity": {
                     "value": 3,
@@ -13409,6 +14030,7 @@
                 }
             },
             {
+                "name": "lola_chola_sweat",
                 "image": "lola_chola_sweat.webp",
                 "rarity": {
                     "value": 3,
@@ -13417,6 +14039,7 @@
                 }
             },
             {
+                "name": "lola_chola_special",
                 "image": "lola_chola_special.webp",
                 "rarity": {
                     "value": 3,
@@ -13425,6 +14048,7 @@
                 }
             },
             {
+                "name": "lola_villains",
                 "image": "lola_villains.webp",
                 "rarity": {
                     "value": 3,
@@ -13545,6 +14169,7 @@
         ],
         "pins": [
             {
+                "name": "fang_default",
                 "image": "fang_default.webp",
                 "rarity": {
                     "value": 0,
@@ -13553,6 +14178,7 @@
                 }
             },
             {
+                "name": "fang_happy",
                 "image": "fang_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -13561,6 +14187,7 @@
                 }
             },
             {
+                "name": "fang_sad",
                 "image": "fang_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -13569,6 +14196,7 @@
                 }
             },
             {
+                "name": "fang_angry",
                 "image": "fang_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -13577,6 +14205,7 @@
                 }
             },
             {
+                "name": "fang_gg",
                 "image": "fang_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -13585,6 +14214,7 @@
                 }
             },
             {
+                "name": "fang_clap",
                 "image": "fang_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -13593,6 +14223,7 @@
                 }
             },
             {
+                "name": "fang_thanks",
                 "image": "fang_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -13601,6 +14232,7 @@
                 }
             },
             {
+                "name": "fang_sweat",
                 "image": "fang_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -13609,6 +14241,7 @@
                 }
             },
             {
+                "name": "fang_special",
                 "image": "fang_special.webp",
                 "rarity": {
                     "value": 2,
@@ -13617,6 +14250,7 @@
                 }
             },
             {
+                "name": "fang_furious_default",
                 "image": "fang_furious_default.webp",
                 "rarity": {
                     "value": 3,
@@ -13625,6 +14259,7 @@
                 }
             },
             {
+                "name": "fang_furious_happy",
                 "image": "fang_furious_happy.webp",
                 "rarity": {
                     "value": 3,
@@ -13633,6 +14268,7 @@
                 }
             },
             {
+                "name": "fang_furious_sad",
                 "image": "fang_furious_sad.webp",
                 "rarity": {
                     "value": 3,
@@ -13641,6 +14277,7 @@
                 }
             },
             {
+                "name": "fang_furious_angry",
                 "image": "fang_furious_angry.webp",
                 "rarity": {
                     "value": 3,
@@ -13649,6 +14286,7 @@
                 }
             },
             {
+                "name": "fang_furious_gg",
                 "image": "fang_furious_gg.webp",
                 "rarity": {
                     "value": 3,
@@ -13657,6 +14295,7 @@
                 }
             },
             {
+                "name": "fang_furious_clap",
                 "image": "fang_furious_clap.webp",
                 "rarity": {
                     "value": 3,
@@ -13665,6 +14304,7 @@
                 }
             },
             {
+                "name": "fang_furious_thanks",
                 "image": "fang_furious_thanks.webp",
                 "rarity": {
                     "value": 3,
@@ -13673,6 +14313,7 @@
                 }
             },
             {
+                "name": "fang_furious_sweat",
                 "image": "fang_furious_sweat.webp",
                 "rarity": {
                     "value": 3,
@@ -13681,6 +14322,7 @@
                 }
             },
             {
+                "name": "fang_furious_special",
                 "image": "fang_furious_special.webp",
                 "rarity": {
                     "value": 3,
@@ -13689,6 +14331,7 @@
                 }
             },
             {
+                "name": "fang_deepsea",
                 "image": "fang_deepsea.webp",
                 "rarity": {
                     "value": 3,
@@ -13788,6 +14431,7 @@
         ],
         "pins": [
             {
+                "name": "eve_default",
                 "image": "eve_default.webp",
                 "rarity": {
                     "value": 0,
@@ -13796,6 +14440,7 @@
                 }
             },
             {
+                "name": "eve_happy",
                 "image": "eve_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -13804,6 +14449,7 @@
                 }
             },
             {
+                "name": "eve_sad",
                 "image": "eve_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -13812,6 +14458,7 @@
                 }
             },
             {
+                "name": "eve_angry",
                 "image": "eve_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -13820,6 +14467,7 @@
                 }
             },
             {
+                "name": "eve_gg",
                 "image": "eve_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -13828,6 +14476,7 @@
                 }
             },
             {
+                "name": "eve_clap",
                 "image": "eve_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -13836,6 +14485,7 @@
                 }
             },
             {
+                "name": "eve_thanks",
                 "image": "eve_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -13844,6 +14494,7 @@
                 }
             },
             {
+                "name": "eve_sweat",
                 "image": "eve_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -13852,6 +14503,7 @@
                 }
             },
             {
+                "name": "eve_special",
                 "image": "eve_special.webp",
                 "rarity": {
                     "value": 2,
@@ -13860,6 +14512,7 @@
                 }
             },
             {
+                "name": "eve_spacecactus_default",
                 "image": "eve_spacecactus_default.webp",
                 "rarity": {
                     "value": 3,
@@ -13868,6 +14521,7 @@
                 }
             },
             {
+                "name": "eve_spacecactus_happy",
                 "image": "eve_spacecactus_happy.webp",
                 "rarity": {
                     "value": 3,
@@ -13876,6 +14530,7 @@
                 }
             },
             {
+                "name": "eve_spacecactus_sad",
                 "image": "eve_spacecactus_sad.webp",
                 "rarity": {
                     "value": 3,
@@ -13884,6 +14539,7 @@
                 }
             },
             {
+                "name": "eve_spacecactus_angry",
                 "image": "eve_spacecactus_angry.webp",
                 "rarity": {
                     "value": 3,
@@ -13892,6 +14548,7 @@
                 }
             },
             {
+                "name": "eve_spacecactus_gg",
                 "image": "eve_spacecactus_gg.webp",
                 "rarity": {
                     "value": 3,
@@ -13900,6 +14557,7 @@
                 }
             },
             {
+                "name": "eve_spacecactus_clap",
                 "image": "eve_spacecactus_clap.webp",
                 "rarity": {
                     "value": 3,
@@ -13908,6 +14566,7 @@
                 }
             },
             {
+                "name": "eve_spacecactus_thanks",
                 "image": "eve_spacecactus_thanks.webp",
                 "rarity": {
                     "value": 3,
@@ -13916,6 +14575,7 @@
                 }
             },
             {
+                "name": "eve_spacecactus_sweat",
                 "image": "eve_spacecactus_sweat.webp",
                 "rarity": {
                     "value": 3,
@@ -13924,6 +14584,7 @@
                 }
             },
             {
+                "name": "eve_spacecactus_special",
                 "image": "eve_spacecactus_special.webp",
                 "rarity": {
                     "value": 3,
@@ -14023,6 +14684,7 @@
         ],
         "pins": [
             {
+                "name": "janet_default",
                 "image": "janet_default.webp",
                 "rarity": {
                     "value": 0,
@@ -14031,6 +14693,7 @@
                 }
             },
             {
+                "name": "janet_happy",
                 "image": "janet_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -14039,6 +14702,7 @@
                 }
             },
             {
+                "name": "janet_sad",
                 "image": "janet_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -14047,6 +14711,7 @@
                 }
             },
             {
+                "name": "janet_angry",
                 "image": "janet_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -14055,6 +14720,7 @@
                 }
             },
             {
+                "name": "janet_gg",
                 "image": "janet_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -14063,6 +14729,7 @@
                 }
             },
             {
+                "name": "janet_clap",
                 "image": "janet_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -14071,6 +14738,7 @@
                 }
             },
             {
+                "name": "janet_thanks",
                 "image": "janet_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -14079,6 +14747,7 @@
                 }
             },
             {
+                "name": "janet_sweat",
                 "image": "janet_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -14087,6 +14756,7 @@
                 }
             },
             {
+                "name": "janet_special",
                 "image": "janet_special.webp",
                 "rarity": {
                     "value": 2,
@@ -14095,6 +14765,7 @@
                 }
             },
             {
+                "name": "janet_valkyrie_default",
                 "image": "janet_valkyrie_default.webp",
                 "rarity": {
                     "value": 3,
@@ -14103,6 +14774,7 @@
                 }
             },
             {
+                "name": "janet_valkyrie_happy",
                 "image": "janet_valkyrie_happy.webp",
                 "rarity": {
                     "value": 3,
@@ -14111,6 +14783,7 @@
                 }
             },
             {
+                "name": "janet_valkyrie_sad",
                 "image": "janet_valkyrie_sad.webp",
                 "rarity": {
                     "value": 3,
@@ -14119,6 +14792,7 @@
                 }
             },
             {
+                "name": "janet_valkyrie_angry",
                 "image": "janet_valkyrie_angry.webp",
                 "rarity": {
                     "value": 3,
@@ -14127,6 +14801,7 @@
                 }
             },
             {
+                "name": "janet_valkyrie_gg",
                 "image": "janet_valkyrie_gg.webp",
                 "rarity": {
                     "value": 3,
@@ -14135,6 +14810,7 @@
                 }
             },
             {
+                "name": "janet_valkyrie_clap",
                 "image": "janet_valkyrie_clap.webp",
                 "rarity": {
                     "value": 3,
@@ -14143,6 +14819,7 @@
                 }
             },
             {
+                "name": "janet_valkyrie_thanks",
                 "image": "janet_valkyrie_thanks.webp",
                 "rarity": {
                     "value": 3,
@@ -14151,6 +14828,7 @@
                 }
             },
             {
+                "name": "janet_valkyrie_sweat",
                 "image": "janet_valkyrie_sweat.webp",
                 "rarity": {
                     "value": 3,
@@ -14159,6 +14837,7 @@
                 }
             },
             {
+                "name": "janet_valkyrie_special",
                 "image": "janet_valkyrie_special.webp",
                 "rarity": {
                     "value": 3,
@@ -14220,6 +14899,7 @@
         ],
         "pins": [
             {
+                "name": "otis_default",
                 "image": "otis_default.webp",
                 "rarity": {
                     "value": 0,
@@ -14228,6 +14908,7 @@
                 }
             },
             {
+                "name": "otis_happy",
                 "image": "otis_happy.webp",
                 "rarity": {
                     "value": 0,
@@ -14236,6 +14917,7 @@
                 }
             },
             {
+                "name": "otis_sad",
                 "image": "otis_sad.webp",
                 "rarity": {
                     "value": 0,
@@ -14244,6 +14926,7 @@
                 }
             },
             {
+                "name": "otis_angry",
                 "image": "otis_angry.webp",
                 "rarity": {
                     "value": 0,
@@ -14252,6 +14935,7 @@
                 }
             },
             {
+                "name": "otis_gg",
                 "image": "otis_gg.webp",
                 "rarity": {
                     "value": 1,
@@ -14260,6 +14944,7 @@
                 }
             },
             {
+                "name": "otis_clap",
                 "image": "otis_clap.webp",
                 "rarity": {
                     "value": 1,
@@ -14268,6 +14953,7 @@
                 }
             },
             {
+                "name": "otis_thanks",
                 "image": "otis_thanks.webp",
                 "rarity": {
                     "value": 2,
@@ -14276,6 +14962,7 @@
                 }
             },
             {
+                "name": "otis_sweat",
                 "image": "otis_sweat.webp",
                 "rarity": {
                     "value": 2,
@@ -14284,6 +14971,7 @@
                 }
             },
             {
+                "name": "otis_special",
                 "image": "otis_special.webp",
                 "rarity": {
                     "value": 2,
@@ -14292,6 +14980,7 @@
                 }
             },
             {
+                "name": "otis_pharaoh_default",
                 "image": "otis_pharaoh_default.webp",
                 "rarity": {
                     "value": 3,
@@ -14300,6 +14989,7 @@
                 }
             },
             {
+                "name": "otis_pharaoh_happy",
                 "image": "otis_pharaoh_happy.webp",
                 "rarity": {
                     "value": 3,
@@ -14308,6 +14998,7 @@
                 }
             },
             {
+                "name": "otis_pharaoh_sad",
                 "image": "otis_pharaoh_sad.webp",
                 "rarity": {
                     "value": 3,
@@ -14316,6 +15007,7 @@
                 }
             },
             {
+                "name": "otis_pharaoh_angry",
                 "image": "otis_pharaoh_angry.webp",
                 "rarity": {
                     "value": 3,
@@ -14324,6 +15016,7 @@
                 }
             },
             {
+                "name": "otis_pharaoh_gg",
                 "image": "otis_pharaoh_gg.webp",
                 "rarity": {
                     "value": 3,
@@ -14332,6 +15025,7 @@
                 }
             },
             {
+                "name": "otis_pharaoh_clap",
                 "image": "otis_pharaoh_clap.webp",
                 "rarity": {
                     "value": 3,
@@ -14340,6 +15034,7 @@
                 }
             },
             {
+                "name": "otis_pharaoh_thanks",
                 "image": "otis_pharaoh_thanks.webp",
                 "rarity": {
                     "value": 3,
@@ -14348,6 +15043,7 @@
                 }
             },
             {
+                "name": "otis_pharaoh_sweat",
                 "image": "otis_pharaoh_sweat.webp",
                 "rarity": {
                     "value": 3,
@@ -14356,6 +15052,7 @@
                 }
             },
             {
+                "name": "otis_pharaoh_special",
                 "image": "otis_pharaoh_special.webp",
                 "rarity": {
                     "value": 3,

@@ -93,7 +93,11 @@ function formatBrawlerData(brawlerData, portraitFile, modelFile, pinFile){
         for (var x = 0; x < brawlerPins.length; x++){
             var thisPin = {};
             for (let y in brawlerPins[x]){
-                thisPin[y] = brawlerPins[x][y];
+                // Copy over all data of the pin, except the name
+                // which is not displayed in the brawler view
+                if (y != "name"){
+                    thisPin[y] = brawlerPins[x][y];
+                }
             }
 
             if (thisPin.hasOwnProperty("image")){
