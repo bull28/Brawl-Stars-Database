@@ -1,10 +1,11 @@
 const mysql2 = require("mysql2");
 
 const databaseLogin = {
-    host     : "localhost",
-    user     : "bull",
-    password : "darryl_roll",
-    database : "bull2"
+    host     : process.env.DATABASE_HOST || "localhost",
+    port     : process.env.DATABASE_PORT || 3306,
+    user     : process.env.DATABASE_USER || "username",
+    password : process.env.DATABASE_PASSWORD || "password",
+    database : process.env.DATABASE_NAME || "database_name"
 }
 
 const connection = mysql2.createConnection(databaseLogin);
@@ -23,6 +24,14 @@ connection.connect((error) => {
 });
 
 
+/**
+ * Sends a query to the database using the connection. The callback is
+ * then executed with (error, result, fields) being passed to it.
+ * @param {String} query sql query for the database
+ * @param {Array} values any values to include in the query
+ * @param {Function} callback function to execute after the query
+ * @returns same type that the callback returns
+ */
 function queryDatabase(query, values, callback){
     if (success){
         connection.query(query, values, callback);
@@ -32,8 +41,12 @@ function queryDatabase(query, values, callback){
 }
 
 
-// When ctrl+c is used then close the connection
-// This function gets executed on "SIGINT" which is sent on ctrl+c
+/**
+ * Closes an active connection then exeuctes a callback.
+ * When ctrl+c is used then close the connection
+ * This function gets executed on "SIGINT" which is sent on ctrl+c
+ * @param {Function} callback function to execute
+ */
 function closeConnection(callback){
     connection.end((error) => {
         if (error){

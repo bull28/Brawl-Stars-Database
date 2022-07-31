@@ -6,6 +6,7 @@ const jsonwebtoken = require("jsonwebtoken");
 
 // Methods to query the database are contained in this module
 const database = require("../modules/database");
+const TABLE_NAME = process.env.DATABASE_TABLE_NAME || "brawl_stars_database";
 
 
 /**
@@ -13,7 +14,7 @@ const database = require("../modules/database");
  * @param {Array} results all results from the database that match the query
  * @returns token if succesful, empty string otherwise
  */
-function login(results, res){
+function login(results){
     if (results.length > 0) {
         const user = {
             "username": results[0].username
@@ -33,7 +34,7 @@ router.post("/login", function(req, res) {
     let username = req.body.username;
     let password = req.body.password;
     if (username && password){
-        database.queryDatabase("SELECT username FROM braw_star_data_base WHERE username = ? AND password = ?", [username, password], (error, results, fields) => {
+        database.queryDatabase("SELECT username FROM " + TABLE_NAME + " WHERE username = ? AND password = ?", [username, password], (error, results, fields) => {
             if (error){
                 res.status(500).send("Could not connect to database.");
                 return;
@@ -58,7 +59,7 @@ router.post("/signup", function(req, res) {
     let username = req.body.username;
     let password = req.body.password;
     if (username && password){
-        database.queryDatabase("INSERT IGNORE INTO braw_star_data_base (username, password) VALUES (?, ?);", [username, password], (error, results, fields) => {
+        database.queryDatabase("INSERT IGNORE INTO " + TABLE_NAME + " (username, password, brawlers) VALUES (?, ?, ?);", [username, password, "[]"], (error, results, fields) => {
             if (error){
                 res.status(500).send("Could not connect to database.");
                 return;
@@ -67,7 +68,7 @@ router.post("/signup", function(req, res) {
             if (results.affectedRows == 0){
                 res.status(401).send("Username already exists.");
             } else{
-                database.queryDatabase("SELECT username FROM braw_star_data_base WHERE username = ? AND password = ?", [username, password], (error, results, fields) => {
+                database.queryDatabase("SELECT username FROM " + TABLE_NAME + " WHERE username = ? AND password = ?", [username, password], (error, results, fields) => {
                     if (error){
                         res.status(500).send("Could not connect to database.");
                         return;
