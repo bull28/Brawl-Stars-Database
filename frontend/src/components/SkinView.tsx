@@ -55,8 +55,8 @@ export default function BrawlerImage({ brawler, skin, setModel }: BrawlerImagePr
     <>
     {data && Object.keys(data).length !== 0 && 
         <>
-            <Flex h={'90%'} bgImage={`/image/${data.group.image}`} borderRadius={'lg'} onClick={onOpen} border={data.limited ? '4px solid gold' : 'none'} backgroundPosition={'center'}>
-                <Image objectFit={'cover'} src={`/image/${data.image}`} alt={data.displayName} fallback={<Spinner/>}/>
+            <Flex h={'90%'} bgImage={`/image/${data.group.image}`} borderRadius={'lg'} onClick={onOpen} border={data.limited ? '4px solid gold' : 'none'} backgroundPosition={'center'} justifyContent={'center'}>
+                <Image objectFit={'contain'} src={`/image/${data.image}`} alt={data.displayName} fallback={<Spinner/>}/>
             </Flex>
             <Flex alignItems={'center'} alignSelf={'center'} mt={3}>
                     {(data.group.icon !== 'skingroups/icons/icon_default.webp') && <Label label={data.group.name}><Image src={`/image/${data.group.icon}`} w={7} mr={3}/></Label>}            
