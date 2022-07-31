@@ -2,7 +2,6 @@
 
 const express = require("express");
 const router = express.Router();
-const fs = require("fs");
 
 // functions to load the map rotation and create EventSlot objects
 const maps = require("../modules/maps.js");
@@ -15,14 +14,11 @@ const MAP_BANNER_DIR = "maps/banners/";
 
 // Load the events json object
 var eventList = [];
-fs.readFile("assets/data/maps_data.json", "utf8", (err, data) => {
-    if (err) {
-      console.error(err);
-      return;
+const eventListPromise = require("../modules/dataloader.js").eventListPromise;
+eventListPromise.then((data) => {
+    if (data !== undefined){
+        eventList = data;
     }
-    let eventData = JSON.parse(data);
-
-    eventList = maps.jsonToEvents(eventData);
 });
 
 

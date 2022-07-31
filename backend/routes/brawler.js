@@ -18,12 +18,11 @@ const PIN_IMAGE_DIR = "pins/";
 
 // Load the skins json object
 var allSkins = [];
-fs.readFile("assets/data/brawlers_data.json", "utf8", (err, data) => {
-    if (err) {
-      console.error(err);
-      return;
+const allSkinsPromise = require("../modules/dataloader.js").allSkinsPromise;
+allSkinsPromise.then((data) => {
+    if (data !== undefined){
+        allSkins = data;
     }
-    allSkins = JSON.parse(data);
 });
 
 
