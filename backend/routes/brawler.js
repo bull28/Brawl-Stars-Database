@@ -18,7 +18,7 @@ const PIN_IMAGE_DIR = "pins/";
 
 // Load the skins json object
 var allSkins = [];
-const allSkinsPromise = require("../modules/dataloader.js").allSkinsPromise;
+const allSkinsPromise = require("../modules/fileloader.js").allSkinsPromise;
 allSkinsPromise.then((data) => {
     if (data !== undefined){
         allSkins = data;
@@ -63,6 +63,7 @@ function skinModelExists(data){
 
 
 //----------------------------------------------------------------------------------------------------------------------
+
 
 // Get the entire list of brawlers
 router.get("/brawler", (req, res) => {

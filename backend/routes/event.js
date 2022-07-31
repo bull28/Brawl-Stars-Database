@@ -14,7 +14,7 @@ const MAP_BANNER_DIR = "maps/banners/";
 
 // Load the events json object
 var eventList = [];
-const eventListPromise = require("../modules/dataloader.js").eventListPromise;
+const eventListPromise = require("../modules/fileloader.js").eventListPromise;
 eventListPromise.then((data) => {
     if (data !== undefined){
         eventList = data;
@@ -75,6 +75,9 @@ function formatEvents(events, seasonTime){
 
     return eventsInfo;
 }
+
+
+//----------------------------------------------------------------------------------------------------------------------
 
 
 // Get currently active events

@@ -10,6 +10,7 @@ const port = process.env.PORT || 6969;
 const brawler = require("./routes/brawler");
 const map = require("./routes/map");
 const event = require("./routes/event");
+const account = require("./routes/account");
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -31,6 +32,7 @@ app.use("/image", express.static(path.join("assets", "images")));
 app.use("/", brawler);
 app.use("/", map);
 app.use("/event", event);
+app.use("/", account);
 
 // Error handler
 app.use((error, req, res, next) => {
