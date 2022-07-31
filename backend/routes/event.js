@@ -121,21 +121,16 @@ router.get("/later", (req, res) => {
     const secondString = req.query.second;
 
     const currentTime = maps.realToTime(Date.now());
-    var deltaTime = new maps.SeasonTime(0, 0, 0, 0);
 
     if (isValidTime(hourString, minuteString, secondString) == false){
         res.status(400).send("Invalid input.");
         return;
     }
 
-    const deltaHours = parseInt(hourString);
-
-    deltaTime.season = Math.floor(deltaHours / maps.MAP_CYCLE_HOURS);
-    deltaTime.hour = maps.mod(deltaHours, maps.MAP_CYCLE_HOURS);
-    deltaTime.minute = maps.mod(parseInt(minuteString), 60);
-    deltaTime.second = maps.mod(parseInt(secondString), 60);
-
-    deltaTime = maps.addSeasonTimes(currentTime, deltaTime);
+    const deltaTime = maps.addSeasonTimes(
+        currentTime,
+        new maps.SeasonTime(0, parseInt(hourString), parseInt(minuteString), parseInt(secondString))
+    );
 
     let activeEvents = maps.getAllEvents(eventList, deltaTime);
     let eventsInfo = formatEvents(activeEvents, deltaTime);
