@@ -19,7 +19,12 @@ export default function MapView({ event }: MapViewProps){
             <Image src={`/image/${event.current.map.bannerImage}`}/>
             <Flex color={event.upcoming.gameMode.data.textColor} w={'100%'} justifyContent={'space-between'} bgColor={'black'}>
               <Text>{`Next: ${event.upcoming.map.displayName}`}</Text>
-              <Text>{`${event.timeLeft.hour}h ${event.timeLeft.minute}m ${event.timeLeft.second}s`}</Text>
+              <Flex>
+                <Text whiteSpace={"pre"}>{event.timeLeft.hour > 0 ? ` ${event.timeLeft.hour}h` : ""}</Text>
+                <Text whiteSpace={"pre"}>{event.timeLeft.minute > 0 ? ` ${event.timeLeft.minute}m` : ""}</Text>
+                <Text whiteSpace={"pre"}>{event.timeLeft.second > 0 ? ` ${event.timeLeft.second}s` : ""}</Text>
+                <Text>{(event.timeLeft.hour === 0 && event.timeLeft.minute === 0 && event.timeLeft.second === 0) ? "0s" : ""}</Text>
+              </Flex>
             </Flex>
           </Flex>
     )
