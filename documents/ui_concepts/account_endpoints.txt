@@ -42,6 +42,28 @@ Errors:
 	- 401: User already exists
 	- 400: Username not between 1 - 30 characters or password not between 1 - 100 characters
 
+/changepassword - Change an existing user's password
+Request: {"token": String, "currentPassword": String, "newPassword": String}
+Response: nothing... 200 code if successful
+Errors:
+	- 500: Database problem
+	- 401: Invalid token
+	- 401: Password does not match token's username
+	- 400: New password is the same as current password
+	- 400: Request missing fields
+
+/changeusername - Change an existing user's username
+Request: {"token": String, "currentPassword": String, "newUsername": String}
+Response: {"token": String, "username": String}
+	- If successful, a new token will be returned containing the user's new name
+	- The old token will become invalid once the username is changed
+Errors:
+	- 500: Database problem
+	- 401: Invalid token
+	- 401: New username is taken
+	- 401: Password does not match token's username
+	- 400: New username is the same as current username
+	- 400: Request missing fields
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -60,6 +82,11 @@ Response:
 
 	- For now, all fields besides "username" have no use. They are added now to prepare for later features.
 	- "tokens", "tokenDoubler", and "tradeCredits" can be displayed in the user's account page.
+	
+	Short descriptions of each of the resource fields (these are subject to change)
+	- tokens: "Collect tokens by vising the website regularly. Use them to open Brawl Boxes."
+	- tokenDoubler: "For every token collected, receive an additional token as a bonus. X bonus tokens remaining."
+	- tradeCredits: "Use these to trade pins with other users. Higher-rarity pins require more credits to trade."
 Errors:
 	- 500: Database problem
 	- 404: User has no data
