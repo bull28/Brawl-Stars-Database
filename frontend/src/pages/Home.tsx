@@ -1,11 +1,13 @@
-import { Flex, Text, Image, Box, SimpleGrid } from '@chakra-ui/react'
+import { Flex, Text, Image, Box, SimpleGrid, Button } from '@chakra-ui/react'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import AccountDisplay from '../components/AccountDisplay'
+
 
 const topRow = ['Gallary', 'Brawlers', 'Events', 'Coming Soon']
 const bottomRow = ['Brawl Box', 'Coming Soon', 'About/Options']
 
-const topLinks = ['', '/brawlers', '/events', '']
+const topLinks = ['/gallary', '/brawlers', '/events', '']
 const bottomLinks = ['', '', '']
 
 const LargeTile = ({ link, children }: {link: string, children: React.ReactNode}) => {
@@ -30,14 +32,28 @@ const SmallTile = ({ link, children }: {link: string, children: React.ReactNode}
   )
 }
 
+
+
 export default function Home() {
+
+  const navigate = useNavigate()
+
+  const login = () => {
+    navigate('/login')
+  }
+
+
   return (
     <>
     <Image w={'100vw'} h={'100vh'} position={'absolute'} objectFit={'cover'} src={require('../assets/backround.webp')} zIndex={'-1'} fallbackSrc={require('../assets/backround.png')}/>
     <Flex position={'absolute'} width={'100%'} justifyContent={'right'}>
       <Flex m={5} alignItems={'center'}>
         <Text mr={5} fontSize={'xl'} className={'heading-xl'} color={'pink.400'}>{`${new Date().getHours()}:${String(new Date().getMinutes()).length === 2 ? new Date().getMinutes() : "0"+new Date().getMinutes()}`}</Text>
-        <Box w={'70px'} h={'70px'} bgColor={'white'}></Box>
+        <Box w={'70px'} h={'70px'} bgColor={'white'} mr={5}></Box>
+        {localStorage.getItem('token') ? 
+          <AccountDisplay/> :
+          <Button onClick={login}>Log In</Button>}
+        
       </Flex>
 
     </Flex>
