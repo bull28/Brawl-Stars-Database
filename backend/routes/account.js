@@ -14,23 +14,28 @@ const TABLE_NAME = process.env.DATABASE_TABLE_NAME || "brawl_stars_database";
  * @param {Array} results all results from the database that match the query
  * @returns token if succesful, empty string otherwise
  */
-function login(results){
+function login(results, res){
     if (results.length > 0) {
+        if (!(results[0].hasOwnProperty("username"))){
+            res.status(500).send("Database is not set up properly.");
+            return;
+        }
         const user = {
             "username": results[0].username
         }
     
         const token = jsonwebtoken.sign(user, "THE KING WINS AGAIN");
-        return token;
+        res.send(token);
+    } else{
+        res.status(401).send("Incorrect username or password");
     }
-    return "";
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------
 
 // Accepts user credentials and return a token if they are valid
-router.post("/login", function(req, res) {
+router.post("/login", (req, res) => {
     let username = req.body.username;
     let password = req.body.password;
     if (username && password){
@@ -41,12 +46,7 @@ router.post("/login", function(req, res) {
             }
             // At this point, the query was successful (error was not found) so
             // either the login is successful or the username/password are incorrect
-            const token = login(results);
-            if (token == ""){
-                res.status(401).send("Incorrect username or password");
-            } else{
-                res.send(token);
-            }
+            login(results, res);
         });
     } else{
         res.status(400).send("Username or password is missing.");
@@ -55,9 +55,14 @@ router.post("/login", function(req, res) {
 
 
 // Creates a new account then returns a token with the given credentials
-router.post("/signup", function(req, res) {
+router.post("/signup", (req, res) => {
     let username = req.body.username;
     let password = req.body.password;
+
+    if (username.length > 30 || password.length > 100){
+        res.status(400).send("Username or password is too long. Maximum username length is 30 and password length is 100.");
+        return;
+    }
     if (username && password){
         database.queryDatabase("INSERT IGNORE INTO " + TABLE_NAME + " (username, password, brawlers) VALUES (?, ?, ?);", [username, password, "[]"], (error, results, fields) => {
             if (error){
@@ -75,12 +80,7 @@ router.post("/signup", function(req, res) {
                     }
                     // At this point, the query was successful (error was not found) so
                     // either the login is successful or the username/password are incorrect
-                    const token = login(results);
-                    if (token == ""){
-                        res.status(401).send("Incorrect username or password");
-                    } else{
-                        res.send(token);
-                    }
+                    login(results, res);
                 });
             }
         });

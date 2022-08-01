@@ -11,6 +11,7 @@ const brawler = require("./routes/brawler");
 const map = require("./routes/map");
 const event = require("./routes/event");
 const account = require("./routes/account");
+const collection = require("./routes/collection");
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -33,6 +34,7 @@ app.use("/", brawler);
 app.use("/", map);
 app.use("/event", event);
 app.use("/", account);
+app.use("/", collection);
 
 // Error handler
 app.use((error, req, res, next) => {
