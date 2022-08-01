@@ -106,8 +106,8 @@ router.post("/signup", (req, res) => {
     }
     if (username && password){
         database.queryDatabase(
-        "INSERT IGNORE INTO " + TABLE_NAME + " (username, password, brawlers, backgrounds, trade_requests) VALUES (?, ?, ?, ?, ?);",
-        [username, password, "{}", "[]", "[]"], (error, results, fields) => {
+        "INSERT IGNORE INTO " + TABLE_NAME + " (username, password, avatar, brawlers, backgrounds, trade_requests) VALUES (?, ?, ?, ?, ?, ?);",
+        [username, password, "default", "{}", "[]", "[]"], (error, results, fields) => {
             if (error){
                 res.status(500).send("Could not connect to database.");
                 return;
@@ -134,66 +134,21 @@ router.post("/signup", (req, res) => {
     }
 });
 
-// Changes an account's password
-router.post("/changepassword", (req, res) => {
-    let token = req.body.token;
-    let currentPassword = req.body.currentPassword;
-    let newPassword = req.body.newPassword;
-
-    if (currentPassword == newPassword){
-        res.status(400).send("New password cannot be the same as the current password.");
-        return;
-    }
-
-    if (token && currentPassword && newPassword){
-        let username = validateToken(token);
-        if (username == ""){
-            res.status(401).send("Invalid token.");
-            return;
-        }
-
-        // Attempt to update the existing user's data. If the user cannot be found,
-        // the affected rows will be 0 and an error can be sent accordingly.
-        // Otherwise, the update was successful. No data needs to be returned as
-        // the password is not stored in the token.
-        database.queryDatabase(
-        "UPDATE brawl_stars_database SET password = ? WHERE username = ? AND password = ?;",
-        [newPassword, username, currentPassword], (error, results, fields) => {
-            if (error){
-                res.status(500).send("Could not connect to database.");
-                return;
-            }
-            
-            if (results.affectedRows == 0){
-                res.status(401).send("Existing username and password do not match.");
-            } else{
-                res.status(200).send("Password successfully changed.");
-            }
-        });
-    } else{
-        res.status(400).send("At least one of token, current password, or new password is missing.");
-    }
-});
-
-// Changes an account's username
-router.post("/changeusername", (req, res) => {
+// Updates an account's information
+router.post("/update", (req, res) => {
     let token = req.body.token;
     let currentPassword = req.body.currentPassword;
     let newUsername = req.body.newUsername;
+    let newPassword = req.body.newPassword;
+    let newAvatar = req.body.newAvatar;
 
-    if (token && currentPassword && newUsername){
+    if (token && currentPassword && newUsername && newPassword && newAvatar){
         let currentUsername = validateToken(token);
         if (currentUsername == ""){
             res.status(401).send("Invalid token.");
             return;
         }
-        if (currentUsername == newUsername){
-            res.status(400).send("New username cannot be the same as the current username.");
-            return;
-        }
 
-        // First, check to see if the requested new username is already taken.
-        // If it is, send an error and do not attempt to change it.
         database.queryDatabase(
         "SELECT username FROM brawl_stars_database WHERE username = ?;",
         [newUsername], (error, results, fields) => {
@@ -202,29 +157,26 @@ router.post("/changeusername", (req, res) => {
                 return;
             }
                 
-            if (results.length > 0){
+            if (results.length > 0 && currentUsername != newUsername){
                 res.status(401).send("Username already exists.");
                 return;
             }
 
-            // If the length of the results is 0, the new username cannot be found in
-            // the database and therefore, it is available. Now, update the user's data
-            // in the same way as change password, except change their username.
-            // After, return the new token corresponding to their new username.
             database.queryDatabase(
-            "UPDATE brawl_stars_database SET username = ? WHERE username = ? AND password = ?;",
-            [newUsername, currentUsername, currentPassword], (error, results, fields) => {
+            "UPDATE brawl_stars_database SET username = ?, password = ?, avatar = ? WHERE username = ? AND password = ?;",
+            [newUsername, newPassword, newAvatar, currentUsername, currentPassword], (error, results, fields) => {
                 if (error){
                     res.status(500).send("Could not connect to database.");
                     return;
                 }
-                        
+                
                 if (results.affectedRows == 0){
                     res.status(401).send("Existing username and password do not match.");
                 } else{
                     const userInfo = signToken(newUsername);
-                    res.json(userInfo); 
+                    res.json(userInfo);
                 }
+                
             });
         });
     } else{

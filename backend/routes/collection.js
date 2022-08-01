@@ -81,7 +81,7 @@ router.post("/resources", function(req, res) {
 
     if (username){
         database.queryDatabase(
-        "SELECT username, tokens, token_doubler, trade_credits FROM " + TABLE_NAME + " WHERE username = ?;",
+        "SELECT username, avatar, tokens, token_doubler, trade_credits FROM " + TABLE_NAME + " WHERE username = ?;",
         [username], (error, results, fields) => {
             if (databaseErrorCheck(error, results, fields, res)){
                 return;
@@ -89,6 +89,7 @@ router.post("/resources", function(req, res) {
 
             const resourcesData = {
                 "username": results[0].username,
+                "avatar": results[0].avatar,// add the file path later
                 "tokens": results[0].tokens,
                 "tokenDoubler": results[0].token_doubler,
                 "tradeCredits": results[0].trade_credits
