@@ -20,7 +20,7 @@ function App() {
           <Route path="brawlers/:brawler" element={<Brawler/>}/>
           <Route path="events/:map" element={<Map/>}/>
           <Route path="/events" element={<Events/>}/>
-          <Route path="/gallary" element={<Gallery/>}/>
+          <Route path="/gallery" element={<Gallery/>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/signup" element={<Signup/>}/>
           <Route path="/account" element={<Account/>}/>
