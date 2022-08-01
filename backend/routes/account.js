@@ -176,7 +176,7 @@ router.post("/update", (req, res) => {
 
             // After all fields are set, check to make sure the user doesn't exist already
             database.queryDatabase(
-            "SELECT username FROM brawl_stars_database WHERE username = ?;",
+            "SELECT username FROM " + TABLE_NAME + " WHERE username = ?;",
             [newUsername], (error, results, fields) => {
                 if (error){
                     res.status(500).send("Could not connect to database.");
@@ -190,7 +190,7 @@ router.post("/update", (req, res) => {
 
                 // Update all columns of the database (new fields are guaranteed not to be empty strings)
                 database.queryDatabase(
-                "UPDATE brawl_stars_database SET username = ?, password = ?, avatar = ? WHERE username = ? AND password = ?;",
+                "UPDATE " + TABLE_NAME + " SET username = ?, password = ?, avatar = ? WHERE username = ? AND password = ?;",
                 [newUsername, newPassword, newAvatar, currentUsername, currentPassword], (error, results, fields) => {
                     if (error){
                         res.status(500).send("Could not connect to database.");
