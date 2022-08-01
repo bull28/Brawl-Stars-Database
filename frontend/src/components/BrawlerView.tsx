@@ -21,7 +21,7 @@ export default function Brawler({ image, name, displayName, rarityColor }: Brawl
          
         <Box m={3} onClick={redirect} cursor={'pointer'}>
             <Text fontSize={'2xl'} className={'heading-2xl'} color={'white'}>{displayName}</Text>
-            <Image src={'/image/portraits/'+image} borderRadius={'lg'} fallback={<Spinner/>}/>
+            <Image src={'/image/'+image} borderRadius={'lg'} fallback={<Spinner/>}/>
         </Box>
         
         </Flex>

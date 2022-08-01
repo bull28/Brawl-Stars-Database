@@ -5,15 +5,16 @@ const router = express.Router();
 const fs = require("fs");
 
 // functions to search for brawlers, skins, and pins in json data
-const skins = require("../modules/skins.js");
+const skins = require("../modules/skins");
 
 // base directories of image files
-const PORTRAIT_IMAGE_DIR = "portraits/";
-const SKIN_IMAGE_DIR = "skins/";
-const SKIN_MODEL_DIR = "models/";
-const SKINGROUP_IMAGE_DIR = "skingroups/backgrounds/";
-const SKINGROUP_ICON_DIR = "skingroups/icons/";
-const PIN_IMAGE_DIR = "pins/";
+const filePaths = require("../modules/filepaths");
+const PORTRAIT_IMAGE_DIR = filePaths.PORTRAIT_IMAGE_DIR;
+const SKIN_IMAGE_DIR = filePaths.SKIN_IMAGE_DIR;
+const SKIN_MODEL_DIR = filePaths.SKIN_MODEL_DIR;
+const SKINGROUP_IMAGE_DIR = filePaths.SKINGROUP_IMAGE_DIR;
+const SKINGROUP_ICON_DIR = filePaths.SKINGROUP_ICON_DIR;
+const PIN_IMAGE_DIR = filePaths.PIN_IMAGE_DIR;
 
 
 // Load the skins json object
@@ -50,7 +51,6 @@ function isEmpty(x){
  * @returns data, modified with the correct values
  */
 function skinModelExists(data){
-    //const checkFile = skinFile.replace(".png", "_alt.png");
     if (!(data.hasOwnProperty("image"))){
         return;
     }
@@ -77,7 +77,11 @@ router.get("/brawler", (req, res) => {
         var brawlerData = {};
         for (let y in x){
             if (includeInBrawler.includes(y)){
-                brawlerData[y] = x[y];
+                if (y == "portrait"){
+                    brawlerData[y] = PORTRAIT_IMAGE_DIR + x[y];
+                } else{
+                    brawlerData[y] = x[y];
+                }
             }
         }
         allBrawlers.push(brawlerData);

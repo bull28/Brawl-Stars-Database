@@ -5,7 +5,7 @@ function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
     const includeFromBrawler = ["name", "displayName", "portrait", "rarity", "pins"];
 
     // Iterate over all the brawlers
-    for (let x of allSkins){
+    for (let brawler of allSkins){
         var thisBrawler = {};
 
         // Check that all desired properties exist all at once
@@ -13,7 +13,7 @@ function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
         // they are used
         var missingProperties = false;
         for (let j of includeFromBrawler){
-            if (!(x.hasOwnProperty(j))){
+            if (!(brawler.hasOwnProperty(j))){
                 missingProperties = true;
             }
         }
@@ -23,22 +23,18 @@ function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
         // be unlocked either.
         let hasBrawler = false;
         if (missingProperties == false){
-            hasBrawler = userCollection.hasOwnProperty(x.name);
+            hasBrawler = userCollection.hasOwnProperty(brawler.name);
 
             var brawlerPins = [];
 
             // Iterate over a brawler's pins
-            for (let y of x.pins){
+            for (let pin of brawler.pins){
                 var thisPin = {};
 
                 // Iterate over the fields of a single pin object, do not include the rarity
-                for (let i in y){
-                    //if (i != "rarity" && i != "name"){//leaving the name out for now (change this later////)
-                    //    thisPin[i] = y[i];
-                    //}
-                    if (i == "image"){
-                        //thisPin[i] = "FRANK/" + y[i];
-                        thisPin["image"] = y[i];
+                for (let x in pin){
+                    if (x == "image"){
+                        thisPin["image"] = pin[x];
                     }
                 }
 
@@ -49,7 +45,7 @@ function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
                 // pin appears in the corresponding value. If it appears, the current
                 // pin is unlocked.
                 if (hasBrawler){    
-                    let hasPin = userCollection[x.name].includes(y.name);
+                    let hasPin = userCollection[brawler.name].includes(pin.name);
                     if (hasPin == true){
                         thisPin["unlocked"] = true;
                     }
@@ -58,24 +54,54 @@ function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
                 brawlerPins.push(thisPin);
             }
 
-            thisBrawler["name"] = x.name;
-            thisBrawler["displayName"] = x.displayName;
-            thisBrawler["portrait"] = portraitFile + x.portrait;
+            thisBrawler["name"] = brawler.name;
+            thisBrawler["displayName"] = brawler.displayName;
+            thisBrawler["portrait"] = portraitFile + brawler.portrait;
 
             var rarityColor = "#000000";
-            if (x.rarity.hasOwnProperty("color")){
-                rarityColor = x.rarity.color;
+            if (brawler.rarity.hasOwnProperty("color")){
+                rarityColor = brawler.rarity.color;
             }
 
             thisBrawler["rarityColor"] = rarityColor;
             thisBrawler["unlocked"] = hasBrawler;
-            thisBrawler["pinFilePath"] = pinFile + x.name + "/";
+            thisBrawler["pinFilePath"] = pinFile + brawler.name + "/";
             thisBrawler["pins"] = brawlerPins;
 
             collectionInfo.push(thisBrawler);
         }
     }
     return collectionInfo;
+}
+
+// These functions may be used for brawl boxes and trading
+function addBrawler(userCollection, brawler){
+    if (userCollection.hasOwnProperty(brawler)){
+        return;
+    }
+    // If the user does not already own the brawler,
+    // initialize an empty pin list.
+    userCollection[brawler] = [];
+}
+
+function addPin(userCollection, brawler, pin){
+    if (!(userCollection.hasOwnProperty(brawler))){
+        return;
+    }
+    if (userCollection[brawler].includes(pin)){
+        return;
+    }
+    userCollection[brawler].push(pin);
+}
+
+function removePin(userCollection, brawler, pin){
+    if (!(userCollection.hasOwnProperty(brawler))){
+        return;
+    }
+    const pinIndex = userCollection[brawler].indexOf(pin);
+    if (pinIndex >= 0){
+        userCollection[brawler].splice(pinIndex, 1);
+    }
 }
 
 exports.formatCollectionData = formatCollectionData;

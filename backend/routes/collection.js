@@ -9,11 +9,12 @@ const database = require("../modules/database");
 const TABLE_NAME = process.env.DATABASE_TABLE_NAME || "brawl_stars_database";
 
 // functions to view and modify a pin collections
-const pins = require("../modules/pins.js");
+const pins = require("../modules/pins");
 
 // base directories of image files
-const PORTRAIT_IMAGE_DIR = "portraits/";
-const PIN_IMAGE_DIR = "pins/";
+const filePaths = require("../modules/filepaths");
+const PORTRAIT_IMAGE_DIR = filePaths.PORTRAIT_IMAGE_DIR;
+const PIN_IMAGE_DIR = filePaths.PIN_IMAGE_DIR;
 
 
 // Load the skins json object
@@ -58,7 +59,9 @@ router.post("/collection", function(req, res) {
     let username = validateToken(req.body.token);
 
     if (username){
-        database.queryDatabase("SELECT brawlers FROM " + TABLE_NAME + " WHERE username = ?", [username], (error, results, fields) => {
+        database.queryDatabase(
+        "SELECT brawlers FROM " + TABLE_NAME + " WHERE username = ?",
+        [username], (error, results, fields) => {
             if (error){
                 res.status(500).send("Could not connect to database.");
                 return;
@@ -66,11 +69,6 @@ router.post("/collection", function(req, res) {
             
             if (results.length == 0){
                 res.status(404).send("Could not find the user in the database.");
-                return;
-            }
-
-            if (!(results[0].hasOwnProperty("brawlers"))){
-                res.status(500).send("Database is not set up properly.");
                 return;
             }
 

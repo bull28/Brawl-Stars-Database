@@ -39,7 +39,9 @@ router.post("/login", (req, res) => {
     let username = req.body.username;
     let password = req.body.password;
     if (username && password){
-        database.queryDatabase("SELECT username FROM " + TABLE_NAME + " WHERE username = ? AND password = ?", [username, password], (error, results, fields) => {
+        database.queryDatabase(
+        "SELECT username FROM " + TABLE_NAME + " WHERE username = ? AND password = ?",
+        [username, password], (error, results, fields) => {
             if (error){
                 res.status(500).send("Could not connect to database.");
                 return;
@@ -64,7 +66,9 @@ router.post("/signup", (req, res) => {
         return;
     }
     if (username && password){
-        database.queryDatabase("INSERT IGNORE INTO " + TABLE_NAME + " (username, password, brawlers) VALUES (?, ?, ?);", [username, password, "[]"], (error, results, fields) => {
+        database.queryDatabase(
+        "INSERT IGNORE INTO " + TABLE_NAME + " (username, password, brawlers, backgrounds, trade_requests) VALUES (?, ?, ?, ?, ?);",
+        [username, password, "{}", "[]", "[]"], (error, results, fields) => {
             if (error){
                 res.status(500).send("Could not connect to database.");
                 return;
@@ -73,7 +77,9 @@ router.post("/signup", (req, res) => {
             if (results.affectedRows == 0){
                 res.status(401).send("Username already exists.");
             } else{
-                database.queryDatabase("SELECT username FROM " + TABLE_NAME + " WHERE username = ? AND password = ?", [username, password], (error, results, fields) => {
+                database.queryDatabase(
+                "SELECT username FROM " + TABLE_NAME + " WHERE username = ? AND password = ?",
+                [username, password], (error, results, fields) => {
                     if (error){
                         res.status(500).send("Could not connect to database.");
                         return;

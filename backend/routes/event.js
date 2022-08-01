@@ -4,12 +4,13 @@ const express = require("express");
 const router = express.Router();
 
 // functions to load the map rotation and create EventSlot objects
-const maps = require("../modules/maps.js");
+const maps = require("../modules/maps");
 
 // base directories of image files
-const GAMEMODE_IMAGE_DIR = "gamemodes/";
-const MAP_IMAGE_DIR = "maps/";
-const MAP_BANNER_DIR = "maps/banners/";
+const filePaths = require("../modules/filepaths");
+const GAMEMODE_IMAGE_DIR = filePaths.GAMEMODE_IMAGE_DIR;
+const MAP_IMAGE_DIR = filePaths.MAP_IMAGE_DIR;
+const MAP_BANNER_DIR = filePaths.MAP_BANNER_DIR;
 
 
 // Load the events json object
