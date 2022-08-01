@@ -47,6 +47,7 @@ function validateToken(token){
     }
 }
 
+
 /**
  * Processes a query to the database by checking if there was an error
  * and whether there were results. If the query was unsuccessful, return
@@ -80,7 +81,7 @@ router.post("/resources", function(req, res) {
 
     if (username){
         database.queryDatabase(
-        "SELECT username, tokens, token_doubler, trade_credits FROM " + TABLE_NAME + " WHERE username = ?",
+        "SELECT username, tokens, token_doubler, trade_credits FROM " + TABLE_NAME + " WHERE username = ?;",
         [username], (error, results, fields) => {
             if (databaseErrorCheck(error, results, fields, res)){
                 return;
@@ -111,7 +112,7 @@ router.post("/collection", function(req, res) {
 
     if (username){
         database.queryDatabase(
-        "SELECT brawlers FROM " + TABLE_NAME + " WHERE username = ?",
+        "SELECT brawlers FROM " + TABLE_NAME + " WHERE username = ?;",
         [username], (error, results, fields) => {
             if (databaseErrorCheck(error, results, fields, res)){
                 return;
