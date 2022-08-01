@@ -142,42 +142,71 @@ router.post("/update", (req, res) => {
     let newPassword = req.body.newPassword;
     let newAvatar = req.body.newAvatar;
 
-    if (token && currentPassword && newUsername && newPassword && newAvatar){
+    if (token && currentPassword && newUsername !== undefined && newPassword !== undefined && newAvatar !== undefined){
         let currentUsername = validateToken(token);
         if (currentUsername == ""){
             res.status(401).send("Invalid token.");
             return;
         }
 
+        // If the user leaves any of the new fields as empty, this means
+        // they do not want them changed. Get the current values of these
+        // fields first and replace any empty strings with them.
         database.queryDatabase(
-        "SELECT username FROM brawl_stars_database WHERE username = ?;",
-        [newUsername], (error, results, fields) => {
+        "SELECT username, password, avatar FROM " + TABLE_NAME + " WHERE username = ?;",
+        [currentUsername], (error, results, fields) => {
             if (error){
                 res.status(500).send("Could not connect to database.");
                 return;
             }
-                
-            if (results.length > 0 && currentUsername != newUsername){
-                res.status(401).send("Username already exists.");
+            if (results.length == 0){
+                res.status(404).send("Could not find the user in the database.");
                 return;
             }
 
+            if (newUsername == ""){
+                newUsername = results[0].username;
+            }
+            if (newPassword == ""){
+                newPassword = results[0].password;
+            }
+            if (newAvatar == ""){
+                newAvatar = results[0].avatar;
+            }
+
+            // After all fields are set, check to make sure the user doesn't exist already
             database.queryDatabase(
-            "UPDATE brawl_stars_database SET username = ?, password = ?, avatar = ? WHERE username = ? AND password = ?;",
-            [newUsername, newPassword, newAvatar, currentUsername, currentPassword], (error, results, fields) => {
+            "SELECT username FROM brawl_stars_database WHERE username = ?;",
+            [newUsername], (error, results, fields) => {
                 if (error){
                     res.status(500).send("Could not connect to database.");
                     return;
                 }
-                
-                if (results.affectedRows == 0){
-                    res.status(401).send("Existing username and password do not match.");
-                } else{
-                    const userInfo = signToken(newUsername);
-                    res.json(userInfo);
+                    
+                if (results.length > 0 && currentUsername != newUsername){
+                    res.status(401).send("Username already exists.");
+                    return;
                 }
-                
+
+                // Update all columns of the database (new fields are guaranteed not to be empty strings)
+                database.queryDatabase(
+                "UPDATE brawl_stars_database SET username = ?, password = ?, avatar = ? WHERE username = ? AND password = ?;",
+                [newUsername, newPassword, newAvatar, currentUsername, currentPassword], (error, results, fields) => {
+                    if (error){
+                        res.status(500).send("Could not connect to database.");
+                        return;
+                    }
+                    
+                    if (results.affectedRows == 0){
+                        res.status(401).send("Existing username and password do not match.");
+                    } else{
+                        const userInfo = signToken(newUsername);
+                        res.json(userInfo);
+                    }
+                    
+                });
             });
+
         });
     } else{
         res.status(400).send("At least one of token, current password, or new username is missing.");
