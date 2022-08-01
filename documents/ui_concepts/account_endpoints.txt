@@ -1,0 +1,104 @@
+Database setup
+1. Create a new database (the name does not matter).
+2. Switch to the new database and create a table. A script to create the table is available in documents/create_database.sql.
+   Run the query starting with 'CREATE TABLE `brawl_stars_database`('.
+3. Insert a test value into the database. The queries to do this can be found by reading the comments.
+4. Set environment variables to allow the API to connect to the database.
+
+	File name: backend/.env
+	
+	These environment variables must be set.
+	DATABASE_USER (username of the account created in the configuration: String)
+	DATABASE_PASSWORD (password of the account: String)
+	DATABASE_NAME (name of the database chosen in step 1: String)
+
+	These environment variables may or may not be set, depending on whether these values are modified.
+	PORT (default 6969, the port which the API runs on)
+	DATABASE_HOST (default "localhost")
+	DATABASE_PORT (default 3306, the port which the database server runs on)
+	DATABASE_TABLE_NAME (default "brawl_stars_database", the name of the table in the database)
+
+5. Once the database is created, the script can be used again to update the table if anything changes later or reset it to
+   its initial state.
+
+
+Endpoints
+/login - Authenticate a user
+Request: {"username": String, "password": String}
+Response: {"token": String, "username": String}
+	- "token" is the web token which should be stored and passed to all other endpoints which require authentication
+	- "username" is their username, as stored in the database (for now, the database doesn't handle upper/lowercase
+	  to well so this allows the user to see their username in the same case they entered on signup)
+Errors (these can be checked so a message can be displayed to the user):
+	- 500: Database problem
+	- 401: Invalid credentials
+	- 400: Credential(s) missing
+
+/signup - Create a new user and automatically log in
+Request: {"username": String, "password": String}
+Response: {"token": String, "username": String} - Same response type as login
+Errors:
+	- 500: Database problem
+	- 401: User already exists
+	- 400: Username not between 1 - 30 characters or password not between 1 - 100 characters
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Note: the endpoints below are work in progress. The format of data may undergo significant changes.
+They do not need to be used yet. They are listed here to help with planning future website features.
+
+/resources - View a user's information, along with all their resources
+Request: {"token": String}
+Response:
+[
+    "username": String,
+    "tokens": Number,
+    "tokenDoubler": Number,
+    "tradeCredits": Number
+]
+
+	- For now, all fields besides "username" have no use. They are added now to prepare for later features.
+	- "tokens", "tokenDoubler", and "tradeCredits" can be displayed in the user's account page.
+Errors:
+	- 500: Database problem
+	- 404: User has no data
+	- 401: Invalid token
+	- 400: Could not find token
+
+/collection - View all brawlers and pins available, and which ones the user has collected
+Request: {"token": String}
+Response:
+[
+    {
+        "name": String,
+        "displayName": String,
+        "portrait": String,
+        "rarityColor": String,
+        "unlocked": Boolean,
+        "pinFilePath": String,
+	"pins": [
+            {
+                "image": String,
+                "unlocked": Boolean
+            },
+            ... 1 object for each pin
+        ]
+    },
+    ... 1 object for each brawler
+]
+
+	- The response contains an array of brawler objects. Each brawler object contains various fields describing the
+	  brawler and also a "pins" field which is an array of all their pin objects.
+	- Each pin object contains its image and whether it is unlocked.
+
+	**IMPORTANT**
+	- To minimize the response size, the base directory of the pin images are not contained in a pin's
+	  "image" field because the base directories are the exact same for all of a brawler's pins.
+	- Instead, the base directory to the pin images are stored in the brawler's "pinFilePath" field.
+	- To get the full route from the API: "image/" + brawler.pinFilePath + pin.image
+Errors:
+	- 500: Database problem
+	- 404: User has no data
+	- 401: Invalid token
+	- 400: Could not find token

@@ -30,7 +30,7 @@ allSkinsPromise.then((data) => {
 /**
  * Checks whether a token is valid and returns the username that the
  * token belongs to. If the token is not valid, returns an empty string.
- * Errors will be processed using the result of this function
+ * Errors will be processed using the result of this function.
  * @param {Object} token the token to check
  * @returns username the token belongs to
  */
@@ -47,10 +47,61 @@ function validateToken(token){
     }
 }
 
-
+/**
+ * Processes a query to the database by checking if there was an error
+ * and whether there were results. If the query was unsuccessful, return
+ * true. Otherwise, return false.
+ * @param {Error} error 
+ * @param {Array} results 
+ * @param {Object} fields 
+ * @param {Object} res 
+ * @returns boolean
+ */
+function databaseErrorCheck(error, results, fields, res){
+    if (error){
+        res.status(500).send("Could not connect to database.");
+        return true;
+    }
+    if (results.length == 0){
+        res.status(404).send("Could not find the user in the database.");
+        return true;
+    }
+    return false;
+}
 //----------------------------------------------------------------------------------------------------------------------
 
-// ???
+// Get a user's username and amounts of various resources
+router.post("/resources", function(req, res) {
+    if (!(req.body.token)){
+        res.status(400).send("Token is missing.");
+        return;
+    }
+    let username = validateToken(req.body.token);
+
+    if (username){
+        database.queryDatabase(
+        "SELECT username, tokens, token_doubler, trade_credits FROM " + TABLE_NAME + " WHERE username = ?",
+        [username], (error, results, fields) => {
+            if (databaseErrorCheck(error, results, fields, res)){
+                return;
+            }
+
+            const resourcesData = {
+                "username": results[0].username,
+                "tokens": results[0].tokens,
+                "tokenDoubler": results[0].token_doubler,
+                "tradeCredits": results[0].trade_credits
+            }
+
+            res.json(resourcesData);
+        });
+    } else{
+        res.status(401).send("Invalid token.");
+    }
+});
+
+
+// Get a user's collection of brawlers and pins
 router.post("/collection", function(req, res) {
     if (!(req.body.token)){
         res.status(400).send("Token is missing.");
@@ -62,13 +113,7 @@ router.post("/collection", function(req, res) {
         database.queryDatabase(
         "SELECT brawlers FROM " + TABLE_NAME + " WHERE username = ?",
         [username], (error, results, fields) => {
-            if (error){
-                res.status(500).send("Could not connect to database.");
-                return;
-            }
-            
-            if (results.length == 0){
-                res.status(404).send("Could not find the user in the database.");
+            if (databaseErrorCheck(error, results, fields, res)){
                 return;
             }
 

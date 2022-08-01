@@ -25,7 +25,12 @@ function login(results, res){
         }
     
         const token = jsonwebtoken.sign(user, "THE KING WINS AGAIN");
-        res.send(token);
+
+        const userInfo = {
+            "token": token,
+            "username": results[0].username
+        }
+        res.json(userInfo);
     } else{
         res.status(401).send("Incorrect username or password");
     }

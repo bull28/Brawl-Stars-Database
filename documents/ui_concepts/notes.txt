@@ -17,10 +17,6 @@ indicate a multiple choice menu. Only one option can be chosen at a time.
 - The "Update" button refreshes the timers on the events. If the web page is able to refresh automatically without much delay,
 this button can be removed.
 
-------------------------------------------------------------------------------------------------------------------------------
-Last updated here
-------------------------------------------------------------------------------------------------------------------------------
-
 Map Search Page - example in map_view.png
 - This page will allow the user to view the image of a specific map.
 - There will be a box where the user can enter a search query. Once the user starts the search, all the maps which match their
@@ -46,5 +42,27 @@ back to the default.
 - Fix some free skins being displayed as default skins.
 - Move the skin image background to the center of the box.
 
-Brawl Box
-- See the issue for more details...
+------------------------------------------------------------------------------------------------------------------------------
+Last updated here
+------------------------------------------------------------------------------------------------------------------------------
+
+User Accounts - this explains how the website should work, endpoint descriptions are in account_endpoints.txt
+- This feature allows users to collect brawlers and pins and store them in an account.
+- There should be a login/signup button which redirects the user to the login page. Here are two ways that it can be done:
+	- Add an "Accounts" button to the bottom-middle purple button on the main menu. This opens a page where accounts can
+	  be managed. Log in, sign up, and view account status on this page.
+	- Add a "Log in" button to the top-right of the screen which opens a pop-up where the user enters their credentials.
+	  Once they are logged in, their username is displayed in the top-right corner and the "Log in" button changes to a
+	  "Log out" button.
+- Once the user is logged in, they are able to access certain features of the website which are only availble to users who are
+logged in.
+- If a user is not logged in and attempts to access one of these features, the page should not open. Alternatively, the user
+could be redirected to the login page.
+- If a user is logged in, their username should be displayed somewhere on the screen. Also, a logout button should be near
+their username and/or the login button.
+
+Brawler and Pin Collection Page - example coming soon
+- The user must be logged in to access this page. It can be accessed through the "Gallary" button.
+- All brawlers and pins that can be collected will be shown on this page. Those which the user has not collected yet will be
+grayed out.
+- Clicking on a brawler will redirect the user to that brawler's page.
