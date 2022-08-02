@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import {useState} from "react";
 import axios from 'axios';
 import {Link as RouterLink, useNavigate} from 'react-router-dom';
 import {Flex, Box, FormControl, FormLabel, Input, FormHelperText, Text, Alert, AlertIcon, AlertDescription, Link, InputGroup, InputLeftElement} from '@chakra-ui/react';
@@ -21,12 +21,6 @@ function Login(){
         401: "Username and/or Password is incorrect.",
         500: "The Server Encountered an Error. Please Try Again Later."
     }
-
-    useEffect(() => {
-        //localStorage.removeItem('token')
-        localStorage.setItem('token', 'cum')
-
-    }, [])
 
     const handleLogin = async (e: any) => {
         e.preventDefault()
@@ -52,7 +46,7 @@ function Login(){
         <>
         <Box w={'100vw'} h={'100vh'} position={'absolute'} zIndex={-1} bgColor={'blue.100'}></Box>
         <Flex flexDir={'column'} alignItems={'center'} justifyContent={'center'} w={'100vw'} h={'90vh'}>
-            <Text fontSize={'3xl'} fontWeight={'bold'} mb={10}>Log In</Text>
+            <Text fontSize={'3xl'} className={'heading-3xl'} color={'white'} mb={10}>Log In</Text>
             <Box w={['80%', '50%']} p={6} borderRadius={'xl'} maxW={'500px'} boxShadow={'rgba(149, 157, 165, 0.2) 0px 8px 24px'} bgColor={'white'}>
                 <form onSubmit={handleLogin}>
                 <FormControl>

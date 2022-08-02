@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import AccountDisplay from '../components/AccountDisplay'
 
 
-const topRow = ['Gallary', 'Brawlers', 'Events', 'Coming Soon']
+const topRow = ['Gallary', 'Brawlers', 'Events', 'Trade']
 const bottomRow = ['Brawl Box', 'Coming Soon', 'About/Options']
 
 const topLinks = ['/gallary', '/brawlers', '/events', '']

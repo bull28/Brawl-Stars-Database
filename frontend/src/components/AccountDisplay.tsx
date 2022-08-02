@@ -10,13 +10,7 @@ import { Flex, Text, Menu,
     Tooltip,
     } from '@chakra-ui/react'
 import axios from 'axios'
-
-interface UserInfoProps {
-    username: string,
-    tokens: number,
-    tokenDoubler: number,
-    tradeCredits: number
-}
+import {UserInfoProps} from '../types/AccountData'
 
 
 export default function AccountDisplay() {
