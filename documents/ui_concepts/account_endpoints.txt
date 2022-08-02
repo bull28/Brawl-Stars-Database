@@ -42,28 +42,40 @@ Errors:
 	- 401: User already exists
 	- 400: Username not between 1 - 30 characters or password not between 1 - 100 characters
 
-/changepassword - Change an existing user's password
-Request: {"token": String, "currentPassword": String, "newPassword": String}
-Response: nothing... 200 code if successful
-Errors:
-	- 500: Database problem
-	- 401: Invalid token
-	- 401: Password does not match token's username
-	- 400: New password is the same as current password
-	- 400: Request missing fields
-
-/changeusername - Change an existing user's username
-Request: {"token": String, "currentPassword": String, "newUsername": String}
+/update - Change an existing user's information
+Request: {
+		"token": String,
+		"currentPassword": String,
+		"newUsername": String,
+		"newPassword": String,
+		"newAvatar": String
+	 }
+	- "newUsername", "newPassword", and "newAvatar" can be left as empty strings. If they are, those information fields
+	  will not be changed.
 Response: {"token": String, "username": String}
 	- If successful, a new token will be returned containing the user's new name
 	- The old token will become invalid once the username is changed
 Errors:
 	- 500: Database problem
+	- 404: User has no data
+	- 403: Image cannot be used as an avatar
 	- 401: Invalid token
 	- 401: New username is taken
 	- 401: Password does not match token's username
-	- 400: New username is the same as current username
 	- 400: Request missing fields
+
+/avatar - Get the list of all available avatars
+Request: {"token": String}
+Response: [String, ... 1 String for each avatar]
+	- A token is required because different users may have different avatars unlocked.
+	- Returns the file paths to all avatars that the user has unlocked.
+	- The avatar should be stored as a file path and when it needs to be displayed, call the /image endpoint with the file
+	  path to get the image source.
+Errors:
+	- 500: Database problem
+	- 404: User has no data
+	- 401: Invalid token
+	- 400: Could not find token
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -75,6 +87,7 @@ Request: {"token": String}
 Response:
 [
     "username": String,
+    "avatar": String,
     "tokens": Number,
     "tokenDoubler": Number,
     "tradeCredits": Number
