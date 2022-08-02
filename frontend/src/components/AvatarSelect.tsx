@@ -52,7 +52,7 @@ const AvatarSelect = React.forwardRef<{open: () => void}, Props>((props, ref) =>
             .then((res) => {
                 setAvatars(res.data)
             })
-    })
+    }, [])
 
   return (
     <>

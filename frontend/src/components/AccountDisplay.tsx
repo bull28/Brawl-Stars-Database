@@ -26,7 +26,7 @@ export default function AccountDisplay() {
                     localStorage.removeItem('token')
                 }
             })
-    })
+    }, [])
   return (
     <Flex>
         <Menu autoSelect={false} closeOnSelect={false}>
