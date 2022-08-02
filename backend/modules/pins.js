@@ -74,6 +74,50 @@ function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
     return collectionInfo;
 }
 
+function getAvatars(allSkins, allAvatars, userCollection, userAvatars){
+    var avatarsInfo = [];
+    var unlockedBrawlers = [];
+
+    if (!(allSkins && allAvatars.free && allAvatars.special)){
+        return avatarsInfo;
+    }
+
+    for (let brawler of allSkins){
+        if (brawler.hasOwnProperty("name") && brawler.hasOwnProperty("portrait")){
+            // If the user has the brawler unlocked, add the avatar as an option
+            if (userCollection.hasOwnProperty(brawler.name)){
+                unlockedBrawlers.push(brawler.portrait);
+            }
+        }
+    }
+    
+    for (let avatar of allAvatars.special){
+        // If a special avatar is unlocked, add it to the array.
+        if (userAvatars.includes(avatar)){
+            avatarsInfo.push(avatar);
+        }
+
+        // If a special avatar is not unlocked, the only other way that
+        // it can be used is if it is a brawler portrait and if the brawler
+        // is unlocked, the portrait is made available.
+        // In order for this to happen, the file names must be the same.
+        else{
+            const filePaths = avatar.split("/");
+            const fileName = filePaths[filePaths.length - 1];
+            if (unlockedBrawlers.includes(fileName)){
+                avatarsInfo.push(avatar);
+            }
+        }
+    }
+
+    // All free avatars are available, regardless of user
+    for (let avatar of allAvatars.free){
+        avatarsInfo.push(avatar);
+    }
+
+    return avatarsInfo;
+}
+
 // These functions may be used for brawl boxes and trading
 function addBrawler(userCollection, brawler){
     if (userCollection.hasOwnProperty(brawler)){
@@ -105,3 +149,4 @@ function removePin(userCollection, brawler, pin){
 }
 
 exports.formatCollectionData = formatCollectionData;
+exports.getAvatars = getAvatars;

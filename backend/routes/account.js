@@ -8,6 +8,34 @@ const jsonwebtoken = require("jsonwebtoken");
 const database = require("../modules/database");
 const TABLE_NAME = process.env.DATABASE_TABLE_NAME || "brawl_stars_database";
 
+// functions to view and modify a pin collections
+const pins = require("../modules/pins");
+
+
+// Load the skins json object
+var allSkins = [];
+const allSkinsPromise = require("../modules/fileloader.js").allSkinsPromise;
+allSkinsPromise.then((data) => {
+    if (data !== undefined){
+        allSkins = data;
+    }
+});
+
+// Load the avatars
+var allAvatars = {"free": [], "special": []};
+const freeAvatarsPromise = require("../modules/fileloader.js").freeAvatarsPromise;
+freeAvatarsPromise.then((data) => {
+    if (data !== undefined){
+        allAvatars.free = data;
+    }
+});
+const specialAvatarsPromise = require("../modules/fileloader.js").specialAvatarsPromise;
+specialAvatarsPromise.then((data) => {
+    if (data !== undefined){
+        allAvatars.special = data;
+    }
+});
+
 
 /**
  * Creates a new json web token for the given username.
@@ -94,7 +122,6 @@ router.post("/login", (req, res) => {
     }
 });
 
-
 // Creates a new account then returns a token with the given credentials
 router.post("/signup", (req, res) => {
     let username = req.body.username;
@@ -106,8 +133,8 @@ router.post("/signup", (req, res) => {
     }
     if (username && password){
         database.queryDatabase(
-        "INSERT IGNORE INTO " + TABLE_NAME + " (username, password, avatar, brawlers, backgrounds, trade_requests) VALUES (?, ?, ?, ?, ?, ?);",
-        [username, password, "default", "{}", "[]", "[]"], (error, results, fields) => {
+        "INSERT IGNORE INTO " + TABLE_NAME + " (username, password, active_avatar, brawlers, avatars, backgrounds, trade_requests) VALUES (?, ?, ?, ?, ?, ?, ?);",
+        [username, password, "avatars/free/default.webp", "{}", "[]", "[]", "[]"], (error, results, fields) => {
             if (error){
                 res.status(500).send("Could not connect to database.");
                 return;
@@ -153,7 +180,7 @@ router.post("/update", (req, res) => {
         // they do not want them changed. Get the current values of these
         // fields first and replace any empty strings with them.
         database.queryDatabase(
-        "SELECT username, password, avatar FROM " + TABLE_NAME + " WHERE username = ?;",
+        "SELECT username, password, active_avatar, brawlers, avatars FROM " + TABLE_NAME + " WHERE username = ?;",
         [currentUsername], (error, results, fields) => {
             if (error){
                 res.status(500).send("Could not connect to database.");
@@ -170,9 +197,21 @@ router.post("/update", (req, res) => {
             if (newPassword == ""){
                 newPassword = results[0].password;
             }
+
             if (newAvatar == ""){
-                newAvatar = results[0].avatar;
+                // Do not check the avatar if they are not planning on changing it
+                // It's fine to keep it, if for some reason they have an invalid avatar
+                newAvatar = results[0].active_avatar;
+            } else{
+                // Check to make sure the user's new avatar is unlocked
+                const avatarsInfo = pins.getAvatars(allSkins, allAvatars, results[0].brawlers, results[0].avatars);
+                if (!(avatarsInfo.includes(newAvatar))){
+                    res.status(403).send("You are not allowed to use that avatar.");
+                    return;
+                }
             }
+
+            
 
             // After all fields are set, check to make sure the user doesn't exist already
             database.queryDatabase(
@@ -190,13 +229,13 @@ router.post("/update", (req, res) => {
 
                 // Update all columns of the database (new fields are guaranteed not to be empty strings)
                 database.queryDatabase(
-                "UPDATE " + TABLE_NAME + " SET username = ?, password = ?, avatar = ? WHERE username = ? AND password = ?;",
+                "UPDATE " + TABLE_NAME + " SET username = ?, password = ?, active_avatar = ? WHERE username = ? AND password = ?;",
                 [newUsername, newPassword, newAvatar, currentUsername, currentPassword], (error, results, fields) => {
                     if (error){
                         res.status(500).send("Could not connect to database.");
                         return;
                     }
-                    
+
                     if (results.affectedRows == 0){
                         res.status(401).send("Existing username and password do not match.");
                     } else{
@@ -206,10 +245,38 @@ router.post("/update", (req, res) => {
                     
                 });
             });
-
         });
     } else{
         res.status(400).send("At least one of token, current password, or new username is missing.");
+    }
+});
+
+// 
+router.post("/avatar", (req, res) => {
+    if (!(req.body.token)){
+        res.status(400).send("Token is missing.");
+        return;
+    }
+    let username = validateToken(req.body.token);
+
+    if (username){
+        database.queryDatabase(
+        "SELECT brawlers, avatars FROM " + TABLE_NAME + " WHERE username = ?;",
+        [username], (error, results, fields) => {
+            if (error){
+                res.status(500).send("Could not connect to database.");
+                return;
+            }
+            if (results.length == 0){
+                res.status(404).send("Could not find the user in the database.");
+                return;
+            }
+
+            const avatarsInfo = pins.getAvatars(allSkins, allAvatars, results[0].brawlers, results[0].avatars);
+            res.json(avatarsInfo);
+        });
+    } else{
+        res.status(401).send("Invalid token.");
     }
 });
 

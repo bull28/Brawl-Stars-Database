@@ -28,5 +28,33 @@ async function readMaps(){
     });
 }
 
+async function readFreeAvatars(){
+    return fs.promises.readdir("assets/images/avatars/free")
+    .then((result) => {
+        for (let x in result){
+            result[x] = "avatars/free/" + result[x];
+        }
+        return result;
+    })
+    .catch((error) => {
+        return [];
+    });
+}
+
+async function readSpecialAvatars(){
+    return fs.promises.readdir("assets/images/avatars/special")
+    .then((result) => {
+        for (let x in result){
+            result[x] = "avatars/special/" + result[x];
+        }
+        return result;
+    })
+    .catch((error) => {
+        return [];
+    });
+}
+
 exports.allSkinsPromise = readBrawlers();
 exports.eventListPromise = readMaps();
+exports.freeAvatarsPromise = readFreeAvatars();
+exports.specialAvatarsPromise = readSpecialAvatars();
