@@ -19,21 +19,9 @@ type Props = {
     setAvatar: any
 }
 
-//subject to change to actual endpoint
-//must provide name with each avatar
-interface Avatars {
-    name: string,
-    displayName: string,
-    rarity: {
-        value: number,
-        name: string,
-        color: string
-    },
-    portrait: string
-}
 
 const AvatarSelect = React.forwardRef<{open: () => void}, Props>((props, ref) => {
-    const [avatars, setAvatars] = useState<[Avatars]>()
+    const [avatars, setAvatars] = useState<[string]>()
 
     const { isOpen, onOpen, onClose } = useDisclosure()
     
@@ -48,7 +36,7 @@ const AvatarSelect = React.forwardRef<{open: () => void}, Props>((props, ref) =>
     )
     
     useEffect(() => {
-        axios.get('/brawler')
+        axios.post('/avatar', {token: localStorage.getItem('token')})
             .then((res) => {
                 setAvatars(res.data)
             })
@@ -64,8 +52,8 @@ const AvatarSelect = React.forwardRef<{open: () => void}, Props>((props, ref) =>
           <ModalBody>
             <SimpleGrid columns={[4,5,6,7,8]} spacing={2}>
                 {avatars?.map((a) => (
-                    <Box w={'fit-content'} onClick={() => {props.setAvatar(a.name)}} cursor={'pointer'}>
-                        <Image src={`/image/${a.portrait}`} w={'100px'} borderRadius={'40%'} border={(a.name === props.avatar) ? '3px solid #87CEEB' : 'none'}/>
+                    <Box w={'fit-content'} onClick={() => {props.setAvatar(a)}} cursor={'pointer'}>
+                        <Image src={`/image/${a}`} w={'100px'} borderRadius={'50%'} border={(a === props.avatar) ? '3px solid #87C1FF' : '2px solid black'}/>
                     </Box>
                 ))}
             </SimpleGrid>

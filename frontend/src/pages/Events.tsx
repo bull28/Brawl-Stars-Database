@@ -29,7 +29,7 @@ export default function Maps() {
   return (
     <Flex flexDir={'column'} justifyContent={'space-between'} w={'100%'}>
       <Flex w={'100%'} textAlign={'center'} justifyContent={'center'}>
-        <Text fontSize={'3xl'}>Events</Text>  
+        <Text fontSize={'3xl'} className={'heading-3xl'} color={'white'}>Events</Text>  
       </Flex>
       <Flex flexDir={'row'}>
         <EventSideBar changeData={setData}/>

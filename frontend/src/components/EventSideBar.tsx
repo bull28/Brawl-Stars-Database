@@ -114,7 +114,7 @@ export default function EventSideBar({ changeData }: {changeData: any}){
     if (query){
         return (
             <Flex flexDir={'column'} minH={"80vh"} style={{caretColor: "transparent"}} border={'1px'} borderRadius={'md'} borderColor={'gray.200'} w={'28%'} maxW={'350px'} justifyContent={'space-around'} px={5} mr={10} ml={3} boxShadow={'rgba(99, 99, 99, 0.2) 0px 1px 4px 0px'}>
-                <Text fontSize={"2xl"} className={'heading-2xl'} my={8} color='#c0c0c0'>Event Menu</Text>
+                <Text fontSize={"2xl"} className={'heading-2xl'} my={8} color={'white'}>Event Menu</Text>
                 <Divider color={'black'} opacity={1} pr={5} mb={6}/>
                 <RadioGroup onChange={setChoice} value={choice}>
                     <Stack direction={'column'} spacing={[5, 10]}>
