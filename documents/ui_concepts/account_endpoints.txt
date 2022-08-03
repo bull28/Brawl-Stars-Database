@@ -109,34 +109,45 @@ Errors:
 /collection - View all brawlers and pins available, and which ones the user has collected
 Request: {"token": String}
 Response:
-[
-    {
-        "name": String,
-        "displayName": String,
-        "portrait": String,
-        "rarityColor": String,
-        "unlocked": Boolean,
-        "pinFilePath": String,
-	"pins": [
-            {
-                "image": String,
-                "unlocked": Boolean
-            },
-            ... 1 object for each pin
-        ]
-    },
-    ... 1 object for each brawler
-]
+{
+    "unlockedBrawlers": Number,
+    "totalBrawlers": Number,
+    "unlockedPins": Number,
+    "totalPins": Number,
+    "collection": [
+        {
+            "name": String,
+            "displayName": String,
+            "rarityColor": String,
+            "i": String,
+            "u": Boolean,
+            "unlockedPins": Number,
+            "totalPins": Number,
+            "pinFilePath": String,
+            "pins": [
+                {
+                    "i": String,
+                    "u": Boolean
+                },
+                ... 1 object for each pin
+            ]
+        },
+        ... 1 object for each brawler
+    ]
+}
 
-	- The response contains an array of brawler objects. Each brawler object contains various fields describing the
-	  brawler and also a "pins" field which is an array of all their pin objects.
+	- The response contains an object which contains some numbers summarizing the pin collection.
+	- There is a "collection" field which contains an array of brawler objects. Each brawler object contains various
+	  fields describing the brawler and also a "pins" field which is an array of all their pin objects.
 	- Each pin object contains its image and whether it is unlocked.
 
 	**IMPORTANT**
 	- To minimize the response size, the base directory of the pin images are not contained in a pin's
-	  "image" field because the base directories are the exact same for all of a brawler's pins.
+	  image field because the base directories are the exact same for all of a brawler's pins.
 	- Instead, the base directory to the pin images are stored in the brawler's "pinFilePath" field.
-	- To get the full route from the API: "image/" + brawler.pinFilePath + pin.image
+	- To get the full route from the API: "image/" + brawler.pinFilePath + pin.i   .
+	- Additionally, the names "unlocked" and "image" appear many times in the data so to further minimize the response
+	  size, "unlocked" has been replaced with "u" and "image" has been replaced by "i".
 Errors:
 	- 500: Database problem
 	- 404: User has no data

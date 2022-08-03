@@ -61,8 +61,13 @@ could be redirected to the login page.
 - If a user is logged in, their username should be displayed somewhere on the screen. Also, a logout button should be near
 their username and/or the login button.
 
-Brawler and Pin Collection Page - example coming soon
-- The user must be logged in to access this page. It can be accessed through the "Gallary" button.
+Brawler and Pin Collection Page - example in collection_page.png
+- The user must be logged in to access this page. It can be accessed through their account page.
 - All brawlers and pins that can be collected will be shown on this page. Those which the user has not collected yet will be
 grayed out.
-- Clicking on a brawler will redirect the user to that brawler's page.
+- The bottom half of the page contains tiles with brawler portraits and names. The tiles also show how many pins have been
+collected for that brawler.
+- Clicking on a brawler's portrait will redirect the user to that brawler's page.
+- A brawler's pins are hidden by default, but can be shown by clicking the down arrow on the bottom-right corner of their box.
+- On this page, the user can also open Brawl Boxes. Clicking on a box with sufficient resources will open the box and show
+the user what rewards they received.
