@@ -1,16 +1,19 @@
 import { Suspense, useEffect, useState } from 'react'
-import { Flex, Text, SimpleGrid, Image, Icon, Link, Spinner } from '@chakra-ui/react'
+import { Flex, Text, SimpleGrid, Image, Icon, Link, Spinner, LinkBox } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import SkinView from '../components/SkinView'
-import { ArrowBackIcon } from '@chakra-ui/icons'
+import { ArrowBackIcon, ExternalLinkIcon } from '@chakra-ui/icons'
 import { BrawlerData } from '../types/BrawlerData'
 import ModelViewer from '../components/3D_Model_Viewer'
+import { CollectionData } from '../types/CollectionData'
 
 export default function Brawler() {
     const params = useParams()
     const [data, setData] = useState<BrawlerData>()
     const [model, setModel] = useState<string | null>(null)
+    const [collectionData, setCollectionData] = useState<CollectionData>()
+
 
     useEffect(() => {
         axios.get(`/brawler/${params.brawler}`)
@@ -18,6 +21,13 @@ export default function Brawler() {
                 setData(res.data)
                 setModel(`/image/${res.data.model}`)
             })
+        if (localStorage.getItem('token')){
+            axios.post('/collection', {token: localStorage})
+                .then((res) => {
+                    setCollectionData(res.data)
+                })
+        }
+        
     }, [params])
   return (
     <>
@@ -42,7 +52,7 @@ export default function Brawler() {
                 </Flex>
 
                 <Flex w={'33%'} flexDir={'column'} justifyContent={'center'} alignItems={'center'} maxH={'60vh'}>
-                    <Text color={'white'} fontSize={'2xl'} className={'heading-2xl'}>Pins Unlocked 6/12</Text>
+                    <Text color={'white'} fontSize={'2xl'} className={'heading-2xl'}>Pins</Text>
                     <SimpleGrid columns={[1,2,2,3,3,4]} spacing={3} bgColor={'black'} p={3} borderRadius={'md'} w={'90%'} border={'1px solid rgba(255,255,255,0.8)'} overflowY={'scroll'} sx={{
                         '&::-webkit-scrollbar': {
                         width: '10px',
@@ -60,6 +70,12 @@ export default function Brawler() {
                             </Flex>
                         ))}
                     </SimpleGrid>
+                    {localStorage.getItem('token') ? 
+                        <Link href={`/collection?brawler=${data.name}`} color={'white'} fontSize={'lg'} className={'heading-xs'}>View Collection <ExternalLinkIcon mx={'2px'}/></Link>
+                            :
+                        <Text color={'white'} fontSize={'lg'} ><Link color={'blue.400'} href="/login">Log In</Link> To View Collection</Text>
+                    }
+                    
                 </Flex>
             </Flex>
             

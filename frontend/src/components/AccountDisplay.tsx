@@ -57,6 +57,7 @@ export default function AccountDisplay() {
                 </MenuGroup>
                 <MenuDivider/>
                 <MenuItem onClick={() => {window.location.href = "/account"}}>Account</MenuItem>
+                <MenuItem onClick={() => {window.location.href = "/collection"}}>Collection</MenuItem>
                 <MenuItem icon={<MdOutlineLogout fontSize={'22px'}/>} onClick={() => {localStorage.removeItem('token'); window.location.reload()}}>Log Out</MenuItem>
                 
             </MenuList>
