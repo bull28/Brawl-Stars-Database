@@ -15,7 +15,7 @@ const MAP_BANNER_DIR = filePaths.MAP_BANNER_DIR;
 
 // Load the events json object
 var eventList = [];
-const eventListPromise = require("../modules/fileloader.js").eventListPromise;
+const eventListPromise = require("../modules/fileloader").eventListPromise;
 eventListPromise.then((data) => {
     if (data !== undefined){
         eventList = data;

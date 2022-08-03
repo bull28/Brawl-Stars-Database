@@ -7,7 +7,7 @@ DROP TABLE `brawl_stars_database`;
 
 -- Create the table
 CREATE TABLE `brawl_stars_database` (
-  `username` VARCHAR(30) NOT NULL,
+  `username` VARCHAR(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `password` VARCHAR(100) NOT NULL,
   `tokens` INT DEFAULT 0,
   `token_doubler` INT DEFAULT 0,
@@ -19,7 +19,7 @@ CREATE TABLE `brawl_stars_database` (
   `trade_requests` JSON NOT NULL,
   PRIMARY KEY (`username`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4;
+DEFAULT CHARACTER SET = utf8mb4 COLLATE utf8mb4_bin;
 -- -----------------------------------------------------------------------------------------------------
 
 -- Insert a test value into the table

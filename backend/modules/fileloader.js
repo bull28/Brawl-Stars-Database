@@ -1,7 +1,7 @@
 // This module reads all the required data from files
 
 const fs = require("fs");
-const maps = require("./maps.js");
+const maps = require("./maps");
 
 async function readBrawlers(){
     return fs.promises.readFile("assets/data/brawlers_data.json", "utf8")

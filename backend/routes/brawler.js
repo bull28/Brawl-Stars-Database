@@ -19,7 +19,7 @@ const PIN_IMAGE_DIR = filePaths.PIN_IMAGE_DIR;
 
 // Load the skins json object
 var allSkins = [];
-const allSkinsPromise = require("../modules/fileloader.js").allSkinsPromise;
+const allSkinsPromise = require("../modules/fileloader").allSkinsPromise;
 allSkinsPromise.then((data) => {
     if (data !== undefined){
         allSkins = data;

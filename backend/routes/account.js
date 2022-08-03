@@ -10,11 +10,11 @@ const TABLE_NAME = process.env.DATABASE_TABLE_NAME || "brawl_stars_database";
 
 // functions to view and modify a pin collections
 const pins = require("../modules/pins");
-
+const fileLoader = require("../modules/fileloader");
 
 // Load the skins json object
 var allSkins = [];
-const allSkinsPromise = require("../modules/fileloader.js").allSkinsPromise;
+const allSkinsPromise = fileLoader.allSkinsPromise;
 allSkinsPromise.then((data) => {
     if (data !== undefined){
         allSkins = data;
@@ -23,13 +23,13 @@ allSkinsPromise.then((data) => {
 
 // Load the avatars
 var allAvatars = {"free": [], "special": []};
-const freeAvatarsPromise = require("../modules/fileloader.js").freeAvatarsPromise;
+const freeAvatarsPromise = fileLoader.freeAvatarsPromise;
 freeAvatarsPromise.then((data) => {
     if (data !== undefined){
         allAvatars.free = data;
     }
 });
-const specialAvatarsPromise = require("../modules/fileloader.js").specialAvatarsPromise;
+const specialAvatarsPromise = fileLoader.specialAvatarsPromise;
 specialAvatarsPromise.then((data) => {
     if (data !== undefined){
         allAvatars.special = data;
