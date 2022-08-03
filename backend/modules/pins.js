@@ -82,6 +82,12 @@ function getAvatars(allSkins, allAvatars, userCollection, userAvatars){
         return avatarsInfo;
     }
 
+    // All free avatars are available, regardless of user
+    for (let avatar of allAvatars.free){
+        avatarsInfo.push(avatar);
+    }
+    
+
     for (let brawler of allSkins){
         if (brawler.hasOwnProperty("name") && brawler.hasOwnProperty("portrait")){
             // If the user has the brawler unlocked, add the avatar as an option
@@ -108,11 +114,6 @@ function getAvatars(allSkins, allAvatars, userCollection, userAvatars){
                 avatarsInfo.push(avatar);
             }
         }
-    }
-
-    // All free avatars are available, regardless of user
-    for (let avatar of allAvatars.free){
-        avatarsInfo.push(avatar);
     }
 
     return avatarsInfo;

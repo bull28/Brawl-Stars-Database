@@ -133,7 +133,8 @@ router.post("/signup", (req, res) => {
     }
     if (username && password){
         database.queryDatabase(
-        "INSERT IGNORE INTO " + TABLE_NAME + " (username, password, active_avatar, brawlers, avatars, backgrounds, trade_requests) VALUES (?, ?, ?, ?, ?, ?, ?);",
+        "INSERT IGNORE INTO " + TABLE_NAME +
+        " (username, password, active_avatar, brawlers, avatars, backgrounds, trade_requests) VALUES (?, ?, ?, ?, ?, ?, ?);",
         [username, password, "avatars/free/default.webp", "{}", "[]", "[]", "[]"], (error, results, fields) => {
             if (error){
                 res.status(500).send("Could not connect to database.");
@@ -164,12 +165,11 @@ router.post("/signup", (req, res) => {
 // Updates an account's information
 router.post("/update", (req, res) => {
     let token = req.body.token;
-    let currentPassword = req.body.currentPassword;
     let newUsername = req.body.newUsername;
     let newPassword = req.body.newPassword;
     let newAvatar = req.body.newAvatar;
 
-    if (token && currentPassword && newUsername !== undefined && newPassword !== undefined && newAvatar !== undefined){
+    if (token && newUsername !== undefined && newPassword !== undefined && newAvatar !== undefined){
         let currentUsername = validateToken(token);
         if (currentUsername == ""){
             res.status(401).send("Invalid token.");
@@ -211,8 +211,6 @@ router.post("/update", (req, res) => {
                 }
             }
 
-            
-
             // After all fields are set, check to make sure the user doesn't exist already
             database.queryDatabase(
             "SELECT username FROM " + TABLE_NAME + " WHERE username = ?;",
@@ -222,15 +220,15 @@ router.post("/update", (req, res) => {
                     return;
                 }
                     
-                if (results.length > 0 && currentUsername != newUsername){
+                if (results.length > 0 && currentUsername.toLowerCase() != newUsername.toLowerCase()){
                     res.status(401).send("Username already exists.");
                     return;
                 }
 
                 // Update all columns of the database (new fields are guaranteed not to be empty strings)
                 database.queryDatabase(
-                "UPDATE " + TABLE_NAME + " SET username = ?, password = ?, active_avatar = ? WHERE username = ? AND password = ?;",
-                [newUsername, newPassword, newAvatar, currentUsername, currentPassword], (error, results, fields) => {
+                "UPDATE " + TABLE_NAME + " SET username = ?, password = ?, active_avatar = ? WHERE username = ?;",
+                [newUsername, newPassword, newAvatar, currentUsername], (error, results, fields) => {
                     if (error){
                         res.status(500).send("Could not connect to database.");
                         return;
@@ -247,7 +245,7 @@ router.post("/update", (req, res) => {
             });
         });
     } else{
-        res.status(400).send("At least one of token, current password, or new username is missing.");
+        res.status(400).send("Token is missing.");
     }
 });
 
