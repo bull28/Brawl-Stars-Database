@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { BsFillPersonFill } from 'react-icons/bs'
 import { MdOutlineLogout } from 'react-icons/md'
 import { Flex, Text, Menu,
     MenuButton,
@@ -8,6 +7,7 @@ import { Flex, Text, Menu,
     MenuGroup,
     MenuDivider, 
     Tooltip,
+    Image,
     } from '@chakra-ui/react'
 import axios from 'axios'
 import {UserInfoProps} from '../types/AccountData'
@@ -31,7 +31,7 @@ export default function AccountDisplay() {
     <Flex>
         <Menu autoSelect={false} closeOnSelect={false}>
             <MenuButton>
-                <BsFillPersonFill fontSize={'35px'}/>
+                <Image src={`/image/${data?.avatar}`} borderRadius={'50%'} w={'50px'} border={'2px solid black'}/>
             </MenuButton>
             <MenuList>
                 <MenuGroup>
@@ -42,15 +42,15 @@ export default function AccountDisplay() {
                 <MenuDivider/>
                 <MenuGroup title='Stats' fontSize={'lg'}>
 
-                    <Tooltip label='1'>
+                    <Tooltip label='Collect tokens by vising the website. Used to open Brawl Boxes.' placement='left' className='heading-md' hasArrow>
                         <MenuItem>{`Tokens: ${data?.tokens ? data.tokens : 0}`}</MenuItem>
                     </Tooltip>
                     
-                    <Tooltip label='2'>
-                        <MenuItem>{`Token Doubler: ${data?.tokenDoubler ? data.tokenDoubler : 0}`}</MenuItem>    
+                    <Tooltip label='For every token collected, receive an additional token as a bonus.' placement='left' className='heading-md' hasArrow>
+                        <MenuItem>{`Tokens Remaining: ${data?.tokenDoubler ? data.tokenDoubler : 0}`}</MenuItem>    
                     </Tooltip>
                     
-                    <Tooltip label='3'>
+                    <Tooltip label='Use these to trade pins with other users.' placement='left' className='heading-md' hasArrow>
                         <MenuItem>{`Trade Credits: ${data?.tradeCredits ? data.tradeCredits : 0}`}</MenuItem>    
                     </Tooltip>
     
