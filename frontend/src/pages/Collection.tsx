@@ -1,4 +1,4 @@
-import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Center, Flex, HStack, Icon, Image, Link, SimpleGrid, Spinner, Tag, Text, VStack } from '@chakra-ui/react'
+import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Center, Flex, HStack, Image, Link, SimpleGrid, Spinner, Tag, Text } from '@chakra-ui/react'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { CollectionData } from '../types/CollectionData'
@@ -10,14 +10,9 @@ import { useSearchParams } from 'react-router-dom'
 export default function Collection() {
     const [data, setData] = useState<CollectionData>()
     const [loaded, updateLoaded] = useState<any>([])
-    const [searchParams, setSearchParams] = useSearchParams()
+    const [searchParams] = useSearchParams()
     const [brawlers, setBrawlers] = useState<any>([])
 
-    const getBrawlers = () => {
-        data?.collection.forEach(element => {
-            setBrawlers((brawlers: any) => [...brawlers, element.name])
-        })
-    }
 
     useEffect(() => {
         axios.post('/collection', {token: localStorage.getItem('token')})
@@ -28,7 +23,9 @@ export default function Collection() {
     }, [])
 
     useEffect(() => {
-        getBrawlers()
+        data?.collection.forEach(element => {
+            setBrawlers((brawlers: any) => [...brawlers, element.name])
+        })
     }, [data])
 
     const AddLoadedBrawler = (brawler: string) => {
@@ -87,7 +84,7 @@ export default function Collection() {
                             </HStack>
                             {AddLoadedBrawler(brawler.name)}</>}
                             <Center flexDir={'column'} mt={3}>
-                                {!brawler.u && <Tag colorScheme={'red'}>Unlock This Brawler To Collect Pins</Tag>}
+                                {!brawler.u && <Tag colorScheme={'red'} my={2}>Unlock This Brawler To Collect Pins</Tag>}
                                 <Link href={`/brawlers/${brawler.name}`} color={'white'} className={'heading-sm'}>View Brawler Page <ExternalLinkIcon mx={'2px'}/></Link>
                             </Center>
                         </AccordionPanel>
