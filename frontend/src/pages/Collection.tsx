@@ -52,7 +52,7 @@ export default function Collection() {
                                 <Flex flexDir={'column'} mr={5} justifyContent={'center'} alignItems={'center'} textAlign={'center'} w={'100%'} >
                                     <Flex alignItems={'center'}>
                                         <Text fontSize={'xl'} className={'heading-xl'} color={'white'} mr={1}>{brawler.displayName}</Text>
-                                        <RiLock2Line fontSize={'20px'}/>
+                                        {(!brawler.u) && <RiLock2Line fontSize={'20px'}/>}
                                     </Flex>
                                     <HStack spacing={5} my={3}>
                                         <Image src={`/image/${brawler.i}`} maxW={'64px'} fallback={<Spinner/>}/>
@@ -80,7 +80,7 @@ export default function Collection() {
                         },
                     }}> 
                                 {brawler.pins.map((pin) => (
-                                    <Image w={'80px'} filter={'grayscale(70%)'} src={`/image/${brawler.pinFilePath+pin.i}`} fallback={<Spinner/>}/>
+                                    <Image w={'80px'} filter={(!pin.u) ? 'grayscale(70%)': 'none'} src={`/image/${brawler.pinFilePath+pin.i}`} fallback={<Spinner/>}/>
                                 ))}
                                 
                              
