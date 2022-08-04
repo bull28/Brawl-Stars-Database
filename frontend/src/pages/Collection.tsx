@@ -1,4 +1,4 @@
-import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Center, Flex, HStack, Image, Link, SimpleGrid, Spinner, Tag, Text } from '@chakra-ui/react'
+import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Center, Flex, HStack, Icon, Image, Link, SimpleGrid, Spinner, Tag, Text } from '@chakra-ui/react'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { CollectionData } from '../types/CollectionData'
@@ -48,11 +48,14 @@ export default function Collection() {
                             <AccordionButton bgColor={brawler.rarityColor}>
                                 <Flex flexDir={'column'} mr={5} justifyContent={'center'} alignItems={'center'} textAlign={'center'} w={'100%'} >
                                     <Flex alignItems={'center'}>
-                                        <Text fontSize={'xl'} className={'heading-xl'} color={'white'} mr={1}>{brawler.displayName}</Text>
-                                        {(!brawler.u) && <RiLock2Line fontSize={'20px'}/>}
+                                        <Text fontSize={'xl'} className={'heading-xl'} color={'white'} mr={1}>{brawler.displayName}</Text>    
                                     </Flex>
                                     <HStack spacing={5} my={3}>
-                                        <Image src={`/image/${brawler.i}`} maxW={'64px'} fallback={<Spinner/>}/>
+                                        <Box pos={'relative'}>
+                                            <Image filter={'blur(1px)'} src={`/image/${brawler.i}`} maxW={'64px'} borderRadius={'lg'} fallback={<Spinner/>}/>
+                                            <Box w={'100%'} h={'100%'} bgColor={'rgba(0, 0, 0, 0.5)'} pos={'absolute'} top={0} borderRadius={'lg'}/>
+                                            {(!brawler.u) && <Icon as={RiLock2Line} color={'white'} pos={'absolute'} fontSize={'25px'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}></Icon>}
+                                        </Box>
                                         
                                         <Text color={(brawler.unlockedPins !== brawler.totalPins) ? 'white' : 'gold'} fontSize={'md'} className={'heading-md'}>{`${brawler.unlockedPins}/${brawler.totalPins} Unlocked`}</Text>
 
