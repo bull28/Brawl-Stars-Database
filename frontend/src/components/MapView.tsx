@@ -67,10 +67,13 @@ const MapView = React.forwardRef<{open: () => void}, Props>((props, ref) => {
   )
 
   useEffect(() => {
-    axios.get(`/map/${props.map}`)
-      .then((res) => {
-        setData(res.data)
+    if (props.map){
+      axios.get(`/map/${props.map}`)
+        .then((res) => {
+          setData(res.data)
       })
+    }
+    
   }, [props.map])
 
   return (

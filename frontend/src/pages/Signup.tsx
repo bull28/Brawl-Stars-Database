@@ -17,8 +17,8 @@ function Signup(){
 
     const errorMessages = {
         200: "",
-        400: "Username and/or Password not Provided.",
-        401: "Username and/or Password Already Exists.",
+        400: "Invalid Username and/or Password.",
+        401: "Username Already Exists.",
         500: "The Server Encountered an Error. Please Try Again Later."
     }
 
@@ -53,12 +53,12 @@ function Signup(){
                     <FormLabel htmlFor={'username'}>Username</FormLabel>
                     <InputGroup>
                         <InputLeftElement><BsFillPersonFill/></InputLeftElement>
-                        <Input type={'text'} mb={5} value={username} onChange={(e) => {setUsername(e.target.value)}} borderColor={'gray.400'}/>
+                        <Input type={'text'} mb={5} value={username} onChange={(e) => {setUsername(e.target.value)}} borderColor={'gray.400'} style={{caretColor: 'auto'}}/>
                     </InputGroup>
                     <FormLabel htmlFor={'password'}>Password</FormLabel>
                     <InputGroup>
                         <InputLeftElement><RiKeyFill/></InputLeftElement>
-                        <Input type={'password'}  value={password} onChange={(e) => {setPassword(e.target.value)}} borderColor={'gray.400'}/>
+                        <Input type={'password'}  value={password} onChange={(e) => {setPassword(e.target.value)}} borderColor={'gray.400'} style={{caretColor: 'auto'}}/>
                     </InputGroup>
                     <Input type={'submit'} value={'Sign Up'} backgroundColor={'blue.400'} color={'white'} fontWeight={'500'} _hover={{backgroundColor: "blue.500"}} cursor={'pointer'} mt={10}/>
                     <Flex mt={5} justifyContent={'space-between'}>

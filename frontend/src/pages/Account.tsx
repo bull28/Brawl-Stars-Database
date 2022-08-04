@@ -30,7 +30,7 @@ export default function Account() {
           setAvatar(res.data.avatar)
           setUsername(res.data.username)
         }).catch(function(error) {
-          if (error.response){
+          if (error.response.status === 400 || error.response.status === 401){
               localStorage.removeItem('token')
               navigate('/login')
           }
@@ -58,23 +58,28 @@ export default function Account() {
           isClosable: true
         })
       }).catch(function(error) {
-        if (error.response.status === 401){
-            toast({
-              title: 'Error',
-              description: 'Invalid Credentials.',
-              status: 'error',
-              duration: 3000,
-              isClosable: true
-            })
-        } else if (error.response.status === 400){
-          toast({
-            title: 'Error',
-            description: 'Missing Field(s)',
-            status: 'error',
-            duration: 3000,
-            isClosable: true
-          })
+        let description;
+
+        switch(error.response.status) {
+          case 401:
+            description = "Incorrect Password or Username Is Already Taken."
+            break;
+          case 403:
+            description = "Invalid Avatar."
+            break;
+          case 500:
+            description = "Internal Server Error. Please Try Again Later."
+            break;
+        
         }
+
+        toast({
+          title: "Error",
+          description: description,
+          status: 'error',
+          duration: 3000,
+          isClosable: true
+        })
     })
   }
   
@@ -89,16 +94,16 @@ export default function Account() {
         <FormControl w={'fit-content'} textAlign={'left'} mt={5}>
           <Stack direction={'column'} spacing={6}>
             <Box>
-              <FormLabel><Flex alignItems={'center'}>Username<BsFillPersonFill/></Flex></FormLabel>
-              <Input type='text' value={username} onChange={(e) => {setUsername(e.target.value)}}/>
+              <FormLabel><Flex alignItems={'center'}><Text mr={1}>Username</Text><BsFillPersonFill/></Flex></FormLabel>
+              <Input type='text' value={username} onChange={(e) => {setUsername(e.target.value)}} style={{caretColor: 'auto'}}/>
             </Box>
             <Box>
-              <FormLabel><Flex alignItems={'center'}>Change Password<RiKeyFill/></Flex></FormLabel>
+              <FormLabel><Flex alignItems={'center'}><Text mr={1}>Change Password</Text><RiKeyFill/></Flex></FormLabel>
               <InputGroup flexDir={'column'}>
                 <FormHelperText>Old Password</FormHelperText>
-                <Input type='text' value={oldPassword} onChange={(e) => {setOldPassword(e.target.value)}}/>
+                <Input type='text' value={oldPassword} onChange={(e) => {setOldPassword(e.target.value)}} style={{caretColor: 'auto'}}/>
                 <FormHelperText>New Password</FormHelperText>  
-              <Input type='text' value={newPassword} onChange={(e) => {setNewPassword(e.target.value)}}/>
+              <Input type='text' value={newPassword} onChange={(e) => {setNewPassword(e.target.value)}} style={{caretColor: 'auto'}}/>
               </InputGroup>
             </Box>
             <Input type={'submit'} value={'Update'} backgroundColor={'blue.400'} color={'white'} fontWeight={'500'} _hover={{backgroundColor: "blue.500"}} cursor={'pointer'} onClick={handleUpdate}/>

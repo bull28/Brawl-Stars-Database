@@ -1,18 +1,17 @@
 import { Suspense, useEffect, useState } from 'react'
-import { Flex, Text, SimpleGrid, Image, Icon, Link, Spinner, LinkBox } from '@chakra-ui/react'
+import { Flex, Text, SimpleGrid, Image, Icon, Link, Spinner } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import SkinView from '../components/SkinView'
 import { ArrowBackIcon, ExternalLinkIcon } from '@chakra-ui/icons'
 import { BrawlerData } from '../types/BrawlerData'
 import ModelViewer from '../components/3D_Model_Viewer'
-import { CollectionData } from '../types/CollectionData'
+
 
 export default function Brawler() {
     const params = useParams()
     const [data, setData] = useState<BrawlerData>()
     const [model, setModel] = useState<string | null>(null)
-    const [collectionData, setCollectionData] = useState<CollectionData>()
 
 
     useEffect(() => {
@@ -21,13 +20,6 @@ export default function Brawler() {
                 setData(res.data)
                 setModel(`/image/${res.data.model}`)
             })
-        if (localStorage.getItem('token')){
-            axios.post('/collection', {token: localStorage})
-                .then((res) => {
-                    setCollectionData(res.data)
-                })
-        }
-        
     }, [params])
   return (
     <>
@@ -71,11 +63,10 @@ export default function Brawler() {
                         ))}
                     </SimpleGrid>
                     {localStorage.getItem('token') ? 
-                        <Link href={`/collection?brawler=${data.name}`} color={'white'} fontSize={'lg'} className={'heading-xs'}>View Collection <ExternalLinkIcon mx={'2px'}/></Link>
+                        <Link href={`/collection?brawler=${data.name}`} color={'white'} fontSize={'lg'} className={'heading-xs'}>{`View ${data.displayName} Collection `}<ExternalLinkIcon mx={'2px'}/></Link>
                             :
                         <Text color={'white'} fontSize={'lg'} ><Link color={'blue.400'} href="/login">Log In</Link> To View Collection</Text>
                     }
-                    
                 </Flex>
             </Flex>
             

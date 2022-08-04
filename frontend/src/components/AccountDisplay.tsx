@@ -22,7 +22,7 @@ export default function AccountDisplay() {
             .then((res) => {
                 setData(res.data)
             }).catch(function(error) {
-                if (error.response){
+                if (error.response.status === 400 || error.response.status === 401){
                     localStorage.removeItem('token')
                 }
             })

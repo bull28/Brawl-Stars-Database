@@ -121,11 +121,11 @@ export default function EventSideBar({ changeData }: {changeData: any}){
                         <Radio value='current'>Current</Radio>
                         <Radio value='season_time'>Season Time</Radio>
                         <Stack direction={'row'} alignItems={'center'}>
-                            <Input type={'number'} onChange={(e) => handleTimeChange(e.target.value, 0)} value={time[0]}/>
+                            <Input type={'number'} onChange={(e) => handleTimeChange(e.target.value, 0)} value={time[0]} style={{caretColor: 'auto'}}/>
                             <Text>:</Text>
-                            <Input type={'number'} onChange={(e) => handleTimeChange(e.target.value, 1)} value={time[1]}/>
+                            <Input type={'number'} onChange={(e) => handleTimeChange(e.target.value, 1)} value={time[1]} style={{caretColor: 'auto'}}/>
                             <Text>:</Text>
-                            <Input type={'number'} onChange={(e) => handleTimeChange(e.target.value, 2)} value={time[2]}/>
+                            <Input type={'number'} onChange={(e) => handleTimeChange(e.target.value, 2)} value={time[2]} style={{caretColor: 'auto'}}/>
                         </Stack>
                         <Select onChange={(e) => setSelect(e.target.value)} value={select}>
                             <option value='at_time'>At Time</option>
@@ -141,7 +141,7 @@ export default function EventSideBar({ changeData }: {changeData: any}){
                 <Flex alignItems={'center'} alignContent={'center'} textAlign={'center'} flexDir={'column'} pb={3}>
                     
                     <InputGroup>
-                        <Input type={'text'} value={searchText} onChange={e => setSearchText(e.target.value)}/>
+                        <Input type={'text'} value={searchText} onChange={e => setSearchText(e.target.value)} style={{caretColor: 'auto'}}/>
                         <InputRightElement>
                             <Icon as={SearchIcon} onClick={search} cursor={'pointer'} fontSize={'xl'}/>
                         </InputRightElement>
@@ -183,11 +183,11 @@ export default function EventSideBar({ changeData }: {changeData: any}){
                                 <Radio value='current'>Current</Radio>
                                 <Radio value='season time'>Season Time</Radio>
                                 <Stack direction={'row'} alignItems={'center'}>
-                                    <Input type={'number'} onChange={(e) => handleTimeChange(e.target.value, 0)} value={time[0]}/>
+                                    <Input type={'number'} onChange={(e) => handleTimeChange(e.target.value, 0)} value={time[0]} style={{caretColor: 'auto'}}/>
                                     <Text>:</Text>
-                                    <Input type={'number'} onChange={(e) => handleTimeChange(e.target.value, 1)} value={time[1]}/>
+                                    <Input type={'number'} onChange={(e) => handleTimeChange(e.target.value, 1)} value={time[1]} style={{caretColor: 'auto'}}/>
                                     <Text>:</Text>
-                                    <Input type={'number'} onChange={(e) => handleTimeChange(e.target.value, 2)} value={time[2]}/>
+                                    <Input type={'number'} onChange={(e) => handleTimeChange(e.target.value, 2)} value={time[2]} style={{caretColor: 'auto'}}/>
                                 </Stack>
                                 <Select onChange={(e) => setSelect(e.target.value)} value={select}>
                                     <option value='at_time'>At Time</option>
@@ -201,7 +201,7 @@ export default function EventSideBar({ changeData }: {changeData: any}){
                         </DrawerBody>
                         <DrawerFooter>
                             <InputGroup>
-                                <Input type={'text'}/>
+                                <Input type={'text'} style={{caretColor: 'auto'}}/>
                                 <InputRightElement>
                                     <Icon as={SearchIcon} onClick={search} cursor={'pointer'}/>
                                 </InputRightElement>

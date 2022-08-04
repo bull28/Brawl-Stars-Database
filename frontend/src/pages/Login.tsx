@@ -18,7 +18,7 @@ function Login(){
     const errorMessages = {
         200: "",
         400: "Username and/or Password not Provided.",
-        401: "Username and/or Password is incorrect.",
+        401: "Incorrect Username and/or Password.",
         500: "The Server Encountered an Error. Please Try Again Later."
     }
 
@@ -35,6 +35,7 @@ function Login(){
                 if (error.response){
                     setInvalidlogin(true);
                     setErrorCode(error.response.status)
+                    console.log(error.response.data)
                 }
             })
 
@@ -53,12 +54,12 @@ function Login(){
                     <FormLabel htmlFor={'username'}>Username</FormLabel>
                     <InputGroup>
                         <InputLeftElement><BsFillPersonFill/></InputLeftElement>
-                        <Input type={'text'} mb={5} value={username} onChange={(e) => {setUsername(e.target.value)}} borderColor={'gray.400'}/>
+                        <Input type={'text'} mb={5} value={username} onChange={(e) => {setUsername(e.target.value)}} borderColor={'gray.400'} style={{caretColor: 'auto'}}/>
                     </InputGroup>
                     <FormLabel htmlFor={'password'}>Password</FormLabel>
                     <InputGroup>
                         <InputLeftElement><RiKeyFill/></InputLeftElement>
-                        <Input type={'password'}  value={password} onChange={(e) => {setPassword(e.target.value)}} borderColor={'gray.400'}/>
+                        <Input type={'password'}  value={password} onChange={(e) => {setPassword(e.target.value)}} borderColor={'gray.400'} style={{caretColor: 'auto'}}/>
                     </InputGroup>
                     <Flex justifyContent={'right'}>
                         <FormHelperText mb={10} color={'blue.400'}><Link>Forgot Password?</Link></FormHelperText>
