@@ -90,6 +90,7 @@ Response:
     "avatar": String,
     "tokens": Number,
     "tokenDoubler": Number,
+    "coins": Number,
     "tradeCredits": Number
 ]
 
@@ -99,6 +100,7 @@ Response:
 	Short descriptions of each of the resource fields (these are subject to change)
 	- tokens: "Collect tokens by vising the website regularly. Use them to open Brawl Boxes."
 	- tokenDoubler: "For every token collected, receive an additional token as a bonus. X bonus tokens remaining."
+	- coins: "Coins are used to buy special avatars. Find them in Brawl Boxes."
 	- tradeCredits: "Use these to trade pins with other users. Higher-rarity pins require more credits to trade."
 Errors:
 	- 500: Database problem

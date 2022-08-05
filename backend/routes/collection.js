@@ -81,7 +81,7 @@ router.post("/resources", function(req, res) {
 
     if (username){
         database.queryDatabase(
-        "SELECT username, active_avatar, tokens, token_doubler, trade_credits FROM " + TABLE_NAME + " WHERE username = ?;",
+        "SELECT username, active_avatar, tokens, token_doubler, coins, trade_credits FROM " + TABLE_NAME + " WHERE username = ?;",
         [username], (error, results, fields) => {
             if (databaseErrorCheck(error, results, fields, res)){
                 return;
@@ -92,6 +92,7 @@ router.post("/resources", function(req, res) {
                 "avatar": results[0].active_avatar,
                 "tokens": results[0].tokens,
                 "tokenDoubler": results[0].token_doubler,
+                "coins": results[0].coins,
                 "tradeCredits": results[0].trade_credits
             }
 
