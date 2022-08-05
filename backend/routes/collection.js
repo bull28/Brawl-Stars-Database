@@ -10,6 +10,8 @@ const TABLE_NAME = process.env.DATABASE_TABLE_NAME || "brawl_stars_database";
 
 // functions to view and modify a pin collections
 const pins = require("../modules/pins");
+const fileLoader = require("../modules/fileloader");
+const brawlbox = require("../modules/brawlbox");
 
 // base directories of image files
 const filePaths = require("../modules/filepaths");
@@ -19,12 +21,22 @@ const PIN_IMAGE_DIR = filePaths.PIN_IMAGE_DIR;
 
 // Load the skins json object
 var allSkins = [];
-const allSkinsPromise = require("../modules/fileloader").allSkinsPromise;
+const allSkinsPromise = fileLoader.allSkinsPromise;
 allSkinsPromise.then((data) => {
     if (data !== undefined){
         allSkins = data;
     }
 });
+// Add loading of avatar pmf
+/*
+var specialAvatars = [];
+const specialAvatarsPromise = fileLoader.specialAvatarsPromise;
+specialAvatarsPromise.then((data) => {
+    if (data !== undefined){
+        specialAvatars = data;
+    }
+});
+*/
 
 
 /**
@@ -103,7 +115,6 @@ router.post("/resources", function(req, res) {
     }
 });
 
-
 // Get a user's collection of brawlers and pins
 router.post("/collection", function(req, res) {
     if (!(req.body.token)){
@@ -125,6 +136,35 @@ router.post("/collection", function(req, res) {
             let collectionInfo = pins.formatCollectionData(allSkins, collectionData, PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR);
 
             res.json(collectionInfo);
+        });
+    } else{
+        res.status(401).send("Invalid token.");
+    }
+});
+
+// 
+router.post("/brawlbox", function(req, res) {
+    if (!(req.body.token)){
+        res.status(400).send("Token is missing.");
+        return;
+    }
+    let username = validateToken(req.body.token);
+
+    if (username){
+        database.queryDatabase(
+        "SELECT brawlers FROM " + TABLE_NAME + " WHERE username = ?;",
+        [username], (error, results, fields) => {
+            if (databaseErrorCheck(error, results, fields, res)){
+                return;
+            }
+
+            const collectionData = results[0].brawlers;
+
+            // remove hard coded stuff later
+            // later get avatar, resources, and other stuff from query
+            let brawlBoxContents = brawlbox.brawlBox(allSkins, [], collectionData,[],{"tokens": 6969, "token_doubler":0, "coins":55, "trade_credits":0});
+
+            res.json(brawlBoxContents);
         });
     } else{
         res.status(401).send("Invalid token.");
