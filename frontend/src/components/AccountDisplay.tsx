@@ -28,7 +28,7 @@ export default function AccountDisplay() {
             })
     }, [])
   return (
-    <Flex>
+    <Flex flexDir={'column'}>
         <Menu autoSelect={false} closeOnSelect={false}>
             <MenuButton>
                 <Image src={`/image/${data?.avatar}`} borderRadius={'50%'} w={'50px'} border={'2px solid black'}/>
@@ -40,18 +40,22 @@ export default function AccountDisplay() {
                     </Flex>
                 </MenuGroup>
                 <MenuDivider/>
-                <MenuGroup title='Stats' fontSize={'lg'}>
+                <MenuGroup title='Resources' fontSize={'lg'}>
 
-                    <Tooltip label='Collect tokens by vising the website. Used to open Brawl Boxes.' placement='left' className='heading-md' hasArrow>
-                        <MenuItem>{`Tokens: ${data?.tokens ? data.tokens : 0}`}</MenuItem>
+                    <Tooltip label='Tokens are used to open Brawl Boxes. Collect them by vising the website regularly!' placement='left' className='heading-md' hasArrow>
+                        <MenuItem><Image maxW={'30px'} src={'/image/misc/resource_tokens.webp'} mr={2}/>{`${data?.tokens ? data.tokens : 0}`}</MenuItem>
+                    </Tooltip>
+
+                    <Tooltip label='Token Doubler gives you a bonus token for every token you receieve!' placement='left' className='heading-md' hasArrow>
+                        <MenuItem><Image maxW={'30px'} src={'/image/misc/resource_token_doubler.webp'} mr={2}/>{`${data?.tokenDoubler ? data.tokenDoubler : 0}`}</MenuItem>    
+                    </Tooltip>
+
+                    <Tooltip label='Coins are used to buy special avatars. Find them in Brawl Boxes!' placement='left' className='heading-md' hasArrow>
+                        <MenuItem><Image maxW={'30px'} src={'/image/misc/resource_coins.webp'} mr={2}/>{`${data?.coins ? data.coins : 0}`}</MenuItem>
                     </Tooltip>
                     
-                    <Tooltip label='For every token collected, receive an additional token as a bonus.' placement='left' className='heading-md' hasArrow>
-                        <MenuItem>{`Tokens Remaining: ${data?.tokenDoubler ? data.tokenDoubler : 0}`}</MenuItem>    
-                    </Tooltip>
-                    
-                    <Tooltip label='Use these to trade pins with other users.' placement='left' className='heading-md' hasArrow>
-                        <MenuItem>{`Trade Credits: ${data?.tradeCredits ? data.tradeCredits : 0}`}</MenuItem>    
+                    <Tooltip label='Trade Tokens are used to trade pins with other users!' placement='left' className='heading-md' hasArrow>
+                        <MenuItem><Image maxW={'30px'} src={'/image/misc/resource_trade_credits.webp'} mr={2}/>{`${data?.tradeCredits ? data.tradeCredits : 0}`}</MenuItem>    
                     </Tooltip>
     
                 </MenuGroup>
@@ -62,6 +66,12 @@ export default function AccountDisplay() {
                 
             </MenuList>
         </Menu>
+        <Tooltip label='Tokens are used to open Brawl Boxes. Collect them by vising the website regularly!' placement={'bottom-start'}>
+            <Flex justifyContent={'center'} alignItems={'center'} textAlign={'center'} mt={1}> 
+                <Image maxW={'25px'} src={'/image/misc/resource_tokens.webp'} mr={1}/>
+                <Text fontSize={'xl'}>{data?.tokens}</Text>
+            </Flex>
+        </Tooltip>
     </Flex>
   )
 }
