@@ -165,6 +165,7 @@ router.post("/signup", (req, res) => {
 // Updates an account's information
 router.post("/update", (req, res) => {
     let token = req.body.token;
+    let currentPassword = req.body.currentPassword;
     let newUsername = req.body.newUsername;
     let newPassword = req.body.newPassword;
     let newAvatar = req.body.newAvatar;
@@ -194,8 +195,15 @@ router.post("/update", (req, res) => {
             if (newUsername == ""){
                 newUsername = results[0].username;
             }
+
             if (newPassword == ""){
+                currentPassword = results[0].password;
                 newPassword = results[0].password;
+            } else{
+                if (currentPassword === undefined){
+                    res.status(400).send("Current password is required to change password.");
+                    return;
+                }
             }
 
             if (newAvatar == ""){
@@ -227,15 +235,15 @@ router.post("/update", (req, res) => {
 
                 // Update all columns of the database (new fields are guaranteed not to be empty strings)
                 database.queryDatabase(
-                "UPDATE " + TABLE_NAME + " SET username = ?, password = ?, active_avatar = ? WHERE username = ?;",
-                [newUsername, newPassword, newAvatar, currentUsername], (error, results, fields) => {
+                "UPDATE " + TABLE_NAME + " SET username = ?, password = ?, active_avatar = ? WHERE username = ? AND password = ?;",
+                [newUsername, newPassword, newAvatar, currentUsername, currentPassword], (error, results, fields) => {
                     if (error){
                         res.status(500).send("Could not connect to database.");
                         return;
                     }
 
                     if (results.affectedRows == 0){
-                        res.status(401).send("Existing username and password do not match.");
+                        res.status(401).send("Current password is incorrect.");
                     } else{
                         const userInfo = signToken(newUsername);
                         res.json(userInfo);
