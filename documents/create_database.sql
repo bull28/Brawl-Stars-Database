@@ -11,6 +11,7 @@ CREATE TABLE `brawl_stars_database` (
   `password` VARCHAR(100) NOT NULL,
   `tokens` INT DEFAULT 0,
   `token_doubler` INT DEFAULT 0,
+  `coins` INT DEFAULT 0,
   `trade_credits` INT DEFAULT 0,
   `active_avatar` VARCHAR(200) NOT NULL,
   `brawlers` JSON NOT NULL,
