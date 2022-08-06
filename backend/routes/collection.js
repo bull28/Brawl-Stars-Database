@@ -161,7 +161,16 @@ router.post("/brawlbox", function(req, res) {
             // remove hard coded stuff later
             // later get avatar, resources, and other stuff from query
             //["avatars/special/angry_darryl.webp", "avatars/special/ELIXIR_GOLM.webp", "avatars/special/viking_bull.webp", "avatars/special/yellow_face_02.webp"]
-            let brawlBoxContents = brawlbox.brawlBox(dropChances, allSkins, collectionData,[],[0, 0, 0, 0, 0],{"tokens": 6969, "token_doubler":0, "coins":55, "trade_credits":0});
+            const results1 = {
+                "brawlers": collectionData,
+                "avatars": [],
+                "wild_cards": [0, 0, 0, 0, 0],
+                "tokens": 6969,
+                "token_doubler": 0,
+                "coins": 55,
+                "trade_credits": 0
+            };
+            let brawlBoxContents = brawlbox.brawlBox(dropChances, "brawlBox", allSkins, results1);
 
             res.json(brawlBoxContents);
         });
