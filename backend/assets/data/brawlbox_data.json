@@ -1,0 +1,71 @@
+{
+    "key": {
+        "boxes": [
+            {"types": ["brawlBox", "bonus"], "properties": ["draws", "rewardTypeValues"]}
+        ],
+        "rewardTypes": [
+            {"types": ["coins", "tokenDoubler"], "properties": ["minAmount", "maxAmount"]},
+            {"types": ["pin", "wildcard", "brawler"], "properties": ["raritypmf", "minraritypmf", "coinConversion"]},
+            {"types": ["tradeCredits", "avatar"], "properties": ["pmfobject"]}
+        ]
+    },
+    "boxes": {
+        "brawlBox": {
+            "draws": [
+                [0, 0, 20, 0, 6, 4],
+                [1, 0, 1, 0, 0, 0],
+                [3, 0, 0, 1, 0, 0]
+            ],
+            "rewardTypeValues": ["nothing", "coins", "pin", "wildcard", "brawler", "bonus"]
+        },
+        "bonus": {
+            "draws": [
+                [6, 5, 1]
+            ],
+            "rewardTypeValues": ["tradeCredits", "tokenDoubler", "avatar"]
+        }
+    },
+    "rewardTypes": {
+        "coins": {
+            "minAmount": 200,
+            "maxAmount": 200
+        },
+        "tokenDoubler": {
+            "minAmount": 200,
+            "maxAmount": 200
+        },
+        "pin": {
+            "raritypmf": [36, 15, 6, 3, 0],
+            "minraritypmf": [0, 0, 0, 0, 0],
+            "coinConversion": 500
+        },
+        "wildcard": {
+            "raritypmf": [36, 15, 6, 3, 0],
+            "minraritypmf": [0, 0, 0, 0, 0],
+            "coinConversion": 0
+        },
+        "brawler": {
+            "raritypmf": [32, 16, 8, 4, 2, 1, 1],
+            "minraritypmf": [0, 0, 0, 0, 0, 0, 0],
+            "coinConversion": 2500
+        },
+        "tradeCredits": {
+            "pmfobject": [
+                {"value": 1, "weight": 347},
+                {"value": 2, "weight": 972},
+                {"value": 3, "weight": 480},
+                {"value": 5, "weight": 160},
+                {"value": 10, "weight": 40},
+                {"value": 69, "weight": 1}
+            ]
+        },
+        "avatar": {
+            "pmfobject": [
+                {"value": "avatars/special/angry_darryl.webp", "weight": 4},
+                {"value": "avatars/special/ELIXIR_GOLM.webp", "weight": 3},
+                {"value": "avatars/special/viking_bull.webp", "weight": 2},
+                {"value": "avatars/special/yellow_face_02.webp", "weight": 1}
+            ]
+        }
+    }
+}

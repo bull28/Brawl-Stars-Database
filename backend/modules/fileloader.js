@@ -28,6 +28,17 @@ async function readMaps(){
     });
 }
 
+async function readBrawlBox(){
+    return fs.promises.readFile("assets/data/brawlbox_data.json", "utf8")
+    .then((result) => {
+        const brawlBoxData = JSON.parse(result);
+        return brawlBoxData;
+    })
+    .catch((error) => {
+        return {};
+    });
+}
+
 async function readFreeAvatars(){
     return fs.promises.readdir("assets/images/avatars/free")
     .then((result) => {
@@ -56,5 +67,6 @@ async function readSpecialAvatars(){
 
 exports.allSkinsPromise = readBrawlers();
 exports.eventListPromise = readMaps();
+exports.dropChancesPromise = readBrawlBox();
 exports.freeAvatarsPromise = readFreeAvatars();
 exports.specialAvatarsPromise = readSpecialAvatars();
