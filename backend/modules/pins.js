@@ -1,6 +1,7 @@
 function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
     var collectionInfo = {
         "unlockedBrawlers":0,
+        "completedBrawlers":0,
         "totalBrawlers":0,
         "unlockedPins":0,
         "totalPins":0,
@@ -81,9 +82,14 @@ function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
             thisBrawler["pinFilePath"] = pinFile + brawler.name + "/";
             thisBrawler["pins"] = brawlerPins;
 
+            if (unlockedPins == totalPins){
+                collectionInfo.completedBrawlers++;
+            }
+
             collectionInfo.collection.push(thisBrawler);
         }
     }
+
     return collectionInfo;
 }
 

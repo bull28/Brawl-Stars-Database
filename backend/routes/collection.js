@@ -28,13 +28,43 @@ allSkinsPromise.then((data) => {
     }
 });
 var dropChances = {};
+var brawlBoxTypes = {};
 const dropChancesPromise = fileLoader.dropChancesPromise;
 dropChancesPromise.then((data) => {
     if (data !== undefined){
-        dropChances = data;
+        if (validateDropChances(data)){
+            dropChances = data;
+
+            // Copy over the brawl box data in case the user requests a list of box types
+            // Remove all secret information like drop chances
+            for (let x in dropChances.boxes){
+                if (x != "bonus"){
+                    var thisBrawlBox = {};
+                    for (let y in dropChances.boxes[x]){
+                        if (y != "draws" && y != "rewardTypeValues"){
+                            thisBrawlBox[y] = dropChances.boxes[x][y];
+                        }
+                    }
+                    brawlBoxTypes[x] = thisBrawlBox;
+                }
+            }
+        }
     }
 });
 
+
+/**
+ * Checks whether a json object is empty.
+ * @param {Object} x the object
+ * @returns true if empty, false otherwise
+ */
+ function isEmpty(x){
+    var isEmpty = true;
+    for (var y in x){
+        isEmpty = false;
+    }
+    return isEmpty;
+}
 
 
 /**
@@ -78,6 +108,47 @@ function databaseErrorCheck(error, results, fields, res){
         return true;
     }
     return false;
+}
+
+
+function validateDropChances(dropChances){
+    // The object doesn't even exist...
+    if (!(dropChances)){
+        return false;
+    }
+    // If no key exists, immediately throw the game and shoot your teammates
+    if (!(dropChances.hasOwnProperty("key"))){
+        return false;
+    }
+
+    valid = true;
+    for (let checkType in dropChances.key){
+        // checkType = the reward type category (boxes or rewardTypes)
+        if (dropChances.hasOwnProperty(checkType)){
+            for (let x of dropChances.key[checkType]){
+                // x = the object representing what to check ({"types": [...], "properties": [...]})
+                if (x.hasOwnProperty("types") && x.hasOwnProperty("properties")){
+                    for (let y of x.types){
+                        // y = the key of the type to check ("coins", "tokenDoubler", ...)
+                        // checkObject = the actual object to check (found using the key)
+                        var checkObject = dropChances[checkType][y];
+                        for (let key of x.properties){
+                            // Go through the object's properties and check if they exist
+                            if (!(checkObject.hasOwnProperty(key))){
+                                valid = false;
+                            }
+                        }
+                    }
+                } else{
+                    valid = false;
+                }
+            }
+        } else{
+            valid = false;
+        }   
+    }
+
+    return valid;
 }
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -128,8 +199,14 @@ router.post("/collection", function(req, res) {
             if (databaseErrorCheck(error, results, fields, res)){
                 return;
             }
-
-            const collectionData = results[0].brawlers;
+            
+            var collectionData = {};
+            try{
+                collectionData = JSON.parse(results[0].brawlers);
+            } catch (error){
+                res.status(500).send("Collection data could not be loaded.");
+                return;
+            }
 
             let collectionInfo = pins.formatCollectionData(allSkins, collectionData, PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR);
 
@@ -146,33 +223,99 @@ router.post("/brawlbox", function(req, res) {
         res.status(400).send("Token is missing.");
         return;
     }
-    let username = validateToken(req.body.token);
+    if (isEmpty(dropChances)){
+        res.status(500).send("Brawl Box is not set up properly.");
+        return;
+    }
 
+
+    // If the user does not specify a box type, send all the available boxes
+    // If they do specify a box type, check to make sure that box actually exists.
+    if (!(req.body.boxType)){
+        res.json(brawlBoxTypes);
+        return;
+    }
+    if (!(brawlBoxTypes.hasOwnProperty(req.body.boxType))){
+        res.status(400).send("Box type does not exist.");
+        return;
+    }
+
+
+    let username = validateToken(req.body.token);
+    let boxType = req.body.boxType;
     if (username){
+        const BUL = performance.now();
         database.queryDatabase(
-        "SELECT brawlers FROM " + TABLE_NAME + " WHERE username = ?;",
+        "SELECT brawlers, avatars, wild_card_pins, tokens, token_doubler, coins, trade_credits FROM " + TABLE_NAME + " WHERE username = ?;",
         [username], (error, results, fields) => {
             if (databaseErrorCheck(error, results, fields, res)){
                 return;
             }
 
-            const collectionData = results[0].brawlers;
+            var userResources = results[0];
 
-            // remove hard coded stuff later
-            // later get avatar, resources, and other stuff from query
-            //["avatars/special/angry_darryl.webp", "avatars/special/ELIXIR_GOLM.webp", "avatars/special/viking_bull.webp", "avatars/special/yellow_face_02.webp"]
-            const results1 = {
-                "brawlers": collectionData,
-                "avatars": [],
-                "wild_cards": [0, 0, 0, 0, 0],
-                "tokens": 6969,
-                "token_doubler": 0,
-                "coins": 55,
-                "trade_credits": 0
-            };
-            let brawlBoxContents = brawlbox.brawlBox(dropChances, "brawlBox", allSkins, results1);
+            if (userResources.tokens < brawlBoxTypes[boxType].cost){
+                //console.log("You cannot afford this Box!");
+                //send status 403 later
+            }
 
-            res.json(brawlBoxContents);
+            // Is storing the data as text instead of json is faster if there is no searching???
+            try{
+                userResources.brawlers = JSON.parse(userResources.brawlers);
+                userResources.avatars = JSON.parse(userResources.avatars);
+                userResources.wild_card_pins = JSON.parse(userResources.wild_card_pins);
+            } catch (error){
+                res.status(500).send("Collection data could not be loaded.");
+                return;
+            }
+
+            //for (let D=0;D<500;D++){
+            //    brawlbox.brawlBox(dropChances, boxType, allSkins, userResources);
+            //}
+
+
+            let brawlBoxContents = brawlbox.brawlBox(dropChances, boxType, allSkins, userResources);
+
+            if (brawlBoxContents.length == 0){
+                res.status(500).send("This Brawl Box contained a manufacturing defect.");
+                return;
+            }
+
+            // Sort all the brawlers so they don't end up in random order as the user opens more boxes
+            userResources.brawlers = Object.keys(userResources.brawlers).sort().reduce((object, key) => {
+                object[key] = userResources.brawlers[key]; 
+                return object;
+            }, {});
+
+
+            database.queryDatabase(
+            "UPDATE " + TABLE_NAME +
+            " SET brawlers = ?, avatars = ?, wild_card_pins = ?, tokens = ?, token_doubler = ?, coins = ?, trade_credits = ? WHERE username = ?;",
+            [JSON.stringify(userResources.brawlers), JSON.stringify(userResources.avatars), JSON.stringify(userResources.wild_card_pins), userResources.tokens, userResources.token_doubler, userResources.coins, userResources.trade_credits, username], (error, results, fields) => {
+                if (error){
+                    res.status(500).send("Could not connect to database.");
+                    return;
+                }
+                if (results.affectedRows == 0){
+                    res.status(500).send("The database refused to update.");
+                }
+
+                // Add image file paths to all images returned as rewards
+                for (let x of brawlBoxContents){
+                    if (x.hasOwnProperty("image") && x.hasOwnProperty("rewardType")){
+                        if (x.rewardType == "pin"){
+                            x.image = PIN_IMAGE_DIR + x.image;
+                        } else if (x.rewardType == "brawler"){
+                            x.image = PORTRAIT_IMAGE_DIR + x.image;
+                        }
+                    }
+                }
+
+                const EDGRISBAD = (performance.now() - BUL);
+                console.log("YOUR PROGRAM IS",EDGRISBAD.toString(),"TIMES WORSE THAN E D G R");
+
+                res.json(brawlBoxContents);
+            });
         });
     } else{
         res.status(401).send("Invalid token.");

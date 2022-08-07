@@ -1,7 +1,7 @@
 {
     "key": {
         "boxes": [
-            {"types": ["brawlBox", "bonus"], "properties": ["draws", "rewardTypeValues"]}
+            {"types": ["brawlBox", "bonus"], "properties": ["cost", "image", "draws", "rewardTypeValues"]}
         ],
         "rewardTypes": [
             {"types": ["coins", "tokenDoubler"], "properties": ["minAmount", "maxAmount"]},
@@ -11,6 +11,8 @@
     },
     "boxes": {
         "brawlBox": {
+            "cost": 100,
+            "image": "misc/brawlbox_default.webp",
             "draws": [
                 [0, 0, 20, 0, 6, 4],
                 [1, 0, 1, 0, 0, 0],
@@ -19,6 +21,8 @@
             "rewardTypeValues": ["nothing", "coins", "pin", "wildcard", "brawler", "bonus"]
         },
         "bonus": {
+            "cost": 0,
+            "image": "",
             "draws": [
                 [6, 5, 1]
             ],

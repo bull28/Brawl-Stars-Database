@@ -134,7 +134,7 @@ router.post("/signup", (req, res) => {
     if (username && password){
         database.queryDatabase(
         "INSERT IGNORE INTO " + TABLE_NAME +
-        " (username, password, active_avatar, brawlers, avatars, backgrounds, trade_requests) VALUES (?, ?, ?, ?, ?, ?, ?);",
+        " (username, password, active_avatar, brawlers, avatars, wild_card_pins, trade_requests) VALUES (?, ?, ?, ?, ?, ?, ?);",
         [username, password, "avatars/free/default.webp", "{}", "[]", "[]", "[]"], (error, results, fields) => {
             if (error){
                 res.status(500).send("Could not connect to database.");

@@ -27,52 +27,11 @@ function RNG(options){
     return index;
 }
 
-function validateDropChances(dropChances){
-    // The object doesn't even exist...
-    if (!(dropChances)){
-        return false;
-    }
-    // If no key exists, immediately throw the game and shoot your teammates
-    if (!(dropChances.hasOwnProperty("key"))){
-        return false;
-    }
-
-    valid = true;
-    for (let checkType in dropChances.key){
-        // checkType = the reward type category (boxes or rewardTypes)
-        if (dropChances.hasOwnProperty(checkType)){
-            for (let x of dropChances.key[checkType]){
-                // x = the object representing what to check ({"types": [...], "properties": [...]})
-                if (x.hasOwnProperty("types") && x.hasOwnProperty("properties")){
-                    for (let y of x.types){
-                        // y = the key of the type to check ("coins", "tokenDoubler", ...)
-                        // checkObject = the actual object to check (found using the key)
-                        var checkObject = dropChances[checkType][y];
-                        for (let key of x.properties){
-                            // Go through the object's properties and check if they exist
-                            if (!(checkObject.hasOwnProperty(key))){
-                                valid = false;
-                            }
-                        }
-                    }
-                } else{
-                    valid = false;
-                }
-            }
-        } else{
-            valid = false;
-        }   
-    }
-
-    return valid;
-}
-
 function brawlBox(dropChances, boxType, allSkins, resources){
     // Validating parameters
-    if (!(validateDropChances(dropChances))){
-        // Drop chances data is invalid
-        return [];
-    }
+
+    // dropChances has already been validated before being passed
+    // to this function
 
     if (resources === undefined){
         // User is missing all resource information
@@ -81,7 +40,7 @@ function brawlBox(dropChances, boxType, allSkins, resources){
     const resourceProperties = [
         "brawlers",
         "avatars",
-        "wild_cards",
+        "wild_card_pins",
         "tokens",
         "token_doubler",
         "coins",
@@ -107,6 +66,9 @@ function brawlBox(dropChances, boxType, allSkins, resources){
     // All types of brawl boxes are guaranteed to give at least one drop, even coins
     // If a brawl box gives nothing then an error can be sent back
 
+    // Deduct tokens to pay for the brawl box
+    resources.tokens -= dropChances.boxes[boxType].cost;
+
 
     var rewards = [];
     var coinsReward = 0;
@@ -130,10 +92,11 @@ function brawlBox(dropChances, boxType, allSkins, resources){
     }
     //console.log(selections);
 
-    //var selections = ["coins", "pin", "wildcard", "brawler", "bonus"];// for testing, use RNG later
-    selections = ["pin"];
+    var selections = ["coins", "pin", "wildcard", "brawler", "bonus"];// for testing, use RNG later
+    //selections = ["pin"];
 
     for (let x of selections){
+        if (x != "nothing"){
         var drop = {
             "displayName": "",
             "rewardType": "empty",
@@ -166,6 +129,7 @@ function brawlBox(dropChances, boxType, allSkins, resources){
             coinsReward += drop.amount;
         } else{
             rewards.push(drop);
+        }
         }
     }
 
@@ -277,7 +241,7 @@ function selectPin(pinDropChances, resources, allSkins){
 
         result.displayName = "New Pin";
         result.rewardType = "pin";
-        result.image = pinObject.image;
+        result.image = allSkins[selectedPin[0]].name + "/" + pinObject.image;// add the brawler's name directory
         result.backgroundColor = pinObject.rarity.color;
     } else{
         resources.coins += pinDropChances.coinConversion;
@@ -299,12 +263,16 @@ function selectWildCardPin(wildCardDropChances, resources, allSkins){
         "backgroundColor": "#000000"
     };
 
-    var wildCardPins = resources.wild_cards;
     //var raritypmf = [36, 15, 6, 3, 0];
     const raritypmf = wildCardDropChances.raritypmf;
 
-    if (wildCardPins.length < raritypmf.length){
-        return result;
+    // If the wild card pins array is incorrectly formatted
+    // fix it before adding a wild card pin
+    if (resources.wild_card_pins.length < raritypmf.length){
+        resources.wild_card_pins = [];
+        for (let x = 0; x < raritypmf.length; x++){
+            resources.wild_card_pins.push(0);
+        }
     }
 
     var selectedRarity = RNG(raritypmf);
@@ -329,7 +297,7 @@ function selectWildCardPin(wildCardDropChances, resources, allSkins){
             }
             x++;
         }
-        wildCardPins[selectedRarity]++;
+        resources.wild_card_pins[selectedRarity]++;
 
         result.displayName = rarityName + " Wild Card Pin";
         result.rewardType = "wildcard";
