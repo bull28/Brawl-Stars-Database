@@ -297,7 +297,7 @@ router.post("/brawlbox", function(req, res) {
                     return;
                 }
                 if (results.affectedRows == 0){
-                    res.status(500).send("The database refused to update.");
+                    res.status(500).send("Could not update the database.");
                 }
 
                 // Add image file paths to all images returned as rewards

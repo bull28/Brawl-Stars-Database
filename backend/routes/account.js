@@ -8,9 +8,15 @@ const jsonwebtoken = require("jsonwebtoken");
 const database = require("../modules/database");
 const TABLE_NAME = process.env.DATABASE_TABLE_NAME || "brawl_stars_database";
 
-// functions to view and modify a pin collections
+// functions to view and modify pin collections
 const pins = require("../modules/pins");
+const maps = require("../modules/maps");
 const fileLoader = require("../modules/fileloader");
+
+// constants for log in rewards
+const HOURS_PER_REWARD = 6;
+const TOKENS_PER_REWARD = 100;
+const MAX_REWARD_STACK = 4;
 
 // Load the skins json object
 var allSkins = [];
@@ -40,9 +46,10 @@ specialAvatarsPromise.then((data) => {
 /**
  * Creates a new json web token for the given username.
  * @param {String} username username to sign the token with
+ * @param {Number} tokensEarned token resources earned when logging in
  * @returns json object with the token and the username
  */
-function signToken(username){
+function signToken(username, tokensEarned){
     const user = {
         "username": username
     };
@@ -51,7 +58,8 @@ function signToken(username){
 
     const userInfo = {
         "token": token,
-        "username": username
+        "username": username,
+        "tokensEarned": tokensEarned
     };
 
     return userInfo;
@@ -81,18 +89,150 @@ function signToken(username){
 
 /**
  * Creates a new json web token for a user, based on their username.
+ * If successful, sends the appropriate login information to the user.
+ * If unsuccessful, sends an error message using the response object provided.
+ * The function calling this function must return immediately because a response
+ * will be sent no matter the outcome.
  * @param {Array} results all results from the database that match the query
+ * @param {Object} res the response object to be sent to the user
  * @returns token if succesful, empty string otherwise
  */
 function login(results, res){
     if (results.length > 0) {
-        if (!(results[0].hasOwnProperty("username"))){
+        if (!(results[0].hasOwnProperty("username") &&
+        results[0].hasOwnProperty("last_login") &&
+        results[0].hasOwnProperty("tokens"))){
             res.status(500).send("Database is not set up properly.");
             return;
         }
 
-        const userInfo = signToken(results[0].username);
-        res.json(userInfo);
+        var userResults = results[0];
+        
+        // Add tokens based on how much time has passed since they last logged in
+        var currentTime = Date.now();
+
+        // Batches of tokens to be given to the player
+        var rewardsGiven = 0;
+
+        // The season time does not manage times longer than 4 weeks so if the last
+        // login was over 4 weeks ago then give the player the maximum login reward
+        // and reset. A time of 2 weeks is still beyond the amount of time required
+        // to receive maximum rewards so give them the maximum reward for all times
+        // longer than 2 weeks, even though the map rotation can handle times
+        // between 2 and 4 weeks.
+        var hoursSinceLastLogin = (currentTime - userResults.last_login) / 3600000;
+        if (hoursSinceLastLogin >= maps.MAP_CYCLE_HOURS){
+            rewardsGiven = MAX_REWARD_STACK;
+        } else{
+            var currentSeasonTime = maps.realToTime(currentTime);
+            //currentSeasonTime = new maps.SeasonTime(0, 0, 0, 0);
+            var currentSeason = currentSeasonTime.season;
+            var currentHour = currentSeasonTime.hour;
+
+            var lastLoginTime = maps.realToTime(userResults.last_login);
+            //lastLoginTime = new maps.SeasonTime(1, 309, 0, 0);
+            var lastLoginSeason = lastLoginTime.season;
+            var lastLoginHour = lastLoginTime.hour;
+            
+            // Since reward times must be compared on the same season, "carry over"
+            // cases, where the season values are not the same, must be handled
+            var seasonDiff = currentSeason - lastLoginSeason;
+            if (seasonDiff > 0){
+                // Case 1: Positive carry over
+                // Represents a case where the map rotation reset since the last login
+                // but not the ladder season reset
+                //
+                // Ex. Current time: [1, 5, 0, 0], Last login: [0, 309, 0, 0]
+                // Remove the additional seasons and add a full season worth of
+                // hours for each season removed.
+                // In this example: remove 1 season and add 336 hours
+                // so the comparison becomes [0, 341, 0, 0] and [0, 309, 0, 0]
+                currentSeason -= seasonDiff;
+                currentHour += currentSeasonTime.hoursPerSeason * seasonDiff;
+            } else if (seasonDiff < 0){
+                // Case 2: Negative carry over
+                // Represents a case where the ladder season reset since the last login
+                //
+                // Ex. (Note: the maxSeasons is 3 here because this is supposed to
+                // work no matter what maxSeasons is)
+                // Current time: [0, 5, 0, 0], Last login: [1, 309, 0, 0], maxSeasons = 3
+                // The comparison should be done using the higher season number so the lower
+                // one has to be increased to match the higher one
+                // The desired comparison here is [1, 677, 0, 0] and [1, 309, 0, 0] since
+                // [0, 5, 0, 0] is actually an entire season + a few hours ahead of [1, 309, 0, 0]
+                //
+                // Increase the lower season amount by subtracting seasonDiff
+                // seasonDiff is negative here so subtracting it increases the value
+                // In this example,  [0, 5, 0, 0] becomes [1, 5, 0, 0]
+                // Now the correct number of hours must be added to make the time equal again
+                // while keeping the season value unchanged.
+                // To avoid negative numbers, add and entire season worth of hours then subtract
+                // the amount of hours added when seasonDiff was subtracted from currentSeason
+                // In this example, [1, 5, 0, 0] +1008 => [1, 1013, 0, 0] -336 => [1, 677, 0, 0]
+                // These two numbers of hours to be added/subtracted can both be obtained with
+                // the mod operator (using seasonDiff % maxSeasons).
+                // 
+                // Many of these calculations can be simplified when maxSeasons is 2 but to make
+                // sure this works no matter what they do to the map rotation, the calculations
+                // have to be done.
+                currentSeason -= seasonDiff;// seasonDiff is negative so this is adding a season
+                currentHour += currentSeasonTime.hoursPerSeason * maps.mod(seasonDiff, currentSeasonTime.maxSeasons);
+            } else if (currentHour < lastLoginHour){
+                // Case 3: Entire season carry over
+                // Represents a case where almost an entire season has passed since the last login
+                //
+                // Ex. Current time: [0, 7, 0, 0], Last login: [0, 2, 0, 0], maxSeasons = 3
+                // The current time should be treated as [3, 7, 0, 0] but since maxSeasons is 3,
+                // the time given by the function is set to [0, 7, 0, 0] because it is equivalent
+                // in terms of the map rotation.
+                //
+                // Add an entire season worth of hours to the current time to represent all the
+                // time that has passed since the last login.
+                currentHour += currentSeasonTime.hoursPerSeason * currentSeasonTime.maxSeasons;
+            }
+            
+            // Rewards are given at multiples of 6 hours in the season so find the last multiple of
+            // 6 before the current time then compare it to the last login time.
+            var lastRewardHour = Math.floor(currentHour / HOURS_PER_REWARD) * HOURS_PER_REWARD;
+
+            // The user can claim rewards as long as their last login hour is less than the last
+            // reward hour. Since rewards are given at the very start of the hour, a last login
+            // hour that is the same as the last reward hour means the user logged in right after
+            // the reward was given and cannot receive it. Their last login time can essentially
+            // be treated as the next hour
+            // (ex. [0, 309, 28, 44] is treated the same as [0, 310, 0, 0])
+            // To account for this, add 1 to the lastLoginHour.
+            rewardsGiven = Math.floor((lastRewardHour - lastLoginHour - 1) / HOURS_PER_REWARD) + 1;// rounded up
+
+            //console.log("Last login was at",lastLoginHour,"Last reward was given at",lastRewardHour);
+        }
+
+        if (rewardsGiven > MAX_REWARD_STACK){
+            // Maximum of 4 token batches can be stacked at once
+            // They must log in at least once per day to maximize rewards
+            rewardsGiven = MAX_REWARD_STACK;
+        }
+
+        const newTokenAmount = userResults.tokens + rewardsGiven * TOKENS_PER_REWARD;
+
+        // Update the last login to the current time
+        database.queryDatabase(
+        "UPDATE " + TABLE_NAME + " SET last_login = ?, tokens = ? WHERE username = ?;",
+        [currentTime, newTokenAmount, userResults.username], (error, newResults, fields) => {
+            if (error){
+                console.log(error);
+                res.status(500).send("Could not connect to database.");
+                return;
+            }
+            if (newResults.affectedRows == 0){
+                res.status(500).send("Could not update the database.");
+            }
+
+            // At this point, the database update was successful so send the token
+            // containing the user's information
+            const userInfo = signToken(userResults.username, rewardsGiven * TOKENS_PER_REWARD);
+            res.json(userInfo);
+        });
     } else{
         res.status(401).send("Incorrect username or password");
     }
@@ -107,7 +247,7 @@ router.post("/login", (req, res) => {
     let password = req.body.password;
     if (username && password){
         database.queryDatabase(
-        "SELECT username FROM " + TABLE_NAME + " WHERE username = ? AND password = ?;",
+        "SELECT username, last_login, tokens FROM " + TABLE_NAME + " WHERE username = ? AND password = ?;",
         [username, password], (error, results, fields) => {
             if (error){
                 res.status(500).send("Could not connect to database.");
@@ -145,7 +285,7 @@ router.post("/signup", (req, res) => {
                 res.status(401).send("Username already exists.");
             } else{
                 database.queryDatabase(
-                "SELECT username FROM " + TABLE_NAME + " WHERE username = ? AND password = ?;",
+                "SELECT username, last_login, tokens FROM " + TABLE_NAME + " WHERE username = ? AND password = ?;",
                 [username, password], (error, results, fields) => {
                     if (error){
                         res.status(500).send("Could not connect to database.");
@@ -192,6 +332,16 @@ router.post("/update", (req, res) => {
                 return;
             }
 
+            var userBrawlers = {};
+            var userAvatars = [];
+            try{
+                userBrawlers = JSON.parse(results[0].brawlers);
+                userAvatars = JSON.parse(results[0].avatars);
+            } catch (error){
+                res.status(500).send("Collection data could not be loaded.");
+                return;
+            }
+
             if (newUsername == ""){
                 newUsername = results[0].username;
             }
@@ -212,7 +362,7 @@ router.post("/update", (req, res) => {
                 newAvatar = results[0].active_avatar;
             } else{
                 // Check to make sure the user's new avatar is unlocked
-                const avatarsInfo = pins.getAvatars(allSkins, allAvatars, results[0].brawlers, results[0].avatars);
+                const avatarsInfo = pins.getAvatars(allSkins, allAvatars, userBrawlers, userAvatars);
                 if (!(avatarsInfo.includes(newAvatar))){
                     res.status(403).send("You are not allowed to use that avatar.");
                     return;
@@ -245,7 +395,7 @@ router.post("/update", (req, res) => {
                     if (results.affectedRows == 0){
                         res.status(401).send("Current password is incorrect.");
                     } else{
-                        const userInfo = signToken(newUsername);
+                        const userInfo = signToken(newUsername, 0);// 0 = number of tokens given
                         res.json(userInfo);
                     }
                     
@@ -278,7 +428,17 @@ router.post("/avatar", (req, res) => {
                 return;
             }
 
-            const avatarsInfo = pins.getAvatars(allSkins, allAvatars, results[0].brawlers, results[0].avatars);
+            var userBrawlers = {};
+            var userAvatars = [];
+            try{
+                userBrawlers = JSON.parse(results[0].brawlers);
+                userAvatars = JSON.parse(results[0].avatars);
+            } catch (error){
+                res.status(500).send("Collection data could not be loaded.");
+                return;
+            }
+
+            const avatarsInfo = pins.getAvatars(allSkins, allAvatars, userBrawlers, userAvatars);
             res.json(avatarsInfo);
         });
     } else{
