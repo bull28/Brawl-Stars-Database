@@ -157,10 +157,22 @@ class EventSlot{
                 // also, the maximum difference between a start time and the current time is
                 // guaranteed to be 1 season because all events that do appear are guaranteed
                 // to appear at least once per season
-                const thisTime = new SeasonTime(currentTime.season, startTime[x], 0, 0);
+                var thisTime = new SeasonTime(currentTime.season, startTime[x], 0, 0);
 
+
+
+                // currentTime and thisTime will always be the same season
+                // this will only execute if thisTime is at a time earlier in the season than
+                // the current time. in this case the map already appeared this season and
+                // the time until it appears is from now until that map's appearance in the next
+                // season so 1 season will have to be added to get that time
+                
+                // for example if the current hour is 312 and the map to be checked starts at 126
+                // in this case, the carry over is always 1 (even if maxSeasons is > 2) since the
+                // rotation is the same in every season
                 if (seasonTimesLessThan(thisTime, currentTime)){
-                    thisTime.season += 1;
+                    //thisTime.season += 1;
+                    thisTime = addSeasonTimes(thisTime, new SeasonTime(1, 0, 0, 0));
                 }
 
                 // make sure the game mode is actually active
