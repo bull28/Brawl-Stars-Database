@@ -139,7 +139,7 @@ function brawlBox(dropChances, boxType, allSkins, resources){
             "displayName": "Coins",
             "rewardType": "coins",
             "amount": coinsReward,
-            "image": "misc/resource_coins.webp",
+            "image": "resource_coins.webp",
             "backgroundColor": "#000000"
         });
     }
@@ -449,7 +449,7 @@ function selectBonus(allBonusDrops, rewardTypes, resources){
 
             result.displayName = "Trade Credits";
             result.rewardType = "tradeCredits";
-            result.image = "misc/resource_trade_credits.webp";
+            result.image = "resource_trade_credits.webp";
             result.amount = tradeCreditDrops[selectedIndex].value;
             //result.backgroundColor = brawlerObject.rarity.color;
         }
@@ -468,7 +468,7 @@ function selectBonus(allBonusDrops, rewardTypes, resources){
 
         result.displayName = "Token Doubler";
         result.rewardType = "tokenDoubler";
-        result.image = "misc/resource_token_doubler.webp";
+        result.image = "resource_token_doubler.webp";
         result.amount = rewardAmount;
         //result.backgroundColor = brawlerObject.rarity.color;
     }

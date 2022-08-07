@@ -17,6 +17,7 @@ const brawlbox = require("../modules/brawlbox");
 const filePaths = require("../modules/filepaths");
 const PORTRAIT_IMAGE_DIR = filePaths.PORTRAIT_IMAGE_DIR;
 const PIN_IMAGE_DIR = filePaths.PIN_IMAGE_DIR;
+const RESOURCE_IMAGE_DIR = filePaths.RESOURCE_IMAGE_DIR;
 
 
 // Load the skins json object
@@ -255,8 +256,8 @@ router.post("/brawlbox", function(req, res) {
             var userResources = results[0];
 
             if (userResources.tokens < brawlBoxTypes[boxType].cost){
-                //console.log("You cannot afford this Box!");
-                //send status 403 later
+                res.status(403).send("You cannot afford this Box!");
+                return;
             }
 
             // Is storing the data as text instead of json is faster if there is no searching???
@@ -291,7 +292,16 @@ router.post("/brawlbox", function(req, res) {
             database.queryDatabase(
             "UPDATE " + TABLE_NAME +
             " SET brawlers = ?, avatars = ?, wild_card_pins = ?, tokens = ?, token_doubler = ?, coins = ?, trade_credits = ? WHERE username = ?;",
-            [JSON.stringify(userResources.brawlers), JSON.stringify(userResources.avatars), JSON.stringify(userResources.wild_card_pins), userResources.tokens, userResources.token_doubler, userResources.coins, userResources.trade_credits, username], (error, results, fields) => {
+            [
+                JSON.stringify(userResources.brawlers),
+                JSON.stringify(userResources.avatars),
+                JSON.stringify(userResources.wild_card_pins),
+                userResources.tokens,
+                userResources.token_doubler,
+                userResources.coins,
+                userResources.trade_credits,
+                username
+            ], (error, results, fields) => {
                 if (error){
                     res.status(500).send("Could not connect to database.");
                     return;
@@ -307,6 +317,13 @@ router.post("/brawlbox", function(req, res) {
                             x.image = PIN_IMAGE_DIR + x.image;
                         } else if (x.rewardType == "brawler"){
                             x.image = PORTRAIT_IMAGE_DIR + x.image;
+                        } else if (
+                            x.rewardType == "coins" ||
+                            x.rewardType == "wildcard" ||
+                            x.rewardType == "tradeCredits" ||
+                            x.rewardType == "tokenDoubler"
+                        ){
+                            x.image = RESOURCE_IMAGE_DIR + x.image;                            
                         }
                     }
                 }

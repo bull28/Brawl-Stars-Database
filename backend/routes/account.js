@@ -99,14 +99,16 @@ function signToken(username, tokensEarned){
  */
 function login(results, res){
     if (results.length > 0) {
-        if (!(results[0].hasOwnProperty("username") &&
-        results[0].hasOwnProperty("last_login") &&
-        results[0].hasOwnProperty("tokens"))){
+        var userResults = results[0];
+
+        if (!(userResults.hasOwnProperty("username") &&
+        userResults.hasOwnProperty("last_login") &&
+        userResults.hasOwnProperty("tokens") &&
+        userResults.hasOwnProperty("token_doubler"))){
             res.status(500).send("Database is not set up properly.");
             return;
         }
-
-        var userResults = results[0];
+        
         
         // Add tokens based on how much time has passed since they last logged in
         var currentTime = Date.now();
@@ -213,12 +215,31 @@ function login(results, res){
             rewardsGiven = MAX_REWARD_STACK;
         }
 
-        const newTokenAmount = userResults.tokens + rewardsGiven * TOKENS_PER_REWARD;
+        var tokenReward = rewardsGiven * TOKENS_PER_REWARD;
+        var activeTokenDoubler = userResults.token_doubler;
+
+        // If the user has a token doubler active
+        if (activeTokenDoubler > 0){
+            // If there are more tokens remaining in the doubler than the tokens being received right now
+            // then double all current tokens received and subtract that amount from the doubler
+            if (activeTokenDoubler > tokenReward){
+                activeTokenDoubler -= tokenReward;
+                tokenReward += tokenReward;
+            }
+            // If there are more tokens being received right now than there are remaining in the doubler
+            // then use up all that is left in the doubler and add that many tokens to the current amount
+            // being received
+            else{
+                tokenReward += activeTokenDoubler;
+                activeTokenDoubler = 0;
+            }
+        }
+        const newTokenAmount = userResults.tokens + tokenReward;
 
         // Update the last login to the current time
         database.queryDatabase(
-        "UPDATE " + TABLE_NAME + " SET last_login = ?, tokens = ? WHERE username = ?;",
-        [currentTime, newTokenAmount, userResults.username], (error, newResults, fields) => {
+        "UPDATE " + TABLE_NAME + " SET last_login = ?, tokens = ?, token_doubler = ? WHERE username = ?;",
+        [currentTime, newTokenAmount, activeTokenDoubler, userResults.username], (error, newResults, fields) => {
             if (error){
                 console.log(error);
                 res.status(500).send("Could not connect to database.");
@@ -230,7 +251,7 @@ function login(results, res){
 
             // At this point, the database update was successful so send the token
             // containing the user's information
-            const userInfo = signToken(userResults.username, rewardsGiven * TOKENS_PER_REWARD);
+            const userInfo = signToken(userResults.username, tokenReward);
             res.json(userInfo);
         });
     } else{
@@ -247,7 +268,7 @@ router.post("/login", (req, res) => {
     let password = req.body.password;
     if (username && password){
         database.queryDatabase(
-        "SELECT username, last_login, tokens FROM " + TABLE_NAME + " WHERE username = ? AND password = ?;",
+        "SELECT username, last_login, tokens, token_doubler FROM " + TABLE_NAME + " WHERE username = ? AND password = ?;",
         [username, password], (error, results, fields) => {
             if (error){
                 res.status(500).send("Could not connect to database.");
@@ -285,7 +306,7 @@ router.post("/signup", (req, res) => {
                 res.status(401).send("Username already exists.");
             } else{
                 database.queryDatabase(
-                "SELECT username, last_login, tokens FROM " + TABLE_NAME + " WHERE username = ? AND password = ?;",
+                "SELECT username, last_login, tokens, token_doubler FROM " + TABLE_NAME + " WHERE username = ? AND password = ?;",
                 [username, password], (error, results, fields) => {
                     if (error){
                         res.status(500).send("Could not connect to database.");
