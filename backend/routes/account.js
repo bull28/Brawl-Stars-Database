@@ -467,4 +467,44 @@ router.post("/avatar", (req, res) => {
     }
 });
 
+router.post("/claimtokens", (req, res) => {
+    if (!(req.body.token)){
+        res.status(400).send("Token is missing.");
+        return;
+    }
+    let username = validateToken(req.body.token);
+
+    if (username){
+        /*
+        database.queryDatabase(
+        "SELECT brawlers, avatars FROM " + TABLE_NAME + " WHERE username = ?;",
+        [username], (error, results, fields) => {
+            if (error){
+                res.status(500).send("Could not connect to database.");
+                return;
+            }
+            if (results.length == 0){
+                res.status(404).send("Could not find the user in the database.");
+                return;
+            }
+
+            var userBrawlers = {};
+            var userAvatars = [];
+            try{
+                userBrawlers = JSON.parse(results[0].brawlers);
+                userAvatars = JSON.parse(results[0].avatars);
+            } catch (error){
+                res.status(500).send("Collection data could not be loaded.");
+                return;
+            }
+
+            const avatarsInfo = pins.getAvatars(allSkins, allAvatars, userBrawlers, userAvatars);
+            res.json(avatarsInfo);
+        });*/
+        res.send("log in ");
+    } else{
+        res.status(401).send("Invalid token.");
+    }
+});
+
 module.exports = router;

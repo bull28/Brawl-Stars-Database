@@ -235,7 +235,18 @@ router.post("/brawlbox", function(req, res) {
     // If the user does not specify a box type, send all the available boxes
     // If they do specify a box type, check to make sure that box actually exists.
     if (!(req.body.boxType)){
-        res.json(brawlBoxTypes);
+        // Format it in an array when sending to the user
+        var brawlBoxList = [];
+        for (let x in brawlBoxTypes){
+            var thisBox = {};
+            thisBox.name = x;
+            for (let property in brawlBoxTypes[x]){
+                thisBox[property] = brawlBoxTypes[x][property];
+            }
+            brawlBoxList.push(thisBox);
+        }
+        
+        res.json(brawlBoxList);
         return;
     }
     if (!(brawlBoxTypes.hasOwnProperty(req.body.boxType))){

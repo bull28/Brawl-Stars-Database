@@ -90,6 +90,10 @@ function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
         }
     }
 
+    const BUL = performance.now();
+    getCollectionScore(collectionInfo);
+    console.log(performance.now() - BUL);
+
     return collectionInfo;
 }
 
@@ -136,6 +140,18 @@ function getAvatars(allSkins, allAvatars, userCollection, userAvatars){
     }
 
     return avatarsInfo;
+}
+
+function getCollectionScore(collection){
+    const brawlerScore = collection.unlockedBrawlers / collection.totalBrawlers;
+    const completionScore = collection.completedBrawlers / collection.totalBrawlers;
+    const pinScore = collection.unlockedPins / collection.totalPins;
+
+    var score = {
+        "grade": "-",
+        "color": ""
+    }
+    return 0;
 }
 
 // These functions may be used for brawl boxes and trading
