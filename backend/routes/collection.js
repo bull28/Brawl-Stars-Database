@@ -46,7 +46,7 @@ dropChancesPromise.then((data) => {
                             thisBrawlBox[y] = RESOURCE_IMAGE_DIR + dropChances.boxes[x][y];
                         } else if (y != "draws" && y != "rewardTypeValues"){
                             thisBrawlBox[y] = dropChances.boxes[x][y];
-                        } 
+                        }
                     }
                     brawlBoxTypes[x] = thisBrawlBox;
                 }

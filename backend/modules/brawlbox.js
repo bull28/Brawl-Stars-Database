@@ -1,3 +1,10 @@
+/**
+ * Takes in a probability mass function encoded in an array and
+ * randomly selects an index. The probability of an index in the array
+ * being selected is the value at that index / the sum of all values.
+ * @param {Array} options array of numbers
+ * @returns index that was randomly selected
+ */
 function RNG(options){
     var totalWeight = 0;
     for (let x of options){
@@ -27,6 +34,19 @@ function RNG(options){
     return index;
 }
 
+/**
+ * Opens a Brawl Box and directly adds the contents of it to the user.
+ * All Brawl Boxes are guaranteed to contain at least one item. If a
+ * box is opened and there is no item, an error occurred somewhere.
+ * A valid dropChances object must be passed to this function. To make
+ * it run faster, the dropChances object is validated only once when
+ * being loaded from the file and assumed to be valid from then on.
+ * @param {Object} dropChances valid object with drop chances data stored inside
+ * @param {String} boxType the type of Brawl Box to open
+ * @param {Array} allSkins array of all brawlers and skins in the game
+ * @param {Object} resources object containing all of the user's resource amounts that may change
+ * @returns array of the items the user received
+ */
 function brawlBox(dropChances, boxType, allSkins, resources){
     // Validating parameters
 
@@ -134,8 +154,15 @@ function brawlBox(dropChances, boxType, allSkins, resources){
     return rewards;
 }
 
-function selectCoins(staticDropChances, resources){
-    const amounts = staticDropChances;
+// All select... functions do the same operation but give a
+// different reward type. They take in objects representing
+// drop chances and the player's resources. Optionally, they
+// may require the allSkins array to select a brawler or pin.
+// They then randomly select a drop and add it to the player's
+// resources and return an object describing the drop.
+
+function selectCoins(coinsDropChances, resources){
+    const amounts = coinsDropChances;
     var rewardAmount = 0;
     if (amounts.minAmount == amounts.maxAmount){
         rewardAmount = amounts.minAmount;
@@ -235,7 +262,6 @@ function selectPin(pinDropChances, resources, allSkins){
 
         result.rewardType = "coins";
         result.amount = pinDropChances.coinConversion;
-        //result.backgroundColor = pinObject.rarity.color;
     }
 
     return result;
@@ -361,7 +387,6 @@ function selectBrawler(brawlerDropChances, resources, allSkins){
 
         result.rewardType = "coins";
         result.amount = brawlerDropChances.coinConversion;
-        //result.backgroundColor = pinObject.rarity.color;
     }
     
     return result;

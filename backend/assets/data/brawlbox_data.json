@@ -11,8 +11,10 @@
     },
     "boxes": {
         "brawlBox": {
+            "displayName": "Brawl Box",
             "cost": 100,
             "image": "brawlbox_default.webp",
+            "description": "Contains coins and up to 3 pins. May rarely drop bonus items such as a new brawler, trade credits, token doubler, or a new avatar.",
             "draws": [
                 [0, 1, 0, 0, 0, 0],
                 [0, 0, 2, 0, 1, 0],
@@ -22,8 +24,10 @@
             "rewardTypeValues": ["nothing", "coins", "pin", "wildcard", "brawler", "bonus"]
         },
         "pinPack": {
+            "displayName": "Pin Pack",
             "cost": 80,
             "image": "brawlbox_pinpack.webp",
+            "description": "Guaranteed to contain 1 pin and a chance for up to 6 pins in total. Only contains pins but has a much higher chance to find pins of higher rarity.",
             "draws": [
                 [0, 1],
                 [2, 1],
@@ -35,8 +39,10 @@
             "rewardTypeValues": ["nothing", "pinHighRarity"]
         },
         "megaBox": {
+            "displayName": "Mega Box",
             "cost": 240,
             "image": "brawlbox_megabox.webp",
+            "description": "Drops many coins and has a very high chance of collecting at least 1 brawler. Can contain up to 6 pins, up to 3 brawlers, and sometimes bonus items.",
             "draws": [
                 [1, 0, 0, 0, 0],
                 [1, 0, 0, 0, 0],

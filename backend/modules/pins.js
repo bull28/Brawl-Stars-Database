@@ -1,3 +1,14 @@
+/**
+ * Reads a user's brawler and pin collection from the database and organizes it
+ * in an array with useful properties for displaying the collection on-screen.
+ * Also analyzes the collection and gives a score based on how close it is to
+ * completion. All image files have their appropriate file paths added.
+ * @param {*} allSkins json array with all the brawlers
+ * @param {*} userCollection parsed brawlers object from the database
+ * @param {*} portraitFile file path to brawler portraits
+ * @param {*} pinFile file path to the directory containing the pins
+ * @returns json object of the collection that can be sent to the user
+ */
 function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
     var collectionInfo = {
         "unlockedBrawlers":0,
@@ -98,6 +109,18 @@ function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
     return collectionInfo;
 }
 
+/**
+ * Returns a complete list of all avatars a user is able to select.
+ * All free avatars are included and the user's special avatars collected
+ * are compared with the list of all special avatars to determine which
+ * special avatars they can select. Their collection is also used to
+ * determine which portrait avatars are available.
+ * @param {Array} allSkins json array with all the brawlers
+ * @param {Array} allAvatars json object with arrays of free and special avatars
+ * @param {*} userCollection parsed brawlers object from the database
+ * @param {*} userAvatars parsed avatars object from the database
+ * @returns array of all avatar image names
+ */
 function getAvatars(allSkins, allAvatars, userCollection, userAvatars){
     var avatarsInfo = [];
     var unlockedBrawlers = [];
@@ -143,6 +166,12 @@ function getAvatars(allSkins, allAvatars, userCollection, userAvatars){
     return avatarsInfo;
 }
 
+/**
+ * Sets the collectionScore and avatarColor fields of a collection object
+ * based on how close it is to completion.
+ * @param {Array} collection formatted collection object
+ * @returns nothing
+ */
 function getCollectionScore(collection){
     if (collection.totalBrawlers == 0 || collection.totalPins == 0){
         return;

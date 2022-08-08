@@ -145,11 +145,18 @@ router.post("/signup", (req, res) => {
         return;
     }
 
-    const startingBrawlers = {
-        "shelly": [],
-        "nita": [],
-        "colt": []
-    };
+    // If there are enough brawlers in the game, give the user 3 to start
+    // so they do not keep getting coins instead of pins because they have
+    // no brawlers unlocked.
+    var startingBrawlers = {};
+    if (allSkins.length >= 10){
+        for (let x = 0; x < 3; x++){
+            if (allSkins[x].hasOwnProperty("name")){
+                startingBrawlers[allSkins[x].name] = [];
+            }
+        }
+    }
+    
     if (username && password){
         database.queryDatabase(
         "INSERT IGNORE INTO " + TABLE_NAME +
@@ -286,7 +293,7 @@ router.post("/update", (req, res) => {
     }
 });
 
-// 
+// Get the list of all avatars the user is allowed to select
 router.post("/avatar", (req, res) => {
     if (!(req.body.token)){
         res.status(400).send("Token is missing.");
@@ -325,6 +332,7 @@ router.post("/avatar", (req, res) => {
     }
 });
 
+// Claim any available tokens and get the time until the next batch
 router.post("/claimtokens", (req, res) => {
     if (!(req.body.token)){
         res.status(400).send("Token is missing.");

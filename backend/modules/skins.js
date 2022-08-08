@@ -1,6 +1,6 @@
 /**
  * Searches for a specific brawler in an array of brawlers.
- * @param {Array} allSkins json object with all the brawlers
+ * @param {Array} allSkins json array with all the brawlers
  * @param {String} name name of the brawler to search for
  * @returns json object of the brawler, empty if not found
  */
