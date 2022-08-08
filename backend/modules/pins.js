@@ -5,6 +5,8 @@ function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
         "totalBrawlers":0,
         "unlockedPins":0,
         "totalPins":0,
+        "collectionScore": "",
+        "avatarColor": "#000000",
         "collection":[]
     };
 
@@ -90,9 +92,8 @@ function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
         }
     }
 
-    const BUL = performance.now();
+    // After the collection is created, calculate its score
     getCollectionScore(collectionInfo);
-    console.log(performance.now() - BUL);
 
     return collectionInfo;
 }
@@ -143,15 +144,39 @@ function getAvatars(allSkins, allAvatars, userCollection, userAvatars){
 }
 
 function getCollectionScore(collection){
+    if (collection.totalBrawlers == 0 || collection.totalPins == 0){
+        return;
+    }
+
     const brawlerScore = collection.unlockedBrawlers / collection.totalBrawlers;
     const completionScore = collection.completedBrawlers / collection.totalBrawlers;
     const pinScore = collection.unlockedPins / collection.totalPins;
 
-    var score = {
-        "grade": "-",
-        "color": ""
-    }
-    return 0;
+    // use larger numbers and floor to avoid non-exact
+    // representations of floating point numbers causing errors
+    const overallScore = Math.floor(500 * pinScore + 300 * brawlerScore + 200 * completionScore);
+    
+    var grade = "X";
+    var color = "#000000";
+
+    // bad code but it needs to be faster
+    if      (overallScore < 1)      { grade = "X" ; color = "#000000"; }
+    else if (overallScore < 100)    { grade = "D" ; color = "#808080"; }
+    else if (overallScore < 150)    { grade = "C-"; color = "#80C080"; }
+    else if (overallScore < 200)    { grade = "C" ; color = "#80FF80"; }
+    else if (overallScore < 350)    { grade = "C+"; color = "#00FF00"; }
+    else if (overallScore < 500)    { grade = "B-"; color = "#00FFC0"; }
+    else if (overallScore < 600)    { grade = "B" ; color = "#00FFFF"; }
+    else if (overallScore < 700)    { grade = "B+"; color = "#00FF80"; }
+    else if (overallScore < 800)    { grade = "A-"; color = "#8000FF"; }
+    else if (overallScore < 850)    { grade = "A" ; color = "#FF03CC"; }
+    else if (overallScore < 900)    { grade = "A+"; color = "#EA3331"; }
+    else if (overallScore < 950)    { grade = "S-"; color = "#FF8000"; }
+    else if (overallScore < 1000)   { grade = "S" ; color = "#FDF155"; }
+    else                            { grade = "S+"; color = "rainbow"; }
+
+    collection.collectionScore = grade;
+    collection.avatarColor = color;
 }
 
 // These functions may be used for brawl boxes and trading

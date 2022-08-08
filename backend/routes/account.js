@@ -144,11 +144,17 @@ router.post("/signup", (req, res) => {
         res.status(400).send("Username or password is too long. Maximum username length is 30 and password length is 100.");
         return;
     }
+
+    const startingBrawlers = {
+        "shelly": [],
+        "nita": [],
+        "colt": []
+    };
     if (username && password){
         database.queryDatabase(
         "INSERT IGNORE INTO " + TABLE_NAME +
         " (username, password, active_avatar, brawlers, avatars, wild_card_pins, trade_requests) VALUES (?, ?, ?, ?, ?, ?, ?);",
-        [username, password, "avatars/free/default.webp", "{}", "[]", "[]", "[]"], (error, results, fields) => {
+        [username, password, "avatars/free/default.webp", JSON.stringify(startingBrawlers), "[]", "[]", "[]"], (error, results, fields) => {
             if (error){
                 res.status(500).send("Could not connect to database.");
                 return;

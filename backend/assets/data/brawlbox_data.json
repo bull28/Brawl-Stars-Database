@@ -1,11 +1,11 @@
 {
     "key": {
         "boxes": [
-            {"types": ["brawlBox", "testBox", "bonus"], "properties": ["cost", "image", "draws", "rewardTypeValues"]}
+            {"types": ["brawlBox", "pinPack", "megaBox"], "properties": ["cost", "image", "draws", "rewardTypeValues"]}
         ],
         "rewardTypes": [
             {"types": ["coins", "tokenDoubler"], "properties": ["minAmount", "maxAmount"]},
-            {"types": ["pin", "wildcard", "brawler"], "properties": ["raritypmf", "minraritypmf", "coinConversion"]},
+            {"types": ["pin", "pinLowRarity", "pinHighRarity", "wildcard", "brawler", "brawlerLowRarity"], "properties": ["raritypmf", "minraritypmf", "coinConversion"]},
             {"types": ["tradeCredits", "avatar"], "properties": ["pmfobject"]}
         ]
     },
@@ -14,43 +14,74 @@
             "cost": 100,
             "image": "brawlbox_default.webp",
             "draws": [
-                [0, 0, 20, 0, 6, 4],
-                [1, 0, 1, 0, 0, 0],
-                [3, 0, 0, 1, 0, 0]
+                [0, 1, 0, 0, 0, 0],
+                [0, 0, 2, 0, 1, 0],
+                [0, 0, 2, 1, 0, 1],
+                [3, 0, 2, 0, 0, 0]
             ],
             "rewardTypeValues": ["nothing", "coins", "pin", "wildcard", "brawler", "bonus"]
         },
-        "testBox": {
-            "cost": 200,
-            "image": "brawlbox_default.webp",
+        "pinPack": {
+            "cost": 80,
+            "image": "brawlbox_pinpack.webp",
             "draws": [
-                [0, 0, 20, 0, 6, 4],
-                [1, 0, 1, 0, 0, 0],
-                [3, 0, 0, 1, 0, 0]
+                [0, 1],
+                [2, 1],
+                [2, 1],
+                [2, 1],
+                [2, 1],
+                [2, 1]
             ],
-            "rewardTypeValues": ["nothing", "coins", "pin", "wildcard", "brawler", "bonus"]
+            "rewardTypeValues": ["nothing", "pinHighRarity"]
+        },
+        "megaBox": {
+            "cost": 240,
+            "image": "brawlbox_megabox.webp",
+            "draws": [
+                [1, 0, 0, 0, 0],
+                [1, 0, 0, 0, 0],
+                [1, 0, 0, 0, 0],
+                [1, 0, 0, 0, 0],
+                [0, 1, 0, 0, 0],
+                [0, 1, 0, 0, 0],
+                [0, 4, 0, 3, 5],
+                [0, 1, 0, 1, 0],
+                [0, 1, 1, 0, 0],
+                [0, 1, 0, 3, 0]
+            ],
+            "rewardTypeValues": ["coins", "pinLowRarity", "wildcard", "brawlerLowRarity", "bonus"]
         },
         "bonus": {
             "cost": 0,
             "image": "",
             "draws": [
-                [6, 5, 1]
+                [5, 4, 3]
             ],
             "rewardTypeValues": ["tradeCredits", "tokenDoubler", "avatar"]
         }
     },
     "rewardTypes": {
         "coins": {
-            "minAmount": 200,
-            "maxAmount": 200
+            "minAmount": 120,
+            "maxAmount": 180
         },
         "tokenDoubler": {
-            "minAmount": 200,
-            "maxAmount": 200
+            "minAmount": 250,
+            "maxAmount": 250
         },
         "pin": {
-            "raritypmf": [36, 15, 6, 3, 0],
-            "minraritypmf": [0, 0, 0, 0, 0],
+            "raritypmf": [36, 15, 5, 3, 1],
+            "minraritypmf": [1, 2, 1, 0, 0],
+            "coinConversion": 500
+        },
+        "pinLowRarity": {
+            "raritypmf": [36, 24, 0, 0, 0],
+            "minraritypmf": [6, 0, 0, 0, 0],
+            "coinConversion": 500
+        },
+        "pinHighRarity": {
+            "raritypmf": [24, 18, 9, 6, 3],
+            "minraritypmf": [0, 0, 3, 0, 0],
             "coinConversion": 500
         },
         "wildcard": {
@@ -60,8 +91,13 @@
         },
         "brawler": {
             "raritypmf": [32, 16, 8, 4, 2, 1, 1],
+            "minraritypmf": [0, 0, 0, 1, 1, 0, 0],
+            "coinConversion": 1500
+        },
+        "brawlerLowRarity": {
+            "raritypmf": [24, 16, 16, 8, 0, 0, 0],
             "minraritypmf": [0, 0, 0, 0, 0, 0, 0],
-            "coinConversion": 2500
+            "coinConversion": 1500
         },
         "tradeCredits": {
             "pmfobject": [

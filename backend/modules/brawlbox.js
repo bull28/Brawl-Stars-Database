@@ -72,13 +72,6 @@ function brawlBox(dropChances, boxType, allSkins, resources){
 
     var rewards = [];
     var coinsReward = 0;
-
-    /*const draws = [
-        [0, 0, 20, 0, 6, 4],
-        [1, 0, 1, 0, 0, 0],
-        [3, 0, 0, 1, 0, 0]
-    ];
-    const rewardTypeValues = ["nothing", "coins", "pin", "wildcard", "brawler", "bonus"];*/
     
     const draws = dropChances.boxes[boxType].draws;
     const rewardTypeValues = dropChances.boxes[boxType].rewardTypeValues;
@@ -92,8 +85,9 @@ function brawlBox(dropChances, boxType, allSkins, resources){
     }
     //console.log(selections);
 
-    var selections = ["coins", "pin", "wildcard", "brawler", "bonus"];// for testing, use RNG later
+    //var selections = ["coins", "pin", "wildcard", "brawler", "bonus"];// for testing, use RNG later
     //selections = ["pin"];
+    //selections = ["pinHighRarity", "pinHighRarity", "pinHighRarity", "pinHighRarity", "pinHighRarity", "pinHighRarity"];
 
     for (let x of selections){
         if (x != "nothing"){
@@ -108,19 +102,12 @@ function brawlBox(dropChances, boxType, allSkins, resources){
         
         if (x == "coins"){
             drop = selectCoins(dropChances.rewardTypes.coins, resources);
-        } else if (x == "pin"){
-            drop = selectPin(dropChances.rewardTypes.pin, resources, allSkins);
+        } else if (x == "pin" || x == "pinLowRarity" || x == "pinHighRarity"){
+            drop = selectPin(dropChances.rewardTypes[x], resources, allSkins);
         } else if (x == "wildcard"){
             drop = selectWildCardPin(dropChances.rewardTypes.wildcard, resources, allSkins);
-        } else if (x == "brawler"){
-            drop = selectBrawler(dropChances.rewardTypes.brawler, resources, allSkins);
-            /*userCollection = Object.keys(userCollection).sort().reduce(
-                (obj, key) => { 
-                  obj[key] = userCollection[key]; 
-                  return obj;
-                }, 
-                {}
-            );*/
+        } else if (x == "brawler" || x == "brawlerLowRarity"){
+            drop = selectBrawler(dropChances.rewardTypes[x], resources, allSkins);
         } else if (x == "bonus"){
             drop = selectBonus(dropChances.boxes.bonus, dropChances.rewardTypes, resources);
         }

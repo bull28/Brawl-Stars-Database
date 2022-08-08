@@ -134,12 +134,16 @@ function validateDropChances(dropChances){
                     for (let y of x.types){
                         // y = the key of the type to check ("coins", "tokenDoubler", ...)
                         // checkObject = the actual object to check (found using the key)
-                        var checkObject = dropChances[checkType][y];
-                        for (let key of x.properties){
-                            // Go through the object's properties and check if they exist
-                            if (!(checkObject.hasOwnProperty(key))){
-                                valid = false;
+                        if (dropChances[checkType].hasOwnProperty(y)){
+                            var checkObject = dropChances[checkType][y];
+                            for (let key of x.properties){
+                                // Go through the object's properties and check if they exist
+                                if (!(checkObject.hasOwnProperty(key))){
+                                    valid = false;
+                                }
                             }
+                        } else{
+                            valid = false;
                         }
                     }
                 } else{
@@ -283,8 +287,12 @@ router.post("/brawlbox", function(req, res) {
                 return;
             }
 
-            //for (let D=0;D<500;D++){
-            //    brawlbox.brawlBox(dropChances, boxType, allSkins, userResources);
+            //for (let D=0;D<25;D++){
+            //    brawlbox.brawlBox(dropChances, "megaBox", allSkins, userResources);
+            //} for (let D=0;D<175;D++){
+            //    brawlbox.brawlBox(dropChances, "brawlBox", allSkins, userResources);
+            //} for (let D=0;D<125;D++){
+            //    brawlbox.brawlBox(dropChances, "pinPack", allSkins, userResources);
             //}
 
 
