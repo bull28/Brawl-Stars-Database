@@ -12,7 +12,7 @@
     "boxes": {
         "brawlBox": {
             "cost": 100,
-            "image": "misc/brawlbox_default.webp",
+            "image": "brawlbox_default.webp",
             "draws": [
                 [0, 0, 20, 0, 6, 4],
                 [1, 0, 1, 0, 0, 0],

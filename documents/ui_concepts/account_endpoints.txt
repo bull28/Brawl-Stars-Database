@@ -25,7 +25,7 @@ Database setup
 Endpoints
 /login - Authenticate a user
 Request: {"username": String, "password": String}
-Response: {"token": String, "username": String}
+Response: {"token": String, "username": String, "tokensEarned": Number} (New)
 	- "token" is the web token which should be stored and passed to all other endpoints which require authentication
 	- "username" is their username, as stored in the database (for now, the database doesn't handle upper/lowercase
 	  to well so this allows the user to see their username in the same case they entered on signup)
@@ -113,9 +113,11 @@ Request: {"token": String}
 Response:
 {
     "unlockedBrawlers": Number,
+    "completedBrawlers": Number, (New)
     "totalBrawlers": Number,
     "unlockedPins": Number,
     "totalPins": Number,
+    "collectionScore": Object, (Future addition)
     "collection": [
         {
             "name": String,

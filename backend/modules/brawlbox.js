@@ -301,7 +301,7 @@ function selectWildCardPin(wildCardDropChances, resources, allSkins){
 
         result.displayName = rarityName + " Wild Card Pin";
         result.rewardType = "wildcard";
-        //result.image = "";//add wildcard image later when made
+        result.image = "wildcard_pin.webp";
         result.backgroundColor = rarityColor;
     }
     // Wild card pins can always be collected so there is no coins

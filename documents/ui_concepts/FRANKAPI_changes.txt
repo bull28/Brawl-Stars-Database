@@ -1,0 +1,62 @@
+FRANK API Changes
+
+Make sure to run the script again!
+
+Resource icons moved from misc/ -> resources/
+
+/collection
+
+New field: completedBrawlers: Number
+Number of brawlers the user has all pins unlocked for.
+
+Future addition: collectionScore
+This will show a letter grade for the user's collection, describing how close they are to completion.
+This grade will also determine the color of the user's icon border.
+
+/login
+
+New field: tokensEarned: Number
+The amount of tokens the user has collected by logging in. If some time has passed since their last login,
+the user should receive some tokens. All new users receive some free tokens on their first login.
+
+
+New endpoint: /brawlbox
+
+Request:
+{
+    "token": String,
+    "boxType": String
+}
+
+	- The boxType field tells the API which type of box to open. If no boxType is specified or an empty
+	  string is given, a list of available boxes will be returned in the format
+	  {"<boxType1>": {"cost":Number,"image": String}, "<boxType2>": ...}
+	- The <boxType> value is the ID of the brawlbox which can be send in the boxType field to open that type of box.
+Response:
+[
+    {
+        "displayName": String,
+        "rewardType": String,
+        "amount": Number,
+        "image": String,
+        "backgroundColor": String
+    }
+    ... 1 object for each item
+]
+
+	- All calculations are done internally before the response is sent. The response is made entirely for the user
+	  and nothing needs to be sent back to the API.
+	- The response contains the information that should be displayed to the user based on the contents of the box.
+	- rewardType is an ID for the type of reward given. This should not be displayed to the user and instead, it
+	  can be used by the website to do similar actions on the same types of rewards.
+Errors:
+	- 500: Brawl Box is not set up properly.
+	- 500: Collection data could not be loaded.
+	- 500: This Brawl Box contained a manufacturing defect.
+	- 500: Could not connect to database.
+	- 500: Could not update the database.
+	- 404: User has no data
+	- 403: You cannot afford this Box!
+	- 401: Invalid token.
+	- 400: Box type does not exist.
+	- 400: Token is missing.
