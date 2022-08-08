@@ -42,7 +42,7 @@
             "displayName": "Mega Box",
             "cost": 240,
             "image": "brawlbox_megabox.webp",
-            "description": "Drops many coins and has a very high chance of collecting at least 1 brawler. Can contain up to 6 pins, up to 3 brawlers, and sometimes bonus items.",
+            "description": "Drops many coins and has a very high chance of collecting at least 1 brawler. Can contain up to 6 pins, up to 3 brawlers, and sometimes bonus items. Does not contain any brawlers above Epic rarity or pins above Rare rarity.",
             "draws": [
                 [1, 0, 0, 0, 0],
                 [1, 0, 0, 0, 0],

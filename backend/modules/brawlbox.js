@@ -147,7 +147,8 @@ function brawlBox(dropChances, boxType, allSkins, resources){
             "rewardType": "coins",
             "amount": coinsReward,
             "image": "resource_coins.webp",
-            "backgroundColor": "#000000"
+            "backgroundColor": "#000000",
+            "description": "Spend these on special avatars and other items in the shop."
         });
     }
     
@@ -177,7 +178,8 @@ function selectCoins(coinsDropChances, resources){
         "rewardType": "coins",
         "amount": rewardAmount,
         "image": "",
-        "backgroundColor": ""
+        "backgroundColor": "",
+        "description": ""
     };
 
     return result;
@@ -189,7 +191,8 @@ function selectPin(pinDropChances, resources, allSkins){
         "rewardType": "empty",
         "amount": 1,
         "image": "",
-        "backgroundColor": "#000000"
+        "backgroundColor": "#000000",
+        "description": ""
     };
 
     var userCollection = resources.brawlers;
@@ -249,14 +252,16 @@ function selectPin(pinDropChances, resources, allSkins){
     // Otherwise, give coins as an alternative reward.
     if (availablePins.length > 0){
         const selectedPin = availablePins[Math.floor(Math.random() * availablePins.length)];
-        const pinObject = allSkins[selectedPin[0]].pins[selectedPin[1]];
+        const brawlerObject = allSkins[selectedPin[0]];
+        const pinObject = brawlerObject.pins[selectedPin[1]];
         //userCollection[allSkins[selectedPin[0]].name].push(pinObject.name);
-        userCollection[allSkins[selectedPin[0]].name] = userCollection[allSkins[selectedPin[0]].name].concat([pinObject.name]);
+        userCollection[brawlerObject.name] = userCollection[brawlerObject.name].concat([pinObject.name]);
 
         result.displayName = "New Pin";
         result.rewardType = "pin";
-        result.image = allSkins[selectedPin[0]].name + "/" + pinObject.image;// add the brawler's name directory
+        result.image = brawlerObject.name + "/" + pinObject.image;// add the brawler's name directory
         result.backgroundColor = pinObject.rarity.color;
+        result.description = "A new Pin for " + brawlerObject.displayName + ".";
     } else{
         resources.coins += pinDropChances.coinConversion;
 
@@ -273,7 +278,8 @@ function selectWildCardPin(wildCardDropChances, resources, allSkins){
         "rewardType": "empty",
         "amount": 1,
         "image": "",
-        "backgroundColor": "#000000"
+        "backgroundColor": "#000000",
+        "description": ""
     };
 
     //var raritypmf = [36, 15, 6, 3, 0];
@@ -316,6 +322,7 @@ function selectWildCardPin(wildCardDropChances, resources, allSkins){
         result.rewardType = "wildcard";
         result.image = "wildcard_pin.webp";
         result.backgroundColor = rarityColor;
+        result.description = "This can be used in place of a Pin of " + rarityName + " rarity when accepting a trade.";
     }
     // Wild card pins can always be collected so there is no coins
     // alternative reward available here.
@@ -331,7 +338,8 @@ function selectBrawler(brawlerDropChances, resources, allSkins){
         "rewardType": "empty",
         "amount": 1,
         "image": "",
-        "backgroundColor": "#000000"
+        "backgroundColor": "#000000",
+        "description": ""
     };
 
     var userCollection = resources.brawlers;
@@ -382,6 +390,7 @@ function selectBrawler(brawlerDropChances, resources, allSkins){
         result.rewardType = "brawler";
         result.image = brawlerObject.portrait;
         result.backgroundColor = brawlerObject.rarity.color;
+        result.description = brawlerObject.description;
     } else{
         resources.coins += brawlerDropChances.coinConversion;
 
@@ -398,7 +407,8 @@ function selectBonus(allBonusDrops, rewardTypes, resources){
         "rewardType": "empty",
         "amount": 1,
         "image": "",
-        "backgroundColor": "#000000"
+        "backgroundColor": "#000000",
+        "description": ""
     };
 
     var userAvatars = resources.avatars;
@@ -464,6 +474,7 @@ function selectBonus(allBonusDrops, rewardTypes, resources){
             result.image = "resource_trade_credits.webp";
             result.amount = tradeCreditDrops[selectedIndex].value;
             //result.backgroundColor = brawlerObject.rarity.color;
+            result.description = "Use these to trade pins with other users. Higher-rarity pins require more credits to trade.";
         }
     }
     // Token doubler
@@ -483,6 +494,7 @@ function selectBonus(allBonusDrops, rewardTypes, resources){
         result.image = "resource_token_doubler.webp";
         result.amount = rewardAmount;
         //result.backgroundColor = brawlerObject.rarity.color;
+        result.description = "Doubles the next " + rewardAmount.toString() + " tokens collected.";
     }
     // Avatar
     else if (selection == "avatar"){
@@ -498,6 +510,7 @@ function selectBonus(allBonusDrops, rewardTypes, resources){
             result.displayName = "New Avatar";
             result.rewardType = "avatar";
             result.image = availableAvatars[selectedIndex].value;
+            result.description = "Select this avatar in the account settings.";
         }
     }
 
