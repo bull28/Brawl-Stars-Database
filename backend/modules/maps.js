@@ -771,6 +771,7 @@ exports.jsonToEvents = jsonToEvents;
 exports.mod = mod;
 exports.realToTime = realToTime;
 exports.addSeasonTimes = addSeasonTimes;
+exports.subtractSeasonTimes = subtractSeasonTimes;
 exports.getModeInformation = getModeInformation;
 exports.getMapInformation = getMapInformation;
 exports.searchForMapName = searchForMapName;

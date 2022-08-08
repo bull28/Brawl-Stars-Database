@@ -46,10 +46,9 @@ specialAvatarsPromise.then((data) => {
 /**
  * Creates a new json web token for the given username.
  * @param {String} username username to sign the token with
- * @param {Number} tokensEarned token resources earned when logging in
  * @returns json object with the token and the username
  */
-function signToken(username, tokensEarned){
+function signToken(username){
     const user = {
         "username": username
     };
@@ -58,8 +57,7 @@ function signToken(username, tokensEarned){
 
     const userInfo = {
         "token": token,
-        "username": username,
-        "tokensEarned": tokensEarned
+        "username": username
     };
 
     return userInfo;
@@ -101,159 +99,13 @@ function login(results, res){
     if (results.length > 0) {
         var userResults = results[0];
 
-        if (!(userResults.hasOwnProperty("username") &&
-        userResults.hasOwnProperty("last_login") &&
-        userResults.hasOwnProperty("tokens") &&
-        userResults.hasOwnProperty("token_doubler"))){
+        if (!(userResults.hasOwnProperty("username"))){
             res.status(500).send("Database is not set up properly.");
             return;
         }
-        
-        
-        // Add tokens based on how much time has passed since they last logged in
-        var currentTime = Date.now();
 
-        // Batches of tokens to be given to the player
-        var rewardsGiven = 0;
-
-        // The season time does not manage times longer than 4 weeks so if the last
-        // login was over 4 weeks ago then give the player the maximum login reward
-        // and reset. A time of 2 weeks is still beyond the amount of time required
-        // to receive maximum rewards so give them the maximum reward for all times
-        // longer than 2 weeks, even though the map rotation can handle times
-        // between 2 and 4 weeks.
-        var hoursSinceLastLogin = (currentTime - userResults.last_login) / 3600000;
-        if (hoursSinceLastLogin >= maps.MAP_CYCLE_HOURS){
-            rewardsGiven = MAX_REWARD_STACK;
-        } else{
-            var currentSeasonTime = maps.realToTime(currentTime);
-            //currentSeasonTime = new maps.SeasonTime(0, 0, 0, 0);
-            var currentSeason = currentSeasonTime.season;
-            var currentHour = currentSeasonTime.hour;
-
-            var lastLoginTime = maps.realToTime(userResults.last_login);
-            //lastLoginTime = new maps.SeasonTime(1, 309, 0, 0);
-            var lastLoginSeason = lastLoginTime.season;
-            var lastLoginHour = lastLoginTime.hour;
-            
-            // Since reward times must be compared on the same season, "carry over"
-            // cases, where the season values are not the same, must be handled
-            var seasonDiff = currentSeason - lastLoginSeason;
-            if (seasonDiff > 0){
-                // Case 1: Positive carry over
-                // Represents a case where the map rotation reset since the last login
-                // but not the ladder season reset
-                //
-                // Ex. Current time: [1, 5, 0, 0], Last login: [0, 309, 0, 0]
-                // Remove the additional seasons and add a full season worth of
-                // hours for each season removed.
-                // In this example: remove 1 season and add 336 hours
-                // so the comparison becomes [0, 341, 0, 0] and [0, 309, 0, 0]
-                currentSeason -= seasonDiff;
-                currentHour += currentSeasonTime.hoursPerSeason * seasonDiff;
-            } else if (seasonDiff < 0){
-                // Case 2: Negative carry over
-                // Represents a case where the ladder season reset since the last login
-                //
-                // Ex. (Note: the maxSeasons is 3 here because this is supposed to
-                // work no matter what maxSeasons is)
-                // Current time: [0, 5, 0, 0], Last login: [1, 309, 0, 0], maxSeasons = 3
-                // The comparison should be done using the higher season number so the lower
-                // one has to be increased to match the higher one
-                // The desired comparison here is [1, 677, 0, 0] and [1, 309, 0, 0] since
-                // [0, 5, 0, 0] is actually an entire season + a few hours ahead of [1, 309, 0, 0]
-                //
-                // Increase the lower season amount by subtracting seasonDiff
-                // seasonDiff is negative here so subtracting it increases the value
-                // In this example,  [0, 5, 0, 0] becomes [1, 5, 0, 0]
-                // Now the correct number of hours must be added to make the time equal again
-                // while keeping the season value unchanged.
-                // To avoid negative numbers, add and entire season worth of hours then subtract
-                // the amount of hours added when seasonDiff was subtracted from currentSeason
-                // In this example, [1, 5, 0, 0] +1008 => [1, 1013, 0, 0] -336 => [1, 677, 0, 0]
-                // These two numbers of hours to be added/subtracted can both be obtained with
-                // the mod operator (using seasonDiff % maxSeasons).
-                // 
-                // Many of these calculations can be simplified when maxSeasons is 2 but to make
-                // sure this works no matter what they do to the map rotation, the calculations
-                // have to be done.
-                currentSeason -= seasonDiff;// seasonDiff is negative so this is adding a season
-                currentHour += currentSeasonTime.hoursPerSeason * maps.mod(seasonDiff, currentSeasonTime.maxSeasons);
-            } else if (currentHour < lastLoginHour){
-                // Case 3: Entire season carry over
-                // Represents a case where almost an entire season has passed since the last login
-                //
-                // Ex. Current time: [0, 7, 0, 0], Last login: [0, 2, 0, 0], maxSeasons = 3
-                // The current time should be treated as [3, 7, 0, 0] but since maxSeasons is 3,
-                // the time given by the function is set to [0, 7, 0, 0] because it is equivalent
-                // in terms of the map rotation.
-                //
-                // Add an entire season worth of hours to the current time to represent all the
-                // time that has passed since the last login.
-                currentHour += currentSeasonTime.hoursPerSeason * currentSeasonTime.maxSeasons;
-            }
-            
-            // Rewards are given at multiples of 6 hours in the season so find the last multiple of
-            // 6 before the current time then compare it to the last login time.
-            var lastRewardHour = Math.floor(currentHour / HOURS_PER_REWARD) * HOURS_PER_REWARD;
-
-            // The user can claim rewards as long as their last login hour is less than the last
-            // reward hour. Since rewards are given at the very start of the hour, a last login
-            // hour that is the same as the last reward hour means the user logged in right after
-            // the reward was given and cannot receive it. Their last login time can essentially
-            // be treated as the next hour
-            // (ex. [0, 309, 28, 44] is treated the same as [0, 310, 0, 0])
-            // To account for this, add 1 to the lastLoginHour.
-            rewardsGiven = Math.floor((lastRewardHour - lastLoginHour - 1) / HOURS_PER_REWARD) + 1;// rounded up
-
-            //console.log("Last login was at",lastLoginHour,"Last reward was given at",lastRewardHour);
-        }
-
-        if (rewardsGiven > MAX_REWARD_STACK){
-            // Maximum of 4 token batches can be stacked at once
-            // They must log in at least once per day to maximize rewards
-            rewardsGiven = MAX_REWARD_STACK;
-        }
-
-        var tokenReward = rewardsGiven * TOKENS_PER_REWARD;
-        var activeTokenDoubler = userResults.token_doubler;
-
-        // If the user has a token doubler active
-        if (activeTokenDoubler > 0){
-            // If there are more tokens remaining in the doubler than the tokens being received right now
-            // then double all current tokens received and subtract that amount from the doubler
-            if (activeTokenDoubler > tokenReward){
-                activeTokenDoubler -= tokenReward;
-                tokenReward += tokenReward;
-            }
-            // If there are more tokens being received right now than there are remaining in the doubler
-            // then use up all that is left in the doubler and add that many tokens to the current amount
-            // being received
-            else{
-                tokenReward += activeTokenDoubler;
-                activeTokenDoubler = 0;
-            }
-        }
-        const newTokenAmount = userResults.tokens + tokenReward;
-
-        // Update the last login to the current time
-        database.queryDatabase(
-        "UPDATE " + TABLE_NAME + " SET last_login = ?, tokens = ?, token_doubler = ? WHERE username = ?;",
-        [currentTime, newTokenAmount, activeTokenDoubler, userResults.username], (error, newResults, fields) => {
-            if (error){
-                console.log(error);
-                res.status(500).send("Could not connect to database.");
-                return;
-            }
-            if (newResults.affectedRows == 0){
-                res.status(500).send("Could not update the database.");
-            }
-
-            // At this point, the database update was successful so send the token
-            // containing the user's information
-            const userInfo = signToken(userResults.username, tokenReward);
-            res.json(userInfo);
-        });
+        const userInfo = signToken(userResults.username);
+        res.json(userInfo);
     } else{
         res.status(401).send("Incorrect username or password");
     }
@@ -416,7 +268,7 @@ router.post("/update", (req, res) => {
                     if (results.affectedRows == 0){
                         res.status(401).send("Current password is incorrect.");
                     } else{
-                        const userInfo = signToken(newUsername, 0);// 0 = number of tokens given
+                        const userInfo = signToken(newUsername);
                         res.json(userInfo);
                     }
                     
@@ -475,33 +327,181 @@ router.post("/claimtokens", (req, res) => {
     let username = validateToken(req.body.token);
 
     if (username){
-        /*
         database.queryDatabase(
-        "SELECT brawlers, avatars FROM " + TABLE_NAME + " WHERE username = ?;",
+        "SELECT username, last_login, tokens, token_doubler FROM " + TABLE_NAME + " WHERE username = ?;",
         [username], (error, results, fields) => {
             if (error){
                 res.status(500).send("Could not connect to database.");
                 return;
             }
-            if (results.length == 0){
-                res.status(404).send("Could not find the user in the database.");
-                return;
-            }
 
-            var userBrawlers = {};
-            var userAvatars = [];
-            try{
-                userBrawlers = JSON.parse(results[0].brawlers);
-                userAvatars = JSON.parse(results[0].avatars);
-            } catch (error){
-                res.status(500).send("Collection data could not be loaded.");
-                return;
-            }
+            if (results.length > 0) {
+                var userResults = results[0];
+        
+                if (!(userResults.hasOwnProperty("username") &&
+                userResults.hasOwnProperty("last_login") &&
+                userResults.hasOwnProperty("tokens") &&
+                userResults.hasOwnProperty("token_doubler"))){
+                    res.status(500).send("Database is not set up properly.");
+                    return;
+                }
+                
+                // Add tokens based on how much time has passed since they last logged in
+                var currentTime = Date.now();
+                var currentSeasonTime = maps.realToTime(currentTime);
+        
+                // Batches of tokens to be given to the player
+                var rewardsGiven = 0;
+        
+                // The season time does not manage times longer than 4 weeks so if the last
+                // login was over 4 weeks ago then give the player the maximum login reward
+                // and reset. A time of 2 weeks is still beyond the amount of time required
+                // to receive maximum rewards so give them the maximum reward for all times
+                // longer than 2 weeks, even though the map rotation can handle times
+                // between 2 and 4 weeks.
+                var hoursSinceLastLogin = (currentTime - userResults.last_login) / 3600000;
+                if (hoursSinceLastLogin >= maps.MAP_CYCLE_HOURS){
+                    rewardsGiven = MAX_REWARD_STACK;
+                } else{
+                    //currentSeasonTime = new maps.SeasonTime(1, 219, 0, 0);
+                    var currentSeason = currentSeasonTime.season;
+                    var currentHour = currentSeasonTime.hour;
+        
+                    var lastLoginTime = maps.realToTime(userResults.last_login);
+                    //lastLoginTime = new maps.SeasonTime(0, 327, 0, 0);
+                    var lastLoginSeason = lastLoginTime.season;
+                    var lastLoginHour = lastLoginTime.hour;
+                    
+                    // Since reward times must be compared on the same season, "carry over"
+                    // cases, where the season values are not the same, must be handled
+                    var seasonDiff = currentSeason - lastLoginSeason;
+                    if (seasonDiff > 0){
+                        // Case 1: Positive carry over
+                        // Represents a case where the map rotation reset since the last login
+                        // but not the ladder season reset
+                        //
+                        // Ex. Current time: [1, 5, 0, 0], Last login: [0, 309, 0, 0]
+                        // Remove the additional seasons and add a full season worth of
+                        // hours for each season removed.
+                        // In this example: remove 1 season and add 336 hours
+                        // so the comparison becomes [0, 341, 0, 0] and [0, 309, 0, 0]
+                        currentSeason -= seasonDiff;
+                        currentHour += currentSeasonTime.hoursPerSeason * seasonDiff;
+                    } else if (seasonDiff < 0){
+                        // Case 2: Negative carry over
+                        // Represents a case where the ladder season reset since the last login
+                        //
+                        // Ex. (Note: the maxSeasons is 3 here because this is supposed to
+                        // work no matter what maxSeasons is)
+                        // Current time: [0, 5, 0, 0], Last login: [1, 309, 0, 0], maxSeasons = 3
+                        // The comparison should be done using the higher season number so the lower
+                        // one has to be increased to match the higher one
+                        // The desired comparison here is [1, 677, 0, 0] and [1, 309, 0, 0] since
+                        // [0, 5, 0, 0] is actually an entire season + a few hours ahead of [1, 309, 0, 0]
+                        //
+                        // Increase the lower season amount by subtracting seasonDiff
+                        // seasonDiff is negative here so subtracting it increases the value
+                        // In this example,  [0, 5, 0, 0] becomes [1, 5, 0, 0]
+                        // Now the correct number of hours must be added to make the time equal again
+                        // while keeping the season value unchanged.
+                        // To avoid negative numbers, add and entire season worth of hours then subtract
+                        // the amount of hours added when seasonDiff was subtracted from currentSeason
+                        // In this example, [1, 5, 0, 0] +1008 => [1, 1013, 0, 0] -336 => [1, 677, 0, 0]
+                        // These two numbers of hours to be added/subtracted can both be obtained with
+                        // the mod operator (using seasonDiff % maxSeasons).
+                        // 
+                        // Many of these calculations can be simplified when maxSeasons is 2 but to make
+                        // sure this works no matter what they do to the map rotation, the calculations
+                        // have to be done.
+                        currentSeason -= seasonDiff;// seasonDiff is negative so this is adding a season
+                        currentHour += currentSeasonTime.hoursPerSeason * maps.mod(seasonDiff, currentSeasonTime.maxSeasons);
+                    } else if (currentHour < lastLoginHour){
+                        // Case 3: Entire season carry over
+                        // Represents a case where almost an entire season has passed since the last login
+                        //
+                        // Ex. Current time: [0, 7, 0, 0], Last login: [0, 2, 0, 0], maxSeasons = 3
+                        // The current time should be treated as [3, 7, 0, 0] but since maxSeasons is 3,
+                        // the time given by the function is set to [0, 7, 0, 0] because it is equivalent
+                        // in terms of the map rotation.
+                        //
+                        // Add an entire season worth of hours to the current time to represent all the
+                        // time that has passed since the last login.
+                        currentHour += currentSeasonTime.hoursPerSeason * currentSeasonTime.maxSeasons;
+                    }
+                    
+                    // Rewards are given at multiples of 6 hours in the season so find the last multiple of
+                    // 6 before the current time then compare it to the last login time.
+                    var lastRewardHour = Math.floor(currentHour / HOURS_PER_REWARD) * HOURS_PER_REWARD;
+        
+                    // The user can claim rewards as long as their last login hour is less than the last
+                    // reward hour. Since rewards are given at the very start of the hour, a last login
+                    // hour that is the same as the last reward hour means the user logged in right after
+                    // the reward was given and cannot receive it. Their last login time can essentially
+                    // be treated as the next hour
+                    // (ex. [0, 309, 28, 44] is treated the same as [0, 310, 0, 0])
+                    // To account for this, add 1 to the lastLoginHour.
+                    rewardsGiven = Math.floor((lastRewardHour - lastLoginHour - 1) / HOURS_PER_REWARD) + 1;// rounded up
+        
+                    //console.log("Last login was at",lastLoginHour,"Last reward was given at",lastRewardHour);
+                }
+        
+                if (rewardsGiven > MAX_REWARD_STACK){
+                    // Maximum of 4 token batches can be stacked at once
+                    // They must log in at least once per day to maximize rewards
+                    rewardsGiven = MAX_REWARD_STACK;
+                }
+        
+                var tokenReward = rewardsGiven * TOKENS_PER_REWARD;
+                var activeTokenDoubler = userResults.token_doubler;
+        
+                // If the user has a token doubler active
+                if (activeTokenDoubler > 0){
+                    // If there are more tokens remaining in the doubler than the tokens being received right now
+                    // then double all current tokens received and subtract that amount from the doubler
+                    if (activeTokenDoubler > tokenReward){
+                        activeTokenDoubler -= tokenReward;
+                        tokenReward += tokenReward;
+                    }
+                    // If there are more tokens being received right now than there are remaining in the doubler
+                    // then use up all that is left in the doubler and add that many tokens to the current amount
+                    // being received
+                    else{
+                        tokenReward += activeTokenDoubler;
+                        activeTokenDoubler = 0;
+                    }
+                }
+                const newTokenAmount = userResults.tokens + tokenReward;
 
-            const avatarsInfo = pins.getAvatars(allSkins, allAvatars, userBrawlers, userAvatars);
-            res.json(avatarsInfo);
-        });*/
-        res.send("log in ");
+                //console.log(tokenReward,"tokens given");
+
+
+                // To calculate the time until the next reward, only the current time is required.
+                // No other modifications have to be done to the time.
+                const nextRewardTime = maps.subtractSeasonTimes(
+                    new maps.SeasonTime(currentSeasonTime.season, Math.floor(currentSeasonTime.hour / HOURS_PER_REWARD + 1) * HOURS_PER_REWARD, 0, -1),
+                    currentSeasonTime
+                );
+        
+                // Update the last login to the current time
+                database.queryDatabase(
+                "UPDATE " + TABLE_NAME + " SET last_login = ?, tokens = ?, token_doubler = ? WHERE username = ?;",
+                [currentTime, newTokenAmount, activeTokenDoubler, userResults.username], (error, newResults, fields) => {
+                    if (error){
+                        console.log(error);
+                        res.status(500).send("Could not connect to database.");
+                        return;
+                    }
+                    if (newResults.affectedRows == 0){
+                        res.status(500).send("Could not update the database.");
+                    }
+
+                    res.json({
+                        "tokensEarned": tokenReward,
+                        "timeLeft": nextRewardTime
+                    });
+                });
+            }
+        });
     } else{
         res.status(401).send("Invalid token.");
     }
