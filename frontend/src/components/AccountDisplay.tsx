@@ -28,10 +28,10 @@ export default function AccountDisplay() {
             })
     }, [])
   return (
-    <Flex flexDir={'column'}>
+    <Flex flexDir={'column'} justifyContent={'center'} alignItems={'center'} textAlign={'center'}>
         <Menu autoSelect={false} closeOnSelect={false}>
             <MenuButton>
-                <Image src={`/image/${data?.avatar}`} borderRadius={'50%'} w={'50px'} border={'2px solid black'}/>
+                <Image src={`/image/${data?.avatar}`} borderRadius={'50%'} w={'50px'} border={`3px solid ${data?.avatarColor}`}/>
             </MenuButton>
             <MenuList>
                 <MenuGroup>

@@ -1,4 +1,4 @@
-import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Center, Flex, HStack, Icon, Image, Link, SimpleGrid, Spinner, Tag, Text, Tooltip } from '@chakra-ui/react'
+import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Center, Divider, Flex, HStack, Icon, Image, Link, SimpleGrid, Spinner, Stack, Tag, Text, Tooltip, VStack } from '@chakra-ui/react'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { CollectionData } from '../types/CollectionData'
@@ -41,11 +41,8 @@ export default function Collection() {
     }, [])
 
     useEffect(() => {
-        axios.post('/resources', {token: localStorage.getItem('token')})
-            .then((res) => {
-                setTokens(res.data.tokens)
-            })
-    })
+        updateTokens()
+    }, [])
 
     useEffect(() => {
         data?.collection.forEach(element => {
@@ -59,22 +56,37 @@ export default function Collection() {
         }
     }
 
+    const updateTokens = () => {
+        axios.post('/resources', {token: localStorage.getItem('token')})
+            .then((res) => {
+                setTokens(res.data.tokens)
+        })
+    }
+
 
     return (
         <Flex flexDir={'column'} w={'100%'} justifyContent={'center'} alignItems={'center'} textAlign={'center'}>
             <Text fontSize={'3xl'} className={'heading-3xl'} color={'white'}>Collection</Text>
             {localStorage.getItem('token') && 
                 <Flex my={5}>
-                    <HStack w={'100%'} spacing={'5'}>
-                    <Flex justifyContent={'center'} textAlign={'center'} alignItems={'center'} bgColor={'lightskyblue'} p={3} borderRadius={'lg'}>
-                        <Text fontSize={'2xl'}>{tokens}</Text>
-                        <Image w={'40px'}  ml={1} src={'/image/resources/resource_tokens.webp'}/>
+                    <Stack w={'100%'} spacing={'5'} direction={['column', 'column', 'row']}>
+                    <Flex justifyContent={'center'} textAlign={'center'} alignItems={'center'} p={3} borderRadius={'lg'} flexDir={'column'}>
+                        <Text fontSize={'2xl'} className={'heading-2xl'} color={'white'} mb={3}>Collection Score</Text>
+                        <Flex bgColor={(data?.avatarColor === 'rainbow') ? 'blue.300' : data?.avatarColor} flexDir={'column'} p={10}  border={'3px solid black'} mb={5}>
+                            <Text color={(data?.collectionScore === 'S+' ? 'gold' : 'white')} className={'heading-2xl'} fontSize={'2xl'}>{data?.collectionScore}</Text>
+                            <Divider mb={5}/>
+                            <VStack spacing={1}>
+                            <Text color={'white'} className={'heading-md'}  fontSize={'md'}>Brawlers Unlocked: </Text><Text fontSize={'lg'} className={'heading-lg'} color={(data?.unlockedBrawlers === data?.totalBrawlers) ? 'gold' : 'white'} >{`${data?.unlockedBrawlers}/${data?.totalBrawlers}`}</Text>
+                            <Text color={'white'} className={'heading-md'} fontSize={'md'}>Pins Unlocked:  </Text><Text fontSize={'lg'} className={'heading-lg'} color={(data?.unlockedPins === data?.totalPins) ? 'gold' : 'white'} >{`${data?.unlockedPins}/${data?.totalPins}`}</Text>
+                            <Text color={'white'} className={'heading-md'} fontSize={'md'}>Completed Brawlers:  </Text><Text fontSize={'lg'} className={'heading-lg'} color={(data?.completedBrawlers === data?.totalBrawlers) ? 'gold' : 'white'} >{`${data?.completedBrawlers}/${data?.totalBrawlers}`}</Text>
+                            </VStack>
+                        </Flex>
                     </Flex>
                     {brawlBoxData?.map((brawlBox: BrawlBoxData) => (
-                        <BrawlBoxDisplay data={brawlBox}/>
+                        <BrawlBoxDisplay data={brawlBox} tokens={tokens}/>
                     ))}
-                    <TokenDisplay/>
-                    </HStack>
+                    <TokenDisplay callback={updateTokens} tokens={tokens}/>
+                    </Stack>
                 </Flex>
             }
             {(brawlers.length > 0) && <Accordion defaultIndex={[brawlers.indexOf(searchParams.get('brawler'))]} allowMultiple allowToggle>

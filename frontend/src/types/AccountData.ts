@@ -4,5 +4,6 @@ export interface UserInfoProps {
     coins: number,
     tokenDoubler: number,
     tradeCredits: number,
-    avatar: string
+    avatar: string,
+    avatarColor: string
 }

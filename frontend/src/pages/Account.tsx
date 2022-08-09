@@ -88,7 +88,7 @@ export default function Account() {
     <Flex w={'100%'} justifyContent={'center'} textAlign={'center'} flexDir={'column'} alignItems={'center'}>
         <Text fontSize={'4xl'} className={'heading-4xl'} color={'white'}>{data?.username}</Text>
         <Flex position={'relative'} pt={3} w={'fit-content'} mt={3}>
-          <Image src={`/image/${avatar}`} borderRadius={'50%'} border={'3px solid #ffd700'}/>
+          <Image src={`/image/${avatar}`} borderRadius={'50%'} border={`3px solid ${data?.avatarColor}`}/>
           <Icon fontSize={'3xl'} position={'absolute'} top={0} right={0} as={MdOutlineEdit} onClick={changeAvatar} cursor={'pointer'}/>
         </Flex>
         <FormControl w={'fit-content'} textAlign={'left'} mt={5}>

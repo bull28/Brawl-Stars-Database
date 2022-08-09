@@ -16,5 +16,7 @@ export interface CollectionData {
     totalBrawlers: number,
     unlockedPins: number,
     totalPins: number,
+    collectionScore: string,
+    avatarColor: string,
     collection: [BrawlerCollectionData]
 }
