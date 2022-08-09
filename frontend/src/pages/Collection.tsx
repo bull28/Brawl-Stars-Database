@@ -5,13 +5,18 @@ import { CollectionData } from '../types/CollectionData'
 import { RiLock2Line } from 'react-icons/ri'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 import { useNavigate, useSearchParams } from 'react-router-dom'
+import { BrawlBoxData } from '../types/BrawlBoxData'
+import BrawlBoxDisplay from '../components/BrawlBoxDisplay'
+import TokenDisplay from '../components/TokenDisplay'
 
 
 export default function Collection() {
     const [data, setData] = useState<CollectionData>()
+    const [brawlBoxData, setBrawlBoxData] = useState<[BrawlBoxData]>()
     const [loaded, updateLoaded] = useState<any>([])
     const [searchParams] = useSearchParams()
     const [brawlers, setBrawlers] = useState<any>([])
+    const [ tokens, setTokens ] = useState<number>()
     const navigate = useNavigate()
 
 
@@ -29,6 +34,20 @@ export default function Collection() {
     }, [navigate])
 
     useEffect(() => {
+        axios.post('/brawlbox', {token: localStorage.getItem('token')})
+            .then((res) => {
+                setBrawlBoxData(res.data)
+            })
+    }, [])
+
+    useEffect(() => {
+        axios.post('/resources', {token: localStorage.getItem('token')})
+            .then((res) => {
+                setTokens(res.data.tokens)
+            })
+    })
+
+    useEffect(() => {
         data?.collection.forEach(element => {
             setBrawlers((brawlers: any) => [...brawlers, element.name])
         })
@@ -44,6 +63,20 @@ export default function Collection() {
     return (
         <Flex flexDir={'column'} w={'100%'} justifyContent={'center'} alignItems={'center'} textAlign={'center'}>
             <Text fontSize={'3xl'} className={'heading-3xl'} color={'white'}>Collection</Text>
+            {localStorage.getItem('token') && 
+                <Flex my={5}>
+                    <HStack w={'100%'} spacing={'5'}>
+                    <Flex justifyContent={'center'} textAlign={'center'} alignItems={'center'} bgColor={'lightskyblue'} p={3} borderRadius={'lg'}>
+                        <Text fontSize={'2xl'}>{tokens}</Text>
+                        <Image w={'40px'}  ml={1} src={'/image/resources/resource_tokens.webp'}/>
+                    </Flex>
+                    {brawlBoxData?.map((brawlBox: BrawlBoxData) => (
+                        <BrawlBoxDisplay data={brawlBox}/>
+                    ))}
+                    <TokenDisplay/>
+                    </HStack>
+                </Flex>
+            }
             {(brawlers.length > 0) && <Accordion defaultIndex={[brawlers.indexOf(searchParams.get('brawler'))]} allowMultiple allowToggle>
             <SimpleGrid columns={[1,2,3,4]} spacing={3} w={'95vw'} bgColor={'blue.800'} p={5}>
                 {data?.collection.map((brawler) => (

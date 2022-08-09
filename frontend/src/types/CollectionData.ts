@@ -12,6 +12,7 @@ export interface BrawlerCollectionData {
 
 export interface CollectionData {
     unlockedBrawlers: number,
+    completedBrawlers: number,
     totalBrawlers: number,
     unlockedPins: number,
     totalPins: number,
