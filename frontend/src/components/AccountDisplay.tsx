@@ -31,7 +31,9 @@ export default function AccountDisplay() {
     <Flex flexDir={'column'} justifyContent={'center'} alignItems={'center'} textAlign={'center'}>
         <Menu autoSelect={false} closeOnSelect={false}>
             <MenuButton>
-                <Image src={`/image/${data?.avatar}`} borderRadius={'50%'} w={'50px'} border={`3px solid ${data?.avatarColor}`}/>
+                <Flex justifyContent={'center'} alignItems={'center'} borderRadius={'50%'} p={'3px'} background={(data?.avatarColor === 'rainbow' ? 'conic-gradient(#f00,#ff0,#0f0,#0ff,#00f,#f0f,#f00)' : data?.avatarColor)}>
+                    <Image src={`/image/${data?.avatar}`} borderRadius={'50%'} w={'50px'}/>
+                </Flex>
             </MenuButton>
             <MenuList>
                 <MenuGroup>
