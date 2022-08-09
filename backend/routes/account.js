@@ -495,6 +495,17 @@ router.post("/claimtokens", (req, res) => {
                     new maps.SeasonTime(currentSeasonTime.season, Math.floor(currentSeasonTime.hour / HOURS_PER_REWARD + 1) * HOURS_PER_REWARD, 0, -1),
                     currentSeasonTime
                 );
+
+                // If the user just wants to see how many tokens are available,
+                // send the response without updating the database.
+                if (req.body.claim == false){
+                    res.json({
+                        "tokensAvailable": tokenReward,
+                        "tokensEarned": 0,
+                        "timeLeft": nextRewardTime
+                    });
+                    return;
+                }
         
                 // Update the last login to the current time
                 database.queryDatabase(
@@ -510,6 +521,7 @@ router.post("/claimtokens", (req, res) => {
                     }
 
                     res.json({
+                        "tokensAvailable": 0,
                         "tokensEarned": tokenReward,
                         "timeLeft": nextRewardTime
                     });

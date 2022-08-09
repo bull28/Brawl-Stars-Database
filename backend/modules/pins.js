@@ -190,17 +190,17 @@ function getCollectionScore(collection){
 
     // bad code but it needs to be faster
     if      (overallScore < 1)      { grade = "X" ; color = "#000000"; }
-    else if (overallScore < 100)    { grade = "D" ; color = "#808080"; }
-    else if (overallScore < 150)    { grade = "C-"; color = "#80C080"; }
-    else if (overallScore < 200)    { grade = "C" ; color = "#80FF80"; }
-    else if (overallScore < 350)    { grade = "C+"; color = "#00FF00"; }
-    else if (overallScore < 500)    { grade = "B-"; color = "#00FFC0"; }
-    else if (overallScore < 600)    { grade = "B" ; color = "#00FFFF"; }
-    else if (overallScore < 700)    { grade = "B+"; color = "#00FF80"; }
-    else if (overallScore < 800)    { grade = "A-"; color = "#8000FF"; }
-    else if (overallScore < 850)    { grade = "A" ; color = "#FF03CC"; }
-    else if (overallScore < 900)    { grade = "A+"; color = "#EA3331"; }
-    else if (overallScore < 950)    { grade = "S-"; color = "#FF8000"; }
+    else if (overallScore < 40)     { grade = "D" ; color = "#808080"; }
+    else if (overallScore < 80)     { grade = "C-"; color = "#80C080"; }
+    else if (overallScore < 120)    { grade = "C" ; color = "#80FF80"; }
+    else if (overallScore < 200)    { grade = "C+"; color = "#00FF00"; }
+    else if (overallScore < 300)    { grade = "B-"; color = "#00FFC0"; }
+    else if (overallScore < 400)    { grade = "B" ; color = "#00FFFF"; }
+    else if (overallScore < 560)    { grade = "B+"; color = "#00FF80"; }
+    else if (overallScore < 720)    { grade = "A-"; color = "#8000FF"; }
+    else if (overallScore < 840)    { grade = "A" ; color = "#FF03CC"; }
+    else if (overallScore < 920)    { grade = "A+"; color = "#EA3331"; }
+    else if (overallScore < 960)    { grade = "S-"; color = "#FF8000"; }
     else if (overallScore < 1000)   { grade = "S" ; color = "#FDF155"; }
     else                            { grade = "S+"; color = "rainbow"; }
 

@@ -114,6 +114,12 @@ function databaseErrorCheck(error, results, fields, res){
 }
 
 
+/**
+ * Checks an object to determine whether it has all the necessary information
+ * to be used by the brawl box to calculate drops.
+ * @param {Object} dropChances object with drop chances data stored inside
+ * @returns boolean whether the object is valid
+ */
 function validateDropChances(dropChances){
     // The object doesn't even exist...
     if (!(dropChances)){
@@ -169,21 +175,24 @@ router.post("/resources", function(req, res) {
 
     if (username){
         database.queryDatabase(
-        "SELECT username, active_avatar, tokens, token_doubler, coins, trade_credits FROM " + TABLE_NAME + " WHERE username = ?;",
+        "SELECT username, active_avatar, tokens, token_doubler, coins, trade_credits, brawlers FROM " + TABLE_NAME + " WHERE username = ?;",
         [username], (error, results, fields) => {
             if (databaseErrorCheck(error, results, fields, res)){
                 return;
             }
 
+            let collectionInfo = pins.formatCollectionData(allSkins, JSON.parse(results[0].brawlers), PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR);
+            
             const resourcesData = {
                 "username": results[0].username,
                 "avatar": results[0].active_avatar,
+                "avatarColor": collectionInfo.avatarColor,
                 "tokens": results[0].tokens,
                 "tokenDoubler": results[0].token_doubler,
                 "coins": results[0].coins,
                 "tradeCredits": results[0].trade_credits
             }
-
+            
             res.json(resourcesData);
         });
     } else{
@@ -214,7 +223,7 @@ router.post("/collection", function(req, res) {
                 res.status(500).send("Collection data could not be loaded.");
                 return;
             }
-
+            
             let collectionInfo = pins.formatCollectionData(allSkins, collectionData, PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR);
 
             res.json(collectionInfo);

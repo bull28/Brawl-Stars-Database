@@ -146,8 +146,8 @@ function brawlBox(dropChances, boxType, allSkins, resources){
             "displayName": "Coins",
             "rewardType": "coins",
             "amount": coinsReward,
-            "image": "resource_coins.webp",
-            "backgroundColor": "#000000",
+            "image": "resource_coins_200x.webp",
+            "backgroundColor": "#8CA0E0",
             "description": "Spend these on special avatars and other items in the shop."
         });
     }
@@ -471,9 +471,9 @@ function selectBonus(allBonusDrops, rewardTypes, resources){
 
             result.displayName = "Trade Credits";
             result.rewardType = "tradeCredits";
-            result.image = "resource_trade_credits.webp";
+            result.image = "resource_trade_credits_200x.webp";
             result.amount = tradeCreditDrops[selectedIndex].value;
-            //result.backgroundColor = brawlerObject.rarity.color;
+            result.backgroundColor = "#389CFC";
             result.description = "Use these to trade pins with other users. Higher-rarity pins require more credits to trade.";
         }
     }
@@ -491,9 +491,9 @@ function selectBonus(allBonusDrops, rewardTypes, resources){
 
         result.displayName = "Token Doubler";
         result.rewardType = "tokenDoubler";
-        result.image = "resource_token_doubler.webp";
+        result.image = "resource_token_doubler_200x.webp";
         result.amount = rewardAmount;
-        //result.backgroundColor = brawlerObject.rarity.color;
+        result.backgroundColor = "#A248FF";
         result.description = "Doubles the next " + rewardAmount.toString() + " tokens collected.";
     }
     // Avatar
@@ -510,6 +510,7 @@ function selectBonus(allBonusDrops, rewardTypes, resources){
             result.displayName = "New Avatar";
             result.rewardType = "avatar";
             result.image = availableAvatars[selectedIndex].value;
+            result.backgroundColor = "#F7831C";
             result.description = "Select this avatar in the account settings.";
         }
     }
