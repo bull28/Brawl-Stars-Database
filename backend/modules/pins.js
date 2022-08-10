@@ -196,7 +196,7 @@ function getCollectionScore(collection){
     else if (overallScore < 200)    { grade = "C+"; color = "#00FF00"; }
     else if (overallScore < 300)    { grade = "B-"; color = "#00FFC0"; }
     else if (overallScore < 400)    { grade = "B" ; color = "#00FFFF"; }
-    else if (overallScore < 560)    { grade = "B+"; color = "#00FF80"; }
+    else if (overallScore < 560)    { grade = "B+"; color = "#0080FF"; }
     else if (overallScore < 720)    { grade = "A-"; color = "#8000FF"; }
     else if (overallScore < 840)    { grade = "A" ; color = "#FF03CC"; }
     else if (overallScore < 920)    { grade = "A+"; color = "#EA3331"; }

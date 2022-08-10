@@ -3764,7 +3764,7 @@
                     "Effects"
                 ],
                 "group": {
-                    "name": "Brawlentines",
+                    "name": "Brawlentine's",
                     "image": "bg_brawlentines.webp",
                     "icon": "icon_brawlentines.webp"
                 },
@@ -4240,7 +4240,7 @@
                     "Effects"
                 ],
                 "group": {
-                    "name": "Brawlentines",
+                    "name": "Brawlentine's",
                     "image": "bg_brawlentines.webp",
                     "icon": "icon_brawlentines.webp"
                 },
@@ -6205,7 +6205,7 @@
                     "Effects"
                 ],
                 "group": {
-                    "name": "Brawlentines",
+                    "name": "Brawlentine's",
                     "image": "bg_brawlentines.webp",
                     "icon": "icon_brawlentines.webp"
                 },
@@ -12389,7 +12389,7 @@
                     "Effects"
                 ],
                 "group": {
-                    "name": "Brawlentines",
+                    "name": "Brawlentine's",
                     "image": "bg_brawlentines.webp",
                     "icon": "icon_brawlentines.webp"
                 },
@@ -14109,7 +14109,7 @@
             },
             {
                 "name": "kickerdudeocto",
-                "displayName": "OctoFang",
+                "displayName": "Octo Fang",
                 "cost": 79,
                 "currency": "Gems",
                 "features": [
