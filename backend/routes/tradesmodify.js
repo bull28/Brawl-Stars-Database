@@ -14,13 +14,11 @@ const pins = require("../modules/pins");
 const fileLoader = require("../modules/fileloader");
 
 // constants for trades
-const MAX_ACTIVE_TRADES = 69;
+const MAX_ACTIVE_TRADES = 25;// will be lowered later when done testing
 
 // base directories of image files
 const filePaths = require("../modules/filepaths");
-const PORTRAIT_IMAGE_DIR = filePaths.PORTRAIT_IMAGE_DIR;
 const PIN_IMAGE_DIR = filePaths.PIN_IMAGE_DIR;
-const RESOURCE_IMAGE_DIR = filePaths.RESOURCE_IMAGE_DIR;
 
 
 // Load the skins json object
@@ -91,22 +89,35 @@ function databaseErrorCheck(error, results, fields, res){
 }
 
 
-function validatePins(allSkins, pinArray, searchByImage){
+function validatePins(allSkins, pinArray, searchByName){
     //pinArray.slice()
     var validArray = [];
+    var alreadyAdded = [];
     for (let x of pinArray){
-        if (x.hasOwnProperty("brawler") && x.hasOwnProperty("pin")){
+        if (x.hasOwnProperty("brawler") && x.hasOwnProperty("pin") && x.hasOwnProperty("amount")){
             let brawlerObjects = allSkins.filter((element, index, array) => {return element.name == x.brawler;});
             if (brawlerObjects.length > 0 && brawlerObjects[0].hasOwnProperty("pins")){
-                let pinObjects = brawlerObjects[0].pins.filter((element, index, array) => {return element.name == x.pin;});
+                var pinObjects = [];
+                if (searchByName){
+                    pinObjects = brawlerObjects[0].pins.filter((element, index, array) => {return element.name == x.pin;});
+                } else{
+                    let imageArray = x.pin.split("/");
+                    // remove the file path directories before checking the image
+                    pinObjects = brawlerObjects[0].pins.filter((element, index, array) => {return element.image == imageArray[imageArray.length - 1];});
+                }
+                
                 if (pinObjects.length > 0){
-                    if (pinObjects[0].hasOwnProperty("rarity")){
+                    let thisPin = pinObjects[0];
+                    if (thisPin.hasOwnProperty("rarity") && thisPin.hasOwnProperty("image") && x.amount > 0 && alreadyAdded.includes(thisPin.name) == false){
                         validArray.push({
                             "brawler": brawlerObjects[0].name,
-                            "pin": pinObjects[0].name,
-                            "amount": 1,
-                            "rarityValue": pinObjects[0].rarity.value
+                            "pin": thisPin.name,
+                            "pinImage": PIN_IMAGE_DIR + brawlerObjects[0].name + "/" + thisPin.image,
+                            "amount": x.amount,
+                            "rarityValue": thisPin.rarity.value,
+                            "rarityColor": thisPin.rarity.color
                         });
+                        alreadyAdded.push(thisPin.name);
                     }
                 }
             }
@@ -131,28 +142,37 @@ router.post("/create", function(req, res) {
     }
     let username = validateToken(req.body.token);
 
-    //var searchByName = false;
+    var searchByName = false;
+    if (req.body.searchByName == true){
+        searchByName = true;
+    }
 
-    if (username){
+    if (username && req.body.offer && req.body.request){
+        //const BUL = performance.now();
         var offerPins = [];
         var requestPins = [];
         try{
-            offerPins = JSON.parse('[{"brawler": "bull", "pin": "bull_angry"}, {"brawler": "darryl", "pin": "darryl_sweat"}, {"brawler": "frank", "pin": "frank_thanks"}, {"brawler": "FRNK", "pin": "FRNK_SAD"}]');
-            requestPins = JSON.parse('[{"brawler": "elprimo", "pin": "elprimo_dragon"}, {"brawler": "tara", "pin": "tara_thanks"}, {"brawler": "ash", "pin": "ash_gg"}, {"brawler": "FRNK", "pin": "FRK PIN"}]');
+            offerPins = JSON.parse(req.body.offer);
+            requestPins = JSON.parse(req.body.request);
         } catch(error){
             res.status(400).send("Invalid offer and request data.");
             return;
         }
 
-        const BUL = performance.now();
-        offerPins = validatePins(allSkins, offerPins, false);
-        requestPins = validatePins(allSkins, requestPins, false);
+        // Run the function to validate the user's pin requests
+        offerPins = validatePins(allSkins, offerPins, searchByName);
+        requestPins = validatePins(allSkins, requestPins, searchByName);
 
         if (offerPins.length > 10 || requestPins.length > 10){
             res.status(400).send("Too many pins in request or offer.");
             return;
         }
+        if (offerPins.length == 0 && requestPins.length == 0){
+            res.status(400).send("Trade does not contain any pins being exchanged.");
+            return;
+        }
 
+        // If the same pin exists in both offer and request, stop the trade
         const offerPinsNames = offerPins.map(element => element.pin);
         const requestPinsNames = requestPins.map(element => element.pin);
         var validPins = true;
@@ -163,7 +183,7 @@ router.post("/create", function(req, res) {
         }
         
         if (validPins == false){
-            res.status(400).send("Cannot offer and request the same pin.");
+            res.status(400).send("Cannot have the same pin in both offer and request.");
             return;
         }
 
@@ -190,13 +210,13 @@ router.post("/create", function(req, res) {
             }
 
 
-            //if (userResources.trade_credits < tradeCost){
-            //    res.status(403).send("Not enough Trade Credits. Open Brawl Boxes to get more.");
-            //    return;
-            //}
+            // Not enough trade credits
+            if (userResources.trade_credits < tradeCost){
+                res.status(403).send("Not enough Trade Credits. Open Brawl Boxes to get more.");
+                return;
+            }
 
-            // userResources.trade_credits -= tradeCost;
-
+            // Too many active trades
             if (userResources.trade_requests.length >= MAX_ACTIVE_TRADES){
                 res.status(403).send("Too many active trades. Close one before creating a new one.");
                 return;
@@ -216,10 +236,24 @@ router.post("/create", function(req, res) {
                             collectionData[x.brawler][x.pin] -= x.amount;
                         }
                         //console.log(collectionData[x.brawler][x.pin]);
+                    } else{
+                        // They do not have the pin unlockd for that brawler
+                        hasRequiredPins = false;
                     }
+                } else{
+                    // They do not have the brawler unlocked
+                    hasRequiredPins = false;
                 }
             }
-            // return error when hasrequiredpins is false
+
+            // User does not have the pins they are offering
+            if (hasRequiredPins == false){
+                res.status(403).send("You do not have enough copies of the pins required to create this trade.");
+                return;
+            }
+
+            // Deduct trade credits (if there is an error later, it will not be written to database)
+            userResources.trade_credits -= tradeCost;
 
             // Default of 2 days expiry time
             const tradeExpiration = Date.now() + 172800000;
@@ -227,9 +261,10 @@ router.post("/create", function(req, res) {
             
             // Add the new trade into the trades table
             database.queryDatabase(
-            "INSERT INTO " + TRADE_TABLE_NAME + " (creator, creator_avatar, creator_color, offer, request, expiration) VALUES (?, ?, ?, ?, ?, ?);",
-            [username, userResources.active_avatar, "#000000", JSON.stringify(offerPins), JSON.stringify(requestPins), tradeExpiration], (error, results, fields) => {
-                if (databaseErrorCheck(error, results, fields, res)){
+            "INSERT INTO " + TRADE_TABLE_NAME + " (creator, creator_avatar, creator_color, offer, request, trade_credits, expiration) VALUES (?, ?, ?, ?, ?, ?, ?);",
+            [username, userResources.active_avatar, "#000000", JSON.stringify(offerPins), JSON.stringify(requestPins), tradeCost, tradeExpiration], (error, results, fields) => {
+                if (error){
+                    res.status(500).send("Could not connect to database.");
                     return;
                 }
 
@@ -247,22 +282,23 @@ router.post("/create", function(req, res) {
                         return;
                     }
 
-                    userResources.trade_requests.push(results[0]["LAST_INSERT_ID()"]);
+                    const tradeidResult = results[0]["LAST_INSERT_ID()"];
+                    userResources.trade_requests.push(tradeidResult);
                     
                     // Update the user's data after their resources and pins have been changed
                     database.queryDatabase(
                     "UPDATE " + TABLE_NAME + " SET brawlers = ?, trade_requests = ?, trade_credits = ? WHERE username = ?;",
                     [JSON.stringify(collectionData), JSON.stringify(userResources.trade_requests), userResources.trade_credits, username], (error, results, fields) => {
-                        if (databaseErrorCheck(error, results, fields, res)){
+                        if (error){
+                            res.status(500).send("Could not connect to database.");
                             return;
                         }
                         if (results.affectedRows == 0){
                             res.status(500).send("Could not update the database.");
                         }
 
-                        console.log(performance.now() - BUL);
-
-                        res.send("BUL");
+                        //console.log(performance.now() - BUL);
+                        res.json({"tradeid": tradeidResult});
                     });
                 });
             });
@@ -281,12 +317,22 @@ router.post("/accept", function(req, res) {
     let username = validateToken(req.body.token);
 
     let tradeid = req.body.tradeid;
-    tradeid = 16;// trade id is hard coded for now because i don't want to keep changing h.js and refreshing the page
+    //tradeid = 7;// trade id is hard coded for now because i don't want to keep changing h.js and refreshing the page
 
-    //var searchByName = false;
+    // useWildCards makes the server check if the user has a wild card pin to use instead when they are missing a required pin
+    // forceAccept makes the server accept the trade anyway even if the user would not be able to collect a pin because they
+    // do not have the brawler unlocked.
+    var useWildCards = true;
+    var forceAccept = false;
+    if (req.body.useWildCards == true){
+        useWildCards = true;
+    }
+    if (req.body.forceAccept == true){
+        forceAccept = true;
+    }
 
     if (username && tradeid !== undefined){
-        const BUL = performance.now();
+        //const BUL = performance.now();
 
         // Get the user's data and check if they have the necessary resources and pins to accept the trade
         database.queryDatabase(
@@ -311,18 +357,19 @@ router.post("/accept", function(req, res) {
 
             // Get the trade data for the tradeid specified by the user
             database.queryDatabase(
-            "SELECT creator, offer, request, trade_credits FROM " + TRADE_TABLE_NAME + " WHERE tradeid = ? AND expiration > ?;",// add AND accepted = 0 later
-            [tradeid, Date.now() + 300000], (error, results, fields) => {
+            "SELECT creator, offer, request, trade_credits FROM " + TRADE_TABLE_NAME + " WHERE tradeid = ? AND expiration > ? AND accepted = ?;",
+            [tradeid, Date.now() + 300000, 0], (error, results, fields) => {
                 if (databaseErrorCheck(error, results, fields, res)){
                     return;
                 }
 
                 var tradeResults = results[0];
 
-                //if (tradeResults.creator == username){
-                //    res.status(403).send("You cannot accept your own trade!");
-                //    return;
-                //}
+                // Trying to accept their own trade...
+                if (tradeResults.creator == username){
+                    res.status(400).send("You cannot accept your own trade!");
+                    return;
+                }
 
                 var offerPins = [];
                 var requestPins = [];
@@ -336,12 +383,11 @@ router.post("/accept", function(req, res) {
 
                 const tradeCost = tradeResults.trade_credits;
 
-                //if (userResources.trade_credits < tradeCost){
-                //    res.status(403).send("Not enough Trade Credits. Open Brawl Boxes to get more.");
-                //    return;
-                //}
-
-                // userResources.trade_credits -= tradeCost;
+                // Not enough trade credits
+                if (userResources.trade_credits < tradeCost){
+                    res.status(403).send("Not enough Trade Credits. Open Brawl Boxes to get more.");
+                    return;
+                }
                 
                 var hasRequiredPins = true;
                 for (let x of requestPins){
@@ -351,7 +397,8 @@ router.post("/accept", function(req, res) {
                                 // add check to use wild card pins here
 
                                 // If the user does not have enough pins, check if they have enough wild cards of the correct rarity
-                                if (wildCardPins[x.rarityValue] >= x.amount){
+                                // Note: this is only done when accepting a trade. Using wild card pins when creating a trade is not allowed.
+                                if (useWildCards && wildCardPins[x.rarityValue] >= x.amount){
                                     wildCardPins[x.rarityValue] -= x.amount
                                 }
                                 
@@ -362,15 +409,28 @@ router.post("/accept", function(req, res) {
                             } else{
                                 collectionData[x.brawler][x.pin] -= x.amount;
                             }
-                            //console.log(x.pin);
+                        } else{
+                            hasRequiredPins = false;
                         }
+                    } else{
+                        // They do not have the brawler unlocked
+                        hasRequiredPins = false;
                     }
                 }
 
+                // User does not have the pins the trade creator wants
+                if (hasRequiredPins == false){
+                    res.status(403).send("You do not have enough copies of the pins required to accept this trade.");
+                    return;
+                }
+
+                // Deduct trade credits (if there is an error later, it will not be written to database)
+                userResources.trade_credits -= tradeCost;
+
+                // Array of pins the user received which will be sent to them as information
+                var tradedItems = [];
                 
-                // return error when hasrequiredpins is false
-
-
+                var hasRequiredBrawlers = true;
                 for (let x of offerPins){
                     if (collectionData.hasOwnProperty(x.brawler)){
                         // If the user already has the pin in their collection, add the amount they will receive
@@ -382,15 +442,26 @@ router.post("/accept", function(req, res) {
                         else{
                             collectionData[x.brawler][x.pin] = x.amount;
                         }
+                        tradedItems.push(x);
+                    } else{
+                        hasRequiredBrawlers = false;
                     }
                     // If the user does not have the brawler unlocked, they cannot receive the pin...
-                }                
+                }
+
+                // If the user does not have the brawlers unlocked, they have the option to accept anyway
+                // and not collect those pins or for the server to prevent them from accepting.
+                if (forceAccept == false && hasRequiredBrawlers == false){
+                    res.status(403).send("You do not have the necessary brawlers unlocked to accept the trade.");
+                    return;
+                }
 
                 // Update the user's data after their resources and pins have been changed
                 database.queryDatabase(
                 "UPDATE " + TABLE_NAME + " SET brawlers = ?, wild_card_pins = ?, trade_credits = ? WHERE username = ?;",
                 [JSON.stringify(collectionData), JSON.stringify(wildCardPins), userResources.trade_credits, username], (error, results, fields) => {
-                    if (databaseErrorCheck(error, results, fields, res)){
+                    if (error){
+                        res.status(500).send("Could not connect to database.");
                         return;
                     }
                     if (results.affectedRows == 0){
@@ -404,15 +475,175 @@ router.post("/accept", function(req, res) {
                     database.queryDatabase(
                     "UPDATE " + TRADE_TABLE_NAME + " SET accepted = ?, accepted_by = ? WHERE tradeid = ?;",
                     [1, username, tradeid], (error, results, fields) => {
-                        if (databaseErrorCheck(error, results, fields, res)){
+                        if (error){
+                            res.status(500).send("Could not connect to database.");
                             return;
                         }
                         if (results.affectedRows == 0){
                             res.status(500).send("Could not update the database.");
                         }
 
-                        console.log(performance.now() - BUL);
-                        res.send("BUL");
+                        //console.log(performance.now() - BUL);
+                        res.json(tradedItems);
+                    });
+                });
+            });
+        });
+    } else{
+        res.status(401).send("Invalid token.");
+    }
+});
+
+//
+router.post("/close", function(req, res) {
+    if (!(req.body.token)){
+        res.status(400).send("Token is missing.");
+        return;
+    }
+    let username = validateToken(req.body.token);
+
+    let tradeid = req.body.tradeid;
+    //tradeid = 7;// trade id is hard coded for now because i don't want to keep changing h.js and refreshing the page
+
+    var forceAccept = true;
+    if (req.body.forceAccept == true){
+        forceAccept = true;
+    }
+
+    if (username && tradeid !== undefined){
+        //const BUL = performance.now();
+
+        // Get the user's data and check if they have the necessary resources and pins to accept the trade
+        database.queryDatabase(
+        "SELECT brawlers, trade_requests, trade_credits FROM " + TABLE_NAME + " WHERE username = ?;",
+        [username], (error, results, fields) => {
+            if (databaseErrorCheck(error, results, fields, res)){
+                return;
+            }
+
+            // Load the data in then get the trade data and compare then
+            //var userResources = results[0];
+
+            var collectionData = {};
+            var userTrades = [];
+            var userTradeCredits = results[0].trade_credits;
+            try{
+                collectionData = JSON.parse(results[0].brawlers);
+                userTrades = JSON.parse(results[0].trade_requests);
+            } catch (error){
+                res.status(500).send("Collection data could not be loaded.");
+                return;
+            }
+
+            // Get the trade data for the tradeid specified by the user
+            database.queryDatabase(
+            "SELECT creator, offer, request, trade_credits, expiration, accepted, accepted_by FROM " + TRADE_TABLE_NAME + " WHERE tradeid = ?;",
+            [tradeid], (error, results, fields) => {
+                if (databaseErrorCheck(error, results, fields, res)){
+                    return;
+                }
+
+                var tradeResults = results[0];
+
+                if (tradeResults.creator != username){
+                    res.status(401).send("You did not create this trade!");
+                    return;
+                }
+
+                var offerPins = [];
+                var requestPins = [];
+                try{
+                    offerPins = JSON.parse(tradeResults.offer);
+                    requestPins = JSON.parse(tradeResults.request);
+                } catch (error){
+                    res.status(500).send("Trade data could not be loaded.");
+                    return;
+                }
+
+                const tradeCost = tradeResults.trade_credits;
+
+                // Based on whether the trade was complete or not, pins will be added
+                // back from either the offer or request
+                var addPinsFrom = [];
+
+                if (tradeResults.accepted == 1){
+                    // If the trade was completed, add pins from the request
+                    addPinsFrom = requestPins;
+                } else{
+                    // If the trade was expired or no one accepted it, add pins back from the offer
+                    // Also refund the trade credits they paid to create the trade
+                    addPinsFrom = offerPins;
+                    userTradeCredits += tradeCost;
+                }
+
+                // Array of pins the user received which will be sent to them as information
+                var tradedItems = [];
+                
+                var hasRequiredBrawlers = true;
+                for (let x of addPinsFrom){
+                    if (collectionData.hasOwnProperty(x.brawler)){
+                        if (collectionData[x.brawler].hasOwnProperty(x.pin)){
+                            collectionData[x.brawler][x.pin] += x.amount;
+                        }
+                        else{
+                            collectionData[x.brawler][x.pin] = x.amount;
+                        }
+                        tradedItems.push(x);
+                    } else{
+                        hasRequiredBrawlers = false;
+                    }
+                    // If the user does not have the brawler unlocked, they cannot receive the pin...
+                }
+                
+                if (forceAccept == false && hasRequiredBrawlers == false){
+                    res.status(403).send("You do not have the necessary brawlers unlocked to accept the trade.");
+                    return;
+                }
+
+                // If the tradeid exists in the user's trade_requests array, remove it because the
+                // trade will no longer exist in the database after
+                const tradeidIndex = userTrades.indexOf(tradeid);
+                if (tradeidIndex > -1){
+                    userTrades.splice(tradeidIndex, 1);
+                }
+
+
+                // Update the user's data after their resources and pins have been changed
+                database.queryDatabase(
+                "UPDATE " + TABLE_NAME + " SET brawlers = ?, trade_requests = ?, trade_credits = ? WHERE username = ?;",
+                [JSON.stringify(collectionData), JSON.stringify(userTrades), userTradeCredits, username], (error, results, fields) => {
+                    if (error){
+                        res.status(500).send("Could not connect to database.");
+                        return;
+                    }
+                    if (results.affectedRows == 0){
+                        res.status(500).send("Could not update the database.");
+                    }
+
+                    
+                    // Remove the trade from the database
+                    database.queryDatabase(
+                    "DELETE FROM " + TRADE_TABLE_NAME + " WHERE tradeid = ?;",
+                    [tradeid], (error, results, fields) => {
+                        if (error){
+                            res.status(500).send("Could not connect to database.");
+                            return;
+                        }
+                        if (results.affectedRows == 0){
+                            res.status(500).send("Could not update the database.");
+                        }
+                        
+                        var tradeSuccess = false;
+                        if (tradeResults.accepted == 1){
+                            tradeSuccess = true;
+                        }
+
+                        //console.log(performance.now() - BUL);
+
+                        res.json({
+                            "complete": tradeSuccess,
+                            "pins": tradedItems
+                        });
                     });
                 });
             });
