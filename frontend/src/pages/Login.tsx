@@ -29,6 +29,7 @@ function Login(){
             .then(res => {
                 navigate('/')
                 localStorage.setItem('token', res.data.token);
+                localStorage.setItem('username', res.data.username)
                 setInvalidlogin(false);
             })
             .catch(function(error) {

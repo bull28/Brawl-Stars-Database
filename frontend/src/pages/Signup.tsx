@@ -29,6 +29,7 @@ function Signup(){
             .then(res => {
                 navigate('/')
                 localStorage.setItem('token', res.data.token);
+                localStorage.setItem('username', res.data.username)
                 setInvalid(false);
             })
             .catch(function(error) {

@@ -11,7 +11,7 @@ import { Flex, Text, Menu,
     } from '@chakra-ui/react'
 import axios from 'axios'
 import {UserInfoProps} from '../types/AccountData'
-
+import test from '../helpers/test'
 
 export default function AccountDisplay() {
 
