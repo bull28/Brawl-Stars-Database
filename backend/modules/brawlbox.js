@@ -197,12 +197,14 @@ function selectPin(pinDropChances, resources, allSkins){
 
     var userCollection = resources.brawlers;
     //var raritypmf = [36, 15, 6, 3, 0];
-    var raritypmf = [0, 0, 0, 0, 0];
+    //var raritypmf = [0, 0, 0, 0, 0];
     //var raritypmf = pinDropChances.raritypmf;
+    const raritypmf = pinDropChances.raritypmf;
+    const minraritypmf = pinDropChances.minraritypmf;
     var pinsByRarity = [[], [], [], [], []];
+    var duplicatePins = [[], [], [], [], []];
 
-    if (pinDropChances.raritypmf.length != raritypmf.length ||
-        pinDropChances.minraritypmf.length != raritypmf.length){
+    if (raritypmf.length != minraritypmf.length){
         return result;
     }
     
@@ -218,34 +220,54 @@ function selectPin(pinDropChances, resources, allSkins){
             if (userCollection.hasOwnProperty(brawler.name)){
                 for (let pinIndex = 0; pinIndex < brawler.pins.length; pinIndex++){
                     const pinRarity = brawler.pins[pinIndex].rarity.value;
-                    if (pinRarity < pinsByRarity.length && userCollection[brawler.name].includes(brawler.pins[pinIndex].name) == false){
+                    const pinAmount = userCollection[brawler.name][brawler.pins[pinIndex].name];
+                    //if (pinRarity < pinsByRarity.length && userCollection[brawler.name].includes(brawler.pins[pinIndex].name) == false){
+                    if (pinRarity < pinsByRarity.length){
                         // Add the brawler's index and the pin's index so when the random pin has to be
                         // chosen, the link to the pin object can be easily found without storing the
                         // entire pin data in an array.
 
                         //availablePins.push([brawlerIndex, pinIndex]);
-                        pinsByRarity[pinRarity].push([brawlerIndex, pinIndex]);
-                    }   
+                        if (pinAmount !== undefined && pinAmount > 0){
+                            duplicatePins[pinRarity].push([brawlerIndex, pinIndex]);
+                        } else{
+                            pinsByRarity[pinRarity].push([brawlerIndex, pinIndex]);
+                        }
+                    }
                 }
             }
         }
     }
-    
-    // For the rarities with no more pins available, set their weights to 0
-    // Later: make it slightly higher than 0 so a pin isn't always guaranteed
-    for (let r = 0; r < raritypmf.length; r++){
-        if (pinsByRarity[r].length == 0){
-            raritypmf[r] = pinDropChances.minraritypmf[r];
-            //raritypmf[r] = 1;
-        } else{
-            raritypmf[r] = pinDropChances.raritypmf[r];
-        }
-    }
 
     // Select a rarity based from the ones that do have pins available
+    // With the latest change, allowing duplicate pins to be collected,
+    // all rarities can be selected. When a rarity is selected, there is a
+    // chance to receive either a new pin or a duplicate pin. The probability
+    // of getting either is stored in minraritypmf.
     var selectedRarity = RNG(raritypmf);
+    var duplicate = false;
     if (selectedRarity >= 0){
-        availablePins = pinsByRarity[selectedRarity];
+        // The probability of getting a duplicate pin is minraritypmf[selectedRarity] / raritypmf[selectedRarity]
+        // So the probability of getting a new pin is 1 - that value which is checked for here.
+        // Also, if there are no more new pins available (pinsByRarity[selectedRarity].length == 0)
+        // then every pin will be a duplicate, as long as there are also duplicate pins available.
+        // In this case, the value of duplicateProbability does not do anything.
+        // If a certain rarity has no pins available, coins will be given instead.
+        const newPinCount = pinsByRarity[selectedRarity].length;
+        const duplicatePinCount = duplicatePins[selectedRarity].length;
+
+        var duplicateProbability = 0;
+        if (duplicatePinCount > 0 && raritypmf[selectedRarity] > 0){
+            duplicateProbability = (minraritypmf[selectedRarity] / raritypmf[selectedRarity]) * (duplicatePinCount / (newPinCount + duplicatePinCount));
+        }
+
+        // Math.random() > duplicateProbability is the same as Math.random() < (1 - duplicateProbability)
+        if (Math.random() > duplicateProbability && newPinCount > 0){
+            availablePins = pinsByRarity[selectedRarity];
+        } else if (duplicatePinCount > 0){
+            duplicate = true;
+            availablePins = duplicatePins[selectedRarity];
+        }
     }
 
     // If there are pins available to collect, randomly select one and add it.
@@ -255,13 +277,31 @@ function selectPin(pinDropChances, resources, allSkins){
         const brawlerObject = allSkins[selectedPin[0]];
         const pinObject = brawlerObject.pins[selectedPin[1]];
         //userCollection[allSkins[selectedPin[0]].name].push(pinObject.name);
-        userCollection[brawlerObject.name] = userCollection[brawlerObject.name].concat([pinObject.name]);
+        //userCollection[brawlerObject.name] = userCollection[brawlerObject.name].concat([pinObject.name]);
 
-        result.displayName = "New Pin";
+        // Usually, all the pins must be stored in the database with an amount, even if they are not unlocked yet.
+        // In case a certain pin was selected to be given and it does not already exist, create a new property in
+        // the object and set its value to 1. This may happen when new pins are released and the existing players'
+        // data has not been updated to include the new pins. Because new pins are added automatically here, an
+        // update to every user in the database when a new pin gets released is not necessary.
+        if (userCollection[brawlerObject.name][pinObject.name] === undefined){
+            userCollection[brawlerObject.name][pinObject.name] = 1;
+        } else{
+            userCollection[brawlerObject.name][pinObject.name]++;
+        }
+
+        //result.displayName = "New Pin";
         result.rewardType = "pin";
         result.image = brawlerObject.name + "/" + pinObject.image;// add the brawler's name directory
         result.backgroundColor = pinObject.rarity.color;
-        result.description = "A new Pin for " + brawlerObject.displayName + ".";
+        result.description = "A Pin for " + brawlerObject.displayName + ".";
+
+        if (duplicate){
+            result.displayName = "Duplicate Pin";
+        } else{
+            result.displayName = "New Pin";
+        }
+
     } else{
         resources.coins += pinDropChances.coinConversion;
 

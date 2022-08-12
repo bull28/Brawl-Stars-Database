@@ -3,10 +3,10 @@
  * in an array with useful properties for displaying the collection on-screen.
  * Also analyzes the collection and gives a score based on how close it is to
  * completion. All image files have their appropriate file paths added.
- * @param {*} allSkins json array with all the brawlers
- * @param {*} userCollection parsed brawlers object from the database
- * @param {*} portraitFile file path to brawler portraits
- * @param {*} pinFile file path to the directory containing the pins
+ * @param {Array} allSkins json array with all the brawlers
+ * @param {Object} userCollection parsed brawlers object from the database
+ * @param {String} portraitFile file path to brawler portraits
+ * @param {String} pinFile file path to the directory containing the pins
  * @returns json object of the collection that can be sent to the user
  */
 function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
@@ -29,6 +29,7 @@ function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
         var thisBrawler = {};
         var unlockedPins = 0;
         var totalPins = 0;
+        var pinCopies = 0;
 
         // Check that all desired properties exist all at once
         // so they do not have to be checked individually as
@@ -61,18 +62,41 @@ function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
                     thisPin["i"] = pin["image"];
                 }
 
-                thisPin["u"] = false;
+                //thisPin["u"] = false;
 
                 // If the brawler appears in userCollection as a key, it is unlocked
                 // If the brawler is unlocked, check to see if the name of the current
                 // pin appears in the corresponding value. If it appears, the current
                 // pin is unlocked.
-                if (hasBrawler){    
+                if (hasBrawler){
+                    var pinDataObject = userCollection[brawler.name];
+                    /*
+                    if (pinDataObject.hasOwnProperty(pin.name)){
+                        //const pinAmount = userCollection[brawler.name][pin.name];
+                        
+                        if (pinDataObject[pin.name] > 0){
+                            thisPin["u"] = true;
+                            unlockedPins++;
+                            collectionInfo.unlockedPins++;
+                        }
+                    }*/
+                    if (pinDataObject[pin.name] !== undefined){
+                        if (pinDataObject[pin.name] > 0){
+                            //thisPin["u"] = true;
+                            unlockedPins++;
+                            collectionInfo.unlockedPins++;
+                        }
+                        pinCopies += pinDataObject[pin.name];
+                        thisPin["a"] = pinDataObject[pin.name];
+                    }
+                    
+                    /*
                     if (userCollection[brawler.name].includes(pin.name)){
                         thisPin["u"] = true;
                         unlockedPins++;
                         collectionInfo.unlockedPins++;
                     }
+                    */
                 }
                 totalPins++;
                 collectionInfo.totalPins++;
@@ -92,6 +116,7 @@ function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
             thisBrawler["u"] = hasBrawler;
             thisBrawler["unlockedPins"] = unlockedPins;
             thisBrawler["totalPins"] = totalPins;
+            thisBrawler["pinCopies"] = pinCopies;
             thisBrawler["pinFilePath"] = pinFile + brawler.name + "/";
             thisBrawler["pins"] = brawlerPins;
 
@@ -117,8 +142,8 @@ function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
  * determine which portrait avatars are available.
  * @param {Array} allSkins json array with all the brawlers
  * @param {Array} allAvatars json object with arrays of free and special avatars
- * @param {*} userCollection parsed brawlers object from the database
- * @param {*} userAvatars parsed avatars object from the database
+ * @param {Object} userCollection parsed brawlers object from the database
+ * @param {Array} userAvatars parsed avatars object from the database
  * @returns array of all avatar image names
  */
 function getAvatars(allSkins, allAvatars, userCollection, userAvatars){

@@ -224,7 +224,10 @@ router.post("/collection", function(req, res) {
                 return;
             }
             
+            //const BUL = performance.now();
             let collectionInfo = pins.formatCollectionData(allSkins, collectionData, PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR);
+            //const EDGRISBAD = (performance.now() - BUL);
+            //console.log("YOUR PROGRAM IS",EDGRISBAD.toString(),"TIMES WORSE THAN E D G R");
 
             res.json(collectionInfo);
         });
@@ -305,7 +308,10 @@ router.post("/brawlbox", function(req, res) {
             //}
 
 
+            //const BUL = performance.now();
             let brawlBoxContents = brawlbox.brawlBox(dropChances, boxType, allSkins, userResources);
+            //const EDGRISBAD = (performance.now() - BUL);
+            //console.log("YOUR PROGRAM IS",EDGRISBAD.toString(),"TIMES WORSE THAN E D G R");
 
             if (brawlBoxContents.length == 0){
                 res.status(500).send("This Brawl Box contained a manufacturing defect.");

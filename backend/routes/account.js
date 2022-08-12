@@ -155,6 +155,20 @@ router.post("/signup", (req, res) => {
                 startingBrawlers[allSkins[x].name] = [];
             }
         }
+
+        /*
+        var testx = {};
+        for (let x of allSkins){
+            var KINg = {};
+            for (let y of x.pins){
+                KINg[y.name] = 0;
+            }
+            testx[x.name] = KINg;
+        }
+        //console.log(testx);
+        //res.json(testx);
+        //return;
+        */
     }
     
     if (username && password){

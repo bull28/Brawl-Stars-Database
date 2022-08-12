@@ -77,17 +77,17 @@
         },
         "pin": {
             "raritypmf": [36, 15, 5, 3, 1],
-            "minraritypmf": [1, 2, 1, 0, 0],
+            "minraritypmf": [18, 9, 4, 3, 1],
             "coinConversion": 500
         },
         "pinLowRarity": {
             "raritypmf": [36, 24, 0, 0, 0],
-            "minraritypmf": [6, 0, 0, 0, 0],
+            "minraritypmf": [24, 18, 0, 0, 0],
             "coinConversion": 500
         },
         "pinHighRarity": {
             "raritypmf": [24, 18, 9, 6, 3],
-            "minraritypmf": [0, 0, 3, 0, 0],
+            "minraritypmf": [8, 9, 6, 5, 3],
             "coinConversion": 500
         },
         "wildcard": {
