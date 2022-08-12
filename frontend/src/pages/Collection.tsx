@@ -1,4 +1,4 @@
-import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Center, Divider, Flex, HStack, Icon, Image, Link, SimpleGrid, Spinner, Stack, Tag, Text, Tooltip, VStack } from '@chakra-ui/react'
+import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Center, Flex, HStack, Icon, Image, Link, SimpleGrid, Spinner, Stack, Tag, Text, Tooltip, VStack } from '@chakra-ui/react'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { CollectionData } from '../types/CollectionData'
@@ -74,11 +74,15 @@ export default function Collection() {
                         <Text fontSize={'2xl'} className={'heading-2xl'} color={'white'} mb={3}>Collection Score</Text>
                         <Flex bgColor={(data?.avatarColor === 'rainbow') ? 'blue.300' : data?.avatarColor} flexDir={'column'} p={10}  border={'3px solid black'} mb={5}>
                             <Text color={(data?.collectionScore === 'S+' ? 'gold' : 'white')} className={'heading-2xl'} fontSize={'2xl'}>{data?.collectionScore}</Text>
-                            <Divider mb={5}/>
+                            <Box mt={1} mb={5} w={'100%'} h={'6px'} bgColor={'white'} borderRadius={'sm'}>
+                                <Box borderRadius={'sm'} h={'6px'} w={data ? `${data?.scoreProgress * 100}%` : '0%'} bgColor={'blue.400'}></Box>                            
+                            </Box>
+                            
                             <VStack spacing={1}>
                             <Text color={'white'} className={'heading-md'}  fontSize={'md'}>Brawlers Unlocked: </Text><Text fontSize={'lg'} className={'heading-lg'} color={(data?.unlockedBrawlers === data?.totalBrawlers) ? 'gold' : 'white'} >{`${data?.unlockedBrawlers}/${data?.totalBrawlers}`}</Text>
                             <Text color={'white'} className={'heading-md'} fontSize={'md'}>Pins Unlocked:  </Text><Text fontSize={'lg'} className={'heading-lg'} color={(data?.unlockedPins === data?.totalPins) ? 'gold' : 'white'} >{`${data?.unlockedPins}/${data?.totalPins}`}</Text>
                             <Text color={'white'} className={'heading-md'} fontSize={'md'}>Completed Brawlers:  </Text><Text fontSize={'lg'} className={'heading-lg'} color={(data?.completedBrawlers === data?.totalBrawlers) ? 'gold' : 'white'} >{`${data?.completedBrawlers}/${data?.totalBrawlers}`}</Text>
+                            <Text color={'white'} className={'heading-md'} fontSize={'md'}>Total Pins: </Text><Text fontSize={'lg'} className={'heading-lg'} color={(data && (data.pinCopies > data.totalPins)) ? 'gold' : 'white'} >{data?.pinCopies}</Text>
                             </VStack>
                         </Flex>
                     </Flex>
@@ -131,12 +135,17 @@ export default function Collection() {
                         },
                     }}> 
                                 {brawler.pins.map((pin) => (
-                                    <Image w={'80px'} filter={(!pin.u) ? 'grayscale(100%)': 'none'} src={`/image/${brawler.pinFilePath+pin.i}`} fallback={<Spinner/>}/>
+                                        <Box minW={'80px'}>
+                                            <Image w={'80px'} filter={(pin.a === 0) ? 'grayscale(100%)': 'none'} src={`/image/${brawler.pinFilePath+pin.i}`} fallback={<Spinner/>}/>                            
+                                            <Text my={1} color={(pin.a === 10) ? 'gold' : 'white'} fontSize={'lg'} className={'heading-lg'}>{`${pin.a}/10`}</Text>
+                                        </Box>                                  
+                                        
                                 ))}
                             </HStack>
                             {AddLoadedBrawler(brawler.name)}</>}
                             <Center flexDir={'column'} mt={3}>
                                 {!brawler.u && <Tooltip label={'Unlock By Opening Boxes'}><Tag colorScheme={'red'} my={2}>Unlock This Brawler To Collect Pins</Tag></Tooltip>}
+                                <Text mb={'30px'} color={'white'} className={'heading-sm'}>{`${brawler.displayName} Pins: ${brawler.pinCopies}/${brawler.totalPins*10}`}</Text>
                                 <Link href={`/brawlers/${brawler.name}`} color={'white'} className={'heading-sm'}>View Brawler Page <ExternalLinkIcon mx={'2px'}/></Link>
                             </Center>
                         </AccordionPanel>

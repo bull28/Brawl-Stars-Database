@@ -2,11 +2,13 @@ import { useRef, useState } from 'react'
 import axios from 'axios'
 import { AlertDialog, AlertDialogBody, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, Button, Flex, Image, keyframes, Modal, ModalBody, ModalContent, ModalFooter, SimpleGrid, Slider, SliderFilledTrack, SliderMark, SliderThumb, SliderTrack, Text, useDisclosure, useToast } from '@chakra-ui/react'
 import { BrawlBoxData } from '../types/BrawlBoxData'
+import CountUp from 'react-countup'
 
 interface BrawlBoxContentsData {
     displayName: string,
     rewardType: string,
     amount: number,
+    inventory: number,
     image: string,
     backgroundColor: string,
     description: string
@@ -74,6 +76,11 @@ export default function BrawlBoxDisplay({ data, tokens }: {data: BrawlBoxData, t
                         <AlertDialogBody>
                             <Image src={`/image/${data.image}`}/>
                             <Text>{data.description}</Text>
+                            <Flex flexDir={'column'}>
+                                {data?.dropsDescription.map((drop) => (
+                                    <Text>{drop}</Text>
+                                ))}     
+                             </Flex>     
                             <Flex>
                             <Slider value={amount} onChange={(count) => setAmount(count)} max={15} min={1} step={1} w={'70%'}>
                                 <SliderMark value={1} mt={'2'} ml={'-2.5'} fontSize={'sm'}>
@@ -112,11 +119,11 @@ export default function BrawlBoxDisplay({ data, tokens }: {data: BrawlBoxData, t
                             {boxContents?.map((content, x) => (        
                                 <Flex py={'20%'} bgColor={content.backgroundColor}  flexDir={'column'} justifyContent={'space-between'} alignItems={'center'} textAlign={'center'} borderRadius={'2xl'} border={'2px solid black'} boxShadow={'rgba(149, 157, 165, 0.2) 0px 8px 24px;'} maxW={'350px'} maxH={'600px'} transform={'scale(0)'} animation={`${contentTransition} 0.5s ease-out ${((x/2)+0.5)}s 1 forwards`} w={'20vw'}>                                    
                                 
-                                    <Text color={'white'} fontSize={'3xl'} className={'heading-2xl'}>{content.displayName}</Text>                                    
+                                    <Text mb={2} color={'white'} fontSize={'3xl'} className={'heading-2xl'}>{content.displayName}</Text>                                    
                                     <Image borderRadius={'xl'} src={`/image/${content.image}`} loading={'eager'}/>
-                                    {content.amount > 1 && <Text color={'white'} fontSize={'2xl'}>{`${content.amount}x`}</Text>}
-                                    <Text mx={6} color={'white'} className={'heading-lg'} fontSize={'xl'}>{content.description}</Text>                                    
-                            
+                                    {content.amount > 1 && <Text color={'white'} fontSize={'2xl'} className={'heading-2xl'}>{`${content.amount}x`}</Text>}
+                                    <Text mx={6} color={'white'} className={'heading-lg'} fontSize={'xl'}>{content.description}</Text>
+                                    <Text mt={'20%'} color={'white'} className={'heading-lg'} fontSize={'lg'}><CountUp prefix={'Inventory: '} end={content.inventory} duration={1.5}/></Text>
                                 </Flex>               
                             ))}
                         </SimpleGrid>       

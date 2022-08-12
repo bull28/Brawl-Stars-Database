@@ -1,8 +1,4 @@
-import React from 'react'
-
-type Props = {}
-
-export default function Gallery({}: Props) {
+export default function Gallery() {
   return (
     <div>Gallery</div>
   )

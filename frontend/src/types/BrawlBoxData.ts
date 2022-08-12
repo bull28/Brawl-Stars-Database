@@ -3,5 +3,6 @@ export interface BrawlBoxData {
     cost: number,
     image: string,
     displayName: string,
-    description: string
+    description: string,
+    dropsDescription: [string]
 }
