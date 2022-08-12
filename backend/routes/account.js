@@ -152,23 +152,11 @@ router.post("/signup", (req, res) => {
     if (allSkins.length >= 10){
         for (let x = 0; x < 3; x++){
             if (allSkins[x].hasOwnProperty("name")){
-                startingBrawlers[allSkins[x].name] = [];
+                // even though the pins are supposed to be here, when the user
+                // unlocks them, they will be inserted as a new key with value 0
+                startingBrawlers[allSkins[x].name] = {};
             }
         }
-
-        /*
-        var testx = {};
-        for (let x of allSkins){
-            var KINg = {};
-            for (let y of x.pins){
-                KINg[y.name] = 0;
-            }
-            testx[x.name] = KINg;
-        }
-        //console.log(testx);
-        //res.json(testx);
-        //return;
-        */
     }
     
     if (username && password){

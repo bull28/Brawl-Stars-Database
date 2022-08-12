@@ -29,14 +29,14 @@
             "image": "brawlbox_pinpack.webp",
             "description": "Guaranteed to contain 1 pin and a chance for up to 6 pins in total. Only contains pins but has a much higher chance to find pins of higher rarity.",
             "draws": [
-                [0, 1],
-                [2, 1],
-                [2, 1],
-                [2, 1],
-                [2, 1],
-                [2, 1]
+                [2, 1, 0],
+                [2, 1, 0],
+                [2, 1, 0],
+                [2, 1, 0],
+                [2, 1, 0],
+                [0, 0, 1]
             ],
-            "rewardTypeValues": ["nothing", "pinHighRarity"]
+            "rewardTypeValues": ["nothing", "pinHighRarity", "wildcard"]
         },
         "megaBox": {
             "displayName": "Mega Box",

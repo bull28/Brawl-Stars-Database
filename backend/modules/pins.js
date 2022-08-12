@@ -16,7 +16,9 @@ function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
         "totalBrawlers":0,
         "unlockedPins":0,
         "totalPins":0,
+        "pinCopies": 0,
         "collectionScore": "",
+        "scoreProgress": 0,
         "avatarColor": "#000000",
         "collection":[]
     };
@@ -80,6 +82,7 @@ function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
                             collectionInfo.unlockedPins++;
                         }
                     }*/
+                    
                     if (pinDataObject[pin.name] !== undefined){
                         if (pinDataObject[pin.name] > 0){
                             //thisPin["u"] = true;
@@ -87,7 +90,10 @@ function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
                             collectionInfo.unlockedPins++;
                         }
                         pinCopies += pinDataObject[pin.name];
+                        collectionInfo.pinCopies += pinDataObject[pin.name];
                         thisPin["a"] = pinDataObject[pin.name];
+                    } else{
+                        thisPin["a"] = 0;
                     }
                     
                     /*
@@ -201,36 +207,42 @@ function getCollectionScore(collection){
     if (collection.totalBrawlers == 0 || collection.totalPins == 0){
         return;
     }
+    if (collection.pinCopies < collection.unlockedPins){
+        return;
+    }
 
     const brawlerScore = collection.unlockedBrawlers / collection.totalBrawlers;
     const completionScore = collection.completedBrawlers / collection.totalBrawlers;
     const pinScore = collection.unlockedPins / collection.totalPins;
+    const duplicateScore = collection.pinCopies / (collection.pinCopies + collection.totalPins - collection.unlockedPins);
 
     // use larger numbers and floor to avoid non-exact
     // representations of floating point numbers causing errors
-    const overallScore = Math.floor(500 * pinScore + 300 * brawlerScore + 200 * completionScore);
+    const overallScore = Math.floor(500 * pinScore + 300 * brawlerScore + 200 * completionScore + 200 * duplicateScore);
     
     var grade = "X";
     var color = "#000000";
+    var progress = 0;
 
     // bad code but it needs to be faster
-    if      (overallScore < 1)      { grade = "X" ; color = "#000000"; }
-    else if (overallScore < 40)     { grade = "D" ; color = "#808080"; }
-    else if (overallScore < 80)     { grade = "C-"; color = "#80C080"; }
-    else if (overallScore < 120)    { grade = "C" ; color = "#80FF80"; }
-    else if (overallScore < 200)    { grade = "C+"; color = "#00FF00"; }
-    else if (overallScore < 300)    { grade = "B-"; color = "#00FFC0"; }
-    else if (overallScore < 400)    { grade = "B" ; color = "#00FFFF"; }
-    else if (overallScore < 560)    { grade = "B+"; color = "#0080FF"; }
-    else if (overallScore < 720)    { grade = "A-"; color = "#8000FF"; }
-    else if (overallScore < 840)    { grade = "A" ; color = "#FF03CC"; }
-    else if (overallScore < 920)    { grade = "A+"; color = "#EA3331"; }
-    else if (overallScore < 960)    { grade = "S-"; color = "#FF8000"; }
-    else if (overallScore < 1000)   { grade = "S" ; color = "#FDF155"; }
-    else                            { grade = "S+"; color = "rainbow"; }
+    if      (overallScore < 1)      { grade = "X" ; color = "#000000"; progress = 0                          ; }
+    else if (overallScore < 30)     { grade = "D" ; color = "#808080"; progress = (overallScore -    0) /  30; }
+    else if (overallScore < 60)     { grade = "C-"; color = "#80C080"; progress = (overallScore -   30) /  30; }
+    else if (overallScore < 90)     { grade = "C" ; color = "#80FF80"; progress = (overallScore -   60) /  30; }
+    else if (overallScore < 120)    { grade = "C+"; color = "#00FF00"; progress = (overallScore -   90) /  30; }
+    else if (overallScore < 180)    { grade = "B-"; color = "#00FFC0"; progress = (overallScore -  120) /  60; }
+    else if (overallScore < 270)    { grade = "B" ; color = "#00FFFF"; progress = (overallScore -  180) /  90; }
+    else if (overallScore < 360)    { grade = "B+"; color = "#0080FF"; progress = (overallScore -  270) /  90; }
+    else if (overallScore < 480)    { grade = "A-"; color = "#8000FF"; progress = (overallScore -  360) / 120; }
+    else if (overallScore < 640)    { grade = "A" ; color = "#FF03CC"; progress = (overallScore -  480) / 160; }
+    else if (overallScore < 800)    { grade = "A+"; color = "#EA3331"; progress = (overallScore -  640) / 160; }
+    else if (overallScore < 1000)   { grade = "S-"; color = "#FF8000"; progress = (overallScore -  800) / 200; }
+    else if (overallScore < 1200)   { grade = "S" ; color = "#FDF155"; progress = (overallScore - 1000) / 200; }
+    else                            { grade = "S+"; color = "rainbow"; progress = 1                          ; }
 
     collection.collectionScore = grade;
     collection.avatarColor = color;
+    collection.scoreProgress = progress;
 }
 
 // These functions may be used for brawl boxes and trading

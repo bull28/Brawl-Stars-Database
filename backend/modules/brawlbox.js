@@ -115,8 +115,10 @@ function brawlBox(dropChances, boxType, allSkins, resources){
             "displayName": "",
             "rewardType": "empty",
             "amount": 1,
+            "inventory": 0,
             "image": "",
-            "backgroundColor": "#000000"
+            "backgroundColor": "#000000",
+            "description": ""
         };
 
         
@@ -146,6 +148,7 @@ function brawlBox(dropChances, boxType, allSkins, resources){
             "displayName": "Coins",
             "rewardType": "coins",
             "amount": coinsReward,
+            "inventory": resources.coins,
             "image": "resource_coins_200x.webp",
             "backgroundColor": "#8CA0E0",
             "description": "Spend these on special avatars and other items in the shop."
@@ -177,6 +180,7 @@ function selectCoins(coinsDropChances, resources){
         "displayName": "",
         "rewardType": "coins",
         "amount": rewardAmount,
+        "inventory": 0,
         "image": "",
         "backgroundColor": "",
         "description": ""
@@ -190,6 +194,7 @@ function selectPin(pinDropChances, resources, allSkins){
         "displayName": "",
         "rewardType": "empty",
         "amount": 1,
+        "inventory": 0,
         "image": "",
         "backgroundColor": "#000000",
         "description": ""
@@ -284,10 +289,11 @@ function selectPin(pinDropChances, resources, allSkins){
         // the object and set its value to 1. This may happen when new pins are released and the existing players'
         // data has not been updated to include the new pins. Because new pins are added automatically here, an
         // update to every user in the database when a new pin gets released is not necessary.
-        if (userCollection[brawlerObject.name][pinObject.name] === undefined){
-            userCollection[brawlerObject.name][pinObject.name] = 1;
+        var brawlerInCollection = userCollection[brawlerObject.name];
+        if (brawlerInCollection[pinObject.name] === undefined){
+            brawlerInCollection[pinObject.name] = 1;
         } else{
-            userCollection[brawlerObject.name][pinObject.name]++;
+            brawlerInCollection[pinObject.name]++;
         }
 
         //result.displayName = "New Pin";
@@ -295,6 +301,7 @@ function selectPin(pinDropChances, resources, allSkins){
         result.image = brawlerObject.name + "/" + pinObject.image;// add the brawler's name directory
         result.backgroundColor = pinObject.rarity.color;
         result.description = "A Pin for " + brawlerObject.displayName + ".";
+        result.inventory = brawlerInCollection[pinObject.name];
 
         if (duplicate){
             result.displayName = "Duplicate Pin";
@@ -317,6 +324,7 @@ function selectWildCardPin(wildCardDropChances, resources, allSkins){
         "displayName": "",
         "rewardType": "empty",
         "amount": 1,
+        "inventory": 0,
         "image": "",
         "backgroundColor": "#000000",
         "description": ""
@@ -363,6 +371,7 @@ function selectWildCardPin(wildCardDropChances, resources, allSkins){
         result.image = "wildcard_pin.webp";
         result.backgroundColor = rarityColor;
         result.description = "This can be used in place of a Pin of " + rarityName + " rarity when accepting a trade.";
+        result.inventory = resources.wild_card_pins[selectedRarity];
     }
     // Wild card pins can always be collected so there is no coins
     // alternative reward available here.
@@ -377,6 +386,7 @@ function selectBrawler(brawlerDropChances, resources, allSkins){
         "displayName": "",
         "rewardType": "empty",
         "amount": 1,
+        "inventory": 0,
         "image": "",
         "backgroundColor": "#000000",
         "description": ""
@@ -423,7 +433,7 @@ function selectBrawler(brawlerDropChances, resources, allSkins){
         const selectedIndex = availableBrawlers[Math.floor(Math.random() * availableBrawlers.length)];
         const brawlerObject = allSkins[selectedIndex];
         if (!(userCollection.hasOwnProperty(brawlerObject.name))){
-            userCollection[brawlerObject.name] = [];
+            userCollection[brawlerObject.name] = {};
         }
 
         result.displayName = brawlerObject.displayName;
@@ -431,6 +441,7 @@ function selectBrawler(brawlerDropChances, resources, allSkins){
         result.image = brawlerObject.portrait;
         result.backgroundColor = brawlerObject.rarity.color;
         result.description = brawlerObject.description;
+        result.inventory = 1;
     } else{
         resources.coins += brawlerDropChances.coinConversion;
 
@@ -446,6 +457,7 @@ function selectBonus(allBonusDrops, rewardTypes, resources){
         "displayName": "",
         "rewardType": "empty",
         "amount": 1,
+        "inventory": 0,
         "image": "",
         "backgroundColor": "#000000",
         "description": ""
@@ -513,6 +525,7 @@ function selectBonus(allBonusDrops, rewardTypes, resources){
             result.rewardType = "tradeCredits";
             result.image = "resource_trade_credits_200x.webp";
             result.amount = tradeCreditDrops[selectedIndex].value;
+            result.inventory = resources.trade_credits;
             result.backgroundColor = "#389CFC";
             result.description = "Use these to trade pins with other users. Higher-rarity pins require more credits to trade.";
         }
@@ -533,6 +546,7 @@ function selectBonus(allBonusDrops, rewardTypes, resources){
         result.rewardType = "tokenDoubler";
         result.image = "resource_token_doubler_200x.webp";
         result.amount = rewardAmount;
+        result.inventory = resources.token_doubler;
         result.backgroundColor = "#A248FF";
         result.description = "Doubles the next " + rewardAmount.toString() + " tokens collected.";
     }
@@ -552,6 +566,7 @@ function selectBonus(allBonusDrops, rewardTypes, resources){
             result.image = availableAvatars[selectedIndex].value;
             result.backgroundColor = "#F7831C";
             result.description = "Select this avatar in the account settings.";
+            result.inventory = 1;
         }
     }
 
