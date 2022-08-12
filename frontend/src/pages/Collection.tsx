@@ -137,7 +137,7 @@ export default function Collection() {
                                 {brawler.pins.map((pin) => (
                                         <Box minW={'80px'}>
                                             <Image w={'80px'} filter={(pin.a === 0) ? 'grayscale(100%)': 'none'} src={`/image/${brawler.pinFilePath+pin.i}`} fallback={<Spinner/>}/>                            
-                                            <Text my={1} color={(pin.a === 10) ? 'gold' : 'white'} fontSize={'lg'} className={'heading-lg'}>{`${pin.a}/10`}</Text>
+                                            <Text my={1} color={(pin.a === 10) ? 'gold' : 'white'} fontSize={'lg'} className={'heading-lg'}>{`${pin.a}x`}</Text>
                                         </Box>                                  
                                         
                                 ))}
