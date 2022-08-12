@@ -107,7 +107,7 @@ function databaseErrorCheck(error, results, fields, res){
         return true;
     }
     if (results.length == 0){
-        res.status(404).send("Could not find the user in the database.");
+        res.status(404).send("Could not find the content in the database.");
         return true;
     }
     return false;
@@ -163,6 +163,8 @@ function validateDropChances(dropChances){
 
     return valid;
 }
+
+
 //----------------------------------------------------------------------------------------------------------------------
 
 // Get a user's username and amounts of various resources
@@ -181,7 +183,13 @@ router.post("/resources", function(req, res) {
                 return;
             }
 
-            let collectionInfo = pins.formatCollectionData(allSkins, JSON.parse(results[0].brawlers), PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR);
+            var collectionInfo = {};
+            try{
+                collectionInfo = pins.formatCollectionData(allSkins, JSON.parse(results[0].brawlers), PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR);
+            } catch (error){
+                res.status(500).send("Collection data could not be loaded.");
+                return;
+            }
             
             const resourcesData = {
                 "username": results[0].username,
