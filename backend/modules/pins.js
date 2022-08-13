@@ -63,8 +63,7 @@ function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
                 if (pin.hasOwnProperty("image")){
                     thisPin["i"] = pin["image"];
                 }
-
-                //thisPin["u"] = false;
+                thisPin["a"] = 0;
 
                 // If the brawler appears in userCollection as a key, it is unlocked
                 // If the brawler is unlocked, check to see if the name of the current
@@ -92,8 +91,6 @@ function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
                         pinCopies += pinDataObject[pin.name];
                         collectionInfo.pinCopies += pinDataObject[pin.name];
                         thisPin["a"] = pinDataObject[pin.name];
-                    } else{
-                        thisPin["a"] = 0;
                     }
                     
                     /*

@@ -1,4 +1,4 @@
-// This route contains operations relating adding and removing trades
+// This route contains operations relating to adding and removing trades
 
 const express = require("express");
 const router = express.Router();
@@ -7,10 +7,10 @@ const jsonwebtoken = require("jsonwebtoken");
 // Methods to query the database are contained in this module
 const database = require("../modules/database");
 const TABLE_NAME = process.env.DATABASE_TABLE_NAME || "brawl_stars_database";
-const TRADE_TABLE_NAME = "brawl_stars_trades";
+const TRADE_TABLE_NAME = process.env.DATABASE_TRADE_TABLE_NAME || "brawl_stars_trades";
 
-// functions to view and modify a pin collections
-const pins = require("../modules/pins");
+// functions to set up trades
+const trades = require("../modules/trades");
 const fileLoader = require("../modules/fileloader");
 
 // constants for trades
@@ -29,20 +29,6 @@ allSkinsPromise.then((data) => {
         allSkins = data;
     }
 });
-
-
-/**
- * Checks whether a json object is empty.
- * @param {Object} x the object
- * @returns true if empty, false otherwise
- */
- function isEmpty(x){
-    var isEmpty = true;
-    for (var y in x){
-        isEmpty = false;
-    }
-    return isEmpty;
-}
 
 
 /**
@@ -89,53 +75,10 @@ function databaseErrorCheck(error, results, fields, res){
 }
 
 
-function validatePins(allSkins, pinArray, searchByName){
-    //pinArray.slice()
-    var validArray = [];
-    var alreadyAdded = [];
-    for (let x of pinArray){
-        if (x.hasOwnProperty("brawler") && x.hasOwnProperty("pin") && x.hasOwnProperty("amount")){
-            let brawlerObjects = allSkins.filter((element, index, array) => {return element.name == x.brawler;});
-            if (brawlerObjects.length > 0 && brawlerObjects[0].hasOwnProperty("pins")){
-                var pinObjects = [];
-                if (searchByName){
-                    pinObjects = brawlerObjects[0].pins.filter((element, index, array) => {return element.name == x.pin;});
-                } else{
-                    let imageArray = x.pin.split("/");
-                    // remove the file path directories before checking the image
-                    pinObjects = brawlerObjects[0].pins.filter((element, index, array) => {return element.image == imageArray[imageArray.length - 1];});
-                }
-                
-                if (pinObjects.length > 0){
-                    let thisPin = pinObjects[0];
-                    if (thisPin.hasOwnProperty("rarity") && thisPin.hasOwnProperty("image") && x.amount > 0 && alreadyAdded.includes(thisPin.name) == false){
-                        validArray.push({
-                            "brawler": brawlerObjects[0].name,
-                            "pin": thisPin.name,
-                            "pinImage": PIN_IMAGE_DIR + brawlerObjects[0].name + "/" + thisPin.image,
-                            "amount": x.amount,
-                            "rarityValue": thisPin.rarity.value,
-                            "rarityColor": thisPin.rarity.color
-                        });
-                        alreadyAdded.push(thisPin.name);
-                    }
-                }
-            }
-        }
-    }
-    return validArray;
-}
-
-
-function getTradeCost(offerPins, requestPins){
-    // add this later
-    return 1;
-}
-
 //----------------------------------------------------------------------------------------------------------------------
 
-//
-router.post("/create", function(req, res) {
+// Create a new trade
+router.post("/create", (req, res) => {
     if (!(req.body.token)){
         res.status(400).send("Token is missing.");
         return;
@@ -160,8 +103,8 @@ router.post("/create", function(req, res) {
         }
 
         // Run the function to validate the user's pin requests
-        offerPins = validatePins(allSkins, offerPins, searchByName);
-        requestPins = validatePins(allSkins, requestPins, searchByName);
+        offerPins = trades.validatePins(allSkins, offerPins, PIN_IMAGE_DIR, searchByName);
+        requestPins = trades.validatePins(allSkins, requestPins, PIN_IMAGE_DIR, searchByName);
 
         if (offerPins.length > 10 || requestPins.length > 10){
             res.status(400).send("Too many pins in request or offer.");
@@ -188,7 +131,7 @@ router.post("/create", function(req, res) {
         }
 
 
-        const tradeCost = getTradeCost(offerPins, requestPins);
+        const tradeCost = trades.getTradeCost(offerPins, requestPins);
 
         // Get the user's data and check if they have the necessary resources and pins to create the trade
         database.queryDatabase(
@@ -308,8 +251,8 @@ router.post("/create", function(req, res) {
     }
 });
 
-//
-router.post("/accept", function(req, res) {
+// Accept an existing trade
+router.post("/accept", (req, res) => {
     if (!(req.body.token)){
         res.status(400).send("Token is missing.");
         return;
@@ -494,8 +437,8 @@ router.post("/accept", function(req, res) {
     }
 });
 
-//
-router.post("/close", function(req, res) {
+// Close a trade, collecting rewards if successful or refunding payment if unsuccessful
+router.post("/close", (req, res) => {
     if (!(req.body.token)){
         res.status(400).send("Token is missing.");
         return;
@@ -505,7 +448,7 @@ router.post("/close", function(req, res) {
     let tradeid = req.body.tradeid;
     //tradeid = 7;// trade id is hard coded for now because i don't want to keep changing h.js and refreshing the page
 
-    var forceAccept = true;
+    var forceAccept = false;
     if (req.body.forceAccept == true){
         forceAccept = true;
     }

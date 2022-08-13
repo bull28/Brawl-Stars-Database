@@ -8,7 +8,7 @@ const jsonwebtoken = require("jsonwebtoken");
 const database = require("../modules/database");
 const TABLE_NAME = process.env.DATABASE_TABLE_NAME || "brawl_stars_database";
 
-// functions to view and modify a pin collections
+// functions to view and modify pin collections
 const pins = require("../modules/pins");
 const fileLoader = require("../modules/fileloader");
 const brawlbox = require("../modules/brawlbox");
@@ -168,7 +168,7 @@ function validateDropChances(dropChances){
 //----------------------------------------------------------------------------------------------------------------------
 
 // Get a user's username and amounts of various resources
-router.post("/resources", function(req, res) {
+router.post("/resources", (req, res) => {
     if (!(req.body.token)){
         res.status(400).send("Token is missing.");
         return;
@@ -209,7 +209,7 @@ router.post("/resources", function(req, res) {
 });
 
 // Get a user's collection of brawlers and pins
-router.post("/collection", function(req, res) {
+router.post("/collection", (req, res) => {
     if (!(req.body.token)){
         res.status(400).send("Token is missing.");
         return;
@@ -245,7 +245,7 @@ router.post("/collection", function(req, res) {
 });
 
 // 
-router.post("/brawlbox", function(req, res) {
+router.post("/brawlbox", (req, res) => {
     if (!(req.body.token)){
         res.status(400).send("Token is missing.");
         return;

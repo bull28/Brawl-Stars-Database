@@ -12,6 +12,7 @@ const map = require("./routes/map");
 const event = require("./routes/event");
 const account = require("./routes/account");
 const collection = require("./routes/collection");
+const tradesview = require("./routes/tradesview");
 const tradesmodify = require("./routes/tradesmodify");
 
 app.use(cors());
@@ -36,6 +37,7 @@ app.use("/", map);
 app.use("/event", event);
 app.use("/", account);
 app.use("/", collection);
+app.use("/trade", tradesview);
 app.use("/trade", tradesmodify);
 
 // Error handler
