@@ -50,7 +50,7 @@ export default function Home() {
       <Flex m={5} alignItems={'center'}>
         <Text mr={5} fontSize={'xl'} className={'heading-xl'} color={'pink.400'}>{`${new Date().getHours()}:${String(new Date().getMinutes()).length === 2 ? new Date().getMinutes() : "0"+new Date().getMinutes()}`}</Text>
         {(new Date().getHours() > 12) ? <Image src={require('../assets/moon.webp')} w={'70px'} mr={5}/> : <Box w={'70px'} h={'70px'} bgColor={'white'} mr={5}></Box>}
-        {localStorage.getItem('token') ? 
+        {localStorage.getItem('username') ? 
           <AccountDisplay/> :
           <Button onClick={login}>Log In</Button>}
         

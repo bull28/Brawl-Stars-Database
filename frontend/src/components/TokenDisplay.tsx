@@ -1,5 +1,5 @@
-import { Button, Flex, Image, Text, useToast } from "@chakra-ui/react";
-import axios from "axios";
+import { Button, Flex, Image, Text } from "@chakra-ui/react";
+import AuthRequest from '../helpers/AuthRequest'
 import { useEffect, useState } from "react";
 import { time } from "../types/EventData";
 
@@ -13,35 +13,20 @@ export default function TokenDisplay({ callback, tokens }: {callback: () => void
     const [data, setData] = useState<TokenData>()
     const [response, setResponse] = useState<TokenData>()
 
-    const toast = useToast()
 
     useEffect(() => {
-        axios.post('/claimtokens', {token: localStorage.getItem('token'), claim: false})
-            .then((res) => {
-                setData(res.data)
-            })
+        AuthRequest('/claimtokens', {setState: [{func: setData, attr: ""}], data: {claim: false}})
     }, [response])
 
     const claimTokens = () => {
-        axios.post('/claimtokens', {token: localStorage.getItem('token')})
-            .then((res) => {
-                setResponse(res.data)
-
-                toast({
-                    title: '',
-                    description: `Claimed ${res.data.tokensEarned} Tokens!`,
-                    status: 'success',
-                    duration: 3000,
-                    isClosable: true
-                })
-
-                callback()
-            })
+       AuthRequest('/claimtokens', {setState: [{func: setResponse, attr: ""}], callback: () => {
+        callback()
+       }, message: {description: "Claimed $ Tokens!", status: 'success', data: "tokensEarned"}})
     }
 
   return (
     
-    <Flex flexDir={'column'} border={'3px solid black'} bgColor={'aquamarine'} p={3} justifyContent={'center'} alignItems={'center'} textAlign={'center'} pos={'relative'}>
+    <Flex minH={'80%'} flexDir={'column'} border={'3px solid black'} bgColor={'aquamarine'} p={3} justifyContent={'center'} alignItems={'center'} textAlign={'center'} pos={'relative'}>
         
         <Image src={'/image/resources/resource_tokens.webp'}/>
         <Text>{`Tokens Available: ${data?.tokensAvailable}`}</Text>

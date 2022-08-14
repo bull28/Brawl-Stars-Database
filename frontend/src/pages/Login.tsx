@@ -4,6 +4,7 @@ import {Link as RouterLink, useNavigate} from 'react-router-dom';
 import {Flex, Box, FormControl, FormLabel, Input, FormHelperText, Text, Alert, AlertIcon, AlertDescription, Link, InputGroup, InputLeftElement} from '@chakra-ui/react';
 import {BsFillPersonFill} from 'react-icons/bs';
 import {RiKeyFill} from 'react-icons/ri';
+import { changeToken } from "../helpers/AuthRequest";
 
 
 function Login(){
@@ -28,15 +29,15 @@ function Login(){
         axios.post('/login', {username: username, password: password})
             .then(res => {
                 navigate('/')
-                localStorage.setItem('token', res.data.token);
-                localStorage.setItem('username', res.data.username)
+                
+                changeToken(res.data.username, res.data.token)
+
                 setInvalidlogin(false);
             })
             .catch(function(error) {
                 if (error.response){
                     setInvalidlogin(true);
                     setErrorCode(error.response.status)
-                    console.log(error.response.data)
                 }
             })
 

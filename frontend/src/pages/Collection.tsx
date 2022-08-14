@@ -1,13 +1,13 @@
 import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Center, Flex, HStack, Icon, Image, Link, SimpleGrid, Spinner, Stack, Tag, Text, Tooltip, VStack } from '@chakra-ui/react'
-import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { CollectionData } from '../types/CollectionData'
 import { RiLock2Line } from 'react-icons/ri'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 import { BrawlBoxData } from '../types/BrawlBoxData'
 import BrawlBoxDisplay from '../components/BrawlBoxDisplay'
 import TokenDisplay from '../components/TokenDisplay'
+import AuthRequest from '../helpers/AuthRequest'
 
 
 export default function Collection() {
@@ -17,27 +17,14 @@ export default function Collection() {
     const [searchParams] = useSearchParams()
     const [brawlers, setBrawlers] = useState<any>([])
     const [ tokens, setTokens ] = useState<number>()
-    const navigate = useNavigate()
 
 
     useEffect(() => {
-        axios.post('/collection', {token: localStorage.getItem('token')})
-            .then((res) => {
-                setData(res.data)
-            }).catch(function(error) {
-                if (error.response.status === 400 || error.response.status === 401){
-                    localStorage.removeItem('token')
-                    navigate('/login')
-                }
-            })
-            //add error codes
-    }, [navigate])
+        AuthRequest('/collection', {setState: [{func: setData, attr: ""}], navigate: true})
+    }, [])
 
     useEffect(() => {
-        axios.post('/brawlbox', {token: localStorage.getItem('token')})
-            .then((res) => {
-                setBrawlBoxData(res.data)
-            })
+        AuthRequest('/brawlbox', {setState: [{func: setBrawlBoxData, attr: ""}]})
     }, [])
 
     useEffect(() => {
@@ -57,32 +44,35 @@ export default function Collection() {
     }
 
     const updateTokens = () => {
-        axios.post('/resources', {token: localStorage.getItem('token')})
-            .then((res) => {
-                setTokens(res.data.tokens)
-        })
+        AuthRequest('/resources', {setState: [{func: setTokens, attr: "tokens"}]})
     }
 
 
     return (
         <Flex flexDir={'column'} w={'100%'} justifyContent={'center'} alignItems={'center'} textAlign={'center'}>
             <Text fontSize={'3xl'} className={'heading-3xl'} color={'white'}>Collection</Text>
-            {localStorage.getItem('token') && 
+            {localStorage.getItem('username') && 
                 <Flex my={5}>
-                    <Stack w={'100%'} spacing={'5'} direction={['column', 'column', 'row']}>
+                    <Stack w={'100%'} spacing={'5'} direction={['column', 'column', 'row']} alignItems={'center'}>
                     <Flex justifyContent={'center'} textAlign={'center'} alignItems={'center'} p={3} borderRadius={'lg'} flexDir={'column'}>
                         <Text fontSize={'2xl'} className={'heading-2xl'} color={'white'} mb={3}>Collection Score</Text>
                         <Flex bgColor={(data?.avatarColor === 'rainbow') ? 'blue.300' : data?.avatarColor} flexDir={'column'} p={10}  border={'3px solid black'} mb={5}>
                             <Text color={(data?.collectionScore === 'S+' ? 'gold' : 'white')} className={'heading-2xl'} fontSize={'2xl'}>{data?.collectionScore}</Text>
-                            <Box mt={1} mb={5} w={'100%'} h={'6px'} bgColor={'white'} borderRadius={'sm'}>
-                                <Box borderRadius={'sm'} h={'6px'} w={data ? `${data?.scoreProgress * 100}%` : '0%'} bgColor={'blue.400'}></Box>                            
-                            </Box>
+                            <Tooltip label={`${data?.scoreProgress && (data?.scoreProgress * 100).toFixed(1)}% to next letter grade`}>
+                                <Box py={2} mt={1} mb={5}>
+                                    <Box w={'100%'} h={'6px'} bgColor={'white'} borderRadius={'sm'}>
+                                        <Box borderRadius={'sm'} h={'6px'} w={data ? `${data?.scoreProgress * 100}%` : '0%'} bgColor={'blue.400'}></Box>                            
+                                    </Box>
+                                </Box>
+                            </Tooltip>
                             
                             <VStack spacing={1}>
-                            <Text color={'white'} className={'heading-md'}  fontSize={'md'}>Brawlers Unlocked: </Text><Text fontSize={'lg'} className={'heading-lg'} color={(data?.unlockedBrawlers === data?.totalBrawlers) ? 'gold' : 'white'} >{`${data?.unlockedBrawlers}/${data?.totalBrawlers}`}</Text>
-                            <Text color={'white'} className={'heading-md'} fontSize={'md'}>Pins Unlocked:  </Text><Text fontSize={'lg'} className={'heading-lg'} color={(data?.unlockedPins === data?.totalPins) ? 'gold' : 'white'} >{`${data?.unlockedPins}/${data?.totalPins}`}</Text>
-                            <Text color={'white'} className={'heading-md'} fontSize={'md'}>Completed Brawlers:  </Text><Text fontSize={'lg'} className={'heading-lg'} color={(data?.completedBrawlers === data?.totalBrawlers) ? 'gold' : 'white'} >{`${data?.completedBrawlers}/${data?.totalBrawlers}`}</Text>
-                            <Text color={'white'} className={'heading-md'} fontSize={'md'}>Total Pins: </Text><Text fontSize={'lg'} className={'heading-lg'} color={(data && (data.pinCopies > data.totalPins)) ? 'gold' : 'white'} >{data?.pinCopies}</Text>
+                          
+                                <Text color={'white'} className={'heading-md'}  fontSize={'md'}>Brawlers Unlocked: </Text><Text fontSize={'lg'} className={'heading-lg'} color={(data && data?.unlockedBrawlers === data?.totalBrawlers) ? 'gold' : 'white'} >{`${data?.unlockedBrawlers ? data.unlockedBrawlers : '0'}/${data?.totalBrawlers ? data.totalBrawlers : '0'}`}</Text>
+                                <Text color={'white'} className={'heading-md'} fontSize={'md'}>Pins Unlocked:  </Text><Text fontSize={'lg'} className={'heading-lg'} color={(data && data?.unlockedPins === data?.totalPins) ? 'gold' : 'white'} >{`${data?.unlockedPins ? data.unlockedPins : '0'}/${data?.totalPins ? data.totalPins : '0'}`}</Text>
+                                <Text color={'white'} className={'heading-md'} fontSize={'md'}>Completed Brawlers:  </Text><Text fontSize={'lg'} className={'heading-lg'} color={(data && data?.completedBrawlers === data?.totalBrawlers) ? 'gold' : 'white'} >{`${data?.completedBrawlers ? data.completedBrawlers : '0'}/${data?.totalBrawlers ? data.totalBrawlers : '0'}`}</Text>
+                                <Text color={'white'} className={'heading-md'} fontSize={'md'}>Total Pins: </Text><Text fontSize={'lg'} className={'heading-lg'} color={(data && (data && data.pinCopies > data.totalPins)) ? 'gold' : 'white'} >{data?.pinCopies ? data.pinCopies : '0'}</Text>
+                              
                             </VStack>
                         </Flex>
                     </Flex>
@@ -96,7 +86,7 @@ export default function Collection() {
             {(brawlers.length > 0) && <Accordion defaultIndex={[brawlers.indexOf(searchParams.get('brawler'))]} allowMultiple allowToggle>
             <SimpleGrid columns={[1,2,3,4]} spacing={3} w={'95vw'} bgColor={'blue.800'} p={5}>
                 {data?.collection.map((brawler) => (
-                    <AccordionItem border={brawler.unlockedPins === brawler.totalPins ? '2px solid #E7A210' : '3px solid black'}>
+                    <AccordionItem border={brawler.unlockedPins === brawler.totalPins ? '3px solid #E7A210' : '3px solid black'}>
                         {({ isExpanded }) => (
                         <>
                         <h2 id={brawler.name}>

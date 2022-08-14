@@ -8,31 +8,51 @@ import { Flex, Text, Menu,
     MenuDivider, 
     Tooltip,
     Image,
+    Drawer,
+    DrawerBody,
+    DrawerFooter,
+    DrawerHeader,
+    DrawerOverlay,
+    DrawerContent,
+    DrawerCloseButton,
+    useDisclosure,
+    Button
     } from '@chakra-ui/react'
-import axios from 'axios'
+import { HiOutlineSwitchHorizontal } from 'react-icons/hi'
+import { BsPerson, BsCollection } from 'react-icons/bs'
 import {UserInfoProps} from '../types/AccountData'
-import test from '../helpers/test'
+import AccountMenuDisplay from './AccountMenuDisplay'
+import AuthRequest from '../helpers/AuthRequest'
+/*
+
+switch between accounts
+remove accounts
+
+
+*/
+
 
 export default function AccountDisplay() {
-
     const [data, setData] = useState<UserInfoProps>()
+    const [tokenData, setTokenData] = useState<any>()
 
+    const { isOpen, onOpen, onClose } = useDisclosure()
+
+    
     useEffect(() => {
-        axios.post('/resources', {token: localStorage.getItem('token')})
-            .then((res) => {
-                setData(res.data)
-            }).catch(function(error) {
-                if (error.response.status === 400 || error.response.status === 401){
-                    localStorage.removeItem('token')
-                }
-            })
+        
+        AuthRequest('/resources', {setState: [{func: setData, attr: ""}]})
+
+        setTokenData(JSON.parse(localStorage.getItem('tokens') || "{}"))
     }, [])
+
+
   return (
     <Flex flexDir={'column'} justifyContent={'center'} alignItems={'center'} textAlign={'center'}>
         <Menu autoSelect={false} closeOnSelect={false}>
             <MenuButton>
                 <Flex justifyContent={'center'} alignItems={'center'} borderRadius={'50%'} p={'3px'} background={(data?.avatarColor === 'rainbow' ? 'conic-gradient(#f00,#ff0,#0f0,#0ff,#00f,#f0f,#f00)' : data?.avatarColor)}>
-                    <Image src={`/image/${data?.avatar}`} borderRadius={'50%'} w={'50px'}/>
+                    <Image loading={'eager'} src={`/image/${data?.avatar}`} borderRadius={'50%'} w={'50px'}/>
                 </Flex>
             </MenuButton>
             <MenuList>
@@ -62,9 +82,10 @@ export default function AccountDisplay() {
     
                 </MenuGroup>
                 <MenuDivider/>
-                <MenuItem onClick={() => {window.location.href = "/account"}}>Account</MenuItem>
-                <MenuItem onClick={() => {window.location.href = "/collection"}}>Collection</MenuItem>
-                <MenuItem icon={<MdOutlineLogout fontSize={'22px'}/>} onClick={() => {localStorage.removeItem('token'); window.location.reload()}}>Log Out</MenuItem>
+                <MenuItem icon={<BsPerson fontSize={'22px'}/>} onClick={() => {window.location.href = "/account"}}>Account</MenuItem>
+                <MenuItem icon={<BsCollection fontSize={'22px'}/>} onClick={() => {window.location.href = "/collection"}}>Collection</MenuItem>
+                <MenuItem icon={<HiOutlineSwitchHorizontal fontSize={'22px'}/>} onClick={onOpen}>Switch Accounts</MenuItem>
+                <MenuItem icon={<MdOutlineLogout fontSize={'22px'}/>} onClick={() => {localStorage.removeItem('username'); window.location.reload()}}>Log Out</MenuItem>
                 
             </MenuList>
         </Menu>
@@ -74,6 +95,44 @@ export default function AccountDisplay() {
                 <Text fontSize={'xl'}>{data?.tokens}</Text>
             </Flex>
         </Tooltip>
+        <Drawer isOpen={isOpen} placement={'right'} onClose={onClose}>
+            <DrawerOverlay/>
+            <DrawerContent>
+                <DrawerCloseButton/>
+                <DrawerHeader borderBottomWidth={'1px'}>
+                    Accounts
+                </DrawerHeader>
+
+                <DrawerBody sx={{
+                        '&::-webkit-scrollbar': {
+                        width: '8px',
+                        borderRadius: '8px',
+                        backgroundColor: `rgba(0, 0, 0, 0.05)`,
+                        },
+                        '&::-webkit-scrollbar-thumb': {
+                        backgroundColor: `rgba(0, 0, 0, 0.5)`,
+                        borderRadius: `6px`,
+                        },
+                    }}>
+                    {
+                        tokenData && Object.keys(tokenData).map((token) => (
+
+                            <>
+                                <AccountMenuDisplay username={token} token={tokenData[token]}/>
+                            </>
+
+                        ))
+                        
+                    }
+                </DrawerBody>
+
+                <DrawerFooter>
+                    <Button colorScheme={'facebook'} onClick={onClose}>
+                        Done
+                    </Button>
+                </DrawerFooter>
+            </DrawerContent>
+        </Drawer>
     </Flex>
   )
 }

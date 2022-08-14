@@ -1,8 +1,8 @@
 import { useRef, useState } from 'react'
-import axios from 'axios'
-import { AlertDialog, AlertDialogBody, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, Button, Flex, Image, keyframes, Modal, ModalBody, ModalContent, ModalFooter, SimpleGrid, Slider, SliderFilledTrack, SliderMark, SliderThumb, SliderTrack, Text, useDisclosure, useToast } from '@chakra-ui/react'
+import { AlertDialog, AlertDialogBody, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, Button, Flex, Image, keyframes, Modal, ModalBody, ModalContent, ModalFooter, SimpleGrid, Slider, SliderFilledTrack, SliderMark, SliderThumb, SliderTrack, Spinner, Text, useDisclosure, useToast } from '@chakra-ui/react'
 import { BrawlBoxData } from '../types/BrawlBoxData'
 import CountUp from 'react-countup'
+import AuthRequest from '../helpers/AuthRequest'
 
 interface BrawlBoxContentsData {
     displayName: string,
@@ -33,36 +33,29 @@ export default function BrawlBoxDisplay({ data, tokens }: {data: BrawlBoxData, t
 
     const openBox = (id: string) => {
         for (let i = 0; i < amount; i++){
-            axios.post('/brawlbox', {token: localStorage.getItem('token'), boxType: id})
-                .then((res) => {
-                    setBoxContents(res.data)                                    
-                }).then(() => {
-                    onClose()
-                    onOpen2()
-                }).catch(function(error) {
-                    if (error.response.status === 403){
+            AuthRequest('/brawlbox', {setState: [{func: setBoxContents, attr: ""}], data: {boxType: id}, callback: () => {
+                onClose()
+                onOpen2()
+            }, fallback: function(error: any) {
+                if (error.response.status === 403){
 
-                        if (!toast.isActive(toastRef.current)){
-                            toastRef.current = toast({
-                                description: `You don't have enough tokens to open this box!`,
-                                status: 'error',
-                                duration: 3000,
-                                isClosable: true
-                            })
-                        }
-                        
+                    if (!toast.isActive(toastRef.current)){
+                        toastRef.current = toast({
+                            description: `You don't have enough tokens to open this box!`,
+                            status: 'error',
+                            duration: 3000,
+                            isClosable: true
+                        })
                     }
-                })
+                }
+            }})
         }
-
-        
-    
     }
 
     return (
         
-        <Flex flexDir={'column'} justifyContent={'center'} alignItems={'center'} textAlign={'center'} pos={'relative'} bgColor={'lightskyblue'} px={10} py={2} borderRadius={'lg'} cursor={'pointer'} onClick={onOpen}>
-            <Image src={`/image/${data.image}`}/>
+        <Flex py={5} flexDir={'column'} justifyContent={'center'} alignItems={'center'} textAlign={'center'} pos={'relative'} bgColor={'lightskyblue'} px={10} borderRadius={'lg'} cursor={'pointer'} onClick={onOpen}>
+            <Image src={`/image/${data.image}`} fallback={<Spinner/>}/>
             <Flex w={'100%'} justifyContent={'center'}>
                 <Text fontSize={'lg'} mr={1}>{data.cost}</Text>
                 <Image w={'22px'} h={'22px'} src={'/image/resources/resource_tokens.webp'}/>

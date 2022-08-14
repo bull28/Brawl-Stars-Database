@@ -14,10 +14,8 @@ import {
   Flex,
   Spinner
 } from '@chakra-ui/react'
-
-
-
 import axios from 'axios'
+
 
 interface Props {
     map: string

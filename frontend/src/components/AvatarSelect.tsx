@@ -11,7 +11,8 @@ import {  Modal,
     Image,
     Box,
     Flex, } from '@chakra-ui/react'
-import axios from 'axios'
+
+import AuthRequest from '../helpers/AuthRequest'
 
 
 type Props = {
@@ -36,10 +37,7 @@ const AvatarSelect = React.forwardRef<{open: () => void}, Props>((props, ref) =>
     )
     
     useEffect(() => {
-        axios.post('/avatar', {token: localStorage.getItem('token')})
-            .then((res) => {
-                setAvatars(res.data)
-            })
+      AuthRequest('/avatar', {setState: [{func: setAvatars, attr: ""}]})   
     }, [])
 
   return (

@@ -85,9 +85,7 @@ export default function EventSideBar({ changeData }: {changeData: any}){
                     if (choice === "season_time" && select === "at_time"){
                         setTime([res.data.time.hour, res.data.time.minute, res.data.time.second])
                     }
-                })
-            
-            
+                })     
         } else {
             toast({
                 title: 'Please Enter a Valid Time.',
@@ -96,7 +94,6 @@ export default function EventSideBar({ changeData }: {changeData: any}){
                 isClosable: true
             })
         }
-        
     }
 
     const openMapView = (m: string) => {

@@ -7,6 +7,8 @@ import { MdOutlineEdit } from 'react-icons/md'
 import { BsFillPersonFill } from "react-icons/bs";
 import { RiKeyFill } from "react-icons/ri";
 import AvatarSelect from '../components/AvatarSelect';
+import { changeToken, getToken } from "../helpers/AuthRequest";
+import AuthRequest from '../helpers/AuthRequest'
 
 export default function Account() {
   const [data, setData] = useState<UserInfoProps>()
@@ -17,28 +19,17 @@ export default function Account() {
 
   const toast = useToast()
 
-  const token = localStorage.getItem('token')
   const navigate = useNavigate()
 
   const avatarSelectRef = useRef<{ open: () => void}>(null)
 
   useEffect(() => {
-    if (token){
-      axios.post('/resources', {token: token})
-        .then((res) => {
-          setData(res.data)
-          setAvatar(res.data.avatar)
-          setUsername(res.data.username)
-        }).catch(function(error) {
-          if (error.response.status === 400 || error.response.status === 401){
-              localStorage.removeItem('token')
-              navigate('/login')
-          }
-      })
+    if (localStorage.getItem('username')){
+     AuthRequest('/resources', {setState: [{func: setData, attr: ""}, {func: setAvatar, attr: "avatar"}, {func: setUsername, attr: "username"}], navigate: true})
     } else {
       navigate('/login')
     }
-  }, [token, navigate])
+  }, [navigate])
 
   const changeAvatar = () => {
     avatarSelectRef.current?.open()
@@ -47,9 +38,10 @@ export default function Account() {
   const handleUpdate = () => {
     toast.closeAll();
 
-    axios.post('/update', {newUsername: username, currentPassword: oldPassword, newPassword: newPassword, newAvatar: avatar, token: localStorage.getItem('token')})
+    axios.post('/update', {newUsername: username, currentPassword: oldPassword, newPassword: newPassword, newAvatar: avatar, token: getToken()})
       .then((res) => {
-        localStorage.setItem('token', res.data.token)
+        changeToken(res.data.username, res.data.token)
+        
         toast({
           title: 'Success',
           description: 'Updated Profile.',
@@ -81,6 +73,7 @@ export default function Account() {
           isClosable: true
         })
     })
+
   }
   
 

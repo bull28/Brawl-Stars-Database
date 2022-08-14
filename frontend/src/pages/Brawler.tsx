@@ -62,7 +62,7 @@ export default function Brawler() {
                             </Flex>
                         ))}
                     </SimpleGrid>
-                    {localStorage.getItem('token') ? 
+                    {localStorage.getItem('username') ? 
                         <Link href={`/collection?brawler=${data.name}`} color={'white'} fontSize={'lg'} className={'heading-xs'}>{`View ${data.displayName} Collection `}<ExternalLinkIcon mx={'2px'}/></Link>
                             :
                         <Text color={'white'} fontSize={'lg'} ><Link color={'blue.400'} href="/login">Log In</Link> To View Collection</Text>
