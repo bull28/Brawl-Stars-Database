@@ -29,6 +29,7 @@ import { useNavigate } from 'react-router-dom'
 export default function AccountDisplay() {
     const [data, setData] = useState<UserInfoProps>()
     const [tokenData, setTokenData] = useState<any>()
+    const [removing, toggleRemoving] = useState<boolean>(false)
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -114,7 +115,7 @@ export default function AccountDisplay() {
                         tokenData && Object.keys(tokenData).map((token) => (
 
                             <>
-                                <AccountMenuDisplay username={token} token={tokenData[token]}/>
+                                <AccountMenuDisplay username={token} token={tokenData[token]} toggleRemove={removing}/>
                             </>
 
                         ))
@@ -129,8 +130,8 @@ export default function AccountDisplay() {
                             Add Account
                         </Button>
 
-                        <Button colorScheme={'facebook'} onClick={onClose}>
-                            Done
+                        <Button boxShadow={'md'} className={'heading-md'} fontWeight={'normal'} colorScheme={'red'} onClick={() => {toggleRemoving(!removing)}}>
+                            Remove Account
                         </Button>
                     </Flex>
                 </DrawerFooter>
