@@ -145,6 +145,10 @@ router.post("/signup", (req, res) => {
         res.status(400).send("Username or password is too long. Maximum username length is 30 and password length is 100.");
         return;
     }
+    if (password.includes(" ")){
+        res.status(400).send("Password cannot contain spaces.");
+        return;
+    }
 
     // If there are enough brawlers in the game, give the user 3 to start
     // so they do not keep getting coins instead of pins because they have
@@ -203,6 +207,15 @@ router.post("/update", (req, res) => {
         let currentUsername = validateToken(token);
         if (currentUsername == ""){
             res.status(401).send("Invalid token.");
+            return;
+        }
+
+        if (newUsername.length > 30 || newPassword.length > 100){
+            res.status(400).send("Username or password is too long. Maximum username length is 30 and password length is 100.");
+            return;
+        }
+        if (newPassword.includes(" ")){
+            res.status(400).send("Password cannot contain spaces.");
             return;
         }
 
