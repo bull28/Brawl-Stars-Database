@@ -12,6 +12,7 @@ function validatePins(allSkins, pinArray, pinFile, searchByName){
     var validArray = [];
     var alreadyAdded = [];
     for (let x of pinArray){
+        // These are the 3 properties each input object must have
         if (x.hasOwnProperty("brawler") && x.hasOwnProperty("pin") && x.hasOwnProperty("amount")){
             // search through the skins array by brawler name but since the name is a property
             // then filter has to be used instead of includes

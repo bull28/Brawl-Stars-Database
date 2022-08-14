@@ -82,8 +82,13 @@ router.get("/id", (req, res) => {
 });
 
 // Get all active trades a user currently has
-router.get("/user", (req, res) => {
-    const username = "bull30";// will change to post request later
+router.post("/user", (req, res) => {
+    const username = req.body.username;// will change to post request later
+
+    if (!(username)){
+        res.status(400).send("No username provided.");
+        return;
+    }
 
     database.queryDatabase(
     "SELECT tradeid, offer, request, trade_credits, expiration, accepted FROM " + TRADE_TABLE_NAME + " WHERE creator = ? LIMIT ?;",
@@ -200,8 +205,8 @@ router.post("/all", (req, res) => {
 
             // Unlike for the user, this endpoint does not return expired trades
             tradeList.push({
-                "creator": x.creator,
                 "tradeid": x.tradeid,
+                "creator": x.creator,
                 "cost": x.trade_credits,
                 "offer": offerPins,
                 "request": requestPins
