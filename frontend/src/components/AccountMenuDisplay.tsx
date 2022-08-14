@@ -1,4 +1,4 @@
-import { Flex, Icon, Image, Text } from '@chakra-ui/react'
+import { Flex, Icon, Image, Text, useToast } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import { UserInfoProps } from '../types/AccountData'
 import AuthRequest from '../helpers/AuthRequest'
@@ -13,6 +13,7 @@ interface Props {
 export default function AccountMenuDisplay({ username, token }: Props) {
     const [data, setData] = useState<UserInfoProps>()
 
+    const toast = useToast()
 
     useEffect(() => {
         AuthRequest('/resources', {data: {token: token}, setState: [{func: setData, attr: ""}]})
@@ -20,8 +21,13 @@ export default function AccountMenuDisplay({ username, token }: Props) {
 
 
     const switchUser = () => {
-        localStorage.setItem('username', username)
-        window.location.reload()
+        if (username !== localStorage.getItem('username')){
+            localStorage.setItem('username', username)
+            window.location.reload()
+        } else {
+            toast({description: 'Already on this account!', status: 'error', duration: 3000, isClosable: true})
+        }
+        
     }
 
     return (

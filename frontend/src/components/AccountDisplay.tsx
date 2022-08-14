@@ -23,13 +23,7 @@ import { BsPerson, BsCollection } from 'react-icons/bs'
 import {UserInfoProps} from '../types/AccountData'
 import AccountMenuDisplay from './AccountMenuDisplay'
 import AuthRequest from '../helpers/AuthRequest'
-/*
-
-switch between accounts
-remove accounts
-
-
-*/
+import { useNavigate } from 'react-router-dom'
 
 
 export default function AccountDisplay() {
@@ -37,6 +31,8 @@ export default function AccountDisplay() {
     const [tokenData, setTokenData] = useState<any>()
 
     const { isOpen, onOpen, onClose } = useDisclosure()
+
+    const navigate = useNavigate()
 
     
     useEffect(() => {
@@ -82,10 +78,10 @@ export default function AccountDisplay() {
     
                 </MenuGroup>
                 <MenuDivider/>
-                <MenuItem icon={<BsPerson fontSize={'22px'}/>} onClick={() => {window.location.href = "/account"}}>Account</MenuItem>
-                <MenuItem icon={<BsCollection fontSize={'22px'}/>} onClick={() => {window.location.href = "/collection"}}>Collection</MenuItem>
+                <MenuItem icon={<BsPerson fontSize={'22px'}/>} onClick={() => {navigate('/account')}}>Account</MenuItem>
+                <MenuItem icon={<BsCollection fontSize={'22px'}/>} onClick={() => {navigate('/collection')}}>Collection</MenuItem>
                 <MenuItem icon={<HiOutlineSwitchHorizontal fontSize={'22px'}/>} onClick={onOpen}>Switch Accounts</MenuItem>
-                <MenuItem icon={<MdOutlineLogout fontSize={'22px'}/>} onClick={() => {localStorage.removeItem('username'); window.location.reload()}}>Log Out</MenuItem>
+                <MenuItem icon={<MdOutlineLogout fontSize={'22px'}/>} onClick={() => {localStorage.removeItem('username'); navigate('/')}}>Log Out</MenuItem>
                 
             </MenuList>
         </Menu>
@@ -123,13 +119,20 @@ export default function AccountDisplay() {
 
                         ))
                         
-                    }
+                    }                   
+
                 </DrawerBody>
 
                 <DrawerFooter>
-                    <Button colorScheme={'facebook'} onClick={onClose}>
-                        Done
-                    </Button>
+                    <Flex w={'100%'} justifyContent={'space-around'}>
+                        <Button onClick={() => {navigate('/login')}} boxShadow={'md'} colorScheme={'green'} className={'heading-md'} fontWeight={'normal'}>
+                            Add Account
+                        </Button>
+
+                        <Button colorScheme={'facebook'} onClick={onClose}>
+                            Done
+                        </Button>
+                    </Flex>
                 </DrawerFooter>
             </DrawerContent>
         </Drawer>
