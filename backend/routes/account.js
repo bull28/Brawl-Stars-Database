@@ -7,6 +7,7 @@ const jsonwebtoken = require("jsonwebtoken");
 // Methods to query the database are contained in this module
 const database = require("../modules/database");
 const TABLE_NAME = process.env.DATABASE_TABLE_NAME || "brawl_stars_database";
+const TRADE_TABLE_NAME = process.env.DATABASE_TRADE_TABLE_NAME || "brawl_stars_trades";
 
 // functions to view and modify pin collections
 const pins = require("../modules/pins");
@@ -162,8 +163,8 @@ router.post("/signup", (req, res) => {
     if (username && password){
         database.queryDatabase(
         "INSERT IGNORE INTO " + TABLE_NAME +
-        " (username, password, active_avatar, brawlers, avatars, wild_card_pins, trade_requests) VALUES (?, ?, ?, ?, ?, ?, ?);",
-        [username, password, "avatars/free/default.webp", JSON.stringify(startingBrawlers), "[]", "[]", "[]"], (error, results, fields) => {
+        " (username, password, active_avatar, brawlers, avatars, wild_card_pins) VALUES (?, ?, ?, ?, ?, ?);",
+        [username, password, "avatars/free/default.webp", JSON.stringify(startingBrawlers), "[]", "[]"], (error, results, fields) => {
             if (error){
                 res.status(500).send("Could not connect to database.");
                 return;
@@ -282,11 +283,24 @@ router.post("/update", (req, res) => {
 
                     if (results.affectedRows == 0){
                         res.status(401).send("Current password is incorrect.");
-                    } else{
+                        return;
+                    }
+
+                    // Update all the user's trades to have their new username otherwise they will
+                    // lose access to all their trades
+                    database.queryDatabase(
+                    "UPDATE " + TRADE_TABLE_NAME + " SET creator = ? WHERE creator = ?;",
+                    [newUsername, currentUsername], (error, results, fields) => {
+                        if (error){
+                            res.status(500).send("Could not connect to database.");
+                            return;
+                        }
+
+                        // If results.affectedRows == 0 there is no error because the user might have no trades
+                    
                         const userInfo = signToken(newUsername);
                         res.json(userInfo);
-                    }
-                    
+                    });
                 });
             });
         });
