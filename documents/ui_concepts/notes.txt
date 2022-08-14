@@ -42,10 +42,6 @@ back to the default.
 - Fix some free skins being displayed as default skins.
 - Move the skin image background to the center of the box.
 
-------------------------------------------------------------------------------------------------------------------------------
-Last updated here
-------------------------------------------------------------------------------------------------------------------------------
-
 User Accounts - this explains how the website should work, endpoint descriptions are in account_endpoints.txt
 - This feature allows users to collect brawlers and pins and store them in an account.
 - There should be a login/signup button which redirects the user to the login page. Here are two ways that it can be done:
@@ -71,3 +67,60 @@ collected for that brawler.
 - A brawler's pins are hidden by default, but can be shown by clicking the down arrow on the bottom-right corner of their box.
 - On this page, the user can also open Brawl Boxes. Clicking on a box with sufficient resources will open the box and show
 the user what rewards they received.
+
+------------------------------------------------------------------------------------------------------------------------------
+Last updated here
+------------------------------------------------------------------------------------------------------------------------------
+
+Trading Page - example in trades_page.png
+- This page can be viewed without logging in. However, in order to perform any actions, the user needs to log in.
+- The main trades page will display all the trades currently active with 20 per page. If there are performance issues, this
+amount can be decreased.
+- There are various sorting methods and filters that the user can use to find what they are looking for:
+	- The sorting method controls how the returned results are ordered. There are currently 4 options: newest first
+	  (default), oldest first, most expensive, and least expensive.
+	- The filters control which results are returned and which are not. The user can choose only to see trades which
+	  include a specific brawler.
+	- To narrow results even further, the user can choose to only see trades with a specific pin they may be looking for.
+	- The "Apply to:" option controls whether the filters affect the offer or the request. For example, one may choose
+	  apply to offer if they are looking for a specific pin. One use for apply to request may be if someone really wants
+	  to get rid of that Darryl pin and wants to see if anyone wants it.
+- Once the user selects their desired sorting and filters, the refresh button will update the list of trades. If the user
+changes the page number, the list is updated immediately.
+- The user's relevant resources are displayed at the top of the screen.
+
+User Trades
+- There should exist a page where the user can view their own active trades. This information is available by using the
+search by username endpoint.
+- The search by username feature can also be used to get a list of another user's trades.
+
+Creating Trades - example in trades_create.png
+- On the user trades page, there will be a button to create a new trade. This opens up an interface where the user can select
+which pins they want to include in the trade.
+- One way of allowing the user to add pins is having their collection on the screen in a compact format and they can drag and
+drop pins from their collection into either of the two sides of the trade.
+- If dragging and dropping is not possible, another way is to have a "+" button on each of the two sides of the trade.
+Clicking the "+" button will open a pop-up which lists all the user's brawlers and pins, similar to the way they are listed
+in the collection page, except more compact. They can then click on pins in this pop-up to add them to the trade.
+- If the user makes a mistake and wants to remove a pin, there is a "X" button on each pin they have added.
+- To adjust the copies of each pin in the trade, make it so either the user can click on the number to edit it or the user
+chooses how many copies they want to add when adding the pin.
+
+Accepting Trades - example in trades_confirm.png
+- Clicking on a trade preview will open a pop-up which serves as a confirmation for the trade. Example in trades_confirm.png.
+- If the user is not logged in at this point, replace the confirm button with a log in button.
+- When the user clicks on the confirm button, the trade will be validated. If it is successful, the pins which the user
+received will be displayed to them. If unsuccessful, an error will be displayed.
+
+Closing Trades
+- If a user clicks on a trade from the main trading page or the user trades page which they created, instead of the confirm
+button, a close button will be displayed.
+- If the trade has not yet been accepted or has expired, the close button will cancel the trade and refund all pins and trade
+credits. In this case, the close button should read "Cancel".
+- If the trade has been accepted by another user, the close button will claim the rewards then remove the trade. In this case,
+the close button should read "Claim".
+- When trades are accepted, pins the creator requested are not immediately added to their collection. Only the acceptor
+will receive their pins at that moment.
+- When the creator logs in, they have to manually claim their trade. This is the case because there may be conflicts with
+locked brawlers which require the user's input to resolve.
+- When closing a trade, display the pins the user received.

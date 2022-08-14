@@ -1,0 +1,201 @@
+Trade Pin Object data format
+This is the data format of the "offer" and "request" arrays that are returned from viewing trades, as well as the list of pins
+returned when accepting and closing a trade.
+{
+    "brawler": String,
+    "pin": String,
+    "pinImage": String,
+    "amount": Number,
+    "rarityValue": Number,
+    "rarityColor": String
+}
+------------------------------------------------------------------------------------------------------------------------------
+Viewing Trades
+------------------------------------------------------------------------------------------------------------------------------
+/trade/id - View a specific trade, searching for it by ID
+GET request with query
+tradeid: Number
+
+Response:
+{
+    "creator": {
+        "username": String,
+        "avatar": String,
+        "avatarColor": String,
+    },
+    "offer": Array,
+    "request": Array,
+    "cost": Number,
+    "timeLeft": SeasonTime,
+    "accepted": Boolean,
+    "acceptedBy": String
+}
+	- "offer" and "request" are arrays of pin objects. The format of these objects are defined at the top of the page.
+	- "timeLeft" will be 0 if the trade is expired. The highest value it can be is 1 season (336 hours). This indicates
+	  the trade has lasts for at least 1 more season. Note that trades normally do not last this long.
+	- The field "acceptedBy" contains an empty string. If another user accepted the trade, this field will contain their
+	  username instead.
+Errors:
+	- 500: Database problem
+	- 404: Trade ID does not exist
+	- 400: Trade ID is not a number
+------------------------------------------------------------------------------------------------------------------------------
+/trade/user - View all of a user's trades
+POST request
+{"username": String}
+
+Response:
+[
+    {
+        "tradeid": Number,
+        "cost": Number,
+        "offer": Array,
+        "request": Array,
+        "expired": Boolean,
+        "accepted": Boolean
+    },
+    ... 1 object for each trade
+]
+	- If required, the "expired" field can be changed to a SeasonTime. Contact KING GOLM about that.
+	- If the user has no trades, an empty array will be returned. No error is sent in this case because it is entirely
+	  valid for a user to have no trades.
+Errors:
+	- 500: Database problem
+	- 400: Missing username
+------------------------------------------------------------------------------------------------------------------------------
+/trade/all - View all active trades
+POST request
+{
+    "sortMethod": String,
+    "page": Number,
+    "filterInRequest": Boolean,
+    "brawler": String,
+    "pin": String,
+    "pinImage: String,
+}
+
+Response:
+[
+    {
+        "tradeid": Number,
+        "creator": String,
+        "cost": Number,
+        "offer": Array,
+        "request": Array
+    },
+    ... 1 object for each trade
+]
+	- All fields in the request body are optional. If they are not included, the default sorting and filters will be used.
+	- "sortMethod" can contain the following values:
+		- "oldest"
+		- "lowcost"
+		- "highcost"
+	- "page" is a number at least 1 which allows navigating through the results. Since only 20 results are displayed, if
+	  more than 20 results are found, they will be displayed on separate pages. If the page number exceeds the number of
+	  total pages in that search, an empty array will be returned.
+	- "filterInRequest" determines whether to apply brawler or pin filters to the request or the offer. If it is false
+	  (default), it will apply filters to the offer. Otherwise, it will apply filters to the request.
+	- "brawler" allows filtering by brawler name. If a brawler name is specified here, only results containing that
+	  brawler will be returned.
+	- "pin" filters the same way as "brawler" but even more precise. Only trades with a specific pin will be returned.
+	  Note: the value of "pin" overrides the value of "brawler". Since pins are bound to brawlers, filtering by pin
+	  already filters by brawler.
+	- If it is easier to search by a pin's image instead of its ID (name), the field "pinImage" can be used instead.
+Errors:
+	- 500: Database problem
+------------------------------------------------------------------------------------------------------------------------------
+Modifying Trades
+------------------------------------------------------------------------------------------------------------------------------
+/trade/create - Creates a new trade
+POST request
+{
+    "token": String,
+    "searchByName": Boolean,
+    "offer": Array,
+    "request": Array
+}
+	- This is the format of the "offer" and "request" arrays:
+	  {"brawler": String, "pin": String, "amount": Number}
+	- Since the pins included in the trade have to be specified, "searchByName" gives the option of matching pins by 
+	  either ID (name) or image. If "searchByName" is true, the value in the "pin" field will be matched with the pin's
+	  ID. If it is false, the value in the "pin" field will be matched with the pin's image. Use whichever is more
+	  convenient for you.
+
+Response:
+{"tradeid": Number}
+	- The "tradeid" returned provides a link to the trade just created.
+Errors:
+	- 500: Database problem
+	- 404: User has no data
+	- 401: Invalid token
+	- 400: Could not find token
+
+	- 400: Offer and/or request contain too many pins (limit 10 each)
+	- 400: Offer and request are both empty
+	- 400: At least one pin is in both the offer and request
+	- 403: Not enough trade credits
+	- 403: Not enough copies of the pins required to create the trade
+	- 403: Too many trades currently active
+------------------------------------------------------------------------------------------------------------------------------
+/trade/accept - Accepts an existing trade
+POST request
+{
+    "token": String,
+    "tradeid": Number,
+    "useWildCards": Boolean,
+    "forceAccept": Boolean
+}
+	- If "useWildCards" is true, the server will attempt to spend a user's wild card pins if they do not have the pins
+	  required to accept the trade.
+	- Users can only collect pins for brawlers they have unlocked. If the trade they are accepting contains pins for a
+	  brawler they do not have unlocked yet, "forceAccept" specifies what to do.
+	- If "forceAccept" is false, an error will be sent if they try to accept a trade for which they do not have the
+	  required brawlers unlocked.
+	- If "forceAccept" is true, no error will be sent and the user will be given all the pins they are able to receive and
+	  the remaining pins for locked brawlers will be discarded.
+
+Response:
+[{Pin Object}, ... 1 object for each pin]
+	- Returns objects in the same format as the objects defined at the top of the page.
+	- These are the pins which the user received from accepting the trade.
+Errors:
+	- 500: Database problem
+	- 404: User has no data
+	- 404: Trade with given ID does not exist
+	- 401: Invalid token
+	- 400: Could not find token
+
+	- 400: Cannot accept own trade
+	- 403: Not enough trade credits
+	- 403: Not enough copies of the pins required to create the trade
+	- 403: Required brawlers not unlocked (only sent when "forceAccept" is false)
+------------------------------------------------------------------------------------------------------------------------------
+/trade/close - Closes a trade and either refunds or claims pins
+POST request
+{
+    "token": String,
+    "tradeid": Number,
+    "forceAccept": Boolean
+}
+	- Refer to /trade/accept for more information on "forceAccept"
+
+Response:
+{
+    "complete": Boolean,
+    "acceptedBy": String,
+    "pins": [{Pin Object}, ... 1 object for each pin]
+}
+	- If the trade was either expired or not accepted yet, the user will be refunded all pins and trade credits they spent
+	  to create the trade. The pins they were refunded will be returned in the "pins" field.
+	- If the trade was successfully completed, the user will be given the pins they requested for. These pins will be
+	  listed in the "pins" field. The user who accepted the trade will also be given in the "acceptedBy" field.
+Errors:
+	- 500: Database problem
+	- 404: User has no data
+	- 404: Trade with given ID does not exist
+	- 401: Invalid token
+	- 400: Could not find token
+
+	- 401: Cannot close another user's trade
+	- 403: Required brawlers not unlocked (only sent when "forceAccept" is false)
+------------------------------------------------------------------------------------------------------------------------------

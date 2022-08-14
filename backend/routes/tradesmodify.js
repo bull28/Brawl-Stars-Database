@@ -146,7 +146,6 @@ router.post("/create", (req, res) => {
             var collectionData = {};
             try{
                 collectionData = JSON.parse(userResources.brawlers);
-                userResources.trade_requests = JSON.parse(userResources.trade_requests);
             } catch (error){
                 res.status(500).send("Collection data could not be loaded.");
                 return;
@@ -160,7 +159,7 @@ router.post("/create", (req, res) => {
             }
 
             // Too many active trades
-            if (userResources.trade_requests.length >= MAX_ACTIVE_TRADES){
+            if (userResources.trade_requests >= MAX_ACTIVE_TRADES){
                 res.status(403).send("Too many active trades. Close one before creating a new one.");
                 return;
             }
@@ -226,12 +225,12 @@ router.post("/create", (req, res) => {
                     }
 
                     const tradeidResult = results[0]["LAST_INSERT_ID()"];
-                    userResources.trade_requests.push(tradeidResult);
+                    userResources.trade_requests++;
                     
                     // Update the user's data after their resources and pins have been changed
                     database.queryDatabase(
                     "UPDATE " + TABLE_NAME + " SET brawlers = ?, trade_requests = ?, trade_credits = ? WHERE username = ?;",
-                    [JSON.stringify(collectionData), JSON.stringify(userResources.trade_requests), userResources.trade_credits, username], (error, results, fields) => {
+                    [JSON.stringify(collectionData), userResources.trade_requests, userResources.trade_credits, username], (error, results, fields) => {
                         if (error){
                             res.status(500).send("Could not connect to database.");
                             return;
@@ -416,8 +415,8 @@ router.post("/accept", (req, res) => {
                     
                     // Set the trade's status to accepted and accepted_by to the user's name
                     database.queryDatabase(
-                    "UPDATE " + TRADE_TABLE_NAME + " SET accepted = ?, accepted_by = ? WHERE tradeid = ?;",
-                    [1, username, tradeid], (error, results, fields) => {
+                    "UPDATE " + TRADE_TABLE_NAME + " SET expiration = ?, accepted = ?, accepted_by = ? WHERE tradeid = ?;",
+                    [0, 1, username, tradeid], (error, results, fields) => {
                         if (error){
                             res.status(500).send("Could not connect to database.");
                             return;
@@ -468,11 +467,10 @@ router.post("/close", (req, res) => {
             //var userResources = results[0];
 
             var collectionData = {};
-            var userTrades = [];
             var userTradeCredits = results[0].trade_credits;
+            var userTradeRequests = results[0].trade_requests;
             try{
                 collectionData = JSON.parse(results[0].brawlers);
-                userTrades = JSON.parse(results[0].trade_requests);
             } catch (error){
                 res.status(500).send("Collection data could not be loaded.");
                 return;
@@ -543,18 +541,20 @@ router.post("/close", (req, res) => {
                     return;
                 }
 
-                // If the tradeid exists in the user's trade_requests array, remove it because the
-                // trade will no longer exist in the database after
-                const tradeidIndex = userTrades.indexOf(tradeid);
-                if (tradeidIndex > -1){
-                    userTrades.splice(tradeidIndex, 1);
+                // Since the trade is closed, remove 1 from their trade requests
+                // as long as it would not make it negative
+                if (userTradeRequests > 0){
+                    userTradeRequests--;
                 }
+
+                // Tell the user who accepted their trade
+                const acceptedBy = results[0].accepted_by;
 
 
                 // Update the user's data after their resources and pins have been changed
                 database.queryDatabase(
                 "UPDATE " + TABLE_NAME + " SET brawlers = ?, trade_requests = ?, trade_credits = ? WHERE username = ?;",
-                [JSON.stringify(collectionData), JSON.stringify(userTrades), userTradeCredits, username], (error, results, fields) => {
+                [JSON.stringify(collectionData), userTradeRequests, userTradeCredits, username], (error, results, fields) => {
                     if (error){
                         res.status(500).send("Could not connect to database.");
                         return;
@@ -585,6 +585,7 @@ router.post("/close", (req, res) => {
 
                         res.json({
                             "complete": tradeSuccess,
+                            "acceptedBy": acceptedBy,
                             "pins": tradedItems
                         });
                     });

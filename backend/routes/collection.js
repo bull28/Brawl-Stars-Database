@@ -282,7 +282,7 @@ router.post("/brawlbox", (req, res) => {
     let username = validateToken(req.body.token);
     let boxType = req.body.boxType;
     if (username){
-        const BUL = performance.now();
+        //const BUL = performance.now();
         database.queryDatabase(
         "SELECT brawlers, avatars, wild_card_pins, tokens, token_doubler, coins, trade_credits FROM " + TABLE_NAME + " WHERE username = ?;",
         [username], (error, results, fields) => {
@@ -372,8 +372,8 @@ router.post("/brawlbox", (req, res) => {
                     }
                 }
 
-                const EDGRISBAD = (performance.now() - BUL);
-                console.log("YOUR PROGRAM IS",EDGRISBAD.toString(),"TIMES WORSE THAN E D G R");
+                //const EDGRISBAD = (performance.now() - BUL);
+                //console.log("YOUR PROGRAM IS",EDGRISBAD.toString(),"TIMES WORSE THAN E D G R");
 
                 res.json(brawlBoxContents);
             });
