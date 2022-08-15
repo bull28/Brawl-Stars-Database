@@ -58,6 +58,9 @@ function closeConnection(callback){
 };
 
 process.on("SIGINT", () => {
+    if (success == false){
+        return;
+    }
     closeConnection(() => {
         process.kill(process.pid, "SIGINT");
     });

@@ -191,7 +191,53 @@ function getAvatars(allSkins, allAvatars, userCollection, userAvatars){
         }
     }
 
+    // Lastly, check for achievement avatars
+    const userCollectionStats = formatCollectionData(allSkins, userCollection, "", "");
+    avatarsInfo = avatarsInfo.concat(getAchievementAvatars(allAvatars.special, userCollectionStats));
+
     return avatarsInfo;
+}
+
+/**
+ * Checks whether a user is eligible to use achievement avatars which are only available
+ * under specific conditions such as collecting a certain number of pins.
+ * @param {Array} specialAvatars json array of all special avatars that exist
+ * @param {*} collection formatted collection object
+ * @returns array of file paths to achievement avatars
+ */
+function getAchievementAvatars(specialAvatars, collection){
+    var achievementAvatars = [];
+    
+    const unlockedPins = collection.unlockedPins;
+
+
+    if (unlockedPins >= 10){
+        achievementAvatars.push("pins_collection_01");
+    } if (unlockedPins >= 20){
+        achievementAvatars.push("pins_collection_02");
+    } if (unlockedPins >= 50){
+        achievementAvatars.push("pins_collection_03");
+    } if (unlockedPins >= 100){
+        achievementAvatars.push("pins_collection_04");
+    } if (unlockedPins >= 250){
+        achievementAvatars.push("pins_collection_05");
+    } if (unlockedPins >= 500){
+        achievementAvatars.push("pins_collection_06");
+    } if (unlockedPins >= 1000){
+        achievementAvatars.push("pins_collection_07");
+    }
+
+    // Add more achievement avatars here like getting all pins for a specific brawler
+
+    achievementAvatars = specialAvatars.filter((element, index, array) => {
+        // Since file paths may change, instead of hardcoding the file paths
+        // check to see if the avatar image name exists in the special avatars list
+        // before returning it.
+        const filePaths = element.split("/");
+        return achievementAvatars.includes(filePaths[filePaths.length - 1].split(".")[0]);
+    });
+
+    return achievementAvatars;
 }
 
 /**
