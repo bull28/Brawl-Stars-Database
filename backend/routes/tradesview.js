@@ -17,6 +17,25 @@ const MAX_ACTIVE_TRADES = 25;// will be lowered later when done testing
 const TRADES_PER_PAGE = 20;
 
 
+/**
+ * Calculates the time left for a trade using the expiration time from the
+ * database. Returns [1, 0, 0, 0] for all times greater than 1 season.
+ * If expired, returns [0, 0, 0, 0].
+ * @param {Number} expiration expiration time stored in the database
+ * @returns SeasonTime
+ */
+function getTradeTimeLeft(expiration){
+    var tradeSecondsLeft = Math.floor((expiration - Date.now()) / 1000);
+    var tradeTimeLeft = new maps.SeasonTime(0, 0, 0, 0);
+    if (tradeSecondsLeft > maps.MAP_CYCLE_HOURS * 3600){
+        tradeTimeLeft = new maps.SeasonTime(1, 0, 0, 0);
+    } else if (tradeSecondsLeft > 0){
+        tradeTimeLeft = maps.addSeasonTimes(tradeTimeLeft, new maps.SeasonTime(0, 0, 0, tradeSecondsLeft));
+    }
+
+    return tradeTimeLeft;
+}
+
 //----------------------------------------------------------------------------------------------------------------------
 
 // Get details about a specific trade
@@ -40,19 +59,6 @@ router.get("/id", (req, res) => {
             return;
         }
 
-        var accepted = false;
-        if (results[0].accepted == 1){
-            accepted = true;
-        }
-
-        var tradeSecondsLeft = Math.floor((results[0].expiration - Date.now()) / 1000);
-        var tradeTimeLeft = new maps.SeasonTime(0, 0, 0, 0);
-        if (tradeSecondsLeft > maps.MAP_CYCLE_HOURS * 3600){
-            tradeTimeLeft = new maps.SeasonTime(1, 0, 0, 0);
-        } else if (tradeSecondsLeft > 0){
-            tradeTimeLeft = maps.addSeasonTimes(tradeTimeLeft, new maps.SeasonTime(0, 0, 0, tradeSecondsLeft));
-        }
-
         var offerPins = [];
         var requestPins = [];
         try{
@@ -69,11 +75,11 @@ router.get("/id", (req, res) => {
                 "avatar": results[0].creator_avatar,
                 "avatarColor": results[0].creator_color
             },
+            "cost": results[0].trade_credits,
             "offer": offerPins,
             "request": requestPins,
-            "cost": results[0].trade_credits,
-            "timeLeft": tradeTimeLeft,
-            "accepted": accepted,
+            "timeLeft": getTradeTimeLeft(results[0].expiration),
+            "accepted": (results[0].accepted == 1),
             "acceptedBy": results[0].accepted_by
         }
 
@@ -102,15 +108,6 @@ router.post("/user", (req, res) => {
 
         var validJSONTrades = true;
         for (let x of results){
-            var accepted = false;
-            var expired = false;
-            var tradeTimeLeft = x.expiration - Date.now();
-
-            if (x.accepted == 1){
-                accepted = true;
-            } if (tradeTimeLeft < 0){
-                expired = true;
-            }
 
             var offerPins = [];
             var requestPins = [];
@@ -126,8 +123,8 @@ router.post("/user", (req, res) => {
                 "cost": x.trade_credits,
                 "offer": offerPins,
                 "request": requestPins,
-                "expired": expired,
-                "accepted": accepted
+                "timeLeft": getTradeTimeLeft(x.expiration),
+                "accepted": (x.accepted == 1)
             });
         }
 
@@ -151,7 +148,7 @@ router.post("/all", (req, res) => {
     var minExpiration = 0;
     var limitStart = 0;
 
-    if (sortMethod == "oldest"){
+    if (sortMethod == "lowtime"){
         sortString = "expiration";
         // Do not show trades that are about to expire very shortly
         minExpiration += 300000;
@@ -183,7 +180,7 @@ router.post("/all", (req, res) => {
     }
 
     database.queryDatabase(
-    "SELECT tradeid, creator, offer, request, trade_credits FROM " + TRADE_TABLE_NAME + " WHERE " + filterColumn + " LIKE ? AND expiration > ? ORDER BY " + sortString + " LIMIT ?, ?;",
+    "SELECT tradeid, creator, offer, request, trade_credits, expiration FROM " + TRADE_TABLE_NAME + " WHERE " + filterColumn + " LIKE ? AND expiration > ? ORDER BY " + sortString + " LIMIT ?, ?;",
     [filterString, minExpiration, limitStart, TRADES_PER_PAGE], (error, results, fields) => {
         if (error){
             res.status(500).send("Could not connect to database.");
@@ -209,7 +206,8 @@ router.post("/all", (req, res) => {
                 "creator": x.creator,
                 "cost": x.trade_credits,
                 "offer": offerPins,
-                "request": requestPins
+                "request": requestPins,
+                "timeLeft": getTradeTimeLeft(x.expiration)
             });
         }
 
