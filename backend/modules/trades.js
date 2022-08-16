@@ -86,7 +86,7 @@ function tradeCreditsByRarity(rarityValue){
  * @param {Array} requestPins valid array of pins to receive
  * @returns Number
  */
-function getTradeCost(offerPins, requestPins, tradeHours){
+function getTradeCost(offerPins, requestPins){
     var totalTradeCost = 0;
 
     if (!(offerPins && requestPins)){
