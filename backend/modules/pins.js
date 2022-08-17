@@ -198,6 +198,30 @@ function getAvatars(allSkins, allAvatars, userCollection, userAvatars){
     return avatarsInfo;
 }
 
+function getShopItems(shopItems, allSkins, userCollection, userAvatars){
+    var availableShopItems = {};
+
+    const collectionInfo = formatCollectionData(allSkins, userCollection, "", "");
+    for (let x in shopItems){
+        // Depending on the type of item, check availability differently
+        if (shopItems[x].itemType == "tradeCredits"){
+            // Trade credits are always available
+            availableShopItems[x] = shopItems[x];
+        } else if (shopItems[x].itemType == "brawler"){
+            // As long as the user has one or more brawlers left to unlock, allow them to buy a brawler
+            if (collectionInfo.unlockedBrawlers < collectionInfo.totalBrawlers){
+                availableShopItems[x] = shopItems[x];
+            }
+        } else if (shopItems[x].itemType == "avatar"){
+            // If the user does not already own an avatar, it is available for them to buy
+            if (userAvatars.includes(shopItems[x].extraData) == false){
+                availableShopItems[x] = shopItems[x];
+            }
+        }
+    }
+    return availableShopItems;
+}
+
 /**
  * Checks whether a user is eligible to use achievement avatars which are only available
  * under specific conditions such as collecting a certain number of pins.
@@ -320,3 +344,4 @@ function removePin(userCollection, brawler, pin){
 
 exports.formatCollectionData = formatCollectionData;
 exports.getAvatars = getAvatars;
+exports.getShopItems = getShopItems;

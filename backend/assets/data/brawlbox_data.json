@@ -75,6 +75,14 @@
             ],
             "rewardTypeValues": ["coins", "pinLowRarity", "wildcard", "brawlerLowRarity", "bonus"]
         },
+        "newBrawler": {
+            "cost": 0,
+            "image": "",
+            "draws": [
+                [1]
+            ],
+            "rewardTypeValues": ["brawlerHighRarity"]
+        },
         "bonus": {
             "cost": 0,
             "image": "",
@@ -96,17 +104,17 @@
         "pin": {
             "raritypmf": [36, 15, 5, 3, 1],
             "minraritypmf": [18, 9, 4, 3, 1],
-            "coinConversion": 500
+            "coinConversion": 100
         },
         "pinLowRarity": {
             "raritypmf": [36, 24, 0, 0, 0],
             "minraritypmf": [24, 18, 0, 0, 0],
-            "coinConversion": 500
+            "coinConversion": 100
         },
         "pinHighRarity": {
             "raritypmf": [24, 18, 9, 6, 3],
             "minraritypmf": [8, 9, 6, 5, 3],
-            "coinConversion": 500
+            "coinConversion": 100
         },
         "wildcard": {
             "raritypmf": [36, 15, 6, 3, 0],
@@ -116,12 +124,17 @@
         "brawler": {
             "raritypmf": [32, 16, 8, 4, 2, 1, 1],
             "minraritypmf": [0, 0, 0, 1, 1, 0, 0],
-            "coinConversion": 1500
+            "coinConversion": 400
         },
         "brawlerLowRarity": {
             "raritypmf": [24, 16, 16, 8, 0, 0, 0],
             "minraritypmf": [0, 0, 0, 0, 0, 0, 0],
-            "coinConversion": 1500
+            "coinConversion": 400
+        },
+        "brawlerHighRarity": {
+            "raritypmf": [32, 16, 8, 4, 2, 1, 1],
+            "minraritypmf": [0, 0, 0, 0, 0, 0, 0],
+            "coinConversion": 0
         },
         "tradeCredits": {
             "pmfobject": [
@@ -135,6 +148,7 @@
         },
         "avatar": {
             "pmfobject": [
+                {"value": "avatars/special/brawlbox_icon.webp", "weight": 5},
                 {"value": "avatars/special/angry_darryl.webp", "weight": 4},
                 {"value": "avatars/special/ELIXIR_GOLM.webp", "weight": 3},
                 {"value": "avatars/special/viking_bull.webp", "weight": 2},

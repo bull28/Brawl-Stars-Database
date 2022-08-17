@@ -128,7 +128,7 @@ function brawlBox(dropChances, boxType, allSkins, resources){
             drop = selectPin(dropChances.rewardTypes[x], resources, allSkins);
         } else if (x == "wildcard"){
             drop = selectWildCardPin(dropChances.rewardTypes.wildcard, resources, allSkins);
-        } else if (x == "brawler" || x == "brawlerLowRarity"){
+        } else if (x == "brawler" || x == "brawlerLowRarity" || x == "brawlerHighRarity"){
             drop = selectBrawler(dropChances.rewardTypes[x], resources, allSkins);
         } else if (x == "bonus"){
             drop = selectBonus(dropChances.boxes.bonus, dropChances.rewardTypes, resources);
@@ -136,7 +136,7 @@ function brawlBox(dropChances, boxType, allSkins, resources){
 
         if (drop.rewardType == "coins"){
             coinsReward += drop.amount;
-        } else{
+        } else if (drop.rewardType != "empty"){
             rewards.push(drop);
         }
         }
@@ -309,7 +309,7 @@ function selectPin(pinDropChances, resources, allSkins){
             result.displayName = "New Pin";
         }
 
-    } else{
+    } else if (pinDropChances.coinConversion > 0){
         resources.coins += pinDropChances.coinConversion;
 
         result.rewardType = "coins";
@@ -442,7 +442,7 @@ function selectBrawler(brawlerDropChances, resources, allSkins){
         result.backgroundColor = brawlerObject.rarity.color;
         result.description = brawlerObject.description;
         result.inventory = 1;
-    } else{
+    } else if (brawlerDropChances.coinConversion > 0){
         resources.coins += brawlerDropChances.coinConversion;
 
         result.rewardType = "coins";
