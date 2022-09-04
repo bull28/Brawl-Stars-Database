@@ -11,6 +11,7 @@ const TRADE_TABLE_NAME = process.env.DATABASE_TRADE_TABLE_NAME || "brawl_stars_t
 
 // functions to set up trades
 const trades = require("../modules/trades");
+const pins = require("../modules/pins");
 const fileLoader = require("../modules/fileloader");
 
 // constants for trades
@@ -153,6 +154,7 @@ router.post("/create", (req, res) => {
             }
 
             var userResources = results[0];
+            var userAvatarColor = "#FFFFFF";
 
             var collectionData = {};
             try{
@@ -161,6 +163,9 @@ router.post("/create", (req, res) => {
                 res.status(500).send("Collection data could not be loaded.");
                 return;
             }
+
+            // Get the user's avatar color and that will be the text color when displaying all trades
+            userAvatarColor = pins.formatCollectionData(allSkins, collectionData, "", "").avatarColor;
 
 
             // Not enough trade credits
@@ -215,7 +220,7 @@ router.post("/create", (req, res) => {
             // Add the new trade into the trades table
             database.queryDatabase(
             "INSERT INTO " + TRADE_TABLE_NAME + " (creator, creator_avatar, creator_color, offer, request, trade_credits, trade_credits_time, expiration) VALUES (?, ?, ?, ?, ?, ?, ?, ?);",
-            [username, userResources.active_avatar, "#000000", JSON.stringify(offerPins), JSON.stringify(requestPins), tradeCost, timeTradeCost, tradeExpiration], (error, results, fields) => {
+            [username, userResources.active_avatar, userAvatarColor, JSON.stringify(offerPins), JSON.stringify(requestPins), tradeCost, timeTradeCost, tradeExpiration], (error, results, fields) => {
                 if (error){
                     res.status(500).send("Could not connect to database.");
                     return;

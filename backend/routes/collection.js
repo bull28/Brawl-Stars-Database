@@ -210,7 +210,7 @@ router.post("/resources", (req, res) => {
 
     if (username){
         database.queryDatabase(
-        "SELECT username, active_avatar, tokens, token_doubler, coins, trade_credits, brawlers FROM " + TABLE_NAME + " WHERE username = ?;",
+        "SELECT username, active_avatar, tokens, token_doubler, coins, trade_credits, brawlers, wild_card_pins FROM " + TABLE_NAME + " WHERE username = ?;",
         [username], (error, results, fields) => {
             if (databaseErrorCheck(error, results, fields, res)){
                 return;
@@ -223,6 +223,36 @@ router.post("/resources", (req, res) => {
                 res.status(500).send("Collection data could not be loaded.");
                 return;
             }
+
+            
+            var wildCardData = JSON.parse(results[0].wild_card_pins);
+            var wildCardPins = [];
+
+            for (let x in wildCardData){
+                wildCardPins.push({
+                    "rarityName":"",
+                    "rarityColor":"#000000",
+                    "amount":wildCardData[x]
+                });
+            }
+
+            // Look through the allSkins array to get the rarity information
+            for (let x in allSkins){
+                if (allSkins[x].hasOwnProperty("pins")){
+                    for (let y of allSkins[x].pins){
+                        if (y.rarity.value < wildCardPins.length){
+                            const rarityValue = y.rarity.value;
+                            wildCardPins[rarityValue].rarityName = y.rarity.name;
+                            wildCardPins[rarityValue].rarityColor = y.rarity.color;
+                        }
+                    }
+                }
+            }
+
+            // If there are no pins of a specific rarity, the rarity name in wildCardPins
+            // will be empty. This is fine because wild card pins of that rarity have no use
+            // since there are no pins of that rarity that exist.
+            
             
             const resourcesData = {
                 "username": results[0].username,
@@ -231,7 +261,8 @@ router.post("/resources", (req, res) => {
                 "tokens": results[0].tokens,
                 "tokenDoubler": results[0].token_doubler,
                 "coins": results[0].coins,
-                "tradeCredits": results[0].trade_credits
+                "tradeCredits": results[0].trade_credits,
+                "wildCardPins": wildCardPins
             }
             
             res.json(resourcesData);
