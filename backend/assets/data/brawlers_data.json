@@ -575,6 +575,15 @@
                 }
             },
             {
+                "name": "nita_special",
+                "image": "nita_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
                 "name": "nita_brawlidays_2018",
                 "image": "nita_brawlidays_2018.webp",
                 "rarity": {
@@ -1572,6 +1581,15 @@
                 }
             },
             {
+                "name": "jessie_special",
+                "image": "jessie_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
                 "name": "jessie_goldenweek",
                 "image": "jessie_goldenweek.webp",
                 "rarity": {
@@ -1852,6 +1870,15 @@
             {
                 "name": "brock_sweat",
                 "image": "brock_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "name": "brock_special",
+                "image": "brock_special.webp",
                 "rarity": {
                     "value": 2,
                     "name": "Epic",
@@ -2304,9 +2331,9 @@
                     "Voice"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Mecha",
+                    "image": "bg_mecha.webp",
+                    "icon": "icon_mecha.webp"
                 },
                 "limited": false,
                 "image": "bomecha.webp",
@@ -2591,8 +2618,35 @@
                 }
             },
             {
-                "name": "bo_biodome",
-                "image": "bo_biodome.webp",
+                "name": "bo_ranked",
+                "image": "bo_ranked.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "name": "bo_mecha",
+                "image": "bo_mecha.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "name": "bo_mechawhite",
+                "image": "bo_mechawhite.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "name": "bo_mechagold",
+                "image": "bo_mechagold.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -4346,6 +4400,27 @@
                 "image": "deadmariachisilver.webp",
                 "model": "deadmariachisilver.glb",
                 "rating": 0
+            },
+            {
+                "name": "deadmariachioutlaw",
+                "displayName": "Desperado Poco",
+                "cost": 149,
+                "currency": "Gems",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Brawl Pass",
+                    "image": "bg_default.webp",
+                    "icon": "icon_brawlpass.webp"
+                },
+                "limited": true,
+                "image": "deadmariachioutlaw.webp",
+                "model": "deadmariachioutlaw.glb",
+                "rating": 0
             }
         ],
         "pins": [
@@ -4433,6 +4508,15 @@
             {
                 "name": "poco_brawlentines",
                 "image": "poco_brawlentines.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "name": "poco_outlaw",
+                "image": "poco_outlaw.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -5028,6 +5112,15 @@
             {
                 "name": "rico_sweat",
                 "image": "rico_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "name": "rico_special",
+                "image": "rico_special.webp",
                 "rarity": {
                     "value": 2,
                     "name": "Epic",
@@ -6129,6 +6222,119 @@
         ]
     },
     {
+        "name": "gus",
+        "displayName": "Gus",
+        "rarity": {
+            "value": 2,
+            "name": "Super Rare",
+            "color": "#3A85F2"
+        },
+        "portrait": "portrait_gus.webp",
+        "model": "soulcollectordefault.glb",
+        "description": "Hanging out in a long forgotten and abandoned train ride, Gus loves balloons. He's a master at crafting balloon animals, which he uses to pass the time and to keep himself company.",
+        "skins": [
+            {
+                "name": "soulcollectordefault",
+                "displayName": "Gus",
+                "cost": 0,
+                "currency": "",
+                "features": [],
+                "group": {
+                    "name": "",
+                    "image": "bg_default.webp",
+                    "icon": "icon_default.webp"
+                },
+                "limited": false,
+                "image": "soulcollectordefault.webp",
+                "model": "soulcollectordefault.glb",
+                "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "name": "gus_default",
+                "image": "gus_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "name": "gus_happy",
+                "image": "gus_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "name": "gus_sad",
+                "image": "gus_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "name": "gus_angry",
+                "image": "gus_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "name": "gus_gg",
+                "image": "gus_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "name": "gus_clap",
+                "image": "gus_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "name": "gus_thanks",
+                "image": "gus_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "name": "gus_sweat",
+                "image": "gus_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "name": "gus_special",
+                "image": "gus_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            }
+        ]
+    },
+    {
         "name": "piper",
         "displayName": "Piper",
         "rarity": {
@@ -6504,6 +6710,27 @@
                 "image": "minigundudesilver.webp",
                 "model": "minigundudesilver.glb",
                 "rating": 0
+            },
+            {
+                "name": "minigundudebroker",
+                "displayName": "Stonks Pam",
+                "cost": 49,
+                "currency": "Gems",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "",
+                    "image": "bg_default.webp",
+                    "icon": "icon_default.webp"
+                },
+                "limited": false,
+                "image": "minigundudebroker.webp",
+                "model": "minigundudebroker.glb",
+                "rating": 0
             }
         ],
         "pins": [
@@ -6577,6 +6804,15 @@
                     "value": 2,
                     "name": "Epic",
                     "color": "#A229E3"
+                }
+            },
+            {
+                "name": "pam_broker",
+                "image": "pam_broker.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF155"
                 }
             }
         ]
@@ -7026,6 +7262,15 @@
             {
                 "name": "bibi_sweat",
                 "image": "bibi_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "name": "bibi_special",
+                "image": "bibi_special.webp",
                 "rarity": {
                     "value": 2,
                     "name": "Epic",
@@ -7617,6 +7862,44 @@
                 "image": "enragertata.webp",
                 "model": "enragertata.glb",
                 "rating": 0
+            },
+            {
+                "name": "enragergold",
+                "displayName": "True Gold Edgar",
+                "cost": 25000,
+                "currency": "Coins",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "True Gold",
+                    "image": "bg_gold.webp",
+                    "icon": "icon_gold.webp"
+                },
+                "limited": false,
+                "image": "enragergold.webp",
+                "model": "enragergold.glb",
+                "rating": 0
+            },
+            {
+                "name": "enragersilver",
+                "displayName": "True Silver Edgar",
+                "cost": 10000,
+                "currency": "Coins",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "True Silver",
+                    "image": "bg_silver.webp",
+                    "icon": "icon_silver.webp"
+                },
+                "limited": false,
+                "image": "enragersilver.webp",
+                "model": "enragersilver.glb",
+                "rating": 0
             }
         ],
         "pins": [
@@ -7777,6 +8060,44 @@
                 "limited": true,
                 "image": "assaultshotgunsled.webp",
                 "model": "assaultshotgunsled.glb",
+                "rating": 0
+            },
+            {
+                "name": "assaultshotgungold",
+                "displayName": "True Gold Griff",
+                "cost": 25000,
+                "currency": "Coins",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "True Gold",
+                    "image": "bg_gold.webp",
+                    "icon": "icon_gold.webp"
+                },
+                "limited": false,
+                "image": "assaultshotgungold.webp",
+                "model": "assaultshotgungold.glb",
+                "rating": 0
+            },
+            {
+                "name": "assaultshotgunsilver",
+                "displayName": "True Silver Griff",
+                "cost": 10000,
+                "currency": "Coins",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "True Silver",
+                    "image": "bg_silver.webp",
+                    "icon": "icon_silver.webp"
+                },
+                "limited": false,
+                "image": "assaultshotgunsilver.webp",
+                "model": "assaultshotgunsilver.glb",
                 "rating": 0
             }
         ],
@@ -8426,6 +8747,72 @@
                 "image": "undertakerbeach.webp",
                 "model": "undertakerbeach.glb",
                 "rating": 0
+            },
+            {
+                "name": "undertakermecha",
+                "displayName": "Mecha Mortis",
+                "cost": 299,
+                "currency": "Gems",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Voice"
+                ],
+                "group": {
+                    "name": "Mecha",
+                    "image": "bg_mecha.webp",
+                    "icon": "icon_mecha.webp"
+                },
+                "limited": false,
+                "image": "undertakermecha.webp",
+                "model": "undertakermecha.glb",
+                "rating": 0
+            },
+            {
+                "name": "undertakerchromalight",
+                "displayName": "Light Mecha Mortis",
+                "cost": 49,
+                "currency": "Gems",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Voice"
+                ],
+                "group": {
+                    "name": "Mecha",
+                    "image": "bg_mecha.webp",
+                    "icon": "icon_mecha.webp"
+                },
+                "limited": false,
+                "image": "undertakerchromalight.webp",
+                "model": "undertakerchromalight.glb",
+                "rating": 0
+            },
+            {
+                "name": "undertakerchromadark",
+                "displayName": "Dark Mecha Mortis",
+                "cost": 49,
+                "currency": "Gems",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Voice"
+                ],
+                "group": {
+                    "name": "Mecha",
+                    "image": "bg_mecha.webp",
+                    "icon": "icon_mecha.webp"
+                },
+                "limited": false,
+                "image": "undertakerchromadark.webp",
+                "model": "undertakerchromadark.glb",
+                "rating": 0
             }
         ],
         "pins": [
@@ -8508,6 +8895,87 @@
                     "value": 3,
                     "name": "Legendary",
                     "color": "#FDF155"
+                }
+            },
+            {
+                "name": "mortis_mecha_default",
+                "image": "mortis_mecha_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "name": "mortis_mecha_happy",
+                "image": "mortis_mecha_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "name": "mortis_mecha_sad",
+                "image": "mortis_mecha_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "name": "mortis_mecha_angry",
+                "image": "mortis_mecha_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "name": "mortis_mecha_gg",
+                "image": "mortis_mecha_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "name": "mortis_mecha_clap",
+                "image": "mortis_mecha_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "name": "mortis_mecha_thanks",
+                "image": "mortis_mecha_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "name": "mortis_mecha_sweat",
+                "image": "mortis_mecha_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "name": "mortis_mecha_special",
+                "image": "mortis_mecha_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
                 }
             }
         ]
@@ -9192,6 +9660,15 @@
                     "name": "Epic",
                     "color": "#A229E3"
                 }
+            },
+            {
+                "name": "max_special",
+                "image": "max_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
             }
         ]
     },
@@ -9411,6 +9888,15 @@
             {
                 "name": "mrp_sweat",
                 "image": "mrp_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "name": "mrp_special",
+                "image": "mrp_special.webp",
                 "rarity": {
                     "value": 2,
                     "name": "Epic",
@@ -9794,6 +10280,44 @@
                 "image": "snakeoilvillain.webp",
                 "model": "snakeoilvillain.glb",
                 "rating": 0
+            },
+            {
+                "name": "snakeoilgold",
+                "displayName": "True Gold Byron",
+                "cost": 25000,
+                "currency": "Coins",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "True Gold",
+                    "image": "bg_gold.webp",
+                    "icon": "icon_gold.webp"
+                },
+                "limited": false,
+                "image": "snakeoilgold.webp",
+                "model": "snakeoilgold.glb",
+                "rating": 0
+            },
+            {
+                "name": "snakeoilsilver",
+                "displayName": "True Silver Byron",
+                "cost": 10000,
+                "currency": "Coins",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "True Silver",
+                    "image": "bg_silver.webp",
+                    "icon": "icon_silver.webp"
+                },
+                "limited": false,
+                "image": "snakeoilsilver.webp",
+                "model": "snakeoilsilver.glb",
+                "rating": 0
             }
         ],
         "pins": [
@@ -9958,6 +10482,65 @@
                 "image": "stickybombghost.webp",
                 "model": "stickybombghost.glb",
                 "rating": 0
+            },
+            {
+                "name": "stickybombrabbit",
+                "displayName": "Moon Bunny Squeak",
+                "cost": 49,
+                "currency": "Gems",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "",
+                    "image": "bg_default.webp",
+                    "icon": "icon_default.webp"
+                },
+                "limited": false,
+                "image": "stickybombrabbit.webp",
+                "model": "stickybombrabbit.glb",
+                "rating": 0
+            },
+            {
+                "name": "stickybombgold",
+                "displayName": "True Gold Squeak",
+                "cost": 25000,
+                "currency": "Coins",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "True Gold",
+                    "image": "bg_gold.webp",
+                    "icon": "icon_gold.webp"
+                },
+                "limited": false,
+                "image": "stickybombgold.webp",
+                "model": "stickybombgold.glb",
+                "rating": 0
+            },
+            {
+                "name": "stickybombsilver",
+                "displayName": "True Silver Squeak",
+                "cost": 10000,
+                "currency": "Coins",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "True Silver",
+                    "image": "bg_silver.webp",
+                    "icon": "icon_silver.webp"
+                },
+                "limited": false,
+                "image": "stickybombsilver.webp",
+                "model": "stickybombsilver.glb",
+                "rating": 0
             }
         ],
         "pins": [
@@ -10045,6 +10628,15 @@
             {
                 "name": "squeak_brawloween",
                 "image": "squeak_brawloween.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "name": "squeak_rabbit",
+                "image": "squeak_rabbit.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -10315,6 +10907,15 @@
                 }
             },
             {
+                "name": "spike_special",
+                "image": "spike_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
                 "name": "spike_pink",
                 "image": "spike_pink.webp",
                 "rarity": {
@@ -10432,9 +11033,9 @@
                     "Voice"
                 ],
                 "group": {
-                    "name": "Legendary Set",
-                    "image": "bg_legendaryset.webp",
-                    "icon": "icon_legendaryset.webp"
+                    "name": "Mecha",
+                    "image": "bg_mecha.webp",
+                    "icon": "icon_mecha.webp"
                 },
                 "limited": false,
                 "image": "crowmecha.webp",
@@ -10543,6 +11144,27 @@
                 "image": "crowsuper.webp",
                 "model": "crowsuper.glb",
                 "rating": 0
+            },
+            {
+                "name": "crowvulture",
+                "displayName": "Crowbone",
+                "cost": 149,
+                "currency": "Gems",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Calamity Gang",
+                    "image": "bg_outlaw.webp",
+                    "icon": "icon_outlaw.webp"
+                },
+                "limited": false,
+                "image": "crowvulture.webp",
+                "model": "crowvulture.glb",
+                "rating": 0
             }
         ],
         "pins": [
@@ -10616,6 +11238,42 @@
                     "value": 2,
                     "name": "Epic",
                     "color": "#A229E3"
+                }
+            },
+            {
+                "name": "crow_outlaw",
+                "image": "crow_outlaw.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "name": "crow_mecha",
+                "image": "crow_mecha.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "name": "crow_mechanight",
+                "image": "crow_mechanight.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "name": "crow_mechagold",
+                "image": "crow_mechagold.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF155"
                 }
             }
         ]
@@ -10764,6 +11422,25 @@
                 "image": "ninjadino.webp",
                 "model": "ninjadino.glb",
                 "rating": 0
+            },
+            {
+                "name": "ninjaghost",
+                "displayName": "Trick or Treat Leon",
+                "cost": 49,
+                "currency": "Gems",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "Brawl-o-ween",
+                    "image": "bg_brawloween.webp",
+                    "icon": "icon_brawloween.webp"
+                },
+                "limited": true,
+                "image": "ninjaghost.webp",
+                "model": "ninjaghost.glb",
+                "rating": 0
             }
         ],
         "pins": [
@@ -10842,6 +11519,15 @@
             {
                 "name": "leon_brawloween",
                 "image": "leon_brawloween.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "name": "leon_brawloween_02",
+                "image": "leon_brawloween_02.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -11678,6 +12364,15 @@
                 }
             },
             {
+                "name": "gale_special",
+                "image": "gale_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
                 "name": "gale_trader_default",
                 "image": "gale_trader_default.webp",
                 "rarity": {
@@ -12246,6 +12941,15 @@
                 }
             },
             {
+                "name": "colette_special",
+                "image": "colette_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
                 "name": "colette_trixie_default",
                 "image": "colette_trixie_default.webp",
                 "rarity": {
@@ -12633,7 +13337,7 @@
     },
     {
         "name": "ruffs",
-        "displayName": "Colonel Ruffs",
+        "displayName": "Ruffs",
         "rarity": {
             "value": 6,
             "name": "Chromatic",
@@ -12641,7 +13345,7 @@
         },
         "portrait": "portrait_ruffs.webp",
         "model": "ruffsdefault.glb",
-        "description": "Ruffs' twin-laser bounces off walls multiple times. They can hit opponents behind cover.",
+        "description": "He may bark orders at his subordinates, but Colonel Ruffs is a very good boy! Possessing a serious and calm demeanor, Ruffs keeps his dog traits hidden, unless there's a game of fetch going on!",
         "skins": [
             {
                 "name": "ruffsdefault",
@@ -13882,6 +14586,27 @@
                 "image": "duplicatorsilver.webp",
                 "model": "duplicatorsilver.glb",
                 "rating": 0
+            },
+            {
+                "name": "duplicatoroutlaw",
+                "displayName": "Lawless Lola",
+                "cost": 25000,
+                "currency": "Coins",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Power League",
+                    "image": "bg_ranked.webp",
+                    "icon": "icon_ranked.webp"
+                },
+                "limited": true,
+                "image": "duplicatoroutlaw.webp",
+                "model": "duplicatoroutlaw.glb",
+                "rating": 0
             }
         ],
         "pins": [
@@ -14050,6 +14775,15 @@
             {
                 "name": "lola_villains",
                 "image": "lola_villains.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF155"
+                }
+            },
+            {
+                "name": "lola_ranked",
+                "image": "lola_ranked.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -14895,6 +15629,44 @@
                 "image": "silencerpharaoh.webp",
                 "model": "silencerpharaoh.glb",
                 "rating": 0
+            },
+            {
+                "name": "silencergold",
+                "displayName": "True Gold Otis",
+                "cost": 25000,
+                "currency": "Coins",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "True Gold",
+                    "image": "bg_gold.webp",
+                    "icon": "icon_gold.webp"
+                },
+                "limited": false,
+                "image": "silencergold.webp",
+                "model": "silencergold.glb",
+                "rating": 0
+            },
+            {
+                "name": "silencersilver",
+                "displayName": "True Silver Otis",
+                "cost": 10000,
+                "currency": "Coins",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "True Silver",
+                    "image": "bg_silver.webp",
+                    "icon": "icon_silver.webp"
+                },
+                "limited": false,
+                "image": "silencersilver.webp",
+                "model": "silencersilver.glb",
+                "rating": 0
             }
         ],
         "pins": [
@@ -15054,6 +15826,221 @@
             {
                 "name": "otis_pharaoh_special",
                 "image": "otis_pharaoh_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            }
+        ]
+    },
+    {
+        "name": "sam",
+        "displayName": "Sam",
+        "rarity": {
+            "value": 6,
+            "name": "Chromatic",
+            "color": "#E87D3E"
+        },
+        "portrait": "portrait_sam.webp",
+        "model": "weaponthrowerdefault.glb",
+        "description": "A former factory hand, Sam Bronson has a vendetta against ALL robots. He's the brawn behind the brains of the Goldarm Gang, always happy to take the loot and give robots the boot!",
+        "skins": [
+            {
+                "name": "weaponthrowerdefault",
+                "displayName": "Sam",
+                "cost": 0,
+                "currency": "",
+                "features": [],
+                "group": {
+                    "name": "",
+                    "image": "bg_default.webp",
+                    "icon": "icon_default.webp"
+                },
+                "limited": false,
+                "image": "weaponthrowerdefault.webp",
+                "model": "weaponthrowerdefault.glb",
+                "rating": 0
+            },
+            {
+                "name": "weaponthroweremperor",
+                "displayName": "Caesar Sam",
+                "cost": 149,
+                "currency": "Gems",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Brawl Pass",
+                    "image": "bg_default.webp",
+                    "icon": "icon_brawlpass.webp"
+                },
+                "limited": true,
+                "image": "weaponthroweremperor.webp",
+                "model": "weaponthroweremperor.glb",
+                "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "name": "sam_default",
+                "image": "sam_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "name": "sam_happy",
+                "image": "sam_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "name": "sam_sad",
+                "image": "sam_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "name": "sam_angry",
+                "image": "sam_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "name": "sam_gg",
+                "image": "sam_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "name": "sam_clap",
+                "image": "sam_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "name": "sam_thanks",
+                "image": "sam_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "name": "sam_sweat",
+                "image": "sam_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "name": "sam_special",
+                "image": "sam_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "name": "sam_emperor_default",
+                "image": "sam_emperor_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "name": "sam_emperor_happy",
+                "image": "sam_emperor_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "name": "sam_emperor_sad",
+                "image": "sam_emperor_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "name": "sam_emperor_angry",
+                "image": "sam_emperor_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#A2D5F1"
+                }
+            },
+            {
+                "name": "sam_emperor_gg",
+                "image": "sam_emperor_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "name": "sam_emperor_clap",
+                "image": "sam_emperor_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#6CDA47"
+                }
+            },
+            {
+                "name": "sam_emperor_thanks",
+                "image": "sam_emperor_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "name": "sam_emperor_sweat",
+                "image": "sam_emperor_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#A229E3"
+                }
+            },
+            {
+                "name": "sam_emperor_special",
+                "image": "sam_emperor_special.webp",
                 "rarity": {
                     "value": 2,
                     "name": "Epic",

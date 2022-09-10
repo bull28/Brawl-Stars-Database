@@ -36,16 +36,17 @@
             "description": "Guaranteed to contain 1 pin and a chance for up to 6 pins in total. Only contains pins but has a much higher chance to find pins of higher rarity.",
             "dropsDescription": [
                 "Coins drop: 0 (extra pins may be converted to coins)",
-                "Draw 1: Wild Card Pin: 1",
-                "Draws 2 to 6: Pin: 1/3, Nothing: 2/3"
+                "Draw 1: Pin: 1",
+                "Draw 2: Wild Card Pin: 1/3, Nothing: 2/3",
+                "Draws 3 to 6: Pin: 1/3, Nothing: 2/3"
             ],
             "draws": [
+                [0, 1, 0],
+                [0, 1, 2],
                 [2, 1, 0],
                 [2, 1, 0],
                 [2, 1, 0],
-                [2, 1, 0],
-                [2, 1, 0],
-                [0, 0, 1]
+                [2, 1, 0]
             ],
             "rewardTypeValues": ["nothing", "pinHighRarity", "wildcard"]
         },

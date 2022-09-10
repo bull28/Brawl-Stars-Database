@@ -305,6 +305,7 @@ function selectPin(pinDropChances, resources, allSkins){
 
         if (duplicate){
             result.displayName = "Duplicate Pin";
+            result.backgroundColor = "#808080";
         } else{
             result.displayName = "New Pin";
         }
