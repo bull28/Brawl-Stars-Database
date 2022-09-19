@@ -5,7 +5,8 @@
         ],
         "rewardTypes": [
             {"types": ["coins", "tokenDoubler"], "properties": ["minAmount", "maxAmount"]},
-            {"types": ["pin", "pinLowRarity", "pinHighRarity", "wildcard", "brawler", "brawlerLowRarity"], "properties": ["raritypmf", "minraritypmf", "coinConversion"]},
+            {"types": ["wildcard", "brawler", "brawlerLowRarity"], "properties": ["raritypmf", "minraritypmf", "coinConversion"]},
+            {"types": ["pin", "pinLowRarity", "pinHighRarity", "pinNoDupes"], "properties": ["raritypmf", "minraritypmf", "newPinWeight", "coinConversion"]},
             {"types": ["tradeCredits", "avatar"], "properties": ["pmfobject"]}
         ]
     },
@@ -35,14 +36,14 @@
             "image": "brawlbox_pinpack.webp",
             "description": "Guaranteed to contain 1 pin and a chance for up to 6 pins in total. Only contains pins but has a much higher chance to find pins of higher rarity.",
             "dropsDescription": [
-                "Coins drop: 0 (extra pins may be converted to coins)",
+                "Coins drop: 0 (extra drops converted to 100 coins per pin)",
                 "Draw 1: Pin: 1",
                 "Draw 2: Wild Card Pin: 1/3, Nothing: 2/3",
                 "Draws 3 to 6: Pin: 1/3, Nothing: 2/3"
             ],
             "draws": [
-                [0, 1, 0],
                 [0, 1, 2],
+                [0, 1, 0],
                 [2, 1, 0],
                 [2, 1, 0],
                 [2, 1, 0],
@@ -103,19 +104,28 @@
             "maxAmount": 250
         },
         "pin": {
-            "raritypmf": [36, 15, 5, 3, 1],
-            "minraritypmf": [18, 9, 4, 3, 1],
+            "raritypmf": [180, 75, 25, 15, 5],
+            "minraritypmf": [144, 60, 20, 12, 4],
+            "newPinWeight": [5.25, 2.25, 1.25, 1, 1],
             "coinConversion": 100
         },
         "pinLowRarity": {
             "raritypmf": [36, 24, 0, 0, 0],
-            "minraritypmf": [24, 18, 0, 0, 0],
+            "minraritypmf": [36, 24, 0, 0, 0],
+            "newPinWeight": [2.75, 1, 1, 1, 1],
             "coinConversion": 100
         },
         "pinHighRarity": {
             "raritypmf": [24, 18, 9, 6, 3],
-            "minraritypmf": [8, 9, 6, 5, 3],
+            "minraritypmf": [16, 12, 6, 4, 2],
+            "newPinWeight": [5.25, 3.5, 3.25, 1, 1],
             "coinConversion": 100
+        },
+        "pinNoDupes": {
+            "raritypmf": [36, 15, 5, 3, 1],
+            "minraritypmf": [0, 0, 0, 0, 0],
+            "newPinWeight": [0, 0, 0, 0, 0],
+            "coinConversion": 300
         },
         "wildcard": {
             "raritypmf": [36, 15, 6, 3, 0],

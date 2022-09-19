@@ -64,6 +64,8 @@ dropChancesPromise.then((data) => {
                     brawlBoxTypes[x] = thisBrawlBox;
                 }
             }
+        } else{
+            console.log("Could not find a valid Brawl Box data file.")
         }
     }
 });
