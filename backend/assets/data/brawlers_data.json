@@ -1705,11 +1705,11 @@
                     "Effects"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Retropolis",
+                    "image": "bg_retropolis.webp",
+                    "icon": "icon_retro.webp"
                 },
-                "limited": false,
+                "limited": true,
                 "image": "rocketgirlhotrod.webp",
                 "model": "rocketgirlhotrod.glb",
                 "rating": 0
@@ -3063,11 +3063,11 @@
                     "Effects"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Retropolis",
+                    "image": "bg_retropolis.webp",
+                    "icon": "icon_retro.webp"
                 },
-                "limited": false,
+                "limited": true,
                 "image": "arcaderetropolis.webp",
                 "model": "arcaderetropolis.glb",
                 "rating": 0
@@ -3455,11 +3455,11 @@
                     "Effects"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Brawl-o-ween",
+                    "image": "bg_brawloween.webp",
+                    "icon": "icon_brawloween.webp"
                 },
-                "limited": false,
+                "limited": true,
                 "image": "rollerheadless.webp",
                 "model": "rollerheadless.glb",
                 "rating": 0
@@ -4091,11 +4091,11 @@
                     "Animations"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Retropolis",
+                    "image": "bg_retropolis.webp",
+                    "icon": "icon_retro.webp"
                 },
-                "limited": false,
+                "limited": true,
                 "image": "barkeepms.webp",
                 "model": "barkeepms.glb",
                 "rating": 0
@@ -4637,11 +4637,11 @@
                     "Effects"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Brawl-o-ween",
+                    "image": "bg_brawloween.webp",
+                    "icon": "icon_brawloween.webp"
                 },
-                "limited": false,
+                "limited": true,
                 "image": "rosarosabrawloween.webp",
                 "model": "rosarosabrawloween.glb",
                 "rating": 0
@@ -5829,11 +5829,11 @@
                     "Effects"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Retropolis",
+                    "image": "bg_retropolis.webp",
+                    "icon": "icon_retro.webp"
                 },
-                "limited": false,
+                "limited": true,
                 "image": "whirlwindrr.webp",
                 "model": "whirlwindrr.glb",
                 "rating": 0
@@ -8856,11 +8856,11 @@
                     "Animations"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Retropolis",
+                    "image": "bg_retropolis.webp",
+                    "icon": "icon_retro.webp"
                 },
-                "limited": false,
+                "limited": true,
                 "image": "undertakergreaser.webp",
                 "model": "undertakergreaser.glb",
                 "rating": 0
@@ -9650,11 +9650,11 @@
                     "Effects"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Brawl-o-ween",
+                    "image": "bg_brawloween.webp",
+                    "icon": "icon_brawloween.webp"
                 },
-                "limited": false,
+                "limited": true,
                 "image": "hookdudeswamp.webp",
                 "model": "hookdudeswamp.glb",
                 "rating": 0
@@ -10079,11 +10079,11 @@
                     "Effects"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Brawl-o-ween",
+                    "image": "bg_brawloween.webp",
+                    "icon": "icon_brawloween.webp"
                 },
-                "limited": false,
+                "limited": true,
                 "image": "spawnerdudedracula.webp",
                 "model": "spawnerdudedracula.glb",
                 "rating": 0
@@ -10814,11 +10814,11 @@
                     "Effects"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Brawl-o-ween",
+                    "image": "bg_brawloween.webp",
+                    "icon": "icon_brawloween.webp"
                 },
-                "limited": false,
+                "limited": true,
                 "image": "stickybombghost.webp",
                 "model": "stickybombghost.glb",
                 "rating": 0
