@@ -37,7 +37,7 @@
                         "gameMode": "gemgrab",
                         "powerLeagueMap": false,
                         "image": "gem-fort.webp",
-                        "bannerImage": "robotfactory.webp"
+                        "bannerImage": "ghostmetro.webp"
                     },
                     {
                         "name": "undermine",
@@ -45,7 +45,7 @@
                         "gameMode": "gemgrab",
                         "powerLeagueMap": false,
                         "image": "undermine.webp",
-                        "bannerImage": "mine.webp"
+                        "bannerImage": "mortuary.webp"
                     },
                     {
                         "name": "deep-diner",
@@ -53,7 +53,7 @@
                         "gameMode": "gemgrab",
                         "powerLeagueMap": false,
                         "image": "deep-diner.webp",
-                        "bannerImage": "mortuary.webp"
+                        "bannerImage": "retropolis.webp"
                     },
                     {
                         "name": "hard-rock-mine",
@@ -265,7 +265,7 @@
                         "gameMode": "knockout",
                         "powerLeagueMap": false,
                         "image": "flaring-phoenix.webp",
-                        "bannerImage": "robotfactory.webp"
+                        "bannerImage": "retropolis.webp"
                     },
                     {
                         "name": "belles-rock",
@@ -289,7 +289,7 @@
                         "gameMode": "knockout",
                         "powerLeagueMap": true,
                         "image": "out-in-the-open.webp",
-                        "bannerImage": "arcade.webp"
+                        "bannerImage": "ghostmetro.webp"
                     },
                     {
                         "name": "x-marks-the-spot",
@@ -317,7 +317,7 @@
                         "gameMode": "bounty",
                         "powerLeagueMap": false,
                         "image": "excel.webp",
-                        "bannerImage": "mortuary.webp"
+                        "bannerImage": "retropolis.webp"
                     },
                     {
                         "name": "temple-ruins",
@@ -333,7 +333,7 @@
                         "gameMode": "bounty",
                         "powerLeagueMap": true,
                         "image": "canal-grande.webp",
-                        "bannerImage": "mortuary.webp"
+                        "bannerImage": "ghostmetro.webp"
                     },
                     {
                         "name": "hideout",
@@ -393,7 +393,7 @@
                         "gameMode": "hotzone",
                         "powerLeagueMap": true,
                         "image": "dueling-beetles.webp",
-                        "bannerImage": "arcade.webp"
+                        "bannerImage": "ghostmetro.webp"
                     },
                     {
                         "name": "open-zone",
@@ -409,7 +409,7 @@
                         "gameMode": "hotzone",
                         "powerLeagueMap": false,
                         "image": "controller-chaos.webp",
-                        "bannerImage": "arcade.webp"
+                        "bannerImage": "retropolis.webp"
                     },
                     {
                         "name": "quarter-pounder",
@@ -461,7 +461,7 @@
                         "gameMode": "heist",
                         "powerLeagueMap": true,
                         "image": "safe-zone.webp",
-                        "bannerImage": "robotfactory.webp"
+                        "bannerImage": "ghostmetro.webp"
                     },
                     {
                         "name": "hot-potato",
@@ -501,7 +501,7 @@
                         "gameMode": "heist",
                         "powerLeagueMap": false,
                         "image": "tornado-ring.webp",
-                        "bannerImage": "arcade.webp"
+                        "bannerImage": "retropolis.webp"
                     },
                     {
                         "name": "snaked-assault",
