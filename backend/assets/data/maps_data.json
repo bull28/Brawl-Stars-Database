@@ -29,7 +29,7 @@
                         "gameMode": "gemgrab",
                         "powerLeagueMap": true,
                         "image": "crystal-arcade.webp",
-                        "bannerImage": "arcade.webp"
+                        "bannerImage": "candystand.webp"
                     },
                     {
                         "name": "gem-fort",
@@ -53,7 +53,7 @@
                         "gameMode": "gemgrab",
                         "powerLeagueMap": false,
                         "image": "deep-diner.webp",
-                        "bannerImage": "retropolis.webp"
+                        "bannerImage": "snowtel.webp"
                     },
                     {
                         "name": "hard-rock-mine",
@@ -69,7 +69,7 @@
                         "gameMode": "gemgrab",
                         "powerLeagueMap": true,
                         "image": "double-swoosh.webp",
-                        "bannerImage": "robotfactory.webp"
+                        "bannerImage": "fightinggame.webp"
                     }
                 ]
             }
@@ -257,7 +257,7 @@
                         "gameMode": "knockout",
                         "powerLeagueMap": false,
                         "image": "riverside.webp",
-                        "bannerImage": "mortuary.webp"
+                        "bannerImage": "candystand.webp"
                     },
                     {
                         "name": "flaring-phoenix",
@@ -265,7 +265,7 @@
                         "gameMode": "knockout",
                         "powerLeagueMap": false,
                         "image": "flaring-phoenix.webp",
-                        "bannerImage": "retropolis.webp"
+                        "bannerImage": "snowtel.webp"
                     },
                     {
                         "name": "belles-rock",
@@ -273,7 +273,7 @@
                         "gameMode": "knockout",
                         "powerLeagueMap": true,
                         "image": "belles-rock.webp",
-                        "bannerImage": "robotfactory.webp"
+                        "bannerImage": "fightinggame.webp"
                     },
                     {
                         "name": "goldarm-gulch",
@@ -317,7 +317,7 @@
                         "gameMode": "bounty",
                         "powerLeagueMap": false,
                         "image": "excel.webp",
-                        "bannerImage": "retropolis.webp"
+                        "bannerImage": "snowtel.webp"
                     },
                     {
                         "name": "temple-ruins",
@@ -325,7 +325,7 @@
                         "gameMode": "bounty",
                         "powerLeagueMap": false,
                         "image": "temple-ruins.webp",
-                        "bannerImage": "mortuary.webp"
+                        "bannerImage": "candystand.webp"
                     },
                     {
                         "name": "canal-grande",
@@ -349,7 +349,7 @@
                         "gameMode": "bounty",
                         "powerLeagueMap": true,
                         "image": "shooting-star.webp",
-                        "bannerImage": "robotfactory.webp"
+                        "bannerImage": "fightinggame.webp"
                     },
                     {
                         "name": "dry-season",
@@ -409,7 +409,7 @@
                         "gameMode": "hotzone",
                         "powerLeagueMap": false,
                         "image": "controller-chaos.webp",
-                        "bannerImage": "retropolis.webp"
+                        "bannerImage": "snowtel.webp"
                     },
                     {
                         "name": "quarter-pounder",
@@ -417,7 +417,7 @@
                         "gameMode": "hotzone",
                         "powerLeagueMap": false,
                         "image": "quarter-pounder.webp",
-                        "bannerImage": "mortuary.webp"
+                        "bannerImage": "candystand.webp"
                     },
                     {
                         "name": "parallel-plays",
@@ -441,7 +441,7 @@
                         "gameMode": "hotzone",
                         "powerLeagueMap": true,
                         "image": "ring-of-fire.webp",
-                        "bannerImage": "robotfactory.webp"
+                        "bannerImage": "fightinggame.webp"
                     }
                 ]
             },
@@ -469,7 +469,7 @@
                         "gameMode": "heist",
                         "powerLeagueMap": false,
                         "image": "hot-potato.webp",
-                        "bannerImage": "mortuary.webp"
+                        "bannerImage": "candystand.webp"
                     },
                     {
                         "name": "bridge-too-far",
@@ -485,7 +485,7 @@
                         "gameMode": "heist",
                         "powerLeagueMap": true,
                         "image": "pit-stop.webp",
-                        "bannerImage": "robotfactory.webp"
+                        "bannerImage": "fightinggame.webp"
                     },
                     {
                         "name": "kaboom-canyon",
@@ -501,7 +501,7 @@
                         "gameMode": "heist",
                         "powerLeagueMap": false,
                         "image": "tornado-ring.webp",
-                        "bannerImage": "retropolis.webp"
+                        "bannerImage": "snowtel.webp"
                     },
                     {
                         "name": "snaked-assault",
