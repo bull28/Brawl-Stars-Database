@@ -288,7 +288,7 @@ router.post("/accept", (req, res) => {
     // useWildCards makes the server check if the user has a wild card pin to use instead when they are missing a required pin
     // forceAccept makes the server accept the trade anyway even if the user would not be able to collect a pin because they
     // do not have the brawler unlocked.
-    var useWildCards = true;
+    var useWildCards = false;
     var forceAccept = false;
     if (req.body.useWildCards == true){
         useWildCards = true;
@@ -358,23 +358,26 @@ router.post("/accept", (req, res) => {
                 
                 var hasRequiredPins = true;
                 for (let x of requestPins){
+                    // First check if they have the required pins in their collection
                     if (collectionData.hasOwnProperty(x.brawler)){
                         if (collectionData[x.brawler].hasOwnProperty(x.pin)){
-                            if (collectionData[x.brawler][x.pin] < x.amount){
-                                // add check to use wild card pins here
-
-                                // If the user does not have enough pins, check if they have enough wild cards of the correct rarity
-                                // Note: this is only done when accepting a trade. Using wild card pins when creating a trade is not allowed.
-                                if (useWildCards && wildCardPins[x.rarityValue] >= x.amount){
-                                    wildCardPins[x.rarityValue] -= x.amount
-                                }
-                                
-                                // If they also do not have enough wild cards, they do not have the required pins
-                                else{
+                            var collectionPinCount = collectionData[x.brawler][x.pin];
+                            if (collectionPinCount >= x.amount){
+                                // User has all the required pins
+                                collectionData[x.brawler][x.pin] -= x.amount;
+                            } else if (collectionPinCount > 0){
+                                // User has some pins but not the full required amount
+                                var missingPins = x.amount - collectionPinCount;
+                                if (wildCardPins[x.rarityValue] >= missingPins){
+                                    wildCardPins[x.rarityValue] -= missingPins;
+                                    collectionData[x.brawler][x.pin] -= collectionPinCount;
+                                } else{
                                     hasRequiredPins = false;
                                 }
                             } else{
-                                collectionData[x.brawler][x.pin] -= x.amount;
+                                // User has none of the required pins
+                                // In this case, check for wild card pins below
+                                hasRequiredPins = false;
                             }
                         } else{
                             hasRequiredPins = false;
@@ -383,7 +386,20 @@ router.post("/accept", (req, res) => {
                         // They do not have the brawler unlocked
                         hasRequiredPins = false;
                     }
+
+                    // If they do not have the required pins, check if they have enough wild cards
+                    if (hasRequiredPins == false && useWildCards){
+                        if (wildCardPins[x.rarityValue] >= x.amount){
+                            wildCardPins[x.rarityValue] -= x.amount
+                            hasRequiredPins = true;
+                        } else{
+                            hasRequiredPins = false;
+                        }
+                    }
                 }
+                // If they still do not have the required pins, check their wild card pins only
+                // if they enabled that option
+                
 
                 // User does not have the pins the trade creator wants
                 if (hasRequiredPins == false){
