@@ -143,6 +143,16 @@ router.post("/create", (req, res) => {
         const tradeCost = trades.getTradeCost(offerPins, requestPins);
         const timeTradeCost = trades.getTimeTradeCost(tradeHours);
 
+        // At this point, the trade is a valid trade (the user may not have the requirements or resources
+        // to create it though). The value returned here is the number of trade credits it would require
+        // to create a trade with the given offer, request, and duration.
+        if (req.body.getCost == true){
+            res.json({
+                "tradeCost": tradeCost + timeTradeCost
+            });
+            return;
+        }
+
         // Get the user's data and check if they have the necessary resources and pins to create the trade
         database.queryDatabase(
         "SELECT brawlers, active_avatar, trade_credits, trade_requests FROM " + TABLE_NAME + " WHERE username = ?;",

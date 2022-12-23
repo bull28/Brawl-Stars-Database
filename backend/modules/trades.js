@@ -99,13 +99,13 @@ function getTradeCost(offerPins, requestPins){
     for (let x of offerPins){
         totalTradeCost += tradeCreditsByRarity(x.rarityValue);
         if (x.amount > 1){
-            totalTradeCost += (x.amount - 1);
+            totalTradeCost += ((x.amount - 1) * 2);
         }
     }
     for (let x of requestPins){
         totalTradeCost += tradeCreditsByRarity(x.rarityValue);
         if (x.amount > 1){
-            totalTradeCost += (x.amount - 1);
+            totalTradeCost += ((x.amount - 1) * 2);
         }
     }
 
@@ -117,8 +117,8 @@ function getTradeCost(offerPins, requestPins){
 //@param {Number} tradeHours number of hours the trade will last
 /**
  * Calculates the additional cost of a trade based on how much time the trade
- * lasts for. Trades 48 hours or less are free. Trades should not last more
- * than 336 hours (or 1 season).
+ * lasts for. Trades 48 hours or less do not cost extra credits. Trades
+ * should not last more than 336 hours (or 1 season).
  * @param {Number} tradeHours number of hours the trade will last
  * @returns 
  */
