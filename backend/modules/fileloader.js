@@ -1,10 +1,10 @@
 // This module reads all the required data from files
 
-const fs = require("fs");
+const fspromises = require("fs/promises");
 const maps = require("./maps");
 
 async function readBrawlers(){
-    return fs.promises.readFile("assets/data/brawlers_data.json", "utf8")
+    return fspromises.readFile("assets/data/brawlers_data.json", "utf8")
     .then((result) => {
         const allSkins = JSON.parse(result);
         return allSkins;
@@ -16,7 +16,7 @@ async function readBrawlers(){
 }
 
 async function readMaps(){
-    return fs.promises.readFile("assets/data/maps_data.json", "utf8")
+    return fspromises.readFile("assets/data/maps_data.json", "utf8")
     .then((result) => {
         const eventData = JSON.parse(result);
         const eventList = maps.jsonToEvents(eventData);
@@ -29,7 +29,7 @@ async function readMaps(){
 }
 
 async function readBrawlBox(){
-    return fs.promises.readFile("assets/data/brawlbox_data.json", "utf8")
+    return fspromises.readFile("assets/data/brawlbox_data.json", "utf8")
     .then((result) => {
         const brawlBoxData = JSON.parse(result);
         return brawlBoxData;
@@ -39,8 +39,19 @@ async function readBrawlBox(){
     });
 }
 
+async function readShop(){
+    return fspromises.readFile("assets/data/coinsshop_data.json", "utf8")
+    .then((result) => {
+        const shopData = JSON.parse(result);
+        return shopData;
+    })
+    .catch((error) => {
+        return {};
+    });
+}
+
 async function readFreeAvatars(){
-    return fs.promises.readdir("assets/images/avatars/free")
+    return fspromises.readdir("assets/images/avatars/free")
     .then((result) => {
         for (let x in result){
             result[x] = "avatars/free/" + result[x];
@@ -53,7 +64,7 @@ async function readFreeAvatars(){
 }
 
 async function readSpecialAvatars(){
-    return fs.promises.readdir("assets/images/avatars/special")
+    return fspromises.readdir("assets/images/avatars/special")
     .then((result) => {
         for (let x in result){
             result[x] = "avatars/special/" + result[x];
@@ -70,3 +81,4 @@ exports.eventListPromise = readMaps();
 exports.dropChancesPromise = readBrawlBox();
 exports.freeAvatarsPromise = readFreeAvatars();
 exports.specialAvatarsPromise = readSpecialAvatars();
+exports.shopDataPromise = readShop();

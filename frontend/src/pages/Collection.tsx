@@ -69,9 +69,9 @@ export default function Collection() {
                             <VStack spacing={1}>
                           
                                 <Text color={'white'} className={'heading-md'}  fontSize={'md'}>Brawlers Unlocked: </Text><Text fontSize={'lg'} className={'heading-lg'} color={(data && data?.unlockedBrawlers === data?.totalBrawlers) ? 'gold' : 'white'} >{`${data?.unlockedBrawlers ? data.unlockedBrawlers : '0'}/${data?.totalBrawlers ? data.totalBrawlers : '0'}`}</Text>
-                                <Text color={'white'} className={'heading-md'} fontSize={'md'}>Pins Unlocked:  </Text><Text fontSize={'lg'} className={'heading-lg'} color={(data && data?.unlockedPins === data?.totalPins) ? 'gold' : 'white'} >{`${data?.unlockedPins ? data.unlockedPins : '0'}/${data?.totalPins ? data.totalPins : '0'}`}</Text>
+                                <Text color={'white'} className={'heading-md'} fontSize={'md'}>Unique Pins Unlocked:  </Text><Text fontSize={'lg'} className={'heading-lg'} color={(data && data?.unlockedPins === data?.totalPins) ? 'gold' : 'white'} >{`${data?.unlockedPins ? data.unlockedPins : '0'}/${data?.totalPins ? data.totalPins : '0'}`}</Text>
                                 <Text color={'white'} className={'heading-md'} fontSize={'md'}>Completed Brawlers:  </Text><Text fontSize={'lg'} className={'heading-lg'} color={(data && data?.completedBrawlers === data?.totalBrawlers) ? 'gold' : 'white'} >{`${data?.completedBrawlers ? data.completedBrawlers : '0'}/${data?.totalBrawlers ? data.totalBrawlers : '0'}`}</Text>
-                                <Text color={'white'} className={'heading-md'} fontSize={'md'}>Total Pins: </Text><Text fontSize={'lg'} className={'heading-lg'} color={(data && (data && data.pinCopies > data.totalPins)) ? 'gold' : 'white'} >{data?.pinCopies ? data.pinCopies : '0'}</Text>
+                                <Text color={'white'} className={'heading-md'} fontSize={'md'}>Total Pins: </Text><Text fontSize={'lg'} className={'heading-lg'} color={(data && data?.unlockedPins === data?.totalPins) ? 'gold' : 'white'} >{data?.pinCopies ? data.pinCopies : '0'}</Text>
                               
                             </VStack>
                         </Flex>
@@ -127,7 +127,7 @@ export default function Collection() {
                                 {brawler.pins.map((pin) => (
                                         <Box minW={'80px'}>
                                             <Image w={'80px'} filter={(pin.a === 0) ? 'grayscale(100%)': 'none'} src={`/image/${brawler.pinFilePath+pin.i}`} fallback={<Spinner/>}/>                            
-                                            <Text my={1} color={(pin.a === 10) ? 'gold' : 'white'} fontSize={'lg'} className={'heading-lg'}>{`${pin.a}x`}</Text>
+                                            <Text my={1} color={(pin.a === 0) ? 'gray' : 'white'} fontSize={'lg'} className={'heading-lg'}>{`${pin.a}x`}</Text>
                                         </Box>                                  
                                         
                                 ))}
@@ -135,7 +135,7 @@ export default function Collection() {
                             {AddLoadedBrawler(brawler.name)}</>}
                             <Center flexDir={'column'} mt={3}>
                                 {!brawler.u && <Tooltip label={'Unlock By Opening Boxes'}><Tag colorScheme={'red'} my={2}>Unlock This Brawler To Collect Pins</Tag></Tooltip>}
-                                <Text mb={'30px'} color={'white'} className={'heading-sm'}>{`${brawler.displayName} Pins: ${brawler.pinCopies}`}</Text>
+                                <Text mb={'30px'} color={'white'} className={'heading-sm'}>{`Total ${brawler.displayName} Pins: ${brawler.pinCopies}`}</Text>
                                 <Link href={`/brawlers/${brawler.name}`} color={'white'} className={'heading-sm'}>View Brawler Page <ExternalLinkIcon mx={'2px'}/></Link>
                             </Center>
                         </AccordionPanel>

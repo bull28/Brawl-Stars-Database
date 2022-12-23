@@ -64,7 +64,7 @@ INSERT INTO `brawl_stars_database` (`username`, `password`, `active_avatar`, `br
 -- Trade test 1
 INSERT INTO `brawl_stars_database` (`username`, `password`, `active_avatar`, `brawlers`, `avatars`, `wild_card_pins`, `trade_requests`, `tokens`, `trade_credits`) VALUES ("trade1", "x1", "avatars/free/default.webp", 
 '{"bull":{"bull_default":2,"bull_angry":3,"bull_sad":2},"darryl":{"darryl_happy":1,"darryl_thanks":0},"frank":{},"ash":{"ash_special":1,"ash_ninja_special":4},"tara":{},"elprimo":{}}',
-'[]', '[10, 10, 10, 10, 10]', 0, 20000, 28
+'[]', '[10, 10, 10, 10, 10]', 0, 20000, 6
 );
 
 -- Trade test 2
@@ -89,6 +89,7 @@ CREATE TABLE `brawl_stars_trades` (
   `offer` TEXT NOT NULL,
   `request` TEXT NOT NULL,
   `trade_credits` INT DEFAULT 1,
+  `trade_credits_time` INT DEFAULT 0,
   `expiration` BIGINT NOT NULL,
   `accepted` TINYINT DEFAULT 0,
   `accepted_by` VARCHAR(30) DEFAULT "",

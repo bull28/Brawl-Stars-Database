@@ -124,11 +124,11 @@ function brawlBox(dropChances, boxType, allSkins, resources){
         
         if (x == "coins"){
             drop = selectCoins(dropChances.rewardTypes.coins, resources);
-        } else if (x == "pin" || x == "pinLowRarity" || x == "pinHighRarity"){
+        } else if (x == "pin" || x == "pinLowRarity" || x == "pinHighRarity" || x == "pinNoDupes"){
             drop = selectPin(dropChances.rewardTypes[x], resources, allSkins);
         } else if (x == "wildcard"){
             drop = selectWildCardPin(dropChances.rewardTypes.wildcard, resources, allSkins);
-        } else if (x == "brawler" || x == "brawlerLowRarity"){
+        } else if (x == "brawler" || x == "brawlerLowRarity" || x == "brawlerHighRarity"){
             drop = selectBrawler(dropChances.rewardTypes[x], resources, allSkins);
         } else if (x == "bonus"){
             drop = selectBonus(dropChances.boxes.bonus, dropChances.rewardTypes, resources);
@@ -136,7 +136,7 @@ function brawlBox(dropChances, boxType, allSkins, resources){
 
         if (drop.rewardType == "coins"){
             coinsReward += drop.amount;
-        } else{
+        } else if (drop.rewardType != "empty"){
             rewards.push(drop);
         }
         }
@@ -204,8 +204,10 @@ function selectPin(pinDropChances, resources, allSkins){
     //var raritypmf = [36, 15, 6, 3, 0];
     //var raritypmf = [0, 0, 0, 0, 0];
     //var raritypmf = pinDropChances.raritypmf;
+    var modifiedRaritypmf = [0, 0, 0, 0, 0];
     const raritypmf = pinDropChances.raritypmf;
     const minraritypmf = pinDropChances.minraritypmf;
+    const newPinWeight = pinDropChances.newPinWeight;
     var pinsByRarity = [[], [], [], [], []];
     var duplicatePins = [[], [], [], [], []];
 
@@ -244,30 +246,56 @@ function selectPin(pinDropChances, resources, allSkins){
         }
     }
 
-    // Select a rarity based from the ones that do have pins available
-    // With the latest change, allowing duplicate pins to be collected,
-    // all rarities can be selected. When a rarity is selected, there is a
-    // chance to receive either a new pin or a duplicate pin. The probability
-    // of getting either is stored in minraritypmf.
-    var selectedRarity = RNG(raritypmf);
-    var duplicate = false;
+    // Rarities that have all pins collected will have a lower chance of
+    // being selected. This chance is stored in minraritypmf.
+    // Since this affects the drop chances even when all pins are collected,
+    // resulting in more copies of high-rarity pins, the relative rarities
+    // are the same in minraritypmf as they are in raritypmf.
+
+    for (let r = 0; r < modifiedRaritypmf.length; r++){
+        // newPinWeight modifies the chances of getting duplicates
+        if (pinsByRarity[r].length == 0){
+            modifiedRaritypmf[r] = minraritypmf[r];
+        } else{
+            modifiedRaritypmf[r] = raritypmf[r];
+        }
+    }
+    //console.log(modifiedRaritypmf);
+    selectedRarity = RNG(modifiedRaritypmf);
+
+    
+    var duplicate = false;// used to determine whether the pin received was a duplicate then send the correct message to the user
     if (selectedRarity >= 0){
-        // The probability of getting a duplicate pin is minraritypmf[selectedRarity] / raritypmf[selectedRarity]
-        // So the probability of getting a new pin is 1 - that value which is checked for here.
-        // Also, if there are no more new pins available (pinsByRarity[selectedRarity].length == 0)
-        // then every pin will be a duplicate, as long as there are also duplicate pins available.
-        // In this case, the value of duplicateProbability does not do anything.
-        // If a certain rarity has no pins available, coins will be given instead.
         const newPinCount = pinsByRarity[selectedRarity].length;
         const duplicatePinCount = duplicatePins[selectedRarity].length;
 
         var duplicateProbability = 0;
-        if (duplicatePinCount > 0 && raritypmf[selectedRarity] > 0){
-            duplicateProbability = (minraritypmf[selectedRarity] / raritypmf[selectedRarity]) * (duplicatePinCount / (newPinCount + duplicatePinCount));
+        // Every pin that can be collected has a weight which represents how likely it is to
+        // be chosen.
+        
+        // The probability of a specific pin being chosen is its weight divided by the sum of all pins' weight in that rarity.
+        
+        // To make it easier to collect new pins when a user does not yet have them all,
+        // new pins' weight are multiplied by newPinWeight[selectedRarity], making them
+        // more likely to drop than duplicate pins.
+
+        // If there are no more new pins available (pinsByRarity[selectedRarity].length == 0)
+        // then every pin will be a duplicate, as long as there are also duplicate pins available.
+        // In this case, the value of duplicateProbability does not do anything.
+        // If the selected rarity has no pins available, coins will be given instead.
+
+        if (duplicatePinCount > 0 && newPinWeight[selectedRarity] > 0){
+            //duplicateProbability = (1 / newPinWeight[selectedRarity]) * (duplicatePinCount / (newPinCount + duplicatePinCount));
+            duplicateProbability = (duplicatePinCount / (newPinCount * newPinWeight[selectedRarity] + duplicatePinCount));
         }
+        
+        //if (newPinWeight[selectedRarity] > 0) console.log("Selected Rarity:", selectedRarity, " New Pins:", newPinCount, " Duplicate Pins:", duplicatePinCount,
+        //    " Probability of a new pin: ", newPinCount * newPinWeight[selectedRarity], "/", (newPinCount * newPinWeight[selectedRarity] + duplicatePinCount),
+        //    " Probability of a duplicate pin:", duplicatePinCount, "/", (newPinCount * newPinWeight[selectedRarity] + duplicatePinCount)
+        //);
 
         // Math.random() > duplicateProbability is the same as Math.random() < (1 - duplicateProbability)
-        if (Math.random() > duplicateProbability && newPinCount > 0){
+        if (Math.random() >= duplicateProbability && newPinCount > 0){
             availablePins = pinsByRarity[selectedRarity];
         } else if (duplicatePinCount > 0){
             duplicate = true;
@@ -305,11 +333,12 @@ function selectPin(pinDropChances, resources, allSkins){
 
         if (duplicate){
             result.displayName = "Duplicate Pin";
+            result.backgroundColor = "#808080";
         } else{
             result.displayName = "New Pin";
         }
 
-    } else{
+    } else if (pinDropChances.coinConversion > 0){
         resources.coins += pinDropChances.coinConversion;
 
         result.rewardType = "coins";
@@ -442,7 +471,7 @@ function selectBrawler(brawlerDropChances, resources, allSkins){
         result.backgroundColor = brawlerObject.rarity.color;
         result.description = brawlerObject.description;
         result.inventory = 1;
-    } else{
+    } else if (brawlerDropChances.coinConversion > 0){
         resources.coins += brawlerDropChances.coinConversion;
 
         result.rewardType = "coins";

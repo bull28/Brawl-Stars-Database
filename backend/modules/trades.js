@@ -114,5 +114,36 @@ function getTradeCost(offerPins, requestPins){
     return totalTradeCost;
 }
 
+//@param {Number} tradeHours number of hours the trade will last
+/**
+ * Calculates the additional cost of a trade based on how much time the trade
+ * lasts for. Trades 48 hours or less are free. Trades should not last more
+ * than 336 hours (or 1 season).
+ * @param {Number} tradeHours number of hours the trade will last
+ * @returns 
+ */
+function getTimeTradeCost(tradeHours){
+    var timeTradeCost = 0;
+
+    if (tradeHours > 48){
+        if (tradeHours <= 72){
+            timeTradeCost = 1;
+        } else if (tradeHours <= 120){
+            timeTradeCost = 2;
+        } else if (tradeHours <= 168){
+            timeTradeCost = 3;
+        } else if (tradeHours <= 240){
+            timeTradeCost = 4;
+        } else if (tradeHours <= 336){
+            timeTradeCost = 5;
+        } else{
+            timeTradeCost = 1000;
+        }
+    }
+
+    return timeTradeCost;
+}
+
 exports.validatePins = validatePins;
 exports.getTradeCost = getTradeCost;
+exports.getTimeTradeCost = getTimeTradeCost;

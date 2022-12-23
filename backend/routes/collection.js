@@ -28,6 +28,19 @@ allSkinsPromise.then((data) => {
         allSkins = data;
     }
 });
+
+// Load the shop items
+var shopItems = {};
+const shopDataPromise = fileLoader.shopDataPromise;
+shopDataPromise.then((data) => {
+    if (data !== undefined){
+        if (validateShopItems(data)){
+            shopItems = data;
+        }
+    }
+});
+
+// Load the drop chances data
 var dropChances = {};
 var brawlBoxTypes = {};
 const dropChancesPromise = fileLoader.dropChancesPromise;
@@ -39,7 +52,7 @@ dropChancesPromise.then((data) => {
             // Copy over the brawl box data in case the user requests a list of box types
             // Remove all secret information like drop chances
             for (let x in dropChances.boxes){
-                if (x != "bonus"){
+                if (x != "bonus" && x != "newBrawler"){
                     var thisBrawlBox = {};
                     for (let y in dropChances.boxes[x]){
                         if (y == "image"){
@@ -51,6 +64,8 @@ dropChancesPromise.then((data) => {
                     brawlBoxTypes[x] = thisBrawlBox;
                 }
             }
+        } else{
+            console.log("Could not find a valid Brawl Box data file.")
         }
     }
 });
@@ -114,6 +129,26 @@ function databaseErrorCheck(error, results, fields, res){
 }
 
 
+function validateShopItems(shopItems){
+    if (!(shopItems)){
+        return false;
+    }
+
+    // these are the only required properties, all others are optional
+    const checkProperties = ["cost", "itemType", "extraData", "amount"];
+
+    var valid = true;
+    for (let item in shopItems){
+        for (let property of checkProperties){
+            if (shopItems[item].hasOwnProperty(property) == false){
+                valid = false;
+            }
+        }
+    }
+
+    return valid;
+}
+
 /**
  * Checks an object to determine whether it has all the necessary information
  * to be used by the brawl box to calculate drops.
@@ -130,7 +165,7 @@ function validateDropChances(dropChances){
         return false;
     }
 
-    valid = true;
+    var valid = true;
     for (let checkType in dropChances.key){
         // checkType = the reward type category (boxes or rewardTypes)
         if (dropChances.hasOwnProperty(checkType)){
@@ -177,7 +212,7 @@ router.post("/resources", (req, res) => {
 
     if (username){
         database.queryDatabase(
-        "SELECT username, active_avatar, tokens, token_doubler, coins, trade_credits, brawlers FROM " + TABLE_NAME + " WHERE username = ?;",
+        "SELECT username, active_avatar, tokens, token_doubler, coins, trade_credits, brawlers, wild_card_pins FROM " + TABLE_NAME + " WHERE username = ?;",
         [username], (error, results, fields) => {
             if (databaseErrorCheck(error, results, fields, res)){
                 return;
@@ -190,6 +225,36 @@ router.post("/resources", (req, res) => {
                 res.status(500).send("Collection data could not be loaded.");
                 return;
             }
+
+            
+            var wildCardData = JSON.parse(results[0].wild_card_pins);
+            var wildCardPins = [];
+
+            for (let x in wildCardData){
+                wildCardPins.push({
+                    "rarityName":"",
+                    "rarityColor":"#000000",
+                    "amount":wildCardData[x]
+                });
+            }
+
+            // Look through the allSkins array to get the rarity information
+            for (let x in allSkins){
+                if (allSkins[x].hasOwnProperty("pins")){
+                    for (let y of allSkins[x].pins){
+                        if (y.rarity.value < wildCardPins.length){
+                            const rarityValue = y.rarity.value;
+                            wildCardPins[rarityValue].rarityName = y.rarity.name;
+                            wildCardPins[rarityValue].rarityColor = y.rarity.color;
+                        }
+                    }
+                }
+            }
+
+            // If there are no pins of a specific rarity, the rarity name in wildCardPins
+            // will be empty. This is fine because wild card pins of that rarity have no use
+            // since there are no pins of that rarity that exist.
+            
             
             const resourcesData = {
                 "username": results[0].username,
@@ -198,7 +263,8 @@ router.post("/resources", (req, res) => {
                 "tokens": results[0].tokens,
                 "tokenDoubler": results[0].token_doubler,
                 "coins": results[0].coins,
-                "tradeCredits": results[0].trade_credits
+                "tradeCredits": results[0].trade_credits,
+                "wildCardPins": wildCardPins
             }
             
             res.json(resourcesData);
@@ -376,6 +442,141 @@ router.post("/brawlbox", (req, res) => {
                 //console.log("YOUR PROGRAM IS",EDGRISBAD.toString(),"TIMES WORSE THAN E D G R");
 
                 res.json(brawlBoxContents);
+            });
+        });
+    } else{
+        res.status(401).send("Invalid token.");
+    }
+});
+
+// 
+router.post("/shop", (req, res) => {
+    if (!(req.body.token)){
+        res.status(400).send("Token is missing.");
+        return;
+    }
+    if (isEmpty(shopItems)){
+        res.status(500).send("No items currently available for sale.");
+        return;
+    }
+
+    let username = validateToken(req.body.token);
+
+    if (username){
+        database.queryDatabase(
+        "SELECT coins, trade_credits, brawlers, avatars FROM " + TABLE_NAME + " WHERE username = ?;",
+        [username], (error, results, fields) => {
+            if (databaseErrorCheck(error, results, fields, res)){
+                return;
+            }
+
+            // Load the user's resources
+            var userBrawlers = {};
+            var userAvatars = [];
+            var userCoins = results[0].coins;
+            var userTradeCredits = results[0].trade_credits;
+            try{
+                userBrawlers = JSON.parse(results[0].brawlers);
+                userAvatars = JSON.parse(results[0].avatars);
+            } catch (error){
+                res.status(500).send("Collection data could not be loaded.");
+                return;
+            }
+
+            // Out of all the shop items, remove all of them that the user cannot buy right now
+            var availableShopItems = pins.getShopItems(shopItems, allSkins, userBrawlers, userAvatars);
+
+            // If they do not provide an item to buy, show all items
+            if (!(req.body.item)){
+                var shopItemList = [];
+                for (let x in availableShopItems){
+                    var thisItem = {};
+                    thisItem.name = x;
+                    for (let property in availableShopItems[x]){
+                        if (property != "itemType"){
+                            // they do not need to know the itemType id
+                            thisItem[property] = availableShopItems[x][property];
+                        }
+                    }
+                    shopItemList.push(thisItem);
+                }
+                
+                res.json(shopItemList);
+                return;
+            }
+            if (!(availableShopItems.hasOwnProperty(req.body.item))){
+                res.status(404).send("Item is not currently available.");
+                return;
+            }
+
+            // This object contains all the data of the item the user is currently buying
+            const itemData = shopItems[req.body.item];
+
+            if (userCoins < itemData.cost){
+                res.status(403).send("You cannot afford this item!");
+                return;
+            }
+
+            // All costs in this shop are in coins
+            userCoins -= itemData.cost;
+            
+            // Add the item to the user's inventory
+            // Do a different operation based on the type of the item
+            var buyItemResult = [];
+            var userItemInventory = 0;
+            if (itemData.itemType == "tradeCredits"){
+                userTradeCredits += itemData.amount;
+                userItemInventory = userTradeCredits;
+            } else if (itemData.itemType == "avatar"){
+                userAvatars.push(itemData.extraData);
+                userItemInventory = 1;
+            } else if (itemData.itemType == "brawler"){
+                // The brawl box opener needs a resources object so provide a temporary object
+                // with some of the fields set to default values
+                var tempResourceObject = {
+                    "brawlers": userBrawlers,
+                    "avatars": userAvatars,
+                    "wild_card_pins": [],
+                    "tokens": 0,
+                    "token_doubler": 0,
+                    "coins": userCoins,
+                    "trade_credits": userTradeCredits
+                }
+                buyItemResult = brawlbox.brawlBox(dropChances, "newBrawler", allSkins, tempResourceObject);
+
+                if (buyItemResult.length > 0){
+                    userItemInventory = 1;
+
+                    // Sort all the brawlers so they don't end up in random order as the user opens more boxes
+                    userBrawlers = Object.keys(userBrawlers).sort().reduce((object, key) => {
+                        object[key] = userBrawlers[key]; 
+                        return object;
+                    }, {});
+                }
+            }
+
+            // Write back to the database after all values have been modified
+            database.queryDatabase(
+            "UPDATE " + TABLE_NAME + " SET coins = ?, trade_credits = ?, brawlers = ?, avatars = ? WHERE username = ?;",
+            [
+                userCoins,
+                userTradeCredits,
+                JSON.stringify(userBrawlers),
+                JSON.stringify(userAvatars),
+                username
+            ], (error, results, fields) => {
+                if (error){
+                    res.status(500).send("Could not connect to database.");
+                    return;
+                }
+                if (results.affectedRows == 0){
+                    res.status(500).send("Could not update the database.");
+                }
+
+                res.json({
+                    "inventory": userItemInventory,
+                    "result": buyItemResult
+                });
             });
         });
     } else{

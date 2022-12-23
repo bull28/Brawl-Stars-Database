@@ -11,6 +11,7 @@ const TRADE_TABLE_NAME = process.env.DATABASE_TRADE_TABLE_NAME || "brawl_stars_t
 
 // functions to set up trades
 const trades = require("../modules/trades");
+const pins = require("../modules/pins");
 const fileLoader = require("../modules/fileloader");
 
 // constants for trades
@@ -90,6 +91,16 @@ router.post("/create", (req, res) => {
         searchByName = true;
     }
 
+    var tradeHours = 48;
+    if (req.body.tradeDurationHours !== undefined){
+        tradeHours = req.body.tradeDurationHours;
+    }
+    if (tradeHours < 1 || tradeHours > 336){
+        // This will not execute if they do not provide a tradeDurationHours
+        res.status(403).send("Cannot create trades outside the range of 1 - 336 hours.");
+        return;
+    }
+
     if (username && req.body.offer && req.body.request){
         //const BUL = performance.now();
         var offerPins = [];
@@ -130,6 +141,7 @@ router.post("/create", (req, res) => {
 
 
         const tradeCost = trades.getTradeCost(offerPins, requestPins);
+        const timeTradeCost = trades.getTimeTradeCost(tradeHours);
 
         // Get the user's data and check if they have the necessary resources and pins to create the trade
         database.queryDatabase(
@@ -140,6 +152,7 @@ router.post("/create", (req, res) => {
             }
 
             var userResources = results[0];
+            var userAvatarColor = "#FFFFFF";
 
             var collectionData = {};
             try{
@@ -149,9 +162,12 @@ router.post("/create", (req, res) => {
                 return;
             }
 
+            // Get the user's avatar color and that will be the text color when displaying all trades
+            userAvatarColor = pins.formatCollectionData(allSkins, collectionData, "", "").avatarColor;
+
 
             // Not enough trade credits
-            if (userResources.trade_credits < tradeCost){
+            if (userResources.trade_credits < tradeCost + timeTradeCost){
                 res.status(403).send("Not enough Trade Credits. Open Brawl Boxes to get more.");
                 return;
             }
@@ -193,16 +209,16 @@ router.post("/create", (req, res) => {
             }
 
             // Deduct trade credits (if there is an error later, it will not be written to database)
-            userResources.trade_credits -= tradeCost;
+            userResources.trade_credits -= (tradeCost + timeTradeCost);
 
-            // Default of 2 days expiry time
-            const tradeExpiration = Date.now() + 172800000;
+            // tradeHours defaults to 2 days expiry time
+            const tradeExpiration = Date.now() + tradeHours * 3600000;
 
             
             // Add the new trade into the trades table
             database.queryDatabase(
-            "INSERT INTO " + TRADE_TABLE_NAME + " (creator, creator_avatar, creator_color, offer, request, trade_credits, expiration) VALUES (?, ?, ?, ?, ?, ?, ?);",
-            [username, userResources.active_avatar, "#000000", JSON.stringify(offerPins), JSON.stringify(requestPins), tradeCost, tradeExpiration], (error, results, fields) => {
+            "INSERT INTO " + TRADE_TABLE_NAME + " (creator, creator_avatar, creator_color, offer, request, trade_credits, trade_credits_time, expiration) VALUES (?, ?, ?, ?, ?, ?, ?, ?);",
+            [username, userResources.active_avatar, userAvatarColor, JSON.stringify(offerPins), JSON.stringify(requestPins), tradeCost, timeTradeCost, tradeExpiration], (error, results, fields) => {
                 if (error){
                     res.status(500).send("Could not connect to database.");
                     return;
@@ -321,6 +337,7 @@ router.post("/accept", (req, res) => {
                     return;
                 }
 
+                // The acceptor does not pay any time cost for the trade
                 const tradeCost = tradeResults.trade_credits;
 
                 // Not enough trade credits
@@ -476,7 +493,7 @@ router.post("/close", (req, res) => {
 
             // Get the trade data for the tradeid specified by the user
             database.queryDatabase(
-            "SELECT creator, offer, request, trade_credits, expiration, accepted, accepted_by FROM " + TRADE_TABLE_NAME + " WHERE tradeid = ?;",
+            "SELECT creator, offer, request, trade_credits, trade_credits_time, expiration, accepted, accepted_by FROM " + TRADE_TABLE_NAME + " WHERE tradeid = ?;",
             [tradeid], (error, results, fields) => {
                 if (databaseErrorCheck(error, results, fields, res)){
                     return;
@@ -499,7 +516,11 @@ router.post("/close", (req, res) => {
                     return;
                 }
 
+                // The time cost for the trade had to be stored in the database
+                // in case the user cancels the trade, there will be a way to find
+                // out how many credits they spent on the time.
                 const tradeCost = tradeResults.trade_credits;
+                const timeTradeCost = tradeResults.trade_credits_time;
 
                 // Based on whether the trade was complete or not, pins will be added
                 // back from either the offer or request
@@ -512,7 +533,7 @@ router.post("/close", (req, res) => {
                     // If the trade was expired or no one accepted it, add pins back from the offer
                     // Also refund the trade credits they paid to create the trade
                     addPinsFrom = offerPins;
-                    userTradeCredits += tradeCost;
+                    userTradeCredits += (tradeCost + timeTradeCost);
                 }
 
                 // Array of pins the user received which will be sent to them as information
