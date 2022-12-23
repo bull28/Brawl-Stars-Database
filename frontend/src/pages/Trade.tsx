@@ -1,11 +1,12 @@
-import { Box, Button, Drawer, DrawerBody, DrawerContent, DrawerFooter, Flex, FormControl, FormLabel, IconButton, Image, Input, Menu, MenuButton, MenuItem, MenuList, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Radio, RadioGroup, Select, SimpleGrid, Slider, SliderFilledTrack, SliderThumb, SliderTrack, Spinner, Stack, Text, useDisclosure, useToast } from '@chakra-ui/react'
+import { Box, Button, Drawer, DrawerBody, DrawerContent, DrawerFooter, Flex, FormControl, FormLabel, HStack, IconButton, Image, Input, Menu, MenuButton, MenuItem, MenuList, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Radio, RadioGroup, Select, SimpleGrid, Slider, SliderFilledTrack, SliderThumb, SliderTrack, Spinner, Stack, Text, useDisclosure, useToast } from '@chakra-ui/react'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { FilterData, TradeData } from '../types/TradeData'
 import { Brawler } from '../types/BrawlerData'
 import { ChevronLeftIcon, ChevronRightIcon, AddIcon, HamburgerIcon, CloseIcon, ArrowBackIcon } from '@chakra-ui/icons'
 import TradeCard from '../components/TradeCard'
-import { getToken } from '../helpers/AuthRequest'
+import AuthRequest, { getToken } from '../helpers/AuthRequest'
+import { UserInfoProps } from '../types/AccountData'
 
 /*
     To-Do
@@ -52,6 +53,9 @@ export default function Trade() {
     const [pinDisplayData, setPinDisplay] = useState<[PinData]>()
     const [amount, setAmount] = useState<number>(1)
     const [pinLocation, setPinLocation] = useState<"offer" | "req">("offer")
+    const [resources, setResources] = useState<UserInfoProps>()
+    const [tradeLength, setTradeLength] = useState<number>(48)
+    const [tradeCost, setTradeCost] = useState<number>()
 
     const toast = useToast()
 
@@ -65,10 +69,56 @@ export default function Trade() {
                 setResults(res.data)
             })
     }
+
+    useEffect(() => {
+        let offerObject = []
+        let reqObject = []
+
+        for (var k in offer){
+            let temp;
+            temp = {
+                amount: offer[k].amount,
+                brawler: offer[k].brawler,
+                pin: offer[k].pin
+            }
+            offerObject.push(temp)
+        }
+
+        for (k in req){
+            let temp;
+            temp = {
+                amount: req[k].amount,
+                brawler: req[k].brawler,
+                pin: req[k].pin
+            }
+            reqObject.push(temp)
+        }
+
+        if (offerObject.length > 0 || reqObject.length > 0){
+            axios.post('/trade/create', {
+                token: getToken(),
+                searchByName: true,
+                offer: offerObject,
+                request: reqObject,
+                tradeDurationHours: tradeLength,
+                getCost: true
+            }).then((res) => {
+                setTradeCost(res.data.tradeCost)
+            })
+        } else {
+            setTradeCost(0)
+        }
+
+        
+    }, [offer, req, tradeLength])
+
+    useEffect(() => {
+        AuthRequest('/resources', {setState: [{func: setResources, attr: ""}]})
+    }, [])
     
     useEffect(() => {
         updateResults();
-    }, [filter.page, updateResults])
+    }, [filter.page])
 
     useEffect(() => {
         axios.get('/brawler')
@@ -148,13 +198,15 @@ export default function Trade() {
             token: getToken(),
             searchByName: true,
             offer: offerObject,
-            request: reqObject
+            request: reqObject,
+            tradeDurationHours: tradeLength,
+            getCost: false
         })
         .then(() => {
             window.location.reload()
         })
-        .catch(() => {
-            toast({title: 'Invalid Trade Request', description: 'Make sure you have the required trade credits and pins for your trade.', status: 'error', duration: 3000, isClosable: true})
+        .catch((error) => {
+            toast({title: 'Invalid Trade Request', description: error.response.data, status: 'error', duration: 3000, isClosable: true})
         })
     }
 
@@ -193,11 +245,25 @@ export default function Trade() {
             <Text mt={5} fontSize={'3xl'} className={'heading-3xl'} color={'white'}>Trades</Text>
             <Flex pos={'absolute'} top={0} right={0} m={5}>
                 <Button h={'50px'} m={2} rightIcon={<AddIcon/>} colorScheme={'whatsapp'} className={'heading-md'} fontWeight={'normal'} onClick={onOpen2}>New Trade</Button>
-                <Box w={'50px'} h={'50px'} bgColor={'red'} m={2}></Box>
-                <Box w={'50px'} h={'50px'} bgColor={'red'} m={2}></Box>
-                <Box w={'50px'} h={'50px'} bgColor={'red'} m={2}></Box>
-                <Box w={'50px'} h={'50px'} bgColor={'red'} m={2}></Box>
-                <Box w={'50px'} h={'50px'} bgColor={'red'} m={2}></Box>
+                <Flex>
+                    <HStack>
+                        <Flex  h={'40px'} pr={'30px'} bgColor={'#f98f92'} justifyContent={'space-between'} alignItems={'center'} borderRadius={'5%'} border={'2px solid black'}>
+                            <Image h={'50px'}  src={`/image/resources/resource_trade_credits.webp`}/>                        
+                            <Text  fontSize={'lg'} h={'30px'} className={'heading-lg'} color={'white'}>{resources?.tradeCredits}</Text>
+                        </Flex>
+                        
+                        {resources?.wildCardPins.map((wildCard) => { if (wildCard.amount){ 
+                            return (
+                                <Flex py={'15px'} h={'50px'} px={'30px'} bgColor={wildCard.rarityColor}justifyContent={'space-around'} alignItems={'center'} borderRadius={'5%'}>
+                                    <Image h={'50px'} src={`/image/resources/wildcard_pin.webp`}/>                        
+                                    <Text  fontSize={'lg'} className={'heading-lg'} color={'white'}>{wildCard.amount}</Text>
+                                </Flex>    
+                            )
+                            }}
+                            
+                        )}
+                    </HStack>
+                </Flex>
             </Flex>       
             <Flex mt={'60px'}>
                 <Drawer isOpen={isOpen} placement={'left'} onClose={onClose} colorScheme={'linkedin'}>
@@ -274,9 +340,9 @@ export default function Trade() {
                         </DrawerFooter>
                     </DrawerContent>
                 </Drawer>
-            <SimpleGrid columns={[1,2,2,3]} spacing={3}>
+            <SimpleGrid columns={[1,1,2,3]} spacing={3}>
                 {results?.map((trade) => {
-                     if (trade.creator.toLowerCase().includes(filter.username.toLowerCase())) {return <TradeCard data={trade}/>}
+                     if (trade.creator.toLowerCase().includes(filter.username.toLowerCase()) && !(trade.timeLeft.hour === trade.timeLeft.minute && trade.timeLeft.hour === trade.timeLeft.second && trade.timeLeft.hour === trade.timeLeft.season && trade.timeLeft.hour === 0)) {return <TradeCard data={trade}/>}
                     })}
             </SimpleGrid>
         </Flex>
@@ -400,14 +466,25 @@ export default function Trade() {
                     </ModalBody>
                     </ModalContent>
                 </Modal>
-
+                <Flex flexDir={'column'} w={'100%'} justifyContent={'center'} alignItems={'center'} mt={5}>
+                <Text fontSize={'xl'} color={'white'} className={'heading-2xl'}>Trade Length</Text>
+                
+                <Slider min={1} max={336} mt={5} value={tradeLength} onChange={(val) => {setTradeLength(val)}}>
+                    <SliderTrack bg='skyblue'>
+                        <Box position='relative' right={10} />
+                        <SliderFilledTrack bg='blue.400' />
+                    </SliderTrack>
+                    <SliderThumb boxSize={6} bgColor={'blue.700'}/>   
+                </Slider>
+                <Text fontSize={'lg'} color={'white'} className={'heading-xl'}>{`${tradeLength}h`}</Text>
+                </Flex>
             </ModalBody>
 
             <ModalFooter>
                 <Button colorScheme='red' fontSize={'2xl'} p={5}  mr={3} fontWeight={'normal'} onClick={onClose2}>
                 Cancel
                 </Button>
-                <Button colorScheme={'whatsapp'} fontSize={'2xl'} p={5} fontWeight={'normal'} onClick={createTrade} rightIcon={<Image maxH={'40px'} src={'/image/resources/resource_trade_credits.webp'}/>}>69</Button>
+                <Button colorScheme={'whatsapp'} fontSize={'2xl'} p={5} fontWeight={'normal'} onClick={createTrade} rightIcon={<Image maxH={'40px'} src={'/image/resources/resource_trade_credits.webp'}/>}>{tradeCost}</Button>
             </ModalFooter>
             </ModalContent>
       </Modal>

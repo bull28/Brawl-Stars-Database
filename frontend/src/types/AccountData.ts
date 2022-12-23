@@ -5,5 +5,10 @@ export interface UserInfoProps {
     tokenDoubler: number,
     tradeCredits: number,
     avatar: string,
-    avatarColor: string
+    avatarColor: string,
+    wildCardPins: [{
+        rarityName: string,
+        rarityColor: string,
+        amount: number
+    }]
 }

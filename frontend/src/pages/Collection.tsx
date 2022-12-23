@@ -18,17 +18,14 @@ export default function Collection() {
     const [brawlers, setBrawlers] = useState<any>([])
     const [ tokens, setTokens ] = useState<number>()
 
-
-    useEffect(() => {
+    const loadResources = () => {
         AuthRequest('/collection', {setState: [{func: setData, attr: ""}], navigate: true})
-    }, [])
-
-    useEffect(() => {
         AuthRequest('/brawlbox', {setState: [{func: setBrawlBoxData, attr: ""}]})
-    }, [])
+        updateTokens()
+    }
 
     useEffect(() => {
-        updateTokens()
+        loadResources();
     }, [])
 
     useEffect(() => {
@@ -77,14 +74,14 @@ export default function Collection() {
                         </Flex>
                     </Flex>
                     {brawlBoxData?.map((brawlBox: BrawlBoxData) => (
-                        <BrawlBoxDisplay data={brawlBox} tokens={tokens}/>
+                        <BrawlBoxDisplay data={brawlBox} tokens={tokens} loadResources={loadResources}/>
                     ))}
                     <TokenDisplay callback={updateTokens} tokens={tokens}/>
                     </Stack>
                 </Flex>
             }
             {(brawlers.length > 0) && <Accordion defaultIndex={[brawlers.indexOf(searchParams.get('brawler'))]} allowMultiple allowToggle>
-            <SimpleGrid columns={[1,2,3,4]} spacing={3} w={'95vw'} bgColor={'blue.800'} p={5}>
+            <SimpleGrid columns={[1,2,3,4]} spacing={3} w={'95vw'} bgColor={'blue.800'} p={5} mb={3}>
                 {data?.collection.map((brawler) => (
                     <AccordionItem border={brawler.unlockedPins === brawler.totalPins ? '3px solid #E7A210' : '3px solid black'}>
                         {({ isExpanded }) => (

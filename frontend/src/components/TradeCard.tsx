@@ -35,7 +35,8 @@ export default function TradeCard({ data }: {data: TradeData}) {
             console.log(res.data)
         })
         .catch(function(err){
-            toast({title: 'Error', description: 'Please ensure you have the right resources to accept the trade or try again later.', status: 'error', duration: 5000, isClosable: true})
+            console.log(err)
+            toast({title: 'Error', description: err.response.data, status: 'error', duration: 5000, isClosable: true})
         })
         
         
@@ -115,7 +116,16 @@ export default function TradeCard({ data }: {data: TradeData}) {
                         </SimpleGrid>
 
                 </Flex>
-                <Text fontSize={'lg'} color={'white'}>{data.creator}</Text>
+                <Flex w={'90%'} justifyContent={'space-between'}>
+                    <Flex color={(data.timeLeft.hour < 5 && data.timeLeft.season === 0) ? 'red.500' : 'white'}>
+                        <Text whiteSpace={"pre"}>{data.timeLeft.hour > 0 ? ` ${data.timeLeft.hour}h` : ""}</Text>
+                        <Text whiteSpace={"pre"}>{data.timeLeft.minute > 0 ? ` ${data.timeLeft.minute}m` : ""}</Text>
+                        <Text whiteSpace={"pre"}>{data.timeLeft.second > 0 ? ` ${data.timeLeft.second}s` : ""}</Text>
+                        <Text>{(data.timeLeft.hour === 0 && data.timeLeft.minute === 0 && data.timeLeft.second === 0) ? `> ${data.timeLeft.hoursPerSeason} hours` : ""}</Text>
+                    </Flex>
+                    <Text fontSize={'lg'} color={'white'}>{data.creator}</Text>
+                    
+                </Flex>
             </Flex>
             <Modal isOpen={isOpen} onClose={refreshPage} size={'6xl'}>
                 <ModalOverlay />

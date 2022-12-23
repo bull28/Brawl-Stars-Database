@@ -22,5 +22,13 @@ export interface TradeData {
     creator: string,
     cost: number,
     offer: PinObject[],
-    request: PinObject[]
+    request: PinObject[],
+    timeLeft: {
+        season: number,
+        hour: number,
+        minute: number,
+        second: number,
+        hoursPerSeason: number,
+        maxSeasons: number
+    }
 }

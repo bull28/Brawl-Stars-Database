@@ -15,7 +15,7 @@ interface BrawlBoxContentsData {
 }
 
 
-export default function BrawlBoxDisplay({ data, tokens }: {data: BrawlBoxData, tokens: number | undefined}) {
+export default function BrawlBoxDisplay({ data, tokens, loadResources }: {data: BrawlBoxData, tokens: number | undefined, loadResources: () => void}) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { isOpen: isOpen2, onOpen: onOpen2, onClose: onClose2 } = useDisclosure() //fix
 
@@ -32,9 +32,11 @@ export default function BrawlBoxDisplay({ data, tokens }: {data: BrawlBoxData, t
     `
 
     const openBox = (id: string) => {
+        setBoxContents(undefined)
         for (let i = 0; i < amount; i++){
             AuthRequest('/brawlbox', {setState: [{func: setBoxContents, attr: ""}], data: {boxType: id}, callback: () => {
                 onClose()
+                onClose2()
                 onOpen2()
             }, fallback: function(error: any) {
                 if (error.response.status === 403){
@@ -110,7 +112,7 @@ export default function BrawlBoxDisplay({ data, tokens }: {data: BrawlBoxData, t
                         <Flex mt={5} w={'100%'} h={'100%'} justifyContent={'center'} alignItems={'center'} textAlign={'center'}>       
                         <SimpleGrid columns={(boxContents && boxContents.length > 4) ? Math.ceil(boxContents.length / 2) : boxContents?.length} spacing={10}>
                             {boxContents?.map((content, x) => (        
-                                <Flex py={'20%'} bgColor={content.backgroundColor}  flexDir={'column'} justifyContent={'space-between'} alignItems={'center'} textAlign={'center'} borderRadius={'2xl'} border={'2px solid black'} boxShadow={'rgba(149, 157, 165, 0.2) 0px 8px 24px;'} maxW={'350px'} maxH={'600px'} transform={'scale(0)'} animation={`${contentTransition} 0.5s ease-out ${((x/2)+0.5)}s 1 forwards`} w={'20vw'}>                                    
+                                <Flex py={'20%'} bgColor={content.backgroundColor} flexDir={'column'} justifyContent={'space-between'} alignItems={'center'} textAlign={'center'} borderRadius={'2xl'} border={'2px solid black'} boxShadow={'rgba(149, 157, 165, 0.2) 0px 8px 24px;'} maxW={'350px'} maxH={'600px'} transform={'scale(0)'} animation={`${contentTransition} 0.5s ease-out ${((x/2)+0.5)}s 1 forwards`} w={'20vw'}>                                    
                                 
                                     <Text mb={2} color={'white'} fontSize={'3xl'} className={'heading-2xl'}>{content.displayName}</Text>                                    
                                     <Image borderRadius={'xl'} src={`/image/${content.image}`} loading={'eager'}/>
@@ -122,9 +124,12 @@ export default function BrawlBoxDisplay({ data, tokens }: {data: BrawlBoxData, t
                         </SimpleGrid>       
                         </Flex>       
                     </ModalBody>
-                    <ModalFooter>
-                        <Button colorScheme={'facebook'} onClick={() => {window.location.reload()}}>
+                    <ModalFooter>                     
+                        <Button colorScheme={'red'} onClick={() => {loadResources(); onClose2()}}>
                             Close
+                        </Button>
+                        <Button colorScheme={'facebook'} onClick={() => {openBox(data.name)}} ml={3}>
+                            Open Again
                         </Button>
                     </ModalFooter>
                 </ModalContent>
