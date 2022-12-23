@@ -1,0 +1,40 @@
+/shop - Access the coins shop. Has 2 modes: viewing available items and buying an item
+
+Request:
+{
+    "token": String,
+    "item": String
+}
+	- Provide only a token to use view mode.
+	- To use buy mode, provide a valid item name in the item field. Item names can be obtained by using view mode.
+
+
+Response in view mode:
+[
+    {
+        "name": String,
+        "displayName": String,
+        "cost": Number,
+        "image": String,
+        "amount": Number,
+        "description": String
+    }
+    ... 1 object for each item
+]
+	- The value of displayName should be the title of the item. The description of the item can be in a subtitle.
+
+Response in buy mode:
+{
+    "inventory": Number,
+    "result": [],
+}
+	- The inventory field shows how many of the item the user now has after the purchase.
+	- The result field shows any items the user may have received if they buy a Brawl Box type item. This is formatted
+	  like the Brawl Box opening output.
+
+Errors:
+	- 500: Database problem
+	- 404: Item does not exist
+	- 401: Invalid token
+	- 400: Could not find token
+	- 403: Cannot afford item

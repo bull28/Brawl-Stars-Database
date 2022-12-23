@@ -3,6 +3,7 @@
         "displayName": "1 Trade Credit",
         "cost": 500,
         "itemType": "tradeCredits",
+        "image": "resource_trade_credits_200x.webp",
         "extraData": "",
         "amount": 1,
         "description": "Contains 1 Trade Credit. Use it to trade pins with other users."
@@ -11,6 +12,7 @@
         "displayName": "3 Trade Credits",
         "cost": 1400,
         "itemType": "tradeCredits",
+        "image": "resource_trade_credits_200x.webp",
         "extraData": "",
         "amount": 3,
         "description": "Contains 3 Trade Credits. Use these to trade pins with other users."
@@ -19,6 +21,7 @@
         "displayName": "5 Trade Credits",
         "cost": 2200,
         "itemType": "tradeCredits",
+        "image": "resource_trade_credits_200x.webp",
         "extraData": "",
         "amount": 5,
         "description": "Contains 5 Trade Credits. Use these to trade pins with other users."
@@ -27,6 +30,7 @@
         "displayName": "10 Trade Credits",
         "cost": 4000,
         "itemType": "tradeCredits",
+        "image": "resource_trade_credits_200x.webp",
         "extraData": "",
         "amount": 10,
         "description": "Contains 10 Trade Credits. Use these to trade pins with other users."
@@ -35,6 +39,7 @@
         "displayName": "25 Trade Credits",
         "cost": 9000,
         "itemType": "tradeCredits",
+        "image": "resource_trade_credits_200x.webp",
         "extraData": "",
         "amount": 25,
         "description": "Contains 25 Trade Credits. Use these to trade pins with other users."
@@ -43,6 +48,7 @@
         "displayName": "New Brawler",
         "cost": 2000,
         "itemType": "brawler",
+        "image": "random_brawler.webp",
         "extraData": "newBrawler",
         "amount": 1,
         "description": "Randomly selects a new brawler to unlock. If all brawlers of a specific rarity are unlocked, the probability of getting a brawler of all other rarities increases."
@@ -51,6 +57,7 @@
         "displayName": "New Avatar",
         "cost": 5000,
         "itemType": "avatar",
+        "image": "",
         "extraData": "avatars/special/sadpin.webp",
         "amount": 1,
         "description": "Contains a new avatar. This avatar can be selected in the account settings."
@@ -59,6 +66,7 @@
         "displayName": "New Avatar",
         "cost": 5000,
         "itemType": "avatar",
+        "image": "",
         "extraData": "avatars/special/trophy.webp",
         "amount": 1,
         "description": "Contains a new avatar. This avatar can be selected in the account settings."
@@ -67,6 +75,7 @@
         "displayName": "New Avatar",
         "cost": 10000,
         "itemType": "avatar",
+        "image": "",
         "extraData": "avatars/special/starpoint.webp",
         "amount": 1,
         "description": "Contains a new avatar. This avatar can be selected in the account settings."
@@ -75,6 +84,7 @@
         "displayName": "New Avatar",
         "cost": 20000,
         "itemType": "avatar",
+        "image": "",
         "extraData": "avatars/special/coins.webp",
         "amount": 1,
         "description": "Contains a new avatar. This avatar can be selected in the account settings."
@@ -83,6 +93,7 @@
         "displayName": "New Avatar",
         "cost": 50000,
         "itemType": "avatar",
+        "image": "",
         "extraData": "avatars/special/pay2winavatar.webp",
         "amount": 1,
         "description": "Contains a new avatar. This avatar can be selected in the account settings."
@@ -91,6 +102,7 @@
         "displayName": "New Avatar",
         "cost": 100000,
         "itemType": "avatar",
+        "image": "",
         "extraData": "avatars/special/real_pay2winavatar.webp",
         "amount": 1,
         "description": "Contains a new avatar. This avatar can be selected in the account settings."

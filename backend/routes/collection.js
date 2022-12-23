@@ -135,7 +135,7 @@ function validateShopItems(shopItems){
     }
 
     // these are the only required properties, all others are optional
-    const checkProperties = ["cost", "itemType", "extraData", "amount"];
+    const checkProperties = ["cost", "itemType", "image", "extraData", "amount"];
 
     var valid = true;
     for (let item in shopItems){
@@ -493,8 +493,23 @@ router.post("/shop", (req, res) => {
                     var thisItem = {};
                     thisItem.name = x;
                     for (let property in availableShopItems[x]){
-                        if (property != "itemType"){
-                            // they do not need to know the itemType id
+                        if (property == "image"){
+                            thisItem[property] = "";
+
+                            const thisItemType = availableShopItems[x]["itemType"];
+
+                            // Avatars have their image stored in extraData because the image is required
+                            // when adding it to the user's inventory
+                            // All other item types' images are only for display
+                            if (thisItemType == "avatar"){
+                                thisItem[property] = availableShopItems[x]["extraData"];
+                            } else{
+                                if (availableShopItems[x][property] != ""){
+                                    thisItem[property] = RESOURCE_IMAGE_DIR + availableShopItems[x][property];
+                                }
+                            }
+                        } else if (property != "itemType" && property != "extraData"){
+                            // The user does not need to know about itemType and extraData
                             thisItem[property] = availableShopItems[x][property];
                         }
                     }
