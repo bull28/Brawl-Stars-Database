@@ -48,7 +48,7 @@ export default function AccountMenuDisplay({ username, token, toggleRemove }: Pr
         <>
         {data &&
             <Flex pos={'relative'} flexDir={'column'} justifyContent={'center'} alignItems={'center'} my={5} cursor={'pointer'} background={(data?.avatarColor === 'rainbow' ? 'conic-gradient(#f00,#ff0,#0f0,#0ff,#00f,#f0f,#f00)' : data?.avatarColor)} border={'3px solid'} borderColor={(localStorage.getItem('username') === username) ? 'blue.500' : 'black'} py={3} onClick={() => {if (!toggleRemove){switchUser()}}}>
-                {toggleRemove && <CloseButton pos={'absolute'} top={1} right={1} color={'white'} onClick={removeUser}/>}
+                {toggleRemove && <CloseButton pos={'absolute'} top={1} right={1} color={'white'} onClick={removeUser} fontSize={'lg'}/>}
                 <Image src={`/image/${data?.avatar}`} borderRadius={'50%'} mb={1}/>
                 <Text color={(data.avatarColor === 'rainbow') ? 'gold' : 'white'} fontSize={'xl'} className={'heading-xl'}>{data?.username}</Text>
                 <Flex maxH={'30px'} alignItems={'center'}>

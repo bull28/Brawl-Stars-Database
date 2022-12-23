@@ -8,3 +8,14 @@ export type BrawlerData = {
     model: string,
     description: string
 }
+
+export interface Brawler {
+    name: string,
+    displayName: string,
+    rarity: {
+        value: number,
+        name: string,
+        color: string
+    },
+    portrait: string
+}

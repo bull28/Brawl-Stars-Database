@@ -2,21 +2,11 @@ import {useEffect, useState} from 'react'
 import { Flex, SimpleGrid, Text } from '@chakra-ui/react'
 import axios from 'axios'
 import BrawlerView from '../components/BrawlerView'
+import { Brawler } from '../types/BrawlerData'
 
 export default function Brawlers() {
 
-    interface brawler {
-        name: string,
-        displayName: string,
-        rarity: {
-            value: number,
-            name: string,
-            color: string
-        },
-        portrait: string
-    }
-
-    const [data, setData] = useState<[brawler]>()
+    const [data, setData] = useState<[Brawler]>()
 
     useEffect(() => {
         axios.get('/brawler')
@@ -33,7 +23,7 @@ export default function Brawlers() {
         </Text>
         {data && 
             <SimpleGrid columns={[2,3,4,5,6,7,8]}>
-                {data.map((brawler: brawler) => <BrawlerView key={brawler.name} image={brawler.portrait} name={brawler.name} displayName={brawler.displayName} rarityColor={brawler.rarity.color}/>)}
+                {data.map((brawler) => <BrawlerView key={brawler.name} image={brawler.portrait} name={brawler.name} displayName={brawler.displayName} rarityColor={brawler.rarity.color}/>)}
             </SimpleGrid>
         }
     </Flex>

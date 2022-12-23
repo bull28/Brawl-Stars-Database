@@ -10,6 +10,7 @@ import Signup from './pages/Signup'
 import Gallery from './pages/Gallery'
 import Account from './pages/Account'
 import Collection from './pages/Collection'
+import Trade from './pages/Trade'
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/signup" element={<Signup/>}/>
           <Route path="/account" element={<Account/>}/>
           <Route path="/collection" element={<Collection/>}/>
+          <Route path="/trade" element={<Trade/>}/>
           <Route path="*" element={<NotFound/>}/>
         </Routes>
       </BrowserRouter>

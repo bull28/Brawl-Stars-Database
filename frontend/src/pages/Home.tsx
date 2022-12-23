@@ -7,7 +7,7 @@ import AccountDisplay from '../components/AccountDisplay'
 const topRow = ['Gallery', 'Brawlers', 'Events', 'Trade']
 const bottomRow = ['Brawl Box', 'Coming Soon', 'About/Options']
 
-const topLinks = ['/gallery', '/brawlers', '/events', '']
+const topLinks = ['/gallery', '/brawlers', '/events', '/trade']
 const bottomLinks = ['', '', '']
 
 const LargeTile = ({ link, children }: {link: string, children: React.ReactNode}) => {

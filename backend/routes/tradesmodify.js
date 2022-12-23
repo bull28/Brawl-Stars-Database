@@ -94,13 +94,11 @@ router.post("/create", (req, res) => {
         //const BUL = performance.now();
         var offerPins = [];
         var requestPins = [];
-        try{
-            offerPins = JSON.parse(req.body.offer);
-            requestPins = JSON.parse(req.body.request);
-        } catch(error){
-            res.status(400).send("Invalid offer and request data.");
-            return;
-        }
+        
+        //removed JSON.parse cause errors and stuff l ike that
+        offerPins = req.body.offer;
+        requestPins = req.body.request;
+        
 
         // Run the function to validate the user's pin requests
         offerPins = trades.validatePins(allSkins, offerPins, PIN_IMAGE_DIR, searchByName);

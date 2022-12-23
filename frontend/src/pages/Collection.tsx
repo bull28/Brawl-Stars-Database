@@ -135,7 +135,7 @@ export default function Collection() {
                             {AddLoadedBrawler(brawler.name)}</>}
                             <Center flexDir={'column'} mt={3}>
                                 {!brawler.u && <Tooltip label={'Unlock By Opening Boxes'}><Tag colorScheme={'red'} my={2}>Unlock This Brawler To Collect Pins</Tag></Tooltip>}
-                                <Text mb={'30px'} color={'white'} className={'heading-sm'}>{`${brawler.displayName} Pins: ${brawler.pinCopies}/${brawler.totalPins*10}`}</Text>
+                                <Text mb={'30px'} color={'white'} className={'heading-sm'}>{`${brawler.displayName} Pins: ${brawler.pinCopies}`}</Text>
                                 <Link href={`/brawlers/${brawler.name}`} color={'white'} className={'heading-sm'}>View Brawler Page <ExternalLinkIcon mx={'2px'}/></Link>
                             </Center>
                         </AccordionPanel>
