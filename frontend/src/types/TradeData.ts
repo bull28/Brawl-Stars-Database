@@ -19,7 +19,11 @@ export interface PinObject {
 
 export interface TradeData {
     tradeid: number,
-    creator: string,
+    creator: {
+        username: string,
+        avatar: string,
+        avatarColor: string
+    }
     cost: number,
     offer: PinObject[],
     request: PinObject[],

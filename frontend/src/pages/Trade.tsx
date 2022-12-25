@@ -7,6 +7,8 @@ import { ChevronLeftIcon, ChevronRightIcon, AddIcon, HamburgerIcon, CloseIcon, A
 import TradeCard from '../components/TradeCard'
 import AuthRequest, { getToken } from '../helpers/AuthRequest'
 import { UserInfoProps } from '../types/AccountData'
+import { useNavigate } from 'react-router-dom'
+import { BsPersonFill } from 'react-icons/bs'
 
 /*
     To-Do
@@ -58,6 +60,7 @@ export default function Trade() {
     const [tradeCost, setTradeCost] = useState<number>()
 
     const toast = useToast()
+    const navigate = useNavigate()
 
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { isOpen: isOpen2, onOpen: onOpen2, onClose: onClose2 } = useDisclosure()
@@ -222,8 +225,26 @@ export default function Trade() {
         let pinName:string = pin.image.split('/')[2].split('.')[0]
         let brawlerName:string = pinName.split('_')[0]
 
+        let duplicate:boolean = false;
+
+        //check if pin already exists in offer
+
+        for (let i = 0; i<offer.length; i++){
+            
+            if (offer[i].pin === pinName){
+                offer[i].amount = Math.min(offer[i].amount + amount, 1000)
+
+                duplicate = true;
+
+                break
+            }
+        }
+
+        if (!duplicate){            
+            setOffer((prevState: any) => ([...prevState, {amount: amount, brawler: brawlerName, pin: pinName, pinImage: pin.image, rarityColor: pin.rarity.color, rarityValue: pin.rarity.value}]))
+        }
+        
         setAmount(1)
-        setOffer((prevState: any) => ([...prevState, {amount: amount, brawler: brawlerName, pin: pinName, pinImage: pin.image, rarityColor: pin.rarity.color, rarityValue: pin.rarity.value}]))
         
         toast({title: 'Pin Added!', description: 'Pin successfully added to offer.', status: 'success', duration: 2000})
     }
@@ -232,12 +253,33 @@ export default function Trade() {
         let pinName:string = pin.image.split('/')[2].split('.')[0]
         let brawlerName:string = pinName.split('_')[0]
 
-        setAmount(1)
-        setReq((prevState: any) => ([...prevState, {amount: amount, brawler: brawlerName, pin: pinName, pinImage: pin.image, rarityColor: pin.rarity.color, rarityValue: pin.rarity.value}]))
+        let duplicate:boolean = false;
+
+         //check if pin already exists in request
+
+         for (let i = 0; i<req.length; i++){
+            
+            if (req[i].pin === pinName){
+                req[i].amount = Math.min(req[i].amount + amount, 1000)
+
+                duplicate = true;
+
+                break
+            }
+        }
+
+        if (!duplicate){
+            setReq((prevState: any) => ([...prevState, {amount: amount, brawler: brawlerName, pin: pinName, pinImage: pin.image, rarityColor: pin.rarity.color, rarityValue: pin.rarity.value}]))
+        }
+
+        setAmount(1)        
         
         toast({title: 'Pin Added!', description: 'Pin successfully added to request.', status: 'success', duration: 2000})
     }
-    
+
+    const redirect = () => {
+        navigate('/mytrades')
+    }
 
     return (
         <Flex justifyContent={'space-evenly'} alignItems={'center'} flexDir={'column'}>            
@@ -262,6 +304,7 @@ export default function Trade() {
                             }}
                             
                         )}
+                        <IconButton borderRadius={'md'} onClick={redirect} cursor={'pointer'} size={'lg'} p={1} colorScheme={'twitter'} as={BsPersonFill} aria-label="open my trades menu"/>
                     </HStack>
                 </Flex>
             </Flex>       
@@ -342,7 +385,7 @@ export default function Trade() {
                 </Drawer>
             <SimpleGrid columns={[1,1,2,3]} spacing={3}>
                 {results?.map((trade) => {
-                     if (trade.creator.toLowerCase().includes(filter.username.toLowerCase()) && !(trade.timeLeft.hour === trade.timeLeft.minute && trade.timeLeft.hour === trade.timeLeft.second && trade.timeLeft.hour === trade.timeLeft.season && trade.timeLeft.hour === 0)) {return <TradeCard data={trade}/>}
+                     if (trade.creator.username.toLowerCase().includes(filter.username.toLowerCase()) && !(trade.timeLeft.hour === trade.timeLeft.minute && trade.timeLeft.hour === trade.timeLeft.second && trade.timeLeft.hour === trade.timeLeft.season && trade.timeLeft.hour === 0)) {return <TradeCard data={trade}/>}
                     })}
             </SimpleGrid>
         </Flex>

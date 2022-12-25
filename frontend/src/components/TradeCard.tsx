@@ -123,8 +123,7 @@ export default function TradeCard({ data }: {data: TradeData}) {
                         <Text whiteSpace={"pre"}>{data.timeLeft.second > 0 ? ` ${data.timeLeft.second}s` : ""}</Text>
                         <Text>{(data.timeLeft.hour === 0 && data.timeLeft.minute === 0 && data.timeLeft.second === 0) ? `> ${data.timeLeft.hoursPerSeason} hours` : ""}</Text>
                     </Flex>
-                    <Text fontSize={'lg'} color={'white'}>{data.creator}</Text>
-                    
+                    <Text fontSize={'lg'} color={'white'}>{data.creator.username}</Text>                   
                 </Flex>
             </Flex>
             <Modal isOpen={isOpen} onClose={refreshPage} size={'6xl'}>
@@ -205,7 +204,7 @@ export default function TradeCard({ data }: {data: TradeData}) {
                         <Flex flexDir={'column'}>
                         <Box borderTop={'2px solid #9f9'} bgColor={'#f3fff3'} p={3}>
                             <Flex whiteSpace={'pre-wrap'}>
-                                <Text fontSize={'xl'} className={'heading-2xl'} color={'white'}>Your Trade with </Text><Text fontSize={'xl'} className={'heading-2xl'} color={'white'} fontWeight={'bold'}>{data.creator}</Text><Text fontSize={'xl'} className={'heading-2xl'} color={'white'}> Has Been Completed!</Text>
+                                <Text fontSize={'xl'} className={'heading-2xl'} color={'white'}>Your Trade with </Text><Text fontSize={'xl'} className={'heading-2xl'} color={'white'} fontWeight={'bold'}>{data.creator.username}</Text><Text fontSize={'xl'} className={'heading-2xl'} color={'white'}> Has Been Completed!</Text>
                             </Flex>
                             <br></br>
                         </Box>
@@ -226,7 +225,7 @@ export default function TradeCard({ data }: {data: TradeData}) {
                 </ModalBody>
 
                 <ModalFooter>
-                    {!tradeComplete ? <Text>{`Created By: ${data.creator}`}</Text> : 
+                    {!tradeComplete ? <><Text>{`Created By: ${data.creator.username}`}</Text><Image w={'50px'} ml={2} borderRadius={'50%'} p={'3px'} background={(data?.creator.avatarColor === 'rainbow' ? 'conic-gradient(#f00,#ff0,#0f0,#0ff,#00f,#f0f,#f00)' : data?.creator.avatarColor)} src={`/image/${data.creator.avatar}`}/></> : 
                     
                     <Flex bgColor={'#f99ff9'} p={2} borderRadius={'lg'}>
                         <Link fontSize={'lg'} href={`/collection`} color={'white'} className={'heading-md'}>View Collection <ExternalLinkIcon mx={'2px'}/></Link>

@@ -11,6 +11,7 @@ import Gallery from './pages/Gallery'
 import Account from './pages/Account'
 import Collection from './pages/Collection'
 import Trade from './pages/Trade'
+import MyTrades from './components/MyTrades'
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/account" element={<Account/>}/>
           <Route path="/collection" element={<Collection/>}/>
           <Route path="/trade" element={<Trade/>}/>
+          <Route path="/mytrades" element={<MyTrades/>}/>
           <Route path="*" element={<NotFound/>}/>
         </Routes>
       </BrowserRouter>

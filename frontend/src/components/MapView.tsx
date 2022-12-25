@@ -80,7 +80,7 @@ const MapView = React.forwardRef<{open: () => void}, Props>((props, ref) => {
         <ModalOverlay />
         <ModalContent bgColor={data?.gameMode.backgroundColor}>
           <ModalHeader p={1}>
-            <Flex flexDir={'column'} textAlign={'center'} position={'relative'}>
+            <Flex p={2} flexDir={'column'} textAlign={'center'} position={'relative'}>
               <Image maxH={'80px'} objectFit={'fill'} src={`/image/${data?.bannerImage}`} borderRadius={'lg'} fallback={<Spinner/>}/>
               <Flex position={'absolute'} left={'50%'} top={'50%'} transform={'translate(-50%,-50%)'} w={'100%'} justifyContent={'center'} alignItems={'center'}>
                 <Image src={`/image/${data?.gameMode.image}`} mr={3}/>
