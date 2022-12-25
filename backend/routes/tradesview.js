@@ -180,7 +180,7 @@ router.post("/all", (req, res) => {
     }
 
     database.queryDatabase(
-    "SELECT tradeid, creator, creator_color, offer, request, trade_credits, expiration FROM " + TRADE_TABLE_NAME + " WHERE " + filterColumn + " LIKE ? AND expiration > ? ORDER BY " + sortString + " LIMIT ?, ?;",
+    "SELECT tradeid, creator, creator_avatar, creator_color, offer, request, trade_credits, expiration FROM " + TRADE_TABLE_NAME + " WHERE " + filterColumn + " LIKE ? AND expiration > ? ORDER BY " + sortString + " LIMIT ?, ?;",
     [filterString, minExpiration, limitStart, TRADES_PER_PAGE], (error, results, fields) => {
         if (error){
             res.status(500).send("Could not connect to database.");
@@ -203,8 +203,11 @@ router.post("/all", (req, res) => {
             // Unlike for the user, this endpoint does not return expired trades
             tradeList.push({
                 "tradeid": x.tradeid,
-                "creator": x.creator,
-                "creatorColor": x.creator_color,
+                "creator": {
+                    "username": x.creator,
+                    "avatar": x.creator_avatar,
+                    "avatarColor": x.creator_color,
+                },
                 "cost": x.trade_credits,
                 "offer": offerPins,
                 "request": requestPins,

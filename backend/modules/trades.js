@@ -36,7 +36,7 @@ function validatePins(allSkins, pinArray, pinFile, searchByName){
                             "brawler": brawlerObjects[0].name,
                             "pin": thisPin.name,
                             "pinImage": pinFile + brawlerObjects[0].name + "/" + thisPin.image,
-                            "amount": x.amount,
+                            "amount": Math.min(x.amount, 1000),
                             "rarityValue": thisPin.rarity.value,
                             "rarityColor": thisPin.rarity.color
                         });
