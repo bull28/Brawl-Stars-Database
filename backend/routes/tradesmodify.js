@@ -15,7 +15,7 @@ const pins = require("../modules/pins");
 const fileLoader = require("../modules/fileloader");
 
 // constants for trades
-const MAX_ACTIVE_TRADES = 25;// will be lowered later when done testing
+const MAX_ACTIVE_TRADES = 10;
 
 // base directories of image files
 const filePaths = require("../modules/filepaths");
@@ -140,15 +140,17 @@ router.post("/create", (req, res) => {
         }
 
 
+        // trade costs are stored in the database as 10 times the amount of credits required
         const tradeCost = trades.getTradeCost(offerPins, requestPins);
         const timeTradeCost = trades.getTimeTradeCost(tradeHours);
+        const totalTradeCost = Math.ceil((tradeCost + timeTradeCost) / 10);
 
         // At this point, the trade is a valid trade (the user may not have the requirements or resources
         // to create it though). The value returned here is the number of trade credits it would require
         // to create a trade with the given offer, request, and duration.
         if (req.body.getCost == true){
             res.json({
-                "tradeCost": tradeCost + timeTradeCost
+                "tradeCost": totalTradeCost
             });
             return;
         }
@@ -177,7 +179,7 @@ router.post("/create", (req, res) => {
 
 
             // Not enough trade credits
-            if (userResources.trade_credits < tradeCost + timeTradeCost){
+            if (userResources.trade_credits < totalTradeCost){
                 res.status(403).send("Not enough Trade Credits. Open Brawl Boxes to get more.");
                 return;
             }
@@ -219,7 +221,7 @@ router.post("/create", (req, res) => {
             }
 
             // Deduct trade credits (if there is an error later, it will not be written to database)
-            userResources.trade_credits -= (tradeCost + timeTradeCost);
+            userResources.trade_credits -= totalTradeCost;
 
             // tradeHours defaults to 2 days expiry time
             const tradeExpiration = Date.now() + tradeHours * 3600000;
@@ -349,9 +351,10 @@ router.post("/accept", (req, res) => {
 
                 // The acceptor does not pay any time cost for the trade
                 const tradeCost = tradeResults.trade_credits;
+                const totalTradeCost = Math.ceil(tradeCost / 10);
 
                 // Not enough trade credits
-                if (userResources.trade_credits < tradeCost){
+                if (userResources.trade_credits < totalTradeCost){
                     res.status(403).send("Not enough Trade Credits. Open Brawl Boxes to get more.");
                     return;
                 }
@@ -408,7 +411,7 @@ router.post("/accept", (req, res) => {
                 }
 
                 // Deduct trade credits (if there is an error later, it will not be written to database)
-                userResources.trade_credits -= tradeCost;
+                userResources.trade_credits -= totalTradeCost;
 
                 // Array of pins the user received which will be sent to them as information
                 var tradedItems = [];
@@ -547,6 +550,7 @@ router.post("/close", (req, res) => {
                 // out how many credits they spent on the time.
                 const tradeCost = tradeResults.trade_credits;
                 const timeTradeCost = tradeResults.trade_credits_time;
+                const totalTradeCost = Math.ceil((tradeCost + timeTradeCost) / 10);
 
                 // Based on whether the trade was complete or not, pins will be added
                 // back from either the offer or request
@@ -559,7 +563,7 @@ router.post("/close", (req, res) => {
                     // If the trade was expired or no one accepted it, add pins back from the offer
                     // Also refund the trade credits they paid to create the trade
                     addPinsFrom = offerPins;
-                    userTradeCredits += (tradeCost + timeTradeCost);
+                    userTradeCredits += totalTradeCost;
                 }
 
                 // Array of pins the user received which will be sent to them as information
