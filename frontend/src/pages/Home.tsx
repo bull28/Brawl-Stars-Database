@@ -5,10 +5,10 @@ import AccountDisplay from '../components/AccountDisplay'
 
 
 const topRow = ['Gallery', 'Brawlers', 'Events', 'Trade']
-const bottomRow = ['Brawl Box', 'Coming Soon', 'About/Options']
+const bottomRow = ['Shop', 'Coming Soon', 'About/Options']
 
 const topLinks = ['/gallery', '/brawlers', '/events', '/trade']
-const bottomLinks = ['', '', '']
+const bottomLinks = ['/shop', '', '']
 
 const LargeTile = ({ link, children }: {link: string, children: React.ReactNode}) => {
   const redirect = useNavigate();

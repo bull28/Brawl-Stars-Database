@@ -73,7 +73,7 @@ export default function Trade() {
             })
     }
 
-    useEffect(() => {
+    const getCost = () => {
         let offerObject = []
         let reqObject = []
 
@@ -112,6 +112,11 @@ export default function Trade() {
             setTradeCost(0)
         }
 
+    }
+
+    useEffect(() => {
+        
+        getCost();
         
     }, [offer, req, tradeLength])
 
@@ -284,7 +289,7 @@ export default function Trade() {
     return (
         <Flex justifyContent={'space-evenly'} alignItems={'center'} flexDir={'column'}>            
             <IconButton aria-label='open filter' as={HamburgerIcon} pos={'absolute'} top={0} left={0} m={5} onClick={onOpen}></IconButton>
-            <Text mt={5} fontSize={'3xl'} className={'heading-3xl'} color={'white'}>Trades</Text>
+            <Text mt={5} fontSize={'3xl'} className={'heading-3xl'} color={'white'}>Trades</Text>            
             <Flex pos={'absolute'} top={0} right={0} m={5}>
                 <Button h={'50px'} m={2} rightIcon={<AddIcon/>} colorScheme={'whatsapp'} className={'heading-md'} fontWeight={'normal'} onClick={onOpen2}>New Trade</Button>
                 <Flex>
@@ -507,6 +512,9 @@ export default function Trade() {
                         </Flex>
                     </>}
                     </ModalBody>
+                    <ModalFooter>
+                        <Button colorScheme={'red'} onClick={onClose3}>Close</Button>
+                    </ModalFooter>
                     </ModalContent>
                 </Modal>
                 <Flex flexDir={'column'} w={'100%'} justifyContent={'center'} alignItems={'center'} mt={5}>

@@ -68,7 +68,7 @@ export default function MyTrades() {
     }
 
   return (
-    <Flex flexDir={'column'} alignItems={'center'}>
+    <Flex flexDir={'column'} alignItems={'center'} overflow={'hidden'}>
         <Text fontSize={'2xl'} color={'white'} className={'heading-2xl'} my={3}>My Trades</Text>
         <IconButton pos={'absolute'} top={'2vh'} left={'2vh'} colorScheme={'gray'} as={ArrowBackIcon} aria-label="back to trades menu" onClick={() => {navigate('/trade')}} cursor={'pointer'}/>
         <Flex flexDir={'column'} ml={'10vw'} mt={'5vh'}>
@@ -172,7 +172,7 @@ export default function MyTrades() {
         <Flex flexDir={'column'} ml={'10vw'} mt={'5vh'}>
             <Text fontSize={'xl'} color={'orange'} className={'heading-xl'}>Pending</Text>
             <Box bgColor={'gray.200'} h={'2px'} w={'100vw'} my={3}/>
-            <HStack overflowX={'auto'} maxW={'100vw'} sx={{
+            <HStack overflowX={'auto'} maxW={'100vw'} pr={'6vw'} sx={{
                     '&::-webkit-scrollbar': {
                     width: '8px',
                     borderRadius: '8px',
