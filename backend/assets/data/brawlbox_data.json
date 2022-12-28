@@ -161,9 +161,9 @@
             "pmfobject": [
                 {"value": "avatars/special/brawlbox_icon.webp", "weight": 5},
                 {"value": "avatars/special/angry_darryl.webp", "weight": 4},
-                {"value": "avatars/special/ELIXIR_GOLM.webp", "weight": 3},
+                {"value": "avatars/special/yellow_face_02.webp", "weight": 3},
                 {"value": "avatars/special/viking_bull.webp", "weight": 2},
-                {"value": "avatars/special/yellow_face_02.webp", "weight": 1}
+                {"value": "avatars/special/STOMPER.webp", "weight": 1}
             ]
         }
     }

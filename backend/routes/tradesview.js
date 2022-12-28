@@ -69,13 +69,14 @@ router.get("/id", (req, res) => {
             return;
         }
 
+        // trade costs are stored in the database as 10 times the amount of credits required
         const tradeData = {
             "creator": {
                 "username": results[0].creator,
                 "avatar": results[0].creator_avatar,
                 "avatarColor": results[0].creator_color
             },
-            "cost": results[0].trade_credits,
+            "cost": Math.ceil(results[0].trade_credits / 10),
             "offer": offerPins,
             "request": requestPins,
             "timeLeft": getTradeTimeLeft(results[0].expiration),
@@ -120,7 +121,7 @@ router.post("/user", (req, res) => {
 
             tradeList.push({
                 "tradeid": x.tradeid,
-                "cost": x.trade_credits,
+                "cost": Math.ceil(x.trade_credits / 10),
                 "offer": offerPins,
                 "request": requestPins,
                 "timeLeft": getTradeTimeLeft(x.expiration),
@@ -208,7 +209,7 @@ router.post("/all", (req, res) => {
                     "avatar": x.creator_avatar,
                     "avatarColor": x.creator_color,
                 },
-                "cost": x.trade_credits,
+                "cost": Math.ceil(x.trade_credits / 10),
                 "offer": offerPins,
                 "request": requestPins,
                 "timeLeft": getTradeTimeLeft(x.expiration)

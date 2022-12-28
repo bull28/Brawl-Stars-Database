@@ -50,15 +50,15 @@ function validatePins(allSkins, pinArray, pinFile, searchByName){
 }
 
 /**
- * Returns the cost of trading a pin based on its rarity. All numbers
- * returned are 10 times their intended value to avoid floating point
- * rounding errors.
+ * Returns 10 times the cost of trading a pin based on its rarity.
  * @param {Number} rarityValue numerical value of the rarity
  * @returns Number
  */
 function tradeCreditsByRarity(rarityValue){
     // All costs are divided by 10 later
     // to avoid floating point errors
+    // and to allow more precision when
+    // combining pin and time costs
 
     // Base cost to trade any pin
     var tradeCredits = 3;
@@ -77,6 +77,25 @@ function tradeCreditsByRarity(rarityValue){
     return tradeCredits;
 }
 
+/**
+ * There is a discount for trading multiple copies of a pin in one trade.
+ * Returns how many times more expensive a trade would cost when trading
+ * more than one copy of a pin.
+ * @param {Number} amount 
+ * @returns Number
+ */
+function tradeCostMultiplier(amount){
+    var costMultiplier = 1.0;
+    if (amount > 15){
+        costMultiplier = 3.0 + 0.025 * (amount - 15);
+    } else if (amount > 5){
+        costMultiplier = 2.0 + 0.1 * (amount - 5);
+    } else if (amount > 1){
+        costMultiplier = 1.0 + 0.25 * (amount - 1);
+    }
+    return costMultiplier;
+}
+
 
 /**
  * Calculates the cost of a trade based on how many pins are being exchanged
@@ -87,7 +106,7 @@ function tradeCreditsByRarity(rarityValue){
  * @returns Number
  */
 function getTradeCost(offerPins, requestPins){
-    var totalTradeCost = 0;
+    var totalTradeCost = 0.0;
 
     if (!(offerPins && requestPins)){
         return totalTradeCost;
@@ -97,24 +116,15 @@ function getTradeCost(offerPins, requestPins){
     // A small extra cost is added if there are multiple copies of the
     // same pin being traded
     for (let x of offerPins){
-        totalTradeCost += tradeCreditsByRarity(x.rarityValue);
-        if (x.amount > 1){
-            totalTradeCost += ((x.amount - 1) * 2);
-        }
+        totalTradeCost += tradeCostMultiplier(x.amount) * tradeCreditsByRarity(x.rarityValue);
     }
     for (let x of requestPins){
-        totalTradeCost += tradeCreditsByRarity(x.rarityValue);
-        if (x.amount > 1){
-            totalTradeCost += ((x.amount - 1) * 2);
-        }
+        totalTradeCost += tradeCostMultiplier(x.amount) * tradeCreditsByRarity(x.rarityValue);
     }
 
-    totalTradeCost = Math.ceil(totalTradeCost / 10);
-
-    return totalTradeCost;
+    return Math.round(totalTradeCost);
 }
 
-//@param {Number} tradeHours number of hours the trade will last
 /**
  * Calculates the additional cost of a trade based on how much time the trade
  * lasts for. Trades 48 hours or less do not cost extra credits. Trades
@@ -127,21 +137,21 @@ function getTimeTradeCost(tradeHours){
 
     if (tradeHours > 48){
         if (tradeHours <= 72){
-            timeTradeCost = 1;
+            timeTradeCost = 6 * (tradeHours - 48) / 24;
         } else if (tradeHours <= 120){
-            timeTradeCost = 2;
+            timeTradeCost = 6 + 6 * (tradeHours - 72) / 48;
         } else if (tradeHours <= 168){
-            timeTradeCost = 3;
+            timeTradeCost = 12 + 6 * (tradeHours - 120) / 48;
         } else if (tradeHours <= 240){
-            timeTradeCost = 4;
+            timeTradeCost = 18 + 6 * (tradeHours - 168) / 72;
         } else if (tradeHours <= 336){
-            timeTradeCost = 5;
+            timeTradeCost = 24 + 6 * (tradeHours - 240) / 96;
         } else{
             timeTradeCost = 1000;
         }
     }
 
-    return timeTradeCost;
+    return Math.floor(timeTradeCost);
 }
 
 exports.validatePins = validatePins;
