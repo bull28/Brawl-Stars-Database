@@ -2,6 +2,7 @@ import { Flex, Text, Image, Box, SimpleGrid, Button, Tooltip } from '@chakra-ui/
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import AccountDisplay from '../components/AccountDisplay'
+import isSun from '../helpers/SunOrMoon'
 
 
 const topRow = ['Gallery', 'Brawlers', 'Events', 'Trade']
@@ -49,7 +50,7 @@ export default function Home() {
     <Flex position={'absolute'} width={'100%'} justifyContent={'right'}>
       <Flex m={5} alignItems={'center'}>
         <Text mr={5} fontSize={'xl'} className={'heading-xl'} color={'pink.400'}>{`${new Date().getHours()}:${String(new Date().getMinutes()).length === 2 ? new Date().getMinutes() : "0"+new Date().getMinutes()}`}</Text>
-        <Tooltip label={`don't ask where this is from...`}>{(new Date().getHours() > 12) ? <Image src={require('../assets/moon.webp')} w={'70px'} mr={5}/> : <Box w={'70px'} h={'70px'} bgColor={'white'} mr={5}></Box>}</Tooltip>
+        <Tooltip label={`don't ask where this is from...`}>{(!isSun()) ? <Image src={require('../assets/moon.webp')} w={'70px'} mr={5}/> : <Box w={'70px'} h={'70px'} bgColor={'white'} mr={5}></Box>}</Tooltip>
         {localStorage.getItem('username') ? 
           <AccountDisplay/> :
           <Button onClick={login}>Log In</Button>}

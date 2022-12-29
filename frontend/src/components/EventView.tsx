@@ -10,6 +10,8 @@ export default function MapView({ event }: MapViewProps){
 
     const [timer, updateTimer] = useState<number>(0)
 
+    //issues
+
     useEffect(() => {
       const id = setInterval(() => 
         updateTimer((time) => time + 1)

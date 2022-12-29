@@ -90,7 +90,7 @@ export default function MyTrades() {
                         if (trade.accepted){
                             return (
                                 <Flex flexDir={'column'}>
-                                <Flex h={'25vh'} maxW={'fit-content'} flexDir={'column'} alignItems={'center'} justifyContent={'space-between'} textAlign={'center'} bgColor={'blue.800'} p={3} borderRadius={'xl'} border={'3px solid #75fa9d'} cursor={'pointer'} _hover={{transform: "scale(110%)"}} transition={'0.25s'}>
+                                <Flex h={'25vh'} maxW={'fit-content'} flexDir={'column'} alignItems={'center'} justifyContent={'space-between'} textAlign={'center'} bgColor={'blue.800'} p={3} borderRadius={'xl'} border={'3px solid #75fa9d'} cursor={'pointer'} transition={'0.25s'}>
                 <Flex w={'85%'} justifyContent={'space-between'} color={'white'} fontSize={'lg'}>
                     <Text color={'red.500'}>Requesting</Text>
                     <Text color={'green.400'}>Offering</Text>
@@ -185,10 +185,10 @@ export default function MyTrades() {
                 }}>
                 {
                     data?.map((trade) => {
-                        if (!trade.accepted){
+                        if ((trade.timeLeft.hour > 0 || trade.timeLeft.minute > 0 || trade.timeLeft.second > 0)){
                             return (
                                 <Flex flexDir={'column'}>
-                                <Flex h={'25vh'} maxW={'fit-content'} flexDir={'column'} alignItems={'center'} justifyContent={'space-between'} textAlign={'center'} bgColor={'blue.800'} p={3} borderRadius={'xl'} border={'3px solid orange'} cursor={'pointer'} _hover={{transform: "scale(110%)"}} transition={'0.25s'}>
+                                <Flex h={'25vh'} maxW={'fit-content'} flexDir={'column'} alignItems={'center'} justifyContent={'space-between'} textAlign={'center'} bgColor={'blue.800'} p={3} borderRadius={'xl'} border={'3px solid orange'} cursor={'pointer'} transition={'0.25s'}>
                 <Flex w={'85%'} justifyContent={'space-between'} color={'white'} fontSize={'lg'}>
                     <Text color={'red.500'}>Requesting</Text>
                     <Text color={'green.400'}>Offering</Text>
@@ -253,6 +253,104 @@ export default function MyTrades() {
                         <Text whiteSpace={"pre"}>{trade.timeLeft.minute > 0 ? ` ${trade.timeLeft.minute}m` : ""}</Text>
                         <Text whiteSpace={"pre"}>{trade.timeLeft.second > 0 ? ` ${trade.timeLeft.second}s` : ""}</Text>
                         <Text>{(trade.timeLeft.hour === 0 && trade.timeLeft.minute === 0 && trade.timeLeft.second === 0) ? `> ${trade.timeLeft.hoursPerSeason} hours` : ""}</Text>
+                    </Flex>             
+                </Flex>
+            </Flex>
+
+            <Button colorScheme={'red'} onClick={() => {removeTrade(trade.tradeid)}} rightIcon={<IoMdRemoveCircleOutline/>} mt={3}>Remove</Button>
+            <br></br>
+            </Flex>
+                            )
+                        }
+                    })
+                }
+                
+            </HStack>
+        </Flex>
+
+        <Flex flexDir={'column'} ml={'10vw'} mt={'5vh'}>
+            <Text fontSize={'xl'} color={'gray'} className={'heading-xl'}>Expired</Text>
+            <Box bgColor={'gray.200'} h={'2px'} w={'100vw'} my={3}/>
+            <HStack overflowX={'auto'} maxW={'100vw'} pr={'6vw'} sx={{
+                    '&::-webkit-scrollbar': {
+                    width: '8px',
+                    borderRadius: '8px',
+                    backgroundColor: `rgba(0, 0, 0, 0.05)`,                  
+                    },
+                    '&::-webkit-scrollbar-thumb': {
+                    backgroundColor: `rgba(0, 0, 0, 0.5)`,
+                    borderRadius: `6px`,                    
+                    },
+                }}>
+                {
+                    data?.map((trade) => {
+                        if (!trade.accepted && ((trade.timeLeft.hour === 0 && trade.timeLeft.minute === 0 && trade.timeLeft.second === 0))){
+                            return (
+                                <Flex flexDir={'column'}>
+                                <Flex h={'25vh'} maxW={'fit-content'} flexDir={'column'} alignItems={'center'} justifyContent={'space-between'} textAlign={'center'} bgColor={'blue.800'} p={3} borderRadius={'xl'} border={'3px solid orange'} cursor={'pointer'} transition={'0.25s'}>
+                <Flex w={'85%'} justifyContent={'space-between'} color={'white'} fontSize={'lg'}>
+                    <Text color={'red.500'}>Requesting</Text>
+                    <Text color={'green.400'}>Offering</Text>
+                </Flex>
+
+                <Flex justifyContent={'center'} alignItems={'center'} maxH={'70%'} >
+
+                    
+                        <SimpleGrid w={'10vw'} columns={[1, 2]} spacing={3} overflow={'auto'} maxH={'100%'} sx={{
+                    '&::-webkit-scrollbar': {
+                    width: '8px',
+                    borderRadius: '8px',
+                    backgroundColor: `rgba(0, 0, 0, 0.05)`,
+                    },
+                    '&::-webkit-scrollbar-thumb': {
+                    backgroundColor: `rgba(0, 0, 0, 0.5)`,
+                    borderRadius: `6px`,
+                    },
+                }}>
+                            {trade.request.map((request) => (
+                                <Flex p={3} border={'2px solid black'} borderRadius={'lg'} bgColor={request.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
+                                    <Image maxW={'60px'} src={`/image/${request.pinImage}`} fallback={<Spinner/>}/>
+                                    <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} color={'white'}>{request.amount}</Text>
+                                </Flex>
+                            ))}
+                        </SimpleGrid>
+                    
+
+                    <Flex flexDir={'column'} justifyContent={'space-evenly'} alignItems={'center'} mx={'1vw'}  color={'white'} h={'100%'}>
+                        <Flex alignItems={'center'}>
+                            <Image w={'30px'} h={'30px'} src={'/image/resources/resource_trade_credits.webp'}/>
+                            <Text ml={1} fontSize={'2xl'}>{trade.cost}</Text>                                
+                        </Flex>
+
+                        <HiOutlineSwitchHorizontal fontSize={'30px'}/>
+                    </Flex>
+
+                    
+                        <SimpleGrid w={'10vw'} columns={[1, 2]} spacing={3} overflow={'auto'} maxH={'100%'} sx={{
+                    '&::-webkit-scrollbar': {
+                    width: '8px',
+                    borderRadius: '8px',
+                    backgroundColor: `rgba(0, 0, 0, 0.05)`,
+                    },
+                    '&::-webkit-scrollbar-thumb': {
+                    backgroundColor: `rgba(0, 0, 0, 0.5)`,
+                    borderRadius: `6px`,
+                    },
+                }}>
+                            {trade.offer.map((offer) => (
+                                
+                                <Flex p={3} border={'2px solid black'} borderRadius={'lg'} bgColor={offer.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
+                                    <Image  maxW={'60px'} src={`/image/${offer.pinImage}`} fallback={<Spinner/>}/>
+                                    <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} color={'white'}>{offer.amount}</Text>
+                                </Flex>
+                                
+                            ))}
+                        </SimpleGrid>
+
+                </Flex>
+                <Flex w={'90%'} justifyContent={'space-between'}>
+                    <Flex color={'red.500'}>
+                        <Text>Expired!</Text>
                     </Flex>             
                 </Flex>
             </Flex>

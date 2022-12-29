@@ -9,6 +9,7 @@ import AuthRequest, { getToken } from '../helpers/AuthRequest'
 import { UserInfoProps } from '../types/AccountData'
 import { useNavigate } from 'react-router-dom'
 import { BsPersonFill } from 'react-icons/bs'
+import { CollectionData } from '../types/CollectionData'
 
 /*
     To-Do
@@ -58,6 +59,7 @@ export default function Trade() {
     const [resources, setResources] = useState<UserInfoProps>()
     const [tradeLength, setTradeLength] = useState<number>(48)
     const [tradeCost, setTradeCost] = useState<number>()
+    const [collectionData, setCollectionData] = useState<CollectionData>()
 
     const toast = useToast()
     const navigate = useNavigate()
@@ -141,6 +143,10 @@ export default function Trade() {
                 setPinData(res.data.pins)
             })
     }, [filter.brawler])
+
+    useEffect(() => {
+        AuthRequest('/collection', {setState: [{func: setCollectionData, attr: ""}]})
+    })
 
     const changeFilter = (query:string, value:any) => {
         updateFilter(prevState => ({
