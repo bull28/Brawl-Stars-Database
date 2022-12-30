@@ -20,6 +20,7 @@ function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
         "collectionScore": "",
         "scoreProgress": 0,
         "avatarColor": "#000000",
+        "pinRarityColors": {},
         "collection":[]
     };
 
@@ -61,9 +62,12 @@ function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
                 var thisPin = {};
 
                 if (pin.hasOwnProperty("image")){
-                    thisPin["i"] = pin["image"];
+                    thisPin["i"] = pin.image;
                 }
                 thisPin["a"] = 0;
+                //console.log(pin);
+                thisPin["r"] = pin.rarity.value;
+                collectionInfo.pinRarityColors[pin.rarity.value] = pin.rarity.color;
 
                 // If the brawler appears in userCollection as a key, it is unlocked
                 // If the brawler is unlocked, check to see if the name of the current

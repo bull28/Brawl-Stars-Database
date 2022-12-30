@@ -214,6 +214,9 @@ function selectPin(pinDropChances, resources, allSkins){
     if (raritypmf.length != minraritypmf.length){
         return result;
     }
+    if (raritypmf.length != pinDropChances.coinConversion.length){
+        return result;
+    }
     
     var availablePins = [];
     
@@ -338,11 +341,11 @@ function selectPin(pinDropChances, resources, allSkins){
             result.displayName = "New Pin";
         }
 
-    } else if (pinDropChances.coinConversion > 0){
-        resources.coins += pinDropChances.coinConversion;
+    } else if (pinDropChances.coinConversion[selectedRarity] > 0){
+        resources.coins += pinDropChances.coinConversion[selectedRarity];
 
         result.rewardType = "coins";
-        result.amount = pinDropChances.coinConversion;
+        result.amount = pinDropChances.coinConversion[selectedRarity];
     }
 
     return result;
@@ -423,11 +426,16 @@ function selectBrawler(brawlerDropChances, resources, allSkins){
 
     var userCollection = resources.brawlers;
     //var raritypmf = [32, 16, 8, 4, 2, 1, 1];
-    var raritypmf = [0, 0, 0, 0, 0, 0, 0];
+    //var raritypmf = [0, 0, 0, 0, 0, 0, 0];
+    var modifiedRaritypmf = [0, 0, 0, 0, 0, 0, 0];
+    const raritypmf = brawlerDropChances.raritypmf;
+    const minraritypmf = brawlerDropChances.minraritypmf;
     var brawlersByRarity = [[], [], [], [], [], [], []];
 
-    if (brawlerDropChances.raritypmf.length != raritypmf.length ||
-        brawlerDropChances.minraritypmf.length != raritypmf.length){
+    if (raritypmf.length != minraritypmf.length){
+        return result;
+    }
+    if (brawlerDropChances.coinConversion.length != raritypmf.length){
         return result;
     }
 
@@ -445,15 +453,15 @@ function selectBrawler(brawlerDropChances, resources, allSkins){
         }
     }
 
-    for (let r = 0; r < raritypmf.length; r++){
+    for (let r = 0; r < modifiedRaritypmf.length; r++){
         if (brawlersByRarity[r].length == 0){
-            raritypmf[r] = brawlerDropChances.minraritypmf[r];
+            modifiedRaritypmf[r] = minraritypmf[r];
         } else{
-            raritypmf[r] = brawlerDropChances.raritypmf[r];
+            modifiedRaritypmf[r] = raritypmf[r];
         }
     }
 
-    var selectedRarity = RNG(raritypmf);
+    var selectedRarity = RNG(modifiedRaritypmf);
     if (selectedRarity >= 0){
         availableBrawlers = brawlersByRarity[selectedRarity];
     }
@@ -471,11 +479,11 @@ function selectBrawler(brawlerDropChances, resources, allSkins){
         result.backgroundColor = brawlerObject.rarity.color;
         result.description = brawlerObject.description;
         result.inventory = 1;
-    } else if (brawlerDropChances.coinConversion > 0){
-        resources.coins += brawlerDropChances.coinConversion;
+    } else if (brawlerDropChances.coinConversion[selectedRarity] > 0){
+        resources.coins += brawlerDropChances.coinConversion[selectedRarity];
 
         result.rewardType = "coins";
-        result.amount = brawlerDropChances.coinConversion;
+        result.amount = brawlerDropChances.coinConversion[selectedRarity];
     }
     
     return result;
