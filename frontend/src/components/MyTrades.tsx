@@ -72,7 +72,7 @@ export default function MyTrades() {
         <Text fontSize={'2xl'} color={'white'} className={'heading-2xl'} my={3}>My Trades</Text>
         <IconButton pos={'absolute'} top={'2vh'} left={'2vh'} colorScheme={'gray'} as={ArrowBackIcon} aria-label="back to trades menu" onClick={() => {navigate('/trade')}} cursor={'pointer'}/>
         <Flex flexDir={'column'} ml={'10vw'} mt={'5vh'}>
-            <Text  fontSize={'xl'} color={'#9f9'} className={'heading-2xl'}>Accepted</Text>
+            <Text  fontSize={'2xl'} color={'#9f9'} className={'heading-2xl'}>Accepted</Text>
             <Box bgColor={'gray.200'} h={'2px'} w={'100vw'} my={3}/>
             <HStack overflowX={'auto'} maxW={'100vw'} sx={{
                     '&::-webkit-scrollbar': {
@@ -170,7 +170,7 @@ export default function MyTrades() {
         </Flex>
 
         <Flex flexDir={'column'} ml={'10vw'} mt={'5vh'}>
-            <Text fontSize={'xl'} color={'orange'} className={'heading-xl'}>Pending</Text>
+            <Text fontSize={'2xl'} color={'orange'} className={'heading-2xl'}>Pending</Text>
             <Box bgColor={'gray.200'} h={'2px'} w={'100vw'} my={3}/>
             <HStack overflowX={'auto'} maxW={'100vw'} pr={'6vw'} sx={{
                     '&::-webkit-scrollbar': {
@@ -269,7 +269,7 @@ export default function MyTrades() {
         </Flex>
 
         <Flex flexDir={'column'} ml={'10vw'} mt={'5vh'}>
-            <Text fontSize={'xl'} color={'gray'} className={'heading-xl'}>Expired</Text>
+            <Text fontSize={'2xl'} color={'red.400'} className={'heading-2xl'}>Expired</Text>
             <Box bgColor={'gray.200'} h={'2px'} w={'100vw'} my={3}/>
             <HStack overflowX={'auto'} maxW={'100vw'} pr={'6vw'} sx={{
                     '&::-webkit-scrollbar': {

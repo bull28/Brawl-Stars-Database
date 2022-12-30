@@ -8,7 +8,7 @@ export interface BrawlerCollectionData {
     totalPins: number,
     pinCopies: number,
     pinFilePath: string,
-    pins: [{i: string, a: number}]
+    pins: [{i: string, a: number, r: number}]
 }
 
 export interface CollectionData {
@@ -21,5 +21,11 @@ export interface CollectionData {
     scoreProgress: number,
     collectionScore: string,
     avatarColor: string,
+    pinRarityColors: {
+        0: string,
+        1: string,
+        2: string,
+        3: string
+    }
     collection: [BrawlerCollectionData]
 }

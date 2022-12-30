@@ -57,7 +57,7 @@ export default function TradeCard({ data }: {data: TradeData}) {
 
     return (
         <>
-            <Flex h={'25vh'} maxW={'fit-content'} flexDir={'column'} alignItems={'center'} justifyContent={'space-between'} textAlign={'center'} bgColor={'blue.800'} p={3} borderRadius={'xl'} border={'2px solid black'} onClick={onOpen} cursor={'pointer'} _hover={{transform: "scale(110%)"}} transition={'0.25s'} boxShadow={'rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;'}>
+            <Flex h={'25vh'} maxW={'25vw'} flexDir={'column'} alignItems={'center'} justifyContent={'space-between'} textAlign={'center'} bgColor={'blue.800'} p={3} borderRadius={'xl'} border={'2px solid black'} onClick={onOpen} cursor={'pointer'} _hover={{transform: "scale(110%)"}} transition={'0.25s'} boxShadow={'rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;'}>
                 <Flex w={'85%'} justifyContent={'space-between'} color={'white'} fontSize={'lg'}>
                     <Text color={'red.500'}>Requesting</Text>
                     <Text color={'green.400'}>Offering</Text>
