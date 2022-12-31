@@ -90,7 +90,7 @@ export default function AccountDisplay() {
         <Tooltip label='Tokens are used to open Brawl Boxes. Collect them by vising the website regularly!' placement={'bottom-start'}>
             <Flex justifyContent={'center'} alignItems={'center'} textAlign={'center'} mt={1}> 
                 <Image maxW={'25px'} src={'/image/resources/resource_tokens.webp'} mr={1}/>
-                <Text fontSize={'xl'}>{data?.tokens}</Text>
+                <Text color={'white'} className={'heading-xl'} fontSize={'xl'}>{data?.tokens}</Text>
             </Flex>
         </Tooltip>
         <Drawer isOpen={isOpen} placement={'right'} onClose={onClose}>

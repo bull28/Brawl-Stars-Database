@@ -56,7 +56,7 @@ export default function BrawlBoxDisplay({ data, tokens, loadResources }: {data: 
 
     return (
         
-        <Flex py={5} flexDir={'column'} justifyContent={'center'} alignItems={'center'} textAlign={'center'} pos={'relative'} bgColor={'lightskyblue'} px={10} borderRadius={'lg'} cursor={'pointer'} onClick={onOpen}>
+        <Flex py={5} flexDir={'column'} justifyContent={'center'} alignItems={'center'} textAlign={'center'} pos={'relative'} bgColor={'lightskyblue'} px={10} borderRadius={'lg'} cursor={'pointer'} border={'2px solid black'} onClick={onOpen}>
             <Image src={`/image/${data.image}`} fallback={<Spinner/>}/>
             <Flex w={'100%'} justifyContent={'center'}>
                 <Text fontSize={'lg'} mr={1}>{data.cost}</Text>

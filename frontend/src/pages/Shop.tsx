@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { BsPerson } from 'react-icons/bs'
 import { FaSkull } from 'react-icons/fa'
 import { MdOutlineFeaturedPlayList, MdOutlineGeneratingTokens } from 'react-icons/md'
+import MovingText from '../components/MovingText'
 import ShopItem from '../components/ShopItem'
 import AuthRequest, { getToken } from '../helpers/AuthRequest'
 import { GoldMovingBackground, RainbowBorder } from '../themes/rainbow'
@@ -46,10 +47,7 @@ export default function Shop() {
         <Flex flexDir={'column'} alignItems={'center'} minH={'100vh'}>
             <Flex zIndex={'-1'} w={'100%'} h={'100%'} pos={'absolute'} backgroundImage={require(`../assets/shopbackground${season}.jpg`)} backgroundAttachment={'fixed'} backgroundRepeat={'no-repeat'}  objectFit={'cover'}>            
             </Flex>
-            <Flex pos={'relative'}>
-                <Text pos={'absolute'} background={'linear-gradient(to left, #fdf542, #ff9005, #fdf542)'} backgroundClip={'text'} color={'transparent'} animation={`${GoldMovingBackground()} 30s linear infinite`} fontSize={'3xl'} textAlign={'center'} fontWeight={'bold'}>Shop</Text>            
-                <Text background={'linear-gradient(to left, #fdf542, #ff9005, #fdf542)'} backgroundClip={'text'} color={'transparent'} animation={`${GoldMovingBackground()} 30s linear infinite`} fontSize={'3xl'} textAlign={'center'} fontWeight={'bold'} className={'heading-3xl'}>Shop</Text>            
-            </Flex>
+            <MovingText title="Shop" color1="#fdf542" color2="#ff9005" fontSize='3xl'/>
             { getToken() ? <>
             <Flex pos={'absolute'} right={3} top={3}>
                 <Flex justifyContent={'center'} alignItems={'center'} p={3} pl={2} pos={'relative'} borderRadius={'lg'}>

@@ -26,15 +26,14 @@ export default function TokenDisplay({ callback, tokens }: {callback: () => void
 
   return (
     
-    <Flex minH={'80%'} flexDir={'column'} border={'3px solid black'} bgColor={'aquamarine'} p={3} justifyContent={'center'} alignItems={'center'} textAlign={'center'} pos={'relative'}>
-        
+    <Flex flexDir={'column'} border={'3px solid black'} bgColor={'aquamarine'} p={3} justifyContent={'center'} alignItems={'center'} textAlign={'center'} pos={'relative'}>        
         <Image src={'/image/resources/resource_tokens.webp'}/>
         <Text>{`Tokens Available: ${data?.tokensAvailable}`}</Text>
         {(data?.tokensAvailable && data?.tokensAvailable > 0) ? <Button my={5} onClick={claimTokens}>Claim Tokens!</Button> : <Button my={5} isDisabled>Claim Tokens!</Button>}
         <Text>{`Next Tokens Available in ${data?.timeLeft.hour}h ${data?.timeLeft.minute}m!`}</Text>
-        <Flex flexDir={'row'} pos={'absolute'} bottom={3}>
+        <Flex flexDir={'row'} mt={5}>
             <Text fontSize={'2xl'}>{tokens}</Text>
-            <Image w={'40px'}  ml={1} src={'/image/resources/resource_tokens.webp'}/>
+            <Image w={'40px'} ml={1} src={'/image/resources/resource_tokens.webp'}/>
         </Flex>
     </Flex>
     
