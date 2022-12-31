@@ -18,7 +18,27 @@ export function changeToken(username: string, token: string){
     localStorage.setItem('username', username)
 }
 
-export default async function AuthRequest(endpoint: string, config: {setState?: {func: any, attr: string}[], data?: any, callback?: any, fallback?: any, navigate?: boolean, message?: {title?: string, description?: string, status?: "success" | "error", duration?: number, data?: string}}) {
+interface AuthRequestConfigProps {
+    setState?: {
+        func: any,
+        attr: string
+    }[],
+    data?: any,
+    callback?: any,
+    fallback?: any,
+    navigate?: boolean,
+    message?: {
+        title?: string,
+        description?: string,
+        status?: "success" | "error",
+        duration?: number,
+        data?: string
+    },
+    errorToastMessage?: string
+}
+
+//export default async function AuthRequest(endpoint: string, config: {setState?: {func: any, attr: string}[], data?: any, callback?: any, fallback?: any, navigate?: boolean, message?: {title?: string, description?: string, status?: "success" | "error", duration?: number, data?: string}, errorToastMessage?: string}) {
+export default async function AuthRequest(endpoint:string, config:AuthRequestConfigProps) {
     const { toast } = createStandaloneToast()
 
     axios.post(endpoint, {token: getToken(), ...config.data})
@@ -51,6 +71,10 @@ export default async function AuthRequest(endpoint: string, config: {setState?: 
                 if (config.navigate){
                     document.location.replace('/login')
                 }
+            }
+
+            if (config.errorToastMessage){
+                toast({title: config.errorToastMessage, description: error.response.data, status: 'error', duration: 3000, isClosable: true})
             }
         })
 }

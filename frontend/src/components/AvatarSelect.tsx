@@ -50,7 +50,7 @@ const AvatarSelect = React.forwardRef<{open: () => void}, Props>((props, ref) =>
           <ModalBody>
             <SimpleGrid columns={[4,5,6,7,8]} spacing={2}>
                 {avatars?.map((a) => (
-                    <Box w={'fit-content'} onClick={() => {props.setAvatar(a)}} cursor={'pointer'}>
+                    <Box w={'fit-content'} onClick={() => {props.setAvatar(a); onClose();}} cursor={'pointer'}>
                         <Image src={`/image/${a}`} w={'100px'} borderRadius={'50%'} border={(a === props.avatar) ? '3px solid #87C1FF' : '2px solid black'}/>
                     </Box>
                 ))}

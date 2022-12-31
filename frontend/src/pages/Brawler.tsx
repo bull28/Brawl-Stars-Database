@@ -41,7 +41,7 @@ export default function Brawler() {
                     </Flex>
 
                     <Flex flexDir={'column'} w={'100%'} alignItems={'center'} py={'3vh'} bgColor={'teal.200'}>
-                        <Text fontSize={'2xl'} color={'white'} className={'heading-2xl'} mb={3}>Brawler Model</Text>
+                        <Text fontSize={'3xl'} color={'white'} className={'heading-3xl'} mb={3}>Brawler Model</Text>
                         <Flex justifyContent={'center'} alignItems={'center'} w={'60%'} h={'60vw'} bgImage={"/image/misc/bg_3d_model.webp"} backgroundPosition={"center"} backgroundSize={"cover"} backgroundRepeat={"no-repeat"} border={'3px solid white'}>                        
                             <Suspense fallback={<Spinner/>}>
                                 {model && <ModelViewer scale={1.0} modelPath={model} position={[0, 0, 0]}/>}
@@ -50,7 +50,7 @@ export default function Brawler() {
                     </Flex>
 
                     <Flex w={'100%'} flexDir={'column'} alignItems={'center'} bgColor={'orange.400'} py={'3vh'}>
-                        <Text color={'white'} fontSize={'2xl'} className={'heading-2xl'} mb={3}>Pins</Text>
+                        <Text color={'white'} fontSize={'3xl'} className={'heading-3xl'} mb={3}>Pins</Text>
                         <SimpleGrid columns={[3,4]} spacing={3} bgColor={'black'} p={3} borderRadius={'md'} w={'90%'} border={'1px solid rgba(255,255,255,0.8)'}>
                             {data.pins.map((pin) => (
                                 <ScaleFade in={true}>

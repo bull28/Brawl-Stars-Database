@@ -1,7 +1,8 @@
-import { Box, Button, Divider, Flex, Image, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, SimpleGrid, Tag, Text, useDisclosure } from '@chakra-ui/react'
+import { Box, Button, Divider, Flex, Image, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, ScaleFade, SimpleGrid, Tag, Text, useDisclosure } from '@chakra-ui/react'
 import AuthRequest from '../helpers/AuthRequest'
 import ShopData from '../types/ShopData'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 
 
@@ -11,10 +12,10 @@ export default function ShopItem({data}: {data: ShopData}) {
 
     const [accepted, setAccepted] = useState<boolean>()
 
-    
+    const navigate = useNavigate()
 
     const purchase = (itemName: string) => {
-        AuthRequest('/shop', {data: {item: itemName}})
+        AuthRequest('/shop', {data: {item: itemName}, callback: () => {setAccepted(true)}, errorToastMessage: "Invalid Purchase"})
     }
 
     return (
@@ -55,20 +56,28 @@ export default function ShopItem({data}: {data: ShopData}) {
 
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
-                <ModalContent>
-                <ModalHeader>{accepted ? 'Purchase Successful!' : 'Purchase Item'}</ModalHeader>
-                <ModalCloseButton />
-                <ModalBody>
-                    
-                </ModalBody>
+                <ScaleFade in={true}>
+                    <ModalContent bgColor={(accepted) ? '#9f9' : 'lightskyblue'} border={'2px solid '}>
+                    <ModalHeader color={'white'} className={'heading-2xl'} fontWeight={'normal'}>{accepted ? 'Purchase Successful!' : `Purchase ${data.displayName}`}</ModalHeader>
+                    <ModalBody>
+                        <Flex justifyContent={'center'}>
+                            <Image boxShadow={(accepted) ? '0px 0px 50px #fff' : ''} borderRadius={'50%'} src={`/image/${data.image}`}/>
+                        </Flex>
+                    </ModalBody>
 
-                <ModalFooter>
-                    <Button colorScheme='red' mr={3} onClick={() => {window.location.reload()}}>
-                    Close
-                    </Button>
-                    <Button colorScheme={'whatsapp'} onClick={() => {purchase(data.name)}}>Buy</Button>
-                </ModalFooter>
-                </ModalContent>
+                    <ModalFooter>
+                        <Button colorScheme='red' mr={3} onClick={(accepted) ? () => {window.location.reload()} : onClose}>
+                        Close
+                        </Button>
+                        {accepted ? 
+                        <></>
+                        :
+                        <Button colorScheme={'whatsapp'} onClick={() => {purchase(data.name)}}>{data.cost}<Image ml={1} maxH={'25px'} src={`/image/resources/resource_coins.webp`}/></Button>
+                    }
+                        
+                    </ModalFooter>
+                    </ModalContent>
+                </ScaleFade>
             </Modal>
         </Flex>       
     )
