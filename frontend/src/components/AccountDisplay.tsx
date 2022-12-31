@@ -24,6 +24,7 @@ import {UserInfoProps} from '../types/AccountData'
 import AccountMenuDisplay from './AccountMenuDisplay'
 import AuthRequest from '../helpers/AuthRequest'
 import { useNavigate } from 'react-router-dom'
+import { RainbowBorder } from '../themes/rainbow'
 
 
 export default function AccountDisplay() {
@@ -48,7 +49,7 @@ export default function AccountDisplay() {
     <Flex flexDir={'column'} justifyContent={'center'} alignItems={'center'} textAlign={'center'}>
         <Menu autoSelect={false} closeOnSelect={false}>
             <MenuButton>
-                <Flex justifyContent={'center'} alignItems={'center'} borderRadius={'50%'} p={'3px'} background={(data?.avatarColor === 'rainbow' ? 'conic-gradient(#f00,#ff0,#0f0,#0ff,#00f,#f0f,#f00)' : data?.avatarColor)}>
+                <Flex justifyContent={'center'} alignItems={'center'} borderRadius={'50%'} animation={(data?.avatarColor === 'rainbow') ? `${RainbowBorder()} 12s infinite` : ''}>
                     <Image loading={'eager'} src={`/image/${data?.avatar}`} borderRadius={'50%'} w={'50px'}/>
                 </Flex>
             </MenuButton>

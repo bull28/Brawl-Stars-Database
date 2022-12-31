@@ -8,6 +8,7 @@ import { BrawlBoxData } from '../types/BrawlBoxData'
 import BrawlBoxDisplay from '../components/BrawlBoxDisplay'
 import TokenDisplay from '../components/TokenDisplay'
 import AuthRequest from '../helpers/AuthRequest'
+import { RainbowBackground, RainbowBorder } from '../themes/rainbow'
 
 
 export default function Collection() {
@@ -53,7 +54,7 @@ export default function Collection() {
                     <Stack w={'100%'} spacing={'5'} direction={['column', 'column', 'row']} alignItems={'center'}>
                     <Flex justifyContent={'center'} textAlign={'center'} alignItems={'center'} p={3} borderRadius={'lg'} flexDir={'column'}>
                         <Text fontSize={'2xl'} className={'heading-2xl'} color={'white'} mb={3}>Collection Score</Text>
-                        <Flex bgColor={(data?.avatarColor === 'rainbow') ? 'blue.300' : data?.avatarColor} flexDir={'column'} p={10}  border={'3px solid black'} mb={5}>
+                        <Flex animation={(data?.avatarColor === 'rainbow') ? `${RainbowBorder()} 12s infinite` : ''} bgColor={(data?.avatarColor === 'rainbow') ? 'black' : data?.avatarColor} flexDir={'column'} p={10}  border={'3px solid black'} mb={5}>
                             <Text color={(data?.collectionScore === 'S+' ? 'gold' : 'white')} className={'heading-2xl'} fontSize={'2xl'}>{data?.collectionScore}</Text>
                             <Tooltip label={`${data?.scoreProgress && (data?.scoreProgress * 100).toFixed(1)}% to next letter grade`}>
                                 <Box py={2} mt={1} mb={5}>

@@ -9,6 +9,7 @@ import { RiKeyFill } from "react-icons/ri";
 import AvatarSelect from '../components/AvatarSelect';
 import { changeToken, getToken } from "../helpers/AuthRequest";
 import AuthRequest from '../helpers/AuthRequest'
+import { RainbowBorder } from "../themes/rainbow";
 
 export default function Account() {
   const [data, setData] = useState<UserInfoProps>()
@@ -81,7 +82,7 @@ export default function Account() {
     <Flex w={'100%'} justifyContent={'center'} textAlign={'center'} flexDir={'column'} alignItems={'center'}>
         <Text fontSize={'4xl'} className={'heading-4xl'} color={'white'}>{data?.username}</Text>
         <Flex position={'relative'} pt={3} w={'fit-content'} mt={3}>
-          <Flex justifyContent={'center'} alignItems={'center'} borderRadius={'50%'} p={'3px'} background={(data?.avatarColor === 'rainbow' ? 'conic-gradient(#f00,#ff0,#0f0,#0ff,#00f,#f0f,#f00)' : data?.avatarColor)}>
+          <Flex justifyContent={'center'} alignItems={'center'} borderRadius={'50%'} animation={(data?.avatarColor === 'rainbow') ? `${RainbowBorder()} 12s infinite` : ''}>
             <Image src={`/image/${avatar}`} borderRadius={'50%'}/>
           </Flex>
           <Icon fontSize={'3xl'} position={'absolute'} top={0} right={0} as={MdOutlineEdit} onClick={changeAvatar} cursor={'pointer'}/>

@@ -4,6 +4,7 @@ import axios from 'axios'
 import { useState } from 'react'
 import { HiOutlineSwitchHorizontal } from 'react-icons/hi'
 import { getToken } from '../helpers/AuthRequest'
+import { RainbowBorder } from '../themes/rainbow'
 import { TradeData } from '../types/TradeData'
 
 interface PinData {
@@ -225,7 +226,7 @@ export default function TradeCard({ data }: {data: TradeData}) {
                 </ModalBody>
 
                 <ModalFooter>
-                    {!tradeComplete ? <><Text>{`Created By: ${data.creator.username}`}</Text><Image w={'50px'} ml={2} borderRadius={'50%'} p={'3px'} background={(data?.creator.avatarColor === 'rainbow' ? 'conic-gradient(#f00,#ff0,#0f0,#0ff,#00f,#f0f,#f00)' : data?.creator.avatarColor)} src={`/image/${data.creator.avatar}`}/></> : 
+                    {!tradeComplete ? <><Text>{`Created By: ${data.creator.username}`}</Text><Image w={'50px'} ml={2} borderRadius={'50%'} animation={(data.creator.avatarColor === 'rainbow') ? `${RainbowBorder()} 12s infinite` : ''} src={`/image/${data.creator.avatar}`}/></> : 
                     
                     <Flex bgColor={'#f99ff9'} p={2} borderRadius={'lg'}>
                         <Link fontSize={'lg'} href={`/collection`} color={'white'} className={'heading-md'}>View Collection <ExternalLinkIcon mx={'2px'}/></Link>

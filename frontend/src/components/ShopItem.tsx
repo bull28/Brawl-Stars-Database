@@ -63,7 +63,7 @@ export default function ShopItem({data}: {data: ShopData}) {
                 </ModalBody>
 
                 <ModalFooter>
-                    <Button colorScheme='red' mr={3} onClick={onClose}>
+                    <Button colorScheme='red' mr={3} onClick={() => {window.location.reload()}}>
                     Close
                     </Button>
                     <Button colorScheme={'whatsapp'} onClick={() => {purchase(data.name)}}>Buy</Button>
