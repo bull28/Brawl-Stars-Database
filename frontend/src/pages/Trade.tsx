@@ -392,7 +392,7 @@ export default function Trade() {
                 </Drawer>
             <SimpleGrid columns={[1,1,2,3]} spacing={3}>
                 {results?.map((trade) => {
-                     if (trade.creator.username.toLowerCase().includes(filter.username.toLowerCase()) && !(trade.timeLeft.hour === trade.timeLeft.minute && trade.timeLeft.hour === trade.timeLeft.second && trade.timeLeft.hour === trade.timeLeft.season && trade.timeLeft.hour === 0)) {return <TradeCard data={trade}/>}
+                     if (trade.creator.username.toLowerCase().includes(filter.username.toLowerCase()) && !(trade.timeLeft.hour === trade.timeLeft.minute && trade.timeLeft.hour === trade.timeLeft.second && trade.timeLeft.hour === trade.timeLeft.season && trade.timeLeft.hour === 0)) {return <ScaleFade in={true}><TradeCard data={trade}/></ScaleFade>}
                     })}
             </SimpleGrid>
         </Flex>

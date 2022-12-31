@@ -60,7 +60,7 @@ export default function AccountDisplay() {
                     </Flex>
                 </MenuGroup>
                 <MenuDivider/>
-                <MenuGroup title='Resources' fontSize={'lg'}>
+                <MenuGroup>
 
                     <Tooltip label='Tokens are used to open Brawl Boxes. Collect them by vising the website regularly!' placement='left' className='heading-md' hasArrow>
                         <MenuItem><Image maxW={'30px'} src={'/image/resources/resource_tokens.webp'} mr={2}/>{`${data?.tokens ? data.tokens : 0}`}</MenuItem>

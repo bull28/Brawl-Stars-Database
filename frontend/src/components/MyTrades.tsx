@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Flex, HStack, IconButton, Image, keyframes, Link, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, SimpleGrid, Spinner, Text, useDisclosure } from '@chakra-ui/react'
+import { Box, Button, Divider, Flex, HStack, IconButton, Image, keyframes, Link, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, ScaleFade, SimpleGrid, Spinner, Text, useDisclosure } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import { HiOutlineSwitchHorizontal } from 'react-icons/hi'
 import { MdDoneOutline } from 'react-icons/md'
@@ -89,6 +89,7 @@ export default function MyTrades() {
                     data?.map((trade) => {
                         if (trade.accepted){
                             return (
+                                <ScaleFade in={true}>
                                 <Flex flexDir={'column'}>
                                 <Flex h={'25vh'} maxW={'fit-content'} flexDir={'column'} alignItems={'center'} justifyContent={'space-between'} textAlign={'center'} bgColor={'blue.800'} p={3} borderRadius={'xl'} border={'3px solid #75fa9d'} cursor={'pointer'} transition={'0.25s'}>
                 <Flex w={'85%'} justifyContent={'space-between'} color={'white'} fontSize={'lg'}>
@@ -161,6 +162,7 @@ export default function MyTrades() {
             <Button colorScheme={'whatsapp'} onClick={() => {claimTrade(trade.tradeid)}} rightIcon={<MdDoneOutline/>} my={3}>Claim</Button>
             <br></br>                                    
             </Flex>
+            </ScaleFade>
                             )
                         }
                     })
@@ -187,6 +189,7 @@ export default function MyTrades() {
                     data?.map((trade) => {
                         if ((trade.timeLeft.hour > 0 || trade.timeLeft.minute > 0 || trade.timeLeft.second > 0)){
                             return (
+                                <ScaleFade in={true}>
                                 <Flex flexDir={'column'}>
                                 <Flex h={'25vh'} maxW={'fit-content'} flexDir={'column'} alignItems={'center'} justifyContent={'space-between'} textAlign={'center'} bgColor={'blue.800'} p={3} borderRadius={'xl'} border={'3px solid orange'} cursor={'pointer'} transition={'0.25s'}>
                 <Flex w={'85%'} justifyContent={'space-between'} color={'white'} fontSize={'lg'}>
@@ -260,6 +263,7 @@ export default function MyTrades() {
             <Button colorScheme={'red'} onClick={() => {removeTrade(trade.tradeid)}} rightIcon={<IoMdRemoveCircleOutline/>} mt={3}>Remove</Button>
             <br></br>
             </Flex>
+            </ScaleFade>
                             )
                         }
                     })
@@ -286,6 +290,7 @@ export default function MyTrades() {
                     data?.map((trade) => {
                         if (!trade.accepted && ((trade.timeLeft.hour === 0 && trade.timeLeft.minute === 0 && trade.timeLeft.second === 0))){
                             return (
+                                <ScaleFade in={true}>
                                 <Flex flexDir={'column'}>
                                 <Flex h={'25vh'} maxW={'fit-content'} flexDir={'column'} alignItems={'center'} justifyContent={'space-between'} textAlign={'center'} bgColor={'blue.800'} p={3} borderRadius={'xl'} border={'3px solid orange'} cursor={'pointer'} transition={'0.25s'}>
                 <Flex w={'85%'} justifyContent={'space-between'} color={'white'} fontSize={'lg'}>
@@ -358,6 +363,7 @@ export default function MyTrades() {
             <Button colorScheme={'red'} onClick={() => {removeTrade(trade.tradeid)}} rightIcon={<IoMdRemoveCircleOutline/>} mt={3}>Remove</Button>
             <br></br>
             </Flex>
+            </ScaleFade>
                             )
                         }
                     })

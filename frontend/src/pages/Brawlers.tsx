@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react'
-import { Flex, SimpleGrid, Text } from '@chakra-ui/react'
+import { Flex, ScaleFade, SimpleGrid, Text } from '@chakra-ui/react'
 import axios from 'axios'
 import BrawlerView from '../components/BrawlerView'
 import { Brawler } from '../types/BrawlerData'
@@ -23,7 +23,7 @@ export default function Brawlers() {
         </Text>
         {data && 
             <SimpleGrid columns={[2,3,4,5,6,7,8]}>
-                {data.map((brawler) => <BrawlerView key={brawler.name} image={brawler.portrait} name={brawler.name} displayName={brawler.displayName} rarityColor={brawler.rarity.color}/>)}
+                {data.map((brawler) => <ScaleFade in={true}><BrawlerView key={brawler.name} image={brawler.portrait} name={brawler.name} displayName={brawler.displayName} rarityColor={brawler.rarity.color}/></ScaleFade>)}
             </SimpleGrid>
         }
     </Flex>

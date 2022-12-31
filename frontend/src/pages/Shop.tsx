@@ -1,4 +1,4 @@
-import { Box, Flex, HStack, Image, Link, Text } from '@chakra-ui/react'
+import { Box, Flex, HStack, Image, Link, ScaleFade, Text } from '@chakra-ui/react'
 import { useState, useEffect } from 'react'
 import { BsPerson } from 'react-icons/bs'
 import { FaSkull } from 'react-icons/fa'
@@ -72,7 +72,7 @@ export default function Shop() {
                         ))
                         */
                        data?.map((item, x) => (
-                            (x === 3) && <ShopItem data={item}/>
+                            (x === 3) && <ScaleFade in={true}><ShopItem data={item}/></ScaleFade>
                        ))
                     }     
                 </Flex>           
@@ -87,7 +87,7 @@ export default function Shop() {
                         <HStack>
                         {
                             data?.map((item) => (
-                                item.name.includes('avatar') && <ShopItem data={item}/>
+                                item.name.includes('avatar') && <ScaleFade in={true}><ShopItem data={item}/></ScaleFade>
                             ))
                         }
                         </HStack>
@@ -100,7 +100,7 @@ export default function Shop() {
                         <HStack>
                         {
                             data?.map((item) => (
-                                item.name.includes('brawler') && <ShopItem data={item}/>
+                                item.name.includes('brawler') && <ScaleFade in={true}><ShopItem data={item}/></ScaleFade>
                             ))
                         }
                         </HStack>
@@ -113,7 +113,7 @@ export default function Shop() {
                         <HStack>
                         {
                             data?.map((item) => (
-                                item.name.toLowerCase().includes('credit') && <ShopItem data={item}/>
+                                item.name.toLowerCase().includes('credit') && <ScaleFade in={true}><ShopItem data={item}/></ScaleFade>
                             ))
                         }
                         </HStack>
