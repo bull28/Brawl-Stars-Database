@@ -36,10 +36,10 @@ export default function ShopItem({data}: {data: ShopData}) {
             transform: "scaleY(1)"
           }
         }}>            
-            <Box className='top' pos={'absolute'} display={'block'} background={'purple.300'} transition={`all 0.1s linear`} w={'100%'} height={'3px'} transform={'scaleX(0)'} top={0} left={0} transitionDelay={'0.15s'} transformOrigin={'top left'}></Box>
-            <Box className='bottom' pos={'absolute'} display={'block'} background={'purple.300'} transition={`all 0.1s linear`} w={'100%'} height={'3px'} transform={'scaleX(0)'} bottom={0} right={0} transitionDelay={'0.05s'} transformOrigin={'top right'}></Box>
-            <Box className='left' pos={'absolute'} display={'block'} background={'purple.300'} transition={`all 0.1s linear`} w={'3px'} height={'100%'} transform={'scaleY(0)'} top={0} left={0} transformOrigin={'bottom left'}></Box>
-            <Box className='right' pos={'absolute'} display={'block'} background={'purple.300'} transition={`all 0.1s linear`} w={'3px'} height={'100%'} transform={'scaleY(0)'} top={0} right={0} transitionDelay={'0.1s'} transformOrigin={'top left'}></Box>
+            <Box className='top' pos={'absolute'} display={'block'} background={'blue.500'} transition={`all 0.1s linear`} w={'100%'} height={'3px'} transform={'scaleX(0)'} top={0} left={0} transitionDelay={'0.15s'} transformOrigin={'top left'}></Box>
+            <Box className='bottom' pos={'absolute'} display={'block'} background={'blue.500'} transition={`all 0.1s linear`} w={'100%'} height={'3px'} transform={'scaleX(0)'} bottom={0} right={0} transitionDelay={'0.05s'} transformOrigin={'top right'}></Box>
+            <Box className='left' pos={'absolute'} display={'block'} background={'blue.500'} transition={`all 0.1s linear`} w={'3px'} height={'100%'} transform={'scaleY(0)'} top={0} left={0} transformOrigin={'bottom left'}></Box>
+            <Box className='right' pos={'absolute'} display={'block'} background={'blue.500'} transition={`all 0.1s linear`} w={'3px'} height={'100%'} transform={'scaleY(0)'} top={0} right={0} transitionDelay={'0.1s'} transformOrigin={'top left'}></Box>
 
             <Flex p={5}>
                 <Image borderRadius={'lg'} src={`/image/${data.image}`}/>

@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Flex, HStack, Image, Link, Text } from '@chakra-ui/react'
+import { Box, Flex, HStack, Image, Link, Text } from '@chakra-ui/react'
 import { useState, useEffect } from 'react'
 import { BsPerson } from 'react-icons/bs'
 import { FaSkull } from 'react-icons/fa'
@@ -6,16 +6,16 @@ import { MdOutlineFeaturedPlayList, MdOutlineGeneratingTokens } from 'react-icon
 import MovingText from '../components/MovingText'
 import ShopItem from '../components/ShopItem'
 import AuthRequest, { getToken } from '../helpers/AuthRequest'
-import { GoldMovingBackground, RainbowBorder } from '../themes/rainbow'
+import { RainbowBorder } from '../themes/rainbow'
 import { UserInfoProps } from '../types/AccountData'
 import ShopData from '../types/ShopData'
-
 
 
 export default function Shop() {
 
     const [data, setData] = useState<[ShopData]>()
     const [userInfo, setUserInfo] = useState<UserInfoProps>()
+    const [isBought, setIsBought] = useState<boolean>(false)
 
     const getSeason = (month: number) => {
         if (2 <= month && month <= 4){
@@ -39,9 +39,6 @@ export default function Shop() {
         AuthRequest('/shop', {setState: [{func: setData, attr: ""}]})
         AuthRequest('/resources', {setState: [{func: setUserInfo, attr: ""}]})
     }, [])
-
-    //make sections currency, brawlers, special offers
-    //make click on button scroll to the type
 
     return (
         <Flex flexDir={'column'} alignItems={'center'} minH={'100vh'}>
