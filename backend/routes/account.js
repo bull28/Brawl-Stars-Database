@@ -18,7 +18,6 @@ const fileLoader = require("../modules/fileloader");
 const HOURS_PER_REWARD = 6;
 const TOKENS_PER_REWARD = 100;
 const MAX_REWARD_STACK = 4;
-const FEATURED_REFRESH_HOURS = 24;
 
 // Load the skins json object
 var allSkins = [];
@@ -101,82 +100,13 @@ function login(results, res){
     if (results.length > 0) {
         var userResults = results[0];
 
-        if (!(userResults.hasOwnProperty("username") &&
-        userResults.hasOwnProperty("last_login") &&
-        userResults.hasOwnProperty("brawlers") &&
-        userResults.hasOwnProperty("featured_item"))){
+        if (!(userResults.hasOwnProperty("username"))){
             res.status(500).send("Database is not set up properly.");
             return;
         }
 
-        var featuredItem = userResults.featured_item;
-
-        var currentTime = Date.now();
-        var currentSeasonTime = maps.realToTime(currentTime);
-
-        var refreshed = false;
-
-        var hoursSinceLastLogin = (currentTime - userResults.last_login) / 3600000;
-        if (hoursSinceLastLogin >= maps.MAP_CYCLE_HOURS){
-            refreshed = true;
-        } else{
-            //currentSeasonTime = new maps.SeasonTime(1, 219, 0, 0);
-            var currentSeason = currentSeasonTime.season;
-            var currentHour = currentSeasonTime.hour;
-
-            var lastLoginTime = maps.realToTime(userResults.last_login);
-            //lastLoginTime = new maps.SeasonTime(0, 327, 0, 0);
-            var lastLoginSeason = lastLoginTime.season;
-            var lastLoginHour = lastLoginTime.hour;
-
-            
-            // Explanation for the different cases is in claimtokens
-            var seasonDiff = currentSeason - lastLoginSeason;
-            if (seasonDiff > 0){
-                currentSeason -= seasonDiff;
-                currentHour += currentSeasonTime.hoursPerSeason * seasonDiff;
-            } else if (seasonDiff < 0){
-                currentSeason -= seasonDiff;
-                currentHour += currentSeasonTime.hoursPerSeason * maps.mod(seasonDiff, currentSeasonTime.maxSeasons);
-            } else if (currentHour < lastLoginHour){
-                currentHour += currentSeasonTime.hoursPerSeason * currentSeasonTime.maxSeasons;
-            }
-
-            if (Math.floor(currentHour / FEATURED_REFRESH_HOURS) * FEATURED_REFRESH_HOURS > lastLoginHour){
-                refreshed = true;
-            }
-        }
-
-        if (refreshed){
-            var userBrawlers = {};
-            try{
-                userBrawlers = JSON.parse(userResults.brawlers);
-            } catch (error){
-                res.status(500).send("Collection data could not be loaded.");
-                return;
-            }
-            var newFeaturedItem = pins.refreshFeaturedItem(allSkins, userBrawlers);
-            if (newFeaturedItem != ""){
-                featuredItem = newFeaturedItem;
-            }
-        }
-
-        // Update the last token claim to the current time
-        database.queryDatabase(
-        "UPDATE " + TABLE_NAME + " SET last_login = ?, featured_item = ? WHERE username = ?;",
-        [currentTime, featuredItem, userResults.username], (error, newResults, fields) => {
-            if (error){
-                console.log(error);
-                res.status(500).send("Could not connect to database.");
-                return;
-            }
-            if (newResults.affectedRows == 0){
-                res.status(500).send("Could not update the database.");
-            }
-
-            const userInfo = signToken(userResults.username);
-            res.json(userInfo);
-        });
+        const userInfo = signToken(userResults.username);
+        res.json(userInfo);
     } else{
         res.status(401).send("Incorrect username or password");
     }
@@ -191,7 +121,7 @@ router.post("/login", (req, res) => {
     let password = req.body.password;
     if (username && password){
         database.queryDatabase(
-        "SELECT username, last_login, brawlers, featured_item FROM " + TABLE_NAME + " WHERE username = ? AND password = ?;",
+        "SELECT username FROM " + TABLE_NAME + " WHERE username = ? AND password = ?;",
         [username, password], (error, results, fields) => {
             if (error){
                 res.status(500).send("Could not connect to database.");
@@ -248,13 +178,14 @@ router.post("/signup", (req, res) => {
                 res.status(401).send("Username already exists.");
             } else{
                 database.queryDatabase(
-                "SELECT username, last_login, brawlers, featured_item FROM " + TABLE_NAME + " WHERE username = ? AND password = ?;",
+                "SELECT username FROM " + TABLE_NAME + " WHERE username = ? AND password = ?;",
                 [username, password], (error, results, fields) => {
                     if (error){
                         res.status(500).send("Could not connect to database.");
                         return;
                     }
                     //"SELECT username, last_login, last_claim, tokens, token_doubler FROM " + TABLE_NAME + " WHERE username = ? AND password = ?;",
+                    //"SELECT username, last_login, brawlers, featured_item FROM " + TABLE_NAME + " WHERE username = ? AND password = ?;",
 
                     // At this point, the query was successful (error was not found) so
                     // either the login is successful or the username/password are incorrect

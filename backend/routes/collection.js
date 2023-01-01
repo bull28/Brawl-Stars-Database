@@ -10,6 +10,7 @@ const TABLE_NAME = process.env.DATABASE_TABLE_NAME || "brawl_stars_database";
 
 // functions to view and modify pin collections
 const pins = require("../modules/pins");
+const maps = require("../modules/maps");
 const fileLoader = require("../modules/fileloader");
 const brawlbox = require("../modules/brawlbox");
 
@@ -18,6 +19,9 @@ const filePaths = require("../modules/filepaths");
 const PORTRAIT_IMAGE_DIR = filePaths.PORTRAIT_IMAGE_DIR;
 const PIN_IMAGE_DIR = filePaths.PIN_IMAGE_DIR;
 const RESOURCE_IMAGE_DIR = filePaths.RESOURCE_IMAGE_DIR;
+
+// time each featured item is available for
+const FEATURED_REFRESH_HOURS = 24;
 
 
 // Load the skins json object
@@ -464,7 +468,7 @@ router.post("/shop", (req, res) => {
 
     if (username){
         database.queryDatabase(
-        "SELECT coins, trade_credits, brawlers, avatars, featured_item FROM " + TABLE_NAME + " WHERE username = ?;",
+        "SELECT last_login, coins, trade_credits, brawlers, avatars, featured_item FROM " + TABLE_NAME + " WHERE username = ?;",
         [username], (error, results, fields) => {
             if (databaseErrorCheck(error, results, fields, res)){
                 return;
@@ -483,6 +487,53 @@ router.post("/shop", (req, res) => {
                 res.status(500).send("Collection data could not be loaded.");
                 return;
             }
+            
+
+            // Determine whether the featured item should be refreshed
+            var currentTime = Date.now();
+            var currentSeasonTime = maps.realToTime(currentTime);
+
+            var refreshed = false;
+
+            var hoursSinceLastLogin = (currentTime - results[0].last_login) / 3600000;
+            if (hoursSinceLastLogin >= maps.MAP_CYCLE_HOURS){
+                refreshed = true;
+            } else{
+                //currentSeasonTime = new maps.SeasonTime(1, 219, 0, 0);
+                var currentSeason = currentSeasonTime.season;
+                var currentHour = currentSeasonTime.hour;
+
+                var lastLoginTime = maps.realToTime(results[0].last_login);
+                //lastLoginTime = new maps.SeasonTime(0, 327, 0, 0);
+                var lastLoginSeason = lastLoginTime.season;
+                var lastLoginHour = lastLoginTime.hour;
+
+                
+                // Explanation for the different cases is in claimtokens
+                var seasonDiff = currentSeason - lastLoginSeason;
+                if (seasonDiff > 0){
+                    currentSeason -= seasonDiff;
+                    currentHour += currentSeasonTime.hoursPerSeason * seasonDiff;
+                } else if (seasonDiff < 0){
+                    currentSeason -= seasonDiff;
+                    currentHour += currentSeasonTime.hoursPerSeason * maps.mod(seasonDiff, currentSeasonTime.maxSeasons);
+                } else if (currentHour < lastLoginHour){
+                    currentHour += currentSeasonTime.hoursPerSeason * currentSeasonTime.maxSeasons;
+                }
+
+                if (Math.floor(currentHour / FEATURED_REFRESH_HOURS) * FEATURED_REFRESH_HOURS > lastLoginHour){
+                    refreshed = true;
+                }
+            }
+
+            if (refreshed){
+                var newFeaturedItem = pins.refreshFeaturedItem(allSkins, userBrawlers);
+                if (newFeaturedItem != ""){
+                    featuredItem = newFeaturedItem;
+                }
+            }
+
+
 
             // The shop items object may me modified with a featured item so create a copy
             var shopItemsCopy = {};
@@ -531,7 +582,22 @@ router.post("/shop", (req, res) => {
                     shopItemList.push(thisItem);
                 }
                 
-                res.json(shopItemList);
+                //res.json(shopItemList);
+                //return;
+                database.queryDatabase(
+                "UPDATE " + TABLE_NAME + " SET last_login = ?, featured_item = ? WHERE username = ?;",
+                [currentTime, featuredItem, username], (error, results, fields) => {
+                    if (error){
+                        res.status(500).send("Could not connect to database.");
+                        return;
+                    }
+                    if (results.affectedRows == 0){
+                        res.status(500).send("Could not update the database.");
+                        return;
+                    }
+    
+                    res.json(shopItemList);
+                });
                 return;
             }
             if (!(availableShopItems.hasOwnProperty(req.body.item))){
@@ -608,8 +674,9 @@ router.post("/shop", (req, res) => {
 
             // Write back to the database after all values have been modified
             database.queryDatabase(
-            "UPDATE " + TABLE_NAME + " SET coins = ?, trade_credits = ?, brawlers = ?, avatars = ?, featured_item = ? WHERE username = ?;",
+            "UPDATE " + TABLE_NAME + " SET last_login = ?, coins = ?, trade_credits = ?, brawlers = ?, avatars = ?, featured_item = ? WHERE username = ?;",
             [
+                currentTime,
                 userCoins,
                 userTradeCredits,
                 JSON.stringify(userBrawlers),
@@ -623,6 +690,7 @@ router.post("/shop", (req, res) => {
                 }
                 if (results.affectedRows == 0){
                     res.status(500).send("Could not update the database.");
+                    return;
                 }
 
                 res.json({
