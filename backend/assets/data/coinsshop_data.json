@@ -1,4 +1,13 @@
 {
+    "featuredItem": {
+        "displayName": "Featured Item",
+        "cost": 5000,
+        "itemType": "featured",
+        "image": "",
+        "extraData": "",
+        "amount": 1,
+        "description": ""
+    },
     "tradeCredits1": {
         "displayName": "1 Trade Credit",
         "cost": 500,

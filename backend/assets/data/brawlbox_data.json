@@ -125,7 +125,7 @@
             "raritypmf": [36, 15, 5, 3, 1],
             "minraritypmf": [0, 0, 0, 0, 0],
             "newPinWeight": [0, 0, 0, 0, 0],
-            "coinConversion": [60, 150, 300, 450, 750]
+            "coinConversion": [120, 240, 600, 1200, 3600]
         },
         "wildcard": {
             "raritypmf": [36, 15, 6, 3, 0],

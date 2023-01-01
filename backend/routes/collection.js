@@ -449,7 +449,7 @@ router.post("/brawlbox", (req, res) => {
     }
 });
 
-// 
+// View or buy item(s) from the (coins) shop
 router.post("/shop", (req, res) => {
     if (!(req.body.token)){
         res.status(400).send("Token is missing.");
@@ -464,7 +464,7 @@ router.post("/shop", (req, res) => {
 
     if (username){
         database.queryDatabase(
-        "SELECT coins, trade_credits, brawlers, avatars FROM " + TABLE_NAME + " WHERE username = ?;",
+        "SELECT coins, trade_credits, brawlers, avatars, featured_item FROM " + TABLE_NAME + " WHERE username = ?;",
         [username], (error, results, fields) => {
             if (databaseErrorCheck(error, results, fields, res)){
                 return;
@@ -474,6 +474,7 @@ router.post("/shop", (req, res) => {
             var userBrawlers = {};
             var userAvatars = [];
             var userCoins = results[0].coins;
+            var featuredItem = results[0].featured_item;
             var userTradeCredits = results[0].trade_credits;
             try{
                 userBrawlers = JSON.parse(results[0].brawlers);
@@ -483,8 +484,19 @@ router.post("/shop", (req, res) => {
                 return;
             }
 
+            // The shop items object may me modified with a featured item so create a copy
+            var shopItemsCopy = {};
+            for (let x in shopItems){
+                shopItemsCopy[x] = shopItems[x];
+            }
+
+            // Get the coin costs for the featured pin
+            featuredCosts = [];
+            if (dropChances.rewardTypes.pinNoDupes.coinConversion !== undefined){
+                featuredCosts = dropChances.rewardTypes.pinNoDupes.coinConversion;
+            }
             // Out of all the shop items, remove all of them that the user cannot buy right now
-            var availableShopItems = pins.getShopItems(shopItems, allSkins, userBrawlers, userAvatars);
+            var availableShopItems = pins.getShopItems(shopItemsCopy, allSkins, userBrawlers, userAvatars, featuredItem, featuredCosts);
 
             // If they do not provide an item to buy, show all items
             if (!(req.body.item)){
@@ -503,7 +515,10 @@ router.post("/shop", (req, res) => {
                             // All other item types' images are only for display
                             if (thisItemType == "avatar"){
                                 thisItem[property] = availableShopItems[x]["extraData"];
+                            } else if (thisItemType == "featuredPin"){
+                                thisItem[property] = PIN_IMAGE_DIR + availableShopItems[x]["image"];
                             } else{
+                                // Only add the image directory if the image is not empty string
                                 if (availableShopItems[x][property] != ""){
                                     thisItem[property] = RESOURCE_IMAGE_DIR + availableShopItems[x][property];
                                 }
@@ -525,7 +540,7 @@ router.post("/shop", (req, res) => {
             }
 
             // This object contains all the data of the item the user is currently buying
-            const itemData = shopItems[req.body.item];
+            const itemData = shopItemsCopy[req.body.item];
 
             if (userCoins < itemData.cost){
                 res.status(403).send("You cannot afford this item!");
@@ -568,16 +583,38 @@ router.post("/shop", (req, res) => {
                         return object;
                     }, {});
                 }
+            } else if (itemData.itemType == "featuredPin"){
+                // The extraData of the itemData has already been checked when getting shop items
+                // so this is guaranteed to be a valid brawler and pin name. It just has to check
+                // whether the user already owns the pin or not then modify their collection.
+
+                const pinName = itemData.extraData.split("/");
+                // Index 0 is the brawler, index 1 is the pin
+
+                if (userBrawlers.hasOwnProperty(pinName[0])){
+                    if (userBrawlers[pinName[0]].hasOwnProperty(pinName[1])){
+                        // User already has the pin
+                        userBrawlers[pinName[0]][pinName[1]] += itemData.amount;
+                    } else{
+                        // User does not have the pin yet
+                        userBrawlers[pinName[0]][pinName[1]] = itemData.amount
+                    }
+                    userItemInventory = userBrawlers[pinName[0]][pinName[1]];
+
+                    // The featured item can only be bought once per day
+                    featuredItem = "";
+                }
             }
 
             // Write back to the database after all values have been modified
             database.queryDatabase(
-            "UPDATE " + TABLE_NAME + " SET coins = ?, trade_credits = ?, brawlers = ?, avatars = ? WHERE username = ?;",
+            "UPDATE " + TABLE_NAME + " SET coins = ?, trade_credits = ?, brawlers = ?, avatars = ?, featured_item = ? WHERE username = ?;",
             [
                 userCoins,
                 userTradeCredits,
                 JSON.stringify(userBrawlers),
                 JSON.stringify(userAvatars),
+                featuredItem,
                 username
             ], (error, results, fields) => {
                 if (error){

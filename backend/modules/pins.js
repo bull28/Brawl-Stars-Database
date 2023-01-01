@@ -65,7 +65,6 @@ function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
                     thisPin["i"] = pin.image;
                 }
                 thisPin["a"] = 0;
-                //console.log(pin);
                 thisPin["r"] = pin.rarity.value;
                 collectionInfo.pinRarityColors[pin.rarity.value] = pin.rarity.color;
 
@@ -202,7 +201,24 @@ function getAvatars(allSkins, allAvatars, userCollection, userAvatars){
     return avatarsInfo;
 }
 
-function getShopItems(shopItems, allSkins, userCollection, userAvatars){
+/**
+ * Determines which items a user is able to buy from the shop, given their
+ * collection progress and unlocked avatars. Avatars are a one-time purchase
+ * and brawler-type items are only available if the user does not have all
+ * brawlers unlocked. Also checks whether the user is able to buy their
+ * featured item, and formats the shop item object with the item's display
+ * name, description, image, and extra data. If the featured item is invalid,
+ * it will return the default featured item object which cannot be bought.
+ * The shopItems object will be modified with the featured item.
+ * @param {Object} shopItems json object with all the possible shop items
+ * @param {Array} allSkins json array with all the brawlers
+ * @param {Object} userCollection parsed brawlers object from the database
+ * @param {Array} userAvatars parsed avatars object from the database
+ * @param {String} featuredItem current featured item string
+ * @param {Array} featuredCosts array of costs for different rarities of pins
+ * @returns object containing items the user can buy
+ */
+function getShopItems(shopItems, allSkins, userCollection, userAvatars, featuredItem, featuredCosts){
     var availableShopItems = {};
 
     const collectionInfo = formatCollectionData(allSkins, userCollection, "", "");
@@ -221,9 +237,105 @@ function getShopItems(shopItems, allSkins, userCollection, userAvatars){
             if (userAvatars.includes(shopItems[x].extraData) == false){
                 availableShopItems[x] = shopItems[x];
             }
+        } else if (shopItems[x].itemType == "featured"){
+            var shopItemCopy = {};
+            for (let y in shopItems[x]){
+                shopItemCopy[y] = shopItems[x][y];
+            }
+            
+            if (featuredItem.includes("/")){
+                const pinName = featuredItem.split("/");
+                // The featured pin is valid only if the user has the brawler unlocked
+                // but they do not have to have the pin unlocked
+                try{
+                    if (userCollection.hasOwnProperty(pinName[0])){
+                        for (let brawler in allSkins){
+                            if (allSkins[brawler].name == pinName[0]){
+                                const brawlerPins = allSkins[brawler].pins;
+                                for (let pin in brawlerPins){
+                                    if (brawlerPins[pin].name == pinName[1]){
+                                        shopItemCopy.itemType = "featuredPin";// May allow different types of featured items in the future
+                                        shopItemCopy.displayName = "Featured " + brawlerPins[pin].rarity.name + " Pin";
+                                        shopItemCopy.extraData = featuredItem;
+                                        shopItemCopy.image = allSkins[brawler].name + "/" + brawlerPins[pin].image;
+                                        shopItemCopy.description = "This pin is a featured item for today. It can be bought only once but a new item will be available tomorrow."
+
+                                        if (brawlerPins[pin].rarity.value < featuredCosts.length){
+                                            shopItemCopy.cost = featuredCosts[brawlerPins[pin].rarity.value];
+                                        } else{
+                                            // This is a "fallback" amount in case the brawl box drop chances file is not correctly formatted
+                                            shopItemCopy.cost = 5000;
+                                        }
+
+                                        availableShopItems[x] = shopItemCopy;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } catch(error){
+                    // If allSkins is missing properties then this happens
+                    shopItemCopy.displayName = "No Featured Item";
+                    shopItemCopy.image = "";
+                }
+            }
+
+            shopItems[x] = shopItemCopy;
         }
     }
     return availableShopItems;
+}
+
+/**
+ * Randomly selects a pin to be a featured offer from a user's collection.
+ * If they are missing copies of some pins, the user will be guaranteed to
+ * get an offer for a new pin. Otherwise, they will get an offer for a duplicate.
+ * If the user has no brawlers unlocked, they cannot receive an offer and this
+ * function will return an empty string.
+ * @param {Array} allSkins json array with all the brawlers
+ * @param {Object} userCollection parsed brawlers object from the database
+ * @returns string in "brawler/pin" format
+ */
+function refreshFeaturedItem(allSkins, userCollection){
+    var newPins = [];
+    var duplicatePins = [];
+
+    // A call to formatCollectionData costs more time than looping through the array
+    // here and only storing data required to select a featured pin.
+    
+    for (var brawlerIndex = 0; brawlerIndex < allSkins.length; brawlerIndex++){
+        let brawler = allSkins[brawlerIndex];
+        
+        if (brawler.hasOwnProperty("name") && brawler.hasOwnProperty("pins")){
+            // Only offer pins from brawlers the user owns
+            if (userCollection.hasOwnProperty(brawler.name)){
+                for (let pinIndex = 0; pinIndex < brawler.pins.length; pinIndex++){
+                    //const pinRarity = brawler.pins[pinIndex].rarity.value;
+                    const pinAmount = userCollection[brawler.name][brawler.pins[pinIndex].name];
+                    if (pinAmount !== undefined && pinAmount > 0){
+                        duplicatePins.push(brawler.name + "/" + brawler.pins[pinIndex].name);
+                    } else{
+                        newPins.push(brawler.name + "/" + brawler.pins[pinIndex].name);
+                    }
+                }
+            }
+        }
+    }
+
+    //console.log(duplicatePins.length, newPins.length);
+    var selectedPin = "";
+
+    // If the user can receive new pins, select one to offer
+    // If they user does not have any new pins available to collect, select one
+    // that is a duplicate. If the user cannot collect any pins (ex. no brawlers
+    // unlocked), offer nothing.
+    if (newPins.length > 0){
+        selectedPin = newPins[Math.floor(Math.random() * newPins.length)];
+    } else if (duplicatePins.length > 0){
+        selectedPin = duplicatePins[Math.floor(Math.random() * duplicatePins.length)];
+    }
+
+    return selectedPin;
 }
 
 /**
@@ -349,3 +461,4 @@ function removePin(userCollection, brawler, pin){
 exports.formatCollectionData = formatCollectionData;
 exports.getAvatars = getAvatars;
 exports.getShopItems = getShopItems;
+exports.refreshFeaturedItem = refreshFeaturedItem;
