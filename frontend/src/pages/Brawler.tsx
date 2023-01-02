@@ -111,11 +111,9 @@ export default function Brawler() {
             }
             
             <SimpleGrid spacing={5} columns={[1,2,2,3,4]} bgColor={'blue.900'} pt={'3vh'} px={6}>{(data.skins).map((skin) => (
-                <ScaleFade in={true}>
                     <Flex key={skin.name} flexDir={'column'} m={3}>
                         <SkinView skin={skin.name} brawler={data.name} setModel={setModel}></SkinView>
                     </Flex>
-                </ScaleFade>
             ))}
             </SimpleGrid>
         </Flex>}

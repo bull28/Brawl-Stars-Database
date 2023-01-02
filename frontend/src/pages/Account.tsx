@@ -82,7 +82,7 @@ export default function Account() {
     <Flex w={'100%'} justifyContent={'center'} textAlign={'center'} flexDir={'column'} alignItems={'center'}>
         <Text fontSize={'4xl'} className={'heading-4xl'} color={'white'}>{data?.username}</Text>
         <Flex position={'relative'} pt={3} w={'fit-content'} mt={3}>
-          <Flex justifyContent={'center'} alignItems={'center'} borderRadius={'50%'} animation={(data?.avatarColor === 'rainbow') ? `${RainbowBorder()} 12s infinite` : ''}>
+          <Flex justifyContent={'center'} alignItems={'center'} borderRadius={'50%'} animation={(data?.avatarColor === 'rainbow') ? `${RainbowBorder()} 12s infinite` : ''} border={(data?.avatarColor !== 'rainbow') ? `3px solid ${data?.avatarColor}` : ''} >
             <Image src={`/image/${avatar}`} borderRadius={'50%'}/>
           </Flex>
           <Icon fontSize={'3xl'} position={'absolute'} top={0} right={0} as={MdOutlineEdit} onClick={changeAvatar} cursor={'pointer'}/>

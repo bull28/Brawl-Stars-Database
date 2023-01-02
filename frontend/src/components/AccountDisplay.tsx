@@ -49,7 +49,7 @@ export default function AccountDisplay() {
     <Flex flexDir={'column'} justifyContent={'center'} alignItems={'center'} textAlign={'center'}>
         <Menu autoSelect={false} closeOnSelect={false}>
             <MenuButton>
-                <Flex justifyContent={'center'} alignItems={'center'} borderRadius={'50%'} animation={(data?.avatarColor === 'rainbow') ? `${RainbowBorder()} 12s infinite` : ''}>
+                <Flex justifyContent={'center'} alignItems={'center'} borderRadius={'50%'} border={(data?.avatarColor !== 'rainbow') ? `3px solid ${data?.avatarColor}` : ''} animation={(data?.avatarColor === 'rainbow') ? `${RainbowBorder()} 12s infinite` : ''}>
                     <Image loading={'eager'} src={`/image/${data?.avatar}`} borderRadius={'50%'} w={'50px'}/>
                 </Flex>
             </MenuButton>

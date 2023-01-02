@@ -226,7 +226,7 @@ export default function TradeCard({ data }: {data: TradeData}) {
                 </ModalBody>
 
                 <ModalFooter>
-                    {!tradeComplete ? <><Text>{`Created By: ${data.creator.username}`}</Text><Image w={'50px'} ml={2} borderRadius={'50%'} animation={(data.creator.avatarColor === 'rainbow') ? `${RainbowBorder()} 12s infinite` : ''} src={`/image/${data.creator.avatar}`}/></> : 
+                    {!tradeComplete ? <><Text>{`Created By: ${data.creator.username}`}</Text><Image w={'50px'} ml={2} borderRadius={'50%'} animation={(data.creator.avatarColor === 'rainbow') ? `${RainbowBorder()} 12s infinite` : ''} border={(data?.creator.avatarColor !== 'rainbow') ? `3px solid ${data?.creator.avatarColor}` : ''} src={`/image/${data.creator.avatar}`}/></> : 
                     
                     <Flex bgColor={'#f99ff9'} p={2} borderRadius={'lg'}>
                         <Link fontSize={'lg'} href={`/collection`} color={'white'} className={'heading-md'}>View Collection <ExternalLinkIcon mx={'2px'}/></Link>

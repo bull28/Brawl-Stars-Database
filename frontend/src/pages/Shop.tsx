@@ -53,29 +53,17 @@ export default function Shop() {
                         <Text>{userInfo?.coins}</Text>
                         <Image ml={1} maxH={'40px'} src={`/image/resources/resource_coins.webp`}/>
                     </Flex>
-                    <Flex justifyContent={'center'} alignItems={'center'} borderRadius={'50%'} animation={(userInfo?.avatarColor === 'rainbow') ? `${RainbowBorder()} 12s infinite` : ''} ml={3}>
+                    <Flex justifyContent={'center'} alignItems={'center'} borderRadius={'50%'} animation={(userInfo?.avatarColor === 'rainbow') ? `${RainbowBorder()} 12s infinite` : ''} border={(userInfo?.avatarColor !== 'rainbow') ? `3px solid ${userInfo?.avatarColor}` : ''} ml={3}>
                         <Image loading={'eager'} src={`/image/${userInfo?.avatar}`} borderRadius={'50%'} w={'50px'}/>
                     </Flex>
                 </Flex>
             </Flex>
-            <Flex flexDir={'column'} alignItems={'center'} w={'40vw'} pos={'relative'} py={5}>
-                <Box  w={'100%'} h={'100%'} bgColor={'gold'} pos={'absolute'} borderRadius={'lg'} border={'3px solid black'} opacity={'0.6'} zIndex={'-1'}/>
-                <Flex alignItems={'center'}>
-                    <Text>Featured</Text>
-                    <MdOutlineFeaturedPlayList/>
-                </Flex>
-                <Flex>
-                    {
-                        /*
-                        data?.map((item) => (
-                            item.name.includes('featured') && <ShopItem data={item}/>
-                        ))
-                        */
-                       data?.map((item, x) => (
-                            (x === 3) && <ScaleFade in={true}><ShopItem data={item}/></ScaleFade>
-                       ))
-                    }     
-                </Flex>           
+            <Flex flexDir={'column'} alignItems={'center'} pb={'5vh'} pt={'10vh'}>  
+                {
+                    data?.map((item) => (
+                        (item.name === 'featuredItem') && <ScaleFade in={true}><ShopItem data={item} isFeatured={true}/></ScaleFade>
+                    ))
+                }               
             </Flex>  
             <Flex w={'90%'} justifyContent={'left'}>
                 <Flex justifyContent={'space-between'} flexDir={'column'} p={5}>                              
