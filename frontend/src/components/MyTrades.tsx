@@ -3,26 +3,12 @@ import { useEffect, useState } from 'react'
 import { HiOutlineSwitchHorizontal } from 'react-icons/hi'
 import { MdDoneOutline } from 'react-icons/md'
 import AuthRequest from '../helpers/AuthRequest'
-import { PinObject } from '../types/TradeData'
+import { PinObject, UserTradeData } from '../types/TradeData'
 import { IoMdRemoveCircleOutline } from 'react-icons/io'
 import { ArrowBackIcon, ExternalLinkIcon } from '@chakra-ui/icons'
 import { useNavigate } from 'react-router-dom'
 
-export interface TradeData {
-    tradeid: number,
-    cost: number,
-    offer: PinObject[],
-    request: PinObject[],
-    timeLeft: {
-        season: number,
-        hour: number,
-        minute: number,
-        second: number,
-        hoursPerSeason: number,
-        maxSeasons: number
-    },
-    accepted: boolean
-}
+
 
 interface TradeAcceptData {
     complete: boolean,
@@ -32,7 +18,7 @@ interface TradeAcceptData {
 
 export default function MyTrades() {
     const [username, setUsername] = useState<string>()
-    const [data, setData] = useState<[TradeData]>()
+    const [data, setData] = useState<[UserTradeData]>()
     const [acceptData, setAcceptData] = useState<TradeAcceptData>()
 
     const {isOpen, onOpen, onClose} = useDisclosure()

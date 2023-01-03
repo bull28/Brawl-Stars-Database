@@ -1,7 +1,7 @@
 import { Box, Button, Drawer, DrawerBody, DrawerContent, DrawerFooter, Flex, FormControl, FormLabel, HStack, Icon, IconButton, Image, Input, Menu, MenuButton, MenuItem, MenuList, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Radio, RadioGroup, ScaleFade, Select, SimpleGrid, SlideFade, Slider, SliderFilledTrack, SliderThumb, SliderTrack, Spinner, Stack, Text, useDisclosure, useToast } from '@chakra-ui/react'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { FilterData, TradeData } from '../types/TradeData'
+import { FilterData, TradeData, UserTradeData } from '../types/TradeData'
 import { Brawler } from '../types/BrawlerData'
 import { ChevronLeftIcon, ChevronRightIcon, AddIcon, HamburgerIcon, CloseIcon, ArrowBackIcon } from '@chakra-ui/icons'
 import TradeCard from '../components/TradeCard'
@@ -59,6 +59,8 @@ export default function Trade() {
     const [tradeLength, setTradeLength] = useState<number>(48)
     const [tradeCost, setTradeCost] = useState<number>()
     const [collectionData, setCollectionData] = useState<CollectionData>()
+    const [username, setUsername] = useState<string>()
+    const [userTradeData, setUserTradeData] = useState<[UserTradeData]>()
 
     const toast = useToast()
     const navigate = useNavigate()
@@ -146,6 +148,20 @@ export default function Trade() {
     useEffect(() => {
         AuthRequest('/collection', {setState: [{func: setCollectionData, attr: ""}]})
     }, [])
+
+    useEffect(() => {
+        AuthRequest('/resources', {setState: [{func: setUsername, attr: "username"}]})        
+    }, [])
+
+    useEffect(() => {
+        getTrades();   
+    }, [username])
+
+    const getTrades = () => {
+        if (username){
+            AuthRequest('/trade/user', {data: {username: username}, setState: [{func: setUserTradeData, attr: ""}], fallback: () => {}})
+        }
+    }
 
     const changeFilter = (query:string, value:any) => {
         updateFilter(prevState => ({
@@ -311,7 +327,14 @@ export default function Trade() {
                             }}
                             
                         )}
-                        <IconButton borderRadius={'md'} onClick={redirect} cursor={'pointer'} size={'lg'} p={1} colorScheme={'twitter'} as={BsPersonFill} aria-label="open my trades menu"/>
+                        <Flex pos={'relative'} p={2.5}>
+                            <IconButton borderRadius={'md'} onClick={redirect} cursor={'pointer'} size={'lg'} p={1} colorScheme={(userTradeData && userTradeData?.filter((trade) => trade.accepted === true).length > 0) ? 'whatsapp' : 'twitter'} as={BsPersonFill} aria-label="open my trades menu"/>
+                            {userTradeData && (userTradeData?.filter((trade) => trade.accepted === true).length) > 0 && 
+                            <Box pos={'absolute'} top={0} right={0} bgColor={'red.500'} borderRadius={'50%'} w={'25px'} h={'25px'} textAlign={'center'}>
+                                <Text color={'white'}>{userTradeData?.filter((trade) => trade.accepted === true).length}</Text>
+                            </Box>                            
+                            }
+                        </Flex>
                     </HStack>
                 </Flex>
             </Flex>       

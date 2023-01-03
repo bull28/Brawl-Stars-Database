@@ -1,7 +1,9 @@
 import { Box, Button, Flex, Image, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, ModalOverlay, ScaleFade, Text, useDisclosure } from '@chakra-ui/react'
 import AuthRequest from '../helpers/AuthRequest'
 import ShopData from '../types/ShopData'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { HMStoS, StoHMS } from '../helpers/Countdown'
+import { GrPowerReset } from 'react-icons/gr'
 
 
 
@@ -9,11 +11,29 @@ export default function ShopItem({data, isFeatured}: {data: ShopData, isFeatured
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
-    const [accepted, setAccepted] = useState<boolean>()    
+    const [accepted, setAccepted] = useState<boolean>()  
+    
+    const [seconds, updateSeconds] =  useState<number>(HMStoS({hours: 23 - new Date().getHours() + Math.floor((new Date(new Date().getFullYear(), 0, 1).getTimezoneOffset() - new Date().getTimezoneOffset())/60),  minutes: 59 - new Date().getMinutes(), seconds: 59 - new Date().getSeconds()}))
 
     const purchase = (itemName: string) => {
         AuthRequest('/shop', {data: {item: itemName}, callback: () => {setAccepted(true)}, errorToastMessage: "Invalid Purchase"})
     }
+
+    useEffect(() => {        
+        const timer = setInterval(() => {
+            if (seconds > 0 ){
+                updateSeconds(prevState => prevState - 1)
+            }            
+
+            if (seconds == 0){
+                window.location.reload()
+            }
+        }, 1000)
+
+        return () => {
+            clearInterval(timer)
+        }                    
+    }, [seconds])
 
     if (!isFeatured){
 
@@ -92,6 +112,12 @@ export default function ShopItem({data, isFeatured}: {data: ShopData, isFeatured
                         <Text fontSize={'xl'} color={'white'} className={'heading-xl'}>{data.cost}</Text>
                         <Image ml={1} maxH={'30px'} src={`/image/resources/resource_coins.webp`}/>
                     </Flex>
+                    <Flex w={'100%'} justifyContent={'right'} mt={5}>
+                        <Flex px={5} py={3} borderRadius={'30px'} bgColor={'lightskyblue'} alignItems={'center'} border={'2px solid'} borderColor={'blue.500'}>
+                            <GrPowerReset fontSize={'20px'}/>                            
+                            <Text ml={2} color={'white'} className={'heading-md'}>{(StoHMS(seconds).hours !== 0) ? `Offer Ends in ${StoHMS(seconds).hours}h ${StoHMS(seconds).minutes}m` : `Offer Ends in ${StoHMS(seconds).minutes}m ${StoHMS(seconds).seconds}s`}</Text>
+                        </Flex>
+                    </Flex>
         
                     <Modal isOpen={isOpen} onClose={onClose} >
                         <ModalOverlay />
@@ -99,7 +125,9 @@ export default function ShopItem({data, isFeatured}: {data: ShopData, isFeatured
                             <ModalHeader color={'white'} className={'heading-2xl'} fontWeight={'normal'}>{accepted ? 'Purchase Successful!' : `Purchase ${data.displayName}`}</ModalHeader>
                             <ModalBody>
                                 <Flex justifyContent={'center'}>
-                                    <Image boxShadow={(accepted) ? '0px 0px 50px #fff' : ''} borderRadius={'50%'} src={`/image/${data.image}`}/>
+                                    <Flex boxShadow={(accepted) ? '0px 0px 50px #fff' : ''} borderRadius={'50%'}>
+                                        <Image src={`/image/${data.image}`}/>
+                                    </Flex>
                                 </Flex>
                             </ModalBody>
         

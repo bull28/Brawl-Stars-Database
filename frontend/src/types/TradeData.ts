@@ -36,3 +36,19 @@ export interface TradeData {
         maxSeasons: number
     }
 }
+
+export interface UserTradeData {
+    tradeid: number,
+    cost: number,
+    offer: PinObject[],
+    request: PinObject[],
+    timeLeft: {
+        season: number,
+        hour: number,
+        minute: number,
+        second: number,
+        hoursPerSeason: number,
+        maxSeasons: number
+    },
+    accepted: boolean
+}
