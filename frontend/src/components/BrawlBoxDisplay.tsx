@@ -1,18 +1,8 @@
 import { useRef, useState } from 'react'
 import { AlertDialog, AlertDialogBody, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, Button, Flex, Image, keyframes, Modal, ModalBody, ModalContent, ModalFooter, SimpleGrid, Slider, SliderFilledTrack, SliderMark, SliderThumb, SliderTrack, Spinner, Text, useDisclosure, useToast } from '@chakra-ui/react'
-import { BrawlBoxData } from '../types/BrawlBoxData'
+import { BrawlBoxContentsData, BrawlBoxData } from '../types/BrawlBoxData'
 import CountUp from 'react-countup'
 import AuthRequest from '../helpers/AuthRequest'
-
-interface BrawlBoxContentsData {
-    displayName: string,
-    rewardType: string,
-    amount: number,
-    inventory: number,
-    image: string,
-    backgroundColor: string,
-    description: string
-}
 
 
 export default function BrawlBoxDisplay({ data, tokens, loadResources }: {data: BrawlBoxData, tokens: number | undefined, loadResources: () => void}) {

@@ -4,19 +4,30 @@ import ShopData from '../types/ShopData'
 import { useEffect, useState } from 'react'
 import { HMStoS, StoHMS } from '../helpers/Countdown'
 import { GrPowerReset } from 'react-icons/gr'
+import { BrawlBoxContentsData } from '../types/BrawlBoxData'
+import CountUp from 'react-countup'
+import { useNavigate } from 'react-router-dom'
 
 
+interface PurchaseData {
+    inventory: number,
+    result: [BrawlBoxContentsData]
+}
 
-export default function ShopItem({data, isFeatured}: {data: ShopData, isFeatured?: Boolean}) {
+export default function ShopItem({data, coins, isFeatured}: {data: ShopData, coins: number, isFeatured?: boolean}) {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     const [accepted, setAccepted] = useState<boolean>()  
+
+    const [purchaseData, setPurchaseData] = useState<PurchaseData>()
     
     const [seconds, updateSeconds] =  useState<number>(HMStoS({hours: 23 - new Date().getHours() + Math.floor((new Date(new Date().getFullYear(), 0, 1).getTimezoneOffset() - new Date().getTimezoneOffset())/60),  minutes: 59 - new Date().getMinutes(), seconds: 59 - new Date().getSeconds()}))
 
+    const navigate = useNavigate()
+
     const purchase = (itemName: string) => {
-        AuthRequest('/shop', {data: {item: itemName}, callback: () => {setAccepted(true)}, errorToastMessage: "Invalid Purchase"})
+        AuthRequest('/shop', {data: {item: itemName}, setState: [{func: setPurchaseData, attr: ""}], callback: () => {setAccepted(true)}, errorToastMessage: "Invalid Purchase"})
     }
 
     useEffect(() => {        
@@ -64,8 +75,7 @@ export default function ShopItem({data, isFeatured}: {data: ShopData, isFeatured
                 <Flex p={5}>
                     <Image borderRadius={'lg'} src={`/image/${data.image}`}/>
                 </Flex>
-                <Flex>
-                    {/*<Tag colorScheme={'red'} size={'sm'} mr={1}>NEW</Tag>*/}
+                <Flex>                    
                     <Text fontSize={'xl'} color={'white'} className={'heading-2xl'}>{data.displayName}</Text>
                 </Flex>
                 <Flex alignItems={'center'} mt={3}>
@@ -73,25 +83,54 @@ export default function ShopItem({data, isFeatured}: {data: ShopData, isFeatured
                     <Image ml={1} maxH={'30px'} src={`/image/resources/resource_coins.webp`}/>
                 </Flex>
     
-                <Modal isOpen={isOpen} onClose={onClose} >
+                <Modal isOpen={isOpen} onClose={onClose} size={'3xl'}>
                     <ModalOverlay />
                         <ModalContent bgColor={(accepted) ? '#9f9' : 'lightskyblue'} border={'2px solid '}>
-                        <ModalHeader color={'white'} className={'heading-2xl'} fontWeight={'normal'}>{accepted ? 'Purchase Successful!' : `Purchase ${data.displayName}`}</ModalHeader>
+                        <ModalHeader fontSize={'2xl'} color={'white'} className={'heading-2xl'} fontWeight={'normal'}>{accepted ? 'Purchase Successful!' : `Purchase ${data.displayName}`}</ModalHeader>
                         <ModalBody>
-                            <Flex justifyContent={'center'}>
-                                <Image boxShadow={(accepted) ? '0px 0px 50px #fff' : ''} borderRadius={'50%'} src={`/image/${data.image}`}/>
+                            <Flex flexDir={'column'} alignItems={'center'}>
+                                {(( purchaseData?.result.length || 0 ) < 1) ?
+
+                                <>
+                                    <Flex boxShadow={(accepted) ? '0px 0px 50px #fff' : ''} borderRadius={'50%'} >
+                                        <Image src={`/image/${data.image}`}/>
+                                    </Flex>
+                                    <Flex color={'white'} fontSize={'xl'} className={'heading-xl'} mt={5}>
+                                        {accepted && purchaseData && purchaseData.inventory !== 1 && <CountUp prefix={'Inventory: '} end={purchaseData.inventory} duration={0.5}/>}
+                                    </Flex>
+                                </>
+
+                                :
+                                <ScaleFade in={true} delay={1}>
+                                    <Flex bgColor={purchaseData?.result[0].backgroundColor} flexDir={'column'} alignItems={'center'} justifyContent={'center'} borderRadius={'lg'} textAlign={'center'} py={5} border={'3px solid black'} boxShadow={'0px 0px 50px #fff'}>
+                                        <Text mb={5} color={'white'} fontSize={'3xl'} className={'heading-3xl'}>{purchaseData?.result[0].displayName}</Text>
+                                        <Flex mb={5}>
+                                            <Image border={'2px solid black'} borderRadius={'lg'} src={`/image/portraits/${purchaseData?.result[0].image}`}/>
+                                        </Flex>
+                                        <Text mb={5} w={'75%'} fontSize={'xl'} color={'white'} className={'heading-2xl'}>{purchaseData?.result[0].description}</Text>                                    
+                                    </Flex>
+                                </ScaleFade>
+                                }
                             </Flex>
                         </ModalBody>
     
                         <ModalFooter>
-                            <Button colorScheme='red' mr={3} onClick={(accepted) ? () => {window.location.reload()} : onClose}>
+                            <Button className={'heading-md'} colorScheme='red' mr={3} onClick={(accepted) ? () => {window.location.reload()} : onClose}>
                             Close
                             </Button>
                             {accepted ? 
                             <></>
                             :
-                            <Button colorScheme={'whatsapp'} onClick={() => {purchase(data.name)}}>{data.cost}<Image ml={1} maxH={'25px'} src={`/image/resources/resource_coins.webp`}/></Button>
-                        }                        
+                            <Button className={'heading-md'} color={(coins < data.cost) ? 'red.500' : 'white'} colorScheme={'whatsapp'} onClick={() => {purchase(data.name)}}>{data.cost}<Image ml={1} maxH={'25px'} src={`/image/resources/resource_coins.webp`}/></Button>
+                            }
+
+                            {(( purchaseData?.result.length || 0 ) < 1) ?
+                            <></>
+                            :                            
+                            <Button className={'heading-md'} colorScheme='facebook' mr={3} onClick={() => {navigate('/collection')}}>
+                            View Collection
+                            </Button>
+                            }                        
                         </ModalFooter>
                         </ModalContent>
                 </Modal>
@@ -104,8 +143,7 @@ export default function ShopItem({data, isFeatured}: {data: ShopData, isFeatured
                     <Flex p={5}>
                         <Image borderRadius={'lg'} src={`/image/${data.image}`}/>
                     </Flex>
-                    <Flex>
-                        {/*<Tag colorScheme={'red'} size={'sm'} mr={1}>NEW</Tag>*/}
+                    <Flex>                    
                         <Text fontSize={'2xl'} color={'white'} className={'heading-2xl'}>{data.displayName}</Text>
                     </Flex>
                     <Flex alignItems={'center'} mt={3}>
@@ -119,27 +157,29 @@ export default function ShopItem({data, isFeatured}: {data: ShopData, isFeatured
                         </Flex>
                     </Flex>
         
-                    <Modal isOpen={isOpen} onClose={onClose} >
+                    <Modal isOpen={isOpen} onClose={onClose} size={'3xl'}>
                         <ModalOverlay />
                             <ModalContent bgColor={(accepted) ? '#9f9' : 'lightskyblue'} border={'2px solid '}>
-                            <ModalHeader color={'white'} className={'heading-2xl'} fontWeight={'normal'}>{accepted ? 'Purchase Successful!' : `Purchase ${data.displayName}`}</ModalHeader>
+                            <ModalHeader fontSize={'2xl'} color={'white'} className={'heading-2xl'} fontWeight={'normal'}>{accepted ? 'Purchase Successful!' : `Purchase ${data.displayName}`}</ModalHeader>
                             <ModalBody>
                                 <Flex justifyContent={'center'}>
                                     <Flex boxShadow={(accepted) ? '0px 0px 50px #fff' : ''} borderRadius={'50%'}>
                                         <Image src={`/image/${data.image}`}/>
-                                    </Flex>
+                                    </Flex>                                    
                                 </Flex>
                             </ModalBody>
         
                             <ModalFooter>
-                                <Button colorScheme='red' mr={3} onClick={(accepted) ? () => {window.location.reload()} : onClose}>
+                                <Button className={'heading-md'} colorScheme='red' mr={3} onClick={(accepted) ? () => {window.location.reload()} : onClose}>
                                 Close
                                 </Button>
                                 {accepted ? 
-                                <></>
+                                <Button className={'heading-md'} colorScheme='facebook' mr={3} onClick={() => {navigate('/collection')}}>
+                                    View Collection
+                                </Button>
                                 :
-                                <Button colorScheme={'whatsapp'} onClick={() => {purchase(data.name)}}>{data.cost}<Image ml={1} maxH={'25px'} src={`/image/resources/resource_coins.webp`}/></Button>
-                            }                        
+                                <Button className={'heading-md'} color={(coins < data.cost) ? 'red.500' : 'white'} colorScheme={'whatsapp'} onClick={() => {purchase(data.name)}}>{data.cost}<Image ml={1} maxH={'25px'} src={`/image/resources/resource_coins.webp`}/></Button>
+                                }                         
                             </ModalFooter>
                             </ModalContent>
                     </Modal>

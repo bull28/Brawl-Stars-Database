@@ -2,7 +2,7 @@ import { Box, Flex, HStack, Image, Link, ScaleFade, Text } from '@chakra-ui/reac
 import { useState, useEffect } from 'react'
 import { BsPerson } from 'react-icons/bs'
 import { FaSkull } from 'react-icons/fa'
-import { MdOutlineFeaturedPlayList, MdOutlineGeneratingTokens } from 'react-icons/md'
+import { MdOutlineGeneratingTokens } from 'react-icons/md'
 import MovingText from '../components/MovingText'
 import ShopItem from '../components/ShopItem'
 import AuthRequest, { getToken } from '../helpers/AuthRequest'
@@ -15,7 +15,6 @@ export default function Shop() {
 
     const [data, setData] = useState<[ShopData]>()
     const [userInfo, setUserInfo] = useState<UserInfoProps>()
-    const [isBought, setIsBought] = useState<boolean>(false)
 
     const getSeason = (month: number) => {
         if (2 <= month && month <= 4){
@@ -61,7 +60,7 @@ export default function Shop() {
             <Flex flexDir={'column'} alignItems={'center'} pb={'5vh'} pt={'10vh'}>  
                 {
                     data?.map((item) => (
-                        (item.name === 'featuredItem') && <ScaleFade in={true}><ShopItem data={item} isFeatured={true}/></ScaleFade>
+                        (item.name === 'featuredItem') && <ScaleFade in={true}><ShopItem data={item} coins={userInfo?.coins || 0} isFeatured={true}/></ScaleFade>
                     ))
                 }               
             </Flex>  
@@ -75,7 +74,7 @@ export default function Shop() {
                         <HStack>
                         {
                             data?.map((item) => (
-                                item.name.includes('avatar') && <ScaleFade in={true}><ShopItem data={item}/></ScaleFade>
+                                item.name.includes('avatar') && <ScaleFade in={true}><ShopItem data={item} coins={userInfo?.coins || 0}/></ScaleFade>
                             ))
                         }
                         </HStack>
@@ -88,7 +87,7 @@ export default function Shop() {
                         <HStack>
                         {
                             data?.map((item) => (
-                                item.name.includes('brawler') && <ScaleFade in={true}><ShopItem data={item}/></ScaleFade>
+                                item.name.includes('brawler') && <ScaleFade in={true}><ShopItem data={item} coins={userInfo?.coins || 0}/></ScaleFade>
                             ))
                         }
                         </HStack>
@@ -101,7 +100,7 @@ export default function Shop() {
                         <HStack>
                         {
                             data?.map((item) => (
-                                item.name.toLowerCase().includes('credit') && <ScaleFade in={true}><ShopItem data={item}/></ScaleFade>
+                                item.name.toLowerCase().includes('credit') && <ScaleFade in={true}><ShopItem data={item} coins={userInfo?.coins || 0}/></ScaleFade>
                             ))
                         }
                         </HStack>
