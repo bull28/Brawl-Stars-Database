@@ -13,6 +13,7 @@ interface EventsCurrent {
 
 export default function Maps() {
   const [data, setData] = useState<EventsCurrent>()
+  const [offset, setOffset] = useState<number>(0);
 
   const fetchData = () => {
     axios.get('/event/current')
@@ -25,19 +26,18 @@ export default function Maps() {
     fetchData();
   }, [])
 
-
   return (
     <Flex flexDir={'column'} justifyContent={'space-between'} w={'100%'}>
       <Flex w={'100%'} textAlign={'center'} justifyContent={'center'}>
         <Text fontSize={'3xl'} className={'heading-3xl'} color={'white'}>Events</Text>  
       </Flex>
       <Flex flexDir={'row'}>
-        <EventSideBar changeData={setData}/>
+        <EventSideBar changeData={setData} changeOffset={setOffset} startTime={new Date()}/>
         <Flex flexDir={'column'} mt={10}>
           <SimpleGrid columns={[1,2,3]} spacing={5} w={'100%'}>
             {data?.events.map((event) => (
-              <EventView event={event}/>
-          ))}
+              <EventView event={event} offset={offset} key={event.current.map.name + event.current.gameMode.name}/>
+            ))}
           </SimpleGrid>
         </Flex>
       </Flex>

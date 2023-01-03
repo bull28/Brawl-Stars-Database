@@ -11,7 +11,7 @@ import { Flex, Text, Divider, Icon, RadioGroup, Stack, Radio, Input, Select, Inp
     Spinner} from "@chakra-ui/react";
 
 import { HamburgerIcon, SearchIcon } from '@chakra-ui/icons'
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import MapView from './MapView';
 import axios from 'axios';
 
@@ -26,8 +26,18 @@ interface MapData {
     }
 }
 
+interface Timer {
+    start: number,
+    offset: number
+}
 
-export default function EventSideBar({ changeData }: {changeData: any}){
+interface EventMode {
+    choice: string,
+    select: string
+}
+
+
+export default function EventSideBar({ changeData, changeOffset, startTime }: {changeData: Function, changeOffset: Function, startTime: Date}){
     const [choice, setChoice] = useState<string>("current");
     const [select, setSelect] = useState<string>("at_time");
     const [time, setTime] = useState<string[]>(["", "", ""]);
@@ -36,6 +46,10 @@ export default function EventSideBar({ changeData }: {changeData: any}){
     const [maps, setMaps] = useState<MapData[]>([]);
     const [map, setMap] = useState<string>("");
     const mapViewRef = useRef<{ open: () => void}>(null)
+    const [timer, updateTimer] = useState<Timer>({start: startTime.getTime(), offset: 0});// Time since the last update
+    const [lastUpdate, setlastUpdate] = useState<number>(3600000);// Time at the last update
+    const [eventMode, setEventMode] = useState<EventMode>({choice: "current", select: "at_time"});// User's event mode choices, only updated when "Update" is clicked
+    const [success, setSuccess] = useState<boolean>(true);// Whether or not the attemped calls to the API were successful
 
     const query = useMediaQuery('(min-width: 400px)')[0]
     const { isOpen, onOpen, onClose } = useDisclosure() 
@@ -58,34 +72,42 @@ export default function EventSideBar({ changeData }: {changeData: any}){
     const search = () => {
         console.log(searchText)
     }
-
-    const update = () => {
+   
+    const update = useCallback((choice1: string, choice2: string) => {
         let endpoint = "";
 
-        if (choice === "current"){
+        if (choice1 === "current"){
             endpoint = "/event/current"
 
-        } else if (choice === "season_time" && !time.includes("")){
-            if (select === "at_time"){
+        } else if (choice1 === "season_time" && !time.includes("")){
+            if (choice2 === "at_time"){
                 endpoint = `/event/seasontime`
-            } else if (select === "from_now"){
+            } else if (choice2 === "from_now"){
                 endpoint = `/event/later`
             }
 
-        } else if (choice === "world_time" && date !== ""){
+        } else if (choice1 === "world_time" && date !== ""){
             endpoint = `/event/worldtime`
         }
         
         if (endpoint !== ""){
-
             axios.get(endpoint, {params: {hour: time[0], minute: time[1], second: (endpoint === "/event/worldtime") ? getSeconds(date) : time[2]}})
                 .then((res) => {
-                    changeData(res.data)
-
-                    if (choice === "season_time" && select === "at_time"){
-                        setTime([res.data.time.hour, res.data.time.minute, res.data.time.second])
+                    if (choice1 === "season_time" && choice2 === "at_time"){
+                        setTime([res.data.time.hour, res.data.time.minute, res.data.time.second]);
                     }
-                })     
+                    changeData(res.data);
+                    setSuccess(true);
+
+                    // Add the milliseconds from the current time to compensate for lower precison
+                    // given by the API. (see below)
+                    // Correct mod is not required since Date.now() is never negative.
+                    setlastUpdate(res.data.time.second * 1000 + Date.now() % 1000);
+                }).catch((error) => {
+                    // This only occurs when the API encounters an error. Incorrectly formatted user input
+                    // is handled by the if-statments above.
+                    setSuccess(false);
+                })
         } else {
             toast({
                 title: 'Please Enter a Valid Time.',
@@ -94,7 +116,7 @@ export default function EventSideBar({ changeData }: {changeData: any}){
                 isClosable: true
             })
         }
-    }
+    }, [changeData, date, time, toast])
 
     const openMapView = (m: string) => {
         setMap(m);
@@ -107,6 +129,62 @@ export default function EventSideBar({ changeData }: {changeData: any}){
                 setMaps(res.data)
             })
     }, [searchText])
+
+    useEffect(() => {
+        const id = setInterval(() => 
+        updateTimer((previousTime) => {
+            // Pause program if there is an error, a page reload or click on "Update" is required once the error is fixed.
+            if (success === false){
+                return previousTime;
+            }
+
+            // These event mode choices require real-time updating
+            if (eventMode.choice === "current" || (eventMode.choice === "season_time" && eventMode.select === "from_now" && !time.includes(""))){
+                var elapsed: number = Date.now() - previousTime.start;
+                
+                // Update when the last updated time + offset passes multiples of 1 minute.
+                // If it does, update the events and set offset to 0.
+                if (lastUpdate + elapsed >= 60000){
+                    update(eventMode.choice, eventMode.select);
+                    return {
+                        start: Date.now(),
+                        offset: 0
+                    };
+                }
+
+                // If an update was not required, return the offset without changing the last update.
+                return {
+                    start: previousTime.start,
+                    offset: elapsed
+                };
+            }
+
+            return previousTime;
+        })
+        , 200)
+
+        return () => {
+            clearInterval(id);
+        };
+    }, [lastUpdate, timer, eventMode, success, time, update])// <- dependency list
+
+    useEffect(() => {
+        // When real-time updating is required, add the milliseconds from the last update to make the display
+        // more accurate. Since the API only returns values up to a precision of 1 second, store the current
+        // millisecond value at the time of the call to the API and add it to the offset. This (hopefullly)
+        // makes it so a last updated time of 50s + 900ms and an offset of 5900ms gets displayed using an offset
+        // of 56800ms => 56s and not 55900ms => 55s (example). This seemed to have fixed the issue where the
+        // countdown skipped a second every once in a while.
+        
+        // When real-time updating is not required, the precision given by the API is sufficient because the
+        // returned events will always be the same, no matter what time the endpoint was called at.
+
+        if (eventMode.choice === "current" || (eventMode.choice === "season_time" && eventMode.select === "from_now" && !time.includes(""))){
+            changeOffset(lastUpdate % 1000 + timer.offset);
+        } else{
+            changeOffset(timer.offset);
+        }
+    });
 
     if (query){
         return (
@@ -130,7 +208,7 @@ export default function EventSideBar({ changeData }: {changeData: any}){
                         </Select>
                         <Radio value='world_time'>World Time</Radio>
                         <Input type={'datetime-local'} onChange={(e) => setDate(e.target.value)} value={date}/>
-                        <Button type={'button'} colorScheme={'facebook'} onClick={update}>Update</Button>
+                        <Button type={'button'} colorScheme={'facebook'} onClick={() => {setEventMode({choice: choice, select: select}); update(choice, select); updateTimer({start: Date.now(), offset: 0});}}>Update</Button>
                     </Stack>
                 </RadioGroup>
     
@@ -165,7 +243,6 @@ export default function EventSideBar({ changeData }: {changeData: any}){
             </Flex>
         )
     } else {
-    
         return (
             <>
                 <Icon as={HamburgerIcon} onClick={onOpen} position={'absolute'} top={2} right={2} fontSize={'3xl'}/>
@@ -192,7 +269,7 @@ export default function EventSideBar({ changeData }: {changeData: any}){
                                 </Select>
                                 <Radio value='world time'>World Time</Radio>
                                 <Input type={'datetime-local'} onChange={(e) => setDate(e.target.value)} value={date}/>
-                                <Button type={'button'} colorScheme={'facebook'} onClick={() => {update(); onClose();}}>Update</Button>
+                                <Button type={'button'} colorScheme={'facebook'} onClick={() => {setEventMode({choice: choice, select: select}); update(choice, select); updateTimer({start: Date.now(), offset: 0}); onClose();}}>Update</Button>
                             </Stack>
                             </RadioGroup>
                         </DrawerBody>
@@ -209,5 +286,4 @@ export default function EventSideBar({ changeData }: {changeData: any}){
             </>
         )
     }
-    
 }
