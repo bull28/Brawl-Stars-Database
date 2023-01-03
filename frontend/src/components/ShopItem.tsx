@@ -36,7 +36,7 @@ export default function ShopItem({data, coins, isFeatured}: {data: ShopData, coi
                 updateSeconds(prevState => prevState - 1)
             }            
 
-            if (seconds == 0){
+            if (seconds === 0){
                 window.location.reload()
             }
         }, 1000)
