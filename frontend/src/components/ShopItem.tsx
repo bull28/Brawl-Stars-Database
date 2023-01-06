@@ -1,8 +1,7 @@
 import { Box, Button, Flex, Image, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, ModalOverlay, ScaleFade, Text, useDisclosure } from '@chakra-ui/react'
 import AuthRequest from '../helpers/AuthRequest'
 import ShopData from '../types/ShopData'
-import { useEffect, useState } from 'react'
-import { HMStoS, StoHMS } from '../helpers/Countdown'
+import { useState } from 'react'
 import { GrPowerReset } from 'react-icons/gr'
 import { BrawlBoxContentsData } from '../types/BrawlBoxData'
 import CountUp from 'react-countup'
@@ -14,37 +13,19 @@ interface PurchaseData {
     result: [BrawlBoxContentsData]
 }
 
-export default function ShopItem({data, coins, isFeatured}: {data: ShopData, coins: number, isFeatured?: boolean}) {
+export default function ShopItem({data, coins, isFeatured, timeLeftString}: {data: ShopData, coins: number, isFeatured?: boolean, timeLeftString: string}) {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     const [accepted, setAccepted] = useState<boolean>()  
 
     const [purchaseData, setPurchaseData] = useState<PurchaseData>()
-    
-    const [seconds, updateSeconds] =  useState<number>(HMStoS({hours: 23 - new Date().getHours() + Math.floor((new Date(new Date().getFullYear(), 0, 1).getTimezoneOffset() - new Date().getTimezoneOffset())/60),  minutes: 59 - new Date().getMinutes(), seconds: 59 - new Date().getSeconds()}))
 
     const navigate = useNavigate()
 
     const purchase = (itemName: string) => {
         AuthRequest('/shop', {data: {item: itemName}, setState: [{func: setPurchaseData, attr: ""}], callback: () => {setAccepted(true)}, errorToastMessage: "Invalid Purchase"})
     }
-
-    useEffect(() => {        
-        const timer = setInterval(() => {
-            if (seconds > 0 ){
-                updateSeconds(prevState => prevState - 1)
-            }            
-
-            if (seconds === 0){
-                window.location.reload()
-            }
-        }, 1000)
-
-        return () => {
-            clearInterval(timer)
-        }                    
-    }, [seconds])
 
     if (!isFeatured){
 
@@ -152,8 +133,8 @@ export default function ShopItem({data, coins, isFeatured}: {data: ShopData, coi
                     </Flex>
                     <Flex w={'100%'} justifyContent={'right'} mt={5}>
                         <Flex px={5} py={3} borderRadius={'30px'} bgColor={'lightskyblue'} alignItems={'center'} border={'2px solid'} borderColor={'blue.500'}>
-                            <GrPowerReset fontSize={'20px'}/>                            
-                            <Text ml={2} color={'white'} className={'heading-md'}>{(StoHMS(seconds).hours !== 0) ? `Offer Ends in ${StoHMS(seconds).hours}h ${StoHMS(seconds).minutes}m` : `Offer Ends in ${StoHMS(seconds).minutes}m ${StoHMS(seconds).seconds}s`}</Text>
+                            <GrPowerReset fontSize={'20px'}/>
+                            <Text ml={2} color={'white'} className={'heading-md'}>{`Offer ends in ${timeLeftString}`}</Text>
                         </Flex>
                     </Flex>
         
