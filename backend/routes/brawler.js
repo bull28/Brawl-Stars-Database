@@ -18,7 +18,7 @@ const PIN_IMAGE_DIR = filePaths.PIN_IMAGE_DIR;
 
 
 // Load the skins json object
-var allSkins = [];
+let allSkins = [];
 const allSkinsPromise = require("../modules/fileloader").allSkinsPromise;
 allSkinsPromise.then((data) => {
     if (data !== undefined){
@@ -33,8 +33,8 @@ allSkinsPromise.then((data) => {
  * @returns true if empty, false otherwise
  */
 function isEmpty(x){
-    var isEmpty = true;
-    for (var y in x){
+    let isEmpty = true;
+    for (let y in x){
         isEmpty = false;
     }
     return isEmpty;
@@ -67,14 +67,14 @@ function skinModelExists(data){
 
 // Get the entire list of brawlers
 router.get("/brawler", (req, res) => {
-    var allBrawlers = [];
+    let allBrawlers = [];
 
     const includeInBrawler = ["name", "displayName", "rarity", "portrait"];
 
     for (let x of allSkins){
         // copy over the entire brawler's data, except for their skins
         // call /brawler/:brawler to get the skin list and description (too much data here)
-        var brawlerData = {};
+        let brawlerData = {};
         for (let y in x){
             if (includeInBrawler.includes(y)){
                 if (y == "portrait"){

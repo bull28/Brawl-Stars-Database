@@ -14,7 +14,7 @@ class SeasonTime{
      * @returns seconds after season reset
      */
     convertToSeconds(){
-        var seconds = 0;
+        let seconds = 0;
         seconds += this.season * this.hoursPerSeason * 3600;
         seconds += this.hour * 3600;
         seconds += this.minute * 60;
@@ -44,14 +44,14 @@ class EventSlot{
      * @returns gameMode
      */
     getCurrentGameMode(seasonTime){
-        var seasonHour = seasonTime.hour;
+        let seasonHour = seasonTime.hour;
         seasonHour -= this.offset;
         seasonHour = mod(seasonHour, MAP_CYCLE_HOURS);
 
-        var gameModeIndex = Math.floor(seasonHour / this.eventDuration);
+        let gameModeIndex = Math.floor(seasonHour / this.eventDuration);
         gameModeIndex = mod(gameModeIndex, this.gameModes.length);
 
-        var currentGameMode = this.gameModes[gameModeIndex];
+        let currentGameMode = this.gameModes[gameModeIndex];
 
         return currentGameMode;
     }
@@ -62,7 +62,7 @@ class EventSlot{
      * @returns json object of the active map
      */
     getCurrentGameMap(seasonTime){
-        var theGameMode = this.getCurrentGameMode(seasonTime);
+        let theGameMode = this.getCurrentGameMode(seasonTime);
         return theGameMode.getMapAtTime(seasonTime, this.offset);
     }
 
@@ -84,12 +84,12 @@ class EventSlot{
      * @returns SeasonTime
      */
     getEventTimeLeft(seasonTime){
-        var seasonHour = seasonTime.hour;
+        let seasonHour = seasonTime.hour;
         seasonHour -= this.offset;
 
-        var nextEventHour = (Math.floor(seasonHour / this.eventDuration) + 1) * this.eventDuration;
+        let nextEventHour = (Math.floor(seasonHour / this.eventDuration) + 1) * this.eventDuration;
 
-        var nextEventTime = subtractSeasonTimes(new SeasonTime(seasonTime.season, this.offset + nextEventHour, 0, -1), seasonTime);
+        let nextEventTime = subtractSeasonTimes(new SeasonTime(seasonTime.season, this.offset + nextEventHour, 0, -1), seasonTime);
         return nextEventTime;
     }
 
@@ -99,7 +99,7 @@ class EventSlot{
      * @returns json object of the map, empty if not found
      */
     searchForMap(mapName){
-        for (var x = 0; x < this.gameModes.length; x++){
+        for (let x = 0; x < this.gameModes.length; x++){
             let mapSearchResult = this.gameModes[x].findMapIndex(mapName);
             if (mapSearchResult >= 0){
                 return this.gameModes[x].getMap(mapSearchResult);
@@ -124,15 +124,15 @@ class EventSlot{
         // if the map is currently active, return 0 because "it can be played right now"
 
         // if the map is not active, search to see if it exists in this slot
-        var result = {};
-        var validStartTimes = [];
-        var gameModeIndex = -1;
-        var mapIndex = -1;
+        let result = {};
+        let validStartTimes = [];
+        let gameModeIndex = -1;
+        let mapIndex = -1;
 
-        var lowestStartTime = new SeasonTime(1, 0, 0, 0);
+        let lowestStartTime = new SeasonTime(1, 0, 0, 0);
 
         // search through all the game modes in this event slot to see if the map appears in one of them
-        for (var x = 0; x < this.gameModes.length; x++){
+        for (let x = 0; x < this.gameModes.length; x++){
             let mapSearchResult = this.gameModes[x].findMapIndex(mapName);
             if (mapSearchResult >= 0){
                 gameModeIndex = x;
@@ -142,22 +142,22 @@ class EventSlot{
 
         // if gameModeIndex >= 0 then mapIndex is guaranteed to be >= 0 and the map does exist in this event slot
         if (gameModeIndex >= 0){
-            var theGameMode = this.gameModes[gameModeIndex];
+            let theGameMode = this.gameModes[gameModeIndex];
 
             // get the list of all possible start times for that map
-            var startTime = theGameMode.getTimeAtMap(mapIndex, this.offset, this.eventDuration);
+            let startTime = theGameMode.getTimeAtMap(mapIndex, this.offset, this.eventDuration);
             
             
             // go through all the start times and compute the difference between them and the current time
             // save the lowest difference and return that
 
-            for (var x = 0; x < startTime.length; x++){
+            for (let x = 0; x < startTime.length; x++){
                 // if a certain start time ends up being less than the current time, add 1 season
                 // (can't have negative differences)
                 // also, the maximum difference between a start time and the current time is
                 // guaranteed to be 1 season because all events that do appear are guaranteed
                 // to appear at least once per season
-                var thisTime = new SeasonTime(currentTime.season, startTime[x], 0, 0);
+                let thisTime = new SeasonTime(currentTime.season, startTime[x], 0, 0);
 
 
 
@@ -257,8 +257,8 @@ class GameMode{
      * @returns Number
      */
     findMapIndex(mapName){
-        var index = -1;
-        for (var x = 0; x < this.maps.length; x++){
+        let index = -1;
+        for (let x = 0; x < this.maps.length; x++){
             if (this.maps[x].hasOwnProperty("name")){
                 if (this.maps[x].name == mapName){
                     index = x;
@@ -275,11 +275,11 @@ class GameMode{
      * @returns json object of the active map
      */
     getMapAtTime(seasonTime, offset){
-        var seasonHour = seasonTime.hour;
+        let seasonHour = seasonTime.hour;
         seasonHour -= offset;
         seasonHour = mod(seasonHour, MAP_CYCLE_HOURS);
 
-        var mapIndex = Math.floor(seasonHour / this.rotationTime);
+        let mapIndex = Math.floor(seasonHour / this.rotationTime);
         mapIndex = mod(mapIndex, this.maps.length);
 
         return this.maps[mapIndex];
@@ -298,12 +298,12 @@ class GameMode{
      */
     getTimeAtMap(mapIndex, offset, eventDuration){
         mapIndex = mod(mapIndex, this.maps.length);
-        var startTime = mapIndex * this.rotationTime;
+        let startTime = mapIndex * this.rotationTime;
         startTime += offset;
         startTime = mod(startTime, MAP_CYCLE_HOURS);
 
 
-        var activeTimes = [];
+        let activeTimes = [];
 
         // check if the game mode currently active in this slot matches the map search
         // begin at startTime and do checks at intervals based on this event slot's eventDuration
@@ -312,8 +312,8 @@ class GameMode{
         // then, repeat again later in the season (for those game modes which take less than a full
         // season to go through all their maps, ex: in the 2 hour rotation, the heist/bounty game modes
         // would repeat every 7 days)
-        for (var seasonPos = 0; seasonPos < MAP_CYCLE_HOURS; seasonPos += this.rotationTime * this.maps.length){
-            for (var x = startTime + seasonPos; x < (startTime + seasonPos + this.rotationTime); x += eventDuration){
+        for (let seasonPos = 0; seasonPos < MAP_CYCLE_HOURS; seasonPos += this.rotationTime * this.maps.length){
+            for (let x = startTime + seasonPos; x < (startTime + seasonPos + this.rotationTime); x += eventDuration){
                 activeTimes.push(mod(x, MAP_CYCLE_HOURS));
             }
         }
@@ -334,15 +334,15 @@ class GameMode{
  * @returns array of EventSlot objects
  */
 function jsonToEvents(eventData){
-    var events = [];
-    for (var x = 0; x < eventData.length; x++){
-        var gameModes = [];
+    let events = [];
+    for (let x = 0; x < eventData.length; x++){
+        let gameModes = [];
     
-        for (var y = 0; y < eventData[x].gameModes.length; y++){
+        for (let y = 0; y < eventData[x].gameModes.length; y++){
             let gameModeData = eventData[x].gameModes[y];
-            var thisGameMode = new GameMode(gameModeData.name, gameModeData.displayName, gameModeData.rotationTime);
+            let thisGameMode = new GameMode(gameModeData.name, gameModeData.displayName, gameModeData.rotationTime);
     
-            for (var m = 0; m < gameModeData.maps.length; m++){
+            for (let m = 0; m < gameModeData.maps.length; m++){
                 thisGameMode.addMap(gameModeData.maps[m]);
             }
 
@@ -354,7 +354,7 @@ function jsonToEvents(eventData){
             gameModes.push(thisGameMode);
         }
         
-        var thisEvent = new EventSlot(gameModes, eventData[x].eventDuration, eventData[x].offset);     
+        let thisEvent = new EventSlot(gameModes, eventData[x].eventDuration, eventData[x].offset);     
         events.push(thisEvent);
     }
 
@@ -391,7 +391,7 @@ function realToTime(real){
  * @returns SeasonTime
  */
 function secondsToTime(seconds){
-    var seasonTime = new SeasonTime(0, 0, 0, 0);
+    let seasonTime = new SeasonTime(0, 0, 0, 0);
     seasonTime.season = Math.floor(seconds/MAP_CYCLE_SECONDS);
     seasonTime.hour = Math.floor((Math.floor(seconds/3600) % MAP_CYCLE_HOURS));
     seasonTime.minute = Math.floor((seconds % 3600) / 60);
@@ -451,13 +451,13 @@ function seasonTimesLessThan(time1, time2){
  * @returns json object of the game mode
  */
 function getModeInformation(eventList, modeName){
-    var result = {};
+    let result = {};
 
-    var x = 0;
-    var found = false;
+    let x = 0;
+    let found = false;
     // go through all the events first
     while (x < eventList.length && found == false){
-        var y = 0;
+        let y = 0;
         // inside each event, look for the game mode in its game mode list
         while (y < eventList[x].gameModes.length){
             if (eventList[x].gameModes[y].name == modeName){
@@ -471,7 +471,7 @@ function getModeInformation(eventList, modeName){
 
                 // must copy the data because the function which adds the image path
                 // modifies this object directly
-                var dataCopy = {};
+                let dataCopy = {};
                 for (let i in thisGameMode.data){
                     dataCopy[i] = thisGameMode.data[i];
                 }
@@ -479,8 +479,8 @@ function getModeInformation(eventList, modeName){
 
                 // only add the list of map names and not the entire json data
                 const allMaps = thisGameMode.maps;
-                var mapList = [];
-                for (var m = 0; m < allMaps.length; m++){
+                let mapList = [];
+                for (let m = 0; m < allMaps.length; m++){
                     if (allMaps[m].hasOwnProperty("name") && allMaps[m].hasOwnProperty("displayName")){
                         mapList.push({
                             "name": allMaps[m].name,
@@ -509,15 +509,14 @@ function getModeInformation(eventList, modeName){
  * @returns json object of the map
  */
 function getMapInformation(eventList, mapName, currentTime){
-    var result = {};
+    let result = {};
 
-    var x = 0;
-    var found = false;
+    let x = 0;
+    let found = false;
     while (x < eventList.length && found == false){
-        //const mapInThisSlot = eventList[x].searchForMap(mapName);
-        var mapInThisSlot = {};
-        var isEmpty = true;
-        for (var y = 0; y < eventList[x].gameModes.length; y++){
+        let mapInThisSlot = {};
+        let isEmpty = true;
+        for (let y = 0; y < eventList[x].gameModes.length; y++){
             let thisGameMode = eventList[x].gameModes[y];
             let mapSearchResult = thisGameMode.findMapIndex(mapName);
             if (mapSearchResult >= 0){
@@ -526,7 +525,7 @@ function getMapInformation(eventList, mapName, currentTime){
                 for (let i in mapInThisSlot){
                     if (i == "gameMode"){
                         // add the data (colors, images, ...) from the game mode
-                        var mapSlotData = {};
+                        let mapSlotData = {};
                         mapSlotData["name"] = thisGameMode.name;
                         for (let i in thisGameMode.data){
                             mapSlotData[i] = thisGameMode.data[i];
@@ -564,12 +563,12 @@ function getMapInformation(eventList, mapName, currentTime){
  * @returns array containing the search results
  */
 function searchForMapName(eventList, search, filePath){
-    var result = [];
-    var exactMatch = [];
-    var startsWith = [];
-    var onlyContains = [];
+    let result = [];
+    let exactMatch = [];
+    let startsWith = [];
+    let onlyContains = [];
 
-    var query = "";
+    let query = "";
     if (search.hasOwnProperty("search")){
         query = search.search;
         query = query.toLowerCase();
@@ -589,7 +588,7 @@ function searchForMapName(eventList, search, filePath){
 
                 if (includes){
                     // copy over the game mode's data, and include its name
-                    var mapSlotData = {};
+                    let mapSlotData = {};
                     mapSlotData["name"] = mode.name;
                     for (let i in mode.data){
                         if (i == "image"){
@@ -640,7 +639,7 @@ function searchForMapName(eventList, search, filePath){
  * @returns json object
  */
 function getEventInformation(event, seasonTime){
-    var thisEvent = {};
+    let thisEvent = {};
 
     thisEvent["gameMode"] = {};
     thisEvent["map"] = {};
@@ -663,12 +662,12 @@ function getEventInformation(event, seasonTime){
     const excludeFromGameMode = ["maps", "rotationTime"];
     const excludeFromMap = ["image", "gameMode", "powerLeagueMap"];
     
-    for (var x in thisGameMode){
+    for (let x in thisGameMode){
         if (x == "data"){
             // copy all pieces of data and add the image file path
             // otherwise functions which modify this object will be referencing
             // the object directly and future calls will keep stacking the modifications
-            var dataCopy = {};
+            let dataCopy = {};
             for (let y in thisGameMode[x]){
                 dataCopy[y] = thisGameMode[x][y];
             }
@@ -679,7 +678,7 @@ function getEventInformation(event, seasonTime){
             thisEvent["gameMode"][x] = thisGameMode[x];
         }
     }
-    for (var x in thisMap){
+    for (let x in thisMap){
         //if (x != "image" && x != "gameMode"){/////////////////////////
         if (!(excludeFromMap.includes(x))){
             thisEvent["map"][x] = thisMap[x];
@@ -699,10 +698,10 @@ function getEventInformation(event, seasonTime){
  * @returns array of json objects for the events
  */
 function getAllEvents(eventList, seasonTime){
-    var allEvents = [];
+    let allEvents = [];
 
-    for (var x = 0; x < eventList.length; x++){
-        var thisEvent = {};
+    for (let x = 0; x < eventList.length; x++){
+        let thisEvent = {};
         
         thisEvent["current"] = getEventInformation(eventList[x], seasonTime);
         thisEvent["upcoming"] = getEventInformation(eventList[x], addSeasonTimes(seasonTime, new SeasonTime(0, eventList[x].eventDuration, 0, 0)));
@@ -724,7 +723,7 @@ function getAllEvents(eventList, seasonTime){
  * @returns json object of the map with the file paths added
  */
 function addPathMap(data, imagePath, bannerPath, gameModeIconPath){
-    for (var x in data){
+    for (let x in data){
         if (x == "image"){
             data[x] = imagePath + data.gameMode.name + "/" + data.image;
         } else if (x == "bannerImage"){

@@ -9,8 +9,8 @@
  */
 function validatePins(allSkins, pinArray, pinFile, searchByName){
     //pinArray.slice()
-    var validArray = [];
-    var alreadyAdded = [];
+    let validArray = [];
+    let alreadyAdded = [];
     for (let x of pinArray){
         // These are the 3 properties each input object must have
         if (x.hasOwnProperty("brawler") && x.hasOwnProperty("pin") && x.hasOwnProperty("amount")){
@@ -20,7 +20,7 @@ function validatePins(allSkins, pinArray, pinFile, searchByName){
             if (brawlerObjects.length > 0 && brawlerObjects[0].hasOwnProperty("pins")){
                 // do same type of search through pins except there are 2 ways to do the search
                 // by name and by image
-                var pinObjects = [];
+                let pinObjects = [];
                 if (searchByName){
                     pinObjects = brawlerObjects[0].pins.filter((element, index, array) => {return element.name == x.pin;});
                 } else{
@@ -61,7 +61,7 @@ function tradeCreditsByRarity(rarityValue){
     // combining pin and time costs
 
     // Base cost to trade any pin
-    var tradeCredits = 3;
+    let tradeCredits = 3;
 
     // Higher rarities are more expensive to trade
     if (rarityValue == 1){
@@ -85,7 +85,7 @@ function tradeCreditsByRarity(rarityValue){
  * @returns Number
  */
 function tradeCostMultiplier(amount){
-    var costMultiplier = 1.0;
+    let costMultiplier = 1.0;
     if (amount > 15){
         costMultiplier = 3.0 + 0.025 * (amount - 15);
     } else if (amount > 5){
@@ -106,7 +106,7 @@ function tradeCostMultiplier(amount){
  * @returns Number
  */
 function getTradeCost(offerPins, requestPins){
-    var totalTradeCost = 0.0;
+    let totalTradeCost = 0.0;
 
     if (!(offerPins && requestPins)){
         return totalTradeCost;
@@ -133,7 +133,7 @@ function getTradeCost(offerPins, requestPins){
  * @returns 
  */
 function getTimeTradeCost(tradeHours){
-    var timeTradeCost = 0;
+    let timeTradeCost = 0;
 
     if (tradeHours > 48){
         if (tradeHours <= 72){

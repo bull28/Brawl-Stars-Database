@@ -14,7 +14,7 @@ const MAP_BANNER_DIR = filePaths.MAP_BANNER_DIR;
 
 
 // Load the events json object
-var eventList = [];
+let eventList = [];
 const eventListPromise = require("../modules/fileloader").eventListPromise;
 eventListPromise.then((data) => {
     if (data !== undefined){
@@ -33,7 +33,7 @@ eventListPromise.then((data) => {
  * @returns true if valid, false otherwise
  */
 function isValidTime(hour, minute, second){
-    var valid = true;
+    let valid = true;
     if (isNaN(hour)){
         valid = false;
     } if (isNaN(minute)){
@@ -55,7 +55,7 @@ function isValidTime(hour, minute, second){
  * @returns json object
  */
 function formatEvents(events, seasonTime){
-    var eventsInfo = {};
+    let eventsInfo = {};
 
     // events is an array of event objects
     for (let x of events){

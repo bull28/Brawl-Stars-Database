@@ -25,7 +25,7 @@ const FEATURED_REFRESH_HOURS = 24;
 
 
 // Load the skins json object
-var allSkins = [];
+let allSkins = [];
 const allSkinsPromise = fileLoader.allSkinsPromise;
 allSkinsPromise.then((data) => {
     if (data !== undefined){
@@ -34,7 +34,7 @@ allSkinsPromise.then((data) => {
 });
 
 // Load the shop items
-var shopItems = {};
+let shopItems = {};
 const shopDataPromise = fileLoader.shopDataPromise;
 shopDataPromise.then((data) => {
     if (data !== undefined){
@@ -45,8 +45,8 @@ shopDataPromise.then((data) => {
 });
 
 // Load the drop chances data
-var dropChances = {};
-var brawlBoxTypes = {};
+let dropChances = {};
+let brawlBoxTypes = {};
 const dropChancesPromise = fileLoader.dropChancesPromise;
 dropChancesPromise.then((data) => {
     if (data !== undefined){
@@ -57,7 +57,7 @@ dropChancesPromise.then((data) => {
             // Remove all secret information like drop chances
             for (let x in dropChances.boxes){
                 if (x != "bonus" && x != "newBrawler"){
-                    var thisBrawlBox = {};
+                    let thisBrawlBox = {};
                     for (let y in dropChances.boxes[x]){
                         if (y == "image"){
                             thisBrawlBox[y] = RESOURCE_IMAGE_DIR + dropChances.boxes[x][y];
@@ -81,8 +81,8 @@ dropChancesPromise.then((data) => {
  * @returns true if empty, false otherwise
  */
  function isEmpty(x){
-    var isEmpty = true;
-    for (var y in x){
+    let isEmpty = true;
+    for (let y in x){
         isEmpty = false;
     }
     return isEmpty;
@@ -141,7 +141,7 @@ function validateShopItems(shopItems){
     // these are the only required properties, all others are optional
     const checkProperties = ["cost", "itemType", "image", "extraData", "amount"];
 
-    var valid = true;
+    let valid = true;
     for (let item in shopItems){
         for (let property of checkProperties){
             if (shopItems[item].hasOwnProperty(property) == false){
@@ -169,7 +169,7 @@ function validateDropChances(dropChances){
         return false;
     }
 
-    var valid = true;
+    let valid = true;
     for (let checkType in dropChances.key){
         // checkType = the reward type category (boxes or rewardTypes)
         if (dropChances.hasOwnProperty(checkType)){
@@ -180,7 +180,7 @@ function validateDropChances(dropChances){
                         // y = the key of the type to check ("coins", "tokenDoubler", ...)
                         // checkObject = the actual object to check (found using the key)
                         if (dropChances[checkType].hasOwnProperty(y)){
-                            var checkObject = dropChances[checkType][y];
+                            let checkObject = dropChances[checkType][y];
                             for (let key of x.properties){
                                 // Go through the object's properties and check if they exist
                                 if (!(checkObject.hasOwnProperty(key))){
@@ -222,7 +222,7 @@ router.post("/resources", (req, res) => {
                 return;
             }
 
-            var collectionInfo = {};
+            let collectionInfo = {};
             try{
                 collectionInfo = pins.formatCollectionData(allSkins, JSON.parse(results[0].brawlers), PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR);
             } catch (error){
@@ -231,8 +231,8 @@ router.post("/resources", (req, res) => {
             }
 
             
-            var wildCardData = JSON.parse(results[0].wild_card_pins);
-            var wildCardPins = [];
+            let wildCardData = JSON.parse(results[0].wild_card_pins);
+            let wildCardPins = [];
 
             for (let x in wildCardData){
                 wildCardPins.push({
@@ -294,7 +294,7 @@ router.post("/collection", (req, res) => {
                 return;
             }
             
-            var collectionData = {};
+            let collectionData = {};
             try{
                 collectionData = JSON.parse(results[0].brawlers);
             } catch (error){
@@ -330,9 +330,9 @@ router.post("/brawlbox", (req, res) => {
     // If they do specify a box type, check to make sure that box actually exists.
     if (!(req.body.boxType)){
         // Format it in an array when sending to the user
-        var brawlBoxList = [];
+        let brawlBoxList = [];
         for (let x in brawlBoxTypes){
-            var thisBox = {};
+            let thisBox = {};
             thisBox.name = x;
             for (let property in brawlBoxTypes[x]){
                 thisBox[property] = brawlBoxTypes[x][property];
@@ -360,7 +360,7 @@ router.post("/brawlbox", (req, res) => {
                 return;
             }
 
-            var userResources = results[0];
+            let userResources = results[0];
 
             if (userResources.tokens < brawlBoxTypes[boxType].cost){
                 res.status(403).send("You cannot afford this Box!");
@@ -475,11 +475,11 @@ router.post("/shop", (req, res) => {
             }
 
             // Load the user's resources
-            var userBrawlers = {};
-            var userAvatars = [];
-            var userCoins = results[0].coins;
-            var featuredItem = results[0].featured_item;
-            var userTradeCredits = results[0].trade_credits;
+            let userBrawlers = {};
+            let userAvatars = [];
+            let userCoins = results[0].coins;
+            let featuredItem = results[0].featured_item;
+            let userTradeCredits = results[0].trade_credits;
             try{
                 userBrawlers = JSON.parse(results[0].brawlers);
                 userAvatars = JSON.parse(results[0].avatars);
@@ -490,27 +490,26 @@ router.post("/shop", (req, res) => {
             
 
             // Determine whether the featured item should be refreshed
-            var currentTime = Date.now();
-            var currentSeasonTime = maps.realToTime(currentTime);
+            let currentTime = Date.now();
+            let currentSeasonTime = maps.realToTime(currentTime);
 
-            var refreshed = false;
+            let refreshed = false;
 
-            var hoursSinceLastLogin = (currentTime - results[0].last_login) / 3600000;
+            let hoursSinceLastLogin = (currentTime - results[0].last_login) / 3600000;
             if (hoursSinceLastLogin >= maps.MAP_CYCLE_HOURS){
                 refreshed = true;
             } else{
                 //currentSeasonTime = new maps.SeasonTime(1, 219, 0, 0);
-                var currentSeason = currentSeasonTime.season;
-                var currentHour = currentSeasonTime.hour;
+                let currentSeason = currentSeasonTime.season;
+                let currentHour = currentSeasonTime.hour;
 
-                var lastLoginTime = maps.realToTime(results[0].last_login);
+                let lastLoginTime = maps.realToTime(results[0].last_login);
                 //lastLoginTime = new maps.SeasonTime(0, 327, 0, 0);
-                var lastLoginSeason = lastLoginTime.season;
-                var lastLoginHour = lastLoginTime.hour;
+                let lastLoginHour = lastLoginTime.hour;
 
                 
                 // Explanation for the different cases is in claimtokens
-                var seasonDiff = currentSeason - lastLoginSeason;
+                let seasonDiff = currentSeason - lastLoginTime.season;
                 if (seasonDiff > 0){
                     currentSeason -= seasonDiff;
                     currentHour += currentSeasonTime.hoursPerSeason * seasonDiff;
@@ -527,7 +526,7 @@ router.post("/shop", (req, res) => {
             }
 
             if (refreshed){
-                var newFeaturedItem = pins.refreshFeaturedItem(allSkins, userBrawlers);
+                let newFeaturedItem = pins.refreshFeaturedItem(allSkins, userBrawlers);
                 if (newFeaturedItem != ""){
                     featuredItem = newFeaturedItem;
                 }
@@ -536,7 +535,7 @@ router.post("/shop", (req, res) => {
 
 
             // The shop items object may me modified with a featured item so create a copy
-            var shopItemsCopy = {};
+            let shopItemsCopy = {};
             for (let x in shopItems){
                 shopItemsCopy[x] = shopItems[x];
             }
@@ -547,13 +546,13 @@ router.post("/shop", (req, res) => {
                 featuredCosts = dropChances.rewardTypes.pinNoDupes.coinConversion;
             }
             // Out of all the shop items, remove all of them that the user cannot buy right now
-            var availableShopItems = pins.getShopItems(shopItemsCopy, allSkins, userBrawlers, userAvatars, featuredItem, featuredCosts);
+            let availableShopItems = pins.getShopItems(shopItemsCopy, allSkins, userBrawlers, userAvatars, featuredItem, featuredCosts);
 
             // If they do not provide an item to buy, show all items
             if (!(req.body.item)){
-                var shopItemList = [];
+                let shopItemList = [];
                 for (let x in availableShopItems){
-                    var thisItem = {};
+                    let thisItem = {};
                     thisItem.name = x;
                     for (let property in availableShopItems[x]){
                         if (property == "image"){
@@ -618,8 +617,8 @@ router.post("/shop", (req, res) => {
             
             // Add the item to the user's inventory
             // Do a different operation based on the type of the item
-            var buyItemResult = [];
-            var userItemInventory = 0;
+            let buyItemResult = [];
+            let userItemInventory = 0;
             if (itemData.itemType == "tradeCredits"){
                 userTradeCredits += itemData.amount;
                 userItemInventory = userTradeCredits;
@@ -629,7 +628,7 @@ router.post("/shop", (req, res) => {
             } else if (itemData.itemType == "brawler"){
                 // The brawl box opener needs a resources object so provide a temporary object
                 // with some of the fields set to default values
-                var tempResourceObject = {
+                let tempResourceObject = {
                     "brawlers": userBrawlers,
                     "avatars": userAvatars,
                     "wild_card_pins": [],

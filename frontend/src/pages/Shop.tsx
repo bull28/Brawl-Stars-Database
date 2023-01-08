@@ -9,7 +9,12 @@ import AuthRequest, { getToken } from '../helpers/AuthRequest'
 import { RainbowBorder } from '../themes/animations'
 import { UserInfoProps } from '../types/AccountData'
 import ShopData from '../types/ShopData'
+import EventTime from '../helpers/EventTime'
 
+interface Timer {
+    start: number,
+    offset: number
+}
 
 export default function Shop() {
 
@@ -33,6 +38,41 @@ export default function Shop() {
     }
 
     const season = getSeason(new Date().getMonth())
+
+    const [timer, updateTimer] = useState<Timer>({start: Date.now(), offset: 0});
+    const [initialTimeLeftms, setNewInitialTime] = useState<number>(((86400 + (new Date(new Date().getFullYear(), 0, 1).getTimezoneOffset() - new Date().getTimezoneOffset()) * 60 - new Date().getHours() * 3600 - new Date().getMinutes() * 60 - new Date().getSeconds()) % 86400) * 1000);
+    const [secondsLeft, updateSecondsLeft] = useState<number>(Math.floor(initialTimeLeftms / 1000));
+
+    useEffect(() => {        
+        const timer = setInterval(() => {
+            updateTimer((previousTime) => {
+                var elapsed: number = Date.now() - previousTime.start;
+
+                let timeLeft: number = Math.floor((initialTimeLeftms - elapsed) / 1000);
+                if (timeLeft >= 3600){
+                    updateSecondsLeft(Math.floor(timeLeft / 60) * 60);
+                } else{
+                    updateSecondsLeft(timeLeft);
+                }
+                if (initialTimeLeftms - elapsed < -1000){
+                    window.location.reload();
+                    setNewInitialTime(86400000);
+                    return {
+                        start: Date.now(),
+                        offset: 0
+                    };
+                }
+                return {
+                    start: previousTime.start,
+                    offset: elapsed
+                };
+            });
+        }, 200)
+
+        return () => {
+            clearInterval(timer)
+        }                    
+    }, [initialTimeLeftms, timer, secondsLeft])
 
     useEffect(() => {
         AuthRequest('/shop', {setState: [{func: setData, attr: ""}]})
@@ -60,7 +100,7 @@ export default function Shop() {
             <Flex flexDir={'column'} alignItems={'center'} pb={'5vh'} pt={'10vh'}>  
                 {
                     data?.map((item) => (
-                        (item.name === 'featuredItem') && <ScaleFade in={true}><ShopItem data={item} coins={userInfo?.coins || 0} isFeatured={true}/></ScaleFade>
+                        (item.name === 'featuredItem') && <ScaleFade in={true}><ShopItem data={item} coins={userInfo?.coins || 0} isFeatured={true} timeLeftString={EventTime({season: 0, hour: Math.floor(secondsLeft / 3600), minute: Math.floor(secondsLeft / 60) % 60, second: secondsLeft % 60, hoursPerSeason: 336, maxSeasons: 2}, 0)}/></ScaleFade>
                     ))
                 }               
             </Flex>  
@@ -74,7 +114,7 @@ export default function Shop() {
                         <HStack>
                         {
                             data?.map((item) => (
-                                item.name.includes('avatar') && <ScaleFade in={true}><ShopItem data={item} coins={userInfo?.coins || 0}/></ScaleFade>
+                                item.name.includes('avatar') && <ScaleFade in={true}><ShopItem data={item} coins={userInfo?.coins || 0} timeLeftString={""}/></ScaleFade>
                             ))
                         }
                         </HStack>
@@ -87,7 +127,7 @@ export default function Shop() {
                         <HStack>
                         {
                             data?.map((item) => (
-                                item.name.includes('brawler') && <ScaleFade in={true}><ShopItem data={item} coins={userInfo?.coins || 0}/></ScaleFade>
+                                item.name.includes('brawler') && <ScaleFade in={true}><ShopItem data={item} coins={userInfo?.coins || 0} timeLeftString={""}/></ScaleFade>
                             ))
                         }
                         </HStack>
@@ -100,7 +140,7 @@ export default function Shop() {
                         <HStack>
                         {
                             data?.map((item) => (
-                                item.name.toLowerCase().includes('credit') && <ScaleFade in={true}><ShopItem data={item} coins={userInfo?.coins || 0}/></ScaleFade>
+                                item.name.toLowerCase().includes('credit') && <ScaleFade in={true}><ShopItem data={item} coins={userInfo?.coins || 0} timeLeftString={""}/></ScaleFade>
                             ))
                         }
                         </HStack>

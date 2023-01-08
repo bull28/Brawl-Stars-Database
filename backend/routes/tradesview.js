@@ -25,8 +25,8 @@ const TRADES_PER_PAGE = 20;
  * @returns SeasonTime
  */
 function getTradeTimeLeft(expiration){
-    var tradeSecondsLeft = Math.floor((expiration - Date.now()) / 1000);
-    var tradeTimeLeft = new maps.SeasonTime(0, 0, 0, 0);
+    let tradeSecondsLeft = Math.floor((expiration - Date.now()) / 1000);
+    let tradeTimeLeft = new maps.SeasonTime(0, 0, 0, 0);
     if (tradeSecondsLeft > maps.MAP_CYCLE_HOURS * 3600){
         tradeTimeLeft = new maps.SeasonTime(1, 0, 0, 0);
     } else if (tradeSecondsLeft > 0){
@@ -59,8 +59,8 @@ router.get("/id", (req, res) => {
             return;
         }
 
-        var offerPins = [];
-        var requestPins = [];
+        let offerPins = [];
+        let requestPins = [];
         try{
             offerPins = JSON.parse(results[0].offer);
             requestPins = JSON.parse(results[0].request);
@@ -105,13 +105,13 @@ router.post("/user", (req, res) => {
             return;
         }
 
-        var tradeList = [];
+        let tradeList = [];
 
-        var validJSONTrades = true;
+        let validJSONTrades = true;
         for (let x of results){
 
-            var offerPins = [];
-            var requestPins = [];
+            let offerPins = [];
+            let requestPins = [];
             try{
                 offerPins = JSON.parse(x.offer);
                 requestPins = JSON.parse(x.request);
@@ -143,11 +143,11 @@ router.post("/user", (req, res) => {
 router.post("/all", (req, res) => {
     const sortMethod = req.body.sortMethod;
 
-    var filterColumn = "offer";
-    var filterString = '%%';
-    var sortString = "expiration DESC";
-    var minExpiration = 0;
-    var limitStart = 0;
+    let filterColumn = "offer";
+    let filterString = '%%';
+    let sortString = "expiration DESC";
+    let minExpiration = 0;
+    let limitStart = 0;
 
     if (sortMethod == "lowtime"){
         sortString = "expiration";
@@ -188,12 +188,12 @@ router.post("/all", (req, res) => {
             return;
         }
 
-        var tradeList = [];
+        let tradeList = [];
 
-        var validJSONTrades = true;
+        let validJSONTrades = true;
         for (let x of results){
-            var offerPins = [];
-            var requestPins = [];
+            let offerPins = [];
+            let requestPins = [];
             try{
                 offerPins = JSON.parse(x.offer);
                 requestPins = JSON.parse(x.request);
