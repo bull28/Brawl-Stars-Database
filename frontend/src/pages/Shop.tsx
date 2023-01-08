@@ -6,7 +6,7 @@ import { MdOutlineGeneratingTokens } from 'react-icons/md'
 import MovingText from '../components/MovingText'
 import ShopItem from '../components/ShopItem'
 import AuthRequest, { getToken } from '../helpers/AuthRequest'
-import { RainbowBorder } from '../themes/rainbow'
+import { RainbowBorder } from '../themes/animations'
 import { UserInfoProps } from '../types/AccountData'
 import ShopData from '../types/ShopData'
 
@@ -49,7 +49,7 @@ export default function Shop() {
                 <Flex justifyContent={'center'} alignItems={'center'} p={3} pl={2} pos={'relative'} borderRadius={'lg'}>
                     <Box w={'100%'} h={'100%'} pos={'absolute'} zIndex={'-1'} bgColor={'blue.500'}border={'2px solid'} borderRadius={'lg'} borderColor={'blue.800'}/>
                     <Flex bgColor={'gray.100'} alignItems={'center'} py={2} px={5} borderRadius={'lg'} boxShadow={'rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;'}>
-                        <Text>{userInfo?.coins}</Text>
+                        <Text className={'heading-lg'}>{userInfo?.coins}</Text>
                         <Image ml={1} maxH={'40px'} src={`/image/resources/resource_coins.webp`}/>
                     </Flex>
                     <Flex justifyContent={'center'} alignItems={'center'} borderRadius={'50%'} animation={(userInfo?.avatarColor === 'rainbow') ? `${RainbowBorder()} 12s infinite` : ''} border={(userInfo?.avatarColor !== 'rainbow') ? `3px solid ${userInfo?.avatarColor}` : ''} ml={3}>
@@ -67,7 +67,7 @@ export default function Shop() {
             <Flex w={'90%'} justifyContent={'left'}>
                 <Flex justifyContent={'space-between'} flexDir={'column'} p={5}>                              
                     <Flex flexDir={'column'}>
-                        <Flex alignItems={'center'} color={'white'} fontSize={'3xl'} className={'heading-3xl'} ml={5} mb={3} mt={'5vh'}>
+                        <Flex alignItems={'center'}  fontSize={'3xl'} className={'heading-3xl'} ml={5} mb={3} mt={'5vh'}>
                             <Text mr={1}>Avatars</Text>
                             <BsPerson color={'black'}/>                            
                         </Flex>                        
@@ -80,7 +80,7 @@ export default function Shop() {
                         </HStack>
                     </Flex>
                     <Flex flexDir={'column'}>
-                        <Flex alignItems={'center'} color={'white'} fontSize={'3xl'} className={'heading-3xl'} ml={5} mb={3} mt={'5vh'}>
+                        <Flex alignItems={'center'}  fontSize={'3xl'} className={'heading-3xl'} ml={5} mb={3} mt={'5vh'}>
                             <Text mr={1}>Brawlers</Text>
                             <FaSkull color={'black'}/>
                         </Flex>                        
@@ -93,7 +93,7 @@ export default function Shop() {
                         </HStack>
                     </Flex>
                     <Flex flexDir={'column'}>
-                        <Flex alignItems={'center'} color={'white'} fontSize={'3xl'} className={'heading-3xl'} ml={5} mb={3} mt={'5vh'}>
+                        <Flex alignItems={'center'}  fontSize={'3xl'} className={'heading-3xl'} ml={5} mb={3} mt={'5vh'}>
                             <Text mr={1}>Currency</Text>
                             <MdOutlineGeneratingTokens color={'black'}/>
                         </Flex>
@@ -112,7 +112,7 @@ export default function Shop() {
             <>
             <Flex flexDir={'column'} alignItems={'center'} w={'100vw'} h={'100vh'} justifyContent={'center'} pos={'absolute'}>
                 <Flex flexDir={'column'} alignItems={'center'} justifyContent={'center'} bgColor={'lightskyblue'} border={'2px solid'} borderColor={'blue.500'} borderRadius={'lg'} p={5}>
-                    <Text fontSize={'2xl'} className={'heading-2xl'} color={'white'}>Please Login to View the Shop</Text>
+                    <Text fontSize={'2xl'} className={'heading-2xl'} >Please Login to View the Shop</Text>
                     <Link fontSize={'2xl'} className={'heading-xl'} color={'blue.300'} href="/login">Click here to login</Link>
                 </Flex>
             </Flex>

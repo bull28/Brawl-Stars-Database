@@ -55,8 +55,8 @@ export default function MyTrades() {
 
   return (
     <Flex flexDir={'column'} alignItems={'center'} overflow={'hidden'}>
-        <Text fontSize={'2xl'} color={'white'} className={'heading-2xl'} my={3}>My Trades</Text>
-        <IconButton pos={'absolute'} top={'2vh'} left={'2vh'} colorScheme={'gray'} as={ArrowBackIcon} aria-label="back to trades menu" onClick={() => {navigate('/trade')}} cursor={'pointer'}/>
+        <Text fontSize={'2xl'}  className={'heading-2xl'} my={3}>My Trades</Text>
+        <IconButton pos={'absolute'} top={'2vh'} left={'2vh'} as={ArrowBackIcon} aria-label="back to trades menu" onClick={() => {navigate('/trade')}} cursor={'pointer'}/>
         <Flex flexDir={'column'} ml={'10vw'} mt={'5vh'}>
             <Text  fontSize={'2xl'} color={'#9f9'} className={'heading-2xl'}>Accepted</Text>
             <Box bgColor={'gray.200'} h={'2px'} w={'100vw'} my={3}/>
@@ -78,7 +78,7 @@ export default function MyTrades() {
                                 <ScaleFade in={true}>
                                 <Flex flexDir={'column'}>
                                 <Flex h={'25vh'} maxW={'fit-content'} flexDir={'column'} alignItems={'center'} justifyContent={'space-between'} textAlign={'center'} bgColor={'blue.800'} p={3} borderRadius={'xl'} border={'3px solid #75fa9d'} cursor={'pointer'} transition={'0.25s'}>
-                <Flex w={'85%'} justifyContent={'space-between'} color={'white'} fontSize={'lg'}>
+                <Flex w={'85%'} justifyContent={'space-between'}  fontSize={'lg'}>
                     <Text color={'red.500'}>Requesting</Text>
                     <Text color={'green.400'}>Offering</Text>
                 </Flex>
@@ -100,13 +100,13 @@ export default function MyTrades() {
                             {trade.request.map((request) => (
                                 <Flex p={3} border={'2px solid black'} borderRadius={'lg'} bgColor={request.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
                                     <Image maxW={'60px'} src={`/image/${request.pinImage}`} fallback={<Spinner/>}/>
-                                    <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} color={'white'}>{request.amount}</Text>
+                                    <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} >{request.amount}</Text>
                                 </Flex>
                             ))}
                         </SimpleGrid>
                     
 
-                    <Flex flexDir={'column'} justifyContent={'space-evenly'} alignItems={'center'} mx={'1vw'}  color={'white'} h={'100%'}>
+                    <Flex flexDir={'column'} justifyContent={'space-evenly'} alignItems={'center'} mx={'1vw'}   h={'100%'}>
                         <Flex alignItems={'center'}>
                             <Image w={'30px'} h={'30px'} src={'/image/resources/resource_trade_credits.webp'}/>
                             <Text ml={1} fontSize={'2xl'}>{trade.cost}</Text>                                
@@ -130,7 +130,7 @@ export default function MyTrades() {
                             {trade.offer.map((offer) => (
                                 <Flex p={3} border={'2px solid black'} borderRadius={'lg'} bgColor={offer.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
                                     <Image  maxW={'60px'} src={`/image/${offer.pinImage}`} fallback={<Spinner/>}/>
-                                    <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} color={'white'}>{offer.amount}</Text>
+                                    <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} >{offer.amount}</Text>
                                 </Flex>
                             ))}
                         </SimpleGrid>
@@ -145,7 +145,7 @@ export default function MyTrades() {
                     </Flex>             
                 </Flex>        
             </Flex>
-            <Button colorScheme={'whatsapp'} onClick={() => {claimTrade(trade.tradeid)}} rightIcon={<MdDoneOutline/>} my={3}>Claim</Button>
+            <Button onClick={() => {claimTrade(trade.tradeid)}} rightIcon={<MdDoneOutline/>} my={3}>Claim</Button>
             <br></br>                                    
             </Flex>
             </ScaleFade>
@@ -160,7 +160,7 @@ export default function MyTrades() {
         <Flex flexDir={'column'} ml={'10vw'} mt={'5vh'}>
             <Text fontSize={'2xl'} color={'orange'} className={'heading-2xl'}>Pending</Text>
             <Box bgColor={'gray.200'} h={'2px'} w={'100vw'} my={3}/>
-            <HStack overflowX={'auto'} maxW={'100vw'} pr={'6vw'} sx={{
+            <HStack scrollSnapType={'x mandatory'} scrollPadding={'20px'} overflowX={'auto'} maxW={'100vw'} pr={'6vw'} sx={{
                     '&::-webkit-scrollbar': {
                     width: '8px',
                     borderRadius: '8px',
@@ -176,9 +176,9 @@ export default function MyTrades() {
                         if ((trade.timeLeft.hour > 0 || trade.timeLeft.minute > 0 || trade.timeLeft.second > 0)){
                             return (
                                 <ScaleFade in={true}>
-                                <Flex flexDir={'column'}>
+                                <Flex flexDir={'column'}  scrollSnapAlign={'start'}>
                                 <Flex h={'25vh'} maxW={'fit-content'} flexDir={'column'} alignItems={'center'} justifyContent={'space-between'} textAlign={'center'} bgColor={'blue.800'} p={3} borderRadius={'xl'} border={'3px solid orange'} cursor={'pointer'} transition={'0.25s'}>
-                <Flex w={'85%'} justifyContent={'space-between'} color={'white'} fontSize={'lg'}>
+                <Flex w={'85%'} justifyContent={'space-between'}  fontSize={'lg'}>
                     <Text color={'red.500'}>Requesting</Text>
                     <Text color={'green.400'}>Offering</Text>
                 </Flex>
@@ -200,13 +200,13 @@ export default function MyTrades() {
                             {trade.request.map((request) => (
                                 <Flex p={3} border={'2px solid black'} borderRadius={'lg'} bgColor={request.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
                                     <Image maxW={'60px'} src={`/image/${request.pinImage}`} fallback={<Spinner/>}/>
-                                    <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} color={'white'}>{request.amount}</Text>
+                                    <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} >{request.amount}</Text>
                                 </Flex>
                             ))}
                         </SimpleGrid>
                     
 
-                    <Flex flexDir={'column'} justifyContent={'space-evenly'} alignItems={'center'} mx={'1vw'}  color={'white'} h={'100%'}>
+                    <Flex flexDir={'column'} justifyContent={'space-evenly'} alignItems={'center'} mx={'1vw'}   h={'100%'}>
                         <Flex alignItems={'center'}>
                             <Image w={'30px'} h={'30px'} src={'/image/resources/resource_trade_credits.webp'}/>
                             <Text ml={1} fontSize={'2xl'}>{trade.cost}</Text>                                
@@ -230,7 +230,7 @@ export default function MyTrades() {
                             {trade.offer.map((offer) => (
                                 <Flex p={3} border={'2px solid black'} borderRadius={'lg'} bgColor={offer.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
                                     <Image  maxW={'60px'} src={`/image/${offer.pinImage}`} fallback={<Spinner/>}/>
-                                    <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} color={'white'}>{offer.amount}</Text>
+                                    <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} >{offer.amount}</Text>
                                 </Flex>
                             ))}
                         </SimpleGrid>
@@ -246,7 +246,7 @@ export default function MyTrades() {
                 </Flex>
             </Flex>
 
-            <Button colorScheme={'red'} onClick={() => {removeTrade(trade.tradeid)}} rightIcon={<IoMdRemoveCircleOutline/>} mt={3}>Remove</Button>
+            <Button onClick={() => {removeTrade(trade.tradeid)}} rightIcon={<IoMdRemoveCircleOutline/>} mt={3}>Remove</Button>
             <br></br>
             </Flex>
             </ScaleFade>
@@ -279,7 +279,7 @@ export default function MyTrades() {
                                 <ScaleFade in={true}>
                                 <Flex flexDir={'column'}>
                                 <Flex h={'25vh'} maxW={'fit-content'} flexDir={'column'} alignItems={'center'} justifyContent={'space-between'} textAlign={'center'} bgColor={'blue.800'} p={3} borderRadius={'xl'} border={'3px solid orange'} cursor={'pointer'} transition={'0.25s'}>
-                <Flex w={'85%'} justifyContent={'space-between'} color={'white'} fontSize={'lg'}>
+                <Flex w={'85%'} justifyContent={'space-between'}  fontSize={'lg'}>
                     <Text color={'red.500'}>Requesting</Text>
                     <Text color={'green.400'}>Offering</Text>
                 </Flex>
@@ -301,13 +301,13 @@ export default function MyTrades() {
                             {trade.request.map((request) => (
                                 <Flex p={3} border={'2px solid black'} borderRadius={'lg'} bgColor={request.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
                                     <Image maxW={'60px'} src={`/image/${request.pinImage}`} fallback={<Spinner/>}/>
-                                    <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} color={'white'}>{request.amount}</Text>
+                                    <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} >{request.amount}</Text>
                                 </Flex>
                             ))}
                         </SimpleGrid>
                     
 
-                    <Flex flexDir={'column'} justifyContent={'space-evenly'} alignItems={'center'} mx={'1vw'}  color={'white'} h={'100%'}>
+                    <Flex flexDir={'column'} justifyContent={'space-evenly'} alignItems={'center'} mx={'1vw'}   h={'100%'}>
                         <Flex alignItems={'center'}>
                             <Image w={'30px'} h={'30px'} src={'/image/resources/resource_trade_credits.webp'}/>
                             <Text ml={1} fontSize={'2xl'}>{trade.cost}</Text>                                
@@ -332,7 +332,7 @@ export default function MyTrades() {
                                 
                                 <Flex p={3} border={'2px solid black'} borderRadius={'lg'} bgColor={offer.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
                                     <Image  maxW={'60px'} src={`/image/${offer.pinImage}`} fallback={<Spinner/>}/>
-                                    <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} color={'white'}>{offer.amount}</Text>
+                                    <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} >{offer.amount}</Text>
                                 </Flex>
                                 
                             ))}
@@ -346,7 +346,7 @@ export default function MyTrades() {
                 </Flex>
             </Flex>
 
-            <Button colorScheme={'red'} onClick={() => {removeTrade(trade.tradeid)}} rightIcon={<IoMdRemoveCircleOutline/>} mt={3}>Remove</Button>
+            <Button onClick={() => {removeTrade(trade.tradeid)}} rightIcon={<IoMdRemoveCircleOutline/>} mt={3}>Remove</Button>
             <br></br>
             </Flex>
             </ScaleFade>
@@ -367,19 +367,19 @@ export default function MyTrades() {
                     {acceptData?.pins.map((pin, x) => (
                         <Flex py={'20%'} bgColor={pin.rarityColor} flexDir={'column'} justifyContent={'space-between'} alignItems={'center'} textAlign={'center'} borderRadius={'2xl'} border={'2px solid black'} boxShadow={'rgba(149, 157, 165, 0.2) 0px 8px 24px;'} maxW={'350px'} maxH={'600px'} transform={'scale(0)'} animation={`${contentTransition} 0.5s ease-out ${((x/2)+0.5)}s 1 forwards`}>                                                                                            
                             <Image borderRadius={'xl'} src={`/image/${pin.pinImage}`} loading={'eager'}/>
-                            <Text color={'white'} fontSize={'2xl'} className={'heading-2xl'} mt={1}>{`${pin.amount}x`}</Text>
+                            <Text  fontSize={'2xl'} className={'heading-2xl'} mt={1}>{`${pin.amount}x`}</Text>
                         </Flex>
                     ))}
                 </SimpleGrid>
                 <Flex justifyContent={'center'}>
-                    <Link p={3} borderRadius={'lg'} my={5} bgColor={'#a9e8da'} fontSize={'lg'} href={`/collection`} color={'white'} className={'heading-md'}>View Collection <ExternalLinkIcon mx={'2px'}/></Link>
+                    <Link p={3} borderRadius={'lg'} my={5} bgColor={'#a9e8da'} fontSize={'lg'} href={`/collection`}  className={'heading-md'}>View Collection <ExternalLinkIcon mx={'2px'}/></Link>
                 </Flex>      
             </ModalBody>
 
             <ModalFooter>
                 <Flex w={'100%'} justifyContent={'space-between'} alignItems={'center'}>
                     <Text>{acceptData?.complete ? `Accepted By: ${acceptData?.acceptedBy}` : ``}</Text>
-                    <Button colorScheme='blue' mr={3} onClick={onClose}>
+                    <Button mr={3} onClick={onClose}>
                     Close
                     </Button>
                 </Flex>

@@ -1,16 +1,34 @@
 import { extendTheme } from "@chakra-ui/react"
 
-const theme: any = extendTheme({
+
+const config: any = {
     components: {
         Text: {
             baseStyle: {
-                fontWeight: "normal"
+                fontWeight: "normal",
+                color: "white"
+            }
+        },
+        Button: {
+            baseStyle: {
+                fontWeight: "normal",
+                color: "white",                            
+            }
+        },
+        Link: {
+            baseStyle: {
+                color: "white"
             }
         }
     },
     fonts: {
         heading: `"Lilita One (KINGFONT)"`,
         body: `"Lilita One (KINGFONT)"`
+    },
+    colors: {
+        bg: "#f98e1a",
+        main: "#e9a812",
+        accent: "#aa9309"
     },
     styles: {
         global: {
@@ -41,9 +59,15 @@ const theme: any = extendTheme({
             '*': {
                 caretColor: 'transparent'
             }
-
         }
+    },
+    config: {
+        initialColorMode: 'dark',
+        useSystemColorMode: false
     }
-});
+}
 
-export default theme;
+
+const theme = extendTheme( config )
+
+export default theme

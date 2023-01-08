@@ -7,7 +7,7 @@ interface Props {
 
 const symbols = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '-', '=', '+', '[', ']', '{', '}', '|', ':', ';', '<', '>', ',', '.', '?', '/']
 
-const strengthData: {msg: string, color: string}[] = [{msg: 'Password must be between 3-100 characters.', color: 'white'}, {msg: 'Weak', color: 'red.400'}, {msg: 'Fair', color: 'yellow.400'}, {msg: 'Strong', color: 'green.300'}, {msg: 'Very Strong', color: 'green.500'}, {msg: 'x1', color: 'black'}]
+const strengthData: {msg: string, color: string}[] = [{msg: 'Password must be between 3-100 characters.', color: 'black'}, {msg: 'Weak', color: 'red.400'}, {msg: 'Fair', color: 'yellow.400'}, {msg: 'Strong', color: 'green.300'}, {msg: 'Very Strong', color: 'green.500'}, {msg: 'x1', color: 'black'}]
 
 
 export default function PasswordStrength({ password }: Props) {
@@ -50,7 +50,7 @@ export default function PasswordStrength({ password }: Props) {
 
   return (
     <>
-        <Text mt={5}>{(strength !== 0) ?  `Strength: ${strengthData[strength].msg}` : strengthData[strength].msg}</Text>
+        <Text className={'heading-md'} mt={5}>{(strength !== 0) ?  `Strength: ${strengthData[strength].msg}` : strengthData[strength].msg}</Text>
         <Box h={'5px'} w={'100%'} bgColor={strengthData[strength].color}></Box>
     </>
   )

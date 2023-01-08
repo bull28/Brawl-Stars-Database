@@ -63,7 +63,7 @@ export default function Brawler() {
                         {localStorage.getItem('username') ? 
                             <Link pt={3} href={`/collection?brawler=${data.name}`} color={'white'} fontSize={'lg'} className={'heading-lg'}>{`View ${data.displayName} Collection `}<ExternalLinkIcon mx={'2px'}/></Link>
                                 :
-                            <Text pt={3} color={'white'} fontSize={'lg'} ><Link color={'blue.400'} href="/login">Log In</Link> To View Collection</Text>
+                            <Text pt={3} color={'white'} fontSize={'lg'} className={'heading-md'}><Link color={'blue.400'} href="/login">Log In</Link> To View Collection</Text>
                         }
                     </Flex>
 
@@ -104,7 +104,7 @@ export default function Brawler() {
                         {localStorage.getItem('username') ? 
                             <Link href={`/collection?brawler=${data.name}`} color={'white'} fontSize={'lg'} className={'heading-lg'}>{`View ${data.displayName} Collection `}<ExternalLinkIcon mx={'2px'}/></Link>
                                 :
-                            <Text color={'white'} fontSize={'lg'} ><Link color={'blue.400'} href="/login">Log In</Link> To View Collection</Text>
+                            <Text color={'white'} fontSize={'lg'} className={'heading-md'}><Link color={'blue.400'} href="/login">Log In</Link> To View Collection</Text>
                         }
                     </Flex>
                 </Flex>

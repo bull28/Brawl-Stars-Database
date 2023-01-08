@@ -189,7 +189,7 @@ export default function EventSideBar({ changeData, changeOffset, startTime }: {c
     if (query){
         return (
             <Flex flexDir={'column'} minH={"80vh"} style={{caretColor: "transparent"}} border={'1px'} borderRadius={'md'} borderColor={'gray.200'} w={'28%'} maxW={'350px'} justifyContent={'space-around'} px={5} mr={10} ml={3} boxShadow={'rgba(99, 99, 99, 0.2) 0px 1px 4px 0px'}>
-                <Text fontSize={"2xl"} className={'heading-2xl'} my={8} color={'white'}>Event Menu</Text>
+                <Text fontSize={"2xl"} className={'heading-2xl'} my={8} >Event Menu</Text>
                 <Divider color={'black'} opacity={1} pr={5} mb={6}/>
                 <RadioGroup onChange={setChoice} value={choice}>
                     <Stack direction={'column'} spacing={[5, 10]}>
@@ -208,7 +208,7 @@ export default function EventSideBar({ changeData, changeOffset, startTime }: {c
                         </Select>
                         <Radio value='world_time'>World Time</Radio>
                         <Input type={'datetime-local'} onChange={(e) => setDate(e.target.value)} value={date}/>
-                        <Button type={'button'} colorScheme={'facebook'} onClick={() => {setEventMode({choice: choice, select: select}); update(choice, select); updateTimer({start: Date.now(), offset: 0});}}>Update</Button>
+                        <Button type={'button'} onClick={() => {setEventMode({choice: choice, select: select}); update(choice, select); updateTimer({start: Date.now(), offset: 0});}}>Update</Button>
                     </Stack>
                 </RadioGroup>
     
@@ -233,7 +233,7 @@ export default function EventSideBar({ changeData, changeOffset, startTime }: {c
                         },
                     }}>
                     {maps.map((m) => (
-                        <Button key={m.name} onClick={() => {openMapView(m.name)}} fontSize={['xs', 'xs', 'md', 'lg']} bgColor={'white'} py={2} color={m.gameModeData.textColor} fontWeight={'normal'}><Image src={`/image/${m.gameModeData.image}`} h={'100%'} mr={1} fallback={<Spinner/>}></Image>{m.displayName}</Button>
+                        <Button key={m.name} onClick={() => {openMapView(m.name)}} fontSize={['xs', 'xs', 'md', 'lg']} bgColor={'transparent'} py={2} color={m.gameModeData.textColor} fontWeight={'normal'}><Image src={`/image/${m.gameModeData.image}`} h={'100%'} mr={1} fallback={<Spinner/>}></Image>{m.displayName}</Button>
                     ))}
                     </Stack>
                     
@@ -269,7 +269,7 @@ export default function EventSideBar({ changeData, changeOffset, startTime }: {c
                                 </Select>
                                 <Radio value='world time'>World Time</Radio>
                                 <Input type={'datetime-local'} onChange={(e) => setDate(e.target.value)} value={date}/>
-                                <Button type={'button'} colorScheme={'facebook'} onClick={() => {setEventMode({choice: choice, select: select}); update(choice, select); updateTimer({start: Date.now(), offset: 0}); onClose();}}>Update</Button>
+                                <Button type={'button'} onClick={() => {setEventMode({choice: choice, select: select}); update(choice, select); updateTimer({start: Date.now(), offset: 0}); onClose();}}>Update</Button>
                             </Stack>
                             </RadioGroup>
                         </DrawerBody>

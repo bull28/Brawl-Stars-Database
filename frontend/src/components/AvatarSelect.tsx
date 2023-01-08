@@ -45,7 +45,7 @@ const AvatarSelect = React.forwardRef<{open: () => void}, Props>((props, ref) =>
         <Modal isOpen={isOpen} onClose={onClose} size={'full'}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader><Flex w={'100%'} justifyContent={'center'} alignItems={'center'} textAlign={'center'}><Text fontSize={'3xl'} className={'heading-3xl'} color={'white'}>Change Avatar</Text></Flex></ModalHeader>
+          <ModalHeader><Flex w={'100%'} justifyContent={'center'} alignItems={'center'} textAlign={'center'}><Text fontSize={'3xl'} className={'heading-3xl'} >Change Avatar</Text></Flex></ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <SimpleGrid columns={[4,5,6,7,8]} spacing={2}>

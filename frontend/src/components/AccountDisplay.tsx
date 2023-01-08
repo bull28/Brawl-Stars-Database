@@ -24,7 +24,7 @@ import {UserInfoProps} from '../types/AccountData'
 import AccountMenuDisplay from './AccountMenuDisplay'
 import AuthRequest from '../helpers/AuthRequest'
 import { useNavigate } from 'react-router-dom'
-import { RainbowBorder } from '../themes/rainbow'
+import { RainbowBorder } from '../themes/animations'
 
 
 export default function AccountDisplay() {
@@ -90,7 +90,7 @@ export default function AccountDisplay() {
         <Tooltip label='Tokens are used to open Brawl Boxes. Collect them by vising the website regularly!' placement={'bottom-start'}>
             <Flex justifyContent={'center'} alignItems={'center'} textAlign={'center'} mt={1}> 
                 <Image maxW={'25px'} src={'/image/resources/resource_tokens.webp'} mr={1}/>
-                <Text color={'white'} className={'heading-xl'} fontSize={'xl'}>{data?.tokens}</Text>
+                <Text  className={'heading-xl'} fontSize={'xl'}>{data?.tokens}</Text>
             </Flex>
         </Tooltip>
         <Drawer isOpen={isOpen} placement={'right'} onClose={onClose}>
@@ -127,11 +127,11 @@ export default function AccountDisplay() {
 
                 <DrawerFooter>
                     <Flex w={'100%'} justifyContent={'space-around'}>
-                        <Button onClick={() => {navigate('/login')}} boxShadow={'md'} colorScheme={'green'} className={'heading-md'} fontWeight={'normal'}>
+                        <Button onClick={() => {navigate('/login')}} boxShadow={'md'} className={'heading-md'} fontWeight={'normal'}>
                             Add Account
                         </Button>
 
-                        <Button boxShadow={'md'} className={'heading-md'} fontWeight={'normal'} colorScheme={'red'} onClick={() => {toggleRemoving(!removing)}}>
+                        <Button boxShadow={'md'} className={'heading-md'} fontWeight={'normal'} onClick={() => {toggleRemoving(!removing)}}>
                             Remove Account
                         </Button>
                     </Flex>

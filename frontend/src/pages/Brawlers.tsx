@@ -17,12 +17,12 @@ export default function Brawlers() {
     }, [])
 
   return (
-    <Flex w={'100%'} flexDir={'column'} textAlign={'center'}>
-        <Text fontSize={'3xl'}>
+    <Flex w={'100%'} flexDir={'column'} textAlign={'center'} alignItems={'center'}>
+        <Text fontSize={'4xl'} className={'heading-4xl'}>
             Brawlers
         </Text>
         {data && 
-            <SimpleGrid columns={[2,3,4,5,6,7,8]}>
+            <SimpleGrid columns={[2,3,4,5,6,7,8]} w={'95%'}>
                 {data.map((brawler) => <ScaleFade in={true} delay={0.15}><BrawlerView key={brawler.name} image={brawler.portrait} name={brawler.name} displayName={brawler.displayName} rarityColor={brawler.rarity.color}/></ScaleFade>)}
             </SimpleGrid>
         }

@@ -76,17 +76,17 @@ export default function ShopItem({data, coins, isFeatured}: {data: ShopData, coi
                     <Image borderRadius={'lg'} src={`/image/${data.image}`}/>
                 </Flex>
                 <Flex>                    
-                    <Text fontSize={'xl'} color={'white'} className={'heading-2xl'}>{data.displayName}</Text>
+                    <Text fontSize={'xl'}  className={'heading-2xl'}>{data.displayName}</Text>
                 </Flex>
                 <Flex alignItems={'center'} mt={3}>
-                    <Text fontSize={'lg'} color={'white'} className={'heading-xl'}>{data.cost}</Text>
+                    <Text fontSize={'lg'}  className={'heading-xl'}>{data.cost}</Text>
                     <Image ml={1} maxH={'30px'} src={`/image/resources/resource_coins.webp`}/>
                 </Flex>
     
                 <Modal isOpen={isOpen} onClose={onClose} size={'3xl'}>
                     <ModalOverlay />
                         <ModalContent bgColor={(accepted) ? '#9f9' : 'lightskyblue'} border={'2px solid '}>
-                        <ModalHeader fontSize={'2xl'} color={'white'} className={'heading-2xl'} fontWeight={'normal'}>{accepted ? 'Purchase Successful!' : `Purchase ${data.displayName}`}</ModalHeader>
+                        <ModalHeader fontSize={'2xl'}  className={'heading-2xl'} fontWeight={'normal'}>{accepted ? 'Purchase Successful!' : `Purchase ${data.displayName}`}</ModalHeader>
                         <ModalBody>
                             <Flex flexDir={'column'} alignItems={'center'}>
                                 {(( purchaseData?.result.length || 0 ) < 1) ?
@@ -95,7 +95,7 @@ export default function ShopItem({data, coins, isFeatured}: {data: ShopData, coi
                                     <Flex boxShadow={(accepted) ? '0px 0px 50px #fff' : ''} borderRadius={'50%'} >
                                         <Image src={`/image/${data.image}`}/>
                                     </Flex>
-                                    <Flex color={'white'} fontSize={'xl'} className={'heading-xl'} mt={5}>
+                                    <Flex  fontSize={'xl'} className={'heading-xl'} mt={5}>
                                         {accepted && purchaseData && purchaseData.inventory !== 1 && <CountUp prefix={'Inventory: '} end={purchaseData.inventory} duration={0.5}/>}
                                     </Flex>
                                 </>
@@ -103,11 +103,11 @@ export default function ShopItem({data, coins, isFeatured}: {data: ShopData, coi
                                 :
                                 <ScaleFade in={true} delay={1}>
                                     <Flex bgColor={purchaseData?.result[0].backgroundColor} flexDir={'column'} alignItems={'center'} justifyContent={'center'} borderRadius={'lg'} textAlign={'center'} py={5} border={'3px solid black'} boxShadow={'0px 0px 50px #fff'}>
-                                        <Text mb={5} color={'white'} fontSize={'3xl'} className={'heading-3xl'}>{purchaseData?.result[0].displayName}</Text>
+                                        <Text mb={5}  fontSize={'3xl'} className={'heading-3xl'}>{purchaseData?.result[0].displayName}</Text>
                                         <Flex mb={5}>
                                             <Image border={'2px solid black'} borderRadius={'lg'} src={`/image/portraits/${purchaseData?.result[0].image}`}/>
                                         </Flex>
-                                        <Text mb={5} w={'75%'} fontSize={'xl'} color={'white'} className={'heading-2xl'}>{purchaseData?.result[0].description}</Text>                                    
+                                        <Text mb={5} w={'75%'} fontSize={'xl'}  className={'heading-2xl'}>{purchaseData?.result[0].description}</Text>                                    
                                     </Flex>
                                 </ScaleFade>
                                 }
@@ -115,19 +115,19 @@ export default function ShopItem({data, coins, isFeatured}: {data: ShopData, coi
                         </ModalBody>
     
                         <ModalFooter>
-                            <Button className={'heading-md'} colorScheme='red' mr={3} onClick={(accepted) ? () => {window.location.reload()} : onClose}>
+                            <Button className={'heading-md'} mr={3} onClick={(accepted) ? () => {window.location.reload()} : onClose}>
                             Close
                             </Button>
                             {accepted ? 
                             <></>
                             :
-                            <Button className={'heading-md'} color={(coins < data.cost) ? 'red.500' : 'white'} colorScheme={'whatsapp'} onClick={() => {purchase(data.name)}}>{data.cost}<Image ml={1} maxH={'25px'} src={`/image/resources/resource_coins.webp`}/></Button>
+                            <Button className={'heading-md'} color={(coins < data.cost) ? 'red.500' : 'white'} onClick={() => {purchase(data.name)}}>{data.cost}<Image ml={1} maxH={'25px'} src={`/image/resources/resource_coins.webp`}/></Button>
                             }
 
                             {(( purchaseData?.result.length || 0 ) < 1) ?
                             <></>
                             :                            
-                            <Button className={'heading-md'} colorScheme='facebook' mr={3} onClick={() => {navigate('/collection')}}>
+                            <Button className={'heading-md'} mr={3} onClick={() => {navigate('/collection')}}>
                             View Collection
                             </Button>
                             }                        
@@ -144,23 +144,23 @@ export default function ShopItem({data, coins, isFeatured}: {data: ShopData, coi
                         <Image borderRadius={'lg'} src={`/image/${data.image}`}/>
                     </Flex>
                     <Flex>                    
-                        <Text fontSize={'2xl'} color={'white'} className={'heading-2xl'}>{data.displayName}</Text>
+                        <Text fontSize={'2xl'}  className={'heading-2xl'}>{data.displayName}</Text>
                     </Flex>
                     <Flex alignItems={'center'} mt={3}>
-                        <Text fontSize={'xl'} color={'white'} className={'heading-xl'}>{data.cost}</Text>
+                        <Text fontSize={'xl'}  className={'heading-xl'}>{data.cost}</Text>
                         <Image ml={1} maxH={'30px'} src={`/image/resources/resource_coins.webp`}/>
                     </Flex>
                     <Flex w={'100%'} justifyContent={'right'} mt={5}>
                         <Flex px={5} py={3} borderRadius={'30px'} bgColor={'lightskyblue'} alignItems={'center'} border={'2px solid'} borderColor={'blue.500'}>
                             <GrPowerReset fontSize={'20px'}/>                            
-                            <Text ml={2} color={'white'} className={'heading-md'}>{(StoHMS(seconds).hours !== 0) ? `Offer Ends in ${StoHMS(seconds).hours}h ${StoHMS(seconds).minutes}m` : `Offer Ends in ${StoHMS(seconds).minutes}m ${StoHMS(seconds).seconds}s`}</Text>
+                            <Text ml={2}  className={'heading-md'}>{(StoHMS(seconds).hours !== 0) ? `Offer Ends in ${StoHMS(seconds).hours}h ${StoHMS(seconds).minutes}m` : `Offer Ends in ${StoHMS(seconds).minutes}m ${StoHMS(seconds).seconds}s`}</Text>
                         </Flex>
                     </Flex>
         
                     <Modal isOpen={isOpen} onClose={onClose} size={'3xl'}>
                         <ModalOverlay />
                             <ModalContent bgColor={(accepted) ? '#9f9' : 'lightskyblue'} border={'2px solid '}>
-                            <ModalHeader fontSize={'2xl'} color={'white'} className={'heading-2xl'} fontWeight={'normal'}>{accepted ? 'Purchase Successful!' : `Purchase ${data.displayName}`}</ModalHeader>
+                            <ModalHeader fontSize={'2xl'}  className={'heading-2xl'} fontWeight={'normal'}>{accepted ? 'Purchase Successful!' : `Purchase ${data.displayName}`}</ModalHeader>
                             <ModalBody>
                                 <Flex justifyContent={'center'}>
                                     <Flex boxShadow={(accepted) ? '0px 0px 50px #fff' : ''} borderRadius={'50%'}>
@@ -170,15 +170,15 @@ export default function ShopItem({data, coins, isFeatured}: {data: ShopData, coi
                             </ModalBody>
         
                             <ModalFooter>
-                                <Button className={'heading-md'} colorScheme='red' mr={3} onClick={(accepted) ? () => {window.location.reload()} : onClose}>
+                                <Button className={'heading-md'} mr={3} onClick={(accepted) ? () => {window.location.reload()} : onClose}>
                                 Close
                                 </Button>
                                 {accepted ? 
-                                <Button className={'heading-md'} colorScheme='facebook' mr={3} onClick={() => {navigate('/collection')}}>
+                                <Button className={'heading-md'} mr={3} onClick={() => {navigate('/collection')}}>
                                     View Collection
                                 </Button>
                                 :
-                                <Button className={'heading-md'} color={(coins < data.cost) ? 'red.500' : 'white'} colorScheme={'whatsapp'} onClick={() => {purchase(data.name)}}>{data.cost}<Image ml={1} maxH={'25px'} src={`/image/resources/resource_coins.webp`}/></Button>
+                                <Button className={'heading-md'} color={(coins < data.cost) ? 'red.500' : 'white'} onClick={() => {purchase(data.name)}}>{data.cost}<Image ml={1} maxH={'25px'} src={`/image/resources/resource_coins.webp`}/></Button>
                                 }                         
                             </ModalFooter>
                             </ModalContent>

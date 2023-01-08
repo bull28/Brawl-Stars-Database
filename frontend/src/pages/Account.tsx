@@ -9,7 +9,7 @@ import { RiKeyFill } from "react-icons/ri";
 import AvatarSelect from '../components/AvatarSelect';
 import { changeToken, getToken } from "../helpers/AuthRequest";
 import AuthRequest from '../helpers/AuthRequest'
-import { RainbowBorder } from "../themes/rainbow";
+import { RainbowBorder } from "../themes/animations";
 
 export default function Account() {
   const [data, setData] = useState<UserInfoProps>()
@@ -80,7 +80,7 @@ export default function Account() {
 
   return (
     <Flex w={'100%'} justifyContent={'center'} textAlign={'center'} flexDir={'column'} alignItems={'center'}>
-        <Text fontSize={'4xl'} className={'heading-4xl'} color={'white'}>{data?.username}</Text>
+        <Text fontSize={'4xl'} className={'heading-4xl'} >{data?.username}</Text>
         <Flex position={'relative'} pt={3} w={'fit-content'} mt={3}>
           <Flex justifyContent={'center'} alignItems={'center'} borderRadius={'50%'} animation={(data?.avatarColor === 'rainbow') ? `${RainbowBorder()} 12s infinite` : ''} border={(data?.avatarColor !== 'rainbow') ? `3px solid ${data?.avatarColor}` : ''} >
             <Image src={`/image/${avatar}`} borderRadius={'50%'}/>
@@ -102,7 +102,7 @@ export default function Account() {
               <Input type='text' value={newPassword} onChange={(e) => {setNewPassword(e.target.value)}} style={{caretColor: 'auto'}}/>
               </InputGroup>
             </Box>
-            <Input type={'submit'} value={'Update'} backgroundColor={'blue.400'} color={'white'} fontWeight={'500'} _hover={{backgroundColor: "blue.500"}} cursor={'pointer'} onClick={handleUpdate}/>
+            <Input type={'submit'} value={'Update'} backgroundColor={'blue.400'}  fontWeight={'500'} _hover={{backgroundColor: "blue.500"}} cursor={'pointer'} onClick={handleUpdate}/>
           </Stack>
         </FormControl>
         <AvatarSelect avatar={avatar} setAvatar={setAvatar} ref={avatarSelectRef}/>

@@ -307,21 +307,21 @@ export default function Trade() {
     return (
         <Flex justifyContent={'space-evenly'} alignItems={'center'} flexDir={'column'}>      
             <IconButton aria-label='open filter' as={HamburgerIcon} pos={'absolute'} top={0} left={0} m={5} onClick={onOpen}></IconButton>
-            <Text mt={5} fontSize={'3xl'} className={'heading-3xl'} color={'white'}>Trades</Text>            
+            <Text mt={5} fontSize={'3xl'} className={'heading-3xl'} >Trades</Text>            
             <Flex pos={'absolute'} top={0} right={0} m={5}>
-                <Button h={'50px'} m={2} rightIcon={<AddIcon/>} colorScheme={'whatsapp'} className={'heading-md'} fontWeight={'normal'} onClick={onOpen2}>New Trade</Button>
+                <Button h={'50px'} m={2} rightIcon={<AddIcon/>} bgColor={'green.300'} className={'heading-md'} fontWeight={'normal'} onClick={onOpen2}>New Trade</Button>
                 <Flex>
                     <HStack>
                         <Flex  h={'40px'} pr={'30px'} bgColor={'#f98f92'} justifyContent={'space-between'} alignItems={'center'} borderRadius={'5%'} border={'2px solid black'}>
                             <Image h={'50px'}  src={`/image/resources/resource_trade_credits.webp`}/>                        
-                            <Text  fontSize={'lg'} h={'30px'} className={'heading-lg'} color={'white'}>{resources?.tradeCredits}</Text>
+                            <Text  fontSize={'lg'} h={'30px'} className={'heading-lg'} >{resources?.tradeCredits}</Text>
                         </Flex>
                         
                         {resources?.wildCardPins.map((wildCard) => { if (wildCard.amount){ 
                             return (
                                 <Flex py={'15px'} h={'50px'} px={'30px'} bgColor={wildCard.rarityColor}justifyContent={'space-around'} alignItems={'center'} borderRadius={'5%'}>
                                     <Image h={'50px'} src={`/image/resources/wildcard_pin.webp`}/>                        
-                                    <Text  fontSize={'lg'} className={'heading-lg'} color={'white'}>{wildCard.amount}</Text>
+                                    <Text  fontSize={'lg'} className={'heading-lg'} >{wildCard.amount}</Text>
                                 </Flex>    
                             )
                             }}
@@ -331,7 +331,7 @@ export default function Trade() {
                             <IconButton borderRadius={'md'} onClick={redirect} cursor={'pointer'} size={'lg'} p={1} colorScheme={(userTradeData && userTradeData?.filter((trade) => trade.accepted === true).length > 0) ? 'whatsapp' : 'twitter'} as={BsPersonFill} aria-label="open my trades menu"/>
                             {userTradeData && (userTradeData?.filter((trade) => trade.accepted === true).length) > 0 && 
                             <Box pos={'absolute'} top={0} right={0} bgColor={'red.500'} borderRadius={'50%'} w={'25px'} h={'25px'} textAlign={'center'}>
-                                <Text color={'white'}>{userTradeData?.filter((trade) => trade.accepted === true).length}</Text>
+                                <Text >{userTradeData?.filter((trade) => trade.accepted === true).length}</Text>
                             </Box>                            
                             }
                         </Flex>
@@ -339,14 +339,14 @@ export default function Trade() {
                 </Flex>
             </Flex>       
             <Flex mt={'60px'}>
-                <Drawer isOpen={isOpen} placement={'left'} onClose={onClose} colorScheme={'linkedin'}>
-                    <DrawerContent bgColor={'purple.600'}>
-                        <IconButton aria-label='close filter' as={CloseIcon} color={'white'} pos={'absolute'} right={0} top={0} bgColor={'transparent'} transform={'scale(50%)'} _hover={{backgroundColor: 'transparent'}} cursor={'pointer'} onClick={onClose}/>
+                <Drawer isOpen={isOpen} placement={'left'} onClose={onClose}>
+                    <DrawerContent>
+                        <IconButton aria-label='close filter' as={CloseIcon}  pos={'absolute'} right={0} top={0} bgColor={'transparent'} transform={'scale(50%)'} _hover={{backgroundColor: 'transparent'}} cursor={'pointer'} onClick={onClose}/>
                         <DrawerBody>
-                                <FormControl h={'100%'} color={'white'}>
+                                <FormControl h={'100%'} >
                                     <Flex flexDir={'column'} h={'60%'} justifyContent={'space-between'}>
                                         <Flex w={'100%'} justifyContent={'center'}>
-                                            <FormLabel fontSize={'2xl'} color={'white'} className={'heading-2xl'}>
+                                            <FormLabel fontSize={'2xl'}  className={'heading-2xl'}>
                                                 Filter
                                             </FormLabel>
                                         </Flex>
@@ -355,7 +355,7 @@ export default function Trade() {
                                             <option value='lowcost'>Cost Ascending</option>
                                             <option value='highcost'>Cost Descending</option>
                                         </Select>
-                                        <FormLabel fontSize={'xl'} color={'white'} className={'heading-xl'}>
+                                        <FormLabel fontSize={'xl'}  className={'heading-xl'}>
                                             Filter In
                                         </FormLabel>
                                         <RadioGroup value={String(filter.filterInRequest)} onChange={(e) => {changeFilter("filterInRequest", e === "true")}}>
@@ -364,7 +364,7 @@ export default function Trade() {
                                                 <Radio value='true'>Request</Radio>
                                             </Stack>
                                         </RadioGroup>
-                                        <FormLabel fontSize={'xl'} color={'white'} className={'heading-xl'}>
+                                        <FormLabel fontSize={'xl'}  className={'heading-xl'}>
                                             Brawler
                                         </FormLabel>
                                         <Select color={'black'} value={filter.brawler} placeholder='Filter by brawler' onChange={(e) => {changeFilter("brawler", e.target.value); changeFilter("pin", "")}} sx={{
@@ -382,7 +382,7 @@ export default function Trade() {
                                                 <option value={brawler.name}><Text>{brawler.displayName}</Text></option>
                                             ))}
                                         </Select>
-                                        <FormLabel fontSize={'xl'} color={'white'} className={'heading-xl'}>
+                                        <FormLabel fontSize={'xl'}  className={'heading-xl'}>
                                             Pin
                                         </FormLabel>
                                         <Menu>
@@ -398,7 +398,7 @@ export default function Trade() {
                                             </MenuList>
                                             
                                         </Menu>
-                                        <FormLabel fontSize={'xl'} color={'white'} className={'heading-xl'}>
+                                        <FormLabel fontSize={'xl'}  className={'heading-xl'}>
                                             Username
                                         </FormLabel>
                                         <Input type={'text'} value={filter.username} onChange={(e) => {changeFilter("username", e.target.value)}}/>
@@ -407,8 +407,8 @@ export default function Trade() {
                         </DrawerBody>
                         <DrawerFooter>
                             <Flex flexDir={'row'} w={'100%'} justifyContent={'space-between'}>
-                                <Button  colorScheme={'red'} onClick={clearFilter}>Clear Filter</Button>
-                                <Button colorScheme={'facebook'} onClick={updateResults}>Update</Button>
+                                <Button bgColor={'red.500'} onClick={clearFilter}>Clear Filter</Button>
+                                <Button bgColor={'green.500'} onClick={updateResults}>Update</Button>
                             </Flex>
                         </DrawerFooter>
                     </DrawerContent>
@@ -423,7 +423,7 @@ export default function Trade() {
         <Flex justifyContent={'right'} alignItems={'center'} w={'95%'} mb={5}>
             <IconButton aria-label='previous page' as={ChevronLeftIcon} onClick={previousPage}/>
             <Flex w={'50px'} bgColor={'gray.200'} h={'100%'} borderRadius={'lg'} justifyContent={'center'} alignItems={'center'}>
-                <Text fontSize={'2xl'} color={'white'} className={'heading-2xl'}>{filter.page}</Text>
+                <Text fontSize={'2xl'}  className={'heading-2xl'}>{filter.page}</Text>
             </Flex>
             <IconButton aria-label='next page' as={ChevronRightIcon} onClick={nextPage}/>
         </Flex>
@@ -437,7 +437,7 @@ export default function Trade() {
                 <Flex w={'100%'} flexDir={'row'}>
                     
                     <Flex w={'50%'} alignItems={'center'} flexDir={'column'}>
-                        <Text mb={5} fontSize={'2xl'} className={'heading-2xl'} color={'white'}>You Give</Text>
+                        <Text mb={5} fontSize={'2xl'} className={'heading-2xl'} >You Give</Text>
                         
             
                         <SimpleGrid columns={[2,3]} spacing={3} overflow={'auto'} sx={{
@@ -459,12 +459,12 @@ export default function Trade() {
                                     ))}
                             
                         </SimpleGrid>
-                        <IconButton onClick={() => {onOpen3(); setPinLocation("offer")}} colorScheme={'whatsapp'} p={2} as={AddIcon} aria-label="add pin" mt={5}/>
+                        <IconButton onClick={() => {onOpen3(); setPinLocation("offer")}} p={2} as={AddIcon} aria-label="add pin" mt={5}/>
                     
                     </Flex>
 
                     <Flex w={'50%'} alignItems={'center'} flexDir={'column'}>
-                        <Text mb={5} fontSize={'2xl'} className={'heading-2xl'} color={'white'}>You Receive</Text>
+                        <Text mb={5} fontSize={'2xl'} className={'heading-2xl'} >You Receive</Text>
                         <SimpleGrid columns={[2,3]} spacing={3} overflow={'auto'} sx={{
                             '&::-webkit-scrollbar': {
                             width: '8px',
@@ -484,7 +484,7 @@ export default function Trade() {
                                     ))}
                             
                         </SimpleGrid>
-                        <IconButton onClick={() => {onOpen3(); setPinLocation('req')}} colorScheme={'whatsapp'} p={2} as={AddIcon} aria-label="add pin" mt={5}/>
+                        <IconButton onClick={() => {onOpen3(); setPinLocation('req')}} p={2} as={AddIcon} aria-label="add pin" mt={5}/>
                         
                     </Flex>
 
@@ -512,7 +512,7 @@ export default function Trade() {
                                                 <Image filter={!brawler.u ? 'blur(1px)' : 'none'} draggable={'false'} borderRadius={'20%'} src={`/image/${brawler.i}`} fallback={<Spinner/>}/>                                                                                
                                             </Box>
                                             {!brawler.u && <Box w={'100%'} h={'100%'} bgColor={'rgba(0, 0, 0, 0.5)'} pos={'absolute'} top={0} borderRadius={'lg'}/>}
-                                            {(!brawler.u) && <Icon as={RiLock2Line} color={'white'} pos={'absolute'} fontSize={'25px'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}></Icon>}
+                                            {(!brawler.u) && <Icon as={RiLock2Line}  pos={'absolute'} fontSize={'25px'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}></Icon>}
                                             
                                         </Flex>
                                         <Text>{brawler.displayName}</Text>
@@ -522,7 +522,7 @@ export default function Trade() {
                                 </SimpleGrid>               
                             </SlideFade>
                     </> : <>
-                        <IconButton colorScheme={'gray'} as={ArrowBackIcon} aria-label="choose brawler" onClick={() => {toggleScreen(true)}} cursor={'pointer'}/>
+                        <IconButton as={ArrowBackIcon} aria-label="choose brawler" onClick={() => {toggleScreen(true)}} cursor={'pointer'}/>
                         <ScaleFade in={true}>
                             <SimpleGrid spacing={3} columns={[3,4,5]} mt={5}>
                             {collectionData?.collection.map((brawler) => {
@@ -532,9 +532,9 @@ export default function Trade() {
                                             <Flex p={2} border={'2px solid black'} borderRadius={'lg'} bgColor={Object.values(collectionData?.pinRarityColors || {})[pin.r]} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'} cursor={'pointer'} onClick={() => {if (pinLocation === "offer"){ if (pin.a !== 0 ){addOffer({image: `${brawler.pinFilePath}${pin.i}`, r: pin.r})}} else {addReq({image: `${brawler.pinFilePath}${pin.i}`, r: pin.r})}}}>
                                                 <Image draggable={'false'} borderRadius={'20%'} src={`/image/${brawler.pinFilePath}${pin.i}`} fallback={<Spinner/>}/>                                                                                
                                                 {(pin.a === 0 && pinLocation === "offer") && <Box w={'100%'} h={'100%'} bgColor={'rgba(0, 0, 0, 0.5)'} pos={'absolute'} top={0} borderRadius={'lg'}/>}
-                                                {(pin.a === 0 && pinLocation === "offer") && <Icon as={RiLock2Line} color={'white'} pos={'absolute'} fontSize={'25px'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}></Icon>}                                                
+                                                {(pin.a === 0 && pinLocation === "offer") && <Icon as={RiLock2Line}  pos={'absolute'} fontSize={'25px'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}></Icon>}                                                
                                             </Flex>                                
-                                            <Text color={'white'} fontSize={'xl'} className={'heading-2xl'}>{`${pin.a}x`}</Text>
+                                            <Text  fontSize={'xl'} className={'heading-2xl'}>{`${pin.a}x`}</Text>
                                         </Flex>
                                     ))
                                 }
@@ -555,12 +555,12 @@ export default function Trade() {
                     </>}
                     </ModalBody>
                     <ModalFooter>
-                        <Button colorScheme={'red'} onClick={onClose3}>Close</Button>
+                        <Button onClick={onClose3}>Close</Button>
                     </ModalFooter>
                     </ModalContent>
                 </Modal>
                 <Flex flexDir={'column'} w={'100%'} justifyContent={'center'} alignItems={'center'} mt={5}>
-                <Text fontSize={'xl'} color={'white'} className={'heading-2xl'}>Trade Length</Text>
+                <Text fontSize={'xl'}  className={'heading-2xl'}>Trade Length</Text>
                 
                 <Slider min={1} max={336} mt={5} value={tradeLength} onChange={(val) => {setTradeLength(val)}}>
                     <SliderTrack bg='skyblue'>
@@ -569,15 +569,15 @@ export default function Trade() {
                     </SliderTrack>
                     <SliderThumb boxSize={6} bgColor={'blue.700'}/>   
                 </Slider>
-                <Text fontSize={'lg'} color={'white'} className={'heading-xl'}>{`${tradeLength}h`}</Text>
+                <Text fontSize={'lg'}  className={'heading-xl'}>{`${tradeLength}h`}</Text>
                 </Flex>
             </ModalBody>
 
             <ModalFooter>
-                <Button colorScheme='red' fontSize={'2xl'} p={5}  mr={3} fontWeight={'normal'} onClick={onClose2}>
+                <Button fontSize={'2xl'} p={5}  mr={3} fontWeight={'normal'} onClick={onClose2}>
                 Cancel
                 </Button>
-                <Button colorScheme={'whatsapp'} fontSize={'2xl'} p={5} fontWeight={'normal'} onClick={createTrade} rightIcon={<Image maxH={'40px'} src={'/image/resources/resource_trade_credits.webp'}/>}>{tradeCost}</Button>
+                <Button fontSize={'2xl'} p={5} fontWeight={'normal'} onClick={createTrade} rightIcon={<Image maxH={'40px'} src={'/image/resources/resource_trade_credits.webp'}/>}>{tradeCost}</Button>
             </ModalFooter>
             </ModalContent>
       </Modal>

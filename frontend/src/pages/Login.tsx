@@ -1,7 +1,7 @@
 import {useState} from "react";
 import axios from 'axios';
 import {Link as RouterLink, useNavigate} from 'react-router-dom';
-import {Flex, Box, FormControl, FormLabel, Input, FormHelperText, Text, Alert, AlertIcon, AlertDescription, Link, InputGroup, InputLeftElement} from '@chakra-ui/react';
+import {Flex, Box, FormControl, FormLabel, Input, FormHelperText, Text, Alert, AlertIcon, AlertDescription, Link, InputGroup, InputLeftElement, useColorMode} from '@chakra-ui/react';
 import {BsFillPersonFill} from 'react-icons/bs';
 import {RiKeyFill} from 'react-icons/ri';
 import { changeToken } from "../helpers/AuthRequest";
@@ -14,6 +14,8 @@ function Login(){
     const [invalidlogin, setInvalidlogin] = useState<boolean>(false);
     const [errorCode, setErrorCode] = useState<200 | 400 | 401 | 500>(200)
     
+    const { colorMode } = useColorMode()
+
     const navigate = useNavigate();
 
     const errorMessages = {
@@ -47,10 +49,10 @@ function Login(){
 
     return(
         <>
-        <Box w={'100vw'} h={'100vh'} position={'absolute'} zIndex={-1} bgColor={'blue.100'}></Box>
+        <Box w={'100vw'} h={'100vh'} position={'absolute'} zIndex={-1} bgColor={(colorMode === 'dark') ? '' : 'blue.100'}></Box>
         <Flex flexDir={'column'} alignItems={'center'} justifyContent={'center'} w={'100vw'} h={'90vh'}>
-            <Text fontSize={'3xl'} className={'heading-3xl'} color={'white'} mb={10}>Log In</Text>
-            <Box w={['80%', '50%']} p={6} borderRadius={'xl'} maxW={'500px'} boxShadow={'rgba(149, 157, 165, 0.2) 0px 8px 24px'} bgColor={'white'}>
+            <Text fontSize={'3xl'} className={'heading-3xl'}  mb={10}>Log In</Text>
+            <Box w={['80%', '50%']} p={6} borderRadius={'xl'} maxW={'500px'} boxShadow={'rgba(149, 157, 165, 0.2) 0px 8px 24px'} bgColor={(colorMode === 'dark') ? 'gray.800' : 'white'}>
                 <form onSubmit={handleLogin}>
                 <FormControl>
                     <FormLabel htmlFor={'username'}>Username</FormLabel>
