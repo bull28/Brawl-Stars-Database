@@ -14,7 +14,7 @@ const connection = mysql2.createConnection(databaseLogin);
 // instead of throwing an error when trying to connect allows the app
 // to continue running even if the connection was unsuccessful. Other
 // features of the app can be used even if this happens.
-var success = true;
+let success = true;
 
 connection.connect((error) => {
     if (error){

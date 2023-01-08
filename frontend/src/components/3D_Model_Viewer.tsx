@@ -11,10 +11,10 @@ interface ModelViewerProps {
 }
 
 const GltfModel = ({ modelPath, scale = 1.0, position = [0, 0, 0] }: ModelViewerProps) => {
-    const ref: any = useRef();
-    const gltf: any = useLoader(GLTFLoader, modelPath);
+    const ref = useRef();
+    const gltf = useLoader(GLTFLoader, modelPath);
 
-    const BARBARIAN_KING: any = useThree();//i am allowed to have 1 bad variable name
+    const BARBARIAN_KING = useThree();//i am allowed to have 1 bad variable name
     const camera: Camera = BARBARIAN_KING.camera;
     const scene: Scene = BARBARIAN_KING.scene;
     
@@ -140,7 +140,7 @@ const GltfModel = ({ modelPath, scale = 1.0, position = [0, 0, 0] }: ModelViewer
 };
 
 const ModelViewer = ({ modelPath, scale = 1.0, position = [0, 0, 0] }: ModelViewerProps) => {
-    const gltf: any = useLoader(GLTFLoader, modelPath);//maybe there's a way to avoid using the loader again here???
+    const gltf = useLoader(GLTFLoader, modelPath);//maybe there's a way to avoid using the loader again here???
     gltf.scene.traverse((object: Object3D) => {object.frustumCulled = false;});//force all objects to render
     
     var camera: PerspectiveCamera = new PerspectiveCamera();
@@ -148,7 +148,7 @@ const ModelViewer = ({ modelPath, scale = 1.0, position = [0, 0, 0] }: ModelView
 
     // if the scene does contains a camera, use it
     if (gltf.cameras.length > 0){
-        camera = gltf.cameras[0];
+        camera = gltf.cameras[0] as PerspectiveCamera;
     }
 
     // if the scene did contain a camera, its parent should not be null
@@ -169,7 +169,7 @@ const ModelViewer = ({ modelPath, scale = 1.0, position = [0, 0, 0] }: ModelView
         <Canvas camera={{ fov: camera.fov, position: cameraObj.position}}>
             <Suspense fallback={null}>
                 <GltfModel modelPath={modelPath} scale={scale} position={position} />
-                <OrbitControls/>
+                <OrbitControls maxDistance={100}/>
             </Suspense> 
         </Canvas>
     );

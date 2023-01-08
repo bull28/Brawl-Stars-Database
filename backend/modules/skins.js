@@ -17,7 +17,7 @@ function getBrawler(allSkins, name){
 
 /**
  * Searches for a specific skin in a brawler's skin list.
- * @param {Array} brawler json object of a brawler
+ * @param {Object} brawler json object of a brawler
  * @param {String} skin name of the skin to search for
  * @returns json object of the skin, empty of not found
  */
@@ -47,9 +47,9 @@ function getSkin(brawler, skin){
 function formatBrawlerData(brawlerData, portraitFile, modelFile, pinFile){
     // since the skins array has to be modified, a copy of the brawlerData
     // must be created so that the original is not modified
-    var brawlerInfo = {};
+    let brawlerInfo = {};
 
-    for (var x in brawlerData){
+    for (let x in brawlerData){
         // the user can't do anything with the portrait file so don't send it
         if (x == "portrait"){
             portraitFile = portraitFile + brawlerData[x];
@@ -73,7 +73,7 @@ function formatBrawlerData(brawlerData, portraitFile, modelFile, pinFile){
     if (brawlerData.hasOwnProperty("skins")){
         // go through all the brawler's skins and add their name to the brawler's skin list
         let brawlerSkins = brawlerData.skins;
-        for (var x = 0; x < brawlerSkins.length; x++){
+        for (let x = 0; x < brawlerSkins.length; x++){
             if (brawlerSkins[x].hasOwnProperty("name") && brawlerSkins[x].hasOwnProperty("displayName")){
                 brawlerInfo["skins"].push({
                     "name": brawlerSkins[x].name,
@@ -90,8 +90,8 @@ function formatBrawlerData(brawlerData, portraitFile, modelFile, pinFile){
 
     if (brawlerData.hasOwnProperty("pins")){
         let brawlerPins = brawlerData.pins;
-        for (var x = 0; x < brawlerPins.length; x++){
-            var thisPin = {};
+        for (let x = 0; x < brawlerPins.length; x++){
+            let thisPin = {};
             for (let y in brawlerPins[x]){
                 // Copy over all data of the pin, except the name
                 // which is not displayed in the brawler view
@@ -112,19 +112,19 @@ function formatBrawlerData(brawlerData, portraitFile, modelFile, pinFile){
 
 /**
  * Adds all the necessary file paths to any images in a skin's data. 
- * @param {*} brawlerName name of the brawler the skin belongs to
- * @param {*} skinData json object of the skin
- * @param {*} skinFile file path to the image
- * @param {*} skinModelFile file path to the 3d model
- * @param {*} groupFile file path to the skin group background image
- * @param {*} groupIconFile file path to the skin group icon
+ * @param {Object} skinData json object of the skin
+ * @param {String} brawlerName name of the brawler the skin belongs to
+ * @param {String} skinFile file path to the image
+ * @param {String} skinModelFile file path to the 3d model
+ * @param {String} groupFile file path to the skin group background image
+ * @param {String} groupIconFile file path to the skin group icon
  * @returns json object of the skin which can be sent to the user
  */
 function formatSkinData(skinData, brawlerName, skinFile, skinModelFile, groupFile, groupIconFile){
-    var skinInfo = {};
-    var groupData = {};
+    let skinInfo = {};
+    let groupData = {};
 
-    for (var x in skinData){
+    for (let x in skinData){
         // do not copy the image or model, instead add it to the file path
         if (x == "image"){
             skinFile = skinFile + brawlerName + "/" + skinData.image;
@@ -134,7 +134,7 @@ function formatSkinData(skinData, brawlerName, skinFile, skinModelFile, groupFil
 
         // for the group, go into the group object and change its image to match the path
         else if (x == "group"){
-            for (var y in skinData[x]){
+            for (let y in skinData[x]){
                 if (y == "image"){
                     groupData[y] = groupFile + skinData[x][y];
                 } else if (y == "icon"){

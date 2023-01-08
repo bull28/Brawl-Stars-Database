@@ -23,7 +23,7 @@ const PIN_IMAGE_DIR = filePaths.PIN_IMAGE_DIR;
 
 
 // Load the skins json object
-var allSkins = [];
+let allSkins = [];
 const allSkinsPromise = fileLoader.allSkinsPromise;
 allSkinsPromise.then((data) => {
     if (data !== undefined){
@@ -86,12 +86,12 @@ router.post("/create", (req, res) => {
     }
     let username = validateToken(req.body.token);
 
-    var searchByName = false;
+    let searchByName = false;
     if (req.body.searchByName == true){
         searchByName = true;
     }
 
-    var tradeHours = 48;
+    let tradeHours = 48;
     if (req.body.tradeDurationHours !== undefined){
         tradeHours = req.body.tradeDurationHours;
     }
@@ -103,8 +103,8 @@ router.post("/create", (req, res) => {
 
     if (username && req.body.offer && req.body.request){
         //const BUL = performance.now();
-        var offerPins = [];
-        var requestPins = [];
+        let offerPins = [];
+        let requestPins = [];
         
         //removed JSON.parse cause errors and stuff l ike that
         offerPins = req.body.offer;
@@ -127,7 +127,7 @@ router.post("/create", (req, res) => {
         // If the same pin exists in both offer and request, stop the trade
         const offerPinsNames = offerPins.map(element => element.pin);
         const requestPinsNames = requestPins.map(element => element.pin);
-        var validPins = true;
+        let validPins = true;
         for (let x of offerPinsNames){
             if (requestPinsNames.includes(x)){
                 validPins = false;
@@ -163,10 +163,10 @@ router.post("/create", (req, res) => {
                 return;
             }
 
-            var userResources = results[0];
-            var userAvatarColor = "#FFFFFF";
+            let userResources = results[0];
+            let userAvatarColor = "#FFFFFF";
 
-            var collectionData = {};
+            let collectionData = {};
             try{
                 collectionData = JSON.parse(userResources.brawlers);
             } catch (error){
@@ -191,7 +191,7 @@ router.post("/create", (req, res) => {
             }
 
             
-            var hasRequiredPins = true;
+            let hasRequiredPins = true;
             for (let x of offerPins){
                 if (collectionData.hasOwnProperty(x.brawler)){
                     if (collectionData[x.brawler].hasOwnProperty(x.pin)){
@@ -290,8 +290,8 @@ router.post("/accept", (req, res) => {
     // useWildCards makes the server check if the user has a wild card pin to use instead when they are missing a required pin
     // forceAccept makes the server accept the trade anyway even if the user would not be able to collect a pin because they
     // do not have the brawler unlocked.
-    var useWildCards = false;
-    var forceAccept = false;
+    let useWildCards = false;
+    let forceAccept = false;
     if (req.body.useWildCards == true){
         useWildCards = true;
     }
@@ -311,10 +311,10 @@ router.post("/accept", (req, res) => {
             }
 
             // Load the data in then get the trade data and compare then
-            var userResources = results[0];
+            let userResources = results[0];
 
-            var collectionData = {};
-            var wildCardPins = [];
+            let collectionData = {};
+            let wildCardPins = [];
             try{
                 collectionData = JSON.parse(userResources.brawlers);
                 wildCardPins = JSON.parse(userResources.wild_card_pins);
@@ -331,7 +331,7 @@ router.post("/accept", (req, res) => {
                     return;
                 }
 
-                var tradeResults = results[0];
+                let tradeResults = results[0];
 
                 // Trying to accept their own trade...
                 if (tradeResults.creator == username){
@@ -339,8 +339,8 @@ router.post("/accept", (req, res) => {
                     return;
                 }
 
-                var offerPins = [];
-                var requestPins = [];
+                let offerPins = [];
+                let requestPins = [];
                 try{
                     offerPins = JSON.parse(tradeResults.offer);
                     requestPins = JSON.parse(tradeResults.request);
@@ -359,18 +359,18 @@ router.post("/accept", (req, res) => {
                     return;
                 }
                 
-                var hasRequiredPins = true;
+                let hasRequiredPins = true;
                 for (let x of requestPins){
                     // First check if they have the required pins in their collection
                     if (collectionData.hasOwnProperty(x.brawler)){
                         if (collectionData[x.brawler].hasOwnProperty(x.pin)){
-                            var collectionPinCount = collectionData[x.brawler][x.pin];
+                            let collectionPinCount = collectionData[x.brawler][x.pin];
                             if (collectionPinCount >= x.amount){
                                 // User has all the required pins
                                 collectionData[x.brawler][x.pin] -= x.amount;
                             } else if (collectionPinCount > 0){
                                 // User has some pins but not the full required amount
-                                var missingPins = x.amount - collectionPinCount;
+                                let missingPins = x.amount - collectionPinCount;
                                 if (wildCardPins[x.rarityValue] >= missingPins){
                                     wildCardPins[x.rarityValue] -= missingPins;
                                     collectionData[x.brawler][x.pin] -= collectionPinCount;
@@ -414,9 +414,9 @@ router.post("/accept", (req, res) => {
                 userResources.trade_credits -= totalTradeCost;
 
                 // Array of pins the user received which will be sent to them as information
-                var tradedItems = [];
+                let tradedItems = [];
                 
-                var hasRequiredBrawlers = true;
+                let hasRequiredBrawlers = true;
                 for (let x of offerPins){
                     if (collectionData.hasOwnProperty(x.brawler)){
                         // If the user already has the pin in their collection, add the amount they will receive
@@ -491,7 +491,7 @@ router.post("/close", (req, res) => {
     let tradeid = req.body.tradeid;
     //tradeid = 7;// trade id is hard coded for now because i don't want to keep changing h.js and refreshing the page
 
-    var forceAccept = false;
+    let forceAccept = false;
     if (req.body.forceAccept == true){
         forceAccept = true;
     }
@@ -508,11 +508,9 @@ router.post("/close", (req, res) => {
             }
 
             // Load the data in then get the trade data and compare then
-            //var userResources = results[0];
-
-            var collectionData = {};
-            var userTradeCredits = results[0].trade_credits;
-            var userTradeRequests = results[0].trade_requests;
+            let collectionData = {};
+            let userTradeCredits = results[0].trade_credits;
+            let userTradeRequests = results[0].trade_requests;
             try{
                 collectionData = JSON.parse(results[0].brawlers);
             } catch (error){
@@ -528,15 +526,15 @@ router.post("/close", (req, res) => {
                     return;
                 }
 
-                var tradeResults = results[0];
+                let tradeResults = results[0];
 
                 if (tradeResults.creator != username){
                     res.status(401).send("You did not create this trade!");
                     return;
                 }
 
-                var offerPins = [];
-                var requestPins = [];
+                let offerPins = [];
+                let requestPins = [];
                 try{
                     offerPins = JSON.parse(tradeResults.offer);
                     requestPins = JSON.parse(tradeResults.request);
@@ -554,7 +552,7 @@ router.post("/close", (req, res) => {
 
                 // Based on whether the trade was complete or not, pins will be added
                 // back from either the offer or request
-                var addPinsFrom = [];
+                let addPinsFrom = [];
 
                 if (tradeResults.accepted == 1){
                     // If the trade was completed, add pins from the request
@@ -567,9 +565,9 @@ router.post("/close", (req, res) => {
                 }
 
                 // Array of pins the user received which will be sent to them as information
-                var tradedItems = [];
+                let tradedItems = [];
                 
-                var hasRequiredBrawlers = true;
+                let hasRequiredBrawlers = true;
                 for (let x of addPinsFrom){
                     if (collectionData.hasOwnProperty(x.brawler)){
                         if (collectionData[x.brawler].hasOwnProperty(x.pin)){
@@ -625,7 +623,7 @@ router.post("/close", (req, res) => {
                             res.status(500).send("Could not update the database.");
                         }
                         
-                        var tradeSuccess = false;
+                        let tradeSuccess = false;
                         if (tradeResults.accepted == 1){
                             tradeSuccess = true;
                         }

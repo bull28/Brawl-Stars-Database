@@ -14,7 +14,7 @@ const MAP_BANNER_DIR = filePaths.MAP_BANNER_DIR;
 
 
 // Load the events json object
-var eventList = [];
+let eventList = [];
 const eventListPromise = require("../modules/fileloader").eventListPromise;
 eventListPromise.then((data) => {
     if (data !== undefined){
@@ -29,8 +29,8 @@ eventListPromise.then((data) => {
  * @returns true if empty, false otherwise
  */
 function isEmpty(x){
-    var isEmpty = true;
-    for (var y in x){
+    let isEmpty = true;
+    for (let y in x){
         isEmpty = false;
     }
     return isEmpty;
@@ -42,10 +42,10 @@ function isEmpty(x){
 
 // Get the entire list of game modes
 router.get("/gamemode", (req, res) => {
-    var allGameModes = [];
+    let allGameModes = [];
 
     // used to make sure there are no duplicate game modes in the return value
-    var alreadyChecked = [];
+    let alreadyChecked = [];
 
     // go through all the events and then go through every event's game modes
     // and add the game mode's name and display name
@@ -80,7 +80,7 @@ router.get("/gamemode/:gamemode", (req, res) => {
     }
 
     // directly modify gameModeData by adding the image's file path
-    var gameModeInfo = maps.addPathGameMode(gameModeData, GAMEMODE_IMAGE_DIR);
+    let gameModeInfo = maps.addPathGameMode(gameModeData, GAMEMODE_IMAGE_DIR);
 
     res.json(gameModeInfo);
 });
@@ -103,7 +103,7 @@ router.get("/map/:map", (req, res) => {
     }
 
     // directly modify mapData by adding the image and banner's file paths
-    var mapInfo = maps.addPathMap(mapData, MAP_IMAGE_DIR, MAP_BANNER_DIR, GAMEMODE_IMAGE_DIR);
+    let mapInfo = maps.addPathMap(mapData, MAP_IMAGE_DIR, MAP_BANNER_DIR, GAMEMODE_IMAGE_DIR);
 
     res.json(mapInfo);
 });
@@ -111,7 +111,7 @@ router.get("/map/:map", (req, res) => {
 
 // Search for a specific map by its name
 router.post("/mapsearch", (req, res) => {
-    var search = req.body;
+    let search = req.body;
     //if the json is not formatted correctly, error will be thrown above
     
     const searchResult = maps.searchForMapName(eventList, search, GAMEMODE_IMAGE_DIR);

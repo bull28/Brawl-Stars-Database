@@ -6,7 +6,7 @@
  * @returns index that was randomly selected
  */
 function RNG(options){
-    var totalWeight = 0;
+    let totalWeight = 0;
     for (let x of options){
         totalWeight += x;
     }
@@ -15,10 +15,10 @@ function RNG(options){
         return -1;
     }
 
-    var weightRemaining = (Math.random() * totalWeight);
+    let weightRemaining = (Math.random() * totalWeight);
 
-    var index = 0;
-    var found = false;
+    let index = 0;
+    let found = false;
     
     
     for (let x = 0; x < options.length; x++){
@@ -32,6 +32,63 @@ function RNG(options){
     }
     
     return index;
+}
+
+/**
+ * Multiplies a color code's value by a factor, between 0 and 1 to
+ * provide a darker version of the rarity color when receiving
+ * duplicate pins. Any invalid inputs will return a gray color.
+ * @param {String} oldColorString hex code of the color ("#" + 6 digits)
+ * @param {Number} factor amount to multiply brightness by, must be in [0.0, 1.0]
+ * @returns modified hex code of the color
+ */
+function getDuplicateColor(oldColorString, factor){
+    const color = oldColorString.slice(1, oldColorString.length);
+    let newColorString = "#808080";
+
+    // Check whether the provided string is valid
+    if (color.length != 6){
+        return newColorString;
+    } if (factor < 0.0 || factor > 1.0){
+        return newColorString;
+    } if (color.includes("-")){
+        return newColorString;
+    }
+
+    let colorHex = parseInt(color, 16);
+    if (isNaN(colorHex)){
+        return newColorString;
+    }
+
+    // The toString method converts hex digits to lowercase letters so if the
+    // original was uppercase then convert the result to uppercase
+    const isUpperCase = color.toUpperCase() == color;
+
+    // Multiply each of the red, green, and blue values by the brightness factor
+    // colorHex is never negative so "%" works here
+    colorHex = Math.floor(colorHex * factor / 65536) * 65536 + Math.floor((colorHex % 65536) * factor / 256) * 256 + Math.floor((colorHex % 256) * factor);
+
+    // Convert the new hex value to a string then return it
+    newColorString = colorHex.toString(16);
+    
+    // Make sure the new string has exactly 6 digits
+    // If the new string has more than 6 then remove the higher order bits
+    // If the new string has less than 6 then add zeros from the left
+    if (newColorString.length > 6){
+        newColorString = newColorString.slice(newColorString.length - 6, newColorString.length);
+    } else{
+        const missingDigits = 6 - newColorString.length;
+        for (let x = 0; x < missingDigits; x++){
+            newColorString = "0" + newColorString;
+        }
+    }
+
+    if (isUpperCase){
+        newColorString = newColorString.toUpperCase();
+    }
+    newColorString = "#" + newColorString;
+
+    return newColorString;
 }
 
 /**
@@ -67,7 +124,7 @@ function brawlBox(dropChances, boxType, allSkins, resources){
         "trade_credits"
     ];
     
-    var missingProperties = false;
+    let missingProperties = false;
     for (let x of resourceProperties){
         if (!(resources.hasOwnProperty(x))){
             missingProperties = true;
@@ -90,55 +147,55 @@ function brawlBox(dropChances, boxType, allSkins, resources){
     resources.tokens -= dropChances.boxes[boxType].cost;
 
 
-    var rewards = [];
-    var coinsReward = 0;
+    let rewards = [];
+    let coinsReward = 0;
     
     const draws = dropChances.boxes[boxType].draws;
     const rewardTypeValues = dropChances.boxes[boxType].rewardTypeValues;
 
-    var selections = [];
+    let selections = [];
     for (let x of draws){
-        var thisReward = rewardTypeValues[RNG(x)];
+        let thisReward = rewardTypeValues[RNG(x)];
         if (thisReward !== undefined){
             selections.push(thisReward);
         }
     }
     //console.log(selections);
 
-    //var selections = ["coins", "pin", "wildcard", "brawler", "bonus"];// for testing, use RNG later
+    //selections = ["coins", "pin", "wildcard", "brawler", "bonus"];// for testing, use RNG later
     //selections = ["pin"];
     //selections = ["pinHighRarity", "pinHighRarity", "pinHighRarity", "pinHighRarity", "pinHighRarity", "pinHighRarity"];
 
     for (let x of selections){
         if (x != "nothing"){
-        var drop = {
-            "displayName": "",
-            "rewardType": "empty",
-            "amount": 1,
-            "inventory": 0,
-            "image": "",
-            "backgroundColor": "#000000",
-            "description": ""
-        };
+            let drop = {
+                "displayName": "",
+                "rewardType": "empty",
+                "amount": 1,
+                "inventory": 0,
+                "image": "",
+                "backgroundColor": "#000000",
+                "description": ""
+            };
 
-        
-        if (x == "coins"){
-            drop = selectCoins(dropChances.rewardTypes.coins, resources);
-        } else if (x == "pin" || x == "pinLowRarity" || x == "pinHighRarity" || x == "pinNoDupes"){
-            drop = selectPin(dropChances.rewardTypes[x], resources, allSkins);
-        } else if (x == "wildcard"){
-            drop = selectWildCardPin(dropChances.rewardTypes.wildcard, resources, allSkins);
-        } else if (x == "brawler" || x == "brawlerLowRarity" || x == "brawlerHighRarity"){
-            drop = selectBrawler(dropChances.rewardTypes[x], resources, allSkins);
-        } else if (x == "bonus"){
-            drop = selectBonus(dropChances.boxes.bonus, dropChances.rewardTypes, resources);
-        }
+            
+            if (x == "coins"){
+                drop = selectCoins(dropChances.rewardTypes.coins, resources);
+            } else if (x == "pin" || x == "pinLowRarity" || x == "pinHighRarity" || x == "pinNoDupes"){
+                drop = selectPin(dropChances.rewardTypes[x], resources, allSkins);
+            } else if (x == "wildcard"){
+                drop = selectWildCardPin(dropChances.rewardTypes.wildcard, resources, allSkins);
+            } else if (x == "brawler" || x == "brawlerLowRarity" || x == "brawlerHighRarity"){
+                drop = selectBrawler(dropChances.rewardTypes[x], resources, allSkins);
+            } else if (x == "bonus"){
+                drop = selectBonus(dropChances.boxes.bonus, dropChances.rewardTypes, resources);
+            }
 
-        if (drop.rewardType == "coins"){
-            coinsReward += drop.amount;
-        } else if (drop.rewardType != "empty"){
-            rewards.push(drop);
-        }
+            if (drop.rewardType == "coins"){
+                coinsReward += drop.amount;
+            } else if (drop.rewardType != "empty"){
+                rewards.push(drop);
+            }
         }
     }
 
@@ -167,7 +224,7 @@ function brawlBox(dropChances, boxType, allSkins, resources){
 
 function selectCoins(coinsDropChances, resources){
     const amounts = coinsDropChances;
-    var rewardAmount = 0;
+    let rewardAmount = 0;
     if (amounts.minAmount == amounts.maxAmount){
         rewardAmount = amounts.minAmount;
     } else{
@@ -176,7 +233,7 @@ function selectCoins(coinsDropChances, resources){
 
     resources.coins += rewardAmount;
 
-    var result = {
+    let result = {
         "displayName": "",
         "rewardType": "coins",
         "amount": rewardAmount,
@@ -190,7 +247,7 @@ function selectCoins(coinsDropChances, resources){
 }
 
 function selectPin(pinDropChances, resources, allSkins){
-    var result = {
+    let result = {
         "displayName": "",
         "rewardType": "empty",
         "amount": 1,
@@ -200,16 +257,16 @@ function selectPin(pinDropChances, resources, allSkins){
         "description": ""
     };
 
-    var userCollection = resources.brawlers;
-    //var raritypmf = [36, 15, 6, 3, 0];
-    //var raritypmf = [0, 0, 0, 0, 0];
-    //var raritypmf = pinDropChances.raritypmf;
-    var modifiedRaritypmf = [0, 0, 0, 0, 0];
+    let userCollection = resources.brawlers;
+    //raritypmf = [36, 15, 6, 3, 0];
+    //raritypmf = [0, 0, 0, 0, 0];
+    //raritypmf = pinDropChances.raritypmf;
+    let modifiedRaritypmf = [0, 0, 0, 0, 0];
     const raritypmf = pinDropChances.raritypmf;
     const minraritypmf = pinDropChances.minraritypmf;
     const newPinWeight = pinDropChances.newPinWeight;
-    var pinsByRarity = [[], [], [], [], []];
-    var duplicatePins = [[], [], [], [], []];
+    let pinsByRarity = [[], [], [], [], []];
+    let duplicatePins = [[], [], [], [], []];
 
     if (raritypmf.length != minraritypmf.length){
         return result;
@@ -218,14 +275,14 @@ function selectPin(pinDropChances, resources, allSkins){
         return result;
     }
     
-    var availablePins = [];
+    let availablePins = [];
     
-    for (var brawlerIndex = 0; brawlerIndex < allSkins.length; brawlerIndex++){
+    for (let brawlerIndex = 0; brawlerIndex < allSkins.length; brawlerIndex++){
         let brawler = allSkins[brawlerIndex];
 
-        //var missingProperties = (!(brawler.hasOwnProperty("name") && brawler.hasOwnProperty("pins")));
+        //let missingProperties = (!(brawler.hasOwnProperty("name") && brawler.hasOwnProperty("pins")));
         if (brawler.hasOwnProperty("name") && brawler.hasOwnProperty("pins")){
-            //var hasBrawler = userCollection.hasOwnProperty(brawler.name);
+            //let hasBrawler = userCollection.hasOwnProperty(brawler.name);
 
             if (userCollection.hasOwnProperty(brawler.name)){
                 for (let pinIndex = 0; pinIndex < brawler.pins.length; pinIndex++){
@@ -267,12 +324,12 @@ function selectPin(pinDropChances, resources, allSkins){
     selectedRarity = RNG(modifiedRaritypmf);
 
     
-    var duplicate = false;// used to determine whether the pin received was a duplicate then send the correct message to the user
+    let duplicate = false;// used to determine whether the pin received was a duplicate then send the correct message to the user
     if (selectedRarity >= 0){
         const newPinCount = pinsByRarity[selectedRarity].length;
         const duplicatePinCount = duplicatePins[selectedRarity].length;
 
-        var duplicateProbability = 0;
+        let duplicateProbability = 0;
         // Every pin that can be collected has a weight which represents how likely it is to
         // be chosen.
         
@@ -320,7 +377,7 @@ function selectPin(pinDropChances, resources, allSkins){
         // the object and set its value to 1. This may happen when new pins are released and the existing players'
         // data has not been updated to include the new pins. Because new pins are added automatically here, an
         // update to every user in the database when a new pin gets released is not necessary.
-        var brawlerInCollection = userCollection[brawlerObject.name];
+        let brawlerInCollection = userCollection[brawlerObject.name];
         if (brawlerInCollection[pinObject.name] === undefined){
             brawlerInCollection[pinObject.name] = 1;
         } else{
@@ -336,7 +393,7 @@ function selectPin(pinDropChances, resources, allSkins){
 
         if (duplicate){
             result.displayName = "Duplicate Pin";
-            result.backgroundColor = "#808080";
+            result.backgroundColor = getDuplicateColor(pinObject.rarity.color, 0.75);
         } else{
             result.displayName = "New Pin";
         }
@@ -352,7 +409,7 @@ function selectPin(pinDropChances, resources, allSkins){
 }
 
 function selectWildCardPin(wildCardDropChances, resources, allSkins){
-    var result = {
+    let result = {
         "displayName": "",
         "rewardType": "empty",
         "amount": 1,
@@ -362,7 +419,7 @@ function selectWildCardPin(wildCardDropChances, resources, allSkins){
         "description": ""
     };
 
-    //var raritypmf = [36, 15, 6, 3, 0];
+    //raritypmf = [36, 15, 6, 3, 0];
     const raritypmf = wildCardDropChances.raritypmf;
 
     // If the wild card pins array is incorrectly formatted
@@ -374,16 +431,16 @@ function selectWildCardPin(wildCardDropChances, resources, allSkins){
         }
     }
 
-    var selectedRarity = RNG(raritypmf);
+    let selectedRarity = RNG(raritypmf);
     if (selectedRarity >= 0){
-        var rarityName = "";
-        var rarityColor = "#000000";
+        let rarityName = "";
+        let rarityColor = "#000000";
 
         // Look through the allSkins array to get the rarity
         // colors for the pin since there is no other place
         // where they are stored...
-        var x = 0;
-        var found = false;
+        let x = 0;
+        let found = false;
         while (x < allSkins.length && found == false){
             if (allSkins[x].hasOwnProperty("pins")){
                 for (let y of allSkins[x].pins){
@@ -414,7 +471,7 @@ function selectWildCardPin(wildCardDropChances, resources, allSkins){
 function selectBrawler(brawlerDropChances, resources, allSkins){
     // Refer to selectPins for comments, most of the logic is the
     // same except brawlers are being added instead of pins
-    var result = {
+    let result = {
         "displayName": "",
         "rewardType": "empty",
         "amount": 1,
@@ -424,13 +481,13 @@ function selectBrawler(brawlerDropChances, resources, allSkins){
         "description": ""
     };
 
-    var userCollection = resources.brawlers;
-    //var raritypmf = [32, 16, 8, 4, 2, 1, 1];
-    //var raritypmf = [0, 0, 0, 0, 0, 0, 0];
-    var modifiedRaritypmf = [0, 0, 0, 0, 0, 0, 0];
+    let userCollection = resources.brawlers;
+    //raritypmf = [32, 16, 8, 4, 2, 1, 1];
+    //raritypmf = [0, 0, 0, 0, 0, 0, 0];
+    let modifiedRaritypmf = [0, 0, 0, 0, 0, 0, 0];
     const raritypmf = brawlerDropChances.raritypmf;
     const minraritypmf = brawlerDropChances.minraritypmf;
-    var brawlersByRarity = [[], [], [], [], [], [], []];
+    let brawlersByRarity = [[], [], [], [], [], [], []];
 
     if (raritypmf.length != minraritypmf.length){
         return result;
@@ -439,9 +496,9 @@ function selectBrawler(brawlerDropChances, resources, allSkins){
         return result;
     }
 
-    var availableBrawlers = [];
+    let availableBrawlers = [];
     
-    for (var brawlerIndex = 0; brawlerIndex < allSkins.length; brawlerIndex++){
+    for (let brawlerIndex = 0; brawlerIndex < allSkins.length; brawlerIndex++){
         let brawler = allSkins[brawlerIndex];
 
         if (brawler.hasOwnProperty("name") && brawler.hasOwnProperty("rarity")){
@@ -461,7 +518,7 @@ function selectBrawler(brawlerDropChances, resources, allSkins){
         }
     }
 
-    var selectedRarity = RNG(modifiedRaritypmf);
+    let selectedRarity = RNG(modifiedRaritypmf);
     if (selectedRarity >= 0){
         availableBrawlers = brawlersByRarity[selectedRarity];
     }
@@ -490,7 +547,7 @@ function selectBrawler(brawlerDropChances, resources, allSkins){
 }
 
 function selectBonus(allBonusDrops, rewardTypes, resources){
-    var result = {
+    let result = {
         "displayName": "",
         "rewardType": "empty",
         "amount": 1,
@@ -500,8 +557,8 @@ function selectBonus(allBonusDrops, rewardTypes, resources){
         "description": ""
     };
 
-    var userAvatars = resources.avatars;
-    var bonuspmf = [0, 0, 0];
+    let userAvatars = resources.avatars;
+    let bonuspmf = [0, 0, 0];
 
     const specialAvatars = rewardTypes["avatar"].pmfobject;// list of all avatars
     if (specialAvatars === undefined){
@@ -511,7 +568,7 @@ function selectBonus(allBonusDrops, rewardTypes, resources){
     // Before choosing a bonus reward type, determine whether the user
     // has avatars to collect. Do this here so the array does not have
     // to be traversed more than once.
-    var availableAvatars = [];
+    let availableAvatars = [];
     for (let avatarIndex = 0; avatarIndex < specialAvatars.length; avatarIndex++){
         if (!(userAvatars.includes(specialAvatars[avatarIndex].value))){
             availableAvatars.push(specialAvatars[avatarIndex]);
@@ -536,8 +593,8 @@ function selectBonus(allBonusDrops, rewardTypes, resources){
         }
     }
 
-    var selection = "";
-    var selectedBonus = RNG(bonuspmf);
+    let selection = "";
+    let selectedBonus = RNG(bonuspmf);
 
     if (selectedBonus >= 0){
         selection = allBonusDrops.rewardTypeValues[selectedBonus];
@@ -549,12 +606,12 @@ function selectBonus(allBonusDrops, rewardTypes, resources){
         //const tradeCreditValues = [1, 2, 3, 5, 10, 69];
 
         const tradeCreditDrops = rewardTypes[allBonusDrops.rewardTypeValues[0]].pmfobject;
-        var tradeCreditpmf = [];
+        let tradeCreditpmf = [];
         for (let x of tradeCreditDrops){
             tradeCreditpmf.push(x.weight);
         }
 
-        var selectedIndex = RNG(tradeCreditpmf);
+        let selectedIndex = RNG(tradeCreditpmf);
         if (selectedIndex >= 0){
             resources.trade_credits += tradeCreditDrops[selectedIndex].value;
 
@@ -570,7 +627,7 @@ function selectBonus(allBonusDrops, rewardTypes, resources){
     // Token doubler
     else if (selection == "tokenDoubler"){
         const amounts = rewardTypes[allBonusDrops.rewardTypeValues[1]];
-        var rewardAmount = 0;
+        let rewardAmount = 0;
         if (amounts.minAmount == amounts.maxAmount){
             rewardAmount = amounts.minAmount;
         } else{
@@ -589,12 +646,12 @@ function selectBonus(allBonusDrops, rewardTypes, resources){
     }
     // Avatar
     else if (selection == "avatar"){
-        var avatarpmf = [];
+        let avatarpmf = [];
         for (let x of availableAvatars){
             avatarpmf.push(x.weight);
         }
         
-        var selectedIndex = RNG(avatarpmf);
+        let selectedIndex = RNG(avatarpmf);
         if (selectedIndex >= 0){
             userAvatars.push(availableAvatars[selectedIndex].value);
             

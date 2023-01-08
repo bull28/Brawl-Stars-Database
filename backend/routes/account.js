@@ -20,7 +20,7 @@ const TOKENS_PER_REWARD = 100;
 const MAX_REWARD_STACK = 4;
 
 // Load the skins json object
-var allSkins = [];
+let allSkins = [];
 const allSkinsPromise = fileLoader.allSkinsPromise;
 allSkinsPromise.then((data) => {
     if (data !== undefined){
@@ -29,7 +29,7 @@ allSkinsPromise.then((data) => {
 });
 
 // Load the avatars
-var allAvatars = {"free": [], "special": []};
+let allAvatars = {"free": [], "special": []};
 const freeAvatarsPromise = fileLoader.freeAvatarsPromise;
 freeAvatarsPromise.then((data) => {
     if (data !== undefined){
@@ -98,7 +98,7 @@ function signToken(username){
  */
 function login(results, res){
     if (results.length > 0) {
-        var userResults = results[0];
+        let userResults = results[0];
 
         if (!(userResults.hasOwnProperty("username"))){
             res.status(500).send("Database is not set up properly.");
@@ -153,7 +153,7 @@ router.post("/signup", (req, res) => {
     // If there are enough brawlers in the game, give the user 3 to start
     // so they do not keep getting coins instead of pins because they have
     // no brawlers unlocked.
-    var startingBrawlers = {};
+    let startingBrawlers = {};
     if (allSkins.length >= 10){
         for (let x = 0; x < 3; x++){
             if (allSkins[x].hasOwnProperty("name")){
@@ -237,8 +237,8 @@ router.post("/update", (req, res) => {
                 return;
             }
 
-            var userBrawlers = {};
-            var userAvatars = [];
+            let userBrawlers = {};
+            let userAvatars = [];
             try{
                 userBrawlers = JSON.parse(results[0].brawlers);
                 userAvatars = JSON.parse(results[0].avatars);
@@ -346,8 +346,8 @@ router.post("/avatar", (req, res) => {
                 return;
             }
 
-            var userBrawlers = {};
-            var userAvatars = [];
+            let userBrawlers = {};
+            let userAvatars = [];
             try{
                 userBrawlers = JSON.parse(results[0].brawlers);
                 userAvatars = JSON.parse(results[0].avatars);
@@ -382,7 +382,7 @@ router.post("/claimtokens", (req, res) => {
             }
 
             if (results.length > 0) {
-                var userResults = results[0];
+                let userResults = results[0];
         
                 if (!(userResults.hasOwnProperty("username") &&
                 userResults.hasOwnProperty("last_claim") &&
@@ -393,11 +393,11 @@ router.post("/claimtokens", (req, res) => {
                 }
                 
                 // Add tokens based on how much time has passed since they last logged in
-                var currentTime = Date.now();
-                var currentSeasonTime = maps.realToTime(currentTime);
+                let currentTime = Date.now();
+                let currentSeasonTime = maps.realToTime(currentTime);
         
                 // Batches of tokens to be given to the player
-                var rewardsGiven = 0;
+                let rewardsGiven = 0;
         
                 // The season time does not manage times longer than 4 weeks so if the last
                 // login was over 4 weeks ago then give the player the maximum login reward
@@ -405,22 +405,22 @@ router.post("/claimtokens", (req, res) => {
                 // to receive maximum rewards so give them the maximum reward for all times
                 // longer than 2 weeks, even though the map rotation can handle times
                 // between 2 and 4 weeks.
-                var hoursSinceLastLogin = (currentTime - userResults.last_claim) / 3600000;
+                let hoursSinceLastLogin = (currentTime - userResults.last_claim) / 3600000;
                 if (hoursSinceLastLogin >= maps.MAP_CYCLE_HOURS){
                     rewardsGiven = MAX_REWARD_STACK;
                 } else{
                     //currentSeasonTime = new maps.SeasonTime(1, 219, 0, 0);
-                    var currentSeason = currentSeasonTime.season;
-                    var currentHour = currentSeasonTime.hour;
+                    let currentSeason = currentSeasonTime.season;
+                    let currentHour = currentSeasonTime.hour;
         
-                    var lastLoginTime = maps.realToTime(userResults.last_claim);
+                    let lastLoginTime = maps.realToTime(userResults.last_claim);
                     //lastLoginTime = new maps.SeasonTime(0, 327, 0, 0);
-                    var lastLoginSeason = lastLoginTime.season;
-                    var lastLoginHour = lastLoginTime.hour;
+                    //let lastLoginSeason = lastLoginTime.season;
+                    let lastLoginHour = lastLoginTime.hour;
                     
                     // Since reward times must be compared on the same season, "carry over"
                     // cases, where the season values are not the same, must be handled
-                    var seasonDiff = currentSeason - lastLoginSeason;
+                    let seasonDiff = currentSeason - lastLoginTime.season;
                     if (seasonDiff > 0){
                         // Case 1: Positive carry over
                         // Represents a case where the map rotation reset since the last login
@@ -477,7 +477,7 @@ router.post("/claimtokens", (req, res) => {
                     
                     // Rewards are given at multiples of 6 hours in the season so find the last multiple of
                     // 6 before the current time then compare it to the last login time.
-                    var lastRewardHour = Math.floor(currentHour / HOURS_PER_REWARD) * HOURS_PER_REWARD;
+                    let lastRewardHour = Math.floor(currentHour / HOURS_PER_REWARD) * HOURS_PER_REWARD;
         
                     // The user can claim rewards as long as their last login hour is less than the last
                     // reward hour. Since rewards are given at the very start of the hour, a last login
@@ -497,8 +497,8 @@ router.post("/claimtokens", (req, res) => {
                     rewardsGiven = MAX_REWARD_STACK;
                 }
         
-                var tokenReward = rewardsGiven * TOKENS_PER_REWARD;
-                var activeTokenDoubler = userResults.token_doubler;
+                let tokenReward = rewardsGiven * TOKENS_PER_REWARD;
+                let activeTokenDoubler = userResults.token_doubler;
         
                 // If the user has a token doubler active
                 if (activeTokenDoubler > 0){

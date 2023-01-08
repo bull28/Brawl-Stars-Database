@@ -10,7 +10,7 @@
  * @returns json object of the collection that can be sent to the user
  */
 function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
-    var collectionInfo = {
+    let collectionInfo = {
         "unlockedBrawlers":0,
         "completedBrawlers":0,
         "totalBrawlers":0,
@@ -29,15 +29,15 @@ function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
     
     // Iterate over all the brawlers
     for (let brawler of allSkins){
-        var thisBrawler = {};
-        var unlockedPins = 0;
-        var totalPins = 0;
-        var pinCopies = 0;
+        let thisBrawler = {};
+        let unlockedPins = 0;
+        let totalPins = 0;
+        let pinCopies = 0;
 
         // Check that all desired properties exist all at once
         // so they do not have to be checked individually as
         // they are used
-        var missingProperties = false;
+        let missingProperties = false;
         for (let j of includeFromBrawler){
             if (!(brawler.hasOwnProperty(j))){
                 missingProperties = true;
@@ -47,7 +47,7 @@ function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
         // This determines whether to check for unlocked pins
         // If a brawler is not unlocked, none of their pins can
         // be unlocked either.
-        var hasBrawler = false;
+        let hasBrawler = false;
         if (missingProperties == false){
             hasBrawler = userCollection.hasOwnProperty(brawler.name);
             if (hasBrawler){
@@ -55,11 +55,11 @@ function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
             }
             collectionInfo.totalBrawlers++;
 
-            var brawlerPins = [];
+            let brawlerPins = [];
 
             // Iterate over a brawler's pins
             for (let pin of brawler.pins){
-                var thisPin = {};
+                let thisPin = {};
 
                 if (pin.hasOwnProperty("image")){
                     thisPin["i"] = pin.image;
@@ -73,7 +73,7 @@ function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
                 // pin appears in the corresponding value. If it appears, the current
                 // pin is unlocked.
                 if (hasBrawler){
-                    var pinDataObject = userCollection[brawler.name];
+                    let pinDataObject = userCollection[brawler.name];
                     /*
                     if (pinDataObject.hasOwnProperty(pin.name)){
                         //const pinAmount = userCollection[brawler.name][pin.name];
@@ -153,8 +153,8 @@ function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
  * @returns array of all avatar image names
  */
 function getAvatars(allSkins, allAvatars, userCollection, userAvatars){
-    var avatarsInfo = [];
-    var unlockedBrawlers = [];
+    let avatarsInfo = [];
+    let unlockedBrawlers = [];
 
     if (!(allSkins && allAvatars.free && allAvatars.special)){
         return avatarsInfo;
@@ -219,7 +219,7 @@ function getAvatars(allSkins, allAvatars, userCollection, userAvatars){
  * @returns object containing items the user can buy
  */
 function getShopItems(shopItems, allSkins, userCollection, userAvatars, featuredItem, featuredCosts){
-    var availableShopItems = {};
+    let availableShopItems = {};
 
     const collectionInfo = formatCollectionData(allSkins, userCollection, "", "");
     for (let x in shopItems){
@@ -238,7 +238,7 @@ function getShopItems(shopItems, allSkins, userCollection, userAvatars, featured
                 availableShopItems[x] = shopItems[x];
             }
         } else if (shopItems[x].itemType == "featured"){
-            var shopItemCopy = {};
+            let shopItemCopy = {};
             for (let y in shopItems[x]){
                 shopItemCopy[y] = shopItems[x][y];
             }
@@ -297,13 +297,13 @@ function getShopItems(shopItems, allSkins, userCollection, userAvatars, featured
  * @returns string in "brawler/pin" format
  */
 function refreshFeaturedItem(allSkins, userCollection){
-    var newPins = [];
-    var duplicatePins = [];
+    let newPins = [];
+    let duplicatePins = [];
 
     // A call to formatCollectionData costs more time than looping through the array
     // here and only storing data required to select a featured pin.
     
-    for (var brawlerIndex = 0; brawlerIndex < allSkins.length; brawlerIndex++){
+    for (let brawlerIndex = 0; brawlerIndex < allSkins.length; brawlerIndex++){
         let brawler = allSkins[brawlerIndex];
         
         if (brawler.hasOwnProperty("name") && brawler.hasOwnProperty("pins")){
@@ -323,7 +323,7 @@ function refreshFeaturedItem(allSkins, userCollection){
     }
 
     //console.log(duplicatePins.length, newPins.length);
-    var selectedPin = "";
+    let selectedPin = "";
 
     // If the user can receive new pins, select one to offer
     // If they user does not have any new pins available to collect, select one
@@ -342,11 +342,11 @@ function refreshFeaturedItem(allSkins, userCollection){
  * Checks whether a user is eligible to use achievement avatars which are only available
  * under specific conditions such as collecting a certain number of pins.
  * @param {Array} specialAvatars json array of all special avatars that exist
- * @param {*} collection formatted collection object
+ * @param {Object} collection formatted collection object
  * @returns array of file paths to achievement avatars
  */
 function getAchievementAvatars(specialAvatars, collection){
-    var achievementAvatars = [];
+    let achievementAvatars = [];
     
     const unlockedPins = collection.unlockedPins;
 
@@ -403,9 +403,9 @@ function getCollectionScore(collection){
     // representations of floating point numbers causing errors
     const overallScore = Math.floor(500 * pinScore + 300 * brawlerScore + 200 * completionScore + 200 * duplicateScore);
     
-    var grade = "X";
-    var color = "#000000";
-    var progress = 0;
+    let grade = "X";
+    let color = "#000000";
+    let progress = 0;
 
     // bad code but it needs to be faster
     if      (overallScore < 1)      { grade = "X" ; color = "#000000"; progress = 0                          ; }
