@@ -11,7 +11,7 @@ import Gallery from './pages/Gallery'
 import Account from './pages/Account'
 import Collection from './pages/Collection'
 import Trade from './pages/Trade'
-import MyTrades from './components/MyTrades'
+import MyTrades from './pages/MyTrades'
 import Shop from './pages/Shop'
 
 function App() {

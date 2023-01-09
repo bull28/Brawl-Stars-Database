@@ -10,6 +10,7 @@ import TokenDisplay from '../components/TokenDisplay'
 import AuthRequest from '../helpers/AuthRequest'
 import { RainbowBackground, RainbowBorder } from '../themes/animations'
 import MovingText from '../components/MovingText'
+import SkullBackground from '../components/SkullBackground'
 
 
 export default function Collection() {
@@ -48,7 +49,8 @@ export default function Collection() {
 
 
     return (
-        <Flex flexDir={'column'} w={'100%'} justifyContent={'center'} alignItems={'center'} textAlign={'center'}>
+        <Flex flexDir={'column'} w={'100%'} justifyContent={'center'} alignItems={'center'} textAlign={'center'}>            
+            <SkullBackground/>
             <Text fontSize={'3xl'} className={'heading-3xl'} >Collection</Text>
             {localStorage.getItem('username') && 
                 <Flex my={10} justifyContent={'center'}>

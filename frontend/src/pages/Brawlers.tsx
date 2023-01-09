@@ -3,6 +3,7 @@ import { Flex, ScaleFade, SimpleGrid, Text } from '@chakra-ui/react'
 import axios from 'axios'
 import BrawlerView from '../components/BrawlerView'
 import { Brawler } from '../types/BrawlerData'
+import SkullBackground from '../components/ScrollableSkullBackground'
 
 export default function Brawlers() {
 
@@ -18,6 +19,7 @@ export default function Brawlers() {
 
   return (
     <Flex w={'100%'} flexDir={'column'} textAlign={'center'} alignItems={'center'}>
+        <SkullBackground/>
         <Text fontSize={'4xl'} className={'heading-4xl'}>
             Brawlers
         </Text>

@@ -1,4 +1,5 @@
 import { Button, Flex, Text, useColorMode } from "@chakra-ui/react";
+import SkullBackground from "../components/SkullBackground";
 
 export default function Gallery() {
 
@@ -10,6 +11,7 @@ export default function Gallery() {
       <Button onClick={toggleColorMode}>
         Toggle {colorMode === 'light' ? 'Dark' : 'Light'}
       </Button>
+      <SkullBackground/>
     </Flex>
   )
 }

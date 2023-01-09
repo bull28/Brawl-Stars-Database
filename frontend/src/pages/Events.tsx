@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import EventView from '../components/EventView'
 import EventSideBar from '../components/EventSideBar'
 import {event, time} from '../types/EventData'
+import SkullBackground from "../components/SkullBackground"
 
 
 interface EventsCurrent {
@@ -28,6 +29,7 @@ export default function Maps() {
 
   return (
     <Flex flexDir={'column'} justifyContent={'space-between'} w={'100%'}>
+      <SkullBackground/>
       <Flex w={'100%'} textAlign={'center'} justifyContent={'center'}>
         <Text fontSize={'3xl'} className={'heading-3xl'} >Events</Text>  
       </Flex>

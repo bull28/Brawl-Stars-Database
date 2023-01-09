@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom'
 import { BsPersonFill } from 'react-icons/bs'
 import { CollectionData } from '../types/CollectionData'
 import { RiLock2Line } from 'react-icons/ri'
+import SkullBackground from '../components/SkullBackground'
 
 /*
     To-Do
@@ -306,6 +307,7 @@ export default function Trade() {
 
     return (
         <Flex justifyContent={'space-evenly'} alignItems={'center'} flexDir={'column'}>      
+            <SkullBackground/>
             <IconButton aria-label='open filter' as={HamburgerIcon} pos={'absolute'} top={0} left={0} m={5} onClick={onOpen}></IconButton>
             <Text mt={5} fontSize={'3xl'} className={'heading-3xl'} >Trades</Text>            
             <Flex pos={'absolute'} top={0} right={0} m={5}>
