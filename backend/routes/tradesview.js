@@ -10,7 +10,6 @@ const TRADE_TABLE_NAME = process.env.DATABASE_TRADE_TABLE_NAME || "brawl_stars_t
 
 // maps only used to do time calculations
 const maps = require("../modules/maps");
-const fileLoader = require("../modules/fileloader");
 
 // constants for trades
 const MAX_ACTIVE_TRADES = 25;// will be lowered later when done testing

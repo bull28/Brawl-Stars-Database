@@ -25,7 +25,7 @@ function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
     };
 
     // All other fields will not be included to minimize the data size
-    const includeFromBrawler = ["name", "displayName", "portrait", "rarity", "pins"];
+    const includeFromBrawler = ["name", "displayName", "image", "rarity", "pins"];
     
     // Iterate over all the brawlers
     for (let brawler of allSkins){
@@ -118,7 +118,7 @@ function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
                 thisBrawler["rarityColor"] = brawler.rarity.color;
             }
             
-            thisBrawler["i"] = portraitFile + brawler.portrait;
+            thisBrawler["i"] = portraitFile + brawler.image;
             thisBrawler["u"] = hasBrawler;
             thisBrawler["unlockedPins"] = unlockedPins;
             thisBrawler["totalPins"] = totalPins;
@@ -167,10 +167,10 @@ function getAvatars(allSkins, allAvatars, userCollection, userAvatars){
     
 
     for (let brawler of allSkins){
-        if (brawler.hasOwnProperty("name") && brawler.hasOwnProperty("portrait")){
+        if (brawler.hasOwnProperty("name") && brawler.hasOwnProperty("image")){
             // If the user has the brawler unlocked, add the avatar as an option
             if (userCollection.hasOwnProperty(brawler.name)){
-                unlockedBrawlers.push(brawler.portrait);
+                unlockedBrawlers.push(brawler.image);
             }
         }
     }

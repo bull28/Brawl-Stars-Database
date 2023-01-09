@@ -532,7 +532,7 @@ function selectBrawler(brawlerDropChances, resources, allSkins){
 
         result.displayName = brawlerObject.displayName;
         result.rewardType = "brawler";
-        result.image = brawlerObject.portrait;
+        result.image = brawlerObject.image;
         result.backgroundColor = brawlerObject.rarity.color;
         result.description = brawlerObject.description;
         result.inventory = 1;
