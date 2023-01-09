@@ -51,7 +51,7 @@ function formatBrawlerData(brawlerData, portraitFile, modelFile, pinFile){
 
     for (let x in brawlerData){
         // the user can't do anything with the portrait file so don't send it
-        if (x == "portrait"){
+        if (x == "image"){
             portraitFile = portraitFile + brawlerData[x];
         } else if (x == "model"){
             // this model file is the one for the default skin

@@ -69,7 +69,7 @@ function skinModelExists(data){
 router.get("/brawler", (req, res) => {
     let allBrawlers = [];
 
-    const includeInBrawler = ["name", "displayName", "rarity", "portrait"];
+    const includeInBrawler = ["name", "displayName", "rarity", "image"];
 
     for (let x of allSkins){
         // copy over the entire brawler's data, except for their skins
@@ -77,7 +77,7 @@ router.get("/brawler", (req, res) => {
         let brawlerData = {};
         for (let y in x){
             if (includeInBrawler.includes(y)){
-                if (y == "portrait"){
+                if (y == "image"){
                     brawlerData[y] = PORTRAIT_IMAGE_DIR + x[y];
                 } else{
                     brawlerData[y] = x[y];
