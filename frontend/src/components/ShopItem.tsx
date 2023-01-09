@@ -159,7 +159,7 @@ export default function ShopItem({data, coins, isFeatured, timeLeftString}: {dat
                                     View Collection
                                 </Button>
                                 :
-                                <Button className={'heading-md'} color={(coins < data.cost) ? 'red.500' : 'white'} onClick={() => {purchase(data.name)}}>{data.cost}<Image ml={1} maxH={'25px'} src={`/image/resources/resource_coins.webp`}/></Button>
+                                <Button className={'heading-md buttonGreen'} color={(coins < data.cost) ? 'red.500' : 'white'} onClick={() => {purchase(data.name)}}>{data.cost}<Image ml={1} maxH={'25px'} src={`/image/resources/resource_coins.webp`}/></Button>
                                 }                         
                             </ModalFooter>
                             </ModalContent>

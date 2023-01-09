@@ -355,7 +355,7 @@ export default function Trade() {
                                             <option value='lowcost'>Cost Ascending</option>
                                             <option value='highcost'>Cost Descending</option>
                                         </Select>
-                                        <FormLabel fontSize={'xl'}  className={'heading-xl'}>
+                                        <FormLabel fontSize={'xl'} className={'heading-xl'}>
                                             Filter In
                                         </FormLabel>
                                         <RadioGroup value={String(filter.filterInRequest)} onChange={(e) => {changeFilter("filterInRequest", e === "true")}}>

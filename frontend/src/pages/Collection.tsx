@@ -114,7 +114,7 @@ export default function Collection() {
                 </Flex>
             }            
             {(brawlers.length > 0) && <Accordion defaultIndex={[brawlers.indexOf(searchParams.get('brawler'))]} allowMultiple allowToggle>
-            <SimpleGrid columns={[1,2,3,4]} spacing={3} w={'95vw'} bgColor={'blue.800'} p={5} mb={3}>
+            <SimpleGrid columns={[1,2,3,4]} spacing={3} w={'100vw'} bgColor={'blue.800'} p={5} mb={3}>
                 {data?.collection.map((brawler) => (
                     <AccordionItem border={brawler.unlockedPins === brawler.totalPins ? '3px solid #E7A210' : '3px solid black'}>
                         {({ isExpanded }) => (

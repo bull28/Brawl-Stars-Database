@@ -17,7 +17,7 @@ export default function Brawler({ image, name, displayName, rarityColor }: Brawl
 
   return (
     <>
-        <Flex maxW={'sm'} maxH={'sm'} flexDir={'column'} bgColor={rarityColor} borderRadius={'lg'} boxShadow={'lg'} margin={5} border='1px' borderColor='white' transition={'all 0.15s ease-in'} cursor={'pointer'} _hover={{transform: 'scale(1.05)'}}>
+        <Flex maxW={'sm'} maxH={'sm'} flexDir={'column'} bgColor={rarityColor} borderRadius={'lg'} boxShadow={'rgba(255, 255, 255, 0.3) 0px 7px 29px 0px;'} margin={5} border='1px' borderColor='white' transition={'all 0.15s ease-in'} cursor={'pointer'} _hover={{transform: 'scale(1.05)'}}>
          
         <Box m={3} onClick={redirect} cursor={'pointer'}>
             <Text fontSize={'2xl'} className={'heading-3xl'} >{displayName}</Text>

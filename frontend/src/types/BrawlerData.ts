@@ -17,5 +17,5 @@ export interface Brawler {
         name: string,
         color: string
     },
-    portrait: string
+    image: string
 }
