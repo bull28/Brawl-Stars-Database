@@ -8,7 +8,7 @@ const filePaths = {
     "GAMEMODE_IMAGE_DIR": "gamemodes/",
     "MAP_IMAGE_DIR": "maps/",
     "MAP_BANNER_DIR": "maps/banners/",
-    "RESOURCE_IMAGE_DIR": "resources/",
+    "RESOURCE_IMAGE_DIR": "resources/"
 }
 
 module.exports = filePaths;
