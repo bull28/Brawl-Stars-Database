@@ -169,7 +169,7 @@ const ModelViewer = ({ modelPath, scale = 1.0, position = [0, 0, 0] }: ModelView
         <Canvas camera={{ fov: camera.fov, position: cameraObj.position}}>
             <Suspense fallback={null}>
                 <GltfModel modelPath={modelPath} scale={scale} position={position} />
-                <OrbitControls maxDistance={100}/>
+                <OrbitControls maxDistance={cameraObj.position.length() * 3}/>
             </Suspense> 
         </Canvas>
     );
