@@ -408,7 +408,7 @@ function getCollectionScore(collection){
     let progress = 0;
 
     // bad code but it needs to be faster
-    if      (overallScore < 1)      { grade = "X" ; color = "#000000"; progress = 0                          ; }
+    if      (overallScore < 1)      { grade = "X" ; color = "#FFFFFF"; progress = 0                          ; }
     else if (overallScore < 30)     { grade = "D" ; color = "#808080"; progress = (overallScore -    0) /  30; }
     else if (overallScore < 60)     { grade = "C-"; color = "#80C080"; progress = (overallScore -   30) /  30; }
     else if (overallScore < 90)     { grade = "C" ; color = "#80FF80"; progress = (overallScore -   60) /  30; }
@@ -418,9 +418,9 @@ function getCollectionScore(collection){
     else if (overallScore < 360)    { grade = "B+"; color = "#0080FF"; progress = (overallScore -  270) /  90; }
     else if (overallScore < 480)    { grade = "A-"; color = "#8000FF"; progress = (overallScore -  360) / 120; }
     else if (overallScore < 640)    { grade = "A" ; color = "#FF03CC"; progress = (overallScore -  480) / 160; }
-    else if (overallScore < 800)    { grade = "A+"; color = "#EA3331"; progress = (overallScore -  640) / 160; }
+    else if (overallScore < 800)    { grade = "A+"; color = "#FE0521"; progress = (overallScore -  640) / 160; }
     else if (overallScore < 1000)   { grade = "S-"; color = "#FF8000"; progress = (overallScore -  800) / 200; }
-    else if (overallScore < 1200)   { grade = "S" ; color = "#FDF155"; progress = (overallScore - 1000) / 200; }
+    else if (overallScore < 1200)   { grade = "S" ; color = "#FDF11E"; progress = (overallScore - 1000) / 200; }
     else                            { grade = "S+"; color = "rainbow"; progress = 1                          ; }
 
     collection.collectionScore = grade;

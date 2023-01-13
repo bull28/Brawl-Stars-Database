@@ -3,8 +3,8 @@
  * all the pins in the original array that have valid names.
  * @param {Array} allSkins json array with all the brawlers
  * @param {Array} pinArray json array with the pin objects
- * @param {*} pinFile file path to the directory containing the pins
- * @param {*} searchByName whether or not to match pin strings by name
+ * @param {String} pinFile file path to the directory containing the pins
+ * @param {Boolean} searchByName whether or not to match pin strings by name
  * @returns array of valid pins
  */
 function validatePins(allSkins, pinArray, pinFile, searchByName){
