@@ -12,6 +12,12 @@ export default function Gallery() {
         Toggle {colorMode === 'light' ? 'Dark' : 'Light'}
       </Button>
       <SkullBackground/>
+      <Flex flexDir={'column'}>
+        <Text>Backgrounds</Text>
+        <Flex>
+
+        </Flex>
+      </Flex>
     </Flex>
   )
 }
