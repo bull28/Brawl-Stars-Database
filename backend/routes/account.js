@@ -168,7 +168,7 @@ router.post("/signup", (req, res) => {
         database.queryDatabase(
         "INSERT IGNORE INTO " + TABLE_NAME +
         " (username, password, active_avatar, brawlers, avatars, wild_card_pins, featured_item) VALUES (?, ?, ?, ?, ?, ?, ?);",
-        [username, password, "avatars/free/default.webp", JSON.stringify(startingBrawlers), "[]", "[]", ""], (error, results, fields) => {
+        [username, password, "avatars/free/default", JSON.stringify(startingBrawlers), "[]", "[]", ""], (error, results, fields) => {
             if (error){
                 res.status(500).send("Could not connect to database.");
                 return;
@@ -260,7 +260,12 @@ router.post("/update", (req, res) => {
                     return;
                 }
             }
-
+            
+            // To avoid storing file extensions in the database, newAvatar must contain
+            // only the avatar name. If the user does not change their avatar, the existing
+            // avatar already has no file extension. If the user changes their avatar, the
+            // new avatar they provide will have a file extension so it will have to be
+            // removed before assigning it to newAvatar
             if (newAvatar == ""){
                 // Do not check the avatar if they are not planning on changing it
                 // It's fine to keep it, if for some reason they have an invalid avatar
@@ -272,7 +277,16 @@ router.post("/update", (req, res) => {
                     res.status(403).send("You are not allowed to use that avatar.");
                     return;
                 }
+
+                const newAvatarName = newAvatar.split(".");
+                if (newAvatarName.length != 2){
+                    res.status(403).send("You are not allowed to use that avatar.");
+                    return;
+                }
+                newAvatar = newAvatarName[0];
             }
+
+            
 
             // After all fields are set, check to make sure the user doesn't exist already
             database.queryDatabase(

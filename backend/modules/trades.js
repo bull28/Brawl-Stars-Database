@@ -8,7 +8,6 @@
  * @returns array of valid pins
  */
 function validatePins(allSkins, pinArray, pinFile, searchByName){
-    //pinArray.slice()
     let validArray = [];
     let alreadyAdded = [];
     for (let x of pinArray){
@@ -35,7 +34,7 @@ function validatePins(allSkins, pinArray, pinFile, searchByName){
                         validArray.push({
                             "brawler": brawlerObjects[0].name,
                             "pin": thisPin.name,
-                            "pinImage": pinFile + brawlerObjects[0].name + "/" + thisPin.image,
+                            //"pinImage": pinFile + brawlerObjects[0].name + "/" + thisPin.image,
                             "amount": Math.min(x.amount, 1000),
                             "rarityValue": thisPin.rarity.value,
                             "rarityColor": thisPin.rarity.color
@@ -44,6 +43,29 @@ function validatePins(allSkins, pinArray, pinFile, searchByName){
                     }
                 }
             }
+        }
+    }
+    return validArray;
+}
+
+/**
+ * Adds images to a trade's offer or request information and removes
+ * all information that does not need to be displayed on the screen.
+ * @param {Array} pinArray json array with the pin objects
+ * @param {String} pinFile file path to the directory containing the pins
+ * @param {String} fileExtension image file extension
+ * @returns formatted offer or request array that can be sent to the user
+ */
+function formatTradeData(pinArray, pinFile, fileExtension){
+    let validArray = [];
+    for (let x of pinArray){
+        if (x.hasOwnProperty("brawler") && x.hasOwnProperty("pin")){
+            validArray.push({
+                "pinImage": pinFile + x.brawler + "/" + x.pin + fileExtension,
+                "amount": x.amount,
+                "rarityValue": x.rarityValue,
+                "rarityColor": x.rarityColor
+            });
         }
     }
     return validArray;
@@ -155,5 +177,6 @@ function getTimeTradeCost(tradeHours){
 }
 
 exports.validatePins = validatePins;
+exports.formatTradeData = formatTradeData;
 exports.getTradeCost = getTradeCost;
 exports.getTimeTradeCost = getTimeTradeCost;

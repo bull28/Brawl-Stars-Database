@@ -31,7 +31,7 @@ export default function SkullBackground() {
         <Flex pos={'absolute'} overflow={'hidden'} zIndex={'-1'} top={0}>            
             <Image w={'100vw'} h={'2762px'} objectFit={'cover'} animation={`${animation1} 175s linear infinite reverse`} pos={'absolute'} src={require(`../assets/icons/icon_${iconName}.webp`)}/>
             <Image w={'100vw'} h={'2762px'} objectFit={'cover'} animation={`${animation2} 175s linear infinite reverse`} pos={'absolute'} src={require(`../assets/icons/icon_${iconName}.webp`)}/>
-            <Image w={'100vw'} h={'100vh'} objectFit={'cover'} src={require(`../assets/backgrounds/background_${backgroundName}.webp`)}/>    
+            <Image w={'100vw'} h={'100vh'} objectFit={'cover'} src={require(`../assets/backgrounds/bg_${backgroundName}.webp`)}/>    
         </Flex>
         
     )

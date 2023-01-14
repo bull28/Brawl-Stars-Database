@@ -19,6 +19,7 @@ const filePaths = require("../modules/filepaths");
 const PORTRAIT_IMAGE_DIR = filePaths.PORTRAIT_IMAGE_DIR;
 const PIN_IMAGE_DIR = filePaths.PIN_IMAGE_DIR;
 const RESOURCE_IMAGE_DIR = filePaths.RESOURCE_IMAGE_DIR;
+const IMAGE_FILE_EXTENSION = filePaths.IMAGE_FILE_EXTENSION;
 
 // time each featured item is available for
 const FEATURED_REFRESH_HOURS = 24;
@@ -262,7 +263,7 @@ router.post("/resources", (req, res) => {
             
             const resourcesData = {
                 "username": results[0].username,
-                "avatar": results[0].active_avatar,
+                "avatar": results[0].active_avatar + IMAGE_FILE_EXTENSION,
                 "avatarColor": collectionInfo.avatarColor,
                 "tokens": results[0].tokens,
                 "tokenDoubler": results[0].token_doubler,
@@ -335,7 +336,11 @@ router.post("/brawlbox", (req, res) => {
             let thisBox = {};
             thisBox.name = x;
             for (let property in brawlBoxTypes[x]){
-                thisBox[property] = brawlBoxTypes[x][property];
+                if (property == "image"){
+                    thisBox[property] = brawlBoxTypes[x][property] + IMAGE_FILE_EXTENSION;
+                } else{
+                    thisBox[property] = brawlBoxTypes[x][property];
+                }
             }
             brawlBoxList.push(thisBox);
         }
@@ -387,7 +392,7 @@ router.post("/brawlbox", (req, res) => {
 
 
             //const BUL = performance.now();
-            let brawlBoxContents = brawlbox.brawlBox(dropChances, boxType, allSkins, userResources);
+            let brawlBoxContents = brawlbox.brawlBox(dropChances, boxType, allSkins, userResources, IMAGE_FILE_EXTENSION);
             //const EDGRISBAD = (performance.now() - BUL);
             //console.log("YOUR PROGRAM IS",EDGRISBAD.toString(),"TIMES WORSE THAN E D G R");
 
@@ -564,13 +569,14 @@ router.post("/shop", (req, res) => {
                             // when adding it to the user's inventory
                             // All other item types' images are only for display
                             if (thisItemType == "avatar"){
-                                thisItem[property] = availableShopItems[x]["extraData"];
+                                thisItem[property] = availableShopItems[x]["extraData"] + IMAGE_FILE_EXTENSION;
                             } else if (thisItemType == "featuredPin"){
-                                thisItem[property] = PIN_IMAGE_DIR + availableShopItems[x]["image"];
+                                // Featured pin already has the image extension since it is stored in brawlers data
+                                thisItem[property] = PIN_IMAGE_DIR + availableShopItems[x][property];
                             } else{
                                 // Only add the image directory if the image is not empty string
                                 if (availableShopItems[x][property] != ""){
-                                    thisItem[property] = RESOURCE_IMAGE_DIR + availableShopItems[x][property];
+                                    thisItem[property] = RESOURCE_IMAGE_DIR + availableShopItems[x][property] + IMAGE_FILE_EXTENSION;
                                 }
                             }
                         } else if (property != "itemType" && property != "extraData"){
@@ -637,7 +643,7 @@ router.post("/shop", (req, res) => {
                     "coins": userCoins,
                     "trade_credits": userTradeCredits
                 }
-                buyItemResult = brawlbox.brawlBox(dropChances, "newBrawler", allSkins, tempResourceObject);
+                buyItemResult = brawlbox.brawlBox(dropChances, "newBrawler", allSkins, tempResourceObject, IMAGE_FILE_EXTENSION);
 
                 if (buyItemResult.length > 0){
                     userItemInventory = 1;

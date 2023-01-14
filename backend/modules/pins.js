@@ -145,7 +145,8 @@ function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
  * All free avatars are included and the user's special avatars collected
  * are compared with the list of all special avatars to determine which
  * special avatars they can select. Their collection is also used to
- * determine which portrait avatars are available.
+ * determine which portrait avatars are available. This function returns
+ * avatars with their file extension.
  * @param {Array} allSkins json array with all the brawlers
  * @param {Array} allAvatars json object with arrays of free and special avatars
  * @param {Object} userCollection parsed brawlers object from the database
@@ -177,7 +178,8 @@ function getAvatars(allSkins, allAvatars, userCollection, userAvatars){
     
     for (let avatar of allAvatars.special){
         // If a special avatar is unlocked, add it to the array.
-        if (userAvatars.includes(avatar)){
+        const avatarName = avatar.split(".")[0];
+        if (avatarName !== undefined && userAvatars.includes(avatarName)){
             avatarsInfo.push(avatar);
         }
 

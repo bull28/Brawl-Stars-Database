@@ -20,6 +20,7 @@ const MAX_ACTIVE_TRADES = 10;
 // base directories of image files
 const filePaths = require("../modules/filepaths");
 const PIN_IMAGE_DIR = filePaths.PIN_IMAGE_DIR;
+const IMAGE_FILE_EXTENSION = filePaths.IMAGE_FILE_EXTENSION;
 
 
 // Load the skins json object
@@ -470,7 +471,7 @@ router.post("/accept", (req, res) => {
                         }
 
                         //console.log(performance.now() - BUL);
-                        res.json(tradedItems);
+                        res.json(trades.formatTradeData(tradedItems, PIN_IMAGE_DIR, IMAGE_FILE_EXTENSION));
                     });
                 });
             });
@@ -633,7 +634,7 @@ router.post("/close", (req, res) => {
                         res.json({
                             "complete": tradeSuccess,
                             "acceptedBy": acceptedBy,
-                            "pins": tradedItems
+                            "pins": trades.formatTradeData(tradedItems, PIN_IMAGE_DIR, IMAGE_FILE_EXTENSION)
                         });
                     });
                 });

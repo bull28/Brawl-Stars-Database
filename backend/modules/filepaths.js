@@ -1,4 +1,5 @@
 const filePaths = {
+    "IMAGE_FILE_EXTENSION": ".webp",
     "PORTRAIT_IMAGE_DIR": "portraits/",
     "SKIN_IMAGE_DIR": "skins/",
     "SKIN_MODEL_DIR": "models/",

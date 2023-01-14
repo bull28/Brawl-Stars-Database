@@ -98,13 +98,16 @@ function getDuplicateColor(oldColorString, factor){
  * A valid dropChances object must be passed to this function. To make
  * it run faster, the dropChances object is validated only once when
  * being loaded from the file and assumed to be valid from then on.
+ * Data in the drop chances does not include image file extensions so
+ * the extension currently used has to be passed to the function.
  * @param {Object} dropChances valid object with drop chances data stored inside
  * @param {String} boxType the type of Brawl Box to open
  * @param {Array} allSkins array of all brawlers and skins in the game
  * @param {Object} resources object containing all of the user's resource amounts that may change
+ * @param {String} fileExtension image file extension
  * @returns array of the items the user received
  */
-function brawlBox(dropChances, boxType, allSkins, resources){
+function brawlBox(dropChances, boxType, allSkins, resources, fileExtension){
     // Validating parameters
 
     // dropChances has already been validated before being passed
@@ -184,11 +187,11 @@ function brawlBox(dropChances, boxType, allSkins, resources){
             } else if (x == "pin" || x == "pinLowRarity" || x == "pinHighRarity" || x == "pinNoDupes"){
                 drop = selectPin(dropChances.rewardTypes[x], resources, allSkins);
             } else if (x == "wildcard"){
-                drop = selectWildCardPin(dropChances.rewardTypes.wildcard, resources, allSkins);
+                drop = selectWildCardPin(dropChances.rewardTypes.wildcard, resources, allSkins, fileExtension);
             } else if (x == "brawler" || x == "brawlerLowRarity" || x == "brawlerHighRarity"){
                 drop = selectBrawler(dropChances.rewardTypes[x], resources, allSkins);
             } else if (x == "bonus"){
-                drop = selectBonus(dropChances.boxes.bonus, dropChances.rewardTypes, resources);
+                drop = selectBonus(dropChances.boxes.bonus, dropChances.rewardTypes, resources, fileExtension);
             }
 
             if (drop.rewardType == "coins"){
@@ -206,7 +209,7 @@ function brawlBox(dropChances, boxType, allSkins, resources){
             "rewardType": "coins",
             "amount": coinsReward,
             "inventory": resources.coins,
-            "image": "resource_coins_200x.webp",
+            "image": "resource_coins_200x" + fileExtension,
             "backgroundColor": "#8CA0E0",
             "description": "Spend these on special avatars and other items in the shop."
         });
@@ -408,7 +411,7 @@ function selectPin(pinDropChances, resources, allSkins){
     return result;
 }
 
-function selectWildCardPin(wildCardDropChances, resources, allSkins){
+function selectWildCardPin(wildCardDropChances, resources, allSkins, fileExtension){
     let result = {
         "displayName": "",
         "rewardType": "empty",
@@ -457,7 +460,7 @@ function selectWildCardPin(wildCardDropChances, resources, allSkins){
 
         result.displayName = rarityName + " Wild Card Pin";
         result.rewardType = "wildcard";
-        result.image = "wildcard_pin.webp";
+        result.image = "wildcard_pin" + fileExtension;
         result.backgroundColor = rarityColor;
         result.description = "This can be used in place of a Pin of " + rarityName + " rarity when accepting a trade.";
         result.inventory = resources.wild_card_pins[selectedRarity];
@@ -546,7 +549,7 @@ function selectBrawler(brawlerDropChances, resources, allSkins){
     return result;
 }
 
-function selectBonus(allBonusDrops, rewardTypes, resources){
+function selectBonus(allBonusDrops, rewardTypes, resources, fileExtension){
     let result = {
         "displayName": "",
         "rewardType": "empty",
@@ -617,7 +620,7 @@ function selectBonus(allBonusDrops, rewardTypes, resources){
 
             result.displayName = "Trade Credits";
             result.rewardType = "tradeCredits";
-            result.image = "resource_trade_credits_200x.webp";
+            result.image = "resource_trade_credits_200x" + fileExtension;
             result.amount = tradeCreditDrops[selectedIndex].value;
             result.inventory = resources.trade_credits;
             result.backgroundColor = "#389CFC";
@@ -638,7 +641,7 @@ function selectBonus(allBonusDrops, rewardTypes, resources){
 
         result.displayName = "Token Doubler";
         result.rewardType = "tokenDoubler";
-        result.image = "resource_token_doubler_200x.webp";
+        result.image = "resource_token_doubler_200x" + fileExtension;
         result.amount = rewardAmount;
         result.inventory = resources.token_doubler;
         result.backgroundColor = "#A248FF";
@@ -657,7 +660,7 @@ function selectBonus(allBonusDrops, rewardTypes, resources){
             
             result.displayName = "New Avatar";
             result.rewardType = "avatar";
-            result.image = availableAvatars[selectedIndex].value;
+            result.image = availableAvatars[selectedIndex].value + fileExtension;
             result.backgroundColor = "#F7831C";
             result.description = "Select this avatar in the account settings.";
             result.inventory = 1;

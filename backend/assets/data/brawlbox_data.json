@@ -14,7 +14,7 @@
         "brawlBox": {
             "displayName": "Brawl Box",
             "cost": 100,
-            "image": "brawlbox_default.webp",
+            "image": "brawlbox_default",
             "description": "Contains coins and up to 3 pins. May rarely drop bonus items such as a new brawler, trade credits, token doubler, or a new avatar.",
             "dropsDescription": [
                 "Coins drop: 120 - 180 (discrete uniform distribution)",
@@ -33,7 +33,7 @@
         "pinPack": {
             "displayName": "Pin Pack",
             "cost": 80,
-            "image": "brawlbox_pinpack.webp",
+            "image": "brawlbox_pinpack",
             "description": "Guaranteed to contain 1 pin and a chance for up to 6 pins in total. Only contains pins but has a much higher chance to find pins of higher rarity.",
             "dropsDescription": [
                 "Coins drop: 0 (extra pins converted to coins)",
@@ -54,7 +54,7 @@
         "megaBox": {
             "displayName": "Mega Box",
             "cost": 240,
-            "image": "brawlbox_megabox.webp",
+            "image": "brawlbox_megabox",
             "description": "Drops many coins and has a very high chance of collecting at least 1 brawler. Can contain up to 6 pins, up to 3 brawlers, and sometimes bonus items. Does not contain any brawlers above Epic rarity or pins above Rare rarity.",
             "dropsDescription": [
                 "Coins drop: 4 drops * (120 - 180 per drop) (each drop is a discrete uniform distribution)",
@@ -159,11 +159,11 @@
         },
         "avatar": {
             "pmfobject": [
-                {"value": "avatars/special/brawlbox_icon.webp", "weight": 5},
-                {"value": "avatars/special/angry_darryl.webp", "weight": 4},
-                {"value": "avatars/special/yellow_face_02.webp", "weight": 3},
-                {"value": "avatars/special/viking_bull.webp", "weight": 2},
-                {"value": "avatars/special/STOMPER.webp", "weight": 1}
+                {"value": "avatars/special/brawlbox_icon", "weight": 5},
+                {"value": "avatars/special/angry_darryl", "weight": 4},
+                {"value": "avatars/special/yellow_face_02", "weight": 3},
+                {"value": "avatars/special/viking_bull", "weight": 2},
+                {"value": "avatars/special/STOMPER", "weight": 1}
             ]
         }
     }

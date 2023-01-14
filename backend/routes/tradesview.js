@@ -10,10 +10,16 @@ const TRADE_TABLE_NAME = process.env.DATABASE_TRADE_TABLE_NAME || "brawl_stars_t
 
 // maps only used to do time calculations
 const maps = require("../modules/maps");
+const trades = require("../modules/trades");
 
 // constants for trades
 const MAX_ACTIVE_TRADES = 25;// will be lowered later when done testing
 const TRADES_PER_PAGE = 20;
+
+// base directories of image files
+const filePaths = require("../modules/filepaths");
+const PIN_IMAGE_DIR = filePaths.PIN_IMAGE_DIR;
+const IMAGE_FILE_EXTENSION = filePaths.IMAGE_FILE_EXTENSION;
 
 
 /**
@@ -34,6 +40,7 @@ function getTradeTimeLeft(expiration){
 
     return tradeTimeLeft;
 }
+
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -72,12 +79,12 @@ router.get("/id", (req, res) => {
         const tradeData = {
             "creator": {
                 "username": results[0].creator,
-                "avatar": results[0].creator_avatar,
+                "avatar": results[0].creator_avatar + IMAGE_FILE_EXTENSION,
                 "avatarColor": results[0].creator_color
             },
             "cost": Math.ceil(results[0].trade_credits / 10),
-            "offer": offerPins,
-            "request": requestPins,
+            "offer": trades.formatTradeData(offerPins, PIN_IMAGE_DIR, IMAGE_FILE_EXTENSION),
+            "request": trades.formatTradeData(requestPins, PIN_IMAGE_DIR, IMAGE_FILE_EXTENSION),
             "timeLeft": getTradeTimeLeft(results[0].expiration),
             "accepted": (results[0].accepted == 1),
             "acceptedBy": results[0].accepted_by
@@ -121,8 +128,8 @@ router.post("/user", (req, res) => {
             tradeList.push({
                 "tradeid": x.tradeid,
                 "cost": Math.ceil(x.trade_credits / 10),
-                "offer": offerPins,
-                "request": requestPins,
+                "offer": trades.formatTradeData(offerPins, PIN_IMAGE_DIR, IMAGE_FILE_EXTENSION),
+                "request": trades.formatTradeData(requestPins, PIN_IMAGE_DIR, IMAGE_FILE_EXTENSION),
                 "timeLeft": getTradeTimeLeft(x.expiration),
                 "accepted": (x.accepted == 1)
             });
@@ -205,12 +212,12 @@ router.post("/all", (req, res) => {
                 "tradeid": x.tradeid,
                 "creator": {
                     "username": x.creator,
-                    "avatar": x.creator_avatar,
+                    "avatar": x.creator_avatar + IMAGE_FILE_EXTENSION,
                     "avatarColor": x.creator_color,
                 },
                 "cost": Math.ceil(x.trade_credits / 10),
-                "offer": offerPins,
-                "request": requestPins,
+                "offer": trades.formatTradeData(offerPins, PIN_IMAGE_DIR, IMAGE_FILE_EXTENSION),
+                "request": trades.formatTradeData(requestPins, PIN_IMAGE_DIR, IMAGE_FILE_EXTENSION),
                 "timeLeft": getTradeTimeLeft(x.expiration)
             });
         }
