@@ -420,8 +420,6 @@ router.post("/theme", (req, res) => {
                 return;
             }
 
-            //const avatarsInfo = pins.getAvatars(allSkins, allAvatars, userBrawlers, userAvatars);
-            console.log(userThemes);
             const themesInfo = pins.getThemes(allThemes, userThemes);
             res.json(themesInfo);
         });

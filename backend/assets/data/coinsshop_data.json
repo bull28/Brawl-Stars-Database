@@ -214,5 +214,14 @@
         "extraData": "themes/special/legendaryset",
         "amount": 1,
         "description": "This bundle contains a new background and a new icon style."
+    },
+    "specialtheme1": {
+        "displayName": "Theme",
+        "cost": 18000,
+        "itemType": "theme",
+        "image": "",
+        "extraData": "themes/special/yellow_face",
+        "amount": 1,
+        "description": "This bundle contains a new background and a new icon style."
     }
 }
