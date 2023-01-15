@@ -1,7 +1,6 @@
-import { Box, Flex, HStack, Image, Link, ScaleFade, Text } from '@chakra-ui/react'
+import { Box, Flex, HStack, Image, Link, ScaleFade, SimpleGrid, Text } from '@chakra-ui/react'
 import { useState, useEffect } from 'react'
-import { BsPerson } from 'react-icons/bs'
-import { FaSkull } from 'react-icons/fa'
+import { BsEmojiLaughing, BsPalette, BsPerson } from 'react-icons/bs'
 import { MdOutlineGeneratingTokens } from 'react-icons/md'
 import MovingText from '../components/MovingText'
 import ShopItem from '../components/ShopItem'
@@ -81,7 +80,7 @@ export default function Shop() {
 
     return (
         <Flex flexDir={'column'} alignItems={'center'} minH={'100vh'}>
-            <Flex zIndex={'-1'} w={'100%'} h={'100%'} pos={'absolute'} backgroundImage={require(`../assets/shopbackground${season}.jpg`)} backgroundAttachment={'fixed'} backgroundRepeat={'no-repeat'}  objectFit={'cover'}>            
+            <Flex zIndex={'-1'} w={'100%'} h={'100%'} pos={'absolute'} backgroundImage={require(`../assets/shopbackground${season}.webp`)} backgroundAttachment={'fixed'} backgroundRepeat={'no-repeat'} objectFit={'cover'}>            
             </Flex>
             <MovingText title="Shop" color1="#fdf542" color2="#ff9005" fontSize='3xl'/>
             { getToken() ? <>
@@ -109,7 +108,7 @@ export default function Shop() {
                     <Flex flexDir={'column'}>
                         <Flex alignItems={'center'}  fontSize={'3xl'} className={'heading-3xl'} ml={5} mb={3} mt={'5vh'}>
                             <Text mr={1}>Avatars</Text>
-                            <BsPerson color={'black'}/>                            
+                            <BsEmojiLaughing color={'black'}/>                            
                         </Flex>                        
                         <HStack>
                         {
@@ -122,7 +121,7 @@ export default function Shop() {
                     <Flex flexDir={'column'}>
                         <Flex alignItems={'center'}  fontSize={'3xl'} className={'heading-3xl'} ml={5} mb={3} mt={'5vh'}>
                             <Text mr={1}>Brawlers</Text>
-                            <FaSkull color={'black'}/>
+                            <BsPerson color={'black'}/>
                         </Flex>                        
                         <HStack>
                         {
@@ -145,7 +144,22 @@ export default function Shop() {
                         }
                         </HStack>
                     </Flex>
+                    <Flex flexDir={'column'}>
+                        <Flex alignItems={'center'}  fontSize={'3xl'} className={'heading-3xl'} ml={5} mb={3} mt={'5vh'}>
+                            <Text mr={1}>Themes</Text>
+                            <BsPalette color={'black'}/>
+                        </Flex>
+                        <SimpleGrid columns={8} spacingX={2}>
+                        {
+                            data?.map((item) => (
+                                item.name.toLowerCase().includes('theme') && <ScaleFade in={true}><ShopItem data={item} coins={userInfo?.coins || 0} timeLeftString={""}/></ScaleFade>
+                            ))
+                        }
+                        </SimpleGrid>
+                    </Flex>
+                    
                 </Flex>
+                
             </Flex>
             </>
             :

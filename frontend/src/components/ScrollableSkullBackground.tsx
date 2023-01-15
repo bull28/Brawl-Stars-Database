@@ -24,14 +24,14 @@ export default function SkullBackground() {
     
     `
 
-    const iconName = localStorage.getItem('icon') || 'default'
-    const backgroundName = localStorage.getItem('background') || 'default'
+    const iconName = localStorage.getItem('icon') || 'themes/free/default_icon.webp'
+    const backgroundName = localStorage.getItem('background') || 'themes/free/default_background.webp'
 
     return (
         <Flex pos={'absolute'} overflow={'hidden'} zIndex={'-1'} top={0} w={'100%'} h={'100%'}>                        
-            <Image w={'100vw'} h={'2762px'} objectFit={'cover'} animation={`${animation1} 175s linear infinite reverse`} pos={'absolute'} src={require(`../assets/icons/icon_${iconName}.webp`)}/>
-            <Image w={'100vw'} h={'2762px'} objectFit={'cover'} animation={`${animation2} 175s linear infinite reverse`} pos={'absolute'} src={require(`../assets/icons/icon_${iconName}.webp`)}/>
-            <Flex w={'100%'} h={'100%'} backgroundRepeat={'no-repeat'} objectFit={'cover'} backgroundAttachment={'fixed'} backgroundImage={require(`../assets/backgrounds/bg_${backgroundName}.webp`)}/>    
+            <Image w={'100vw'} h={'2762px'} objectFit={'cover'} animation={`${animation1} 175s linear infinite reverse`} pos={'absolute'} src={`/image/${iconName}`}/>
+            <Image w={'100vw'} h={'2762px'} objectFit={'cover'} animation={`${animation2} 175s linear infinite reverse`} pos={'absolute'} src={`/image/${iconName}`}/>
+            <Flex w={'100%'} h={'100%'} backgroundRepeat={'no-repeat'} objectFit={'cover'} backgroundAttachment={'fixed'} backgroundImage={`/image/${backgroundName}`}/>    
         </Flex>
         
     )

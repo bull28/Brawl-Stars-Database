@@ -30,7 +30,7 @@ export default function ShopItem({data, coins, isFeatured, timeLeftString}: {dat
     if (!isFeatured){
 
         return (
-            <Flex alignItems={'center'} flexDir={'column'} borderRadius={'lg'} onClick={onOpen} w={'10vw'} p={5} cursor={'pointer'} pos={'relative'} bgColor={'lightskyblue'} border={'3px solid'} borderColor={'blue.500'} _hover={{
+            <Flex alignItems={'center'} flexDir={'column'} borderRadius={'lg'} onClick={onOpen} w={'11vw'} p={5} cursor={'pointer'} pos={'relative'} bgColor={'lightskyblue'} border={'3px solid'} borderColor={'blue.500'} _hover={{
             ".top": {
                 transitionDelay: "0s",
                 transform: "scaleX(1)"
@@ -54,7 +54,7 @@ export default function ShopItem({data, coins, isFeatured, timeLeftString}: {dat
                 <Box className='right' pos={'absolute'} display={'block'} background={'blue.500'} transition={`all 0.1s linear`} w={'3px'} height={'100%'} transform={'scaleY(0)'} top={0} right={0} transitionDelay={'0.1s'} transformOrigin={'top left'}></Box>
     
                 <Flex p={5}>
-                    <Image borderRadius={'lg'} src={`/image/${data.image}`}/>
+                    <Image filter={'drop-shadow(0 0 2rem rgb(255, 255, 255));'} borderRadius={'lg'} src={`/image/${data.image}`}/>
                 </Flex>
                 <Flex>                    
                     <Text fontSize={'xl'}  className={'heading-2xl'}>{data.displayName}</Text>

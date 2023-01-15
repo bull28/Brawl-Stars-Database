@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom'
 import { BsPersonFill } from 'react-icons/bs'
 import { CollectionData } from '../types/CollectionData'
 import { RiLock2Line } from 'react-icons/ri'
-import SkullBackground from '../components/SkullBackground'
+import SkullBackground from '../components/ScrollableSkullBackground'
 
 /*
     To-Do

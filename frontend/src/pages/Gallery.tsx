@@ -1,38 +1,16 @@
 import { Button, Flex, Image, Text } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 import SkullBackground from "../components/SkullBackground";
+import AuthRequest from "../helpers/AuthRequest";
 
 export default function Gallery() {
 
-  interface DataProps {
-    file: string,
-    name: string,
-    cost: number
-  }
+  const [data, setData] = useState<ThemeProps>()
 
-  const data: DataProps[] = [
-    {file: "giftshop", name: "Gift Shop", cost: 200},
-    {file: "lunar", name: "Lunar", cost: 500},
-    {file: "lny_20", name: "Lunar 2020", cost: 2000},
-    {file: "lny_20", name: "Lunar 2020", cost: 2000},
-    {file: "lny_20", name: "Lunar 2020", cost: 2000},
-    {file: "lny_20", name: "Lunar 2020", cost: 2000},
-    {file: "lny_20", name: "Lunar 2020", cost: 2000},
-    {file: "lny_20", name: "Lunar 2020", cost: 2000},
-
-
-  ]
-
-  const data2: DataProps[] = [
-    {file: "giftshop", name: "Gift Shop", cost: 200},
-    {file: "lunar", name: "Lunar", cost: 500},
-    {file: "lny_20", name: "Lunar 2020", cost: 2000},
-    {file: "lny_20", name: "Lunar 2020", cost: 2000},
-    {file: "lny_20", name: "Lunar 2020", cost: 2000},
-    {file: "lny_20", name: "Lunar 2020", cost: 2000},
-    {file: "lny_20", name: "Lunar 2020", cost: 2000},
-    {file: "lny_20", name: "Lunar 2020", cost: 2000},
-
-  ]
+  useEffect(() => {
+    AuthRequest('/theme', {setState: [{func: setData, attr: ""}]})
+    
+  }, [])
 
   const changeBg = (file: string) => {
     localStorage.setItem('background', file)
@@ -43,6 +21,12 @@ export default function Gallery() {
     localStorage.setItem('icon', file)
     window.location.reload()
   }
+
+  interface ThemeProps {
+    background: [string],
+    icon: [string]
+  }
+  
 
   return (
     <Flex justifyContent={'center'}>            
@@ -62,18 +46,18 @@ export default function Gallery() {
                           borderRadius: `6px`,
                           },
                       }}>
-            {data.map((bg) => (
+            {data?.background.map((bg) => (
               <Flex bgColor={'lightskyblue'} justifyContent={'space-between'} p={4} borderRadius={'lg'} my={'1%'} border={'2px solid black'}>
                 <Flex>
-                  <Image  borderRadius={'lg'} border={'2px solid'} borderColor={'blue.800'} w={'15vh'} h={'15vh'} src={require(`../assets/backgrounds/bg_${bg.file}.webp`)}/>
+                  <Image  borderRadius={'lg'} border={'2px solid'} borderColor={'blue.800'} w={'15vh'} h={'15vh'} src={`/image/${bg}`}/>
                   <Flex flexDir={'column'} ml={'5%'} h={'11vh'}  justifyContent={'space-between'}>
-                    <Text className="heading-2xl" fontSize={'2xl'}>{bg.name}</Text>
+                    <Text className="heading-2xl" fontSize={'2xl'}>{bg}</Text>
                     <Text fontSize={'sm'} className="heading-md">Personalize the Website with a New Background!</Text>
                   </Flex>
                 </Flex>
                 <Flex flexDir={'column'} h={'13vh'} justifyContent={'space-around'}>
                   <Button isDisabled={true} fontSize={'xl'} bgColor={'green.300'}>Buy</Button>
-                  <Button onClick={() => {changeBg(bg.file)}} fontSize={'xl'} bgColor={'blue.500'}>Try</Button>
+                  <Button onClick={() => {changeBg(bg)}} fontSize={'xl'} bgColor={'blue.500'}>Try</Button>
                 </Flex>
               </Flex>
             ))}
@@ -93,18 +77,18 @@ export default function Gallery() {
                           borderRadius: `6px`,
                           },
                       }}>
-            {data2.map((icon) => (
+            {data?.icon.map((icon) => (
               <Flex bgColor={'lightskyblue'} justifyContent={'space-between'} p={4} borderRadius={'lg'} my={'1%'} border={'2px solid black'}>
                 <Flex>
-                  <Image  borderRadius={'lg'} border={'2px solid'} borderColor={'blue.800'} w={'15vh'} h={'15vh'} src={require(`../assets/icons/icon_${icon.file}.webp`)}/>
+                  <Image borderRadius={'lg'} border={'2px solid'} borderColor={'blue.800'} w={'15vh'} h={'15vh'} src={`/image/${icon}`}/>
                   <Flex flexDir={'column'} ml={'5%'} h={'11vh'}  justifyContent={'space-between'}>
-                    <Text className="heading-2xl" fontSize={'2xl'}>{icon.name}</Text>
+                    <Text className="heading-2xl" fontSize={'2xl'}>{icon}</Text>
                     <Text fontSize={'sm'} className="heading-md">Personalize the Website with New Background Icons!</Text>
                   </Flex>
                 </Flex>
                 <Flex flexDir={'column'} h={'13vh'} justifyContent={'space-around'}>
                   <Button isDisabled={true} fontSize={'xl'} bgColor={'green.300'}>Buy</Button>
-                  <Button onClick={() => {changeIcon(icon.file)}} fontSize={'xl'} bgColor={'blue.500'}>Try</Button>
+                  <Button onClick={() => {changeIcon(icon)}} fontSize={'xl'} bgColor={'blue.500'}>Try</Button>
                 </Flex>
               </Flex>
             ))}
