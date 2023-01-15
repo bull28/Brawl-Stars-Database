@@ -204,6 +204,56 @@ function getAvatars(allSkins, allAvatars, userCollection, userAvatars){
 }
 
 /**
+ * Returns a complete list of all themes a user is able to select.
+ * All free themes are available to anyone. Special themes are only
+ * obtainable from the shop. This function takes the name of a theme
+ * bundle and classifies each image as either background, icon, or
+ * any other type of item that may be contained in a bundle.
+ * @param {Array} allThemes json object with arrays of free and special themes
+ * @param {Array} userThemes parsed themes object from the database
+ * @returns object with keys corresponding to types of images
+ */
+function getThemes(allThemes, userThemes){
+    let themesInfo = {
+        "background": [],
+        "icon": []
+    };
+
+    if (!(allThemes.free && allThemes.special)){
+        return themesInfo;
+    }
+
+    for (let t in allThemes){
+        for (let theme of allThemes[t]){
+            let themeType = "";
+            if (theme.includes("_icon")){
+                themeType = "icon";
+            } else if (theme.includes("_background")){
+                themeType = "background";
+            }
+            // Add more types if they become available
+    
+            if (themeType != "" && themesInfo.hasOwnProperty(themeType)){
+                if (t == "free"){
+                    // Free themes are always available
+                    themesInfo[themeType].push(theme);
+                } else if (t == "special"){
+                    // Get the theme name and check if the user owns that theme
+                    // This check may pass on different loop iterations because
+                    // each theme name corresponds to a bundle of items.
+                    const themeName = theme.split("_" + themeType)[0];
+                    if (themeName !== undefined && userThemes.includes(themeName)){
+                        themesInfo[themeType].push(theme);
+                    }
+                }
+            }
+        }
+    }
+
+    return themesInfo;
+}
+
+/**
  * Determines which items a user is able to buy from the shop, given their
  * collection progress and unlocked avatars. Avatars are a one-time purchase
  * and brawler-type items are only available if the user does not have all
@@ -216,11 +266,12 @@ function getAvatars(allSkins, allAvatars, userCollection, userAvatars){
  * @param {Array} allSkins json array with all the brawlers
  * @param {Object} userCollection parsed brawlers object from the database
  * @param {Array} userAvatars parsed avatars object from the database
+ * @param {Array} userThemes parsed themes object from the database
  * @param {String} featuredItem current featured item string
  * @param {Array} featuredCosts array of costs for different rarities of pins
  * @returns object containing items the user can buy
  */
-function getShopItems(shopItems, allSkins, userCollection, userAvatars, featuredItem, featuredCosts){
+function getShopItems(shopItems, allSkins, userCollection, userAvatars, userThemes, featuredItem, featuredCosts){
     let availableShopItems = {};
 
     const collectionInfo = formatCollectionData(allSkins, userCollection, "", "");
@@ -237,6 +288,12 @@ function getShopItems(shopItems, allSkins, userCollection, userAvatars, featured
         } else if (shopItems[x].itemType == "avatar"){
             // If the user does not already own an avatar, it is available for them to buy
             if (userAvatars.includes(shopItems[x].extraData) == false){
+                availableShopItems[x] = shopItems[x];
+            }
+        } else if (shopItems[x].itemType == "theme"){
+            // Themes are handled the same way as avatars. The only difference is that one theme string
+            // corresponds to a bundle of actual items (background, icon, and possibly more???)
+            if (userThemes.includes(shopItems[x].extraData) == false){
                 availableShopItems[x] = shopItems[x];
             }
         } else if (shopItems[x].itemType == "featured"){
@@ -462,5 +519,6 @@ function removePin(userCollection, brawler, pin){
 
 exports.formatCollectionData = formatCollectionData;
 exports.getAvatars = getAvatars;
+exports.getThemes = getThemes;
 exports.getShopItems = getShopItems;
 exports.refreshFeaturedItem = refreshFeaturedItem;

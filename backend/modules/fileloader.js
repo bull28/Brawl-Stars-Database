@@ -76,9 +76,37 @@ async function readSpecialAvatars(){
     });
 }
 
+async function readFreeThemes(){
+    return fspromises.readdir("assets/images/themes/free")
+    .then((result) => {
+        for (let x in result){
+            result[x] = "themes/free/" + result[x];
+        }
+        return result;
+    })
+    .catch((error) => {
+        return [];
+    });
+}
+
+async function readSpecialThemes(){
+    return fspromises.readdir("assets/images/themes/special")
+    .then((result) => {
+        for (let x in result){
+            result[x] = "themes/special/" + result[x];
+        }
+        return result;
+    })
+    .catch((error) => {
+        return [];
+    });
+}
+
 exports.allSkinsPromise = readBrawlers();
 exports.eventListPromise = readMaps();
 exports.dropChancesPromise = readBrawlBox();
 exports.freeAvatarsPromise = readFreeAvatars();
 exports.specialAvatarsPromise = readSpecialAvatars();
+exports.freeThemesPromise = readFreeThemes();
+exports.specialThemesPromise = readSpecialThemes();
 exports.shopDataPromise = readShop();

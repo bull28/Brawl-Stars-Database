@@ -115,5 +115,104 @@
         "extraData": "avatars/special/real_pay2winavatar",
         "amount": 1,
         "description": "Contains a new avatar. This avatar can be selected in the account settings."
+    },
+    "theme1": {
+        "displayName": "Retropolis Theme",
+        "cost": 6000,
+        "itemType": "theme",
+        "image": "",
+        "extraData": "themes/special/retro",
+        "amount": 1,
+        "description": "This bundle contains a new background and a new icon style."
+    },
+    "theme2": {
+        "displayName": "Mecha Theme",
+        "cost": 6000,
+        "itemType": "theme",
+        "image": "",
+        "extraData": "themes/special/mecha",
+        "amount": 1,
+        "description": "This bundle contains a new background and a new icon style."
+    },
+    "theme3": {
+        "displayName": "Pirate Brawlidays Theme",
+        "cost": 6000,
+        "itemType": "theme",
+        "image": "",
+        "extraData": "themes/special/pirate",
+        "amount": 1,
+        "description": "This bundle contains a new background and a new icon style."
+    },
+    "theme4": {
+        "displayName": "Lunar Brawl Theme",
+        "cost": 6000,
+        "itemType": "theme",
+        "image": "",
+        "extraData": "themes/special/lny_20",
+        "amount": 1,
+        "description": "This bundle contains a new background and a new icon style."
+    },
+    "theme5": {
+        "displayName": "Brawl Ball Theme",
+        "cost": 6000,
+        "itemType": "theme",
+        "image": "",
+        "extraData": "themes/special/psg",
+        "amount": 1,
+        "description": "This bundle contains a new background and a new icon style."
+    },
+    "theme6": {
+        "displayName": "Tara's Bazaar Theme",
+        "cost": 6000,
+        "itemType": "theme",
+        "image": "",
+        "extraData": "themes/special/taras_bazaar",
+        "amount": 1,
+        "description": "This bundle contains a new background and a new icon style."
+    },
+    "theme7": {
+        "displayName": "Super City Theme",
+        "cost": 6000,
+        "itemType": "theme",
+        "image": "",
+        "extraData": "themes/special/super_city",
+        "amount": 1,
+        "description": "This bundle contains a new background and a new icon style."
+    },
+    "theme8": {
+        "displayName": "Starr Park Theme",
+        "cost": 6000,
+        "itemType": "theme",
+        "image": "",
+        "extraData": "themes/special/giftshop",
+        "amount": 1,
+        "description": "This bundle contains a new background and a new icon style."
+    },
+    "theme9": {
+        "displayName": "Moon Festival Theme",
+        "cost": 6000,
+        "itemType": "theme",
+        "image": "",
+        "extraData": "themes/special/lunar",
+        "amount": 1,
+        "description": "This bundle contains a new background and a new icon style."
+    },
+    "theme10": {
+        "displayName": "Waterpark Theme",
+        "cost": 6000,
+        "itemType": "theme",
+        "image": "",
+        "extraData": "themes/special/waterpark",
+        "amount": 1,
+        "description": "This bundle contains a new background and a new icon style."
+    },
+    "theme11": {
+        "displayName": "Legendary Theme",
+        "cost": 6000,
+        "itemType": "theme",
+        "image": "",
+        "extraData": "themes/special/legendaryset",
+        "amount": 1,
+        "description": "This bundle contains a new background and a new icon style."
     }
 }

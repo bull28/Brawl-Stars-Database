@@ -42,6 +42,19 @@ specialAvatarsPromise.then((data) => {
         allAvatars.special = data;
     }
 });
+let allThemes = {"free": [], "special": []};
+const freeThemesPromise = fileLoader.freeThemesPromise;
+freeThemesPromise.then((data) => {
+    if (data !== undefined){
+        allThemes.free = data;
+    }
+});
+const specialThemesPromise = fileLoader.specialThemesPromise;
+specialThemesPromise.then((data) => {
+    if (data !== undefined){
+        allThemes.special = data;
+    }
+});
 
 
 /**
@@ -372,6 +385,45 @@ router.post("/avatar", (req, res) => {
 
             const avatarsInfo = pins.getAvatars(allSkins, allAvatars, userBrawlers, userAvatars);
             res.json(avatarsInfo);
+        });
+    } else{
+        res.status(401).send("Invalid token.");
+    }
+});
+
+// Get the list of all themes the user is allowed to select
+router.post("/theme", (req, res) => {
+    if (!(req.body.token)){
+        res.status(400).send("Token is missing.");
+        return;
+    }
+    let username = validateToken(req.body.token);
+
+    if (username){
+        database.queryDatabase(
+        "SELECT themes FROM " + TABLE_NAME + " WHERE username = ?;",
+        [username], (error, results, fields) => {
+            if (error){
+                res.status(500).send("Could not connect to database.");
+                return;
+            }
+            if (results.length == 0){
+                res.status(404).send("Could not find the user in the database.");
+                return;
+            }
+
+            let userThemes = [];
+            try{
+                userThemes = JSON.parse(results[0].themes);
+            } catch (error){
+                res.status(500).send("Theme data could not be loaded.");
+                return;
+            }
+
+            //const avatarsInfo = pins.getAvatars(allSkins, allAvatars, userBrawlers, userAvatars);
+            console.log(userThemes);
+            const themesInfo = pins.getThemes(allThemes, userThemes);
+            res.json(themesInfo);
         });
     } else{
         res.status(401).send("Invalid token.");
