@@ -26,7 +26,7 @@ export default function Gallery() {
     background: [string],
     icon: [string]
   }
-  
+
 
   return (
     <Flex justifyContent={'center'}>            

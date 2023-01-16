@@ -13,6 +13,7 @@ import Collection from './pages/Collection'
 import Trade from './pages/Trade'
 import MyTrades from './pages/MyTrades'
 import Shop from './pages/Shop'
+import AudioPlayer from './components/AudioPlayer'
 
 function App() {
   return (
@@ -32,9 +33,10 @@ function App() {
           <Route path="/trade" element={<Trade/>}/>
           <Route path="/mytrades" element={<MyTrades/>}/>
           <Route path="/shop" element={<Shop/>}/>
-          <Route path="*" element={<NotFound/>}/>
-        </Routes>
+          <Route path="*" element={<NotFound/>}/>        
+        </Routes>                
       </BrowserRouter>
+      <AudioPlayer/>
     </div>
   );
 }
