@@ -123,7 +123,7 @@
         "image": "",
         "extraData": "themes/special/retro",
         "amount": 1,
-        "description": "This bundle contains a new background and a new icon style."
+        "description": "This bundle contains a new background, icon style, and background music."
     },
     "theme2": {
         "displayName": "",
@@ -132,7 +132,7 @@
         "image": "",
         "extraData": "themes/special/mecha",
         "amount": 1,
-        "description": "This bundle contains a new background and a new icon style."
+        "description": "This bundle contains a new background, icon style, and background music."
     },
     "theme3": {
         "displayName": "",
@@ -141,7 +141,7 @@
         "image": "",
         "extraData": "themes/special/pirate",
         "amount": 1,
-        "description": "This bundle contains a new background and a new icon style."
+        "description": "This bundle contains a new background, icon style, and background music."
     },
     "theme4": {
         "displayName": "",
@@ -150,7 +150,7 @@
         "image": "",
         "extraData": "themes/special/lny_20",
         "amount": 1,
-        "description": "This bundle contains a new background and a new icon style."
+        "description": "This bundle contains a new background, icon style, and background music."
     },
     "theme5": {
         "displayName": "",
@@ -159,7 +159,7 @@
         "image": "",
         "extraData": "themes/special/psg",
         "amount": 1,
-        "description": "This bundle contains a new background and a new icon style."
+        "description": "This bundle contains a new background, icon style, and background music."
     },
     "theme6": {
         "displayName": "",
@@ -168,7 +168,7 @@
         "image": "",
         "extraData": "themes/special/taras_bazaar",
         "amount": 1,
-        "description": "This bundle contains a new background and a new icon style."
+        "description": "This bundle contains a new background, icon style, and background music."
     },
     "theme7": {
         "displayName": "",
@@ -177,7 +177,7 @@
         "image": "",
         "extraData": "themes/special/super_city",
         "amount": 1,
-        "description": "This bundle contains a new background and a new icon style."
+        "description": "This bundle contains a new background, icon style, and background music."
     },
     "theme8": {
         "displayName": "",
@@ -186,7 +186,7 @@
         "image": "",
         "extraData": "themes/special/giftshop",
         "amount": 1,
-        "description": "This bundle contains a new background and a new icon style."
+        "description": "This bundle contains a new background, icon style, and background music."
     },
     "theme9": {
         "displayName": "",
@@ -195,7 +195,7 @@
         "image": "",
         "extraData": "themes/special/lunar",
         "amount": 1,
-        "description": "This bundle contains a new background and a new icon style."
+        "description": "This bundle contains a new background, icon style, and background music."
     },
     "theme10": {
         "displayName": "",
@@ -204,7 +204,7 @@
         "image": "",
         "extraData": "themes/special/waterpark",
         "amount": 1,
-        "description": "This bundle contains a new background and a new icon style."
+        "description": "This bundle contains a new background, icon style, and background music."
     },
     "theme11": {
         "displayName": "",
@@ -213,7 +213,7 @@
         "image": "",
         "extraData": "themes/special/legendaryset",
         "amount": 1,
-        "description": "This bundle contains a new background and a new icon style."
+        "description": "This bundle contains a new background, icon style, and background music."
     },
     "specialtheme1": {
         "displayName": "",
@@ -222,6 +222,6 @@
         "image": "",
         "extraData": "themes/special/yellow_face",
         "amount": 1,
-        "description": "This bundle contains a new background and a new icon style."
+        "description": "This bundle contains a new background, icon style, and background music."
     }
 }
