@@ -117,7 +117,7 @@
         "description": "Contains a new avatar. This avatar can be selected in the account settings."
     },
     "theme1": {
-        "displayName": "Retropolis Theme",
+        "displayName": "",
         "cost": 6000,
         "itemType": "theme",
         "image": "",
@@ -126,7 +126,7 @@
         "description": "This bundle contains a new background and a new icon style."
     },
     "theme2": {
-        "displayName": "Mecha Theme",
+        "displayName": "",
         "cost": 6000,
         "itemType": "theme",
         "image": "",
@@ -135,7 +135,7 @@
         "description": "This bundle contains a new background and a new icon style."
     },
     "theme3": {
-        "displayName": "Pirate Brawlidays Theme",
+        "displayName": "",
         "cost": 6000,
         "itemType": "theme",
         "image": "",
@@ -144,7 +144,7 @@
         "description": "This bundle contains a new background and a new icon style."
     },
     "theme4": {
-        "displayName": "Lunar Brawl Theme",
+        "displayName": "",
         "cost": 6000,
         "itemType": "theme",
         "image": "",
@@ -153,7 +153,7 @@
         "description": "This bundle contains a new background and a new icon style."
     },
     "theme5": {
-        "displayName": "Brawl Ball Theme",
+        "displayName": "",
         "cost": 6000,
         "itemType": "theme",
         "image": "",
@@ -162,7 +162,7 @@
         "description": "This bundle contains a new background and a new icon style."
     },
     "theme6": {
-        "displayName": "Tara's Bazaar Theme",
+        "displayName": "",
         "cost": 6000,
         "itemType": "theme",
         "image": "",
@@ -171,7 +171,7 @@
         "description": "This bundle contains a new background and a new icon style."
     },
     "theme7": {
-        "displayName": "Super City Theme",
+        "displayName": "",
         "cost": 6000,
         "itemType": "theme",
         "image": "",
@@ -180,7 +180,7 @@
         "description": "This bundle contains a new background and a new icon style."
     },
     "theme8": {
-        "displayName": "Starr Park Theme",
+        "displayName": "",
         "cost": 6000,
         "itemType": "theme",
         "image": "",
@@ -189,7 +189,7 @@
         "description": "This bundle contains a new background and a new icon style."
     },
     "theme9": {
-        "displayName": "Moon Festival Theme",
+        "displayName": "",
         "cost": 6000,
         "itemType": "theme",
         "image": "",
@@ -198,7 +198,7 @@
         "description": "This bundle contains a new background and a new icon style."
     },
     "theme10": {
-        "displayName": "Waterpark Theme",
+        "displayName": "",
         "cost": 6000,
         "itemType": "theme",
         "image": "",
@@ -207,7 +207,7 @@
         "description": "This bundle contains a new background and a new icon style."
     },
     "theme11": {
-        "displayName": "Legendary Theme",
+        "displayName": "",
         "cost": 6000,
         "itemType": "theme",
         "image": "",
@@ -216,7 +216,7 @@
         "description": "This bundle contains a new background and a new icon style."
     },
     "specialtheme1": {
-        "displayName": "Theme",
+        "displayName": "",
         "cost": 18000,
         "itemType": "theme",
         "image": "",

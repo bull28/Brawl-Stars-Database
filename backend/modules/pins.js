@@ -211,12 +211,15 @@ function getAvatars(allSkins, allAvatars, userCollection, userAvatars){
  * any other type of item that may be contained in a bundle.
  * @param {Array} allThemes json object with arrays of free and special themes
  * @param {Array} userThemes parsed themes object from the database
+ * @param {Object} themeMap json object which maps theme files to display names
  * @returns object with keys corresponding to types of images
  */
-function getThemes(allThemes, userThemes){
+function getThemes(allThemes, userThemes, themeMap){
     let themesInfo = {
         "background": [],
-        "icon": []
+        "icon": [],
+        "selectpreview": [],
+        "music": []
     };
 
     if (!(allThemes.free && allThemes.special)){
@@ -226,24 +229,43 @@ function getThemes(allThemes, userThemes){
     for (let t in allThemes){
         for (let theme of allThemes[t]){
             let themeType = "";
+            let themeTypeDisplay = "";
             if (theme.includes("_icon")){
                 themeType = "icon";
+                themeTypeDisplay = " Icon";
             } else if (theme.includes("_background")){
                 themeType = "background";
+                themeTypeDisplay = " Background";
+            } else if (theme.includes("_selectpreview")){
+                themeType = "selectpreview";
+                themeTypeDisplay = " Icon";
+            } else if (theme.includes("_music")){
+                themeType = "music";
+                themeTypeDisplay = " Music";
             }
             // Add more types if they become available
     
             if (themeType != "" && themesInfo.hasOwnProperty(themeType)){
+                // Object representing an image and its display name
+                let thisTheme = {
+                    "displayName": "",
+                    "image": ""
+                };
+
+                // Check if the theme map contains the current theme name and if it
+                // does, set its display name
+                const themeName = theme.split("_" + themeType)[0];
+                if (themeMap.hasOwnProperty(themeName)){
+                    thisTheme.displayName = themeMap[themeName] + themeTypeDisplay;
+                }
+
                 if (t == "free"){
-                    // Free themes are always available
-                    themesInfo[themeType].push(theme);
+                    thisTheme.image = theme;
+                    themesInfo[themeType].push(thisTheme);
                 } else if (t == "special"){
-                    // Get the theme name and check if the user owns that theme
-                    // This check may pass on different loop iterations because
-                    // each theme name corresponds to a bundle of items.
-                    const themeName = theme.split("_" + themeType)[0];
                     if (themeName !== undefined && userThemes.includes(themeName)){
-                        themesInfo[themeType].push(theme);
+                        thisTheme.image = theme;
+                        themesInfo[themeType].push(thisTheme);
                     }
                 }
             }

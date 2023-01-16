@@ -28,6 +28,15 @@ allSkinsPromise.then((data) => {
     }
 });
 
+// Load the theme map
+let themeMap = {};
+const themeMapPromise = fileLoader.themeMapPromise;
+themeMapPromise.then((data) => {
+    if (data !== undefined){
+        themeMap = data;
+    }
+});
+
 // Load the avatars
 let allAvatars = {"free": [], "special": []};
 const freeAvatarsPromise = fileLoader.freeAvatarsPromise;
@@ -420,7 +429,7 @@ router.post("/theme", (req, res) => {
                 return;
             }
 
-            const themesInfo = pins.getThemes(allThemes, userThemes);
+            const themesInfo = pins.getThemes(allThemes, userThemes, themeMap);
             res.json(themesInfo);
         });
     } else{

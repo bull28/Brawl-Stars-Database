@@ -34,6 +34,15 @@ allSkinsPromise.then((data) => {
     }
 });
 
+// Load the theme map
+let themeMap = {};
+const themeMapPromise = fileLoader.themeMapPromise;
+themeMapPromise.then((data) => {
+    if (data !== undefined){
+        themeMap = data;
+    }
+});
+
 // Load the shop items
 let shopItems = {};
 const shopDataPromise = fileLoader.shopDataPromise;
@@ -573,7 +582,11 @@ router.post("/shop", (req, res) => {
                             if (thisItemType == "avatar"){
                                 thisItem.image = availableShopItems[x]["extraData"] + IMAGE_FILE_EXTENSION;
                             } else if (thisItemType == "theme"){
-                                thisItem.image = availableShopItems[x]["extraData"] + "_preview" + IMAGE_FILE_EXTENSION;
+                                const themeName = availableShopItems[x]["extraData"];
+                                if (themeMap.hasOwnProperty(themeName)){
+                                    thisItem.displayName = themeMap[themeName];
+                                }
+                                thisItem.image = themeName + "_preview" + IMAGE_FILE_EXTENSION;
                             } else if (thisItemType == "featuredPin"){
                                 // Featured pin already has the image extension since it is stored in brawlers data
                                 thisItem.image = PIN_IMAGE_DIR + availableShopItems[x].image;

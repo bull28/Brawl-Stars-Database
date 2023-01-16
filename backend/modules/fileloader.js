@@ -50,6 +50,17 @@ async function readShop(){
     });
 }
 
+async function readThemeMap(){
+    return fspromises.readFile("assets/data/themes_data.json", "utf8")
+    .then((result) => {
+        const themeMap = JSON.parse(result);
+        return themeMap;
+    })
+    .catch((error) => {
+        return {};
+    });
+}
+
 async function readFreeAvatars(){
     return fspromises.readdir("assets/images/avatars/free")
     .then((result) => {
@@ -110,3 +121,4 @@ exports.specialAvatarsPromise = readSpecialAvatars();
 exports.freeThemesPromise = readFreeThemes();
 exports.specialThemesPromise = readSpecialThemes();
 exports.shopDataPromise = readShop();
+exports.themeMapPromise = readThemeMap();

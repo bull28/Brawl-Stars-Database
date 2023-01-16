@@ -86,7 +86,7 @@ const GltfModel = ({ modelPath, scale = 1.0, position = [0, 0, 0] }: ModelViewer
     
     // scene backround light
     const backroundLight = new AmbientLight();
-    backroundLight.intensity = 0.69;
+    backroundLight.intensity = 1.2;
     backroundLight.color = new Color(0xffffff);
 
 
@@ -98,7 +98,7 @@ const GltfModel = ({ modelPath, scale = 1.0, position = [0, 0, 0] }: ModelViewer
     light1.position.set(light1X * -1, light1Y * -1, light1Z * -1);
     light1.target = light1Pos;
 
-    light1.intensity = 1.6;
+    light1.intensity = 6.4;
     //light1.color = new Color(0xc0ffff);//an alternative color
     light1.color = new Color(0x24d6ff);
 
@@ -111,7 +111,7 @@ const GltfModel = ({ modelPath, scale = 1.0, position = [0, 0, 0] }: ModelViewer
     light2.position.set(light2X * -1, light2Y * -1, light2Z * -1);//position of the light
     light2.target = light2Pos;
 
-    light2.intensity = 1.0;
+    light2.intensity = 3.0;
     light2.color = new Color(0xdfdfdf);
 
 
@@ -166,7 +166,7 @@ const ModelViewer = ({ modelPath, scale = 1.0, position = [0, 0, 0] }: ModelView
     }
 
     return (
-        <Canvas camera={{ fov: camera.fov, position: cameraObj.position}}>
+        <Canvas linear={true} camera={{ fov: camera.fov, position: cameraObj.position}}>
             <Suspense fallback={null}>
                 <GltfModel modelPath={modelPath} scale={scale} position={position} />
                 <OrbitControls maxDistance={cameraObj.position.length() * 3}/>
