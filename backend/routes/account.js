@@ -189,8 +189,8 @@ router.post("/signup", (req, res) => {
     if (username && password){
         database.queryDatabase(
         "INSERT IGNORE INTO " + TABLE_NAME +
-        " (username, password, active_avatar, brawlers, avatars, wild_card_pins, featured_item) VALUES (?, ?, ?, ?, ?, ?, ?);",
-        [username, password, "avatars/free/default", JSON.stringify(startingBrawlers), "[]", "[]", ""], (error, results, fields) => {
+        " (username, password, active_avatar, brawlers, avatars, themes, wild_card_pins, featured_item) VALUES (?, ?, ?, ?, ?, ?, ?, ?);",
+        [username, password, "avatars/free/default", JSON.stringify(startingBrawlers), "[]", "[]", "[]", ""], (error, results, fields) => {
             if (error){
                 res.status(500).send("Could not connect to database.");
                 return;
@@ -206,8 +206,6 @@ router.post("/signup", (req, res) => {
                         res.status(500).send("Could not connect to database.");
                         return;
                     }
-                    //"SELECT username, last_login, last_claim, tokens, token_doubler FROM " + TABLE_NAME + " WHERE username = ? AND password = ?;",
-                    //"SELECT username, last_login, brawlers, featured_item FROM " + TABLE_NAME + " WHERE username = ? AND password = ?;",
 
                     // At this point, the query was successful (error was not found) so
                     // either the login is successful or the username/password are incorrect
