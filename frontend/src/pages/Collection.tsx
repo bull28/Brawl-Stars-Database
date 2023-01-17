@@ -49,7 +49,7 @@ export default function Collection() {
 
 
     return (
-        <Flex flexDir={'column'} w={'100%'} justifyContent={'center'} alignItems={'center'} textAlign={'center'}>            
+        <Flex flexDir={'column'} w={'100%'} justifyContent={'center'} alignItems={'center'} textAlign={'center'} overflowX={'hidden'}>            
             <SkullBackground/>
             <Text fontSize={'3xl'} className={'heading-3xl'} >Collection</Text>
             {localStorage.getItem('username') && 
@@ -116,7 +116,7 @@ export default function Collection() {
                 </Flex>
             }            
             {(brawlers.length > 0) && <Accordion defaultIndex={[brawlers.indexOf(searchParams.get('brawler'))]} allowMultiple allowToggle>
-            <SimpleGrid columns={[1,2,3,4]} spacing={3} w={'100vw'} bgColor={'blue.800'} p={5} mb={3}>
+            <SimpleGrid columns={[1,2,3,4]} spacing={3} w={'100vw'} bgColor={'blue.800'} p={5} mb={0}>
                 {data?.collection.map((brawler) => (
                     <AccordionItem border={brawler.unlockedPins === brawler.totalPins ? '3px solid #E7A210' : '3px solid black'}>
                         {({ isExpanded }) => (

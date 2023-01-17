@@ -3,7 +3,7 @@ import { Flex, ScaleFade, SimpleGrid, Text } from '@chakra-ui/react'
 import axios from 'axios'
 import BrawlerView from '../components/BrawlerView'
 import { Brawler } from '../types/BrawlerData'
-import SkullBackground from '../components/ScrollableSkullBackground'
+import SkullBackground from '../components/SkullBackground'
 
 export default function Brawlers() {
 
