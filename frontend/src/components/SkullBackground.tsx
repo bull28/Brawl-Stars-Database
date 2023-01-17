@@ -8,14 +8,14 @@ export default function SkullBackground() {
         }
 
         100% {
-            transform: translateY(2762px);
+            transform: translateY(255.7407407vh);
         }
     
     `
 
     const animation2 = keyframes`
         0% {
-            transform: translateY(-2762px);
+            transform: translateY(-255.7407407vh);
         }
 
         100% {
@@ -29,8 +29,8 @@ export default function SkullBackground() {
 
     return (
         <Flex pos={'absolute'} overflow={'hidden'} zIndex={'-1'} top={0}>            
-            <Image w={'100vw'} h={'2762px'} objectFit={'cover'} animation={`${animation1} 175s linear infinite reverse`} pos={'absolute'} src={`/image/${iconName}`}/>
-            <Image w={'100vw'} h={'2762px'} objectFit={'cover'} animation={`${animation2} 175s linear infinite reverse`} pos={'absolute'} src={`/image/${iconName}`}/>
+            <Image w={'100vw'} h={'255.7407407vh'} objectFit={'cover'} animation={`${animation1} 175s linear infinite reverse`} pos={'absolute'} src={`/image/${iconName}`}/>
+            <Image w={'100vw'} h={'255.7407407vh'} objectFit={'cover'} animation={`${animation2} 175s linear infinite reverse`} pos={'absolute'} src={`/image/${iconName}`}/>
             <Image w={'100vw'} h={'100vh'} objectFit={'cover'} src={`/image/${backgroundName}`}/>    
         </Flex>
         

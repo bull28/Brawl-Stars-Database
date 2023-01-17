@@ -215,12 +215,7 @@ function getAvatars(allSkins, allAvatars, userCollection, userAvatars){
  * @returns object with keys corresponding to types of images
  */
 function getThemes(allThemes, userThemes, themeMap){
-    let themesInfo = {
-        "background": [],
-        "icon": [],
-        "selectpreview": [],
-        "music": []
-    };
+    let themesInfo = {};
 
     if (!(allThemes.free && allThemes.special)){
         return themesInfo;
@@ -229,50 +224,66 @@ function getThemes(allThemes, userThemes, themeMap){
     for (let t in allThemes){
         for (let theme of allThemes[t]){
             let themeType = "";
-            let themeTypeDisplay = "";
             if (theme.includes("_icon")){
                 themeType = "icon";
-                themeTypeDisplay = " Icon";
             } else if (theme.includes("_background")){
                 themeType = "background";
-                themeTypeDisplay = " Background";
             } else if (theme.includes("_selectpreview")){
                 themeType = "selectpreview";
-                themeTypeDisplay = " Icon";
             } else if (theme.includes("_music")){
                 themeType = "music";
-                themeTypeDisplay = " Music";
             }
             // Add more types if they become available
     
-            if (themeType != "" && themesInfo.hasOwnProperty(themeType)){
-                // Object representing an image and its display name
-                let thisTheme = {
-                    "displayName": "",
-                    "image": ""
-                };
-
+            if (themeType != ""){
                 // Check if the theme map contains the current theme name and if it
-                // does, set its display name
-                const themeName = theme.split("_" + themeType)[0];
-                if (themeMap.hasOwnProperty(themeName)){
-                    thisTheme.displayName = themeMap[themeName] + themeTypeDisplay;
-                }
-
-                if (t == "free"){
-                    thisTheme.image = theme;
-                    themesInfo[themeType].push(thisTheme);
-                } else if (t == "special"){
-                    if (themeName !== undefined && userThemes.includes(themeName)){
-                        thisTheme.image = theme;
-                        themesInfo[themeType].push(thisTheme);
+                // does, add it to the themesInfo, grouped by name
+                const themePath = theme.split("_" + themeType)[0];
+                if (themeMap.hasOwnProperty(themePath)){
+                    if (!themesInfo.hasOwnProperty(themePath)){
+                        themesInfo[themePath] = {};
+                    }
+    
+                    if (t == "free"){
+                        themesInfo[themePath][themeType] = theme;
+                    } else if (t == "special"){
+                        if (themePath !== undefined && userThemes.includes(themePath)){
+                            themesInfo[themePath][themeType] = theme;
+                        }
                     }
                 }
             }
         }
     }
+    
+    // The data is required to be grouped by file type instead of theme name
+    let themesResult = {
+        "background": [],
+        "icon": [],
+        "music": []
+    };
 
-    return themesInfo;
+    for (let x in themesInfo){
+        for (let key in themesResult){
+            if (themesInfo[x].hasOwnProperty(key)){
+                // Themes are only added to themesInfo if there is a mapping from file
+                // path to theme name so no need to check if it has property
+                let thisTheme = {
+                    "displayName": themeMap[x],
+                    "path": themesInfo[x][key]
+                };
+
+                // Special case for icon and selectpreview: they need to be grouped together
+                if (key == "icon" && themesInfo[x].hasOwnProperty("selectpreview")){
+                    thisTheme.preview = themesInfo[x].selectpreview;
+                }
+
+                themesResult[key].push(thisTheme);
+            }
+        }
+    };
+
+    return themesResult;
 }
 
 /**
