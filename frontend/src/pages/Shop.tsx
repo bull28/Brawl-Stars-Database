@@ -80,7 +80,7 @@ export default function Shop() {
 
     return (
         <Flex flexDir={'column'} alignItems={'center'} minH={'100vh'}>
-            <Image w={"100%"} h={"100%"} position={"fixed"} src={require(`../assets/shopbackground${season}.webp`)}/>
+            <Flex zIndex={'-1'} w={'100%'} h={'100%'} pos={'absolute'} backgroundImage={require(`../assets/shopbackground${season}.webp`)} backgroundAttachment={'fixed'} backgroundRepeat={'no-repeat'} objectFit={'cover'}/>
             <MovingText title="Shop" color1="#fdf542" color2="#ff9005" fontSize='3xl'/>
             { getToken() ? <>
             <Flex pos={'absolute'} right={3} top={3}>
