@@ -215,6 +215,24 @@
         "amount": 1,
         "description": "This bundle contains a new background, icon style, and background music."
     },
+    "theme12": {
+        "displayName": "",
+        "cost": 6000,
+        "itemType": "theme",
+        "image": "",
+        "extraData": "themes/special/stuntshow",
+        "amount": 1,
+        "description": "This bundle contains a new background, icon style, and background music."
+    },
+    "theme13": {
+        "displayName": "",
+        "cost": 6000,
+        "itemType": "theme",
+        "image": "",
+        "extraData": "themes/special/deepsea",
+        "amount": 1,
+        "description": "This bundle contains a new background, icon style, and background music."
+    },
     "specialtheme1": {
         "displayName": "",
         "cost": 18000,
