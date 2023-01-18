@@ -46,7 +46,7 @@ export default function Home() {
 
   return (
     <Flex flexDir={'column'} alignItems={'center'}>
-    <Image w={'100vw'} h={'100vh'} position={'absolute'} objectFit={'cover'} src={(!isSun()) ? require('../assets/backroundnight.webp') : require('../assets/backround.webp')} zIndex={'-1'}/>
+    <Image w={'100vw'} h={'100vh'} position={'fixed'} objectFit={'cover'} src={(!isSun()) ? require('../assets/backroundnight.webp') : require('../assets/backround.webp')} zIndex={'-1'}/>
     <Flex mt={3} pos={['relative', 'relative', 'absolute']} width={['90%', '90%', '90%', '95%']} justifyContent={['space-between', 'space-between', 'space-between', 'right']} alignItems={'center'}>
         <Flex justifyContent={'center'} alignItems={'center'}>
           <Text mr={3} fontSize={'xl'} className={'heading-xl'} color={'pink.400'}>{`${new Date().getHours()}:${String(new Date().getMinutes()).length === 2 ? new Date().getMinutes() : "0"+new Date().getMinutes()}`}</Text>
