@@ -149,7 +149,7 @@ export default function Shop() {
                             <Text mr={1}>Themes</Text>
                             <BsPalette color={'black'}/>
                         </Flex>
-                        <SimpleGrid columns={8} spacingX={2}>
+                        <SimpleGrid columns={7} spacing={3}>
                         {
                             data?.map((item) => (
                                 item.name.toLowerCase().includes('theme') && <ScaleFade in={true}><ShopItem data={item} coins={userInfo?.coins || 0} timeLeftString={""}/></ScaleFade>

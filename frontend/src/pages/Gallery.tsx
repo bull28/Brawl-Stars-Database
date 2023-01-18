@@ -3,6 +3,18 @@ import { useEffect, useState } from "react";
 import SkullBackground from "../components/SkullBackground";
 import AuthRequest from "../helpers/AuthRequest";
 
+interface ThemeElementProps {
+  displayName: string,
+  image: string
+}
+
+interface ThemeProps {
+  background: [ThemeElementProps],
+  icon: [ThemeElementProps],
+  selectpreview: [ThemeElementProps],
+  music: [ThemeElementProps]
+}
+
 export default function Gallery() {
 
   const [data, setData] = useState<ThemeProps>()
@@ -22,10 +34,7 @@ export default function Gallery() {
     window.location.reload()
   }
 
-  interface ThemeProps {
-    background: [string],
-    icon: [string]
-  }
+  
 
 
   return (
@@ -49,15 +58,15 @@ export default function Gallery() {
             {data?.background.map((bg) => (
               <Flex bgColor={'lightskyblue'} justifyContent={'space-between'} p={4} borderRadius={'lg'} my={'1%'} border={'2px solid black'}>
                 <Flex>
-                  <Image  borderRadius={'lg'} border={'2px solid'} borderColor={'blue.800'} w={'15vh'} h={'15vh'} src={`/image/${bg}`}/>
+                  <Image  borderRadius={'lg'} border={'2px solid'} borderColor={'blue.800'} w={'15vh'} h={'15vh'} src={`/image/${bg.image}`}/>
                   <Flex flexDir={'column'} ml={'5%'} h={'11vh'}  justifyContent={'space-between'}>
-                    <Text className="heading-2xl" fontSize={'2xl'}>{bg}</Text>
+                    <Text className="heading-2xl" fontSize={'2xl'}>{bg.displayName}</Text>
                     <Text fontSize={'sm'} className="heading-md">Personalize the Website with a New Background!</Text>
                   </Flex>
                 </Flex>
                 <Flex flexDir={'column'} h={'13vh'} justifyContent={'space-around'}>
                   <Button isDisabled={true} fontSize={'xl'} bgColor={'green.300'}>Buy</Button>
-                  <Button onClick={() => {changeBg(bg)}} fontSize={'xl'} bgColor={'blue.500'}>Try</Button>
+                  <Button onClick={() => {changeBg(bg.image)}} fontSize={'xl'} bgColor={'blue.500'}>Try</Button>
                 </Flex>
               </Flex>
             ))}
@@ -80,15 +89,15 @@ export default function Gallery() {
             {data?.icon.map((icon) => (
               <Flex bgColor={'lightskyblue'} justifyContent={'space-between'} p={4} borderRadius={'lg'} my={'1%'} border={'2px solid black'}>
                 <Flex>
-                  <Image borderRadius={'lg'} border={'2px solid'} borderColor={'blue.800'} w={'15vh'} h={'15vh'} src={`/image/${icon}`}/>
+                  <Image bgColor={'black'} borderRadius={'lg'} border={'2px solid'} borderColor={'blue.800'} w={'15vh'} h={'15vh'} src={`/image/${icon.image}`}/>
                   <Flex flexDir={'column'} ml={'5%'} h={'11vh'}  justifyContent={'space-between'}>
-                    <Text className="heading-2xl" fontSize={'2xl'}>{icon}</Text>
+                    <Text className="heading-2xl" fontSize={'2xl'}>{icon.displayName}</Text>
                     <Text fontSize={'sm'} className="heading-md">Personalize the Website with New Background Icons!</Text>
                   </Flex>
                 </Flex>
                 <Flex flexDir={'column'} h={'13vh'} justifyContent={'space-around'}>
                   <Button isDisabled={true} fontSize={'xl'} bgColor={'green.300'}>Buy</Button>
-                  <Button onClick={() => {changeIcon(icon)}} fontSize={'xl'} bgColor={'blue.500'}>Try</Button>
+                  <Button onClick={() => {changeIcon(icon.image)}} fontSize={'xl'} bgColor={'blue.500'}>Try</Button>
                 </Flex>
               </Flex>
             ))}
