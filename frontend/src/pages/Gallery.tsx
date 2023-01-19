@@ -38,19 +38,31 @@ export default function Gallery() {
 
   const changeBg = (file: string) => {
     trigger(prevState => prevState + 1)
-    localStorage.setItem('background', file)    
+
+    const userData = JSON.parse(localStorage.getItem('background') || "{}")
+
+    userData[localStorage.getItem('username') || ""] = file
+
+    localStorage.setItem('background', JSON.stringify(userData))
   }
 
   const changeIcon = (file: string) => {
     trigger(prevState => prevState + 1)
-    localStorage.setItem('icon', file)
+
+    const userData = JSON.parse(localStorage.getItem('icon') || "{}")
+
+    userData[localStorage.getItem('username') || ""] = file
+
+    localStorage.setItem('icon', JSON.stringify(userData))
   }
 
-  
+  const readStorage = (key: string) => {
+    return JSON.parse(localStorage.getItem(key) || "{}")[localStorage.getItem('username') || ""]
+  }
 
 
   return (
-    <Flex justifyContent={'center'}>      
+    <Flex justifyContent={'center'}>            
       <SkullBackground key={update}/>
       <Flex w={'70vw'} justifyContent={'space-around'} mt={'2vh'}>
         <Flex flexDir={'column'} alignItems={'center'}>
@@ -68,7 +80,7 @@ export default function Gallery() {
                           },
                       }}>
             {data?.background.map((bg) => (
-              <Flex bgColor={(localStorage.getItem('background') || '') === bg.path ? 'green.300' : 'lightskyblue'} justifyContent={'space-between'} p={4} borderRadius={'lg'} my={'1%'} border={'2px solid black'}>
+              <Flex bgColor={(readStorage('background') === bg.path || ( !readStorage('background') && bg.displayName === 'Default' ) ) ? 'green.300' : 'lightskyblue'} justifyContent={'space-between'} p={4} borderRadius={'lg'} my={'1%'} border={'2px solid black'}>
                 <Flex>
                   <Image  borderRadius={'lg'} border={'2px solid'} borderColor={'black'} w={'15vh'} h={'15vh'} src={`/image/${bg.path}`} boxShadow={'0px 0px 25px #fff'}/>
                   <Flex flexDir={'column'} ml={'5%'} h={'11vh'}  justifyContent={'space-between'}>
@@ -77,7 +89,7 @@ export default function Gallery() {
                   </Flex>
                 </Flex>
                 <Flex flexDir={'column'} h={'13vh'} justifyContent={'space-around'}>                  
-                  <Button disabled={(localStorage.getItem('background') || '') === bg.path ? true : false} onClick={() => {changeBg(bg.path)}} fontSize={'xl'} bgColor={'green.500'}>Try</Button>
+                  <Button disabled={(readStorage('background') === bg.path || ( !readStorage('background') && bg.displayName === 'Default' ) ) ? true : false} onClick={() => {changeBg(bg.path)}} fontSize={'xl'} bgColor={'green.500'}>Use</Button>
                 </Flex>
               </Flex>
             ))}
@@ -98,7 +110,7 @@ export default function Gallery() {
                           },
                       }}>
             {data?.icon.map((icon) => (
-              <Flex bgColor={(localStorage.getItem('background') || '') === icon.path ? 'green.300' : 'lightskyblue'} justifyContent={'space-between'} p={4} borderRadius={'lg'} my={'1%'} border={'2px solid black'}>
+              <Flex bgColor={(readStorage('icon') === icon.path || ( !readStorage('icon') && icon.displayName === 'Default' ) ) ? 'green.300' : 'lightskyblue'} justifyContent={'space-between'} p={4} borderRadius={'lg'} my={'1%'} border={'2px solid black'}>
                 <Flex>
                   <Image bgColor={'black'} borderRadius={'lg'} border={'2px solid'} borderColor={'white'} w={'15vh'} h={'15vh'} src={`/image/${icon.preview}`} boxShadow={'0px 0px 25px #fff'}/>
                   <Flex flexDir={'column'} ml={'5%'} h={'11vh'}  justifyContent={'space-between'}>
@@ -107,7 +119,7 @@ export default function Gallery() {
                   </Flex>
                 </Flex>
                 <Flex flexDir={'column'} h={'13vh'} justifyContent={'space-around'}>                  
-                  <Button disabled={(localStorage.getItem('icon') || '') === icon.path ? true : false} onClick={() => {changeIcon(icon.path)}} fontSize={'xl'} bgColor={'green.500'}>Use</Button>
+                  <Button disabled={(readStorage('icon') === icon.path || ( !readStorage('icon') && icon.displayName === 'Default' ) ) ? true : false} onClick={() => {changeIcon(icon.path)}} fontSize={'xl'} bgColor={'green.500'}>Use</Button>
                 </Flex>
               </Flex>
             ))}

@@ -2,6 +2,10 @@ import { Flex, Image, keyframes } from "@chakra-ui/react";
 
 export default function SkullBackground() {
 
+    const readStorage = (key: string) => {
+        return JSON.parse(localStorage.getItem(key) || "{}")[localStorage.getItem('username') || ""]
+    }
+
     const animation1 = keyframes`
         0% {
             transform: translateY(0px);
@@ -24,8 +28,8 @@ export default function SkullBackground() {
     
     `
 
-    const iconName = localStorage.getItem('icon') || 'themes/free/default_icon.webp'
-    const backgroundName = localStorage.getItem('background') || 'themes/free/default_background.webp'
+    const iconName = readStorage('icon') || 'themes/free/default_icon.webp'
+    const backgroundName = readStorage('background') || 'themes/free/default_background.webp'
 
     return (
         <Flex pos={'fixed'} overflow={'hidden'} zIndex={'-1'} top={0} w={'100%'} h={'100%'} alignItems={'center'} justifyContent={'center'}>                        
