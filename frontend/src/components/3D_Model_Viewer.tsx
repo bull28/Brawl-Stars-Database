@@ -86,7 +86,7 @@ const GltfModel = ({ modelPath, scale = 1.0, position = [0, 0, 0] }: ModelViewer
     
     // scene backround light
     const backroundLight = new AmbientLight();
-    backroundLight.intensity = 1.2;
+    backroundLight.intensity = 1.5;
     backroundLight.color = new Color(0xffffff);
 
 
@@ -111,7 +111,7 @@ const GltfModel = ({ modelPath, scale = 1.0, position = [0, 0, 0] }: ModelViewer
     light2.position.set(light2X * -1, light2Y * -1, light2Z * -1);//position of the light
     light2.target = light2Pos;
 
-    light2.intensity = 3.0;
+    light2.intensity = 2.5;
     light2.color = new Color(0xdfdfdf);
 
 
