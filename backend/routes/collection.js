@@ -608,8 +608,6 @@ router.post("/shop", (req, res) => {
                     shopItemList.push(thisItem);
                 }
                 
-                //res.json(shopItemList);
-                //return;
                 database.queryDatabase(
                 "UPDATE " + TABLE_NAME + " SET last_login = ?, featured_item = ? WHERE username = ?;",
                 [currentTime, featuredItem, username], (error, results, fields) => {
@@ -649,7 +647,7 @@ router.post("/shop", (req, res) => {
             if (itemData.itemType == "tradeCredits"){
                 userTradeCredits += itemData.amount;
                 userItemInventory = userTradeCredits;
-            } else if (itemData.itemType == "avatar"){
+            } else if (itemData.itemType == "avatar" || itemData.itemType == "achievementAvatar"){
                 userAvatars.push(itemData.extraData);
                 userItemInventory = 1;
             } else if (itemData.itemType == "theme"){

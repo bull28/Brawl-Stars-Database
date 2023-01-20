@@ -161,7 +161,6 @@
         "avatar": {
             "pmfobject": [
                 {"value": "brawlbox_icon", "weight": 5},
-                {"value": "yellow_face_02", "weight": 5},
                 {"value": "bush", "weight": 4},
                 {"value": "viking_bull", "weight": 3},
                 {"value": "angry_darryl", "weight": 2},

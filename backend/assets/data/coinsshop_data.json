@@ -62,6 +62,78 @@
         "amount": 1,
         "description": "Randomly selects a new brawler to unlock. If all brawlers of a specific rarity are unlocked, the probability of getting a brawler of all other rarities increases."
     },
+    "avatart1": {
+        "displayName": "New Avatar",
+        "cost": 1200,
+        "itemType": "achievementAvatar",
+        "image": "",
+        "extraData": "collection_01",
+        "amount": 1,
+        "description": "Contains a new avatar. This avatar can be selected in the account settings."
+    },
+    "avatart2": {
+        "displayName": "New Avatar",
+        "cost": 1600,
+        "itemType": "achievementAvatar",
+        "image": "",
+        "extraData": "collection_02",
+        "amount": 1,
+        "description": "Contains a new avatar. This avatar can be selected in the account settings."
+    },
+    "avatart3": {
+        "displayName": "New Avatar",
+        "cost": 2400,
+        "itemType": "achievementAvatar",
+        "image": "",
+        "extraData": "collection_03",
+        "amount": 1,
+        "description": "Contains a new avatar. This avatar can be selected in the account settings."
+    },
+    "avatart4": {
+        "displayName": "New Avatar",
+        "cost": 4800,
+        "itemType": "achievementAvatar",
+        "image": "",
+        "extraData": "collection_04",
+        "amount": 1,
+        "description": "Contains a new avatar. This avatar can be selected in the account settings."
+    },
+    "avatart5": {
+        "displayName": "New Avatar",
+        "cost": 8000,
+        "itemType": "achievementAvatar",
+        "image": "",
+        "extraData": "collection_05",
+        "amount": 1,
+        "description": "Contains a new avatar. This avatar can be selected in the account settings."
+    },
+    "avatart6": {
+        "displayName": "New Avatar",
+        "cost": 12000,
+        "itemType": "achievementAvatar",
+        "image": "",
+        "extraData": "collection_06",
+        "amount": 1,
+        "description": "Contains a new avatar. This avatar can be selected in the account settings."
+    },
+    "avatart7": {
+        "displayName": "New Avatar",
+        "cost": 20000,
+        "itemType": "achievementAvatar",
+        "image": "",
+        "extraData": "collection_07",
+        "amount": 1,
+        "description": "Contains a new avatar. This avatar can be selected in the account settings."
+    },
+    "avatart8": {
+        "displayName": "New Avatar",
+        "cost": 40000,
+        "itemType": "achievementAvatar",
+        "image": "",
+        "extraData": "collection_08",
+        "amount": 1,
+        "description": "Contains a new avatar. This avatar can be selected in the account settings."
+    },
     "avatar1": {
         "displayName": "New Avatar",
         "cost": 2500,
@@ -73,15 +145,6 @@
     },
     "avatar2": {
         "displayName": "New Avatar",
-        "cost": 2500,
-        "itemType": "avatar",
-        "image": "",
-        "extraData": "trophy",
-        "amount": 1,
-        "description": "Contains a new avatar. This avatar can be selected in the account settings."
-    },
-    "avatar3": {
-        "displayName": "New Avatar",
         "cost": 5000,
         "itemType": "avatar",
         "image": "",
@@ -89,16 +152,7 @@
         "amount": 1,
         "description": "Contains a new avatar. This avatar can be selected in the account settings."
     },
-    "avatar4": {
-        "displayName": "New Avatar",
-        "cost": 5000,
-        "itemType": "avatar",
-        "image": "",
-        "extraData": "coins",
-        "amount": 1,
-        "description": "Contains a new avatar. This avatar can be selected in the account settings."
-    },
-    "avatar5": {
+    "avatar3": {
         "displayName": "New Avatar",
         "cost": 20000,
         "itemType": "avatar",
@@ -107,7 +161,43 @@
         "amount": 1,
         "description": "Contains a new avatar. This avatar can be selected in the account settings."
     },
-    "avatar6": {
+    "avatar4": {
+        "displayName": "New Avatar",
+        "cost": 10000,
+        "itemType": "avatar",
+        "image": "",
+        "extraData": "gamemode_gemgrab",
+        "amount": 1,
+        "description": "Contains a new avatar. This avatar can be selected in the account settings."
+    },
+    "avatara1": {
+        "displayName": "New Avatar",
+        "cost": 10000,
+        "itemType": "achievementAvatar",
+        "image": "",
+        "extraData": "gamemode_brawlball",
+        "amount": 1,
+        "description": "Contains a new avatar. This avatar can be selected in the account settings."
+    },
+    "avatara2": {
+        "displayName": "New Avatar",
+        "cost": 10000,
+        "itemType": "achievementAvatar",
+        "image": "",
+        "extraData": "gamemode_heist",
+        "amount": 1,
+        "description": "Contains a new avatar. This avatar can be selected in the account settings."
+    },
+    "avatara3": {
+        "displayName": "New Avatar",
+        "cost": 10000,
+        "itemType": "achievementAvatar",
+        "image": "",
+        "extraData": "gamemode_bounty",
+        "amount": 1,
+        "description": "Contains a new avatar. This avatar can be selected in the account settings."
+    },
+    "avatar0": {
         "displayName": "New Avatar",
         "cost": 100000,
         "itemType": "avatar",

@@ -151,7 +151,7 @@ function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
  * @param {Array} allSkins json array with all the brawlers
  * @param {Array} allAvatars json object with arrays of free and special avatars
  * @param {Object} userCollection parsed brawlers object from the database
- * @param {Array} userAvatars parsed avatars object from the database
+ * @param {Array} userAvatars parsed avatars array from the database
  * @returns array of all avatar image names
  */
 function getAvatars(allSkins, allAvatars, userCollection, userAvatars){
@@ -197,10 +197,6 @@ function getAvatars(allSkins, allAvatars, userCollection, userAvatars){
         }
     }
 
-    // Lastly, check for achievement avatars
-    const userCollectionStats = formatCollectionData(allSkins, userCollection, "", "");
-    avatarsInfo = avatarsInfo.concat(getAchievementAvatars(allAvatars.special, userCollectionStats));
-
     return avatarsInfo;
 }
 
@@ -211,7 +207,7 @@ function getAvatars(allSkins, allAvatars, userCollection, userAvatars){
  * bundle and classifies each image as either background, icon, or
  * any other type of item that may be contained in a bundle.
  * @param {Array} allThemes json object with arrays of free and special themes
- * @param {Array} userThemes parsed themes object from the database
+ * @param {Array} userThemes parsed themes array from the database
  * @param {Object} themeMap json object which maps theme files to display names
  * @returns object with keys corresponding to types of images
  */
@@ -300,8 +296,8 @@ function getThemes(allThemes, userThemes, themeMap){
  * @param {Object} shopItems json object with all the possible shop items
  * @param {Array} allSkins json array with all the brawlers
  * @param {Object} userCollection parsed brawlers object from the database
- * @param {Array} userAvatars parsed avatars object from the database
- * @param {Array} userThemes parsed themes object from the database
+ * @param {Array} userAvatars parsed avatars array from the database
+ * @param {Array} userThemes parsed themes array from the database
  * @param {String} featuredItem current featured item string
  * @param {Array} featuredCosts array of costs for different rarities of pins
  * @returns object containing items the user can buy
@@ -310,6 +306,7 @@ function getShopItems(shopItems, allSkins, userCollection, userAvatars, userThem
     let availableShopItems = {};
 
     const collectionInfo = formatCollectionData(allSkins, userCollection, "", "");
+    const achievements = getAchievementAvatars(userAvatars, userThemes, collectionInfo);
     for (let x in shopItems){
         // Depending on the type of item, check availability differently
         if (shopItems[x].itemType == "tradeCredits"){
@@ -324,6 +321,18 @@ function getShopItems(shopItems, allSkins, userCollection, userAvatars, userThem
             // If the user does not already own an avatar, it is available for them to buy
             if (userAvatars.includes(shopItems[x].extraData) == false){
                 availableShopItems[x] = shopItems[x];
+            }
+        } else if (shopItems[x].itemType == "achievementAvatar"){
+            // If the user does not already own an avatar, it is available for them to buy
+            if (userAvatars.includes(shopItems[x].extraData) == false && achievements.includes(shopItems[x].extraData)){
+                let shopItemCopy = {};
+                for (let y in shopItems[x]){
+                    shopItemCopy[y] = shopItems[x][y];
+                }
+
+                shopItemCopy.itemType = "avatar";
+
+                availableShopItems[x] = shopItemCopy;
             }
         } else if (shopItems[x].itemType == "theme"){
             // Themes are handled the same way as avatars. The only difference is that one theme string
@@ -433,43 +442,82 @@ function refreshFeaturedItem(allSkins, userCollection){
 }
 
 /**
- * Checks whether a user is eligible to use achievement avatars which are only available
- * under specific conditions such as collecting a certain number of pins.
- * @param {Array} specialAvatars json array of all special avatars that exist
+ * Some avatars are only available in the shop only if the user has collected
+ * enough pins. This function returns the avatars which the user is able to
+ * purchase from the shop, given their current collection.
+ * @param {Array} userAvatars parsed avatars array from the database
+ * @param {Array} userThemes parsed themes array from the database
  * @param {Object} collection formatted collection object
- * @returns array of file paths to achievement avatars
+ * @returns array of avatar names
  */
-function getAchievementAvatars(specialAvatars, collection){
+function getAchievementAvatars(userAvatars, userThemes, collection){
     let achievementAvatars = [];
+
+    const score = getCollectionScore(collection);
+
+    // Order of unlocking tiered avatars ("hardest" challenge sprays !!!)
+    const tierOrder = [
+        "collection_01",
+        "collection_02",
+        "collection_03",
+        "collection_04",
+        "collection_05",
+        "collection_06",
+        "collection_07",
+        "collection_08"
+    ];
     
-    const unlockedPins = collection.unlockedPins;
+    // This will contain the index of the highest tiered avatar the user currently has
+    let tier = -1;
 
+    for (let x in userAvatars){
+        if (userAvatars[x].includes("collection")){
+            tier = Math.max(tier, tierOrder.indexOf(userAvatars[x]));            
+        }
+    }    
 
-    if (unlockedPins >= 10){
-        achievementAvatars.push("pins_collection_01");
-    } if (unlockedPins >= 20){
-        achievementAvatars.push("pins_collection_02");
-    } if (unlockedPins >= 50){
-        achievementAvatars.push("pins_collection_03");
-    } if (unlockedPins >= 100){
-        achievementAvatars.push("pins_collection_04");
-    } if (unlockedPins >= 250){
-        achievementAvatars.push("pins_collection_05");
-    } if (unlockedPins >= 500){
-        achievementAvatars.push("pins_collection_06");
-    } if (unlockedPins >= 1000){
-        achievementAvatars.push("pins_collection_07");
+    // The user can buy the next tiered avatar if and only if they meet the
+    // collection score requirement. Only one tiered avatar is offered at a time.
+    if (tier == -1){
+        if (score >=   60) { achievementAvatars.push(tierOrder[0]); }// Requires C
+    } else if (tier == 0){
+        if (score >=  120) { achievementAvatars.push(tierOrder[1]); }// Requires B-
+    } else if (tier == 1){
+        if (score >=  270) { achievementAvatars.push(tierOrder[2]); }// Requires B+
+    } else if (tier == 2){
+        if (score >=  480) { achievementAvatars.push(tierOrder[3]); }// Requires A
+    } else if (tier == 3){
+        if (score >=  640) { achievementAvatars.push(tierOrder[4]); }// Requires A+
+    } else if (tier == 4){
+        if (score >=  800) { achievementAvatars.push(tierOrder[5]); }// Requires S-
+    } else if (tier == 5){
+        if (score >= 1000) { achievementAvatars.push(tierOrder[6]); }// Requires S
+    } else if (tier == 6){
+        if (score >= 1200) { achievementAvatars.push(tierOrder[7]); }// Requires S+
+    }
+    // tier == 7 means all avatars unlocked
+
+    // Gem Grab avatar is available in the shop with no requirement
+
+    // Brawl Ball avatar is available when the user has at least 12 special avatars unlocked
+    if (userAvatars.length >= 12){
+        achievementAvatars.push("gamemode_brawlball");
     }
 
-    // Add more achievement avatars here like getting all pins for a specific brawler
+    // Heist avatar is available when the user has at least 12 special themes unlocked
+    if (userThemes.length >= 12){
+        achievementAvatars.push("gamemode_heist");
+    }
 
-    achievementAvatars = specialAvatars.filter((element, index, array) => {
-        // Since file paths may change, instead of hardcoding the file paths
-        // check to see if the avatar image name exists in the special avatars list
-        // before returning it.
+    // Bounty avatar is available when the user has at least 2000 pin copies
+    if (collection.pinCopies >= 2000){
+        achievementAvatars.push("gamemode_bounty");
+    }
+
+    /*achievementAvatars = specialAvatars.filter((element, index, array) => {
         const filePaths = element.split("/");
         return achievementAvatars.includes(filePaths[filePaths.length - 1].split(".")[0]);
-    });
+    });*/
 
     return achievementAvatars;
 }
@@ -478,7 +526,7 @@ function getAchievementAvatars(specialAvatars, collection){
  * Sets the collectionScore and avatarColor fields of a collection object
  * based on how close it is to completion.
  * @param {Array} collection formatted collection object
- * @returns nothing
+ * @returns numeric value of collection score
  */
 function getCollectionScore(collection){
     if (collection.totalBrawlers == 0 || collection.totalPins == 0){
@@ -520,36 +568,8 @@ function getCollectionScore(collection){
     collection.collectionScore = grade;
     collection.avatarColor = color;
     collection.scoreProgress = progress;
-}
 
-// These functions may be used for brawl boxes and trading
-function addBrawler(userCollection, brawler){
-    if (userCollection.hasOwnProperty(brawler)){
-        return;
-    }
-    // If the user does not already own the brawler,
-    // initialize an empty pin list.
-    userCollection[brawler] = [];
-}
-
-function addPin(userCollection, brawler, pin){
-    if (!(userCollection.hasOwnProperty(brawler))){
-        return;
-    }
-    if (userCollection[brawler].includes(pin)){
-        return;
-    }
-    userCollection[brawler].push(pin);
-}
-
-function removePin(userCollection, brawler, pin){
-    if (!(userCollection.hasOwnProperty(brawler))){
-        return;
-    }
-    const pinIndex = userCollection[brawler].indexOf(pin);
-    if (pinIndex >= 0){
-        userCollection[brawler].splice(pinIndex, 1);
-    }
+    return overallScore;
 }
 
 exports.formatCollectionData = formatCollectionData;
