@@ -146,7 +146,8 @@ function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
  * are compared with the list of all special avatars to determine which
  * special avatars they can select. Their collection is also used to
  * determine which portrait avatars are available. This function returns
- * avatars with their file extension.
+ * avatars with their file extension. The array userAvatars does not have
+ * file paths
  * @param {Array} allSkins json array with all the brawlers
  * @param {Array} allAvatars json object with arrays of free and special avatars
  * @param {Object} userCollection parsed brawlers object from the database
@@ -171,14 +172,18 @@ function getAvatars(allSkins, allAvatars, userCollection, userAvatars){
         if (brawler.hasOwnProperty("name") && brawler.hasOwnProperty("image")){
             // If the user has the brawler unlocked, add the avatar as an option
             if (userCollection.hasOwnProperty(brawler.name)){
-                unlockedBrawlers.push(brawler.image);
+                unlockedBrawlers.push(brawler.image.split(".")[0]);
             }
         }
     }
     
     for (let avatar of allAvatars.special){
         // If a special avatar is unlocked, add it to the array.
-        const avatarName = avatar.split(".")[0];
+
+        // The entire path of avatars is no longer stored in the
+        // database, only the file name
+        const filePaths = avatar.split("/");
+        const avatarName = filePaths[filePaths.length - 1].split(".")[0];
         if (avatarName !== undefined && userAvatars.includes(avatarName)){
             avatarsInfo.push(avatar);
         }
@@ -187,12 +192,8 @@ function getAvatars(allSkins, allAvatars, userCollection, userAvatars){
         // it can be used is if it is a brawler portrait and if the brawler
         // is unlocked, the portrait is made available.
         // In order for this to happen, the file names must be the same.
-        else{
-            const filePaths = avatar.split("/");
-            const fileName = filePaths[filePaths.length - 1];
-            if (unlockedBrawlers.includes(fileName)){
-                avatarsInfo.push(avatar);
-            }
+        else if (unlockedBrawlers.includes(avatarName)){
+            avatarsInfo.push(avatar);
         }
     }
 
@@ -238,17 +239,18 @@ function getThemes(allThemes, userThemes, themeMap){
             if (themeType != ""){
                 // Check if the theme map contains the current theme name and if it
                 // does, add it to the themesInfo, grouped by name
-                const themePath = theme.split("_" + themeType)[0];
-                if (themeMap.hasOwnProperty(themePath)){
-                    if (!themesInfo.hasOwnProperty(themePath)){
-                        themesInfo[themePath] = {};
+                const filePaths = theme.split("/");
+                const themeName = filePaths[filePaths.length - 1].split("_" + themeType)[0];
+                if (themeMap.hasOwnProperty(themeName)){
+                    if (!themesInfo.hasOwnProperty(themeName)){
+                        themesInfo[themeName] = {};
                     }
     
                     if (t == "free"){
-                        themesInfo[themePath][themeType] = theme;
+                        themesInfo[themeName][themeType] = theme;
                     } else if (t == "special"){
-                        if (themePath !== undefined && userThemes.includes(themePath)){
-                            themesInfo[themePath][themeType] = theme;
+                        if (themeName !== undefined && userThemes.includes(themeName)){
+                            themesInfo[themeName][themeType] = theme;
                         }
                     }
                 }

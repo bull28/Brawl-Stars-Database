@@ -19,6 +19,8 @@ const filePaths = require("../modules/filepaths");
 const PORTRAIT_IMAGE_DIR = filePaths.PORTRAIT_IMAGE_DIR;
 const PIN_IMAGE_DIR = filePaths.PIN_IMAGE_DIR;
 const RESOURCE_IMAGE_DIR = filePaths.RESOURCE_IMAGE_DIR;
+const AVATAR_IMAGE_DIR = filePaths.AVATAR_IMAGE_DIR;
+const THEME_IMAGE_DIR = filePaths.THEME_IMAGE_DIR;
 const IMAGE_FILE_EXTENSION = filePaths.IMAGE_FILE_EXTENSION;
 
 // time each featured item is available for
@@ -445,6 +447,8 @@ router.post("/brawlbox", (req, res) => {
                             x.image = PIN_IMAGE_DIR + x.image;
                         } else if (x.rewardType == "brawler"){
                             x.image = PORTRAIT_IMAGE_DIR + x.image;
+                        } else if (x.rewardType == "avatar"){
+                            x.image = AVATAR_IMAGE_DIR + x.image;
                         } else if (
                             x.rewardType == "coins" ||
                             x.rewardType == "wildcard" ||
@@ -580,13 +584,13 @@ router.post("/shop", (req, res) => {
                             // when adding it to the user's inventory
                             // All other item types' images are only for display
                             if (thisItemType == "avatar"){
-                                thisItem.image = availableShopItems[x]["extraData"] + IMAGE_FILE_EXTENSION;
+                                thisItem.image = AVATAR_IMAGE_DIR + availableShopItems[x]["extraData"] + IMAGE_FILE_EXTENSION;
                             } else if (thisItemType == "theme"){
                                 const themeName = availableShopItems[x]["extraData"];
                                 if (themeMap.hasOwnProperty(themeName)){
                                     thisItem.displayName = themeMap[themeName];
                                 }
-                                thisItem.image = themeName + "_preview" + IMAGE_FILE_EXTENSION;
+                                thisItem.image = THEME_IMAGE_DIR + themeName + "_preview" + IMAGE_FILE_EXTENSION;
                             } else if (thisItemType == "featuredPin"){
                                 // Featured pin already has the image extension since it is stored in brawlers data
                                 thisItem.image = PIN_IMAGE_DIR + availableShopItems[x].image;

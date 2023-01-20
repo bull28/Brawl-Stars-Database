@@ -64,46 +64,46 @@
     },
     "avatar1": {
         "displayName": "New Avatar",
-        "cost": 5000,
+        "cost": 2500,
         "itemType": "avatar",
         "image": "",
-        "extraData": "avatars/special/sadpin",
+        "extraData": "sadpin",
         "amount": 1,
         "description": "Contains a new avatar. This avatar can be selected in the account settings."
     },
     "avatar2": {
         "displayName": "New Avatar",
-        "cost": 5000,
+        "cost": 2500,
         "itemType": "avatar",
         "image": "",
-        "extraData": "avatars/special/trophy",
+        "extraData": "trophy",
         "amount": 1,
         "description": "Contains a new avatar. This avatar can be selected in the account settings."
     },
     "avatar3": {
         "displayName": "New Avatar",
-        "cost": 10000,
+        "cost": 5000,
         "itemType": "avatar",
         "image": "",
-        "extraData": "avatars/special/starpoint",
+        "extraData": "starpoint",
         "amount": 1,
         "description": "Contains a new avatar. This avatar can be selected in the account settings."
     },
     "avatar4": {
         "displayName": "New Avatar",
-        "cost": 20000,
+        "cost": 5000,
         "itemType": "avatar",
         "image": "",
-        "extraData": "avatars/special/coins",
+        "extraData": "coins",
         "amount": 1,
         "description": "Contains a new avatar. This avatar can be selected in the account settings."
     },
     "avatar5": {
         "displayName": "New Avatar",
-        "cost": 50000,
+        "cost": 20000,
         "itemType": "avatar",
         "image": "",
-        "extraData": "avatars/special/pay2winavatar",
+        "extraData": "gem",
         "amount": 1,
         "description": "Contains a new avatar. This avatar can be selected in the account settings."
     },
@@ -112,7 +112,7 @@
         "cost": 100000,
         "itemType": "avatar",
         "image": "",
-        "extraData": "avatars/special/real_pay2winavatar",
+        "extraData": "space",
         "amount": 1,
         "description": "Contains a new avatar. This avatar can be selected in the account settings."
     },
@@ -121,7 +121,7 @@
         "cost": 6000,
         "itemType": "theme",
         "image": "",
-        "extraData": "themes/special/retro",
+        "extraData": "retro",
         "amount": 1,
         "description": "This bundle contains a new background, icon style, and background music."
     },
@@ -130,7 +130,7 @@
         "cost": 6000,
         "itemType": "theme",
         "image": "",
-        "extraData": "themes/special/mecha",
+        "extraData": "mecha",
         "amount": 1,
         "description": "This bundle contains a new background, icon style, and background music."
     },
@@ -139,7 +139,7 @@
         "cost": 6000,
         "itemType": "theme",
         "image": "",
-        "extraData": "themes/special/pirate",
+        "extraData": "pirate",
         "amount": 1,
         "description": "This bundle contains a new background, icon style, and background music."
     },
@@ -148,7 +148,7 @@
         "cost": 6000,
         "itemType": "theme",
         "image": "",
-        "extraData": "themes/special/lny_20",
+        "extraData": "lny_20",
         "amount": 1,
         "description": "This bundle contains a new background, icon style, and background music."
     },
@@ -157,7 +157,7 @@
         "cost": 6000,
         "itemType": "theme",
         "image": "",
-        "extraData": "themes/special/psg",
+        "extraData": "psg",
         "amount": 1,
         "description": "This bundle contains a new background, icon style, and background music."
     },
@@ -166,7 +166,7 @@
         "cost": 6000,
         "itemType": "theme",
         "image": "",
-        "extraData": "themes/special/taras_bazaar",
+        "extraData": "taras_bazaar",
         "amount": 1,
         "description": "This bundle contains a new background, icon style, and background music."
     },
@@ -175,7 +175,7 @@
         "cost": 6000,
         "itemType": "theme",
         "image": "",
-        "extraData": "themes/special/super_city",
+        "extraData": "super_city",
         "amount": 1,
         "description": "This bundle contains a new background, icon style, and background music."
     },
@@ -184,7 +184,7 @@
         "cost": 6000,
         "itemType": "theme",
         "image": "",
-        "extraData": "themes/special/giftshop",
+        "extraData": "giftshop",
         "amount": 1,
         "description": "This bundle contains a new background, icon style, and background music."
     },
@@ -193,7 +193,7 @@
         "cost": 6000,
         "itemType": "theme",
         "image": "",
-        "extraData": "themes/special/lunar",
+        "extraData": "lunar",
         "amount": 1,
         "description": "This bundle contains a new background, icon style, and background music."
     },
@@ -202,7 +202,7 @@
         "cost": 6000,
         "itemType": "theme",
         "image": "",
-        "extraData": "themes/special/waterpark",
+        "extraData": "waterpark",
         "amount": 1,
         "description": "This bundle contains a new background, icon style, and background music."
     },
@@ -211,7 +211,7 @@
         "cost": 6000,
         "itemType": "theme",
         "image": "",
-        "extraData": "themes/special/legendaryset",
+        "extraData": "legendaryset",
         "amount": 1,
         "description": "This bundle contains a new background, icon style, and background music."
     },
@@ -220,7 +220,7 @@
         "cost": 6000,
         "itemType": "theme",
         "image": "",
-        "extraData": "themes/special/stuntshow",
+        "extraData": "stuntshow",
         "amount": 1,
         "description": "This bundle contains a new background, icon style, and background music."
     },
@@ -229,7 +229,7 @@
         "cost": 6000,
         "itemType": "theme",
         "image": "",
-        "extraData": "themes/special/deepsea",
+        "extraData": "deepsea",
         "amount": 1,
         "description": "This bundle contains a new background, icon style, and background music."
     },
@@ -238,7 +238,7 @@
         "cost": 18000,
         "itemType": "theme",
         "image": "",
-        "extraData": "themes/special/yellow_face",
+        "extraData": "yellow_face",
         "amount": 1,
         "description": "This bundle contains a new background, icon style, and background music."
     }
