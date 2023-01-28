@@ -3,9 +3,9 @@ export type BrawlerData = {
     displayName: string,
     rarity: {value: number, name: string, color: string},
     skins: [{name: string, displayName: string}],
-    pins: [{image: string, rarity: {value: number, name: string, color: string}}]
+    pins: [{image: string, rarity: {value: number, name: string, color: string}}],
     image: string,
-    model: string,
+    defaultSkin: string,
     description: string
 }
 

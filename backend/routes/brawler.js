@@ -51,12 +51,22 @@ function isEmpty(x){
  * @returns data, modified with the correct values
  */
 function skinModelExists(data){
+    /*console.log(data);
     if (!(data.hasOwnProperty("image"))){
         return;
     }
     data.exists = fs.existsSync("assets/images/" + data.image);
     if (!(data.exists)){
         data.image = "";
+    }
+    return data;*/
+    for (let x in data){
+        if ((data[x].hasOwnProperty("path"))){
+            data[x].exists = fs.existsSync("assets/images/" + data[x].path);
+            if (!(data[x].exists)){
+                data[x].path = "";
+            }
+        }
     }
     return data;
 }
@@ -103,7 +113,6 @@ router.get("/brawler/:brawler", (req, res) => {
     let brawlerInfo = skins.formatBrawlerData(
         brawlerData, 
         PORTRAIT_IMAGE_DIR, 
-        SKIN_MODEL_DIR, 
         PIN_IMAGE_DIR
     );
 
@@ -145,6 +154,7 @@ router.get("/skin/:brawler/:skin", (req, res) => {
     // when it is returned, the exists field of the model data will be set to false
     // this function will test to see if the model exists and set exists accordingly.
     // if it turns out to not exist, the model path will also be set to the empty string.
+    // this is done for each of the skin's models (geometry, win, lose).
     skinInfo["model"] = skinModelExists(skinInfo["model"]);
 
     res.json(skinInfo);

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { SetStateAction, useEffect, useState } from 'react'
 import { Flex, Image, Text, Modal,
     ModalContent,
     ModalHeader,
@@ -20,7 +20,9 @@ import { animateScroll as scroll } from 'react-scroll'
 type BrawlerImageProps = {
     brawler: string,
     skin: string,
-    setModel: any
+    setModel: React.Dispatch<SetStateAction<string | null>>,
+    setWin: React.Dispatch<SetStateAction<string | null>>,
+    setLose: React.Dispatch<SetStateAction<string | null>>,
 }
 
 type SkinData = {
@@ -37,10 +39,14 @@ type SkinData = {
     },
     rating: number,
     image: string,
-    model: {exists: boolean, image: string}
+    model: {
+        geometry: {exists: boolean, path: string},
+        winAnimation: {exists: boolean, path: string},
+        loseAnimation: {exists: boolean, path: string}
+    }
 }
 
-export default function BrawlerImage({ brawler, skin, setModel }: BrawlerImageProps) {
+export default function BrawlerImage({ brawler, skin, setModel, setWin, setLose }: BrawlerImageProps) {
     const [data, setData] = useState<SkinData>()
     const { isOpen, onOpen, onClose } = useDisclosure()
     
@@ -61,7 +67,7 @@ export default function BrawlerImage({ brawler, skin, setModel }: BrawlerImagePr
             <Flex alignItems={'center'} alignSelf={'center'} mt={3}>
                     {(data.group.icon !== 'skingroups/icons/icon_default.webp') && <Label label={data.group.name}><Image src={`/image/${data.group.icon}`} w={7} mr={3}/></Label>}            
                 <Text fontSize={['md','lg','xl']} className={'heading-lg'} >{data.displayName}</Text>    
-                {(data.model.exists) && <Icon as={RepeatIcon} ml={3} fontSize={'24px'} cursor={'pointer'}  onClick={() => {setModel(`/image/${data.model.image}`); scroll.scrollToTop()}}/>}
+                {(data.model.geometry.exists) && <Icon as={RepeatIcon} ml={3} fontSize={'24px'} cursor={'pointer'}  onClick={() => {setModel(`/image/${data.model.geometry.path}`); if (data.model.winAnimation.exists){setWin(`/image/${data.model.winAnimation.path}`);} else{setWin(null);} if (data.model.loseAnimation.exists){setLose(`/image/${data.model.loseAnimation.path}`);} else{setLose(null);} scroll.scrollToTop();}}/>}
             </Flex>
             
             <Flex alignItems={'center'} alignSelf={'center'}>

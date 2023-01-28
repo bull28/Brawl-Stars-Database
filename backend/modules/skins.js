@@ -40,22 +40,21 @@ function getSkin(brawler, skin){
  * and display names of the brawler's skins.
  * @param {Object} brawlerData the json object of the brawler
  * @param {Object} portraitFile file path to the portrait
- * @param {Object} modelFile file path to the 3d model
  * @param {Object} pinFile file path to the directory containing the pins
  * @returns json object of the brawler that can be sent to the user
  */
-function formatBrawlerData(brawlerData, portraitFile, modelFile, pinFile){
+function formatBrawlerData(brawlerData, portraitFile, pinFile){
     // since the skins array has to be modified, a copy of the brawlerData
     // must be created so that the original is not modified
     let brawlerInfo = {};
+    let defaultSkin = "";
 
     for (let x in brawlerData){
         // the user can't do anything with the portrait file so don't send it
         if (x == "image"){
             portraitFile = portraitFile + brawlerData[x];
-        } else if (x == "model"){
-            // this model file is the one for the default skin
-            modelFile = modelFile + brawlerData["name"] + "/" + brawlerData[x];
+        } else if (x == "defaultSkin"){
+            defaultSkin = brawlerData[x];
         }
         else if (x != "skins" && x != "pins"){
             brawlerInfo[x] = brawlerData[x];
@@ -63,7 +62,9 @@ function formatBrawlerData(brawlerData, portraitFile, modelFile, pinFile){
     }
 
     brawlerInfo["image"] = portraitFile;
-    brawlerInfo["model"] = modelFile;
+    if (defaultSkin != ""){
+        brawlerInfo["defaultSkin"] = defaultSkin;
+    }
 
 
     // all information is copied from the original brawlerData to the new one
@@ -123,13 +124,20 @@ function formatBrawlerData(brawlerData, portraitFile, modelFile, pinFile){
 function formatSkinData(skinData, brawlerName, skinFile, skinModelFile, groupFile, groupIconFile){
     let skinInfo = {};
     let groupData = {};
+    let skinModel = {};
 
     for (let x in skinData){
         // do not copy the image or model, instead add it to the file path
         if (x == "image"){
             skinFile = skinFile + brawlerName + "/" + skinData.image;
         } else if (x == "model"){
-            skinModelFile = skinModelFile + brawlerName + "/" + skinData.model;
+            //skinModelFile = skinModelFile + brawlerName + "/" + skinData.model;
+            for (let y in skinData.model){
+                skinModel[y] = {
+                    "exists": false,
+                    "path": skinModelFile + brawlerName + "/" + skinData.model[y]
+                };
+            }
         }
 
         // for the group, go into the group object and change its image to match the path
@@ -152,12 +160,7 @@ function formatSkinData(skinData, brawlerName, skinFile, skinModelFile, groupFil
     }
 
     skinInfo["image"] = skinFile;
-
-    // exists gets set to true when it is validated
-    skinInfo["model"] = {
-        "exists": false,
-        "image": skinModelFile
-    };
+    skinInfo["model"] = skinModel;
 
     return skinInfo;
 }

@@ -5,23 +5,32 @@ import axios from 'axios'
 import SkinView from '../components/SkinView'
 import { ArrowBackIcon, ExternalLinkIcon } from '@chakra-ui/icons'
 import { BrawlerData } from '../types/BrawlerData'
-import ModelViewer from '../components/3D_Model_Viewer'
-
+import AnimationViewer from '../components/3D_Animation_Viewer'
 
 export default function Brawler() {
     const params = useParams()
     const [data, setData] = useState<BrawlerData>()
     const [model, setModel] = useState<string | null>(null)
+    const [win, setWin] = useState<string | null>(null)
+    const [lose, setLose] = useState<string | null>(null)
 
     const isWide = useMediaQuery('(min-width: 1250px)')
 
 
     useEffect(() => {
         axios.get(`/brawler/${params.brawler}`)
-            .then((res) => {
-                setData(res.data)
-                setModel(`/image/${res.data.model}`)
-            })
+        .then((res) => {
+            setData(res.data);
+            axios.get(`/skin/${params.brawler}/${res.data.defaultSkin}`)
+            .then((skinRes) => {
+                setModel(`/image/${skinRes.data.model.geometry.path}`);
+                if (skinRes.data.model.winAnimation.exists){
+                    setWin(`/image/${skinRes.data.model.winAnimation.path}`);
+                } if (skinRes.data.model.loseAnimation.exists){
+                    setLose(`/image/${skinRes.data.model.loseAnimation.path}`);
+                }
+            });
+        })
     }, [params])
 
   return (
@@ -44,7 +53,7 @@ export default function Brawler() {
                         <Text fontSize={'3xl'} color={'white'} className={'heading-3xl'} mb={3}>Brawler Model</Text>
                         <Flex justifyContent={'center'} alignItems={'center'} w={'60%'} h={'60vw'} bgImage={"/image/misc/bg_3d_model.webp"} backgroundPosition={"center"} backgroundSize={"cover"} backgroundRepeat={"no-repeat"} border={'3px solid white'}>                        
                             <Suspense fallback={<Spinner/>}>
-                                {model && <ModelViewer scale={1.0} modelPath={model} position={[0, 0, 0]}/>}
+                                {model && <AnimationViewer modelFile={model} winFile={win} loseFile={lose}/>}
                             </Suspense>
                         </Flex>
                     </Flex>
@@ -78,7 +87,7 @@ export default function Brawler() {
 
                     <Flex justifyContent={'center'} alignItems={'center'} h={'100%'} w={'33%'} bgImage={"/image/misc/bg_3d_model.webp"} backgroundPosition={"center"} backgroundSize={"cover"} backgroundRepeat={"no-repeat"} border={'3px solid white'}>
                         <Suspense fallback={<Spinner/>}>
-                            {model && <ModelViewer scale={1.0} modelPath={model} position={[0, 0, 0]}/>}
+                            {model && <AnimationViewer modelFile={model} winFile={win} loseFile={lose}/>}
                         </Suspense>
                     </Flex>
 
@@ -112,7 +121,7 @@ export default function Brawler() {
             
             <SimpleGrid spacing={5} columns={[1,2,2,3,4]} bgColor={'blue.900'} pt={'3vh'} px={6}>{(data.skins).map((skin) => (
                     <Flex key={skin.name} flexDir={'column'} m={3}>
-                        <SkinView skin={skin.name} brawler={data.name} setModel={setModel}></SkinView>
+                        <SkinView skin={skin.name} brawler={data.name} setModel={setModel} setWin={setWin} setLose={setLose}></SkinView>
                     </Flex>
             ))}
             </SimpleGrid>
