@@ -95,7 +95,7 @@ const GltfModel = ({modelFile, winFile, loseFile, playing}: GltfModelProps) => {
 
     const BARBARIAN_KING: RootState = useThree();//i am allowed to have 1 bad variable name
     const sceneCamera = BARBARIAN_KING.camera;
-    if (sceneCamera instanceof PerspectiveCamera){
+    if (sceneCamera instanceof PerspectiveCamera && gltf.cameras.length > 0){
         // Camera position is stored in the "Camera" scene object
         // but camera parameters are stored in the gltf.cameras camera
         const modelCamera = gltf.scene.getObjectByName("Camera");
