@@ -1295,8 +1295,8 @@
                 "image": "bulldudefootbullblue.webp",
                 "model": {
                     "geometry": "bulldudefootbullblue.glb",
-                    "winAnimation": "bulldudefootbullblue_win.glb",
-                    "loseAnimation": "bulldudefootbullblue_lose.glb"
+                    "winAnimation": "bullguyfootbull_win.glb",
+                    "loseAnimation": "bullguyfootbull_lose.glb"
                 },
                 "rating": 0
             },
@@ -1343,8 +1343,8 @@
                 "image": "bulldudegold.webp",
                 "model": {
                     "geometry": "bulldudegold.glb",
-                    "winAnimation": "bulldudegold_win.glb",
-                    "loseAnimation": "bulldudegold_lose.glb"
+                    "winAnimation": "bullguydefault_win.glb",
+                    "loseAnimation": "bullguydefault_lose.glb"
                 },
                 "rating": 0
             },
@@ -1366,8 +1366,8 @@
                 "image": "bulldudesilver.webp",
                 "model": {
                     "geometry": "bulldudesilver.glb",
-                    "winAnimation": "bulldudesilver_win.glb",
-                    "loseAnimation": "bulldudesilver_lose.glb"
+                    "winAnimation": "bullguydefault_win.glb",
+                    "loseAnimation": "bullguydefault_lose.glb"
                 },
                 "rating": 0
             },
@@ -2112,8 +2112,8 @@
                 "image": "luchadoratomic.webp",
                 "model": {
                     "geometry": "luchadoratomic.glb",
-                    "winAnimation": "luchadoratomic_win.glb",
-                    "loseAnimation": "luchadoratomic_lose.glb"
+                    "winAnimation": "luchadordefault_win.glb",
+                    "loseAnimation": "luchadordefault_lose.glb"
                 },
                 "rating": 0
             },
@@ -7486,8 +7486,8 @@
                 "image": "sniperpink.webp",
                 "model": {
                     "geometry": "sniperpink.glb",
-                    "winAnimation": "sniperpink_win.glb",
-                    "loseAnimation": "sniperpink_lose.glb"
+                    "winAnimation": "sniperdefault_win.glb",
+                    "loseAnimation": "sniperdefault_lose.glb"
                 },
                 "rating": 0
             },
@@ -7510,8 +7510,8 @@
                 "image": "sniperrose.webp",
                 "model": {
                     "geometry": "sniperrose.glb",
-                    "winAnimation": "sniperrose_win.glb",
-                    "loseAnimation": "sniperrose_lose.glb"
+                    "winAnimation": "sniperdefault_win.glb",
+                    "loseAnimation": "sniperdefault_lose.glb"
                 },
                 "rating": 0
             },
@@ -7557,8 +7557,8 @@
                 "image": "snipergold.webp",
                 "model": {
                     "geometry": "snipergold.glb",
-                    "winAnimation": "snipergold_win.glb",
-                    "loseAnimation": "snipergold_lose.glb"
+                    "winAnimation": "sniperdefault_win.glb",
+                    "loseAnimation": "sniperdefault_lose.glb"
                 },
                 "rating": 0
             },
@@ -7580,8 +7580,8 @@
                 "image": "snipersilver.webp",
                 "model": {
                     "geometry": "snipersilver.glb",
-                    "winAnimation": "snipersilver_win.glb",
-                    "loseAnimation": "snipersilver_lose.glb"
+                    "winAnimation": "sniperdefault_win.glb",
+                    "loseAnimation": "sniperdefault_lose.glb"
                 },
                 "rating": 0
             },
@@ -12703,8 +12703,8 @@
                 "image": "cactuspink.webp",
                 "model": {
                     "geometry": "cactuspink.glb",
-                    "winAnimation": "cactuspink_win.glb",
-                    "loseAnimation": "cactuspink_lose.glb"
+                    "winAnimation": "cactusdefault_win.glb",
+                    "loseAnimation": "cactusdefault_lose.glb"
                 },
                 "rating": 0
             },
@@ -13047,8 +13047,8 @@
                 "image": "crowwhite.webp",
                 "model": {
                     "geometry": "crowwhite.glb",
-                    "winAnimation": "crowwhite_win.glb",
-                    "loseAnimation": "crowwhite_lose.glb"
+                    "winAnimation": "crowdefault_win.glb",
+                    "loseAnimation": "crowdefault_lose.glb"
                 },
                 "rating": 0
             },
