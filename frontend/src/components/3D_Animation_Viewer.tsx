@@ -29,7 +29,7 @@ const addLights = (camera: Object3D) => {
     
     // scene backround light
     const backroundLight = new AmbientLight();
-    backroundLight.intensity = 1.5;
+    backroundLight.intensity = 0.8;
     backroundLight.color = new Color(0xffffff);
 
 
@@ -41,7 +41,7 @@ const addLights = (camera: Object3D) => {
     light1.position.set(light1X * -1, light1Y * -1, light1Z * -1);
     light1.target = light1Pos;
 
-    light1.intensity = 6.4;
+    light1.intensity = 3.2;
     light1.color = new Color(0x24d6ff);//0xc0ffff an alternative color
 
 
@@ -53,7 +53,7 @@ const addLights = (camera: Object3D) => {
     light2.position.set(light2X * -1, light2Y * -1, light2Z * -1);//position of the light
     light2.target = light2Pos;
 
-    light2.intensity = 2.5;
+    light2.intensity = 1.2;
     light2.color = new Color(0xdfdfdf);
 
     camera.children = [];//remove all existing lights so there are no duplicates
@@ -176,7 +176,7 @@ const AnimationViewer = (({modelFile, winFile, loseFile}: AnimationViewerProps) 
 
     return(
         <Flex w={"100%"} h={"100%"} flexDir={"column"}>
-            <Canvas linear={true} camera={{fov: 40, position: [0, 0, 1]}}>
+            <Canvas flat={true} camera={{fov: 40, position: [0, 0, 1]}}>
                 <Suspense fallback={null}>
                     <GltfModel modelFile={modelFile} winFile={winFile ? winFile : "../image/misc/empty.glb"} loseFile={loseFile ? loseFile : "../image/misc/empty.glb"} playing={animationRef}/>
                     <OrbitControls/>
