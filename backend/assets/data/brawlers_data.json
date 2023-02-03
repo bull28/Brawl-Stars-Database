@@ -886,7 +886,7 @@
                 ],
                 "group": {
                     "name": "World Finals 2020",
-                    "image": "bg_default.webp",
+                    "image": "bg_wf.webp",
                     "icon": "icon_wf.webp"
                 },
                 "limited": true,
@@ -1679,7 +1679,7 @@
                 ],
                 "group": {
                     "name": "Retropolis",
-                    "image": "bg_retropolis.webp",
+                    "image": "bg_retro.webp",
                     "icon": "icon_retro.webp"
                 },
                 "limited": true,
@@ -2498,7 +2498,7 @@
                 ],
                 "group": {
                     "name": "Retropolis",
-                    "image": "bg_retropolis.webp",
+                    "image": "bg_retro.webp",
                     "icon": "icon_retro.webp"
                 },
                 "limited": true,
@@ -2887,7 +2887,7 @@
                 ],
                 "group": {
                     "name": "THE BAD RANDOMS",
-                    "image": "bg_default.webp",
+                    "image": "bg_punk.webp",
                     "icon": "icon_punk.webp"
                 },
                 "limited": false,
@@ -3657,7 +3657,7 @@
                 ],
                 "group": {
                     "name": "World Finals 2021",
-                    "image": "bg_default.webp",
+                    "image": "bg_wf.webp",
                     "icon": "icon_wf.webp"
                 },
                 "limited": true,
@@ -4624,7 +4624,7 @@
                 ],
                 "group": {
                     "name": "Retropolis",
-                    "image": "bg_retropolis.webp",
+                    "image": "bg_retro.webp",
                     "icon": "icon_retro.webp"
                 },
                 "limited": true,
@@ -5219,7 +5219,7 @@
                 ],
                 "group": {
                     "name": "China 1 Year Anniversary",
-                    "image": "bg_default.webp",
+                    "image": "bg_c1a.webp",
                     "icon": "icon_c1a.webp"
                 },
                 "limited": true,
@@ -5269,7 +5269,7 @@
                 ],
                 "group": {
                     "name": "Omega Box",
-                    "image": "bg_default.webp",
+                    "image": "bg_c1a.webp",
                     "icon": "icon_lastbox.webp"
                 },
                 "limited": true,
@@ -5780,7 +5780,7 @@
                 ],
                 "group": {
                     "name": "Retropolis",
-                    "image": "bg_retropolis.webp",
+                    "image": "bg_retro.webp",
                     "icon": "icon_retro.webp"
                 },
                 "limited": true,
@@ -6435,7 +6435,7 @@
                 ],
                 "group": {
                     "name": "World Champions 2022",
-                    "image": "bg_default.webp",
+                    "image": "bg_wf.webp",
                     "icon": "icon_wf.webp"
                 },
                 "limited": false,
@@ -7251,7 +7251,7 @@
                 ],
                 "group": {
                     "name": "THE BAD RANDOMS",
-                    "image": "bg_default.webp",
+                    "image": "bg_punk.webp",
                     "icon": "icon_punk.webp"
                 },
                 "limited": false,
@@ -10127,7 +10127,7 @@
                 ],
                 "group": {
                     "name": "Retropolis",
-                    "image": "bg_retropolis.webp",
+                    "image": "bg_retro.webp",
                     "icon": "icon_retro.webp"
                 },
                 "limited": true,
@@ -10766,7 +10766,7 @@
                 ],
                 "group": {
                     "name": "World Finals 2022",
-                    "image": "bg_default.webp",
+                    "image": "bg_wf.webp",
                     "icon": "icon_wf.webp"
                 },
                 "limited": true,

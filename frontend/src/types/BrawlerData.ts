@@ -19,3 +19,9 @@ export interface Brawler {
     },
     image: string
 }
+
+export interface ModelFiles{
+    geometry: string | null,
+    winAnimation: string | null,
+    loseAnimation: string | null
+}
