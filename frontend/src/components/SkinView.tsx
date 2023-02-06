@@ -21,8 +21,7 @@ import { ModelFiles } from '../types/BrawlerData'
 type BrawlerImageProps = {
     brawler: string,
     skin: string,
-    setModel: React.Dispatch<SetStateAction<ModelFiles>>,
-    setModelBg: React.Dispatch<SetStateAction<string>>
+    setModel: React.Dispatch<SetStateAction<ModelFiles>>
 }
 
 type SkinData = {
@@ -46,7 +45,7 @@ type SkinData = {
     }
 }
 
-export default function BrawlerImage({ brawler, skin, setModel, setModelBg }: BrawlerImageProps) {
+export default function BrawlerImage({ brawler, skin, setModel }: BrawlerImageProps) {
     const [data, setData] = useState<SkinData>()
     const { isOpen, onOpen, onClose } = useDisclosure()
     
@@ -67,7 +66,7 @@ export default function BrawlerImage({ brawler, skin, setModel, setModelBg }: Br
             <Flex alignItems={'center'} alignSelf={'center'} mt={3}>
                     {(data.group.icon !== 'skingroups/icons/icon_default.webp') && <Label label={data.group.name}><Image src={`/image/${data.group.icon}`} w={7} mr={3}/></Label>}            
                 <Text fontSize={['md','lg','xl']} className={'heading-lg'} >{data.displayName}</Text>    
-                {(data.model.geometry.exists) && <Icon as={RepeatIcon} ml={3} fontSize={'24px'} cursor={'pointer'} onClick={() => {let skinModel: ModelFiles = {geometry: `/image/${data.model.geometry.path}`, winAnimation: null, loseAnimation: null}; if (data.model.winAnimation.exists){skinModel.winAnimation = `/image/${data.model.winAnimation.path}`;} if (data.model.loseAnimation.exists){skinModel.loseAnimation = `/image/${data.model.loseAnimation.path}`;} setModel(skinModel); setModelBg(`/image/${data.group.image}`); scroll.scrollToTop();}}/>}
+                {(data.model.geometry.exists) && <Icon as={RepeatIcon} ml={3} fontSize={'24px'} cursor={'pointer'} onClick={() => {let skinModel: ModelFiles = {geometry: `/image/${data.model.geometry.path}`, winAnimation: null, loseAnimation: null}; if (data.model.winAnimation.exists){skinModel.winAnimation = `/image/${data.model.winAnimation.path}`;} if (data.model.loseAnimation.exists){skinModel.loseAnimation = `/image/${data.model.loseAnimation.path}`;} setModel(skinModel); scroll.scrollToTop();}}/>}
             </Flex>
             
             <Flex alignItems={'center'} alignSelf={'center'}>
