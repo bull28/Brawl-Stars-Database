@@ -56,7 +56,7 @@ export default function Brawler() {
                         <Text fontSize={'3xl'} color={'white'} className={'heading-3xl'} mb={3}>Brawler Model</Text>
                         <Flex justifyContent={'center'} alignItems={'center'} w={'60%'} h={'60vw'} bgColor={"#000"} backgroundPosition={"center"} backgroundSize={"cover"} backgroundRepeat={"no-repeat"} border={'3px solid white'}>                        
                             <Suspense fallback={<Spinner/>}>
-                                {model.geometry && <AnimationViewer modelFile={model.geometry} winFile={model.winAnimation} loseFile={model.loseAnimation} bgFile={"/image/scenes/stunt_show.glb"}/>}
+                                {model.geometry && <AnimationViewer modelFile={model.geometry} winFile={model.winAnimation} loseFile={model.loseAnimation} bgFile={"/image/scenes/mine.glb"}/>}
                             </Suspense>
                         </Flex>
                     </Flex>
@@ -90,7 +90,7 @@ export default function Brawler() {
 
                     <Flex justifyContent={'center'} alignItems={'center'} h={'100%'} w={'33%'} bgColor={"#000"} backgroundPosition={"center"} backgroundSize={"cover"} backgroundRepeat={"no-repeat"} border={'3px solid white'}>
                         <Suspense fallback={<Spinner/>}>
-                        {model.geometry && <AnimationViewer modelFile={model.geometry} winFile={model.winAnimation} loseFile={model.loseAnimation} bgFile={"/image/scenes/retropolis.glb"}/>}
+                            {model.geometry && <AnimationViewer modelFile={model.geometry} winFile={model.winAnimation} loseFile={model.loseAnimation} bgFile={"/image/scenes/mine.glb"}/>}
                         </Suspense>
                     </Flex>
 

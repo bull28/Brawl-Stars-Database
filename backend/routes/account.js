@@ -237,21 +237,16 @@ router.post("/signup", (req, res) => {
 router.post("/update", (req, res) => {
     let token = req.body.token;
     let currentPassword = req.body.currentPassword;
-    let newUsername = req.body.newUsername;
     let newPassword = req.body.newPassword;
     let newAvatar = req.body.newAvatar;
 
-    if (token && newUsername !== undefined && newPassword !== undefined && newAvatar !== undefined){
+    if (token && newPassword !== undefined && newAvatar !== undefined){
         let currentUsername = validateToken(token);
         if (currentUsername == ""){
             res.status(401).send("Invalid token.");
             return;
         }
-
-        if (newUsername.length > 30 || newPassword.length > 100){
-            res.status(400).send("Username or password is too long. Maximum username length is 30 and password length is 100.");
-            return;
-        }
+        
         if (newPassword.includes(" ")){
             res.status(400).send("Password cannot contain spaces.");
             return;
@@ -280,10 +275,6 @@ router.post("/update", (req, res) => {
             } catch (error){
                 res.status(500).send("Collection data could not be loaded.");
                 return;
-            }
-
-            if (newUsername == ""){
-                newUsername = results[0].username;
             }
 
             if (newPassword == ""){
@@ -321,52 +312,21 @@ router.post("/update", (req, res) => {
                 newAvatar = newAvatarName[0];
             }
 
-            
-
-            // After all fields are set, check to make sure the user doesn't exist already
             database.queryDatabase(
-            "SELECT username FROM " + TABLE_NAME + " WHERE username = ?;",
-            [newUsername], (error, results, fields) => {
+            "UPDATE " + TABLE_NAME + " SET password = ?, active_avatar = ? WHERE username = ? AND password = ?;",
+            [newPassword, newAvatar, currentUsername, currentPassword], (error, results, fields) => {
                 if (error){
                     res.status(500).send("Could not connect to database.");
                     return;
                 }
-                    
-                if (results.length > 0 && currentUsername.toLowerCase() != newUsername.toLowerCase()){
-                    res.status(401).send("Username already exists.");
+
+                if (results.affectedRows == 0){
+                    res.status(401).send("Current password is incorrect.");
                     return;
                 }
 
-                // Update all columns of the database (new fields are guaranteed not to be empty strings)
-                database.queryDatabase(
-                "UPDATE " + TABLE_NAME + " SET username = ?, password = ?, active_avatar = ? WHERE username = ? AND password = ?;",
-                [newUsername, newPassword, newAvatar, currentUsername, currentPassword], (error, results, fields) => {
-                    if (error){
-                        res.status(500).send("Could not connect to database.");
-                        return;
-                    }
-
-                    if (results.affectedRows == 0){
-                        res.status(401).send("Current password is incorrect.");
-                        return;
-                    }
-
-                    // Update all the user's trades to have their new username otherwise they will
-                    // lose access to all their trades
-                    database.queryDatabase(
-                    "UPDATE " + TRADE_TABLE_NAME + " SET creator = ? WHERE creator = ?;",
-                    [newUsername, currentUsername], (error, results, fields) => {
-                        if (error){
-                            res.status(500).send("Could not connect to database.");
-                            return;
-                        }
-
-                        // If results.affectedRows == 0 there is no error because the user might have no trades
-                    
-                        const userInfo = signToken(newUsername);
-                        res.json(userInfo);
-                    });
-                });
+                const userInfo = signToken(currentUsername);
+                res.json(userInfo);
             });
         });
     } else{
