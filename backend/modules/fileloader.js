@@ -50,11 +50,11 @@ async function readShop(){
     });
 }
 
-async function readThemeMap(){
-    return fspromises.readFile("assets/data/themes_data.json", "utf8")
+async function readFileMaps(){
+    return fspromises.readFile("assets/data/files_data.json", "utf8")
     .then((result) => {
-        const themeMap = JSON.parse(result);
-        return themeMap;
+        const fileMap = JSON.parse(result);
+        return fileMap;
     })
     .catch((error) => {
         return {};
@@ -113,6 +113,19 @@ async function readSpecialThemes(){
     });
 }
 
+async function readScenes(){
+    return fspromises.readdir("assets/images/scenes")
+    .then((result) => {
+        for (let x in result){
+            result[x] = "scenes/" + result[x];
+        }
+        return result;
+    })
+    .catch((error) => {
+        return [];
+    });
+}
+
 exports.allSkinsPromise = readBrawlers();
 exports.eventListPromise = readMaps();
 exports.dropChancesPromise = readBrawlBox();
@@ -120,5 +133,6 @@ exports.freeAvatarsPromise = readFreeAvatars();
 exports.specialAvatarsPromise = readSpecialAvatars();
 exports.freeThemesPromise = readFreeThemes();
 exports.specialThemesPromise = readSpecialThemes();
+exports.scenesPromise = readScenes();
 exports.shopDataPromise = readShop();
-exports.themeMapPromise = readThemeMap();
+exports.fileMapsPromise = readFileMaps();

@@ -36,12 +36,17 @@ allSkinsPromise.then((data) => {
     }
 });
 
-// Load the theme map
+// Load the theme and scene maps
 let themeMap = {};
-const themeMapPromise = fileLoader.themeMapPromise;
-themeMapPromise.then((data) => {
+let sceneMap = {};
+const fileMapsPromise = fileLoader.fileMapsPromise;
+fileMapsPromise.then((data) => {
     if (data !== undefined){
-        themeMap = data;
+        if (data.themeMap !== undefined){
+            themeMap = data.themeMap;
+        } if (data.sceneMap !== undefined){
+            sceneMap = data.sceneMap;
+        }
     }
 });
 
@@ -486,7 +491,7 @@ router.post("/shop", (req, res) => {
 
     if (username){
         database.queryDatabase(
-        "SELECT last_login, coins, trade_credits, brawlers, avatars, themes, featured_item FROM " + TABLE_NAME + " WHERE username = ?;",
+        "SELECT last_login, coins, trade_credits, brawlers, avatars, themes, scenes, featured_item FROM " + TABLE_NAME + " WHERE username = ?;",
         [username], (error, results, fields) => {
             if (databaseErrorCheck(error, results, fields, res)){
                 return;
@@ -496,6 +501,7 @@ router.post("/shop", (req, res) => {
             let userBrawlers = {};
             let userAvatars = [];
             let userThemes = [];
+            let userScenes = [];
             let userCoins = results[0].coins;
             let featuredItem = results[0].featured_item;
             let userTradeCredits = results[0].trade_credits;
@@ -503,6 +509,7 @@ router.post("/shop", (req, res) => {
                 userBrawlers = JSON.parse(results[0].brawlers);
                 userAvatars = JSON.parse(results[0].avatars);
                 userThemes = JSON.parse(results[0].themes);
+                userScenes = JSON.parse(results[0].scenes);
             } catch (error){
                 res.status(500).send("Collection data could not be loaded.");
                 return;
@@ -566,7 +573,8 @@ router.post("/shop", (req, res) => {
                 featuredCosts = dropChances.rewardTypes.pinNoDupes.coinConversion;
             }
             // Out of all the shop items, remove all of them that the user cannot buy right now
-            let availableShopItems = pins.getShopItems(shopItemsCopy, allSkins, userBrawlers, userAvatars, userThemes, featuredItem, featuredCosts);
+            let userCosmetics = {"avatars": userAvatars, "themes": userThemes, "scenes": userScenes};
+            let availableShopItems = pins.getShopItems(shopItemsCopy, allSkins, userBrawlers, userCosmetics, featuredItem, featuredCosts);
 
             // If they do not provide an item to buy, show all items
             if (!(req.body.item)){
@@ -591,6 +599,12 @@ router.post("/shop", (req, res) => {
                                     thisItem.displayName = themeMap[themeName];
                                 }
                                 thisItem.image = THEME_IMAGE_DIR + themeName + "_preview" + IMAGE_FILE_EXTENSION;
+                            } else if (thisItemType == "scene"){
+                                const sceneName = availableShopItems[x]["extraData"];
+                                if (sceneMap.hasOwnProperty(sceneName)){
+                                    thisItem.displayName = sceneMap[sceneName].displayName;
+                                }
+                                thisItem.image = sceneMap[sceneName].preview + IMAGE_FILE_EXTENSION;
                             } else if (thisItemType == "featuredPin"){
                                 // Featured pin already has the image extension since it is stored in brawlers data
                                 thisItem.image = PIN_IMAGE_DIR + availableShopItems[x].image;
@@ -653,6 +667,9 @@ router.post("/shop", (req, res) => {
             } else if (itemData.itemType == "theme"){
                 userThemes.push(itemData.extraData);
                 userItemInventory = 1;
+            } else if (itemData.itemType == "scene"){
+                userScenes.push(itemData.extraData);
+                userItemInventory = 1;
             } else if (itemData.itemType == "brawler"){
                 // The brawl box opener needs a resources object so provide a temporary object
                 // with some of the fields set to default values
@@ -701,7 +718,7 @@ router.post("/shop", (req, res) => {
 
             // Write back to the database after all values have been modified
             database.queryDatabase(
-            "UPDATE " + TABLE_NAME + " SET last_login = ?, coins = ?, trade_credits = ?, brawlers = ?, avatars = ?, themes = ?, featured_item = ? WHERE username = ?;",
+            "UPDATE " + TABLE_NAME + " SET last_login = ?, coins = ?, trade_credits = ?, brawlers = ?, avatars = ?, themes = ?, scenes = ?, featured_item = ? WHERE username = ?;",
             [
                 currentTime,
                 userCoins,
@@ -709,6 +726,7 @@ router.post("/shop", (req, res) => {
                 JSON.stringify(userBrawlers),
                 JSON.stringify(userAvatars),
                 JSON.stringify(userThemes),
+                JSON.stringify(userScenes),
                 featuredItem,
                 username
             ], (error, results, fields) => {

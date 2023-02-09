@@ -331,5 +331,41 @@
         "extraData": "yellow_face",
         "amount": 1,
         "description": "This bundle contains a new background, icon style, and background music."
+    },
+    "scene1": {
+        "displayName": "",
+        "cost": 4000,
+        "itemType": "scene",
+        "image": "",
+        "extraData": "canyon",
+        "amount": 1,
+        "description": "Adds a new background scene for the 3D model viewer."
+    },
+    "scene2": {
+        "displayName": "",
+        "cost": 4000,
+        "itemType": "scene",
+        "image": "",
+        "extraData": "mine",
+        "amount": 1,
+        "description": "Adds a new background scene for the 3D model viewer."
+    },
+    "scene3": {
+        "displayName": "",
+        "cost": 12000,
+        "itemType": "scene",
+        "image": "",
+        "extraData": "retropolis",
+        "amount": 1,
+        "description": "Adds a new background scene for the 3D model viewer."
+    },
+    "scene4": {
+        "displayName": "",
+        "cost": 12000,
+        "itemType": "scene",
+        "image": "",
+        "extraData": "stunt_show",
+        "amount": 1,
+        "description": "Adds a new background scene for the 3D model viewer."
     }
 }

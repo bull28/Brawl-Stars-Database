@@ -205,14 +205,19 @@ function getAvatars(allSkins, allAvatars, userCollection, userAvatars){
  * All free themes are available to anyone. Special themes are only
  * obtainable from the shop. This function takes the name of a theme
  * bundle and classifies each image as either background, icon, or
- * any other type of item that may be contained in a bundle.
- * @param {Array} allThemes json object with arrays of free and special themes
- * @param {Array} userThemes parsed themes array from the database
- * @param {Object} themeMap json object which maps theme files to display names
+ * any other type of item that may be contained in a bundle. Data inputs
+ * have keys all: array with all available items, user: array with items
+ * the user unlocked, map: mapping from file name to displays or previews.
+ * @param {Object} themesData json object with keys all, user, map
+ * @param {Object} scenesData json object with keys all, user, map
+ * @param {String} fileExtension image file extension
  * @returns object with keys corresponding to types of images
  */
-function getThemes(allThemes, userThemes, themeMap){
+function getThemes(themesData, scenesData, fileExtension){
     let themesInfo = {};
+    const allThemes = themesData.all;
+    const userThemes = themesData.user;
+    const themeMap = themesData.map;
 
     if (!(allThemes.free && allThemes.special)){
         return themesInfo;
@@ -258,7 +263,8 @@ function getThemes(allThemes, userThemes, themeMap){
     let themesResult = {
         "background": [],
         "icon": [],
-        "music": []
+        "music": [],
+        "scene": getScenes(scenesData, fileExtension)
     };
 
     for (let x in themesInfo){
@@ -285,6 +291,42 @@ function getThemes(allThemes, userThemes, themeMap){
 }
 
 /**
+ * Returns a complete list of all scenes a user is able to select.
+ * All scenes require a purchase to unlock. This returns an array
+ * of scenes. Each scene is an object with its file path which gets
+ * passed to the 3D model viewer. There is also a display name and
+ * a preview image.
+ * @param {Object} themesData json object with keys all, user, map
+ * @param {Object} scenesData json object with keys all, user, map
+ * @param {String} fileExtension image file extension
+ * @returns object with keys corresponding to types of images
+ */
+function getScenes(scenesData, fileExtension){
+    let scenesInfo = [];
+
+    const sceneMap = scenesData.map;
+
+    for (let scene of scenesData.all){
+        const filePaths = scene.split("/");
+        const sceneName = filePaths[filePaths.length - 1].split(".")[0];
+        
+        if (sceneName !== undefined && sceneMap.hasOwnProperty(sceneName)){
+            if (sceneMap.hasOwnProperty(sceneName)){
+                if (scenesData.user.includes(sceneName)){
+                    scenesInfo.push({
+                        "displayName": sceneMap[sceneName].displayName,
+                        "path": scene,
+                        "preview": sceneMap[sceneName].preview + fileExtension
+                    });
+                }
+            } 
+        }
+    }
+
+    return scenesInfo;
+}
+
+/**
  * Determines which items a user is able to buy from the shop, given their
  * collection progress and unlocked avatars. Avatars are a one-time purchase
  * and brawler-type items are only available if the user does not have all
@@ -296,14 +338,18 @@ function getThemes(allThemes, userThemes, themeMap){
  * @param {Object} shopItems json object with all the possible shop items
  * @param {Array} allSkins json array with all the brawlers
  * @param {Object} userCollection parsed brawlers object from the database
- * @param {Array} userAvatars parsed avatars array from the database
- * @param {Array} userThemes parsed themes array from the database
+ * @param {Object} userCosmetics arrays of user avatars, themes, and scenes
  * @param {String} featuredItem current featured item string
  * @param {Array} featuredCosts array of costs for different rarities of pins
  * @returns object containing items the user can buy
  */
-function getShopItems(shopItems, allSkins, userCollection, userAvatars, userThemes, featuredItem, featuredCosts){
+function getShopItems(shopItems, allSkins, userCollection, userCosmetics, featuredItem, featuredCosts){
     let availableShopItems = {};
+
+    // Avatars, themes, and scenes are grouped together in userCosmetics
+    const userAvatars = userCosmetics.avatars;
+    const userThemes = userCosmetics.themes;
+    const userScenes = userCosmetics.scenes;
 
     const collectionInfo = formatCollectionData(allSkins, userCollection, "", "");
     const achievements = getAchievementAvatars(userAvatars, userThemes, collectionInfo);
@@ -338,6 +384,11 @@ function getShopItems(shopItems, allSkins, userCollection, userAvatars, userThem
             // Themes are handled the same way as avatars. The only difference is that one theme string
             // corresponds to a bundle of actual items (background, icon, and possibly more???)
             if (userThemes.includes(shopItems[x].extraData) == false){
+                availableShopItems[x] = shopItems[x];
+            }
+        } else if (shopItems[x].itemType == "scene"){
+            // Scenes are handled the same way as avatars. Unlike avatars, there are no free scenes.
+            if (userScenes.includes(shopItems[x].extraData) == false){
                 availableShopItems[x] = shopItems[x];
             }
         } else if (shopItems[x].itemType == "featured"){

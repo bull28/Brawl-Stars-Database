@@ -14,6 +14,9 @@ const pins = require("../modules/pins");
 const maps = require("../modules/maps");
 const fileLoader = require("../modules/fileloader");
 
+const filePaths = require("../modules/filepaths");
+const IMAGE_FILE_EXTENSION = filePaths.IMAGE_FILE_EXTENSION;
+
 // constants for log in rewards
 const HOURS_PER_REWARD = 6;
 const TOKENS_PER_REWARD = 100;
@@ -28,12 +31,17 @@ allSkinsPromise.then((data) => {
     }
 });
 
-// Load the theme map
+// Load the theme and scene maps
 let themeMap = {};
-const themeMapPromise = fileLoader.themeMapPromise;
-themeMapPromise.then((data) => {
+let sceneMap = {};
+const fileMapsPromise = fileLoader.fileMapsPromise;
+fileMapsPromise.then((data) => {
     if (data !== undefined){
-        themeMap = data;
+        if (data.themeMap !== undefined){
+            themeMap = data.themeMap;
+        } if (data.sceneMap !== undefined){
+            sceneMap = data.sceneMap;
+        }
     }
 });
 
@@ -62,6 +70,13 @@ const specialThemesPromise = fileLoader.specialThemesPromise;
 specialThemesPromise.then((data) => {
     if (data !== undefined){
         allThemes.special = data;
+    }
+});
+let allScenes = [];
+const scenesPromise = fileLoader.scenesPromise;
+scenesPromise.then((data) => {
+    if (data !== undefined){
+        allScenes = data;
     }
 });
 
@@ -189,8 +204,8 @@ router.post("/signup", (req, res) => {
     if (username && password){
         database.queryDatabase(
         "INSERT IGNORE INTO " + TABLE_NAME +
-        " (username, password, active_avatar, brawlers, avatars, themes, wild_card_pins, featured_item) VALUES (?, ?, ?, ?, ?, ?, ?, ?);",
-        [username, password, "avatars/free/default", JSON.stringify(startingBrawlers), "[]", "[]", "[]", ""], (error, results, fields) => {
+        " (username, password, active_avatar, brawlers, avatars, themes, scenes, wild_card_pins, featured_item) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);",
+        [username, password, "avatars/free/default", JSON.stringify(startingBrawlers), "[]", "[]", "[]", "[]", ""], (error, results, fields) => {
             if (error){
                 res.status(500).send("Could not connect to database.");
                 return;
@@ -398,7 +413,7 @@ router.post("/avatar", (req, res) => {
     }
 });
 
-// Get the list of all themes the user is allowed to select
+// Get the list of all themes and scenes the user is allowed to select
 router.post("/theme", (req, res) => {
     if (!(req.body.token)){
         res.status(400).send("Token is missing.");
@@ -408,7 +423,7 @@ router.post("/theme", (req, res) => {
 
     if (username){
         database.queryDatabase(
-        "SELECT themes FROM " + TABLE_NAME + " WHERE username = ?;",
+        "SELECT themes, scenes FROM " + TABLE_NAME + " WHERE username = ?;",
         [username], (error, results, fields) => {
             if (error){
                 res.status(500).send("Could not connect to database.");
@@ -420,14 +435,20 @@ router.post("/theme", (req, res) => {
             }
 
             let userThemes = [];
+            let userScenes = [];
             try{
                 userThemes = JSON.parse(results[0].themes);
+                userScenes = JSON.parse(results[0].scenes);
             } catch (error){
                 res.status(500).send("Theme data could not be loaded.");
                 return;
             }
 
-            const themesInfo = pins.getThemes(allThemes, userThemes, themeMap);
+            const themesInfo = pins.getThemes(
+                {"all": allThemes, "user": userThemes, "map": themeMap},
+                {"all": allScenes, "user": userScenes, "map": sceneMap},
+                IMAGE_FILE_EXTENSION
+            );
             res.json(themesInfo);
         });
     } else{

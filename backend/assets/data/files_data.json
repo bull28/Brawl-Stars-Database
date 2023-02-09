@@ -1,0 +1,37 @@
+{
+    "themeMap": {
+        "default": "Default",
+        "retro": "Retropolis",
+        "mecha": "Mecha",
+        "pirate": "Pirate Brawlidays",
+        "lny_20": "Lunar Brawl",
+        "psg": "Brawl Ball",
+        "taras_bazaar": "Tara's Bazaar",
+        "super_city": "Super City",
+        "giftshop": "Starr Park",
+        "lunar": "Moon Festival",
+        "waterpark": "Waterpark",
+        "legendaryset": "Legendary",
+        "stuntshow": "Stunt Show",
+        "deepsea": "Deep Sea",
+        "yellow_face": " "
+    },
+    "sceneMap": {
+        "canyon": {
+            "displayName": "Canyon",
+            "preview": "maps/banners/canyon"
+        },
+        "mine": {
+            "displayName": "Gem Mine",
+            "preview": "maps/banners/mine"
+        },
+        "retropolis": {
+            "displayName": "Retropolis",
+            "preview": "maps/banners/retropolis"
+        },
+        "stunt_show": {
+            "displayName": "Stunt Show",
+            "preview": "maps/banners/stuntshow"
+        }
+    }
+}
