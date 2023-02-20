@@ -69,7 +69,7 @@
         "image": "",
         "extraData": "collection_01",
         "amount": 1,
-        "description": "Contains a new avatar. This avatar can be selected in the account settings."
+        "description": "This avatar is a reward for reaching a collection score of C. Purchase this avatar and reach a collection score of B- to purchase the next avatar in this series."
     },
     "avatart2": {
         "displayName": "New Avatar",
@@ -78,7 +78,7 @@
         "image": "",
         "extraData": "collection_02",
         "amount": 1,
-        "description": "Contains a new avatar. This avatar can be selected in the account settings."
+        "description": "This avatar is a reward for reaching a collection score of B-. Purchase this avatar and reach a collection score of B+ to purchase the next avatar in this series."
     },
     "avatart3": {
         "displayName": "New Avatar",
@@ -87,7 +87,7 @@
         "image": "",
         "extraData": "collection_03",
         "amount": 1,
-        "description": "Contains a new avatar. This avatar can be selected in the account settings."
+        "description": "This avatar is a reward for reaching a collection score of B+. Purchase this avatar and reach a collection score of A to purchase the next avatar in this series."
     },
     "avatart4": {
         "displayName": "New Avatar",
@@ -96,7 +96,7 @@
         "image": "",
         "extraData": "collection_04",
         "amount": 1,
-        "description": "Contains a new avatar. This avatar can be selected in the account settings."
+        "description": "This avatar is a reward for reaching a collection score of A. Purchase this avatar and reach a collection score of A+ to purchase the next avatar in this series."
     },
     "avatart5": {
         "displayName": "New Avatar",
@@ -105,7 +105,7 @@
         "image": "",
         "extraData": "collection_05",
         "amount": 1,
-        "description": "Contains a new avatar. This avatar can be selected in the account settings."
+        "description": "This avatar is a reward for reaching a collection score of A+. Purchase this avatar and reach a collection score of S- to purchase the next avatar in this series."
     },
     "avatart6": {
         "displayName": "New Avatar",
@@ -114,7 +114,7 @@
         "image": "",
         "extraData": "collection_06",
         "amount": 1,
-        "description": "Contains a new avatar. This avatar can be selected in the account settings."
+        "description": "This avatar is a reward for reaching a collection score of S-. Purchase this avatar and reach a collection score of S to purchase the next avatar in this series."
     },
     "avatart7": {
         "displayName": "New Avatar",
@@ -123,7 +123,7 @@
         "image": "",
         "extraData": "collection_07",
         "amount": 1,
-        "description": "Contains a new avatar. This avatar can be selected in the account settings."
+        "description": "This avatar is a reward for reaching a collection score of S. Purchase this avatar and reach a collection score of S+ to purchase the next avatar in this series."
     },
     "avatart8": {
         "displayName": "New Avatar",
@@ -132,7 +132,7 @@
         "image": "",
         "extraData": "collection_08",
         "amount": 1,
-        "description": "Contains a new avatar. This avatar can be selected in the account settings."
+        "description": "This avatar is a reward for reaching a collection score of S+. This is the final avatar in this series of collection score rewards."
     },
     "avatar1": {
         "displayName": "New Avatar",
@@ -177,7 +177,7 @@
         "image": "",
         "extraData": "gamemode_brawlball",
         "amount": 1,
-        "description": "Contains a new avatar. This avatar can be selected in the account settings."
+        "description": "This avatar is a reward for purchasing at least 12 different avatars."
     },
     "avatara2": {
         "displayName": "New Avatar",
@@ -186,7 +186,7 @@
         "image": "",
         "extraData": "gamemode_heist",
         "amount": 1,
-        "description": "Contains a new avatar. This avatar can be selected in the account settings."
+        "description": "This avatar is a reward for purchasing at least 12 different themes."
     },
     "avatara3": {
         "displayName": "New Avatar",
@@ -195,7 +195,7 @@
         "image": "",
         "extraData": "gamemode_bounty",
         "amount": 1,
-        "description": "Contains a new avatar. This avatar can be selected in the account settings."
+        "description": "This avatar is a reward for collecting at least 2000 pin copies."
     },
     "avatar0": {
         "displayName": "New Avatar",

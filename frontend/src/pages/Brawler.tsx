@@ -17,9 +17,9 @@ export default function Brawler() {
     const readStorage = (key: string) => {
         const a = JSON.parse(localStorage.getItem(key) || "{}")[localStorage.getItem('username') || ""]
         if (a){
-            return a
+            return "/image/" + a
         } else {
-            return "/image/scenes/mine.glb"
+            return ""
         }
     }
 
@@ -64,7 +64,7 @@ export default function Brawler() {
                         <Text fontSize={'3xl'} color={'white'} className={'heading-3xl'} mb={3}>Brawler Model</Text>
                         <Flex justifyContent={'center'} alignItems={'center'} w={'60%'} h={'60vw'} bgColor={"#000"} backgroundPosition={"center"} backgroundSize={"cover"} backgroundRepeat={"no-repeat"} border={'3px solid white'}>                        
                             <Suspense fallback={<Spinner/>}>
-                                {model.geometry && <AnimationViewer modelFile={model.geometry} winFile={model.winAnimation} loseFile={model.loseAnimation} bgFile={`/image/${readStorage('scene')}`}/>}
+                                {model.geometry && <AnimationViewer modelFile={model.geometry} winFile={model.winAnimation} loseFile={model.loseAnimation} bgFile={`${readStorage('scene')}`}/>}
                             </Suspense>
                         </Flex>
                     </Flex>
@@ -98,7 +98,7 @@ export default function Brawler() {
 
                     <Flex justifyContent={'center'} alignItems={'center'} h={'100%'} w={'33%'} bgColor={"#000"} backgroundPosition={"center"} backgroundSize={"cover"} backgroundRepeat={"no-repeat"} border={'3px solid white'}>
                         <Suspense fallback={<Spinner/>}>
-                            {model.geometry && <AnimationViewer modelFile={model.geometry} winFile={model.winAnimation} loseFile={model.loseAnimation} bgFile={`/image/${readStorage('scene')}`}/>}
+                            {model.geometry && <AnimationViewer modelFile={model.geometry} winFile={model.winAnimation} loseFile={model.loseAnimation} bgFile={`${readStorage('scene')}`}/>}
                         </Suspense>
                     </Flex>
 
