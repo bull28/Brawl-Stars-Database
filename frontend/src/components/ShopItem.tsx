@@ -76,6 +76,7 @@ export default function ShopItem({data, coins, isFeatured, timeLeftString}: {dat
                                     <Flex boxShadow={(accepted) ? '0px 0px 50px #fff' : ''} borderRadius={'50%'} >
                                         <Image src={`/image/${data.image}`}/>
                                     </Flex>
+                                    <Text w={'75%'} textAlign={'center'} mt={'5%'} fontSize={'xl'} className={'heading-2xl'}>{data.description}</Text>
                                     <Flex  fontSize={'xl'} className={'heading-xl'} mt={5}>
                                         {accepted && purchaseData && purchaseData.inventory !== 1 && <CountUp prefix={'Inventory: '} end={purchaseData.inventory} duration={0.5}/>}
                                     </Flex>
@@ -87,8 +88,8 @@ export default function ShopItem({data, coins, isFeatured, timeLeftString}: {dat
                                         <Text mb={5}  fontSize={'3xl'} className={'heading-3xl'}>{purchaseData?.result[0].displayName}</Text>
                                         <Flex mb={5}>
                                             <Image border={'2px solid black'} borderRadius={'lg'} src={`/image/portraits/${purchaseData?.result[0].image}`}/>
-                                        </Flex>
-                                        <Text mb={5} w={'75%'} fontSize={'xl'}  className={'heading-2xl'}>{purchaseData?.result[0].description}</Text>                                    
+                                        </Flex>    
+                                        <Text mb={5} fontSize={'xl'} className={'heading-2xl'}>{purchaseData?.result[0].description}</Text>                                  
                                     </Flex>
                                 </ScaleFade>
                                 }

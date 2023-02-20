@@ -2,6 +2,7 @@ import { Box, Flex, HStack, Image, Link, ScaleFade, SimpleGrid, Text } from '@ch
 import { useState, useEffect } from 'react'
 import { BsEmojiLaughing, BsPalette, BsPerson } from 'react-icons/bs'
 import { MdOutlineGeneratingTokens } from 'react-icons/md'
+import { BiLandscape } from 'react-icons/bi'
 import MovingText from '../components/MovingText'
 import ShopItem from '../components/ShopItem'
 import AuthRequest, { getToken } from '../helpers/AuthRequest'
@@ -152,6 +153,19 @@ export default function Shop() {
                         {
                             data?.map((item) => (
                                 item.name.toLowerCase().includes('theme') && <ScaleFade in={true}><ShopItem data={item} coins={userInfo?.coins || 0} timeLeftString={""}/></ScaleFade>
+                            ))
+                        }
+                        </SimpleGrid>
+                    </Flex>
+                    <Flex flexDir={'column'}>
+                        <Flex alignItems={'center'}  fontSize={'3xl'} className={'heading-3xl'} ml={5} mb={3} mt={'5vh'}>
+                            <Text mr={1}>Scenes</Text>
+                            <BiLandscape color={'black'}/>
+                        </Flex>
+                        <SimpleGrid columns={7} spacing={3}>
+                        {
+                            data?.map((item) => (
+                                item.name.toLowerCase().includes('scene') && <ScaleFade in={true}><ShopItem data={item} coins={userInfo?.coins || 0} timeLeftString={""}/></ScaleFade>
                             ))
                         }
                         </SimpleGrid>
