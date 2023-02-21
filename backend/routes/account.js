@@ -7,7 +7,7 @@ const jsonwebtoken = require("jsonwebtoken");
 // Methods to query the database are contained in this module
 const database = require("../modules/database");
 const TABLE_NAME = process.env.DATABASE_TABLE_NAME || "brawl_stars_database";
-const TRADE_TABLE_NAME = process.env.DATABASE_TRADE_TABLE_NAME || "brawl_stars_trades";
+const COSMETIC_TABLE_NAME = process.env.DATABASE_COSMETIC_TABLE_NAME || "brawl_stars_cosmetics";
 
 // functions to view and modify pin collections
 const pins = require("../modules/pins");
@@ -16,6 +16,8 @@ const fileLoader = require("../modules/fileloader");
 
 const filePaths = require("../modules/filepaths");
 const AVATAR_IMAGE_DIR = filePaths.AVATAR_IMAGE_DIR;
+const THEME_IMAGE_DIR = filePaths.THEME_IMAGE_DIR;
+const SCENE_IMAGE_DIR = filePaths.SCENE_IMAGE_DIR;
 const IMAGE_FILE_EXTENSION = filePaths.IMAGE_FILE_EXTENSION;
 
 // constants for log in rewards
@@ -204,30 +206,31 @@ router.post("/signup", (req, res) => {
     
     if (username && password){
         database.queryDatabase(
-        "INSERT IGNORE INTO " + TABLE_NAME +
+        "INSERT INTO " + TABLE_NAME +
         " (username, password, active_avatar, brawlers, avatars, themes, scenes, wild_card_pins, featured_item) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);",
         [username, password, "free/default", JSON.stringify(startingBrawlers), "[]", "[]", "[]", "[]", ""], (error, results, fields) => {
             if (error){
+                if (error.errno == 1062){
+                    // This is the error number for duplicate primary key
+                    res.status(401).send("Username already exists.");
+                    return;
+                }
                 res.status(500).send("Could not connect to database.");
                 return;
             }
 
-            if (results.affectedRows == 0){
-                res.status(401).send("Username already exists.");
-            } else{
-                database.queryDatabase(
-                "SELECT username FROM " + TABLE_NAME + " WHERE username = ? AND password = ?;",
-                [username, password], (error, results, fields) => {
-                    if (error){
-                        res.status(500).send("Could not connect to database.");
-                        return;
-                    }
+            database.queryDatabase(
+            "SELECT username FROM " + TABLE_NAME + " WHERE username = ? AND password = ?;",
+            [username, password], (error, results, fields) => {
+                if (error){
+                    res.status(500).send("Could not connect to database.");
+                    return;
+                }
 
-                    // At this point, the query was successful (error was not found) so
-                    // either the login is successful or the username/password are incorrect
-                    login(results, res);
-                });
-            }
+                // At this point, the query was successful (error was not found) so
+                // either the login is successful or the username/password are incorrect
+                login(results, res);
+            });
         });
     } else{
         res.status(400).send("Username or password is missing.");
@@ -407,11 +410,217 @@ router.post("/theme", (req, res) => {
             }
 
             const themesInfo = pins.getThemes(
-                {"all": allThemes, "user": userThemes, "map": themeMap, "file": "themes/"},
-                {"all": allScenes, "user": userScenes, "map": sceneMap, "file": "scenes/"},
+                {"all": allThemes, "user": userThemes, "map": themeMap, "file": THEME_IMAGE_DIR},
+                {"all": allScenes, "user": userScenes, "map": sceneMap, "file": SCENE_IMAGE_DIR},
                 IMAGE_FILE_EXTENSION
             );
             res.json(themesInfo);
+        });
+    } else{
+        res.status(401).send("Invalid token.");
+    }
+});
+
+// Get and set user cosmetic items
+router.post("/cosmetic", (req, res) => {
+    if (!(req.body.token)){
+        res.status(400).send("Token is missing.");
+        return;
+    }
+    let username = validateToken(req.body.token);
+
+    // This object is returned to the user with their data
+    let setCosmetics = {
+        "background": "",
+        "icon": "",
+        "music": "",
+        "scene": ""
+    };
+
+    // If the user does not provide any cosmetics to set,
+    // get their currently active cosmetics then return
+    if (!(req.body.setCosmetics)){
+        database.queryDatabase(
+        "SELECT background, icon, music, scene FROM " + COSMETIC_TABLE_NAME + " WHERE username = ?;",
+        [username], (error, results, fields) => {
+            if (error){
+                res.status(500).send("Could not connect to database.");
+                return;
+            }
+            if (results.length == 0){
+                res.status(404).send("User does not have any cosmetic data.");
+                return;
+            }
+
+            let cosmeticsData = results[0];
+
+            // First, get the list of all default cosmetics
+            const defaultThemes = allThemes.free.filter((value) => value.includes("default_"));
+
+            // Initialize the object sent to the user with the default cosmetics
+            for (let x of defaultThemes){
+                if (x.includes("_background")){
+                    setCosmetics.background = THEME_IMAGE_DIR + x;
+                } else if (x.includes("_icon")){
+                    setCosmetics.icon = THEME_IMAGE_DIR + x;
+                } else if (x.includes("_music")){
+                    setCosmetics.music = THEME_IMAGE_DIR + x;
+                }
+            }
+
+            // For all of the cosmetics returned from the database that are not empty string,
+            // update the object with that cosmetic's name
+            for (let x in cosmeticsData){
+                if (cosmeticsData[x] != ""){
+                    if (x == "background" || x == "icon" || x == "music"){
+                        // Since the file extension might is not always the same, use the file name
+                        // from the allThemes/allScenes arrays
+
+                        // cosmeticsData[x] stores only whether the cosmetic is free/special
+                        // and its name. Both of those are contained in allThemes or allScenes.
+                        let result = undefined;
+                        if (cosmeticsData[x].includes("free/")){
+                            result = allThemes.free.find((value) => value.includes(cosmeticsData[x]));
+                        } else{
+                            result = allThemes.special.find((value) => value.includes(cosmeticsData[x]));
+                        }
+
+                        if (result){
+                            setCosmetics[x] = THEME_IMAGE_DIR + result;
+                        }
+                    } else if (x == "scene"){
+                        const result = allScenes.find((value) => value.includes(cosmeticsData[x]));
+                        if (result){
+                            setCosmetics[x] = SCENE_IMAGE_DIR + result;
+                        }
+                    }
+                }
+            }
+            res.json(setCosmetics);
+        });
+        return;
+    }
+
+
+    // Try to read which cosmetics the user wants to set
+    // If req.body.setCosmetics is not formatted correctly or is some other data type
+    // then an error will be sent here.
+    try{
+        for (let x in req.body.setCosmetics){
+            if (x == "background" || x == "icon" || x == "music"){
+                // Remove the file extension and the directory because that information
+                // is common among all themes and only the necessary information has to
+                // be stored in the database.
+                setCosmetics[x] = req.body.setCosmetics[x].split(".")[0].replace(THEME_IMAGE_DIR, "");
+            } else if (x == "scene"){
+                setCosmetics[x] = req.body.setCosmetics[x].split(".")[0].replace(SCENE_IMAGE_DIR, "");
+            }
+        }
+    } catch (error){
+        res.status(400).send("Request to set cosmetics is not formatted correctly.");
+        return;
+    }
+
+    if (username){
+        database.queryDatabase(
+        "SELECT themes, scenes FROM " + TABLE_NAME + " WHERE username = ?;",
+        [username], (error, results, fields) => {
+            if (error){
+                res.status(500).send("Could not connect to database.");
+                return;
+            }
+            if (results.length == 0){
+                res.status(404).send("Could not find the user in the database.");
+                return;
+            }
+
+            let userThemes = [];
+            let userScenes = [];
+            try{
+                userThemes = JSON.parse(results[0].themes);
+                userScenes = JSON.parse(results[0].scenes);
+            } catch (error){
+                res.status(500).send("Theme data could not be loaded.");
+                return;
+            }
+            
+
+            // If the user wants to set their cosmetics, first validate their
+            // selections by checking the database values.
+            let validCosmetics = true;
+            for (let x in setCosmetics){
+                // Empty string means set to default
+                if (setCosmetics[x] != ""){
+                    if (x == "background" || x == "icon" || x == "music"){
+                        const filePaths = setCosmetics[x].split("/");
+                        const themeNameFull = filePaths[filePaths.length - 1];
+    
+                        // Find the last underscore in themeNameFull and split it there.
+                        // This has to be done to get the name of the theme because it is
+                        // stored without the _background, _icon, ...
+                        let splitIndex = themeNameFull.length;
+                        let foundSplitIndex = false;
+                        while (splitIndex >= 0 && foundSplitIndex == false){
+                            if (themeNameFull[splitIndex] == "_"){
+                                foundSplitIndex = true;
+                            } else{
+                                splitIndex--;
+                            }
+                        }
+                        
+                        if (splitIndex > 0){
+                            const themeName = themeNameFull.slice(0, splitIndex);
+
+                            if (filePaths[0] == "free"){
+                                // If the theme they want to set is free, make sure it exists in the
+                                // free themes since the database does not store free themes, meaning
+                                // there is no other way to tell if the theme they are trying to set
+                                // actually exists.
+                                if (allThemes.free.find((value) => value.includes(themeNameFull)) === undefined){
+                                    validCosmetics = false;
+                                }
+                            } else if (!(userThemes.includes(themeName))){
+                                // If the theme they want to set is special, only need to check if
+                                // that theme is stored in the database because only valid themes are
+                                // inserted into the database when buying themes from the shop.
+                                validCosmetics = false;
+                            }                            
+                        } else{
+                            validCosmetics = false;
+                        }
+                    } else if (x == "scene"){
+                        if (!(userScenes.includes(setCosmetics[x]))){
+                            validCosmetics = false;
+                        }
+                    }
+                }
+            }
+
+            if (validCosmetics){
+                database.queryDatabase(
+                "UPDATE " + COSMETIC_TABLE_NAME + " SET background = ?, icon = ?, music = ?, scene = ? WHERE username = ?;",
+                [
+                    setCosmetics.background,
+                    setCosmetics.icon,
+                    setCosmetics.music,
+                    setCosmetics.scene,
+                    username
+                ], (error, results, fields) => {
+                    if (error){
+                        res.status(500).send("Could not connect to database.");
+                        return;
+                    }
+                    if (results.affectedRows == 0){
+                        res.status(500).send("User does not have any cosmetic data.");
+                        return;
+                    }
+
+                    res.json(setCosmetics);
+                    return;
+                });
+            } else{
+                res.status(403).send("You are not allowed to use one or more of those cosmetics.");
+            }
         });
     } else{
         res.status(401).send("Invalid token.");

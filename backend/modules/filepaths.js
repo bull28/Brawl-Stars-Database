@@ -14,7 +14,7 @@ const filePaths = {
     "AVATAR_SPECIAL_DIR": "avatars/special/",
     "THEME_IMAGE_DIR": "themes/",
     "THEME_SPECIAL_DIR": "themes/special/",
-    "SCENE_MODEL_DIR": "scenes/"
+    "SCENE_IMAGE_DIR": "scenes/"
 }
 
 module.exports = filePaths;

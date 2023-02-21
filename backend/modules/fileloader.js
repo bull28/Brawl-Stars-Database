@@ -116,9 +116,6 @@ async function readSpecialThemes(){
 async function readScenes(){
     return fspromises.readdir("assets/images/scenes")
     .then((result) => {
-        //for (let x in result){
-        //    result[x] = "scenes/" + result[x];
-        //}
         return result;
     })
     .catch((error) => {
