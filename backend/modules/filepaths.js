@@ -10,8 +10,11 @@ const filePaths = {
     "MAP_IMAGE_DIR": "maps/",
     "MAP_BANNER_DIR": "maps/banners/",
     "RESOURCE_IMAGE_DIR": "resources/",
-    "AVATAR_IMAGE_DIR": "avatars/special/",
-    "THEME_IMAGE_DIR": "themes/special/"
+    "AVATAR_IMAGE_DIR": "avatars/",
+    "AVATAR_SPECIAL_DIR": "avatars/special/",
+    "THEME_IMAGE_DIR": "themes/",
+    "THEME_SPECIAL_DIR": "themes/special/",
+    "SCENE_MODEL_DIR": "scenes/"
 }
 
 module.exports = filePaths;

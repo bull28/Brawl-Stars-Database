@@ -19,6 +19,7 @@ const TRADES_PER_PAGE = 20;
 // base directories of image files
 const filePaths = require("../modules/filepaths");
 const PIN_IMAGE_DIR = filePaths.PIN_IMAGE_DIR;
+const AVATAR_IMAGE_DIR = filePaths.AVATAR_IMAGE_DIR;
 const IMAGE_FILE_EXTENSION = filePaths.IMAGE_FILE_EXTENSION;
 
 
@@ -79,7 +80,7 @@ router.get("/id", (req, res) => {
         const tradeData = {
             "creator": {
                 "username": results[0].creator,
-                "avatar": results[0].creator_avatar + IMAGE_FILE_EXTENSION,
+                "avatar": AVATAR_IMAGE_DIR + results[0].creator_avatar + IMAGE_FILE_EXTENSION,
                 "avatarColor": results[0].creator_color
             },
             "cost": Math.ceil(results[0].trade_credits / 10),
@@ -212,7 +213,7 @@ router.post("/all", (req, res) => {
                 "tradeid": x.tradeid,
                 "creator": {
                     "username": x.creator,
-                    "avatar": x.creator_avatar + IMAGE_FILE_EXTENSION,
+                    "avatar": AVATAR_IMAGE_DIR + x.creator_avatar + IMAGE_FILE_EXTENSION,
                     "avatarColor": x.creator_color,
                 },
                 "cost": Math.ceil(x.trade_credits / 10),

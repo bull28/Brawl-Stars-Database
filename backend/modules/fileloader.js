@@ -65,7 +65,7 @@ async function readFreeAvatars(){
     return fspromises.readdir("assets/images/avatars/free")
     .then((result) => {
         for (let x in result){
-            result[x] = "avatars/free/" + result[x];
+            result[x] = "free/" + result[x];
         }
         return result;
     })
@@ -78,7 +78,7 @@ async function readSpecialAvatars(){
     return fspromises.readdir("assets/images/avatars/special")
     .then((result) => {
         for (let x in result){
-            result[x] = "avatars/special/" + result[x];
+            result[x] = "special/" + result[x];
         }
         return result;
     })
@@ -91,7 +91,7 @@ async function readFreeThemes(){
     return fspromises.readdir("assets/images/themes/free")
     .then((result) => {
         for (let x in result){
-            result[x] = "themes/free/" + result[x];
+            result[x] = "free/" + result[x];
         }
         return result;
     })
@@ -104,7 +104,7 @@ async function readSpecialThemes(){
     return fspromises.readdir("assets/images/themes/special")
     .then((result) => {
         for (let x in result){
-            result[x] = "themes/special/" + result[x];
+            result[x] = "special/" + result[x];
         }
         return result;
     })
@@ -116,9 +116,9 @@ async function readSpecialThemes(){
 async function readScenes(){
     return fspromises.readdir("assets/images/scenes")
     .then((result) => {
-        for (let x in result){
-            result[x] = "scenes/" + result[x];
-        }
+        //for (let x in result){
+        //    result[x] = "scenes/" + result[x];
+        //}
         return result;
     })
     .catch((error) => {

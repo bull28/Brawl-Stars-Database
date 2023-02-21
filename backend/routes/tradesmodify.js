@@ -158,7 +158,7 @@ router.post("/create", (req, res) => {
 
         // Get the user's data and check if they have the necessary resources and pins to create the trade
         database.queryDatabase(
-        "SELECT brawlers, active_avatar, trade_credits, trade_requests FROM " + TABLE_NAME + " WHERE username = ?;",
+        "SELECT brawlers, active_avatar, trade_credits FROM " + TABLE_NAME + " WHERE username = ?;",
         [username], (error, results, fields) => {
             if (databaseErrorCheck(error, results, fields, res)){
                 return;
@@ -184,13 +184,6 @@ router.post("/create", (req, res) => {
                 res.status(403).send("Not enough Trade Credits. Open Brawl Boxes to get more.");
                 return;
             }
-
-            // Too many active trades
-            if (userResources.trade_requests >= MAX_ACTIVE_TRADES){
-                res.status(403).send("Too many active trades. Close one before creating a new one.");
-                return;
-            }
-
             
             let hasRequiredPins = true;
             for (let x of offerPins){
@@ -227,12 +220,17 @@ router.post("/create", (req, res) => {
             // tradeHours defaults to 2 days expiry time
             const tradeExpiration = Date.now() + tradeHours * 3600000;
 
-            
             // Add the new trade into the trades table
             database.queryDatabase(
             "INSERT INTO " + TRADE_TABLE_NAME + " (creator, creator_avatar, creator_color, offer, request, trade_credits, trade_credits_time, expiration) VALUES (?, ?, ?, ?, ?, ?, ?, ?);",
             [username, userResources.active_avatar, userAvatarColor, JSON.stringify(offerPins), JSON.stringify(requestPins), tradeCost, timeTradeCost, tradeExpiration], (error, results, fields) => {
                 if (error){
+                    // Check to see if the error is from the trigger or something else
+                    // then return the appropriate error message.
+                    if (error.sqlMessage == "ASH THREW THAT TRADE IN THE TRASH ! ! !"){
+                        res.status(403).send("Too many active trades. Close one before creating a new one.");
+                        return;
+                    }
                     res.status(500).send("Could not connect to database.");
                     return;
                 }
@@ -243,7 +241,7 @@ router.post("/create", (req, res) => {
                 }
 
 
-                // Get the tradeid that was just inserted and it will be returned to the user and added to their trade_requests
+                // Get the tradeid that was just inserted and it will be returned to the user
                 database.queryDatabase(
                 "SELECT LAST_INSERT_ID();",
                 [], (error, results, fields) => {
@@ -252,12 +250,11 @@ router.post("/create", (req, res) => {
                     }
 
                     const tradeidResult = results[0]["LAST_INSERT_ID()"];
-                    userResources.trade_requests++;
                     
                     // Update the user's data after their resources and pins have been changed
                     database.queryDatabase(
-                    "UPDATE " + TABLE_NAME + " SET brawlers = ?, trade_requests = ?, trade_credits = ? WHERE username = ?;",
-                    [JSON.stringify(collectionData), userResources.trade_requests, userResources.trade_credits, username], (error, results, fields) => {
+                    "UPDATE " + TABLE_NAME + " SET brawlers = ?, trade_credits = ? WHERE username = ?;",
+                    [JSON.stringify(collectionData), userResources.trade_credits, username], (error, results, fields) => {
                         if (error){
                             res.status(500).send("Could not connect to database.");
                             return;
@@ -502,7 +499,7 @@ router.post("/close", (req, res) => {
 
         // Get the user's data and check if they have the necessary resources and pins to accept the trade
         database.queryDatabase(
-        "SELECT brawlers, trade_requests, trade_credits FROM " + TABLE_NAME + " WHERE username = ?;",
+        "SELECT brawlers, trade_credits FROM " + TABLE_NAME + " WHERE username = ?;",
         [username], (error, results, fields) => {
             if (databaseErrorCheck(error, results, fields, res)){
                 return;
@@ -511,7 +508,6 @@ router.post("/close", (req, res) => {
             // Load the data in then get the trade data and compare then
             let collectionData = {};
             let userTradeCredits = results[0].trade_credits;
-            let userTradeRequests = results[0].trade_requests;
             try{
                 collectionData = JSON.parse(results[0].brawlers);
             } catch (error){
@@ -589,20 +585,14 @@ router.post("/close", (req, res) => {
                     return;
                 }
 
-                // Since the trade is closed, remove 1 from their trade requests
-                // as long as it would not make it negative
-                if (userTradeRequests > 0){
-                    userTradeRequests--;
-                }
-
                 // Tell the user who accepted their trade
                 const acceptedBy = results[0].accepted_by;
 
 
                 // Update the user's data after their resources and pins have been changed
                 database.queryDatabase(
-                "UPDATE " + TABLE_NAME + " SET brawlers = ?, trade_requests = ?, trade_credits = ? WHERE username = ?;",
-                [JSON.stringify(collectionData), userTradeRequests, userTradeCredits, username], (error, results, fields) => {
+                "UPDATE " + TABLE_NAME + " SET brawlers = ?, trade_credits = ? WHERE username = ?;",
+                [JSON.stringify(collectionData), userTradeCredits, username], (error, results, fields) => {
                     if (error){
                         res.status(500).send("Could not connect to database.");
                         return;

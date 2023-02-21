@@ -15,6 +15,7 @@ const maps = require("../modules/maps");
 const fileLoader = require("../modules/fileloader");
 
 const filePaths = require("../modules/filepaths");
+const AVATAR_IMAGE_DIR = filePaths.AVATAR_IMAGE_DIR;
 const IMAGE_FILE_EXTENSION = filePaths.IMAGE_FILE_EXTENSION;
 
 // constants for log in rewards
@@ -205,7 +206,7 @@ router.post("/signup", (req, res) => {
         database.queryDatabase(
         "INSERT IGNORE INTO " + TABLE_NAME +
         " (username, password, active_avatar, brawlers, avatars, themes, scenes, wild_card_pins, featured_item) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);",
-        [username, password, "avatars/free/default", JSON.stringify(startingBrawlers), "[]", "[]", "[]", "[]", ""], (error, results, fields) => {
+        [username, password, "free/default", JSON.stringify(startingBrawlers), "[]", "[]", "[]", "[]", ""], (error, results, fields) => {
             if (error){
                 res.status(500).send("Could not connect to database.");
                 return;
@@ -298,7 +299,7 @@ router.post("/update", (req, res) => {
                 newAvatar = results[0].active_avatar;
             } else{
                 // Check to make sure the user's new avatar is unlocked
-                const avatarsInfo = pins.getAvatars(allSkins, allAvatars, userBrawlers, userAvatars);
+                const avatarsInfo = pins.getAvatars(allSkins, allAvatars, userBrawlers, userAvatars, AVATAR_IMAGE_DIR);
                 if (!(avatarsInfo.includes(newAvatar))){
                     res.status(403).send("You are not allowed to use that avatar.");
                     return;
@@ -309,7 +310,8 @@ router.post("/update", (req, res) => {
                     res.status(403).send("You are not allowed to use that avatar.");
                     return;
                 }
-                newAvatar = newAvatarName[0];
+                // Do not store the avatar image directory in the database
+                newAvatar = newAvatarName[0].replace(AVATAR_IMAGE_DIR, "");
             }
 
             database.queryDatabase(
@@ -365,7 +367,7 @@ router.post("/avatar", (req, res) => {
                 return;
             }
 
-            const avatarsInfo = pins.getAvatars(allSkins, allAvatars, userBrawlers, userAvatars);
+            const avatarsInfo = pins.getAvatars(allSkins, allAvatars, userBrawlers, userAvatars, AVATAR_IMAGE_DIR);
             res.json(avatarsInfo);
         });
     } else{
@@ -405,8 +407,8 @@ router.post("/theme", (req, res) => {
             }
 
             const themesInfo = pins.getThemes(
-                {"all": allThemes, "user": userThemes, "map": themeMap},
-                {"all": allScenes, "user": userScenes, "map": sceneMap},
+                {"all": allThemes, "user": userThemes, "map": themeMap, "file": "themes/"},
+                {"all": allScenes, "user": userScenes, "map": sceneMap, "file": "scenes/"},
                 IMAGE_FILE_EXTENSION
             );
             res.json(themesInfo);
@@ -596,7 +598,6 @@ router.post("/claimtokens", (req, res) => {
                 "UPDATE " + TABLE_NAME + " SET last_claim = ?, tokens = ?, token_doubler = ? WHERE username = ?;",
                 [currentTime, newTokenAmount, activeTokenDoubler, userResults.username], (error, newResults, fields) => {
                     if (error){
-                        console.log(error);
                         res.status(500).send("Could not connect to database.");
                         return;
                     }

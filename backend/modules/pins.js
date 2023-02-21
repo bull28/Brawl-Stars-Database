@@ -152,9 +152,10 @@ function formatCollectionData(allSkins, userCollection, portraitFile, pinFile){
  * @param {Array} allAvatars json object with arrays of free and special avatars
  * @param {Object} userCollection parsed brawlers object from the database
  * @param {Array} userAvatars parsed avatars array from the database
+ * @param {String} avatarFile file path to the directory containing the avatars
  * @returns array of all avatar image names
  */
-function getAvatars(allSkins, allAvatars, userCollection, userAvatars){
+function getAvatars(allSkins, allAvatars, userCollection, userAvatars, avatarFile){
     let avatarsInfo = [];
     let unlockedBrawlers = [];
 
@@ -164,7 +165,7 @@ function getAvatars(allSkins, allAvatars, userCollection, userAvatars){
 
     // All free avatars are available, regardless of user
     for (let avatar of allAvatars.free){
-        avatarsInfo.push(avatar);
+        avatarsInfo.push(avatarFile + avatar);
     }
     
 
@@ -185,7 +186,7 @@ function getAvatars(allSkins, allAvatars, userCollection, userAvatars){
         const filePaths = avatar.split("/");
         const avatarName = filePaths[filePaths.length - 1].split(".")[0];
         if (avatarName !== undefined && userAvatars.includes(avatarName)){
-            avatarsInfo.push(avatar);
+            avatarsInfo.push(avatarFile + avatar);
         }
 
         // If a special avatar is not unlocked, the only other way that
@@ -193,7 +194,7 @@ function getAvatars(allSkins, allAvatars, userCollection, userAvatars){
         // is unlocked, the portrait is made available.
         // In order for this to happen, the file names must be the same.
         else if (unlockedBrawlers.includes(avatarName)){
-            avatarsInfo.push(avatar);
+            avatarsInfo.push(avatarFile + avatar);
         }
     }
 
@@ -207,9 +208,10 @@ function getAvatars(allSkins, allAvatars, userCollection, userAvatars){
  * bundle and classifies each image as either background, icon, or
  * any other type of item that may be contained in a bundle. Data inputs
  * have keys all: array with all available items, user: array with items
- * the user unlocked, map: mapping from file name to displays or previews.
- * @param {Object} themesData json object with keys all, user, map
- * @param {Object} scenesData json object with keys all, user, map
+ * the user unlocked, map: mapping from file name to displays or previews,
+ * file: file path to the themes or scenes
+ * @param {Object} themesData json object with keys all, user, map, file
+ * @param {Object} scenesData json object with keys all, user, map, file
  * @param {String} fileExtension image file extension
  * @returns object with keys corresponding to types of images
  */
@@ -218,6 +220,7 @@ function getThemes(themesData, scenesData, fileExtension){
     const allThemes = themesData.all;
     const userThemes = themesData.user;
     const themeMap = themesData.map;
+    const themeFile = themesData.file;
 
     if (!(allThemes.free && allThemes.special)){
         return themesInfo;
@@ -248,10 +251,10 @@ function getThemes(themesData, scenesData, fileExtension){
                     }
     
                     if (t == "free"){
-                        themesInfo[themeName][themeType] = theme;
+                        themesInfo[themeName][themeType] = themeFile + theme;
                     } else if (t == "special"){
                         if (themeName !== undefined && userThemes.includes(themeName)){
-                            themesInfo[themeName][themeType] = theme;
+                            themesInfo[themeName][themeType] = themeFile + theme;
                         }
                     }
                 }
@@ -296,8 +299,8 @@ function getThemes(themesData, scenesData, fileExtension){
  * of scenes. Each scene is an object with its file path which gets
  * passed to the 3D model viewer. There is also a display name and
  * a preview image.
- * @param {Object} themesData json object with keys all, user, map
- * @param {Object} scenesData json object with keys all, user, map
+ * @param {Object} themesData json object with keys all, user, map, file
+ * @param {Object} scenesData json object with keys all, user, map, file
  * @param {String} fileExtension image file extension
  * @returns object with keys corresponding to types of images
  */
@@ -305,6 +308,7 @@ function getScenes(scenesData, fileExtension){
     let scenesInfo = [];
 
     const sceneMap = scenesData.map;
+    const sceneFile = scenesData.file;
 
     for (let scene of scenesData.all){
         const filePaths = scene.split("/");
@@ -315,7 +319,7 @@ function getScenes(scenesData, fileExtension){
                 if (scenesData.user.includes(sceneName)){
                     scenesInfo.push({
                         "displayName": sceneMap[sceneName].displayName,
-                        "path": scene,
+                        "path": sceneFile + scene,
                         "preview": sceneMap[sceneName].preview + fileExtension
                     });
                 }

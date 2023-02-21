@@ -20,7 +20,8 @@ const PORTRAIT_IMAGE_DIR = filePaths.PORTRAIT_IMAGE_DIR;
 const PIN_IMAGE_DIR = filePaths.PIN_IMAGE_DIR;
 const RESOURCE_IMAGE_DIR = filePaths.RESOURCE_IMAGE_DIR;
 const AVATAR_IMAGE_DIR = filePaths.AVATAR_IMAGE_DIR;
-const THEME_IMAGE_DIR = filePaths.THEME_IMAGE_DIR;
+const AVATAR_SPECIAL_DIR = filePaths.AVATAR_SPECIAL_DIR;
+const THEME_SPECIAL_DIR = filePaths.THEME_SPECIAL_DIR;
 const IMAGE_FILE_EXTENSION = filePaths.IMAGE_FILE_EXTENSION;
 
 // time each featured item is available for
@@ -279,7 +280,7 @@ router.post("/resources", (req, res) => {
             
             const resourcesData = {
                 "username": results[0].username,
-                "avatar": results[0].active_avatar + IMAGE_FILE_EXTENSION,
+                "avatar": AVATAR_IMAGE_DIR + results[0].active_avatar + IMAGE_FILE_EXTENSION,
                 "avatarColor": collectionInfo.avatarColor,
                 "tokens": results[0].tokens,
                 "tokenDoubler": results[0].token_doubler,
@@ -453,7 +454,7 @@ router.post("/brawlbox", (req, res) => {
                         } else if (x.rewardType == "brawler"){
                             x.image = PORTRAIT_IMAGE_DIR + x.image;
                         } else if (x.rewardType == "avatar"){
-                            x.image = AVATAR_IMAGE_DIR + x.image;
+                            x.image = AVATAR_SPECIAL_DIR + x.image;
                         } else if (
                             x.rewardType == "coins" ||
                             x.rewardType == "wildcard" ||
@@ -592,13 +593,13 @@ router.post("/shop", (req, res) => {
                             // when adding it to the user's inventory
                             // All other item types' images are only for display
                             if (thisItemType == "avatar"){
-                                thisItem.image = AVATAR_IMAGE_DIR + availableShopItems[x]["extraData"] + IMAGE_FILE_EXTENSION;
+                                thisItem.image = AVATAR_SPECIAL_DIR + availableShopItems[x]["extraData"] + IMAGE_FILE_EXTENSION;
                             } else if (thisItemType == "theme"){
                                 const themeName = availableShopItems[x]["extraData"];
                                 if (themeMap.hasOwnProperty(themeName)){
                                     thisItem.displayName = themeMap[themeName];
                                 }
-                                thisItem.image = THEME_IMAGE_DIR + themeName + "_preview" + IMAGE_FILE_EXTENSION;
+                                thisItem.image = THEME_SPECIAL_DIR + themeName + "_preview" + IMAGE_FILE_EXTENSION;
                             } else if (thisItemType == "scene"){
                                 const sceneName = availableShopItems[x]["extraData"];
                                 if (sceneMap.hasOwnProperty(sceneName)){
