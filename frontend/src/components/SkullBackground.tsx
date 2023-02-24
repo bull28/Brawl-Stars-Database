@@ -1,10 +1,20 @@
 import { Flex, Image, keyframes } from "@chakra-ui/react";
+import { useState, useEffect } from 'react'
+import AuthRequest from "../helpers/AuthRequest";
+import CosmeticData from "../types/CosmeticData";
 
-export default function SkullBackground() {
+export default function SkullBackground({bg, icon}: {bg?: string, icon?: string}) {
 
-    const readStorage = (key: string) => {
-        return JSON.parse(localStorage.getItem(key) || "{}")[localStorage.getItem('username') || ""]
-    }
+    const [cosmetics, setCosmetics] = useState<CosmeticData>()
+    
+    useEffect(() => {
+        if (bg && icon){
+            setCosmetics({background: bg, icon: icon})
+        } else {
+            AuthRequest('/cosmetic', {setState: [{func: setCosmetics, attr: ""}]})
+        }
+    }, [bg, icon])
+    
 
     const animation1 = keyframes`
         0% {
@@ -28,14 +38,13 @@ export default function SkullBackground() {
     
     `
 
-    const iconName = readStorage('icon') || 'themes/free/default_icon.webp'
-    const backgroundName = readStorage('background') || 'themes/free/default_background.webp'
-
     return (
-        <Flex pos={'fixed'} overflow={'hidden'} zIndex={'-1'} top={0} w={'100%'} h={'100%'} alignItems={'center'} justifyContent={'center'}>                        
-            <Image w={'100vw'} h={'255.7407407vh'} objectFit={'cover'} animation={`${animation1} 175s linear infinite reverse`} pos={'absolute'} src={`/image/${iconName}`}/>
-            <Image w={'100vw'} h={'255.7407407vh'} objectFit={'cover'} animation={`${animation2} 175s linear infinite reverse`} pos={'absolute'} src={`/image/${iconName}`}/>
-            <Image w={'100%'} h={'100%'} src={`/image/${backgroundName}`}/>
+        <Flex pos={'fixed'} overflow={'hidden'} zIndex={'-1'} top={0} w={'100%'} h={'100%'} alignItems={'center'} justifyContent={'center'}>     
+        {cosmetics && <>               
+            <Image w={'100vw'} h={'255.7407407vh'} objectFit={'cover'} animation={`${animation1} 175s linear infinite reverse`} pos={'absolute'} src={`/image/${cosmetics?.icon}`}/>
+            <Image w={'100vw'} h={'255.7407407vh'} objectFit={'cover'} animation={`${animation2} 175s linear infinite reverse`} pos={'absolute'} src={`/image/${cosmetics?.icon}`}/>
+            <Image w={'100%'} h={'100%'} src={`/image/${cosmetics?.background}`}/>
+        </>}
         </Flex>
         
     )

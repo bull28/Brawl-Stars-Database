@@ -6,22 +6,20 @@ import SkinView from '../components/SkinView'
 import { ArrowBackIcon, ExternalLinkIcon } from '@chakra-ui/icons'
 import { BrawlerData, ModelFiles } from '../types/BrawlerData'
 import AnimationViewer from '../components/AnimationViewer'
+import AuthRequest from '../helpers/AuthRequest'
+import CosmeticData from '../types/CosmeticData'
 
 export default function Brawler() {
     const params = useParams()
     const [data, setData] = useState<BrawlerData>()
     const [model, setModel] = useState<ModelFiles>({geometry: null, winAnimation: null, loseAnimation: null})
+    const [cosmetics, setCosmetics] = useState<CosmeticData>()
 
     const isWide = useMediaQuery('(min-width: 1250px)')
-
-    const readStorage = (key: string) => {
-        const a = JSON.parse(localStorage.getItem(key) || "{}")[localStorage.getItem('username') || ""]
-        if (a){
-            return "/image/" + a
-        } else {
-            return ""
-        }
-    }
+    
+    useEffect(() => {
+        AuthRequest('/cosmetic', {setState: [{func: setCosmetics, attr: ""}]})
+    }, [])
 
     useEffect(() => {
         axios.get(`/brawler/${params.brawler}`)
@@ -64,7 +62,7 @@ export default function Brawler() {
                         <Text fontSize={'3xl'} color={'white'} className={'heading-3xl'} mb={3}>Brawler Model</Text>
                         <Flex justifyContent={'center'} alignItems={'center'} w={'60%'} h={'60vw'} bgColor={"#000"} backgroundPosition={"center"} backgroundSize={"cover"} backgroundRepeat={"no-repeat"} border={'3px solid white'}>                        
                             <Suspense fallback={<Spinner/>}>
-                                {model.geometry && <AnimationViewer modelFile={model.geometry} winFile={model.winAnimation} loseFile={model.loseAnimation} bgFile={`${readStorage('scene')}`}/>}
+                                {model.geometry && <AnimationViewer modelFile={model.geometry} winFile={model.winAnimation} loseFile={model.loseAnimation} bgFile={`/image/${cosmetics?.scene}`}/>}
                             </Suspense>
                         </Flex>
                     </Flex>
@@ -98,7 +96,7 @@ export default function Brawler() {
 
                     <Flex justifyContent={'center'} alignItems={'center'} h={'100%'} w={'33%'} bgColor={"#000"} backgroundPosition={"center"} backgroundSize={"cover"} backgroundRepeat={"no-repeat"} border={'3px solid white'}>
                         <Suspense fallback={<Spinner/>}>
-                            {model.geometry && <AnimationViewer modelFile={model.geometry} winFile={model.winAnimation} loseFile={model.loseAnimation} bgFile={`${readStorage('scene')}`}/>}
+                            {model.geometry && <AnimationViewer modelFile={model.geometry} winFile={model.winAnimation} loseFile={model.loseAnimation} bgFile={`/image/${cosmetics?.scene}`}/>}
                         </Suspense>
                     </Flex>
 
