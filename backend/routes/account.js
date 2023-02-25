@@ -423,19 +423,21 @@ router.post("/theme", (req, res) => {
 
 // Get and set user cosmetic items
 router.post("/cosmetic", (req, res) => {
-    if (!(req.body.token)){
-        res.status(400).send("Token is missing.");
-        return;
-    }
-    let username = validateToken(req.body.token);
-
-    // This object is returned to the user with their data
+    // This object stores a validated copy of the user's request to change cosmetics
     let setCosmetics = {
         "background": "",
         "icon": "",
         "music": "",
         "scene": ""
     };
+
+    // A token is only required to set cosmetics
+    // Getting cosmetics with no token will return the default
+    if (!(req.body.token)){
+        res.json(pins.getCosmetics(allThemes, allScenes, {}, THEME_IMAGE_DIR, SCENE_IMAGE_DIR));
+        return;
+    }
+    let username = validateToken(req.body.token);
 
     // If the user does not provide any cosmetics to set,
     // get their currently active cosmetics then return
@@ -454,49 +456,7 @@ router.post("/cosmetic", (req, res) => {
 
             let cosmeticsData = results[0];
 
-            // First, get the list of all default cosmetics
-            const defaultThemes = allThemes.free.filter((value) => value.includes("default_"));
-
-            // Initialize the object sent to the user with the default cosmetics
-            for (let x of defaultThemes){
-                if (x.includes("_background")){
-                    setCosmetics.background = THEME_IMAGE_DIR + x;
-                } else if (x.includes("_icon")){
-                    setCosmetics.icon = THEME_IMAGE_DIR + x;
-                } else if (x.includes("_music")){
-                    setCosmetics.music = THEME_IMAGE_DIR + x;
-                }
-            }
-
-            // For all of the cosmetics returned from the database that are not empty string,
-            // update the object with that cosmetic's name
-            for (let x in cosmeticsData){
-                if (cosmeticsData[x] != ""){
-                    if (x == "background" || x == "icon" || x == "music"){
-                        // Since the file extension might is not always the same, use the file name
-                        // from the allThemes/allScenes arrays
-
-                        // cosmeticsData[x] stores only whether the cosmetic is free/special
-                        // and its name. Both of those are contained in allThemes or allScenes.
-                        let result = undefined;
-                        if (cosmeticsData[x].includes("free/")){
-                            result = allThemes.free.find((value) => value.includes(cosmeticsData[x]));
-                        } else{
-                            result = allThemes.special.find((value) => value.includes(cosmeticsData[x]));
-                        }
-
-                        if (result){
-                            setCosmetics[x] = THEME_IMAGE_DIR + result;
-                        }
-                    } else if (x == "scene"){
-                        const result = allScenes.find((value) => value.includes(cosmeticsData[x]));
-                        if (result){
-                            setCosmetics[x] = SCENE_IMAGE_DIR + result;
-                        }
-                    }
-                }
-            }
-            res.json(setCosmetics);
+            res.json(pins.getCosmetics(allThemes, allScenes, cosmeticsData, THEME_IMAGE_DIR, SCENE_IMAGE_DIR));
         });
         return;
     }

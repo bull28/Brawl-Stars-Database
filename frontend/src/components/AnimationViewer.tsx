@@ -201,8 +201,8 @@ const AnimationViewer = (({modelFile, winFile, loseFile, bgFile}: AnimationViewe
             <Flex w={"100%"} h={"100%"} bgImage={"../image/misc/bg_3d_model.webp"} backgroundPosition={"center"} backgroundSize={"cover"} backgroundRepeat={"no-repeat"}>
             <Canvas flat={true} camera={{fov: 40, position: [0, 0, 1]}}>
                 <Suspense fallback={null}>
-                    {bgFile ? <BackgroundScene file={bgFile} modelPos={positionRef}/> : <></>}
-                    <GltfModel modelFile={modelFile} winFile={winFile ? winFile : "../image/misc/empty.glb"} loseFile={loseFile ? loseFile : "../image/misc/empty.glb"} playing={animationRef} modelPos={positionRef} hasBackground={(bgFile !== null && bgFile !== "")}/>
+                    {(bgFile !== null && bgFile !== "" && bgFile !== "/image/") ? <BackgroundScene file={bgFile} modelPos={positionRef}/> : <></>}
+                    <GltfModel modelFile={modelFile} winFile={winFile ? winFile : "../image/misc/empty.glb"} loseFile={loseFile ? loseFile : "../image/misc/empty.glb"} playing={animationRef} modelPos={positionRef} hasBackground={(bgFile !== null && bgFile !== "" && bgFile !== "/image/")}/>
                     <OrbitControls/>
                 </Suspense>
             </Canvas>

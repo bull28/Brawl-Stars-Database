@@ -331,6 +331,71 @@ function getScenes(scenesData, fileExtension){
 }
 
 /**
+ * Searches the list of themes and scenes to match cosmetic names from
+ * the database to the actual cosmetics. If cosmeticsData is not provided
+ * or is empty, the default cosmetics will be returned.
+ * @param {Object} allThemes object with free and specil arrays with names of themes
+ * @param {Array} allScenes array with all the names of scenes
+ * @param {Object} cosmeticsData cosmetics object from the database
+ * @param {String} themeFile path to the themes directory
+ * @param {String} sceneFile path to the scenes directory
+ * @returns object with file names of the cosmetics
+ */
+function getCosmetics(allThemes, allScenes, cosmeticsData, themeFile, sceneFile){
+    let setCosmetics = {
+        "background": "",
+        "icon": "",
+        "music": "",
+        "scene": ""
+    };
+
+    // First, get the list of all default cosmetics
+    const defaultThemes = allThemes.free.filter((value) => value.includes("default_"));
+
+    // Initialize the object sent to the user with the default cosmetics
+    for (let x of defaultThemes){
+        if (x.includes("_background")){
+            setCosmetics.background = themeFile + x;
+        } else if (x.includes("_icon")){
+            setCosmetics.icon = themeFile + x;
+        } else if (x.includes("_music")){
+            setCosmetics.music = themeFile + x;
+        }
+    }
+
+    // For all of the cosmetics returned from the database that are not empty string,
+    // update the object with that cosmetic's name
+    for (let x in cosmeticsData){
+        if (cosmeticsData[x] != ""){
+            if (x == "background" || x == "icon" || x == "music"){
+                // Since the file extension might is not always the same, use the file name
+                // from the allThemes/allScenes arrays
+
+                // cosmeticsData[x] stores only whether the cosmetic is free/special
+                // and its name. Both of those are contained in allThemes or allScenes.
+                let result = undefined;
+                if (cosmeticsData[x].includes("free/")){
+                    result = allThemes.free.find((value) => value.includes(cosmeticsData[x]));
+                } else{
+                    result = allThemes.special.find((value) => value.includes(cosmeticsData[x]));
+                }
+
+                if (result){
+                    setCosmetics[x] = themeFile + result;
+                }
+            } else if (x == "scene"){
+                const result = allScenes.find((value) => value.includes(cosmeticsData[x]));
+                if (result){
+                    setCosmetics[x] = sceneFile + result;
+                }
+            }
+        }
+    }
+
+    return setCosmetics;
+}
+
+/**
  * Determines which items a user is able to buy from the shop, given their
  * collection progress and unlocked avatars. Avatars are a one-time purchase
  * and brawler-type items are only available if the user does not have all
@@ -630,5 +695,6 @@ function getCollectionScore(collection){
 exports.formatCollectionData = formatCollectionData;
 exports.getAvatars = getAvatars;
 exports.getThemes = getThemes;
+exports.getCosmetics = getCosmetics;
 exports.getShopItems = getShopItems;
 exports.refreshFeaturedItem = refreshFeaturedItem;
