@@ -753,12 +753,17 @@ function addPathGameMode(data, filePath){
     return data;
 }
 
-const MAP_CYCLE_HOURS=336;
-const MAP_CYCLE_SECONDS=1209600;
-const SEASON_SECONDS=2419200;
-const MAP_CYCLES_PER_SEASON=2;
+const MAP_CYCLE_HOURS=384;
+//const MAP_CYCLE_HOURS=336;
+const MAP_CYCLE_SECONDS=1382400;
+//const MAP_CYCLE_SECONDS=1209600;
+const SEASON_SECONDS=9679800;
+//const SEASON_SECONDS=2419200;
+const MAP_CYCLES_PER_SEASON=7;
+//const MAP_CYCLES_PER_SEASON=2;
 
-const next_season_time = (((86400*365)*(2021-1970))+(12*86400)+(263*86400)+(8*3600));
+//const next_season_time = (((86400*365)*(2021-1970))+(12*86400)+(263*86400)+(8*3600));
+const next_season_time = (((86400*365)*(2023-1970))+(12*86400)+(51*86400)+(8*3600));
 const first_season_time = next_season_time % SEASON_SECONDS;
 
 
