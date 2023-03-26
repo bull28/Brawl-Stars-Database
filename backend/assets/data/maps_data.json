@@ -268,12 +268,12 @@
                 },
                 "maps": [
                     {
-                        "name": "iron-curtain",
-                        "displayName": "Iron Curtain",
+                        "name": "pick-and-roll",
+                        "displayName": "Pick and Roll",
                         "gameMode": "basketbrawl",
                         "powerLeagueMap": false,
-                        "image": "iron-curtain.webp",
-                        "bannerImage": "rooftop.webp"
+                        "image": "pick-and-roll.webp",
+                        "bannerImage": "default"
                     },
                     {
                         "name": "basket-fort",
