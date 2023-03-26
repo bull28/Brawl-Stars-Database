@@ -6,8 +6,8 @@ const jsonwebtoken = require("jsonwebtoken");
 
 // Methods to query the database are contained in this module
 const database = require("../modules/database");
-const TABLE_NAME = process.env.DATABASE_TABLE_NAME || "brawl_stars_database";
-const TRADE_TABLE_NAME = process.env.DATABASE_TRADE_TABLE_NAME || "brawl_stars_trades";
+const TABLE_NAME = database.tableNames.main;
+const TRADE_TABLE_NAME = database.tableNames.trades;
 
 // functions to set up trades
 const trades = require("../modules/trades");

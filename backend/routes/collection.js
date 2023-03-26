@@ -6,7 +6,7 @@ const jsonwebtoken = require("jsonwebtoken");
 
 // Methods to query the database are contained in this module
 const database = require("../modules/database");
-const TABLE_NAME = process.env.DATABASE_TABLE_NAME || "brawl_stars_database";
+const TABLE_NAME = database.tableNames.main;
 
 // functions to view and modify pin collections
 const pins = require("../modules/pins");

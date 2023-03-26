@@ -1,11 +1,38 @@
 const mysql2 = require("mysql2");
 
 const databaseLogin = {
-    host     : process.env.DATABASE_HOST || "localhost",
-    port     : process.env.DATABASE_PORT || 3306,
-    user     : process.env.DATABASE_USER || "username",
-    password : process.env.DATABASE_PASSWORD || "password",
-    database : process.env.DATABASE_NAME || "database_name"
+    host     : "localhost",
+    port     : 3306,
+    user     : "username",
+    password : "password",
+    database : "database_name"
+};
+
+const tableNames = {
+    main: "users",
+    trades: "trades",
+    cosmetics: "cosmetics"
+};
+
+if (typeof process.env.DATABASE_HOST != "undefined"){
+    databaseLogin.host = process.env.DATABASE_HOST;
+} if (typeof process.env.DATABASE_PORT != "undefined"){
+    const portString = process.env.DATABASE_PORT;
+    if (isNaN(portString) == false){
+        databaseLogin.port = parseInt(portString);
+    }
+} if (typeof process.env.DATABASE_USER != "undefined"){
+    databaseLogin.user = process.env.DATABASE_USER;
+} if (typeof process.env.DATABASE_PASSWORD != "undefined"){
+    databaseLogin.password = process.env.DATABASE_PASSWORD;
+} if (typeof process.env.DATABASE_NAME != "undefined"){
+    databaseLogin.database = process.env.DATABASE_NAME;
+} if (typeof process.env.DATABASE_TABLE_NAME != "undefined"){
+    tableNames.main = process.env.DATABASE_TABLE_NAME;
+} if (typeof process.env.DATABASE_TRADE_TABLE_NAME != "undefined"){
+    tableNames.trades = process.env.DATABASE_TRADE_TABLE_NAME;
+} if (typeof process.env.DATABASE_COSMETIC_TABLE_NAME != "undefined"){
+    tableNames.cosmetics = process.env.DATABASE_COSMETIC_TABLE_NAME;
 }
 
 const connection = mysql2.createConnection(databaseLogin);
@@ -68,3 +95,4 @@ process.on("SIGINT", () => {
 
 
 exports.queryDatabase = queryDatabase;
+exports.tableNames = tableNames;

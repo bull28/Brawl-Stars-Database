@@ -5,7 +5,13 @@ const path = require("path");
 require("dotenv").config();
 
 const app = express();
-const port = process.env.PORT || 6969;
+let port = 6969;
+if (typeof process.env.PORT != "undefined"){
+    const portString = process.env.PORT;
+    if (isNaN(portString) == false){
+        port = parseInt(portString);
+    }
+}
 
 const brawler = require("./routes/brawler");
 const map = require("./routes/map");

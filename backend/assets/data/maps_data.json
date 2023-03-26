@@ -273,7 +273,7 @@
                         "gameMode": "basketbrawl",
                         "powerLeagueMap": false,
                         "image": "pick-and-roll.webp",
-                        "bannerImage": "default"
+                        "bannerImage": "rooftop.webp"
                     },
                     {
                         "name": "basket-fort",
