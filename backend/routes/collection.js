@@ -2,7 +2,8 @@
 
 const express = require("express");
 const router = express.Router();
-const jsonwebtoken = require("jsonwebtoken");
+
+const authenticate = require("../modules/authenticate");
 
 // Methods to query the database are contained in this module
 const database = require("../modules/database");
@@ -108,27 +109,6 @@ dropChancesPromise.then((data) => {
 
 
 /**
- * Checks whether a token is valid and returns the username that the
- * token belongs to. If the token is not valid, returns an empty string.
- * Errors will be processed using the result of this function.
- * @param {Object} token the token to check
- * @returns username the token belongs to
- */
-function validateToken(token){
-    try{
-        const data = jsonwebtoken.verify(token, "THE KING WINS AGAIN");
-            
-        if (data.username === undefined){
-            return "";
-        }
-        return data.username;
-    } catch(error){
-        return "";
-    }
-}
-
-
-/**
  * Processes a query to the database by checking if there was an error
  * and whether there were results. If the query was unsuccessful, return
  * true. Otherwise, return false.
@@ -230,7 +210,7 @@ router.post("/resources", (req, res) => {
         res.status(400).send("Token is missing.");
         return;
     }
-    let username = validateToken(req.body.token);
+    let username = authenticate.validateToken(req.body.token);
 
     if (username){
         database.queryDatabase(
@@ -302,7 +282,7 @@ router.post("/collection", (req, res) => {
         res.status(400).send("Token is missing.");
         return;
     }
-    let username = validateToken(req.body.token);
+    let username = authenticate.validateToken(req.body.token);
 
     if (username){
         database.queryDatabase(
@@ -371,7 +351,7 @@ router.post("/brawlbox", (req, res) => {
     }
 
 
-    let username = validateToken(req.body.token);
+    let username = authenticate.validateToken(req.body.token);
     let boxType = req.body.boxType;
     if (username){
         //const BUL = performance.now();
@@ -488,7 +468,7 @@ router.post("/shop", (req, res) => {
         return;
     }
 
-    let username = validateToken(req.body.token);
+    let username = authenticate.validateToken(req.body.token);
 
     if (username){
         database.queryDatabase(

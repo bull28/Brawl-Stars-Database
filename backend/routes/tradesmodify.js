@@ -2,7 +2,8 @@
 
 const express = require("express");
 const router = express.Router();
-const jsonwebtoken = require("jsonwebtoken");
+
+const authenticate = require("../modules/authenticate");
 
 // Methods to query the database are contained in this module
 const database = require("../modules/database");
@@ -13,9 +14,6 @@ const TRADE_TABLE_NAME = database.tableNames.trades;
 const trades = require("../modules/trades");
 const pins = require("../modules/pins");
 const fileLoader = require("../modules/fileloader");
-
-// constants for trades
-const MAX_ACTIVE_TRADES = 10;
 
 // base directories of image files
 const filePaths = require("../modules/filepaths");
@@ -31,27 +29,6 @@ allSkinsPromise.then((data) => {
         allSkins = data;
     }
 });
-
-
-/**
- * Checks whether a token is valid and returns the username that the
- * token belongs to. If the token is not valid, returns an empty string.
- * Errors will be processed using the result of this function.
- * @param {Object} token the token to check
- * @returns username the token belongs to
- */
-function validateToken(token){
-    try{
-        const data = jsonwebtoken.verify(token, "THE KING WINS AGAIN");
-            
-        if (data.username === undefined){
-            return "";
-        }
-        return data.username;
-    } catch(error){
-        return "";
-    }
-}
 
 
 /**
@@ -85,7 +62,7 @@ router.post("/create", (req, res) => {
         res.status(400).send("Token is missing.");
         return;
     }
-    let username = validateToken(req.body.token);
+    let username = authenticate.validateToken(req.body.token);
 
     let searchByName = false;
     if (req.body.searchByName == true){
@@ -280,7 +257,7 @@ router.post("/accept", (req, res) => {
         res.status(400).send("Token is missing.");
         return;
     }
-    let username = validateToken(req.body.token);
+    let username = authenticate.validateToken(req.body.token);
 
     let tradeid = req.body.tradeid;
     //tradeid = 7;// trade id is hard coded for now because i don't want to keep changing h.js and refreshing the page
@@ -484,7 +461,7 @@ router.post("/close", (req, res) => {
         res.status(400).send("Token is missing.");
         return;
     }
-    let username = validateToken(req.body.token);
+    let username = authenticate.validateToken(req.body.token);
 
     let tradeid = req.body.tradeid;
     //tradeid = 7;// trade id is hard coded for now because i don't want to keep changing h.js and refreshing the page

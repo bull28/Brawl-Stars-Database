@@ -2,7 +2,8 @@
 
 const express = require("express");
 const router = express.Router();
-const jsonwebtoken = require("jsonwebtoken");
+
+const authenticate = require("../modules/authenticate");
 
 // Methods to query the database are contained in this module
 const database = require("../modules/database");
@@ -85,48 +86,6 @@ scenesPromise.then((data) => {
 
 
 /**
- * Creates a new json web token for the given username.
- * @param {String} username username to sign the token with
- * @returns json object with the token and the username
- */
-function signToken(username){
-    const user = {
-        "username": username
-    };
-
-    const token = jsonwebtoken.sign(user, "THE KING WINS AGAIN");
-
-    const userInfo = {
-        "token": token,
-        "username": username
-    };
-
-    return userInfo;
-}
-
-
-/**
- * Checks whether a token is valid and returns the username that the
- * token belongs to. If the token is not valid, returns an empty string.
- * Errors will be processed using the result of this function.
- * @param {Object} token the token to check
- * @returns username the token belongs to
- */
- function validateToken(token){
-    try{
-        const data = jsonwebtoken.verify(token, "THE KING WINS AGAIN");
-            
-        if (data.username === undefined){
-            return "";
-        }
-        return data.username;
-    } catch(error){
-        return "";
-    }
-}
-
-
-/**
  * Creates a new json web token for a user, based on their username.
  * If successful, sends the appropriate login information to the user.
  * If unsuccessful, sends an error message using the response object provided.
@@ -145,7 +104,7 @@ function login(results, res){
             return;
         }
 
-        const userInfo = signToken(userResults.username);
+        const userInfo = authenticate.signToken(userResults.username);
         res.json(userInfo);
     } else{
         res.status(401).send("Incorrect username or password");
@@ -245,7 +204,7 @@ router.post("/update", (req, res) => {
     let newAvatar = req.body.newAvatar;
 
     if (token && newPassword !== undefined && newAvatar !== undefined){
-        let currentUsername = validateToken(token);
+        let currentUsername = authenticate.validateToken(token);
         if (currentUsername == ""){
             res.status(401).send("Invalid token.");
             return;
@@ -330,7 +289,7 @@ router.post("/update", (req, res) => {
                     return;
                 }
 
-                const userInfo = signToken(currentUsername);
+                const userInfo = authenticate.signToken(currentUsername);
                 res.json(userInfo);
             });
         });
@@ -345,7 +304,7 @@ router.post("/avatar", (req, res) => {
         res.status(400).send("Token is missing.");
         return;
     }
-    let username = validateToken(req.body.token);
+    let username = authenticate.validateToken(req.body.token);
 
     if (username){
         database.queryDatabase(
@@ -384,7 +343,7 @@ router.post("/theme", (req, res) => {
         res.status(400).send("Token is missing.");
         return;
     }
-    let username = validateToken(req.body.token);
+    let username = authenticate.validateToken(req.body.token);
 
     if (username){
         database.queryDatabase(
@@ -437,7 +396,7 @@ router.post("/cosmetic", (req, res) => {
         res.json(pins.getCosmetics(allThemes, allScenes, {}, THEME_IMAGE_DIR, SCENE_IMAGE_DIR));
         return;
     }
-    let username = validateToken(req.body.token);
+    let username = authenticate.validateToken(req.body.token);
 
     // If the user does not provide any cosmetics to set,
     // get their currently active cosmetics then return
@@ -593,7 +552,7 @@ router.post("/claimtokens", (req, res) => {
         res.status(400).send("Token is missing.");
         return;
     }
-    let username = validateToken(req.body.token);
+    let username = authenticate.validateToken(req.body.token);
 
     if (username){
         database.queryDatabase(
