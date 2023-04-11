@@ -1,15 +1,18 @@
+import allSkins from "../data/brawlers_data.json";
+import {IMAGE_FILE_EXTENSION, PIN_IMAGE_DIR} from "../data/constants";
+import { MAP_CYCLE_HOURS, SeasonTime, addSeasonTimes } from "./maps";
+import {TradePin, TradePinData, TradePinValid} from "../types";
+
 /**
  * Takes an array of pins to be traded and returns a new array containing
  * all the pins in the original array that have valid names.
- * @param {Array} allSkins json array with all the brawlers
- * @param {Array} pinArray json array with the pin objects
- * @param {String} pinFile file path to the directory containing the pins
- * @param {Boolean} searchByName whether or not to match pin strings by name
- * @returns array of valid pins
+ * @param pinArray array of all pin objects from the request
+ * @param searchByName whether or not to match pin strings by name instead of image
+ * @returns array of valid pin objects
  */
-function validatePins(allSkins, pinArray, pinFile, searchByName){
-    let validArray = [];
-    let alreadyAdded = [];
+export function validatePins(pinArray: TradePin[], searchByName: boolean): TradePinValid[]{
+    let validArray: TradePinValid[] = [];
+    let alreadyAdded: string[] = [];
     for (let x of pinArray){
         // These are the 3 properties each input object must have
         if (x.hasOwnProperty("brawler") && x.hasOwnProperty("pin") && x.hasOwnProperty("amount")){
@@ -30,14 +33,14 @@ function validatePins(allSkins, pinArray, pinFile, searchByName){
                 
                 if (pinObjects.length > 0){
                     let thisPin = pinObjects[0];
-                    if (thisPin.hasOwnProperty("rarity") && thisPin.hasOwnProperty("image") && x.amount > 0 && alreadyAdded.includes(thisPin.name) == false){
+                    if (thisPin.hasOwnProperty("rarity") && thisPin.hasOwnProperty("image") && x.amount > 0 && !alreadyAdded.includes(thisPin.name)){
                         validArray.push({
-                            "brawler": brawlerObjects[0].name,
-                            "pin": thisPin.name,
-                            //"pinImage": pinFile + brawlerObjects[0].name + "/" + thisPin.image,
-                            "amount": Math.min(x.amount, 1000),
-                            "rarityValue": thisPin.rarity.value,
-                            "rarityColor": thisPin.rarity.color
+                            brawler: brawlerObjects[0].name,
+                            pin: thisPin.name,
+                            //pinImage: pinFile + brawlerObjects[0].name + "/" + thisPin.image,
+                            amount: Math.min(x.amount, 1000),
+                            rarityValue: thisPin.rarity.value,
+                            rarityColor: thisPin.rarity.color
                         });
                         alreadyAdded.push(thisPin.name);
                     }
@@ -51,32 +54,25 @@ function validatePins(allSkins, pinArray, pinFile, searchByName){
 /**
  * Adds images to a trade's offer or request information and removes
  * all information that does not need to be displayed on the screen.
- * @param {Array} pinArray json array with the pin objects
- * @param {String} pinFile file path to the directory containing the pins
- * @param {String} fileExtension image file extension
+ * @param validPinArray array of pin objects with valid names and images
  * @returns formatted offer or request array that can be sent to the user
  */
-function formatTradeData(pinArray, pinFile, fileExtension){
-    let validArray = [];
-    for (let x of pinArray){
+export function formatTradeData(validPinArray: TradePinValid[]): TradePinData[]{
+    let formatArray: TradePinData[] = [];
+    for (let x of validPinArray){
         if (x.hasOwnProperty("brawler") && x.hasOwnProperty("pin")){
-            validArray.push({
-                "pinImage": pinFile + x.brawler + "/" + x.pin + fileExtension,
-                "amount": x.amount,
-                "rarityValue": x.rarityValue,
-                "rarityColor": x.rarityColor
+            formatArray.push({
+                pinImage: PIN_IMAGE_DIR + x.brawler + "/" + x.pin + IMAGE_FILE_EXTENSION,
+                amount: x.amount,
+                rarityValue: x.rarityValue,
+                rarityColor: x.rarityColor
             });
         }
     }
-    return validArray;
+    return formatArray;
 }
 
-/**
- * Returns 10 times the cost of trading a pin based on its rarity.
- * @param {Number} rarityValue numerical value of the rarity
- * @returns Number
- */
-function tradeCreditsByRarity(rarityValue){
+function tradeCreditsByRarity(rarityValue: number): number{
     // All costs are divided by 10 later
     // to avoid floating point errors
     // and to allow more precision when
@@ -99,14 +95,7 @@ function tradeCreditsByRarity(rarityValue){
     return tradeCredits;
 }
 
-/**
- * There is a discount for trading multiple copies of a pin in one trade.
- * Returns how many times more expensive a trade would cost when trading
- * more than one copy of a pin.
- * @param {Number} amount 
- * @returns Number
- */
-function tradeCostMultiplier(amount){
+function tradeCostMultiplier(amount: number): number{
     let costMultiplier = 1.0;
     if (amount > 15){
         costMultiplier = 3.0 + 0.025 * (amount - 15);
@@ -118,16 +107,7 @@ function tradeCostMultiplier(amount){
     return costMultiplier;
 }
 
-
-/**
- * Calculates the cost of a trade based on how many pins are being exchanged
- * and what the rarity of those pins are. Returns a number, representing how
- * many trade credits are required to perform the trade.
- * @param {Array} offerPins valid array of pins to give
- * @param {Array} requestPins valid array of pins to receive
- * @returns Number
- */
-function getTradeCost(offerPins, requestPins){
+export function getTradeCost(offerPins: TradePinValid[], requestPins: TradePinValid[]): number{
     let totalTradeCost = 0.0;
 
     if (!(offerPins && requestPins)){
@@ -147,14 +127,7 @@ function getTradeCost(offerPins, requestPins){
     return Math.round(totalTradeCost);
 }
 
-/**
- * Calculates the additional cost of a trade based on how much time the trade
- * lasts for. Trades 48 hours or less do not cost extra credits. Trades
- * should not last more than 336 hours (or 1 season).
- * @param {Number} tradeHours number of hours the trade will last
- * @returns 
- */
-function getTimeTradeCost(tradeHours){
+export function getTimeTradeCost(tradeHours: number): number{
     let timeTradeCost = 0;
 
     if (tradeHours > 48){
@@ -176,7 +149,21 @@ function getTimeTradeCost(tradeHours){
     return Math.floor(timeTradeCost);
 }
 
-exports.validatePins = validatePins;
-exports.formatTradeData = formatTradeData;
-exports.getTradeCost = getTradeCost;
-exports.getTimeTradeCost = getTimeTradeCost;
+/**
+ * Calculates the time left for a trade using the expiration time from the
+ * database. Returns [1, 0, 0, 0] for all times greater than 1 season.
+ * If expired, returns [0, 0, 0, 0].
+ * @param expiration expiration time stored in the database
+ * @returns time represented as SeasonTime
+ */
+export function getTradeTimeLeft(expiration: number): SeasonTime{
+    let tradeSecondsLeft = Math.floor((expiration - Date.now()) / 1000);
+    let tradeTimeLeft = new SeasonTime(0, 0, 0, 0);
+    if (tradeSecondsLeft > MAP_CYCLE_HOURS * 3600){
+        tradeTimeLeft = new SeasonTime(1, 0, 0, 0);
+    } else if (tradeSecondsLeft > 0){
+        tradeTimeLeft = addSeasonTimes(tradeTimeLeft, new SeasonTime(0, 0, 0, tradeSecondsLeft));
+    }
+
+    return tradeTimeLeft;
+}

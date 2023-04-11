@@ -507,7 +507,7 @@ export default function Trade() {
                     {pickingBrawler ? <>
                             <SlideFade in={true}>
                                 <SimpleGrid spacing={3} columns={[3,4,5]}>
-                                {collectionData?.collection.map((brawler) => (
+                                {collectionData?.brawlers.map((brawler) => (
                                     <Flex flexDir={'column'} alignItems={'center'} userSelect={'none'}>
                                         <Flex p={1} border={'2px solid black'} borderRadius={'lg'} bgColor={brawler.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'} cursor={'pointer'} onClick={() => {if (brawler.u){showPins(brawler.name)}}}>
                                             <Box pos={'relative'}>
@@ -527,7 +527,7 @@ export default function Trade() {
                         <IconButton as={ArrowBackIcon} aria-label="choose brawler" onClick={() => {toggleScreen(true)}} cursor={'pointer'}/>
                         <ScaleFade in={true}>
                             <SimpleGrid spacing={3} columns={[3,4,5]} mt={5}>
-                            {collectionData?.collection.map((brawler) => {
+                            {collectionData?.brawlers.map((brawler) => {
                                 if (brawler.name === brawlerchoice){
                                     return brawler.pins.map((pin) => (
                                         <Flex flexDir={'column'} alignItems={'center'} userSelect={'none'}>

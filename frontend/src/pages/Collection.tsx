@@ -32,7 +32,7 @@ export default function Collection() {
     }, [])
 
     useEffect(() => {
-        data?.collection.forEach(element => {
+        data?.brawlers.forEach(element => {
             setBrawlers((brawlers: any) => [...brawlers, element.name])
         })
     }, [data])
@@ -117,7 +117,7 @@ export default function Collection() {
             }            
             {(brawlers.length > 0) && <Accordion defaultIndex={[brawlers.indexOf(searchParams.get('brawler'))]} allowMultiple allowToggle>
             <SimpleGrid columns={[1,2,3,4]} spacing={3} w={'100vw'} bgColor={'blue.800'} p={5} mb={0}>
-                {data?.collection.map((brawler) => (
+                {data?.brawlers.map((brawler) => (
                     <AccordionItem border={brawler.unlockedPins === brawler.totalPins ? '3px solid #E7A210' : '3px solid black'}>
                         {({ isExpanded }) => (
                         <>

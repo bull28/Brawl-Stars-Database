@@ -27,5 +27,5 @@ export interface CollectionData {
         2: string,
         3: string
     }
-    collection: [BrawlerCollectionData]
+    brawlers: [BrawlerCollectionData]
 }

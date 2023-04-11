@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "lib": ["es2022", "dom"],
+        "outDir": "build",
+        "rootDir": "bull",
+        "strict": true,
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "esModuleInterop": true,
+        "removeComments": true,
+        "resolveJsonModule": true
+    },
+    "include": [
+        "./bull/**/*"
+    ]
+}

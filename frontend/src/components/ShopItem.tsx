@@ -87,7 +87,7 @@ export default function ShopItem({data, coins, isFeatured, timeLeftString}: {dat
                                     <Flex bgColor={purchaseData?.result[0].backgroundColor} flexDir={'column'} alignItems={'center'} justifyContent={'center'} borderRadius={'lg'} textAlign={'center'} py={5} border={'3px solid black'} boxShadow={'0px 0px 50px #fff'}>
                                         <Text mb={5}  fontSize={'3xl'} className={'heading-3xl'}>{purchaseData?.result[0].displayName}</Text>
                                         <Flex mb={5}>
-                                            <Image border={'2px solid black'} borderRadius={'lg'} src={`/image/portraits/${purchaseData?.result[0].image}`}/>
+                                            <Image border={'2px solid black'} borderRadius={'lg'} src={`/image/${purchaseData?.result[0].image}`}/>
                                         </Flex>    
                                         <Text mb={5} fontSize={'xl'} className={'heading-2xl'}>{purchaseData?.result[0].description}</Text>                                  
                                     </Flex>
