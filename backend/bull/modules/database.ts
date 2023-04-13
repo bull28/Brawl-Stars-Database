@@ -42,7 +42,6 @@ class EmptyResultsError extends Error{
 
     constructor(message: string){
         super(message);
-        this.stack = (new Error).stack;
         this.ash = 404;
     }
 }
@@ -52,7 +51,6 @@ class NoUpdateError extends Error{
 
     constructor(message: string){
         super(message);
-        this.stack = (new Error).stack;
         this.frank = 500;
     }
 }
@@ -73,25 +71,25 @@ let COSMETIC_TABLE_NAME = "cosmetics";
 
 // Read environment variables first before connecting
 
-if (typeof process.env.DATABASE_HOST != "undefined"){
-    databaseLogin.host = process.env.DATABASE_HOST;
-} if (typeof process.env.DATABASE_PORT != "undefined"){
-    const portString = process.env.DATABASE_PORT;
+if (typeof process.env["DATABASE_HOST"] != "undefined"){
+    databaseLogin.host = process.env["DATABASE_HOST"];
+} if (typeof process.env["DATABASE_PORT"] != "undefined"){
+    const portString = process.env["DATABASE_PORT"];
     if (!isNaN(+portString)){
         databaseLogin.port = parseInt(portString);
     }
-} if (typeof process.env.DATABASE_USER != "undefined"){
-    databaseLogin.user = process.env.DATABASE_USER;
-} if (typeof process.env.DATABASE_PASSWORD != "undefined"){
-    databaseLogin.password = process.env.DATABASE_PASSWORD;
-} if (typeof process.env.DATABASE_NAME != "undefined"){
-    databaseLogin.database = process.env.DATABASE_NAME;
-} if (typeof process.env.DATABASE_TABLE_NAME != "undefined"){
-    TABLE_NAME = process.env.DATABASE_TABLE_NAME;
-} if (typeof process.env.DATABASE_TRADE_TABLE_NAME != "undefined"){
-    TRADE_TABLE_NAME = process.env.DATABASE_TRADE_TABLE_NAME;
-} if (typeof process.env.DATABASE_COSMETIC_TABLE_NAME != "undefined"){
-    COSMETIC_TABLE_NAME = process.env.DATABASE_COSMETIC_TABLE_NAME;
+} if (typeof process.env["DATABASE_USER"] != "undefined"){
+    databaseLogin.user = process.env["DATABASE_USER"];
+} if (typeof process.env["DATABASE_PASSWORD"] != "undefined"){
+    databaseLogin.password = process.env["DATABASE_PASSWORD"];
+} if (typeof process.env["DATABASE_NAME"] != "undefined"){
+    databaseLogin.database = process.env["DATABASE_NAME"];
+} if (typeof process.env["DATABASE_TABLE_NAME"] != "undefined"){
+    TABLE_NAME = process.env["DATABASE_TABLE_NAME"];
+} if (typeof process.env["DATABASE_TRADE_TABLE_NAME"] != "undefined"){
+    TRADE_TABLE_NAME = process.env["DATABASE_TRADE_TABLE_NAME"];
+} if (typeof process.env["DATABASE_COSMETIC_TABLE_NAME"] != "undefined"){
+    COSMETIC_TABLE_NAME = process.env["DATABASE_COSMETIC_TABLE_NAME"];
 }
 
 

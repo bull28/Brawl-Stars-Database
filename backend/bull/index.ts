@@ -15,8 +15,8 @@ import tradesmodify from "./routes/tradesmodify";
 const app = express();
 let port = 6969;
 
-if (typeof process.env.PORT != "undefined"){
-    const portString = process.env.PORT;
+if (typeof process.env["PORT"] != "undefined"){
+    const portString = process.env["PORT"];
     if (!isNaN(+portString)){
         port = parseInt(portString);
     }

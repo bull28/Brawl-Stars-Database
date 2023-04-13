@@ -691,6 +691,7 @@ export interface TradeViewIDResult extends TradeViewResult{
     creator: string;
     creator_avatar: string;
     creator_color: string;
+    accepted: number;
     accepted_by: string;
 }
 
