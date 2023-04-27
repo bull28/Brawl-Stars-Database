@@ -239,7 +239,7 @@ export interface CurrentEvent{
  * Full current event data sent to the user
  */
 export interface CurrentEventsData{
-    time: SeasonTimeData,
+    time: SeasonTimeData;
     events: CurrentEvent[];
 }
 
@@ -493,7 +493,8 @@ export interface RewardTypeBonus{
  */
 export interface BrawlBoxData{
     boxes: Map<string, BrawlBoxAttributes | HiddenBrawlBoxAttributes>;
-    rewardTypes: Map<string, RewardTypeCurrency | RewardTypePin | RewardTypeBrawler | RewardTypeBonus>;
+    rewardTypes: Map<string, 
+    RewardTypeCurrency | RewardTypePin | RewardTypeBrawler | RewardTypeBonus>;
 }
 
 /**

@@ -105,8 +105,8 @@
             "maxAmount": 250
         },
         "pin": {
-            "raritypmf": [180, 75, 25, 15, 5],
-            "minraritypmf": [144, 60, 20, 12, 4],
+            "raritypmf": [40, 30, 15, 10, 5],
+            "minraritypmf": [32, 24, 12, 8, 4],
             "newPinWeight": [5.25, 2.25, 1.25, 1, 1],
             "coinConversion": [20, 50, 100, 150, 250]
         },
@@ -117,8 +117,8 @@
             "coinConversion": [20, 50, 0, 0, 0]
         },
         "pinHighRarity": {
-            "raritypmf": [24, 18, 9, 6, 3],
-            "minraritypmf": [16, 12, 6, 4, 2],
+            "raritypmf": [36, 24, 15, 9, 6],
+            "minraritypmf": [24, 16, 10, 6, 4],
             "newPinWeight": [5.25, 3.5, 3.25, 1, 1],
             "coinConversion": [20, 50, 100, 150, 250]
         },

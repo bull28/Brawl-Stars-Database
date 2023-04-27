@@ -2,6 +2,7 @@ import allSkins from "../data/brawlers_data.json";
 import dropChances from "../data/brawlbox_data.json";
 import {IMAGE_FILE_EXTENSION, PIN_IMAGE_DIR, PORTRAIT_IMAGE_DIR, AVATAR_SPECIAL_DIR, RESOURCE_IMAGE_DIR} from "../data/constants";
 import {
+    Pin,
     UserResources, 
     BrawlBoxData, 
     BrawlBoxAttributes, 
@@ -409,8 +410,29 @@ function selectPin(pinDropChances: RewardTypePin, resources: UserResources): Bra
         } else{
             modifiedRaritypmf[r] = raritypmf[r];
         }
+        
+        if (r < pinCounts.length){
+            modifiedRaritypmf[r] *= pinCounts[r];
+        }
+
+        // Multiply each rarity's probability by the number of pins in that rarity
+        // divided by the total number of pins
+
+        // As more pins get added, some rarities may end up with many more pins
+        // than others. Some rarities such as legendary end up with many pins because
+        // new brawl pass brawlers keep getting added and most new skins have
+        // exclusive pins whereas the rare rarity has much fewer pins because each
+        // new brawler only has 2 rare pins. Also, there is only 1 custom pin (rarity 4)
+        // so every time a custom pin is given, it will be that same pin. This makes
+        // that pin appear much more common than it is supposed to be.
+
+        // Because of the differences in pin counts across rarities, it can take much
+        // longer to get all the legendary pins, compared to rare pins. To balance this,
+        // multiplying probabilities by the number of pins makes rarities with more pins
+        // more likely to drop, while making higher rarities overall less likely to drop.
     }
-    
+
+    // RNG does not require the distribution to be normalized
     let selectedRarity = RNG(modifiedRaritypmf);
 
 
@@ -530,23 +552,15 @@ function selectWildCardPin(wildCardDropChances: RewardTypeBrawler, resources: Us
         let rarityName = "";
         let rarityColor = "#000000";
 
-        // Look through the allSkins array to get the rarity
-        // colors for the pin since there is no other place
-        // where they are stored...
-        let x = 0;
-        let found = false;
-        while (x < allSkins.length && found == false){
-            if (allSkins[x].hasOwnProperty("pins")){
-                for (let y of allSkins[x].pins){
-                    if (y.rarity.value == selectedRarity){
-                        rarityName = y.rarity.name;
-                        rarityColor = y.rarity.color;
-                        found = true;
-                    }
-                }
-            }
-            x++;
+        // Instead of needing to get the rarity colors by looking through
+        // the allSkins array, get them from the rarityNames map.
+        const rarityData = rarityNames.get(selectedRarity);
+        if (typeof rarityData != "undefined"){
+            rarityName = rarityData.name;
+            rarityColor = rarityData.color;
         }
+
+
         resources.wild_card_pins[selectedRarity]++;
 
         result.displayName = rarityName + " Wild Card Pin";
@@ -771,4 +785,40 @@ function selectBonus(allBonusDrops: HiddenBrawlBoxAttributes, rewardTypes: Brawl
     }
 
     return result;
+}
+
+// Initialize data that will not change when boxes are opened but requires
+// searching through the allSkins array to obtain.
+
+// Stores (number of pins in each rarity / total pins)
+// Used when selecting pins
+let pinCounts = [0, 0, 0, 0, 0];
+let totalPins = 0;
+
+// Maps a rarity value to its color and name
+// Used when selecting wild card pins
+let rarityNames = new Map<number, Omit<Pin["rarity"], "value">>();
+
+for (let brawlerIndex = 0; brawlerIndex < allSkins.length; brawlerIndex++){
+    let brawler = allSkins[brawlerIndex];
+
+    if (brawler.hasOwnProperty("name") && brawler.hasOwnProperty("pins")){
+        for (let pinIndex = 0; pinIndex < brawler.pins.length; pinIndex++){
+            const pinRarity = brawler.pins[pinIndex].rarity.value;
+            if (pinRarity < pinCounts.length){
+                pinCounts[pinRarity]++;
+                totalPins++
+            }
+
+            if (!rarityNames.has(pinRarity)){
+                rarityNames.set(pinRarity, {
+                    name: brawler.pins[pinIndex].rarity.name,
+                    color: brawler.pins[pinIndex].rarity.color
+                });
+            }
+        }
+    }
+}
+for (let x = 0; x < pinCounts.length; x++){
+    pinCounts[x] /= totalPins;
 }
