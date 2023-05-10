@@ -89,6 +89,7 @@ export function getBrawlerData(brawler: Brawler): BrawlerData{
         description: brawler.description,
         image: PORTRAIT_IMAGE_DIR + brawler.image,
         defaultSkin: brawler.defaultSkin,
+        title: brawler.title,
         skins: brawlerSkins,
         pins: brawlerPins
     };
@@ -114,6 +115,7 @@ export function getSkinData(skin: Skin, brawlerName: string): SkinData{
         displayName: skin.displayName,
         cost: skin.cost,
         currency: skin.currency,
+        costBling: skin.costBling,
         features: skinFeatures,
         group: {
             name: skin.group.name,

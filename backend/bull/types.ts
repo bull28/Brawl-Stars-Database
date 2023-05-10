@@ -31,6 +31,7 @@ export interface BrawlerData{
     description: Brawler["description"];
     image: Brawler["image"];
     defaultSkin: Brawler["defaultSkin"];
+    title: Brawler["title"];
     skins: SkinPreview[];
     pins: PinPreview[];
 }
@@ -78,6 +79,7 @@ export interface SkinData{
     displayName: Skin["displayName"];
     cost: Skin["cost"];
     currency: Skin["currency"];
+    costBling: Skin["costBling"];
     features: Skin["features"];
     group: Skin["group"];
     limited: Skin["limited"];
