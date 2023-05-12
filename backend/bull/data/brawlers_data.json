@@ -18,6 +18,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -39,6 +40,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model"
                 ],
@@ -62,6 +64,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Effects"
@@ -86,6 +89,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Effects",
@@ -112,6 +116,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -136,6 +141,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Shelly",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -160,6 +166,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -184,6 +191,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -208,6 +216,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -232,6 +241,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -256,6 +266,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -282,6 +293,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -422,6 +434,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -443,6 +456,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Pet Model"
@@ -467,6 +481,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Pet Model"
@@ -491,6 +506,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Pet Model",
@@ -518,6 +534,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model"
                 ],
@@ -541,6 +558,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Nita",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -565,6 +583,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -589,6 +608,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -616,6 +636,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -641,6 +662,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -819,6 +841,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -840,6 +863,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model"
                 ],
@@ -863,6 +887,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -888,6 +913,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model"
                 ],
@@ -911,6 +937,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Effects",
@@ -936,6 +963,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -962,6 +990,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -986,6 +1015,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -1010,6 +1040,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -1034,6 +1065,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -1058,6 +1090,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -1082,6 +1115,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Colt",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -1106,6 +1140,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -1130,6 +1165,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -1155,6 +1191,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -1181,6 +1218,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -1341,6 +1379,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -1362,6 +1401,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model"
                 ],
@@ -1385,6 +1425,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model"
                 ],
@@ -1408,6 +1449,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "Touchdown Bull",
                 "features": [
                     "Brawler Model"
                 ],
@@ -1431,6 +1473,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -1457,6 +1500,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Bull",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -1481,6 +1525,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -1505,6 +1550,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -1532,6 +1578,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -1558,6 +1605,7 @@
                 "cost": 2500,
                 "currency": "ClubCoins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -1584,6 +1632,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -1610,6 +1659,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -1761,6 +1811,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -1782,6 +1833,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Effects",
@@ -1807,6 +1859,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model"
                 ],
@@ -1830,6 +1883,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -1855,6 +1909,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Effects"
@@ -1879,6 +1934,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -1903,6 +1959,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -1927,6 +1984,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -1951,6 +2009,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Brock",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -1975,6 +2034,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -2001,6 +2061,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -2025,6 +2086,7 @@
                 "cost": 199,
                 "currency": "Gems",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -2194,6 +2256,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -2215,6 +2278,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Effects",
@@ -2240,6 +2304,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Effects",
@@ -2265,6 +2330,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Effects",
@@ -2290,6 +2356,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver El Primo",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -2314,6 +2381,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -2338,6 +2406,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -2363,6 +2432,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -2387,6 +2457,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -2411,6 +2482,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -2435,6 +2507,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -2461,6 +2534,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -2487,6 +2561,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -2513,6 +2588,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -2538,6 +2614,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -2725,6 +2802,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -2746,6 +2824,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Effects"
@@ -2770,6 +2849,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Effects",
@@ -2796,6 +2876,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Effects",
@@ -2821,6 +2902,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Effects"
@@ -2845,6 +2927,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "Wizard Barley",
                 "features": [
                     "Brawler Model"
                 ],
@@ -2868,6 +2951,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Barley",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -2892,6 +2976,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -2916,6 +3001,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -2942,6 +3028,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -3111,6 +3198,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -3132,6 +3220,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Effects"
@@ -3156,6 +3245,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Effects"
@@ -3180,6 +3270,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Effects"
@@ -3204,6 +3295,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -3231,6 +3323,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Poco",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -3255,6 +3348,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -3279,6 +3373,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -3439,6 +3534,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -3460,6 +3556,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -3485,6 +3582,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -3511,6 +3609,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -3537,6 +3636,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Rosa",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -3561,6 +3661,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -3585,6 +3686,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -3817,6 +3919,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -3838,6 +3941,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Turret Model",
@@ -3864,6 +3968,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Turret Model",
@@ -3889,6 +3994,7 @@
                 "cost": 39,
                 "currency": "Gems",
                 "costBling": 1500,
+                "requires": "Dragon Knight Jessie",
                 "features": [
                     "Brawler Model",
                     "Turret Model",
@@ -3915,6 +4021,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -3941,6 +4048,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -3966,6 +4074,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Jessie",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -3990,6 +4099,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -4014,6 +4124,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -4174,6 +4285,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -4195,6 +4307,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Effects"
@@ -4219,6 +4332,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Effects"
@@ -4243,6 +4357,7 @@
                 "cost": 299,
                 "currency": "Gems",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Effects",
@@ -4270,6 +4385,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -4296,6 +4412,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -4321,6 +4438,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -4347,6 +4465,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -4373,6 +4492,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -4399,6 +4519,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -4425,6 +4546,7 @@
                 "cost": 2500,
                 "currency": "ClubCoins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -4451,6 +4573,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Dynamike",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -4475,6 +4598,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -4499,6 +4623,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -4523,6 +4648,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -4683,6 +4809,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -4704,6 +4831,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -4730,6 +4858,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -4756,6 +4885,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Tick",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -4780,6 +4910,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -4804,6 +4935,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Texture",
                     "Animations",
@@ -4829,6 +4961,7 @@
                 "cost": 199,
                 "currency": "Gems",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -4989,6 +5122,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -5010,6 +5144,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model"
                 ],
@@ -5033,6 +5168,7 @@
                 "cost": 299,
                 "currency": "Gems",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -5060,6 +5196,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -5087,6 +5224,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -5111,6 +5249,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver 8-Bit",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -5135,6 +5274,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -5295,6 +5435,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -5316,6 +5457,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Effects"
@@ -5340,6 +5482,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Effects"
@@ -5364,6 +5507,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model"
                 ],
@@ -5387,6 +5531,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -5414,6 +5559,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Rico",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -5438,6 +5584,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -5462,6 +5609,7 @@
                 "cost": 2500,
                 "currency": "ClubCoins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -5488,6 +5636,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -5630,6 +5779,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -5651,6 +5801,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -5676,6 +5827,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -5702,6 +5854,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Darryl",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -5726,6 +5879,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -5750,6 +5904,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -5775,6 +5930,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -5801,6 +5957,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -5827,6 +5984,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -5853,6 +6011,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -6031,6 +6190,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -6052,6 +6212,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Turret Model",
@@ -6077,6 +6238,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Turret Model",
@@ -6102,6 +6264,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "Bunny Penny",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -6126,6 +6289,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -6151,6 +6315,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Penny",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -6175,6 +6340,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -6199,6 +6365,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -6368,6 +6535,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -6389,6 +6557,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Effects"
@@ -6413,6 +6582,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model"
                 ],
@@ -6436,6 +6606,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Effects"
@@ -6460,6 +6631,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Effects",
@@ -6485,6 +6657,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "Captain Carl",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -6511,6 +6684,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -6537,6 +6711,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Carl",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -6561,6 +6736,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -6585,6 +6761,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -6611,6 +6788,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -6637,6 +6815,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -6795,6 +6974,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -6816,6 +6996,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -6840,6 +7021,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -6867,6 +7049,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -6894,6 +7077,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -6919,6 +7103,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Jacky",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -6943,6 +7128,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -6967,6 +7153,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -7118,6 +7305,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -7139,6 +7327,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -7165,6 +7354,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Gus",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -7189,6 +7379,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -7329,6 +7520,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -7350,6 +7542,7 @@
                 "cost": 299,
                 "currency": "Gems",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Effects",
@@ -7377,6 +7570,7 @@
                 "cost": 49,
                 "currency": "Gems",
                 "costBling": -1,
+                "requires": "Mecha Bo",
                 "features": [
                     "Brawler Model",
                     "Effects",
@@ -7404,6 +7598,7 @@
                 "cost": 49,
                 "currency": "Gems",
                 "costBling": -1,
+                "requires": "Mecha Bo",
                 "features": [
                     "Brawler Model",
                     "Effects",
@@ -7431,6 +7626,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -7457,6 +7653,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -7483,6 +7680,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -7507,6 +7705,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Bo",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -7531,6 +7730,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -7555,6 +7755,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -7581,6 +7782,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -7777,6 +7979,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -7798,6 +8001,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -7822,6 +8026,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Emz",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -7846,6 +8051,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -7870,6 +8076,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -7896,6 +8103,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -7922,6 +8130,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -8082,6 +8291,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -8103,6 +8313,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Texture"
                 ],
@@ -8126,6 +8337,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -8150,6 +8362,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -8176,6 +8389,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Stu",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -8200,6 +8414,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -8349,6 +8564,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -8370,6 +8586,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model"
                 ],
@@ -8393,6 +8610,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -8418,6 +8636,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -8443,6 +8662,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Piper",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -8467,6 +8687,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -8491,6 +8712,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -8516,6 +8738,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -8542,6 +8765,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -8702,6 +8926,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -8723,6 +8948,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -8749,6 +8975,7 @@
                 "cost": 299,
                 "currency": "Gems",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -8776,6 +9003,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Pam",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -8800,6 +9028,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -8824,6 +9053,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -8966,6 +9196,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -8987,6 +9218,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model"
                 ],
@@ -9010,6 +9242,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -9035,6 +9268,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Frank",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -9059,6 +9293,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -9083,6 +9318,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -9109,6 +9345,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -9260,6 +9497,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -9281,6 +9519,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -9307,6 +9546,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -9332,6 +9572,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -9357,6 +9598,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -9381,6 +9623,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Bibi",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -9405,6 +9648,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -9429,6 +9673,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -9455,6 +9700,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -9613,6 +9859,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -9634,6 +9881,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model"
                 ],
@@ -9657,6 +9905,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -9684,6 +9933,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -9710,6 +9960,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -9736,6 +9987,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -9761,6 +10013,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Bea",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -9785,6 +10038,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -9952,6 +10206,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -9973,6 +10228,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -9997,6 +10253,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -10024,6 +10281,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Nani",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -10048,6 +10306,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -10072,6 +10331,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -10098,6 +10358,7 @@
                 "cost": 199,
                 "currency": "Gems",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -10249,6 +10510,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -10270,6 +10532,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -10296,6 +10559,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -10322,6 +10586,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -10348,6 +10613,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -10374,6 +10640,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Edgar",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -10398,6 +10665,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -10422,6 +10690,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -10589,6 +10858,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -10610,6 +10880,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -10636,6 +10907,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Griff",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -10660,6 +10932,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -10684,6 +10957,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -10835,6 +11109,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -10856,6 +11131,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -10882,6 +11158,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Grom",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -10906,6 +11183,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -10930,6 +11208,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -11144,6 +11423,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -11165,6 +11445,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -11191,6 +11472,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Bonnie",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -11215,6 +11497,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -11355,6 +11638,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -11376,6 +11660,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -11507,6 +11792,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -11528,6 +11814,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Animations"
@@ -11552,6 +11839,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model"
                 ],
@@ -11575,6 +11863,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Effects"
@@ -11599,6 +11888,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -11626,6 +11916,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "True Gold Mortis",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -11650,6 +11941,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Mortis",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -11674,6 +11966,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "True Silver Mortis",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -11698,6 +11991,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -11722,6 +12016,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -11746,6 +12041,7 @@
                 "cost": 299,
                 "currency": "Gems",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -11773,6 +12069,7 @@
                 "cost": 49,
                 "currency": "Gems",
                 "costBling": -1,
+                "requires": "Mecha Mortis",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -11800,6 +12097,7 @@
                 "cost": 49,
                 "currency": "Gems",
                 "costBling": -1,
+                "requires": "Mecha Mortis",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -12024,6 +12322,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -12045,6 +12344,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model"
                 ],
@@ -12068,6 +12368,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -12094,6 +12395,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Tara",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -12118,6 +12420,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -12142,6 +12445,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -12168,6 +12472,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -12194,6 +12499,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -12345,6 +12651,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -12366,6 +12673,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model"
                 ],
@@ -12389,6 +12697,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -12417,6 +12726,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Gene",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -12441,6 +12751,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -12465,6 +12776,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -12616,6 +12928,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -12637,6 +12950,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model"
                 ],
@@ -12660,6 +12974,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -12684,6 +12999,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -12710,6 +13026,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -12735,6 +13052,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -12759,6 +13077,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Max",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -12783,6 +13102,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -12809,6 +13129,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "Leopard Max",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -12969,6 +13290,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -12990,6 +13312,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Turret Model"
@@ -13014,6 +13337,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Mr. P",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -13038,6 +13362,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -13062,6 +13387,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -13088,6 +13414,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -13114,6 +13441,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -13292,6 +13620,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -13313,6 +13642,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -13337,6 +13667,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -13363,6 +13694,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -13388,6 +13720,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -13413,6 +13746,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -13439,6 +13773,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Gold Sprout",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -13463,6 +13798,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -13621,6 +13957,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -13642,6 +13979,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -13668,6 +14006,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -13694,6 +14033,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Byron",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -13718,6 +14058,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -13858,6 +14199,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -13879,6 +14221,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -13905,6 +14248,7 @@
                 "cost": 2500,
                 "currency": "ClubCoins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -13931,6 +14275,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -13957,6 +14302,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -13983,6 +14329,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Squeak",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -14007,6 +14354,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -14165,6 +14513,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -14186,6 +14535,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -14210,6 +14560,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -14236,6 +14587,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "Detective Gray",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -14262,6 +14614,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Gray",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -14286,6 +14639,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -14426,6 +14780,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -14447,6 +14802,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -14578,6 +14934,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -14599,6 +14956,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Effects"
@@ -14623,6 +14981,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Effects",
@@ -14649,6 +15008,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -14673,6 +15033,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -14699,6 +15060,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Spike",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -14723,6 +15085,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -14747,6 +15110,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -14772,6 +15136,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -14941,6 +15306,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -14962,6 +15328,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -14986,6 +15353,7 @@
                 "cost": 299,
                 "currency": "Gems",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Effects",
@@ -15011,6 +15379,7 @@
                 "cost": 299,
                 "currency": "Gems",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Effects",
@@ -15038,6 +15407,7 @@
                 "cost": 49,
                 "currency": "Gems",
                 "costBling": -1,
+                "requires": "Mecha Crow",
                 "features": [
                     "Brawler Model",
                     "Effects",
@@ -15065,6 +15435,7 @@
                 "cost": 49,
                 "currency": "Gems",
                 "costBling": -1,
+                "requires": "Mecha Crow",
                 "features": [
                     "Brawler Model",
                     "Effects",
@@ -15092,6 +15463,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Crow",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -15116,6 +15488,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -15140,6 +15513,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -15166,6 +15540,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -15344,6 +15719,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -15365,6 +15741,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model"
                 ],
@@ -15388,6 +15765,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Effects",
@@ -15414,6 +15792,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Effects"
@@ -15438,6 +15817,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Leon",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -15462,6 +15842,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -15486,6 +15867,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -15512,6 +15894,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -15536,6 +15919,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -15685,6 +16069,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -15706,6 +16091,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model"
                 ],
@@ -15729,6 +16115,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -15755,6 +16142,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -15781,6 +16169,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Sandy",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -15805,6 +16194,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -15829,6 +16219,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -15971,6 +16362,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -15992,6 +16384,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -16018,6 +16411,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Amber",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -16042,6 +16436,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -16066,6 +16461,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -16217,6 +16613,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -16238,6 +16635,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -16264,6 +16662,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -16290,6 +16689,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Meg",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -16314,6 +16714,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -16338,6 +16739,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -16498,6 +16900,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -16519,6 +16922,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -16543,6 +16947,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Chester",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -16567,6 +16972,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -16698,6 +17104,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -16719,6 +17126,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -16745,6 +17153,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -16771,6 +17180,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -16795,6 +17205,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Gale",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -16819,6 +17230,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -17042,6 +17454,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -17063,6 +17476,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -17087,6 +17501,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -17112,6 +17527,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -17138,6 +17554,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Surge",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -17162,6 +17579,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -17374,6 +17792,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -17395,6 +17814,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -17421,6 +17841,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -17446,6 +17867,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -17472,6 +17894,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Colette",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -17496,6 +17919,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -17520,6 +17944,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -17752,6 +18177,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -17773,6 +18199,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -17799,6 +18226,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -17825,6 +18253,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -17850,6 +18279,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Lou",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -17874,6 +18304,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -18095,6 +18526,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -18116,6 +18548,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -18142,6 +18575,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -18167,6 +18601,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Ruffs",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -18191,6 +18626,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -18215,6 +18651,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -18438,6 +18875,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -18459,6 +18897,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -18485,6 +18924,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -18511,6 +18951,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Belle",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -18535,6 +18976,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -18559,6 +19001,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -18791,6 +19234,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -18812,6 +19256,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -18839,6 +19284,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -18865,6 +19311,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Buzz",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -18889,6 +19336,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -18913,6 +19361,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -18939,6 +19388,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -19160,6 +19610,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -19181,6 +19632,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -19207,6 +19659,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Ash",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -19231,6 +19684,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -19255,6 +19709,7 @@
                 "cost": 2500,
                 "currency": "ClubCoins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -19281,6 +19736,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -19307,6 +19763,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -19548,6 +20005,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -19569,6 +20027,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -19595,6 +20054,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -19621,6 +20081,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Lola",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -19645,6 +20106,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -19669,6 +20131,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -19695,6 +20158,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -19936,6 +20400,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -19957,6 +20422,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -19983,6 +20449,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -20009,6 +20476,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Fang",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -20033,6 +20501,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -20254,6 +20723,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -20275,6 +20745,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -20301,6 +20772,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Eve",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -20325,6 +20797,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -20349,6 +20822,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -20572,6 +21046,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -20593,6 +21068,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -20619,6 +21095,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Janet",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -20643,6 +21120,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -20667,6 +21145,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -20691,6 +21170,7 @@
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -20923,6 +21403,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -20944,6 +21425,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -20970,6 +21452,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Otis",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -20994,6 +21477,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -21018,6 +21502,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -21241,6 +21726,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -21262,6 +21748,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -21288,6 +21775,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -21314,6 +21802,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -21338,6 +21827,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Sam",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -21362,6 +21852,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -21592,6 +22083,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -21613,6 +22105,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -21639,6 +22132,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Buster",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -21663,6 +22157,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -21687,6 +22182,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -21910,6 +22406,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -21931,6 +22428,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -21957,6 +22455,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -21981,6 +22480,7 @@
                 "cost": 25000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "True Silver Mandy",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -22005,6 +22505,7 @@
                 "cost": 10000,
                 "currency": "Coins",
                 "costBling": -1,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -22217,6 +22718,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -22238,6 +22740,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -22264,6 +22767,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -22476,6 +22980,7 @@
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
+                "requires": "",
                 "features": [],
                 "group": {
                     "name": "",
@@ -22497,6 +23002,7 @@
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture"
@@ -22521,6 +23027,7 @@
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
+                "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",

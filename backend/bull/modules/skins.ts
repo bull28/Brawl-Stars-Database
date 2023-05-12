@@ -116,6 +116,7 @@ export function getSkinData(skin: Skin, brawlerName: string): SkinData{
         cost: skin.cost,
         currency: skin.currency,
         costBling: skin.costBling,
+        requires: skin.requires,
         features: skinFeatures,
         group: {
             name: skin.group.name,

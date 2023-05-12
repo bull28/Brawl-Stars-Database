@@ -80,6 +80,7 @@ export interface SkinData{
     cost: Skin["cost"];
     currency: Skin["currency"];
     costBling: Skin["costBling"];
+    requires: Skin["requires"];
     features: Skin["features"];
     group: Skin["group"];
     limited: Skin["limited"];
