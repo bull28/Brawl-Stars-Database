@@ -276,11 +276,14 @@ export interface CollectionData{
     unlockedPins: number;
     totalPins: number;
     pinCopies: number;
+    unlockedAccessories: number;
+    totalAccessories: number;
     collectionScore: string;
     scoreProgress: number;
     avatarColor: string;
     pinRarityColors: string[];
     brawlers: CollectionBrawler[];
+    accessories: AccessoryData[];
 }
 
 /**
@@ -855,6 +858,11 @@ export interface ChallengeState{
 //------------------------------------------------------------------------------------------------//
 //                                         Accessory Types                                        //
 //------------------------------------------------------------------------------------------------//
+
+/**
+ * Parsed format of the wild card pins array that is stored in the database as text
+ */
+export type DatabaseAccessories = string[];
 
 /**
  * Name and image that is required to display an accessory to the user

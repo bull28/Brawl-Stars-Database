@@ -30,7 +30,8 @@ import {
     DatabaseThemes, 
     ShopItem, 
     ShopList, 
-    UserResources
+    UserResources, 
+    DatabaseAccessories
 } from "../types";
 
 const router = express.Router();
@@ -101,14 +102,15 @@ router.post<{}, {}, TokenReqBody>("/resources", databaseErrorHandler<TokenReqBod
         const results = await getResources({username: username});
 
         let collection: CollectionData;
+        let wildCards: number[] = [];
         try{
-            collection = formatCollectionData(parseBrawlers(results[0].brawlers));
+            collection = formatCollectionData(parseBrawlers(results[0].brawlers), parseStringArray(results[0].accessories), results[0].level);
+            wildCards = parseNumberArray(results[0].wild_card_pins);
         } catch (error){
             res.status(500).send("Collection data could not be loaded.");
             return;
         }
-
-        let wildCards = parseNumberArray(results[0].wild_card_pins);
+        
         let wildCardPins: WildCardData[] = [];
 
         for (let x = 0; x < wildCards.length; x++){
@@ -167,14 +169,16 @@ router.post<{}, {}, TokenReqBody>("/collection", databaseErrorHandler<TokenReqBo
         const results = await beforeUpdate({username: username});
 
         let collectionData: DatabaseBrawlers;
+        let userAccessories: DatabaseAccessories;
         try{
             collectionData = parseBrawlers(results[0].brawlers);
+            userAccessories = parseStringArray(results[0].accessories);
         } catch (error){
             res.status(500).send("Collection data could not be loaded.");
             return;
         }
 
-        const collection = formatCollectionData(collectionData);
+        const collection = formatCollectionData(collectionData, userAccessories, results[0].level);
         res.json(collection);
     } else{
         res.status(401).send("Invalid token.");
@@ -303,14 +307,17 @@ router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(asyn
         let userAvatars: DatabaseAvatars;
         let userThemes: DatabaseThemes;
         let userScenes: DatabaseScenes;
+        let userAccessories: DatabaseAccessories;
         let userCoins = results[0].coins;
         let featuredItem = results[0].featured_item;
         let userTradeCredits = results[0].trade_credits;
+        let userLevel = results[0].level;
         try{
             userBrawlers = parseBrawlers(results[0].brawlers);
             userAvatars = parseStringArray(results[0].avatars);
             userThemes = parseStringArray(results[0].themes);
             userScenes = parseStringArray(results[0].scenes);
+            userAccessories = parseStringArray(results[0].accessories);
         } catch (error){
             res.status(500).send("Collection data could not be loaded.");
             return;
@@ -377,12 +384,14 @@ router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(asyn
         // Out of all the shop items, remove all of them that the user cannot buy right now
         const availableShopItems = getShopItems(
             shopItemsCopy,
-            userBrawlers,
             {
+                brawlers: userBrawlers,
                 avatars: userAvatars,
                 themes: userThemes,
-                scenes: userScenes
+                scenes: userScenes,
+                accessories: userAccessories
             },
+            userLevel,
             featuredItem,
             featuredCosts
         );
@@ -546,6 +555,7 @@ router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(asyn
             avatars: JSON.stringify(userAvatars),
             themes: JSON.stringify(userThemes),
             scenes: JSON.stringify(userScenes),
+            accessories: JSON.stringify(userAccessories),
             featured_item: featuredItem,
             username: username
         });

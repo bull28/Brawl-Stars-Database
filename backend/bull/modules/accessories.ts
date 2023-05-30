@@ -1,5 +1,5 @@
 import {ACCESSORY_IMAGE_DIR, IMAGE_FILE_EXTENSION, CHALLENGE_WIN_MULTIPLIER, CHALLENGE_COINS_PER_TOKEN, RANDOM_CHALLENGE_START, PLAYER_CHALLENGE_START} from "../data/constants";
-import {AccessoryPreview, AccessoryData, UnitOptions, UnitPreview, UnitOptionsStorage, UnitSelection, UnitDisplay, ChallengeManagerOptions, ChallengePreview} from "../types";
+import {DatabaseAccessories, AccessoryPreview, AccessoryData, UnitOptions, UnitPreview, UnitOptionsStorage, UnitSelection, UnitDisplay, ChallengeManagerOptions, ChallengePreview} from "../types";
 
 interface LevelData{
     upgradePoints: number;
@@ -2491,7 +2491,7 @@ function createDescription(description: string, values: Required<UnitOptionsStor
     return description;
 }
 
-function getUnlockedUnits(userAccessories: string[], level: number): [string, UnitOptionsStorage][]{
+function getUnlockedUnits(userAccessories: DatabaseAccessories, level: number): [string, UnitOptionsStorage][]{
     return freeUnits.filter((value) => level >= value[1].accessory.unlockLevel)
     .concat(specialUnits.filter((value) => level >= value[1].accessory.unlockLevel &&
     userAccessories.includes(value[0]) === true));
@@ -2796,7 +2796,7 @@ export function getAccessoryDisplay(name: string): AccessoryPreview | undefined{
  * @param level accessory level
  * @returns list of units and maximum number per challenge
  */
-export function getUnlockedUnitStats(userAccessories: string[], level: number): UnitSelection{
+export function getUnlockedUnitStats(userAccessories: DatabaseAccessories, level: number): UnitSelection{
     level = Math.max(1, Math.min(levels.length, level));
     return {
         unitsPerChallenge: levels[level - 1].unitsPerChallenge,
@@ -2820,7 +2820,7 @@ export function getUnlockedUnitStats(userAccessories: string[], level: number): 
  * @param level accessory level
  * @returns list of accessories
  */
-export function getAllAccessories(userAccessories: string[], level: number): AccessoryData[]{
+export function getAllAccessories(userAccessories: DatabaseAccessories, level: number): AccessoryData[]{
     return specialUnits.filter((value) => value[1].accessory.collectionName !== "").map<AccessoryData>((value) => {
         let unitName = "";
         let image = "";
@@ -2849,7 +2849,7 @@ export function getAllAccessories(userAccessories: string[], level: number): Acc
  * @param level accessory level
  * @returns UnitPreview objects
  */
-export function createUnitList(inputUnits: string[], userAccessories: string[], level: number): UnitPreview[]{
+export function createUnitList(inputUnits: string[], userAccessories: DatabaseAccessories, level: number): UnitPreview[]{
     level = Math.max(1, Math.min(levels.length, level));
 
     const specialUnitNames = inputUnits.filter((value) => (freeUnitNames.has(value) === false));

@@ -373,14 +373,16 @@ export async function createNewUser(values: NewUserValues): Promise<ResultSetHea
 interface BeforeUpdateResult extends RowDataPacket{
     username: string;
     password: string;
+    level: number;
     active_avatar: string;
     brawlers: string;
     avatars: string;
+    accessories: string;
 }
 export async function beforeUpdate(values: UsernameValues): Promise<BeforeUpdateResult[]>{
     const valuesArray = [values.username];
     return queryDatabase<typeof valuesArray, BeforeUpdateResult[]>(connection, valuesArray, false,
-        `SELECT username, password, active_avatar, brawlers, avatars FROM ${TABLE_NAME} WHERE username = ?;`);
+        `SELECT username, password, level, active_avatar, brawlers, avatars, accessories FROM ${TABLE_NAME} WHERE username = ?;`);
 }
 
 
@@ -474,14 +476,16 @@ interface ResourcesResult extends RowDataPacket{
     token_doubler: number;
     coins: number;
     trade_credits: number;
+    level: number;
     brawlers: string;
     avatars: string;
+    accessories: string;
     wild_card_pins: string;
 }
 export async function getResources(values: UsernameValues): Promise<ResourcesResult[]>{
     const valuesArray = [values.username];
     return queryDatabase<typeof valuesArray, ResourcesResult[]>(connection, valuesArray, false,
-        `SELECT username, active_avatar, tokens, token_doubler, coins, trade_credits, brawlers, avatars, wild_card_pins FROM ${TABLE_NAME} WHERE username = ?;`);
+        `SELECT username, active_avatar, tokens, token_doubler, coins, trade_credits, level, brawlers, avatars, accessories, wild_card_pins FROM ${TABLE_NAME} WHERE username = ?;`);
 }
 
 
@@ -489,16 +493,18 @@ interface BeforeShopResult extends RowDataPacket{
     last_login: number;
     coins: number;
     trade_credits: number;
+    level: number;
     brawlers: string;
     avatars: string;
     themes: string;
     scenes: string;
+    accessories: string;
     featured_item: string;
 }
 export async function beforeShop(values: UsernameValues): Promise<BeforeShopResult[]>{
     const valuesArray = [values.username];
     return queryDatabase<typeof valuesArray, BeforeShopResult[]>(connection, valuesArray, false,
-        `SELECT last_login, coins, trade_credits, brawlers, avatars, themes, scenes, featured_item FROM ${TABLE_NAME} WHERE username = ?;`);
+        `SELECT last_login, coins, trade_credits, level, brawlers, avatars, themes, scenes, accessories, featured_item FROM ${TABLE_NAME} WHERE username = ?;`);
 }
 
 
@@ -543,15 +549,16 @@ interface ShopValues{
     avatars: string;
     themes: string;
     scenes: string;
+    accessories: string;
     featured_item: string;
     username: string;
 }
 export async function afterShop(values: ShopValues): Promise<ResultSetHeader>{
     const valuesArray = [
-        values.last_login, values.coins, values.trade_credits, values.brawlers, values.avatars, values.themes, values.scenes, values.featured_item, values.username
+        values.last_login, values.coins, values.trade_credits, values.brawlers, values.avatars, values.themes, values.scenes, values.accessories, values.featured_item, values.username
     ];
     return updateDatabase<typeof valuesArray>(connection, valuesArray, false,
-        `UPDATE ${TABLE_NAME} SET last_login = ?, coins = ?, trade_credits = ?, brawlers = ?, avatars = ?, themes = ?, scenes = ?, featured_item = ? WHERE username = ?;`);
+        `UPDATE ${TABLE_NAME} SET last_login = ?, coins = ?, trade_credits = ?, brawlers = ?, avatars = ?, themes = ?, scenes = ?, accessories = ?, featured_item = ? WHERE username = ?;`);
 }
 
 

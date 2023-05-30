@@ -1,5 +1,6 @@
 import allSkins from "../data/brawlers_data.json";
 import {themeMap, sceneMap, PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR, AVATAR_IMAGE_DIR, THEME_IMAGE_DIR, IMAGE_FILE_EXTENSION, SCENE_IMAGE_DIR} from "../data/constants";
+import {getAllAccessories} from "./accessories";
 import {
     CollectionData, 
     CollectionBrawler, 
@@ -15,7 +16,8 @@ import {
     ThemeDescriptionPreview, 
     DatabaseCosmetics, 
     ShopList, 
-    ShopItem
+    ShopItem, 
+    DatabaseAccessories
 } from "../types";
 
 /**
@@ -26,7 +28,7 @@ import {
  * @param userCollection parsed brawlers object from the database
  * @returns collection summary object
  */
-export function formatCollectionData(userCollection: DatabaseBrawlers): CollectionData{
+export function formatCollectionData(userCollection: DatabaseBrawlers, userAccessories: DatabaseAccessories, accessoryLevel: number): CollectionData{
     let collection: CollectionData = {
         unlockedBrawlers: 0,
         completedBrawlers: 0,
@@ -34,11 +36,14 @@ export function formatCollectionData(userCollection: DatabaseBrawlers): Collecti
         unlockedPins: 0,
         totalPins: 0,
         pinCopies: 0,
+        unlockedAccessories: 0,
+        totalAccessories: 0,
         collectionScore: "",
         scoreProgress: 0,
         avatarColor: "#000000",
         pinRarityColors: [],
-        brawlers: []
+        brawlers: [],
+        accessories: []
     };
 
     const rarityColors = new Map<number, string>();
@@ -146,6 +151,15 @@ export function formatCollectionData(userCollection: DatabaseBrawlers): Collecti
     rarityColors.forEach((value) => {
         collection.pinRarityColors.push(value);
     });
+
+    const accessories = getAllAccessories(userAccessories, accessoryLevel);
+    for (let x = 0; x < accessories.length; x++){
+        if (accessories[x].unlocked === true){
+            collection.unlockedAccessories++;
+        }
+        collection.totalAccessories++;
+    }
+    collection.accessories = accessories;
 
     getCollectionScore(collection);
 
@@ -421,21 +435,25 @@ function copyShopItem(item: ShopItem): ShopItem{
  * it will return the default featured item object which cannot be bought.
  * The shopItems object will be modified with the featured item.
  * @param shopItems object with all shop items, represented as a map
- * @param userCollection parsed brawlers object from the database
- * @param userCosmetics object containing user avatars, themes, and scenes from the database
+ * @param resources object containing parsed brawlers, avatars, themes, scenes, and accessories from the database
+ * @param accessoryLevel user's accessory level
  * @param featuredItem current featured item string
  * @param featuredCosts array of costs for different rarities of pins
  * @returns items the user can buy, represented as a map
  */
-export function getShopItems(shopItems: ShopList, userCollection: DatabaseBrawlers, userCosmetics: {avatars: DatabaseAvatars, themes: DatabaseThemes, scenes: DatabaseScenes}, featuredItem: string, featuredCosts: number[]): ShopList{
+export function getShopItems(shopItems: ShopList, resources: {
+    brawlers: DatabaseBrawlers, avatars: DatabaseAvatars, themes: DatabaseThemes, scenes: DatabaseScenes, accessories: DatabaseAccessories
+}, accessoryLevel: number, featuredItem: string, featuredCosts: number[]): ShopList{
     let availableShopItems: ShopList = new Map<string, ShopItem>();
 
-    // Avatars, themes, and scenes are grouped together in userCosmetics
-    const userAvatars = userCosmetics.avatars;
-    const userThemes = userCosmetics.themes;
-    const userScenes = userCosmetics.scenes;
+    // Collection items are grouped together in resources
+    const userCollection = resources.brawlers;
+    const userAvatars = resources.avatars;
+    const userThemes = resources.themes;
+    const userScenes = resources.scenes;
+    const userAccessories = resources.accessories;
 
-    const collection = formatCollectionData(userCollection);
+    const collection = formatCollectionData(userCollection, userAccessories, accessoryLevel);
     const achievements = getAchievementAvatars(userAvatars, userThemes, collection);
 
     shopItems.forEach((value, key) => {
@@ -657,7 +675,7 @@ function getAchievementAvatars(userAvatars: DatabaseAvatars, userThemes: Databas
  * @returns numeric value of collection score
  */
 function getCollectionScore(collection: CollectionData): number{
-    if (collection.totalBrawlers === 0 || collection.totalPins === 0){
+    if (collection.totalBrawlers === 0 || collection.totalPins === 0 || collection.totalAccessories === 0){
         return 0;
     }
     if (collection.pinCopies < collection.unlockedPins){
@@ -668,10 +686,11 @@ function getCollectionScore(collection: CollectionData): number{
     const completionScore = collection.completedBrawlers / collection.totalBrawlers;
     const pinScore = collection.unlockedPins / collection.totalPins;
     const duplicateScore = collection.pinCopies / (collection.pinCopies + collection.totalPins - collection.unlockedPins);
+    const accessoryScore = collection.unlockedAccessories / collection.totalAccessories;
 
     // use larger numbers and floor to avoid non-exact
     // representations of floating point numbers causing errors
-    const overallScore = Math.floor(500 * pinScore + 300 * brawlerScore + 200 * completionScore + 200 * duplicateScore);
+    const overallScore = Math.floor(400 * pinScore + 200 * brawlerScore + 50 * completionScore + 150 * duplicateScore + 400 * accessoryScore);
     
     let grade = "X";
     let color = "#000000";
