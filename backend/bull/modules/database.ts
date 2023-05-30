@@ -477,6 +477,7 @@ interface ResourcesResult extends RowDataPacket{
     coins: number;
     trade_credits: number;
     level: number;
+    points: number;
     brawlers: string;
     avatars: string;
     accessories: string;
@@ -485,7 +486,7 @@ interface ResourcesResult extends RowDataPacket{
 export async function getResources(values: UsernameValues): Promise<ResourcesResult[]>{
     const valuesArray = [values.username];
     return queryDatabase<typeof valuesArray, ResourcesResult[]>(connection, valuesArray, false,
-        `SELECT username, active_avatar, tokens, token_doubler, coins, trade_credits, level, brawlers, avatars, accessories, wild_card_pins FROM ${TABLE_NAME} WHERE username = ?;`);
+        `SELECT username, active_avatar, tokens, token_doubler, coins, trade_credits, level, points, brawlers, avatars, accessories, wild_card_pins FROM ${TABLE_NAME} WHERE username = ?;`);
 }
 
 
@@ -512,6 +513,7 @@ interface BrawlBoxResultValues{
     brawlers: string;
     avatars: string;
     wild_card_pins: string;
+    accessories: string;
     tokens: number;
     token_doubler: number;
     coins: number;
@@ -520,10 +522,10 @@ interface BrawlBoxResultValues{
 }
 export async function afterBrawlBox(values: BrawlBoxResultValues): Promise<ResultSetHeader>{
     const valuesArray = [
-        values.brawlers, values.avatars, values.wild_card_pins, values.tokens, values.token_doubler, values.coins, values.trade_credits, values.username
+        values.brawlers, values.avatars, values.wild_card_pins, values.accessories, values.tokens, values.token_doubler, values.coins, values.trade_credits, values.username
     ];
     return updateDatabase<typeof valuesArray>(connection, valuesArray, false,
-        `UPDATE ${TABLE_NAME} SET brawlers = ?, avatars = ?, wild_card_pins = ?, tokens = ?, token_doubler = ?, coins = ?, trade_credits = ? WHERE username = ?;`);
+        `UPDATE ${TABLE_NAME} SET brawlers = ?, avatars = ?, wild_card_pins = ?, accessories = ?, tokens = ?, token_doubler = ?, coins = ?, trade_credits = ? WHERE username = ?;`);
 }
 
 

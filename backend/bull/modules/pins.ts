@@ -1,6 +1,6 @@
 import allSkins from "../data/brawlers_data.json";
 import {themeMap, sceneMap, PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR, AVATAR_IMAGE_DIR, THEME_IMAGE_DIR, IMAGE_FILE_EXTENSION, SCENE_IMAGE_DIR} from "../data/constants";
-import {getAllAccessories} from "./accessories";
+import {requiredLevels, getAccessoryDisplay, getAllAccessories} from "./accessories";
 import {
     CollectionData, 
     CollectionBrawler, 
@@ -465,6 +465,21 @@ export function getShopItems(shopItems: ShopList, resources: {
             // As long as the user has one or more brawlers left to unlock, allow them to buy a brawler
             if (collection.unlockedBrawlers < collection.totalBrawlers){
                 availableShopItems.set(key, value);
+            }
+        } else if (value.itemType === "accessory"){
+            const accessory = getAccessoryDisplay(value.extraData);
+            const requiredLevel = requiredLevels.get(value.extraData);
+
+            if (typeof accessory !== "undefined" && typeof requiredLevel !== "undefined"){
+                // An accessory is available if the user meets the level requirement and does not already own it
+                if (accessoryLevel >= requiredLevel && userAccessories.includes(value.extraData) === false){
+                    let shopItemCopy = copyShopItem(value);
+
+                    shopItemCopy.displayName = accessory.displayName;
+                    shopItemCopy.image = accessory.image;
+                    
+                    availableShopItems.set(key, shopItemCopy);
+                }
             }
         } else if (value.itemType === "avatar"){
             // If the user does not already own an avatar, it is available for them to buy

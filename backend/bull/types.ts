@@ -444,15 +444,29 @@ export interface HiddenBrawlBoxAttributes{
 /**
  * Value and weight of a random variable in a probability distribution
  * 
+ * The value must be a number
+ * 
  * The weight describes its probability relative to all other values
  * in the distribution
  */
-export interface PmfValue{
-    value: number | string;
+interface PmfNumberValue{
+    value: number;
     weight: number;
 }
 
-// Various reward types available in brawl boxes
+/**
+ * Value and weight of a random variable in a probability distribution
+ * 
+ * The value must be a string
+ * 
+ * The weight describes its probability relative to all other values
+ * in the distribution
+ */
+interface PmfStringValue{
+    value: string;
+    weight: number;
+}
+
 /**
  * Reward containing only a numeric amount of currency
  */
@@ -460,6 +474,7 @@ export interface RewardTypeCurrency{
     minAmount: number;
     maxAmount: number;
 }
+
 /**
  * Reward type with multiple tiers and a probability mass function to
  * determine which tier is selected
@@ -473,6 +488,7 @@ export interface RewardTypePin{
     newPinWeight: number[];
     coinConversion: number[];
 }
+
 /**
  * Reward type with multiple tiers and a probability mass function to
  * determine which tier is selected
@@ -485,12 +501,40 @@ export interface RewardTypeBrawler{
     minraritypmf: number[];
     coinConversion: number[];
 }
+
 /**
  * Reward type that includes a set of rewards and a probability mass
  * function that determines which reward is selected
+ * 
+ * All rewards are numeric values
  */
-export interface RewardTypeBonus{
-    pmfobject: PmfValue[];
+export interface RewardTypeBonusNumber{
+    pmfobject: PmfNumberValue[];
+}
+
+/**
+ * Reward type that includes a set of rewards and a probability mass
+ * function that determines which reward is selected
+ * 
+ * All rewards are string values
+ */
+export interface RewardTypeBonusString{
+    pmfobject: PmfStringValue[];
+}
+
+/**
+ * Reward type that includes a set of rewards, a probability mass
+ * function, and a coin conversion for each reward
+ * 
+ * Intended for rewards that are not grouped into tiers
+ */
+export interface RewardTypeAccessory{
+    nothingWeight: number;
+    nothingCoinConversion: number;
+    pmfobject: (PmfStringValue & {
+        minWeight: number;
+        coinConversion: number;
+    })[];
 }
 
 /**
@@ -499,7 +543,12 @@ export interface RewardTypeBonus{
 export interface BrawlBoxData{
     boxes: Map<string, BrawlBoxAttributes | HiddenBrawlBoxAttributes>;
     rewardTypes: Map<string, 
-    RewardTypeCurrency | RewardTypePin | RewardTypeBrawler | RewardTypeBonus>;
+    RewardTypeCurrency | 
+    RewardTypePin | 
+    RewardTypeBrawler | 
+    RewardTypeBonusNumber | 
+    RewardTypeBonusString | 
+    RewardTypeAccessory>;
 }
 
 /**
@@ -514,6 +563,7 @@ export interface UserResources{
     token_doubler: number;
     coins: number;
     trade_credits: number;
+    accessories: DatabaseAccessories;
 }
 
 /**
@@ -860,7 +910,7 @@ export interface ChallengeState{
 //------------------------------------------------------------------------------------------------//
 
 /**
- * Parsed format of the wild card pins array that is stored in the database as text
+ * Parsed format of the accessories array that is stored in the database as text
  */
 export type DatabaseAccessories = string[];
 

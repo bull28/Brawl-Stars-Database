@@ -133,6 +133,19 @@ export default function Shop() {
                     </Flex>
                     <Flex flexDir={'column'}>
                         <Flex alignItems={'center'}  fontSize={'3xl'} className={'heading-3xl'} ml={5} mb={3} mt={'5vh'}>
+                            <Text mr={1}>Accessories</Text>
+                            <BsPerson color={'black'}/>
+                        </Flex>                        
+                        <SimpleGrid columns={7} spacing={3}>
+                        {
+                            data?.map((item) => (
+                                item.name.includes('accessory') && <ScaleFade in={true}><ShopItem data={item} coins={userInfo?.coins || 0} timeLeftString={""}/></ScaleFade>
+                            ))
+                        }
+                        </SimpleGrid>
+                    </Flex>
+                    <Flex flexDir={'column'}>
+                        <Flex alignItems={'center'}  fontSize={'3xl'} className={'heading-3xl'} ml={5} mb={3} mt={'5vh'}>
                             <Text mr={1}>Currency</Text>
                             <MdOutlineGeneratingTokens color={'black'}/>
                         </Flex>

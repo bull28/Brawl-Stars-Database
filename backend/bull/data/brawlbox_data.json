@@ -7,7 +7,7 @@
             {"types": ["coins", "tokenDoubler"], "properties": ["minAmount", "maxAmount"]},
             {"types": ["wildcard", "brawler", "brawlerLowRarity"], "properties": ["raritypmf", "minraritypmf", "coinConversion"]},
             {"types": ["pin", "pinLowRarity", "pinHighRarity", "pinNoDupes"], "properties": ["raritypmf", "minraritypmf", "newPinWeight", "coinConversion"]},
-            {"types": ["tradeCredits", "avatar"], "properties": ["pmfobject"]}
+            {"types": ["tradeCredits", "avatar", "accessory"], "properties": ["pmfobject"]}
         ]
     },
     "boxes": {
@@ -78,6 +78,20 @@
             ],
             "rewardTypeValues": ["coins", "pinLowRarity", "brawlerLowRarity", "bonus"]
         },
+        "notBrawlBox": {
+            "displayName": "Not a Brawl Box",
+            "cost": 0,
+            "image": "brawlbox_megabox",
+            "description": "",
+            "dropsDescription": [
+                ""
+            ],
+            "draws": [
+                [1, 0],
+                [0, 1]
+            ],
+            "rewardTypeValues": ["coins", "accessory"]
+        },
         "newBrawler": {
             "cost": 0,
             "image": "",
@@ -107,19 +121,19 @@
         "pin": {
             "raritypmf": [40, 30, 15, 10, 5],
             "minraritypmf": [32, 24, 12, 8, 4],
-            "newPinWeight": [5.25, 2.25, 1.25, 1, 1],
+            "newPinWeight": [5, 5, 3, 1, 1],
             "coinConversion": [20, 50, 100, 150, 250]
         },
         "pinLowRarity": {
             "raritypmf": [36, 24, 0, 0, 0],
             "minraritypmf": [36, 24, 0, 0, 0],
-            "newPinWeight": [2.75, 1, 1, 1, 1],
+            "newPinWeight": [1, 1, 1, 1, 1],
             "coinConversion": [20, 50, 0, 0, 0]
         },
         "pinHighRarity": {
             "raritypmf": [36, 24, 15, 9, 6],
             "minraritypmf": [24, 16, 10, 6, 4],
-            "newPinWeight": [5.25, 3.5, 3.25, 1, 1],
+            "newPinWeight": [10, 10, 10, 10, 10],
             "coinConversion": [20, 50, 100, 150, 250]
         },
         "pinNoDupes": {
@@ -165,6 +179,24 @@
                 {"value": "viking_bull", "weight": 3},
                 {"value": "angry_darryl", "weight": 2},
                 {"value": "STOMPER", "weight": 1}
+            ]
+        },
+        "accessory": {
+            "nothingWeight": 0,
+            "nothingCoinConversion": 5,
+            "pmfobject": [
+                {"value": "jacky", "weight": 1, "minWeight": 0, "coinConversion": 0},
+                {"value": "stu", "weight": 1, "minWeight": 0, "coinConversion": 0},
+                {"value": "janet", "weight": 1, "minWeight": 0, "coinConversion": 0},
+                {"value": "leon", "weight": 1, "minWeight": 0, "coinConversion": 0},
+                {"value": "sam", "weight": 1, "minWeight": 0, "coinConversion": 0},
+                {"value": "colt", "weight": 1, "minWeight": 0, "coinConversion": 0},
+                {"value": "barley", "weight": 1, "minWeight": 0, "coinConversion": 0},
+                {"value": "pam", "weight": 1, "minWeight": 0, "coinConversion": 0},
+                {"value": "fang", "weight": 1, "minWeight": 0, "coinConversion": 0},
+                {"value": "colette", "weight": 1, "minWeight": 0, "coinConversion": 0},
+                {"value": "bea", "weight": 1, "minWeight": 0, "coinConversion": 0},
+                {"value": "frank", "weight": 1, "minWeight": 0, "coinConversion": 0}
             ]
         }
     }

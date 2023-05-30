@@ -62,6 +62,150 @@
         "amount": 1,
         "description": "Randomly selects a new brawler to unlock. If all brawlers of a specific rarity are unlocked, the probability of getting a brawler of all other rarities increases."
     },
+    "accessory1": {
+        "displayName": "New Accessory",
+        "cost": 100,
+        "itemType": "accessory",
+        "image": "",
+        "extraData": "shelly",
+        "amount": 1,
+        "description": "This accessory unlocks a new unit that can be used in challenges."
+    },
+    "accessory2": {
+        "displayName": "New Accessory",
+        "cost": 100,
+        "itemType": "accessory",
+        "image": "",
+        "extraData": "gus",
+        "amount": 1,
+        "description": "This accessory unlocks a new unit that can be used in challenges."
+    },
+    "accessory3": {
+        "displayName": "New Accessory",
+        "cost": 100,
+        "itemType": "accessory",
+        "image": "",
+        "extraData": "rosa",
+        "amount": 1,
+        "description": "This accessory unlocks a new unit that can be used in challenges."
+    },
+    "accessory4": {
+        "displayName": "New Accessory",
+        "cost": 100,
+        "itemType": "accessory",
+        "image": "",
+        "extraData": "amber",
+        "amount": 1,
+        "description": "This accessory unlocks a new unit that can be used in challenges."
+    },
+    "accessory5": {
+        "displayName": "New Accessory",
+        "cost": 100,
+        "itemType": "accessory",
+        "image": "",
+        "extraData": "buzz",
+        "amount": 1,
+        "description": "This accessory unlocks a new unit that can be used in challenges."
+    },
+    "accessory6": {
+        "displayName": "New Accessory",
+        "cost": 100,
+        "itemType": "accessory",
+        "image": "",
+        "extraData": "spike",
+        "amount": 1,
+        "description": "This accessory unlocks a new unit that can be used in challenges."
+    },
+    "accessory7": {
+        "displayName": "New Accessory",
+        "cost": 100,
+        "itemType": "accessory",
+        "image": "",
+        "extraData": "poco",
+        "amount": 1,
+        "description": "This accessory unlocks a new unit that can be used in challenges."
+    },
+    "accessory8": {
+        "displayName": "New Accessory",
+        "cost": 100,
+        "itemType": "accessory",
+        "image": "",
+        "extraData": "otis",
+        "amount": 1,
+        "description": "This accessory unlocks a new unit that can be used in challenges."
+    },
+    "accessory9": {
+        "displayName": "New Accessory",
+        "cost": 100,
+        "itemType": "accessory",
+        "image": "",
+        "extraData": "belle",
+        "amount": 1,
+        "description": "This accessory unlocks a new unit that can be used in challenges."
+    },
+    "accessory10": {
+        "displayName": "New Accessory",
+        "cost": 100,
+        "itemType": "accessory",
+        "image": "",
+        "extraData": "darryl",
+        "amount": 1,
+        "description": "This accessory unlocks a new unit that can be used in challenges."
+    },
+    "accessory11": {
+        "displayName": "New Accessory",
+        "cost": 100,
+        "itemType": "accessory",
+        "image": "",
+        "extraData": "surge",
+        "amount": 1,
+        "description": "This accessory unlocks a new unit that can be used in challenges."
+    },
+    "accessory12": {
+        "displayName": "New Accessory",
+        "cost": 100,
+        "itemType": "accessory",
+        "image": "",
+        "extraData": "tara",
+        "amount": 1,
+        "description": "This accessory unlocks a new unit that can be used in challenges."
+    },
+    "accessory13": {
+        "displayName": "New Accessory",
+        "cost": 100,
+        "itemType": "accessory",
+        "image": "",
+        "extraData": "crow",
+        "amount": 1,
+        "description": "This accessory unlocks a new unit that can be used in challenges."
+    },
+    "accessory14": {
+        "displayName": "New Accessory",
+        "cost": 100,
+        "itemType": "accessory",
+        "image": "",
+        "extraData": "piper",
+        "amount": 1,
+        "description": "This accessory unlocks a new unit that can be used in challenges."
+    },
+    "accessory15": {
+        "displayName": "New Accessory",
+        "cost": 100,
+        "itemType": "accessory",
+        "image": "",
+        "extraData": "max",
+        "amount": 1,
+        "description": "This accessory unlocks a new unit that can be used in challenges."
+    },
+    "accessory16": {
+        "displayName": "New Accessory",
+        "cost": 100,
+        "itemType": "accessory",
+        "image": "",
+        "extraData": "bull",
+        "amount": 1,
+        "description": "This accessory unlocks a new unit that can be used in challenges."
+    },
     "avatart1": {
         "displayName": "New Avatar",
         "cost": 1200,

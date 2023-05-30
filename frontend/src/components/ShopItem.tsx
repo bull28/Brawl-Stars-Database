@@ -57,7 +57,7 @@ export default function ShopItem({data, coins, isFeatured, timeLeftString}: {dat
                     <Image filter={'drop-shadow(0 0 2rem rgb(255, 255, 255));'} borderRadius={'lg'} src={`/image/${data.image}`}/>
                 </Flex>
                 <Flex>                    
-                    <Text fontSize={'xl'}  className={'heading-2xl'}>{data.displayName}</Text>
+                    <Text fontSize={data.displayName.length >= 20 ? 'md' : (data.displayName.length >= 15 ? 'lg' : 'xl')} lineHeight={8} className={'heading-2xl'}>{data.displayName}</Text>
                 </Flex>
                 <Flex alignItems={'center'} mt={3}>
                     <Text fontSize={'lg'}  className={'heading-xl'}>{data.cost}</Text>

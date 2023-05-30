@@ -110,11 +110,11 @@ async function claimReward(username: string, challenge: ChallengeManager, room: 
         //  4. If they did complete it, stop and return (they get no reward)
         //  5. If not, add the id to the completed challenge array if it is preset
         //  6. Add the coins reward to the coins value
-        //  7. If the challenge costed tokens to accept, update to the player's total wins
-        //  8. Call updateLevelProgress with [level, points] and the reward points to get
+        //  7. Call updateLevelProgress with [level, points] and the reward points to get
         //     the new [level, points]
-        //  9. If the reward includes an accessory (not ""), add it to accessories if not
+        //  8. If the reward includes an accessory (not ""), add it to accessories if not
         //     already there
+        //  9. If the challenge costed tokens to accept, update to the player's total wins
         // 10. Update the database with the new values
         //    Only update last_win if they did claim the daily bonus
 
@@ -143,15 +143,24 @@ async function claimReward(username: string, challenge: ChallengeManager, room: 
 
         const [level, points] = updateLevelProgress([results[0].level, results[0].points], reward.points * multiplier);
 
-        if (isWinner === true && challenge.extraData.acceptCost > 0){
-            totalWins++;
-        }
-
         // Only show the accessory reward if the player has not already unlocked it
         let accessoryUnlocked = false;
         if (reward.accessory !== "" && accessories.includes(reward.accessory) === false){
             accessories.push(reward.accessory);
             accessoryUnlocked = true;
+        }
+
+        if (isWinner === true && challenge.extraData.acceptCost > 0){
+            totalWins++;
+
+            // Some accessories are unlocked after winning enough challenges
+            if (totalWins >= 25 && accessories.includes("brock") === false){
+                accessories.push("brock");
+            } if (totalWins >= 100 && accessories.includes("lola") === false){
+                accessories.push("lola");
+            } if (totalWins >= 500 && accessories.includes("meg") === false){
+                accessories.push("meg");
+            }
         }
 
         await addChallengeReward({

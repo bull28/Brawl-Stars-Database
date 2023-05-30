@@ -1,6 +1,7 @@
 import allSkins from "../data/brawlers_data.json";
 import dropChances from "../data/brawlbox_data.json";
 import {IMAGE_FILE_EXTENSION, PIN_IMAGE_DIR, PORTRAIT_IMAGE_DIR, AVATAR_SPECIAL_DIR, RESOURCE_IMAGE_DIR} from "../data/constants";
+import {requiredLevels, getAccessoryDisplay} from "./accessories";
 import {
     Pin,
     UserResources, 
@@ -10,13 +11,14 @@ import {
     RewardTypeCurrency, 
     RewardTypePin, 
     RewardTypeBrawler, 
-    RewardTypeBonus, 
-    BrawlBoxDrop, 
-    PmfValue
+    RewardTypeBonusNumber, 
+    RewardTypeBonusString, 
+    RewardTypeAccessory, 
+    BrawlBoxDrop
 } from "../types";
 
 type UnknownBoxType = BrawlBoxAttributes | HiddenBrawlBoxAttributes
-type UnknownRewardType = RewardTypeCurrency | RewardTypePin | RewardTypeBrawler | RewardTypeBonus
+type UnknownRewardType = RewardTypeCurrency | RewardTypePin | RewardTypeBrawler | RewardTypeBonusNumber | RewardTypeBonusString | RewardTypeAccessory
 
 // These first 5 functions narrow a box or reward type to a specific type
 // so properties can be accessed on it.
@@ -52,19 +54,53 @@ function isRewardTypeBrawler(object: UnknownRewardType): object is RewardTypeBra
     );
 }
 
-function isRewardTypeBonus(object: UnknownRewardType): object is RewardTypeBonus{
-    const rewards = object as RewardTypeBonus;
+function isRewardTypeBonusNumber(object: UnknownRewardType): object is RewardTypeBonusNumber{
+    const rewards = object as RewardTypeBonusNumber;
     if (Array.isArray(rewards.pmfobject) === false){
         return false;
     }
     let isBonus = true;
     for (let x = 0; x < rewards.pmfobject.length; x++){
         isBonus = isBonus && (
-            typeof rewards.pmfobject[x].value !== "undefined" &&
-            typeof rewards.pmfobject[x].weight !== "undefined"
+            typeof rewards.pmfobject[x].value === "number" &&
+            typeof rewards.pmfobject[x].weight === "number"
         );
     }
     return isBonus;
+}
+
+function isRewardTypeBonusString(object: UnknownRewardType): object is RewardTypeBonusString{
+    const rewards = object as RewardTypeBonusString;
+    if (Array.isArray(rewards.pmfobject) === false){
+        return false;
+    }
+    let isBonus = true;
+    for (let x = 0; x < rewards.pmfobject.length; x++){
+        isBonus = isBonus && (
+            typeof rewards.pmfobject[x].value === "string" &&
+            typeof rewards.pmfobject[x].weight === "number"
+        );
+    }
+    return isBonus;
+}
+
+function isRewardTypeAccessory(object: UnknownRewardType): object is RewardTypeAccessory{
+    const rewards = object as RewardTypeAccessory;
+    if (Array.isArray(rewards.pmfobject) === false){
+        return false;
+    }
+    let isAccessory = true;
+    isAccessory = (typeof rewards.nothingWeight === "number" && typeof rewards.nothingCoinConversion === "number");
+
+    for (let x = 0; x < rewards.pmfobject.length; x++){
+        isAccessory = isAccessory && (
+            typeof rewards.pmfobject[x].value === "string" &&
+            typeof rewards.pmfobject[x].weight === "number" &&
+            typeof rewards.pmfobject[x].minWeight === "number" &&
+            typeof rewards.pmfobject[x].coinConversion === "number"
+        );
+    }
+    return isAccessory;
 }
 
 /**
@@ -195,7 +231,7 @@ function getDuplicateColor(oldColorString: string, factor: number): string{
  * @param resources object containing all the user's resources (this object will change)
  * @returns array of the items the user received
  */
-export default function brawlBox(dropChances: BrawlBoxData, boxType: string, resources: UserResources): BrawlBoxDrop[]{
+export default function brawlBox(dropChances: BrawlBoxData, boxType: string, resources: UserResources, accessoryLevel: number): BrawlBoxDrop[]{
     if (typeof resources === "undefined"){
         return [];
     }
@@ -283,6 +319,10 @@ export default function brawlBox(dropChances: BrawlBoxData, boxType: string, res
                 if (typeof bonusBox !== "undefined"){
                     drop = selectBonus(bonusBox, dropChances.rewardTypes, resources);
                 }
+            } else if (x === "accessory"){
+                if (typeof rewardType !== "undefined" && isRewardTypeAccessory(rewardType)){
+                    drop = selectAccessory(rewardType, resources, accessoryLevel);
+                }
             }
 
             if (drop.rewardType === "coins"){
@@ -338,7 +378,7 @@ function selectCoins(coinsDropChances: RewardTypeCurrency, resources: UserResour
 }
 
 function selectPin(pinDropChances: RewardTypePin, resources: UserResources): BrawlBoxDrop{
-    let result = {
+    let result: BrawlBoxDrop = {
         displayName: "",
         rewardType: "empty",
         amount: 1,
@@ -525,7 +565,7 @@ function selectPin(pinDropChances: RewardTypePin, resources: UserResources): Bra
 }
 
 function selectWildCardPin(wildCardDropChances: RewardTypeBrawler, resources: UserResources): BrawlBoxDrop{
-    let result = {
+    let result: BrawlBoxDrop = {
         displayName: "",
         rewardType: "empty",
         amount: 1,
@@ -579,7 +619,7 @@ function selectWildCardPin(wildCardDropChances: RewardTypeBrawler, resources: Us
 function selectBrawler(brawlerDropChances: RewardTypeBrawler, resources: UserResources): BrawlBoxDrop{
     // Refer to selectPins for comments, most of the logic is the
     // same except brawlers are being added instead of pins
-    let result = {
+    let result: BrawlBoxDrop = {
         displayName: "",
         rewardType: "empty",
         amount: 1,
@@ -654,8 +694,75 @@ function selectBrawler(brawlerDropChances: RewardTypeBrawler, resources: UserRes
     return result;
 }
 
+function selectAccessory(accessoryDropChances: RewardTypeAccessory, resources: UserResources, accessoryLevel: number): BrawlBoxDrop{
+    let result: BrawlBoxDrop = {
+        displayName: "",
+        rewardType: "empty",
+        amount: 1,
+        inventory: 0,
+        image: "",
+        backgroundColor: "#000000",
+        description: ""
+    };
+
+    const availableAccessories = accessoryDropChances.pmfobject.filter((reward) => {
+        // reward has {value (accessory name), weight, coinConversion}
+        const level = requiredLevels.get(reward.value);
+        if (typeof level !== "undefined"){
+            return (accessoryLevel >= level);
+        }
+        return false;
+    });
+
+    const accessorypmf = availableAccessories.map((reward) => {
+        if (resources.accessories.includes(reward.value)){
+            // minWeight makes duplicate accessories less likely to drop
+            return reward.minWeight;
+        }
+        return reward.weight;
+    });
+
+
+    const selectedIndex = RNG(accessorypmf);
+
+    if (selectedIndex >= 0){
+        const reward = availableAccessories[selectedIndex];
+
+        if (resources.accessories.includes(reward.value) === false){
+            // If the user does not already have the accessory, they will unlock it
+            const display = getAccessoryDisplay(reward.value);
+            if (typeof display !== "undefined"){
+                console.log(reward.value);
+                resources.accessories.push(reward.value);
+
+                result.displayName = display.displayName;
+                result.rewardType = "accessory";
+                result.image = display.image;
+                result.backgroundColor = "#A248FF";
+                result.description = "This accessory unlocks a new unit that can be used in challenges.";
+                result.inventory = 1;
+            }
+        } else{
+            // If they do have the accessory, it is converted to coins
+            resources.coins += reward.coinConversion;
+
+            result.rewardType = "coins";
+            result.amount = reward.coinConversion;
+        }
+    } else{
+        // If there are no accessories available, give the "nothing" reward
+        // If accessorypmf is empty, RNG returns -1
+        resources.coins += accessoryDropChances.nothingCoinConversion;
+
+        result.rewardType = "coins";
+        result.amount = accessoryDropChances.nothingCoinConversion;
+    }
+
+    return result;
+}
+
 function selectBonus(allBonusDrops: HiddenBrawlBoxAttributes, rewardTypes: BrawlBoxData["rewardTypes"], resources: UserResources): BrawlBoxDrop{
-    let result = {
+    let result: BrawlBoxDrop = {
         displayName: "",
         rewardType: "empty",
         amount: 1,
@@ -669,7 +776,7 @@ function selectBonus(allBonusDrops: HiddenBrawlBoxAttributes, rewardTypes: Brawl
     let bonuspmf = [0, 0, 0];
 
     const avatarDropChances = rewardTypes.get("avatar");
-    if (typeof avatarDropChances === "undefined" || !isRewardTypeBonus(avatarDropChances)){
+    if (typeof avatarDropChances === "undefined" || !isRewardTypeBonusString(avatarDropChances)){
         return result;
     }
     const specialAvatars = avatarDropChances.pmfobject;// list of all avatars
@@ -680,10 +787,10 @@ function selectBonus(allBonusDrops: HiddenBrawlBoxAttributes, rewardTypes: Brawl
     // Before choosing a bonus reward type, determine whether the user
     // has avatars to collect. Do this here so the array does not have
     // to be traversed more than once.
-    let availableAvatars: PmfValue[] = [];
+    let availableAvatars: RewardTypeBonusString["pmfobject"] = [];
     for (let avatarIndex = 0; avatarIndex < specialAvatars.length; avatarIndex++){
         if (typeof specialAvatars[avatarIndex].value === "string"){
-            if ((userAvatars.includes(specialAvatars[avatarIndex].value as string)) === false){
+            if ((userAvatars.includes(specialAvatars[avatarIndex].value)) === false){
                 availableAvatars.push(specialAvatars[avatarIndex]);
             }
         }
@@ -720,14 +827,10 @@ function selectBonus(allBonusDrops: HiddenBrawlBoxAttributes, rewardTypes: Brawl
         //const tradeCreditValues = [1, 2, 3, 5, 10, 69];
         
         const rewardDropChances = rewardTypes.get(allBonusDrops.rewardTypeValues[0]);
-        if (typeof rewardDropChances !== "undefined" && isRewardTypeBonus(rewardDropChances)){
+        if (typeof rewardDropChances !== "undefined" && isRewardTypeBonusNumber(rewardDropChances)){
             const tradeCreditDrops = rewardDropChances.pmfobject;
-            let tradeCreditpmf = [];
-            for (let x of tradeCreditDrops){
-                tradeCreditpmf.push(x.weight);
-            }
 
-            let selectedIndex = RNG(tradeCreditpmf);
+            let selectedIndex = RNG(tradeCreditDrops.map((value) => value.weight));
             if (selectedIndex >= 0 && typeof tradeCreditDrops[selectedIndex].value === "number"){
                 resources.trade_credits += tradeCreditDrops[selectedIndex].value as number;
 
@@ -760,20 +863,15 @@ function selectBonus(allBonusDrops: HiddenBrawlBoxAttributes, rewardTypes: Brawl
             result.image = RESOURCE_IMAGE_DIR + "resource_token_doubler_200x" + IMAGE_FILE_EXTENSION;
             result.amount = rewardAmount;
             result.inventory = resources.token_doubler;
-            result.backgroundColor = "#A248FF";
+            result.backgroundColor = "#00DA48";
             result.description = "Doubles the next " + rewardAmount.toString() + " tokens collected.";
         }
     }
     // Avatar
     else if (selection === "avatar"){
-        let avatarpmf = [];
-        for (let x of availableAvatars){
-            avatarpmf.push(x.weight);
-        }
-        
-        let selectedIndex = RNG(avatarpmf);
+        let selectedIndex = RNG(availableAvatars.map((value) => value.weight));
         if (selectedIndex >= 0 && typeof availableAvatars[selectedIndex].value === "string"){
-            userAvatars.push(availableAvatars[selectedIndex].value as string);
+            userAvatars.push(availableAvatars[selectedIndex].value);
             
             result.displayName = "New Avatar";
             result.rewardType = "avatar";
@@ -797,7 +895,7 @@ let totalPins = 0;
 
 // Maps a rarity value to its color and name
 // Used when selecting wild card pins
-let rarityNames = new Map<number, Omit<Pin["rarity"], "value">>();
+export const rarityNames = new Map<number, Omit<Pin["rarity"], "value">>();
 
 for (let brawlerIndex = 0; brawlerIndex < allSkins.length; brawlerIndex++){
     let brawler = allSkins[brawlerIndex];
