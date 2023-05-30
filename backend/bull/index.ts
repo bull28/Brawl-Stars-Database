@@ -12,13 +12,21 @@ import collection from "./routes/collection";
 import tradesview from "./routes/tradesview";
 import tradesmodify from "./routes/tradesmodify";
 
+import server from "./server";
+
 const app = express();
 let port = 6969;
+let serverPort = 11600;
 
-if (typeof process.env["PORT"] != "undefined"){
+if (typeof process.env["PORT"] !== "undefined"){
     const portString = process.env["PORT"];
     if (!isNaN(+portString)){
         port = parseInt(portString);
+    }
+} if (typeof process.env["SERVER_PORT"] !== "undefined"){
+    const portString = process.env["SERVER_PORT"];
+    if (!isNaN(+portString)){
+        serverPort = parseInt(portString);
     }
 }
 
@@ -27,7 +35,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.use((req, res, next) => {
     (bodyParser.json())(req, res, (error) => {
-        if (typeof error != "undefined"){
+        if (typeof error !== "undefined"){
             res.status(400).send("Incorrectly formatted json.");
             return;
         }
@@ -52,3 +60,5 @@ app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
 });
 
 app.listen(port, () => console.log(port));
+
+server.listen(serverPort, () => console.log(serverPort));
