@@ -29,27 +29,27 @@ let allAvatars: AvatarList = {free: [], special: []};
 let allThemes: ThemeList = {free: [], special: []};
 let allScenes: SceneList = [];
 readFreeAvatars().then((data) => {
-    if (typeof data != "undefined"){
+    if (typeof data !== "undefined"){
         allAvatars.free = data;
     }
 });
 readSpecialAvatars().then((data) => {
-    if (typeof data != "undefined"){
+    if (typeof data !== "undefined"){
         allAvatars.special = data;
     }
 });
 readFreeThemes().then((data) => {
-    if (typeof data != "undefined"){
+    if (typeof data !== "undefined"){
         allThemes.free = data;
     }
 });
 readSpecialThemes().then((data) => {
-    if (typeof data != "undefined"){
+    if (typeof data !== "undefined"){
         allThemes.special = data;
     }
 });
 readScenes().then((data) => {
-    if (typeof data != "undefined"){
+    if (typeof data !== "undefined"){
         allScenes = data;
     }
 });
@@ -84,12 +84,12 @@ router.post<{}, {}, LoginReqBody>("/login", databaseErrorHandler<LoginReqBody>(a
     let username = req.body.username;
     let password = req.body.password;
 
-    if (typeof username == "string" && typeof password == "string"){
+    if (typeof username === "string" && typeof password === "string"){
         const results = await userLogin({username: username, password: password});
 
         if (results.length > 0){
             const userResults = results[0];
-            if (typeof userResults.username != "string"){
+            if (typeof userResults.username !== "string"){
                 res.status(500).send("Database is not set up properly.");
                 return;
             }
@@ -108,7 +108,7 @@ router.post<{}, {}, LoginReqBody>("/signup", databaseErrorHandler<LoginReqBody>(
     let username = req.body.username;
     let password = req.body.password;
 
-    if (!(typeof username == "string" && typeof password == "string")){
+    if ((typeof username === "string" && typeof password === "string") === false){
         res.status(400).send("Username or password is missing.");
         return;
     }
@@ -117,7 +117,11 @@ router.post<{}, {}, LoginReqBody>("/signup", databaseErrorHandler<LoginReqBody>(
         res.status(400).send("Username or password is too long. Maximum username length is 30 and password length is 100.");
         return;
     }
-    if (password.includes(" ")){
+    if (username.length < 2 || password.length < 3){
+        res.status(400).send("Username or password is too short. Minimum username length is 2 and password length is 3.");
+        return;
+    }
+    if (password.includes(" ") === true){
         res.status(400).send("Password cannot contain spaces.");
         return;
     }
@@ -128,7 +132,7 @@ router.post<{}, {}, LoginReqBody>("/signup", databaseErrorHandler<LoginReqBody>(
     let startingBrawlers: DatabaseBrawlers = new Map<string, Map<string, number>>();
     if (allSkins.length >= 10){
         for (let x = 0; x < 3; x++){
-            if (allSkins[x].hasOwnProperty("name")){
+            if (allSkins[x].hasOwnProperty("name") === true){
                 // even though the pins are supposed to be here, when the user
                 // unlocks them, they will be inserted as a new key with value 0
                 startingBrawlers.set(allSkins[x].name, new Map<string, number>());
@@ -150,7 +154,7 @@ router.post<{}, {}, LoginReqBody>("/signup", databaseErrorHandler<LoginReqBody>(
 
     if (results.length > 0){
         const userResults = results[0];
-        if (typeof userResults.username != "string"){
+        if (typeof userResults.username !== "string"){
             res.status(500).send("Database is not set up properly.");
             return;
         }
@@ -168,15 +172,19 @@ router.post<{}, {}, UpdateReqBody>("/update", databaseErrorHandler<UpdateReqBody
     let newPassword = req.body.newPassword;
     let newAvatar = req.body.newAvatar;
 
-    if (typeof token == "string" && typeof newPassword == "string" && typeof newAvatar == "string"){
+    if (typeof token === "string" && typeof newPassword === "string" && typeof newAvatar === "string"){
         let currentUsername = validateToken(token);
-        if (currentUsername == ""){
+        if (currentUsername === ""){
             res.status(401).send("Invalid token.");
             return;
         }
         
-        if (newPassword.includes(" ")){
+        if (newPassword.includes(" ") === true){
             res.status(400).send("Password cannot contain spaces.");
+            return;
+        }
+        if (newPassword.length < 3){
+            res.status(400).send("New password is too short. Minimum password length is 3.");
             return;
         }
 
@@ -195,11 +203,11 @@ router.post<{}, {}, UpdateReqBody>("/update", databaseErrorHandler<UpdateReqBody
             return;
         }
 
-        if (newPassword == ""){
+        if (newPassword === ""){
             currentPassword = results[0].password;
             newPassword = results[0].password;
         } else{
-            if (typeof currentPassword == "undefined"){
+            if (typeof currentPassword === "undefined"){
                 res.status(400).send("Current password is required to change password.");
                 return;
             }
@@ -210,20 +218,20 @@ router.post<{}, {}, UpdateReqBody>("/update", databaseErrorHandler<UpdateReqBody
         // avatar already has no file extension. If the user changes their avatar, the
         // new avatar they provide will have a file extension so it will have to be
         // removed before assigning it to newAvatar
-        if (newAvatar == ""){
+        if (newAvatar === ""){
             // Do not check the avatar if they are not planning on changing it
             // It's fine to keep it, if for some reason they have an invalid avatar
             newAvatar = results[0].active_avatar;
         } else{
             // Check to make sure the user's new avatar is unlocked
             const avatars = getAvatars(allAvatars, userBrawlers, userAvatars);
-            if (!(avatars.includes(newAvatar))){
+            if (avatars.includes(newAvatar) === false){
                 res.status(403).send("You are not allowed to use that avatar.");
                 return;
             }
 
             const newAvatarName = newAvatar.split(".");
-            if (newAvatarName.length != 2){
+            if (newAvatarName.length !== 2){
                 res.status(403).send("You are not allowed to use that avatar.");
                 return;
             }
@@ -238,7 +246,7 @@ router.post<{}, {}, UpdateReqBody>("/update", databaseErrorHandler<UpdateReqBody
             currentPassword: currentPassword
         });
 
-        // updateResults.affectedRows == 0 checked
+        // updateResults.affectedRows === 0 checked
 
         const userInfo = signToken(currentUsername);
         res.json(userInfo);
@@ -249,13 +257,13 @@ router.post<{}, {}, UpdateReqBody>("/update", databaseErrorHandler<UpdateReqBody
 
 // Get the list of all avatars the user is allowed to select
 router.post<{}, {}, TokenReqBody>("/avatar", databaseErrorHandler<TokenReqBody>(async (req, res) => {
-    if (typeof req.body.token != "string"){
+    if (typeof req.body.token !== "string"){
         res.status(400).send("Token is missing.");
         return;
     }
     const username = validateToken(req.body.token);
 
-    if (username != ""){
+    if (username !== ""){
         // beforeUpdate contains at least as much information as necessary here
         // This is used to avoid creating another database query function that is
         // very similar to an existing one.
@@ -279,13 +287,13 @@ router.post<{}, {}, TokenReqBody>("/avatar", databaseErrorHandler<TokenReqBody>(
 
 // Get the list of all themes and scenes the user is allowed to select
 router.post<{}, {}, TokenReqBody>("/theme", databaseErrorHandler<TokenReqBody>(async (req, res) => {
-    if (typeof req.body.token != "string"){
+    if (typeof req.body.token !== "string"){
         res.status(400).send("Token is missing.");
         return;
     }
     const username = validateToken(req.body.token);
 
-    if (username != ""){
+    if (username !== ""){
         const results = await getUnlockedCosmetics({username: username});
         let userThemes: DatabaseThemes;
         let userScenes: DatabaseScenes;
@@ -316,7 +324,7 @@ router.post<{}, {}, CosmeticReqBody>("/cosmetic", databaseErrorHandler<CosmeticR
 
     // A token is only required to set cosmetics
     // Getting cosmetics with no token will return the default
-    if (typeof req.body.token != "string"){
+    if (typeof req.body.token !== "string"){
         res.json(getCosmetics(allThemes, allScenes, setCosmetics));
         return;
     }
@@ -324,10 +332,10 @@ router.post<{}, {}, CosmeticReqBody>("/cosmetic", databaseErrorHandler<CosmeticR
     
     // If the user does not provide any cosmetics to set,
     // get their currently active cosmetics then return
-    if (typeof req.body.setCosmetics == "undefined"){
+    if (typeof req.body.setCosmetics === "undefined"){
         const results = await getActiveCosmetics({username: username});
 
-        // results.length == 0 checked
+        // results.length === 0 checked
 
         let cosmeticsData = results[0];
         res.json(getCosmetics(allThemes, allScenes, cosmeticsData));
@@ -339,12 +347,12 @@ router.post<{}, {}, CosmeticReqBody>("/cosmetic", databaseErrorHandler<CosmeticR
     // then an error will be sent here.
     try{
         for (let x in req.body.setCosmetics){
-            if (x == "background" || x == "icon" || x == "music"){
+            if (x === "background" || x === "icon" || x === "music"){
                 // Remove the file extension and the directory because that information
                 // is common among all themes and only the necessary information has to
                 // be stored in the database.
                 setCosmetics[x] = req.body.setCosmetics[x].split(".")[0].replace(THEME_IMAGE_DIR, "");
-            } else if (x == "scene"){
+            } else if (x === "scene"){
                 setCosmetics[x] = req.body.setCosmetics[x].split(".")[0].replace(SCENE_IMAGE_DIR, "");
             }
         }
@@ -353,7 +361,7 @@ router.post<{}, {}, CosmeticReqBody>("/cosmetic", databaseErrorHandler<CosmeticR
         return;
     }
 
-    if (username != ""){
+    if (username !== ""){
         const results = await getUnlockedCosmetics({username: username});
         let userThemes: DatabaseThemes;
         let userScenes: DatabaseScenes;
@@ -372,8 +380,8 @@ router.post<{}, {}, CosmeticReqBody>("/cosmetic", databaseErrorHandler<CosmeticR
         for (let x in setCosmetics){
             // Empty string means set to default
             let k = x as keyof typeof setCosmetics;
-            if (setCosmetics[k] != ""){
-                if (x == "background" || x == "icon" || x == "music"){
+            if (setCosmetics[k] !== ""){
+                if (x === "background" || x === "icon" || x === "music"){
                     const filePaths = setCosmetics[x].split("/");
                     const themeNameFull = filePaths[filePaths.length - 1];
 
@@ -382,8 +390,8 @@ router.post<{}, {}, CosmeticReqBody>("/cosmetic", databaseErrorHandler<CosmeticR
                     // stored without the _background, _icon, ...
                     let splitIndex = themeNameFull.length;
                     let foundSplitIndex = false;
-                    while (splitIndex >= 0 && foundSplitIndex == false){
-                        if (themeNameFull[splitIndex] == "_"){
+                    while (splitIndex >= 0 && foundSplitIndex === false){
+                        if (themeNameFull[splitIndex] === "_"){
                             foundSplitIndex = true;
                         } else{
                             splitIndex--;
@@ -393,15 +401,15 @@ router.post<{}, {}, CosmeticReqBody>("/cosmetic", databaseErrorHandler<CosmeticR
                     if (splitIndex > 0){
                         const themeName = themeNameFull.slice(0, splitIndex);
 
-                        if (filePaths[0] == "free"){
+                        if (filePaths[0] === "free"){
                             // If the theme they want to set is free, make sure it exists in the
                             // free themes since the database does not store free themes, meaning
                             // there is no other way to tell if the theme they are trying to set
                             // actually exists.
-                            if (allThemes.free.find((value) => value.includes(themeNameFull)) === undefined){
+                            if (typeof allThemes.free.find((value) => value.includes(themeNameFull)) === "undefined"){
                                 validCosmetics = false;
                             }
-                        } else if (!(userThemes.includes(themeName))){
+                        } else if (userThemes.includes(themeName) === false){
                             // If the theme they want to set is special, only need to check if
                             // that theme is stored in the database because only valid themes are
                             // inserted into the database when buying themes from the shop.
@@ -410,15 +418,15 @@ router.post<{}, {}, CosmeticReqBody>("/cosmetic", databaseErrorHandler<CosmeticR
                     } else{
                         validCosmetics = false;
                     }
-                } else if (x == "scene"){
-                    if (!(userScenes.includes(setCosmetics[x]))){
+                } else if (x === "scene"){
+                    if (userScenes.includes(setCosmetics[x]) === false){
                         validCosmetics = false;
                     }
                 }
             }
         }
 
-        if (validCosmetics){
+        if (validCosmetics === true){
             const updateResults = await updateCosmetics({
                 background: setCosmetics.background,
                 icon: setCosmetics.icon,
@@ -427,7 +435,7 @@ router.post<{}, {}, CosmeticReqBody>("/cosmetic", databaseErrorHandler<CosmeticR
                 username: username
             });
 
-            // updateResults.affectedRows == 0 checked
+            // updateResults.affectedRows === 0 checked
 
             res.json(setCosmetics);
             return;
@@ -441,22 +449,22 @@ router.post<{}, {}, CosmeticReqBody>("/cosmetic", databaseErrorHandler<CosmeticR
 
 // Claim any available tokens and/or get the time until tokens are available again
 router.post<{}, {}, ClaimTokensReqBody>("/claimtokens", databaseErrorHandler<ClaimTokensReqBody>(async (req, res) => {
-    if (typeof req.body.token != "string"){
+    if (typeof req.body.token !== "string"){
         res.status(400).send("Token is missing.");
         return;
     }
     const username = validateToken(req.body.token);
 
-    if (username != ""){
+    if (username !== ""){
         const results = await getLastClaim({username: username});
 
-        // results.length == 0 checked
+        // results.length === 0 checked
 
         let userResults = results[0];
-        if (!(userResults.hasOwnProperty("username") &&
+        if ((userResults.hasOwnProperty("username") &&
         userResults.hasOwnProperty("last_claim") &&
         userResults.hasOwnProperty("tokens") &&
-        userResults.hasOwnProperty("token_doubler"))){
+        userResults.hasOwnProperty("token_doubler")) === false){
             res.status(500).send("Database is not set up properly.");
             return;
         }
@@ -596,7 +604,7 @@ router.post<{}, {}, ClaimTokensReqBody>("/claimtokens", databaseErrorHandler<Cla
 
         // If the user just wants to see how many tokens are available,
         // send the response without updating the database.
-        if (req.body.claim == false){
+        if (req.body.claim === false){
             res.json({
                 tokensAvailable: tokenReward,
                 tokensEarned: 0,
@@ -612,7 +620,7 @@ router.post<{}, {}, ClaimTokensReqBody>("/claimtokens", databaseErrorHandler<Cla
             username: userResults.username
         });
 
-        // updateResults.affectedRows == 0 checked
+        // updateResults.affectedRows === 0 checked
 
         res.json({
             tokensAvailable: 0,

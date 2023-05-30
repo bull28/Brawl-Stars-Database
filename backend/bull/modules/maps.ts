@@ -78,7 +78,7 @@ class GameMode{
     findMapIndex(mapName: string): number{
         let index = -1;
         for (let x = 0; x < this.maps.length; x++){
-            if (this.maps[x].name == mapName){
+            if (this.maps[x].name === mapName){
                 index = x;
             }
         }
@@ -271,16 +271,16 @@ class EventSlot{
                 // for example if the current hour is 312 and the map to be checked starts at 126
                 // in this case, the carry over is always 1 (even if maxSeasons is > 2) since the
                 // rotation is the same in every season
-                if (seasonTimesLessThan(thisTime, currentTime)){
+                if (seasonTimesLessThan(thisTime, currentTime) === true){
                     //thisTime.season += 1;
                     thisTime = addSeasonTimes(thisTime, new SeasonTime(1, 0, 0, 0));
                 }
 
                 // make sure the game mode is actually active
-                if (this.getCurrentGameMode(thisTime) == theGameMode){
+                if (this.getCurrentGameMode(thisTime) === theGameMode){
                     // update lowest time difference
                     const timeDiff = subtractSeasonTimes(thisTime, currentTime);
-                    if (seasonTimesLessThan(timeDiff, lowestStartTime)){
+                    if (seasonTimesLessThan(timeDiff, lowestStartTime) === true){
                         lowestStartTime = timeDiff;
                     }
 
@@ -292,7 +292,7 @@ class EventSlot{
         }
 
         result.all = validStartTimes;
-        if (this.getCurrentGameMap(currentTime).name != mapName){
+        if (this.getCurrentGameMap(currentTime).name !== mapName){
             result.next = subtractSeasonTimes(lowestStartTime, new SeasonTime(0, 0, 0, 1));
         }
         result.duration = new SeasonTime(0, this.eventDuration, 0, 0);
@@ -307,11 +307,11 @@ export function mod(x: number, y: number): number{
 
 export function isValidTimeQuery(hour: string, minute: string, second: string): boolean{
     let valid = true;
-    if (isNaN(+hour)){
+    if (isNaN(+hour) === true){
         valid = false;
-    } if (isNaN(+minute)){
+    } if (isNaN(+minute) === true){
         valid = false;
-    } if (isNaN(+second)){
+    } if (isNaN(+second) === true){
         valid = false;
     }
     return valid;
@@ -395,11 +395,11 @@ export function getModeData(eventList: EventSlot[], modeName: string): GameModeD
     let x = 0;
     let found = false;
     // go through all the events first
-    while (x < eventList.length && found == false){
+    while (x < eventList.length && found === false){
         let y = 0;
         // inside each event, look for the game mode in its game mode list
         while (y < eventList[x].gameModes.length){
-            if (eventList[x].gameModes[y].name == modeName){
+            if (eventList[x].gameModes[y].name === modeName){
                 found = true;
                 // thisGameMode is a gameMode object
                 const thisGameMode = eventList[x].gameModes[y];
@@ -415,7 +415,7 @@ export function getModeData(eventList: EventSlot[], modeName: string): GameModeD
                 const allMaps = thisGameMode.maps;
                 let mapList: MapPreview[] = [];
                 for (let m = 0; m < allMaps.length; m++){
-                    if (allMaps[m].hasOwnProperty("name") && allMaps[m].hasOwnProperty("displayName")){
+                    if (allMaps[m].hasOwnProperty("name") === true && allMaps[m].hasOwnProperty("displayName") === true){
                         mapList.push({
                             "name": allMaps[m].name,
                             "displayName": allMaps[m].displayName
@@ -447,7 +447,7 @@ export function getMapData(eventList: EventSlot[], mapName: string, currentTime:
     let result: MapData | undefined = undefined;
     let x = 0;
     let found = false;
-    while (x < eventList.length && found == false){
+    while (x < eventList.length && found === false){
         let mapInThisSlot: MapAttributes | undefined;
         
         const mapTimes = eventList[x].getNextStartTime(mapName, currentTime);
@@ -458,7 +458,7 @@ export function getMapData(eventList: EventSlot[], mapName: string, currentTime:
             if (mapSearchResult >= 0){
                 mapInThisSlot = eventList[x].gameModes[y].getMap(mapSearchResult);
 
-                if (typeof mapInThisSlot != "undefined"){
+                if (typeof mapInThisSlot !== "undefined"){
                     const mapSlotData: MapData = {
                         name: mapInThisSlot.name,
                         displayName: mapInThisSlot.displayName,
@@ -484,7 +484,7 @@ export function searchForMapName(eventList: EventSlot[], search: {search: string
     let onlyContains: MapSearchPreview[] = [];
 
     let query = "";
-    if (search.hasOwnProperty("search")){
+    if (search.hasOwnProperty("search") === true){
         query = search.search;
         query = query.toLowerCase();
     }
@@ -499,9 +499,8 @@ export function searchForMapName(eventList: EventSlot[], search: {search: string
                 // before adding it. The queryIndex only determines the
                 // order they are added in.
                 const queryIndex = thisMapName.search(query);
-                const includes = thisMapName.includes(query);
 
-                if (includes){
+                if (thisMapName.includes(query) === true){
                     // copy over the game mode's data, and include its name
                     const resultObject: MapSearchPreview = {
                         name: map.name,
@@ -510,9 +509,9 @@ export function searchForMapName(eventList: EventSlot[], search: {search: string
                     }
                     
 
-                    if (thisMapName == query){
+                    if (thisMapName === query){
                         exactMatch.push(resultObject);
-                    } else if (queryIndex == 0){
+                    } else if (queryIndex === 0){
                         startsWith.push(resultObject);
                     } else if (queryIndex > 0){
                         onlyContains.push(resultObject);

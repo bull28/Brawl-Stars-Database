@@ -24,7 +24,7 @@ router.get<{}, {}, {}, TimeQuery>("/seasontime", (req, res) => {
     const minuteString = req.query.minute;
     const secondString = req.query.second;
 
-    if (!isValidTimeQuery(hourString, minuteString, secondString)){
+    if (isValidTimeQuery(hourString, minuteString, secondString) === false){
         res.status(400).send("Invalid input.");
         return;
     }
@@ -47,7 +47,7 @@ router.get<{}, {}, {}, TimeQuery>("/later", (req, res) => {
 
     const currentTime = realToTime(Date.now());
 
-    if (!isValidTimeQuery(hourString, minuteString, secondString)){
+    if (isValidTimeQuery(hourString, minuteString, secondString) === false){
         res.status(400).send("Invalid input.");
         return;
     }
@@ -66,7 +66,7 @@ router.get<{}, {}, {}, TimeQuery>("/later", (req, res) => {
 router.get<{}, {}, {}, TimeQuery>("/worldtime", (req, res) => {
     const realSeconds = req.query.second;
 
-    if (isNaN(+realSeconds)){
+    if (isNaN(+realSeconds) === true){
         res.status(400).send("Invalid input.");
         return;
     }

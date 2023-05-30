@@ -58,7 +58,7 @@ export function formatCollectionData(userCollection: DatabaseBrawlers): Collecti
         // they are used
         let missingProperties = false;
         for (let j of includeFromBrawler){
-            if (!(brawler.hasOwnProperty(j))){
+            if (brawler.hasOwnProperty(j) === false){
                 missingProperties = true;
             }
         }
@@ -67,9 +67,9 @@ export function formatCollectionData(userCollection: DatabaseBrawlers): Collecti
         // If a brawler is not unlocked, none of their pins can
         // be unlocked either.
         let hasBrawler = false;
-        if (!missingProperties){
+        if (missingProperties === false){
             hasBrawler = userCollection.has(brawler.name);
-            if (hasBrawler){
+            if (hasBrawler === true){
                 collection.unlockedBrawlers++;
             }
             collection.totalBrawlers++;
@@ -77,7 +77,7 @@ export function formatCollectionData(userCollection: DatabaseBrawlers): Collecti
             let brawlerPins: CollectionPin[] = [];
 
             let pinData: Map<string, number> | undefined = undefined;
-            if (hasBrawler){
+            if (hasBrawler === true){
                 pinData = userCollection.get(brawler.name)!;   
             }
     
@@ -90,7 +90,7 @@ export function formatCollectionData(userCollection: DatabaseBrawlers): Collecti
                     a: 0
                 };
 
-                if (!rarityColors.has(pin.rarity.value)){
+                if (rarityColors.has(pin.rarity.value) === false){
                     rarityColors.set(pin.rarity.value, pin.rarity.color);
                 }
 
@@ -98,9 +98,9 @@ export function formatCollectionData(userCollection: DatabaseBrawlers): Collecti
                 // If the brawler is unlocked, check to see if the name of the current
                 // pin appears in the corresponding value. If it appears, the current
                 // pin is unlocked.
-                if (typeof pinData != "undefined"){
+                if (typeof pinData !== "undefined"){
                     const pinCount = pinData.get(pin.name);
-                    if (typeof pinCount != "undefined"){
+                    if (typeof pinCount !== "undefined"){
                         if (pinCount > 0){
                             
                             unlockedPins++;
@@ -131,11 +131,11 @@ export function formatCollectionData(userCollection: DatabaseBrawlers): Collecti
                 pins: brawlerPins
             };
 
-            if (brawler.rarity.hasOwnProperty("color")){
+            if (brawler.rarity.hasOwnProperty("color") === true){
                 thisBrawler.rarityColor = brawler.rarity.color;
             }
 
-            if (unlockedPins == totalPins){
+            if (unlockedPins === totalPins){
                 collection.completedBrawlers++;
             }
 
@@ -169,7 +169,7 @@ export function getAvatars(allAvatars: AvatarList, userCollection: DatabaseBrawl
     let avatars: DatabaseAvatars = [];
     let unlockedBrawlers: string[] = [];
 
-    if (typeof allAvatars.free == "undefined" || typeof allAvatars.special == "undefined"){
+    if (typeof allAvatars.free === "undefined" || typeof allAvatars.special === "undefined"){
         return avatars;
     }
 
@@ -180,9 +180,9 @@ export function getAvatars(allAvatars: AvatarList, userCollection: DatabaseBrawl
 
     for (let x = 0; x < allSkins.length; x++){
         const brawler = allSkins[x];
-        if (brawler.hasOwnProperty("name") && brawler.hasOwnProperty("image")){
+        if (brawler.hasOwnProperty("name") === true && brawler.hasOwnProperty("image") === true){
             // If the user has the brawler unlocked, add the avatar as an option
-            if (userCollection.has(brawler.name)){
+            if (userCollection.has(brawler.name) === true){
                 unlockedBrawlers.push(brawler.image.split(".")[0]);
             }
         }
@@ -197,7 +197,7 @@ export function getAvatars(allAvatars: AvatarList, userCollection: DatabaseBrawl
         // database, only the file name
         const filePaths = avatar.split("/");
         const avatarName = filePaths[filePaths.length - 1].split(".")[0];
-        if (typeof avatarName != "undefined" && userAvatars.includes(avatarName)){
+        if (typeof avatarName !== "undefined" && userAvatars.includes(avatarName) === true){
             avatars.push(AVATAR_IMAGE_DIR + avatar);
         }
 
@@ -205,7 +205,7 @@ export function getAvatars(allAvatars: AvatarList, userCollection: DatabaseBrawl
         // it can be used is if it is a brawler portrait and if the brawler
         // is unlocked, the portrait is made available.
         // In order for this to happen, the file names must be the same.
-        else if (unlockedBrawlers.includes(avatarName)){
+        else if (unlockedBrawlers.includes(avatarName) === true){
             avatars.push(AVATAR_IMAGE_DIR + avatar);
         }
     }
@@ -228,7 +228,7 @@ export function getAvatars(allAvatars: AvatarList, userCollection: DatabaseBrawl
 export function getThemes(allThemes: ThemeList, allScenes: SceneList, userThemes: DatabaseThemes, userScenes: DatabaseScenes): ThemeData{
     let themes = new Map<string, Map<string, string>>();
 
-    if (typeof allThemes.free == "undefined" && typeof allThemes.special == "undefined"){
+    if (typeof allThemes.free === "undefined" && typeof allThemes.special === "undefined"){
         return {
             background: [],
             icon: [],
@@ -240,31 +240,31 @@ export function getThemes(allThemes: ThemeList, allScenes: SceneList, userThemes
     for (let t in allThemes){
         for (let theme of allThemes[t as keyof ThemeList]){
             let themeType = "";
-            if (theme.includes("_icon")){
+            if (theme.includes("_icon") === true){
                 themeType = "icon";
-            } else if (theme.includes("_background")){
+            } else if (theme.includes("_background") === true){
                 themeType = "background";
-            } else if (theme.includes("_selectpreview")){
+            } else if (theme.includes("_selectpreview") === true){
                 themeType = "selectpreview";
-            } else if (theme.includes("_music")){
+            } else if (theme.includes("_music") === true){
                 themeType = "music";
             }
             // Add more types if they become available
     
-            if (themeType != ""){
+            if (themeType !== ""){
                 // Check if the theme map contains the current theme name and if it
                 // does, add it to the themes, grouped by name
                 const filePaths = theme.split("/");
                 const themeName = filePaths[filePaths.length - 1].split("_" + themeType)[0];
-                if (themeMap.has(themeName)){
-                    if (!themes.has(themeName)){
-                        themes.set(themeName, new Map<string, string>);
+                if (themeMap.has(themeName) === true){
+                    if (themes.has(themeName) === false){
+                        themes.set(themeName, new Map<string, string>());
                     }
     
-                    if (t == "free"){
+                    if (t === "free"){
                         (themes.get(themeName)!).set(themeType, THEME_IMAGE_DIR + theme);
-                    } else if (t == "special"){
-                        if (themeName != undefined && userThemes.includes(themeName)){
+                    } else if (t === "special"){
+                        if (userThemes.includes(themeName) === true){
                             (themes.get(themeName)!).set(themeType, THEME_IMAGE_DIR + theme);
                         }
                     }
@@ -280,9 +280,9 @@ export function getThemes(allThemes: ThemeList, allScenes: SceneList, userThemes
         const filePaths = scene.split("/");
         const sceneName = filePaths[filePaths.length - 1].split(".")[0];
         
-        if (sceneName != undefined){
-            if (sceneMap.has(sceneName)){
-                if (userScenes.includes(sceneName)){
+        if (typeof sceneName !== "undefined"){
+            if (sceneMap.has(sceneName) === true){
+                if (userScenes.includes(sceneName) === true){
                     scenes.push({
                         displayName: sceneMap.get(sceneName)!.displayName,
                         path: SCENE_IMAGE_DIR + scene,
@@ -303,17 +303,17 @@ export function getThemes(allThemes: ThemeList, allScenes: SceneList, userThemes
 
     themes.forEach((value, key) => {
         const themeName = themeMap.get(key);
-        if (typeof themeName != "undefined"){
+        if (typeof themeName !== "undefined"){
 
             const backgroundPath = value.get("background");
             const iconPath = value.get("icon");
             const iconPreview = value.get("selectpreview");
             const musicPath = value.get("music");
 
-            if (typeof backgroundPath != "undefined" &&
-            typeof iconPath != "undefined" &&
-            typeof iconPreview != "undefined" &&
-            typeof musicPath != "undefined"){
+            if (typeof backgroundPath !== "undefined" &&
+            typeof iconPath !== "undefined" &&
+            typeof iconPreview !== "undefined" &&
+            typeof musicPath !== "undefined"){
                 themesResult.background.push({
                     displayName: themeName,
                     path: backgroundPath
@@ -357,11 +357,11 @@ export function getCosmetics(allThemes: ThemeList, allScenes: SceneList, cosmeti
 
     // Initialize the object sent to the user with the default cosmetics
     for (let x of defaultThemes){
-        if (x.includes("_background")){
+        if (x.includes("_background") === true){
             setCosmetics.background = THEME_IMAGE_DIR + x;
-        } else if (x.includes("_icon")){
+        } else if (x.includes("_icon") === true){
             setCosmetics.icon = THEME_IMAGE_DIR + x;
-        } else if (x.includes("_music")){
+        } else if (x.includes("_music") === true){
             setCosmetics.music = THEME_IMAGE_DIR + x;
         }
     }
@@ -370,26 +370,26 @@ export function getCosmetics(allThemes: ThemeList, allScenes: SceneList, cosmeti
     // update the object with that cosmetic's name
     for (let x in cosmeticsData){
         let k = x as keyof DatabaseCosmetics;
-        if (cosmeticsData[k] != ""){
-            if (x == "background" || x == "icon" || x == "music"){
+        if (cosmeticsData[k] !== ""){
+            if (x === "background" || x === "icon" || x === "music"){
                 // Since the file extension might is not always the same, use the file name
                 // from the allThemes/allScenes arrays
 
                 // cosmeticsData[k] stores only whether the cosmetic is free/special
                 // and its name. Both of those are contained in allThemes or allScenes.
                 let result = undefined;
-                if (cosmeticsData[k].includes("free/")){
+                if (cosmeticsData[k].includes("free/") === true){
                     result = allThemes.free.find((value) => value.includes(cosmeticsData[k]));
                 } else{
                     result = allThemes.special.find((value) => value.includes(cosmeticsData[k]));
                 }
 
-                if (typeof result != "undefined"){
+                if (typeof result !== "undefined"){
                     setCosmetics[x] = THEME_IMAGE_DIR + result;
                 }
-            } else if (x == "scene"){
+            } else if (x === "scene"){
                 const result = allScenes.find((value) => value.includes(cosmeticsData[k]));
-                if (typeof result != "undefined"){
+                if (typeof result !== "undefined"){
                     setCosmetics[x] = SCENE_IMAGE_DIR + result;
                 }
             }
@@ -440,52 +440,52 @@ export function getShopItems(shopItems: ShopList, userCollection: DatabaseBrawle
 
     shopItems.forEach((value, key) => {
         // Depending on the type of item, check availability differently
-        if (value.itemType == "tradeCredits"){
+        if (value.itemType === "tradeCredits"){
             // Trade credits are always available
             availableShopItems.set(key, value);
-        } else if (value.itemType == "brawler"){
+        } else if (value.itemType === "brawler"){
             // As long as the user has one or more brawlers left to unlock, allow them to buy a brawler
             if (collection.unlockedBrawlers < collection.totalBrawlers){
                 availableShopItems.set(key, value);
             }
-        } else if (value.itemType == "avatar"){
+        } else if (value.itemType === "avatar"){
             // If the user does not already own an avatar, it is available for them to buy
-            if (userAvatars.includes(value.extraData) == false){
+            if (userAvatars.includes(value.extraData) === false){
                 availableShopItems.set(key, value);
             }
-        } else if (value.itemType == "achievementAvatar"){
+        } else if (value.itemType === "achievementAvatar"){
             // If the user does not already own an avatar, it is available for them to buy
-            if (userAvatars.includes(value.extraData) == false && achievements.includes(value.extraData)){
+            if (userAvatars.includes(value.extraData) === false && achievements.includes(value.extraData) === true){
                 let shopItemCopy = copyShopItem(value);
                 shopItemCopy.itemType = "avatar";
 
                 availableShopItems.set(key, shopItemCopy);
             }
-        } else if (value.itemType == "theme"){
+        } else if (value.itemType === "theme"){
             // Themes are handled the same way as avatars. The only difference is that one theme string
             // corresponds to a bundle of actual items (background, icon, and possibly more???)
-            if (userThemes.includes(value.extraData) == false){
+            if (userThemes.includes(value.extraData) === false){
                 availableShopItems.set(key, value);
             }
-        } else if (value.itemType == "scene"){
+        } else if (value.itemType === "scene"){
             // Scenes are handled the same way as avatars. Unlike avatars, there are no free scenes.
-            if (userScenes.includes(value.extraData) == false){
+            if (userScenes.includes(value.extraData) === false){
                 availableShopItems.set(key, value);
             }
-        } else if (value.itemType == "featured"){
+        } else if (value.itemType === "featured"){
             let shopItemCopy = copyShopItem(value);
             
-            if (featuredItem.includes("/")){
+            if (featuredItem.includes("/") === true){
                 const pinName = featuredItem.split("/");
                 // The featured pin is valid only if the user has the brawler unlocked
                 // but they do not have to have the pin unlocked
                 try{
-                    if (userCollection.has(pinName[0])){
+                    if (userCollection.has(pinName[0]) === true){
                         for (let brawler in allSkins){
-                            if (allSkins[brawler].name == pinName[0]){
+                            if (allSkins[brawler].name === pinName[0]){
                                 const brawlerPins = allSkins[brawler].pins;
                                 for (let pin in brawlerPins){
-                                    if (brawlerPins[pin].name == pinName[1]){
+                                    if (brawlerPins[pin].name === pinName[1]){
                                         shopItemCopy.itemType = "featuredPin";// May allow different types of featured items in the future
                                         shopItemCopy.displayName = "Featured " + brawlerPins[pin].rarity.name + " Pin";
                                         shopItemCopy.extraData = featuredItem;
@@ -542,13 +542,13 @@ export function refreshFeaturedItem(userCollection: DatabaseBrawlers): string{
     for (let brawlerIndex = 0; brawlerIndex < allSkins.length; brawlerIndex++){
         let brawler = allSkins[brawlerIndex];
         
-        if (brawler.hasOwnProperty("name") && brawler.hasOwnProperty("pins")){
+        if (brawler.hasOwnProperty("name") === true && brawler.hasOwnProperty("pins") === true){
             // Only offer pins from brawlers the user owns
-            if (userCollection.has(brawler.name)){
+            if (userCollection.has(brawler.name) === true){
                 for (let pinIndex = 0; pinIndex < brawler.pins.length; pinIndex++){
                     //const pinRarity = brawler.pins[pinIndex].rarity.value;
                     const pinAmount = (userCollection.get(brawler.name)!).get(brawler.pins[pinIndex].name);
-                    if (pinAmount != undefined && pinAmount > 0){
+                    if (typeof pinAmount !== "undefined" && pinAmount > 0){
                         duplicatePins.push(brawler.name + "/" + brawler.pins[pinIndex].name);
                     } else{
                         newPins.push(brawler.name + "/" + brawler.pins[pinIndex].name);
@@ -604,31 +604,31 @@ function getAchievementAvatars(userAvatars: DatabaseAvatars, userThemes: Databas
     let tier = -1;
 
     for (let x in userAvatars){
-        if (userAvatars[x].includes("collection")){
+        if (userAvatars[x].includes("collection") === true){
             tier = Math.max(tier, tierOrder.indexOf(userAvatars[x]));            
         }
     }    
 
     // The user can buy the next tiered avatar if and only if they meet the
     // collection score requirement. Only one tiered avatar is offered at a time.
-    if (tier == -1){
+    if (tier === -1){
         if (score >=   60) { achievementAvatars.push(tierOrder[0]); }// Requires C
-    } else if (tier == 0){
+    } else if (tier === 0){
         if (score >=  120) { achievementAvatars.push(tierOrder[1]); }// Requires B-
-    } else if (tier == 1){
+    } else if (tier === 1){
         if (score >=  270) { achievementAvatars.push(tierOrder[2]); }// Requires B+
-    } else if (tier == 2){
+    } else if (tier === 2){
         if (score >=  480) { achievementAvatars.push(tierOrder[3]); }// Requires A
-    } else if (tier == 3){
+    } else if (tier === 3){
         if (score >=  640) { achievementAvatars.push(tierOrder[4]); }// Requires A+
-    } else if (tier == 4){
+    } else if (tier === 4){
         if (score >=  800) { achievementAvatars.push(tierOrder[5]); }// Requires S-
-    } else if (tier == 5){
+    } else if (tier === 5){
         if (score >= 1000) { achievementAvatars.push(tierOrder[6]); }// Requires S
-    } else if (tier == 6){
+    } else if (tier === 6){
         if (score >= 1200) { achievementAvatars.push(tierOrder[7]); }// Requires S+
     }
-    // tier == 7 means all avatars unlocked
+    // tier === 7 means all avatars unlocked
 
     // Gem Grab avatar is available in the shop with no requirement
 
@@ -657,7 +657,7 @@ function getAchievementAvatars(userAvatars: DatabaseAvatars, userThemes: Databas
  * @returns numeric value of collection score
  */
 function getCollectionScore(collection: CollectionData): number{
-    if (collection.totalBrawlers == 0 || collection.totalPins == 0){
+    if (collection.totalBrawlers === 0 || collection.totalPins === 0){
         return 0;
     }
     if (collection.pinCopies < collection.unlockedPins){

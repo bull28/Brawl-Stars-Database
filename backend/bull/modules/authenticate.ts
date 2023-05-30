@@ -28,7 +28,7 @@ export function validateToken(token: string): string{
     try{
         const data = <UsernameJwtPayload>jsonwebtoken.verify(token, secret);
             
-        if (data.username == undefined){
+        if (typeof data.username === "undefined"){
             return "";
         }
         return data.username;

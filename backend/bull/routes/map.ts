@@ -18,9 +18,9 @@ router.get("/gamemode", (req, res) => {
     for (let x = 0; x < events.length; x++){
         for (let y = 0; y < events[x].gameModes.length; y++){
             const gameMode = events[x].gameModes[y];
-            if (gameMode.hasOwnProperty("name") && 
-            gameMode.hasOwnProperty("displayName") &&
-            !alreadyChecked.includes(gameMode.name)){
+            if (gameMode.hasOwnProperty("name") === true && 
+            gameMode.hasOwnProperty("displayName") === true &&
+            alreadyChecked.includes(gameMode.name) === false){
                 alreadyChecked.push(gameMode.name);
                 allGameModes.push({
                     name: gameMode.name,
@@ -38,7 +38,7 @@ router.get("/gamemode/:gamemode", (req, res) => {
     const gameMode = req.params.gamemode;
 
     const gameModeData = getModeData(events, gameMode);
-    if (typeof gameModeData == "undefined"){
+    if (typeof gameModeData === "undefined"){
         res.status(404).send("Game mode not found.");
         return;
     }
@@ -51,7 +51,7 @@ router.get("/map/:map", (req, res) => {
     const map = req.params.map;
     
     const mapData = getMapData(events, map, realToTime(Date.now()));
-    if (typeof mapData == "undefined"){
+    if (typeof mapData === "undefined"){
         res.status(404).send("Map not found.");
         return;
     }

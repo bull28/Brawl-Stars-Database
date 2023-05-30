@@ -47,19 +47,19 @@ interface CloseReqBody{
 
 // Create a new trade
 router.post<{}, {}, CreateReqBody>("/create", databaseErrorHandler<CreateReqBody>(async (req, res) => {
-    if (typeof req.body.token != "string"){
+    if (typeof req.body.token !== "string"){
         res.status(400).send("Token is missing.");
         return;
     }
     const username = validateToken(req.body.token);
 
     let searchByName = false;
-    if (req.body.searchByName == true){
+    if (req.body.searchByName === true){
         searchByName = true;
     }
 
     let tradeHours = 48;
-    if (req.body.tradeDurationHours !== undefined){
+    if (typeof req.body.tradeDurationHours !== "undefined"){
         tradeHours = req.body.tradeDurationHours;
     }
     if (tradeHours < 1 || tradeHours > 336){
@@ -68,7 +68,7 @@ router.post<{}, {}, CreateReqBody>("/create", databaseErrorHandler<CreateReqBody
         return;
     }
 
-    if (username != "" && typeof req.body.offer != "undefined" && typeof req.body.request != "undefined"){
+    if (username !== "" && typeof req.body.offer !== "undefined" && typeof req.body.request !== "undefined"){
         // Run the function to validate the user's pin requests
         let offerPins = validatePins(req.body.offer, searchByName);
         let requestPins = validatePins(req.body.request, searchByName);
@@ -77,7 +77,7 @@ router.post<{}, {}, CreateReqBody>("/create", databaseErrorHandler<CreateReqBody
             res.status(400).send("Too many pins in request or offer.");
             return;
         }
-        if (offerPins.length == 0 && requestPins.length == 0){
+        if (offerPins.length === 0 && requestPins.length === 0){
             res.status(400).send("Trade does not contain any pins being exchanged.");
             return;
         }
@@ -87,12 +87,12 @@ router.post<{}, {}, CreateReqBody>("/create", databaseErrorHandler<CreateReqBody
         const requestPinsNames = requestPins.map(element => element.pin);
         let validPins = true;
         for (let x = 0; x < offerPinsNames.length; x++){
-            if (requestPinsNames.includes(offerPinsNames[x])){
+            if (requestPinsNames.includes(offerPinsNames[x]) === true){
                 validPins = false;
             }
         }
 
-        if (!validPins){
+        if (validPins === false){
             res.status(400).send("Cannot have the same pin in both offer and request.");
             return;
         }
@@ -105,14 +105,14 @@ router.post<{}, {}, CreateReqBody>("/create", databaseErrorHandler<CreateReqBody
         // At this point, the trade is a valid trade (the user may not have the requirements or resources
         // to create it though). The value returned here is the number of trade credits it would require
         // to create a trade with the given offer, request, and duration.
-        if (req.body.getCost == true){
+        if (req.body.getCost === true){
             res.json({tradeCost: totalTradeCost});
             return;
         }
 
         const results = await beforeTrade({username: username});
 
-        // results.length == 0 checked
+        // results.length === 0 checked
 
         let userResources = results[0];
         let userAvatarColor = "#FFFFFF";
@@ -137,9 +137,9 @@ router.post<{}, {}, CreateReqBody>("/create", databaseErrorHandler<CreateReqBody
 
         let hasRequiredPins = true;
         for (let x of offerPins){
-            if (collectionData.has(x.brawler)){
+            if (collectionData.has(x.brawler) === true){
                 const brawler = collectionData.get(x.brawler)!;
-                if (brawler.has(x.pin)){
+                if (brawler.has(x.pin) === true){
                     const pinAmount = brawler.get(x.pin)!;
                     if (pinAmount < x.amount){
                         hasRequiredPins = false;
@@ -162,7 +162,7 @@ router.post<{}, {}, CreateReqBody>("/create", databaseErrorHandler<CreateReqBody
         }
 
         // User does not have the pins they are offering
-        if (!hasRequiredPins){
+        if (hasRequiredPins === false){
             res.status(403).send("You do not have enough copies of the pins required to create this trade.");
             return;
         }
@@ -184,13 +184,13 @@ router.post<{}, {}, CreateReqBody>("/create", databaseErrorHandler<CreateReqBody
             expiration: tradeExpiration
         });
 
-        // updateResults.affectedRows == 0 checked
+        // updateResults.affectedRows === 0 checked
 
 
         // Get the tradeid that was just inserted and it will be returned to the user
         const lastInsertID = await selectLastID();
 
-        // lastInsertID.length == 0 checked
+        // lastInsertID.length === 0 checked
 
         const tradeidResult = lastInsertID[0].lastid;
 
@@ -203,7 +203,7 @@ router.post<{}, {}, CreateReqBody>("/create", databaseErrorHandler<CreateReqBody
             username: username,
         });
 
-        // updateUserResults.affectedRows == 0 checked
+        // updateUserResults.affectedRows === 0 checked
 
         res.json({tradeid: tradeidResult});
     } else{
@@ -213,7 +213,7 @@ router.post<{}, {}, CreateReqBody>("/create", databaseErrorHandler<CreateReqBody
 
 // Accept an existing trade
 router.post<{}, {}, AcceptReqBody>("/accept", databaseErrorHandler<AcceptReqBody>(async (req, res) => {
-    if (typeof req.body.token != "string"){
+    if (typeof req.body.token !== "string"){
         res.status(400).send("Token is missing.");
         return;
     }
@@ -226,17 +226,17 @@ router.post<{}, {}, AcceptReqBody>("/accept", databaseErrorHandler<AcceptReqBody
     // do not have the brawler unlocked.
     let useWildCards = false;
     let forceAccept = false;
-    if (req.body.useWildCards == true){
+    if (req.body.useWildCards === true){
         useWildCards = true;
     }
-    if (req.body.forceAccept == true){
+    if (req.body.forceAccept === true){
         forceAccept = true;
     }
 
-    if (username != "" && typeof tradeid != "undefined"){
+    if (username !== "" && typeof tradeid !== "undefined"){
         const results = await beforeTrade({username: username});
 
-        // results.length == 0 checked
+        // results.length === 0 checked
 
         // Load the data then get the trade data and compare then
         let userResources = results[0];
@@ -258,12 +258,12 @@ router.post<{}, {}, AcceptReqBody>("/accept", databaseErrorHandler<AcceptReqBody
             accepted: 0
         });
 
-        // getTrade.length == 0 checked
+        // getTrade.length === 0 checked
 
         let tradeResults = getTrade[0];
 
         // Trying to accept their own trade...
-        if (tradeResults.creator == username){
+        if (tradeResults.creator === username){
             res.status(400).send("You cannot accept your own trade!");
             return;
         }
@@ -291,9 +291,9 @@ router.post<{}, {}, AcceptReqBody>("/accept", databaseErrorHandler<AcceptReqBody
         let hasRequiredPins = true;
         for (let x of requestPins){
             // First check if they have the required pins in their collection
-            if (collectionData.has(x.brawler)){
+            if (collectionData.has(x.brawler) === true){
                 const brawler = collectionData.get(x.brawler)!;
-                if (brawler.has(x.pin)){
+                if (brawler.has(x.pin) === true){
                     let collectionPinCount = brawler.get(x.pin)!;
                     if (collectionPinCount >= x.amount){
                         // User has all the required pins
@@ -325,7 +325,7 @@ router.post<{}, {}, AcceptReqBody>("/accept", databaseErrorHandler<AcceptReqBody
             }
 
             // If they do not have the required pins, check if they have enough wild cards
-            if (!hasRequiredPins && useWildCards){
+            if (hasRequiredPins === false && useWildCards === true){
                 if (wildCardPins[x.rarityValue] >= x.amount){
                     wildCardPins[x.rarityValue] -= x.amount
                     hasRequiredPins = true;
@@ -339,7 +339,7 @@ router.post<{}, {}, AcceptReqBody>("/accept", databaseErrorHandler<AcceptReqBody
 
 
         // User does not have the pins the trade creator wants
-        if (hasRequiredPins == false){
+        if (hasRequiredPins === false){
             res.status(403).send("You do not have enough copies of the pins required to accept this trade.");
             return;
         }
@@ -352,10 +352,10 @@ router.post<{}, {}, AcceptReqBody>("/accept", databaseErrorHandler<AcceptReqBody
 
         let hasRequiredBrawlers = true;
         for (let x of offerPins){
-            if (collectionData.has(x.brawler)){
+            if (collectionData.has(x.brawler) === true){
                 const brawler = collectionData.get(x.brawler)!;
                 // If the user already has the pin in their collection, add the amount they will receive
-                if (brawler.has(x.pin)){
+                if (brawler.has(x.pin) === true){
                     const pinAmount = brawler.get(x.pin)!;
                     brawler.set(x.pin, pinAmount + x.amount);
                     //collectionData[x.brawler][x.pin] += x.amount;
@@ -375,7 +375,7 @@ router.post<{}, {}, AcceptReqBody>("/accept", databaseErrorHandler<AcceptReqBody
 
         // If the user does not have the brawlers unlocked, they have the option to accept anyway
         // and not collect those pins or for the server to prevent them from accepting.
-        if (!forceAccept && !hasRequiredBrawlers){
+        if (forceAccept === false && hasRequiredBrawlers === false){
             res.status(403).send("You do not have the necessary brawlers unlocked to accept the trade.");
             return;
         }
@@ -388,7 +388,7 @@ router.post<{}, {}, AcceptReqBody>("/accept", databaseErrorHandler<AcceptReqBody
             username: username
         });
 
-        // updateResults.affectedRows == 0 checked
+        // updateResults.affectedRows === 0 checked
 
         // At this point, the update to the user was successful so the trade can be marked as completed
 
@@ -402,7 +402,7 @@ router.post<{}, {}, AcceptReqBody>("/accept", databaseErrorHandler<AcceptReqBody
             tradeid: tradeid
         });
 
-        // updateTrade.affectedRows == 0 checked
+        // updateTrade.affectedRows === 0 checked
 
         res.json(formatTradeData(tradedItems));
     } else{
@@ -412,7 +412,7 @@ router.post<{}, {}, AcceptReqBody>("/accept", databaseErrorHandler<AcceptReqBody
 
 // Close a trade, collecting rewards if successful or refunding payment if unsuccessful
 router.post<{}, {}, CloseReqBody>("/close", databaseErrorHandler<CloseReqBody>(async (req, res) => {
-    if (typeof req.body.token != "string"){
+    if (typeof req.body.token !== "string"){
         res.status(400).send("Token is missing.");
         return;
     }
@@ -421,14 +421,14 @@ router.post<{}, {}, CloseReqBody>("/close", databaseErrorHandler<CloseReqBody>(a
     let tradeid = req.body.tradeid;
 
     let forceAccept = false;
-    if (req.body.forceAccept == true){
+    if (req.body.forceAccept === true){
         forceAccept = true;
     }
 
-    if (username != "" && typeof tradeid != "undefined"){
+    if (username !== "" && typeof tradeid !== "undefined"){
         const results = await beforeTrade({username: username});
 
-        // results.length == 0 checked
+        // results.length === 0 checked
 
         // Load the data then get the trade data and compare then
         let collectionData: DatabaseBrawlers;
@@ -445,11 +445,11 @@ router.post<{}, {}, CloseReqBody>("/close", databaseErrorHandler<CloseReqBody>(a
         // Get the trade data for the tradeid specified by the user
         const getTrade = await getTradeClose({tradeid: tradeid});
 
-        // getTrade.length == 0 checked
+        // getTrade.length === 0 checked
         
         let tradeResults = getTrade[0];
 
-        if (tradeResults.creator != username){
+        if (tradeResults.creator !== username){
             res.status(401).send("You did not create this trade!");
             return;
         }
@@ -474,7 +474,7 @@ router.post<{}, {}, CloseReqBody>("/close", databaseErrorHandler<CloseReqBody>(a
         // Based on whether the trade was complete or not, pins will be added
         // back from either the offer or request
         let addPinsFrom: TradePinValid[] = [];
-        if (tradeResults.accepted == 1){
+        if (tradeResults.accepted === 1){
             // If the trade was completed, add pins from the request
             addPinsFrom = requestPins;
         } else{
@@ -490,9 +490,9 @@ router.post<{}, {}, CloseReqBody>("/close", databaseErrorHandler<CloseReqBody>(a
 
         let hasRequiredBrawlers = true;
         for (let x of addPinsFrom){
-            if (collectionData.has(x.brawler)){
+            if (collectionData.has(x.brawler) === true){
                 const brawler = collectionData.get(x.brawler)!;
-                if (brawler.has(x.pin)){
+                if (brawler.has(x.pin) === true){
                     const pinAmount = brawler.get(x.pin)!;
                     brawler.set(x.pin, pinAmount + x.amount);
                     //collectionData[x.brawler][x.pin] += x.amount;
@@ -509,7 +509,7 @@ router.post<{}, {}, CloseReqBody>("/close", databaseErrorHandler<CloseReqBody>(a
         }
 
 
-        if (!forceAccept && !hasRequiredBrawlers){
+        if (forceAccept === false && hasRequiredBrawlers === false){
             res.status(403).send("You do not have the necessary brawlers unlocked to accept the trade.");
             return;
         }
@@ -525,15 +525,15 @@ router.post<{}, {}, CloseReqBody>("/close", databaseErrorHandler<CloseReqBody>(a
             username: username
         });
 
-        // updateResults.affectedRows == 0 checked
+        // updateResults.affectedRows === 0 checked
 
         // Remove the trade from the database
         const deleteResults = await afterTradeClose({tradeid: tradeid});
 
-        // deleteResults.affectedRows == 0 checked
+        // deleteResults.affectedRows === 0 checked
 
         let tradeSuccess = false;
-        if (tradeResults.accepted == 1){
+        if (tradeResults.accepted === 1){
             tradeSuccess = true;
         }
 

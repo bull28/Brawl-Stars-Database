@@ -29,7 +29,7 @@ interface TradeAllReqBody{
 router.get<{}, {}, {}, TradeQuery>("/id", databaseErrorHandler<{}, TradeQuery>(async (req, res) => {
     const tradeidString = req.query.tradeid;
 
-    if (isNaN(+tradeidString)){
+    if (isNaN(+tradeidString) === true){
         res.status(400).send("Invalid Trade ID.");
         return;
     }
@@ -37,7 +37,7 @@ router.get<{}, {}, {}, TradeQuery>("/id", databaseErrorHandler<{}, TradeQuery>(a
 
     const results = await viewTradeID({tradeid: tradeid});
 
-    // results.length == 0 checked
+    // results.length === 0 checked
 
     const tradeResults = results[0];
 
@@ -62,7 +62,7 @@ router.get<{}, {}, {}, TradeQuery>("/id", databaseErrorHandler<{}, TradeQuery>(a
         offer: formatTradeData(offerPins),
         request: formatTradeData(requestPins),
         timeLeft: getTradeTimeLeft(tradeResults.expiration),
-        accepted: (tradeResults.accepted == 1),
+        accepted: (tradeResults.accepted === 1),
         acceptedBy: tradeResults.accepted_by
     });
 }));
@@ -71,14 +71,14 @@ router.get<{}, {}, {}, TradeQuery>("/id", databaseErrorHandler<{}, TradeQuery>(a
 router.post<{}, {}, TradeUserReqBody>("/user", databaseErrorHandler<TradeUserReqBody>(async (req, res) => {
     const username = req.body.username;
 
-    if (typeof username != "string"){
+    if (typeof username !== "string"){
         res.status(400).send("No username provided.");
         return;
     }
 
     const results = await viewTradeUser({username: username});
 
-    // results.length == 0 does not need to be checked
+    // results.length === 0 does not need to be checked
 
     let tradeList: TradeUserData[] = [];
     let validTrades = true;
@@ -100,12 +100,12 @@ router.post<{}, {}, TradeUserReqBody>("/user", databaseErrorHandler<TradeUserReq
             offer: formatTradeData(offerPins),
             request: formatTradeData(requestPins),
             timeLeft: getTradeTimeLeft(trade.expiration),
-            accepted: (trade.accepted == 1)
+            accepted: (trade.accepted === 1)
         });
     }
 
     // Wait until after the for loop to handle the error
-    if (!validTrades){
+    if (validTrades === false){
         res.status(500).send("Trade data could not be loaded.");
         return;
     }
@@ -123,13 +123,13 @@ router.post<{}, {}, TradeAllReqBody>("/all", databaseErrorHandler<TradeAllReqBod
     let minExpiration = 0;
     let limitStart = 0;
 
-    if (sortMethod == "lowtime"){
+    if (sortMethod === "lowtime"){
         sortString = "expiration";
         // Do not show trades that are about to expire very shortly
         minExpiration += 300000;
-    } else if (sortMethod == "lowcost"){
+    } else if (sortMethod === "lowcost"){
         sortString = "trade_credits";
-    } else if (sortMethod == "highcost"){
+    } else if (sortMethod === "highcost"){
         sortString = "trade_credits DESC"
     }
 
@@ -140,17 +140,17 @@ router.post<{}, {}, TradeAllReqBody>("/all", databaseErrorHandler<TradeAllReqBod
     }
 
     // If true, apply filters to request instead of offer
-    if (req.body.filterInRequest == true){
+    if (req.body.filterInRequest === true){
         filterColumn = "request";
     }
 
     // Apply filters by either pin or brawler
     // If a filter by pin is specified, it overrides the filter by brawler
-    if (typeof req.body.pin == "string" && req.body.pin != ""){
+    if (typeof req.body.pin === "string" && req.body.pin !== ""){
         filterString = '%"pin":"' + req.body.pin + '"%';
-    } else if (typeof req.body.pinImage == "string" && req.body.pinImage != ""){
+    } else if (typeof req.body.pinImage === "string" && req.body.pinImage !== ""){
         filterString = '%"pinImage":"' + req.body.pinImage + '"%';
-    } else if (typeof req.body.brawler == "string" && req.body.brawler != ""){
+    } else if (typeof req.body.brawler === "string" && req.body.brawler !== ""){
         filterString = '%"brawler":"' + req.body.brawler + '"%';
     }
 
@@ -163,7 +163,7 @@ router.post<{}, {}, TradeAllReqBody>("/all", databaseErrorHandler<TradeAllReqBod
         sortString: sortString
     });
 
-    // results.length == 0 does not need to be checked
+    // results.length === 0 does not need to be checked
 
     
     let tradeList: TradeAllData[] = [];
@@ -195,7 +195,7 @@ router.post<{}, {}, TradeAllReqBody>("/all", databaseErrorHandler<TradeAllReqBod
         });
     }
 
-    if (!validTrades){
+    if (validTrades === false){
         res.status(500).send("Trade data could not be loaded.");
         return;
     }

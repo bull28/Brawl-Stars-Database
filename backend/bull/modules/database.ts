@@ -363,10 +363,10 @@ interface NewUserValues{
 }
 export async function createNewUser(values: NewUserValues): Promise<ResultSetHeader>{
     const valuesArray = [
-        values.username, values.password, values.active_avatar, values.brawlers, "[]", "[]", "[]", "[]", ""
+        values.username, values.password, values.active_avatar, values.brawlers, "[]", "[]", "[]", "[]", "[]", ""
     ];
     return updateDatabase<typeof valuesArray>(connection, valuesArray, false,
-        `INSERT INTO ${TABLE_NAME} (username, password, active_avatar, brawlers, avatars, themes, scenes, wild_card_pins, featured_item) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);`);
+        `INSERT INTO ${TABLE_NAME} (username, password, active_avatar, brawlers, avatars, themes, scenes, accessories, wild_card_pins, featured_item) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);`);
 }
 
 

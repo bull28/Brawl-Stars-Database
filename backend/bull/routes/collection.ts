@@ -91,13 +91,13 @@ interface ShopReqBody extends TokenReqBody{
 
 // Get a user's username and amounts of various resources
 router.post<{}, {}, TokenReqBody>("/resources", databaseErrorHandler<TokenReqBody>(async (req, res) => {
-    if (typeof req.body.token != "string"){
+    if (typeof req.body.token !== "string"){
         res.status(400).send("Token is missing.");
         return;
     }
     const username = validateToken(req.body.token);
 
-    if (username != ""){
+    if (username !== ""){
         const results = await getResources({username: username});
 
         let collection: CollectionData;
@@ -121,7 +121,7 @@ router.post<{}, {}, TokenReqBody>("/resources", databaseErrorHandler<TokenReqBod
 
         // Look through the allSkins array to get the rarity information
         for (let x in allSkins){
-            if (allSkins[x].hasOwnProperty("pins")){
+            if (allSkins[x].hasOwnProperty("pins") === true){
                 for (let y of allSkins[x].pins){
                     if (y.rarity.value < wildCardPins.length){
                         const rarityValue = y.rarity.value;
@@ -154,13 +154,13 @@ router.post<{}, {}, TokenReqBody>("/resources", databaseErrorHandler<TokenReqBod
 
 // Get a user's collection of brawlers and pins
 router.post<{}, {}, TokenReqBody>("/collection", databaseErrorHandler<TokenReqBody>(async (req, res) => {
-    if (typeof req.body.token != "string"){
+    if (typeof req.body.token !== "string"){
         res.status(400).send("Token is missing.");
         return;
     }
     const username = validateToken(req.body.token);
 
-    if (username != ""){
+    if (username !== ""){
         // beforeUpdate contains at least as much information as necessary here
         // This is used to avoid creating another database query function that is
         // very similar to an existing one.
@@ -183,14 +183,14 @@ router.post<{}, {}, TokenReqBody>("/collection", databaseErrorHandler<TokenReqBo
 
 // Opens a brawl box and returns the results to the user
 router.post<{}, {}, BrawlBoxReqBody>("/brawlbox", databaseErrorHandler<BrawlBoxReqBody>(async (req, res) => {
-    if (typeof req.body.token != "string"){
+    if (typeof req.body.token !== "string"){
         res.status(400).send("Token is missing.");
         return;
     }
 
     // If the user does not specify a box type, send all the available boxes
     // If they do specify a box type, check to make sure that box actually exists.
-    if (typeof req.body.boxType != "string"){
+    if (typeof req.body.boxType !== "string"){
         // Format it in an array when sending to the user
         let brawlBoxList: BrawlBoxPreview[] = [];
         brawlBoxTypes.forEach((value, key) => {
@@ -213,17 +213,17 @@ router.post<{}, {}, BrawlBoxReqBody>("/brawlbox", databaseErrorHandler<BrawlBoxR
     const username = validateToken(req.body.token);
     const boxType = req.body.boxType;
 
-    if (!(brawlBoxTypes.has(boxType))){
+    if (brawlBoxTypes.has(boxType) === false){
         res.status(400).send("Box type does not exist.");
         return;
     }
     // From here on, the brawl box type is guaranteed to exist in the map
 
-    if (username != ""){
+    if (username !== ""){
         // getResources contains at least enough information as necessary here
         const results = await getResources({username: username});
         
-        // results.length == 0 checked
+        // results.length === 0 checked
 
         if (results[0].tokens < brawlBoxTypes.get(boxType)!.cost){
             res.status(403).send("You cannot afford to open this Box!");
@@ -254,7 +254,7 @@ router.post<{}, {}, BrawlBoxReqBody>("/brawlbox", databaseErrorHandler<BrawlBoxR
         //const EDGRISBAD = (performance.now() - BUL);
         //console.log("YOUR PROGRAM IS",EDGRISBAD.toString(),"TIMES WORSE THAN E D G R");
 
-        if (brawlBoxContents.length == 0){
+        if (brawlBoxContents.length === 0){
             res.status(500).send("This Box contained a manufacturing defect.");
             return;
         }
@@ -272,7 +272,7 @@ router.post<{}, {}, BrawlBoxReqBody>("/brawlbox", databaseErrorHandler<BrawlBoxR
             username: username
         });
 
-        // updateResults.affectedRows == 0 checked
+        // updateResults.affectedRows === 0 checked
 
         // brawl box contents already have image file paths added
         res.json(brawlBoxContents);
@@ -283,21 +283,21 @@ router.post<{}, {}, BrawlBoxReqBody>("/brawlbox", databaseErrorHandler<BrawlBoxR
 
 // View or buy item(s) from the (coins) shop
 router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(async (req, res) => {
-    if (typeof req.body.token != "string"){
+    if (typeof req.body.token !== "string"){
         res.status(400).send("Token is missing.");
         return;
     }
-    if (shopItems.size == 0){
+    if (shopItems.size === 0){
         res.status(500).send("No items currently available for sale.");
         return;
     }
 
     const username = validateToken(req.body.token);
 
-    if (username != ""){
+    if (username !== ""){
         const results = await beforeShop({username: username});
 
-        // results.length == 0 checked
+        // results.length === 0 checked
 
         let userBrawlers: DatabaseBrawlers;
         let userAvatars: DatabaseAvatars;
@@ -352,9 +352,9 @@ router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(asyn
             }
         }
 
-        if (refreshed){
+        if (refreshed === true){
             let newFeaturedItem = refreshFeaturedItem(userBrawlers);
-            if (newFeaturedItem != ""){
+            if (newFeaturedItem !== ""){
                 featuredItem = newFeaturedItem;
             }
         }
@@ -367,7 +367,7 @@ router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(asyn
 
         // Get the coin costs for the featured pin
         let featuredCosts: number[] = [];
-        if (typeof dropChances.rewardTypes.get("pinNoDupes") != "undefined"){
+        if (typeof dropChances.rewardTypes.get("pinNoDupes") !== "undefined"){
             const rewardType = dropChances.rewardTypes.get("pinNoDupes")!;
             if (isRewardTypePin(rewardType)){
                 featuredCosts = rewardType.coinConversion;
@@ -388,7 +388,7 @@ router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(asyn
         );
 
         // If they do not provide an item to buy, show all items
-        if (typeof req.body.item != "string"){
+        if (typeof req.body.item !== "string"){
             let shopItemList: ShopItemPreview[] = [];
             availableShopItems.forEach((value, key) => {
                 let itemPreview: ShopItemPreview = {
@@ -405,26 +405,26 @@ router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(asyn
                 // Avatars have their image stored in extraData because the image is required
                 // when adding it to the user's inventory
                 // All other item types' images are only for display
-                if (thisItemType == "avatar"){
+                if (thisItemType === "avatar"){
                     itemPreview.image = AVATAR_SPECIAL_DIR + value.extraData + IMAGE_FILE_EXTENSION;
-                } else if (thisItemType == "theme"){
+                } else if (thisItemType === "theme"){
                     const themeName = value.extraData;
-                    if (themeMap.has(themeName)){
+                    if (themeMap.has(themeName) === true){
                         itemPreview.displayName = themeMap.get(themeName)!;
                     }
                     itemPreview.image = THEME_SPECIAL_DIR + themeName + "_preview" + IMAGE_FILE_EXTENSION;
-                } else if (thisItemType == "scene"){
+                } else if (thisItemType === "scene"){
                     const sceneName = value.extraData;
-                    if (sceneMap.has(sceneName)){
+                    if (sceneMap.has(sceneName) === true){
                         itemPreview.displayName = sceneMap.get(sceneName)!.displayName;
                         itemPreview.image = sceneMap.get(sceneName)!.preview + IMAGE_FILE_EXTENSION;
                     }
-                } else if (thisItemType == "featuredPin"){
+                } else if (thisItemType === "featuredPin"){
                     // Featured pin already has the image extension since it is stored in brawlers data
                     itemPreview.image = PIN_IMAGE_DIR + value.image;
                 } else{
                     // Only add the image directory if the image is not empty string
-                    if (value.image != ""){
+                    if (value.image !== ""){
                         itemPreview.image = RESOURCE_IMAGE_DIR + value.image + IMAGE_FILE_EXTENSION;
                     }
                 }
@@ -439,7 +439,7 @@ router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(asyn
                 username: username
             });
 
-            // updateResults.affectedRows == 0 checked
+            // updateResults.affectedRows === 0 checked
 
             res.json(shopItemList);
             return;
@@ -447,7 +447,7 @@ router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(asyn
 
 
         // All code below is for when the user does provide an item to buy
-        if (!(availableShopItems.has(req.body.item))){
+        if (availableShopItems.has(req.body.item) === false){
             res.status(404).send("Item is not currently available.");
             return;
         }
@@ -458,7 +458,7 @@ router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(asyn
         // the actual item data is required here, use shopItemsCopy instead
         const itemData = shopItemsCopy.get(req.body.item);
 
-        if (typeof itemData == "undefined"){
+        if (typeof itemData === "undefined"){
             res.status(404).send("Item is not currently available.");
             return;
         }
@@ -477,19 +477,19 @@ router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(asyn
         // so update the type////////////////////////////////////////////
         let buyItemResult: BrawlBoxDrop[] = [];
         let userItemInventory = 0;
-        if (itemData.itemType == "tradeCredits"){
+        if (itemData.itemType === "tradeCredits"){
             userTradeCredits += itemData.amount;
             userItemInventory = userTradeCredits;
-        } else if (itemData.itemType == "avatar" || itemData.itemType == "achievementAvatar"){
+        } else if (itemData.itemType === "avatar" || itemData.itemType === "achievementAvatar"){
             userAvatars.push(itemData.extraData);
             userItemInventory = 1;
-        } else if (itemData.itemType == "theme"){
+        } else if (itemData.itemType === "theme"){
             userThemes.push(itemData.extraData);
             userItemInventory = 1;
-        } else if (itemData.itemType == "scene"){
+        } else if (itemData.itemType === "scene"){
             userScenes.push(itemData.extraData);
             userItemInventory = 1;
-        } else if (itemData.itemType == "brawler"){
+        } else if (itemData.itemType === "brawler"){
             // The brawl box opener needs a resources object so provide a temporary object
             // with some of the fields set to default values
             let tempResourceObject: UserResources = {
@@ -508,7 +508,7 @@ router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(asyn
                 userItemInventory = 1;
                 // The "stringify" function already sorts the brawlers' names
             }
-        } else if (itemData.itemType == "featuredPin"){
+        } else if (itemData.itemType === "featuredPin"){
             // The extraData of the itemData has already been checked when getting shop items
             // so this is guaranteed to be a valid brawler and pin name. It just has to check
             // whether the user already owns the pin or not then modify their collection.
@@ -516,9 +516,9 @@ router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(asyn
             const pinName = itemData.extraData.split("/");
             // Index 0 is the brawler, index 1 is the pin
 
-            if (userBrawlers.has(pinName[0])){
+            if (userBrawlers.has(pinName[0]) === true){
                 const brawler = userBrawlers.get(pinName[0])!;
-                if (brawler.has(pinName[1])){
+                if (brawler.has(pinName[1]) === true){
                     // User already has the pin
                     const pinAmount = brawler.get(pinName[1])!;
                     brawler.set(pinName[1], pinAmount + itemData.amount);
@@ -550,7 +550,7 @@ router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(asyn
             username: username
         });
 
-        // updateResults.affectedRows == 0 checked
+        // updateResults.affectedRows === 0 checked
 
         res.json({
             inventory: userItemInventory,
