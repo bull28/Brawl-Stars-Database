@@ -2,11 +2,12 @@ import express from "express";
 import {validateToken} from "../modules/authenticate";
 import {formatTradeData, getTimeTradeCost, getTradeCost, validatePins} from "../modules/trades";
 import {formatCollectionData} from "../modules/pins";
-import {DatabaseBrawlers, DatabaseWildCard, TradePin, TradePinValid} from "../types";
+import {DatabaseBrawlers, DatabaseWildCard, TradePin, TradePinValid, DatabaseAccessories} from "../types";
 import {
     databaseErrorHandler, 
     parseBrawlers, 
     parseNumberArray, 
+    parseStringArray, 
     parseTradePins, 
     stringifyBrawlers, 
     getTradeAccept, 
@@ -118,15 +119,17 @@ router.post<{}, {}, CreateReqBody>("/create", databaseErrorHandler<CreateReqBody
         let userAvatarColor = "#FFFFFF";
 
         let collectionData: DatabaseBrawlers;
+        let userAccessories: DatabaseAccessories;
         try{
             collectionData = parseBrawlers(userResources.brawlers);
+            userAccessories = parseStringArray(userResources.accessories);
         } catch (error){
             res.status(500).send("Collection data could not be loaded.");
             return;
         }
 
         // Get the user's avatar color and that will be the text color when displaying all trades
-        userAvatarColor = formatCollectionData(collectionData).avatarColor;
+        userAvatarColor = formatCollectionData(collectionData, userAccessories, userResources.level).avatarColor;
 
 
         // Not enough trade credits

@@ -17,8 +17,8 @@ import {
     BrawlBoxDrop
 } from "../types";
 
-type UnknownBoxType = BrawlBoxAttributes | HiddenBrawlBoxAttributes
-type UnknownRewardType = RewardTypeCurrency | RewardTypePin | RewardTypeBrawler | RewardTypeBonusNumber | RewardTypeBonusString | RewardTypeAccessory
+type UnknownBoxType = BrawlBoxAttributes | HiddenBrawlBoxAttributes;
+type UnknownRewardType = RewardTypeCurrency | RewardTypePin | RewardTypeBrawler | RewardTypeBonusNumber | RewardTypeBonusString | RewardTypeAccessory;
 
 // These first 5 functions narrow a box or reward type to a specific type
 // so properties can be accessed on it.

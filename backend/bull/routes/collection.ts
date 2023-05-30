@@ -1,5 +1,4 @@
 import express from "express";
-import allSkins from "../data/brawlers_data.json";
 import shopItemsObject from "../data/coinsshop_data.json";
 import {themeMap, sceneMap, AVATAR_IMAGE_DIR, AVATAR_SPECIAL_DIR, FEATURED_REFRESH_HOURS, IMAGE_FILE_EXTENSION, PIN_IMAGE_DIR, RESOURCE_IMAGE_DIR, THEME_SPECIAL_DIR} from "../data/constants";
 import {validateToken} from "../modules/authenticate";

@@ -569,11 +569,13 @@ interface BeforeTradeResult extends RowDataPacket{
     active_avatar: string;
     trade_credits: number;
     wild_card_pins: string;
+    level: number;
+    accessories: string;
 }
 export async function beforeTrade(values: UsernameValues): Promise<BeforeTradeResult[]>{
     const valuesArray = [values.username];
     return queryDatabase<typeof valuesArray, BeforeTradeResult[]>(connection, valuesArray, false,
-        `SELECT brawlers, active_avatar, trade_credits, wild_card_pins FROM ${TABLE_NAME} WHERE username = ?;`);
+        `SELECT brawlers, active_avatar, trade_credits, wild_card_pins, level, accessories FROM ${TABLE_NAME} WHERE username = ?;`);
 }
 
 
