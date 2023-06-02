@@ -165,6 +165,7 @@ const emptyUnit: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 1,
+        unlockMethod: "",
         collectionName: "",
         collectionImage: ""
     }
@@ -189,6 +190,7 @@ const defaultUnit: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 1,
+        unlockMethod: "",
         collectionName: "",
         collectionImage: ""
     }
@@ -215,6 +217,7 @@ const fighter: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 1,
+        unlockMethod: "",
         collectionName: "",
         collectionImage: ""
     }
@@ -237,6 +240,7 @@ const tank: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 2,
+        unlockMethod: "",
         collectionName: "",
         collectionImage: ""
     }
@@ -259,6 +263,7 @@ const controller: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 4,
+        unlockMethod: "",
         collectionName: "",
         collectionImage: ""
     }
@@ -281,6 +286,7 @@ const sharpshooter: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 2,
+        unlockMethod: "",
         collectionName: "",
         collectionImage: ""
     }
@@ -303,6 +309,7 @@ const assassin: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 4,
+        unlockMethod: "",
         collectionName: "",
         collectionImage: ""
     }
@@ -329,6 +336,7 @@ const shelly: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 6,
+        unlockMethod: "shop",
         collectionName: "Shelly's Shotgun",
         collectionImage: "accessory_shelly"
     }
@@ -352,6 +360,7 @@ const gus: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 6,
+        unlockMethod: "shop",
         collectionName: "Gus' Balloon",
         collectionImage: "accessory_gus"
     }
@@ -375,6 +384,7 @@ const otis: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 16,
+        unlockMethod: "shop",
         collectionName: "Otis' Starfish",
         collectionImage: "accessory_otis"
     }
@@ -398,6 +408,7 @@ const janet: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 16,
+        unlockMethod: "boxes",
         collectionName: "Janet's Microphone",
         collectionImage: "accessory_janet"
     }
@@ -421,6 +432,7 @@ const lola: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 18,
+        unlockMethod: "wins",
         collectionName: "Lola's Scarf",
         collectionImage: "accessory_lola"
     }
@@ -472,6 +484,7 @@ const surge: UnitOptionsStorage = {
     },
     accessory: {
         unlockLevel: 24,
+        unlockMethod: "shop",
         collectionName: "Surge's Energy Drink",
         collectionImage: "accessory_surge"
     }
@@ -517,6 +530,7 @@ const colette: UnitOptionsStorage = {
     },
     accessory: {
         unlockLevel: 24,
+        unlockMethod: "boxes",
         collectionName: "Colette's Scrapbook",
         collectionImage: "accessory_colette"
     }
@@ -596,6 +610,7 @@ const bonnie: UnitOptionsStorage = {
     },
     accessory: {
         unlockLevel: 24,
+        unlockMethod: "puzzles",
         collectionName: "Bonnie's Cannon",
         collectionImage: "accessory_bonnie"
     }
@@ -622,6 +637,7 @@ const rosa: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 8,
+        unlockMethod: "shop",
         collectionName: "Rosa's Gloves",
         collectionImage: "accessory_rosa"
     }
@@ -644,6 +660,7 @@ const jacky: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 12,
+        unlockMethod: "boxes",
         collectionName: "Jacky's Jackhammer",
         collectionImage: "accessory_jacky"
     }
@@ -666,6 +683,7 @@ const elprimo: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 16,
+        unlockMethod: "puzzles",
         collectionName: "El Primo's Belt",
         collectionImage: "accessory_elprimo"
     }
@@ -688,6 +706,7 @@ const darryl: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 20,
+        unlockMethod: "shop",
         collectionName: "Darryl's Barrel",
         collectionImage: "accessory_darryl"
     }
@@ -711,6 +730,7 @@ const sam: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 20,
+        unlockMethod: "boxes",
         collectionName: "Sam's Knuckle Busters",
         collectionImage: "accessory_sam"
     }
@@ -753,6 +773,7 @@ const ash: UnitOptionsStorage = {
     },
     accessory: {
         unlockLevel: 26,
+        unlockMethod: "puzzles",
         collectionName: "Ash's Broom",
         collectionImage: "accessory_ash"
     }
@@ -794,6 +815,7 @@ const frank: UnitOptionsStorage = {
     },
     accessory: {
         unlockLevel: 28,
+        unlockMethod: "boxes",
         collectionName: "Frank's Hammer",
         collectionImage: "accessory_frank"
     }
@@ -848,6 +870,7 @@ const bull: UnitOptionsStorage = {
     },
     accessory: {
         unlockLevel: 30,
+        unlockMethod: "shop",
         collectionName: "Bull's Shotgun",
         collectionImage: "accessory_bull"
     }
@@ -874,6 +897,7 @@ const amber: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 10,
+        unlockMethod: "shop",
         collectionName: "Amber's Fire Staff",
         collectionImage: "accessory_amber"
     }
@@ -896,6 +920,7 @@ const poco: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 14,
+        unlockMethod: "shop",
         collectionName: "Poco's Guitar",
         collectionImage: "accessory_poco"
     }
@@ -918,6 +943,7 @@ const emz: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 18,
+        unlockMethod: "puzzles",
         collectionName: "Emz's Spray",
         collectionImage: "accessory_emz"
     }
@@ -941,6 +967,7 @@ const barley: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 22,
+        unlockMethod: "boxes",
         collectionName: "Barley's Bottle",
         collectionImage: "accessory_barley"
     }
@@ -963,6 +990,7 @@ const pam: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 22,
+        unlockMethod: "boxes",
         collectionName: "Pam's Minigun",
         collectionImage: "accessory_pam"
     }
@@ -1003,6 +1031,7 @@ const tara: UnitOptionsStorage = {
     },
     accessory: {
         unlockLevel: 26,
+        unlockMethod: "shop",
         collectionName: "Tara's Cards",
         collectionImage: "accessory_tara"
     }
@@ -1043,6 +1072,7 @@ const carl: UnitOptionsStorage = {
     },
     accessory: {
         unlockLevel: 28,
+        unlockMethod: "puzzles",
         collectionName: "Carl's Pickaxe",
         collectionImage: "accessory_carl"
     }
@@ -1106,6 +1136,7 @@ const meg: UnitOptionsStorage = {
     },
     accessory: {
         unlockLevel: 30,
+        unlockMethod: "wins",
         collectionName: "Meg's Mech",
         collectionImage: "accessory_meg"
     }
@@ -1132,6 +1163,7 @@ const brock: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 8,
+        unlockMethod: "wins",
         collectionName: "Brock's Rocket Launcher",
         collectionImage: "accessory_brock"
     }
@@ -1154,6 +1186,7 @@ const spike: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 12,
+        unlockMethod: "shop",
         collectionName: "Spike's Cactus",
         collectionImage: "accessory_spike"
     }
@@ -1176,6 +1209,7 @@ const belle: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 16,
+        unlockMethod: "shop",
         collectionName: "Belle's Rifle",
         collectionImage: "accessory_belle"
     }
@@ -1198,6 +1232,7 @@ const colt: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 20,
+        unlockMethod: "boxes",
         collectionName: "Colt's Revolvers",
         collectionImage: "accessory_colt"
     }
@@ -1221,6 +1256,7 @@ const nani: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 20,
+        unlockMethod: "puzzles",
         collectionName: "Nani's Drone",
         collectionImage: "accessory_nani"
     }
@@ -1267,6 +1303,7 @@ const bea: UnitOptionsStorage = {
     },
     accessory: {
         unlockLevel: 26,
+        unlockMethod: "boxes",
         collectionName: "Bea's Bee",
         collectionImage: "accessory_bea"
     }
@@ -1314,6 +1351,7 @@ const piper: UnitOptionsStorage = {
     },
     accessory: {
         unlockLevel: 28,
+        unlockMethod: "shop",
         collectionName: "Piper's Umbrella",
         collectionImage: "accessory_piper"
     }
@@ -1352,6 +1390,7 @@ const mandy: UnitOptionsStorage = {
     },
     accessory: {
         unlockLevel: 30,
+        unlockMethod: "puzzles",
         collectionName: "Mandy's Candy Dispenser",
         collectionImage: "accessory_mandy"
     }
@@ -1378,6 +1417,7 @@ const buzz: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 10,
+        unlockMethod: "shop",
         collectionName: "Buzz's Buoy",
         collectionImage: "accessory_buzz"
     }
@@ -1400,6 +1440,7 @@ const stu: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 14,
+        unlockMethod: "boxes",
         collectionName: "Stu's Wheel",
         collectionImage: "accessory_stu"
     }
@@ -1423,6 +1464,7 @@ const leon: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 18,
+        unlockMethod: "boxes",
         collectionName: "Leon's Lollipop",
         collectionImage: "accessory_leon"
     }
@@ -1445,6 +1487,7 @@ const fang: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 22,
+        unlockMethod: "boxes",
         collectionName: "Fang's Shoe",
         collectionImage: "accessory_fang"
     }
@@ -1469,6 +1512,7 @@ const mortis: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 22,
+        unlockMethod: "puzzles",
         collectionName: "Mortis' Shovel",
         collectionImage: "accessory_mortis"
     }
@@ -1505,6 +1549,7 @@ const crow: UnitOptionsStorage = {
     },
     accessory: {
         unlockLevel: 26,
+        unlockMethod: "shop",
         collectionName: "Crow's Daggers",
         collectionImage: "accessory_crow"
     }
@@ -1558,6 +1603,7 @@ const max: UnitOptionsStorage = {
     },
     accessory: {
         unlockLevel: 28,
+        unlockMethod: "shop",
         collectionName: "Max's Energy Drink",
         collectionImage: "accessory_max"
     }
@@ -1616,6 +1662,7 @@ const bibi: UnitOptionsStorage = {
     },
     accessory: {
         unlockLevel: 30,
+        unlockMethod: "puzzles",
         collectionName: "Bibi's Bat",
         collectionImage: "accessory_bibi"
     }
@@ -1630,7 +1677,7 @@ const wall1: UnitOptionsStorage = {
     stats: {health: 800, damage: 0, range: 0.0, targets: 0, speed: 0, weight: 0.00},
     abilities: {},
     abilityValues: {},
-    accessory: {unlockLevel: 1, collectionName: "", collectionImage: ""}
+    accessory: {unlockLevel: 1, unlockMethod: "", collectionName: "", collectionImage: ""}
 };
 
 const wall2: UnitOptionsStorage = {
@@ -1638,7 +1685,7 @@ const wall2: UnitOptionsStorage = {
     stats: {health: 1200, damage: 0, range: 0.0, targets: 0, speed: 0, weight: 0.00},
     abilities: {},
     abilityValues: {},
-    accessory: {unlockLevel: 1, collectionName: "", collectionImage: ""}
+    accessory: {unlockLevel: 1, unlockMethod: "", collectionName: "", collectionImage: ""}
 };
 
 const wall3: UnitOptionsStorage = {
@@ -1646,7 +1693,7 @@ const wall3: UnitOptionsStorage = {
     stats: {health: 2000, damage: 0, range: 0.0, targets: 0, speed: 0, weight: 0.00},
     abilities: {},
     abilityValues: {},
-    accessory: {unlockLevel: 1, collectionName: "", collectionImage: ""}
+    accessory: {unlockLevel: 1, unlockMethod: "", collectionName: "", collectionImage: ""}
 };
 
 const wall4: UnitOptionsStorage = {
@@ -1654,7 +1701,7 @@ const wall4: UnitOptionsStorage = {
     stats: {health: 3600, damage: 0, range: 0.0, targets: 0, speed: 0, weight: 0.00},
     abilities: {},
     abilityValues: {},
-    accessory: {unlockLevel: 1, collectionName: "", collectionImage: ""}
+    accessory: {unlockLevel: 1, unlockMethod: "", collectionName: "", collectionImage: ""}
 };
 
 const wall5: UnitOptionsStorage = {
@@ -1662,7 +1709,7 @@ const wall5: UnitOptionsStorage = {
     stats: {health: 6000, damage: 0, range: 0.0, targets: 0, speed: 0, weight: 0.00},
     abilities: {},
     abilityValues: {},
-    accessory: {unlockLevel: 1, collectionName: "", collectionImage: ""}
+    accessory: {unlockLevel: 1, unlockMethod: "", collectionName: "", collectionImage: ""}
 };
 
 const starting1: UnitOptionsStorage = {
@@ -1670,7 +1717,7 @@ const starting1: UnitOptionsStorage = {
     stats: {health: 1000, damage: 300, range: 2.5, targets: 1, speed: 0, weight: 1.00},
     abilities: {},
     abilityValues: {},
-    accessory: {unlockLevel: 1, collectionName: "", collectionImage: ""}
+    accessory: {unlockLevel: 1, unlockMethod: "", collectionName: "", collectionImage: ""}
 };
 
 const starting2: UnitOptionsStorage = {
@@ -1678,7 +1725,7 @@ const starting2: UnitOptionsStorage = {
     stats: {health: 2000, damage: 400, range: 2.5, targets: 1, speed: 0, weight: 1.00},
     abilities: {},
     abilityValues: {},
-    accessory: {unlockLevel: 1, collectionName: "", collectionImage: ""}
+    accessory: {unlockLevel: 1, unlockMethod: "", collectionName: "", collectionImage: ""}
 };
 
 const starting3: UnitOptionsStorage = {
@@ -1686,7 +1733,7 @@ const starting3: UnitOptionsStorage = {
     stats: {health: 3200, damage: 240, range: 2.5, targets: 2, speed: 0, weight: 1.00},
     abilities: {},
     abilityValues: {},
-    accessory: {unlockLevel: 1, collectionName: "", collectionImage: ""}
+    accessory: {unlockLevel: 1, unlockMethod: "", collectionName: "", collectionImage: ""}
 };
 
 const starting4: UnitOptionsStorage = {
@@ -1694,7 +1741,7 @@ const starting4: UnitOptionsStorage = {
     stats: {health: 6000, damage: 1800, range: 1.5, targets: 1,speed: 0, weight: 1.00},
     abilities: {},
     abilityValues: {},
-    accessory: {unlockLevel: 1, collectionName: "", collectionImage: ""}
+    accessory: {unlockLevel: 1, unlockMethod: "", collectionName: "", collectionImage: ""}
 };
 
 //------------------------------------------------------------------------------------------------//
@@ -2289,7 +2336,7 @@ const empty2players: ChallengeManagerOptions = {
     extraData: {
         challengeid: 50,
         displayName: "Empty 2-Player Challenge",
-        requiredLevel: 1,
+        requiredLevel: 10,
         acceptCost: 60,
         reward: undefined
     }
@@ -2305,7 +2352,7 @@ const empty3players: ChallengeManagerOptions = {
     extraData: {
         challengeid: 51,
         displayName: "Empty 3-Player Challenge",
-        requiredLevel: 1,
+        requiredLevel: 10,
         acceptCost: 60,
         reward: undefined
     }
@@ -2322,7 +2369,7 @@ const empty4players: ChallengeManagerOptions = {
     extraData: {
         challengeid: 52,
         displayName: "Empty 4-Player Challenge",
-        requiredLevel: 1,
+        requiredLevel: 10,
         acceptCost: 60,
         reward: undefined
     }
@@ -2340,7 +2387,7 @@ const empty5players: ChallengeManagerOptions = {
     extraData: {
         challengeid: 53,
         displayName: "Empty 5-Player Challenge",
-        requiredLevel: 1,
+        requiredLevel: 10,
         acceptCost: 60,
         reward: undefined
     }

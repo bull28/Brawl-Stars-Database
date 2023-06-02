@@ -64,7 +64,7 @@
     },
     "accessory1": {
         "displayName": "New Accessory",
-        "cost": 100,
+        "cost": 1200,
         "itemType": "accessory",
         "image": "",
         "extraData": "shelly",
@@ -73,7 +73,7 @@
     },
     "accessory2": {
         "displayName": "New Accessory",
-        "cost": 100,
+        "cost": 1600,
         "itemType": "accessory",
         "image": "",
         "extraData": "gus",
@@ -82,7 +82,7 @@
     },
     "accessory3": {
         "displayName": "New Accessory",
-        "cost": 100,
+        "cost": 2400,
         "itemType": "accessory",
         "image": "",
         "extraData": "rosa",
@@ -91,7 +91,7 @@
     },
     "accessory4": {
         "displayName": "New Accessory",
-        "cost": 100,
+        "cost": 3200,
         "itemType": "accessory",
         "image": "",
         "extraData": "amber",
@@ -100,7 +100,7 @@
     },
     "accessory5": {
         "displayName": "New Accessory",
-        "cost": 100,
+        "cost": 3600,
         "itemType": "accessory",
         "image": "",
         "extraData": "buzz",
@@ -109,7 +109,7 @@
     },
     "accessory6": {
         "displayName": "New Accessory",
-        "cost": 100,
+        "cost": 4000,
         "itemType": "accessory",
         "image": "",
         "extraData": "spike",
@@ -118,7 +118,7 @@
     },
     "accessory7": {
         "displayName": "New Accessory",
-        "cost": 100,
+        "cost": 4800,
         "itemType": "accessory",
         "image": "",
         "extraData": "poco",
@@ -127,7 +127,7 @@
     },
     "accessory8": {
         "displayName": "New Accessory",
-        "cost": 100,
+        "cost": 6000,
         "itemType": "accessory",
         "image": "",
         "extraData": "otis",
@@ -136,7 +136,7 @@
     },
     "accessory9": {
         "displayName": "New Accessory",
-        "cost": 100,
+        "cost": 7200,
         "itemType": "accessory",
         "image": "",
         "extraData": "belle",
@@ -145,7 +145,7 @@
     },
     "accessory10": {
         "displayName": "New Accessory",
-        "cost": 100,
+        "cost": 10000,
         "itemType": "accessory",
         "image": "",
         "extraData": "darryl",
@@ -154,7 +154,7 @@
     },
     "accessory11": {
         "displayName": "New Accessory",
-        "cost": 100,
+        "cost": 16000,
         "itemType": "accessory",
         "image": "",
         "extraData": "surge",
@@ -163,7 +163,7 @@
     },
     "accessory12": {
         "displayName": "New Accessory",
-        "cost": 100,
+        "cost": 20000,
         "itemType": "accessory",
         "image": "",
         "extraData": "tara",
@@ -172,7 +172,7 @@
     },
     "accessory13": {
         "displayName": "New Accessory",
-        "cost": 100,
+        "cost": 22000,
         "itemType": "accessory",
         "image": "",
         "extraData": "crow",
@@ -181,7 +181,7 @@
     },
     "accessory14": {
         "displayName": "New Accessory",
-        "cost": 100,
+        "cost": 28000,
         "itemType": "accessory",
         "image": "",
         "extraData": "piper",
@@ -190,7 +190,7 @@
     },
     "accessory15": {
         "displayName": "New Accessory",
-        "cost": 100,
+        "cost": 30000,
         "itemType": "accessory",
         "image": "",
         "extraData": "max",
@@ -199,7 +199,7 @@
     },
     "accessory16": {
         "displayName": "New Accessory",
-        "cost": 100,
+        "cost": 40000,
         "itemType": "accessory",
         "image": "",
         "extraData": "bull",

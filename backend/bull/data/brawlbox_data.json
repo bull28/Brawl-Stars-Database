@@ -15,28 +15,29 @@
             "displayName": "Brawl Box",
             "cost": 100,
             "image": "brawlbox_default",
-            "description": "Contains coins, up to 3 pins, and sometimes 1 brawler. May rarely give a bonus item such as trade credits, token doublers, or a new avatar.",
+            "description": "Contains a variety of items including brawlers, pins, bonus items, and accessories.",
             "dropsDescription": [
-                "Coins drop: 120 - 180 (discrete uniform distribution)",
+                "Coins: 120 - 180",
                 "Draw 1: Pin: 2/3, Brawler: 1/3",
                 "Draw 2: Pin: 1/2, Wild Card Pin: 1/4, Bonus Item: 1/4",
-                "Draw 3: Pin: 2/5, Nothing: 3/5"
+                "Draw 3: Pin: 2/5, Accessory: 1/10, Nothing: 1/2",
+                "Duplicate brawlers and accessories are converted to coins."
             ],
             "draws": [
-                [0, 1, 0, 0, 0, 0],
-                [0, 0, 2, 0, 1, 0],
-                [0, 0, 2, 1, 0, 1],
-                [3, 0, 2, 0, 0, 0]
+                [0, 1, 0, 0, 0, 0, 0],
+                [0, 0, 2, 0, 1, 0, 0],
+                [0, 0, 2, 1, 0, 1, 0],
+                [5, 0, 4, 0, 0, 0, 1]
             ],
-            "rewardTypeValues": ["nothing", "coins", "pin", "wildcard", "brawler", "bonus"]
+            "rewardTypeValues": ["nothing", "coins", "pin", "wildcard", "brawler", "bonus", "accessory"]
         },
         "pinPack": {
             "displayName": "Pin Pack",
             "cost": 80,
             "image": "brawlbox_pinpack",
-            "description": "Contians at least 1 and at most 6 pins. Only contains pins but has a higher chance to give rarer pins and lower chance to give duplicate pins.",
+            "description": "Contains only pins but has a higher chance to give rarer pins and lower chance to give duplicate pins.",
             "dropsDescription": [
-                "Coins drop: 0",
+                "Coins: 0",
                 "Draw 1: Pin: 1",
                 "Draw 2: Pin: 1/3, Wild Card Pin: 2/3",
                 "Draws 3 to 6: Pin: 1/3, Nothing: 2/3"
@@ -55,13 +56,14 @@
             "displayName": "Mega Box",
             "cost": 240,
             "image": "brawlbox_megabox",
-            "description": "Contains many coins, up to 6 pins, up to 3 brawlers, and sometimes bonus items. Does not contain any brawlers above Epic rarity or pins above Rare rarity.",
+            "description": "Contains many coins, brawlers, and pins. Does not contain any brawlers above Epic rarity or pins above Rare rarity.",
             "dropsDescription": [
-                "Coins drop: 5 drops * (120 - 180 per drop) (each drop is a discrete uniform distribution)",
+                "Coins: 5 drops * (120 - 180 per drop)",
                 "Draws 1 to 3: Pin: 1",
                 "Draw 4: Pin: 1/3, Brawler: 1/4, Bonus Item: 5/12",
                 "Draw 5: Pin: 1/2, Brawler: 1/2",
-                "Draw 6: Pin: 1/4, Brawler: 3/4"
+                "Draw 6: Pin: 1/4, Brawler: 3/4",
+                "Duplicate brawlers are converted to coins."
             ],
             "draws": [
                 [1, 0, 0, 0],
@@ -80,17 +82,21 @@
         },
         "notBrawlBox": {
             "displayName": "Not a Brawl Box",
-            "cost": 0,
+            "cost": 200,
             "image": "brawlbox_megabox",
-            "description": "",
+            "description": "Contains coins, bonus items, and accessories. Has a higher chance to give bonus items and accessories.",
             "dropsDescription": [
-                ""
+                "Coins: 120 - 180",
+                "Draw 1: Bonus Item: 1/2, Nothing: 1/2",
+                "Draw 2: Accessory: 1/4, Nothing: 3/4",
+                "Duplicate accessories are converted to coins."
             ],
             "draws": [
-                [1, 0],
-                [0, 1]
+                [0, 1, 0, 0],
+                [1, 0, 1, 0],
+                [3, 0, 0, 1]
             ],
-            "rewardTypeValues": ["coins", "accessory"]
+            "rewardTypeValues": ["nothing", "coins", "bonus", "accessory"]
         },
         "newBrawler": {
             "cost": 0,
@@ -185,18 +191,18 @@
             "nothingWeight": 0,
             "nothingCoinConversion": 5,
             "pmfobject": [
-                {"value": "jacky", "weight": 1, "minWeight": 0, "coinConversion": 0},
-                {"value": "stu", "weight": 1, "minWeight": 0, "coinConversion": 0},
-                {"value": "janet", "weight": 1, "minWeight": 0, "coinConversion": 0},
-                {"value": "leon", "weight": 1, "minWeight": 0, "coinConversion": 0},
-                {"value": "sam", "weight": 1, "minWeight": 0, "coinConversion": 0},
-                {"value": "colt", "weight": 1, "minWeight": 0, "coinConversion": 0},
-                {"value": "barley", "weight": 1, "minWeight": 0, "coinConversion": 0},
-                {"value": "pam", "weight": 1, "minWeight": 0, "coinConversion": 0},
-                {"value": "fang", "weight": 1, "minWeight": 0, "coinConversion": 0},
-                {"value": "colette", "weight": 1, "minWeight": 0, "coinConversion": 0},
-                {"value": "bea", "weight": 1, "minWeight": 0, "coinConversion": 0},
-                {"value": "frank", "weight": 1, "minWeight": 0, "coinConversion": 0}
+                {"value": "jacky", "weight": 50, "minWeight": 5, "coinConversion": 360},
+                {"value": "stu", "weight": 50, "minWeight": 5, "coinConversion": 360},
+                {"value": "janet", "weight": 40, "minWeight": 4, "coinConversion": 450},
+                {"value": "leon", "weight": 30, "minWeight": 4, "coinConversion": 450},
+                {"value": "sam", "weight": 20, "minWeight": 3, "coinConversion": 600},
+                {"value": "colt", "weight": 16, "minWeight": 2, "coinConversion": 750},
+                {"value": "barley", "weight": 12, "minWeight": 2, "coinConversion": 750},
+                {"value": "pam", "weight": 10, "minWeight": 1, "coinConversion": 1200},
+                {"value": "fang", "weight": 8, "minWeight": 1, "coinConversion": 1200},
+                {"value": "colette", "weight": 6, "minWeight": 1, "coinConversion": 1200},
+                {"value": "bea", "weight": 5, "minWeight": 1, "coinConversion": 1200},
+                {"value": "frank", "weight": 3, "minWeight": 1, "coinConversion": 1200}
             ]
         }
     }
