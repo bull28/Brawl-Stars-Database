@@ -83,7 +83,7 @@
         "notBrawlBox": {
             "displayName": "Not a Brawl Box",
             "cost": 200,
-            "image": "brawlbox_megabox",
+            "image": "brawlbox_crate",
             "description": "Contains coins, bonus items, and accessories. Has a higher chance to give bonus items and accessories.",
             "dropsDescription": [
                 "Coins: 120 - 180",

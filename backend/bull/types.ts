@@ -942,6 +942,7 @@ export interface AccessoryData{
     image: string;
     unlocked: boolean;
     unlockLevel: number;
+    unlockMethod: UnitOptionsStorage["accessory"]["unlockMethod"];
 }
 
 //------------------------------------------------------------------------------------------------//

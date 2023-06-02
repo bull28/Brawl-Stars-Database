@@ -2883,8 +2883,9 @@ export function getAllAccessories(userAccessories: DatabaseAccessories, level: n
             unitName: unitName,
             image: image,
             unlocked: (userAccessories.includes(value[0]) === true && level >= value[1].accessory.unlockLevel),
-            unlockLevel: value[1].accessory.unlockLevel
-        }
+            unlockLevel: value[1].accessory.unlockLevel,
+            unlockMethod: value[1].accessory.unlockMethod
+        };
     });
 }
 
