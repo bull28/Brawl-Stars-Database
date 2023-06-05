@@ -25,6 +25,7 @@ import AccountMenuDisplay from './AccountMenuDisplay'
 import AuthRequest from '../helpers/AuthRequest'
 import { useNavigate } from 'react-router-dom'
 import { RainbowBorder } from '../themes/animations'
+import {displayShort, displayLong} from '../helpers/LargeNumberDisplay'
 
 
 export default function AccountDisplay() {
@@ -62,22 +63,36 @@ export default function AccountDisplay() {
                 <MenuDivider/>
                 <MenuGroup>
 
-                    <Tooltip label='Tokens are used to open Brawl Boxes. Collect them by vising the website regularly!' placement='left' className='heading-md' hasArrow>
+                    <Tooltip label='Tokens are used to open Brawl Boxes and play challenges. Collect them by visiting the website regularly!' placement='left' hasArrow>
                         <MenuItem><Image maxW={'30px'} src={'/image/resources/resource_tokens.webp'} mr={2}/>{`${data?.tokens ? data.tokens : 0}`}</MenuItem>
                     </Tooltip>
 
-                    <Tooltip label='Token Doubler gives you a bonus token for every token you receieve!' placement='left' className='heading-md' hasArrow>
+                    <Tooltip label='Token Doubler gives you a bonus token for every token you receive!' placement='left' hasArrow>
                         <MenuItem><Image maxW={'30px'} src={'/image/resources/resource_token_doubler.webp'} mr={2}/>{`${data?.tokenDoubler ? data.tokenDoubler : 0}`}</MenuItem>    
                     </Tooltip>
 
-                    <Tooltip label='Coins are used to buy special avatars. Find them in Brawl Boxes!' placement='left' className='heading-md' hasArrow>
+                    <Tooltip label='Coins are used to buy brawlers, accessories, and cosmetic items. Collect them from Brawl Boxes and challenges!' placement='left' hasArrow>
                         <MenuItem><Image maxW={'30px'} src={'/image/resources/resource_coins.webp'} mr={2}/>{`${data?.coins ? data.coins : 0}`}</MenuItem>
                     </Tooltip>
                     
-                    <Tooltip label='Trade Tokens are used to trade pins with other users!' placement='left' className='heading-md' hasArrow>
+                    <Tooltip label='Trade Credits are used to trade pins with other users!' placement='left' hasArrow>
                         <MenuItem><Image maxW={'30px'} src={'/image/resources/resource_trade_credits.webp'} mr={2}/>{`${data?.tradeCredits ? data.tradeCredits : 0}`}</MenuItem>    
                     </Tooltip>
-    
+
+                </MenuGroup>
+                <MenuDivider/>
+                <MenuGroup>
+                    <Tooltip label='Challenge Points are used to unlock and upgrade accessories. Collect them by playing challenges!' placement='left' hasArrow>
+                        <MenuItem>
+                        <Flex alignItems={'center'}>
+                            <Image maxW={'30px'} src={'/image/resources/resource_challenge_points.webp'} mr={2}/>
+                            <Flex flexDir={'column'}>
+                                <Flex>{data ? `Level ${data.level}` : `Level 1`}</Flex>
+                                <Flex>{data ? (data.upgradePoints > 0 ? `${displayLong(data.points)} / ${displayShort(data.upgradePoints)}` : `${displayLong(data.points)}`) : `0 / 1`}</Flex>
+                            </Flex>
+                        </Flex>
+                        </MenuItem>    
+                    </Tooltip>
                 </MenuGroup>
                 <MenuDivider/>
                 <MenuItem icon={<BsPerson fontSize={'22px'}/>} onClick={() => {navigate('/account')}}>Account</MenuItem>
@@ -87,7 +102,7 @@ export default function AccountDisplay() {
                 
             </MenuList>
         </Menu>
-        <Tooltip label='Tokens are used to open Brawl Boxes. Collect them by vising the website regularly!' placement={'bottom-start'}>
+        <Tooltip label='Tokens are used to open Brawl Boxes and play challenges. Collect them by visiting the website regularly!' placement={'bottom-start'}>
             <Flex justifyContent={'center'} alignItems={'center'} textAlign={'center'} mt={1}> 
                 <Image maxW={'25px'} src={'/image/resources/resource_tokens.webp'} mr={1}/>
                 <Text  className={'heading-xl'} fontSize={'xl'}>{data?.tokens}</Text>

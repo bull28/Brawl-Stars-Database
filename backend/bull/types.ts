@@ -820,7 +820,7 @@ export interface UnitOptionsStorage{
     abilityValues: Partial<AbilityValueList>;
     accessory: {
         unlockLevel: number;
-        unlockMethod: "" | "shop" | "boxes" | "puzzles" | "wins";
+        unlockMethod: string;
         collectionName: string;
         collectionImage: string;
     }
@@ -942,7 +942,7 @@ export interface AccessoryData{
     image: string;
     unlocked: boolean;
     unlockLevel: number;
-    unlockMethod: UnitOptionsStorage["accessory"]["unlockMethod"];
+    unlockMethod: string;
 }
 
 //------------------------------------------------------------------------------------------------//

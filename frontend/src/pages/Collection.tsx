@@ -1,5 +1,5 @@
 import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Center, Flex, HStack, Icon, Image, Link, SimpleGrid, Spinner, Stack, Tag, Text, Tooltip, VStack } from '@chakra-ui/react'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { CollectionData } from '../types/CollectionData'
 import { RiLock2Line } from 'react-icons/ri'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
@@ -11,7 +11,7 @@ import AuthRequest from '../helpers/AuthRequest'
 import { RainbowBackground, RainbowBorder } from '../themes/animations'
 import MovingText from '../components/MovingText'
 import SkullBackground from '../components/SkullBackground'
-
+import AccessoryLevel from "../components/AccessoryLevel";
 
 export default function Collection() {
     const [data, setData] = useState<CollectionData>()
@@ -20,16 +20,28 @@ export default function Collection() {
     const [searchParams] = useSearchParams()
     const [brawlers, setBrawlers] = useState<any>([])
     const [ tokens, setTokens ] = useState<number>()
+    const [level, setLevel] = useState<number>(1)
+    const [points, setPoints] = useState<number>(0)
+    const [upgradePoints, setUpgradePoints] = useState<number>(1)
 
-    const loadResources = () => {
+    const updateTokens = () => {
+        AuthRequest('/resources', {setState: [
+            {func: setTokens, attr: "tokens"},
+            {func: setLevel, attr: "level"},
+            {func: setPoints, attr: "points"},
+            {func: setUpgradePoints, attr: "upgradePoints"}
+        ]})
+    }
+
+    const loadResources = useCallback(() => {
         AuthRequest('/collection', {setState: [{func: setData, attr: ""}], navigate: true})
         AuthRequest('/brawlbox', {setState: [{func: setBrawlBoxData, attr: ""}]})
         updateTokens()
-    }
+    }, []);
 
     useEffect(() => {
         loadResources();
-    }, [])
+    }, [loadResources])
 
     useEffect(() => {
         data?.brawlers.forEach(element => {
@@ -43,17 +55,15 @@ export default function Collection() {
         }
     }
 
-    const updateTokens = () => {
-        AuthRequest('/resources', {setState: [{func: setTokens, attr: "tokens"}]})
-    }
+    
 
 
     return (
         <Flex flexDir={'column'} w={'100%'} justifyContent={'center'} alignItems={'center'} textAlign={'center'} overflowX={'hidden'}>            
             <SkullBackground/>
-            <Text fontSize={'3xl'} className={'heading-3xl'} >Collection</Text>
+            <Text fontSize={'4xl'} className={'heading-4xl'} >Collection</Text>
             {localStorage.getItem('username') && 
-                <Flex my={10} justifyContent={'center'}>
+                <Flex mt={10} justifyContent={'center'}>
                     <Stack w={'95%'} spacing={'5'} direction={['column', 'column', 'column', 'row']} alignItems={'center'}>
                     <Flex justifyContent={'center'} textAlign={'center'} alignItems={'center'} p={3} borderRadius={'lg'} flexDir={'column'}>
                         <Text fontSize={'2xl'} className={'heading-2xl'}  mb={3}>Collection Score</Text>
@@ -97,12 +107,18 @@ export default function Collection() {
                                     :
                                     <MovingText title={data?.pinCopies ? String(data.pinCopies) : '0'} color1="#fdf542" color2="#ff9005" fontSize={'lg'}/>
                                 }
+                                <Text  className={'heading-md'} fontSize={'md'}>Accessories Unlocked: </Text>
+                                {(data?.unlockedAccessories !== data?.totalAccessories) ?
+                                    <Text fontSize={'lg'} className={'heading-lg'} color={(data && data?.unlockedAccessories === data?.totalAccessories) ? 'gold' : 'white'}>{`${data?.unlockedAccessories ? data.unlockedAccessories : '0'}/${data?.totalAccessories ? data.totalAccessories : '1'}`}</Text>
+                                    :
+                                    <MovingText title={`${data?.unlockedAccessories ? data.unlockedAccessories : '0'}/${data?.totalAccessories ? data.totalAccessories : '1'}`} color1="#fdf542" color2="#ff9005" fontSize={'lg'}/>
+                                }
                             </VStack>
                         </Flex>
                     </Flex>
                     <Flex flexDir={'column'}>
                         <Text  className={'heading-2xl'} fontSize={'2xl'} mb={3}>Brawl Boxes</Text>
-                        <HStack bgColor={'blue.800'} p={5} maxW={'90vw'}>
+                        <HStack bgColor={'blue.800'} p={5} mx={10} maxW={'50vw'}>
                         {brawlBoxData?.map((brawlBox: BrawlBoxData) => (
                             <BrawlBoxDisplay data={brawlBox} tokens={tokens} loadResources={loadResources}/>
                         ))}
@@ -114,10 +130,11 @@ export default function Collection() {
                     </Flex>
                     </Stack>
                 </Flex>
-            }            
-            {(brawlers.length > 0) && <Accordion defaultIndex={[brawlers.indexOf(searchParams.get('brawler'))]} allowMultiple allowToggle>
-            <SimpleGrid columns={[1,2,3,4]} spacing={3} w={'100vw'} bgColor={'blue.800'} p={5} mb={0}>
-                {data?.brawlers.map((brawler) => (
+            }
+            <Text fontSize={'3xl'} className={'heading-3xl'} my={10}>Brawlers and Pins</Text>
+            {(brawlers.length > 0) && <Accordion defaultIndex={[brawlers.indexOf(searchParams.get('brawler'))]} allowMultiple>
+            <SimpleGrid columns={[1,2,3,4]} spacing={3} w={'80vw'} bgColor={'blue.800'} p={5} mb={10}>
+                {data && data.brawlers.map((brawler) => (
                     <AccordionItem border={brawler.unlockedPins === brawler.totalPins ? '3px solid #E7A210' : '3px solid black'}>
                         {({ isExpanded }) => (
                         <>
@@ -176,6 +193,23 @@ export default function Collection() {
                 ))}
             </SimpleGrid>
             </Accordion>}
+            <Text fontSize={'3xl'} className={'heading-3xl'} my={10}>Accessories</Text>
+            <Flex w={'30vw'} mb={10}>
+                <AccessoryLevel level={level} points={points} upgradePoints={upgradePoints}/>
+            </Flex>
+            <SimpleGrid columns={[1,2,3,4]} spacing={3} w={'80vw'} bgColor={'blue.800'} p={5} mb={10}>
+                {data && data.accessories.sort((a, b) => a.unlockLevel - b.unlockLevel).map((accessory, index) => (
+                    <Flex key={index} bgColor={level >= accessory.unlockLevel ? '#a248ff' : '#512480'} flexDir={'column'} alignItems={'center'} border={accessory.unlocked === true ? '3px solid #E7A210' : '3px solid black'}>
+                        <Text fontSize={'2xl'} className={'heading-2xl'}>{accessory.displayName}</Text>
+                        <Box pos={'relative'} maxW={'40%'} m={2}>
+                            <Image filter={accessory.unlocked === true ? 'drop-shadow(0 0 2rem rgb(255, 255, 255));' : ''} src={`/image/${accessory.image}`}/>
+                            {accessory.unlocked === false && <Box w={'100%'} h={'100%'} bgColor={'rgba(0, 0, 0, 0.5)'} pos={'absolute'} top={0} borderRadius={'lg'}/>}
+                            {accessory.unlocked === false && <Icon as={RiLock2Line}  pos={'absolute'} fontSize={'25px'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}></Icon>}
+                        </Box>
+                        <Text fontSize={'md'} className={'heading-md'} mb={1} alignItems={'center'}>{accessory.unlocked === true ? 'Unlocked' : ((level < accessory.unlockLevel) ? `Requires Level ${accessory.unlockLevel}` : accessory.unlockMethod)}</Text>
+                    </Flex>
+                ))}
+            </SimpleGrid>
         </Flex>
     )
 }

@@ -11,21 +11,28 @@ export interface BrawlerCollectionData {
     pins: [{i: string, a: number, r: number}]
 }
 
+export interface AccessoryData{
+    displayName: string;
+    unitName: string;
+    image: string;
+    unlocked: boolean;
+    unlockLevel: number;
+    unlockMethod: string;
+}
+
 export interface CollectionData {
-    unlockedBrawlers: number,
-    completedBrawlers: number,
-    totalBrawlers: number,
-    unlockedPins: number,
-    totalPins: number,
-    pinCopies: number,
-    scoreProgress: number,
-    collectionScore: string,
-    avatarColor: string,
-    pinRarityColors: {
-        0: string,
-        1: string,
-        2: string,
-        3: string
-    }
-    brawlers: [BrawlerCollectionData]
+    unlockedBrawlers: number;
+    completedBrawlers: number;
+    totalBrawlers: number;
+    unlockedPins: number;
+    totalPins: number;
+    pinCopies: number;
+    unlockedAccessories: number;
+    totalAccessories: number;
+    collectionScore: string;
+    scoreProgress: number;
+    avatarColor: string;
+    pinRarityColors: string[];
+    brawlers: BrawlerCollectionData[];
+    accessories: AccessoryData[];
 }

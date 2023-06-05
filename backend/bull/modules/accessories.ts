@@ -336,7 +336,7 @@ const shelly: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 6,
-        unlockMethod: "shop",
+        unlockMethod: "Buy from the shop to unlock",
         collectionName: "Shelly's Shotgun",
         collectionImage: "accessory_shelly"
     }
@@ -360,7 +360,7 @@ const gus: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 6,
-        unlockMethod: "shop",
+        unlockMethod: "Buy from the shop to unlock",
         collectionName: "Gus' Balloon",
         collectionImage: "accessory_gus"
     }
@@ -384,7 +384,7 @@ const otis: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 16,
-        unlockMethod: "shop",
+        unlockMethod: "Buy from the shop to unlock",
         collectionName: "Otis' Starfish",
         collectionImage: "accessory_otis"
     }
@@ -408,7 +408,7 @@ const janet: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 16,
-        unlockMethod: "boxes",
+        unlockMethod: "Open Brawl Boxes to unlock",
         collectionName: "Janet's Microphone",
         collectionImage: "accessory_janet"
     }
@@ -432,7 +432,7 @@ const lola: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 18,
-        unlockMethod: "wins",
+        unlockMethod: "Win 100 challenges to unlock",
         collectionName: "Lola's Scarf",
         collectionImage: "accessory_lola"
     }
@@ -484,7 +484,7 @@ const surge: UnitOptionsStorage = {
     },
     accessory: {
         unlockLevel: 24,
-        unlockMethod: "shop",
+        unlockMethod: "Buy from the shop to unlock",
         collectionName: "Surge's Energy Drink",
         collectionImage: "accessory_surge"
     }
@@ -530,7 +530,7 @@ const colette: UnitOptionsStorage = {
     },
     accessory: {
         unlockLevel: 24,
-        unlockMethod: "boxes",
+        unlockMethod: "Open Brawl Boxes to unlock",
         collectionName: "Colette's Scrapbook",
         collectionImage: "accessory_colette"
     }
@@ -610,7 +610,7 @@ const bonnie: UnitOptionsStorage = {
     },
     accessory: {
         unlockLevel: 24,
-        unlockMethod: "puzzles",
+        unlockMethod: "Complete Puzzle Challenge 5 to unlock",
         collectionName: "Bonnie's Cannon",
         collectionImage: "accessory_bonnie"
     }
@@ -637,7 +637,7 @@ const rosa: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 8,
-        unlockMethod: "shop",
+        unlockMethod: "Buy from the shop to unlock",
         collectionName: "Rosa's Gloves",
         collectionImage: "accessory_rosa"
     }
@@ -660,7 +660,7 @@ const jacky: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 12,
-        unlockMethod: "boxes",
+        unlockMethod: "Open Brawl Boxes to unlock",
         collectionName: "Jacky's Jackhammer",
         collectionImage: "accessory_jacky"
     }
@@ -683,7 +683,7 @@ const elprimo: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 16,
-        unlockMethod: "puzzles",
+        unlockMethod: "Complete Puzzle Challenge 1 to unlock",
         collectionName: "El Primo's Belt",
         collectionImage: "accessory_elprimo"
     }
@@ -706,7 +706,7 @@ const darryl: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 20,
-        unlockMethod: "shop",
+        unlockMethod: "Buy from the shop to unlock",
         collectionName: "Darryl's Barrel",
         collectionImage: "accessory_darryl"
     }
@@ -730,7 +730,7 @@ const sam: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 20,
-        unlockMethod: "boxes",
+        unlockMethod: "Open Brawl Boxes to unlock",
         collectionName: "Sam's Knuckle Busters",
         collectionImage: "accessory_sam"
     }
@@ -773,7 +773,7 @@ const ash: UnitOptionsStorage = {
     },
     accessory: {
         unlockLevel: 26,
-        unlockMethod: "puzzles",
+        unlockMethod: "Complete Puzzle Challenge 6 to unlock",
         collectionName: "Ash's Broom",
         collectionImage: "accessory_ash"
     }
@@ -815,7 +815,7 @@ const frank: UnitOptionsStorage = {
     },
     accessory: {
         unlockLevel: 28,
-        unlockMethod: "boxes",
+        unlockMethod: "Open Brawl Boxes to unlock",
         collectionName: "Frank's Hammer",
         collectionImage: "accessory_frank"
     }
@@ -870,7 +870,7 @@ const bull: UnitOptionsStorage = {
     },
     accessory: {
         unlockLevel: 30,
-        unlockMethod: "shop",
+        unlockMethod: "Buy from the shop to unlock",
         collectionName: "Bull's Shotgun",
         collectionImage: "accessory_bull"
     }
@@ -897,7 +897,7 @@ const amber: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 10,
-        unlockMethod: "shop",
+        unlockMethod: "Buy from the shop to unlock",
         collectionName: "Amber's Fire Staff",
         collectionImage: "accessory_amber"
     }
@@ -920,7 +920,7 @@ const poco: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 14,
-        unlockMethod: "shop",
+        unlockMethod: "Buy from the shop to unlock",
         collectionName: "Poco's Guitar",
         collectionImage: "accessory_poco"
     }
@@ -943,7 +943,7 @@ const emz: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 18,
-        unlockMethod: "puzzles",
+        unlockMethod: "Complete Puzzle Challenge 2 to unlock",
         collectionName: "Emz's Spray",
         collectionImage: "accessory_emz"
     }
@@ -967,7 +967,7 @@ const barley: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 22,
-        unlockMethod: "boxes",
+        unlockMethod: "Open Brawl Boxes to unlock",
         collectionName: "Barley's Bottle",
         collectionImage: "accessory_barley"
     }
@@ -990,7 +990,7 @@ const pam: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 22,
-        unlockMethod: "boxes",
+        unlockMethod: "Open Brawl Boxes to unlock",
         collectionName: "Pam's Minigun",
         collectionImage: "accessory_pam"
     }
@@ -1031,7 +1031,7 @@ const tara: UnitOptionsStorage = {
     },
     accessory: {
         unlockLevel: 26,
-        unlockMethod: "shop",
+        unlockMethod: "Buy from the shop to unlock",
         collectionName: "Tara's Cards",
         collectionImage: "accessory_tara"
     }
@@ -1072,7 +1072,7 @@ const carl: UnitOptionsStorage = {
     },
     accessory: {
         unlockLevel: 28,
-        unlockMethod: "puzzles",
+        unlockMethod: "Complete Puzzle Challenge 7 to unlock",
         collectionName: "Carl's Pickaxe",
         collectionImage: "accessory_carl"
     }
@@ -1136,7 +1136,7 @@ const meg: UnitOptionsStorage = {
     },
     accessory: {
         unlockLevel: 30,
-        unlockMethod: "wins",
+        unlockMethod: "Win 500 challenges to unlock",
         collectionName: "Meg's Mech",
         collectionImage: "accessory_meg"
     }
@@ -1163,7 +1163,7 @@ const brock: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 8,
-        unlockMethod: "wins",
+        unlockMethod: "Win 25 challenges to unlock",
         collectionName: "Brock's Rocket Launcher",
         collectionImage: "accessory_brock"
     }
@@ -1186,7 +1186,7 @@ const spike: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 12,
-        unlockMethod: "shop",
+        unlockMethod: "Buy from the shop to unlock",
         collectionName: "Spike's Cactus",
         collectionImage: "accessory_spike"
     }
@@ -1209,7 +1209,7 @@ const belle: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 16,
-        unlockMethod: "shop",
+        unlockMethod: "Buy from the shop to unlock",
         collectionName: "Belle's Rifle",
         collectionImage: "accessory_belle"
     }
@@ -1232,7 +1232,7 @@ const colt: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 20,
-        unlockMethod: "boxes",
+        unlockMethod: "Open Brawl Boxes to unlock",
         collectionName: "Colt's Revolvers",
         collectionImage: "accessory_colt"
     }
@@ -1256,7 +1256,7 @@ const nani: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 20,
-        unlockMethod: "puzzles",
+        unlockMethod: "Complete Puzzle Challenge 3 to unlock",
         collectionName: "Nani's Drone",
         collectionImage: "accessory_nani"
     }
@@ -1303,7 +1303,7 @@ const bea: UnitOptionsStorage = {
     },
     accessory: {
         unlockLevel: 26,
-        unlockMethod: "boxes",
+        unlockMethod: "Open Brawl Boxes to unlock",
         collectionName: "Bea's Bee",
         collectionImage: "accessory_bea"
     }
@@ -1351,7 +1351,7 @@ const piper: UnitOptionsStorage = {
     },
     accessory: {
         unlockLevel: 28,
-        unlockMethod: "shop",
+        unlockMethod: "Buy from the shop to unlock",
         collectionName: "Piper's Umbrella",
         collectionImage: "accessory_piper"
     }
@@ -1390,7 +1390,7 @@ const mandy: UnitOptionsStorage = {
     },
     accessory: {
         unlockLevel: 30,
-        unlockMethod: "puzzles",
+        unlockMethod: "Complete Puzzle Challenge 8 to unlock",
         collectionName: "Mandy's Candy Dispenser",
         collectionImage: "accessory_mandy"
     }
@@ -1417,7 +1417,7 @@ const buzz: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 10,
-        unlockMethod: "shop",
+        unlockMethod: "Buy from the shop to unlock",
         collectionName: "Buzz's Buoy",
         collectionImage: "accessory_buzz"
     }
@@ -1440,7 +1440,7 @@ const stu: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 14,
-        unlockMethod: "boxes",
+        unlockMethod: "Open Brawl Boxes to unlock",
         collectionName: "Stu's Wheel",
         collectionImage: "accessory_stu"
     }
@@ -1464,7 +1464,7 @@ const leon: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 18,
-        unlockMethod: "boxes",
+        unlockMethod: "Open Brawl Boxes to unlock",
         collectionName: "Leon's Lollipop",
         collectionImage: "accessory_leon"
     }
@@ -1487,7 +1487,7 @@ const fang: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 22,
-        unlockMethod: "boxes",
+        unlockMethod: "Open Brawl Boxes to unlock",
         collectionName: "Fang's Shoe",
         collectionImage: "accessory_fang"
     }
@@ -1512,7 +1512,7 @@ const mortis: UnitOptionsStorage = {
     abilityValues: {},
     accessory: {
         unlockLevel: 22,
-        unlockMethod: "puzzles",
+        unlockMethod: "Complete Puzzle Challenge 4 to unlock",
         collectionName: "Mortis' Shovel",
         collectionImage: "accessory_mortis"
     }
@@ -1549,7 +1549,7 @@ const crow: UnitOptionsStorage = {
     },
     accessory: {
         unlockLevel: 26,
-        unlockMethod: "shop",
+        unlockMethod: "Buy from the shop to unlock",
         collectionName: "Crow's Daggers",
         collectionImage: "accessory_crow"
     }
@@ -1603,7 +1603,7 @@ const max: UnitOptionsStorage = {
     },
     accessory: {
         unlockLevel: 28,
-        unlockMethod: "shop",
+        unlockMethod: "Buy from the shop to unlock",
         collectionName: "Max's Energy Drink",
         collectionImage: "accessory_max"
     }
@@ -1662,7 +1662,7 @@ const bibi: UnitOptionsStorage = {
     },
     accessory: {
         unlockLevel: 30,
-        unlockMethod: "puzzles",
+        unlockMethod: "Complete Puzzle Challenge 9 to unlock",
         collectionName: "Bibi's Bat",
         collectionImage: "accessory_bibi"
     }
