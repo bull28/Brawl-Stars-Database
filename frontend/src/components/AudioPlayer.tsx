@@ -1,29 +1,31 @@
-import { useState, useEffect } from "react";
-import { Flex, IconButton, Tooltip } from "@chakra-ui/react";
+import { useState, useEffect, useCallback } from "react";
+import { Flex, IconButton } from "@chakra-ui/react";
 import { HiMusicNote } from 'react-icons/hi'
+import AuthRequest from "../helpers/AuthRequest";
+import CosmeticData from "../types/CosmeticData";
 
 export default function AudioPlayer() {
+    const [audio] = useState(new Audio());
+    const [playing, setPlaying] = useState<boolean>(false);
+    const toggle = () => setPlaying(!playing);
 
-    const [audio] = useState(new Audio(require('../assets/test.ogg')));
-
-    const [playing, setPlaying] = useState<boolean>(false)
+    const setAudioSrc = useCallback((cosmetics: CosmeticData) => {
+        if (typeof cosmetics.music === "string"){
+            setPlaying(false);
+            audio.pause();
+            audio.src = `/image/${cosmetics.music}`;
+        }
+    }, [audio]);
     
-    const toggle = () => setPlaying(!playing)
-    
+    useEffect(() => {
+        AuthRequest('/cosmetic', {setState: [{func: setAudioSrc, attr: ""}]});
+    }, [setAudioSrc]);
 
     useEffect(() => {
-        playing ? audio.play() : audio.pause();
-
-        }, [playing]);
-
-    useEffect(() => {
-        document.addEventListener('click', () => {
-            audio.loop = true
-            audio.play()
-            toggle()
-        }, {once: true})
-
-        }, []);
+        if (audio.src !== ""){
+            playing ? audio.play() : audio.pause();
+        }
+    }, [playing, audio]);
     
     useEffect(() => {
         audio.addEventListener('ended', () => setPlaying(false));
@@ -32,14 +34,11 @@ export default function AudioPlayer() {
             audio.removeEventListener('ended', () => setPlaying(false));
         };
 
-        }, []);
+    }, [audio]);
     
-        
     return (
-        <Flex pos={'absolute'} right={0} bottom={0}>
-            <Tooltip label="Play or Pause Music">
-                <IconButton onClick={toggle} bgColor={'blue.500'} p={1} as={HiMusicNote} aria-label="play/pause music"/>                
-            </Tooltip>
+        <Flex pos={"fixed"} right={0} bottom={0}>
+            <IconButton onClick={toggle} bgColor={'blue.500'} p={1} as={HiMusicNote} aria-label="play/pause music"/>
         </Flex>
     );
 };

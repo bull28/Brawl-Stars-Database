@@ -137,7 +137,7 @@ export default function Gallery() {
             {data?.music.map((music) => (
               <Flex bgColor={(cosmetics?.music === music.path || ( !cosmetics?.music && music.displayName === 'Default' ) ) ? 'green.300' : 'lightskyblue'} justifyContent={'space-between'} p={4} borderRadius={'lg'} my={'1%'} border={'2px solid black'}>
                 <Flex>
-                  <Image  borderRadius={'lg'} border={'2px solid'} borderColor={'black'} w={'15vh'} h={'15vh'} src={`/image/${music.path}`} boxShadow={'0px 0px 25px #fff'}/>
+                  <Image  borderRadius={'lg'} border={'2px solid'} borderColor={'black'} w={'15vh'} h={'15vh'} boxShadow={'0px 0px 25px #fff'}/>
                   <Flex flexDir={'column'} ml={'5%'} h={'11vh'}  justifyContent={'space-between'}>
                     <Text className="heading-2xl" fontSize={'2xl'}>{music.displayName}</Text>
                     <Text fontSize={'sm'} className="heading-md">Personalize the Website with a New Background Track!</Text>
