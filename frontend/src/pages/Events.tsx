@@ -31,7 +31,7 @@ export default function Maps() {
     <Flex flexDir={'column'} justifyContent={'space-between'} w={'100%'}>
       <SkullBackground/>
       <Flex w={'100%'} textAlign={'center'} justifyContent={'center'}>
-        <Text fontSize={'3xl'} className={'heading-3xl'} >Events</Text>  
+        <Text fontSize={'4xl'} className={'heading-4xl'} >Events</Text>  
       </Flex>
       <Flex flexDir={'row'}>
         <EventSideBar changeData={setData} changeOffset={setOffset} startTime={new Date()}/>

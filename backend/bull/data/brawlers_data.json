@@ -290,9 +290,9 @@
             {
                 "name": "shotgungirloldschool",
                 "displayName": "Classic Shelly",
-                "cost": 29,
-                "currency": "Gems",
-                "costBling": 1000,
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
                 "requires": "",
                 "features": [
                     "Brawler Model",

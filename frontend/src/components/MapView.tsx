@@ -15,19 +15,12 @@ import {
   Spinner
 } from '@chakra-ui/react'
 import axios from 'axios'
-
+import {time} from "../types/EventData";
+import EventTime from "../helpers/EventTime";
+import Label from "./Label";
 
 interface Props {
     map: string
-}
-
-interface time {
-  season: number,
-  hour: number,
-  minute: number,
-  second: number,
-  hoursPerSeason: number,
-  maxSeasons: number,
 }
 
 interface MapData {
@@ -47,6 +40,27 @@ interface MapData {
     next: time,
     duration: time
   }
+}
+
+function eventTimeDays(s: time): string{
+  const days = Math.floor(s.hour / 24);
+  const seasonTime: time = {
+    season: s.season,
+    hour: s.hour,
+    minute: s.minute,
+    second: s.second,
+    hoursPerSeason: s.hoursPerSeason,
+    maxSeasons: s.maxSeasons
+  };
+  if (days <= 0){
+    const result = EventTime(seasonTime, 0);
+    if (result === "0s"){
+      return "Currently Active";
+    }
+    return `Starts in ${result}`;
+  }
+  seasonTime.hour = seasonTime.hour % 24;
+  return `Starts in ${days}d ${EventTime(seasonTime, 0)}`;
 }
 
 const MapView = React.forwardRef<{open: () => void}, Props>((props, ref) => {
@@ -81,7 +95,7 @@ const MapView = React.forwardRef<{open: () => void}, Props>((props, ref) => {
         <ModalContent bgColor={data?.gameMode.backgroundColor}>
           <ModalHeader p={1}>
             <Flex p={2} flexDir={'column'} textAlign={'center'} position={'relative'}>
-              <Image maxH={'80px'} objectFit={'fill'} src={`/image/${data?.bannerImage}`} borderRadius={'lg'} fallback={<Spinner/>}/>
+              <Image maxH={'80px'} objectFit={'cover'} src={`/image/${data?.bannerImage}`} borderRadius={'lg'} fallback={<Spinner/>}/>
               <Flex position={'absolute'} left={'50%'} top={'50%'} transform={'translate(-50%,-50%)'} w={'100%'} justifyContent={'center'} alignItems={'center'}>
                 <Image src={`/image/${data?.gameMode.image}`} mr={3}/>
                 <Text  fontSize={'3xl'} className={'heading-3xl'} noOfLines={1}>{data?.displayName}</Text>
@@ -95,8 +109,8 @@ const MapView = React.forwardRef<{open: () => void}, Props>((props, ref) => {
             <Image src={`/image/${data?.image}`} fallback={<Spinner/>}/>
             {data?.times.next && 
             <Flex alignItems={'center'}>
-              <Text fontSize={'2xl'}  className={'heading-2xl'} textShadow={'-0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000'}>{(data?.times.next.hour === 0 && data.times.next.minute === 0 && data.times.next.season === 0) ? "On Now" : `Starts in ${Math.floor(data?.times.next.hour/24)}d ${data?.times.next.hour % 24}h ${data?.times.next.minute}m ${data?.times.next.second}s`}</Text>
-              {data.powerLeagueMap && <Image h={'35px'} ml={2} src={'/image/skingroups/icons/icon_ranked.webp'}/>}
+              <Text fontSize={'2xl'}  className={'heading-2xl'} textShadow={'-0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000'}>{eventTimeDays(data.times.next)}</Text>
+              {data.powerLeagueMap && <Label label={"Power League Map"}><Image h={'35px'} ml={2} src={'/image/skingroups/icons/icon_ranked.webp'}/></Label>}
             </Flex>
             }
           </ModalBody>

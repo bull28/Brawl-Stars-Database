@@ -25,24 +25,36 @@ type BrawlerImageProps = {
 }
 
 type SkinData = {
-    name: string,
-    displayName: string,
-    cost: number,
-    currency: string,
-    features: [string],
-    limited: boolean,
+    name: string;
+    displayName: string;
+    cost: number;
+    currency: string;
+    costBling: number;
+    requires: string;
+    features: [string];
+    limited: boolean;
     group: {
-        name: string,
-        image: string,
-        icon: string
-    },
-    rating: number,
-    image: string,
+        name: string;
+        image: string;
+        icon: string;
+    };
+    rating: number;
+    image: string;
     model: {
-        geometry: {exists: boolean, path: string},
-        winAnimation: {exists: boolean, path: string},
-        loseAnimation: {exists: boolean, path: string}
+        geometry: {exists: boolean, path: string};
+        winAnimation: {exists: boolean, path: string};
+        loseAnimation: {exists: boolean, path: string};
+    };
+}
+
+function getCostText(skin: SkinData): string{
+    if (skin.cost > 0){
+        return skin.cost.toString();
     }
+    if (skin.name.includes("default") === true){
+        return "Default";
+    }
+    return "Free";
 }
 
 export default function BrawlerImage({ brawler, skin, setModel }: BrawlerImageProps) {
@@ -63,16 +75,31 @@ export default function BrawlerImage({ brawler, skin, setModel }: BrawlerImagePr
             <Flex h={'90%'} bgImage={`/image/${data.group.image}`} borderRadius={'lg'} onClick={onOpen} border={data.limited ? '4px solid gold' : 'none'} backgroundPosition={'center'} justifyContent={'center'}>
                 <Image objectFit={'contain'} src={`/image/${data.image}`} alt={data.displayName} fallback={<Spinner/>}/>
             </Flex>
-            <Flex alignItems={'center'} alignSelf={'center'} mt={3}>
+            <Flex alignItems={'center'} alignSelf={'center'} mt={3} mb={1}>
                     {(data.group.icon !== 'skingroups/icons/icon_default.webp') && <Label label={data.group.name}><Image src={`/image/${data.group.icon}`} w={7} mr={3}/></Label>}            
                 <Text fontSize={['md','lg','xl']} className={'heading-lg'} >{data.displayName}</Text>    
                 {(data.model.geometry.exists) && <Icon as={RepeatIcon} ml={3} fontSize={'24px'} cursor={'pointer'} onClick={() => {let skinModel: ModelFiles = {geometry: `/image/${data.model.geometry.path}`, winAnimation: null, loseAnimation: null}; if (data.model.winAnimation.exists){skinModel.winAnimation = `/image/${data.model.winAnimation.path}`;} if (data.model.loseAnimation.exists){skinModel.loseAnimation = `/image/${data.model.loseAnimation.path}`;} setModel(skinModel); scroll.scrollToTop();}}/>}
             </Flex>
             
-            <Flex alignItems={'center'} alignSelf={'center'}>
-                <Text fontSize={'xl'} mr={1} >{data.cost === 0 ? 'Default' : data.group.name === 'Brawl Pass' ? 'Included in Brawl Pass' : data.cost}</Text>
-                <CurrencyIcon type={data.group.name !== 'Brawl Pass' ? data.currency : ""}/>
+            <Flex alignSelf={'center'} mb={1}>
+                <Flex alignItems={'center'} mx={3}>
+                    <Text fontSize={'xl'} className={"heading-xl"} mr={1} >{getCostText(data)}</Text>
+                    <CurrencyIcon type={data.currency !== "" ? data.currency : ""}/>
+                </Flex>
+                {(data.costBling > 0) ?
+                    <Flex alignItems={'center'} mx={3}>
+                        <Text fontSize={"xl"} className={"heading-xl"} mr={1}>{data.costBling}</Text>
+                        <CurrencyIcon type={"Bling"}/>
+                    </Flex>
+                    :
+                    <></>
+                }
             </Flex>
+            {(data.requires !== "") ?
+                <Text className={"heading-md"}>{`Requires ${data.requires}`}</Text>
+                :
+                <Text className={"heading-md"}>{data.group.name === "Brawl Pass" ? "Included in Brawl Pass" : " "}</Text>
+            }
             <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay/>
                 <ModalContent p={3}>                    

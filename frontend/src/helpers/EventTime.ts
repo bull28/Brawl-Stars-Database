@@ -1,4 +1,4 @@
-import {time} from "../types/EventData"
+import {time} from "../types/EventData";
 
 export default function EventTime(lastUpdate: time, offset: number){
     var displaySeconds: number = (lastUpdate.second - Math.floor(offset / 1000));
