@@ -11,6 +11,7 @@ import account from "./routes/account";
 import collection from "./routes/collection";
 import tradesview from "./routes/tradesview";
 import tradesmodify from "./routes/tradesmodify";
+import challenge from "./routes/challenge";
 
 import server from "./server";
 
@@ -52,6 +53,7 @@ app.use("/", account);
 app.use("/", collection);
 app.use("/trade", tradesview);
 app.use("/trade", tradesmodify);
+app.use("/", challenge);
 
 // Error handler
 app.use((error: Error, req: Request, res: Response, next: NextFunction) => {

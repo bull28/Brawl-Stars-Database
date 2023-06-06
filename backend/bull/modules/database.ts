@@ -782,3 +782,14 @@ export async function addChallengeReward(values: ChallengeRewardValues): Promise
     return updateDatabase<typeof valuesArray>(connection, valuesArray, false,
         `UPDATE ${TABLE_NAME} U, ${CHALLENGE_TABLE_NAME} C SET coins = ?, level = ?, points = ?, accessories = ?, last_win = ?, total_wins = ?, completed = ? WHERE U.username = ? AND C.username = ?;`);
 }
+
+
+interface ChallengeCompletionsResult extends RowDataPacket{
+    total_wins: number;
+    completed: string;
+}
+export async function completedChallenges(values: UsernameValues): Promise<ChallengeCompletionsResult[]>{
+    const valuesArray = [values.username];
+    return queryDatabase<typeof valuesArray, ChallengeCompletionsResult[]>(connection, valuesArray, false,
+        `SELECT total_wins, completed FROM ${CHALLENGE_TABLE_NAME} WHERE username = ?`);
+}

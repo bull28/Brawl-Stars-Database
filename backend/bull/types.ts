@@ -916,6 +916,11 @@ export interface ChallengeState{
 export type DatabaseAccessories = string[];
 
 /**
+ * Parsed format of the completed challenges array that is stored in the database as text
+ */
+export type DatabaseCompletions = number[];
+
+/**
  * Name and image that is required to display an accessory to the user
  */
 export interface AccessoryPreview{
