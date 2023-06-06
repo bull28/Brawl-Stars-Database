@@ -1,5 +1,5 @@
 import { Box, Button, Divider, Flex, HStack, IconButton, Image, keyframes, Link, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, ScaleFade, SimpleGrid, Spinner, Text, useDisclosure } from '@chakra-ui/react'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { HiOutlineSwitchHorizontal } from 'react-icons/hi'
 import { MdDoneOutline } from 'react-icons/md'
 import AuthRequest from '../helpers/AuthRequest'
@@ -34,15 +34,16 @@ export default function MyTrades() {
         AuthRequest('/resources', {setState: [{func: setUsername, attr: "username"}]})        
     }, [])
 
-    useEffect(() => {
-        getTrades();   
-    }, [username])
-
-    const getTrades = () => {
+    const getTrades = useCallback(() => {
         if (username){
             AuthRequest('/trade/user', {data: {username: username}, setState: [{func: setData, attr: ""}], fallback: () => {}})
         }
-    }
+    }, [username]);
+
+    useEffect(() => {
+        getTrades();   
+    }, [username, getTrades])
+    
 
     const removeTrade = (tradeid: number) => {
         AuthRequest('/trade/close', {data: {tradeid: tradeid}, setState: [{func: setAcceptData, attr: ""}], message: {title: 'Removed Trade!', description: 'Successfully removed trade.', status: 'success'}, callback: () => {getTrades()}})
@@ -153,6 +154,7 @@ export default function MyTrades() {
             </ScaleFade>
                             )
                         }
+                        return <></>;
                     })
                 }
 
@@ -254,6 +256,7 @@ export default function MyTrades() {
             </ScaleFade>
                             )
                         }
+                        return <></>;
                     })
                 }
                 
@@ -354,6 +357,7 @@ export default function MyTrades() {
             </ScaleFade>
                             )
                         }
+                        return <></>;
                     })
                 }
                 

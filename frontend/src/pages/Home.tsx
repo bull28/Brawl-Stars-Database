@@ -6,10 +6,10 @@ import isSun from '../helpers/SunOrMoon'
 
 
 const topRow = ['Gallery', 'Brawlers', 'Events', 'Trade']
-const bottomRow = ['Shop', 'Coming Soon', 'About/Options']
+const bottomRow = ['Shop', 'Challenges', 'About/Options']
 
 const topLinks = ['/gallery', '/brawlers', '/events', '/trade']
-const bottomLinks = ['/shop', '', '']
+const bottomLinks = ['/shop', '/challenges', '']
 
 const LargeTile = ({ link, children }: {link: string, children: React.ReactNode}) => {
   const redirect = useNavigate();

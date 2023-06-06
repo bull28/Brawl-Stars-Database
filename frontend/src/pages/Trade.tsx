@@ -1,6 +1,6 @@
 import { Box, Button, Drawer, DrawerBody, DrawerContent, DrawerFooter, Flex, FormControl, FormLabel, HStack, Icon, IconButton, Image, Input, Menu, MenuButton, MenuItem, MenuList, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Radio, RadioGroup, ScaleFade, Select, SimpleGrid, SlideFade, Slider, SliderFilledTrack, SliderThumb, SliderTrack, Spinner, Stack, Text, useDisclosure, useToast } from '@chakra-ui/react'
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { FilterData, TradeData, UserTradeData } from '../types/TradeData'
 import { Brawler } from '../types/BrawlerData'
 import { ChevronLeftIcon, ChevronRightIcon, AddIcon, HamburgerIcon, CloseIcon, ArrowBackIcon } from '@chakra-ui/icons'
@@ -27,14 +27,6 @@ interface PinData {
         name: string,
         color: string
     }
-}
-
-interface PinRequest {
-    amount: number,
-    brawler: string,
-    pin: string,
-    pinImage: string,
-    rarityColor: string
 }
 
 export default function Trade() {
@@ -70,14 +62,14 @@ export default function Trade() {
     const { isOpen: isOpen2, onOpen: onOpen2, onClose: onClose2 } = useDisclosure()
     const { isOpen: isOpen3, onOpen: onOpen3, onClose: onClose3 } = useDisclosure()
 
-    const updateResults = () => {
+    const updateResults = useCallback(() => {
         axios.post('/trade/all', filter)
             .then((res) => {
                 setResults(res.data)
             })
-    }
+    }, [filter]);
 
-    const getCost = () => {
+    const getCost = useCallback(() => {
         let offerObject = []
         let reqObject = []
 
@@ -116,13 +108,13 @@ export default function Trade() {
             setTradeCost(0)
         }
 
-    }
+    }, [offer, req, tradeLength]);
 
     useEffect(() => {
         
         getCost();
         
-    }, [offer, req, tradeLength])
+    }, [offer, req, tradeLength, getCost])
 
     useEffect(() => {
         AuthRequest('/resources', {setState: [{func: setResources, attr: ""}]})
@@ -130,7 +122,7 @@ export default function Trade() {
     
     useEffect(() => {
         updateResults();
-    }, [filter.page])
+    }, [filter.page, updateResults])
 
     useEffect(() => {
         axios.get('/brawler')
@@ -154,15 +146,15 @@ export default function Trade() {
         AuthRequest('/resources', {setState: [{func: setUsername, attr: "username"}]})        
     }, [])
 
-    useEffect(() => {
-        getTrades();   
-    }, [username])
-
-    const getTrades = () => {
+    const getTrades = useCallback(() => {
         if (username){
             AuthRequest('/trade/user', {data: {username: username}, setState: [{func: setUserTradeData, attr: ""}], fallback: () => {}})
         }
-    }
+    }, [username]);
+
+    useEffect(() => {
+        getTrades();   
+    }, [username, getTrades])
 
     const changeFilter = (query:string, value:any) => {
         updateFilter(prevState => ({
@@ -319,14 +311,14 @@ export default function Trade() {
                             <Text  fontSize={'lg'} h={'30px'} className={'heading-lg'} >{resources?.tradeCredits}</Text>
                         </Flex>
                         
-                        {resources?.wildCardPins.map((wildCard) => { if (wildCard.amount){ 
+                        {resources?.wildCardPins.map((wildCard) => {
                             return (
                                 <Flex py={'15px'} h={'50px'} px={'30px'} bgColor={wildCard.rarityColor}justifyContent={'space-around'} alignItems={'center'} borderRadius={'5%'}>
                                     <Image h={'50px'} src={`/image/resources/wildcard_pin.webp`}/>                        
                                     <Text  fontSize={'lg'} className={'heading-lg'} >{wildCard.amount}</Text>
                                 </Flex>    
-                            )
-                            }}
+                            );
+                        }
                             
                         )}
                         <Flex pos={'relative'} p={2.5}>
@@ -416,9 +408,7 @@ export default function Trade() {
                     </DrawerContent>
                 </Drawer>
             <SimpleGrid columns={[1,1,2,3]} spacing={3}>
-                {results?.map((trade) => {
-                     if (trade.creator.username.toLowerCase().includes(filter.username.toLowerCase()) && !(trade.timeLeft.hour === trade.timeLeft.minute && trade.timeLeft.hour === trade.timeLeft.second && trade.timeLeft.hour === trade.timeLeft.season && trade.timeLeft.hour === 0)) {return <ScaleFade in={true}><TradeCard data={trade}/></ScaleFade>}
-                    })}
+                {results?.filter((trade) => (trade.creator.username.toLowerCase().includes(filter.username.toLowerCase()) && !(trade.timeLeft.hour === trade.timeLeft.minute && trade.timeLeft.hour === trade.timeLeft.second && trade.timeLeft.hour === trade.timeLeft.season && trade.timeLeft.hour === 0))).map((trade) => <ScaleFade in={true}><TradeCard data={trade}/></ScaleFade>)}
             </SimpleGrid>
         </Flex>
 
@@ -432,7 +422,7 @@ export default function Trade() {
         <Modal isOpen={isOpen2} onClose={onClose2} size={'6xl'}>
             <ModalOverlay />
             <ModalContent>
-            <ModalHeader>New Trade</ModalHeader>
+            <ModalHeader fontWeight={"normal"}>New Trade</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
                 
@@ -527,20 +517,17 @@ export default function Trade() {
                         <IconButton as={ArrowBackIcon} aria-label="choose brawler" onClick={() => {toggleScreen(true)}} cursor={'pointer'}/>
                         <ScaleFade in={true}>
                             <SimpleGrid spacing={3} columns={[3,4,5]} mt={5}>
-                            {collectionData?.brawlers.map((brawler) => {
-                                if (brawler.name === brawlerchoice){
-                                    return brawler.pins.map((pin) => (
-                                        <Flex flexDir={'column'} alignItems={'center'} userSelect={'none'}>
-                                            <Flex p={2} border={'2px solid black'} borderRadius={'lg'} bgColor={Object.values(collectionData?.pinRarityColors || {})[pin.r]} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'} cursor={'pointer'} onClick={() => {if (pinLocation === "offer"){ if (pin.a !== 0 ){addOffer({image: `${brawler.pinFilePath}${pin.i}`, r: pin.r})}} else {addReq({image: `${brawler.pinFilePath}${pin.i}`, r: pin.r})}}}>
-                                                <Image draggable={'false'} borderRadius={'20%'} src={`/image/${brawler.pinFilePath}${pin.i}`} fallback={<Spinner/>}/>                                                                                
-                                                {(pin.a === 0 && pinLocation === "offer") && <Box w={'100%'} h={'100%'} bgColor={'rgba(0, 0, 0, 0.5)'} pos={'absolute'} top={0} borderRadius={'lg'}/>}
-                                                {(pin.a === 0 && pinLocation === "offer") && <Icon as={RiLock2Line}  pos={'absolute'} fontSize={'25px'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}></Icon>}                                                
-                                            </Flex>                                
-                                            <Text  fontSize={'xl'} className={'heading-2xl'}>{`${pin.a}x`}</Text>
-                                        </Flex>
-                                    ))
-                                }
-                                
+                            {collectionData?.brawlers.filter((brawler) => brawler.name === brawlerchoice).map((brawler) => {
+                                return brawler.pins.map((pin) => (
+                                    <Flex flexDir={'column'} alignItems={'center'} userSelect={'none'}>
+                                        <Flex p={2} border={'2px solid black'} borderRadius={'lg'} bgColor={Object.values(collectionData?.pinRarityColors || {})[pin.r]} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'} cursor={'pointer'} onClick={() => {if (pinLocation === "offer"){ if (pin.a !== 0 ){addOffer({image: `${brawler.pinFilePath}${pin.i}`, r: pin.r})}} else {addReq({image: `${brawler.pinFilePath}${pin.i}`, r: pin.r})}}}>
+                                            <Image draggable={'false'} borderRadius={'20%'} src={`/image/${brawler.pinFilePath}${pin.i}`} fallback={<Spinner/>}/>                                                                                
+                                            {(pin.a === 0 && pinLocation === "offer") && <Box w={'100%'} h={'100%'} bgColor={'rgba(0, 0, 0, 0.5)'} pos={'absolute'} top={0} borderRadius={'lg'}/>}
+                                            {(pin.a === 0 && pinLocation === "offer") && <Icon as={RiLock2Line}  pos={'absolute'} fontSize={'25px'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}></Icon>}                                                
+                                        </Flex>                                
+                                        <Text  fontSize={'xl'} className={'heading-2xl'}>{`${pin.a}x`}</Text>
+                                    </Flex>
+                                ));
                             })}
 
                             </SimpleGrid>

@@ -136,6 +136,12 @@ async function claimReward(username: string, challenge: ChallengeManager, room: 
 
         if (challengeid < REPLAY_CHALLENGE_START && isWinner === true){
             if (completed.includes(challengeid) === true){
+                room.emit("finish", isWinner, {
+                    coins: 0,
+                    points: 0,
+                    bonusClaimed: false,
+                    accessory: undefined
+                });
                 return;
             }
             completed.push(challengeid);

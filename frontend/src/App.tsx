@@ -14,6 +14,7 @@ import Trade from './pages/Trade'
 import MyTrades from './pages/MyTrades'
 import Shop from './pages/Shop'
 import AudioPlayer from './components/AudioPlayer'
+import ChallengeMenu from './pages/ChallengeMenu'
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/trade" element={<Trade/>}/>
           <Route path="/mytrades" element={<MyTrades/>}/>
           <Route path="/shop" element={<Shop/>}/>
+          <Route path="/challenges" element={<ChallengeMenu/>}/>
           <Route path="*" element={<NotFound/>}/>        
         </Routes>                
       </BrowserRouter>

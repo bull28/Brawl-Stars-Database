@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
 import { Flex, IconButton } from "@chakra-ui/react";
-import { HiMusicNote } from 'react-icons/hi'
 import AuthRequest from "../helpers/AuthRequest";
 import CosmeticData from "../types/CosmeticData";
 
@@ -38,7 +37,7 @@ export default function AudioPlayer() {
     
     return (
         <Flex pos={"fixed"} right={0} bottom={0}>
-            <IconButton onClick={toggle} bgColor={'blue.500'} p={1} as={HiMusicNote} aria-label="play/pause music"/>
+            <IconButton onClick={toggle} bgColor={'blue.500'} p={1} aria-label="play/pause music"/>
         </Flex>
     );
 };
