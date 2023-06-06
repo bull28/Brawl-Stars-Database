@@ -673,7 +673,7 @@ const elprimo: UnitOptionsStorage = {
     },
     stats: {
         health: 12000,
-        damage: 240,
+        damage: 300,
         range: 1.5,
         targets: 3,
         speed: 3,
@@ -696,7 +696,7 @@ const darryl: UnitOptionsStorage = {
     },
     stats: {
         health: 20000,
-        damage: 360,
+        damage: 240,
         range: 1.0,
         targets: 1,
         speed: 2,
@@ -2853,6 +2853,7 @@ export function getUnlockedUnitStats(userAccessories: DatabaseAccessories, level
             // Weight has no meaning for the player
             delete unitStats.weight;
             return {
+                name: value[0],
                 display: setUnitDisplay(value[1].display, upgradeAbilityValues(value[1].abilityValues, level, 0)),
                 stats: unitStats
             };

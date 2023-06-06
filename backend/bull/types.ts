@@ -971,6 +971,7 @@ export interface UnitPreview{
  * Full unit data sent to the user when not in a challenge
  */
 interface UnitData{
+    name: string;
     display: {
         displayName: string;
         image: string;
