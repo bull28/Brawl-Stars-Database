@@ -1085,7 +1085,7 @@ export interface ChallengeManagerOptions{
 }
 
 /**
- * Challenge data displayed to the user when selecting a challenge to start
+ * Challenge data displayed to players when they are creating a room
  */
 export interface ChallengePreview{
     challengeid: number;
@@ -1098,6 +1098,19 @@ export interface ChallengePreview{
         points: number;
         accessory: AccessoryPreview;
     }
+    players: number;
+}
+
+/**
+ * Challenge data displayed to players when they are selecting a room to join
+ * 
+ * Any challenges displayed in this format were created by other players
+ */
+export interface ChallengeRoomPreview{
+    username: string;
+    displayName: string;
+    requiredLevel: number;
+    acceptCost: number;
     players: Player[];
 }
 

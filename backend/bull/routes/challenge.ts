@@ -38,7 +38,7 @@ router.post<{}, {}, TokenReqBody>("/unit", databaseErrorHandler<TokenReqBody>(as
     }
 }));
 
-// Get all challenges that a user has not completed yet
+// Get all preset challenges
 router.post<{}, {}, TokenReqBody>("/challenge", databaseErrorHandler<TokenReqBody>(async (req, res) => {
     if (typeof req.body.token !== "string"){
         res.status(400).send("Token is missing.");

@@ -1,71 +1,38 @@
 import {Flex, Text, Image, Button, SimpleGrid, HStack, Divider} from "@chakra-ui/react";
 import {useState} from "react";
-import {UnitData} from "../types/ChallengeData";
+import {UnitImage, UnitData} from "../types/ChallengeData";
 
 interface UnitSelectionProps{
     data: UnitData;
-    setSelected: (units: string[]) => void;
+    setSelected: (units: UnitImage[]) => void;
 }
 
 export default function UnitSelection({data, setSelected}: UnitSelectionProps){
-    const [units, setUnits] = useState<{name: string; image: string;}[]>([]);
+    const [units, setUnits] = useState<UnitImage[]>([]);
     const [currentUnit, setCurrentUnit] = useState<UnitData["unitsAvailable"][number] | undefined>(undefined);
 
     return (
         <Flex>
             <Flex flexDir={"column"} bgColor={"gray.800"} alignItems={"center"} borderRadius={"lg"}>
-                <Text fontSize={"2xl"}>Select Units</Text>
+                <Text fontSize={"2xl"} className={"heading-2xl"}>Select Units</Text>
                 <Divider/>
-                <Flex flexDir={"column"} w={"30vw"} minH={"45vh"} p={2}>
-                    <Flex h={"100%"}>
+                <Flex flexDir={"column"} minW={"480px"} w={"30vw"} minH={"45vh"} p={2}>
+                    <Flex h={"100%"} wrap={"wrap"}>
                         <Flex flexDir={"column"} alignItems={"center"}>
                             <SimpleGrid columns={[5]} spacing={0}>
                                 {data.unitsAvailable.map((value) => {
-                                    //src={`/image/${value.display.image}`}
-                                    //<Button bgImage={`url(/image/${value.display.image})`} bgRepeat={"no-repeat"} bgSize={"cover"} _hover={{}} onMouseOver={() => setCurrentUnit(value)} onMouseOut={() => setCurrentUnit(undefined)} onClick={() => {if (units.length + 1 <= data.unitsPerChallenge){setUnits(units.concat([{name: value.name, image: value.display.image}]));}}}>
-                                    /*
-                                    <Flex alignItems={"center"} justifyContent={"center"}>
-                                            <Image src={`/image/${value.display.image}`}/>
-                                            <Button bgImage={`url(/image/${value.display.image})`} bgRepeat={"no-repeat"} bgSize={"cover"} _hover={{}} onMouseOver={() => setCurrentUnit(value)} onMouseOut={() => setCurrentUnit(undefined)} onClick={() => {if (units.length + 1 <= data.unitsPerChallenge){setUnits(units.concat([{name: value.name, image: value.display.image}]));}}}></Button>
-                                        </Flex>
-                                    */
                                     return (
-                                        <Button border={"2px solid #0000"} borderRadius={"md"} bgImage={`url(/image/${value.display.image})`} bgRepeat={"no-repeat"} bgSize={"cover"} _hover={{}} onMouseOver={() => setCurrentUnit(value)} onMouseOut={() => setCurrentUnit(undefined)} onClick={() => {if (units.length + 1 <= data.unitsPerChallenge){setUnits(units.concat([{name: value.name, image: value.display.image}]));}}}></Button>
+                                        <Button key={value.name} border={"2px solid #0000"} borderRadius={"md"} bgImage={`url(/image/${value.display.image})`} bgRepeat={"no-repeat"} bgSize={"cover"} _hover={{}} onMouseOver={() => setCurrentUnit(value)} onMouseOut={() => setCurrentUnit(undefined)} onClick={() => {if (units.length + 1 <= data.unitsPerChallenge){setUnits(units.concat([{name: value.name, image: value.display.image}]));}}}></Button>
                                     );
                                 })}
                             </SimpleGrid>
                         </Flex>
                         {(typeof currentUnit !== "undefined") ?
-                            <Flex w={"50%"} pos={"relative"} ml={2}>
+                            <Flex w={"40%"} pos={"relative"} ml={2}>
                                 <Flex flexDir={"column"} alignItems={"center"} w={"100%"}>
                                     <Text fontSize={"xl"}>{currentUnit.display.displayName}</Text>
                                     <Flex flexDir={"column"} alignItems={"flex-start"} w={"100%"}>
                                         <Divider bgColor={"#fff"} my={1}/>
-                                        {/*([
-                                            ["Health", currentUnit.stats.health],
-                                            ["Shield", currentUnit.stats.shield]
-                                        ]).map((value) => {
-                                            return (
-                                                <Flex w={"100%"}>
-                                                    <Text w={"40%"} fontSize={"20px"} lineHeight={"24px"}>{value[0]}</Text>
-                                                    <Text w={"60%"} fontSize={"20px"} lineHeight={"24px"}>{value[1]}</Text>
-                                                </Flex>
-                                            );
-                                        })}
-                                        <Divider bgColor={"#fff"} my={1}/>
-                                        {([
-                                            ["Damage", currentUnit.stats.damage],
-                                            ["Range", currentUnit.stats.range],
-                                            ["Targets", currentUnit.stats.targets],
-                                            ["Speed", currentUnit.stats.speed]
-                                        ]).map((value) => {
-                                            return (
-                                                <Flex w={"100%"}>
-                                                    <Text w={"40%"} fontSize={"20px"} lineHeight={"24px"}>{value[0]}</Text>
-                                                    <Text w={"60%"} fontSize={"20px"} lineHeight={"24px"}>{value[1]}</Text>
-                                                </Flex>
-                                            );
-                                        })*/}
                                         <Flex w={"100%"}>
                                             <Text w={"40%"} fontSize={"20px"} lineHeight={"24px"} color={"#ff5"}>Health</Text>
                                             <Text w={"60%"} fontSize={"20px"} lineHeight={"24px"} color={"#ff5"}>{currentUnit.stats.health}</Text>
@@ -102,16 +69,16 @@ export default function UnitSelection({data, setSelected}: UnitSelectionProps){
                                             {currentUnit.stats.specialMoves === true || currentUnit.stats.specialAttacks === true ? <Divider bgColor={"#fff"} my={1}/> : <></>}
                                         </Flex>
                                         <Flex w={"100%"}>
-                                        <Flex flexDir={"column"} w={"100%"}>
-                                            <Text fontSize={"sm"} paddingLeft={1} paddingRight={1}>{currentUnit.display.description}</Text>
-                                            {currentUnit.display.description !== "" ? <Divider bgColor={"#fff"} my={1}/> : <></>}
-                                        </Flex>
+                                            <Flex flexDir={"column"} w={"100%"}>
+                                                <Text fontSize={"sm"} paddingLeft={1} paddingRight={1}>{currentUnit.display.description}</Text>
+                                                {currentUnit.display.description !== "" ? <Divider bgColor={"#fff"} my={1}/> : <></>}
+                                            </Flex>
                                         </Flex>
                                     </Flex>
                                 </Flex>
                             </Flex>
                             :
-                            <></>
+                            <Flex w={"40%"} pos={"relative"} ml={2}/>
                         }
                     </Flex>
                     <Flex flexDir={"column"} justifyContent={"flex-start"}>
@@ -119,15 +86,14 @@ export default function UnitSelection({data, setSelected}: UnitSelectionProps){
                         <Flex>
                             <Button onClick={() => setUnits([])} isDisabled={units.length <= 0}>Clear All</Button>
                             <Button onClick={() => setUnits(units.slice(0, -1))} isDisabled={units.length <= 0}>Clear Last</Button>
-                            <Button onClick={() => setSelected(units.map((value) => value.name))}>Confirm</Button>
+                            <Button onClick={() => setSelected(units)}>Confirm</Button>
                         </Flex>
                         <Flex>
                         
                         <HStack spacing={1} wrap={"wrap"}>
-                            {units.map((value) => {
-                                console.log(value.image);
+                            {units.map((value, index) => {
                                 return (
-                                    <Image h={10} objectFit={"contain"} src={`/image/${value.image}`}/>
+                                    <Image key={index} h={10} objectFit={"contain"} src={`/image/${value.image}`}/>
                                 )
                             })}
                         </HStack>

@@ -5,9 +5,18 @@ import {
     Flex, Text, HStack, Image, Textarea, Button, SimpleGrid, useToast,
     Modal, ModalOverlay, ModalContent, ModalBody, ModalHeader, ModalCloseButton, Divider, useDisclosure
 } from "@chakra-ui/react";
-import UnitSelection from "../components/UnitSelection";
-import {UnitData, ChallengeData} from "../types/ChallengeData";
+import {UnitImage, ChallengeName, RoomData} from "../types/ChallengeData";
 import {displayLong} from "../helpers/LargeNumberDisplay";
+
+interface ChallengePlayerProps{
+    address: string;
+    token: string;
+    createChallenge: ChallengeName | undefined;
+    room: string | undefined;
+    unitChoices: UnitImage[];
+    onStarted: () => void;
+    setRoomList: (rooms: RoomData) => void;
+}
 
 type Point = [number, number];
 interface MoveRequest{unit: number; position: Point;}
@@ -81,6 +90,7 @@ interface ServerToClientEvents{
     message: (message: string) => void;
     error: (message: string) => void;
     state: (state: ChallengeManagerState) => void;
+    rooms: (challenges: RoomData) => void;
     preview: (units: UnitDisplay[]) => void;
     join: (playerIndex: number) => void;
     finish: (win: boolean, reward: RewardEvent) => void;
@@ -89,6 +99,7 @@ interface ServerToClientEvents{
 interface ClientToServerEvents{
     login: (token: string) => void;
     create: (challengeid: number) => void;
+    rooms: (token: string) => void;
     preview: (playerRoom: string) => void;
     join: (playerName: string, unitNames: string[]) => void;
     action: (action: string, request: MoveRequest[] | AttackRequest[]) => void;
@@ -199,7 +210,7 @@ function showStats(unit: UnitState, owner: string): JSX.Element{
     );
 }
 
-export default function ChallengePlayer({address, token, units, challenges}: {address: string; token: string; units: UnitData | undefined; challenges: ChallengeData | undefined}){
+export default function ChallengePlayer({address, token, room, createChallenge, unitChoices, onStarted, setRoomList}: ChallengePlayerProps){
     // Socket object
     const [socket, setSocket] = useState<Socket<ServerToClientEvents, ClientToServerEvents> | undefined>(undefined);
     // Index of the player that is currently logged in
@@ -233,24 +244,16 @@ export default function ChallengePlayer({address, token, units, challenges}: {ad
     // Reward that the player received
     const [reward, setReward] = useState<{winner: boolean; reward: RewardEvent} | undefined>(undefined);
 
-    // Units that the player will join the challenge with
-    const [unitChoices, setUnitChoices] = useState<string[]>([]);
-
     
     const toast = useToast();
     const navigate = useNavigate();
     const {isOpen, onOpen, onClose} = useDisclosure();
-
-
-    const confirmUnitChoices = (units: string[]) => {
-        setUnitChoices(units);
-    }
     
-    // Click on a unit
+    // Hover over a unit
     const selectUnit = (unit: UnitState | undefined): void => {
         setCurrentUnit(unit);
     }
-
+    // Click on a unit or position on the grid
     const click = (id: number, p: Point): void => {
         if (typeof challenge === "undefined"){
             return;
@@ -321,7 +324,8 @@ export default function ChallengePlayer({address, token, units, challenges}: {ad
 
     useEffect(() => {
         const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io(address);
-        socket.on("state", (data) =>{
+        socket.on("state", (data) => {
+            onStarted();
             setCurrentUnit(undefined);
             setPlayers(data.players);
             setChallenge(data.challenge);
@@ -337,6 +341,10 @@ export default function ChallengePlayer({address, token, units, challenges}: {ad
             } else{
                 toast({description: data, status: "info", duration: 2500, isClosable: true});
             }
+        });
+        socket.on("rooms", (data) => {
+            setRoomList(data);
+            console.log(data);
         });
         socket.on("preview", (data) => {
             console.log(data);
@@ -361,7 +369,7 @@ export default function ChallengePlayer({address, token, units, challenges}: {ad
         setSocket(socket);
 
         socket.emit("login", token);
-    }, [address, token, toast, onOpen]);
+    }, [address, token, toast, setRoomList, onStarted, onOpen]);
 
     useEffect(() => {
         return (() => {
@@ -600,17 +608,18 @@ export default function ChallengePlayer({address, token, units, challenges}: {ad
                                 <Button onClick={() => navigate("/")}>Back to Main Menu</Button>
                             </Flex>
                             :
-                            ((typeof socket !== "undefined" && typeof units !== "undefined" && typeof challenges !== "undefined") ?
+                            ((typeof socket !== "undefined") ?
                                 <Flex flexDir={"column"} alignItems={"center"}>
                                     <Flex flexDir={"column"} bgColor={"gray.800"} p={2} borderRadius={"lg"} mb={5}>
                                         <Textarea onChange={changeInput}/>
                                         
-                                        <Button onClick={() => {if (inputText.length > 0){socket.emit("create", parseInt(inputText))} else{toast({description: "No challenge id specified", status: "error", duration: 4500, isClosable: true});}}}>Create Challenge</Button>
+                                        <Button onClick={() => { if (typeof createChallenge !== "undefined"){socket.emit("create", createChallenge.challengeid);} else if (inputText.length > 0){socket.emit("create", parseInt(inputText));} else{toast({description: "No challenge id specified", status: "error", duration: 4500, isClosable: true});} }}>{`Create Challenge${typeof createChallenge !== "undefined" ? ` (${createChallenge.displayName})` : ""}`}</Button>
+                                        <Button onClick={() => { if (typeof room !== "undefined"){socket.emit("join", room, unitChoices.map((value) => value.name));} else{socket.emit("join", inputText, unitChoices.map((value) => value.name));} }}>{`Join Challenge${typeof room !== "undefined" ? ` (room: ${room})` : ""}`}</Button>
+                                        <Button onClick={() => socket.emit("rooms", token)}>Show Rooms</Button>
                                         <Button onClick={() => socket.emit("preview", inputText)}>Preview Challenge</Button>
-                                        <Button onClick={() => socket.emit("join", inputText, unitChoices)}>Join Challenge</Button>
                                         <Button onClick={() => navigate("/")}>Back to Main Menu</Button>
                                     </Flex>
-                                    <UnitSelection data={units} setSelected={confirmUnitChoices}/>
+                                    
                                 </Flex>
                                 :
                                 <Flex flexDir={"column"}>

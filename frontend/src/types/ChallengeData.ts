@@ -1,3 +1,13 @@
+export interface UnitImage{
+    name: string;
+    image: string;
+}
+
+export interface ChallengeName{
+    challengeid: number;
+    displayName: string;
+}
+
 export interface UnitData{
     unitsPerChallenge: number;
     unitsAvailable: ({
@@ -34,6 +44,14 @@ export type ChallengeData = ({
             image: string;
         };
     }
+    players: number;
+})[];
+
+export type RoomData = ({
+    username: string;
+    displayName: string;
+    requiredLevel: number;
+    acceptCost: number;
     players: ({
         username: string;
         avatar: string;

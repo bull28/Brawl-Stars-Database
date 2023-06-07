@@ -2974,7 +2974,7 @@ export function createUnitOptions(data: UnitPreview): UnitOptions | undefined{
 /**
  * Get the full list of preset and random challenges. All challenges that are not created
  * by another player will be included.
- * @param completed array of challenge ids that the player already completed
+ * @param completedChallenges array of challenge ids that the player already completed
  * @returns list of challenges
  */
 export function getAllChallenges(completedChallenges: number[]): ChallengePreview[]{
@@ -3010,12 +3010,7 @@ export function getAllChallenges(completedChallenges: number[]): ChallengePrevie
                 points: points,
                 accessory: accessory
             },
-            players: value[1].players.filter((player) => player.auto === false).map((player) => {
-                return {
-                    username: player.username,
-                    avatar: player.avatar
-                };
-            })
+            players: value[1].players.filter((player) => player.auto === false).length
         };
     }).concat(levels.map((value, index) => {
         return {
@@ -3032,11 +3027,7 @@ export function getAllChallenges(completedChallenges: number[]): ChallengePrevie
                     image: ""
                 }
             },
-            players: [{
-                username: "",
-                avatar: "",
-                avatarColor: ""
-            }]
+            players: 1
         };
     }));
 }

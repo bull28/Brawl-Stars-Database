@@ -1,12 +1,12 @@
 import express, {Request, Response} from "express";
 import {createServer} from "http";
 import {Server, BroadcastOperator} from "socket.io";
-import {DAILY_CHALLENGE_REFRESH, DAILY_CHALLENGE_MULTIPLIER, REPLAY_CHALLENGE_START} from "./data/constants";
+import {AVATAR_IMAGE_DIR, IMAGE_FILE_EXTENSION, DAILY_CHALLENGE_REFRESH, DAILY_CHALLENGE_MULTIPLIER, REPLAY_CHALLENGE_START} from "./data/constants";
 import {validateToken} from "./modules/authenticate";
 import {getAccessoryDisplay, createUnitList, getPresetChallenge, updateLevelProgress} from "./modules/accessories";
 import {ChallengeManager} from "./modules/challengemanager";
 import {parseStringArray, parseNumberArray, updateTokens, checkChallengeRequirement, afterChallenge, addChallengeReward} from "./modules/database";
-import {ActionResult, ChallengeManagerState, MoveRequest, AttackRequest, UnitPreview, UnitDisplay, RewardEvent} from "./types";
+import {ActionResult, ChallengeManagerState, MoveRequest, AttackRequest, UnitPreview, UnitDisplay, RewardEvent, ChallengeRoomPreview} from "./types";
 
 const MAX_ACTIVE_CHALLENGES = 100;
 
@@ -14,6 +14,7 @@ interface ServerToClientEvents{
     message: (message: string) => void;
     error: (message: string) => void;
     state: (state: ChallengeManagerState) => void;
+    rooms: (challenges: ChallengeRoomPreview[]) => void;
     preview: (units: UnitDisplay[]) => void;
     join: (playerIndex: number) => void;
     finish: (win: boolean, reward: RewardEvent) => void;
@@ -22,6 +23,7 @@ interface ServerToClientEvents{
 interface ClientToServerEvents{
     login: (token: string) => void;
     create: (challengeid: number) => void;
+    rooms: (token: string) => void;
     preview: (playerRoom: string) => void;
     join: (playerName: string, unitNames: string[]) => void;
     action: (action: string, request: MoveRequest[] | AttackRequest[]) => void;
@@ -68,6 +70,16 @@ function getChallenge(socketid: string, socketidMap: Map<string, string>, userMa
         }
     }
     return undefined;
+}
+
+function userExists(socketidMap: Map<string, string>, username: string): boolean{
+    let exists = false;
+    socketidMap.forEach((value) => {
+        if (value === username){
+            exists = true;
+        }
+    });
+    return exists;
 }
 
 function isMoveRequest(request: (MoveRequest | AttackRequest)[]): request is MoveRequest[]{
@@ -227,13 +239,8 @@ io.on("connection", (socket) => {
             return;
         }
 
-        //let exists: boolean;
-        //socketidMap.forEach((value) => {
-        //    if (value === username){
-        //        exists = true;
-        //    }
-        //});
-        let exists = (Array.from(socketidMap.values()).findIndex((value) => value === username) !== -1);
+        //let exists = (Array.from(socketidMap.values()).findIndex((value) => value === username) !== -1);
+        let exists = userExists(socketidMap, username);
 
         if (exists === true || userMap.has(username) === true){
             // If the username is a value in socketidMap then it has already been associated with a user
@@ -325,6 +332,41 @@ io.on("connection", (socket) => {
         } else{
             socket.emit("error", "You are not logged in.");
         }
+    });
+
+    socket.on("rooms", (token: string) => {
+        // Gets a list of all the rooms that can be joined
+        // Includes the name of the room and some information about the challenge
+        // Any challenges that have already started will not be included here
+
+        const username = validateToken(token);
+        if (username === ""){
+            socket.emit("error", "Invalid token.");
+            return;
+        }
+
+        let challenges: ChallengeRoomPreview[] = [];
+
+        challengeMap.forEach((value, key) => {
+            if (typeof value.challenge === "undefined"){
+                const players: ChallengeRoomPreview["players"] = value.players.filter((player) => player.auto === false).map((player) => {
+                    return {
+                        username: player.username,
+                        avatar: (player.avatar !== "" ? AVATAR_IMAGE_DIR + player.avatar + IMAGE_FILE_EXTENSION : "")
+                    };
+                });
+
+                challenges.push({
+                    username: key,
+                    displayName: value.extraData.displayName,
+                    requiredLevel: value.extraData.requiredLevel,
+                    acceptCost: value.extraData.acceptCost,
+                    players: players
+                });
+            }
+        });
+
+        socket.emit("rooms", challenges);
     });
 
     socket.on("preview", (playerName: string) => {
