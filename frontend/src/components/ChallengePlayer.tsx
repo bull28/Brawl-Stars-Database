@@ -15,6 +15,7 @@ interface ChallengePlayerProps{
     room: string | undefined;
     unitChoices: UnitImage[];
     onStarted: () => void;
+    onJoin: () => void;
     setRoomList: (rooms: RoomData) => void;
 }
 
@@ -93,7 +94,7 @@ interface ServerToClientEvents{
     rooms: (challenges: RoomData) => void;
     preview: (units: UnitDisplay[]) => void;
     join: (playerIndex: number) => void;
-    finish: (win: boolean, reward: RewardEvent) => void;
+    finish: (win: number, reward: RewardEvent) => void;
 }
 
 interface ClientToServerEvents{
@@ -153,6 +154,15 @@ function phaseText(phase: number): string{
     return "";
 }
 
+function winText(win: number): {text: string; color: string;}{
+    if (win === 1){
+        return {text: "Challenge Won!", color: "#00ffff"};
+    } else if (win === 0){
+        return {text: "Draw!", color: "#c0c0c0"};;
+    }
+    return {text: "Challenge Lost!", color: "#ff0000"};
+}
+
 function pointInRange(start: Point, target: Point, range: number): boolean{
     if (Math.sqrt((target[0] - start[0]) * (target[0] - start[0]) + (target[1] - start[1]) * (target[1] - start[1])) <= range){
         return true;
@@ -210,7 +220,7 @@ function showStats(unit: UnitState, owner: string): JSX.Element{
     );
 }
 
-export default function ChallengePlayer({address, token, room, createChallenge, unitChoices, onStarted, setRoomList}: ChallengePlayerProps){
+export default function ChallengePlayer({address, token, room, createChallenge, unitChoices, onJoin, onStarted, setRoomList}: ChallengePlayerProps){
     // Socket object
     const [socket, setSocket] = useState<Socket<ServerToClientEvents, ClientToServerEvents> | undefined>(undefined);
     // Index of the player that is currently logged in
@@ -242,7 +252,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
     // If the login failed, this will display it to the player
     const [loginFailed, setLoginFailed] = useState<boolean>(false);
     // Reward that the player received
-    const [reward, setReward] = useState<{winner: boolean; reward: RewardEvent} | undefined>(undefined);
+    const [reward, setReward] = useState<{winner: number; reward: RewardEvent} | undefined>(undefined);
 
     
     const toast = useToast();
@@ -364,12 +374,12 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
         });
         socket.on("join", (data) => {
             setCurrentPlayer(data);
-            console.log(`Joined the challenge as ${data}`);
+            onJoin();
         });
         setSocket(socket);
 
         socket.emit("login", token);
-    }, [address, token, toast, setRoomList, onStarted, onOpen]);
+    }, [address, token, toast, setRoomList, onJoin, onStarted, onOpen]);
 
     useEffect(() => {
         return (() => {
@@ -378,6 +388,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
             setChallenge(undefined);
             setCurrentUnit(undefined);
             setInputText("");
+            setLastUnit(undefined);
             setLastTargets([]);
             setMoveActions(new Map());
             setAttackActions(new Map());
@@ -622,7 +633,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                                     
                                 </Flex>
                                 :
-                                <Flex flexDir={"column"}>
+                                <Flex flexDir={"column"} bgColor={"gray.800"} p={2} borderRadius={"lg"}>
                                     <Text fontSize={"2xl"} mb={2} mx={3}>Could not connect to the server.</Text>
                                     <Button onClick={() => navigate("/")}>Back to Main Menu</Button>
                                 </Flex>
@@ -635,8 +646,8 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                 <Modal isOpen={isOpen} onClose={onClose}>
                     <ModalOverlay/>
                         {typeof reward !== "undefined" ?
-                            <ModalContent p={3} border={`3px solid ${reward.winner === true ? "#0ff" : "#f00"}`}>
-                                <ModalHeader fontWeight={"normal"} fontSize={"3xl"} className={"heading-3xl"} textAlign={"center"} color={reward.winner === true ? "#0ff" : "#f00"}>{reward.winner === true ? "Challenge Won!" : "Challenge Lost!"}</ModalHeader>
+                            <ModalContent p={3} border={`3px solid ${winText(reward.winner).color}`}>
+                                <ModalHeader fontWeight={"normal"} fontSize={"3xl"} className={"heading-3xl"} textAlign={"center"} color={winText(reward.winner).color}>{winText(reward.winner).text}</ModalHeader>
                                 <ModalCloseButton/>
                                 <Divider/>
                                 <ModalBody>

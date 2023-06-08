@@ -8,18 +8,6 @@ interface RoomSelectionProps{
 }
 
 export default function UnitSelection({data, level, setSelected}: RoomSelectionProps){
-    data = [{
-        username: "BULLDARRYLELPRIMOFRANKASH",
-        displayName: "The King Wins Again",
-        requiredLevel: 1,
-        acceptCost: 0,
-        players: [
-            {username: "BULLDARRYLELPRIMOFRANKASH", avatar: "avatars/special/portrait_bull.webp"},
-            {username: "PLAYPLAYKINGGOLMWOLF", avatar: ""},
-            {username: "", avatar: ""}
-        ]
-    }];
-
     return (
         <Flex flexDir={"column"} bgColor={"gray.800"} alignItems={"center"} border={"3px solid #000"} borderRadius={"lg"}>
             <Text fontSize={"2xl"} className={"heading-2xl"}>Join Challenge</Text>

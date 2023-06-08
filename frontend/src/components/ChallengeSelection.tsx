@@ -27,7 +27,7 @@ export default function ChallengeSelection({data, level, setSelected}: Challenge
                             backgroundColor: "rgba(0, 0, 0, 0.5)",
                             borderRadius: "6px",
                             },
-                        }}>{data.filter((value) => value.challengeid > 0).map((value, index) => {
+                        }}>{data.map((value, index) => {
                             return (
                                 <Flex key={index} bgColor={"blue.800"} flexDir={"column"} p={2} borderRadius={"lg"} border={"2px solid #000"}>
                                     <Text fontSize={"xl"} className={"heading-xl"}>{value.displayName.length > 0 ? value.displayName : " "}</Text>

@@ -2486,12 +2486,15 @@ export const requiredLevels = new Map<string, number>(
 // All preset challenge objects
 // The array is used to iterate over all challenges
 const presetChallenges: [number, ChallengeManagerOptions][] = [
-    empty1v1, tutorial1, tutorial2, tutorial3, bullChallenge,
+    tutorial1, tutorial2, tutorial3, bullChallenge,
     empty2players, empty3players, empty4players, empty5players,
     puzzle1, puzzle2, puzzle3, puzzle4, puzzle5, puzzle6, puzzle7, puzzle8, puzzle9
 ].map((value) => [value.extraData.challengeid, value]);
 // The map is used to get a specific challenge
 const presetChallengeMap = new Map<number, ChallengeManagerOptions>(presetChallenges);
+
+// This challenge can be selected but is not visible in the list of all challenges
+presetChallengeMap.set(empty1v1.extraData.challengeid, empty1v1);
     
 
 //------------------------------------------------------------------------------------------------//

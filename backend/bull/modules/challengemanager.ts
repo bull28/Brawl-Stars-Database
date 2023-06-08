@@ -251,19 +251,25 @@ export class ChallengeManager{
      * Checks if a specific player is the winner of the challenge. Searches by username
      * instead of player index.
      * @param username player name
-     * @returns boolean
+     * @returns -1 if loss, 0 if draw, 1 if win
      */
-    isWinner(username: string): boolean{
+    isWinner(username: string): number{
         if (typeof this.challenge === "undefined"){
-            return false;
+            return -1;
         }
 
         const playerIndex = this.findPlayer(username);
         if (playerIndex < 0){
-            return false;
+            return -1;
         }
 
-        return (playerIndex === this.challenge.getState().winner);
+        const state = this.challenge.getState();
+        if (playerIndex === state.winner){
+            return 1;
+        } else if (state.winner === -1 && state.turn === -1){
+            return 0;
+        }
+        return -1;
     }
 
     /**

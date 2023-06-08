@@ -13,9 +13,9 @@ export default function ChallengeMenu(){
     // Player's resources, including level, challenge points, coins, and tokens
     const [resources, setResources] = useState<UserInfoProps | undefined>(undefined);
 
-    // Uunits and challenges available to the player
-    const [units, setUnits] = useState<UnitData | undefined>(undefined);
-    const [challenges, setChallenges] = useState<ChallengeData | undefined>(undefined);
+    // Units and challenges available to the player
+    const [unitList, setUnitList] = useState<UnitData | undefined>(undefined);
+    const [challengeList, setChallengeList] = useState<ChallengeData | undefined>(undefined);
 
     // Challenge id and name that the player is creating
     const [challenge, setChallenge] = useState<ChallengeName | undefined>(undefined);
@@ -26,12 +26,19 @@ export default function ChallengeMenu(){
     // Units that the player will join the challenge with
     const [unitChoices, setUnitChoices] = useState<UnitImage[]>([]);
 
+    // Whether or not the player is waiting for a challenge to start
+    const [waiting, setWaiting] = useState<boolean>(false);
     // Whether or not the challenge has started
     const [started, setStarted] = useState<boolean>(false);
 
     
+    // Called by the challenge player when joining a challenge
+    const onJoin = useCallback(() => {
+        setWaiting(true);
+    }, []);
     // Called by the challenge player when the challenge starts
     const onStarted = useCallback(() => {
+        setWaiting(false);
         setStarted(true);
     }, []);
     // Called by the challenge player when the list of rooms is refreshed
@@ -57,14 +64,15 @@ export default function ChallengeMenu(){
     const tokenString: string = (typeof token === "string" ? token : "");
 
     useEffect(() => {
-        AuthRequest("/unit", {setState: [{func: (value: UnitData) => {console.log(value); setUnits(value);}, attr: ""}]});
-        AuthRequest("/challenge", {setState: [{func: (value: ChallengeData) => {console.log(value); setChallenges(value);}, attr: ""}]});
+        AuthRequest("/unit", {setState: [{func: (value: UnitData) => setUnitList(value), attr: ""}]});
+        AuthRequest("/challenge", {setState: [{func: (value: ChallengeData) => setChallengeList(value), attr: ""}]});
         AuthRequest("/resources", {setState: [{func: setResources, attr: ""}]});
 
         return (() => {
+            setWaiting(false);
             setStarted(false);
-            setUnits(undefined);
-            setChallenges(undefined);
+            setUnitList(undefined);
+            setChallengeList(undefined);
             setChallenge(undefined);
             setRoomList([]);
             setRoom(undefined);
@@ -78,18 +86,23 @@ export default function ChallengeMenu(){
             <Flex justifyContent={"center"}>
                 <Text fontSize={"4xl"} className={"heading-4xl"}>Challenges</Text>
             </Flex>
-            <ChallengePlayer address={"http://localhost:11600"} token={tokenString} room={room} createChallenge={challenge} unitChoices={unitChoices} onStarted={onStarted} setRoomList={getRoomList}/>
-            {started === false ?
+            <ChallengePlayer address={"http://localhost:11600"} token={tokenString} room={room} createChallenge={challenge} unitChoices={unitChoices} onJoin={onJoin} onStarted={onStarted} setRoomList={getRoomList}/>
+            {(started === false && waiting === false && typeof unitList !== "undefined" && typeof resources !== "undefined" && typeof challengeList !== "undefined") ?
                 <Flex flexDir={"column"} alignItems={"center"}>
-                <Flex h={"200px"}/>
-                {typeof units !== "undefined" ? <UnitSelection data={units} setSelected={confirmUnitChoices}/> : <></>}
-                <RoomSelection data={roomList} level={(typeof resources !== "undefined" ? resources.level : 1)} setSelected={confirmRoomChoice}/>
-                {(typeof challenges !== "undefined" && typeof resources !== "undefined") ? <ChallengeSelection data={challenges} level={(typeof resources !== "undefined" ? resources.level : 1)} setSelected={confirmChallengeChoice}/> : <></>}
+                    <UnitSelection data={unitList} setSelected={confirmUnitChoices}/>
+                    <RoomSelection data={roomList} level={resources.level} setSelected={confirmRoomChoice}/>
+                    <ChallengeSelection data={challengeList} level={resources.level} setSelected={confirmChallengeChoice}/>
                 </Flex>
                 :
                 <></>
             }
-            
+            {(started === false && waiting === true) ?
+                <Flex flexDir={"column"} alignItems={"center"}>
+                    <Text fontSize={"2xl"} className={"heading-2xl"}>Waiting for players to join</Text>
+                </Flex>
+                :
+                <></>
+            }
         </Flex>
     );
 }

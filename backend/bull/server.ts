@@ -17,7 +17,7 @@ interface ServerToClientEvents{
     rooms: (challenges: ChallengeRoomPreview[]) => void;
     preview: (units: UnitDisplay[]) => void;
     join: (playerIndex: number) => void;
-    finish: (win: boolean, reward: RewardEvent) => void;
+    finish: (win: number, reward: RewardEvent) => void;
 }
 
 interface ClientToServerEvents{
@@ -139,16 +139,16 @@ async function claimReward(username: string, challenge: ChallengeManager, room: 
         let multiplier = 1;
         let lastWin = results[0].last_win;
         let totalWins = results[0].total_wins;
-        if (isWinner === true && reward.bonus === true && currentTime - lastWin >= DAILY_CHALLENGE_REFRESH){
+        if (isWinner === 1 && reward.bonus === true && currentTime - lastWin >= DAILY_CHALLENGE_REFRESH){
             multiplier = DAILY_CHALLENGE_MULTIPLIER;
             lastWin = currentTime;
         }
         
         const challengeid = challenge.extraData.challengeid;
 
-        if (challengeid < REPLAY_CHALLENGE_START && isWinner === true){
+        if (challengeid < REPLAY_CHALLENGE_START && isWinner === 1){
             if (completed.includes(challengeid) === true){
-                room.emit("finish", isWinner, {
+                room.emit("finish", 1, {
                     coins: 0,
                     points: 0,
                     bonusClaimed: false,
@@ -168,7 +168,7 @@ async function claimReward(username: string, challenge: ChallengeManager, room: 
             accessoryUnlocked = true;
         }
 
-        if (isWinner === true && challenge.extraData.acceptCost > 0){
+        if (isWinner === 1 && challenge.extraData.acceptCost > 0){
             totalWins++;
 
             // Some accessories are unlocked after winning enough challenges
