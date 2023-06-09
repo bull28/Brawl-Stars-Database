@@ -58,17 +58,17 @@ function Login(){
                     <FormLabel htmlFor={'username'}>Username</FormLabel>
                     <InputGroup>
                         <InputLeftElement><BsFillPersonFill/></InputLeftElement>
-                        <Input type={'text'} mb={5} value={username} onChange={(e) => {setUsername(e.target.value)}} borderColor={'gray.400'} style={{caretColor: 'auto'}}/>
+                        <Input id={"username"} type={'text'} mb={5} value={username} onChange={(e) => {setUsername(e.target.value)}} borderColor={'gray.400'} style={{caretColor: 'auto'}}/>
                     </InputGroup>
                     <FormLabel htmlFor={'password'}>Password</FormLabel>
                     <InputGroup>
                         <InputLeftElement><RiKeyFill/></InputLeftElement>
-                        <Input type={'password'}  value={password} onChange={(e) => {setPassword(e.target.value)}} borderColor={'gray.400'} style={{caretColor: 'auto'}}/>
+                        <Input id={"password"} type={'password'}  value={password} onChange={(e) => {setPassword(e.target.value)}} borderColor={'gray.400'} style={{caretColor: 'auto'}}/>
                     </InputGroup>
                     <Flex justifyContent={'right'}>
                         <FormHelperText mb={10} color={'blue.400'}><Link>Forgot Password?</Link></FormHelperText>
                     </Flex>
-                    <Input type={'submit'} value={'Login'} backgroundColor={'blue.400'} color={'white'} fontWeight={'500'} _hover={{backgroundColor: "blue.500"}} cursor={'pointer'}/>
+                    <Input id={"bull"} type={'submit'} value={'Login'} backgroundColor={'blue.400'} color={'white'} fontWeight={'500'} _hover={{backgroundColor: "blue.500"}} cursor={'pointer'}/>
                     <Flex mt={5} justifyContent={'space-between'}>
                         <FormHelperText>Don't have an account? <Link as={RouterLink} to="/signup" color={'blue.400'}>Sign Up</Link></FormHelperText>
                         <FormHelperText><Link as={RouterLink} to="/" color={'blue.600'}>Return Home</Link></FormHelperText>

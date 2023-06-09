@@ -78,7 +78,7 @@ export default function MyTrades() {
                     data?.map((trade) => {
                         if (trade.accepted){
                             return (
-                                <ScaleFade in={true}>
+                                <ScaleFade key={trade.tradeid} in={true}>
                                 <Flex flexDir={'column'}>
                                 <Flex h={'25vh'} maxW={'fit-content'} flexDir={'column'} alignItems={'center'} justifyContent={'space-between'} textAlign={'center'} bgColor={'blue.800'} p={3} borderRadius={'xl'} border={'3px solid #75fa9d'} cursor={'pointer'} transition={'0.25s'}>
                 <Flex w={'85%'} justifyContent={'space-between'}  fontSize={'lg'}>
@@ -101,7 +101,7 @@ export default function MyTrades() {
                     },
                 }}>
                             {trade.request.map((request) => (
-                                <Flex p={3} border={'2px solid black'} borderRadius={'lg'} bgColor={request.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
+                                <Flex key={request.pinImage} p={3} border={'2px solid black'} borderRadius={'lg'} bgColor={request.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
                                     <Image maxW={'60px'} src={`/image/${request.pinImage}`} fallback={<Spinner/>}/>
                                     <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} >{request.amount}</Text>
                                 </Flex>
@@ -131,7 +131,7 @@ export default function MyTrades() {
                     },
                 }}>
                             {trade.offer.map((offer) => (
-                                <Flex p={3} border={'2px solid black'} borderRadius={'lg'} bgColor={offer.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
+                                <Flex key={offer.pinImage} p={3} border={'2px solid black'} borderRadius={'lg'} bgColor={offer.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
                                     <Image  maxW={'60px'} src={`/image/${offer.pinImage}`} fallback={<Spinner/>}/>
                                     <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} >{offer.amount}</Text>
                                 </Flex>
@@ -154,7 +154,7 @@ export default function MyTrades() {
             </ScaleFade>
                             )
                         }
-                        return <></>;
+                        return <Flex key={trade.tradeid}></Flex>;
                     })
                 }
 
@@ -179,7 +179,7 @@ export default function MyTrades() {
                     data?.map((trade) => {
                         if ((trade.timeLeft.hour > 0 || trade.timeLeft.minute > 0 || trade.timeLeft.second > 0)){
                             return (
-                                <ScaleFade in={true}>
+                                <ScaleFade key={trade.tradeid} in={true}>
                                 <Flex flexDir={'column'}  scrollSnapAlign={'start'}>
                                 <Flex h={'25vh'} maxW={'fit-content'} flexDir={'column'} alignItems={'center'} justifyContent={'space-between'} textAlign={'center'} bgColor={'blue.800'} p={3} borderRadius={'xl'} border={'3px solid orange'} cursor={'pointer'} transition={'0.25s'}>
                 <Flex w={'85%'} justifyContent={'space-between'}  fontSize={'lg'}>
@@ -202,7 +202,7 @@ export default function MyTrades() {
                     },
                 }}>
                             {trade.request.map((request) => (
-                                <Flex p={3} border={'2px solid black'} borderRadius={'lg'} bgColor={request.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
+                                <Flex key={request.pinImage} p={3} border={'2px solid black'} borderRadius={'lg'} bgColor={request.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
                                     <Image maxW={'60px'} src={`/image/${request.pinImage}`} fallback={<Spinner/>}/>
                                     <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} >{request.amount}</Text>
                                 </Flex>
@@ -232,7 +232,7 @@ export default function MyTrades() {
                     },
                 }}>
                             {trade.offer.map((offer) => (
-                                <Flex p={3} border={'2px solid black'} borderRadius={'lg'} bgColor={offer.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
+                                <Flex key={offer.pinImage} p={3} border={'2px solid black'} borderRadius={'lg'} bgColor={offer.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
                                     <Image  maxW={'60px'} src={`/image/${offer.pinImage}`} fallback={<Spinner/>}/>
                                     <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} >{offer.amount}</Text>
                                 </Flex>
@@ -256,7 +256,7 @@ export default function MyTrades() {
             </ScaleFade>
                             )
                         }
-                        return <></>;
+                        return <Flex key={trade.tradeid}></Flex>;
                     })
                 }
                 
@@ -281,7 +281,7 @@ export default function MyTrades() {
                     data?.map((trade) => {
                         if (!trade.accepted && ((trade.timeLeft.hour === 0 && trade.timeLeft.minute === 0 && trade.timeLeft.second === 0))){
                             return (
-                                <ScaleFade in={true}>
+                                <ScaleFade key={trade.tradeid} in={true}>
                                 <Flex flexDir={'column'}>
                                 <Flex h={'25vh'} maxW={'fit-content'} flexDir={'column'} alignItems={'center'} justifyContent={'space-between'} textAlign={'center'} bgColor={'blue.800'} p={3} borderRadius={'xl'} border={'3px solid orange'} cursor={'pointer'} transition={'0.25s'}>
                 <Flex w={'85%'} justifyContent={'space-between'}  fontSize={'lg'}>
@@ -304,7 +304,7 @@ export default function MyTrades() {
                     },
                 }}>
                             {trade.request.map((request) => (
-                                <Flex p={3} border={'2px solid black'} borderRadius={'lg'} bgColor={request.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
+                                <Flex key={request.pinImage} p={3} border={'2px solid black'} borderRadius={'lg'} bgColor={request.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
                                     <Image maxW={'60px'} src={`/image/${request.pinImage}`} fallback={<Spinner/>}/>
                                     <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} >{request.amount}</Text>
                                 </Flex>
@@ -335,7 +335,7 @@ export default function MyTrades() {
                 }}>
                             {trade.offer.map((offer) => (
                                 
-                                <Flex p={3} border={'2px solid black'} borderRadius={'lg'} bgColor={offer.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
+                                <Flex key={offer.pinImage} p={3} border={'2px solid black'} borderRadius={'lg'} bgColor={offer.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
                                     <Image  maxW={'60px'} src={`/image/${offer.pinImage}`} fallback={<Spinner/>}/>
                                     <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} >{offer.amount}</Text>
                                 </Flex>
@@ -357,7 +357,7 @@ export default function MyTrades() {
             </ScaleFade>
                             )
                         }
-                        return <></>;
+                        return <Flex key={trade.tradeid}></Flex>;
                     })
                 }
                 
@@ -371,7 +371,7 @@ export default function MyTrades() {
             <ModalBody>                
                 <SimpleGrid columns={[2,3,4,5]} spacing={3}>
                     {acceptData?.pins.map((pin, x) => (
-                        <Flex py={'20%'} bgColor={pin.rarityColor} flexDir={'column'} justifyContent={'space-between'} alignItems={'center'} textAlign={'center'} borderRadius={'2xl'} border={'2px solid black'} boxShadow={'rgba(149, 157, 165, 0.2) 0px 8px 24px;'} maxW={'350px'} maxH={'600px'} transform={'scale(0)'} animation={`${contentTransition} 0.5s ease-out ${((x/2)+0.5)}s 1 forwards`}>                                                                                            
+                        <Flex key={pin.pinImage} py={'20%'} bgColor={pin.rarityColor} flexDir={'column'} justifyContent={'space-between'} alignItems={'center'} textAlign={'center'} borderRadius={'2xl'} border={'2px solid black'} boxShadow={'rgba(149, 157, 165, 0.2) 0px 8px 24px;'} maxW={'350px'} maxH={'600px'} transform={'scale(0)'} animation={`${contentTransition} 0.5s ease-out ${((x/2)+0.5)}s 1 forwards`}>                                                                                            
                             <Image borderRadius={'xl'} src={`/image/${pin.pinImage}`} loading={'eager'}/>
                             <Text  fontSize={'2xl'} className={'heading-2xl'} mt={1}>{`${pin.amount}x`}</Text>
                         </Flex>

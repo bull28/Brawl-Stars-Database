@@ -59,15 +59,15 @@ function Signup(){
                     <FormLabel htmlFor={'username'}>Username</FormLabel>
                     <InputGroup>
                         <InputLeftElement><BsFillPersonFill/></InputLeftElement>
-                        <Input type={'text'} mb={5} value={username} onChange={(e) => {setUsername(e.target.value)}} borderColor={'gray.400'} style={{caretColor: 'auto'}}/>
+                        <Input id={"username"} type={'text'} mb={5} value={username} onChange={(e) => {setUsername(e.target.value)}} borderColor={'gray.400'} style={{caretColor: 'auto'}}/>
                     </InputGroup>
                     <FormLabel htmlFor={'password'}>Password</FormLabel>
                     <InputGroup>
                         <InputLeftElement><RiKeyFill/></InputLeftElement>
-                        <Input type={'password'}  value={password} onChange={(e) => {setPassword(e.target.value)}} borderColor={'gray.400'} style={{caretColor: 'auto'}}/>
+                        <Input id={"password"} type={'password'}  value={password} onChange={(e) => {setPassword(e.target.value)}} borderColor={'gray.400'} style={{caretColor: 'auto'}}/>
                     </InputGroup>
                     <PasswordStrength password={password}/>
-                    <Input type={'submit'} value={'Sign Up'} backgroundColor={'blue.400'} color={'white'} fontWeight={'500'} _hover={{backgroundColor: "blue.500"}} cursor={'pointer'} mt={10}/>
+                    <Input id={"bull"} type={'submit'} value={'Sign Up'} backgroundColor={'blue.400'} color={'white'} fontWeight={'500'} _hover={{backgroundColor: "blue.500"}} cursor={'pointer'} mt={10}/>
                     <Flex mt={5} justifyContent={'space-between'}>
                     <FormHelperText>Already Have an Account? <Link as={RouterLink} to="/login" color={'blue.400'}>Log In</Link></FormHelperText>
                     <FormHelperText><Link as={RouterLink} to="/" color={'blue.600'}>Return Home</Link></FormHelperText>

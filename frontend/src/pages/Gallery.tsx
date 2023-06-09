@@ -72,7 +72,7 @@ export default function Gallery() {
                           },
                       }}>
             {data?.background.map((bg) => (
-              <Flex bgColor={(cosmetics?.background === bg.path || ( !cosmetics?.background && bg.displayName === 'Default' ) ) ? 'green.300' : 'lightskyblue'} justifyContent={'space-between'} p={4} borderRadius={'lg'} my={'1%'} border={'2px solid black'}>
+              <Flex key={bg.path} bgColor={(cosmetics?.background === bg.path || ( !cosmetics?.background && bg.displayName === 'Default' ) ) ? 'green.300' : 'lightskyblue'} justifyContent={'space-between'} p={4} borderRadius={'lg'} my={'1%'} border={'2px solid black'}>
                 <Flex>
                   <Image  borderRadius={'lg'} border={'2px solid'} borderColor={'black'} w={'15vh'} h={'15vh'} src={`/image/${bg.path}`} boxShadow={'0px 0px 25px #fff'}/>
                   <Flex flexDir={'column'} ml={'5%'} h={'11vh'}  justifyContent={'space-between'}>
@@ -102,7 +102,7 @@ export default function Gallery() {
                           },
                       }}>
             {data?.icon.map((icon) => (
-              <Flex bgColor={(cosmetics?.icon === icon.path || ( !cosmetics?.icon && icon.displayName === 'Default' ) ) ? 'green.300' : 'lightskyblue'} justifyContent={'space-between'} p={4} borderRadius={'lg'} my={'1%'} border={'2px solid black'}>
+              <Flex key={icon.path} bgColor={(cosmetics?.icon === icon.path || ( !cosmetics?.icon && icon.displayName === 'Default' ) ) ? 'green.300' : 'lightskyblue'} justifyContent={'space-between'} p={4} borderRadius={'lg'} my={'1%'} border={'2px solid black'}>
                 <Flex>
                   <Image bgColor={'black'} borderRadius={'lg'} border={'2px solid'} borderColor={'white'} w={'15vh'} h={'15vh'} src={`/image/${icon.preview}`} boxShadow={'0px 0px 25px #fff'}/>
                   <Flex flexDir={'column'} ml={'5%'} h={'11vh'}  justifyContent={'space-between'}>
@@ -135,7 +135,7 @@ export default function Gallery() {
                           },
                       }}>
             {data?.music.map((music) => (
-              <Flex bgColor={(cosmetics?.music === music.path || ( !cosmetics?.music && music.displayName === 'Default' ) ) ? 'green.300' : 'lightskyblue'} justifyContent={'space-between'} p={4} borderRadius={'lg'} my={'1%'} border={'2px solid black'}>
+              <Flex key={music.path} bgColor={(cosmetics?.music === music.path || ( !cosmetics?.music && music.displayName === 'Default' ) ) ? 'green.300' : 'lightskyblue'} justifyContent={'space-between'} p={4} borderRadius={'lg'} my={'1%'} border={'2px solid black'}>
                 <Flex>
                   <Image  borderRadius={'lg'} border={'2px solid'} borderColor={'black'} w={'15vh'} h={'15vh'} boxShadow={'0px 0px 25px #fff'}/>
                   <Flex flexDir={'column'} ml={'5%'} h={'11vh'}  justifyContent={'space-between'}>
@@ -166,7 +166,7 @@ export default function Gallery() {
                               },
                           }}>
                 {data?.scene.map((scene) => (
-                  <Flex bgColor={(cosmetics?.scene === scene.path || ( !cosmetics?.scene && scene.displayName === 'Default' ) ) ? 'green.300' : 'lightskyblue'} justifyContent={'space-between'} p={4} borderRadius={'lg'} my={'1%'} border={'2px solid black'}>
+                  <Flex key={scene.path} bgColor={(cosmetics?.scene === scene.path || ( !cosmetics?.scene && scene.displayName === 'Default' ) ) ? 'green.300' : 'lightskyblue'} justifyContent={'space-between'} p={4} borderRadius={'lg'} my={'1%'} border={'2px solid black'}>
                     <Flex>
                       <Image bgColor={'black'} borderRadius={'lg'} border={'2px solid'} borderColor={'white'} w={'15vh'} h={'15vh'} src={`/image/${scene.preview}`} boxShadow={'0px 0px 25px #fff'}/>
                       <Flex flexDir={'column'} ml={'5%'} h={'11vh'}  justifyContent={'space-between'}>

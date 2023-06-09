@@ -59,9 +59,7 @@ export default function BrawlBoxDisplay({ data, tokens, loadResources }: {data: 
                             <Image src={`/image/${data.image}`}/>
                             <Text>{data.description}</Text>
                             <Flex flexDir={'column'}>
-                                {data?.dropsDescription.map((drop) => (
-                                    <Text>{drop}</Text>
-                                ))}     
+                                {typeof data !== "undefined" ? <Text whiteSpace={"pre"}>{data.dropsDescription.reduce((previousValue, currentValue) => previousValue + "\n" + currentValue)}</Text> : <></>}
                             </Flex>
                         </AlertDialogBody>
                         <AlertDialogFooter>
@@ -84,7 +82,7 @@ export default function BrawlBoxDisplay({ data, tokens, loadResources }: {data: 
                         <Flex mt={5} w={'100%'} h={'100%'} justifyContent={'center'} alignItems={'center'} textAlign={'center'}>       
                         <SimpleGrid columns={(boxContents && boxContents.length > 4) ? Math.ceil(boxContents.length / 2) : boxContents?.length} spacing={10}>
                             {boxContents?.map((content, x) => (        
-                                <Flex py={'20%'} bgColor={content.backgroundColor} flexDir={'column'} justifyContent={'space-between'} alignItems={'center'} textAlign={'center'} borderRadius={'2xl'} border={'2px solid black'} boxShadow={'rgba(149, 157, 165, 0.2) 0px 8px 24px;'} maxW={'350px'} maxH={'600px'} transform={'scale(0)'} animation={`${contentTransition} 0.5s ease-out ${((x/2)+0.5)}s 1 forwards`} w={'20vw'}>                                    
+                                <Flex key={content.rewardType + content.displayName + content.image} py={'20%'} bgColor={content.backgroundColor} flexDir={'column'} justifyContent={'space-between'} alignItems={'center'} textAlign={'center'} borderRadius={'2xl'} border={'2px solid black'} boxShadow={'rgba(149, 157, 165, 0.2) 0px 8px 24px;'} maxW={'350px'} maxH={'600px'} transform={'scale(0)'} animation={`${contentTransition} 0.5s ease-out ${((x/2)+0.5)}s 1 forwards`} w={'20vw'}>                                    
                                 
                                     <Text mb={2}  fontSize={'3xl'} className={'heading-2xl'}>{content.displayName}</Text>                                    
                                     <Image borderRadius={'xl'} src={`/image/${content.image}`} loading={'eager'}/>

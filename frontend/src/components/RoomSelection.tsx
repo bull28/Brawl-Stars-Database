@@ -26,15 +26,18 @@ export default function UnitSelection({data, level, setSelected}: RoomSelectionP
                             backgroundColor: "rgba(0, 0, 0, 0.5)",
                             borderRadius: "6px",
                             },
-                        }}>{data.map((value, index) => {
+                            "&::-webkit-scrollbar-corner": {
+                            backgroundColor: "rgba(0, 0, 0, 0)",
+                            }
+                        }}>{data.map((value) => {
                             return (
-                                <Flex key={index} bgColor={"blue.800"} flexDir={"column"} p={2} borderRadius={"lg"} border={"2px solid #000"}>
+                                <Flex key={value.username} bgColor={"blue.800"} flexDir={"column"} p={2} borderRadius={"lg"} border={"2px solid #000"}>
                                     <Text fontSize={"xl"} className={"heading-xl"}>{`${value.username}'s Room`}</Text>
                                     <Divider my={1}/>
                                     <Text fontSize={"lg"} className={"heading-lg"}>{value.displayName}</Text>
-                                    <SimpleGrid columns={[1,1,1,1,2]} spacing={1}>{value.players.map((player, index2) => {
+                                    <SimpleGrid columns={[1,1,1,1,2]} spacing={1}>{value.players.map((player) => {
                                         return (
-                                            <Flex key={index2} alignItems={"center"} wrap={"wrap"}>
+                                            <Flex key={value.username + player.username} alignItems={"center"} wrap={"wrap"}>
                                                 <Flex h={10} justifyContent={"center"} alignItems={"center"} borderRadius={"50%"} border={"2px solid #fff"}>
                                                     <Image h={"100%"} objectFit={"contain"} borderRadius={"50%"} src={player.avatar !== "" ? `/image/${player.avatar}` : "/image/avatars/free/default.webp"}/>
                                                 </Flex>

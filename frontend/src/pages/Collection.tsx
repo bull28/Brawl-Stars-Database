@@ -16,10 +16,8 @@ import AccessoryLevel from "../components/AccessoryLevel";
 export default function Collection() {
     const [data, setData] = useState<CollectionData>()
     const [brawlBoxData, setBrawlBoxData] = useState<[BrawlBoxData]>()
-    const [loaded, updateLoaded] = useState<any>([])
     const [searchParams] = useSearchParams()
-    const [brawlers, setBrawlers] = useState<any>([])
-    const [ tokens, setTokens ] = useState<number>()
+    const [tokens, setTokens] = useState<number>(0)
     const [level, setLevel] = useState<number>(1)
     const [points, setPoints] = useState<number>(0)
     const [upgradePoints, setUpgradePoints] = useState<number>(1)
@@ -42,21 +40,6 @@ export default function Collection() {
     useEffect(() => {
         loadResources();
     }, [loadResources])
-
-    useEffect(() => {
-        data?.brawlers.forEach(element => {
-            setBrawlers((brawlers: any) => [...brawlers, element.name])
-        })
-    }, [data])
-
-    const AddLoadedBrawler = (brawler: string) => {
-        if (loaded && !loaded.includes(brawler)) {
-            updateLoaded((loaded: any) => [...loaded, brawler])
-        }
-    }
-
-    
-
 
     return (
         <Flex flexDir={'column'} w={'100%'} justifyContent={'center'} alignItems={'center'} textAlign={'center'} overflowX={'hidden'}>            
@@ -120,7 +103,9 @@ export default function Collection() {
                         <Text  className={'heading-2xl'} fontSize={'2xl'} mb={3}>Brawl Boxes</Text>
                         <HStack bgColor={'blue.800'} p={5} mx={10} maxW={'50vw'}>
                         {brawlBoxData?.map((brawlBox: BrawlBoxData) => (
-                            <BrawlBoxDisplay data={brawlBox} tokens={tokens} loadResources={loadResources}/>
+                            <Flex key={brawlBox.name}>
+                                <BrawlBoxDisplay data={brawlBox} tokens={tokens} loadResources={loadResources}/>
+                            </Flex>
                         ))}
                         </HStack>
                     </Flex>
@@ -132,10 +117,10 @@ export default function Collection() {
                 </Flex>
             }
             <Text fontSize={'3xl'} className={'heading-3xl'} my={10}>Brawlers and Pins</Text>
-            {(brawlers.length > 0) && <Accordion defaultIndex={[brawlers.indexOf(searchParams.get('brawler'))]} allowMultiple>
+            {(typeof data !== "undefined" && data.brawlers.length > 0) && <Accordion defaultIndex={[data.brawlers.findIndex((value) => value.name === searchParams.get('brawler'))]} allowMultiple>
             <SimpleGrid columns={[1,2,3,4]} spacing={3} w={'80vw'} bgColor={'blue.800'} p={5} mb={10}>
                 {data && data.brawlers.map((brawler) => (
-                    <AccordionItem border={brawler.unlockedPins === brawler.totalPins ? '3px solid #E7A210' : '3px solid black'}>
+                    <AccordionItem key={brawler.name} border={brawler.unlockedPins === brawler.totalPins ? '3px solid #E7A210' : '3px solid black'}>
                         {({ isExpanded }) => (
                         <>
                         <h2 id={brawler.name}>
@@ -160,7 +145,7 @@ export default function Collection() {
                             </AccordionButton>      
                         </h2>
                         <AccordionPanel>
-                            {(isExpanded || loaded?.includes(brawler.name) ) && <>
+                            {(isExpanded) && <>
 
                             <HStack overflowX={'scroll'} spacing={3} sx={{
                         '&::-webkit-scrollbar': {
@@ -174,13 +159,13 @@ export default function Collection() {
                         },
                     }}> 
                                 {brawler.pins.map((pin) => (                                        
-                                        <Box minW={'100px'} bgColor={Object.values(data?.pinRarityColors || {})[pin.r]} p={3} borderRadius={'md'} border={'2px solid black'}>
+                                        <Box key={brawler.name + pin.i} minW={'100px'} bgColor={Object.values(data?.pinRarityColors || {})[pin.r]} p={3} borderRadius={'md'} border={'2px solid black'}>
                                             <Image w={'100px'} filter={(pin.a === 0) ? 'grayscale(100%)': 'none'} src={`/image/${brawler.pinFilePath+pin.i}`} fallback={<Spinner/>}/>                            
                                             <Text my={1} color={(pin.a === 0) ? 'gray' : 'white'} fontSize={'lg'} className={'heading-lg'}>{`${pin.a}x`}</Text>                                            
                                         </Box>                                                                                                                                                          
                                 ))}                                
                             </HStack>
-                            {AddLoadedBrawler(brawler.name)}</>}
+                            </>}
                             <Center flexDir={'column'} mt={3}>
                                 {!brawler.u && <Tooltip label={'Unlock By Opening Boxes'}><Tag colorScheme={'red'} my={2}>Unlock This Brawler To Collect Pins</Tag></Tooltip>}
                                 <Text mb={'30px'}  className={'heading-sm'}>{`Total ${brawler.displayName} Pins: ${brawler.pinCopies}`}</Text>
@@ -198,8 +183,8 @@ export default function Collection() {
                 <AccessoryLevel level={level} points={points} upgradePoints={upgradePoints}/>
             </Flex>
             <SimpleGrid columns={[1,2,3,4]} spacing={3} w={'80vw'} bgColor={'blue.800'} p={5} mb={10}>
-                {data && data.accessories.sort((a, b) => a.unlockLevel - b.unlockLevel).map((accessory, index) => (
-                    <Flex key={index} bgColor={level >= accessory.unlockLevel ? '#a248ff' : '#512480'} flexDir={'column'} alignItems={'center'} border={accessory.unlocked === true ? '3px solid #E7A210' : '3px solid black'}>
+                {data && data.accessories.sort((a, b) => a.unlockLevel - b.unlockLevel).map((accessory) => (
+                    <Flex key={accessory.displayName + accessory.image} bgColor={level >= accessory.unlockLevel ? '#a248ff' : '#512480'} flexDir={'column'} alignItems={'center'} border={accessory.unlocked === true ? '3px solid #E7A210' : '3px solid black'}>
                         <Text fontSize={'2xl'} className={'heading-2xl'}>{accessory.displayName}</Text>
                         <Box pos={'relative'} maxW={'40%'} m={2}>
                             <Image filter={accessory.unlocked === true ? 'drop-shadow(0 0 2rem rgb(255, 255, 255));' : ''} src={`/image/${accessory.image}`}/>

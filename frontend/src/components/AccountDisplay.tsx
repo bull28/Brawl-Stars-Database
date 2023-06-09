@@ -27,10 +27,34 @@ import { useNavigate } from 'react-router-dom'
 import { RainbowBorder } from '../themes/animations'
 import {displayShort, displayLong} from '../helpers/LargeNumberDisplay'
 
+type TokenStorage = {[k: string]: string;};
+
+function parseTokens(text: string | null): TokenStorage{
+    if (text === null || text === undefined){
+        return {};
+    }
+
+    try{
+        let data = JSON.parse(text);
+
+        const tokens: TokenStorage = {};
+
+        for (let x in data){
+            if (typeof x === "string" && typeof data[x] === "string"){
+                tokens[x] = data[x];
+            }
+        }
+
+        return data;
+    } catch (error){}
+    
+    return {}
+}
+
 
 export default function AccountDisplay() {
     const [data, setData] = useState<UserInfoProps>()
-    const [tokenData, setTokenData] = useState<any>()
+    const [tokenData, setTokenData] = useState<TokenStorage>({})
     const [removing, toggleRemoving] = useState<boolean>(false)
 
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -39,10 +63,8 @@ export default function AccountDisplay() {
 
     
     useEffect(() => {
-        
         AuthRequest('/resources', {setState: [{func: setData, attr: ""}]})
-
-        setTokenData(JSON.parse(localStorage.getItem('tokens') || "{}"))
+        setTokenData(parseTokens(localStorage.getItem("tokens")));
     }, [])
 
 
@@ -51,7 +73,7 @@ export default function AccountDisplay() {
         <Menu autoSelect={false} closeOnSelect={false}>
             <MenuButton>
                 <Flex justifyContent={'center'} alignItems={'center'} borderRadius={'50%'} border={(data?.avatarColor !== 'rainbow') ? `3px solid ${data?.avatarColor}` : ''} animation={(data?.avatarColor === 'rainbow') ? `${RainbowBorder()} 12s infinite` : ''}>
-                    <Image loading={'eager'} src={`/image/${data?.avatar}`} borderRadius={'50%'} w={'50px'}/>
+                    <Image loading={'eager'} src={typeof data !== "undefined" ? `/image/${data.avatar}` : undefined} borderRadius={'50%'} w={'50px'}/>
                 </Flex>
             </MenuButton>
             <MenuList>
@@ -127,17 +149,11 @@ export default function AccountDisplay() {
                         borderRadius: `6px`,
                         },
                     }}>
-                    {
-                        tokenData && Object.keys(tokenData).map((token) => (
-
-                            <>
-                                <AccountMenuDisplay username={token} token={tokenData[token]} toggleRemove={removing}/>
-                            </>
-
-                        ))
-                        
-                    }                   
-
+                    {Object.keys(tokenData).map((token) => (
+                        <Flex key={token}>
+                            <AccountMenuDisplay username={token} token={tokenData[token]} toggleRemove={removing}/>
+                        </Flex>
+                    ))}
                 </DrawerBody>
 
                 <DrawerFooter>

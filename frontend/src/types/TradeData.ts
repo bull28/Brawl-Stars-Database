@@ -9,8 +9,6 @@ export interface FilterData {
 }
 
 export interface PinObject {
-    brawler: string,
-    pin: string,
     pinImage: string,
     amount: number,
     rarityValue: number,

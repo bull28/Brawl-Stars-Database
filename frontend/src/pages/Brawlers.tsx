@@ -25,7 +25,13 @@ export default function Brawlers() {
         </Text>
         {data && 
             <SimpleGrid columns={[2,3,4,5,6,7,8]} w={'95%'}>
-                {data.map((brawler) => <ScaleFade in={true} delay={0.15}><BrawlerView key={brawler.name} image={brawler.image} name={brawler.name} displayName={brawler.displayName} rarityColor={brawler.rarity.color}/></ScaleFade>)}
+                {data.map((brawler) =>
+                    <Flex key={brawler.name}>
+                        <ScaleFade in={true} delay={0.15}>
+                            <BrawlerView image={brawler.image} name={brawler.name} displayName={brawler.displayName} rarityColor={brawler.rarity.color}/>
+                        </ScaleFade>
+                    </Flex>
+                )}
             </SimpleGrid>
         }
     </Flex>

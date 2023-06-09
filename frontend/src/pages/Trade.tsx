@@ -29,6 +29,14 @@ interface PinData {
     }
 }
 
+interface TradePreview{
+    amount: number;
+    brawler: string;
+    name: string;
+    pinImage: string;
+    rarityColor: string;
+}
+
 export default function Trade() {
     const [filter, updateFilter] = useState<FilterData>({
         sortMethod: "",
@@ -42,8 +50,8 @@ export default function Trade() {
     const [results, setResults] = useState<[TradeData]>()
     const [brawlerData, setBrawlerData] = useState<[Brawler]>()
     const [brawlerPinData, setPinData] = useState<[PinData]>()
-    const [offer, setOffer] = useState<any>([]) //fix
-    const [req, setReq] = useState<any>([]) //fix
+    const [offer, setOffer] = useState<TradePreview[]>([]) //fix
+    const [req, setReq] = useState<TradePreview[]>([]) //fix
     const [pickingBrawler, toggleScreen] = useState<boolean>(true)
     const [brawlerchoice, setBrawlerChoice] = useState<string>()
     const [amount, setAmount] = useState<number>(1)
@@ -78,7 +86,7 @@ export default function Trade() {
             temp = {
                 amount: offer[k].amount,
                 brawler: offer[k].brawler,
-                pin: offer[k].pin
+                pin: offer[k].name
             }
             offerObject.push(temp)
         }
@@ -88,7 +96,7 @@ export default function Trade() {
             temp = {
                 amount: req[k].amount,
                 brawler: req[k].brawler,
-                pin: req[k].pin
+                pin: req[k].name
             }
             reqObject.push(temp)
         }
@@ -103,7 +111,7 @@ export default function Trade() {
                 getCost: true
             }).then((res) => {
                 setTradeCost(res.data.tradeCost)
-            })
+            }).catch((error) => {});
         } else {
             setTradeCost(0)
         }
@@ -156,11 +164,37 @@ export default function Trade() {
         getTrades();   
     }, [username, getTrades])
 
-    const changeFilter = (query:string, value:any) => {
-        updateFilter(prevState => ({
-            ...prevState,
-            [query]: value
-        }))
+    const changeFilter = (query: string, value: string | number | boolean) => {
+        const newFilter: FilterData = {
+            sortMethod: filter.sortMethod,
+            page: filter.page,
+            filterInRequest: filter.filterInRequest,
+            brawler: filter.brawler,
+            pin: filter.pin,
+            pinImage: filter.pinImage,
+            username: filter.username
+        };
+        
+        if (query === "page" && typeof value === "number"){
+            newFilter.page = value;
+        } else if (query === "filterInRequest" && typeof value === "boolean"){
+            newFilter.filterInRequest = value;
+        } else if (typeof value === "string"){
+            if (query === "sortMethod"){
+                newFilter.sortMethod = value;
+            } else if (query === "brawler"){
+                newFilter.brawler = value;
+                newFilter.pin = "";
+            } else if (query === "pin"){
+                newFilter.pin = value;
+            } else if (query === "pinImage"){
+                newFilter.pinImage = value;
+            } else if (query === "username"){
+                newFilter.username = value;
+            }
+        }
+
+        updateFilter(newFilter);
     }
 
     const clearFilter = () => {
@@ -197,7 +231,7 @@ export default function Trade() {
             temp = {
                 amount: offer[k].amount,
                 brawler: offer[k].brawler,
-                pin: offer[k].pin
+                pin: offer[k].name
             }
             offerObject.push(temp)
         }
@@ -207,7 +241,7 @@ export default function Trade() {
             temp = {
                 amount: req[k].amount,
                 brawler: req[k].brawler,
-                pin: req[k].pin
+                pin: req[k].name
             }
             reqObject.push(temp)
         }
@@ -245,7 +279,7 @@ export default function Trade() {
 
         for (let i = 0; i<offer.length; i++){
             
-            if (offer[i].pin === pinName){
+            if (offer[i].name === pinName){
                 offer[i].amount = Math.min(offer[i].amount + amount, 1000)
 
                 duplicate = true;
@@ -255,7 +289,7 @@ export default function Trade() {
         }
 
         if (!duplicate){            
-            setOffer((prevState: any) => ([...prevState, {amount: amount, brawler: brawlerName, pin: pinName, pinImage: pin.image, rarityColor: color}]))
+            setOffer(offer.concat({amount: amount, brawler: brawlerName, name: pinName, pinImage: pin.image, rarityColor: color}));
         }
         
         setAmount(1)
@@ -275,7 +309,7 @@ export default function Trade() {
 
          for (let i = 0; i<req.length; i++){
             
-            if (req[i].pin === pinName){
+            if (req[i].name === pinName){
                 req[i].amount = Math.min(req[i].amount + amount, 1000)
 
                 duplicate = true;
@@ -285,7 +319,7 @@ export default function Trade() {
         }
 
         if (!duplicate){
-            setReq((prevState: any) => ([...prevState, {amount: amount, brawler: brawlerName, pin: pinName, pinImage: pin.image, rarityColor: color}]))
+            setReq(req.concat({amount: amount, brawler: brawlerName, name: pinName, pinImage: pin.image, rarityColor: color}));
         }
 
         setAmount(1)        
@@ -313,7 +347,7 @@ export default function Trade() {
                         
                         {resources?.wildCardPins.map((wildCard) => {
                             return (
-                                <Flex py={'15px'} h={'50px'} px={'30px'} bgColor={wildCard.rarityColor}justifyContent={'space-around'} alignItems={'center'} borderRadius={'5%'}>
+                                <Flex key={wildCard.rarityColor} py={'15px'} h={'50px'} px={'30px'} bgColor={wildCard.rarityColor}justifyContent={'space-around'} alignItems={'center'} borderRadius={'5%'}>
                                     <Image h={'50px'} src={`/image/resources/wildcard_pin.webp`}/>                        
                                     <Text  fontSize={'lg'} className={'heading-lg'} >{wildCard.amount}</Text>
                                 </Flex>    
@@ -344,7 +378,7 @@ export default function Trade() {
                                                 Filter
                                             </FormLabel>
                                         </Flex>
-                                        <Select color={'black'} value={filter.sortMethod} onChange={(e) => {changeFilter("sortMethod", e.target.value)}}>
+                                        <Select color={'#fff'} value={filter.sortMethod} onChange={(e) => {changeFilter("sortMethod", e.target.value)}}>
                                             <option value='oldest'>Oldest</option>
                                             <option value='lowcost'>Cost Ascending</option>
                                             <option value='highcost'>Cost Descending</option>
@@ -361,7 +395,7 @@ export default function Trade() {
                                         <FormLabel fontSize={'xl'}  className={'heading-xl'}>
                                             Brawler
                                         </FormLabel>
-                                        <Select color={'black'} value={filter.brawler} placeholder='Filter by brawler' onChange={(e) => {changeFilter("brawler", e.target.value); changeFilter("pin", "")}} sx={{
+                                        <Select color={'#fff'} value={filter.brawler} placeholder='Filter by brawler' onChange={(e) => {changeFilter("brawler", e.target.value);}} sx={{
                         '&::-webkit-scrollbar': {
                         width: '8px',
                         borderRadius: '8px',
@@ -370,10 +404,10 @@ export default function Trade() {
                         '&::-webkit-scrollbar-thumb': {
                         backgroundColor: `rgba(0, 0, 0, 0.5)`,
                         borderRadius: `6px`,
-                        },
+                        }
                     }}>
                                             {brawlerData?.map((brawler) => (
-                                                <option value={brawler.name}><Text>{brawler.displayName}</Text></option>
+                                                <option key={brawler.name} value={brawler.name}>{brawler.displayName}</option>
                                             ))}
                                         </Select>
                                         <FormLabel fontSize={'xl'}  className={'heading-xl'}>
@@ -386,7 +420,7 @@ export default function Trade() {
                                             <MenuList>
                                             <SimpleGrid columns={3}>
                                             {brawlerPinData?.map((pin) => (
-                                                <MenuItem onClick={(e) => {changeFilter("pin", pin.image.split('/')[2].split('.')[0])}}><Image maxW={'60px'} src={`/image/${pin.image}`}></Image></MenuItem>
+                                                <MenuItem key={pin.image} onClick={(e) => {changeFilter("pin", pin.image.split('/')[2].split('.')[0])}}><Image maxW={'60px'} src={`/image/${pin.image}`}></Image></MenuItem>
                                             ))}
                                             </SimpleGrid>
                                             </MenuList>
@@ -408,7 +442,7 @@ export default function Trade() {
                     </DrawerContent>
                 </Drawer>
             <SimpleGrid columns={[1,1,2,3]} spacing={3}>
-                {results?.filter((trade) => (trade.creator.username.toLowerCase().includes(filter.username.toLowerCase()) && !(trade.timeLeft.hour === trade.timeLeft.minute && trade.timeLeft.hour === trade.timeLeft.second && trade.timeLeft.hour === trade.timeLeft.season && trade.timeLeft.hour === 0))).map((trade) => <ScaleFade in={true}><TradeCard data={trade}/></ScaleFade>)}
+                {results?.filter((trade) => (trade.creator.username.toLowerCase().includes(filter.username.toLowerCase()) && !(trade.timeLeft.hour === trade.timeLeft.minute && trade.timeLeft.hour === trade.timeLeft.second && trade.timeLeft.hour === trade.timeLeft.season && trade.timeLeft.hour === 0))).map((trade) => <Flex key={trade.tradeid}><ScaleFade in={true}><TradeCard data={trade}/></ScaleFade></Flex>)}
             </SimpleGrid>
         </Flex>
 
@@ -443,8 +477,8 @@ export default function Trade() {
                             borderRadius: `6px`,
                             },
                         }}>
-                        {offer?.map((pin: any) => (
-                                        <Flex p={5} border={'2px solid black'} borderRadius={'lg'} bgColor={pin.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'} cursor={'pointer'} onClick={() => {setOffer(offer.filter((item: any) => item !== pin))}}>
+                        {offer?.map((pin) => (
+                                        <Flex p={5} key={pin.name} border={'2px solid black'} borderRadius={'lg'} bgColor={pin.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'} cursor={'pointer'} onClick={() => {setOffer(offer.filter((item) => item !== pin))}}>
                                             <Image  maxW={'60px'} src={`/image/${pin.pinImage}`} fallback={<Spinner/>}/>
                                             <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} color={'red'}>{`- ${pin.amount}`}</Text>
                                         </Flex>
@@ -468,8 +502,8 @@ export default function Trade() {
                             borderRadius: `6px`,
                             },
                         }}>
-                        {req?.map((pin: any) => (
-                                        <Flex p={5} border={'2px solid black'} borderRadius={'lg'} bgColor={pin.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'} cursor={'pointer'} onClick={() => {setReq(req.filter((item: any) => item !== pin))}}>
+                        {req?.map((pin) => (
+                                        <Flex p={5} key={pin.name} border={'2px solid black'} borderRadius={'lg'} bgColor={pin.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'} cursor={'pointer'} onClick={() => {setReq(req.filter((item) => item !== pin))}}>
                                             <Image  maxW={'60px'} src={`/image/${pin.pinImage}`} fallback={<Spinner/>}/>
                                             <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} color={'green'}>{`+ ${pin.amount}`}</Text>
                                         </Flex>
@@ -498,7 +532,7 @@ export default function Trade() {
                             <SlideFade in={true}>
                                 <SimpleGrid spacing={3} columns={[3,4,5]}>
                                 {collectionData?.brawlers.map((brawler) => (
-                                    <Flex flexDir={'column'} alignItems={'center'} userSelect={'none'}>
+                                    <Flex key={brawler.name} flexDir={'column'} alignItems={'center'} userSelect={'none'}>
                                         <Flex p={1} border={'2px solid black'} borderRadius={'lg'} bgColor={brawler.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'} cursor={'pointer'} onClick={() => {if (brawler.u){showPins(brawler.name)}}}>
                                             <Box pos={'relative'}>
                                                 <Image filter={!brawler.u ? 'blur(1px)' : 'none'} draggable={'false'} borderRadius={'20%'} src={`/image/${brawler.i}`} fallback={<Spinner/>}/>                                                                                
@@ -519,7 +553,7 @@ export default function Trade() {
                             <SimpleGrid spacing={3} columns={[3,4,5]} mt={5}>
                             {collectionData?.brawlers.filter((brawler) => brawler.name === brawlerchoice).map((brawler) => {
                                 return brawler.pins.map((pin) => (
-                                    <Flex flexDir={'column'} alignItems={'center'} userSelect={'none'}>
+                                    <Flex key={brawler.name + pin.i} flexDir={'column'} alignItems={'center'} userSelect={'none'}>
                                         <Flex p={2} border={'2px solid black'} borderRadius={'lg'} bgColor={Object.values(collectionData?.pinRarityColors || {})[pin.r]} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'} cursor={'pointer'} onClick={() => {if (pinLocation === "offer"){ if (pin.a !== 0 ){addOffer({image: `${brawler.pinFilePath}${pin.i}`, r: pin.r})}} else {addReq({image: `${brawler.pinFilePath}${pin.i}`, r: pin.r})}}}>
                                             <Image draggable={'false'} borderRadius={'20%'} src={`/image/${brawler.pinFilePath}${pin.i}`} fallback={<Spinner/>}/>                                                                                
                                             {(pin.a === 0 && pinLocation === "offer") && <Box w={'100%'} h={'100%'} bgColor={'rgba(0, 0, 0, 0.5)'} pos={'absolute'} top={0} borderRadius={'lg'}/>}

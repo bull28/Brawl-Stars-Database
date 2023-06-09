@@ -517,7 +517,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                                     }
 
                                     return (
-                                        <Button key={index} w={"50px"} h={"50px"} fontSize={"16px"} lineHeight={"16px"} bgColor={"#0000"} bgPos={"center"} bgSize={"cover"} bgRepeat={"no-repeat"} alignItems={"flex-start"} justifyContent={"flex-start"} padding={0} borderRadius={0} _hover={{}} _active={{}} border={`2px solid ${borderColor}`} bgImage={value.image !== "" ? `url('/image/${value.image}')`: undefined} isDisabled={preview && attackActions.has(value.id)} onMouseOver={() => {selectUnit(value);}} onMouseOut={() => {if (!preview || lastUnit !== value.id){selectUnit(undefined);}}} onClick={() => {click(value.id, point);}}>
+                                        <Button key={-1 * value.id - 1} w={"50px"} h={"50px"} fontSize={"16px"} lineHeight={"16px"} bgColor={"#0000"} bgPos={"center"} bgSize={"cover"} bgRepeat={"no-repeat"} alignItems={"flex-start"} justifyContent={"flex-start"} padding={0} borderRadius={0} _hover={{}} _active={{}} border={`2px solid ${borderColor}`} bgImage={value.image !== "" ? `url('/image/${value.image}')`: undefined} isDisabled={preview && attackActions.has(value.id)} onMouseOver={() => {selectUnit(value);}} onMouseOut={() => {if (!preview || lastUnit !== value.id){selectUnit(undefined);}}} onClick={() => {click(value.id, point);}}>
                                             <Flex flexDir={"column"} w={"100%"} h={"100%"}>
                                                 {value.weight > 0 || healthFraction < 1 ?
                                                     <Flex w={"100%"} h={"3px"} bgColor={"#333"}>
@@ -533,7 +533,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                                 })}
                                 </SimpleGrid>
                             </Flex>
-                            <Flex bgColor={"#000"} w={"100%"} mt={1}>{challenge.inactive.map((value, index) => {
+                            <Flex bgColor={"#000"} w={"100%"} mt={1}>{challenge.inactive.map((value) => {
                                 let borderColor = playerColor(value.player, currentPlayer);
                                 if (lastUnit === value.id){
                                     borderColor = "#ff0";
@@ -542,7 +542,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                                 }
                 
                                 return (
-                                    <Button key={index} w={"50px"} h={"50px"} fontSize={"16px"} lineHeight={"16px"} bgColor={"#0000"} bgPos={"center"} bgSize={"cover"} bgRepeat={"no-repeat"} alignItems={"flex-start"} justifyContent={"flex-start"} padding={0} borderRadius={0} _hover={{}} _active={{}} border={`2px solid ${borderColor}`} bgImage={value.image !== "" ? `url('/image/${value.image}')`: undefined} isDisabled={preview && attackActions.has(value.id)} onMouseOver={() => {selectUnit(value);}} onMouseOut={() => {if (!preview || lastUnit !== value.id){selectUnit(undefined);}}} onClick={() => {click(value.id, [-1, -1])}}>
+                                    <Button key={value.id} w={"50px"} h={"50px"} fontSize={"16px"} lineHeight={"16px"} bgColor={"#0000"} bgPos={"center"} bgSize={"cover"} bgRepeat={"no-repeat"} alignItems={"flex-start"} justifyContent={"flex-start"} padding={0} borderRadius={0} _hover={{}} _active={{}} border={`2px solid ${borderColor}`} bgImage={value.image !== "" ? `url('/image/${value.image}')`: undefined} isDisabled={preview && attackActions.has(value.id)} onMouseOver={() => {selectUnit(value);}} onMouseOut={() => {if (!preview || lastUnit !== value.id){selectUnit(undefined);}}} onClick={() => {click(value.id, [-1, -1])}}>
                                         <Flex w={"100%"} h={"100%"} className={"heading-md"}>{value.id}</Flex>
                                     </Button>
                                 );
@@ -557,7 +557,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                                     turnText = phaseText(challenge.phase);
                                 }
                                 return (
-                                    <Flex w={"150px"} key={index} flexDir={"column"} alignItems={"center"} paddingTop={"5px"} bgColor={(challenge.winner >= 0 && challenge.winner === index) ? playerColor(challenge.winner, currentPlayer) : "#0000"}>
+                                    <Flex w={"150px"} key={value.username + value.avatar} flexDir={"column"} alignItems={"center"} paddingTop={"5px"} bgColor={(challenge.winner >= 0 && challenge.winner === index) ? playerColor(challenge.winner, currentPlayer) : "#0000"}>
                                         <Flex w={"50%"} justifyContent={"center"} alignItems={"center"} borderRadius={"50%"} border={"3px solid #ffffff"}>
                                             <Image src={value.avatar !== "" ? `/image/${value.avatar}` : `/image/avatars/free/default.webp`} borderRadius={"50%"}/>
                                         </Flex>
@@ -584,11 +584,12 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                     <Flex>
                         <Flex flexDir={"column"}>
                             <Flex w={"300px"} minH={"100px"} border={"3px solid #fff"} borderRadius={"3%"} flexDir={"column"}>
-                                {Array.from(moveActions).map((value, index) => {
-                                    return <Button key={index} bgColor={"#00000080"} onClick={() => {moveActions.delete(value[0]); setMoveActions(new Map(moveActions));}}>{`Move by ${value[0]} to ${value[1]}`}</Button>
+                                {Array.from(moveActions).map((value) => {
+                                    // key should be unique because moveActions is a map and maps require keys to be unique
+                                    return <Button key={value[0]} bgColor={"#00000080"} onClick={() => {moveActions.delete(value[0]); setMoveActions(new Map(moveActions));}}>{`Move by ${value[0]} to ${value[1]}`}</Button>
                                 })}
-                                {Array.from(attackActions).map((value, index) => {
-                                    return <Button key={index} bgColor={"#00000080"} onClick={() => {attackActions.delete(value[0]); setAttackActions(new Map(attackActions));}}>{`Attack by ${value[0]} against ${value[1]}`}</Button>
+                                {Array.from(attackActions).map((value) => {
+                                    return <Button key={value[0]} bgColor={"#00000080"} onClick={() => {attackActions.delete(value[0]); setAttackActions(new Map(attackActions));}}>{`Attack by ${value[0]} against ${value[1]}`}</Button>
                                 })}
                             </Flex>
                             <Flex w={"100%"}>

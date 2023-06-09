@@ -91,9 +91,9 @@ export default function UnitSelection({data, setSelected}: UnitSelectionProps){
                         <Flex>
                         
                         <HStack spacing={1} wrap={"wrap"}>
-                            {units.map((value, index) => {
+                            {units.map((value) => {
                                 return (
-                                    <Image key={index} h={10} objectFit={"contain"} src={`/image/${value.image}`}/>
+                                    <Image key={value.name} h={10} objectFit={"contain"} src={`/image/${value.image}`}/>
                                 )
                             })}
                         </HStack>

@@ -63,14 +63,14 @@ export default function Home() {
         </Text>
 
         <SimpleGrid columns={[1,2,4]} spacing={[5, 10, 15, 20]} mb={20}>
-          {[0,1,2,3].map((i) => (
-            <LargeTile link={topLinks[i]}>{topRow[i]}</LargeTile>
+          {[0,1,2,3].map((i, x) => (
+            <LargeTile key={x} link={topLinks[i]}>{topRow[i]}</LargeTile>
           ))}
         </SimpleGrid>
 
         <SimpleGrid columns={[1,1,3]} spacing={[5, 10, 15, 20]}>
-          {[0,1,2].map((i) => (
-            <SmallTile link={bottomLinks[i]}>{bottomRow[i]}</SmallTile>
+          {[0,1,2].map((i, x) => (
+            <SmallTile key={x} link={bottomLinks[i]}>{bottomRow[i]}</SmallTile>
           ))}
         </SimpleGrid>
         

@@ -27,9 +27,12 @@ export default function ChallengeSelection({data, level, setSelected}: Challenge
                             backgroundColor: "rgba(0, 0, 0, 0.5)",
                             borderRadius: "6px",
                             },
-                        }}>{data.map((value, index) => {
+                            "&::-webkit-scrollbar-corner": {
+                            backgroundColor: "rgba(0, 0, 0, 0)",
+                            }
+                        }}>{data.map((value) => {
                             return (
-                                <Flex key={index} bgColor={"blue.800"} flexDir={"column"} p={2} borderRadius={"lg"} border={"2px solid #000"}>
+                                <Flex key={value.challengeid} bgColor={"blue.800"} flexDir={"column"} p={2} borderRadius={"lg"} border={"2px solid #000"}>
                                     <Text fontSize={"xl"} className={"heading-xl"}>{value.displayName.length > 0 ? value.displayName : " "}</Text>
                                     <Divider my={1}/>
                                     <Flex justifyContent={"center"}>

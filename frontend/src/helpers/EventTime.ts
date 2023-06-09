@@ -1,9 +1,9 @@
 import {time} from "../types/EventData";
 
 export default function EventTime(lastUpdate: time, offset: number){
-    var displaySeconds: number = (lastUpdate.second - Math.floor(offset / 1000));
-    var displayMinutes: number = (lastUpdate.minute - Math.floor(offset / 60000) + Math.floor(displaySeconds / 60));
-    var displayHours: number = (lastUpdate.hour - Math.floor(offset / 3600000) + Math.floor(displayMinutes / 60));
+    var displaySeconds = (lastUpdate.second - Math.floor(offset / 1000));
+    var displayMinutes = (lastUpdate.minute - Math.floor(offset / 60000) + Math.floor(displaySeconds / 60));
+    var displayHours = (lastUpdate.hour - Math.floor(offset / 3600000) + Math.floor(displayMinutes / 60));
 
     displaySeconds = (((displaySeconds % 60) + 60) % 60);
     displayMinutes = (((displayMinutes % 60) + 60) % 60);
@@ -12,7 +12,7 @@ export default function EventTime(lastUpdate: time, offset: number){
         return "Now";
     }
 
-    var timeString: string = "";
+    var timeString = "";
 
     if (displayHours > 0){
         timeString += (displayHours.toString() + "h ");

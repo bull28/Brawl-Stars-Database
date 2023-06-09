@@ -9,8 +9,6 @@ import { TradeData } from '../types/TradeData'
 
 interface PinData {
     amount: number,
-    brawler: string,
-    pin: string,
     pinImage: string,
     rarityColor: string,
     rarityValue:  number
@@ -77,9 +75,12 @@ export default function TradeCard({ data }: {data: TradeData}) {
                     backgroundColor: `rgba(0, 0, 0, 0.5)`,
                     borderRadius: `6px`,
                     },
+                    '&::-webkit-scrollbar-corner': {
+                    backgroundColor: `rgba(0, 0, 0, 0)`,
+                    }
                 }}>
                             {data.request.map((request) => (
-                                <Flex p={3} border={'2px solid black'} borderRadius={'lg'} bgColor={request.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
+                                <Flex key={request.pinImage} p={3} border={'2px solid black'} borderRadius={'lg'} bgColor={request.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
                                     <Image  maxW={'60px'} src={`/image/${request.pinImage}`} fallback={<Spinner/>}/>
                                     <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} >{request.amount}</Text>
                                 </Flex>
@@ -107,9 +108,12 @@ export default function TradeCard({ data }: {data: TradeData}) {
                     backgroundColor: `rgba(0, 0, 0, 0.5)`,
                     borderRadius: `6px`,
                     },
+                    '&::-webkit-scrollbar-corner': {
+                    backgroundColor: `rgba(0, 0, 0, 0)`,
+                    }
                 }}>
                             {data.offer.map((offer) => (
-                                <Flex p={3} border={'2px solid black'} borderRadius={'lg'} bgColor={offer.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
+                                <Flex key={offer.pinImage} p={3} border={'2px solid black'} borderRadius={'lg'} bgColor={offer.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
                                     <Image  maxW={'60px'} src={`/image/${offer.pinImage}`} fallback={<Spinner/>}/>
                                     <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} >{offer.amount}</Text>
                                 </Flex>
@@ -150,9 +154,12 @@ export default function TradeCard({ data }: {data: TradeData}) {
                                 backgroundColor: `rgba(0, 0, 0, 0.5)`,
                                 borderRadius: `6px`,
                                 },
+                                '&::-webkit-scrollbar-corner': {
+                                backgroundColor: `rgba(0, 0, 0, 0)`,
+                                }
                             }}>
                             {data.request.map((request) => (
-                                <Flex p={5} border={'2px solid black'} borderRadius={'lg'} bgColor={request.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
+                                <Flex key={request.pinImage} p={5} border={'2px solid black'} borderRadius={'lg'} bgColor={request.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
                                     <Image  maxW={'60px'} src={`/image/${request.pinImage}`} fallback={<Spinner/>}/>
                                     <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} color={'red'}>{`- ${request.amount}`}</Text>
                                 </Flex>
@@ -180,7 +187,7 @@ export default function TradeCard({ data }: {data: TradeData}) {
                                 },
                             }}>
                             {data.offer.map((offer) => (
-                                <Flex p={5} border={'2px solid black'} borderRadius={'lg'} bgColor={offer.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
+                                <Flex key={offer.pinImage} p={5} border={'2px solid black'} borderRadius={'lg'} bgColor={offer.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
                                     <Image  maxW={'60px'} src={`/image/${offer.pinImage}`} fallback={<Spinner/>}/>
                                     <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} color={'green'}>{`+ ${offer.amount}`}</Text>
                                 </Flex>
@@ -214,7 +221,7 @@ export default function TradeCard({ data }: {data: TradeData}) {
                         </Flex>
                         <SimpleGrid columns={(received && received.length > 4) ? Math.ceil(received.length / 2) : ((received?.length === 1) ? 2 : received?.length)} spacing={10} mt={5}>
                             {received?.map((data, x) => (
-                                <Flex p={5} border={'2px solid black'} borderRadius={'lg'} bgColor={data.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'} transform={'scale(0)'} animation={`${contentTransition} 0.5s ease-out ${((x/2)+0.5)}s 1 forwards`}>
+                                <Flex key={data.pinImage} p={5} border={'2px solid black'} borderRadius={'lg'} bgColor={data.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'} transform={'scale(0)'} animation={`${contentTransition} 0.5s ease-out ${((x/2)+0.5)}s 1 forwards`}>
                                     <Image src={`/image/${data.pinImage}`} fallback={<Spinner/>}/>
                                     <Text fontSize={'3xl'}  className={'heading-3xl'}>{`+${data.amount}`}</Text>
                                 </Flex>
