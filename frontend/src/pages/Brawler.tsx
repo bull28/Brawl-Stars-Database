@@ -18,7 +18,7 @@ export default function Brawler() {
     const isWide = useMediaQuery('(min-width: 1250px)')
     
     useEffect(() => {
-        AuthRequest('/cosmetic', {setState: [{func: setCosmetics, attr: ""}]})
+        AuthRequest<CosmeticData>("/cosmetic", {setState: setCosmetics});
     }, [])
 
     useEffect(() => {

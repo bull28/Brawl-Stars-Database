@@ -11,7 +11,7 @@ export default function SkullBackground({bg, icon}: {bg?: string, icon?: string}
         if (bg && icon){
             setCosmetics({background: bg, icon: icon})
         } else {
-            AuthRequest('/cosmetic', {setState: [{func: setCosmetics, attr: ""}]})
+            AuthRequest<CosmeticData>("/cosmetic", {setState: setCosmetics})
         }
     }, [bg, icon])
     

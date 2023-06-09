@@ -22,7 +22,7 @@ type Props = {
 
 
 const AvatarSelect = React.forwardRef<{open: () => void}, Props>((props, ref) => {
-    const [avatars, setAvatars] = useState<[string]>()
+    const [avatars, setAvatars] = useState<string[]>([])
 
     const { isOpen, onOpen, onClose } = useDisclosure()
     
@@ -37,7 +37,7 @@ const AvatarSelect = React.forwardRef<{open: () => void}, Props>((props, ref) =>
     )
     
     useEffect(() => {
-      AuthRequest('/avatar', {setState: [{func: setAvatars, attr: ""}]})   
+      AuthRequest<string[]>("/avatar", {setState: setAvatars});
     }, [])
 
   return (

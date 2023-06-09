@@ -3,13 +3,14 @@ import { AlertDialog, AlertDialogBody, AlertDialogContent, AlertDialogFooter, Al
 import { BrawlBoxContentsData, BrawlBoxData } from '../types/BrawlBoxData'
 import CountUp from 'react-countup'
 import AuthRequest from '../helpers/AuthRequest'
+import { AxiosError } from 'axios'
 
 
 export default function BrawlBoxDisplay({ data, tokens, loadResources }: {data: BrawlBoxData, tokens: number | undefined, loadResources: () => void}) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { isOpen: isOpen2, onOpen: onOpen2, onClose: onClose2 } = useDisclosure() //fix
 
-    const [ boxContents, setBoxContents ] = useState<[BrawlBoxContentsData]>()
+    const [ boxContents, setBoxContents ] = useState<BrawlBoxContentsData[]>([])
     const cancelRef: React.RefObject<HTMLButtonElement> = useRef(null)
     const toastRef: React.MutableRefObject<ToastId> = useRef(1549687458)
 
@@ -21,14 +22,14 @@ export default function BrawlBoxDisplay({ data, tokens, loadResources }: {data: 
     `
 
     const openBox = (id: string) => {
-        setBoxContents(undefined)
-        AuthRequest('/brawlbox', {setState: [{func: setBoxContents, attr: ""}], data: {boxType: id}, callback: () => {
+        setBoxContents([])
+        AuthRequest<BrawlBoxContentsData[]>("/brawlbox", {setState: setBoxContents, data: {boxType: id}, callback: () => {
             onClose()
             onClose2()
             onOpen2()
-        }, fallback: function(error: any) {
-            if (error.response.status === 403){
-
+        }, fallback: function(error: Error) {
+            const e = error as AxiosError;
+            if (typeof e.response !== "undefined" && e.response.status === 403){
                 if (!toast.isActive(toastRef.current)){
                     toastRef.current = toast({
                         description: `You don't have enough tokens to open this box!`,
@@ -38,7 +39,7 @@ export default function BrawlBoxDisplay({ data, tokens, loadResources }: {data: 
                     })
                 }
             }
-        }})
+        }});
     }
 
     return (

@@ -3,7 +3,7 @@ import { createStandaloneToast } from '@chakra-ui/react'
 
 //functions that deal with token storage/retrieval and post requests using them
 
-export function getToken(){
+export function getToken(): string{
     return JSON.parse(localStorage.getItem('tokens') || "{}")[localStorage.getItem('username') || ""]
 }
 
@@ -18,39 +18,29 @@ export function changeToken(username: string, token: string){
     localStorage.setItem('username', username)
 }
 
-interface AuthRequestConfigProps {
-    setState?: {
-        func: any,
-        attr: string
-    }[],
-    data?: any,
-    callback?: any,
-    fallback?: any,
-    navigate?: boolean,
+interface AuthRequestConfigProps<T>{
+    setState?: (data: T) => void;
+    data?: {};
+    callback?: () => void;
+    fallback?: (error: Error) => void;
+    navigate?: boolean;
     message?: {
-        title?: string,
-        description?: string,
-        status?: "success" | "error",
-        duration?: number,
-        data?: string
-    },
-    errorToastMessage?: string
+        title?: string;
+        description?: string;
+        status?: "success" | "error";
+        duration?: number;
+        data?: string;
+    };
+    errorToastMessage?: string;
 }
 
-export default async function AuthRequest(endpoint:string, config:AuthRequestConfigProps) {
+export default async function AuthRequest<T>(endpoint:string, config: AuthRequestConfigProps<T>) {
     const { toast } = createStandaloneToast()
 
     axios.post(endpoint, {token: getToken(), ...config.data})
         .then((res) => {
             if (config.setState){
-                config.setState.forEach(function(item){
-                    if (item.attr === ""){
-                        item.func(res.data)
-                    } else {
-                        item.func(res.data[item.attr])
-                    }
-                    
-                })
+                config.setState(res.data);
             }
 
             if (config.message){

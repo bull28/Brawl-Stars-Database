@@ -64,9 +64,9 @@ export default function ChallengeMenu(){
     const tokenString: string = (typeof token === "string" ? token : "");
 
     useEffect(() => {
-        AuthRequest("/challenge/unit", {setState: [{func: (value: UnitData) => setUnitList(value), attr: ""}]});
-        AuthRequest("/challenge/all", {setState: [{func: (value: ChallengeData) => setChallengeList(value), attr: ""}]});
-        AuthRequest("/resources", {setState: [{func: setResources, attr: ""}]});
+        AuthRequest<UnitData>("/challenge/unit", {setState: (value: UnitData) => setUnitList(value)});
+        AuthRequest<ChallengeData>("/challenge/all", {setState: (value: ChallengeData) => setChallengeList(value)});
+        AuthRequest<UserInfoProps>("/resources", {setState: setResources});
 
         return (() => {
             setWaiting(false);

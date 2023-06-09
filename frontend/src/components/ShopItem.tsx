@@ -24,7 +24,7 @@ export default function ShopItem({data, coins, isFeatured, timeLeftString}: {dat
     const navigate = useNavigate()
 
     const purchase = (itemName: string) => {
-        AuthRequest('/shop', {data: {item: itemName}, setState: [{func: setPurchaseData, attr: ""}], callback: () => {setAccepted(true)}, errorToastMessage: "Invalid Purchase"})
+        AuthRequest<PurchaseData>("/shop", {data: {item: itemName}, setState: setPurchaseData, callback: () => {setAccepted(true)}, errorToastMessage: "Invalid Purchase"});
     }
 
     if (!isFeatured){

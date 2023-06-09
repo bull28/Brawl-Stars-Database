@@ -12,30 +12,33 @@ import { RainbowBackground, RainbowBorder } from '../themes/animations'
 import MovingText from '../components/MovingText'
 import SkullBackground from '../components/SkullBackground'
 import AccessoryLevel from "../components/AccessoryLevel";
+import {UserInfoProps} from '../types/AccountData'
 
 export default function Collection() {
     const [data, setData] = useState<CollectionData>()
-    const [brawlBoxData, setBrawlBoxData] = useState<[BrawlBoxData]>()
+    const [brawlBoxData, setBrawlBoxData] = useState<BrawlBoxData[]>()
     const [searchParams] = useSearchParams()
     const [tokens, setTokens] = useState<number>(0)
     const [level, setLevel] = useState<number>(1)
     const [points, setPoints] = useState<number>(0)
     const [upgradePoints, setUpgradePoints] = useState<number>(1)
 
-    const updateTokens = () => {
-        AuthRequest('/resources', {setState: [
-            {func: setTokens, attr: "tokens"},
-            {func: setLevel, attr: "level"},
-            {func: setPoints, attr: "points"},
-            {func: setUpgradePoints, attr: "upgradePoints"}
-        ]})
-    }
+    const setAllResources = useCallback((data: UserInfoProps) => {
+        setTokens(data.tokens);
+        setLevel(data.level);
+        setPoints(data.points);
+        setUpgradePoints(data.upgradePoints);
+    }, []);
+
+    const updateTokens = useCallback(() => {
+        AuthRequest<UserInfoProps>("/resources", {setState: setAllResources});
+    }, [setAllResources]);
 
     const loadResources = useCallback(() => {
-        AuthRequest('/collection', {setState: [{func: setData, attr: ""}], navigate: true})
-        AuthRequest('/brawlbox', {setState: [{func: setBrawlBoxData, attr: ""}]})
+        AuthRequest<CollectionData>('/collection', {setState: setData, navigate: true})
+        AuthRequest<BrawlBoxData[]>('/brawlbox', {setState: setBrawlBoxData})
         updateTokens()
-    }, []);
+    }, [updateTokens]);
 
     useEffect(() => {
         loadResources();

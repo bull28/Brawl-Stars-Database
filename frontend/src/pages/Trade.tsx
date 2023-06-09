@@ -61,7 +61,7 @@ export default function Trade() {
     const [tradeCost, setTradeCost] = useState<number>()
     const [collectionData, setCollectionData] = useState<CollectionData>()
     const [username, setUsername] = useState<string>()
-    const [userTradeData, setUserTradeData] = useState<[UserTradeData]>()
+    const [userTradeData, setUserTradeData] = useState<UserTradeData[]>()
 
     const toast = useToast()
     const navigate = useNavigate()
@@ -76,6 +76,11 @@ export default function Trade() {
                 setResults(res.data)
             })
     }, [filter]);
+
+    const setAllResources = useCallback((data: UserInfoProps) => {
+        setResources(data);
+        setUsername(data.username);
+    }, []);
 
     const getCost = useCallback(() => {
         let offerObject = []
@@ -125,8 +130,8 @@ export default function Trade() {
     }, [offer, req, tradeLength, getCost])
 
     useEffect(() => {
-        AuthRequest('/resources', {setState: [{func: setResources, attr: ""}]})
-    }, [])
+        AuthRequest<UserInfoProps>("/resources", {setState: setAllResources});
+    }, [setAllResources])
     
     useEffect(() => {
         updateResults();
@@ -147,16 +152,12 @@ export default function Trade() {
     }, [filter.brawler])
 
     useEffect(() => {
-        AuthRequest('/collection', {setState: [{func: setCollectionData, attr: ""}]})
-    }, [])
-
-    useEffect(() => {
-        AuthRequest('/resources', {setState: [{func: setUsername, attr: "username"}]})        
+        AuthRequest<CollectionData>("/collection", {setState: setCollectionData});
     }, [])
 
     const getTrades = useCallback(() => {
         if (username){
-            AuthRequest('/trade/user', {data: {username: username}, setState: [{func: setUserTradeData, attr: ""}], fallback: () => {}})
+            AuthRequest<UserTradeData[]>("/trade/user", {data: {username: username}, setState: setUserTradeData, fallback: () => {}});
         }
     }, [username]);
 
@@ -356,7 +357,7 @@ export default function Trade() {
                             
                         )}
                         <Flex pos={'relative'} p={2.5}>
-                            <IconButton borderRadius={'md'} onClick={redirect} cursor={'pointer'} size={'lg'} p={1} colorScheme={(userTradeData && userTradeData?.filter((trade) => trade.accepted === true).length > 0) ? 'whatsapp' : 'twitter'} as={BsPersonFill} aria-label="open my trades menu"/>
+                            <IconButton borderRadius={'md'} onClick={redirect} cursor={'pointer'} size={'lg'} p={1} colorScheme={(userTradeData && userTradeData?.filter((trade) => trade.accepted === true).length > 0) ? 'whatsapp' : 'twitter'} icon={<BsPersonFill size={"100%"}/>} aria-label="open my trades menu"/>
                             {userTradeData && (userTradeData?.filter((trade) => trade.accepted === true).length) > 0 && 
                             <Box pos={'absolute'} top={0} right={0} bgColor={'red.500'} borderRadius={'50%'} w={'25px'} h={'25px'} textAlign={'center'}>
                                 <Text >{userTradeData?.filter((trade) => trade.accepted === true).length}</Text>

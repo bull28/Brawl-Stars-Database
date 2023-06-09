@@ -8,6 +8,7 @@ import { IoMdRemoveCircleOutline } from 'react-icons/io'
 import { ArrowBackIcon, ExternalLinkIcon } from '@chakra-ui/icons'
 import { useNavigate } from 'react-router-dom'
 import SkullBackground from '../components/SkullBackground'
+import {UserInfoProps} from '../types/AccountData'
 
 
 
@@ -19,7 +20,7 @@ interface TradeAcceptData {
 
 export default function MyTrades() {
     const [username, setUsername] = useState<string>()
-    const [data, setData] = useState<[UserTradeData]>()
+    const [data, setData] = useState<UserTradeData[]>()
     const [acceptData, setAcceptData] = useState<TradeAcceptData>()
 
     const {isOpen, onOpen, onClose} = useDisclosure()
@@ -30,13 +31,17 @@ export default function MyTrades() {
     to {transform: scale(1.0)}
     `
 
+    const setResourcesUsername = useCallback((data: UserInfoProps) => {
+        setUsername(data.username);
+    }, []);
+
     useEffect(() => {
-        AuthRequest('/resources', {setState: [{func: setUsername, attr: "username"}]})        
-    }, [])
+        AuthRequest<UserInfoProps>("/resources", {setState: setResourcesUsername});
+    }, [setResourcesUsername])
 
     const getTrades = useCallback(() => {
         if (username){
-            AuthRequest('/trade/user', {data: {username: username}, setState: [{func: setData, attr: ""}], fallback: () => {}})
+            AuthRequest<UserTradeData[]>("/trade/user", {data: {username: username}, setState: setData, fallback: () => {}});
         }
     }, [username]);
 
@@ -46,12 +51,12 @@ export default function MyTrades() {
     
 
     const removeTrade = (tradeid: number) => {
-        AuthRequest('/trade/close', {data: {tradeid: tradeid}, setState: [{func: setAcceptData, attr: ""}], message: {title: 'Removed Trade!', description: 'Successfully removed trade.', status: 'success'}, callback: () => {getTrades()}})
+        AuthRequest<TradeAcceptData>("/trade/close", {data: {tradeid: tradeid}, setState: setAcceptData, message: {title: 'Removed Trade!', description: 'Successfully removed trade.', status: 'success'}, callback: () => {getTrades()}});
         onOpen()
     }
 
     const claimTrade = (tradeid: number) => {
-        AuthRequest('/trade/close', {data: {tradeid: tradeid}, setState: [{func: setAcceptData, attr: ""}], message: {title: 'Claimed Trade!', description: 'Successfully claimed trade.', status: 'success'}, callback: () => {getTrades()}})
+        AuthRequest<TradeAcceptData>("/trade/close", {data: {tradeid: tradeid}, setState: setAcceptData, message: {title: 'Claimed Trade!', description: 'Successfully claimed trade.', status: 'success'}, callback: () => {getTrades()}});
         onOpen()
     }
 

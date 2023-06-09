@@ -1,13 +1,13 @@
 import { Box, Flex, FormControl, FormHelperText, FormLabel, Icon, Image, Input, InputGroup, Stack, Text, useToast } from "@chakra-ui/react";
 import axios from 'axios'
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserInfoProps } from "../types/AccountData";
 import { MdOutlineEdit } from 'react-icons/md'
 import { BsFillPersonFill } from "react-icons/bs";
 import { RiKeyFill } from "react-icons/ri";
 import AvatarSelect from '../components/AvatarSelect';
-import { changeToken, getToken } from "../helpers/AuthRequest";
+import { getToken } from "../helpers/AuthRequest";
 import AuthRequest from '../helpers/AuthRequest'
 import { RainbowBorder } from "../themes/animations";
 
@@ -24,13 +24,19 @@ export default function Account() {
 
   const avatarSelectRef = useRef<{ open: () => void}>(null)
 
+  const setAllData = useCallback((data: UserInfoProps) => {
+    setData(data);
+    setAvatar(data.avatar);
+    setUsername(data.username);
+  }, []);
+
   useEffect(() => {
     if (localStorage.getItem('username')){
-     AuthRequest('/resources', {setState: [{func: setData, attr: ""}, {func: setAvatar, attr: "avatar"}, {func: setUsername, attr: "username"}], navigate: true})
+     AuthRequest<UserInfoProps>("/resources", {setState: setAllData, navigate: true});
     } else {
       navigate('/login')
     }
-  }, [navigate])
+  }, [navigate, setAllData])
 
   const changeAvatar = () => {
     avatarSelectRef.current?.open()
@@ -39,9 +45,9 @@ export default function Account() {
   const handleUpdate = () => {
     toast.closeAll();
 
-    axios.post('/update', {newUsername: username, currentPassword: oldPassword, newPassword: newPassword, newAvatar: avatar, token: getToken()})
+    axios.post('/update', {currentPassword: oldPassword, newPassword: newPassword, newAvatar: avatar, token: getToken()})
       .then((res) => {
-        changeToken(res.data.username, res.data.token)
+        //changeToken(res.data.username, res.data.token)
         
         toast({
           title: 'Success',
@@ -51,7 +57,7 @@ export default function Account() {
           isClosable: true
         })
       }).catch(function(error) {
-        let description;
+        let description: string = "";
 
         switch(error.response.status) {
           case 401:

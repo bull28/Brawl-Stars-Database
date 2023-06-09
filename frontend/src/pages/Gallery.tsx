@@ -43,8 +43,8 @@ export default function Gallery() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    AuthRequest('/theme', {setState: [{func: setData, attr: ""}]})
-    AuthRequest('/cosmetic', {setState: [{func: setCosmetics, attr: ""}]})
+    AuthRequest<ThemeProps>("/theme", {setState: setData});
+    AuthRequest<CosmeticData>("/cosmetic", {setState: setCosmetics});
   }, [])
 
   const saveChanges = () => {
@@ -54,7 +54,7 @@ export default function Gallery() {
 
   return (
     <Flex alignItems={'center'} flexDir={'column'} justifyContent={'space-between'} maxH={'100vh'}>      
-      <IconButton onClick={() => {navigate('/shop')}} as={GiShoppingCart} aria-label="shop" pos={'absolute'} right={'3vh'} top={'3vh'} bgColor={'blue.500'} border={'2px solid'} borderColor={'blue.700'} p={1} size={'lg'} borderRadius={'md'}/>
+      <IconButton onClick={() => {navigate('/shop')}} icon={<GiShoppingCart size={"100%"}/>} aria-label="shop" pos={'absolute'} right={'3vh'} top={'3vh'} bgColor={'blue.500'} border={'2px solid'} borderColor={'blue.700'} p={1} size={'lg'} borderRadius={'md'}/>
       {cosmetics && <SkullBackground bg={cosmetics.background} icon={cosmetics.icon}/>}
       <Flex w={'70vw'} justifyContent={'space-around'} mt={'2vh'}>
         <Flex flexDir={'column'} alignItems={'center'}>

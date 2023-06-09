@@ -18,7 +18,7 @@ interface Timer {
 
 export default function Shop() {
 
-    const [data, setData] = useState<[ShopData]>()
+    const [data, setData] = useState<ShopData[]>()
     const [userInfo, setUserInfo] = useState<UserInfoProps>()
 
     const getSeason = (month: number) => {
@@ -75,8 +75,8 @@ export default function Shop() {
     }, [initialTimeLeftms, timer, secondsLeft])
 
     useEffect(() => {
-        AuthRequest('/shop', {setState: [{func: setData, attr: ""}]})
-        AuthRequest('/resources', {setState: [{func: setUserInfo, attr: ""}]})
+        AuthRequest<ShopData[]>("/shop", {setState: setData});
+        AuthRequest<UserInfoProps>("/resources", {setState: setUserInfo});
     }, [])
 
     return (

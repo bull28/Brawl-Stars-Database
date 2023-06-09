@@ -183,7 +183,7 @@ router.post<{}, {}, UpdateReqBody>("/update", databaseErrorHandler<UpdateReqBody
             res.status(400).send("Password cannot contain spaces.");
             return;
         }
-        if (newPassword.length < 3){
+        if (newPassword !== "" && newPassword.length < 3){
             res.status(400).send("New password is too short. Minimum password length is 3.");
             return;
         }

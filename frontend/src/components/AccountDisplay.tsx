@@ -63,7 +63,7 @@ export default function AccountDisplay() {
 
     
     useEffect(() => {
-        AuthRequest('/resources', {setState: [{func: setData, attr: ""}]})
+        AuthRequest<UserInfoProps>("/resources", {setState: setData});
         setTokenData(parseTokens(localStorage.getItem("tokens")));
     }, [])
 
@@ -134,7 +134,7 @@ export default function AccountDisplay() {
             <DrawerOverlay/>
             <DrawerContent>
                 <DrawerCloseButton/>
-                <DrawerHeader borderBottomWidth={'1px'}>
+                <DrawerHeader borderBottomWidth={'1px'} fontWeight={'normal'}>
                     Accounts
                 </DrawerHeader>
 
@@ -150,9 +150,9 @@ export default function AccountDisplay() {
                         },
                     }}>
                     {Object.keys(tokenData).map((token) => (
-                        <Flex key={token}>
+                        <div key={token}>
                             <AccountMenuDisplay username={token} token={tokenData[token]} toggleRemove={removing}/>
-                        </Flex>
+                        </div>
                     ))}
                 </DrawerBody>
 

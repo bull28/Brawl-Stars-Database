@@ -15,11 +15,11 @@ export default function TokenDisplay({ callback, tokens }: {callback: () => void
 
 
     useEffect(() => {
-        AuthRequest('/claimtokens', {setState: [{func: setData, attr: ""}], data: {claim: false}})
+        AuthRequest<TokenData>("/claimtokens", {setState: setData, data: {claim: false}})
     }, [response])
 
     const claimTokens = () => {
-       AuthRequest('/claimtokens', {setState: [{func: setResponse, attr: ""}], callback: () => {
+       AuthRequest<TokenData>("/claimtokens", {setState: setResponse, callback: () => {
         callback()
        }, message: {description: "Claimed $ Tokens!", status: 'success', data: "tokensEarned"}})
     }
