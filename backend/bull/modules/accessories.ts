@@ -12,7 +12,7 @@ type LevelProgress = [number, number];
 type StatsMap = Map<number, number[]>;
 
 const levels: LevelData[] = [
-    {upgradePoints:      400, unitsPerChallenge: 3, weightMultiplier:   4},
+    {upgradePoints:      400, unitsPerChallenge: 1, weightMultiplier:   4},
     {upgradePoints:      800, unitsPerChallenge: 3, weightMultiplier:   4},
     {upgradePoints:     1600, unitsPerChallenge: 3, weightMultiplier:   5},
     {upgradePoints:     2400, unitsPerChallenge: 3, weightMultiplier:   5},
@@ -252,7 +252,7 @@ const controller: UnitOptionsStorage = {
         image: "icon_controller"
     },
     stats: {
-        health: 7200,
+        health: 6400,
         damage: 360,
         range: 2.5,
         targets: 2,
@@ -605,7 +605,7 @@ const bonnie: UnitOptionsStorage = {
     abilityValues: {
         health: [3000],
         damage: [1040],
-        range: [1.0],
+        range: [1.5],
         other: [2, 4, 8]
     },
     accessory: {
@@ -936,7 +936,7 @@ const emz: UnitOptionsStorage = {
         damage: 640,
         range: 1.5,
         targets: 3,
-        speed: 1,
+        speed: 2,
         weight: 0.96
     },
     abilities: {},
@@ -973,17 +973,17 @@ const barley: UnitOptionsStorage = {
     }
 };
 
-const pam: UnitOptionsStorage = {
+const buster: UnitOptionsStorage = {
     display: {
-        displayName: "Pam",
-        image: "portrait_pam"
+        displayName: "Buster",
+        image: "portrait_buster"
     },
     stats: {
         health: 8400,
         damage: 500,
         range: 1.5,
         targets: 2,
-        speed: 1,
+        speed: 2,
         weight: 1.00
     },
     abilities: {},
@@ -991,8 +991,8 @@ const pam: UnitOptionsStorage = {
     accessory: {
         unlockLevel: 22,
         unlockMethod: "Open Brawl Boxes to unlock",
-        collectionName: "Pam's Minigun",
-        collectionImage: "accessory_pam"
+        collectionName: "Buster's Projector",
+        collectionImage: "accessory_buster"
     }
 };
 
@@ -1153,7 +1153,7 @@ const brock: UnitOptionsStorage = {
     },
     stats: {
         health: 3200,
-        damage: 800,
+        damage: 1120,
         range: 4.5,
         targets: 1,
         speed: 2,
@@ -1176,9 +1176,10 @@ const spike: UnitOptionsStorage = {
     },
     stats: {
         health: 2400,
-        damage: 1120,
+        shield: 160,
+        damage: 800,
         range: 4.5,
-        targets: 1,
+        targets: 2,
         speed: 1,
         weight: 0.96
     },
@@ -1222,10 +1223,10 @@ const colt: UnitOptionsStorage = {
     },
     stats: {
         health: 2800,
-        damage: 1040,
+        damage: 1500,
         range: 3.5,
         targets: 1,
-        speed: 4,
+        speed: 3,
         weight: 1.00
     },
     abilities: {},
@@ -1266,7 +1267,7 @@ const bea: UnitOptionsStorage = {
     display: {
         displayName: "Bea",
         image: "portrait_bea",
-        description: "Defeating a unit boosts damage to <d0> for the next turn. Units must be defeated with the normal damage to activate the boost."
+        description: "Every turn, alternate between dealing <d0> damage and <d1> damage."
     },
     stats: {
         health: 2000,
@@ -1277,29 +1278,26 @@ const bea: UnitOptionsStorage = {
         weight: 1.08
     },
     abilities: {
-        // Deal 2800 damage on the turn after defeating a unit
-        // Defeating a unit with the damage boost does not activate it
-        // State tracks remaining damage boost duration
+        // Alternate between dealing 840 and 2800 damage
+        // Damage changes after a turn ends
+        // State tracks the current damage phase
         update: (state, event) => {
-            // Immediately after defeating a unit, the state will be 2 then
-            // 1 when the turn ends. During the next turn, the state will
-            // be 1 so the extra damage boost will be active. When that
-            // turn ends, the state will go back to 0.
-            if (event === 3 && state === 0) { return 2; }
-            if (event === 0 && state > 0) { return state - 1; }
+            // The state is 0 when dealing normal damage
+            // The state is 1 when the damage boost is active
+            if (event === 0) { return (state + 1) % 2; }
             return state;
         },
         damage: (values, owner) => {
-            if (owner.state >= 1) { return values[0]; }
+            if (owner.state === 1) { return values[1]; }
             return owner.damage;
         },
         description: (state) => {
-            if (state >= 1) { return "Damage boost is currently active."; }
+            if (state === 1) { return "Damage boost is currently active."; }
             return "Damage boost is currently inactive.";
         }
     },
     abilityValues: {
-        damage: [2800]
+        damage: [840, 2800]
     },
     accessory: {
         unlockLevel: 26,
@@ -1559,7 +1557,8 @@ const max: UnitOptionsStorage = {
     display: {
         displayName: "Max",
         image: "portrait_max",
-        description: "When defeating a unit, get <h0> shield and increase speed to <o0> for 2 turns. Shield does not expire but only stacks up to 4 times."
+        description: "When defeating a unit, get <h0> shield then increase speed to <o0> and damage to <d0> for 2 turns. Shield only stacks up to 4 times."
+        //           "When defeating a unit, get <h0> shield, increase speed to <o0>, and increase damage to <d0> for 2 turns. Shield does not expire but only stacks up to 4 times."
     },
     stats: {
         health: 4000,
@@ -1571,10 +1570,10 @@ const max: UnitOptionsStorage = {
         weight: 1.16
     },
     abilities: {
-        // Get 300 shield and 3 speed when defeating a unit
-        // Speed is removed after 2 turns
+        // Get 300 shield, 3 speed, and 400 damage when defeating a unit
+        // Speed and damage is removed after 2 turns
         // Shield does not expire but only stacks up to 4 times
-        // State tracks remaining speed boost duration
+        // State tracks remaining speed and damage boost duration
         update: (state, event) => {
             if (event === 3) { return 3; }
             if (event === 0 && state > 0) { return state - 1; }
@@ -1588,17 +1587,22 @@ const max: UnitOptionsStorage = {
             }
             return owner.shield;
         },
+        damage: (values, owner) => {
+            if (owner.state > 0) { return values[0]; }
+            return owner.damage;
+        },
         speed: (values, owner) => {
             if (owner.state > 0) { return values[0]; }
             return owner.speed;
         },
         description: (state) => {
-            if (state > 0) { return `Turns until speed boost expires: ${state}.`; }
+            if (state > 0) { return `Turns until speed and damage boost expires: ${state}.`; }
             return "";
         }
     },
     abilityValues: {
         health: [300],
+        damage: [1600],
         other: [7]
     },
     accessory: {
@@ -1614,7 +1618,6 @@ const bibi: UnitOptionsStorage = {
         displayName: "Bibi",
         image: "portrait_bibi",
         description: "Start with an extra <h0> shield. The shield is removed and speed is decreased to <o0> when first attacking."
-        //description: "Start with an extra <h0> shield and <o1> speed. The shield and speed are removed when first attacking."
     },
     stats: {
         health: 3200,
@@ -1674,7 +1677,7 @@ const bibi: UnitOptionsStorage = {
 
 const wall1: UnitOptionsStorage = {
     display: {displayName: "Wall (Tier 1)"},
-    stats: {health: 800, damage: 0, range: 0.0, targets: 0, speed: 0, weight: 0.00},
+    stats: {health: 600, damage: 0, range: 0.0, targets: 0, speed: 0, weight: 0.00},
     abilities: {},
     abilityValues: {},
     accessory: {unlockLevel: 1, unlockMethod: "", collectionName: "", collectionImage: ""}
@@ -1682,7 +1685,7 @@ const wall1: UnitOptionsStorage = {
 
 const wall2: UnitOptionsStorage = {
     display: {displayName: "Wall (Tier 2)"},
-    stats: {health: 1200, damage: 0, range: 0.0, targets: 0, speed: 0, weight: 0.00},
+    stats: {health: 1000, damage: 0, range: 0.0, targets: 0, speed: 0, weight: 0.00},
     abilities: {},
     abilityValues: {},
     accessory: {unlockLevel: 1, unlockMethod: "", collectionName: "", collectionImage: ""}
@@ -1774,11 +1777,9 @@ const tutorial1: ChallengeManagerOptions = {
     options: {gridWidth: 5, gridHeight: 5, maxRounds: 5, moveLimit: 2},
     players: [
         {
-            username: "", avatar: "", auto: false, units: [
-                {name: "fighter", level: 1, position: [2, 4], defense: false}
-            ]},
+            username: "", avatar: "", auto: false, units: []},
         {
-            username: "Tutorial 1",
+            username: "Tutorial",
             avatar: "free/default",
             auto: true,
             units: [
@@ -1788,7 +1789,7 @@ const tutorial1: ChallengeManagerOptions = {
     ],
     extraData: {
         challengeid: 1,
-        displayName: "Tutorial",
+        displayName: "Tutorial 1",
         requiredLevel: 1,
         acceptCost: 0,
         reward: {
@@ -1801,12 +1802,12 @@ const tutorial1: ChallengeManagerOptions = {
 };
 
 const tutorial2: ChallengeManagerOptions = {
-    options: {gridWidth: 5, gridHeight: 7, maxRounds: 10, moveLimit: 2},
+    options: {gridWidth: 5, gridHeight: 7, maxRounds: 10, moveLimit: 2, restrictions: [
+        {player: 0, left: 0, right: 4, top: 0, bottom: 3}
+    ]},
     players: [
         {
-            username: "", avatar: "", auto: false, units: [
-                {name: "fighter", level: 1, position: [4, 6], defense: false}
-            ]},
+            username: "", avatar: "", auto: false, units: []},
         {
             username: "Tutorial",
             avatar: "free/default",
@@ -1844,8 +1845,7 @@ const tutorial3: ChallengeManagerOptions = {
     players: [
         {
             username: "", avatar: "", auto: false, units: [
-                {name: "fighter", level: 1, position: [4, 5], defense: false},
-                {name: "fighter", level: 1, position: undefined, defense: false}
+                {name: "fighter", level: 1, position: [4, 5], defense: false}
             ]},
         {
             username: "Tutorial",
@@ -2038,7 +2038,7 @@ const puzzle4: ChallengeManagerOptions = {
             auto: true,
             units: <UnitPreview[]>[
                 {name: "mortis", level: 22, position: [3, 1], defense: true},
-                {name: "pam", level: 22, position: [4, 4], defense: true},
+                {name: "buster", level: 22, position: [4, 4], defense: true},
                 {name: "amber", level: 22, position: [5, 0], defense: true},
                 {name: "darryl", level: 22, position: [7, 2], defense: true},
                 {name: "sam", level: 22, position: [8, 0], defense: true},
@@ -2133,7 +2133,7 @@ const puzzle6: ChallengeManagerOptions = {
                 {name: "bea", level: 26, position: [5, 5], defense: true},
                 {name: "crow", level: 26, position: [3, 1], defense: true},
                 {name: "colette", level: 26, position: [7, 1], defense: true},
-                {name: "pam", level: 26, position: [1, 5], defense: true},
+                {name: "buster", level: 26, position: [1, 5], defense: true},
                 {name: "fang", level: 26, position: [9, 5], defense: true},
                 {name: "nani", level: 26, position: [3, 9], defense: true},
                 {name: "tara", level: 26, position: [7, 9], defense: true}
@@ -2426,7 +2426,7 @@ const specialUnits: [string, UnitOptionsStorage][] = [
     ["poco", poco],
     ["emz", emz],
     ["barley", barley],
-    ["pam", pam],
+    ["buster", buster],
     ["tara", tara],
     ["carl", carl],
     ["meg", meg],
@@ -2673,6 +2673,7 @@ function generateRandomChallenge(level: number): ChallengeManagerOptions | undef
 
     let locations = new Set<number>();
     let units: UnitPreview[] = [];
+    let restrictions: ChallengeManagerOptions["options"]["restrictions"] = [];
 
     if (width * height >= unitCount * 2){
         while (locations.size < unitCount){
@@ -2698,11 +2699,11 @@ function generateRandomChallenge(level: number): ChallengeManagerOptions | undef
     });
 
     // Create a square of walls around all the units
-    if (level >= 12){
+    if (level >= 16){
         let wallType = "wall1";
-        if (level >= 24){
+        if (level >= 28){
             wallType = "wall3";
-        } else if (level >= 18){
+        } else if (level >= 22){
             wallType = "wall2";
         }
 
@@ -2720,15 +2721,20 @@ function generateRandomChallenge(level: number): ChallengeManagerOptions | undef
         }
     }
 
+    // Restrictions to locations where the player can activate units start at level 12
+    if (level >= 18){
+        restrictions.push({player: 0, left: offsetX - 1, right: offsetX + width, top: offsetY - 1, bottom: offsetY + height});
+    } else if (level >= 12){
+        restrictions.push({player: 0, left: offsetX, right: offsetX + width - 1, top: offsetY, bottom: offsetY + height - 1});
+    }
+
     return {
         options: {
             gridWidth: totalWidth,
             gridHeight: totalHeight,
             maxRounds: unitCount * 4,
             moveLimit: 200,
-            restrictions: [
-                {player: 0, left: offsetX - 1, right: offsetX + width, top: offsetY - 1, bottom: offsetY + height}
-            ]
+            restrictions: restrictions
         },
         players: [
             {username: "", avatar: "", auto: false, units: []},
@@ -2737,7 +2743,7 @@ function generateRandomChallenge(level: number): ChallengeManagerOptions | undef
         extraData: {
             challengeid: level + RANDOM_CHALLENGE_START,
             displayName: `Random Challenge (Level ${level})`,
-            requiredLevel: 1,
+            requiredLevel: Math.max(Math.min(level, 2), level - 8),
             acceptCost: 60,
             reward: undefined
         }
@@ -3019,7 +3025,7 @@ export function getAllChallenges(completedChallenges: number[]): ChallengePrevie
         return {
             challengeid: index + 1 + RANDOM_CHALLENGE_START,
             displayName: `Random Challenge (Level ${index + 1})`,
-            requiredLevel: 1,
+            requiredLevel: Math.max(Math.min(index + 1, 2), index - 7),
             acceptCost: 60,
             completed: false,
             reward: {

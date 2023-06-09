@@ -1,5 +1,5 @@
-import { useRef, useState } from 'react'
-import { AlertDialog, AlertDialogBody, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, Button, Flex, Image, keyframes, Modal, ModalBody, ModalContent, ModalFooter, SimpleGrid, Slider, SliderFilledTrack, SliderMark, SliderThumb, SliderTrack, Spinner, Text, useDisclosure, useToast } from '@chakra-ui/react'
+import React, { useRef, useState } from 'react'
+import { AlertDialog, AlertDialogBody, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, Button, Flex, Image, keyframes, Modal, ModalBody, ModalContent, ModalFooter, SimpleGrid, Spinner, Text, ToastId, useDisclosure, useToast } from '@chakra-ui/react'
 import { BrawlBoxContentsData, BrawlBoxData } from '../types/BrawlBoxData'
 import CountUp from 'react-countup'
 import AuthRequest from '../helpers/AuthRequest'
@@ -9,10 +9,9 @@ export default function BrawlBoxDisplay({ data, tokens, loadResources }: {data: 
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { isOpen: isOpen2, onOpen: onOpen2, onClose: onClose2 } = useDisclosure() //fix
 
-    const [ amount, setAmount ] = useState<number>(1)
     const [ boxContents, setBoxContents ] = useState<[BrawlBoxContentsData]>()
-    const cancelRef:any = useRef()
-    const toastRef:any = useRef()
+    const cancelRef: React.RefObject<HTMLButtonElement> = useRef(null)
+    const toastRef: React.MutableRefObject<ToastId> = useRef(1549687458)
 
     const toast = useToast()
 
@@ -23,25 +22,23 @@ export default function BrawlBoxDisplay({ data, tokens, loadResources }: {data: 
 
     const openBox = (id: string) => {
         setBoxContents(undefined)
-        for (let i = 0; i < amount; i++){
-            AuthRequest('/brawlbox', {setState: [{func: setBoxContents, attr: ""}], data: {boxType: id}, callback: () => {
-                onClose()
-                onClose2()
-                onOpen2()
-            }, fallback: function(error: any) {
-                if (error.response.status === 403){
+        AuthRequest('/brawlbox', {setState: [{func: setBoxContents, attr: ""}], data: {boxType: id}, callback: () => {
+            onClose()
+            onClose2()
+            onOpen2()
+        }, fallback: function(error: any) {
+            if (error.response.status === 403){
 
-                    if (!toast.isActive(toastRef.current)){
-                        toastRef.current = toast({
-                            description: `You don't have enough tokens to open this box!`,
-                            status: 'error',
-                            duration: 3000,
-                            isClosable: true
-                        })
-                    }
+                if (!toast.isActive(toastRef.current)){
+                    toastRef.current = toast({
+                        description: `You don't have enough tokens to open this box!`,
+                        status: 'error',
+                        duration: 3000,
+                        isClosable: true
+                    })
                 }
-            }})
-        }
+            }
+        }})
     }
 
     return (
@@ -55,7 +52,7 @@ export default function BrawlBoxDisplay({ data, tokens, loadResources }: {data: 
             <AlertDialog isOpen={isOpen} onClose={onClose} leastDestructiveRef={cancelRef}>
                 <AlertDialogOverlay>
                     <AlertDialogContent>
-                        <AlertDialogHeader>
+                        <AlertDialogHeader fontWeight={"normal"}>
                             {data.displayName}
                         </AlertDialogHeader>
                         <AlertDialogBody>
@@ -65,30 +62,15 @@ export default function BrawlBoxDisplay({ data, tokens, loadResources }: {data: 
                                 {data?.dropsDescription.map((drop) => (
                                     <Text>{drop}</Text>
                                 ))}     
-                             </Flex>     
-                            <Flex>
-                            <Slider value={amount} onChange={(count) => setAmount(count)} max={15} min={1} step={1} w={'70%'}>
-                                <SliderMark value={1} mt={'2'} ml={'-2.5'} fontSize={'sm'}>
-                                    1x
-                                </SliderMark>
-                                <SliderMark value={15}>
-                                    15x
-                                </SliderMark>
-                                <SliderTrack>
-                                    <SliderFilledTrack/>
-                                </SliderTrack>
-                                <SliderThumb/>
-                            </Slider>
-                            <Text ml={10}>{`${amount}x`}</Text>
                             </Flex>
                         </AlertDialogBody>
                         <AlertDialogFooter>
                             <Button onClick={onClose} ref={cancelRef}>
                                 Cancel
                             </Button>
-                            <Button colorScheme={(tokens && (tokens < amount * data.cost)) ? 'red' : 'facebook'} onClick={() => {openBox(data.name)}} ml={3}>
+                            <Button colorScheme={(tokens && (tokens < data.cost)) ? 'red' : 'facebook'} onClick={() => {openBox(data.name)}} ml={3}>
                                 <Flex alignItems={'center'} justifyContent={'center'} textAlign={'center'}>
-                                    <Text  fontSize={'lg'}>{amount * data.cost}</Text>
+                                    <Text fontSize={'lg'} mr={1}>{data.cost}</Text>
                                     <Image src={'/image/resources/resource_tokens.webp'} w={'22px'}/>
                                 </Flex>
                             </Button>
@@ -106,7 +88,7 @@ export default function BrawlBoxDisplay({ data, tokens, loadResources }: {data: 
                                 
                                     <Text mb={2}  fontSize={'3xl'} className={'heading-2xl'}>{content.displayName}</Text>                                    
                                     <Image borderRadius={'xl'} src={`/image/${content.image}`} loading={'eager'}/>
-                                    {content.amount > 1 && <Text  fontSize={'2xl'} className={'heading-2xl'}>{`${content.amount}x`}</Text>}
+                                    {content.amount > 1 && <Text fontSize={'2xl'} className={'heading-2xl'}>{`+${content.amount}`}</Text>}
                                     <Text mx={6}  className={'heading-lg'} fontSize={'xl'}>{content.description}</Text>
                                     <Text mt={'20%'}  className={'heading-lg'} fontSize={'lg'}><CountUp prefix={'Inventory: '} end={content.inventory} duration={1.5}/></Text>
                                 </Flex>               
@@ -119,7 +101,11 @@ export default function BrawlBoxDisplay({ data, tokens, loadResources }: {data: 
                             Close
                         </Button>
                         <Button onClick={() => {openBox(data.name)}} ml={3}>
-                            Open Again
+                            <Flex alignItems={"center"}>
+                                <Text mr={3}>Open Again</Text>
+                                <Text mr={0.5}>{data.cost}</Text>
+                                <Image src={'/image/resources/resource_tokens.webp'} w={'22px'}/>
+                            </Flex>
                         </Button>
                     </ModalFooter>
                 </ModalContent>

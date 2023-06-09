@@ -53,7 +53,7 @@ app.use("/", account);
 app.use("/", collection);
 app.use("/trade", tradesview);
 app.use("/trade", tradesmodify);
-app.use("/", challenge);
+app.use("/challenge", challenge);
 
 // Error handler
 app.use((error: Error, req: Request, res: Response, next: NextFunction) => {

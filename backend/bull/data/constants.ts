@@ -18,7 +18,7 @@ export const SCENE_IMAGE_DIR = "scenes/";
 export const ACCESSORY_IMAGE_DIR = "accessories/";
 
 export const HOURS_PER_REWARD = 6;
-export const TOKENS_PER_REWARD = 100;
+export const TOKENS_PER_REWARD = 150;
 export const MAX_REWARD_STACK = 4;
 
 export const FEATURED_REFRESH_HOURS = 24;
