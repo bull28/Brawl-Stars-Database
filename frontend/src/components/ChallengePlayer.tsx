@@ -16,7 +16,9 @@ interface ChallengePlayerProps{
     unitChoices: UnitImage[];
     onStarted: () => void;
     onJoin: () => void;
+    updateTokens: () => void;
     setRoomList: (rooms: RoomData) => void;
+    loginRef: React.MutableRefObject<boolean>;
 }
 
 type Point = [number, number];
@@ -90,6 +92,7 @@ interface RewardEvent{
 interface ServerToClientEvents{
     message: (message: string) => void;
     error: (message: string) => void;
+    login: (message: string) => void;
     state: (state: ChallengeManagerState) => void;
     rooms: (challenges: RoomData) => void;
     preview: (units: UnitDisplay[]) => void;
@@ -101,7 +104,6 @@ interface ClientToServerEvents{
     login: (token: string) => void;
     create: (challengeid: number) => void;
     rooms: (token: string) => void;
-    preview: (playerRoom: string) => void;
     join: (playerName: string, unitNames: string[]) => void;
     action: (action: string, request: MoveRequest[] | AttackRequest[]) => void;
 }
@@ -220,7 +222,7 @@ function showStats(unit: UnitState, owner: string): JSX.Element{
     );
 }
 
-export default function ChallengePlayer({address, token, room, createChallenge, unitChoices, onJoin, onStarted, setRoomList}: ChallengePlayerProps){
+export default function ChallengePlayer({address, token, room, createChallenge, unitChoices, onJoin, onStarted, updateTokens, setRoomList, loginRef}: ChallengePlayerProps){
     // Socket object
     const [socket, setSocket] = useState<Socket<ServerToClientEvents, ClientToServerEvents> | undefined>(undefined);
     // Index of the player that is currently logged in
@@ -248,9 +250,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
     const [preview, setPreview] = useState<boolean>(true);
     // Toggle showing area restrictions
     const [showRestrictions, setShowRestrictions] = useState<boolean>(false);
-
-    // If the login failed, this will display it to the player
-    const [loginFailed, setLoginFailed] = useState<boolean>(false);
+    
     // Reward that the player received
     const [reward, setReward] = useState<{winner: number; reward: RewardEvent} | undefined>(undefined);
 
@@ -334,52 +334,58 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
 
     useEffect(() => {
         const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io(address);
-        socket.on("state", (data) => {
-            onStarted();
-            setCurrentUnit(undefined);
-            setPlayers(data.players);
-            setChallenge(data.challenge);
-        });
-        socket.on("message", (data) => {
-            console.log(data);
-            if (data === ""){
-                // No error
-
-                // The player cannot make the same moves two turns in a row so clear move actions
-                setMoveActions(new Map());
-                setAttackActions(new Map());
-            } else{
-                toast({description: data, status: "info", duration: 2500, isClosable: true});
-            }
-        });
-        socket.on("rooms", (data) => {
-            setRoomList(data);
-            console.log(data);
-        });
-        socket.on("preview", (data) => {
-            console.log(data);
-            toast({description: "", status: "info", duration: 2500, isClosable: true});
-        });
-        socket.on("error", (data) => {
-            if (data === "Invalid token."){
-                setLoginFailed(true);
-            } else{
-                toast({description: data, status: "error", duration: 4500, isClosable: true});
-            }
-            console.error(data);
-        });
-        socket.on("finish", (winner, reward) => {
-            setReward({winner: winner, reward: reward});
-            onOpen();
-        });
-        socket.on("join", (data) => {
-            setCurrentPlayer(data);
-            onJoin();
-        });
         setSocket(socket);
+    }, [address]);
 
-        socket.emit("login", token);
-    }, [address, token, toast, setRoomList, onJoin, onStarted, onOpen]);
+    useEffect(() => {
+        if (typeof socket !== "undefined"){
+            socket.on("state", (data) => {
+                onStarted();
+                setCurrentUnit(undefined);
+                setPlayers(data.players);
+                setChallenge(data.challenge);
+            });
+            socket.on("message", (data) => {
+                console.log(data);
+                if (data === ""){
+                    // The player cannot make the same moves two turns in a row so clear move actions
+                    setMoveActions(new Map());
+                    setAttackActions(new Map());
+                } else{
+                    toast({description: data, status: "info", duration: 2500, isClosable: true});
+                }
+            });
+            socket.on("login", (data) => {
+                console.log(data);
+                loginRef.current = true;
+                socket.emit("rooms", token);
+                toast({description: data, status: "info", duration: 2500, isClosable: true});
+            });
+            socket.on("rooms", (data) => {
+                setRoomList(data);
+                console.log(data);
+            });
+            socket.on("preview", (data) => {
+                console.log(data);
+                updateTokens();
+                toast({description: "", status: "info", duration: 2500, isClosable: true});
+            });
+            socket.on("error", (data) => {
+                console.error(data);
+                toast({description: data, status: "error", duration: 4500, isClosable: true});
+            });
+            socket.on("finish", (winner, reward) => {
+                setReward({winner: winner, reward: reward});
+                onOpen();
+            });
+            socket.on("join", (data) => {
+                setCurrentPlayer(data);
+                onJoin();
+            });
+
+            socket.emit("login", token);
+        }
+    }, [socket, token, toast, loginRef, setRoomList, onJoin, onStarted, updateTokens, onOpen]);
 
     useEffect(() => {
         return (() => {
@@ -394,7 +400,6 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
             setAttackActions(new Map());
             setPreview(true);
             setShowRestrictions(false);
-            setLoginFailed(false);
             setReward(undefined);
             socket?.disconnect();
         });
@@ -600,11 +605,11 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                             <Button w={"100%"} className={"heading-md"} onClick={() => {selectUnit(undefined); setShowRestrictions(!showRestrictions);}}>{showRestrictions ? "Hide area restrictions" : "Show area restrictions"}</Button>
                         </Flex>
                         <Flex flexDir={"column"}>
+                            {challenge.started === false ? <Button w={"240px"} className={"heading-md"} onClick={() => sendAction("ready")}>Ready</Button> : <></>}
                             <Flex>
-                                {challenge.started === false ? <Button w={"100px"} className={"heading-md"} onClick={() => sendAction("ready")}>Ready</Button> : <></>}
-                                <Button w={"100px"} className={"heading-md"} isDisabled={challenge.turn !== currentPlayer || currentPlayer < 0 || !challenge.started} onClick={() => sendAction("move")}>Move</Button>
-                                <Button w={"100px"} className={"heading-md"} isDisabled={challenge.turn !== currentPlayer || currentPlayer < 0 || !challenge.started} onClick={() => sendAction("attack")}>Attack</Button>
-                                <Button w={"100px"} className={"heading-md"} isDisabled={(challenge.turn !== currentPlayer || currentPlayer < 0) && challenge.started} onClick={() => sendAction("activate")}>Activate</Button>
+                                <Button w={"80px"} className={"heading-md"} isDisabled={challenge.turn !== currentPlayer || currentPlayer < 0 || !challenge.started} onClick={() => sendAction("move")}>Move</Button>
+                                <Button w={"80px"} className={"heading-md"} isDisabled={challenge.turn !== currentPlayer || currentPlayer < 0 || !challenge.started} onClick={() => sendAction("attack")}>Attack</Button>
+                                <Button w={"80px"} className={"heading-md"} isDisabled={(challenge.turn !== currentPlayer || currentPlayer < 0) && challenge.started} onClick={() => sendAction("activate")}>Activate</Button>
                             </Flex>
                             <Flex padding={1} fontSize={"xl"} className={"heading-xl"}>{`Rounds left: ${challenge.roundsLeft}`}</Flex>
                         </Flex>
@@ -613,7 +618,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                 :
                 <Flex alignItems={"center"} justifyContent={"center"} mt={10}>
                     <Flex flexDir={"column"} minW={"10vw"}>
-                        {(loginFailed === true) ?
+                        {(loginRef.current === false) ?
                             <Flex flexDir={"column"} bgColor={"gray.800"} p={2} borderRadius={"lg"}>
                                 <Text fontSize={"2xl"} mb={2} mx={3}>You must be logged in to play challenges.</Text>
                                 <Button onClick={() => navigate("/login")}>Log In</Button>
@@ -628,7 +633,6 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                                         <Button onClick={() => { if (typeof createChallenge !== "undefined"){socket.emit("create", createChallenge.challengeid);} else if (inputText.length > 0){socket.emit("create", parseInt(inputText));} else{toast({description: "No challenge id specified", status: "error", duration: 4500, isClosable: true});} }}>{`Create Challenge${typeof createChallenge !== "undefined" ? ` (${createChallenge.displayName})` : ""}`}</Button>
                                         <Button onClick={() => { if (typeof room !== "undefined"){socket.emit("join", room, unitChoices.map((value) => value.name));} else{socket.emit("join", inputText, unitChoices.map((value) => value.name));} }}>{`Join Challenge${typeof room !== "undefined" ? ` (room: ${room})` : ""}`}</Button>
                                         <Button onClick={() => socket.emit("rooms", token)}>Show Rooms</Button>
-                                        <Button onClick={() => socket.emit("preview", inputText)}>Preview Challenge</Button>
                                         <Button onClick={() => navigate("/")}>Back to Main Menu</Button>
                                     </Flex>
                                     
@@ -676,7 +680,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                                             :
                                             <></>
                                         }
-                                        <Button onClick={() => navigate("/")} mt={5}>Return to Main Menu</Button>
+                                        <Button onClick={() => window.location.reload()} mt={5}>Exit</Button>
                                     </Flex>
                                 </ModalBody>
                             </ModalContent>

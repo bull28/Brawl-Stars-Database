@@ -92,14 +92,14 @@ export default function Shop() {
                         <Image ml={1} maxH={'40px'} src={`/image/resources/resource_coins.webp`}/>
                     </Flex>
                     <Flex justifyContent={'center'} alignItems={'center'} borderRadius={'50%'} animation={(userInfo?.avatarColor === 'rainbow') ? `${RainbowBorder()} 12s infinite` : ''} border={(userInfo?.avatarColor !== 'rainbow') ? `3px solid ${userInfo?.avatarColor}` : ''} ml={3}>
-                        <Image loading={'eager'} src={`/image/${userInfo?.avatar}`} borderRadius={'50%'} w={'50px'}/>
+                        <Image loading={'eager'} src={typeof userInfo !== "undefined" ? `/image/${userInfo.avatar}` : undefined} borderRadius={'50%'} w={'50px'}/>
                     </Flex>
                 </Flex>
             </Flex>
             <Flex flexDir={'column'} alignItems={'center'} pb={'5vh'} pt={'10vh'}>  
                 {
                     data?.map((item) => (
-                        (item.name === 'featuredItem') && <ScaleFade in={true}><ShopItem data={item} coins={userInfo?.coins || 0} isFeatured={true} timeLeftString={EventTime({season: 0, hour: Math.floor(secondsLeft / 3600), minute: Math.floor(secondsLeft / 60) % 60, second: secondsLeft % 60, hoursPerSeason: 336, maxSeasons: 2}, 0)}/></ScaleFade>
+                        (item.name === 'featuredItem') && <ScaleFade key={item.name} in={true}><ShopItem data={item} coins={userInfo?.coins || 0} isFeatured={true} timeLeftString={EventTime({season: 0, hour: Math.floor(secondsLeft / 3600), minute: Math.floor(secondsLeft / 60) % 60, second: secondsLeft % 60, hoursPerSeason: 336, maxSeasons: 2}, 0)}/></ScaleFade>
                     ))
                 }               
             </Flex>  
@@ -113,7 +113,7 @@ export default function Shop() {
                         <HStack>
                         {
                             data?.map((item) => (
-                                item.name.includes('avatar') && <ScaleFade in={true}><ShopItem data={item} coins={userInfo?.coins || 0} timeLeftString={""}/></ScaleFade>
+                                item.name.includes('avatar') && <ScaleFade key={item.name} in={true}><ShopItem data={item} coins={userInfo?.coins || 0} timeLeftString={""}/></ScaleFade>
                             ))
                         }
                         </HStack>
@@ -126,7 +126,7 @@ export default function Shop() {
                         <HStack>
                         {
                             data?.map((item) => (
-                                item.name.includes('brawler') && <ScaleFade in={true}><ShopItem data={item} coins={userInfo?.coins || 0} timeLeftString={""}/></ScaleFade>
+                                item.name.includes('brawler') && <ScaleFade key={item.name} in={true}><ShopItem data={item} coins={userInfo?.coins || 0} timeLeftString={""}/></ScaleFade>
                             ))
                         }
                         </HStack>
@@ -139,7 +139,7 @@ export default function Shop() {
                         <SimpleGrid columns={7} spacing={3}>
                         {
                             data?.map((item) => (
-                                item.name.includes('accessory') && <ScaleFade in={true}><ShopItem data={item} coins={userInfo?.coins || 0} timeLeftString={""}/></ScaleFade>
+                                item.name.includes('accessory') && <ScaleFade key={item.name} in={true}><ShopItem data={item} coins={userInfo?.coins || 0} timeLeftString={""}/></ScaleFade>
                             ))
                         }
                         </SimpleGrid>
@@ -152,7 +152,7 @@ export default function Shop() {
                         <HStack>
                         {
                             data?.map((item) => (
-                                item.name.toLowerCase().includes('credit') && <ScaleFade in={true}><ShopItem data={item} coins={userInfo?.coins || 0} timeLeftString={""}/></ScaleFade>
+                                item.name.toLowerCase().includes('credit') && <ScaleFade key={item.name} in={true}><ShopItem data={item} coins={userInfo?.coins || 0} timeLeftString={""}/></ScaleFade>
                             ))
                         }
                         </HStack>
@@ -165,7 +165,7 @@ export default function Shop() {
                         <SimpleGrid columns={7} spacing={3}>
                         {
                             data?.map((item) => (
-                                item.name.toLowerCase().includes('theme') && <ScaleFade in={true}><ShopItem data={item} coins={userInfo?.coins || 0} timeLeftString={""}/></ScaleFade>
+                                item.name.toLowerCase().includes('theme') && <ScaleFade key={item.name} in={true}><ShopItem data={item} coins={userInfo?.coins || 0} timeLeftString={""}/></ScaleFade>
                             ))
                         }
                         </SimpleGrid>
@@ -178,7 +178,7 @@ export default function Shop() {
                         <SimpleGrid columns={7} spacing={3}>
                         {
                             data?.map((item) => (
-                                item.name.toLowerCase().includes('scene') && <ScaleFade in={true}><ShopItem data={item} coins={userInfo?.coins || 0} timeLeftString={""}/></ScaleFade>
+                                item.name.toLowerCase().includes('scene') && <ScaleFade key={item.name} in={true}><ShopItem data={item} coins={userInfo?.coins || 0} timeLeftString={""}/></ScaleFade>
                             ))
                         }
                         </SimpleGrid>

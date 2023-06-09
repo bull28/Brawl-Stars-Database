@@ -22,7 +22,7 @@ export default function UnitSelection({data, setSelected}: UnitSelectionProps){
                             <SimpleGrid columns={[5]} spacing={0}>
                                 {data.unitsAvailable.map((value) => {
                                     return (
-                                        <Button key={value.name} border={"2px solid #0000"} borderRadius={"md"} bgImage={`url(/image/${value.display.image})`} bgRepeat={"no-repeat"} bgSize={"cover"} _hover={{}} onMouseOver={() => setCurrentUnit(value)} onMouseOut={() => setCurrentUnit(undefined)} onClick={() => {if (units.length + 1 <= data.unitsPerChallenge){setUnits(units.concat([{name: value.name, image: value.display.image}]));}}}></Button>
+                                        <Button key={value.name} border={"2px solid #0000"} borderRadius={"md"} bgImage={`url(/image/${value.display.image})`} bgRepeat={"no-repeat"} bgSize={"cover"} _hover={{}} onMouseOver={() => setCurrentUnit(value)} onMouseOut={() => setCurrentUnit(undefined)} onClick={() => {if (units.length + 1 <= data.unitsPerChallenge){setUnits(units.concat([{name: value.name, image: value.display.image, key: Date.now()}]));}}}/>
                                     );
                                 })}
                             </SimpleGrid>
@@ -93,8 +93,8 @@ export default function UnitSelection({data, setSelected}: UnitSelectionProps){
                         <HStack spacing={1} wrap={"wrap"}>
                             {units.map((value) => {
                                 return (
-                                    <Image key={value.name} h={10} objectFit={"contain"} src={`/image/${value.image}`}/>
-                                )
+                                    <Image key={value.name + value.key.toString()} h={10} objectFit={"contain"} src={`/image/${value.image}`}/>
+                                );
                             })}
                         </HStack>
                         </Flex>

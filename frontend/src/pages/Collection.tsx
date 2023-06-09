@@ -182,8 +182,8 @@ export default function Collection() {
             </SimpleGrid>
             </Accordion>}
             <Text fontSize={'3xl'} className={'heading-3xl'} my={10}>Accessories</Text>
-            <Flex w={'30vw'} mb={10}>
-                <AccessoryLevel level={level} points={points} upgradePoints={upgradePoints}/>
+            <Flex mb={10}>
+                <AccessoryLevel boxWidth={600} level={level} points={points} upgradePoints={upgradePoints}/>
             </Flex>
             <SimpleGrid columns={[1,2,3,4]} spacing={3} w={'80vw'} bgColor={'blue.800'} p={5} mb={10}>
                 {data && data.accessories.sort((a, b) => a.unlockLevel - b.unlockLevel).map((accessory) => (

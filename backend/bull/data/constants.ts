@@ -29,7 +29,7 @@ export const CHALLENGE_LOSS_MULTIPLIER = 5;
 export const CHALLENGE_WIN_MULTIPLIER = 15;
 export const CHALLENGE_COINS_PER_TOKEN = 3;
 
-export const DAILY_CHALLENGE_REFRESH = 86400000;
+export const DAILY_CHALLENGE_REFRESH = 82800000;
 export const DAILY_CHALLENGE_MULTIPLIER = 5;
 
 export const REPLAY_CHALLENGE_START = 50;
@@ -54,7 +54,7 @@ export const themeMap = new Map<string, string>([
     ["yellow_face", " "]
 ]);
 
-export const sceneMap = new Map<string, {displayName: string, preview: string}>([
+export const sceneMap = new Map<string, {displayName: string; preview: string;}>([
     ["canyon", {"displayName": "Canyon", "preview": "maps/banners/canyon"}],
     ["mine", {"displayName": "Gem Mine", "preview": "maps/banners/mine"}],
     ["retropolis", {"displayName": "Retropolis", "preview": "maps/banners/retropolis"}],

@@ -1,6 +1,6 @@
 import allSkins from "../data/brawlers_data.json";
 import {IMAGE_FILE_EXTENSION, PIN_IMAGE_DIR} from "../data/constants";
-import { MAP_CYCLE_HOURS, SeasonTime, addSeasonTimes } from "./maps";
+import {MAP_CYCLE_HOURS, SeasonTime, addSeasonTimes} from "./maps";
 import {TradePin, TradePinData, TradePinValid} from "../types";
 
 /**

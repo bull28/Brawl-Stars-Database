@@ -1,5 +1,16 @@
 import {ACCESSORY_IMAGE_DIR, IMAGE_FILE_EXTENSION, CHALLENGE_WIN_MULTIPLIER, CHALLENGE_COINS_PER_TOKEN, RANDOM_CHALLENGE_START, PLAYER_CHALLENGE_START} from "../data/constants";
-import {DatabaseAccessories, AccessoryPreview, AccessoryData, UnitOptions, UnitPreview, UnitOptionsStorage, UnitSelection, UnitDisplay, ChallengeManagerOptions, ChallengePreview} from "../types";
+import {
+    DatabaseAccessories, 
+    AccessoryPreview, 
+    AccessoryData, 
+    UnitOptions, 
+    UnitPreview, 
+    UnitOptionsStorage, 
+    UnitSelection, 
+    UnitDisplay, 
+    ChallengeManagerOptions, 
+    ChallengePreview
+} from "../types";
 
 interface LevelData{
     upgradePoints: number;

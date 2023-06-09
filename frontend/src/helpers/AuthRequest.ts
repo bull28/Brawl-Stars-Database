@@ -3,8 +3,12 @@ import { createStandaloneToast } from '@chakra-ui/react'
 
 //functions that deal with token storage/retrieval and post requests using them
 
-export function getToken(): string{
-    return JSON.parse(localStorage.getItem('tokens') || "{}")[localStorage.getItem('username') || ""]
+export function getToken(): string | undefined{
+    try{
+        return JSON.parse(localStorage.getItem('tokens') || "{}")[localStorage.getItem('username') || ""];
+    } catch (error){
+        return undefined;
+    }
 }
 
 export function changeToken(username: string, token: string){

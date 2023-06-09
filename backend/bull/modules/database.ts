@@ -785,11 +785,12 @@ export async function addChallengeReward(values: ChallengeRewardValues): Promise
 
 
 interface ChallengeCompletionsResult extends RowDataPacket{
+    last_win: number;
     total_wins: number;
     completed: string;
 }
 export async function completedChallenges(values: UsernameValues): Promise<ChallengeCompletionsResult[]>{
     const valuesArray = [values.username];
     return queryDatabase<typeof valuesArray, ChallengeCompletionsResult[]>(connection, valuesArray, false,
-        `SELECT total_wins, completed FROM ${CHALLENGE_TABLE_NAME} WHERE username = ?`);
+        `SELECT last_win, total_wins, completed FROM ${CHALLENGE_TABLE_NAME} WHERE username = ?`);
 }

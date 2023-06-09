@@ -13,6 +13,7 @@ const MAX_ACTIVE_CHALLENGES = 100;
 interface ServerToClientEvents{
     message: (message: string) => void;
     error: (message: string) => void;
+    login: (message: string) => void;
     state: (state: ChallengeManagerState) => void;
     rooms: (challenges: ChallengeRoomPreview[]) => void;
     preview: (units: UnitDisplay[]) => void;
@@ -24,7 +25,6 @@ interface ClientToServerEvents{
     login: (token: string) => void;
     create: (challengeid: number) => void;
     rooms: (token: string) => void;
-    preview: (playerRoom: string) => void;
     join: (playerName: string, unitNames: string[]) => void;
     action: (action: string, request: MoveRequest[] | AttackRequest[]) => void;
 }
@@ -246,7 +246,7 @@ io.on("connection", (socket) => {
             // If the username is a value in socketidMap then it has already been associated with a user
             // If the username is a key in userMap then it has already joined a challenge
             // In both of these cases, the login fails
-            socket.emit("error", "The username " + username + " is already active in another session.");
+            socket.emit("error", `The username ${username} is already active in another session.`);
         } else{
             const currentUsername = socketidMap.get(socket.id);
             if (typeof currentUsername !== "undefined"){
@@ -255,12 +255,12 @@ io.on("connection", (socket) => {
                     socket.emit("error", "You cannot switch usernames after starting a challenge.");
                 } else{
                     socketidMap.set(socket.id, username);
-                    socket.emit("message", "Switched usernames: " + currentUsername + " \u279c " + username);
+                    socket.emit("message", `Switched usernames: ${currentUsername} \u279c ${username}`);
                 }
             } else{
                 // User has not logged in yet
                 socketidMap.set(socket.id, username);
-                socket.emit("message", "Logged in as " + username);
+                socket.emit("login", `Logged in as ${username}`);
             }
         }
     });
@@ -348,7 +348,9 @@ io.on("connection", (socket) => {
         let challenges: ChallengeRoomPreview[] = [];
 
         challengeMap.forEach((value, key) => {
-            if (typeof value.challenge === "undefined"){
+            if (typeof value.challenge === "undefined" && userMap.has(key) === true){
+                // If the key (room name) is not in the user map then the creator
+                // has not started it yet and other players cannot join
                 const players: ChallengeRoomPreview["players"] = value.players.filter((player) => player.auto === false).map((player) => {
                     return {
                         username: player.username,
@@ -367,49 +369,6 @@ io.on("connection", (socket) => {
         });
 
         socket.emit("rooms", challenges);
-    });
-
-    socket.on("preview", (playerName: string) => {
-        // Gets a preview of the units in the challenge.
-        // This does not join the challenge and does not cost any tokens to use
-        // The user must already be logged in to get a preview.
-        // The player who created the room already selected a challenge id
-
-        const username = socketidMap.get(socket.id);
-        const roomName = playerName;
-
-        if (typeof username !== "undefined" && roomName !== ""){
-            if (userMap.has(username) === true){
-                // If the username is already in userMap then the user is already in a challenge
-                // and cannot join a new one.
-                socket.emit("error", "You are already in a challenge.");
-            } else if (userMap.has(roomName) === true){
-                // The user map must have the room name otherwise there is no challenge to join
-
-                const challenge = challengeMap.get(roomName);
-                if (typeof challenge === "undefined"){
-                    socket.emit("error", "Challenge could not be found.");
-                    return;
-                }
-                // Check here if the player is allowed to accept the challenge
-                // (enough tokens, required level) and return if not allowed
-
-                if (typeof challenge.getState() !== "undefined"){
-                    socket.emit("error", "This challenge has already started.");
-                    return;
-                }
-
-                // Send the preview state then let them choose which units they want to use
-                // After they choose their units, add them to the challenge in the "units" event
-                socket.emit("preview", challenge.getPreviewState());
-            } else{
-                socket.emit("error", "User is not currently in a room.");
-            }
-        } else if (typeof username !== "undefined"){
-            socket.emit("error", "No room name specified.");
-        } else{
-            socket.emit("error", "You are not logged in.");
-        }
     });
 
     socket.on("join", async (playerName: string, unitNames: string[]) => {
