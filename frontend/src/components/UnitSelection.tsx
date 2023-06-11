@@ -16,8 +16,8 @@ export default function UnitSelection({data, setSelected}: UnitSelectionProps){
             <Flex flexDir={"column"} bgColor={"gray.800"} alignItems={"center"} borderRadius={"lg"}>
                 <Text fontSize={"2xl"} className={"heading-2xl"}>Select Units</Text>
                 <Divider/>
-                <Flex flexDir={"column"} minW={"480px"} w={"30vw"} minH={"45vh"} p={2}>
-                    <Flex h={"100%"} wrap={"wrap"}>
+                <Flex flexDir={"column"} minW={["90vw", "80vw", "480px", "480px", "480px"]} w={"30vw"} minH={"45vh"} p={2}>
+                    <Flex h={"100%"} flexDir={["column", "column", "row", "row", "row"]}>
                         <Flex flexDir={"column"} alignItems={"center"}>
                             <SimpleGrid columns={[5]} spacing={0}>
                                 {data.unitsAvailable.map((value) => {
@@ -28,7 +28,7 @@ export default function UnitSelection({data, setSelected}: UnitSelectionProps){
                             </SimpleGrid>
                         </Flex>
                         {(typeof currentUnit !== "undefined") ?
-                            <Flex w={"40%"} pos={"relative"} ml={2}>
+                            <Flex w={["100%", "75%", "40%", "40%", "40%"]} pos={"relative"} ml={[0, 0, 2, 2, 2]}>
                                 <Flex flexDir={"column"} alignItems={"center"} w={"100%"}>
                                     <Text fontSize={"xl"}>{currentUnit.display.displayName}</Text>
                                     <Flex flexDir={"column"} alignItems={"flex-start"} w={"100%"}>

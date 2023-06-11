@@ -1,10 +1,10 @@
 import {Flex, Text, Image, Button, SimpleGrid, Divider} from "@chakra-ui/react";
-import {RoomData} from "../types/ChallengeData";
+import {RoomDataDisplay, RoomName} from "../types/ChallengeData";
 
 interface RoomSelectionProps{
-    data: RoomData;
+    data: RoomDataDisplay;
     level: number;
-    setSelected: (room: string) => void;
+    setSelected: (room: RoomName) => void;
 }
 
 export default function UnitSelection({data, level, setSelected}: RoomSelectionProps){
@@ -16,18 +16,18 @@ export default function UnitSelection({data, level, setSelected}: RoomSelectionP
                 <Flex h={"100%"} wrap={"wrap"}>
                     <Flex w={"100%"} h={"100%"} flexDir={"column"} alignItems={"center"}>
                         {data.length > 0 ?
-                        <SimpleGrid w={"100%"} h={"100%"} columns={[1,1,2,2,3]} spacing={2} overflow={"auto"} alignItems={"flex-start"} sx={{
+                        <SimpleGrid w={"100%"} h={"100%"} columns={[1, 1, 2, 2, 3]} spacing={2} overflow={"auto"} alignItems={"flex-start"} sx={{
                             "&::-webkit-scrollbar": {
                             width: "8px",
                             borderRadius: "8px",
-                            backgroundColor: `rgba(0, 0, 0, 0.2)`,
+                            backgroundColor: `rgba(0, 0, 0, 0.2)`
                             },
                             "&::-webkit-scrollbar-thumb": {
                             backgroundColor: "rgba(0, 0, 0, 0.5)",
-                            borderRadius: "6px",
+                            borderRadius: "6px"
                             },
                             "&::-webkit-scrollbar-corner": {
-                            backgroundColor: "rgba(0, 0, 0, 0)",
+                            backgroundColor: "rgba(0, 0, 0, 0)"
                             }
                         }}>{data.map((value) => {
                             return (
@@ -35,9 +35,9 @@ export default function UnitSelection({data, level, setSelected}: RoomSelectionP
                                     <Text fontSize={"xl"} className={"heading-xl"}>{`${value.username}'s Room`}</Text>
                                     <Divider my={1}/>
                                     <Text fontSize={"lg"} className={"heading-lg"}>{value.displayName}</Text>
-                                    <SimpleGrid columns={[1,1,1,1,2]} spacing={1}>{value.players.map((player) => {
+                                    <SimpleGrid columns={[1, 1, 1, 1, 2]} spacing={1}>{value.players.map((player) => {
                                         return (
-                                            <Flex key={value.username + player.username} alignItems={"center"} wrap={"wrap"}>
+                                            <Flex key={player.username + player.key.toString()} alignItems={"center"} wrap={"wrap"}>
                                                 <Flex h={10} justifyContent={"center"} alignItems={"center"} borderRadius={"50%"} border={"2px solid #fff"}>
                                                     <Image h={"100%"} objectFit={"contain"} borderRadius={"50%"} src={player.avatar !== "" ? `/image/${player.avatar}` : "/image/avatars/free/default.webp"}/>
                                                 </Flex>
@@ -49,7 +49,7 @@ export default function UnitSelection({data, level, setSelected}: RoomSelectionP
                                     <Divider my={1}/>
                                     <Flex w={"100%"} alignItems={"flex-end"}>
                                         <Text w={"80%"} className={"heading-md"}>{`Requires Level ${value.requiredLevel}`}</Text>
-                                        <Button w={"20%"} isDisabled={level < value.requiredLevel} onClick={() => setSelected(value.username)}>
+                                        <Button w={"20%"} isDisabled={level < value.requiredLevel} onClick={() => setSelected({username: value.username, acceptCost: value.acceptCost})}>
                                             <Text fontSize={"lg"}>{value.acceptCost}</Text>
                                             <Image ml={1} src={"/image/resources/resource_tokens.webp"} h={5}/>
                                         </Button>

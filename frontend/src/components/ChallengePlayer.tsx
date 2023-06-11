@@ -2,17 +2,17 @@ import {io, Socket} from "socket.io-client";
 import {useState, useEffect, ChangeEvent} from "react";
 import {useNavigate} from "react-router-dom";
 import {
-    Flex, Text, HStack, Image, Textarea, Button, SimpleGrid, useToast,
+    Flex, Text, Stack, Image, Input, Button, SimpleGrid, useToast,
     Modal, ModalOverlay, ModalContent, ModalBody, ModalHeader, ModalCloseButton, Divider, useDisclosure
 } from "@chakra-ui/react";
-import {UnitImage, ChallengeName, RoomData} from "../types/ChallengeData";
+import {UnitImage, ChallengeName, RoomName, RoomData} from "../types/ChallengeData";
 import {displayLong} from "../helpers/LargeNumberDisplay";
 
 interface ChallengePlayerProps{
     address: string;
     token: string;
     createChallenge: ChallengeName | undefined;
-    room: string | undefined;
+    room: RoomName | undefined;
     unitChoices: UnitImage[];
     onStarted: () => void;
     onJoin: () => void;
@@ -176,42 +176,47 @@ function showStats(unit: UnitState, owner: string): JSX.Element{
     const unitStats = unit.stats;
     const healthFraction = Math.min(1, Math.max(0, unitStats.health / Math.max(1, unitStats.maxHealth)));
 
+    const titleFontSizes = ["20px", "24px", "28px", "28px", "28px"];
+    const fontSizes = ["16px", "16px", "20px", "20px", "20px"];
+    const lineHeights = ["20px", "20px", "24px", "24px", "24px"];
+    const fontSizes2 = ["12px", "16px", "16px", "16px", "16px"];
+
     return (
-        <Flex w={"260px"} px={"5px"} bgColor={"gray.800"} flexDir={"column"} pos={"relative"}>
-            <Flex justifyContent={"center"} fontSize={"28px"} mt={2}>{unit.displayName}</Flex>
+        <Flex w={"250px"} px={"5px"} bgColor={"gray.800"} flexDir={"column"}>
+            <Flex justifyContent={"center"} fontSize={titleFontSizes} mt={2}>{unit.displayName}</Flex>
             <Flex justifyContent={"center"} fontSize={"16px"}>{`Owner: ${owner}`}</Flex>
             <Flex bgColor={"#808080"} w={"100%"} h={"3px"} mt={2} mb={2}/>
-            <Flex w={"250px"} alignItems={"center"} flexDir={"column"}>
-                <Flex fontSize={"20px"} whiteSpace={"pre"}>
+            <Flex w={"100%"} alignItems={"center"} flexDir={"column"}>
+                <Text maxW={"100%"} fontSize={fontSizes} whiteSpace={"pre"}>
                     {unitStats.shield > 0 ? `${unitStats.health} \u2764  +  ${unitStats.shield} \u2748` : `${unitStats.health} / ${unitStats.maxHealth} \u2764`}
-                </Flex>
-                <Flex w={"200px"} h={"15px"} bgColor={"#333"}>
-                    <Flex w={`${200 * healthFraction}px`} h={"15px"} bgColor={unitStats.shield > 0 ? "#ff03cc" : healthBarColor(healthFraction)}/>
+                </Text>
+                <Flex w={"80%"} h={"15px"} bgColor={"#333"}>
+                    <Flex w={`${100 * healthFraction}%`} h={"15px"} bgColor={unitStats.shield > 0 ? "#ff03cc" : healthBarColor(healthFraction)}/>
                 </Flex>
             </Flex>
             <Flex bgColor={"#808080"} w={"100%"} h={"3px"} mt={2} mb={2}/>
             <Flex flexDir={"column"} paddingLeft={1} paddingRight={1}>
                 <Flex color={"#f55"}>
-                    <Flex w={"100px"} fontSize={"20px"} lineHeight={"24px"}>Damage</Flex>
-                    <Flex fontSize={"20px"} lineHeight={"24px"}>{unitStats.damage}</Flex>
+                    <Flex w={"100px"} fontSize={fontSizes} lineHeight={lineHeights}>Damage</Flex>
+                    <Flex fontSize={fontSizes} lineHeight={lineHeights}>{unitStats.damage}</Flex>
                 </Flex>
                 <Flex color={"#5ff"}>
-                    <Flex w={"100px"} fontSize={"20px"} lineHeight={"24px"}>Range</Flex>
-                    <Flex fontSize={"20px"} lineHeight={"24px"}>{unitStats.range}</Flex>
+                    <Flex w={"100px"} fontSize={fontSizes} lineHeight={lineHeights}>Range</Flex>
+                    <Flex fontSize={fontSizes} lineHeight={lineHeights}>{unitStats.range}</Flex>
                 </Flex>
                 <Flex color={"#5f5"}>
-                    <Flex w={"100px"} fontSize={"20px"} lineHeight={"24px"}>Targets</Flex>
-                    <Flex fontSize={"20px"} lineHeight={"24px"}>{unitStats.targets}</Flex>
+                    <Flex w={"100px"} fontSize={fontSizes} lineHeight={lineHeights}>Targets</Flex>
+                    <Flex fontSize={fontSizes} lineHeight={lineHeights}>{unitStats.targets}</Flex>
                 </Flex>
                 <Flex color={"#f5f"}>
-                    <Flex w={"100px"} fontSize={"20px"} lineHeight={"24px"}>Speed</Flex>
-                    <Flex fontSize={"20px"} lineHeight={"24px"}>{unitStats.speed}</Flex>
+                    <Flex w={"100px"} fontSize={fontSizes} lineHeight={lineHeights}>Speed</Flex>
+                    <Flex fontSize={fontSizes} lineHeight={lineHeights}>{unitStats.speed}</Flex>
                 </Flex>
             </Flex>
             <Flex bgColor={"#808080"} w={"100%"} h={"3px"} mt={2} mb={2}/>
             <Flex alignItems={"center"} flexDir={"column"}>
-                {unitStats.specialMoves === true ? <Flex fontSize={"16px"} lineHeight={"16px"} color={"#ffc700"}>Can jump over units</Flex> : <></>}
-                {unitStats.specialAttacks === true ? <Flex fontSize={"16px"} lineHeight={"16px"} color={"#ffc700"}>Can attack through units</Flex> : <></>}
+                {unitStats.specialMoves === true ? <Flex fontSize={fontSizes2} lineHeight={fontSizes2} color={"#ffc700"}>Can jump over units</Flex> : <></>}
+                {unitStats.specialAttacks === true ? <Flex fontSize={fontSizes2} lineHeight={fontSizes2} color={"#ffc700"}>Can attack through units</Flex> : <></>}
                 {unitStats.specialMoves === true || unitStats.specialAttacks === true ? <Flex bgColor={"#808080"} w={"100%"} h={"3px"} mt={2} mb={2}/> : <></>}
             </Flex>
             <Flex flexDir={"column"}>
@@ -254,10 +259,13 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
     // Reward that the player received
     const [reward, setReward] = useState<{winner: number; reward: RewardEvent} | undefined>(undefined);
 
+    const [confirm, setConfirm] = useState<{title: string; text: string; cost: number; action: () => void;}>({title: "Confirm", text: "", cost: 0, action: () => {}});
+
     
     const toast = useToast();
     const navigate = useNavigate();
     const {isOpen, onOpen, onClose} = useDisclosure();
+    const {isOpen: isOpenConfirm, onOpen: onOpenConfirm, onClose: onCloseConfirm} = useDisclosure();
     
     // Hover over a unit
     const selectUnit = (unit: UnitState | undefined): void => {
@@ -314,7 +322,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
         }
     }
 
-    const changeInput = (event: ChangeEvent<HTMLTextAreaElement>): void => {
+    const changeInput = (event: ChangeEvent<HTMLInputElement>): void => {
         setInputText(event.target.value);
     }
 
@@ -334,11 +342,14 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
 
     useEffect(() => {
         const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io(address);
-        setSocket(socket);
+        socket.on("connect", () => {
+            setSocket(socket);
+        });
     }, [address]);
 
     useEffect(() => {
         if (typeof socket !== "undefined"){
+            socket.removeAllListeners();
             socket.on("state", (data) => {
                 onStarted();
                 setCurrentUnit(undefined);
@@ -482,10 +493,10 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
     }
     
     return (
-        <Flex flexDir={"column"} alignItems={"center"}>
+        <Flex flexDir={"column"} alignItems={"center"} w={"100%"}>
             {(typeof players !== "undefined" && typeof challenge !== "undefined") ?
-                <Flex flexDir={"column"}>
-                    <Flex>
+                <Flex flexDir={"column"} maxW={"100vw"}>
+                    <Flex flexDir={["column","row","row","row","row"]}>
                         <Flex flexDir={"column"} bgColor={"gray.800"} p={2}>
                             <Flex>
                                 <SimpleGrid spacing={1} columns={gridWidth}>{grid.map((value, index) => {
@@ -538,7 +549,19 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                                 })}
                                 </SimpleGrid>
                             </Flex>
-                            <Flex bgColor={"#000"} w={"100%"} mt={1}>{challenge.inactive.map((value) => {
+                            <Flex bgColor={"#000"} w={"100%"} mt={1} overflow={"auto"} sx={{
+                                "&::-webkit-scrollbar": {
+                                width: "8px",
+                                borderRadius: "8px",
+                                backgroundColor: `rgba(0, 0, 0, 0.2)`
+                                },
+                                "&::-webkit-scrollbar-thumb": {
+                                backgroundColor: "rgba(255, 255, 255, 0.5)",
+                                borderRadius: "6px"
+                                },
+                                "&::-webkit-scrollbar-corner": {
+                                backgroundColor: "rgba(0, 0, 0, 0)"
+                            }}}>{challenge.inactive.map((value) => {
                                 let borderColor = playerColor(value.player, currentPlayer);
                                 if (lastUnit === value.id){
                                     borderColor = "#ff0";
@@ -554,7 +577,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                             })}
                             </Flex>
                             
-                            <HStack mt={3} mb={3} spacing={2} alignItems={"flex-start"}>{players.map((value, index) => {
+                            <Stack mt={3} mb={3} spacing={2} alignItems={"flex-start"} direction={"row"}>{players.map((value, index) => {
                                 let turnText = "";
                                 if (challenge.winner >= 0 && challenge.winner === index){
                                     turnText = "Winner!";
@@ -581,14 +604,14 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                                     </Flex>
                                 );
                             })}
-                            </HStack>
+                            </Stack>
                         </Flex>
                         <Flex w={"3px"} bgColor={"#808080"}/>
-                        {(currentUnit && currentUnit.player < players.length) ? showStats(currentUnit, players[currentUnit.player].username) : <Flex w={"260px"} bgColor={"gray.800"}/>}
+                        {(typeof currentUnit !== "undefined" && currentUnit.player < players.length) ? showStats(currentUnit, players[currentUnit.player].username) : <Flex w={"250px"} px={"5px"} bgColor={"gray.800"} flexDir={"column"}/>}
                     </Flex>
-                    <Flex>
-                        <Flex flexDir={"column"}>
-                            <Flex w={"300px"} minH={"100px"} border={"3px solid #fff"} borderRadius={"3%"} flexDir={"column"}>
+                    <Flex flexDir={["column", "row", "row", "row", "row"]}>
+                        <Flex flexDir={"column"} w={["90vw", "300px", "300px", "300px", "300px"]}>
+                            <Flex w={"100%"} minH={"100px"} border={"3px solid #fff"} borderRadius={"3%"} flexDir={"column"}>
                                 {Array.from(moveActions).map((value) => {
                                     // key should be unique because moveActions is a map and maps require keys to be unique
                                     return <Button key={value[0]} bgColor={"#00000080"} onClick={() => {moveActions.delete(value[0]); setMoveActions(new Map(moveActions));}}>{`Move by ${value[0]} to ${value[1]}`}</Button>
@@ -604,43 +627,41 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                             <Button w={"100%"} className={"heading-md"} onClick={() => {selectUnit(undefined); setPreview(!preview);}}>{preview ? "Turn action preview off" : "Turn action preview on"}</Button>
                             <Button w={"100%"} className={"heading-md"} onClick={() => {selectUnit(undefined); setShowRestrictions(!showRestrictions);}}>{showRestrictions ? "Hide area restrictions" : "Show area restrictions"}</Button>
                         </Flex>
-                        <Flex flexDir={"column"}>
-                            {challenge.started === false ? <Button w={"240px"} className={"heading-md"} onClick={() => sendAction("ready")}>Ready</Button> : <></>}
+                        <Flex flexDir={"column"} w={["90vw", "240px", "240px", "240px", "240px"]}>
+                            {challenge.started === false ? <Button w={"100%"} className={"heading-md"} onClick={() => sendAction("ready")}>Ready</Button> : <></>}
                             <Flex>
-                                <Button w={"80px"} className={"heading-md"} isDisabled={challenge.turn !== currentPlayer || currentPlayer < 0 || !challenge.started} onClick={() => sendAction("move")}>Move</Button>
-                                <Button w={"80px"} className={"heading-md"} isDisabled={challenge.turn !== currentPlayer || currentPlayer < 0 || !challenge.started} onClick={() => sendAction("attack")}>Attack</Button>
-                                <Button w={"80px"} className={"heading-md"} isDisabled={(challenge.turn !== currentPlayer || currentPlayer < 0) && challenge.started} onClick={() => sendAction("activate")}>Activate</Button>
+                                <Button w={"33%"} className={"heading-md"} isDisabled={challenge.turn !== currentPlayer || currentPlayer < 0 || !challenge.started} onClick={() => sendAction("move")}>Move</Button>
+                                <Button w={"33%"} className={"heading-md"} isDisabled={challenge.turn !== currentPlayer || currentPlayer < 0 || !challenge.started} onClick={() => sendAction("attack")}>Attack</Button>
+                                <Button w={"33%"} className={"heading-md"} isDisabled={(challenge.turn !== currentPlayer || currentPlayer < 0) && challenge.started} onClick={() => sendAction("activate")}>Activate</Button>
                             </Flex>
                             <Flex padding={1} fontSize={"xl"} className={"heading-xl"}>{`Rounds left: ${challenge.roundsLeft}`}</Flex>
                         </Flex>
                     </Flex>
                 </Flex>
                 :
-                <Flex alignItems={"center"} justifyContent={"center"} mt={10}>
-                    <Flex flexDir={"column"} minW={"10vw"}>
-                        {(loginRef.current === false) ?
-                            <Flex flexDir={"column"} bgColor={"gray.800"} p={2} borderRadius={"lg"}>
-                                <Text fontSize={"2xl"} mb={2} mx={3}>You must be logged in to play challenges.</Text>
-                                <Button onClick={() => navigate("/login")}>Log In</Button>
-                                <Button onClick={() => navigate("/")}>Back to Main Menu</Button>
+                <Flex alignItems={"center"} justifyContent={"center"} w={"100%"}>
+                    <Flex flexDir={"column"} alignItems={"center"} minW={"10vw"} w={"100%"}>
+                        {(typeof socket !== "undefined" && loginRef.current === true) ?
+                            <Flex justifyContent={"center"} w={"80%"}>
+                                <Flex flexDir={"column"} w={"100%"} bgColor={"gray.800"} p={2} borderRadius={"lg"}>
+                                    <Input onChange={changeInput}/>
+                                    
+                                    <Button maxW={"100%"} fontSize={"lg"} onClick={() => { if (typeof createChallenge !== "undefined"){ setConfirm({title: "Create Challenge?", text: createChallenge.displayName, cost: createChallenge.acceptCost, action: () => {socket.emit("create", createChallenge.challengeid);}}); onOpenConfirm(); } else if (inputText.length > 0){socket.emit("create", parseInt(inputText));} else{toast({description: "No challenge id specified", status: "error", duration: 4500, isClosable: true});} }}>Create Challenge</Button>
+                                    <Flex mb={5} px={1} justifyContent={"center"} borderRadius={"md"} maxW={"100%"} bgColor={"gray.700"}>{typeof createChallenge !== "undefined" ? createChallenge.displayName : " "}</Flex>
+                                    <Button maxW={"100%"} fontSize={"lg"} onClick={() => { if (typeof room !== "undefined"){ setConfirm({title: "Join Challenge?", text: `${room.username}'s Room`, cost: room.acceptCost, action: () => {socket.emit("join", room.username, unitChoices.map((value) => value.name));}}); onOpenConfirm(); } else if (inputText.length > 0){socket.emit("join", inputText, unitChoices.map((value) => value.name));} else{toast({description: "No room name specified", status: "error", duration: 4500, isClosable: true}); } }}>Join Challenge</Button>
+                                    <Flex mb={5} px={1} justifyContent={"center"} borderRadius={"md"} maxW={"100%"} bgColor={"gray.700"}>{typeof room !== "undefined" ? room.username : " "}</Flex>
+                                    <Button maxW={"100%"} fontSize={"lg"} onClick={() => socket.emit("rooms", token)}>Refresh Room List</Button>
+                                </Flex>
                             </Flex>
                             :
-                            ((typeof socket !== "undefined") ?
-                                <Flex flexDir={"column"} alignItems={"center"}>
-                                    <Flex flexDir={"column"} bgColor={"gray.800"} p={2} borderRadius={"lg"} mb={5}>
-                                        <Textarea onChange={changeInput}/>
-                                        
-                                        <Button onClick={() => { if (typeof createChallenge !== "undefined"){socket.emit("create", createChallenge.challengeid);} else if (inputText.length > 0){socket.emit("create", parseInt(inputText));} else{toast({description: "No challenge id specified", status: "error", duration: 4500, isClosable: true});} }}>{`Create Challenge${typeof createChallenge !== "undefined" ? ` (${createChallenge.displayName})` : ""}`}</Button>
-                                        <Button onClick={() => { if (typeof room !== "undefined"){socket.emit("join", room, unitChoices.map((value) => value.name));} else{socket.emit("join", inputText, unitChoices.map((value) => value.name));} }}>{`Join Challenge${typeof room !== "undefined" ? ` (room: ${room})` : ""}`}</Button>
-                                        <Button onClick={() => socket.emit("rooms", token)}>Show Rooms</Button>
-                                        <Button onClick={() => navigate("/")}>Back to Main Menu</Button>
-                                    </Flex>
-                                    
+                            ((typeof socket !== "undefined" && socket.connected === true) ?
+                                <Flex flexDir={"column"} alignItems={"center"} bgColor={"gray.800"} p={2} borderRadius={"lg"}>
+                                    <Text fontSize={"2xl"} mb={2} mx={3}>You must be logged in to play challenges.</Text>
+                                    <Button onClick={() => navigate("/login")}>Log In</Button>
                                 </Flex>
                                 :
-                                <Flex flexDir={"column"} bgColor={"gray.800"} p={2} borderRadius={"lg"}>
+                                <Flex flexDir={"column"} alignItems={"center"} bgColor={"gray.800"} p={2} borderRadius={"lg"}>
                                     <Text fontSize={"2xl"} mb={2} mx={3}>Could not connect to the server.</Text>
-                                    <Button onClick={() => navigate("/")}>Back to Main Menu</Button>
                                 </Flex>
                             )
                         }
@@ -692,11 +713,41 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                                 <ModalBody>
                                     <Flex flexDir={"column"} alignItems={"center"}>
                                         <Text fontSize={"lg"} className={"heading-lg"}>Results could not be loaded.</Text>
-                                        <Button onClick={() => navigate("/")} mt={5}>Return to Main Menu</Button>
+                                        <Button onClick={() => window.location.reload()} mt={5}>Exit</Button>
                                     </Flex>
                                 </ModalBody>
                             </ModalContent>
                         }
+                </Modal>
+                <Modal isOpen={isOpenConfirm} onClose={onCloseConfirm}>
+                    <ModalOverlay/>
+                        <ModalContent p={3}>
+                            <ModalHeader fontWeight={"normal"} fontSize={"3xl"} className={"heading-3xl"} textAlign={"center"}>{confirm.title}</ModalHeader>
+                            <ModalCloseButton/>
+                            <Divider/>
+                            <ModalBody>
+                                <Flex flexDir={"column"} alignItems={"center"}>
+                                    <Text fontSize={"xl"} className={"heading-xl"} mb={5}>{confirm.text}</Text>
+                                    <Text fontSize={"lg"} className={"heading-lg"}>Your Units</Text>
+                                    {unitChoices.length > 0 ?
+                                        <Stack direction={["column", "row", "row", "row", "row"]} wrap={"wrap"}>
+                                            {unitChoices.map((value) => {
+                                                return (
+                                                    <Image key={value.key} w={10} src={`/image/${value.image}`}/>
+                                                );
+                                            })}
+                                        </Stack>
+                                        :
+                                        <Text className={"heading-md"} color={"#f00"}>No units selected</Text>
+                                    }
+                                    {confirm.cost > 0 ? <Text mt={8} textAlign={"center"}>Warning: If you leave the page after accepting this challenge, your tokens will not be refunded.</Text> : <></>}
+                                    <Button onClick={() => {confirm.action(); onCloseConfirm(); onClose();}} mt={8}>
+                                        <Text fontSize={"lg"}>{confirm.cost}</Text>
+                                        <Image ml={1} src={"/image/resources/resource_tokens.webp"} h={5}/>
+                                    </Button>
+                                </Flex>
+                            </ModalBody>
+                        </ModalContent>
                 </Modal>
             </Flex>
         </Flex>

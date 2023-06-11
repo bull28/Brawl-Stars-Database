@@ -17,18 +17,18 @@ export default function ChallengeSelection({data, level, setSelected}: Challenge
                 <Flex h={"100%"} wrap={"wrap"}>
                     <Flex w={"100%"} h={"100%"} flexDir={"column"} alignItems={"center"}>
                         {data.length > 0 ?
-                        <SimpleGrid w={"100%"} h={"100%"} columns={[1,1,2,2,3]} spacing={2} overflow={"auto"} alignItems={"flex-start"} sx={{
+                        <SimpleGrid w={"100%"} h={"100%"} columns={[1, 1, 2, 2, 3]} spacing={2} overflow={"auto"} alignItems={"flex-start"} sx={{
                             "&::-webkit-scrollbar": {
                             width: "8px",
                             borderRadius: "8px",
-                            backgroundColor: `rgba(0, 0, 0, 0.2)`,
+                            backgroundColor: `rgba(0, 0, 0, 0.2)`
                             },
                             "&::-webkit-scrollbar-thumb": {
                             backgroundColor: "rgba(0, 0, 0, 0.5)",
-                            borderRadius: "6px",
+                            borderRadius: "6px"
                             },
                             "&::-webkit-scrollbar-corner": {
-                            backgroundColor: "rgba(0, 0, 0, 0)",
+                            backgroundColor: "rgba(0, 0, 0, 0)"
                             }
                         }}>{data.map((value) => {
                             return (
@@ -72,7 +72,7 @@ export default function ChallengeSelection({data, level, setSelected}: Challenge
                                     <Divider my={1}/>
                                     <Flex w={"100%"} alignItems={"flex-end"}>
                                         <Text w={"80%"} className={"heading-md"}>{`Requires Level ${value.requiredLevel}`}</Text>
-                                        <Button w={"20%"} isDisabled={level < value.requiredLevel} onClick={() => setSelected({challengeid: value.challengeid, displayName: value.displayName})}>
+                                        <Button w={"20%"} isDisabled={level < value.requiredLevel} onClick={() => setSelected({challengeid: value.challengeid, displayName: value.displayName, acceptCost: value.acceptCost})}>
                                             <Text fontSize={"lg"}>{value.acceptCost}</Text>
                                             <Image ml={1} src={"/image/resources/resource_tokens.webp"} h={5}/>
                                         </Button>

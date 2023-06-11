@@ -960,10 +960,16 @@ export class Challenge{
 
     advanceTurn(): void{
         // Check if any players are eliminated (have 0 units left) and skip their turns
+        // Players who are not ready are allowed to have 0 units because they may
+        // not have activated their units yet
         let advanceTurns = 1;
         const playerCount = this.units.length;
-        if (playerCount > 1){
-            while (this.units[(this.turn + advanceTurns) % playerCount].length === 0 && advanceTurns < playerCount){
+        if (playerCount > 1 && playerCount === this.scores.length){
+            while (
+                this.units[(this.turn + advanceTurns) % playerCount].length === 0 && 
+                this.scores[(this.turn + advanceTurns) % playerCount].ready === true && 
+                advanceTurns < playerCount
+            ){
                 advanceTurns++;
             }
         }
@@ -975,7 +981,11 @@ export class Challenge{
             // After finishing a turn, the player who is going next might have just been eliminated
             // That means the turns may continue to advance
             if (this.turn >= 0){
-                while (this.units[(this.turn + advanceTurns) % playerCount].length === 0 && advanceTurns < playerCount){
+                while (
+                    this.units[(this.turn + advanceTurns) % playerCount].length === 0 && 
+                    this.scores[(this.turn + advanceTurns) % playerCount].ready === true && 
+                    advanceTurns < playerCount
+                ){
                     advanceTurns++;
                 }
                 this.turn = (this.turn + advanceTurns) % playerCount;

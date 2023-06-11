@@ -4,18 +4,18 @@ import {displayLong} from "../helpers/LargeNumberDisplay";
 
 export default function AccessoryLevel({boxWidth, level, points, upgradePoints}: {boxWidth: number; level: number; points: number; upgradePoints: number;}){
     return (
-        <Flex bgColor={"blue.800"} minW={"400px"} maxW={"100vw"} w={`${Math.max(boxWidth, 400)}px`} flexDir={"column"} alignItems={"center"} p={2}>
+        <Flex bgColor={"blue.800"} w={["90vw", "90vw", "600px", "600px"]} maxW={"600px"} flexDir={"column"} alignItems={"center"} p={2}>
             {(upgradePoints < 0 && level > 1) ? <MovingText title={`Level ${level}`} color1="#fdf542" color2="#ff9005" fontSize={"xl"}/> : <Text className={"heading-2xl"} fontSize={"2xl"}>{`Level ${level}`}</Text>}
             <Flex alignItems={"center"} w={"90%"} mx={3} mb={2}>
                 <Image w={"15%"} src={`/image/resources/resource_challenge_points_200x.webp`} zIndex={69}/>
-                <Flex w={"100%"} h={`${Math.max(boxWidth / 15, 30)}px`} bgColor={"#000"} transform={"translate(-3%, 0)"}>
+                <Flex w={"100%"} h={["25px", "35px", "40px", "40px", "40px"]} bgColor={"#000"} transform={"translate(-3%, 0)"}>
                     <Flex w={upgradePoints > 0 ? `${Math.max(0, Math.min(1, points / upgradePoints)) * 100}%` : "100%"} h={"100%"} bgColor={"#8000f0"}/>
                     <Flex pos={"absolute"} w={"100%"} h={"100%"} alignItems={"center"} justifyContent={"center"}>
-                        <Text className={"heading-xl"} fontSize={"xl"} pos={"absolute"}>{upgradePoints > 0 ? `${displayLong(points)} / ${displayLong(upgradePoints)}` : `${displayLong(points)}`}</Text>
+                        <Text className={"heading-xl"} fontSize={["sm", "xl", "xl", "xl", "xl"]} pos={"absolute"}>{upgradePoints > 0 ? `${displayLong(points)} / ${displayLong(upgradePoints)}` : `${displayLong(points)}`}</Text>
                     </Flex>
                 </Flex>
             </Flex>
-            <Text className={"heading-md"} fontSize={"md"}>{upgradePoints <= 0 ? "You have reached the maximum Accessory Level." : "Collect Challenge Points to increase your Accessory Level."}</Text>
+            <Text className={"heading-md"} fontSize={["xs", "md", "md", "md", "md"]}>{upgradePoints <= 0 ? "You have reached the maximum Accessory Level." : "Collect Challenge Points to increase your Accessory Level."}</Text>
         </Flex>
     );
 }

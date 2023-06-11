@@ -1,12 +1,12 @@
 import ChallengePlayer from "../components/ChallengePlayer";
 import {useEffect, useState, useCallback, useRef} from "react";
 import AuthRequest, {getToken} from "../helpers/AuthRequest";
-import {Flex, Text} from "@chakra-ui/react";
+import {Flex, Text, Stack} from "@chakra-ui/react";
 import SkullBackground from "../components/SkullBackground";
 import {UserInfoProps} from "../types/AccountData";
 import TokenDisplay from "../components/TokenDisplay";
 import AccessoryLevel from "../components/AccessoryLevel";
-import {UnitImage, ChallengeName, ChallengeWins, UnitData, RoomData, ChallengeData} from "../types/ChallengeData";
+import {UnitImage, ChallengeName, RoomName, ChallengeWins, UnitData, RoomData, RoomDataDisplay, ChallengeData} from "../types/ChallengeData";
 import ChallengeProgress from "../components/ChallengeProgress";
 import UnitSelection from "../components/UnitSelection";
 import ChallengeSelection from "../components/ChallengeSelection";
@@ -27,9 +27,9 @@ export default function ChallengeMenu(){
     // Challenge id and name that the player is creating
     const [challenge, setChallenge] = useState<ChallengeName | undefined>(undefined);
     // List of rooms that the player can join
-    const [roomList, setRoomList] = useState<RoomData>([]);
+    const [roomList, setRoomList] = useState<RoomDataDisplay>([]);
     // Room that the player has selected
-    const [room, setRoom] = useState<string | undefined>(undefined);
+    const [room, setRoom] = useState<RoomName | undefined>(undefined);
     // Units that the player will join the challenge with
     const [unitChoices, setUnitChoices] = useState<UnitImage[]>([]);
 
@@ -55,10 +55,17 @@ export default function ChallengeMenu(){
     }, []);
     // Called by the challenge player when the list of rooms is refreshed
     const getRoomList = useCallback((rooms: RoomData) => {
-        setRoomList(rooms);
+        const roomsDisplay = rooms as RoomDataDisplay;
+        const key = Date.now();
+        for (let x = 0; x < roomsDisplay.length; x++){
+            for (let y = 0; y < roomsDisplay[x].players.length; y++){
+                roomsDisplay[x].players[y].key = key + y;
+            }
+        }
+        setRoomList(roomsDisplay);
     }, []);
     
-    const confirmRoomChoice = (room: string) => {
+    const confirmRoomChoice = (room: RoomName) => {
         setRoom(room);
         setChallenge(undefined);
     }
@@ -68,7 +75,7 @@ export default function ChallengeMenu(){
     const confirmChallengeChoice = (challenge: ChallengeName) => {
         setChallenge(challenge);
         if (typeof resources !== "undefined"){
-            setRoom(resources.username);
+            setRoom({username: resources.username, acceptCost: 0});
         }
     }
 
@@ -100,34 +107,38 @@ export default function ChallengeMenu(){
             <Flex justifyContent={"center"}>
                 <Text fontSize={"4xl"} className={"heading-4xl"}>Challenges</Text>
             </Flex>
-            <Flex w={"100%"} mb={"10vh"} mt={"5vh"} justifyContent={"center"}>
-                <ChallengePlayer address={"http://localhost:11600"} token={token} room={room} createChallenge={challenge} unitChoices={unitChoices} onJoin={onJoin} onStarted={onStarted} updateTokens={updateTokens} setRoomList={getRoomList} loginRef={loginRef}/>
+            <Stack w={"100%"} mb={"8vh"} mt={"2vh"} justifyContent={"center"} alignItems={"center"} spacing={[3, 3, 3, 3, 0]} direction={["column", "column", "column", "column", "row"]}>
+                <Flex w={(started === false && typeof progress !== "undefined" && typeof resources !== "undefined") ? ["100%", "75%", "50%", "50%", "25%"] : undefined} justifyContent={"center"}>
+                    <ChallengePlayer address={"http://localhost:11600"} token={token} room={room} createChallenge={challenge} unitChoices={unitChoices} onJoin={onJoin} onStarted={onStarted} updateTokens={updateTokens} setRoomList={getRoomList} loginRef={loginRef}/>
+                </Flex>
                 {(started === false && waiting === false && typeof progress !== "undefined" && typeof resources !== "undefined") ?
-                    <Flex flexDir={"column"} alignItems={"center"}>
-                        <Flex justifyContent={"center"}>
-                            <Flex flexDir={"column"} alignItems={"center"} mx={10}>
-                                <ChallengeProgress username={resources.username} avatar={resources.avatar} avatarColor={resources.avatarColor} data={progress}/>
-                                <Flex h={"3vh"}/>
-                                <AccessoryLevel boxWidth={600} level={resources.level} points={resources.points} upgradePoints={resources.upgradePoints}/>
-                            </Flex>
-                            <TokenDisplay callback={updateTokens} tokens={resources.tokens}/>
-                        </Flex>
+                    <Flex flexDir={"column"} alignItems={"center"} w={["100%", "100%", "100%", "100%", "50%"]} maxW={"720px"}>
+                        <ChallengeProgress username={resources.username} avatar={resources.avatar} avatarColor={resources.avatarColor} data={progress}/>
+                        <Flex h={"3vh"}/>
+                        <AccessoryLevel boxWidth={600} level={resources.level} points={resources.points} upgradePoints={resources.upgradePoints}/>
                     </Flex>
                     :
                     <></>
                 }
-            </Flex>
+                {(started === false && waiting === false && typeof progress !== "undefined" && typeof resources !== "undefined") ?
+                    <Flex w={"25%"} justifyContent={"center"}>
+                        <TokenDisplay callback={updateTokens} tokens={resources.tokens}/>
+                    </Flex>
+                    :
+                    <></>
+                }
+            </Stack>
             {(loginRef.current === true && started === false && waiting === false && typeof progress !== "undefined" && typeof unitList !== "undefined" && typeof resources !== "undefined" && typeof challengeList !== "undefined") ?
-                <Flex flexDir={"column"} alignItems={"center"}>
+                <Stack direction={"column"} spacing={10} mb={10} alignItems={"center"}>
                     <UnitSelection data={unitList} setSelected={confirmUnitChoices}/>
                     <RoomSelection data={roomList} level={resources.level} setSelected={confirmRoomChoice}/>
                     <ChallengeSelection data={challengeList} level={resources.level} setSelected={confirmChallengeChoice}/>
-                </Flex>
+                </Stack>
                 :
                 <></>
             }
             {(started === false && waiting === true) ?
-                <Flex flexDir={"column"} alignItems={"center"}>
+                <Flex flexDir={"column"} alignItems={"center"} w={"100%"}>
                     <Text fontSize={"2xl"} className={"heading-2xl"}>Waiting for players to join</Text>
                 </Flex>
                 :

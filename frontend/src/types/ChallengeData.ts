@@ -7,6 +7,12 @@ export interface UnitImage{
 export interface ChallengeName{
     challengeid: number;
     displayName: string;
+    acceptCost: number;
+}
+
+export interface RoomName{
+    username: string;
+    acceptCost: number;
 }
 
 export interface ChallengeWins{
@@ -60,7 +66,7 @@ export type ChallengeData = ({
     players: number;
 })[];
 
-export type RoomData = ({
+interface Room{
     username: string;
     displayName: string;
     requiredLevel: number;
@@ -69,4 +75,12 @@ export type RoomData = ({
         username: string;
         avatar: string;
     })[];
-})[];
+}
+
+interface RoomDisplay extends Room{
+    players: (Room["players"][number] & {key: number;})[]
+}
+
+export type RoomData = Room[];
+
+export type RoomDataDisplay = RoomDisplay[];

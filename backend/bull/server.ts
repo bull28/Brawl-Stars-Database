@@ -527,7 +527,23 @@ io.on("connection", (socket) => {
             if (typeof roomName !== "undefined"){
                 const challenge = challengeMap.get(roomName);
                 if (typeof challenge !== "undefined"){
+                    // The challenge may end as a result of a player leaving
+                    const turnBefore = challenge.isFinished();
+                    
                     challenge.leave(username);
+                    
+                    const turnAfter = challenge.isFinished();
+                    if (turnBefore === false && turnAfter === true){
+                        const thisRoom = io.sockets.adapter.rooms.get(roomName);
+                        if (typeof thisRoom !== "undefined"){
+                            thisRoom.forEach((value) => {
+                                const thisPlayer = socketidMap.get(value);
+                                if (typeof thisPlayer !== "undefined" && thisPlayer !== username){
+                                    claimReward(thisPlayer, challenge, io.in(value));
+                                }
+                            });
+                        }
+                    }
                     sendState(io, {challenge: challenge, room: roomName, username: username});
                 }
 
