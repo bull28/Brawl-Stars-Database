@@ -1,4 +1,4 @@
-import { Button, Flex, IconButton, Image, Text } from "@chakra-ui/react";
+import { Button, Flex, IconButton, Image, Text, Link } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import SkullBackground from "../components/SkullBackground";
 import AuthRequest from "../helpers/AuthRequest";
@@ -56,6 +56,11 @@ export default function Gallery() {
     <Flex alignItems={'center'} flexDir={'column'} justifyContent={'space-between'} maxH={'100vh'}>      
       <IconButton onClick={() => {navigate('/shop')}} icon={<GiShoppingCart size={"100%"}/>} aria-label="shop" pos={'absolute'} right={'3vh'} top={'3vh'} bgColor={'blue.500'} border={'2px solid'} borderColor={'blue.700'} p={1} size={'lg'} borderRadius={'md'}/>
       {cosmetics && <SkullBackground bg={cosmetics.background} icon={cosmetics.icon}/>}
+      <Flex flexDir={"column"} alignItems={"center"}>
+        <Text fontSize={"4xl"} className={"heading-4xl"}>Gallery</Text>
+      </Flex>
+      {(typeof data !== "undefined" && typeof cosmetics !== "undefined") ?
+      <>
       <Flex w={'70vw'} justifyContent={'space-around'} mt={'2vh'}>
         <Flex flexDir={'column'} alignItems={'center'}>
           <Text fontSize={'3xl'} className={'heading-3xl'} mb={'5'}>Backgrounds</Text>        
@@ -184,6 +189,15 @@ export default function Gallery() {
         }
       </Flex>
       <Button my={'10vh'} fontSize={'2xl'} onClick={saveChanges} bgColor={'green.300'} borderColor={'green.500'} border={'2px solid #9f9'} w={'6vw'} h={'5vh'}>Save</Button>
+      </>
+      :
+      <Flex flexDir={'column'} alignItems={'center'} w={'100vw'} h={'100vh'} justifyContent={'center'} pos={'absolute'} zIndex={-1}>
+        <Flex flexDir={'column'} alignItems={'center'} justifyContent={'center'} bgColor={'lightskyblue'} border={'2px solid'} borderColor={'blue.500'} borderRadius={'lg'} p={5}>
+          <Text fontSize={'2xl'} className={'heading-2xl'} >Please login to view the Gallery</Text>
+          <Link fontSize={'2xl'} className={'heading-xl'} color={'blue.300'} href="/login">Click here to login</Link>
+        </Flex>
+      </Flex>
+    }
     </Flex>
   )
 }

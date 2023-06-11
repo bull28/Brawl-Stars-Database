@@ -54,7 +54,7 @@ export default function Home() {
         </Flex>
         {localStorage.getItem('username') ? 
           <AccountDisplay/> :
-          <Button onClick={login}>Log In</Button>}        
+          <Button onClick={login} fontWeight={"normal"} fontSize={"lg"} className={"heading-lg"} color={"#fff"}>Log In</Button>}        
     </Flex>
       <Flex w={'100%'} flexDir={'column'} textAlign={'center'} justifyContent={'center'} alignItems={'center'}>
       

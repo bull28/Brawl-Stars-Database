@@ -35,9 +35,9 @@ export default function Collection() {
     }, [setAllResources]);
 
     const loadResources = useCallback(() => {
-        AuthRequest<CollectionData>('/collection', {setState: setData, navigate: true})
-        AuthRequest<BrawlBoxData[]>('/brawlbox', {setState: setBrawlBoxData})
-        updateTokens()
+        AuthRequest<CollectionData>("/collection", {setState: setData, navigate: true});
+        AuthRequest<BrawlBoxData[]>("/brawlbox", {setState: setBrawlBoxData});
+        updateTokens();
     }, [updateTokens]);
 
     useEffect(() => {
@@ -163,7 +163,7 @@ export default function Collection() {
                     }}> 
                                 {brawler.pins.map((pin) => (                                        
                                         <Box key={brawler.name + pin.i} minW={'100px'} bgColor={Object.values(data?.pinRarityColors || {})[pin.r]} p={3} borderRadius={'md'} border={'2px solid black'}>
-                                            <Image w={'100px'} filter={(pin.a === 0) ? 'grayscale(100%)': 'none'} src={`/image/${brawler.pinFilePath+pin.i}`} fallback={<Spinner/>}/>                            
+                                            <Image w={'100px'} filter={(pin.a === 0) ? 'grayscale(100%)': 'none'} src={`/image/${brawler.pinFilePath+pin.i}`}/>                            
                                             <Text my={1} color={(pin.a === 0) ? 'gray' : 'white'} fontSize={'lg'} className={'heading-lg'}>{`${pin.a}x`}</Text>                                            
                                         </Box>                                                                                                                                                          
                                 ))}                                

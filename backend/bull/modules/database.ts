@@ -350,7 +350,7 @@ export async function userLogin(values: LoginValues): Promise<LoginResult[]>{
     const valuesArray = [
         values.username, values.password
     ];
-    return queryDatabase<typeof valuesArray, LoginResult[]>(connection, valuesArray, false,
+    return queryDatabase<typeof valuesArray, LoginResult[]>(connection, valuesArray, true,
         `SELECT username FROM ${TABLE_NAME} WHERE username = ? AND password = ?;`);
 }
 

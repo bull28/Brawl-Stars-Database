@@ -302,8 +302,17 @@ export function getThemes(allThemes: ThemeList, allScenes: SceneList, userThemes
                         path: SCENE_IMAGE_DIR + scene,
                         preview: sceneMap.get(sceneName)!.preview + IMAGE_FILE_EXTENSION
                     });
+                } else if (sceneName === "default"){
+                    // Add a default scene that is available to all users
+                    // This scene corresponds to no scene in the viewer and exists so users have the
+                    // option to not show a scene even if they already own one
+                    scenes.push({
+                        displayName: sceneMap.get(sceneName)!.displayName,
+                        path: "",
+                        preview: sceneMap.get(sceneName)!.preview + IMAGE_FILE_EXTENSION
+                    });
                 }
-            } 
+            }
         }
     }
 

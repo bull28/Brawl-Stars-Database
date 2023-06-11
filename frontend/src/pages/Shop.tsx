@@ -1,4 +1,4 @@
-import { Box, Flex, HStack, Image, Link, ScaleFade, SimpleGrid, Text } from '@chakra-ui/react'
+import { Box, Flex, Image, Link, ScaleFade, SimpleGrid, Text } from '@chakra-ui/react'
 import { useState, useEffect } from 'react'
 import { BsEmojiLaughing, BsPalette, BsPerson } from 'react-icons/bs'
 import { MdOutlineGeneratingTokens } from 'react-icons/md'
@@ -110,26 +110,26 @@ export default function Shop() {
                             <Text mr={1}>Avatars</Text>
                             <BsEmojiLaughing color={'black'}/>                            
                         </Flex>                        
-                        <HStack>
+                        <SimpleGrid columns={7} spacing={3}>
                         {
                             data?.map((item) => (
                                 item.name.includes('avatar') && <ScaleFade key={item.name} in={true}><ShopItem data={item} coins={userInfo?.coins || 0} timeLeftString={""}/></ScaleFade>
                             ))
                         }
-                        </HStack>
+                        </SimpleGrid>
                     </Flex>
                     <Flex flexDir={'column'}>
                         <Flex alignItems={'center'}  fontSize={'3xl'} className={'heading-3xl'} ml={5} mb={3} mt={'5vh'}>
                             <Text mr={1}>Brawlers</Text>
                             <BsPerson color={'black'}/>
                         </Flex>                        
-                        <HStack>
+                        <SimpleGrid columns={7} spacing={3}>
                         {
                             data?.map((item) => (
                                 item.name.includes('brawler') && <ScaleFade key={item.name} in={true}><ShopItem data={item} coins={userInfo?.coins || 0} timeLeftString={""}/></ScaleFade>
                             ))
                         }
-                        </HStack>
+                        </SimpleGrid>
                     </Flex>
                     <Flex flexDir={'column'}>
                         <Flex alignItems={'center'}  fontSize={'3xl'} className={'heading-3xl'} ml={5} mb={3} mt={'5vh'}>
@@ -149,13 +149,13 @@ export default function Shop() {
                             <Text mr={1}>Currency</Text>
                             <MdOutlineGeneratingTokens color={'black'}/>
                         </Flex>
-                        <HStack>
+                        <SimpleGrid columns={7} spacing={3}>
                         {
                             data?.map((item) => (
                                 item.name.toLowerCase().includes('credit') && <ScaleFade key={item.name} in={true}><ShopItem data={item} coins={userInfo?.coins || 0} timeLeftString={""}/></ScaleFade>
                             ))
                         }
-                        </HStack>
+                        </SimpleGrid>
                     </Flex>
                     <Flex flexDir={'column'}>
                         <Flex alignItems={'center'}  fontSize={'3xl'} className={'heading-3xl'} ml={5} mb={3} mt={'5vh'}>

@@ -1,7 +1,8 @@
 import fspromises from "fs/promises";
+import {ASSETS_ROOT_DIR} from "../data/constants";
 
 export async function readFreeAvatars(): Promise<string[]>{
-    return fspromises.readdir("assets/images/avatars/free")
+    return fspromises.readdir(`${ASSETS_ROOT_DIR}avatars/free`)
     .then((result) => {
         for (let x = 0; x < result.length; x++){
             result[x] = "free/" + result[x];
@@ -12,7 +13,7 @@ export async function readFreeAvatars(): Promise<string[]>{
 }
 
 export async function readSpecialAvatars(): Promise<string[]>{
-    return fspromises.readdir("assets/images/avatars/special")
+    return fspromises.readdir(`${ASSETS_ROOT_DIR}avatars/special`)
     .then((result) => {
         for (let x = 0; x < result.length; x++){
             result[x] = "special/" + result[x];
@@ -23,7 +24,7 @@ export async function readSpecialAvatars(): Promise<string[]>{
 }
 
 export async function readFreeThemes(): Promise<string[]>{
-    return fspromises.readdir("assets/images/themes/free")
+    return fspromises.readdir(`${ASSETS_ROOT_DIR}themes/free`)
     .then((result) => {
         for (let x = 0; x < result.length; x++){
             result[x] = "free/" + result[x];
@@ -34,7 +35,7 @@ export async function readFreeThemes(): Promise<string[]>{
 }
 
 export async function readSpecialThemes(): Promise<string[]>{
-    return fspromises.readdir("assets/images/themes/special")
+    return fspromises.readdir(`${ASSETS_ROOT_DIR}themes/special`)
     .then((result) => {
         for (let x = 0; x < result.length; x++){
             result[x] = "special/" + result[x];
@@ -45,7 +46,7 @@ export async function readSpecialThemes(): Promise<string[]>{
 }
 
 export async function readScenes(){
-    return fspromises.readdir("assets/images/scenes")
-    .then((result) => result)
+    return fspromises.readdir(`${ASSETS_ROOT_DIR}scenes`)
+    .then((result) => ["default"].concat(result))
     .catch((error) => []);
 }
