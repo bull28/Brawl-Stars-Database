@@ -416,10 +416,15 @@ export class ChallengeManager{
         return {success: true, message: "You are now ready."};
     }
 
-    leave(username: string): ActionResult{
+    leave(username: string, setAuto: boolean): ActionResult{
         // Attempts to remove the player with the given username from the challenge.
         // This will result in the player automatically being eliminated from the challenge.
         // If a player leaves, they are unable to rejoin.
+
+        // If the player who leaves is the one who created the challenge, their data cannot
+        // be removed otherwise other players cannot see the challenge and those who were
+        // waiting for it to start would be stuck forever. In this case, set the challenge
+        // creator to an automatic player so the challenge can still start without them.
         
 
         let playerIndex = this.findPlayer(username);
@@ -432,15 +437,19 @@ export class ChallengeManager{
             // acceptMethod is used to determine whether the player joined the challenge
             // using a reserved spot for them only or an open spot (with name "")
 
-            const acceptMethod = this.players[playerIndex].acceptMethod;
+            if (setAuto === true){
+                this.players[playerIndex].auto = true;
+            } else{
+                const acceptMethod = this.players[playerIndex].acceptMethod;
 
-            this.players[playerIndex].avatar = "";
-            this.players[playerIndex].status = 0;
+                this.players[playerIndex].avatar = "";
+                this.players[playerIndex].status = 0;
 
-            this.players[playerIndex].acceptMethod = 0;
-            this.players[playerIndex].units.splice(0, this.players[playerIndex].units.length);
-            if (acceptMethod < 2){
-                this.players[playerIndex].username = "";
+                this.players[playerIndex].acceptMethod = 0;
+                this.players[playerIndex].units.splice(0, this.players[playerIndex].units.length);
+                if (acceptMethod < 2){
+                    this.players[playerIndex].username = "";
+                }
             }
 
             return {success: true, message: "Successfully left the challenge."};

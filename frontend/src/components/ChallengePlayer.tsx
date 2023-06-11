@@ -630,9 +630,9 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                         <Flex flexDir={"column"} w={["90vw", "240px", "240px", "240px", "240px"]}>
                             {challenge.started === false ? <Button w={"100%"} className={"heading-md"} onClick={() => sendAction("ready")}>Ready</Button> : <></>}
                             <Flex>
-                                <Button w={"33%"} className={"heading-md"} isDisabled={challenge.turn !== currentPlayer || currentPlayer < 0 || !challenge.started} onClick={() => sendAction("move")}>Move</Button>
-                                <Button w={"33%"} className={"heading-md"} isDisabled={challenge.turn !== currentPlayer || currentPlayer < 0 || !challenge.started} onClick={() => sendAction("attack")}>Attack</Button>
-                                <Button w={"33%"} className={"heading-md"} isDisabled={(challenge.turn !== currentPlayer || currentPlayer < 0) && challenge.started} onClick={() => sendAction("activate")}>Activate</Button>
+                                <Button className={"heading-md"} isDisabled={challenge.turn !== currentPlayer || currentPlayer < 0 || !challenge.started} onClick={() => sendAction("move")}>Move</Button>
+                                <Button className={"heading-md"} isDisabled={challenge.turn !== currentPlayer || currentPlayer < 0 || !challenge.started} onClick={() => sendAction("attack")}>Attack</Button>
+                                <Button className={"heading-md"} isDisabled={(challenge.turn !== currentPlayer || currentPlayer < 0) && challenge.started} onClick={() => sendAction("activate")}>Activate</Button>
                             </Flex>
                             <Flex padding={1} fontSize={"xl"} className={"heading-xl"}>{`Rounds left: ${challenge.roundsLeft}`}</Flex>
                         </Flex>

@@ -493,6 +493,9 @@ io.on("connection", (socket) => {
             }
 
             const turnAfter = challengeData.challenge.isFinished();
+
+            // Send state before removing players from the room
+            sendState(io, challengeData);
             
             if (turnBefore === false && turnAfter === true){
                 const thisRoom = io.sockets.adapter.rooms.get(challengeData.room);
@@ -506,12 +509,22 @@ io.on("connection", (socket) => {
                         const thisPlayer = socketidMap.get(value);
                         if (typeof thisPlayer !== "undefined"){
                             claimReward(thisPlayer, challengeData.challenge, io.in(value));
+
+                            // Remove the user from the user map so if they stay on the end screen,
+                            // other users will not have to wait for them to leave the challenge
+                            // before they are allowed to join another one
+                            userMap.delete(thisPlayer);
                         }
                     });
-                }
-            }
+                    // Delete the challenge creator from the user map because they could have left
+                    // before it ended and would not be in the socket id map
+                    userMap.delete(challengeData.room);
 
-            sendState(io, challengeData);
+                    // Remove the challenge from the challenge map so the creator can start a new challenge
+                    challengeMap.delete(challengeData.room);
+                }
+                io.in(challengeData.room).socketsLeave(challengeData.room);
+            }
         } else{
             socket.emit("error", "You are not currently in a challenge.");
         }
@@ -528,9 +541,11 @@ io.on("connection", (socket) => {
                 const challenge = challengeMap.get(roomName);
                 if (typeof challenge !== "undefined"){
                     // The challenge may end as a result of a player leaving
+                    sendState(io, {challenge: challenge, room: roomName, username: username});
+
                     const turnBefore = challenge.isFinished();
                     
-                    challenge.leave(username);
+                    challenge.leave(username, username === roomName);
                     
                     const turnAfter = challenge.isFinished();
                     if (turnBefore === false && turnAfter === true){
@@ -538,22 +553,37 @@ io.on("connection", (socket) => {
                         if (typeof thisRoom !== "undefined"){
                             thisRoom.forEach((value) => {
                                 const thisPlayer = socketidMap.get(value);
-                                if (typeof thisPlayer !== "undefined" && thisPlayer !== username){
-                                    claimReward(thisPlayer, challenge, io.in(value));
+                                if (typeof thisPlayer !== "undefined"){
+                                    if (thisPlayer !== username){
+                                        claimReward(thisPlayer, challenge, io.in(value));
+                                    }
+                                    userMap.delete(thisPlayer);
                                 }
                             });
+                            challengeMap.delete(roomName);
                         }
+                        io.in(roomName).socketsLeave(roomName);
                     }
-                    sendState(io, {challenge: challenge, room: roomName, username: username});
                 }
 
                 socket.leave(roomName);
 
                 if (io.sockets.adapter.rooms.has(roomName) === false){
                     challengeMap.delete(roomName);
+                    userMap.delete(roomName);
                 }
 
-                userMap.delete(username);
+                let playersInRoom = 0;
+                userMap.forEach((value, key) => {
+                    if (value === roomName && key !== roomName){
+                        playersInRoom++;
+                    }
+                });
+                if (username !== roomName || playersInRoom === 0){
+                    // Only remove the user from the user map if they are not the creator
+                    // of the challenge or there are no players already in their challenge
+                    userMap.delete(username);
+                }
             }
             socketidMap.delete(socket.id);
 
