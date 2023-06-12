@@ -123,7 +123,7 @@ export default function Collection() {
             {(typeof data !== "undefined" && data.brawlers.length > 0) && <Accordion defaultIndex={[data.brawlers.findIndex((value) => value.name === searchParams.get('brawler'))]} allowMultiple>
             <SimpleGrid columns={[1,2,3,4]} spacing={3} w={'80vw'} bgColor={'blue.800'} p={5} mb={10}>
                 {data && data.brawlers.map((brawler) => (
-                    <AccordionItem key={brawler.name} border={brawler.unlockedPins === brawler.totalPins ? '3px solid #E7A210' : '3px solid black'}>
+                    <AccordionItem key={brawler.name} border={brawler.unlockedPins === brawler.totalPins ? '3px solid #e7a210' : '3px solid black'}>
                         {({ isExpanded }) => (
                         <>
                         <h2 id={brawler.name}>
@@ -183,11 +183,11 @@ export default function Collection() {
             </Accordion>}
             <Text fontSize={'3xl'} className={'heading-3xl'} my={10}>Accessories</Text>
             <Flex mb={10}>
-                <AccessoryLevel boxWidth={600} level={level} points={points} upgradePoints={upgradePoints}/>
+                <AccessoryLevel level={level} points={points} upgradePoints={upgradePoints}/>
             </Flex>
             <SimpleGrid columns={[1,2,3,4]} spacing={3} w={'80vw'} bgColor={'blue.800'} p={5} mb={10}>
                 {data && data.accessories.sort((a, b) => a.unlockLevel - b.unlockLevel).map((accessory) => (
-                    <Flex key={accessory.displayName + accessory.image} bgColor={level >= accessory.unlockLevel ? '#a248ff' : '#512480'} flexDir={'column'} alignItems={'center'} border={accessory.unlocked === true ? '3px solid #E7A210' : '3px solid black'}>
+                    <Flex key={accessory.displayName + accessory.image} bgColor={level >= accessory.unlockLevel ? '#a248ff' : '#512480'} flexDir={'column'} alignItems={'center'} border={accessory.unlocked === true ? '3px solid #e7a210' : '3px solid black'}>
                         <Text fontSize={'2xl'} className={'heading-2xl'}>{accessory.displayName}</Text>
                         <Box pos={'relative'} maxW={'40%'} m={2}>
                             <Image filter={accessory.unlocked === true ? 'drop-shadow(0 0 2rem rgb(255, 255, 255));' : ''} src={`/image/${accessory.image}`}/>

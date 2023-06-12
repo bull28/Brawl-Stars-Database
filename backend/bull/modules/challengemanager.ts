@@ -184,19 +184,26 @@ export class ChallengeManager{
 
         let triesLeft = this.players.length + 1;
         let turn = this.challenge.getTurn();
-
         
         // For each automatically controlled player, do an empty move action (because automatic
         // players cannot move) then attack the closest targets.
         // If this fails for some reason, the loop will terminate after enough failed attempts.
-        while (triesLeft > 0 && turn >= 0 && this.players[turn].auto){
+        while (triesLeft > 0 && turn >= 0 && this.players[turn].auto == true){
             this.challenge.move(turn, new Map<number, Point>());
             
             const targets = this.challenge.getClosestTargets(turn);
             this.challenge.setTarget(turn, targets);
 
-            turn = this.challenge.getTurn();
-            triesLeft--;
+            const newTurn = this.challenge.getTurn();
+            if (newTurn !== turn){
+                // If there are multiple automatic players, do not remove a try if the actions
+                // were successful. Tries are only removed on unsuccessful actions to avoid an
+                // infinite loop. Removing tries on successful actions will cause the challenge
+                // to get stuck when there are multiple automatic players in a row.
+                turn = newTurn;
+            } else{
+                triesLeft--;
+            }
         }
     }
     

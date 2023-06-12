@@ -1301,10 +1301,6 @@ const bea: UnitOptionsStorage = {
         damage: (values, owner) => {
             if (owner.state === 1) { return values[1]; }
             return owner.damage;
-        },
-        description: (state) => {
-            if (state === 1) { return "Damage boost is currently active."; }
-            return "Damage boost is currently inactive.";
         }
     },
     abilityValues: {
@@ -1918,6 +1914,51 @@ const bullChallenge: ChallengeManagerOptions = {
     }
 };
 
+const frankChallenge: ChallengeManagerOptions = {
+    options: {
+        gridWidth: 10, gridHeight: 10, maxRounds: 50, moveLimit: 200, restrictions: []},
+    players: [
+        {
+            username: "", avatar: "", auto: false, units: [
+                {name: "bull", level: 1, position: undefined, defense: false}
+            ]},
+        {
+            username: "FRANK",
+            avatar: "special/portrait_frank",
+            auto: true,
+            units: [
+                {name: "shelly", level: 1, position: [5, 3], defense: false},
+                {name: "amber", level: 1, position: [6, 3], defense: false},
+                {name: "colette", level: 1, position: [6, 4], defense: false},
+                {name: "bonnie", level: 1, position: [6, 5], defense: false}
+            ]
+        },
+        {
+            username: "ASH",
+            avatar: "special/portrait_ash",
+            auto: true,
+            units: [
+                {name: "mandy", level: 1, position: [5, 5], defense: false},
+                {name: "colt", level: 1, position: [4, 5], defense: false},
+                {name: "gus", level: 1, position: [4, 4], defense: false},
+                {name: "brock", level: 1, position: [4, 3], defense: false}
+            ]
+        }
+    ],
+    extraData: {
+        challengeid: 8,
+        displayName: "FRANK",
+        requiredLevel: 1,
+        acceptCost: 0,
+        reward: {
+            coins: 0,
+            points: 0,
+            accessory: "",
+            bonus: false
+        }
+    }
+};
+
 const puzzle1: ChallengeManagerOptions = {
     options: {gridWidth: 11, gridHeight: 11, maxRounds: 25, moveLimit: 200, restrictions: [
         {player: 0, left: 3, right: 7, top: 3, bottom: 7}
@@ -2497,7 +2538,7 @@ export const requiredLevels = new Map<string, number>(
 // All preset challenge objects
 // The array is used to iterate over all challenges
 const presetChallenges: [number, ChallengeManagerOptions][] = [
-    tutorial1, tutorial2, tutorial3, bullChallenge,
+    tutorial1, tutorial2, tutorial3, bullChallenge, frankChallenge,
     empty2players, empty3players, empty4players, empty5players,
     puzzle1, puzzle2, puzzle3, puzzle4, puzzle5, puzzle6, puzzle7, puzzle8, puzzle9
 ].map((value) => [value.extraData.challengeid, value]);

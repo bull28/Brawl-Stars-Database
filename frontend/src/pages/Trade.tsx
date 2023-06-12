@@ -335,35 +335,32 @@ export default function Trade() {
     return (
         <Flex justifyContent={'space-evenly'} alignItems={'center'} flexDir={'column'}>      
             <SkullBackground/>
-            <IconButton aria-label='open filter' as={HamburgerIcon} pos={'absolute'} top={0} left={0} m={5} onClick={onOpen}></IconButton>
-            <Text mt={5} fontSize={'3xl'} className={'heading-3xl'} >Trades</Text>            
-            <Flex pos={'absolute'} top={0} right={0} m={5}>
-                <Button h={'50px'} m={2} rightIcon={<AddIcon/>} bgColor={'green.300'} className={'heading-md'} fontWeight={'normal'} onClick={onOpen2}>New Trade</Button>
+            <IconButton aria-label='open filter' as={HamburgerIcon} pos={'absolute'} top={0} left={0} m={5} mt={"69px"} onClick={onOpen}></IconButton>
+            <Text fontSize={'4xl'} className={'heading-4xl'}>Trade</Text>
+            <Flex pos={["relative", "relative", "relative", "relative", "absolute"]} top={0} right={0} p={2.5} m={5}>
+                <Button h={'50px'} mr={3} rightIcon={<AddIcon/>} bgColor={'green.300'} className={'heading-md'} fontWeight={'normal'} onClick={onOpen2}>New Trade</Button>
+                <IconButton borderRadius={'md'} onClick={redirect} cursor={'pointer'} size={'lg'} p={1} colorScheme={(userTradeData && userTradeData?.filter((trade) => trade.accepted === true).length > 0) ? 'whatsapp' : 'twitter'} icon={<BsPersonFill size={"100%"}/>} aria-label="open my trades menu"/>
+                {userTradeData && (userTradeData?.filter((trade) => trade.accepted === true).length) > 0 && 
+                <Box pos={'absolute'} top={0} right={0} bgColor={'red.500'} borderRadius={'50%'} w={'25px'} h={'25px'} textAlign={'center'}>
+                    <Text >{userTradeData?.filter((trade) => trade.accepted === true).length}</Text>
+                </Box>                            
+                }
+            </Flex>
+            <Flex mt={3}>
                 <Flex>
                     <HStack>
                         <Flex  h={'40px'} pr={'30px'} bgColor={'#f98f92'} justifyContent={'space-between'} alignItems={'center'} borderRadius={'5%'} border={'2px solid black'}>
                             <Image h={'50px'}  src={`/image/resources/resource_trade_credits.webp`}/>                        
                             <Text  fontSize={'lg'} h={'30px'} className={'heading-lg'} >{resources?.tradeCredits}</Text>
                         </Flex>
-                        
                         {resources?.wildCardPins.map((wildCard) => {
                             return (
-                                <Flex key={wildCard.rarityColor} py={'15px'} h={'50px'} px={'30px'} bgColor={wildCard.rarityColor}justifyContent={'space-around'} alignItems={'center'} borderRadius={'5%'}>
+                                <Flex key={wildCard.rarityName + wildCard.rarityColor} py={'15px'} h={'50px'} px={'30px'} bgColor={wildCard.rarityColor}justifyContent={'space-around'} alignItems={'center'} borderRadius={'5%'}>
                                     <Image h={'50px'} src={`/image/resources/wildcard_pin.webp`}/>                        
                                     <Text  fontSize={'lg'} className={'heading-lg'} >{wildCard.amount}</Text>
                                 </Flex>    
                             );
-                        }
-                            
-                        )}
-                        <Flex pos={'relative'} p={2.5}>
-                            <IconButton borderRadius={'md'} onClick={redirect} cursor={'pointer'} size={'lg'} p={1} colorScheme={(userTradeData && userTradeData?.filter((trade) => trade.accepted === true).length > 0) ? 'whatsapp' : 'twitter'} icon={<BsPersonFill size={"100%"}/>} aria-label="open my trades menu"/>
-                            {userTradeData && (userTradeData?.filter((trade) => trade.accepted === true).length) > 0 && 
-                            <Box pos={'absolute'} top={0} right={0} bgColor={'red.500'} borderRadius={'50%'} w={'25px'} h={'25px'} textAlign={'center'}>
-                                <Text >{userTradeData?.filter((trade) => trade.accepted === true).length}</Text>
-                            </Box>                            
-                            }
-                        </Flex>
+                        })}
                     </HStack>
                 </Flex>
             </Flex>       
@@ -526,7 +523,7 @@ export default function Trade() {
                 <Modal isOpen={isOpen3} onClose={onClose3} size={'3xl'}>
                     <ModalOverlay />
                     <ModalContent>
-                    <ModalHeader>Add Pin</ModalHeader>
+                    <ModalHeader fontWeight={"normal"}>Add Pin</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
                     {pickingBrawler ? <>

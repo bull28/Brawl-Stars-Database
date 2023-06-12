@@ -108,7 +108,7 @@ interface ClientToServerEvents{
     action: (action: string, request: MoveRequest[] | AttackRequest[]) => void;
 }
 
-const playerColors: string[] = ["#ff0000", "#8000ff", "#00c040", "#f08000", "#808080"];
+const playerColors: string[] = ["#ff0000", "#a000ff", "#00c040", "#f08000", "#808080"];
 
 function pointToIndex(point: Point, width: number): number{
     return point[0] + width * point[1];
@@ -136,7 +136,7 @@ function healthBarColor(fraction: number): string{
 function playerColor(player: number, currentPlayer: number): string{
     if (currentPlayer >= 0 && player === currentPlayer){
         // The current player is the player who is logged in and is always the blue color
-        return "#0000ff";
+        return "#2828ff";
     }
     let index = player;
     if (player > currentPlayer){

@@ -22,7 +22,7 @@ interface GltfModelProps{
     hasBackground: boolean
 }
 
-const addLights = (camera: Object3D) => {
+const addLights = (camera: Object3D, hasBackground: boolean) => {
     const light1X = (Math.sqrt(6)-Math.sqrt(2))/4;
     const light1Y = 0.0;
     const light1Z = (Math.sqrt(6)+Math.sqrt(2))/4;
@@ -30,7 +30,7 @@ const addLights = (camera: Object3D) => {
     const light2Y = (Math.sqrt(2))/-2;
     const light2Z = (Math.sqrt(6))/-4;
 
-    
+
     // scene backround light
     const backroundLight = new AmbientLight();
     backroundLight.intensity = 0.8;
@@ -45,8 +45,13 @@ const addLights = (camera: Object3D) => {
     light1.position.set(light1X * -1, light1Y * -1, light1Z * -1);
     light1.target = light1Pos;
 
-    light1.intensity = 3.2;
-    light1.color = new Color(0x24d6ff);//0xc0ffff an alternative color
+    if (hasBackground === true){
+        light1.intensity = 0.8;
+        light1.color = new Color(0xffffff);
+    } else{
+        light1.intensity = 3.2;
+        light1.color = new Color(0x24d6ff);//0xc0ffff an alternative color
+    }
 
 
     // white front light
@@ -120,14 +125,14 @@ const GltfModel = ({modelFile, winFile, loseFile, playing, modelPos, hasBackgrou
 
         // If there is a scene background, increase the FOV so more of the scene
         // can be visible at once.
-        if (hasBackground){
+        if (hasBackground === true){
             sceneCamera.fov = parameters.fov * 1.5;
         } else{
             sceneCamera.fov = parameters.fov;
         }
     }
     // Refer to the long comment about how ugly frank is to see where all the numbers came from
-    addLights(BARBARIAN_KING.camera);
+    addLights(BARBARIAN_KING.camera, hasBackground);
     BARBARIAN_KING.camera.updateProjectionMatrix();
     BARBARIAN_KING.scene.add(BARBARIAN_KING.camera);
 
@@ -152,7 +157,7 @@ const GltfModel = ({modelFile, winFile, loseFile, playing, modelPos, hasBackgrou
             if (initialPose.size > 0){
                 gltf.scene.traverse((object) => {
                     const p = initialPose.get(object.name);
-                    if (p){
+                    if (typeof p !== "undefined"){
                         object.position.copy(p);
                     }
                 })
@@ -171,7 +176,7 @@ const GltfModel = ({modelFile, winFile, loseFile, playing, modelPos, hasBackgrou
             if (initialPose.size > 0){
                 gltf.scene.traverse((object) => {
                     const p = initialPose.get(object.name);
-                    if (p){
+                    if (typeof p !== "undefined"){
                         object.position.copy(p);
                     }
                 })
@@ -203,18 +208,18 @@ const AnimationViewer = (({modelFile, winFile, loseFile, bgFile}: AnimationViewe
                 <Suspense fallback={null}>
                     {(bgFile !== null && bgFile !== "" && bgFile !== "/image/") ? <BackgroundScene file={bgFile} modelPos={positionRef}/> : <></>}
                     <GltfModel modelFile={modelFile} winFile={winFile ? winFile : "../image/misc/empty.glb"} loseFile={loseFile ? loseFile : "../image/misc/empty.glb"} playing={animationRef} modelPos={positionRef} hasBackground={(bgFile !== null && bgFile !== "" && bgFile !== "/image/")}/>
-                    <OrbitControls/>
+                    <OrbitControls enablePan={false}/>
                 </Suspense>
             </Canvas>
             </Flex>
             <Flex h={"5%"} flexDir={"row"} justifyContent={"center"}>
-                <Button disabled={(winFile === null)} h={"100%"} w={"33%"} onClick={() => {animationRef.current = 1;}}>
+                <Button isDisabled={(winFile === null)} h={"100%"} w={"33%"} onClick={() => {animationRef.current = 1;}}>
                     <Text fontSize={"md"} className={"heading-md"}>Win</Text>
                 </Button>
-                <Button disabled={(loseFile === null)} h={"100%"} w={"33%"} onClick={() => {animationRef.current = 2;}}>
+                <Button isDisabled={(loseFile === null)} h={"100%"} w={"33%"} onClick={() => {animationRef.current = 2;}}>
                     <Text fontSize={"md"} className={"heading-md"}>Lose</Text>
                 </Button>
-                <Button disabled={(winFile === null && loseFile === null)} h={"100%"} w={"33%"} onClick={() => {animationRef.current = 3;}}>
+                <Button isDisabled={(winFile === null && loseFile === null)} h={"100%"} w={"33%"} onClick={() => {animationRef.current = 3;}}>
                     <Text fontSize={"md"} className={"heading-md"}>Reset</Text>
                 </Button>
             </Flex>

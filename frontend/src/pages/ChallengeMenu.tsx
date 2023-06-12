@@ -115,7 +115,7 @@ export default function ChallengeMenu(){
                     <Flex flexDir={"column"} alignItems={"center"} w={["100%", "100%", "100%", "100%", "50%"]} maxW={"720px"}>
                         <ChallengeProgress username={resources.username} avatar={resources.avatar} avatarColor={resources.avatarColor} data={progress}/>
                         <Flex h={"3vh"}/>
-                        <AccessoryLevel boxWidth={600} level={resources.level} points={resources.points} upgradePoints={resources.upgradePoints}/>
+                        <AccessoryLevel level={resources.level} points={resources.points} upgradePoints={resources.upgradePoints}/>
                     </Flex>
                     :
                     <></>
