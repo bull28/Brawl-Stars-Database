@@ -419,7 +419,7 @@ router.post<{}, {}, CosmeticReqBody>("/cosmetic", databaseErrorHandler<CosmeticR
                         validCosmetics = false;
                     }
                 } else if (x === "scene"){
-                    if (userScenes.includes(setCosmetics[x]) === false){
+                    if (userScenes.includes(setCosmetics[x].split("_")[0]) === false){
                         validCosmetics = false;
                     }
                 }

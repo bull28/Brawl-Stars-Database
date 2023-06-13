@@ -13,7 +13,7 @@ import {
     DatabaseThemes, 
     DatabaseScenes, 
     ThemeData, 
-    ThemeDescriptionPreview, 
+    ThemeScenePreview, 
     DatabaseCosmetics, 
     ShopList, 
     ShopItem, 
@@ -240,7 +240,8 @@ export function getAvatars(allAvatars: AvatarList, userCollection: DatabaseBrawl
  * @returns themes, gropued by type
  */
 export function getThemes(allThemes: ThemeList, allScenes: SceneList, userThemes: DatabaseThemes, userScenes: DatabaseScenes): ThemeData{
-    let themes = new Map<string, Map<string, string>>();
+    let themes: {[k: string]: Map<string, string>;} = {};
+    let scenes: {[k: string]: ThemeScenePreview} = {};
 
     if (typeof allThemes.free === "undefined" && typeof allThemes.special === "undefined"){
         return {
@@ -271,15 +272,15 @@ export function getThemes(allThemes: ThemeList, allScenes: SceneList, userThemes
                 const filePaths = theme.split("/");
                 const themeName = filePaths[filePaths.length - 1].split("_" + themeType)[0];
                 if (themeMap.has(themeName) === true){
-                    if (themes.has(themeName) === false){
-                        themes.set(themeName, new Map<string, string>());
+                    if (themes.hasOwnProperty(themeName) === false){
+                        themes[themeName] = new Map<string, string>();
                     }
     
                     if (t === "free"){
-                        (themes.get(themeName)!).set(themeType, THEME_IMAGE_DIR + theme);
+                        themes[themeName].set(themeType, THEME_IMAGE_DIR + theme);
                     } else if (t === "special"){
                         if (userThemes.includes(themeName) === true){
-                            (themes.get(themeName)!).set(themeType, THEME_IMAGE_DIR + theme);
+                            themes[themeName].set(themeType, THEME_IMAGE_DIR + theme);
                         }
                     }
                 }
@@ -288,29 +289,46 @@ export function getThemes(allThemes: ThemeList, allScenes: SceneList, userThemes
     }
 
     // Get the list of scenes the user can select
-    let scenes: ThemeDescriptionPreview[] = [];
 
+    // Load all the scene names from the map first
+    sceneMap.forEach((value, key) => {
+        if (userScenes.includes(key) === true || key === "default"){
+            scenes[key] = {
+                displayName: value,
+                path: "",
+                preview: "",
+                background: ""
+            };
+        }
+    });
+
+    // Go through all the files in the scenes directory and set the
+    // correct attribute of each scene object depending on whether
+    // the file is a scene model, preview, or background
     for (let scene of allScenes){
-        const filePaths = scene.split("/");
-        const sceneName = filePaths[filePaths.length - 1].split(".")[0];
-        
-        if (typeof sceneName !== "undefined"){
-            if (sceneMap.has(sceneName) === true){
-                if (userScenes.includes(sceneName) === true){
-                    scenes.push({
-                        displayName: sceneMap.get(sceneName)!.displayName,
-                        path: SCENE_IMAGE_DIR + scene,
-                        preview: sceneMap.get(sceneName)!.preview + IMAGE_FILE_EXTENSION
-                    });
-                } else if (sceneName === "default"){
-                    // Add a default scene that is available to all users
-                    // This scene corresponds to no scene in the viewer and exists so users have the
-                    // option to not show a scene even if they already own one
-                    scenes.push({
-                        displayName: sceneMap.get(sceneName)!.displayName,
-                        path: "",
-                        preview: sceneMap.get(sceneName)!.preview + IMAGE_FILE_EXTENSION
-                    });
+        let sceneType = "";
+        if (scene.includes("_scene") === true){
+            sceneType = "path";
+        } else if (scene.includes("_preview") === true){
+            sceneType = "preview";
+        } else if (scene.includes("_background") === true){
+            sceneType = "background";
+        }
+
+        if (sceneType !== ""){
+            const filePaths = scene.split("/");
+            let sceneName = "";
+            if (sceneType === "path"){
+                // The model file names end in _scene instead of _path
+                sceneName = filePaths[filePaths.length - 1].split("_scene")[0];
+            } else{
+                sceneName = filePaths[filePaths.length - 1].split("_" + sceneType)[0];
+            }
+            if (sceneName in scenes){
+                // Model path is already contained in the scene map
+                const sceneObject = scenes[sceneName];
+                if (sceneObject.hasOwnProperty(sceneType) === true){
+                    sceneObject[sceneType as keyof typeof sceneObject] = SCENE_IMAGE_DIR + scene
                 }
             }
         }
@@ -321,10 +339,11 @@ export function getThemes(allThemes: ThemeList, allScenes: SceneList, userThemes
         "background": [],
         "icon": [],
         "music": [],
-        "scene": scenes
+        "scene": []
     };
 
-    themes.forEach((value, key) => {
+    for (let key in themes){
+        const value = themes[key];
         const themeName = themeMap.get(key);
         if (typeof themeName !== "undefined"){
 
@@ -353,7 +372,11 @@ export function getThemes(allThemes: ThemeList, allScenes: SceneList, userThemes
                 });
             }
         }
-    });
+    }
+    for (let key in scenes){
+        // All scene objects have the same type so they can be added directly
+        themesResult.scene.push(scenes[key]);
+    }
 
     return themesResult;
 }

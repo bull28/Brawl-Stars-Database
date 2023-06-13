@@ -1,6 +1,17 @@
 import express from "express";
 import shopItemsObject from "../data/coinsshop_data.json";
-import {themeMap, sceneMap, AVATAR_IMAGE_DIR, AVATAR_SPECIAL_DIR, FEATURED_REFRESH_HOURS, IMAGE_FILE_EXTENSION, PIN_IMAGE_DIR, RESOURCE_IMAGE_DIR, THEME_SPECIAL_DIR} from "../data/constants";
+import {
+    themeMap, 
+    sceneMap, 
+    AVATAR_IMAGE_DIR, 
+    AVATAR_SPECIAL_DIR, 
+    FEATURED_REFRESH_HOURS, 
+    IMAGE_FILE_EXTENSION, 
+    PIN_IMAGE_DIR, 
+    RESOURCE_IMAGE_DIR, 
+    THEME_SPECIAL_DIR, 
+    SCENE_IMAGE_DIR
+} from "../data/constants";
 import {validateToken} from "../modules/authenticate";
 import brawlBox, {convertBrawlBoxData, isBrawlBoxAttributes, isRewardTypePin, rarityNames} from "../modules/brawlbox";
 import {formatCollectionData, getShopItems, refreshFeaturedItem} from "../modules/pins";
@@ -429,13 +440,13 @@ router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(asyn
                     const themeName = value.extraData;
                     if (themeMap.has(themeName) === true){
                         itemPreview.displayName = themeMap.get(themeName)!;
+                        itemPreview.image = THEME_SPECIAL_DIR + themeName + "_preview" + IMAGE_FILE_EXTENSION;
                     }
-                    itemPreview.image = THEME_SPECIAL_DIR + themeName + "_preview" + IMAGE_FILE_EXTENSION;
                 } else if (thisItemType === "scene"){
                     const sceneName = value.extraData;
                     if (sceneMap.has(sceneName) === true){
-                        itemPreview.displayName = sceneMap.get(sceneName)!.displayName;
-                        itemPreview.image = sceneMap.get(sceneName)!.preview + IMAGE_FILE_EXTENSION;
+                        itemPreview.displayName = sceneMap.get(sceneName)!;
+                        itemPreview.image = SCENE_IMAGE_DIR + sceneName + "_preview" + IMAGE_FILE_EXTENSION;
                     }
                 } else if (thisItemType === "accessory"){
                     // Accessory items already have their image paths added

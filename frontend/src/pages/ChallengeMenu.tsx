@@ -129,7 +129,7 @@ export default function ChallengeMenu(){
                 }
             </Stack>
             {(loginRef.current === true && started === false && waiting === false && typeof progress !== "undefined" && typeof unitList !== "undefined" && typeof resources !== "undefined" && typeof challengeList !== "undefined") ?
-                <Stack direction={"column"} spacing={10} mb={10} alignItems={"center"}>
+                <Stack direction={"column"} spacing={10} mb={"10vh"} alignItems={"center"}>
                     <UnitSelection data={unitList} setSelected={confirmUnitChoices}/>
                     <RoomSelection data={roomList} level={resources.level} setSelected={confirmRoomChoice}/>
                     <ChallengeSelection data={challengeList} level={resources.level} setSelected={confirmChallengeChoice}/>

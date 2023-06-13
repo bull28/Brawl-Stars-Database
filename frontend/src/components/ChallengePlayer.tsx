@@ -383,7 +383,9 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
             });
             socket.on("error", (data) => {
                 console.error(data);
-                toast({description: data, status: "error", duration: 4500, isClosable: true});
+                if (loginRef.current === true){
+                    toast({description: data, status: "error", duration: 4500, isClosable: true});
+                }
             });
             socket.on("finish", (winner, reward) => {
                 setReward({winner: winner, reward: reward});

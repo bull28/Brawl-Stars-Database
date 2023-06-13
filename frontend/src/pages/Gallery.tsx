@@ -31,6 +31,7 @@ interface ThemeProps {
       displayName: string,
       path: string,
       preview: string
+      background: string
     }
   ]
 }

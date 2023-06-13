@@ -54,10 +54,10 @@ export const themeMap = new Map<string, string>([
     ["yellow_face", " "]
 ]);
 
-export const sceneMap = new Map<string, {displayName: string; preview: string;}>([
-    ["default", {"displayName": "No Scene", "preview": "misc/bg_3d_model"}],
-    ["canyon", {"displayName": "Canyon", "preview": "maps/banners/canyon"}],
-    ["mine", {"displayName": "Gem Mine", "preview": "maps/banners/mine"}],
-    ["retropolis", {"displayName": "Retropolis", "preview": "maps/banners/retropolis"}],
-    ["stunt_show", {"displayName": "Stunt Show", "preview": "maps/banners/stuntshow"}]
+export const sceneMap = new Map<string, string>([
+    ["default", "No Scene"],
+    ["canyon", "Canyon"],
+    ["mine", "Gem Mine"],
+    ["retropolis", "Retropolis"],
+    ["stunt_show", "Stunt Show"]
 ]);

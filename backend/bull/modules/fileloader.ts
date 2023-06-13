@@ -45,7 +45,7 @@ export async function readSpecialThemes(): Promise<string[]>{
     .catch((error) => []);
 }
 
-export async function readScenes(){
+export async function readScenes(): Promise<string[]>{
     return fspromises.readdir(`${ASSETS_ROOT_DIR}scenes`)
     .then((result) => ["default"].concat(result))
     .catch((error) => []);

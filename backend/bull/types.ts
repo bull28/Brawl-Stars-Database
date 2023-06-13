@@ -366,29 +366,44 @@ export interface DatabaseCosmetics{
 /**
  * Information required to preview a theme on the gallery screen
  */
-interface ThemeDescription{
+interface ThemePreview{
     displayName: string;
     path: string;
 }
 
 /**
- * Information required to preview a theme on the gallery screen
+ * Information required to preview an icon on the gallery screen
  * 
- * Some themes such as icons and scenes require a preview because they
- * have no image or their image is not descriptive enough
+ * The icon's image is not suitable for a preview so an alternative
+ * image must be displayed
  */
-export interface ThemeDescriptionPreview extends ThemeDescription{
+interface ThemeIconPreview{
+    displayName: string;
+    path: string;
     preview: string;
+}
+
+/**
+ * Information required to preview a scene on the gallery screen
+ * 
+ * Also includes a background that can be used with the scene instead
+ * of the default 3D model background
+ */
+export interface ThemeScenePreview{
+    displayName: string;
+    path: string;
+    preview: string;
+    background: string;
 }
 
 /**
  * Full cosmetics preview object sent to the user
  */
 export interface ThemeData{
-    background: ThemeDescription[];
-    icon: ThemeDescriptionPreview[];
-    music: ThemeDescription[];
-    scene: ThemeDescriptionPreview[];
+    background: ThemePreview[];
+    icon: ThemeIconPreview[];
+    music: ThemePreview[];
+    scene: ThemeScenePreview[];
 }
 
 //------------------------------------------------------------------------------------------------//
