@@ -254,19 +254,19 @@ export function parseNumberArray(input: string): number[]{
 }
 
 export function parseBrawlers(brawlerString: string): DatabaseBrawlers{
-    const collection: DatabaseBrawlers = new Map<string, Map<string, number>>();
+    const collection: DatabaseBrawlers = {};
     try{
         const data = JSON.parse(brawlerString);
 
         for (let x in data){
             if (typeof x === "string" && typeof data[x] === "object"){
-                const pinMap = new Map<string, number>();
+                const pinMap: DatabaseBrawlers[string] = {};
                 for (let y in data[x]){
                     if (typeof y === "string" && typeof data[x][y] === "number"){
-                        pinMap.set(y, data[x][y]);
+                        pinMap[y] = data[x][y];
                     }
                 }
-                collection.set(x, pinMap);
+                collection[x] = pinMap;
             }
         }
     } catch (error){
@@ -305,20 +305,10 @@ export function parseTradePins(tradeString: string): TradePinValid[]{
 }
 
 export function stringifyBrawlers(brawlers: DatabaseBrawlers): string{
-    let result: {
-        [k: string]: {
-            [k: string]: number;
-        };
-    } = {};
-
-    brawlers.forEach((value, key) => {
-        result[key] = Object.fromEntries(value);
-    });
-
-    result = Object.keys(result).sort().reduce((object, key) => {
-        object[key] = result[key];
+    const result: DatabaseBrawlers = Object.keys(brawlers).sort().reduce((object, key) => {
+        object[key] = brawlers[key];
         return object;
-    }, {} as typeof result);
+    }, {} as DatabaseBrawlers);
     
     return JSON.stringify(result);
 }

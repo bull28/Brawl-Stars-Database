@@ -129,13 +129,13 @@ router.post<{}, {}, LoginReqBody>("/signup", databaseErrorHandler<LoginReqBody>(
     // If there are enough brawlers in the game, give the user 3 to start
     // so they do not keep getting coins instead of pins because they have
     // no brawlers unlocked.
-    let startingBrawlers: DatabaseBrawlers = new Map<string, Map<string, number>>();
+    let startingBrawlers: DatabaseBrawlers = {};
     if (allSkins.length >= 10){
         for (let x = 0; x < 3; x++){
             if (allSkins[x].hasOwnProperty("name") === true){
                 // even though the pins are supposed to be here, when the user
                 // unlocks them, they will be inserted as a new key with value 0
-                startingBrawlers.set(allSkins[x].name, new Map<string, number>());
+                startingBrawlers[allSkins[x].name] = {};
             }
         }
     }

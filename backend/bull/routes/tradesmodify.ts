@@ -140,17 +140,17 @@ router.post<{}, {}, CreateReqBody>("/create", databaseErrorHandler<CreateReqBody
 
         let hasRequiredPins = true;
         for (let x of offerPins){
-            if (collectionData.has(x.brawler) === true){
-                const brawler = collectionData.get(x.brawler)!;
-                if (brawler.has(x.pin) === true){
-                    const pinAmount = brawler.get(x.pin)!;
+            if (collectionData.hasOwnProperty(x.brawler) === true){
+                const brawler = collectionData[x.brawler];
+                if (brawler.hasOwnProperty(x.pin) === true){
+                    const pinAmount = brawler[x.pin];
                     if (pinAmount < x.amount){
                         hasRequiredPins = false;
                     } else{
                         // It is ok to modify the collection here because even if the user does not have all required
                         // pins and the trade has to be cancelled with only some of their pins removed, the new collection
                         // is not written to the database unless the trade was successful.
-                        brawler.set(x.pin, pinAmount - x.amount);
+                        brawler[x.pin] = pinAmount - x.amount;
                         //collectionData[x.brawler][x.pin] -= x.amount;
                     }
                     //console.log(collectionData[x.brawler][x.pin]);
@@ -294,13 +294,13 @@ router.post<{}, {}, AcceptReqBody>("/accept", databaseErrorHandler<AcceptReqBody
         let hasRequiredPins = true;
         for (let x of requestPins){
             // First check if they have the required pins in their collection
-            if (collectionData.has(x.brawler) === true){
-                const brawler = collectionData.get(x.brawler)!;
-                if (brawler.has(x.pin) === true){
-                    let collectionPinCount = brawler.get(x.pin)!;
+            if (collectionData.hasOwnProperty(x.brawler) === true){
+                const brawler = collectionData[x.brawler];
+                if (brawler.hasOwnProperty(x.pin) === true){
+                    let collectionPinCount = brawler[x.pin];
                     if (collectionPinCount >= x.amount){
                         // User has all the required pins
-                        brawler.set(x.pin, collectionPinCount - x.amount);
+                        brawler[x.pin] = collectionPinCount - x.amount;
                         //collectionData[x.brawler][x.pin] -= x.amount;
                     } else if (collectionPinCount > 0){
                         // User has some pins but not the full required amount
@@ -309,7 +309,7 @@ router.post<{}, {}, AcceptReqBody>("/accept", databaseErrorHandler<AcceptReqBody
                             // If they have enough wild card pins to fill the remainder, set their pins
                             // to 0 then deduct the missing pins from their wild card pins.
                             wildCardPins[x.rarityValue] -= missingPins;
-                            brawler.set(x.pin, 0);
+                            brawler[x.pin] = 0;
                             //collectionData[x.brawler][x.pin] -= collectionPinCount;
                         } else{
                             hasRequiredPins = false;
@@ -355,18 +355,17 @@ router.post<{}, {}, AcceptReqBody>("/accept", databaseErrorHandler<AcceptReqBody
 
         let hasRequiredBrawlers = true;
         for (let x of offerPins){
-            if (collectionData.has(x.brawler) === true){
-                const brawler = collectionData.get(x.brawler)!;
+            if (collectionData.hasOwnProperty(x.brawler) === true){
+                const brawler = collectionData[x.brawler];
                 // If the user already has the pin in their collection, add the amount they will receive
-                if (brawler.has(x.pin) === true){
-                    const pinAmount = brawler.get(x.pin)!;
-                    brawler.set(x.pin, pinAmount + x.amount);
+                if (brawler.hasOwnProperty(x.pin) === true){
+                    brawler[x.pin], brawler[x.pin] + x.amount;
                     //collectionData[x.brawler][x.pin] += x.amount;
                 }
                 // If the user has the brawler but not the pin, add the new pin to their collection
                 // and set its amount to the amount given in the trade
                 else{
-                    brawler.set(x.pin, x.amount);
+                    brawler[x.pin], x.amount;
                     //collectionData[x.brawler][x.pin] = x.amount;
                 }
                 tradedItems.push(x);
@@ -493,15 +492,14 @@ router.post<{}, {}, CloseReqBody>("/close", databaseErrorHandler<CloseReqBody>(a
 
         let hasRequiredBrawlers = true;
         for (let x of addPinsFrom){
-            if (collectionData.has(x.brawler) === true){
-                const brawler = collectionData.get(x.brawler)!;
-                if (brawler.has(x.pin) === true){
-                    const pinAmount = brawler.get(x.pin)!;
-                    brawler.set(x.pin, pinAmount + x.amount);
+            if (collectionData.hasOwnProperty(x.brawler) === true){
+                const brawler = collectionData[x.brawler];
+                if (brawler.hasOwnProperty(x.pin) === true){
+                    brawler[x.pin] = brawler[x.pin] + x.amount;
                     //collectionData[x.brawler][x.pin] += x.amount;
                 }
                 else{
-                    brawler.set(x.pin, x.amount);
+                    brawler[x.pin], x.amount;
                     //collectionData[x.brawler][x.pin] = x.amount;
                 }
                 tradedItems.push(x);

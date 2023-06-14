@@ -264,7 +264,11 @@ export interface UserTokenResult{
 /**
  * Parsed format of the brawler object that is stored in the database as text
  */
-export type DatabaseBrawlers = Map<string, Map<string, number>>;
+export type DatabaseBrawlers = {
+    [k: string]: {
+        [k: string]: number;
+    };
+}
 
 /**
  * Formatted collection data

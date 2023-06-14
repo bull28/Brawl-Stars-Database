@@ -73,7 +73,7 @@ export function formatCollectionData(userCollection: DatabaseBrawlers, userAcces
         // be unlocked either.
         let hasBrawler = false;
         if (missingProperties === false){
-            hasBrawler = userCollection.has(brawler.name);
+            hasBrawler = userCollection.hasOwnProperty(brawler.name);
             if (hasBrawler === true){
                 collection.unlockedBrawlers++;
             }
@@ -81,9 +81,9 @@ export function formatCollectionData(userCollection: DatabaseBrawlers, userAcces
     
             let brawlerPins: CollectionPin[] = [];
 
-            let pinData: Map<string, number> | undefined = undefined;
+            let pinData: DatabaseBrawlers[string] | undefined = undefined;
             if (hasBrawler === true){
-                pinData = userCollection.get(brawler.name)!;   
+                pinData = userCollection[brawler.name];
             }
     
             for (let y = 0; y < brawler.pins.length; y++){
@@ -104,7 +104,7 @@ export function formatCollectionData(userCollection: DatabaseBrawlers, userAcces
                 // pin appears in the corresponding value. If it appears, the current
                 // pin is unlocked.
                 if (typeof pinData !== "undefined"){
-                    const pinCount = pinData.get(pin.name);
+                    const pinCount = pinData[pin.name];
                     if (typeof pinCount !== "undefined"){
                         if (pinCount > 0){
                             
@@ -196,7 +196,7 @@ export function getAvatars(allAvatars: AvatarList, userCollection: DatabaseBrawl
         const brawler = allSkins[x];
         if (brawler.hasOwnProperty("name") === true && brawler.hasOwnProperty("image") === true){
             // If the user has the brawler unlocked, add the avatar as an option
-            if (userCollection.has(brawler.name) === true){
+            if (userCollection.hasOwnProperty(brawler.name) === true){
                 unlockedBrawlers.push(brawler.image.split(".")[0]);
             }
         }
@@ -328,7 +328,7 @@ export function getThemes(allThemes: ThemeList, allScenes: SceneList, userThemes
                 // Model path is already contained in the scene map
                 const sceneObject = scenes[sceneName];
                 if (sceneObject.hasOwnProperty(sceneType) === true){
-                    sceneObject[sceneType as keyof typeof sceneObject] = SCENE_IMAGE_DIR + scene
+                    sceneObject[sceneType as keyof typeof sceneObject] = SCENE_IMAGE_DIR + scene;
                 }
             }
         }
@@ -486,7 +486,7 @@ export function getShopItems(shopItems: ShopList, resources: {
     const userAccessories = resources.accessories;
 
     const collection = formatCollectionData(userCollection, userAccessories, accessoryLevel);
-    const achievements = getAchievementAvatars(userAvatars, userThemes, collection);
+    const achievements = getAchievementItems(userAvatars, userThemes, collection, accessoryLevel);
 
     shopItems.forEach((value, key) => {
         // Depending on the type of item, check availability differently
@@ -545,7 +545,7 @@ export function getShopItems(shopItems: ShopList, resources: {
                 // The featured pin is valid only if the user has the brawler unlocked
                 // but they do not have to have the pin unlocked
                 try{
-                    if (userCollection.has(pinName[0]) === true){
+                    if (userCollection.hasOwnProperty(pinName[0]) === true){
                         for (let brawler in allSkins){
                             if (allSkins[brawler].name === pinName[0]){
                                 const brawlerPins = allSkins[brawler].pins;
@@ -609,10 +609,10 @@ export function refreshFeaturedItem(userCollection: DatabaseBrawlers): string{
         
         if (brawler.hasOwnProperty("name") === true && brawler.hasOwnProperty("pins") === true){
             // Only offer pins from brawlers the user owns
-            if (userCollection.has(brawler.name) === true){
+            if (userCollection.hasOwnProperty(brawler.name) === true){
                 for (let pinIndex = 0; pinIndex < brawler.pins.length; pinIndex++){
                     //const pinRarity = brawler.pins[pinIndex].rarity.value;
-                    const pinAmount = (userCollection.get(brawler.name)!).get(brawler.pins[pinIndex].name);
+                    const pinAmount = userCollection[brawler.name][brawler.pins[pinIndex].name];
                     if (typeof pinAmount !== "undefined" && pinAmount > 0){
                         duplicatePins.push(brawler.name + "/" + brawler.pins[pinIndex].name);
                     } else{
@@ -640,15 +640,16 @@ export function refreshFeaturedItem(userCollection: DatabaseBrawlers): string{
 }
 
 /**
- * Some avatars are only available in the shop only if the user has progressed
- * far enough. This function returns the avatars which the user is able to
- * purchase from the shop, given their current collection.
+ * Some items are only available in the shop only if the user has progressed
+ * far enough. This function returns the items which the user is able to
+ * purchase from the shop, given their current progress.
  * @param userAvatars parsed array of avatars from the database
  * @param userThemes parsed array of themes from the database
  * @param collection formatted collection object
- * @returns array of avatar names
+ * @param accessoryLevel user's accessory level
+ * @returns array of item names, corresponding to shop item extraData
  */
-function getAchievementAvatars(userAvatars: DatabaseAvatars, userThemes: DatabaseThemes, collection: CollectionData): DatabaseAvatars{
+function getAchievementItems(userAvatars: DatabaseAvatars, userThemes: DatabaseThemes, collection: CollectionData, accessoryLevel: number): DatabaseAvatars{
     let achievementAvatars: DatabaseAvatars = [];
 
     const score = getCollectionScore(collection);

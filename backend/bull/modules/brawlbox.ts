@@ -415,10 +415,10 @@ function selectPin(pinDropChances: RewardTypePin, resources: UserResources): Bra
         if (brawler.hasOwnProperty("name") === true && brawler.hasOwnProperty("pins") === true){
             //let hasBrawler = userCollection.hasOwnProperty(brawler.name);
 
-            if (userCollection.has(brawler.name) === true){
+            if (userCollection.hasOwnProperty(brawler.name) === true){
                 for (let pinIndex = 0; pinIndex < brawler.pins.length; pinIndex++){
                     const pinRarity = brawler.pins[pinIndex].rarity.value;
-                    const pinAmount = (userCollection.get(brawler.name)!).get(brawler.pins[pinIndex].name);
+                    const pinAmount = userCollection[brawler.name][brawler.pins[pinIndex].name];
                     //if (pinRarity < pinsByRarity.length && userCollection[brawler.name].includes(brawler.pins[pinIndex].name) === false){
                     if (pinRarity < pinsByRarity.length){
                         // Add the brawler's index and the pin's index so when the random pin has to be
@@ -529,13 +529,12 @@ function selectPin(pinDropChances: RewardTypePin, resources: UserResources): Bra
         // the object and set its value to 1. This may happen when new pins are released and the existing players'
         // data has not been updated to include the new pins. Because new pins are added automatically here, an
         // update to every user in the database when a new pin gets released is not necessary.
-        let brawlerInCollection = userCollection.get(brawlerObject.name);
+        let brawlerInCollection = userCollection[brawlerObject.name];
         if (typeof brawlerInCollection !== "undefined"){
-            if (brawlerInCollection.has(pinObject.name) === false){
-                brawlerInCollection.set(pinObject.name, 1);
+            if (brawlerInCollection.hasOwnProperty(pinObject.name) === false){
+                brawlerInCollection[pinObject.name] = 1;
             } else{
-                const pinAmount = brawlerInCollection.get(pinObject.name)!;
-                brawlerInCollection.set(pinObject.name, pinAmount + 1);
+                brawlerInCollection[pinObject.name] = brawlerInCollection[pinObject.name] + 1;
             }
 
             //result.displayName = "New Pin";
@@ -543,7 +542,7 @@ function selectPin(pinDropChances: RewardTypePin, resources: UserResources): Bra
             result.image = PIN_IMAGE_DIR + brawlerObject.name + "/" + pinObject.image;// add the brawler's name directory
             result.backgroundColor = pinObject.rarity.color;
             result.description = "A Pin for " + brawlerObject.displayName + ".";
-            result.inventory = brawlerInCollection.get(pinObject.name)!;
+            result.inventory = brawlerInCollection[pinObject.name];
             // pinObject.name is guaranteed to be in the collection map because it was checked above
 
             if (duplicate === true){
@@ -651,7 +650,7 @@ function selectBrawler(brawlerDropChances: RewardTypeBrawler, resources: UserRes
 
         if (brawler.hasOwnProperty("name") === true && brawler.hasOwnProperty("rarity") === true){
             const brawlerRarity = brawler.rarity.value;
-            if (brawlerRarity < brawlersByRarity.length && userCollection.has(brawler.name) === false){
+            if (brawlerRarity < brawlersByRarity.length && userCollection.hasOwnProperty(brawler.name) === false){
                 //availableBrawlers.push(brawlerIndex);
                 brawlersByRarity[brawlerRarity].push(brawlerIndex);
             }
@@ -674,8 +673,8 @@ function selectBrawler(brawlerDropChances: RewardTypeBrawler, resources: UserRes
     if (availableBrawlers.length > 0){
         const selectedIndex = availableBrawlers[Math.floor(Math.random() * availableBrawlers.length)];
         const brawlerObject = allSkins[selectedIndex];
-        if (userCollection.has(brawlerObject.name) === false){
-            userCollection.set(brawlerObject.name, new Map<string, number>());
+        if (userCollection.hasOwnProperty(brawlerObject.name) === false){
+            userCollection[brawlerObject.name] = {};
         }
 
         result.displayName = brawlerObject.displayName;

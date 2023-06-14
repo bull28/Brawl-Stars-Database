@@ -252,7 +252,7 @@ router.post<{}, {}, BrawlBoxReqBody>("/brawlbox", databaseErrorHandler<BrawlBoxR
         }
 
         let resources: UserResources = {
-            brawlers: new Map<string, Map<string, number>>(),
+            brawlers: {},
             avatars: [],
             wild_card_pins: [],
             tokens: results[0].tokens,
@@ -552,20 +552,19 @@ router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(asyn
             const pinName = itemData.extraData.split("/");
             // Index 0 is the brawler, index 1 is the pin
 
-            if (userBrawlers.has(pinName[0]) === true){
-                const brawler = userBrawlers.get(pinName[0])!;
-                if (brawler.has(pinName[1]) === true){
+            if (userBrawlers.hasOwnProperty(pinName[0]) === true){
+                const brawler = userBrawlers[pinName[0]];
+                if (brawler.hasOwnProperty(pinName[1]) === true){
                     // User already has the pin
-                    const pinAmount = brawler.get(pinName[1])!;
-                    brawler.set(pinName[1], pinAmount + itemData.amount);
+                    brawler[pinName[1]] = brawler[pinName[1]] + itemData.amount;
                 } else{
                     // User does not have the pin yet
-                    brawler.set(pinName[1], itemData.amount);
+                    brawler[pinName[1]] = itemData.amount;
                 }
                 // This is not undefined because both cases of pin exists in
                 // brawler map were already checked and if the key was not there
                 // then it was added.
-                userItemInventory = brawler.get(pinName[1])!;
+                userItemInventory = brawler[pinName[1]];
 
                 // The featured item can only be bought once per day
                 featuredItem = "";
