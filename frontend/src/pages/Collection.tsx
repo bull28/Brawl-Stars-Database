@@ -1,4 +1,4 @@
-import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Center, Flex, HStack, Icon, Image, Link, SimpleGrid, Spinner, Stack, Tag, Text, Tooltip, VStack } from '@chakra-ui/react'
+import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Center, Flex, HStack, Icon, Image, Link, SimpleGrid, Stack, Tag, Text, Tooltip, VStack } from '@chakra-ui/react'
 import { useEffect, useState, useCallback } from 'react'
 import { CollectionData } from '../types/CollectionData'
 import { RiLock2Line } from 'react-icons/ri'
@@ -54,10 +54,10 @@ export default function Collection() {
                     <Flex justifyContent={'center'} textAlign={'center'} alignItems={'center'} p={3} borderRadius={'lg'} flexDir={'column'}>
                         <Text fontSize={'2xl'} className={'heading-2xl'}  mb={3}>Collection Score</Text>
                         <Flex animation={(data?.avatarColor === 'rainbow') ? `${RainbowBorder()} 12s infinite` : ''} bgColor={(data?.avatarColor === 'rainbow') ? 'black' : data?.avatarColor} flexDir={'column'} p={10}  border={'3px solid black'} mb={5}>
-                            {(data?.collectionScore !== 'S+') ?
-                                <Text  className={'heading-2xl'} fontSize={'2xl'}>{data?.collectionScore}</Text>
+                            {(data?.collectionScore === 'S+') ?
+                                <MovingText title={data?.collectionScore || ""} color1="#fdf542" color2="#ff9005" fontSize={'2xl'}/>
                                 :
-                            <MovingText title={data?.collectionScore || ""} color1="#fdf542" color2="#ff9005" fontSize={'2xl'}/>
+                                <Text  className={'heading-2xl'} fontSize={'2xl'}>{data?.collectionScore}</Text>
                             }
                             
                             <Tooltip label={`${data?.scoreProgress && (data?.scoreProgress * 100).toFixed(1)}% to next letter grade`}>
@@ -68,38 +68,42 @@ export default function Collection() {
                                 </Box>
                             </Tooltip>
                             
-                            <VStack spacing={1}>                          
-                                <Text  className={'heading-md'}  fontSize={'md'}>Brawlers Unlocked: </Text>
-                                {(data?.unlockedBrawlers !== data?.totalBrawlers) ?
-                                    <Text fontSize={'lg'} className={'heading-lg'} color={(data && data?.unlockedBrawlers === data?.totalBrawlers) ? 'gold' : 'white'} >{`${data?.unlockedBrawlers ? data.unlockedBrawlers : '0'}/${data?.totalBrawlers ? data.totalBrawlers : '0'}`}</Text>
-                                    :
-                                    <MovingText title={`${data?.unlockedBrawlers ? data.unlockedBrawlers : '0'}/${data?.totalBrawlers ? data.totalBrawlers : '0'}`} color1="#fdf542" color2="#ff9005" fontSize={'lg'}/>
-                                }
-                                <Text  className={'heading-md'} fontSize={'md'}>Unique Pins Unlocked:  </Text>
-                                {(data?.unlockedPins !== data?.totalPins) ?
-                                    <Text fontSize={'lg'} className={'heading-lg'} color={(data && data?.unlockedPins === data?.totalPins) ? 'gold' : 'white'} >{`${data?.unlockedPins ? data.unlockedPins : '0'}/${data?.totalPins ? data.totalPins : '0'}`}</Text>
-                                    :
-                                    <MovingText title={`${data?.unlockedPins ? data.unlockedPins : '0'}/${data?.totalPins ? data.totalPins : '0'}`} color1="#fdf542" color2="#ff9005" fontSize={'lg'}/>
-                                }
-                                <Text  className={'heading-md'} fontSize={'md'}>Completed Brawlers:  </Text>
-                                {(data?.completedBrawlers !== data?.totalBrawlers) ?
-                                    <Text fontSize={'lg'} className={'heading-lg'} color={(data && data?.completedBrawlers === data?.totalBrawlers) ? 'gold' : 'white'} >{`${data?.completedBrawlers ? data.completedBrawlers : '0'}/${data?.totalBrawlers ? data.totalBrawlers : '0'}`}</Text>
-                                    :
-                                    <MovingText title={`${data?.completedBrawlers ? data.completedBrawlers : '0'}/${data?.totalBrawlers ? data.totalBrawlers : '0'}`} color1="#fdf542" color2="#ff9005" fontSize={'lg'}/>
-                                }
-                                <Text  className={'heading-md'} fontSize={'md'}>Total Pins: </Text>
-                                {(data?.unlockedPins !== data?.totalPins) ?
-                                    <Text fontSize={'lg'} className={'heading-lg'} color={(data && data?.unlockedPins === data?.totalPins) ? 'gold' : 'white'}>{data?.pinCopies ? data.pinCopies : '0'}</Text>
-                                    :
-                                    <MovingText title={data?.pinCopies ? String(data.pinCopies) : '0'} color1="#fdf542" color2="#ff9005" fontSize={'lg'}/>
-                                }
-                                <Text  className={'heading-md'} fontSize={'md'}>Accessories Unlocked: </Text>
-                                {(data?.unlockedAccessories !== data?.totalAccessories) ?
-                                    <Text fontSize={'lg'} className={'heading-lg'} color={(data && data?.unlockedAccessories === data?.totalAccessories) ? 'gold' : 'white'}>{`${data?.unlockedAccessories ? data.unlockedAccessories : '0'}/${data?.totalAccessories ? data.totalAccessories : '1'}`}</Text>
-                                    :
-                                    <MovingText title={`${data?.unlockedAccessories ? data.unlockedAccessories : '0'}/${data?.totalAccessories ? data.totalAccessories : '1'}`} color1="#fdf542" color2="#ff9005" fontSize={'lg'}/>
-                                }
-                            </VStack>
+                            {typeof data !== "undefined" ?
+                                <VStack spacing={1}>
+                                    <Text className={'heading-md'}  fontSize={'md'}>Brawlers Unlocked:</Text>
+                                    {(data.unlockedBrawlers >= data.totalBrawlers) ?
+                                        <MovingText title={`${data.unlockedBrawlers}/${data.totalBrawlers}`} color1="#fdf542" color2="#ff9005" fontSize={'lg'}/>
+                                        :
+                                        <Text fontSize={'lg'} className={'heading-lg'} color={'white'} >{`${data.unlockedBrawlers}/${data.totalBrawlers}`}</Text>
+                                    }
+                                    <Text className={'heading-md'} fontSize={'md'}>Unique Pins Unlocked:</Text>
+                                    {(data.unlockedPins >= data.totalPins) ?
+                                        <MovingText title={`${data.unlockedPins}/${data.totalPins}`} color1="#fdf542" color2="#ff9005" fontSize={'lg'}/>
+                                        :
+                                        <Text fontSize={'lg'} className={'heading-lg'} color={'white'} >{`${data.unlockedPins}/${data.totalPins}`}</Text>
+                                    }
+                                    <Text className={'heading-md'} fontSize={'md'}>Completed Brawlers:</Text>
+                                    {(data.completedBrawlers >= data.totalBrawlers) ?
+                                        <MovingText title={`${data.completedBrawlers}/${data.totalBrawlers}`} color1="#fdf542" color2="#ff9005" fontSize={'lg'}/>
+                                        :
+                                        <Text fontSize={'lg'} className={'heading-lg'} color={'white'} >{`${data.completedBrawlers}/${data.totalBrawlers}`}</Text>
+                                    }
+                                    <Text className={'heading-md'} fontSize={'md'}>Total Pins:</Text>
+                                    {(data.unlockedPins >= data.totalPins) ?
+                                        <MovingText title={data.pinCopies.toString()} color1="#fdf542" color2="#ff9005" fontSize={'lg'}/>
+                                        :
+                                        <Text fontSize={'lg'} className={'heading-lg'} color={'white'}>{data.pinCopies}</Text>
+                                    }
+                                    <Text className={'heading-md'} fontSize={'md'}>Accessories Unlocked:</Text>
+                                    {(data.unlockedAccessories >= data.totalAccessories) ?
+                                        <MovingText title={`${data.unlockedAccessories}/${data.totalAccessories}`} color1="#fdf542" color2="#ff9005" fontSize={'lg'}/>
+                                        :
+                                        <Text fontSize={'lg'} className={'heading-lg'} color={'white'}>{`${data.unlockedAccessories}/${data.totalAccessories}`}</Text>
+                                    }
+                                </VStack>
+                                :
+                                <></>
+                            }
                         </Flex>
                     </Flex>
                     <Flex flexDir={'column'}>
@@ -134,7 +138,7 @@ export default function Collection() {
                                     </Flex>
                                     <HStack spacing={5} my={3}>
                                         <Box pos={'relative'}>
-                                            <Image filter={!brawler.u ? 'blur(1px)' : 'none'} src={`/image/${brawler.i}`} maxW={'64px'} borderRadius={'lg'} fallback={<Spinner/>}/>
+                                            <Image filter={!brawler.u ? 'blur(1px)' : 'none'} src={`/image/${brawler.i}`} maxW={'64px'} borderRadius={'lg'}/>
                                             {!brawler.u && <Box w={'100%'} h={'100%'} bgColor={'rgba(0, 0, 0, 0.5)'} pos={'absolute'} top={0} borderRadius={'lg'}/>}
                                             {(!brawler.u) && <Icon as={RiLock2Line}  pos={'absolute'} fontSize={'25px'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}></Icon>}
                                         </Box>

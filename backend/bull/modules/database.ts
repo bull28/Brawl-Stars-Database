@@ -1,5 +1,5 @@
 import {Request, Response, NextFunction} from "express";
-import mysql2, {Connection, RowDataPacket, ResultSetHeader} from "mysql2";
+import mysql2, {Pool, RowDataPacket, ResultSetHeader} from "mysql2";
 import {DatabaseBrawlers, TradePinValid} from "../types";
 
 // Custom error classes for common database errors
@@ -23,12 +23,14 @@ class NoUpdateError extends Error{
 }
 
 
-const databaseLogin: mysql2.ConnectionOptions = {
+const databaseLogin: mysql2.PoolOptions = {
     host: "localhost",
     port: 3306,
-    user: "bull",
-    password: "darryl_roll",
-    database: "bull2"
+    user: "username",
+    password: "password",
+    database: "database",
+    connectionLimit: 12,
+    maxIdle: 12
 };
 
 let TABLE_NAME = "users";
@@ -52,7 +54,9 @@ if (typeof process.env["DATABASE_HOST"] !== "undefined"){
     databaseLogin.password = process.env["DATABASE_PASSWORD"];
 } if (typeof process.env["DATABASE_NAME"] !== "undefined"){
     databaseLogin.database = process.env["DATABASE_NAME"];
-} if (typeof process.env["DATABASE_TABLE_NAME"] !== "undefined"){
+}
+
+if (typeof process.env["DATABASE_TABLE_NAME"] !== "undefined"){
     TABLE_NAME = process.env["DATABASE_TABLE_NAME"];
 } if (typeof process.env["DATABASE_TRADE_TABLE_NAME"] !== "undefined"){
     TRADE_TABLE_NAME = process.env["DATABASE_TRADE_TABLE_NAME"];
@@ -63,11 +67,11 @@ if (typeof process.env["DATABASE_HOST"] !== "undefined"){
 }
 
 
-const connection = mysql2.createConnection(databaseLogin);
+const connection = mysql2.createPool(databaseLogin);
 
 let success = true;
 
-connection.connect((error) => {
+connection.query("SELECT 69", [], (error) => {
     if (error !== null && error !== undefined){
         console.log("Could not connect to database.");
         success = false;
@@ -85,9 +89,9 @@ function closeConnection(callback: () => void): void{
 };
 
 process.on("SIGINT", () => {
-    if (success === false){
-        return;
-    }
+    //if (success === false){
+    //    return;
+    //}
     closeConnection(() => {
         process.kill(process.pid, "SIGINT");
     });
@@ -159,7 +163,7 @@ export function databaseErrorHandler<R, Q = {}>(callback: ExpressCallback<R, Q>)
  * @param query sql query string
  * @returns promise resolving to the result
  */
-async function queryDatabase<Values, Result extends RowDataPacket[]>(connection: Connection, values: Values, allowEmptyResults: boolean, query: string): Promise<Result>{
+async function queryDatabase<Values, Result extends RowDataPacket[]>(connection: Pool, values: Values, allowEmptyResults: boolean, query: string): Promise<Result>{
     if (success === false){
         return new Promise<Result>((resolve, reject) => {
             reject("Could not connect to database.");
@@ -191,7 +195,7 @@ async function queryDatabase<Values, Result extends RowDataPacket[]>(connection:
  * @param query sql query string
  * @returns promise resolving to the result set header
  */
-async function updateDatabase<Values>(connection: Connection, values: Values, allowNoUpdate: boolean, query: string): Promise<ResultSetHeader>{
+async function updateDatabase<Values>(connection: Pool, values: Values, allowNoUpdate: boolean, query: string): Promise<ResultSetHeader>{
     if (success === false){
         return new Promise<ResultSetHeader>((resolve, reject) => {
             reject("Could not connect to database.");

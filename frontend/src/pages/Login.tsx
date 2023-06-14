@@ -65,9 +65,7 @@ function Login(){
                         <InputLeftElement><RiKeyFill/></InputLeftElement>
                         <Input id={"password"} type={'password'}  value={password} onChange={(e) => {setPassword(e.target.value)}} borderColor={'gray.400'} style={{caretColor: 'auto'}}/>
                     </InputGroup>
-                    <Flex justifyContent={'right'}>
-                        <FormHelperText mb={10} color={'blue.400'}><Link>Forgot Password?</Link></FormHelperText>
-                    </Flex>
+                    <Flex justifyContent={'right'} mb={10}/>
                     <Input id={"bull"} type={'submit'} value={'Login'} backgroundColor={'blue.400'} color={'white'} fontWeight={'500'} _hover={{backgroundColor: "blue.500"}} cursor={'pointer'}/>
                     <Flex mt={5} justifyContent={'space-between'}>
                         <FormHelperText>Don't have an account? <Link as={RouterLink} to="/signup" color={'blue.400'}>Sign Up</Link></FormHelperText>

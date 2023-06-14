@@ -1,14 +1,13 @@
 import { Flex, Text, Divider, Icon, RadioGroup, Stack, Radio, Input, Select, InputGroup, InputRightElement, Button, useMediaQuery, Drawer,
     DrawerBody,
-    DrawerFooter,
     DrawerHeader,
     DrawerOverlay,
     DrawerContent,
     DrawerCloseButton,
     useDisclosure, 
     useToast,
-    Image,
-    Spinner} from "@chakra-ui/react";
+    Image
+} from "@chakra-ui/react";
 
 import { HamburgerIcon, SearchIcon } from '@chakra-ui/icons'
 import { useEffect, useRef, useState, useCallback } from "react";
@@ -189,12 +188,12 @@ export default function EventSideBar({ changeData, changeOffset, startTime }: {c
     if (query){
         return (
             <Flex flexDir={'column'} minH={"80vh"} style={{caretColor: "transparent"}} border={'1px'} borderRadius={'md'} borderColor={'gray.200'} w={'28%'} maxW={'350px'} justifyContent={'space-around'} px={5} mr={10} ml={3} boxShadow={'rgba(99, 99, 99, 0.2) 0px 1px 4px 0px'}>
-                <Text fontSize={"2xl"} className={'heading-2xl'} my={8} >Event Menu</Text>
-                <Divider color={'black'} opacity={1} pr={5} mb={6}/>
+                <Text fontSize={"2xl"} className={'heading-2xl'} mt={8}>Event Menu</Text>
+                <Divider opacity={1} my={8}/>
                 <RadioGroup onChange={setChoice} value={choice}>
-                    <Stack direction={'column'} spacing={[5, 10]}>
-                        <Radio value='current'>Current</Radio>
-                        <Radio value='season_time'>Season Time</Radio>
+                    <Stack direction={'column'} spacing={[5, 8]}>
+                        <Radio value='current'><Text className={"heading-md"}>Current</Text></Radio>
+                        <Radio value='season_time'><Text className={"heading-md"}>Season Time</Text></Radio>
                         <Stack direction={'row'} alignItems={'center'}>
                             <Input type={'number'} onChange={(e) => handleTimeChange(e.target.value, 0)} value={time[0]} style={{caretColor: 'auto'}}/>
                             <Text>:</Text>
@@ -206,22 +205,22 @@ export default function EventSideBar({ changeData, changeOffset, startTime }: {c
                             <option value='at_time'>At Time</option>
                             <option value='from_now'>From Now</option>                            
                         </Select>
-                        <Radio value='world_time'>World Time</Radio>
+                        <Radio value='world_time'><Text className={"heading-md"}>World Time</Text></Radio>
                         <Input type={'datetime-local'} onChange={(e) => setDate(e.target.value)} value={date}/>
                         <Button type={'button'} onClick={() => {setEventMode({choice: choice, select: select}); update(choice, select); updateTimer({start: Date.now(), offset: 0});}}>Update</Button>
                     </Stack>
                 </RadioGroup>
-    
-                <Divider color={'black'} opacity={0} my={10} orientation={'horizontal'}/>
-                <Flex alignItems={'center'} alignContent={'center'} textAlign={'center'} flexDir={'column'} pb={3}>
-                    
+
+                <Divider opacity={1} my={8}/>
+
+                <Flex alignItems={'center'} alignContent={'center'} textAlign={'center'} flexDir={'column'} pb={5}>
                     <InputGroup>
                         <Input type={'text'} value={searchText} onChange={e => setSearchText(e.target.value)} style={{caretColor: 'auto'}}/>
                         <InputRightElement>
                             <Icon as={SearchIcon} onClick={search} cursor={'pointer'} fontSize={'xl'}/>
                         </InputRightElement>
                     </InputGroup>
-                    <Stack overflow={'auto'} overflowX={'hidden'} maxH={'130px'} mt={1} spacing={0} w={'100%'} sx={{
+                    <Stack overflow={'auto'} overflowX={'hidden'} h={'180px'} mt={1} spacing={0} w={'100%'} sx={{
                         '&::-webkit-scrollbar': {
                         width: '16px',
                         borderRadius: '8px',
@@ -233,7 +232,7 @@ export default function EventSideBar({ changeData, changeOffset, startTime }: {c
                         },
                     }}>
                     {maps.map((m) => (
-                        <Button key={m.name} onClick={() => {openMapView(m.name)}} fontSize={['xs', 'xs', 'md', 'lg']} bgColor={'transparent'} py={2} color={m.gameModeData.textColor} fontWeight={'normal'}><Image src={`/image/${m.gameModeData.image}`} h={'100%'} mr={1} fallback={<Spinner/>}></Image>{m.displayName}</Button>
+                        <Button key={m.name} onClick={() => {openMapView(m.name)}} fontSize={['xs', 'xs', 'md', 'lg']} className={"heading-md"} bgColor={'transparent'} py={2} color={m.gameModeData.textColor} fontWeight={'normal'}><Image src={`/image/${m.gameModeData.image}`} h={'100%'} mr={1}></Image>{m.displayName}</Button>
                     ))}
                     </Stack>
                     
@@ -241,7 +240,7 @@ export default function EventSideBar({ changeData, changeOffset, startTime }: {c
                     
                 <MapView map={map} ref={mapViewRef}/>
             </Flex>
-        )
+        );
     } else {
         return (
             <>
@@ -250,7 +249,7 @@ export default function EventSideBar({ changeData, changeOffset, startTime }: {c
                     <DrawerOverlay/>
                     <DrawerContent>
                         <DrawerCloseButton/>
-                        <DrawerHeader>Filter</DrawerHeader>
+                        <DrawerHeader fontWeight={"normal"}>Filter</DrawerHeader>
                         <DrawerBody>
                             <RadioGroup onChange={setChoice} value={choice}>
                             <Stack direction={'column'} spacing={[5, 10]}>
@@ -273,14 +272,6 @@ export default function EventSideBar({ changeData, changeOffset, startTime }: {c
                             </Stack>
                             </RadioGroup>
                         </DrawerBody>
-                        <DrawerFooter>
-                            <InputGroup>
-                                <Input type={'text'} style={{caretColor: 'auto'}}/>
-                                <InputRightElement>
-                                    <Icon as={SearchIcon} onClick={search} cursor={'pointer'}/>
-                                </InputRightElement>
-                            </InputGroup>
-                        </DrawerFooter>
                     </DrawerContent>
                 </Drawer>
             </>

@@ -26,6 +26,7 @@ import AuthRequest from '../helpers/AuthRequest'
 import { useNavigate } from 'react-router-dom'
 import { RainbowBorder } from '../themes/animations'
 import {displayShort, displayLong} from '../helpers/LargeNumberDisplay'
+import { AxiosError } from 'axios'
 
 type TokenStorage = {[k: string]: string;};
 
@@ -56,6 +57,7 @@ export default function AccountDisplay() {
     const [data, setData] = useState<UserInfoProps>()
     const [tokenData, setTokenData] = useState<TokenStorage>({})
     const [removing, toggleRemoving] = useState<boolean>(false)
+    const [invalid, setInvalid] = useState<boolean>(false)
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -63,13 +65,19 @@ export default function AccountDisplay() {
 
     
     useEffect(() => {
-        AuthRequest<UserInfoProps>("/resources", {setState: setData});
+        AuthRequest<UserInfoProps>("/resources", {setState: setData, fallback: (e) => {
+            const error = e as AxiosError;
+            if (typeof error.response !== "undefined" && error.response.status === 404){
+                setInvalid(true);
+            }
+        }});
         setTokenData(parseTokens(localStorage.getItem("tokens")));
     }, [])
 
 
   return (
     <Flex flexDir={'column'} justifyContent={'center'} alignItems={'center'} textAlign={'center'}>
+        {invalid === true ?<Button fontSize={"lg"} className={"heading-lg"} color={"#fff"} onClick={() => {localStorage.removeItem('username'); navigate('/')}}>Log out</Button> : <></>}
         <Menu autoSelect={false} closeOnSelect={false}>
             <MenuButton>
                 <Flex justifyContent={'center'} alignItems={'center'} borderRadius={'50%'} border={(data?.avatarColor !== 'rainbow') ? `3px solid ${data?.avatarColor}` : ''} animation={(data?.avatarColor === 'rainbow') ? `${RainbowBorder()} 12s infinite` : ''}>
@@ -125,10 +133,14 @@ export default function AccountDisplay() {
             </MenuList>
         </Menu>
         <Tooltip label='Tokens are used to open Brawl Boxes and play challenges. Collect them by visiting the website regularly!' placement={'bottom-start'}>
-            <Flex justifyContent={'center'} alignItems={'center'} textAlign={'center'} mt={1}> 
-                <Image maxW={'25px'} src={'/image/resources/resource_tokens.webp'} mr={1}/>
-                <Text  className={'heading-xl'} fontSize={'xl'}>{data?.tokens}</Text>
-            </Flex>
+            {invalid === false ?
+                <Flex justifyContent={'center'} alignItems={'center'} textAlign={'center'} mt={1}> 
+                    <Image maxW={'25px'} src={'/image/resources/resource_tokens.webp'} mr={1}/>
+                    <Text  className={'heading-xl'} fontSize={'xl'}>{data?.tokens}</Text>
+                </Flex>
+                :
+                <></>
+            }
         </Tooltip>
         <Drawer isOpen={isOpen} placement={'right'} onClose={onClose}>
             <DrawerOverlay/>
