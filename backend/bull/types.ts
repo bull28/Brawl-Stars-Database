@@ -31,6 +31,7 @@ export interface BrawlerData{
     image: Brawler["image"];
     defaultSkin: Brawler["defaultSkin"];
     title: Brawler["title"];
+    masteryIcon: Brawler["masteryIcon"];
     skins: SkinPreview[];
     pins: PinPreview[];
 }

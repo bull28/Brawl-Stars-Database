@@ -8,9 +8,9 @@ import BackgroundScene from "./BackgroundScene";
 
 interface AnimationViewerProps{
     modelFile: string,
-    winFile: string | null,
-    loseFile: string | null,
-    bgFile: string | null
+    winFile: string | undefined,
+    loseFile: string | undefined,
+    bgFile: string | undefined
 }
 
 interface GltfModelProps{
@@ -84,8 +84,8 @@ const GltfModel = ({modelFile, winFile, loseFile, playing, modelPos, hasBackgrou
     });
 
     let mixer: AnimationMixer = new AnimationMixer(gltf.scene);
-    let win: AnimationAction | null = null;
-    let lose: AnimationAction | null = null;
+    let win: AnimationAction | undefined = undefined;
+    let lose: AnimationAction | undefined = undefined;
 
 
     // clampWhenFinished makes it stay on the last frame instead of going back to the first
@@ -206,20 +206,20 @@ const AnimationViewer = (({modelFile, winFile, loseFile, bgFile}: AnimationViewe
             <Flex w={"100%"} h={"100%"} bgImage={"../image/misc/bg_3d_model.webp"} backgroundPosition={"center"} backgroundSize={"cover"} backgroundRepeat={"no-repeat"}>
             <Canvas flat={true} camera={{fov: 40, position: [0, 0, 1]}}>
                 <Suspense fallback={null}>
-                    {(bgFile !== null && bgFile !== "" && bgFile !== "/image/") ? <BackgroundScene file={bgFile} modelPos={positionRef}/> : <></>}
-                    <GltfModel modelFile={modelFile} winFile={winFile ? winFile : "../image/misc/empty.glb"} loseFile={loseFile ? loseFile : "../image/misc/empty.glb"} playing={animationRef} modelPos={positionRef} hasBackground={(bgFile !== null && bgFile !== "" && bgFile !== "/image/")}/>
-                    <OrbitControls enablePan={false}/>
+                    {(bgFile !== undefined && bgFile !== "" && bgFile !== "/image/") ? <BackgroundScene file={bgFile} modelPos={positionRef}/> : <></>}
+                    <GltfModel modelFile={modelFile} winFile={winFile ? winFile : "../image/misc/empty.glb"} loseFile={loseFile ? loseFile : "../image/misc/empty.glb"} playing={animationRef} modelPos={positionRef} hasBackground={(bgFile !== undefined && bgFile !== "" && bgFile !== "/image/")}/>
+                    <OrbitControls enablePan={false} maxPolarAngle={Math.PI / 2} maxDistance={150}/>
                 </Suspense>
             </Canvas>
             </Flex>
             <Flex h={"5%"} flexDir={"row"} justifyContent={"center"}>
-                <Button isDisabled={(winFile === null)} h={"100%"} w={"33%"} onClick={() => {animationRef.current = 1;}}>
+                <Button isDisabled={(winFile === undefined)} h={"100%"} w={"33%"} onClick={() => {animationRef.current = 1;}}>
                     <Text fontSize={"md"} className={"heading-md"}>Win</Text>
                 </Button>
-                <Button isDisabled={(loseFile === null)} h={"100%"} w={"33%"} onClick={() => {animationRef.current = 2;}}>
+                <Button isDisabled={(loseFile === undefined)} h={"100%"} w={"33%"} onClick={() => {animationRef.current = 2;}}>
                     <Text fontSize={"md"} className={"heading-md"}>Lose</Text>
                 </Button>
-                <Button isDisabled={(winFile === null && loseFile === null)} h={"100%"} w={"33%"} onClick={() => {animationRef.current = 3;}}>
+                <Button isDisabled={(winFile === undefined && loseFile === undefined)} h={"100%"} w={"33%"} onClick={() => {animationRef.current = 3;}}>
                     <Text fontSize={"md"} className={"heading-md"}>Reset</Text>
                 </Button>
             </Flex>

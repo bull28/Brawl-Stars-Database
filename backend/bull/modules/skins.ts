@@ -1,5 +1,5 @@
 import fs from "fs";
-import {ASSETS_ROOT_DIR, PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR, SKIN_IMAGE_DIR, SKIN_MODEL_DIR, SKINGROUP_ICON_DIR, SKINGROUP_IMAGE_DIR} from "../data/constants";
+import {ASSETS_ROOT_DIR, PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR, SKIN_IMAGE_DIR, SKIN_MODEL_DIR, SKINGROUP_ICON_DIR, SKINGROUP_IMAGE_DIR, MASTERY_IMAGE_DIR} from "../data/constants";
 import {Brawler, Skin, BrawlerData, SkinData, ModelData} from "../types";
 
 function skinModelExists(model: ModelData): ModelData{
@@ -90,6 +90,7 @@ export function getBrawlerData(brawler: Brawler): BrawlerData{
         image: PORTRAIT_IMAGE_DIR + brawler.image,
         defaultSkin: brawler.defaultSkin,
         title: brawler.title,
+        masteryIcon: MASTERY_IMAGE_DIR + brawler.masteryIcon,
         skins: brawlerSkins,
         pins: brawlerPins
     };

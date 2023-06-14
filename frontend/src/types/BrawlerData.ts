@@ -1,4 +1,4 @@
-export type BrawlerData = {
+export interface BrawlerData{
     name: string;
     displayName: string;
     rarity: {value: number, name: string, color: string};
@@ -6,23 +6,34 @@ export type BrawlerData = {
     image: string;
     defaultSkin: string;
     title: string;
-    skins: [{name: string, displayName: string}];
-    pins: [{image: string, rarity: {value: number, name: string, color: string}}];
+    masteryIcon: string;
+    skins: {
+        name: string;
+        displayName: string;
+    }[];
+    pins: {
+        image: string;
+        rarity: {
+            value: number;
+            name: string;
+            color: string;
+        };
+    }[];
 }
 
-export interface Brawler {
-    name: string,
-    displayName: string,
+export interface Brawler{
+    name: string;
+    displayName: string;
     rarity: {
-        value: number,
-        name: string,
-        color: string
-    },
-    image: string
+        value: number;
+        name: string;
+        color: string;
+    };
+    image: string;
 }
 
 export interface ModelFiles{
-    geometry: string | null,
-    winAnimation: string | null,
-    loseAnimation: string | null
+    geometry: string | undefined;
+    winAnimation: string | undefined;
+    loseAnimation: string | undefined;
 }
