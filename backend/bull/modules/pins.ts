@@ -1,5 +1,5 @@
 import allSkins from "../data/brawlers_data.json";
-import {themeMap, sceneMap, PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR, AVATAR_IMAGE_DIR, THEME_IMAGE_DIR, IMAGE_FILE_EXTENSION, SCENE_IMAGE_DIR} from "../data/constants";
+import {themeMap, sceneMap, PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR, AVATAR_IMAGE_DIR, THEME_IMAGE_DIR, SCENE_IMAGE_DIR} from "../data/constants";
 import {requiredLevels, getAccessoryDisplay, getAllAccessories} from "./accessories";
 import {
     CollectionData, 
@@ -17,6 +17,7 @@ import {
     DatabaseCosmetics, 
     ShopList, 
     ShopItem, 
+    AchievementItems, 
     DatabaseAccessories
 } from "../types";
 
@@ -519,8 +520,7 @@ export function getShopItems(shopItems: ShopList, resources: {
                 availableShopItems.set(key, value);
             }
         } else if (value.itemType === "achievementAvatar"){
-            // If the user does not already own an avatar, it is available for them to buy
-            if (userAvatars.includes(value.extraData) === false && achievements.includes(value.extraData) === true){
+            if (userAvatars.includes(value.extraData) === false && achievements.avatars.has(value.extraData) === true){
                 let shopItemCopy = copyShopItem(value);
                 shopItemCopy.itemType = "avatar";
 
@@ -532,10 +532,24 @@ export function getShopItems(shopItems: ShopList, resources: {
             if (userThemes.includes(value.extraData) === false){
                 availableShopItems.set(key, value);
             }
+        } else if (value.itemType === "achievementTheme"){
+            if (userThemes.includes(value.extraData) === false && achievements.themes.has(value.extraData) === true){
+                let shopItemCopy = copyShopItem(value);
+                shopItemCopy.itemType = "theme";
+
+                availableShopItems.set(key, shopItemCopy);
+            }
         } else if (value.itemType === "scene"){
             // Scenes are handled the same way as avatars. Unlike avatars, there are no free scenes.
             if (userScenes.includes(value.extraData) === false){
                 availableShopItems.set(key, value);
+            }
+        } else if (value.itemType === "achievementScene"){
+            if (userScenes.includes(value.extraData) === false && achievements.scenes.has(value.extraData) === true){
+                let shopItemCopy = copyShopItem(value);
+                shopItemCopy.itemType = "scene";
+
+                availableShopItems.set(key, shopItemCopy);
             }
         } else if (value.itemType === "featured"){
             let shopItemCopy = copyShopItem(value);
@@ -647,23 +661,17 @@ export function refreshFeaturedItem(userCollection: DatabaseBrawlers): string{
  * @param userThemes parsed array of themes from the database
  * @param collection formatted collection object
  * @param accessoryLevel user's accessory level
- * @returns array of item names, corresponding to shop item extraData
+ * @returns object with avatar, theme, and scene extraData strings
  */
-function getAchievementItems(userAvatars: DatabaseAvatars, userThemes: DatabaseThemes, collection: CollectionData, accessoryLevel: number): DatabaseAvatars{
-    let achievementAvatars: DatabaseAvatars = [];
+function getAchievementItems(userAvatars: DatabaseAvatars, userThemes: DatabaseThemes, collection: CollectionData, accessoryLevel: number): AchievementItems{
+    let avatars = new Set<string>();
 
     const score = getCollectionScore(collection);
 
     // Order of unlocking tiered avatars ("hardest" challenge sprays !!!)
     const tierOrder = [
-        "collection_01",
-        "collection_02",
-        "collection_03",
-        "collection_04",
-        "collection_05",
-        "collection_06",
-        "collection_07",
-        "collection_08"
+        "collection_01", "collection_02", "collection_03", "collection_04",
+        "collection_05", "collection_06", "collection_07", "collection_08"
     ];
     
     // This will contain the index of the highest tiered avatar the user currently has
@@ -678,21 +686,21 @@ function getAchievementItems(userAvatars: DatabaseAvatars, userThemes: DatabaseT
     // The user can buy the next tiered avatar if and only if they meet the
     // collection score requirement. Only one tiered avatar is offered at a time.
     if (tier === -1){
-        if (score >=   60) { achievementAvatars.push(tierOrder[0]); }// Requires C
+        if (score >=   60) { avatars.add(tierOrder[0]); }// Requires C
     } else if (tier === 0){
-        if (score >=  120) { achievementAvatars.push(tierOrder[1]); }// Requires B-
+        if (score >=  120) { avatars.add(tierOrder[1]); }// Requires B-
     } else if (tier === 1){
-        if (score >=  270) { achievementAvatars.push(tierOrder[2]); }// Requires B+
+        if (score >=  270) { avatars.add(tierOrder[2]); }// Requires B+
     } else if (tier === 2){
-        if (score >=  480) { achievementAvatars.push(tierOrder[3]); }// Requires A
+        if (score >=  480) { avatars.add(tierOrder[3]); }// Requires A
     } else if (tier === 3){
-        if (score >=  640) { achievementAvatars.push(tierOrder[4]); }// Requires A+
+        if (score >=  640) { avatars.add(tierOrder[4]); }// Requires A+
     } else if (tier === 4){
-        if (score >=  800) { achievementAvatars.push(tierOrder[5]); }// Requires S-
+        if (score >=  800) { avatars.add(tierOrder[5]); }// Requires S-
     } else if (tier === 5){
-        if (score >= 1000) { achievementAvatars.push(tierOrder[6]); }// Requires S
+        if (score >= 1000) { avatars.add(tierOrder[6]); }// Requires S
     } else if (tier === 6){
-        if (score >= 1200) { achievementAvatars.push(tierOrder[7]); }// Requires S+
+        if (score >= 1200) { avatars.add(tierOrder[7]); }// Requires S+
     }
     // tier === 7 means all avatars unlocked
 
@@ -700,20 +708,52 @@ function getAchievementItems(userAvatars: DatabaseAvatars, userThemes: DatabaseT
 
     // Brawl Ball avatar is available when the user has at least 12 special avatars unlocked
     if (userAvatars.length >= 12){
-        achievementAvatars.push("gamemode_brawlball");
+        avatars.add("gamemode_brawlball");
     }
-
     // Heist avatar is available when the user has at least 12 special themes unlocked
     if (userThemes.length >= 12){
-        achievementAvatars.push("gamemode_heist");
+        avatars.add("gamemode_heist");
     }
-
     // Bounty avatar is available when the user has at least 2000 pin copies
     if (collection.pinCopies >= 2000){
-        achievementAvatars.push("gamemode_bounty");
+        avatars.add("gamemode_bounty");
     }
 
-    return achievementAvatars;
+
+
+    let themes = new Set<string>();
+
+    // Legendary set scene is available when the user has at least half of the brawlers completed
+    if (collection.completedBrawlers / Math.max(1, collection.totalBrawlers) >= 0.5){
+        themes.add("legendaryset");
+    }
+
+
+
+    let scenes = new Set<string>();
+
+    // Stunt Show scene is available when the user has at least half of the brawlers unlocked
+    if (collection.unlockedBrawlers / Math.max(1, collection.totalBrawlers) >= 0.5){
+        scenes.add("stunt_show");
+    }
+    // Retropolis scene is available when the user has all of the brawlers unlocked
+    if (collection.unlockedBrawlers / Math.max(1, collection.totalBrawlers) >= 1){
+        scenes.add("retropolis");
+    }
+
+
+
+    // All of the following items require a certain accessory level to unlock
+    if (accessoryLevel >= 30){
+        avatars.add("space");
+        themes.add("yellow_face");
+    }
+
+    return {
+        avatars: avatars,
+        themes: themes,
+        scenes: scenes
+    };
 }
 
 /**

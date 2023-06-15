@@ -433,6 +433,16 @@ export interface ShopItem{
  */
 export type ShopList = Map<string, ShopItem>;
 
+/**
+ * Cosmetic items that are only available in the shop for users who have
+ * made enough progress in their collection
+ */
+export interface AchievementItems{
+    avatars: Set<string>;
+    themes: Set<string>;
+    scenes: Set<string>;
+}
+
 //------------------------------------------------------------------------------------------------//
 //                                         Brawl Box Types                                        //
 //------------------------------------------------------------------------------------------------//

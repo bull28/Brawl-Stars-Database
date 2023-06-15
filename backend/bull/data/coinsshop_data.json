@@ -344,11 +344,11 @@
     "avatar0": {
         "displayName": "New Avatar",
         "cost": 100000,
-        "itemType": "avatar",
+        "itemType": "achievementAvatar",
         "image": "",
         "extraData": "space",
         "amount": 1,
-        "description": "Contains a new avatar. This avatar can be selected in the account settings."
+        "description": "This avatar is a reward for reaching accessory level 30. There is no error in loading an image: this avatar is intended to be fully transparent."
     },
     "theme1": {
         "displayName": "",
@@ -357,7 +357,7 @@
         "image": "",
         "extraData": "retro",
         "amount": 1,
-        "description": "This bundle contains a new background, icon style, and background music."
+        "description": "This bundle contains a new background, icon style, and music."
     },
     "theme2": {
         "displayName": "",
@@ -366,7 +366,7 @@
         "image": "",
         "extraData": "mecha",
         "amount": 1,
-        "description": "This bundle contains a new background, icon style, and background music."
+        "description": "This bundle contains a new background, icon style, and music."
     },
     "theme3": {
         "displayName": "",
@@ -375,7 +375,7 @@
         "image": "",
         "extraData": "pirate",
         "amount": 1,
-        "description": "This bundle contains a new background, icon style, and background music."
+        "description": "This bundle contains a new background, icon style, and music."
     },
     "theme4": {
         "displayName": "",
@@ -384,7 +384,7 @@
         "image": "",
         "extraData": "lny_20",
         "amount": 1,
-        "description": "This bundle contains a new background, icon style, and background music."
+        "description": "This bundle contains a new background, icon style, and music."
     },
     "theme5": {
         "displayName": "",
@@ -393,7 +393,7 @@
         "image": "",
         "extraData": "psg",
         "amount": 1,
-        "description": "This bundle contains a new background, icon style, and background music."
+        "description": "This bundle contains a new background, icon style, and music."
     },
     "theme6": {
         "displayName": "",
@@ -402,7 +402,7 @@
         "image": "",
         "extraData": "taras_bazaar",
         "amount": 1,
-        "description": "This bundle contains a new background, icon style, and background music."
+        "description": "This bundle contains a new background, icon style, and music."
     },
     "theme7": {
         "displayName": "",
@@ -411,7 +411,7 @@
         "image": "",
         "extraData": "super_city",
         "amount": 1,
-        "description": "This bundle contains a new background, icon style, and background music."
+        "description": "This bundle contains a new background, icon style, and music."
     },
     "theme8": {
         "displayName": "",
@@ -420,7 +420,7 @@
         "image": "",
         "extraData": "giftshop",
         "amount": 1,
-        "description": "This bundle contains a new background, icon style, and background music."
+        "description": "This bundle contains a new background, icon style, and music."
     },
     "theme9": {
         "displayName": "",
@@ -429,7 +429,7 @@
         "image": "",
         "extraData": "lunar",
         "amount": 1,
-        "description": "This bundle contains a new background, icon style, and background music."
+        "description": "This bundle contains a new background, icon style, and music."
     },
     "theme10": {
         "displayName": "",
@@ -438,16 +438,16 @@
         "image": "",
         "extraData": "waterpark",
         "amount": 1,
-        "description": "This bundle contains a new background, icon style, and background music."
+        "description": "This bundle contains a new background, icon style, and music."
     },
     "theme11": {
         "displayName": "",
         "cost": 6000,
-        "itemType": "theme",
+        "itemType": "achievementTheme",
         "image": "",
         "extraData": "legendaryset",
         "amount": 1,
-        "description": "This bundle contains a new background, icon style, and background music."
+        "description": "This theme is a reward for unlocking all pins for at least half of the brawlers. It contains a new background, icon style, and music."
     },
     "theme12": {
         "displayName": "",
@@ -456,7 +456,7 @@
         "image": "",
         "extraData": "stuntshow",
         "amount": 1,
-        "description": "This bundle contains a new background, icon style, and background music."
+        "description": "This bundle contains a new background, icon style, and music."
     },
     "theme13": {
         "displayName": "",
@@ -465,16 +465,16 @@
         "image": "",
         "extraData": "deepsea",
         "amount": 1,
-        "description": "This bundle contains a new background, icon style, and background music."
+        "description": "This bundle contains a new background, icon style, and music."
     },
     "specialtheme1": {
         "displayName": "",
         "cost": 18000,
-        "itemType": "theme",
+        "itemType": "achievementTheme",
         "image": "",
         "extraData": "yellow_face",
         "amount": 1,
-        "description": "This bundle contains a new background, icon style, and background music."
+        "description": "This theme is a reward for reaching accessory level 30. It contains a new background, icon style, and music."
     },
     "scene1": {
         "displayName": "",
@@ -497,19 +497,19 @@
     "scene3": {
         "displayName": "",
         "cost": 12000,
-        "itemType": "scene",
+        "itemType": "achievementScene",
         "image": "",
-        "extraData": "retropolis",
+        "extraData": "stunt_show",
         "amount": 1,
-        "description": "Adds a new background scene for the 3D model viewer."
+        "description": "This scene is a reward for unlocking at least half of the brawlers. Adds a new background scene for the 3D model viewer."
     },
     "scene4": {
         "displayName": "",
         "cost": 12000,
-        "itemType": "scene",
+        "itemType": "achievementScene",
         "image": "",
-        "extraData": "stunt_show",
+        "extraData": "retropolis",
         "amount": 1,
-        "description": "Adds a new background scene for the 3D model viewer."
+        "description": "This scene is a reward for unlocking all of the brawlers. Adds a new background scene for the 3D model viewer."
     }
 }
