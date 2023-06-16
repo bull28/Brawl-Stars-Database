@@ -1,9 +1,9 @@
 import express from "express";
-import {DAILY_CHALLENGE_REFRESH} from "../data/constants";
+import {IMAGE_FILE_EXTENSION, AVATAR_IMAGE_DIR, DAILY_CHALLENGE_REFRESH} from "../data/constants";
 import {validateToken} from "../modules/authenticate";
 import {SeasonTime, addSeasonTimes} from "../modules/maps";
-import {getUnlockedUnitStats, getAllChallenges} from "../modules/accessories";
-import {databaseErrorHandler, parseStringArray, parseNumberArray, checkChallengeRequirement, completedChallenges} from "../modules/database";
+import {getRequiredPoints, getUnlockedUnitStats, getAllChallenges} from "../modules/accessories";
+import {databaseErrorHandler, parseStringArray, parseNumberArray, checkChallengeRequirement, completedChallenges, challengeLeaderboard} from "../modules/database";
 import {DatabaseAccessories, DatabaseCompletions} from "../types";
 
 const router = express.Router();
@@ -12,6 +12,20 @@ const router = express.Router();
 interface TokenReqBody{
     token: string;
 }
+
+// Get the users with the most challenge points
+router.get("/leaderboard", databaseErrorHandler<{}, {}>(async (req, res) => {
+    const results = await challengeLeaderboard({count: 50});
+    res.json(results.map((value) => {
+        return {
+            username: value.username,
+            avatar: AVATAR_IMAGE_DIR + value.active_avatar + IMAGE_FILE_EXTENSION,
+            level: value.level,
+            points: value.points,
+            upgradePoints: getRequiredPoints(value.level)
+        };
+    }));
+}));
 
 // Get all the units that a user can select
 router.post<{}, {}, TokenReqBody>("/unit", databaseErrorHandler<TokenReqBody>(async (req, res) => {

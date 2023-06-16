@@ -788,3 +788,19 @@ export async function completedChallenges(values: UsernameValues): Promise<Chall
     return queryDatabase<typeof valuesArray, ChallengeCompletionsResult[]>(connection, valuesArray, false,
         `SELECT last_win, total_wins, completed FROM ${CHALLENGE_TABLE_NAME} WHERE username = ?`);
 }
+
+
+interface LeaderboardUserValues{
+    count: number;
+}
+interface LeaderboardUserResult extends RowDataPacket{
+    username: string;
+    level: number;
+    points: number;
+    active_avatar: string;
+}
+export async function challengeLeaderboard(values: LeaderboardUserValues): Promise<LeaderboardUserResult[]>{
+    const valuesArray = [values.count];
+    return queryDatabase<typeof valuesArray, LeaderboardUserResult[]>(connection, valuesArray, true,
+        `SELECT username, level, points, active_avatar FROM ${TABLE_NAME} ORDER BY level DESC, points DESC LIMIT ?`);
+}

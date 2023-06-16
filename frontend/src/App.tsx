@@ -16,29 +16,29 @@ const MyTrades = lazy(() => import('./pages/MyTrades'));
 const Shop = lazy(() => import('./pages/Shop'));
 const AudioPlayer = lazy(() => import('./components/AudioPlayer'));
 const ChallengeMenu = lazy(() => import('./pages/ChallengeMenu'));
+const Leaderboard = lazy(() => import('./pages/Leaderboard'));
 
 function App() {
   return (
     <div className='app'>
       <BrowserRouter>
-        <Suspense fallback={<></>}>
-          <Routes>
-            <Route path="/" element={<Home/>}/>
-            <Route path="/brawlers" element={<Brawlers/>}/>
-            <Route path="brawlers/:brawler" element={<Brawler/>}/>
-            <Route path="/events" element={<Events/>}/>
-            <Route path="/gallery" element={<Gallery/>}/>
-            <Route path="/login" element={<Login/>}/>
-            <Route path="/signup" element={<Signup/>}/>
-            <Route path="/account" element={<Account/>}/>
-            <Route path="/collection" element={<Collection/>}/>
-            <Route path="/trade" element={<Trade/>}/>
-            <Route path="/mytrades" element={<MyTrades/>}/>
-            <Route path="/shop" element={<Shop/>}/>
-            <Route path="/challenges" element={<ChallengeMenu/>}/>
-            <Route path="*" element={<NotFound/>}/>        
-          </Routes>
-        </Suspense>
+        <Routes>
+          <Route path="/" element={<Suspense fallback={<></>}><Home/></Suspense>}/>
+          <Route path="/brawlers" element={<Suspense fallback={<></>}><Brawlers/></Suspense>}/>
+          <Route path="brawlers/:brawler" element={<Suspense fallback={<></>}><Brawler/></Suspense>}/>
+          <Route path="/events" element={<Suspense fallback={<></>}><Events/></Suspense>}/>
+          <Route path="/gallery" element={<Suspense fallback={<></>}><Gallery/></Suspense>}/>
+          <Route path="/login" element={<Suspense fallback={<></>}><Login/></Suspense>}/>
+          <Route path="/signup" element={<Suspense fallback={<></>}><Signup/></Suspense>}/>
+          <Route path="/account" element={<Suspense fallback={<></>}><Account/></Suspense>}/>
+          <Route path="/collection" element={<Suspense fallback={<></>}><Collection/></Suspense>}/>
+          <Route path="/trade" element={<Suspense fallback={<></>}><Trade/></Suspense>}/>
+          <Route path="/mytrades" element={<Suspense fallback={<></>}><MyTrades/></Suspense>}/>
+          <Route path="/shop" element={<Suspense fallback={<></>}><Shop/></Suspense>}/>
+          <Route path="/challenges" element={<Suspense fallback={<></>}><ChallengeMenu/></Suspense>}/>
+          <Route path="/leaderboard" element={<Suspense fallback={<></>}><Leaderboard/></Suspense>}/>
+          <Route path="*" element={<Suspense fallback={<></>}><NotFound/></Suspense>}/>        
+        </Routes>
       </BrowserRouter>
       <AudioPlayer/>
     </div>

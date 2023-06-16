@@ -1,9 +1,9 @@
 import ChallengePlayer from "../components/ChallengePlayer";
 import {useEffect, useState, useCallback, useRef} from "react";
+import {useNavigate} from "react-router-dom";
 import AuthRequest, {getToken} from "../helpers/AuthRequest";
-import {Flex, Text, Stack} from "@chakra-ui/react";
+import {Flex, Text, Stack, Button} from "@chakra-ui/react";
 import SkullBackground from "../components/SkullBackground";
-import {UserInfoProps} from "../types/AccountData";
 import TokenDisplay from "../components/TokenDisplay";
 import AccessoryLevel from "../components/AccessoryLevel";
 import {UnitImage, ChallengeName, RoomName, ChallengeWins, UnitData, RoomData, RoomDataDisplay, ChallengeData} from "../types/ChallengeData";
@@ -11,6 +11,7 @@ import ChallengeProgress from "../components/ChallengeProgress";
 import UnitSelection from "../components/UnitSelection";
 import ChallengeSelection from "../components/ChallengeSelection";
 import RoomSelection from "../components/RoomSelection";
+import {UserInfoProps} from "../types/AccountData";
 
 export default function ChallengeMenu(){
     // Player's token, used to connect to the server
@@ -39,6 +40,7 @@ export default function ChallengeMenu(){
     const [started, setStarted] = useState<boolean>(false);
     
     const loginRef = useRef<boolean>(false);
+    const navigate = useNavigate();
     
     // Called by the challenge player when creating a challenge
     const updateTokens = useCallback(() => {
@@ -116,6 +118,8 @@ export default function ChallengeMenu(){
                         <ChallengeProgress username={resources.username} avatar={resources.avatar} avatarColor={resources.avatarColor} data={progress}/>
                         <Flex h={"3vh"}/>
                         <AccessoryLevel level={resources.level} points={resources.points} upgradePoints={resources.upgradePoints}/>
+                        <Flex h={"2vh"}/>
+                        <Button bgColor={"gray.800"} _hover={{"backgroundColor": "gray.600"}} onClick={() => navigate("/leaderboard")}>Challenge Leaderboard</Button>
                     </Flex>
                     :
                     <></>

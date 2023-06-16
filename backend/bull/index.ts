@@ -61,6 +61,10 @@ app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
     next();
 });
 
+app.use((req: Request, res: Response, next: NextFunction) => {
+    res.status(404).send("Not Found");
+});
+
 app.listen(port, () => console.log(port));
 
 server.listen(serverPort, () => console.log(serverPort));
