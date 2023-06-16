@@ -434,15 +434,15 @@ router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(asyn
                 // Avatars have their image stored in extraData because the image is required
                 // when adding it to the user's inventory
                 // All other item types' images are only for display
-                if (thisItemType === "avatar"){
+                if (thisItemType === "avatar" || thisItemType === "achievementAvatar"){
                     itemPreview.image = AVATAR_SPECIAL_DIR + value.extraData + IMAGE_FILE_EXTENSION;
-                } else if (thisItemType === "theme"){
+                } else if (thisItemType === "theme" || thisItemType === "achievementTheme"){
                     const themeName = value.extraData;
                     if (themeMap.has(themeName) === true){
                         itemPreview.displayName = themeMap.get(themeName)!;
                         itemPreview.image = THEME_SPECIAL_DIR + themeName + "_preview" + IMAGE_FILE_EXTENSION;
                     }
-                } else if (thisItemType === "scene"){
+                } else if (thisItemType === "scene" || thisItemType === "achievementScene"){
                     const sceneName = value.extraData;
                     if (sceneMap.has(sceneName) === true){
                         itemPreview.displayName = sceneMap.get(sceneName)!;
@@ -515,10 +515,10 @@ router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(asyn
         } else if (itemData.itemType === "avatar" || itemData.itemType === "achievementAvatar"){
             userAvatars.push(itemData.extraData);
             userItemInventory = 1;
-        } else if (itemData.itemType === "theme"){
+        } else if (itemData.itemType === "theme" || itemData.itemType === "achievementTheme"){
             userThemes.push(itemData.extraData);
             userItemInventory = 1;
-        } else if (itemData.itemType === "scene"){
+        } else if (itemData.itemType === "scene" || itemData.itemType === "achievementScene"){
             userScenes.push(itemData.extraData);
             userItemInventory = 1;
         } else if (itemData.itemType === "brawler"){

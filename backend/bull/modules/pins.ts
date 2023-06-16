@@ -521,10 +521,7 @@ export function getShopItems(shopItems: ShopList, resources: {
             }
         } else if (value.itemType === "achievementAvatar"){
             if (userAvatars.includes(value.extraData) === false && achievements.avatars.has(value.extraData) === true){
-                let shopItemCopy = copyShopItem(value);
-                shopItemCopy.itemType = "avatar";
-
-                availableShopItems.set(key, shopItemCopy);
+                availableShopItems.set(key, value);
             }
         } else if (value.itemType === "theme"){
             // Themes are handled the same way as avatars. The only difference is that one theme string
@@ -534,10 +531,7 @@ export function getShopItems(shopItems: ShopList, resources: {
             }
         } else if (value.itemType === "achievementTheme"){
             if (userThemes.includes(value.extraData) === false && achievements.themes.has(value.extraData) === true){
-                let shopItemCopy = copyShopItem(value);
-                shopItemCopy.itemType = "theme";
-
-                availableShopItems.set(key, shopItemCopy);
+                availableShopItems.set(key, value);
             }
         } else if (value.itemType === "scene"){
             // Scenes are handled the same way as avatars. Unlike avatars, there are no free scenes.
@@ -546,10 +540,7 @@ export function getShopItems(shopItems: ShopList, resources: {
             }
         } else if (value.itemType === "achievementScene"){
             if (userScenes.includes(value.extraData) === false && achievements.scenes.has(value.extraData) === true){
-                let shopItemCopy = copyShopItem(value);
-                shopItemCopy.itemType = "scene";
-
-                availableShopItems.set(key, shopItemCopy);
+                availableShopItems.set(key, value);
             }
         } else if (value.itemType === "featured"){
             let shopItemCopy = copyShopItem(value);
@@ -744,7 +735,19 @@ function getAchievementItems(userAvatars: DatabaseAvatars, userThemes: DatabaseT
 
 
     // All of the following items require a certain accessory level to unlock
-    if (accessoryLevel >= 30){
+    if (accessoryLevel >= 12){
+        themes.add("starrforce");
+    } if (accessoryLevel >= 15){
+        themes.add("deepsea");
+    } if (accessoryLevel >= 18){
+        scenes.add("giftshop");
+    } if (accessoryLevel >= 21){
+        themes.add("darkmas");
+    } if (accessoryLevel >= 24){
+        themes.add("mandy");
+    } if (accessoryLevel >= 27){
+        scenes.add("arcade");
+    } if (accessoryLevel >= 30){
         avatars.add("space");
         themes.add("yellow_face");
     }

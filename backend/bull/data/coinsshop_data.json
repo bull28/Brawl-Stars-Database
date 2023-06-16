@@ -443,13 +443,22 @@
     "theme11": {
         "displayName": "",
         "cost": 6000,
+        "itemType": "theme",
+        "image": "",
+        "extraData": "fairytale",
+        "amount": 1,
+        "description": "This bundle contains a new background, icon style, and music."
+    },
+    "theme12": {
+        "displayName": "",
+        "cost": 6000,
         "itemType": "achievementTheme",
         "image": "",
         "extraData": "legendaryset",
         "amount": 1,
         "description": "This theme is a reward for unlocking all pins for at least half of the brawlers. It contains a new background, icon style, and music."
     },
-    "theme12": {
+    "theme13": {
         "displayName": "",
         "cost": 6000,
         "itemType": "theme",
@@ -458,16 +467,43 @@
         "amount": 1,
         "description": "This bundle contains a new background, icon style, and music."
     },
-    "theme13": {
+    "theme14": {
         "displayName": "",
         "cost": 6000,
-        "itemType": "theme",
+        "itemType": "achievementTheme",
+        "image": "",
+        "extraData": "starrforce",
+        "amount": 1,
+        "description": "This theme is a reward for reaching accessory level 12. It contains a new background, icon style, and music."
+    },
+    "theme15": {
+        "displayName": "",
+        "cost": 6000,
+        "itemType": "achievementTheme",
         "image": "",
         "extraData": "deepsea",
         "amount": 1,
-        "description": "This bundle contains a new background, icon style, and music."
+        "description": "This theme is a reward for reaching accessory level 15. It contains a new background, icon style, and music."
     },
-    "specialtheme1": {
+    "theme16": {
+        "displayName": "",
+        "cost": 6000,
+        "itemType": "achievementTheme",
+        "image": "",
+        "extraData": "darkmas",
+        "amount": 1,
+        "description": "This theme is a reward for reaching accessory level 21. It contains a new background, icon style, and music."
+    },
+    "theme17": {
+        "displayName": "",
+        "cost": 9000,
+        "itemType": "achievementTheme",
+        "image": "",
+        "extraData": "mandy",
+        "amount": 1,
+        "description": "This theme is a reward for reaching accessory level 24. It contains a new background, icon style, and music."
+    },
+    "theme0": {
         "displayName": "",
         "cost": 18000,
         "itemType": "achievementTheme",
@@ -501,7 +537,7 @@
         "image": "",
         "extraData": "stunt_show",
         "amount": 1,
-        "description": "This scene is a reward for unlocking at least half of the brawlers. Adds a new background scene for the 3D model viewer."
+        "description": "This scene is a reward for unlocking at least half of the brawlers. It adds a new background scene for the 3D model viewer."
     },
     "scene4": {
         "displayName": "",
@@ -510,6 +546,24 @@
         "image": "",
         "extraData": "retropolis",
         "amount": 1,
-        "description": "This scene is a reward for unlocking all of the brawlers. Adds a new background scene for the 3D model viewer."
+        "description": "This scene is a reward for unlocking all of the brawlers. It adds a new background scene for the 3D model viewer."
+    },
+    "scene5": {
+        "displayName": "",
+        "cost": 20000,
+        "itemType": "achievementScene",
+        "image": "",
+        "extraData": "giftshop",
+        "amount": 1,
+        "description": "This scene is a reward for reaching accessory level 18. It adds a new background scene for the 3D model viewer."
+    },
+    "scene6": {
+        "displayName": "",
+        "cost": 20000,
+        "itemType": "achievementScene",
+        "image": "",
+        "extraData": "arcade",
+        "amount": 1,
+        "description": "This scene is a reward for reaching accessory level 27. It adds a new background scene for the 3D model viewer."
     }
 }

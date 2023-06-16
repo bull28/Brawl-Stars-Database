@@ -49,9 +49,13 @@ export const themeMap = new Map<string, string>([
     ["giftshop", "Starr Park"],
     ["lunar", "Moon Festival"],
     ["waterpark", "Waterpark"],
+    ["fairytale", "Once Upon a Brawl"],
     ["legendaryset", "Legendary"],
     ["stuntshow", "Stunt Show"],
+    ["starrforce", "Starr Force"],
     ["deepsea", "Deep Sea"],
+    ["darkmas", "Dark Brawlidays"],
+    ["mandy", "Candyland"],
     ["yellow_face", " "]
 ]);
 
@@ -60,5 +64,7 @@ export const sceneMap = new Map<string, string>([
     ["canyon", "Canyon"],
     ["mine", "Gem Mine"],
     ["retropolis", "Retropolis"],
-    ["stunt_show", "Stunt Show"]
+    ["stunt_show", "Stunt Show"],
+    ["giftshop", "Gift Shop"],
+    ["arcade", "Arcade"]
 ]);
