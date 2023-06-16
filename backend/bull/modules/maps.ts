@@ -595,7 +595,7 @@ for (let x = 0; x < eventList.length; x++){
 // Last updated: Brawl Pass Season 17
 export const MAP_CYCLE_HOURS = 384;
 const MAP_CYCLE_SECONDS = 1382400;
-const SEASON_SECONDS = 9679800;
+const SEASON_SECONDS = 9676800;
 const MAP_CYCLES_PER_SEASON = 7;
 
 const next_season_time = (((86400*365) * (2023-1970)) + (12*86400) + (51*86400) + (8*3600));
