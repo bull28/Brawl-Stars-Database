@@ -53,7 +53,7 @@ export default function Brawler() {
                     <Image src={`/image/${data.image}`} borderRadius={'sm'} fallback={<Spinner/>} objectFit={'contain'} h={'50%'} border={'8px solid black'} mb={7}/>
                     <Flex pos={'relative'} justifyContent={'center'}>
                         <Text pos={'absolute'} background={`linear-gradient(to left, #ffd12e, #ffdaac, #ffd12e, #f29928, #ffd12e)`} w={'120%'} backgroundClip={'text'} color={'transparent'} animation={`${keyframes`0%{background-position: 0px;} 100%{background-position: ${Math.max(1, data.title.length) * 200}px;}`} 60s linear infinite`} fontSize={'xl'} fontStyle={'italic'}>{data.title}</Text>
-                        <Text color={'black'} fontSize={'xl'} fontStyle={'italic'} className={`heading-xl`}>{data.title}</Text>
+                        <Text color={'black'} fontSize={'xl'} fontStyle={'italic'} fontWeight={'bold'} className={`heading-xl`}>{data.title}</Text>
                     </Flex>
                     <Image src={`/image/${data.masteryIcon}`} objectFit={'contain'} h={'20%'} mb={7} mt={2}/>
                     <Text w={'60%'} color={'white'} fontSize={['x-small', 'sm', 'md']} className={'heading-md'}>{data.description}</Text>

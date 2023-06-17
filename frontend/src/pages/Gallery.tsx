@@ -1,39 +1,29 @@
-import { Button, Flex, IconButton, Image, Text, Link } from "@chakra-ui/react";
+import { Button, Flex, Image, Text, Link } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import SkullBackground from "../components/SkullBackground";
 import AuthRequest from "../helpers/AuthRequest";
-import {GiShoppingCart} from 'react-icons/gi'
-import { useNavigate } from "react-router-dom";
 import CosmeticData from "../types/CosmeticData";
 
 interface ThemeProps {
-  background: [
-    {
-      displayName: string,
-      path: string
-    }
-  ],
-  icon: [
-    {
-      displayName: string,
-      path: string,
-      preview: string
-    }
-  ],
-  music: [
-    {
-      displayName: string,
-      path: string
-    }
-  ],
-  scene: [
-    {
-      displayName: string,
-      path: string,
-      preview: string
-      background: string
-    }
-  ]
+  background: {
+    displayName: string,
+    path: string
+  }[];
+  icon: {
+    displayName: string,
+    path: string,
+    preview: string
+  }[];
+  music: {
+    displayName: string,
+    path: string
+  }[];
+  scene: {
+    displayName: string,
+    path: string,
+    preview: string
+    background: string
+  }[];
 }
 
 export default function Gallery() {
@@ -41,7 +31,21 @@ export default function Gallery() {
   const [data, setData] = useState<ThemeProps>()
   const [cosmetics, setCosmetics] = useState<CosmeticData>()
 
-  const navigate = useNavigate()
+  const scrollStyle = {
+    '&::-webkit-scrollbar': {
+      height: '12px',
+      borderRadius: '8px',
+      backgroundColor: `rgba(0, 0, 0, 0.05)`,
+      width: '10px'
+    },
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: `rgba(0, 0, 0, 0.5)`,
+      borderRadius: `6px`
+    },
+    '&::-webkit-scrollbar-corner': {
+      backgroundColor: `rgba(0, 0, 0, 0)`
+    }
+  };
 
   useEffect(() => {
     AuthRequest<ThemeProps>("/theme", {setState: setData});
@@ -55,7 +59,6 @@ export default function Gallery() {
 
   return (
     <Flex alignItems={'center'} flexDir={'column'} justifyContent={'space-between'} maxH={'100vh'}>      
-      <IconButton onClick={() => {navigate('/shop')}} icon={<GiShoppingCart size={"100%"}/>} aria-label="shop" pos={'absolute'} right={'3vh'} top={'3vh'} bgColor={'blue.500'} border={'2px solid'} borderColor={'blue.700'} p={1} size={'lg'} borderRadius={'md'}/>
       {cosmetics && <SkullBackground bg={cosmetics.background} icon={cosmetics.icon}/>}
       <Flex flexDir={"column"} alignItems={"center"}>
         <Text fontSize={"4xl"} className={"heading-4xl"}>Gallery</Text>
@@ -65,18 +68,7 @@ export default function Gallery() {
       <Flex w={'70vw'} justifyContent={'space-around'} mt={'2vh'}>
         <Flex flexDir={'column'} alignItems={'center'}>
           <Text fontSize={'3xl'} className={'heading-3xl'} mb={'5'}>Backgrounds</Text>        
-          <Flex bgColor={'blue.500'} flexDir={'column'} py={'1%'} px={'1.5%'} borderRadius={'lg'} border={'3px solid'} borderColor={'blue.700'} overflowY={'auto'} maxH={'80vh'} sx={{
-                          '&::-webkit-scrollbar': {
-                          height: '12px',
-                          borderRadius: '8px',
-                          backgroundColor: `rgba(0, 0, 0, 0.05)`,
-                          width: '10px'
-                          },
-                          '&::-webkit-scrollbar-thumb': {
-                          backgroundColor: `rgba(0, 0, 0, 0.5)`,
-                          borderRadius: `6px`,
-                          },
-                      }}>
+          <Flex bgColor={'blue.500'} flexDir={'column'} py={'1%'} px={'1.5%'} borderRadius={'lg'} border={'3px solid'} borderColor={'blue.700'} overflowY={'auto'} maxH={'80vh'} sx={scrollStyle}>
             {data?.background.map((bg) => (
               <Flex key={bg.path + bg.displayName} bgColor={(cosmetics?.background === bg.path || ( !cosmetics?.background && bg.displayName === 'Default' ) ) ? 'green.300' : 'lightskyblue'} justifyContent={'space-between'} p={4} borderRadius={'lg'} my={'1%'} border={'2px solid black'}>
                 <Flex>
@@ -95,18 +87,7 @@ export default function Gallery() {
         </Flex>
         <Flex flexDir={'column'} alignItems={'center'}>
           <Text fontSize={'3xl'} className={'heading-3xl'} mb={'5'}>Icons</Text>        
-          <Flex bgColor={'blue.500'} flexDir={'column'} py={'1%'} px={'1.5%'} borderRadius={'lg'} border={'3px solid'} borderColor={'blue.700'} overflowY={'auto'} maxH={'80vh'} sx={{
-                          '&::-webkit-scrollbar': {
-                          height: '12px',
-                          borderRadius: '8px',
-                          backgroundColor: `rgba(0, 0, 0, 0.05)`,
-                          width: '10px'
-                          },
-                          '&::-webkit-scrollbar-thumb': {
-                          backgroundColor: `rgba(0, 0, 0, 0.5)`,
-                          borderRadius: `6px`,
-                          },
-                      }}>
+          <Flex bgColor={'blue.500'} flexDir={'column'} py={'1%'} px={'1.5%'} borderRadius={'lg'} border={'3px solid'} borderColor={'blue.700'} overflowY={'auto'} maxH={'80vh'} sx={scrollStyle}>
             {data?.icon.map((icon) => (
               <Flex key={icon.path + icon.displayName} bgColor={(cosmetics?.icon === icon.path || ( !cosmetics?.icon && icon.displayName === 'Default' ) ) ? 'green.300' : 'lightskyblue'} justifyContent={'space-between'} p={4} borderRadius={'lg'} my={'1%'} border={'2px solid black'}>
                 <Flex>
@@ -124,22 +105,10 @@ export default function Gallery() {
           </Flex>
         </Flex>
       </Flex>
-
       <Flex w={'70vw'} justifyContent={'space-around'} mt={'2vh'}>
         <Flex flexDir={'column'} alignItems={'center'}>
           <Text fontSize={'3xl'} className={'heading-3xl'} mb={'5'}>Music</Text>        
-          <Flex bgColor={'blue.500'} flexDir={'column'} py={'1%'} px={'1.5%'} borderRadius={'lg'} border={'3px solid'} borderColor={'blue.700'} overflowY={'auto'} maxH={'80vh'} sx={{
-                          '&::-webkit-scrollbar': {
-                          height: '12px',
-                          borderRadius: '8px',
-                          backgroundColor: `rgba(0, 0, 0, 0.05)`,
-                          width: '10px'
-                          },
-                          '&::-webkit-scrollbar-thumb': {
-                          backgroundColor: `rgba(0, 0, 0, 0.5)`,
-                          borderRadius: `6px`,
-                          },
-                      }}>
+          <Flex bgColor={'blue.500'} flexDir={'column'} py={'1%'} px={'1.5%'} borderRadius={'lg'} border={'3px solid'} borderColor={'blue.700'} overflowY={'auto'} maxH={'80vh'} sx={scrollStyle}>
             {data?.music.map((music) => (
               <Flex key={music.path + music.displayName} bgColor={(cosmetics?.music === music.path || ( !cosmetics?.music && music.displayName === 'Default' ) ) ? 'green.300' : 'lightskyblue'} justifyContent={'space-between'} p={4} borderRadius={'lg'} my={'1%'} border={'2px solid black'}>
                 <Flex>
@@ -159,18 +128,7 @@ export default function Gallery() {
         {data && data.scene.length > 0 &&
           <Flex flexDir={'column'} alignItems={'center'}>
             <Text fontSize={'3xl'} className={'heading-3xl'} mb={'5'}>Scenes</Text>      
-              <Flex bgColor={'blue.500'} flexDir={'column'} py={'1%'} px={'1.5%'} borderRadius={'lg'} border={'3px solid'} borderColor={'blue.700'} overflowY={'auto'} maxH={'80vh'} sx={{
-                              '&::-webkit-scrollbar': {
-                              height: '12px',
-                              borderRadius: '8px',
-                              backgroundColor: `rgba(0, 0, 0, 0.05)`,
-                              width: '10px'
-                              },
-                              '&::-webkit-scrollbar-thumb': {
-                              backgroundColor: `rgba(0, 0, 0, 0.5)`,
-                              borderRadius: `6px`,
-                              },
-                          }}>
+              <Flex bgColor={'blue.500'} flexDir={'column'} py={'1%'} px={'1.5%'} borderRadius={'lg'} border={'3px solid'} borderColor={'blue.700'} overflowY={'auto'} maxH={'80vh'} sx={scrollStyle}>
                 {data?.scene.map((scene) => (
                   <Flex key={scene.path + scene.displayName} bgColor={(cosmetics?.scene === scene.path || ( !cosmetics?.scene && scene.displayName === 'Default' ) ) ? 'green.300' : 'lightskyblue'} justifyContent={'space-between'} p={4} borderRadius={'lg'} my={'1%'} border={'2px solid black'}>
                     <Flex>

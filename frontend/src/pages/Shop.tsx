@@ -1,5 +1,5 @@
 import { Box, Flex, Image, Link, ScaleFade, SimpleGrid, Text } from '@chakra-ui/react'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { BsEmojiLaughing, BsPalette, BsPerson } from 'react-icons/bs'
 import { MdOutlineGeneratingTokens } from 'react-icons/md'
 import { BiLandscape } from 'react-icons/bi'
@@ -11,33 +11,55 @@ import { UserInfoProps } from '../types/AccountData'
 import ShopData from '../types/ShopData'
 import EventTime from '../helpers/EventTime'
 
-interface Timer {
+interface Timer{
     start: number,
     offset: number
 }
 
-export default function Shop() {
+interface Category{
+    name: string;
+    search: string;
+    icon: JSX.Element;
+    items: ShopData[];
+}
 
+interface ShopItemCategories{
+    avatars: Category;
+    brawlers: Category;
+    accessories: Category;
+    currency: Category;
+    themes: Category;
+    scenes: Category;
+}
+
+export default function Shop() {
     const [data, setData] = useState<ShopData[]>()
     const [userInfo, setUserInfo] = useState<UserInfoProps>()
+    const [items, setItems] = useState<ShopItemCategories | undefined>(undefined);
 
-    const getSeason = (month: number) => {
-        if (2 <= month && month <= 4){
-            return 0
+    const organizeData = useCallback((items: ShopData[]) => {
+        const sortedItems: ShopItemCategories = {
+            avatars: {name: "Avatars", search: "avatar", icon: <BsEmojiLaughing color={'black'}/>, items: []},
+            brawlers: {name: "Brawlers", search: "brawler", icon: <BsPerson color={'black'}/>, items: []},
+            accessories: {name: "Accessories", search: "accessory", icon: <BsPerson color={'black'}/>, items: []},
+            currency: {name: "Currency", search: "credit", icon: <MdOutlineGeneratingTokens color={'black'}/>, items: []},
+            themes: {name: "Themes", search: "theme", icon: <BsPalette color={'black'}/>, items: []},
+            scenes: {name: "Scenes", search: "scene", icon: <BiLandscape color={'black'}/>, items: []}
+        };
+
+        for (let x = 0; x < items.length; x++){
+            for (let y in sortedItems){
+                if (items[x].name.includes(sortedItems[y as keyof ShopItemCategories].search)){
+                    sortedItems[y as keyof ShopItemCategories].items.push(items[x]);
+                }
+            }
         }
 
-        if (5 <= month && month <= 7){
-            return 1
-        }
+        setData(items);
+        setItems(sortedItems);
+    }, []);
 
-        if (8 <= month && month <= 10){
-            return 2
-        }
-
-        return 3
-    }
-
-    const season = getSeason(new Date().getMonth())
+    const season = (((((new Date().getMonth() - 2) % 12) + 12) % 12) / 3);
 
     const [timer, updateTimer] = useState<Timer>({start: Date.now(), offset: 0});
     const [initialTimeLeftms, setNewInitialTime] = useState<number>(((86400 + (new Date(new Date().getFullYear(), 0, 1).getTimezoneOffset() - new Date().getTimezoneOffset()) * 60 - new Date().getHours() * 3600 - new Date().getMinutes() * 60 - new Date().getSeconds()) % 86400) * 1000);
@@ -69,139 +91,76 @@ export default function Shop() {
             });
         }, 200)
 
-        return () => {
-            clearInterval(timer)
-        }                    
+        return (() => {
+            clearInterval(timer);
+        });
     }, [initialTimeLeftms, timer, secondsLeft])
 
     useEffect(() => {
-        AuthRequest<ShopData[]>("/shop", {setState: setData});
+        AuthRequest<ShopData[]>("/shop", {setState: organizeData});
         AuthRequest<UserInfoProps>("/resources", {setState: setUserInfo});
-    }, [])
+    }, [organizeData])
 
     return (
         <Flex flexDir={'column'} alignItems={'center'} minH={'100vh'}>
             <Flex zIndex={'-1'} w={'100%'} h={'100%'} pos={'absolute'} backgroundImage={require(`../assets/shopbackground${season}.webp`)} backgroundAttachment={'fixed'} backgroundRepeat={'no-repeat'} objectFit={'cover'}/>
             <MovingText title="Shop" color1="#fdf542" color2="#ff9005" fontSize='4xl'/>
-            { getToken() ? <>
-            <Flex pos={'absolute'} right={3} top={3}>
-                <Flex justifyContent={'center'} alignItems={'center'} p={3} pl={2} pos={'relative'} borderRadius={'lg'}>
-                    <Box w={'100%'} h={'100%'} pos={'absolute'} zIndex={'-1'} bgColor={'blue.500'}border={'2px solid'} borderRadius={'lg'} borderColor={'blue.800'}/>
-                    <Flex bgColor={'gray.100'} alignItems={'center'} py={2} px={5} borderRadius={'lg'} boxShadow={'rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;'}>
-                        <Text className={'heading-lg'}>{userInfo?.coins}</Text>
-                        <Image ml={1} maxH={'40px'} src={`/image/resources/resource_coins.webp`}/>
-                    </Flex>
-                    <Flex justifyContent={'center'} alignItems={'center'} borderRadius={'50%'} animation={(userInfo?.avatarColor === 'rainbow') ? `${RainbowBorder()} 12s infinite` : ''} border={(userInfo?.avatarColor !== 'rainbow') ? `3px solid ${userInfo?.avatarColor}` : ''} ml={3}>
-                        <Image loading={'eager'} src={typeof userInfo !== "undefined" ? `/image/${userInfo.avatar}` : undefined} borderRadius={'50%'} w={'50px'}/>
+            {(getToken() && typeof userInfo !== "undefined") ?
+                <>
+                <Flex pos={'absolute'} right={3} top={3}>
+                    <Flex justifyContent={'center'} alignItems={'center'} p={3} pl={2} pos={'relative'} borderRadius={'lg'}>
+                        <Box w={'100%'} h={'100%'} pos={'absolute'} zIndex={'-1'} bgColor={'blue.500'}border={'2px solid'} borderRadius={'lg'} borderColor={'blue.800'}/>
+                        <Flex bgColor={'gray.100'} alignItems={'center'} py={2} px={5} borderRadius={'lg'} boxShadow={'rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;'}>
+                            <Text className={'heading-lg'}>{userInfo.coins}</Text>
+                            <Image ml={1} maxH={'40px'} src={`/image/resources/resource_coins.webp`}/>
+                        </Flex>
+                        <Flex justifyContent={'center'} alignItems={'center'} borderRadius={'50%'} animation={(userInfo.avatarColor === 'rainbow') ? `${RainbowBorder()} 12s infinite` : ''} border={(userInfo.avatarColor !== 'rainbow') ? `3px solid ${userInfo.avatarColor}` : ''} ml={3}>
+                            <Image loading={'eager'} src={`/image/${userInfo.avatar}`} borderRadius={'50%'} w={'50px'}/>
+                        </Flex>
                     </Flex>
                 </Flex>
-            </Flex>
-            <Flex flexDir={'column'} alignItems={'center'} pb={'5vh'} pt={'10vh'}>  
-                {
-                    data?.map((item) => (
-                        (item.name === 'featuredItem') && <ScaleFade key={item.name} in={true}><ShopItem data={item} coins={userInfo?.coins || 0} isFeatured={true} timeLeftString={EventTime({season: 0, hour: Math.floor(secondsLeft / 3600), minute: Math.floor(secondsLeft / 60) % 60, second: secondsLeft % 60, hoursPerSeason: 336, maxSeasons: 2}, 0)}/></ScaleFade>
-                    ))
-                }               
-            </Flex>  
-            <Flex w={'90%'} justifyContent={'left'}>
-                <Flex justifyContent={'space-between'} flexDir={'column'} p={5}>                              
-                    <Flex flexDir={'column'}>
-                        <Flex alignItems={'center'}  fontSize={'3xl'} className={'heading-3xl'} ml={5} mb={3} mt={'5vh'}>
-                            <Text mr={1}>Avatars</Text>
-                            <BsEmojiLaughing color={'black'}/>                            
-                        </Flex>                        
-                        <SimpleGrid columns={7} spacing={3}>
-                        {
-                            data?.map((item) => (
-                                item.name.includes('avatar') && <ScaleFade key={item.name} in={true}><ShopItem data={item} coins={userInfo?.coins || 0} timeLeftString={""}/></ScaleFade>
-                            ))
-                        }
-                        </SimpleGrid>
-                    </Flex>
-                    <Flex flexDir={'column'}>
-                        <Flex alignItems={'center'}  fontSize={'3xl'} className={'heading-3xl'} ml={5} mb={3} mt={'5vh'}>
-                            <Text mr={1}>Brawlers</Text>
-                            <BsPerson color={'black'}/>
-                        </Flex>                        
-                        <SimpleGrid columns={7} spacing={3}>
-                        {
-                            data?.map((item) => (
-                                item.name.includes('brawler') && <ScaleFade key={item.name} in={true}><ShopItem data={item} coins={userInfo?.coins || 0} timeLeftString={""}/></ScaleFade>
-                            ))
-                        }
-                        </SimpleGrid>
-                    </Flex>
-                    <Flex flexDir={'column'}>
-                        <Flex alignItems={'center'}  fontSize={'3xl'} className={'heading-3xl'} ml={5} mb={3} mt={'5vh'}>
-                            <Text mr={1}>Accessories</Text>
-                            <BsPerson color={'black'}/>
-                        </Flex>                        
-                        <SimpleGrid columns={7} spacing={3}>
-                        {
-                            data?.map((item) => (
-                                item.name.includes('accessory') && <ScaleFade key={item.name} in={true}><ShopItem data={item} coins={userInfo?.coins || 0} timeLeftString={""}/></ScaleFade>
-                            ))
-                        }
-                        </SimpleGrid>
-                    </Flex>
-                    <Flex flexDir={'column'}>
-                        <Flex alignItems={'center'}  fontSize={'3xl'} className={'heading-3xl'} ml={5} mb={3} mt={'5vh'}>
-                            <Text mr={1}>Currency</Text>
-                            <MdOutlineGeneratingTokens color={'black'}/>
+                <Flex flexDir={'column'} alignItems={'center'} pb={'5vh'} pt={'10vh'}>  
+                    {
+                        data?.map((item) => (
+                            (item.name === 'featuredItem') && <ScaleFade key={item.name} in={true}><ShopItem data={item} coins={userInfo.coins} isFeatured={true} timeLeftString={EventTime({season: 0, hour: Math.floor(secondsLeft / 3600), minute: Math.floor(secondsLeft / 60) % 60, second: secondsLeft % 60, hoursPerSeason: 336, maxSeasons: 2}, 0)}/></ScaleFade>
+                        ))
+                    }               
+                </Flex>  
+                <Flex w={'90%'} justifyContent={'left'}>
+                    {typeof items !== "undefined" ?
+                        <Flex justifyContent={'space-between'} flexDir={'column'} p={5}>
+                            {Object.keys(items).map((key) => {
+                                const value = items[key as keyof ShopItemCategories];
+                                return (
+                                    <Flex key={key} flexDir={'column'}>
+                                        <Flex alignItems={'center'} fontSize={'3xl'} className={'heading-3xl'} ml={5} mb={3} mt={'5vh'}>
+                                            <Text mr={1}>{value.name}</Text>
+                                            {value.icon}
+                                        </Flex>                        
+                                        <SimpleGrid columns={7} spacing={3}>
+                                            {value.items.map((item) => (
+                                                <ScaleFade key={item.name} in={true}><ShopItem data={item} coins={userInfo.coins} timeLeftString={""}/></ScaleFade>
+                                            ))}
+                                        </SimpleGrid>
+                                    </Flex>
+                                );
+                            })}
                         </Flex>
-                        <SimpleGrid columns={7} spacing={3}>
-                        {
-                            data?.map((item) => (
-                                item.name.toLowerCase().includes('credit') && <ScaleFade key={item.name} in={true}><ShopItem data={item} coins={userInfo?.coins || 0} timeLeftString={""}/></ScaleFade>
-                            ))
-                        }
-                        </SimpleGrid>
-                    </Flex>
-                    <Flex flexDir={'column'}>
-                        <Flex alignItems={'center'}  fontSize={'3xl'} className={'heading-3xl'} ml={5} mb={3} mt={'5vh'}>
-                            <Text mr={1}>Themes</Text>
-                            <BsPalette color={'black'}/>
-                        </Flex>
-                        <SimpleGrid columns={7} spacing={3}>
-                        {
-                            data?.map((item) => (
-                                item.name.toLowerCase().includes('theme') && <ScaleFade key={item.name} in={true}><ShopItem data={item} coins={userInfo?.coins || 0} timeLeftString={""}/></ScaleFade>
-                            ))
-                        }
-                        </SimpleGrid>
-                    </Flex>
-                    <Flex flexDir={'column'}>
-                        <Flex alignItems={'center'}  fontSize={'3xl'} className={'heading-3xl'} ml={5} mb={3} mt={'5vh'}>
-                            <Text mr={1}>Scenes</Text>
-                            <BiLandscape color={'black'}/>
-                        </Flex>
-                        <SimpleGrid columns={7} spacing={3}>
-                        {
-                            data?.map((item) => (
-                                item.name.toLowerCase().includes('scene') && <ScaleFade key={item.name} in={true}><ShopItem data={item} coins={userInfo?.coins || 0} timeLeftString={""}/></ScaleFade>
-                            ))
-                        }
-                        </SimpleGrid>
-                    </Flex>
-                    
+                        :
+                        <></>
+                    }
                 </Flex>
-                
-            </Flex>
-            </>
-            :
-            <>
-            <Flex flexDir={'column'} alignItems={'center'} w={'100vw'} h={'100vh'} justifyContent={'center'} pos={'absolute'}>
-                <Flex flexDir={'column'} alignItems={'center'} justifyContent={'center'} bgColor={'lightskyblue'} border={'2px solid'} borderColor={'blue.500'} borderRadius={'lg'} p={5}>
-                    <Text fontSize={'2xl'} className={'heading-2xl'} >Please Login to View the Shop</Text>
-                    <Link fontSize={'2xl'} className={'heading-xl'} color={'blue.300'} href="/login">Click here to login</Link>
+                </>
+                :
+                <>
+                <Flex flexDir={'column'} alignItems={'center'} w={'100vw'} h={'100vh'} justifyContent={'center'} pos={'absolute'}>
+                    <Flex flexDir={'column'} alignItems={'center'} justifyContent={'center'} bgColor={'lightskyblue'} border={'2px solid'} borderColor={'blue.500'} borderRadius={'lg'} p={5}>
+                        <Text fontSize={'2xl'} className={'heading-2xl'} >Please Login to View the Shop</Text>
+                        <Link fontSize={'2xl'} className={'heading-xl'} color={'blue.300'} href="/login">Click here to login</Link>
+                    </Flex>
                 </Flex>
-            </Flex>
-
-            </>
-        }
-            
-            
-
+                </>
+            }
         </Flex>
     )
 }

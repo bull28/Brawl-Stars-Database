@@ -36,7 +36,7 @@ interface MapData {
   image: string,
   bannerImage: string,
   times: {
-    all: [time],
+    all: time[],
     next: time,
     duration: time
   }
@@ -94,24 +94,31 @@ const MapView = React.forwardRef<{open: () => void}, Props>((props, ref) => {
         <ModalOverlay />
         <ModalContent bgColor={data?.gameMode.backgroundColor}>
           <ModalHeader p={1}>
-            <Flex p={2} flexDir={'column'} textAlign={'center'} position={'relative'}>
-              <Image maxH={'80px'} objectFit={'cover'} src={`/image/${data?.bannerImage}`} borderRadius={'lg'} fallback={<Spinner/>}/>
-              <Flex position={'absolute'} left={'50%'} top={'50%'} transform={'translate(-50%,-50%)'} w={'100%'} justifyContent={'center'} alignItems={'center'}>
-                <Image src={`/image/${data?.gameMode.image}`} mr={3}/>
-                <Text  fontSize={'3xl'} className={'heading-3xl'} noOfLines={1}>{data?.displayName}</Text>
+            {typeof data !== "undefined" ?
+              <Flex p={2} flexDir={'column'} textAlign={'center'} position={'relative'}>
+                <Image maxH={'80px'} objectFit={'cover'} src={`/image/${data.bannerImage}`} borderRadius={'lg'} fallback={<Spinner/>}/>
+                <Flex position={'absolute'} left={'50%'} top={'50%'} transform={'translate(-50%,-50%)'} w={'100%'} justifyContent={'center'} alignItems={'center'}>
+                  <Image src={`/image/${data.gameMode.image}`} mr={3}/>
+                  <Text  fontSize={'3xl'} className={'heading-3xl'} noOfLines={1}>{data.displayName}</Text>
+                </Flex>
               </Flex>
-            </Flex>
-
+              :
+              <></>
+            }
           </ModalHeader>
 
           <ModalCloseButton />
           <ModalBody>
-            <Image src={`/image/${data?.image}`} fallback={<Spinner/>}/>
-            {data?.times.next && 
-            <Flex alignItems={'center'}>
-              <Text fontSize={'2xl'}  className={'heading-2xl'} textShadow={'-0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000'}>{eventTimeDays(data.times.next)}</Text>
-              {data.powerLeagueMap && <Label label={"Power League Map"}><Image h={'35px'} ml={2} src={'/image/skingroups/icons/icon_ranked.webp'}/></Label>}
-            </Flex>
+            {typeof data !== "undefined" ?
+              <>
+                <Image src={`/image/${data.image}`} fallback={<Spinner/>}/>
+                <Flex alignItems={'center'}>
+                  <Text fontSize={'2xl'} className={'heading-2xl'}>{eventTimeDays(data.times.next)}</Text>
+                  {data.powerLeagueMap && <Label label={"Power League Map"}><Image h={'35px'} ml={2} src={'/image/skingroups/icons/icon_ranked.webp'}/></Label>}
+                </Flex>
+              </>
+              :
+              <></>
             }
           </ModalBody>
 
@@ -126,4 +133,4 @@ const MapView = React.forwardRef<{open: () => void}, Props>((props, ref) => {
   )
 });
 
-export default MapView
+export default MapView;
