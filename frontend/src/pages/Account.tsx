@@ -10,7 +10,7 @@ import AvatarSelect from '../components/AvatarSelect';
 import { getToken } from "../helpers/AuthRequest";
 import AuthRequest from '../helpers/AuthRequest'
 import { RainbowBorder } from "../themes/animations";
-import api from "../helpers/ApiRoute";
+import api from "../helpers/APIRoute";
 
 export default function Account() {
   const [data, setData] = useState<UserInfoProps>()

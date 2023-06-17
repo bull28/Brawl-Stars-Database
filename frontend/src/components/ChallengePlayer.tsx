@@ -7,7 +7,7 @@ import {
 } from "@chakra-ui/react";
 import {UnitImage, ChallengeName, RoomName, RoomData} from "../types/ChallengeData";
 import {displayLong} from "../helpers/LargeNumberDisplay";
-import api from "../helpers/ApiRoute";
+import api from "../helpers/APIRoute";
 
 interface ChallengePlayerProps{
     address: string;
@@ -358,7 +358,6 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                 setChallenge(data.challenge);
             });
             socket.on("message", (data) => {
-                console.log(data);
                 if (data === ""){
                     // The player cannot make the same moves two turns in a row so clear move actions
                     setMoveActions(new Map());
@@ -368,17 +367,14 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                 }
             });
             socket.on("login", (data) => {
-                console.log(data);
                 loginRef.current = true;
                 socket.emit("rooms", token);
                 toast({description: data, status: "info", duration: 2500, isClosable: true});
             });
             socket.on("rooms", (data) => {
                 setRoomList(data);
-                console.log(data);
             });
             socket.on("preview", (data) => {
-                console.log(data);
                 updateTokens();
                 toast({description: "", status: "info", duration: 2500, isClosable: true});
             });

@@ -4,8 +4,8 @@ import { useFrame, useLoader } from "@react-three/fiber";
 import { Vector3 } from "three";
 
 interface BackgroundSceneProps{
-    file: string,
-    modelPos: MutableRefObject<Vector3>
+    file: string;
+    modelPos: MutableRefObject<Vector3>;
 }
 
 const BackgroundScene = ({file, modelPos}: BackgroundSceneProps) => {

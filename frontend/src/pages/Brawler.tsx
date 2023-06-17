@@ -7,8 +7,8 @@ import { ArrowBackIcon, ExternalLinkIcon } from '@chakra-ui/icons'
 import { BrawlerData, ModelFiles } from '../types/BrawlerData'
 import AnimationViewer from '../components/AnimationViewer'
 import AuthRequest from '../helpers/AuthRequest'
-import CosmeticData from '../types/CosmeticData'
-import api from "../helpers/ApiRoute";
+import {CosmeticData} from '../types/CosmeticData'
+import api from "../helpers/APIRoute";
 
 export default function Brawler() {
     const params = useParams()

@@ -15,7 +15,7 @@ export default function EventTime(lastUpdate: time, offset: number){
     var timeString = "";
 
     if (displayHours > 0){
-        timeString += (displayHours.toString() + "h ");
+        timeString += (`${displayHours}h `);
     } else{
         if (displayMinutes === 0 && displaySeconds === 0){
             timeString += "0s ";
@@ -23,12 +23,12 @@ export default function EventTime(lastUpdate: time, offset: number){
     }
     
     if (displayMinutes > 0){
-        timeString += (displayMinutes.toString() + "m ");
+        timeString += (`${displayMinutes}m `);
     } if (displaySeconds > 0){
-        timeString += (displaySeconds.toString() + "s ");
+        timeString += (`${displaySeconds}s `);
     }
 
-    timeString = timeString.slice(0, timeString.length - 1);
+    timeString = timeString.trimEnd();
 
     return timeString;
 }

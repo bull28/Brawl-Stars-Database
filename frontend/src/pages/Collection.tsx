@@ -13,7 +13,8 @@ import MovingText from '../components/MovingText'
 import SkullBackground from '../components/SkullBackground'
 import AccessoryLevel from "../components/AccessoryLevel";
 import {UserInfoProps} from '../types/AccountData'
-import api from "../helpers/ApiRoute";
+import {scrollStyle} from "../themes/scrollbar";
+import api from "../helpers/APIRoute";
 
 export default function Collection() {
     const [data, setData] = useState<CollectionData>()
@@ -155,17 +156,7 @@ export default function Collection() {
                         <AccordionPanel>
                             {(isExpanded) && <>
 
-                            <HStack overflowX={'scroll'} spacing={3} sx={{
-                        '&::-webkit-scrollbar': {
-                        height: '12px',
-                        borderRadius: '8px',
-                        backgroundColor: `rgba(0, 0, 0, 0.05)`,
-                        },
-                        '&::-webkit-scrollbar-thumb': {
-                        backgroundColor: `rgba(0, 0, 0, 0.5)`,
-                        borderRadius: `6px`,
-                        },
-                    }}> 
+                            <HStack overflowX={'scroll'} spacing={3} sx={scrollStyle}> 
                                 {brawler.pins.map((pin) => (                                        
                                         <Box key={brawler.name + pin.i} minW={'100px'} bgColor={Object.values(data?.pinRarityColors || {})[pin.r]} p={3} borderRadius={'md'} border={'2px solid black'}>
                                             <Image w={'100px'} filter={(pin.a === 0) ? 'grayscale(100%)': 'none'} src={`${api}/image/${brawler.pinFilePath+pin.i}`}/>                            

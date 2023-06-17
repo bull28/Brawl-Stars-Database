@@ -1,7 +1,7 @@
 import {Flex, Text, Image, Button, SimpleGrid, Divider} from "@chakra-ui/react";
 import {ChallengeName, ChallengeData} from "../types/ChallengeData";
 import {displayLong} from "../helpers/LargeNumberDisplay";
-import api from "../helpers/ApiRoute";
+import api from "../helpers/APIRoute";
 
 interface ChallengeSelectionProps{
     data: ChallengeData;

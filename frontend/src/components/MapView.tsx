@@ -18,29 +18,29 @@ import axios from 'axios'
 import {time} from "../types/EventData";
 import EventTime from "../helpers/EventTime";
 import Label from "./Label";
-import api from "../helpers/ApiRoute";
+import api from "../helpers/APIRoute";
 
-interface Props {
-    map: string
+interface Props{
+    map: string;
 }
 
-interface MapData {
-  name: string,
-  displayName: string,
+interface MapData{
+  name: string;
+  displayName: string;
   gameMode: {
-    name: string,
-    image: string,
-    backgroundColor: string,
-    textColor: string
-  }
-  powerLeagueMap: boolean,
-  image: string,
-  bannerImage: string,
+    name: string;
+    image: string;
+    backgroundColor: string;
+    textColor: string;
+  };
+  powerLeagueMap: boolean;
+  image: string;
+  bannerImage: string;
   times: {
-    all: time[],
-    next: time,
-    duration: time
-  }
+    all: time[];
+    next: time;
+    duration: time;
+  };
 }
 
 function eventTimeDays(s: time): string{

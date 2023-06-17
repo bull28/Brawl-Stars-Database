@@ -1,7 +1,13 @@
+interface Rarity{
+    value: number;
+    name: string;
+    color: string
+}
+
 export interface BrawlerData{
     name: string;
     displayName: string;
-    rarity: {value: number, name: string, color: string};
+    rarity: Rarity;
     description: string;
     image: string;
     defaultSkin: string;
@@ -13,22 +19,14 @@ export interface BrawlerData{
     }[];
     pins: {
         image: string;
-        rarity: {
-            value: number;
-            name: string;
-            color: string;
-        };
+        rarity: Rarity;
     }[];
 }
 
 export interface Brawler{
     name: string;
     displayName: string;
-    rarity: {
-        value: number;
-        name: string;
-        color: string;
-    };
+    rarity: Rarity;
     image: string;
 }
 

@@ -5,7 +5,7 @@ import axios, {AxiosResponse} from "axios";
 import {getToken} from "../helpers/AuthRequest";
 import {displayShort, displayLong} from "../helpers/LargeNumberDisplay";
 import {UserInfoProps} from "../types/AccountData";
-import api from "../helpers/ApiRoute";
+import api from "../helpers/APIRoute";
 
 type LeaderboardData = {
     username: string;

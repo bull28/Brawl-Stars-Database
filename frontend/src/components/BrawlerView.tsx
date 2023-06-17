@@ -1,12 +1,12 @@
 import { Box, Flex, Text, Image, Spinner } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
-import api from "../helpers/ApiRoute";
+import api from "../helpers/APIRoute";
 
-type BrawlerCompProps =  {
-    image: string,
-    name: string,
-    displayName: string,
-    rarityColor: string
+interface BrawlerCompProps{
+    image: string;
+    name: string;
+    displayName: string;
+    rarityColor: string;
 }
 
 export default function Brawler({ image, name, displayName, rarityColor }: BrawlerCompProps) { 
@@ -16,7 +16,7 @@ export default function Brawler({ image, name, displayName, rarityColor }: Brawl
         navigate(`/brawlers/${name}`)  
     }
 
-  return (
+    return (
     <>
         <Flex maxW={'sm'} maxH={'sm'} flexDir={'column'} bgColor={rarityColor} borderRadius={'lg'} boxShadow={'rgba(255, 255, 255, 0.3) 0px 7px 29px 0px;'} margin={5} border={'3px solid black'} transition={'all 0.15s ease-in'} cursor={'pointer'} _hover={{transform: 'scale(1.05)'}}>         
         <Box m={3} onClick={redirect} cursor={'pointer'}>
@@ -26,5 +26,5 @@ export default function Brawler({ image, name, displayName, rarityColor }: Brawl
         
         </Flex>
     </>
-  )
+    )
 }

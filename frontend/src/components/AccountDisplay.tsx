@@ -27,7 +27,8 @@ import { useNavigate } from 'react-router-dom'
 import { RainbowBorder } from '../themes/animations'
 import {displayShort, displayLong} from '../helpers/LargeNumberDisplay'
 import { AxiosError } from 'axios'
-import api from "../helpers/ApiRoute";
+import {scrollStyle} from "../themes/scrollbar";
+import api from "../helpers/APIRoute";
 
 type TokenStorage = {[k: string]: string;};
 
@@ -151,17 +152,7 @@ export default function AccountDisplay() {
                     Accounts
                 </DrawerHeader>
 
-                <DrawerBody sx={{
-                        '&::-webkit-scrollbar': {
-                        width: '8px',
-                        borderRadius: '8px',
-                        backgroundColor: `rgba(0, 0, 0, 0.05)`,
-                        },
-                        '&::-webkit-scrollbar-thumb': {
-                        backgroundColor: `rgba(0, 0, 0, 0.5)`,
-                        borderRadius: `6px`,
-                        },
-                    }}>
+                <DrawerBody sx={scrollStyle}>
                     {Object.keys(tokenData).map((token) => (
                         <div key={token}>
                             <AccountMenuDisplay username={token} token={tokenData[token]} toggleRemove={removing}/>

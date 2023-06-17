@@ -6,11 +6,9 @@ import {BsFillPersonFill} from 'react-icons/bs';
 import {RiKeyFill} from 'react-icons/ri';
 import { changeToken } from "../helpers/AuthRequest";
 import PasswordStrength from "../components/PasswordStrength";
-import api from "../helpers/ApiRoute";
-
+import api from "../helpers/APIRoute";
 
 function Signup(){
-
     const [username, setUsername] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [invalid, setInvalid] = useState<boolean>(false);

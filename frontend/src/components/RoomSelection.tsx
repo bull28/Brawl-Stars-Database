@@ -1,6 +1,6 @@
 import {Flex, Text, Image, Button, SimpleGrid, Divider} from "@chakra-ui/react";
 import {RoomDataDisplay, RoomName} from "../types/ChallengeData";
-import api from "../helpers/ApiRoute";
+import api from "../helpers/APIRoute";
 
 interface RoomSelectionProps{
     data: RoomDataDisplay;

@@ -1,16 +1,12 @@
 import { Box, Text } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 
-interface Props {
-    password: string
-}
-
 const symbols = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '-', '=', '+', '[', ']', '{', '}', '|', ':', ';', '<', '>', ',', '.', '?', '/']
 
 const strengthData: {msg: string, color: string}[] = [{msg: 'Password must be between 3-100 characters.', color: 'black'}, {msg: 'Weak', color: 'red.400'}, {msg: 'Fair', color: 'yellow.400'}, {msg: 'Strong', color: 'green.300'}, {msg: 'Very Strong', color: 'green.500'}, {msg: 'x1', color: 'black'}]
 
 
-export default function PasswordStrength({ password }: Props) {
+export default function PasswordStrength({password}: {password: string;}) {
     const [strength, setStrength] = useState<number>(0)
 
     const calculateStrength = ( password: string ) => {

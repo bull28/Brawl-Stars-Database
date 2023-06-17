@@ -2,51 +2,30 @@ import { Button, Flex, Image, Text, Link } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import SkullBackground from "../components/SkullBackground";
 import AuthRequest from "../helpers/AuthRequest";
-import CosmeticData from "../types/CosmeticData";
-import api from "../helpers/ApiRoute";
+import {CosmeticData, ThemeProps} from "../types/CosmeticData";
+import {scrollStyle} from "../themes/scrollbar";
+import api from "../helpers/APIRoute";
 
-interface ThemeProps {
-  background: {
-    displayName: string,
-    path: string
-  }[];
-  icon: {
-    displayName: string,
-    path: string,
-    preview: string
-  }[];
-  music: {
-    displayName: string,
-    path: string
-  }[];
-  scene: {
-    displayName: string,
-    path: string,
-    preview: string
-    background: string
-  }[];
-}
+
 
 export default function Gallery() {
-
   const [data, setData] = useState<ThemeProps>()
   const [cosmetics, setCosmetics] = useState<CosmeticData>()
 
-  const scrollStyle = {
-    '&::-webkit-scrollbar': {
-      height: '12px',
-      borderRadius: '8px',
-      backgroundColor: `rgba(0, 0, 0, 0.05)`,
-      width: '10px'
-    },
-    '&::-webkit-scrollbar-thumb': {
-      backgroundColor: `rgba(0, 0, 0, 0.5)`,
-      borderRadius: `6px`
-    },
-    '&::-webkit-scrollbar-corner': {
-      backgroundColor: `rgba(0, 0, 0, 0)`
+  const updateCosmeticItem = (cosmetics: CosmeticData, key: string, value: string): CosmeticData => {
+    const newCosmetics: CosmeticData = {
+      background: cosmetics.background,
+      icon: cosmetics.icon,
+      music: cosmetics.music,
+      scene: cosmetics.scene
+    };
+
+    if (newCosmetics.hasOwnProperty(key)){
+      newCosmetics[key as keyof CosmeticData] = value;
     }
-  };
+
+    return newCosmetics;
+  }
 
   useEffect(() => {
     AuthRequest<ThemeProps>("/theme", {setState: setData});
@@ -54,7 +33,7 @@ export default function Gallery() {
   }, [])
 
   const saveChanges = () => {
-    AuthRequest('/cosmetic', {data: {setCosmetics: cosmetics}, message: {title: 'Changes Saved!', status: 'success', duration: 3000}, errorToastMessage: 'Something Went Wrong!'})
+    AuthRequest<CosmeticData>("/cosmetic", {data: {setCosmetics: cosmetics}, message: {title: 'Changes Saved!', status: 'success', duration: 3000}, errorToastMessage: 'Something Went Wrong!'});
   }
 
 
@@ -80,7 +59,7 @@ export default function Gallery() {
                   </Flex>
                 </Flex>
                 <Flex flexDir={'column'} h={'13vh'} justifyContent={'space-around'}>                  
-                  <Button disabled={(cosmetics?.background === bg.path || ( !cosmetics?.background && bg.displayName === 'Default' ) ) ? true : false} onClick={() => {setCosmetics({...cosmetics, background: bg.path})}} fontSize={'xl'} bgColor={'green.500'}>Use</Button>
+                  <Button disabled={(cosmetics?.background === bg.path || ( !cosmetics?.background && bg.displayName === 'Default' ) ) ? true : false} onClick={() => {setCosmetics(updateCosmeticItem(cosmetics, "background", bg.path))}} fontSize={'xl'} bgColor={'green.500'}>Use</Button>
                 </Flex>
               </Flex>
             ))}
@@ -99,7 +78,7 @@ export default function Gallery() {
                   </Flex>
                 </Flex>
                 <Flex flexDir={'column'} h={'13vh'} justifyContent={'space-around'}>                  
-                  <Button disabled={(cosmetics?.icon === icon.path || ( !cosmetics?.icon && icon.displayName === 'Default' ) ) ? true : false} onClick={() => {setCosmetics({...cosmetics, icon: icon.path})}} fontSize={'xl'} bgColor={'green.500'}>Use</Button>
+                  <Button disabled={(cosmetics?.icon === icon.path || ( !cosmetics?.icon && icon.displayName === 'Default' ) ) ? true : false} onClick={() => {setCosmetics(updateCosmeticItem(cosmetics, "icon", icon.path))}} fontSize={'xl'} bgColor={'green.500'}>Use</Button>
                 </Flex>
               </Flex>
             ))}
@@ -120,7 +99,7 @@ export default function Gallery() {
                   </Flex>
                 </Flex>
                 <Flex flexDir={'column'} h={'13vh'} justifyContent={'space-around'}>                  
-                  <Button disabled={(cosmetics?.music === music.path || ( !cosmetics?.music && music.displayName === 'Default' ) ) ? true : false} onClick={() => {setCosmetics({...cosmetics, music: music.path})}} fontSize={'xl'} bgColor={'green.500'}>Use</Button>
+                  <Button disabled={(cosmetics?.music === music.path || ( !cosmetics?.music && music.displayName === 'Default' ) ) ? true : false} onClick={() => {setCosmetics(updateCosmeticItem(cosmetics, "music", music.path))}} fontSize={'xl'} bgColor={'green.500'}>Use</Button>
                 </Flex>
               </Flex>
             ))}
@@ -140,7 +119,7 @@ export default function Gallery() {
                       </Flex>
                     </Flex>
                     <Flex flexDir={'column'} h={'13vh'} justifyContent={'space-around'}>                  
-                      <Button disabled={cosmetics?.scene === scene.path ? true : false} onClick={() => {setCosmetics({...cosmetics, scene: scene.path})}} fontSize={'xl'} bgColor={'green.500'}>Use</Button>
+                      <Button disabled={cosmetics?.scene === scene.path ? true : false} onClick={() => {setCosmetics(updateCosmeticItem(cosmetics, "scene", scene.path))}} fontSize={'xl'} bgColor={'green.500'}>Use</Button>
                     </Flex>
                   </Flex>
                 ))}

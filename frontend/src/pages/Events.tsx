@@ -5,12 +5,12 @@ import EventView from '../components/EventView'
 import EventSideBar from '../components/EventSideBar'
 import {event, time} from '../types/EventData'
 import SkullBackground from "../components/SkullBackground"
-import api from "../helpers/ApiRoute";
+import api from "../helpers/APIRoute";
 
 
-interface EventsCurrent {
-  time: time,
-  events: [event]
+interface EventsCurrent{
+  time: time;
+  events: event[];
 }
 
 export default function Maps() {

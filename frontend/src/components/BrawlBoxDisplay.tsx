@@ -4,10 +4,9 @@ import { BrawlBoxContentsData, BrawlBoxData } from '../types/BrawlBoxData'
 import CountUp from 'react-countup'
 import AuthRequest from '../helpers/AuthRequest'
 import { AxiosError } from 'axios'
-import api from "../helpers/ApiRoute";
+import api from "../helpers/APIRoute";
 
-
-export default function BrawlBoxDisplay({ data, tokens, loadResources }: {data: BrawlBoxData, tokens: number | undefined, loadResources: () => void}) {
+export default function BrawlBoxDisplay({data, tokens, loadResources}: {data: BrawlBoxData; tokens: number | undefined; loadResources: () => void;}){
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { isOpen: isOpen2, onOpen: onOpen2, onClose: onClose2 } = useDisclosure() //fix
 
@@ -44,7 +43,6 @@ export default function BrawlBoxDisplay({ data, tokens, loadResources }: {data: 
     }
 
     return (
-        
         <Flex py={5} flexDir={'column'} justifyContent={'center'} alignItems={'center'} textAlign={'center'} pos={'relative'} bgColor={'lightskyblue'} px={10} borderRadius={'lg'} cursor={'pointer'} border={'2px solid black'} onClick={onOpen}>
             <Image src={`${api}/image/${data.image}`} fallback={<Spinner/>}/>
             <Flex w={'100%'} justifyContent={'center'} mt={3}>
@@ -111,7 +109,5 @@ export default function BrawlBoxDisplay({ data, tokens, loadResources }: {data: 
                 </ModalContent>
             </Modal>
         </Flex>
-    
     )
 }
-

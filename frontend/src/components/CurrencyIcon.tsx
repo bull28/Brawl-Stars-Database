@@ -1,10 +1,6 @@
 import { Image } from '@chakra-ui/react'
 
-type CurrencyIconProps = {
-    type: string
-}
-
-export default function CurrencyIcon({ type }: CurrencyIconProps) {
+export default function CurrencyIcon({type}: {type: string;}){
     if (type === 'Gems'){
         return (
             <Image src={require('../assets/currency/gem.webp')} h={6}/>
@@ -30,5 +26,4 @@ export default function CurrencyIcon({ type }: CurrencyIconProps) {
             <></>
         )
     }
-
 }

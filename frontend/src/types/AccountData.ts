@@ -1,4 +1,4 @@
-export interface UserInfoProps {
+export interface UserInfoProps{
     username: string;
     tokens: number;
     coins: number;

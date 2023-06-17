@@ -1,14 +1,14 @@
-export interface BrawlerCollectionData {
-    name: string,
-    displayName: string,
-    rarityColor: string,
-    i: string,
-    u: boolean,
-    unlockedPins: number,
-    totalPins: number,
-    pinCopies: number,
-    pinFilePath: string,
-    pins: [{i: string, a: number, r: number}]
+export interface BrawlerCollectionData{
+    name: string;
+    displayName: string;
+    rarityColor: string;
+    i: string;
+    u: boolean;
+    unlockedPins: number;
+    totalPins: number;
+    pinCopies: number;
+    pinFilePath: string;
+    pins: {i: string, a: number, r: number}[];
 }
 
 export interface AccessoryData{
@@ -20,7 +20,7 @@ export interface AccessoryData{
     unlockMethod: string;
 }
 
-export interface CollectionData {
+export interface CollectionData{
     unlockedBrawlers: number;
     completedBrawlers: number;
     totalBrawlers: number;

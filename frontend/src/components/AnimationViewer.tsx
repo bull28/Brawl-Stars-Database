@@ -5,22 +5,22 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { Canvas, RootState, useFrame, useLoader, useThree } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import BackgroundScene from "./BackgroundScene";
-import api from "../helpers/ApiRoute";
+import api from "../helpers/APIRoute";
 
 interface AnimationViewerProps{
-    modelFile: string,
-    winFile: string | undefined,
-    loseFile: string | undefined,
-    bgFile: string | undefined
+    modelFile: string;
+    winFile: string | undefined;
+    loseFile: string | undefined;
+    bgFile: string | undefined;
 }
 
 interface GltfModelProps{
-    modelFile: string,
-    winFile: string,
-    loseFile: string,
-    playing: MutableRefObject<number>,
-    modelPos: MutableRefObject<Vector3>,
-    hasBackground: boolean
+    modelFile: string;
+    winFile: string;
+    loseFile: string;
+    playing: MutableRefObject<number>;
+    modelPos: MutableRefObject<Vector3>;
+    hasBackground: boolean;
 }
 
 const addLights = (camera: Object3D, hasBackground: boolean) => {

@@ -17,22 +17,22 @@ import CurrencyIcon from './CurrencyIcon'
 import Label from './Label'
 import { animateScroll as scroll } from 'react-scroll'
 import { ModelFiles } from '../types/BrawlerData'
-import api from "../helpers/ApiRoute";
+import api from "../helpers/APIRoute";
 
-type BrawlerImageProps = {
-    brawler: string,
-    skin: string,
-    setModel: React.Dispatch<SetStateAction<ModelFiles>>
+interface BrawlerImageProps{
+    brawler: string;
+    skin: string;
+    setModel: React.Dispatch<SetStateAction<ModelFiles>>;
 }
 
-type SkinData = {
+interface SkinData{
     name: string;
     displayName: string;
     cost: number;
     currency: string;
     costBling: number;
     requires: string;
-    features: [string];
+    features: string[];
     limited: boolean;
     group: {
         name: string;

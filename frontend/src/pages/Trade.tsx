@@ -12,22 +12,16 @@ import { BsPersonFill } from 'react-icons/bs'
 import { CollectionData } from '../types/CollectionData'
 import { RiLock2Line } from 'react-icons/ri'
 import SkullBackground from '../components/SkullBackground'
-import api from "../helpers/ApiRoute";
+import {scrollStyle} from "../themes/scrollbar";
+import api from "../helpers/APIRoute";
 
-/*
-    To-Do
-
-    serach trades of specific players and trade ids
-
-*/
-
-interface PinData {
-    image: string,
+interface PinData{
+    image: string;
     rarity: {
-        value: number,
-        name: string,
-        color: string
-    }
+        value: number;
+        name: string;
+        color: string;
+    };
 }
 
 interface TradePreview{
@@ -48,11 +42,11 @@ export default function Trade() {
         pinImage: "",
         username: ""
     }) 
-    const [results, setResults] = useState<[TradeData]>()
-    const [brawlerData, setBrawlerData] = useState<[Brawler]>()
-    const [brawlerPinData, setPinData] = useState<[PinData]>()
-    const [offer, setOffer] = useState<TradePreview[]>([]) //fix
-    const [req, setReq] = useState<TradePreview[]>([]) //fix
+    const [results, setResults] = useState<TradeData[]>()
+    const [brawlerData, setBrawlerData] = useState<Brawler[]>()
+    const [brawlerPinData, setPinData] = useState<PinData[]>()
+    const [offer, setOffer] = useState<TradePreview[]>([])
+    const [req, setReq] = useState<TradePreview[]>([])
     const [pickingBrawler, toggleScreen] = useState<boolean>(true)
     const [brawlerchoice, setBrawlerChoice] = useState<string>()
     const [amount, setAmount] = useState<number>(1)
@@ -73,9 +67,9 @@ export default function Trade() {
 
     const updateResults = useCallback(() => {
         axios.post(`${api}/trade/all`, filter)
-            .then((res) => {
-                setResults(res.data)
-            })
+        .then((res) => {
+            setResults(res.data);
+        }).catch((error) => {});
     }, [filter]);
 
     const setAllResources = useCallback((data: UserInfoProps) => {
@@ -84,28 +78,16 @@ export default function Trade() {
     }, []);
 
     const getCost = useCallback(() => {
-        let offerObject = []
-        let reqObject = []
-
-        for (var k in offer){
-            let temp;
-            temp = {
-                amount: offer[k].amount,
-                brawler: offer[k].brawler,
-                pin: offer[k].name
-            }
-            offerObject.push(temp)
-        }
-
-        for (k in req){
-            let temp;
-            temp = {
-                amount: req[k].amount,
-                brawler: req[k].brawler,
-                pin: req[k].name
-            }
-            reqObject.push(temp)
-        }
+        let offerObject = offer.map((value) => ({
+            amount: value.amount,
+            brawler: value.brawler,
+            pin: value.name
+        }));
+        let reqObject = req.map((value) => ({
+            amount: value.amount,
+            brawler: value.brawler,
+            pin: value.name
+        }));
 
         if (offerObject.length > 0 || reqObject.length > 0){
             axios.post(`${api}/trade/create`, {
@@ -125,36 +107,34 @@ export default function Trade() {
     }, [offer, req, tradeLength]);
 
     useEffect(() => {
-        
         getCost();
-        
-    }, [offer, req, tradeLength, getCost])
+    }, [offer, req, tradeLength, getCost]);
 
     useEffect(() => {
         AuthRequest<UserInfoProps>("/resources", {setState: setAllResources});
-    }, [setAllResources])
+    }, [setAllResources]);
     
     useEffect(() => {
         updateResults();
-    }, [filter.page, updateResults])
+    }, [filter.page, updateResults]);
 
     useEffect(() => {
         axios.get(`${api}/brawler`)
-            .then((res) => {
-                setBrawlerData(res.data)
-            })
-    }, [])
+        .then((res) => {
+            setBrawlerData(res.data)
+        }).catch((error) => {setBrawlerData(undefined);});
+    }, []);
 
     useEffect(() =>  {
         axios.get(`${api}/brawler/${filter.brawler}`)
-            .then((res) => {
-                setPinData(res.data.pins)
-            })
-    }, [filter.brawler])
+        .then((res) => {
+            setPinData(res.data.pins)
+        }).catch((error) => {setPinData(undefined);});
+    }, [filter.brawler]);
 
     useEffect(() => {
         AuthRequest<CollectionData>("/collection", {setState: setCollectionData});
-    }, [])
+    }, []);
 
     const getTrades = useCallback(() => {
         if (username){
@@ -164,7 +144,7 @@ export default function Trade() {
 
     useEffect(() => {
         getTrades();   
-    }, [username, getTrades])
+    }, [username, getTrades]);
 
     const changeFilter = (query: string, value: string | number | boolean) => {
         const newFilter: FilterData = {
@@ -208,7 +188,7 @@ export default function Trade() {
             pin: "",
             pinImage: "",
             username: ""
-        })
+        });
     }
 
     const nextPage = async () => {
@@ -219,34 +199,22 @@ export default function Trade() {
 
     const previousPage = async () => {
         if (filter.page > 1){
-            changeFilter("page", filter.page - 1)
+            changeFilter("page", filter.page - 1);
         }
     }
 
 
     const createTrade = () => {
-        let offerObject = []
-        let reqObject = []
-
-        for (var k in offer){
-            let temp;
-            temp = {
-                amount: offer[k].amount,
-                brawler: offer[k].brawler,
-                pin: offer[k].name
-            }
-            offerObject.push(temp)
-        }
-
-        for (k in req){
-            let temp;
-            temp = {
-                amount: req[k].amount,
-                brawler: req[k].brawler,
-                pin: req[k].name
-            }
-            reqObject.push(temp)
-        }
+        let offerObject = offer.map((value) => ({
+            amount: value.amount,
+            brawler: value.brawler,
+            pin: value.name
+        }));
+        let reqObject = req.map((value) => ({
+            amount: value.amount,
+            brawler: value.brawler,
+            pin: value.name
+        }));
 
         axios.post(`${api}/trade/create`, {
             token: getToken(),
@@ -261,12 +229,12 @@ export default function Trade() {
         })
         .catch((error) => {
             toast({title: 'Invalid Trade Request', description: error.response.data, status: 'error', duration: 3000, isClosable: true})
-        })
+        });
     }
 
     const showPins = (brawler: string) => {
-        setBrawlerChoice(brawler)
-        toggleScreen(false)
+        setBrawlerChoice(brawler);
+        toggleScreen(false);
     }
 
     const addOffer = (pin: {image: string, r: number}) => {
@@ -330,7 +298,7 @@ export default function Trade() {
     }
 
     const redirect = () => {
-        navigate('/mytrades')
+        navigate('/mytrades');
     }
 
     return (
@@ -338,6 +306,7 @@ export default function Trade() {
             <SkullBackground/>
             <IconButton aria-label='open filter' as={HamburgerIcon} pos={'absolute'} top={0} left={0} m={5} mt={"69px"} onClick={onOpen}></IconButton>
             <Text fontSize={'4xl'} className={'heading-4xl'}>Trade</Text>
+            {typeof collectionData !== "undefined" &&
             <Flex pos={["relative", "relative", "relative", "relative", "absolute"]} top={0} right={0} p={2.5} m={5}>
                 <Button h={'50px'} mr={3} rightIcon={<AddIcon/>} bgColor={'green.300'} className={'heading-md'} fontWeight={'normal'} onClick={onOpen2}>New Trade</Button>
                 <IconButton borderRadius={'md'} onClick={redirect} cursor={'pointer'} size={'lg'} p={1} colorScheme={(userTradeData && userTradeData?.filter((trade) => trade.accepted === true).length > 0) ? 'whatsapp' : 'twitter'} icon={<BsPersonFill size={"100%"}/>} aria-label="open my trades menu"/>
@@ -346,15 +315,16 @@ export default function Trade() {
                     <Text >{userTradeData?.filter((trade) => trade.accepted === true).length}</Text>
                 </Box>                            
                 }
-            </Flex>
+            </Flex>}
             <Flex mt={3}>
+                {typeof resources !== "undefined" ?
                 <Flex>
                     <HStack>
-                        <Flex  h={'40px'} pr={'30px'} bgColor={'#f98f92'} justifyContent={'space-between'} alignItems={'center'} borderRadius={'5%'} border={'2px solid black'}>
+                        <Flex h={'40px'} pr={'30px'} bgColor={'#f98f92'} justifyContent={'space-between'} alignItems={'center'} borderRadius={'5%'} border={'2px solid black'}>
                             <Image h={'50px'}  src={`${api}/image/resources/resource_trade_credits.webp`}/>                        
-                            <Text  fontSize={'lg'} h={'30px'} className={'heading-lg'} >{resources?.tradeCredits}</Text>
+                            <Text  fontSize={'lg'} h={'30px'} className={'heading-lg'} >{resources.tradeCredits}</Text>
                         </Flex>
-                        {resources?.wildCardPins.map((wildCard) => {
+                        {resources.wildCardPins.map((wildCard) => {
                             return (
                                 <Flex key={wildCard.rarityName + wildCard.rarityColor} py={'15px'} h={'50px'} px={'30px'} bgColor={wildCard.rarityColor}justifyContent={'space-around'} alignItems={'center'} borderRadius={'5%'}>
                                     <Image h={'50px'} src={`${api}/image/resources/wildcard_pin.webp`}/>                        
@@ -364,73 +334,65 @@ export default function Trade() {
                         })}
                     </HStack>
                 </Flex>
+                :
+                <></>
+                }
             </Flex>       
             <Flex mt={'60px'}>
                 <Drawer isOpen={isOpen} placement={'left'} onClose={onClose}>
                     <DrawerContent>
                         <IconButton aria-label='close filter' as={CloseIcon}  pos={'absolute'} right={0} top={0} bgColor={'transparent'} transform={'scale(50%)'} _hover={{backgroundColor: 'transparent'}} cursor={'pointer'} onClick={onClose}/>
                         <DrawerBody>
-                                <FormControl h={'100%'} >
-                                    <Flex flexDir={'column'} h={'60%'} justifyContent={'space-between'}>
-                                        <Flex w={'100%'} justifyContent={'center'}>
-                                            <FormLabel fontSize={'2xl'}  className={'heading-2xl'}>
-                                                Filter
-                                            </FormLabel>
-                                        </Flex>
-                                        <Select color={'#fff'} value={filter.sortMethod} onChange={(e) => {changeFilter("sortMethod", e.target.value)}}>
-                                            <option value='oldest'>Oldest</option>
-                                            <option value='lowcost'>Cost Ascending</option>
-                                            <option value='highcost'>Cost Descending</option>
-                                        </Select>
-                                        <FormLabel fontSize={'xl'} className={'heading-xl'}>
-                                            Filter In
+                            <FormControl h={'100%'} >
+                                <Flex flexDir={'column'} h={'60%'} justifyContent={'space-between'}>
+                                    <Flex w={'100%'} justifyContent={'center'}>
+                                        <FormLabel fontSize={'2xl'}  className={'heading-2xl'}>
+                                            Filter
                                         </FormLabel>
-                                        <RadioGroup value={String(filter.filterInRequest)} onChange={(e) => {changeFilter("filterInRequest", e === "true")}}>
-                                            <Stack direction={'column'}>
-                                                <Radio value='false'>Offer</Radio>
-                                                <Radio value='true'>Request</Radio>
-                                            </Stack>
-                                        </RadioGroup>
-                                        <FormLabel fontSize={'xl'}  className={'heading-xl'}>
-                                            Brawler
-                                        </FormLabel>
-                                        <Select color={'#fff'} value={filter.brawler} placeholder='Filter by brawler' onChange={(e) => {changeFilter("brawler", e.target.value);}} sx={{
-                        '&::-webkit-scrollbar': {
-                        width: '8px',
-                        borderRadius: '8px',
-                        backgroundColor: `rgba(0, 0, 0, 0.05)`,
-                        },
-                        '&::-webkit-scrollbar-thumb': {
-                        backgroundColor: `rgba(0, 0, 0, 0.5)`,
-                        borderRadius: `6px`,
-                        }
-                    }}>
-                                            {brawlerData?.map((brawler) => (
-                                                <option key={brawler.name} value={brawler.name}>{brawler.displayName}</option>
-                                            ))}
-                                        </Select>
-                                        <FormLabel fontSize={'xl'}  className={'heading-xl'}>
-                                            Pin
-                                        </FormLabel>
-                                        <Menu>
-                                            <MenuButton border={'1px solid white'} borderRadius={'md'}>
-                                                <Text my={2} fontSize={'xl'}>{filter.pin ? filter.pin : 'Choose Pin'}</Text>
-                                            </MenuButton>
-                                            <MenuList>
-                                            <SimpleGrid columns={3}>
-                                            {brawlerPinData?.map((pin) => (
-                                                <MenuItem key={pin.image} onClick={(e) => {changeFilter("pin", pin.image.split('/')[2].split('.')[0])}}><Image maxW={'60px'} src={`${api}/image/${pin.image}`}></Image></MenuItem>
-                                            ))}
-                                            </SimpleGrid>
-                                            </MenuList>
-                                            
-                                        </Menu>
-                                        <FormLabel fontSize={'xl'}  className={'heading-xl'}>
-                                            Username
-                                        </FormLabel>
-                                        <Input type={'text'} value={filter.username} onChange={(e) => {changeFilter("username", e.target.value)}}/>
                                     </Flex>
-                                </FormControl>                            
+                                    <Select color={'#fff'} value={filter.sortMethod} onChange={(e) => {changeFilter("sortMethod", e.target.value)}}>
+                                        <option value='oldest'>Oldest</option>
+                                        <option value='lowcost'>Cost Ascending</option>
+                                        <option value='highcost'>Cost Descending</option>
+                                    </Select>
+                                    <FormLabel fontSize={'xl'} className={'heading-xl'}>
+                                        Filter In
+                                    </FormLabel>
+                                    <RadioGroup value={String(filter.filterInRequest)} onChange={(e) => {changeFilter("filterInRequest", e === "true")}}>
+                                        <Stack direction={'column'}>
+                                            <Radio value='false'>Offer</Radio>
+                                            <Radio value='true'>Request</Radio>
+                                        </Stack>
+                                    </RadioGroup>
+                                    <FormLabel fontSize={'xl'}  className={'heading-xl'}>
+                                        Brawler
+                                    </FormLabel>
+                                    <Select color={'#fff'} value={filter.brawler} placeholder='Filter by brawler' onChange={(e) => {changeFilter("brawler", e.target.value);}} sx={scrollStyle}>
+                                        {brawlerData?.map((brawler) => (
+                                            <option key={brawler.name} value={brawler.name}>{brawler.displayName}</option>
+                                        ))}
+                                    </Select>
+                                    <FormLabel fontSize={'xl'}  className={'heading-xl'}>
+                                        Pin
+                                    </FormLabel>
+                                    <Menu>
+                                        <MenuButton border={'1px solid white'} borderRadius={'md'}>
+                                            <Text my={2} fontSize={'xl'}>{filter.pin ? filter.pin : 'Choose Pin'}</Text>
+                                        </MenuButton>
+                                        <MenuList>
+                                        <SimpleGrid columns={3}>
+                                        {brawlerPinData?.map((pin) => (
+                                            <MenuItem key={pin.image} onClick={(e) => {changeFilter("pin", pin.image.split('/')[2].split('.')[0])}}><Image maxW={'60px'} src={`${api}/image/${pin.image}`}></Image></MenuItem>
+                                        ))}
+                                        </SimpleGrid>
+                                        </MenuList>
+                                    </Menu>
+                                    <FormLabel fontSize={'xl'}  className={'heading-xl'}>
+                                        Username
+                                    </FormLabel>
+                                    <Input type={'text'} value={filter.username} onChange={(e) => {changeFilter("username", e.target.value)}}/>
+                                </Flex>
+                            </FormControl>                            
                         </DrawerBody>
                         <DrawerFooter>
                             <Flex flexDir={'row'} w={'100%'} justifyContent={'space-between'}>
@@ -453,67 +415,37 @@ export default function Trade() {
             <IconButton aria-label='next page' as={ChevronRightIcon} onClick={nextPage}/>
         </Flex>
         <Modal isOpen={isOpen2} onClose={onClose2} size={'6xl'}>
-            <ModalOverlay />
+            <ModalOverlay/>
             <ModalContent>
             <ModalHeader fontWeight={"normal"}>New Trade</ModalHeader>
-            <ModalCloseButton />
+            <ModalCloseButton/>
             <ModalBody>
-                
                 <Flex w={'100%'} flexDir={'row'}>
-                    
                     <Flex w={'50%'} alignItems={'center'} flexDir={'column'}>
                         <Text mb={5} fontSize={'2xl'} className={'heading-2xl'} >You Give</Text>
-                        
-            
-                        <SimpleGrid columns={[2,3]} spacing={3} overflow={'auto'} sx={{
-                            '&::-webkit-scrollbar': {
-                            width: '8px',
-                            borderRadius: '8px',
-                            backgroundColor: `rgba(0, 0, 0, 0.05)`,
-                            },
-                            '&::-webkit-scrollbar-thumb': {
-                            backgroundColor: `rgba(0, 0, 0, 0.5)`,
-                            borderRadius: `6px`,
-                            },
-                        }}>
-                        {offer?.map((pin) => (
-                                        <Flex p={5} key={pin.name} border={'2px solid black'} borderRadius={'lg'} bgColor={pin.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'} cursor={'pointer'} onClick={() => {setOffer(offer.filter((item) => item !== pin))}}>
-                                            <Image  maxW={'60px'} src={`${api}/image/${pin.pinImage}`} fallback={<Spinner/>}/>
-                                            <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} color={'red'}>{`- ${pin.amount}`}</Text>
-                                        </Flex>
-                                    ))}
-                            
+                        <SimpleGrid columns={[2,3]} spacing={3} overflow={'auto'} sx={scrollStyle}>
+                        {offer.map((pin) => (
+                            <Flex p={5} key={pin.name} border={'2px solid black'} borderRadius={'lg'} bgColor={pin.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'} cursor={'pointer'} onClick={() => {setOffer(offer.filter((item) => item !== pin))}}>
+                                <Image  maxW={'60px'} src={`${api}/image/${pin.pinImage}`} fallback={<Spinner/>}/>
+                                <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} color={'#f00'}>{`- ${pin.amount}`}</Text>
+                            </Flex>
+                        ))}
                         </SimpleGrid>
                         <IconButton onClick={() => {onOpen3(); setPinLocation("offer")}} p={2} as={AddIcon} aria-label="add pin" mt={5}/>
-                    
                     </Flex>
 
                     <Flex w={'50%'} alignItems={'center'} flexDir={'column'}>
                         <Text mb={5} fontSize={'2xl'} className={'heading-2xl'} >You Receive</Text>
-                        <SimpleGrid columns={[2,3]} spacing={3} overflow={'auto'} sx={{
-                            '&::-webkit-scrollbar': {
-                            width: '8px',
-                            borderRadius: '8px',
-                            backgroundColor: `rgba(0, 0, 0, 0.05)`,
-                            },
-                            '&::-webkit-scrollbar-thumb': {
-                            backgroundColor: `rgba(0, 0, 0, 0.5)`,
-                            borderRadius: `6px`,
-                            },
-                        }}>
-                        {req?.map((pin) => (
-                                        <Flex p={5} key={pin.name} border={'2px solid black'} borderRadius={'lg'} bgColor={pin.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'} cursor={'pointer'} onClick={() => {setReq(req.filter((item) => item !== pin))}}>
-                                            <Image  maxW={'60px'} src={`${api}/image/${pin.pinImage}`} fallback={<Spinner/>}/>
-                                            <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} color={'green'}>{`+ ${pin.amount}`}</Text>
-                                        </Flex>
-                                    ))}
-                            
+                        <SimpleGrid columns={[2,3]} spacing={3} overflow={'auto'} sx={scrollStyle}>
+                        {req.map((pin) => (
+                            <Flex p={5} key={pin.name} border={'2px solid black'} borderRadius={'lg'} bgColor={pin.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'} cursor={'pointer'} onClick={() => {setReq(req.filter((item) => item !== pin))}}>
+                                <Image  maxW={'60px'} src={`${api}/image/${pin.pinImage}`} fallback={<Spinner/>}/>
+                                <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} color={'#0f0'}>{`+ ${pin.amount}`}</Text>
+                            </Flex>
+                        ))}
                         </SimpleGrid>
-                        <IconButton onClick={() => {onOpen3(); setPinLocation('req')}} p={2} as={AddIcon} aria-label="add pin" mt={5}/>
-                        
+                        <IconButton onClick={() => {onOpen3(); setPinLocation("req")}} p={2} as={AddIcon} aria-label="add pin" mt={5}/>
                     </Flex>
-
-                
                 </Flex>
 
                 <Flex w={'100%'} flexDir={'row'} mt={5}>
@@ -522,88 +454,87 @@ export default function Trade() {
                 </Flex>
 
                 <Modal isOpen={isOpen3} onClose={onClose3} size={'3xl'}>
-                    <ModalOverlay />
+                    <ModalOverlay/>
                     <ModalContent>
                     <ModalHeader fontWeight={"normal"}>Add Pin</ModalHeader>
-                    <ModalCloseButton />
+                    <ModalCloseButton/>
                     <ModalBody>
-                    {pickingBrawler ? <>
-                            <SlideFade in={true}>
-                                <SimpleGrid spacing={3} columns={[3,4,5]}>
-                                {collectionData?.brawlers.map((brawler) => (
-                                    <Flex key={brawler.name} flexDir={'column'} alignItems={'center'} userSelect={'none'}>
-                                        <Flex p={1} border={'2px solid black'} borderRadius={'lg'} bgColor={brawler.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'} cursor={'pointer'} onClick={() => {if (brawler.u){showPins(brawler.name)}}}>
-                                            <Box pos={'relative'}>
-                                                <Image filter={!brawler.u ? 'blur(1px)' : 'none'} draggable={'false'} borderRadius={'20%'} src={`${api}/image/${brawler.i}`} fallback={<Spinner/>}/>                                                                                
-                                            </Box>
-                                            {!brawler.u && <Box w={'100%'} h={'100%'} bgColor={'rgba(0, 0, 0, 0.5)'} pos={'absolute'} top={0} borderRadius={'lg'}/>}
-                                            {(!brawler.u) && <Icon as={RiLock2Line}  pos={'absolute'} fontSize={'25px'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}></Icon>}
-                                            
-                                        </Flex>
-                                        <Text>{brawler.displayName}</Text>
+                    {pickingBrawler ?
+                        <>
+                        <SlideFade in={true}>
+                            <SimpleGrid spacing={3} columns={[3,4,5]}>
+                            {collectionData?.brawlers.map((brawler) => (
+                                <Flex key={brawler.name} flexDir={'column'} alignItems={'center'} userSelect={'none'}>
+                                    <Flex p={1} border={'2px solid black'} borderRadius={'lg'} bgColor={brawler.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'} cursor={'pointer'} onClick={() => {if (brawler.u){showPins(brawler.name)}}}>
+                                        <Box pos={'relative'}>
+                                            <Image filter={!brawler.u ? 'blur(1px)' : 'none'} draggable={'false'} borderRadius={'20%'} src={`${api}/image/${brawler.i}`} fallback={<Spinner/>}/>                                                                                
+                                        </Box>
+                                        {!brawler.u && <Box w={'100%'} h={'100%'} bgColor={'rgba(0, 0, 0, 0.5)'} pos={'absolute'} top={0} borderRadius={'lg'}/>}
+                                        {(!brawler.u) && <Icon as={RiLock2Line}  pos={'absolute'} fontSize={'25px'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}></Icon>}
+                                        
                                     </Flex>
-                                ))}
-
-                                </SimpleGrid>               
-                            </SlideFade>
-                    </> : <>
+                                    <Text>{brawler.displayName}</Text>
+                                </Flex>
+                            ))}
+                            </SimpleGrid>
+                        </SlideFade>
+                        </>
+                        :
+                        <>
                         <IconButton as={ArrowBackIcon} aria-label="choose brawler" onClick={() => {toggleScreen(true)}} cursor={'pointer'}/>
                         <ScaleFade in={true}>
                             <SimpleGrid spacing={3} columns={[3,4,5]} mt={5}>
                             {collectionData?.brawlers.filter((brawler) => brawler.name === brawlerchoice).map((brawler) => {
                                 return brawler.pins.map((pin) => (
                                     <Flex key={brawler.name + pin.i} flexDir={'column'} alignItems={'center'} userSelect={'none'}>
-                                        <Flex p={2} border={'2px solid black'} borderRadius={'lg'} bgColor={Object.values(collectionData?.pinRarityColors || {})[pin.r]} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'} cursor={'pointer'} onClick={() => {if (pinLocation === "offer"){ if (pin.a !== 0 ){addOffer({image: `${brawler.pinFilePath}${pin.i}`, r: pin.r})}} else {addReq({image: `${brawler.pinFilePath}${pin.i}`, r: pin.r})}}}>
+                                        <Flex p={2} border={'2px solid black'} borderRadius={'lg'} bgColor={Object.values(collectionData?.pinRarityColors || {})[pin.r]} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'} cursor={'pointer'} onClick={() => {if (pinLocation === "offer"){ if (pin.a >= amount){addOffer({image: `${brawler.pinFilePath}${pin.i}`, r: pin.r})}} else {addReq({image: `${brawler.pinFilePath}${pin.i}`, r: pin.r})}}}>
                                             <Image draggable={'false'} borderRadius={'20%'} src={`${api}/image/${brawler.pinFilePath}${pin.i}`} fallback={<Spinner/>}/>                                                                                
-                                            {(pin.a === 0 && pinLocation === "offer") && <Box w={'100%'} h={'100%'} bgColor={'rgba(0, 0, 0, 0.5)'} pos={'absolute'} top={0} borderRadius={'lg'}/>}
-                                            {(pin.a === 0 && pinLocation === "offer") && <Icon as={RiLock2Line}  pos={'absolute'} fontSize={'25px'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}></Icon>}                                                
+                                            {(pin.a < amount && pinLocation === "offer") && <Box w={'100%'} h={'100%'} bgColor={'rgba(0, 0, 0, 0.5)'} pos={'absolute'} top={0} borderRadius={'lg'}/>}
+                                            {(pin.a < amount && pinLocation === "offer") && <Icon as={RiLock2Line}  pos={'absolute'} fontSize={'25px'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}></Icon>}                                                
                                         </Flex>                                
                                         <Text  fontSize={'xl'} className={'heading-2xl'}>{`${pin.a}x`}</Text>
                                     </Flex>
                                 ));
                             })}
-
                             </SimpleGrid>
                         </ScaleFade>
                         <Flex flexDir={'column'} alignItems={'center'} justifyContent={'center'}>
                         <Slider min={1} max={10} my={5} value={amount} onChange={(val) => {setAmount(val)}}>
                             <SliderTrack bg='blue.300'>
-                                <SliderFilledTrack bg='blue.700' />
+                                <SliderFilledTrack bg='blue.700'/>
                             </SliderTrack>
-                            <SliderThumb bg='teal.500' />
+                            <SliderThumb bg='teal.500'/>
                         </Slider>
                         <Text>{`${amount}x`}</Text>
                         </Flex>
-                    </>}
+                        </>
+                    }
                     </ModalBody>
                     <ModalFooter>
                         <Button onClick={onClose3}>Close</Button>
                     </ModalFooter>
                     </ModalContent>
                 </Modal>
+
                 <Flex flexDir={'column'} w={'100%'} justifyContent={'center'} alignItems={'center'} mt={5}>
-                <Text fontSize={'xl'}  className={'heading-2xl'}>Trade Length</Text>
-                
-                <Slider min={1} max={336} mt={5} value={tradeLength} onChange={(val) => {setTradeLength(val)}}>
-                    <SliderTrack bg='skyblue'>
-                        <Box position='relative' right={10} />
-                        <SliderFilledTrack bg='blue.400' />
-                    </SliderTrack>
-                    <SliderThumb boxSize={6} bgColor={'blue.700'}/>   
-                </Slider>
-                <Text fontSize={'lg'}  className={'heading-xl'}>{`${tradeLength}h`}</Text>
+                    <Text fontSize={'xl'}  className={'heading-2xl'}>Trade Length</Text>
+                    <Slider min={1} max={336} mt={5} value={tradeLength} onChange={(val) => {setTradeLength(val)}}>
+                        <SliderTrack bg='skyblue'>
+                            <Box position='relative' right={10} />
+                            <SliderFilledTrack bg='blue.400' />
+                        </SliderTrack>
+                        <SliderThumb boxSize={6} bgColor={'blue.700'}/>   
+                    </Slider>
+                    <Text fontSize={'lg'}  className={'heading-xl'}>{`${tradeLength}h`}</Text>
                 </Flex>
             </ModalBody>
 
             <ModalFooter>
-                <Button fontSize={'2xl'} p={5}  mr={3} fontWeight={'normal'} onClick={onClose2}>
-                Cancel
-                </Button>
+                <Button fontSize={'2xl'} p={5}  mr={3} fontWeight={'normal'} onClick={onClose2}>Cancel</Button>
                 <Button fontSize={'2xl'} p={5} fontWeight={'normal'} onClick={createTrade} rightIcon={<Image maxH={'40px'} src={`${api}/image/resources/resource_trade_credits.webp`}/>}>{tradeCost}</Button>
             </ModalFooter>
             </ModalContent>
-      </Modal>
+        </Modal>
     </Flex>
- 
-    )
+    );
 }

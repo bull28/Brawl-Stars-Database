@@ -4,11 +4,11 @@ import axios from 'axios'
 import BrawlerView from '../components/BrawlerView'
 import { Brawler } from '../types/BrawlerData'
 import SkullBackground from '../components/SkullBackground'
-import api from "../helpers/ApiRoute";
+import api from "../helpers/APIRoute";
 
 export default function Brawlers() {
 
-    const [data, setData] = useState<[Brawler]>()
+    const [data, setData] = useState<Brawler[]>()
 
     useEffect(() => {
         axios.get(`${api}/brawler`)

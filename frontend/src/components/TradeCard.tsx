@@ -1,24 +1,25 @@
 import { ExternalLinkIcon } from '@chakra-ui/icons'
-import { Flex, Text, SimpleGrid, Image, Spinner, useDisclosure, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Box, Link, keyframes, useToast } from '@chakra-ui/react'
+import { Flex, Text, SimpleGrid, Image, useDisclosure, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Box, Link, keyframes, useToast } from '@chakra-ui/react'
 import axios from 'axios'
 import { useState } from 'react'
 import { HiOutlineSwitchHorizontal } from 'react-icons/hi'
 import { getToken } from '../helpers/AuthRequest'
 import { RainbowBorder } from '../themes/animations'
 import { TradeData } from '../types/TradeData'
-import api from "../helpers/ApiRoute";
+import {scrollStyle} from "../themes/scrollbar";
+import api from "../helpers/APIRoute";
 
 interface PinData {
-    amount: number,
-    pinImage: string,
-    rarityColor: string,
-    rarityValue:  number
+    amount: number;
+    pinImage: string;
+    rarityColor: string;
+    rarityValue: number;
 }
 
 export default function TradeCard({ data }: {data: TradeData}) {
     const [tradeComplete, setCompletion] = useState<boolean>(false);
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const [received, setReceived] = useState<[PinData]>();
+    const [received, setReceived] = useState<PinData[]>();
     const toast = useToast()
 
     const confirmTrade = () => {
@@ -50,22 +51,6 @@ export default function TradeCard({ data }: {data: TradeData}) {
         
     }
 
-    const scrollStyle = {
-        '&::-webkit-scrollbar': {
-            height: '12px',
-            borderRadius: '8px',
-            backgroundColor: `rgba(0, 0, 0, 0.05)`,
-            width: '10px'
-        },
-        '&::-webkit-scrollbar-thumb': {
-            backgroundColor: `rgba(0, 0, 0, 0.5)`,
-            borderRadius: `6px`
-        },
-        '&::-webkit-scrollbar-corner': {
-            backgroundColor: `rgba(0, 0, 0, 0)`
-        }
-    };
-
     const contentTransition = keyframes`
         from {transform: scale(0.3);}
         to {transform: scale(1.0)}
@@ -82,7 +67,7 @@ export default function TradeCard({ data }: {data: TradeData}) {
                     <SimpleGrid w={'10vw'} columns={[1, 2]} spacing={3} overflow={'auto'} maxH={'100%'} sx={scrollStyle}>
                         {data.request.map((request) => (
                             <Flex key={request.pinImage} p={3} border={'2px solid black'} borderRadius={'lg'} bgColor={request.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
-                                <Image  maxW={'60px'} src={`${api}/image/${request.pinImage}`} fallback={<Spinner/>}/>
+                                <Image  maxW={'60px'} src={`${api}/image/${request.pinImage}`}/>
                                 <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} >{request.amount}</Text>
                             </Flex>
                         ))}
@@ -97,7 +82,7 @@ export default function TradeCard({ data }: {data: TradeData}) {
                     <SimpleGrid w={'10vw'} columns={[1, 2]} spacing={3} overflow={'auto'} maxH={'100%'} sx={scrollStyle}>
                         {data.offer.map((offer) => (
                             <Flex key={offer.pinImage} p={3} border={'2px solid black'} borderRadius={'lg'} bgColor={offer.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
-                                <Image  maxW={'60px'} src={`${api}/image/${offer.pinImage}`} fallback={<Spinner/>}/>
+                                <Image  maxW={'60px'} src={`${api}/image/${offer.pinImage}`}/>
                                 <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} >{offer.amount}</Text>
                             </Flex>
                         ))}
@@ -127,7 +112,7 @@ export default function TradeCard({ data }: {data: TradeData}) {
                                 <SimpleGrid columns={[2,3]} spacing={3} overflow={'auto'} sx={scrollStyle}>
                                     {data.request.map((request) => (
                                         <Flex key={request.pinImage} p={5} border={'2px solid black'} borderRadius={'lg'} bgColor={request.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
-                                            <Image  maxW={'60px'} src={`${api}/image/${request.pinImage}`} fallback={<Spinner/>}/>
+                                            <Image  maxW={'60px'} src={`${api}/image/${request.pinImage}`}/>
                                             <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} color={'red'}>{`- ${request.amount}`}</Text>
                                         </Flex>
                                     ))}
@@ -139,7 +124,7 @@ export default function TradeCard({ data }: {data: TradeData}) {
                                 <SimpleGrid columns={[2,3]} spacing={3} overflow={'auto'} sx={scrollStyle}>
                                     {data.offer.map((offer) => (
                                         <Flex key={offer.pinImage} p={5} border={'2px solid black'} borderRadius={'lg'} bgColor={offer.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
-                                            <Image  maxW={'60px'} src={`${api}/image/${offer.pinImage}`} fallback={<Spinner/>}/>
+                                            <Image  maxW={'60px'} src={`${api}/image/${offer.pinImage}`}/>
                                             <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} color={'green'}>{`+ ${offer.amount}`}</Text>
                                         </Flex>
                                     ))}
@@ -173,7 +158,7 @@ export default function TradeCard({ data }: {data: TradeData}) {
                         <SimpleGrid columns={(received && received.length > 4) ? Math.ceil(received.length / 2) : ((received?.length === 1) ? 2 : received?.length)} spacing={10} mt={5}>
                             {received?.map((data, x) => (
                                 <Flex key={data.pinImage} p={5} border={'2px solid black'} borderRadius={'lg'} bgColor={data.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'} transform={'scale(0)'} animation={`${contentTransition} 0.5s ease-out ${((x/2)+0.5)}s 1 forwards`}>
-                                    <Image src={`${api}/image/${data.pinImage}`} fallback={<Spinner/>}/>
+                                    <Image src={`${api}/image/${data.pinImage}`}/>
                                     <Text fontSize={'3xl'}  className={'heading-3xl'}>{`+${data.amount}`}</Text>
                                 </Flex>
                             ))}

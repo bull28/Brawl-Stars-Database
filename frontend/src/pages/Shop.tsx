@@ -10,11 +10,11 @@ import { RainbowBorder } from '../themes/animations'
 import { UserInfoProps } from '../types/AccountData'
 import ShopData from '../types/ShopData'
 import EventTime from '../helpers/EventTime'
-import api from "../helpers/ApiRoute";
+import api from "../helpers/APIRoute";
 
 interface Timer{
-    start: number,
-    offset: number
+    start: number;
+    offset: number;
 }
 
 interface Category{
@@ -34,8 +34,8 @@ interface ShopItemCategories{
 }
 
 export default function Shop() {
-    const [data, setData] = useState<ShopData[]>()
-    const [userInfo, setUserInfo] = useState<UserInfoProps>()
+    const [featured, setFeatured] = useState<ShopData | undefined>(undefined);
+    const [userInfo, setUserInfo] = useState<UserInfoProps | undefined>(undefined);
     const [items, setItems] = useState<ShopItemCategories | undefined>(undefined);
 
     const organizeData = useCallback((items: ShopData[]) => {
@@ -49,14 +49,18 @@ export default function Shop() {
         };
 
         for (let x = 0; x < items.length; x++){
-            for (let y in sortedItems){
-                if (items[x].name.includes(sortedItems[y as keyof ShopItemCategories].search)){
-                    sortedItems[y as keyof ShopItemCategories].items.push(items[x]);
+            if (items[x].name === "featuredItem"){
+                console.log(items[x]);
+                setFeatured(items[x]);
+            } else{
+                for (let y in sortedItems){
+                    if (items[x].name.toLowerCase().includes(sortedItems[y as keyof ShopItemCategories].search)){
+                        sortedItems[y as keyof ShopItemCategories].items.push(items[x]);
+                    }
                 }
             }
         }
-
-        setData(items);
+        
         setItems(sortedItems);
     }, []);
 
@@ -121,12 +125,14 @@ export default function Shop() {
                     </Flex>
                 </Flex>
                 <Flex flexDir={'column'} alignItems={'center'} pb={'5vh'} pt={'10vh'}>  
-                    {
-                        data?.map((item) => (
-                            (item.name === 'featuredItem') && <ScaleFade key={item.name} in={true}><ShopItem data={item} coins={userInfo.coins} isFeatured={true} timeLeftString={EventTime({season: 0, hour: Math.floor(secondsLeft / 3600), minute: Math.floor(secondsLeft / 60) % 60, second: secondsLeft % 60, hoursPerSeason: 336, maxSeasons: 2}, 0)}/></ScaleFade>
-                        ))
-                    }               
-                </Flex>  
+                    {typeof featured !== "undefined" ?
+                        <ScaleFade in={true}>
+                            <ShopItem data={featured} coins={userInfo.coins} isFeatured={true} timeLeftString={EventTime({season: 0, hour: Math.floor(secondsLeft / 3600), minute: Math.floor(secondsLeft / 60) % 60, second: secondsLeft % 60, hoursPerSeason: 336, maxSeasons: 2}, 0)}/>
+                        </ScaleFade>
+                        :
+                        <></>
+                    }
+                </Flex>
                 <Flex w={'90%'} justifyContent={'left'}>
                     {typeof items !== "undefined" ?
                         <Flex justifyContent={'space-between'} flexDir={'column'} p={5}>

@@ -2,7 +2,7 @@ import {Flex, Text, Divider, Image} from "@chakra-ui/react";
 import {ChallengeWins} from "../types/ChallengeData";
 import EventTime from "../helpers/EventTime";
 import {RainbowBorder} from "../themes/animations";
-import api from "../helpers/ApiRoute";
+import api from "../helpers/APIRoute";
 
 interface DailyRewardDisplayProps{
     username: string;

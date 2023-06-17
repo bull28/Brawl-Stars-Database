@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { createStandaloneToast } from '@chakra-ui/react'
-import api from "../helpers/ApiRoute";
+import api from "../helpers/APIRoute";
 
 //functions that deal with token storage/retrieval and post requests using them
 

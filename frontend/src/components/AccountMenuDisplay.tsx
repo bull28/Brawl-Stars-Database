@@ -3,13 +3,13 @@ import { useEffect, useState } from 'react'
 import { UserInfoProps } from '../types/AccountData'
 import AuthRequest from '../helpers/AuthRequest'
 import { RainbowBorder } from '../themes/animations'
-import api from "../helpers/ApiRoute";
+import api from "../helpers/APIRoute";
 
 
-interface Props {
-    username: string,
-    token: string,
-    toggleRemove: boolean
+interface Props{
+    username: string;
+    token: string;
+    toggleRemove: boolean;
 }
 
 export default function AccountMenuDisplay({ username, token, toggleRemove }: Props) {

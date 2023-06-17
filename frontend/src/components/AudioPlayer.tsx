@@ -2,8 +2,8 @@ import { useState, useEffect, useCallback } from "react";
 import { Flex, IconButton } from "@chakra-ui/react";
 import {HiMusicNote} from "react-icons/hi";
 import AuthRequest from "../helpers/AuthRequest";
-import CosmeticData from "../types/CosmeticData";
-import api from "../helpers/ApiRoute";
+import {CosmeticData} from "../types/CosmeticData";
+import api from "../helpers/APIRoute";
 
 export default function AudioPlayer() {
     const [audio] = useState(new Audio());

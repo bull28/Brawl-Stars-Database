@@ -1,11 +1,11 @@
 import { Flex, Image, Text } from '@chakra-ui/react'
 import {event} from '../types/EventData'
 import EventTime from '../helpers/EventTime'
-import api from "../helpers/ApiRoute";
+import api from "../helpers/APIRoute";
 
-interface MapViewProps {
-    event: event,
-    offset: number
+interface MapViewProps{
+    event: event;
+    offset: number;
 }
 
 export default function MapView({ event, offset }: MapViewProps){

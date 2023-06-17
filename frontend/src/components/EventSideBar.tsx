@@ -13,27 +13,27 @@ import { HamburgerIcon, SearchIcon } from '@chakra-ui/icons'
 import { useEffect, useRef, useState, useCallback } from "react";
 import MapView from './MapView';
 import axios from 'axios';
-import api from "../helpers/ApiRoute";
+import api from "../helpers/APIRoute";
 
-interface MapData {
-    name: string,
-    displayName: string,
+interface MapData{
+    name: string;
+    displayName: string;
     gameModeData: {
-        name: string,
-        image: string,
-        backgroundColor: string,
-        textColor: string
-    }
+        name: string;
+        image: string;
+        backgroundColor: string;
+        textColor: string;
+    };
 }
 
-interface Timer {
-    start: number,
-    offset: number
+interface Timer{
+    start: number;
+    offset: number;
 }
 
-interface EventMode {
-    choice: string,
-    select: string
+interface EventMode{
+    choice: string;
+    select: string;
 }
 
 
@@ -45,11 +45,12 @@ export default function EventSideBar({ changeData, changeOffset, startTime }: {c
     const [date, setDate] = useState<string>("");
     const [maps, setMaps] = useState<MapData[]>([]);
     const [map, setMap] = useState<string>("");
-    const mapViewRef = useRef<{ open: () => void}>(null)
     const [timer, updateTimer] = useState<Timer>({start: startTime.getTime(), offset: 0});// Time since the last update
     const [lastUpdate, setlastUpdate] = useState<number>(3600000);// Time at the last update
     const [eventMode, setEventMode] = useState<EventMode>({choice: "current", select: "at_time"});// User's event mode choices, only updated when "Update" is clicked
     const [success, setSuccess] = useState<boolean>(true);// Whether or not the attemped calls to the API were successful
+
+    const mapViewRef = useRef<{ open: () => void}>(null);
 
     const query = useMediaQuery('(min-width: 400px)')[0]
     const { isOpen, onOpen, onClose } = useDisclosure() 

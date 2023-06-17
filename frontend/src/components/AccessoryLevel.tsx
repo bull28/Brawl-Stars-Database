@@ -1,7 +1,7 @@
 import {Flex, Image, Text} from "@chakra-ui/react";
 import MovingText from "./MovingText";
 import {displayLong} from "../helpers/LargeNumberDisplay";
-import api from "../helpers/ApiRoute";
+import api from "../helpers/APIRoute";
 
 export default function AccessoryLevel({level, points, upgradePoints}: {level: number; points: number; upgradePoints: number;}){
     return (
