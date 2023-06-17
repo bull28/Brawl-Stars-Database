@@ -5,6 +5,7 @@ import {Flex, Box, FormControl, FormLabel, Input, FormHelperText, Text, Alert, A
 import {BsFillPersonFill} from 'react-icons/bs';
 import {RiKeyFill} from 'react-icons/ri';
 import { changeToken } from "../helpers/AuthRequest";
+import api from "../helpers/ApiRoute";
 
 
 function Login(){
@@ -28,7 +29,7 @@ function Login(){
     const handleLogin = async (e: any) => {
         e.preventDefault()
         
-        axios.post('/login', {username: username, password: password})
+        axios.post(`${api}/login`, {username: username, password: password})
             .then(res => {
                 navigate('/')
                 

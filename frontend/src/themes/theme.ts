@@ -1,7 +1,6 @@
 import { extendTheme } from "@chakra-ui/react"
 
-
-const config: any = {
+const config = {
     components: {
         Text: {
             baseStyle: {

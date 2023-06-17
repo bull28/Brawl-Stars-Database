@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import SkullBackground from "../components/SkullBackground";
 import AuthRequest from "../helpers/AuthRequest";
 import CosmeticData from "../types/CosmeticData";
+import api from "../helpers/ApiRoute";
 
 interface ThemeProps {
   background: {
@@ -72,7 +73,7 @@ export default function Gallery() {
             {data?.background.map((bg) => (
               <Flex key={bg.path + bg.displayName} bgColor={(cosmetics?.background === bg.path || ( !cosmetics?.background && bg.displayName === 'Default' ) ) ? 'green.300' : 'lightskyblue'} justifyContent={'space-between'} p={4} borderRadius={'lg'} my={'1%'} border={'2px solid black'}>
                 <Flex>
-                  <Image  borderRadius={'lg'} border={'2px solid'} borderColor={'black'} w={'15vh'} h={'15vh'} src={`/image/${bg.path}`} boxShadow={'0px 0px 25px #fff'}/>
+                  <Image  borderRadius={'lg'} border={'2px solid'} borderColor={'black'} w={'15vh'} h={'15vh'} src={`${api}/image/${bg.path}`} boxShadow={'0px 0px 25px #fff'}/>
                   <Flex flexDir={'column'} ml={'5%'} h={'11vh'}  justifyContent={'space-between'}>
                     <Text className="heading-2xl" fontSize={'2xl'}>{bg.displayName}</Text>
                     <Text fontSize={'sm'} className="heading-md">Personalize the Website with a New Background!</Text>
@@ -91,7 +92,7 @@ export default function Gallery() {
             {data?.icon.map((icon) => (
               <Flex key={icon.path + icon.displayName} bgColor={(cosmetics?.icon === icon.path || ( !cosmetics?.icon && icon.displayName === 'Default' ) ) ? 'green.300' : 'lightskyblue'} justifyContent={'space-between'} p={4} borderRadius={'lg'} my={'1%'} border={'2px solid black'}>
                 <Flex>
-                  <Image bgColor={'black'} borderRadius={'lg'} border={'2px solid'} borderColor={'white'} w={'15vh'} h={'15vh'} src={`/image/${icon.preview}`} boxShadow={'0px 0px 25px #fff'}/>
+                  <Image bgColor={'black'} borderRadius={'lg'} border={'2px solid'} borderColor={'white'} w={'15vh'} h={'15vh'} src={`${api}/image/${icon.preview}`} boxShadow={'0px 0px 25px #fff'}/>
                   <Flex flexDir={'column'} ml={'5%'} h={'11vh'}  justifyContent={'space-between'}>
                     <Text className="heading-2xl" fontSize={'2xl'}>{icon.displayName}</Text>
                     <Text fontSize={'sm'} className="heading-md" maxW={'90%'}>Personalize the Website with New Background Icons!</Text>
@@ -132,7 +133,7 @@ export default function Gallery() {
                 {data?.scene.map((scene) => (
                   <Flex key={scene.path + scene.displayName} bgColor={(cosmetics?.scene === scene.path || ( !cosmetics?.scene && scene.displayName === 'Default' ) ) ? 'green.300' : 'lightskyblue'} justifyContent={'space-between'} p={4} borderRadius={'lg'} my={'1%'} border={'2px solid black'}>
                     <Flex>
-                      <Image bgColor={'black'} borderRadius={'lg'} border={'2px solid'} borderColor={'white'} w={'15vh'} h={'15vh'} src={`/image/${scene.preview}`} boxShadow={'0px 0px 25px #fff'}/>
+                      <Image bgColor={'black'} borderRadius={'lg'} border={'2px solid'} borderColor={'white'} w={'15vh'} h={'15vh'} src={`${api}/image/${scene.preview}`} boxShadow={'0px 0px 25px #fff'}/>
                       <Flex flexDir={'column'} ml={'5%'} h={'11vh'}  justifyContent={'space-between'}>
                         <Text className="heading-2xl" fontSize={'2xl'}>{scene.displayName}</Text>
                         <Text fontSize={'sm'} className="heading-md" maxW={'90%'}>Personalize the Website with New Skin Viewer Scenes!</Text>

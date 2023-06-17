@@ -6,6 +6,7 @@ import {BsFillPersonFill} from 'react-icons/bs';
 import {RiKeyFill} from 'react-icons/ri';
 import { changeToken } from "../helpers/AuthRequest";
 import PasswordStrength from "../components/PasswordStrength";
+import api from "../helpers/ApiRoute";
 
 
 function Signup(){
@@ -29,7 +30,7 @@ function Signup(){
     const handleSignUp = async (e: any) => {
         e.preventDefault()
         
-        axios.post('/signup', {username: username, password: password})
+        axios.post(`${api}/signup`, {username: username, password: password})
             .then(res => {
                 navigate('/')
                 

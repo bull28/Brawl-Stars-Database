@@ -13,6 +13,7 @@ import { HamburgerIcon, SearchIcon } from '@chakra-ui/icons'
 import { useEffect, useRef, useState, useCallback } from "react";
 import MapView from './MapView';
 import axios from 'axios';
+import api from "../helpers/ApiRoute";
 
 interface MapData {
     name: string,
@@ -90,7 +91,7 @@ export default function EventSideBar({ changeData, changeOffset, startTime }: {c
         }
         
         if (endpoint !== ""){
-            axios.get(endpoint, {params: {hour: time[0], minute: time[1], second: (endpoint === "/event/worldtime") ? getSeconds(date) : time[2]}})
+            axios.get(`${api}${endpoint}`, {params: {hour: time[0], minute: time[1], second: (endpoint === "/event/worldtime") ? getSeconds(date) : time[2]}})
                 .then((res) => {
                     if (choice1 === "season_time" && choice2 === "at_time"){
                         setTime([res.data.time.hour, res.data.time.minute, res.data.time.second]);
@@ -123,7 +124,7 @@ export default function EventSideBar({ changeData, changeOffset, startTime }: {c
     }
 
     useEffect(() => {
-        axios.post('/mapsearch', {search: searchText})
+        axios.post(`${api}/mapsearch`, {search: searchText})
             .then((res) => {
                 setMaps(res.data)
             })
@@ -232,7 +233,7 @@ export default function EventSideBar({ changeData, changeOffset, startTime }: {c
                         },
                     }}>
                     {maps.map((m) => (
-                        <Button key={m.name} onClick={() => {openMapView(m.name)}} fontSize={['xs', 'xs', 'md', 'lg']} className={"heading-md"} bgColor={'transparent'} py={2} color={m.gameModeData.textColor} fontWeight={'normal'}><Image src={`/image/${m.gameModeData.image}`} h={'100%'} mr={1}></Image>{m.displayName}</Button>
+                        <Button key={m.name} onClick={() => {openMapView(m.name)}} fontSize={['xs', 'xs', 'md', 'lg']} className={"heading-md"} bgColor={'transparent'} py={2} color={m.gameModeData.textColor} fontWeight={'normal'}><Image src={`${api}/image/${m.gameModeData.image}`} h={'100%'} mr={1}></Image>{m.displayName}</Button>
                     ))}
                     </Stack>
                     

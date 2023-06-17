@@ -5,6 +5,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { Canvas, RootState, useFrame, useLoader, useThree } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import BackgroundScene from "./BackgroundScene";
+import api from "../helpers/ApiRoute";
 
 interface AnimationViewerProps{
     modelFile: string,
@@ -203,11 +204,11 @@ const AnimationViewer = (({modelFile, winFile, loseFile, bgFile}: AnimationViewe
 
     return(
         <Flex w={"100%"} h={"100%"} flexDir={"column"}>
-            <Flex w={"100%"} h={"100%"} bgImage={"../image/misc/bg_3d_model.webp"} backgroundPosition={"center"} backgroundSize={"cover"} backgroundRepeat={"no-repeat"}>
+            <Flex w={"100%"} h={"100%"} bgImage={`${api}/image/misc/bg_3d_model.webp`} backgroundPosition={"center"} backgroundSize={"cover"} backgroundRepeat={"no-repeat"}>
             <Canvas flat={true} camera={{fov: 40, position: [0, 0, 1]}}>
                 <Suspense fallback={null}>
-                    {(bgFile !== undefined && bgFile !== "" && bgFile !== "/image/") ? <BackgroundScene file={bgFile} modelPos={positionRef}/> : <></>}
-                    <GltfModel modelFile={modelFile} winFile={winFile ? winFile : "../image/misc/empty.glb"} loseFile={loseFile ? loseFile : "../image/misc/empty.glb"} playing={animationRef} modelPos={positionRef} hasBackground={(bgFile !== undefined && bgFile !== "" && bgFile !== "/image/")}/>
+                    {(bgFile !== undefined && bgFile !== "" && bgFile !== "/image/" && bgFile !== `${api}/image/`) ? <BackgroundScene file={bgFile} modelPos={positionRef}/> : <></>}
+                    <GltfModel modelFile={modelFile} winFile={winFile ? winFile : `${api}/image/misc/empty.glb`} loseFile={loseFile ? loseFile : `${api}/image/misc/empty.glb`} playing={animationRef} modelPos={positionRef} hasBackground={(bgFile !== undefined && bgFile !== "" && bgFile !== "/image/" && bgFile !== `${api}/image/`)}/>
                     <OrbitControls enablePan={false} maxPolarAngle={Math.PI / 2} maxDistance={150}/>
                 </Suspense>
             </Canvas>

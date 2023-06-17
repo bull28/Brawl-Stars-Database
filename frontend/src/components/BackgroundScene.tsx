@@ -1,6 +1,6 @@
 import { MutableRefObject } from "react";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { RootState, useFrame, useLoader } from "@react-three/fiber";
+import { useFrame, useLoader } from "@react-three/fiber";
 import { Vector3 } from "three";
 
 interface BackgroundSceneProps{
@@ -19,7 +19,7 @@ const BackgroundScene = ({file, modelPos}: BackgroundSceneProps) => {
         object.frustumCulled = false;
     });
 
-    useFrame((state: RootState, delta: number) => {
+    useFrame(() => {
         if (gltf.scene.position.y !== modelPos.current.y){
             gltf.scene.position.y = modelPos.current.y;
         }

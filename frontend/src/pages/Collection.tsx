@@ -13,6 +13,7 @@ import MovingText from '../components/MovingText'
 import SkullBackground from '../components/SkullBackground'
 import AccessoryLevel from "../components/AccessoryLevel";
 import {UserInfoProps} from '../types/AccountData'
+import api from "../helpers/ApiRoute";
 
 export default function Collection() {
     const [data, setData] = useState<CollectionData>()
@@ -138,7 +139,7 @@ export default function Collection() {
                                     </Flex>
                                     <HStack spacing={5} my={3}>
                                         <Box pos={'relative'}>
-                                            <Image filter={!brawler.u ? 'blur(1px)' : 'none'} src={`/image/${brawler.i}`} maxW={'64px'} borderRadius={'lg'}/>
+                                            <Image filter={!brawler.u ? 'blur(1px)' : 'none'} src={`${api}/image/${brawler.i}`} maxW={'64px'} borderRadius={'lg'}/>
                                             {!brawler.u && <Box w={'100%'} h={'100%'} bgColor={'rgba(0, 0, 0, 0.5)'} pos={'absolute'} top={0} borderRadius={'lg'}/>}
                                             {(!brawler.u) && <Icon as={RiLock2Line}  pos={'absolute'} fontSize={'25px'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}></Icon>}
                                         </Box>
@@ -167,7 +168,7 @@ export default function Collection() {
                     }}> 
                                 {brawler.pins.map((pin) => (                                        
                                         <Box key={brawler.name + pin.i} minW={'100px'} bgColor={Object.values(data?.pinRarityColors || {})[pin.r]} p={3} borderRadius={'md'} border={'2px solid black'}>
-                                            <Image w={'100px'} filter={(pin.a === 0) ? 'grayscale(100%)': 'none'} src={`/image/${brawler.pinFilePath+pin.i}`}/>                            
+                                            <Image w={'100px'} filter={(pin.a === 0) ? 'grayscale(100%)': 'none'} src={`${api}/image/${brawler.pinFilePath+pin.i}`}/>                            
                                             <Text my={1} color={(pin.a === 0) ? 'gray' : 'white'} fontSize={'lg'} className={'heading-lg'}>{`${pin.a}x`}</Text>                                            
                                         </Box>                                                                                                                                                          
                                 ))}                                
@@ -194,7 +195,7 @@ export default function Collection() {
                     <Flex key={accessory.displayName + accessory.image} bgColor={level >= accessory.unlockLevel ? '#a248ff' : '#512480'} flexDir={'column'} alignItems={'center'} border={accessory.unlocked === true ? '3px solid #e7a210' : '3px solid black'}>
                         <Text fontSize={'2xl'} className={'heading-2xl'}>{accessory.displayName}</Text>
                         <Box pos={'relative'} maxW={'40%'} m={2}>
-                            <Image filter={accessory.unlocked === true ? 'drop-shadow(0 0 2rem rgb(255, 255, 255));' : ''} src={`/image/${accessory.image}`}/>
+                            <Image filter={accessory.unlocked === true ? 'drop-shadow(0 0 2rem rgb(255, 255, 255));' : ''} src={`${api}/image/${accessory.image}`}/>
                             {accessory.unlocked === false && <Box w={'100%'} h={'100%'} bgColor={'rgba(0, 0, 0, 0.5)'} pos={'absolute'} top={0} borderRadius={'lg'}/>}
                             {accessory.unlocked === false && <Icon as={RiLock2Line}  pos={'absolute'} fontSize={'25px'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}></Icon>}
                         </Box>

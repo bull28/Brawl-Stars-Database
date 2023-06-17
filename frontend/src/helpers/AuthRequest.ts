@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { createStandaloneToast } from '@chakra-ui/react'
+import api from "../helpers/ApiRoute";
 
 //functions that deal with token storage/retrieval and post requests using them
 
@@ -41,7 +42,7 @@ interface AuthRequestConfigProps<T>{
 export default async function AuthRequest<T>(endpoint:string, config: AuthRequestConfigProps<T>) {
     const { toast } = createStandaloneToast()
 
-    axios.post(endpoint, {token: getToken(), ...config.data})
+    axios.post(`${api}${endpoint}`, {token: getToken(), ...config.data})
         .then((res) => {
             if (config.setState){
                 config.setState(res.data);

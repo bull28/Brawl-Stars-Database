@@ -12,6 +12,7 @@ import { BsPersonFill } from 'react-icons/bs'
 import { CollectionData } from '../types/CollectionData'
 import { RiLock2Line } from 'react-icons/ri'
 import SkullBackground from '../components/SkullBackground'
+import api from "../helpers/ApiRoute";
 
 /*
     To-Do
@@ -71,7 +72,7 @@ export default function Trade() {
     const { isOpen: isOpen3, onOpen: onOpen3, onClose: onClose3 } = useDisclosure()
 
     const updateResults = useCallback(() => {
-        axios.post('/trade/all', filter)
+        axios.post(`${api}/trade/all`, filter)
             .then((res) => {
                 setResults(res.data)
             })
@@ -107,7 +108,7 @@ export default function Trade() {
         }
 
         if (offerObject.length > 0 || reqObject.length > 0){
-            axios.post('/trade/create', {
+            axios.post(`${api}/trade/create`, {
                 token: getToken(),
                 searchByName: true,
                 offer: offerObject,
@@ -138,14 +139,14 @@ export default function Trade() {
     }, [filter.page, updateResults])
 
     useEffect(() => {
-        axios.get('/brawler')
+        axios.get(`${api}/brawler`)
             .then((res) => {
                 setBrawlerData(res.data)
             })
     }, [])
 
     useEffect(() =>  {
-        axios.get(`/brawler/${filter.brawler}`)
+        axios.get(`${api}/brawler/${filter.brawler}`)
             .then((res) => {
                 setPinData(res.data.pins)
             })
@@ -247,7 +248,7 @@ export default function Trade() {
             reqObject.push(temp)
         }
 
-        axios.post('/trade/create', {
+        axios.post(`${api}/trade/create`, {
             token: getToken(),
             searchByName: true,
             offer: offerObject,
@@ -350,13 +351,13 @@ export default function Trade() {
                 <Flex>
                     <HStack>
                         <Flex  h={'40px'} pr={'30px'} bgColor={'#f98f92'} justifyContent={'space-between'} alignItems={'center'} borderRadius={'5%'} border={'2px solid black'}>
-                            <Image h={'50px'}  src={`/image/resources/resource_trade_credits.webp`}/>                        
+                            <Image h={'50px'}  src={`${api}/image/resources/resource_trade_credits.webp`}/>                        
                             <Text  fontSize={'lg'} h={'30px'} className={'heading-lg'} >{resources?.tradeCredits}</Text>
                         </Flex>
                         {resources?.wildCardPins.map((wildCard) => {
                             return (
                                 <Flex key={wildCard.rarityName + wildCard.rarityColor} py={'15px'} h={'50px'} px={'30px'} bgColor={wildCard.rarityColor}justifyContent={'space-around'} alignItems={'center'} borderRadius={'5%'}>
-                                    <Image h={'50px'} src={`/image/resources/wildcard_pin.webp`}/>                        
+                                    <Image h={'50px'} src={`${api}/image/resources/wildcard_pin.webp`}/>                        
                                     <Text  fontSize={'lg'} className={'heading-lg'} >{wildCard.amount}</Text>
                                 </Flex>    
                             );
@@ -418,7 +419,7 @@ export default function Trade() {
                                             <MenuList>
                                             <SimpleGrid columns={3}>
                                             {brawlerPinData?.map((pin) => (
-                                                <MenuItem key={pin.image} onClick={(e) => {changeFilter("pin", pin.image.split('/')[2].split('.')[0])}}><Image maxW={'60px'} src={`/image/${pin.image}`}></Image></MenuItem>
+                                                <MenuItem key={pin.image} onClick={(e) => {changeFilter("pin", pin.image.split('/')[2].split('.')[0])}}><Image maxW={'60px'} src={`${api}/image/${pin.image}`}></Image></MenuItem>
                                             ))}
                                             </SimpleGrid>
                                             </MenuList>
@@ -477,7 +478,7 @@ export default function Trade() {
                         }}>
                         {offer?.map((pin) => (
                                         <Flex p={5} key={pin.name} border={'2px solid black'} borderRadius={'lg'} bgColor={pin.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'} cursor={'pointer'} onClick={() => {setOffer(offer.filter((item) => item !== pin))}}>
-                                            <Image  maxW={'60px'} src={`/image/${pin.pinImage}`} fallback={<Spinner/>}/>
+                                            <Image  maxW={'60px'} src={`${api}/image/${pin.pinImage}`} fallback={<Spinner/>}/>
                                             <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} color={'red'}>{`- ${pin.amount}`}</Text>
                                         </Flex>
                                     ))}
@@ -502,7 +503,7 @@ export default function Trade() {
                         }}>
                         {req?.map((pin) => (
                                         <Flex p={5} key={pin.name} border={'2px solid black'} borderRadius={'lg'} bgColor={pin.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'} cursor={'pointer'} onClick={() => {setReq(req.filter((item) => item !== pin))}}>
-                                            <Image  maxW={'60px'} src={`/image/${pin.pinImage}`} fallback={<Spinner/>}/>
+                                            <Image  maxW={'60px'} src={`${api}/image/${pin.pinImage}`} fallback={<Spinner/>}/>
                                             <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} color={'green'}>{`+ ${pin.amount}`}</Text>
                                         </Flex>
                                     ))}
@@ -533,7 +534,7 @@ export default function Trade() {
                                     <Flex key={brawler.name} flexDir={'column'} alignItems={'center'} userSelect={'none'}>
                                         <Flex p={1} border={'2px solid black'} borderRadius={'lg'} bgColor={brawler.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'} cursor={'pointer'} onClick={() => {if (brawler.u){showPins(brawler.name)}}}>
                                             <Box pos={'relative'}>
-                                                <Image filter={!brawler.u ? 'blur(1px)' : 'none'} draggable={'false'} borderRadius={'20%'} src={`/image/${brawler.i}`} fallback={<Spinner/>}/>                                                                                
+                                                <Image filter={!brawler.u ? 'blur(1px)' : 'none'} draggable={'false'} borderRadius={'20%'} src={`${api}/image/${brawler.i}`} fallback={<Spinner/>}/>                                                                                
                                             </Box>
                                             {!brawler.u && <Box w={'100%'} h={'100%'} bgColor={'rgba(0, 0, 0, 0.5)'} pos={'absolute'} top={0} borderRadius={'lg'}/>}
                                             {(!brawler.u) && <Icon as={RiLock2Line}  pos={'absolute'} fontSize={'25px'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}></Icon>}
@@ -553,7 +554,7 @@ export default function Trade() {
                                 return brawler.pins.map((pin) => (
                                     <Flex key={brawler.name + pin.i} flexDir={'column'} alignItems={'center'} userSelect={'none'}>
                                         <Flex p={2} border={'2px solid black'} borderRadius={'lg'} bgColor={Object.values(collectionData?.pinRarityColors || {})[pin.r]} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'} cursor={'pointer'} onClick={() => {if (pinLocation === "offer"){ if (pin.a !== 0 ){addOffer({image: `${brawler.pinFilePath}${pin.i}`, r: pin.r})}} else {addReq({image: `${brawler.pinFilePath}${pin.i}`, r: pin.r})}}}>
-                                            <Image draggable={'false'} borderRadius={'20%'} src={`/image/${brawler.pinFilePath}${pin.i}`} fallback={<Spinner/>}/>                                                                                
+                                            <Image draggable={'false'} borderRadius={'20%'} src={`${api}/image/${brawler.pinFilePath}${pin.i}`} fallback={<Spinner/>}/>                                                                                
                                             {(pin.a === 0 && pinLocation === "offer") && <Box w={'100%'} h={'100%'} bgColor={'rgba(0, 0, 0, 0.5)'} pos={'absolute'} top={0} borderRadius={'lg'}/>}
                                             {(pin.a === 0 && pinLocation === "offer") && <Icon as={RiLock2Line}  pos={'absolute'} fontSize={'25px'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}></Icon>}                                                
                                         </Flex>                                
@@ -598,7 +599,7 @@ export default function Trade() {
                 <Button fontSize={'2xl'} p={5}  mr={3} fontWeight={'normal'} onClick={onClose2}>
                 Cancel
                 </Button>
-                <Button fontSize={'2xl'} p={5} fontWeight={'normal'} onClick={createTrade} rightIcon={<Image maxH={'40px'} src={'/image/resources/resource_trade_credits.webp'}/>}>{tradeCost}</Button>
+                <Button fontSize={'2xl'} p={5} fontWeight={'normal'} onClick={createTrade} rightIcon={<Image maxH={'40px'} src={`${api}/image/resources/resource_trade_credits.webp`}/>}>{tradeCost}</Button>
             </ModalFooter>
             </ModalContent>
       </Modal>

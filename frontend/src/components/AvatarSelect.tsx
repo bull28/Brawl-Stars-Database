@@ -13,6 +13,7 @@ import {  Modal,
     Flex, } from '@chakra-ui/react'
 
 import AuthRequest from '../helpers/AuthRequest'
+import api from "../helpers/ApiRoute";
 
 
 type Props = {
@@ -51,7 +52,7 @@ const AvatarSelect = React.forwardRef<{open: () => void}, Props>((props, ref) =>
             <SimpleGrid columns={[4,5,6,7,8]} spacing={2}>
                 {avatars?.map((a) => (
                     <Box key={a} w={'fit-content'} onClick={() => {props.setAvatar(a); onClose();}} cursor={'pointer'}>
-                        <Image src={`/image/${a}`} w={'100px'} borderRadius={'50%'} border={(a === props.avatar) ? '3px solid #87C1FF' : '2px solid black'}/>
+                        <Image src={`${api}/image/${a}`} w={'100px'} borderRadius={'50%'} border={(a === props.avatar) ? '3px solid #87C1FF' : '2px solid black'}/>
                     </Box>
                 ))}
             </SimpleGrid>

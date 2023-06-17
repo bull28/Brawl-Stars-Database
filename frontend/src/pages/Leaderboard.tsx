@@ -5,6 +5,7 @@ import axios, {AxiosResponse} from "axios";
 import {getToken} from "../helpers/AuthRequest";
 import {displayShort, displayLong} from "../helpers/LargeNumberDisplay";
 import {UserInfoProps} from "../types/AccountData";
+import api from "../helpers/ApiRoute";
 
 type LeaderboardData = {
     username: string;
@@ -27,7 +28,7 @@ export default function Leaderboard(){
     }
 
     useEffect(() => {
-        axios.get<{}, AxiosResponse<LeaderboardData>>("/challenge/leaderboard")
+        axios.get<{}, AxiosResponse<LeaderboardData>>(`${api}/challenge/leaderboard`)
         .then((res) => {
             setData(res.data);
         }).catch((error) => {
@@ -39,7 +40,7 @@ export default function Leaderboard(){
         // Not being logged in here is not an error
         const token = getToken();
         if (typeof token !== "undefined"){
-            axios.post<{}, AxiosResponse<UserInfoProps>>("/resources", {token: token})
+            axios.post<{}, AxiosResponse<UserInfoProps>>(`${api}/resources`, {token: token})
             .then((res) => {
                 setUsername(res.data.username);
             }).catch((error) => {});
@@ -82,7 +83,7 @@ export default function Leaderboard(){
                                     <Text fontSize={"xl"} className={"heading-xl"} color={value.username === username ? "#0f0" : "#fff"}>{index + 1}</Text>
                                 </Flex>
                                 <Flex w={"85%"} alignItems={"center"}>
-                                    <Image src={`/image/${value.avatar}`} border={"2px solid #fff"} borderRadius={"50%"} h={10} mr={1}/>
+                                    <Image src={`${api}/image/${value.avatar}`} border={"2px solid #fff"} borderRadius={"50%"} h={10} mr={1}/>
                                     <Text fontSize={value.username.length > 20 ? ["xs", `${15 - (value.username.length - 20) * 0.25}px`, `${15 - (value.username.length - 20) * 0.25}px`, `${20 - (value.username.length - 20) * 0.5}px`, "xl"] : ["md", "md", "lg", "xl", "xl"]} className={"heading-xl"}>{value.username}</Text>
                                 </Flex>
                             </Flex>

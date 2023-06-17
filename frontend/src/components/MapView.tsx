@@ -18,6 +18,7 @@ import axios from 'axios'
 import {time} from "../types/EventData";
 import EventTime from "../helpers/EventTime";
 import Label from "./Label";
+import api from "../helpers/ApiRoute";
 
 interface Props {
     map: string
@@ -80,7 +81,7 @@ const MapView = React.forwardRef<{open: () => void}, Props>((props, ref) => {
 
   useEffect(() => {
     if (props.map){
-      axios.get(`/map/${props.map}`)
+      axios.get(`${api}/map/${props.map}`)
         .then((res) => {
           setData(res.data)
       })
@@ -96,9 +97,9 @@ const MapView = React.forwardRef<{open: () => void}, Props>((props, ref) => {
           <ModalHeader p={1}>
             {typeof data !== "undefined" ?
               <Flex p={2} flexDir={'column'} textAlign={'center'} position={'relative'}>
-                <Image maxH={'80px'} objectFit={'cover'} src={`/image/${data.bannerImage}`} borderRadius={'lg'} fallback={<Spinner/>}/>
+                <Image maxH={'80px'} objectFit={'cover'} src={`${api}/image/${data.bannerImage}`} borderRadius={'lg'} fallback={<Spinner/>}/>
                 <Flex position={'absolute'} left={'50%'} top={'50%'} transform={'translate(-50%,-50%)'} w={'100%'} justifyContent={'center'} alignItems={'center'}>
-                  <Image src={`/image/${data.gameMode.image}`} mr={3}/>
+                  <Image src={`${api}/image/${data.gameMode.image}`} mr={3}/>
                   <Text  fontSize={'3xl'} className={'heading-3xl'} noOfLines={1}>{data.displayName}</Text>
                 </Flex>
               </Flex>
@@ -111,10 +112,10 @@ const MapView = React.forwardRef<{open: () => void}, Props>((props, ref) => {
           <ModalBody>
             {typeof data !== "undefined" ?
               <>
-                <Image src={`/image/${data.image}`} fallback={<Spinner/>}/>
+                <Image src={`${api}/image/${data.image}`} fallback={<Spinner/>}/>
                 <Flex alignItems={'center'}>
                   <Text fontSize={'2xl'} className={'heading-2xl'}>{eventTimeDays(data.times.next)}</Text>
-                  {data.powerLeagueMap && <Label label={"Power League Map"}><Image h={'35px'} ml={2} src={'/image/skingroups/icons/icon_ranked.webp'}/></Label>}
+                  {data.powerLeagueMap && <Label label={"Power League Map"}><Image h={'35px'} ml={2} src={`${api}/image/skingroups/icons/icon_ranked.webp`}/></Label>}
                 </Flex>
               </>
               :

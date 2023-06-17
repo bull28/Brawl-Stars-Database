@@ -7,6 +7,7 @@ import {
 } from "@chakra-ui/react";
 import {UnitImage, ChallengeName, RoomName, RoomData} from "../types/ChallengeData";
 import {displayLong} from "../helpers/LargeNumberDisplay";
+import api from "../helpers/ApiRoute";
 
 interface ChallengePlayerProps{
     address: string;
@@ -535,7 +536,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                                     }
 
                                     return (
-                                        <Button key={-1 * value.id - 1} w={"50px"} h={"50px"} fontSize={"16px"} lineHeight={"16px"} bgColor={"#0000"} bgPos={"center"} bgSize={"cover"} bgRepeat={"no-repeat"} alignItems={"flex-start"} justifyContent={"flex-start"} padding={0} borderRadius={0} _hover={{}} _active={{}} border={`2px solid ${borderColor}`} bgImage={value.image !== "" ? `url('/image/${value.image}')`: undefined} isDisabled={preview && attackActions.has(value.id)} onMouseOver={() => {selectUnit(value);}} onMouseOut={() => {if (!preview || lastUnit !== value.id){selectUnit(undefined);}}} onClick={() => {click(value.id, point);}}>
+                                        <Button key={-1 * value.id - 1} w={"50px"} h={"50px"} fontSize={"16px"} lineHeight={"16px"} bgColor={"#0000"} bgPos={"center"} bgSize={"cover"} bgRepeat={"no-repeat"} alignItems={"flex-start"} justifyContent={"flex-start"} padding={0} borderRadius={0} _hover={{}} _active={{}} border={`2px solid ${borderColor}`} bgImage={value.image !== "" ? `url('${api}/image/${value.image}')`: undefined} isDisabled={preview && attackActions.has(value.id)} onMouseOver={() => {selectUnit(value);}} onMouseOut={() => {if (!preview || lastUnit !== value.id){selectUnit(undefined);}}} onClick={() => {click(value.id, point);}}>
                                             <Flex flexDir={"column"} w={"100%"} h={"100%"}>
                                                 {value.weight > 0 || healthFraction < 1 ?
                                                     <Flex w={"100%"} h={"3px"} bgColor={"#333"}>
@@ -572,7 +573,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                                 }
                 
                                 return (
-                                    <Button key={value.id} w={"50px"} h={"50px"} fontSize={"16px"} lineHeight={"16px"} bgColor={"#0000"} bgPos={"center"} bgSize={"cover"} bgRepeat={"no-repeat"} alignItems={"flex-start"} justifyContent={"flex-start"} padding={0} borderRadius={0} _hover={{}} _active={{}} border={`2px solid ${borderColor}`} bgImage={value.image !== "" ? `url('/image/${value.image}')`: undefined} isDisabled={preview && attackActions.has(value.id)} onMouseOver={() => {selectUnit(value);}} onMouseOut={() => {if (!preview || lastUnit !== value.id){selectUnit(undefined);}}} onClick={() => {click(value.id, [-1, -1])}}>
+                                    <Button key={value.id} w={"50px"} h={"50px"} fontSize={"16px"} lineHeight={"16px"} bgColor={"#0000"} bgPos={"center"} bgSize={"cover"} bgRepeat={"no-repeat"} alignItems={"flex-start"} justifyContent={"flex-start"} padding={0} borderRadius={0} _hover={{}} _active={{}} border={`2px solid ${borderColor}`} bgImage={value.image !== "" ? `url('${api}/image/${value.image}')`: undefined} isDisabled={preview && attackActions.has(value.id)} onMouseOver={() => {selectUnit(value);}} onMouseOut={() => {if (!preview || lastUnit !== value.id){selectUnit(undefined);}}} onClick={() => {click(value.id, [-1, -1])}}>
                                         <Flex w={"100%"} h={"100%"} className={"heading-md"}>{value.id}</Flex>
                                     </Button>
                                 );
@@ -589,7 +590,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                                 return (
                                     <Flex w={"150px"} key={value.username + value.avatar} flexDir={"column"} alignItems={"center"} paddingTop={"5px"} bgColor={(challenge.winner >= 0 && challenge.winner === index) ? playerColor(challenge.winner, currentPlayer) : "#0000"}>
                                         <Flex w={"50%"} justifyContent={"center"} alignItems={"center"} borderRadius={"50%"} border={"3px solid #ffffff"}>
-                                            <Image src={value.avatar !== "" ? `/image/${value.avatar}` : `/image/avatars/free/default.webp`} borderRadius={"50%"}/>
+                                            <Image src={value.avatar !== "" ? `${api}/image/${value.avatar}` : `${api}/image/avatars/free/default.webp`} borderRadius={"50%"}/>
                                         </Flex>
                                         <Text maxW={"100%"} className={"heading-xs"}>{value.username !== "" ? value.username : "Player"}</Text>
                                         <Flex w={"100%"} h={"3px"} bgColor={playerColor(index, currentPlayer)}/>
@@ -683,11 +684,11 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                                         <Text fontSize={"2xl"} className={"heading-2xl"}>Rewards</Text>
                                         <Flex alignItems={"center"}>
                                             <Text fontSize={"2xl"} className={"heading-2xl"} color={"#fff"} mr={1}>{displayLong(reward.reward.coins)}</Text>
-                                            <Image src={"/image/resources/resource_coins.webp"} h={7}/>
+                                            <Image src={`${api}/image/resources/resource_coins.webp`} h={7}/>
                                         </Flex>
                                         <Flex alignItems={"center"} mb={3}>
                                             <Text fontSize={"2xl"} className={"heading-2xl"} color={reward.reward.bonusClaimed === true ? "#0f0" : "#fff"} mr={1}>{displayLong(reward.reward.points)}</Text>
-                                            <Image src={"/image/resources/resource_challenge_points.webp"} h={7}/>
+                                            <Image src={`${api}/image/resources/resource_challenge_points.webp`} h={7}/>
                                         </Flex>
                                         {reward.reward.bonusClaimed === true ?
                                             <Text fontSize={"md"} className={"heading-md"} color={"#0f0"}>Daily bonus claimed!</Text>
@@ -697,7 +698,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                                         {(typeof reward.reward.accessory !== "undefined") ?
                                             <Flex flexDir={"column"} alignItems={"center"} mt={10}>
                                                 <Text fontSize={"2xl"} className={"heading-2xl"}>New Accessory Unlocked!</Text>
-                                                <Image src={`/image/${reward.reward.accessory.image}`} maxW={"50%"}/>
+                                                <Image src={`${api}/image/${reward.reward.accessory.image}`} maxW={"50%"}/>
                                                 <Text fontSize={"2xl"} className={"heading-2xl"}>{reward.reward.accessory.displayName}</Text>
                                             </Flex>
                                             :
@@ -735,7 +736,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                                         <Stack direction={["column", "row", "row", "row", "row"]} wrap={"wrap"}>
                                             {unitChoices.map((value) => {
                                                 return (
-                                                    <Image key={value.key} w={10} src={`/image/${value.image}`}/>
+                                                    <Image key={value.key} w={10} src={`${api}/image/${value.image}`}/>
                                                 );
                                             })}
                                         </Stack>
@@ -745,7 +746,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                                     {confirm.cost > 0 ? <Text mt={8} textAlign={"center"}>Warning: If you leave the page after accepting this challenge, your tokens will not be refunded.</Text> : <></>}
                                     <Button onClick={() => {confirm.action(); onCloseConfirm(); onClose();}} mt={8}>
                                         <Text fontSize={"lg"}>{confirm.cost}</Text>
-                                        <Image ml={1} src={"/image/resources/resource_tokens.webp"} h={5}/>
+                                        <Image ml={1} src={`${api}/image/resources/resource_tokens.webp`} h={5}/>
                                     </Button>
                                 </Flex>
                             </ModalBody>

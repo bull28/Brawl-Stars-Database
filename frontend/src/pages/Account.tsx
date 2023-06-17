@@ -10,6 +10,7 @@ import AvatarSelect from '../components/AvatarSelect';
 import { getToken } from "../helpers/AuthRequest";
 import AuthRequest from '../helpers/AuthRequest'
 import { RainbowBorder } from "../themes/animations";
+import api from "../helpers/ApiRoute";
 
 export default function Account() {
   const [data, setData] = useState<UserInfoProps>()
@@ -45,10 +46,8 @@ export default function Account() {
   const handleUpdate = () => {
     toast.closeAll();
 
-    axios.post('/update', {currentPassword: oldPassword, newPassword: newPassword, newAvatar: avatar, token: getToken()})
+    axios.post(`${api}/update`, {currentPassword: oldPassword, newPassword: newPassword, newAvatar: avatar, token: getToken()})
       .then((res) => {
-        //changeToken(res.data.username, res.data.token)
-        
         toast({
           title: 'Success',
           description: 'Updated Profile.',
@@ -89,7 +88,7 @@ export default function Account() {
         <Text fontSize={'4xl'} className={'heading-4xl'} >{data?.username}</Text>
         <Flex position={'relative'} pt={3} w={'fit-content'} mt={3}>
           <Flex justifyContent={'center'} alignItems={'center'} borderRadius={'50%'} animation={(data?.avatarColor === 'rainbow') ? `${RainbowBorder()} 12s infinite` : ''} border={(data?.avatarColor !== 'rainbow') ? `3px solid ${data?.avatarColor}` : ''} >
-            <Image src={avatar !== "" ? `/image/${avatar}` : undefined} borderRadius={'50%'}/>
+            <Image src={avatar !== "" ? `${api}/image/${avatar}` : undefined} borderRadius={'50%'}/>
           </Flex>
           <Icon fontSize={'3xl'} position={'absolute'} top={0} right={0} as={MdOutlineEdit} onClick={changeAvatar} cursor={'pointer'}/>
         </Flex>

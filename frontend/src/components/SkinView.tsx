@@ -17,6 +17,7 @@ import CurrencyIcon from './CurrencyIcon'
 import Label from './Label'
 import { animateScroll as scroll } from 'react-scroll'
 import { ModelFiles } from '../types/BrawlerData'
+import api from "../helpers/ApiRoute";
 
 type BrawlerImageProps = {
     brawler: string,
@@ -62,7 +63,7 @@ export default function BrawlerImage({ brawler, skin, setModel }: BrawlerImagePr
     const { isOpen, onOpen, onClose } = useDisclosure()
     
     useEffect(() => {
-        axios.get(`/skin/${brawler}/${skin}`)
+        axios.get(`${api}/skin/${brawler}/${skin}`)
             .then((res) => {
                 setData(res.data)
             })
@@ -72,13 +73,13 @@ export default function BrawlerImage({ brawler, skin, setModel }: BrawlerImagePr
     <>
     {data && Object.keys(data).length !== 0 && 
         <>
-            <Flex h={'90%'} bgImage={`/image/${data.group.image}`} borderRadius={'lg'} onClick={onOpen} border={data.limited ? '4px solid gold' : 'none'} backgroundPosition={'center'} justifyContent={'center'}>
-                <Image objectFit={'contain'} src={`/image/${data.image}`} alt={data.displayName} fallback={<Spinner/>}/>
+            <Flex h={'90%'} bgImage={`${api}/image/${data.group.image}`} borderRadius={'lg'} onClick={onOpen} border={data.limited ? '4px solid gold' : 'none'} backgroundPosition={'center'} justifyContent={'center'}>
+                <Image objectFit={'contain'} src={`${api}/image/${data.image}`} alt={data.displayName} fallback={<Spinner/>}/>
             </Flex>
             <Flex alignItems={'center'} alignSelf={'center'} mt={3} mb={1}>
-                    {(data.group.icon !== 'skingroups/icons/icon_default.webp') && <Label label={data.group.name}><Image src={`/image/${data.group.icon}`} w={7} mr={3}/></Label>}            
+                    {(data.group.icon !== 'skingroups/icons/icon_default.webp') && <Label label={data.group.name}><Image src={`${api}/image/${data.group.icon}`} w={7} mr={3}/></Label>}            
                 <Text fontSize={['md','lg','xl']} className={'heading-lg'} >{data.displayName}</Text>    
-                {(data.model.geometry.exists) && <Icon as={RepeatIcon} ml={3} fontSize={'24px'} cursor={'pointer'} onClick={() => {let skinModel: ModelFiles = {geometry: `/image/${data.model.geometry.path}`, winAnimation: undefined, loseAnimation: undefined}; if (data.model.winAnimation.exists){skinModel.winAnimation = `/image/${data.model.winAnimation.path}`;} if (data.model.loseAnimation.exists){skinModel.loseAnimation = `/image/${data.model.loseAnimation.path}`;} setModel(skinModel); scroll.scrollToTop();}}/>}
+                {(data.model.geometry.exists) && <Icon as={RepeatIcon} ml={3} fontSize={'24px'} cursor={'pointer'} onClick={() => {let skinModel: ModelFiles = {geometry: `${api}/image/${data.model.geometry.path}`, winAnimation: undefined, loseAnimation: undefined}; if (data.model.winAnimation.exists){skinModel.winAnimation = `${api}/image/${data.model.winAnimation.path}`;} if (data.model.loseAnimation.exists){skinModel.loseAnimation = `${api}/image/${data.model.loseAnimation.path}`;} setModel(skinModel); scroll.scrollToTop();}}/>}
             </Flex>
             
             <Flex alignSelf={'center'} mb={1}>

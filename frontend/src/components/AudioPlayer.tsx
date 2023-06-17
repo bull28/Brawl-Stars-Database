@@ -3,6 +3,7 @@ import { Flex, IconButton } from "@chakra-ui/react";
 import {HiMusicNote} from "react-icons/hi";
 import AuthRequest from "../helpers/AuthRequest";
 import CosmeticData from "../types/CosmeticData";
+import api from "../helpers/ApiRoute";
 
 export default function AudioPlayer() {
     const [audio] = useState(new Audio());
@@ -13,7 +14,7 @@ export default function AudioPlayer() {
         if (typeof cosmetics.music === "string"){
             setPlaying(false);
             audio.pause();
-            audio.src = `/image/${cosmetics.music}`;
+            audio.src = `${api}/image/${cosmetics.music}`;
         }
     }, [audio]);
     

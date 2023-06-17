@@ -8,6 +8,7 @@ import { BrawlerData, ModelFiles } from '../types/BrawlerData'
 import AnimationViewer from '../components/AnimationViewer'
 import AuthRequest from '../helpers/AuthRequest'
 import CosmeticData from '../types/CosmeticData'
+import api from "../helpers/ApiRoute";
 
 export default function Brawler() {
     const params = useParams()
@@ -20,20 +21,20 @@ export default function Brawler() {
     }, [])
 
     useEffect(() => {
-        axios.get(`/brawler/${params.brawler}`)
+        axios.get(`${api}/brawler/${params.brawler}`)
         .then((res) => {
             setData(res.data);
-            axios.get(`/skin/${params.brawler}/${res.data.defaultSkin}`)
+            axios.get(`${api}/skin/${params.brawler}/${res.data.defaultSkin}`)
             .then((skinRes) => {
                 let defaultModel: ModelFiles = {
-                    geometry: `/image/${skinRes.data.model.geometry.path}`,
+                    geometry: `${api}/image/${skinRes.data.model.geometry.path}`,
                     winAnimation: undefined,
                     loseAnimation: undefined
                 };
                 if (skinRes.data.model.winAnimation.exists){
-                    defaultModel.winAnimation = `/image/${skinRes.data.model.winAnimation.path}`;
+                    defaultModel.winAnimation = `${api}/image/${skinRes.data.model.winAnimation.path}`;
                 } if (skinRes.data.model.loseAnimation.exists){
-                    defaultModel.loseAnimation = `/image/${skinRes.data.model.loseAnimation.path}`;
+                    defaultModel.loseAnimation = `${api}/image/${skinRes.data.model.loseAnimation.path}`;
                 }
                 setModel(defaultModel);
             });
@@ -50,18 +51,18 @@ export default function Brawler() {
             </Flex>
             <Stack direction={['column', 'column', 'column', 'column', 'row']} h={['fit-content', 'fit-content', 'fit-content', 'fit-content', '60vh']} w={'100%'} alignItems={'center'} justifyContent={'space-around'} spacing={['3vh', '3vh', '3vh', '3vh', 0]} mb={5}>
                 <Flex flexDir={'column'} textAlign={'center'} h={'100%'} justifyContent={'center'} alignItems={'center'} w={['100%', '80%', '69%', '50%', '33%']}>
-                    <Image src={`/image/${data.image}`} borderRadius={'sm'} fallback={<Spinner/>} objectFit={'contain'} h={'50%'} border={'8px solid black'} mb={7}/>
+                    <Image src={`${api}/image/${data.image}`} borderRadius={'sm'} fallback={<Spinner/>} objectFit={'contain'} h={'50%'} border={'8px solid black'} mb={7}/>
                     <Flex pos={'relative'} justifyContent={'center'}>
                         <Text pos={'absolute'} background={`linear-gradient(to left, #ffd12e, #ffdaac, #ffd12e, #f29928, #ffd12e)`} w={'120%'} backgroundClip={'text'} color={'transparent'} animation={`${keyframes`0%{background-position: 0px;} 100%{background-position: ${Math.max(1, data.title.length) * 200}px;}`} 60s linear infinite`} fontSize={'xl'} fontStyle={'italic'}>{data.title}</Text>
                         <Text color={'black'} fontSize={'xl'} fontStyle={'italic'} fontWeight={'bold'} className={`heading-xl`}>{data.title}</Text>
                     </Flex>
-                    <Image src={`/image/${data.masteryIcon}`} objectFit={'contain'} h={'20%'} mb={7} mt={2}/>
+                    <Image src={`${api}/image/${data.masteryIcon}`} objectFit={'contain'} h={'20%'} mb={7} mt={2}/>
                     <Text w={'60%'} color={'white'} fontSize={['x-small', 'sm', 'md']} className={'heading-md'}>{data.description}</Text>
                 </Flex>
 
                 <Flex justifyContent={'center'} alignItems={'center'} h={'100%'} w={['60%', '60%', '50%', '40%', '33%']} bgColor={'#000'} backgroundPosition={'center'} backgroundSize={'cover'} backgroundRepeat={'no-repeat'} border={'3px solid white'}>
                     <Suspense fallback={<Spinner/>}>
-                        {model.geometry && <AnimationViewer modelFile={model.geometry} winFile={model.winAnimation} loseFile={model.loseAnimation} bgFile={`/image/${cosmetics?.scene}`}/>}
+                        {model.geometry && <AnimationViewer modelFile={model.geometry} winFile={model.winAnimation} loseFile={model.loseAnimation} bgFile={`${api}/image/${cosmetics?.scene}`}/>}
                     </Suspense>
                 </Flex>
 
@@ -80,7 +81,7 @@ export default function Brawler() {
                     }}>
                         {data.pins.map((pin) => (
                             <Flex bgColor={pin.rarity.color} borderRadius={'lg'} p={1} key={pin.image} border={'1px solid rgba(255,255,255,0.5)'}>
-                                <Image src={`/image/${pin.image}`} fallback={<Spinner/>}/>
+                                <Image src={`${api}/image/${pin.image}`} fallback={<Spinner/>}/>
                             </Flex>
                         ))}
                     </SimpleGrid>

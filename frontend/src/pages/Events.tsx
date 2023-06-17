@@ -5,6 +5,7 @@ import EventView from '../components/EventView'
 import EventSideBar from '../components/EventSideBar'
 import {event, time} from '../types/EventData'
 import SkullBackground from "../components/SkullBackground"
+import api from "../helpers/ApiRoute";
 
 
 interface EventsCurrent {
@@ -17,7 +18,7 @@ export default function Maps() {
   const [offset, setOffset] = useState<number>(0);
 
   const fetchData = () => {
-    axios.get('/event/current')
+    axios.get(`${api}/event/current`)
       .then((res) => {
         setData(res.data)
       })

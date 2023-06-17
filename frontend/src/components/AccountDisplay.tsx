@@ -27,6 +27,7 @@ import { useNavigate } from 'react-router-dom'
 import { RainbowBorder } from '../themes/animations'
 import {displayShort, displayLong} from '../helpers/LargeNumberDisplay'
 import { AxiosError } from 'axios'
+import api from "../helpers/ApiRoute";
 
 type TokenStorage = {[k: string]: string;};
 
@@ -81,7 +82,7 @@ export default function AccountDisplay() {
         <Menu autoSelect={false} closeOnSelect={false}>
             <MenuButton>
                 <Flex justifyContent={'center'} alignItems={'center'} borderRadius={'50%'} border={(data?.avatarColor !== 'rainbow') ? `3px solid ${data?.avatarColor}` : ''} animation={(data?.avatarColor === 'rainbow') ? `${RainbowBorder()} 12s infinite` : ''}>
-                    <Image loading={'eager'} src={typeof data !== "undefined" ? `/image/${data.avatar}` : undefined} borderRadius={'50%'} w={'50px'}/>
+                    <Image loading={'eager'} src={typeof data !== "undefined" ? `${api}/image/${data.avatar}` : undefined} borderRadius={'50%'} w={'50px'}/>
                 </Flex>
             </MenuButton>
             <MenuList>
@@ -94,19 +95,19 @@ export default function AccountDisplay() {
                 <MenuGroup>
 
                     <Tooltip label='Tokens are used to open Brawl Boxes and play challenges. Collect them by visiting the website regularly!' placement='left' hasArrow>
-                        <MenuItem><Image maxW={'30px'} src={'/image/resources/resource_tokens.webp'} mr={2}/>{`${data?.tokens ? data.tokens : 0}`}</MenuItem>
+                        <MenuItem><Image maxW={'30px'} src={`${api}/image/resources/resource_tokens.webp`} mr={2}/>{`${data?.tokens ? data.tokens : 0}`}</MenuItem>
                     </Tooltip>
 
                     <Tooltip label='Token Doubler gives you a bonus token for every token you receive!' placement='left' hasArrow>
-                        <MenuItem><Image maxW={'30px'} src={'/image/resources/resource_token_doubler.webp'} mr={2}/>{`${data?.tokenDoubler ? data.tokenDoubler : 0}`}</MenuItem>    
+                        <MenuItem><Image maxW={'30px'} src={`${api}/image/resources/resource_token_doubler.webp`} mr={2}/>{`${data?.tokenDoubler ? data.tokenDoubler : 0}`}</MenuItem>    
                     </Tooltip>
 
                     <Tooltip label='Coins are used to buy brawlers, accessories, and cosmetic items. Collect them from Brawl Boxes and challenges!' placement='left' hasArrow>
-                        <MenuItem><Image maxW={'30px'} src={'/image/resources/resource_coins.webp'} mr={2}/>{`${data?.coins ? data.coins : 0}`}</MenuItem>
+                        <MenuItem><Image maxW={'30px'} src={`${api}/image/resources/resource_coins.webp`} mr={2}/>{`${data?.coins ? data.coins : 0}`}</MenuItem>
                     </Tooltip>
                     
                     <Tooltip label='Trade Credits are used to trade pins with other users!' placement='left' hasArrow>
-                        <MenuItem><Image maxW={'30px'} src={'/image/resources/resource_trade_credits.webp'} mr={2}/>{`${data?.tradeCredits ? data.tradeCredits : 0}`}</MenuItem>    
+                        <MenuItem><Image maxW={'30px'} src={`${api}/image/resources/resource_trade_credits.webp`} mr={2}/>{`${data?.tradeCredits ? data.tradeCredits : 0}`}</MenuItem>    
                     </Tooltip>
 
                 </MenuGroup>
@@ -115,7 +116,7 @@ export default function AccountDisplay() {
                     <Tooltip label='Challenge Points are used to unlock and upgrade accessories. Collect them by playing challenges!' placement='left' hasArrow>
                         <MenuItem>
                         <Flex alignItems={'center'}>
-                            <Image maxW={'30px'} src={'/image/resources/resource_challenge_points.webp'} mr={2}/>
+                            <Image maxW={'30px'} src={`${api}/image/resources/resource_challenge_points.webp`} mr={2}/>
                             <Flex flexDir={'column'}>
                                 <Flex>{data ? `Level ${data.level}` : `Level 1`}</Flex>
                                 <Flex>{data ? (data.upgradePoints > 0 ? `${displayLong(data.points)} / ${displayShort(data.upgradePoints)}` : `${displayLong(data.points)}`) : `0 / 1`}</Flex>
@@ -135,7 +136,7 @@ export default function AccountDisplay() {
         <Tooltip label='Tokens are used to open Brawl Boxes and play challenges. Collect them by visiting the website regularly!' placement={'bottom-start'}>
             {invalid === false ?
                 <Flex justifyContent={'center'} alignItems={'center'} textAlign={'center'} mt={1}> 
-                    <Image maxW={'25px'} src={'/image/resources/resource_tokens.webp'} mr={1}/>
+                    <Image maxW={'25px'} src={`${api}/image/resources/resource_tokens.webp`} mr={1}/>
                     <Text  className={'heading-xl'} fontSize={'xl'}>{data?.tokens}</Text>
                 </Flex>
                 :
