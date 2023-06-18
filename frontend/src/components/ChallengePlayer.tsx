@@ -173,6 +173,43 @@ function pointInRange(start: Point, target: Point, range: number): boolean{
     return false;
 }
 
+function unitButtonDisabled(challenge: ChallengeManagerState["challenge"] | undefined, player: number, unit: UnitState, lastUnit: UnitState | undefined): boolean{
+    // Returns whether the button corresponding to "unit" should be disabled
+    // given the current phase, current player, and the last unit clicked on
+    if (typeof challenge === "undefined"){
+        return false;
+    }
+    if (player !== challenge.turn){
+        // If it is not the player's turn, they cannot click on any units
+        return true;
+    }
+
+    if (challenge.phase === 0){
+        if (unit.player !== player){
+            // During move phase, the player cannot click on units that do not belong to them
+            return true;
+        }
+        if (typeof lastUnit !== "undefined" && unit.id !== lastUnit.id){
+            // During move phase, the player cannot move a unit to a position containing another unit
+            return true;
+        }
+    } else if (challenge.phase === 1){
+        if (typeof lastUnit !== "undefined" && unit.player === player && unit.id !== lastUnit.id){
+            // During attack phase, the player cannot attack their own unit
+            return true;
+        }
+        if (typeof lastUnit === "undefined" && unit.player !== player){
+            // During attack phase, the player cannot start an attack with a unit that does not belong to them
+            return true;
+        }
+        if (typeof lastUnit !== "undefined" && pointInRange(lastUnit.position, unit.position, lastUnit.stats.range) === false){
+            return true;
+        }
+    }
+
+    return false;
+}
+
 function showStats(unit: UnitState, owner: string): JSX.Element{
     const unitStats = unit.stats;
     const healthFraction = Math.min(1, Math.max(0, unitStats.health / Math.max(1, unitStats.maxHealth)));
@@ -244,7 +281,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
     const [inputText, setInputText] = useState<string>("");
     
     // Last unit that was clicked on
-    const [lastUnit, setLastUnit] = useState<number | undefined>(undefined);
+    const [lastUnit, setLastUnit] = useState<UnitState | undefined>(undefined);
     // List of targets that were clicked on since the last unit was changed
     const [lastTargets, setLastTargets] = useState<number[]>([]);
     // Move actions that will be sent on the next turn
@@ -273,39 +310,55 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
         setCurrentUnit(unit);
     }
     // Click on a unit or position on the grid
-    const click = (id: number, p: Point): void => {
+    const click = (unit: UnitState | undefined, p: Point): void => {
         if (typeof challenge === "undefined"){
             return;
         }
-        if (id >= 0){
+        if (typeof unit !== "undefined"){
             if (challenge.phase === 0){
                 // Move phase expects clicks on a unit then a position
                 // If the same unit is clicked twice, reset the state
-                if (typeof lastUnit !== "undefined" && lastUnit === id){
+                if (typeof lastUnit !== "undefined" && lastUnit.id === unit.id){
                     setLastUnit(undefined);
                     return;
                 } else{
-                    setLastUnit(id);
+                    setLastUnit(unit);
                 }
             } else if (challenge.phase === 1){
                 // Attack phase expects clicks on a unit then another unit
                 // if the existing last unit is not undefined, add action with that
                 // unit and the given id.
-                if (typeof lastUnit !== "undefined" && lastUnit !== id){
+                if (typeof lastUnit !== "undefined" && lastUnit.id !== unit.id){
                     // If they click on a unit after already clicking on an attacker, add it to the targets
-                    setLastTargets(lastTargets.concat([id]));
-                } else if (lastUnit === id){
+                    if (lastTargets.includes(unit.id) === false){
+                        const newTargets = lastTargets.concat([unit.id]);
+
+                        // If clicking on this unit causes the targets to equal or exceed the number of targets
+                        // the unit can attack, immediately add the attack without the player having to click
+                        // on the unit again.
+                        if (newTargets.length >= lastUnit.stats.targets){
+                            setAttackActions(new Map(attackActions.set(lastUnit.id, newTargets)));
+                            setLastUnit(undefined);
+                            setLastTargets([]);
+                        } else{
+                            setLastTargets(newTargets);
+                        }
+                    }
+                } else if (typeof lastUnit !== "undefined" && lastUnit.id === unit.id){
                     if (lastTargets.length > 0){
                         // When they click on the attacker unit, add the attack request
                         // with all the targets they clicked on since they clicked on the attacker
-                        setAttackActions(new Map(attackActions.set(lastUnit, lastTargets)));
+
+                        // Normally, attacks will be automatically added when enough targets are clicked but
+                        // the player can still attack fewer targets by clicking on the unit that is attacking
+                        setAttackActions(new Map(attackActions.set(lastUnit.id, lastTargets)));
                     }
     
                     setLastUnit(undefined);
                     setLastTargets([]);
                 } else{
                     // If this is the first click, set the unit as the attacker
-                    setLastUnit(id);
+                    setLastUnit(unit);
                 }
             }
         }
@@ -315,7 +368,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
             if (challenge.phase === 0){
                 // Move phase expects clicks on a unit then a position
                 if (typeof lastUnit !== "undefined"){
-                    setMoveActions(new Map(moveActions.set(lastUnit, p)));
+                    setMoveActions(new Map(moveActions.set(lastUnit.id, p)));
                     setLastUnit(undefined);
                     setLastTargets([]);
                 }
@@ -519,20 +572,20 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                                         } else if (showRestrictions && restrictionList.findIndex((rect) => (point[0] >= rect.left && point[0] <= rect.right && point[1] >= rect.top && point[1] <= rect.bottom)) !== -1){
                                             color = "#f05031";
                                         }
-                                        return (<Button key={index} w={"50px"} h={"50px"} justifyContent={"center"} alignItems={"center"} fontSize={"12px"} borderRadius={0} color={"#000"} bgColor={color} onClick={() => click(-1, point)}>{`${point[0]}, ${point[1]}`}</Button>);
+                                        return (<Button key={index} w={"50px"} h={"50px"} justifyContent={"center"} alignItems={"center"} fontSize={"12px"} borderRadius={0} color={"#000"} bgColor={color} onClick={() => click(undefined, point)}>{`${point[0]}, ${point[1]}`}</Button>);
                                     }
                                     
                                     const healthFraction = Math.min(1, Math.max(0, value.stats.health / Math.max(1, value.stats.maxHealth)));
                     
                                     let borderColor = playerColor(value.player, currentPlayer);
-                                    if (lastUnit === value.id){
+                                    if (typeof lastUnit !== "undefined" && lastUnit.id === value.id){
                                         borderColor = "#ff0";
                                     } else if (lastTargets.includes(value.id)){
                                         borderColor = "#f0f";
                                     }
 
                                     return (
-                                        <Button key={-1 * value.id - 1} w={"50px"} h={"50px"} fontSize={"16px"} lineHeight={"16px"} bgColor={"#0000"} bgPos={"center"} bgSize={"cover"} bgRepeat={"no-repeat"} alignItems={"flex-start"} justifyContent={"flex-start"} padding={0} borderRadius={0} _hover={{}} _active={{}} border={`2px solid ${borderColor}`} bgImage={value.image !== "" ? `url('${api}/image/${value.image}')`: undefined} isDisabled={preview && attackActions.has(value.id)} onMouseOver={() => {selectUnit(value);}} onMouseOut={() => {if (!preview || lastUnit !== value.id){selectUnit(undefined);}}} onClick={() => {click(value.id, point);}}>
+                                        <Button key={-1 * value.id - 1} w={"50px"} h={"50px"} fontSize={"16px"} lineHeight={"16px"} bgColor={"#0000"} bgPos={"center"} bgSize={"cover"} bgRepeat={"no-repeat"} alignItems={"flex-start"} justifyContent={"flex-start"} padding={0} borderRadius={0} _hover={{}} _active={{}} border={`2px solid ${borderColor}`} bgImage={value.image !== "" ? `url('${api}/image/${value.image}')`: undefined} isDisabled={preview && (attackActions.has(value.id) || unitButtonDisabled(challenge, currentPlayer, value, lastUnit))} onMouseOver={() => {selectUnit(value);}} onMouseOut={() => {if (!preview || lastUnit?.id !== value.id){selectUnit(undefined);}}} onClick={() => {click(value, point);}}>
                                             <Flex flexDir={"column"} w={"100%"} h={"100%"}>
                                                 {value.weight > 0 || healthFraction < 1 ?
                                                     <Flex w={"100%"} h={"3px"} bgColor={"#333"}>
@@ -562,14 +615,14 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                                 backgroundColor: "rgba(0, 0, 0, 0)"
                             }}}>{challenge.inactive.map((value) => {
                                 let borderColor = playerColor(value.player, currentPlayer);
-                                if (lastUnit === value.id){
+                                if (typeof lastUnit !== "undefined" && lastUnit.id === value.id){
                                     borderColor = "#ff0";
                                 } else if (lastTargets.includes(value.id)){
                                     borderColor = "#f0f";
                                 }
                 
                                 return (
-                                    <Button key={value.id} w={"50px"} h={"50px"} fontSize={"16px"} lineHeight={"16px"} bgColor={"#0000"} bgPos={"center"} bgSize={"cover"} bgRepeat={"no-repeat"} alignItems={"flex-start"} justifyContent={"flex-start"} padding={0} borderRadius={0} _hover={{}} _active={{}} border={`2px solid ${borderColor}`} bgImage={value.image !== "" ? `url('${api}/image/${value.image}')`: undefined} isDisabled={preview && attackActions.has(value.id)} onMouseOver={() => {selectUnit(value);}} onMouseOut={() => {if (!preview || lastUnit !== value.id){selectUnit(undefined);}}} onClick={() => {click(value.id, [-1, -1])}}>
+                                    <Button key={value.id} w={"50px"} h={"50px"} fontSize={"16px"} lineHeight={"16px"} bgColor={"#0000"} bgPos={"center"} bgSize={"cover"} bgRepeat={"no-repeat"} alignItems={"flex-start"} justifyContent={"flex-start"} padding={0} borderRadius={0} _hover={{}} _active={{}} border={`2px solid ${borderColor}`} bgImage={value.image !== "" ? `url('${api}/image/${value.image}')`: undefined} isDisabled={preview && (attackActions.has(value.id) || unitButtonDisabled(challenge, currentPlayer, value, lastUnit))} onMouseOver={() => {selectUnit(value);}} onMouseOut={() => {if (!preview || lastUnit?.id !== value.id){selectUnit(undefined);}}} onClick={() => {click(value, [-1, -1])}}>
                                         <Flex w={"100%"} h={"100%"} className={"heading-md"}>{value.id}</Flex>
                                     </Button>
                                 );

@@ -23,7 +23,6 @@ export default function TradeCard({ data }: {data: TradeData}) {
     const toast = useToast()
 
     const confirmTrade = () => {
-
         axios.post(`${api}/trade/accept`, {
             token: getToken(),
             tradeid:  data.tradeid,
@@ -36,11 +35,8 @@ export default function TradeCard({ data }: {data: TradeData}) {
             console.log(res.data)
         })
         .catch(function(err){
-            console.log(err)
             toast({title: 'Error', description: err.response.data, status: 'error', duration: 5000, isClosable: true})
         })
-        
-        
     }
 
     const refreshPage = () => {

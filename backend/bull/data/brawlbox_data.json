@@ -198,7 +198,7 @@
                 {"value": "sam", "weight": 20, "minWeight": 3, "coinConversion": 600},
                 {"value": "colt", "weight": 16, "minWeight": 2, "coinConversion": 750},
                 {"value": "barley", "weight": 12, "minWeight": 2, "coinConversion": 750},
-                {"value": "pam", "weight": 10, "minWeight": 1, "coinConversion": 1200},
+                {"value": "buster", "weight": 10, "minWeight": 1, "coinConversion": 1200},
                 {"value": "fang", "weight": 8, "minWeight": 1, "coinConversion": 1200},
                 {"value": "colette", "weight": 6, "minWeight": 1, "coinConversion": 1200},
                 {"value": "bea", "weight": 5, "minWeight": 1, "coinConversion": 1200},

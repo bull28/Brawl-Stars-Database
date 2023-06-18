@@ -12,6 +12,7 @@ import UnitSelection from "../components/UnitSelection";
 import ChallengeSelection from "../components/ChallengeSelection";
 import RoomSelection from "../components/RoomSelection";
 import {UserInfoProps} from "../types/AccountData";
+import {server} from "../helpers/APIRoute";
 
 export default function ChallengeMenu(){
     // Player's token, used to connect to the server
@@ -111,7 +112,7 @@ export default function ChallengeMenu(){
             </Flex>
             <Stack w={"100%"} mb={"8vh"} mt={"2vh"} justifyContent={"center"} alignItems={"center"} spacing={[3, 3, 3, 3, 0]} direction={["column", "column", "column", "column", "row"]}>
                 <Flex w={(started === false && typeof progress !== "undefined" && typeof resources !== "undefined") ? ["100%", "75%", "50%", "50%", "25%"] : undefined} justifyContent={"center"}>
-                    <ChallengePlayer address={"http://localhost:11600"} token={token} room={room} createChallenge={challenge} unitChoices={unitChoices} onJoin={onJoin} onStarted={onStarted} updateTokens={updateTokens} setRoomList={getRoomList} loginRef={loginRef}/>
+                    <ChallengePlayer address={server} token={token} room={room} createChallenge={challenge} unitChoices={unitChoices} onJoin={onJoin} onStarted={onStarted} updateTokens={updateTokens} setRoomList={getRoomList} loginRef={loginRef}/>
                 </Flex>
                 {(started === false && waiting === false && typeof progress !== "undefined" && typeof resources !== "undefined") ?
                     <Flex flexDir={"column"} alignItems={"center"} w={["100%", "100%", "100%", "100%", "50%"]} maxW={"720px"}>

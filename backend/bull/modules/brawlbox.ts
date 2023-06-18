@@ -731,7 +731,6 @@ function selectAccessory(accessoryDropChances: RewardTypeAccessory, resources: U
             // If the user does not already have the accessory, they will unlock it
             const display = getAccessoryDisplay(reward.value);
             if (typeof display !== "undefined"){
-                console.log(reward.value);
                 resources.accessories.push(reward.value);
 
                 result.displayName = display.displayName;
