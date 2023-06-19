@@ -1,6 +1,7 @@
 import {Flex, Text, Image, Button, SimpleGrid, Divider} from "@chakra-ui/react";
 import {ChallengeName, ChallengeData} from "../types/ChallengeData";
 import {displayLong} from "../helpers/LargeNumberDisplay";
+import {animateScroll} from "react-scroll";
 import api from "../helpers/APIRoute";
 
 interface ChallengeSelectionProps{
@@ -73,7 +74,7 @@ export default function ChallengeSelection({data, level, setSelected}: Challenge
                                     <Divider my={1}/>
                                     <Flex w={"100%"} alignItems={"flex-end"}>
                                         <Text w={"80%"} className={"heading-md"}>{`Requires Level ${value.requiredLevel}`}</Text>
-                                        <Button w={"20%"} isDisabled={level < value.requiredLevel} onClick={() => setSelected({challengeid: value.challengeid, displayName: value.displayName, acceptCost: value.acceptCost})}>
+                                        <Button w={"20%"} isDisabled={level < value.requiredLevel} onClick={() => {setSelected({challengeid: value.challengeid, displayName: value.displayName, acceptCost: value.acceptCost}); animateScroll.scrollToTop();}}>
                                             <Text fontSize={"lg"}>{value.acceptCost}</Text>
                                             <Image ml={1} src={`${api}/image/resources/resource_tokens.webp`} h={5}/>
                                         </Button>

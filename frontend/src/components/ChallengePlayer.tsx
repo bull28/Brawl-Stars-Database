@@ -179,31 +179,18 @@ function unitButtonDisabled(challenge: ChallengeManagerState["challenge"] | unde
     if (typeof challenge === "undefined"){
         return false;
     }
-    if (player !== challenge.turn){
-        // If it is not the player's turn, they cannot click on any units
-        return true;
-    }
 
     if (challenge.phase === 0){
-        if (unit.player !== player){
-            // During move phase, the player cannot click on units that do not belong to them
-            return true;
-        }
         if (typeof lastUnit !== "undefined" && unit.id !== lastUnit.id){
-            // During move phase, the player cannot move a unit to a position containing another unit
+            // A unit cannot move to a position that already contains a unit
             return true;
         }
     } else if (challenge.phase === 1){
-        if (typeof lastUnit !== "undefined" && unit.player === player && unit.id !== lastUnit.id){
-            // During attack phase, the player cannot attack their own unit
-            return true;
-        }
-        if (typeof lastUnit === "undefined" && unit.player !== player){
-            // During attack phase, the player cannot start an attack with a unit that does not belong to them
-            return true;
-        }
-        if (typeof lastUnit !== "undefined" && pointInRange(lastUnit.position, unit.position, lastUnit.stats.range) === false){
-            return true;
+        if (typeof lastUnit !== "undefined"){
+            if ((unit.player === player && unit.id !== lastUnit.id) || pointInRange(lastUnit.position, unit.position, lastUnit.stats.range) === false){
+                // The player cannot attack their own unit or another unit outside its range
+                return true;
+            }
         }
     }
 
@@ -290,13 +277,13 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
     const [attackActions, setAttackActions] = useState<Map<AttackRequest["unit"], AttackRequest["targets"]>>(new Map());
 
     // Toggle preview mode
-    const [preview, setPreview] = useState<boolean>(true);
+    const preview: boolean = true;
     // Toggle showing area restrictions
     const [showRestrictions, setShowRestrictions] = useState<boolean>(false);
     
     // Reward that the player received
     const [reward, setReward] = useState<{winner: number; reward: RewardEvent} | undefined>(undefined);
-
+    // Data for the modal with the challenge confirm button
     const [confirm, setConfirm] = useState<{title: string; text: string; cost: number; action: () => void;}>({title: "Confirm", text: "", cost: 0, action: () => {}});
 
     
@@ -461,7 +448,6 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
             setLastTargets([]);
             setMoveActions(new Map());
             setAttackActions(new Map());
-            setPreview(true);
             setShowRestrictions(false);
             setReward(undefined);
             socket?.disconnect();
@@ -676,7 +662,6 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                                 <Button w={"50%"} className={"heading-md"} onClick={() => setMoveActions(new Map())}>Clear Moves</Button>
                                 <Button w={"50%"} className={"heading-md"} onClick={() => setAttackActions(new Map())}>Clear Attacks</Button>
                             </Flex>
-                            <Button w={"100%"} className={"heading-md"} onClick={() => {selectUnit(undefined); setPreview(!preview);}}>{preview ? "Turn action preview off" : "Turn action preview on"}</Button>
                             <Button w={"100%"} className={"heading-md"} onClick={() => {selectUnit(undefined); setShowRestrictions(!showRestrictions);}}>{showRestrictions ? "Hide area restrictions" : "Show area restrictions"}</Button>
                         </Flex>
                         <Flex flexDir={"column"} w={["90vw", "240px", "240px", "240px", "240px"]}>
@@ -696,7 +681,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                         {(typeof socket !== "undefined" && loginRef.current === true) ?
                             <Flex justifyContent={"center"} w={"80%"}>
                                 <Flex flexDir={"column"} w={"100%"} bgColor={"gray.800"} p={2} borderRadius={"lg"}>
-                                    <Input onChange={changeInput}/>
+                                    <Input id={"challenge"} onChange={changeInput}/>
                                     
                                     <Button maxW={"100%"} fontSize={"lg"} onClick={() => { if (typeof createChallenge !== "undefined"){ setConfirm({title: "Create Challenge?", text: createChallenge.displayName, cost: createChallenge.acceptCost, action: () => {socket.emit("create", createChallenge.challengeid);}}); onOpenConfirm(); } else if (inputText.length > 0){socket.emit("create", parseInt(inputText));} else{toast({description: "No challenge id specified", status: "error", duration: 4500, isClosable: true});} }}>Create Challenge</Button>
                                     <Flex mb={5} px={1} justifyContent={"center"} borderRadius={"md"} maxW={"100%"} bgColor={"gray.700"}>{typeof createChallenge !== "undefined" ? createChallenge.displayName : " "}</Flex>

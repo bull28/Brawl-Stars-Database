@@ -1,5 +1,6 @@
 import {Flex, Text, Image, Button, SimpleGrid, Divider} from "@chakra-ui/react";
 import {RoomDataDisplay, RoomName} from "../types/ChallengeData";
+import {animateScroll} from "react-scroll";
 import api from "../helpers/APIRoute";
 
 interface RoomSelectionProps{
@@ -50,7 +51,7 @@ export default function UnitSelection({data, level, setSelected}: RoomSelectionP
                                     <Divider my={1}/>
                                     <Flex w={"100%"} alignItems={"flex-end"}>
                                         <Text w={"80%"} className={"heading-md"}>{`Requires Level ${value.requiredLevel}`}</Text>
-                                        <Button w={"20%"} isDisabled={level < value.requiredLevel} onClick={() => setSelected({username: value.username, acceptCost: value.acceptCost})}>
+                                        <Button w={"20%"} isDisabled={level < value.requiredLevel} onClick={() => {setSelected({username: value.username, acceptCost: value.acceptCost}); animateScroll.scrollToTop();}}>
                                             <Text fontSize={"lg"}>{value.acceptCost}</Text>
                                             <Image ml={1} src={`${api}/image/resources/resource_tokens.webp`} h={5}/>
                                         </Button>
