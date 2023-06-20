@@ -92,7 +92,7 @@ export default function Brawler() {
                     }
                 </Flex>
             </Stack>
-            <SimpleGrid spacing={5} columns={[1,2,2,3,4]} bgColor={'blue.900'} pt={'3vh'} px={6}>{(data.skins).map((skin) => (
+            <SimpleGrid spacing={5} columns={[1,2,2,3,4]} bgColor={'blue.900'} pt={'3vh'} w={'100%'} px={6}>{(data.skins).map((skin) => (
                 <Flex key={skin.name} flexDir={'column'} m={3}>
                     <SkinView skin={skin.name} brawler={data.name} setModel={setModel}></SkinView>
                 </Flex>
