@@ -1020,15 +1020,6 @@ export interface UnitSelection{
 }
 
 /**
- * Contains the display properties of a unit and its level
- */
-export interface UnitDisplay{
-    displayName: string;
-    image: string;
-    level: number;
-};
-
-/**
  * All of a player's visual data
  */
 export interface Player{

@@ -77,9 +77,6 @@ export default function ChallengeMenu(){
     }
     const confirmChallengeChoice = (challenge: ChallengeName) => {
         setChallenge(challenge);
-        if (typeof resources !== "undefined"){
-            setRoom({username: resources.username, acceptCost: 0});
-        }
     }
 
     useEffect(() => {
@@ -112,7 +109,7 @@ export default function ChallengeMenu(){
             </Flex>
             <Stack w={"100%"} mb={"8vh"} mt={"2vh"} justifyContent={"center"} alignItems={"center"} spacing={[3, 3, 3, 3, 0]} direction={["column", "column", "column", "column", "row"]}>
                 <Flex w={(started === false && typeof progress !== "undefined" && typeof resources !== "undefined") ? ["100%", "75%", "50%", "50%", "25%"] : undefined} justifyContent={"center"}>
-                    <ChallengePlayer address={server} token={token} room={room} createChallenge={challenge} unitChoices={unitChoices} onJoin={onJoin} onStarted={onStarted} updateTokens={updateTokens} setRoomList={getRoomList} loginRef={loginRef}/>
+                    <ChallengePlayer address={server} token={token} room={room} createChallenge={challenge} unitChoices={unitChoices} onJoin={onJoin} onStarted={onStarted} setRoomList={getRoomList} loginRef={loginRef}/>
                 </Flex>
                 {(started === false && waiting === false && typeof progress !== "undefined" && typeof resources !== "undefined") ?
                     <Flex flexDir={"column"} alignItems={"center"} w={["100%", "100%", "100%", "100%", "50%"]} maxW={"720px"}>
@@ -136,8 +133,8 @@ export default function ChallengeMenu(){
             {(loginRef.current === true && started === false && waiting === false && typeof progress !== "undefined" && typeof unitList !== "undefined" && typeof resources !== "undefined" && typeof challengeList !== "undefined") ?
                 <Stack direction={"column"} spacing={10} mb={"10vh"} alignItems={"center"}>
                     <UnitSelection data={unitList} setSelected={confirmUnitChoices}/>
-                    <RoomSelection data={roomList} level={resources.level} setSelected={confirmRoomChoice}/>
                     <ChallengeSelection data={challengeList} level={resources.level} setSelected={confirmChallengeChoice}/>
+                    <RoomSelection data={roomList} level={resources.level} setSelected={confirmRoomChoice}/>
                 </Stack>
                 :
                 <></>

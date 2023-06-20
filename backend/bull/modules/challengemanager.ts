@@ -1,13 +1,12 @@
 import {AVATAR_IMAGE_DIR, IMAGE_FILE_EXTENSION, CHALLENGE_COINS_PER_TOKEN} from "../data/constants";
-import {createUnitOptions, getUnitDisplay} from "./accessories";
+import {createUnitOptions} from "./accessories";
 import {Challenge} from "./challengelogic";
 import {
     Point, 
     ChallengeOptions, 
     UnitOptions, 
     ActionResult, 
-    UnitPreview, 
-    UnitDisplay, 
+    UnitPreview,  
     PlayerData, 
     ChallengeManagerOptions, 
     ChallengeManagerState, 
@@ -229,29 +228,6 @@ export class ChallengeManager{
         }
 
         return state;
-    }
-
-    /**
-     * Gives the user a preview of what units they may expect to face in
-     * a challenge. This function is intended to be called before a challenge
-     * starts and the user is supposed to use this information to decide
-     * which units to use in the challenge.
-     * @returns all active units in the challenge
-     */
-    getPreviewState(): UnitDisplay[]{
-        let units: UnitDisplay[] = [];
-        for (let x = 0; x < this.players.length; x++){
-            for (let y = 0; y < this.players[x].units.length; y++){
-                const thisUnit = this.players[x].units[y];
-                if (typeof thisUnit.position !== "undefined"){
-                    const display = getUnitDisplay(thisUnit);
-                    if (typeof display !== "undefined"){
-                        units.push(display);
-                    }
-                }
-            }
-        }
-        return units;
     }
 
     /**

@@ -7,6 +7,7 @@ import { getToken } from '../helpers/AuthRequest'
 import { RainbowBorder } from '../themes/animations'
 import { TradeData } from '../types/TradeData'
 import {scrollStyle} from "../themes/scrollbar";
+import EventTime from "../helpers/EventTime";
 import api from "../helpers/APIRoute";
 
 interface PinData {
@@ -54,31 +55,31 @@ export default function TradeCard({ data }: {data: TradeData}) {
 
     return (
         <>
-            <Flex h={'25vh'} maxW={'25vw'} flexDir={'column'} alignItems={'center'} justifyContent={'space-between'} textAlign={'center'} bgColor={'blue.800'} p={3} borderRadius={'xl'} border={'2px solid black'} onClick={onOpen} cursor={'pointer'} _hover={{transform: "scale(110%)"}} transition={'0.25s'} boxShadow={'rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;'}>
+            <Flex h={'25vh'} maxW={'500px'} w={['80vw', '80vw', '45vw', '40vw', '30vw']} flexDir={'column'} alignItems={'center'} justifyContent={'space-between'} textAlign={'center'} bgColor={'blue.800'} p={3} borderRadius={'xl'} border={'2px solid black'} onClick={onOpen} cursor={'pointer'} _hover={{transform: "scale(110%)"}} transition={'0.25s'} boxShadow={'rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;'} overflow={'hidden'}>
                 <Flex w={'85%'} justifyContent={'space-between'}  fontSize={'lg'}>
                     <Text color={'red.500'}>Requesting</Text>
                     <Text color={'green.400'}>Offering</Text>
                 </Flex>
-                <Flex justifyContent={'center'} alignItems={'center'} maxH={'70%'} >
-                    <SimpleGrid w={'10vw'} columns={[1, 2]} spacing={3} overflow={'auto'} maxH={'100%'} sx={scrollStyle}>
+                <Flex justifyContent={'center'} alignItems={'center'} maxH={'70%'} w={'100%'}>
+                    <SimpleGrid w={'40%'} columns={2} spacing={[0, 0, 1, 2, 2]} overflow={'auto'} maxH={'100%'} sx={scrollStyle}>
                         {data.request.map((request) => (
                             <Flex key={request.pinImage} p={3} border={'2px solid black'} borderRadius={'lg'} bgColor={request.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
-                                <Image  maxW={'60px'} src={`${api}/image/${request.pinImage}`}/>
+                                <Image w={['40px', '40px', '50px', '50px', '60px']} maxW={'60px'} src={`${api}/image/${request.pinImage}`}/>
                                 <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} >{request.amount}</Text>
                             </Flex>
                         ))}
                     </SimpleGrid>
-                    <Flex flexDir={'column'} justifyContent={'space-evenly'} alignItems={'center'} mx={'1vw'}   h={'100%'}>
-                        <Flex alignItems={'center'}>
+                    <Flex flexDir={'column'} justifyContent={'space-evenly'} alignItems={'center'} mx={'1vw'} w={'20%'} h={'100%'}>
+                        <Flex alignItems={'center'} flexDir={['column', 'row', 'row', 'row', 'row']}>
                             <Image w={'30px'} h={'30px'} src={`${api}/image/resources/resource_trade_credits.webp`}/>
                             <Text ml={1} fontSize={'2xl'}>{data.cost}</Text>                                
                         </Flex>
                         <HiOutlineSwitchHorizontal fontSize={'30px'}/>
                     </Flex>
-                    <SimpleGrid w={'10vw'} columns={[1, 2]} spacing={3} overflow={'auto'} maxH={'100%'} sx={scrollStyle}>
+                    <SimpleGrid w={'40%'} columns={2} spacing={[0, 0, 1, 2, 2]} overflow={'auto'} maxH={'100%'} sx={scrollStyle}>
                         {data.offer.map((offer) => (
                             <Flex key={offer.pinImage} p={3} border={'2px solid black'} borderRadius={'lg'} bgColor={offer.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
-                                <Image  maxW={'60px'} src={`${api}/image/${offer.pinImage}`}/>
+                                <Image w={['40px', '40px', '40px', '50px', '60px']} maxW={'60px'} src={`${api}/image/${offer.pinImage}`}/>
                                 <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} >{offer.amount}</Text>
                             </Flex>
                         ))}
@@ -86,10 +87,7 @@ export default function TradeCard({ data }: {data: TradeData}) {
                 </Flex>
                 <Flex w={'90%'} justifyContent={'space-between'}>
                     <Flex color={(data.timeLeft.hour < 5 && data.timeLeft.season === 0) ? 'red.500' : 'white'}>
-                        <Text whiteSpace={"pre"}>{data.timeLeft.hour > 0 ? ` ${data.timeLeft.hour}h` : ""}</Text>
-                        <Text whiteSpace={"pre"}>{data.timeLeft.minute > 0 ? ` ${data.timeLeft.minute}m` : ""}</Text>
-                        <Text whiteSpace={"pre"}>{data.timeLeft.second > 0 ? ` ${data.timeLeft.second}s` : ""}</Text>
-                        <Text>{(data.timeLeft.hour === 0 && data.timeLeft.minute === 0 && data.timeLeft.second === 0) ? `> ${data.timeLeft.hoursPerSeason} hours` : ""}</Text>
+                        <Text whiteSpace={"pre"}>{(data.timeLeft.hour === 0 && data.timeLeft.minute === 0 && data.timeLeft.second === 0) ? `> ${data.timeLeft.hoursPerSeason} hours` : EventTime(data.timeLeft, 0)}</Text>
                     </Flex>
                     <Text fontSize={'lg'} >{data.creator.username}</Text>                   
                 </Flex>
@@ -102,7 +100,7 @@ export default function TradeCard({ data }: {data: TradeData}) {
                     <ModalBody>
                         {!tradeComplete ? 
                         <>
-                        <Flex w={'100%'} flexDir={'row'}>
+                        <Flex w={'100%'} flexDir={['column', 'row', 'row', 'row', 'row']}>
                             <Flex w={'50%'} alignItems={'center'} flexDir={'column'}>
                                 <Text mb={5} fontSize={'2xl'} className={'heading-2xl'} >You Give</Text>
                                 <SimpleGrid columns={[2,3]} spacing={3} overflow={'auto'} sx={scrollStyle}>

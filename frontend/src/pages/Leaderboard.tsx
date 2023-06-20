@@ -66,7 +66,7 @@ export default function Leaderboard(){
                     <Text w={"75%"} fontSize={"xl"} className={"heading-xl"}>Challenge Points</Text>
                 </Flex>
             </Flex>
-            <VStack w={"90vw"} maxW={"1280px"}>
+            <VStack w={"90vw"} maxW={"1280px"} mb={10}>
                 {data.map((value, index) => {
                     let color = "blue.500";
                     if (index === 0){

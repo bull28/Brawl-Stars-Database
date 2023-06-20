@@ -6,7 +6,7 @@ import {validateToken} from "./modules/authenticate";
 import {getAccessoryDisplay, createUnitList, getPresetChallenge, updateLevelProgress} from "./modules/accessories";
 import {ChallengeManager} from "./modules/challengemanager";
 import {parseStringArray, parseNumberArray, updateTokens, checkChallengeRequirement, afterChallenge, addChallengeReward} from "./modules/database";
-import {ActionResult, ChallengeManagerState, MoveRequest, AttackRequest, UnitPreview, UnitDisplay, RewardEvent, ChallengeRoomPreview} from "./types";
+import {ActionResult, ChallengeManagerState, MoveRequest, AttackRequest, UnitPreview, RewardEvent, ChallengeRoomPreview} from "./types";
 
 const MAX_ACTIVE_CHALLENGES = 100;
 
@@ -16,14 +16,13 @@ interface ServerToClientEvents{
     login: (message: string) => void;
     state: (state: ChallengeManagerState) => void;
     rooms: (challenges: ChallengeRoomPreview[]) => void;
-    preview: (units: UnitDisplay[]) => void;
     join: (playerIndex: number) => void;
     finish: (win: number, reward: RewardEvent) => void;
 }
 
 interface ClientToServerEvents{
     login: (token: string) => void;
-    create: (challengeid: number) => void;
+    create: (challengeid: number, unitNames: string[]) => void;
     rooms: (token: string) => void;
     join: (playerName: string, unitNames: string[]) => void;
     action: (action: string, request: MoveRequest[] | AttackRequest[]) => void;
@@ -247,90 +246,22 @@ io.on("connection", (socket) => {
             // If the username is a key in userMap then it has already joined a challenge
             // In both of these cases, the login fails
             socket.emit("error", `The username ${username} is already active in another session.`);
-        } else{
-            const currentUsername = socketidMap.get(socket.id);
-            if (typeof currentUsername !== "undefined"){
-                // User has already logged in
-                if (userMap.has(currentUsername) === true){
-                    socket.emit("error", "You cannot switch usernames after starting a challenge.");
-                } else{
-                    socketidMap.set(socket.id, username);
-                    socket.emit("message", `Switched usernames: ${currentUsername} \u279c ${username}`);
-                }
-            } else{
-                // User has not logged in yet
-                socketidMap.set(socket.id, username);
-                socket.emit("login", `Logged in as ${username}`);
-            }
-        }
-    });
-
-    socket.on("create", async (challengeid: number) => {
-        // Creates a new room and assigns the specified challengeid to the room.
-        // The player will have to join their own challenge separately after they have chosen their units.
-        // Tokens are deducted when creating a challenge.
-        // The user must already be logged in to join a room.
-
-        if (challengeMap.size >= MAX_ACTIVE_CHALLENGES){
-            socket.emit("error", "There are too many active challenges. Try again later.");
             return;
         }
 
-        const username = socketidMap.get(socket.id);
-
-        // The user must have already logged in before joining a challenge room
-        if (typeof username !== "undefined"){
-            // The name of the new room is the same as the username
-            const roomName = username;
-            // Replace this with database information later (and probably move it to login)
-
-            if (challengeMap.has(roomName) === true){
-                // This case can occur if a user creates a challenge then leaves it before it ends.
-                // The challenge will still exist because there are still other players participating in it.
-                socket.emit("error", "You cannot create a new challenge now.");
-                return;
-            }
-
-            if (userMap.has(username) === true){
-                // If the username is already in userMap then the user already joined a challenge
-                // and cannot create a new one.
-                socket.emit("error", "You are already in a challenge.");
+        const currentUsername = socketidMap.get(socket.id);
+        if (typeof currentUsername !== "undefined"){
+            // User has already logged in
+            if (userMap.has(currentUsername) === true){
+                socket.emit("error", "You cannot switch usernames after starting a challenge.");
             } else{
-                // Otherwise, get the challenge room name that the user specifies then attempt to join
-
-                const challenge = createChallengeManager(challengeid);
-
-                if (typeof challenge === "undefined"){
-                    socket.emit("error", "Challenge with given id not found.");
-                    return;
-                }
-
-                // Check if the player is allowed to accept the challenge
-                try{
-                    const resources = await checkChallengeRequirement({username: username});
-
-                    if (resources[0].tokens < challenge.extraData.acceptCost){
-                        throw new Error("You do not have enough tokens to accept this challenge.");
-                    } if (resources[0].level < challenge.extraData.requiredLevel){
-                        throw new Error("Your accessory level is not high enough to accept this challenge.");
-                    }
-
-                    await updateTokens({
-                        tokens: resources[0].tokens - challenge.extraData.acceptCost,
-                        username: username
-                    });
-                } catch (error){
-                    socket.emit("error", (error as Error).message);
-                    return;
-                }
-
-                // Send the preview state then let them choose which units they want to use
-                // After they choose their units, add them to the challenge in the "units" event
-                challengeMap.set(roomName, challenge);
-                socket.emit("preview", challenge.getPreviewState());
+                socketidMap.set(socket.id, username);
+                socket.emit("message", `Switched usernames: ${currentUsername} \u279c ${username}`);
             }
         } else{
-            socket.emit("error", "You are not logged in.");
+            // User has not logged in yet
+            socketidMap.set(socket.id, username);
+            socket.emit("login", `Logged in as ${username}`);
         }
     });
 
@@ -371,6 +302,95 @@ io.on("connection", (socket) => {
         socket.emit("rooms", challenges);
     });
 
+    socket.on("create", async (challengeid: number, unitNames: string[]) => {
+        // Creates a new room and assigns the specified challengeid to the room.
+        // Tokens are deducted when creating a challenge.
+
+        if (challengeMap.size >= MAX_ACTIVE_CHALLENGES){
+            socket.emit("error", "There are too many active challenges. Try again later.");
+            return;
+        }
+
+        // The user must have already logged in before joining a challenge room
+        const username = socketidMap.get(socket.id);
+        if (typeof username === "undefined"){
+            socket.emit("error", "You are not logged in.");
+            return;
+        }
+
+        // The name of the new room is the same as the username
+        const roomName = username;
+        if (challengeMap.has(roomName) === true){
+            // This case can occur if a user creates a challenge then leaves it before it ends.
+            // The challenge will still exist because there are still other players participating in it.
+            socket.emit("error", "You cannot create a new challenge now.");
+            return;
+        }
+        if (userMap.has(username) === true){
+            // If the username is already in userMap then the user already joined a challenge
+            // and cannot create a new one.
+            socket.emit("error", "You are already in a challenge.");
+            return;
+        }
+
+        // Otherwise, get the challenge room name that the user specifies then attempt to join
+        const challenge = createChallengeManager(challengeid);
+
+        if (typeof challenge === "undefined"){
+            socket.emit("error", "Challenge with given id not found.");
+            return;
+        }
+
+        let units: UnitPreview[] = [];
+        let avatar = "";
+        let result: ActionResult = {success: false, message: ""};
+        // Check if the player is allowed to accept the challenge
+        try{
+            const resources = await checkChallengeRequirement({username: username});
+
+            if (resources[0].tokens < challenge.extraData.acceptCost){
+                throw new Error("You do not have enough tokens to accept this challenge.");
+            } if (resources[0].level < challenge.extraData.requiredLevel){
+                throw new Error("Your accessory level is not high enough to accept this challenge.");
+            }
+
+            const accessories = parseStringArray(resources[0].accessories);
+
+            units = createUnitList(unitNames, accessories, resources[0].level);
+            if (units.length === 0 && unitNames.length !== 0){
+                throw new Error("Unit selection is not valid.");
+            }
+
+            avatar = resources[0].active_avatar;
+
+            // Must check if joining the challenge was successful here because tokens should
+            // not be removed if joining was unsuccessful
+            result = challenge.setPlayer({username: username, avatar: avatar}, units);
+
+            if (result.success === false){
+                // Only send the error to the user who it applies to
+                throw new Error(result.message);
+            }
+            
+            await updateTokens({
+                tokens: resources[0].tokens - challenge.extraData.acceptCost,
+                username: username
+            });
+        } catch (error){
+            socket.emit("error", (error as Error).message);
+            result.success = false;
+            return;
+        }
+        
+        // The user must be allowed to join the challenge and they are added to the map
+        // only if setPlayer succeeds.
+        socket.join(roomName);
+        userMap.set(username, roomName);
+        challengeMap.set(roomName, challenge);
+        socket.emit("join", challenge.findPlayer(username));
+        sendState(io, {challenge: challenge, room: roomName, username: username});
+    });
+
     socket.on("join", async (playerName: string, unitNames: string[]) => {
         // Joins the specified player's challenge room.
         // Costs tokens unless the player joins their own challenge.
@@ -385,79 +405,83 @@ io.on("connection", (socket) => {
         const roomName = playerName;
 
         // The room name of the challenge is the same as the name of the user who created it
-
-        if (typeof username !== "undefined" && roomName !== ""){
-            if (userMap.has(username) === true){
-                socket.emit("error", "You are already in a challenge.");
-                return;
-            }
-
-            const challenge = challengeMap.get(roomName);
-            if (typeof challenge !== "undefined"){
-                if (userMap.has(roomName) === false && username !== roomName){
-                    // The user who created the challenge must be the first player to join it
-                    // Any other players who try to join first will not be allowed to join.
-                    socket.emit("error", "User has not started the challenge yet.");
-                    return;
-                }
-                if (typeof challenge.getState() !== "undefined"){
-                    // Challenges that have already started cannot be joined.
-                    socket.emit("error", "You are not allowed to join this challenge.");
-                    return;
-                }
-
-                let units: UnitPreview[] = [];
-                let avatar = "";
-
-                try{
-                    const resources = await checkChallengeRequirement({username: username});
-
-                    if (resources[0].tokens < challenge.extraData.acceptCost){
-                        throw new Error("You do not have enough tokens to accept this challenge.");
-                    } if (resources[0].level < challenge.extraData.requiredLevel){
-                        throw new Error("Your accessory level is not high enough to accept this challenge.");
-                    }
-
-                    const accessories = parseStringArray(resources[0].accessories);
-
-                    units = createUnitList(unitNames, accessories, resources[0].level);
-                    if (units.length === 0 && unitNames.length !== 0){
-                        throw new Error("Unit selection is not valid.");
-                    }
-
-                    avatar = resources[0].active_avatar;
-
-                    if (username !== roomName){
-                        await updateTokens({
-                            tokens: resources[0].tokens - challenge.extraData.acceptCost,
-                            username: username
-                        });
-                    }
-                } catch (error){
-                    socket.emit("error", (error as Error).message);
-                    return;
-                }
-
-                const result = challenge.setPlayer({username: username, avatar: avatar}, units);
-
-                // The user must be allowed to join the challenge and they are added to the map
-                // only if setPlayer succeeds.
-                if (result.success === true){
-                    socket.join(roomName);
-                    userMap.set(username, roomName);
-                    socket.emit("join", challenge.findPlayer(username));
-                    sendState(io, {challenge: challenge, room: roomName, username: username});
-                } else{
-                    // Only send the error to the user who it applies to
-                    socket.emit("error", result.message);
-                }
-            } else{
-                socket.emit("error", "Challenge could not be found.");
-            }
-        } else if (typeof username !== "undefined"){
-            socket.emit("error", "No room name specified.");
-        } else{
+        if (typeof username === "undefined"){
             socket.emit("error", "You are not logged in.");
+            return;
+        } else if (roomName === ""){
+            socket.emit("error", "No room name specified.");
+            return;
+        }
+
+        if (userMap.has(username) === true){
+            socket.emit("error", "You are already in a challenge.");
+            return;
+        }
+        if (username === roomName){
+            socket.emit("error", "You cannot join your own challenge.");
+            return;
+        }
+
+        const challenge = challengeMap.get(roomName);
+        if (typeof challenge === "undefined"){
+            socket.emit("error", "Challenge could not be found.");
+            return;
+        }
+
+        if (userMap.has(roomName) === false){
+            // The user who created the challenge must be the first player to join it
+            // Any other players who try to join first will not be allowed to join.
+            socket.emit("error", "User has not started the challenge yet.");
+            return;
+        }
+        if (typeof challenge.getState() !== "undefined"){
+            // Challenges that have already started cannot be joined.
+            socket.emit("error", "You are not allowed to join this challenge.");
+            return;
+        }
+
+        let units: UnitPreview[] = [];
+        let avatar = "";
+
+        try{
+            const resources = await checkChallengeRequirement({username: username});
+
+            if (resources[0].tokens < challenge.extraData.acceptCost){
+                throw new Error("You do not have enough tokens to accept this challenge.");
+            } if (resources[0].level < challenge.extraData.requiredLevel){
+                throw new Error("Your accessory level is not high enough to accept this challenge.");
+            }
+
+            const accessories = parseStringArray(resources[0].accessories);
+
+            units = createUnitList(unitNames, accessories, resources[0].level);
+            if (units.length === 0 && unitNames.length !== 0){
+                throw new Error("Unit selection is not valid.");
+            }
+
+            avatar = resources[0].active_avatar;
+
+            await updateTokens({
+                tokens: resources[0].tokens - challenge.extraData.acceptCost,
+                username: username
+            });
+        } catch (error){
+            socket.emit("error", (error as Error).message);
+            return;
+        }
+
+        const result = challenge.setPlayer({username: username, avatar: avatar}, units);
+
+        // The user must be allowed to join the challenge and they are added to the map
+        // only if setPlayer succeeds.
+        if (result.success === true){
+            socket.join(roomName);
+            userMap.set(username, roomName);
+            socket.emit("join", challenge.findPlayer(username));
+            sendState(io, {challenge: challenge, room: roomName, username: username});
+        } else{
+            // Only send the error to the user who it applies to
+            socket.emit("error", result.message);
         }
     });
 
@@ -465,68 +489,69 @@ io.on("connection", (socket) => {
         // Takes an action in the challenge the user is currently participating in.
 
         const challengeData = getChallenge(socket.id, socketidMap, userMap, challengeMap);
-        if (typeof challengeData !== "undefined"){
-            let result: ActionResult = {success: false, message: ""};
-
-            const turnBefore = challengeData.challenge.isFinished();
-
-            if (action === "ready"){
-                result = challengeData.challenge.setReady(challengeData.username);
-            } else if (action === "activate"){
-                if (isMoveRequest(request)){
-                    result = challengeData.challenge.activate(challengeData.username, request);
-                }
-            } else if (action === "move"){
-                if (isMoveRequest(request)){
-                    result = challengeData.challenge.move(challengeData.username, request);
-                }
-            } else if (action === "attack"){
-                if (isAttackRequest(request)){
-                    result = challengeData.challenge.setTarget(challengeData.username, request);
-                }
-            }
-
-            if (result.success === true){
-                socket.emit("message", result.message);
-            } else{
-                socket.emit("error", result.message);
-            }
-
-            const turnAfter = challengeData.challenge.isFinished();
-
-            // Send state before removing players from the room
-            sendState(io, challengeData);
-            
-            if (turnBefore === false && turnAfter === true){
-                const thisRoom = io.sockets.adapter.rooms.get(challengeData.room);
-                if (typeof thisRoom !== "undefined"){
-                    // For each user in the current room, send a private message to them with the
-                    // reward they will receive when they disconnect. Note: this does not actually
-                    // give them the reward here.
-
-                    thisRoom.forEach((value) => {
-                        // Get their username using socketidMap
-                        const thisPlayer = socketidMap.get(value);
-                        if (typeof thisPlayer !== "undefined"){
-                            claimReward(thisPlayer, challengeData.challenge, io.in(value));
-
-                            // Remove the user from the user map so if they stay on the end screen,
-                            // other users will not have to wait for them to leave the challenge
-                            // before they are allowed to join another one
-                            userMap.delete(thisPlayer);
-                        }
-                    });
-                    // Delete the challenge creator from the user map because they could have left
-                    // before it ended and would not be in the socket id map
-                    userMap.delete(challengeData.room);
-
-                    // Remove the challenge from the challenge map so the creator can start a new challenge
-                    challengeMap.delete(challengeData.room);
-                }
-                io.in(challengeData.room).socketsLeave(challengeData.room);
-            }
-        } else{
+        if (typeof challengeData === "undefined"){
             socket.emit("error", "You are not currently in a challenge.");
+            return;
+        }
+
+        let result: ActionResult = {success: false, message: ""};
+
+        const turnBefore = challengeData.challenge.isFinished();
+
+        if (action === "ready"){
+            result = challengeData.challenge.setReady(challengeData.username);
+        } else if (action === "activate"){
+            if (isMoveRequest(request)){
+                result = challengeData.challenge.activate(challengeData.username, request);
+            }
+        } else if (action === "move"){
+            if (isMoveRequest(request)){
+                result = challengeData.challenge.move(challengeData.username, request);
+            }
+        } else if (action === "attack"){
+            if (isAttackRequest(request)){
+                result = challengeData.challenge.setTarget(challengeData.username, request);
+            }
+        }
+
+        if (result.success === true){
+            socket.emit("message", result.message);
+        } else{
+            socket.emit("error", result.message);
+        }
+
+        const turnAfter = challengeData.challenge.isFinished();
+
+        // Send state before removing players from the room
+        sendState(io, challengeData);
+        
+        if (turnBefore === false && turnAfter === true){
+            const thisRoom = io.sockets.adapter.rooms.get(challengeData.room);
+            if (typeof thisRoom !== "undefined"){
+                // For each user in the current room, send a private message to them with the
+                // reward they will receive when they disconnect. Note: this does not actually
+                // give them the reward here.
+
+                thisRoom.forEach((value) => {
+                    // Get their username using socketidMap
+                    const thisPlayer = socketidMap.get(value);
+                    if (typeof thisPlayer !== "undefined"){
+                        claimReward(thisPlayer, challengeData.challenge, io.in(value));
+
+                        // Remove the user from the user map so if they stay on the end screen,
+                        // other users will not have to wait for them to leave the challenge
+                        // before they are allowed to join another one
+                        userMap.delete(thisPlayer);
+                    }
+                });
+                // Delete the challenge creator from the user map because they could have left
+                // before it ended and would not be in the socket id map
+                userMap.delete(challengeData.room);
+
+                // Remove the challenge from the challenge map so the creator can start a new challenge
+                challengeMap.delete(challengeData.room);
+            }
+            io.in(challengeData.room).socketsLeave(challengeData.room);
         }
     });
 
@@ -535,64 +560,66 @@ io.on("connection", (socket) => {
         // and any challenge they may have been participating in.
 
         const username = socketidMap.get(socket.id);
-        if (typeof username !== "undefined"){
-            const roomName = userMap.get(username);
-            if (typeof roomName !== "undefined"){
-                const challenge = challengeMap.get(roomName);
-                if (typeof challenge !== "undefined"){
-                    // The challenge may end as a result of a player leaving
-                    sendState(io, {challenge: challenge, room: roomName, username: username});
+        if (typeof username === "undefined"){
+            return;
+        }
+        
+        const roomName = userMap.get(username);
+        if (typeof roomName !== "undefined"){
+            const challenge = challengeMap.get(roomName);
+            if (typeof challenge !== "undefined"){
+                // The challenge may end as a result of a player leaving
+                sendState(io, {challenge: challenge, room: roomName, username: username});
 
-                    const turnBefore = challenge.isFinished();
-                    
-                    challenge.leave(username, username === roomName);
-                    
-                    const turnAfter = challenge.isFinished();
-                    if (turnBefore === false && turnAfter === true){
-                        const thisRoom = io.sockets.adapter.rooms.get(roomName);
-                        if (typeof thisRoom !== "undefined"){
-                            thisRoom.forEach((value) => {
-                                const thisPlayer = socketidMap.get(value);
-                                if (typeof thisPlayer !== "undefined"){
-                                    if (thisPlayer !== username){
-                                        claimReward(thisPlayer, challenge, io.in(value));
-                                    }
-                                    userMap.delete(thisPlayer);
+                const turnBefore = challenge.isFinished();
+                
+                challenge.leave(username, username === roomName);
+                
+                const turnAfter = challenge.isFinished();
+                if (turnBefore === false && turnAfter === true){
+                    const thisRoom = io.sockets.adapter.rooms.get(roomName);
+                    if (typeof thisRoom !== "undefined"){
+                        thisRoom.forEach((value) => {
+                            const thisPlayer = socketidMap.get(value);
+                            if (typeof thisPlayer !== "undefined"){
+                                if (thisPlayer !== username){
+                                    claimReward(thisPlayer, challenge, io.in(value));
                                 }
-                            });
-                            challengeMap.delete(roomName);
-                        }
-                        io.in(roomName).socketsLeave(roomName);
+                                userMap.delete(thisPlayer);
+                            }
+                        });
+                        challengeMap.delete(roomName);
                     }
-                }
-
-                socket.leave(roomName);
-
-                if (io.sockets.adapter.rooms.has(roomName) === false){
-                    challengeMap.delete(roomName);
-                    userMap.delete(roomName);
-                }
-
-                let playersInRoom = 0;
-                userMap.forEach((value, key) => {
-                    if (value === roomName && key !== roomName){
-                        playersInRoom++;
-                    }
-                });
-                if (username !== roomName || playersInRoom === 0){
-                    // Only remove the user from the user map if they are not the creator
-                    // of the challenge or there are no players already in their challenge
-                    userMap.delete(username);
+                    io.in(roomName).socketsLeave(roomName);
                 }
             }
-            socketidMap.delete(socket.id);
 
-            if (io.sockets.adapter.rooms.has(username) === false){
-                // This executes if the user joins a challenge but does not
-                // set any units then leaves. They will not be added to the
-                // user map so search for the challenge by room name
-                challengeMap.delete(username);
+            socket.leave(roomName);
+
+            if (io.sockets.adapter.rooms.has(roomName) === false){
+                challengeMap.delete(roomName);
+                userMap.delete(roomName);
             }
+
+            let playersInRoom = 0;
+            userMap.forEach((value, key) => {
+                if (value === roomName && key !== roomName){
+                    playersInRoom++;
+                }
+            });
+            if (username !== roomName || playersInRoom === 0){
+                // Only remove the user from the user map if they are not the creator
+                // of the challenge or there are no players already in their challenge
+                userMap.delete(username);
+            }
+        }
+        socketidMap.delete(socket.id);
+
+        if (io.sockets.adapter.rooms.has(username) === false){
+            // This executes if the user joins a challenge but does not
+            // set any units then leaves. They will not be added to the
+            // user map so search for the challenge by room name
+            challengeMap.delete(username);
         }
     });
 });

@@ -17,7 +17,6 @@ interface ChallengePlayerProps{
     unitChoices: UnitImage[];
     onStarted: () => void;
     onJoin: () => void;
-    updateTokens: () => void;
     setRoomList: (rooms: RoomData) => void;
     loginRef: React.MutableRefObject<boolean>;
 }
@@ -73,13 +72,6 @@ interface ChallengeManagerState{
         })[];
     };
 }
-interface UnitDisplay{
-    displayName: string;
-    image: string;
-    description: string;
-    level: number;
-    position: Point;
-}
 interface RewardEvent{
     coins: number;
     points: number;
@@ -96,14 +88,13 @@ interface ServerToClientEvents{
     login: (message: string) => void;
     state: (state: ChallengeManagerState) => void;
     rooms: (challenges: RoomData) => void;
-    preview: (units: UnitDisplay[]) => void;
     join: (playerIndex: number) => void;
     finish: (win: number, reward: RewardEvent) => void;
 }
 
 interface ClientToServerEvents{
     login: (token: string) => void;
-    create: (challengeid: number) => void;
+    create: (challengeid: number, unitNames: string[]) => void;
     rooms: (token: string) => void;
     join: (playerName: string, unitNames: string[]) => void;
     action: (action: string, request: MoveRequest[] | AttackRequest[]) => void;
@@ -252,7 +243,7 @@ function showStats(unit: UnitState, owner: string): JSX.Element{
     );
 }
 
-export default function ChallengePlayer({address, token, room, createChallenge, unitChoices, onJoin, onStarted, updateTokens, setRoomList, loginRef}: ChallengePlayerProps){
+export default function ChallengePlayer({address, token, room, createChallenge, unitChoices, onJoin, onStarted, setRoomList, loginRef}: ChallengePlayerProps){
     // Socket object
     const [socket, setSocket] = useState<Socket<ServerToClientEvents, ClientToServerEvents> | undefined>(undefined);
     // Index of the player that is currently logged in
@@ -414,10 +405,6 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
             socket.on("rooms", (data) => {
                 setRoomList(data);
             });
-            socket.on("preview", (data) => {
-                updateTokens();
-                toast({description: "", status: "info", duration: 2500, isClosable: true});
-            });
             socket.on("error", (data) => {
                 console.error(data);
                 if (loginRef.current === true){
@@ -435,7 +422,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
 
             socket.emit("login", token);
         }
-    }, [socket, token, toast, loginRef, setRoomList, onJoin, onStarted, updateTokens, onOpen]);
+    }, [socket, token, toast, loginRef, setRoomList, onJoin, onStarted, onOpen]);
 
     useEffect(() => {
         return (() => {
@@ -683,7 +670,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                                 <Flex flexDir={"column"} w={"100%"} bgColor={"gray.800"} p={2} borderRadius={"lg"}>
                                     <Input id={"challenge"} onChange={changeInput}/>
                                     
-                                    <Button maxW={"100%"} fontSize={"lg"} onClick={() => { if (typeof createChallenge !== "undefined"){ setConfirm({title: "Create Challenge?", text: createChallenge.displayName, cost: createChallenge.acceptCost, action: () => {socket.emit("create", createChallenge.challengeid);}}); onOpenConfirm(); } else if (inputText.length > 0){socket.emit("create", parseInt(inputText));} else{toast({description: "No challenge id specified", status: "error", duration: 4500, isClosable: true});} }}>Create Challenge</Button>
+                                    <Button maxW={"100%"} fontSize={"lg"} onClick={() => { if (typeof createChallenge !== "undefined"){ setConfirm({title: "Create Challenge?", text: createChallenge.displayName, cost: createChallenge.acceptCost, action: () => {socket.emit("create", createChallenge.challengeid, unitChoices.map((value) => value.name));}}); onOpenConfirm(); } else if (inputText.length > 0){socket.emit("create", parseInt(inputText), unitChoices.map((value) => value.name));} else{toast({description: "No challenge id specified", status: "error", duration: 4500, isClosable: true});} }}>Create Challenge</Button>
                                     <Flex mb={5} px={1} justifyContent={"center"} borderRadius={"md"} maxW={"100%"} bgColor={"gray.700"}>{typeof createChallenge !== "undefined" ? createChallenge.displayName : " "}</Flex>
                                     <Button maxW={"100%"} fontSize={"lg"} onClick={() => { if (typeof room !== "undefined"){ setConfirm({title: "Join Challenge?", text: `${room.username}'s Room`, cost: room.acceptCost, action: () => {socket.emit("join", room.username, unitChoices.map((value) => value.name));}}); onOpenConfirm(); } else if (inputText.length > 0){socket.emit("join", inputText, unitChoices.map((value) => value.name));} else{toast({description: "No room name specified", status: "error", duration: 4500, isClosable: true}); } }}>Join Challenge</Button>
                                     <Flex mb={5} px={1} justifyContent={"center"} borderRadius={"md"} maxW={"100%"} bgColor={"gray.700"}>{typeof room !== "undefined" ? room.username : " "}</Flex>

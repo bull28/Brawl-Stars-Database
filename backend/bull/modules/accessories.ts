@@ -6,8 +6,7 @@ import {
     UnitOptions, 
     UnitPreview, 
     UnitOptionsStorage, 
-    UnitSelection, 
-    UnitDisplay, 
+    UnitSelection,  
     ChallengeManagerOptions, 
     ChallengePreview
 } from "../types";
@@ -2852,32 +2851,6 @@ export function updateLevelProgress(progress: LevelProgress, points: number): Le
     // The player's points towards the next level is their total - the points required to
     // reach the level they are at
     return [newLevel, total - totalCosts[newLevel - 1]];
-}
-
-/**
- * Creates an object that displays a unit to the player before a challenge starts. The information
- * given is minimal and only intended for the player to quickly see what units they are against
- * so they can choose which units to use.
- * @param data {name, level, defense, position}
- * @returns UnitDisplay object or undefined if the unit does not exist
- */
-export function getUnitDisplay(data: UnitPreview): UnitDisplay | undefined{
-    // Used when showing the preview of a challenge's units before the player joins
-    if (typeof data.position === "undefined"){
-        // Inactive units do not appear in the preview
-        return undefined;
-    }
-    
-    const unitRef = unitMap.get(data.name);
-    if (typeof unitRef !== "undefined"){
-        const display = unitRef.display;
-        return {
-            displayName: (typeof display.displayName !== "undefined") ? display.displayName : "",
-            image: (typeof display.image !== "undefined" && display.image !== "") ? ACCESSORY_IMAGE_DIR + display.image + IMAGE_FILE_EXTENSION : "",
-            level: data.level
-        };
-    }
-    return undefined;
 }
 
 /**

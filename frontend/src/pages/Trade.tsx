@@ -319,16 +319,16 @@ export default function Trade() {
             <Flex mt={3}>
                 {typeof resources !== "undefined" ?
                 <Flex>
-                    <HStack>
-                        <Flex h={'40px'} pr={'30px'} bgColor={'#f98f92'} justifyContent={'space-between'} alignItems={'center'} borderRadius={'5%'} border={'2px solid black'}>
-                            <Image h={'50px'}  src={`${api}/image/resources/resource_trade_credits.webp`}/>                        
-                            <Text  fontSize={'lg'} h={'30px'} className={'heading-lg'} >{resources.tradeCredits}</Text>
+                    <HStack spacing={1} alignItems={'center'} justifyContent={'center'} wrap={'wrap'}>
+                        <Flex py={'15px'} px={4} h={'50px'} bgColor={'#f98f92'} justifyContent={'center'} alignItems={'center'} borderRadius={'5%'}>
+                            <Image h={'50px'} src={`${api}/image/resources/resource_trade_credits.webp`}/>
+                            <Text pl={2} fontSize={'lg'} minW={'40px'} textAlign={'center'} className={'heading-lg'}>{resources.tradeCredits}</Text>
                         </Flex>
                         {resources.wildCardPins.map((wildCard) => {
                             return (
-                                <Flex key={wildCard.rarityName + wildCard.rarityColor} py={'15px'} h={'50px'} px={'30px'} bgColor={wildCard.rarityColor}justifyContent={'space-around'} alignItems={'center'} borderRadius={'5%'}>
-                                    <Image h={'50px'} src={`${api}/image/resources/wildcard_pin.webp`}/>                        
-                                    <Text  fontSize={'lg'} className={'heading-lg'} >{wildCard.amount}</Text>
+                                <Flex key={wildCard.rarityName + wildCard.rarityColor} py={'15px'} px={4} h={'50px'} bgColor={wildCard.rarityColor} justifyContent={'center'} alignItems={'center'} borderRadius={'5%'}>
+                                    <Image h={'50px'} src={`${api}/image/resources/wildcard_pin.webp`}/>
+                                    <Text pl={2} fontSize={'lg'} minW={'40px'} textAlign={'center'} className={'heading-lg'}>{wildCard.amount}</Text>
                                 </Flex>    
                             );
                         })}
@@ -402,7 +402,7 @@ export default function Trade() {
                         </DrawerFooter>
                     </DrawerContent>
                 </Drawer>
-            <SimpleGrid columns={[1,1,2,3]} spacing={3}>
+            <SimpleGrid columns={[1,1,2,2,3]} spacing={3}>
                 {results?.filter((trade) => (trade.creator.username.toLowerCase().includes(filter.username.toLowerCase()) && !(trade.timeLeft.hour === trade.timeLeft.minute && trade.timeLeft.hour === trade.timeLeft.second && trade.timeLeft.hour === trade.timeLeft.season && trade.timeLeft.hour === 0))).map((trade) => <Flex key={trade.tradeid}><ScaleFade in={true}><TradeCard data={trade}/></ScaleFade></Flex>)}
             </SimpleGrid>
         </Flex>
