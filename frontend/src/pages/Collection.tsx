@@ -130,11 +130,11 @@ export default function Collection() {
             <Accordion defaultIndex={[data.brawlers.findIndex((value) => value.name === searchParams.get('brawler'))]} allowMultiple={true} >
                 <SimpleGrid columns={[1, 1, 2, 3, 4]} spacing={3} w={'80vw'} bgColor={'blue.800'} p={5} mb={10}>
                     {data && data.brawlers.map((brawler) => (
-                        <AccordionItem key={brawler.name}>
+                        <AccordionItem key={brawler.name} borderTopWidth={'0px'} _last={{borderBottomWidth: undefined}} border={brawler.unlockedPins === brawler.totalPins ? '3px solid #e7a210' : '3px solid black'}>
                         {({ isExpanded }) => (
                             <>
                             <h2 id={brawler.name}>
-                                <AccordionButton bgColor={brawler.rarityColor} border={brawler.unlockedPins === brawler.totalPins ? '3px solid #e7a210' : '3px solid black'} borderBottom={isExpanded ? 'none' : undefined}>
+                                <AccordionButton bgColor={brawler.rarityColor}>
                                     <Flex flexDir={'column'} justifyContent={'center'} alignItems={'center'} textAlign={'center'} w={'100%'}>
                                         <Flex alignItems={'center'}>
                                             <Text fontSize={'2xl'} className={'heading-2xl'}>{brawler.displayName}</Text>    
@@ -152,7 +152,7 @@ export default function Collection() {
                                     </Flex>
                                 </AccordionButton>
                             </h2>
-                            <AccordionPanel border={brawler.unlockedPins === brawler.totalPins ? '3px solid #e7a210' : '3px solid black'} borderTop={'none'}>
+                            <AccordionPanel>
                                 {(isExpanded) && <>
                                     <HStack overflowX={'scroll'} spacing={3} sx={scrollStyle}> 
                                         {brawler.pins.map((pin) => (

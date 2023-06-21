@@ -55,8 +55,8 @@ export default function TradeCard({ data }: {data: TradeData}) {
 
     return (
         <>
-            <Flex h={'25vh'} maxW={'500px'} w={['80vw', '80vw', '45vw', '40vw', '30vw']} flexDir={'column'} alignItems={'center'} justifyContent={'space-between'} textAlign={'center'} bgColor={'blue.800'} p={3} borderRadius={'xl'} border={'2px solid black'} onClick={onOpen} cursor={'pointer'} _hover={{transform: "scale(110%)"}} transition={'0.25s'} boxShadow={'rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;'} overflow={'hidden'}>
-                <Flex w={'85%'} justifyContent={'space-between'}  fontSize={'lg'}>
+            <Flex h={'25vh'} minW={['0px', '0px', '0px', '0px', '384px']} maxW={['500px', '500px', '500px', '500px', '30vw']} w={['80vw', '80vw', '45vw', '40vw', '25vw']} flexDir={'column'} alignItems={'center'} justifyContent={'space-between'} textAlign={'center'} bgColor={'blue.800'} p={3} borderRadius={'xl'} border={'2px solid black'} onClick={onOpen} cursor={'pointer'} _hover={{transform: "scale(110%)"}} transition={'0.25s'} boxShadow={'rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;'} overflow={'hidden'}>
+                <Flex w={'85%'} justifyContent={'space-between'} fontSize={'lg'}>
                     <Text color={'red.500'}>Requesting</Text>
                     <Text color={'green.400'}>Offering</Text>
                 </Flex>
@@ -142,7 +142,7 @@ export default function TradeCard({ data }: {data: TradeData}) {
                         <Flex flexDir={'column'}>
                         <Box borderTop={'2px solid #9f9'} bgColor={'#f3fff3'} p={3}>
                             <Flex whiteSpace={'pre-wrap'}>
-                                <Text fontSize={'xl'} className={'heading-2xl'} >Your Trade with </Text><Text fontSize={'xl'} className={'heading-2xl'}  fontWeight={'bold'}>{data.creator.username}</Text><Text fontSize={'xl'} className={'heading-2xl'} > Has Been Completed!</Text>
+                                <Text fontSize={'xl'} className={'heading-2xl'} >Your Trade with </Text><Text fontSize={'xl'} className={'heading-2xl'} fontWeight={'bold'}>{data.creator.username}</Text><Text fontSize={'xl'} className={'heading-2xl'}> has been completed!</Text>
                             </Flex>
                             <br></br>
                         </Box>

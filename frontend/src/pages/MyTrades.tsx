@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Flex, HStack, IconButton, Image, keyframes, Link, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, ScaleFade, SimpleGrid, Spinner, Text, useDisclosure } from '@chakra-ui/react'
+import { Box, Button, Divider, Flex, IconButton, Image, keyframes, Link, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, ScaleFade, SimpleGrid, Text, useDisclosure, Stack } from '@chakra-ui/react'
 import { useEffect, useState, useCallback } from 'react'
 import { HiOutlineSwitchHorizontal } from 'react-icons/hi'
 import AuthRequest from '../helpers/AuthRequest'
@@ -88,50 +88,48 @@ export default function MyTrades() {
     }
 
     return (
-    <Flex flexDir={'column'} alignItems={'center'} overflow={'hidden'}>
+    <Flex flexDir={'column'} alignItems={'center'} overflow={'hidden'} pb={10}>
         <SkullBackground/>
-        <Text fontSize={'2xl'}  className={'heading-2xl'} my={3}>My Trades</Text>
+        <Text fontSize={'4xl'} className={'heading-4xl'} mb={3}>My Trades</Text>
         <IconButton pos={'absolute'} top={'2vh'} left={'2vh'} as={ArrowBackIcon} aria-label="back to trades menu" onClick={() => {navigate('/trade')}} cursor={'pointer'}/>
         {typeof trades !== "undefined" ? (Object.keys(trades).map((key) => {
             const value = trades[key as keyof TradeCategories];
 
-            return (<Flex key={key} flexDir={'column'} ml={'10vw'} mt={'5vh'}>
+            return (
+            <Flex key={key} flexDir={'column'} mt={'5vh'}>
                 <Text fontSize={'2xl'} className={'heading-2xl'} color={value.color}>{value.description}</Text>
-                <Box bgColor={'gray.200'} h={'2px'} w={'100vw'} my={3}/>
-                <HStack overflowX={'auto'} maxW={'100vw'} sx={scrollStyle}>
+                <Box bgColor={'gray.200'} h={'2px'} w={'90vw'} my={3}/>
+                <Stack direction={['column', 'column', 'row', 'row', 'row']} overflowX={'auto'} alignItems={'center'} maxW={'90vw'} sx={scrollStyle}>
                     {value.trades.map((trade) => {
                         return (
                         <ScaleFade key={trade.tradeid} in={true}>
                             <Flex flexDir={'column'}>
-                            <Flex h={'25vh'} maxW={'fit-content'} flexDir={'column'} alignItems={'center'} justifyContent={'space-between'} textAlign={'center'} bgColor={'blue.800'} p={3} borderRadius={'xl'} border={`3px solid ${value.color}`} cursor={'pointer'} transition={'0.25s'}>
-                                <Flex w={'85%'} justifyContent={'space-between'}  fontSize={'lg'}>
+                            <Flex h={'25vh'} minW={['0px', '0px', '0px', '0px', '384px']} maxW={['500px', '500px', '500px', '500px', '30vw']} w={['80vw', '80vw', '45vw', '40vw', '25vw']} flexDir={'column'} alignItems={'center'} justifyContent={'space-between'} textAlign={'center'} bgColor={'blue.800'} p={3} borderRadius={'xl'} border={'2px solid black'} overflow={'hidden'} cursor={'pointer'} transition={'0.25s'}>
+                                <Flex w={'85%'} justifyContent={'space-between'} fontSize={'lg'}>
                                     <Text color={'red.500'}>Requesting</Text>
                                     <Text color={'green.400'}>Offering</Text>
                                 </Flex>
 
-                                <Flex justifyContent={'center'} alignItems={'center'} maxH={'70%'}>
-                                    <SimpleGrid w={'10vw'} columns={[1, 2]} spacing={3} overflow={'auto'} maxH={'100%'} sx={scrollStyle}>
+                                <Flex justifyContent={'center'} alignItems={'center'} maxH={'70%'} w={'100%'}>
+                                    <SimpleGrid w={'40%'} columns={2} spacing={[0, 0, 1, 2, 2]} overflow={'auto'} maxH={'100%'} sx={scrollStyle}>
                                         {trade.request.map((request) => (
                                             <Flex key={request.pinImage} p={3} border={'2px solid black'} borderRadius={'lg'} bgColor={request.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
-                                                <Image maxW={'60px'} src={`${api}/image/${request.pinImage}`} fallback={<Spinner/>}/>
+                                                <Image w={['40px', '40px', '50px', '50px', '60px']} maxW={'60px'} src={`${api}/image/${request.pinImage}`}/>
                                                 <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} >{request.amount}</Text>
                                             </Flex>
                                         ))}
                                     </SimpleGrid>
-
-                                    <Flex flexDir={'column'} justifyContent={'space-evenly'} alignItems={'center'} mx={'1vw'}   h={'100%'}>
-                                        <Flex alignItems={'center'}>
+                                    <Flex flexDir={'column'} justifyContent={'space-evenly'} alignItems={'center'} mx={'1vw'} w={'20%'} h={'100%'}>
+                                        <Flex alignItems={'center'} flexDir={['column', 'row', 'row', 'row', 'row']}>
                                             <Image w={'30px'} h={'30px'} src={`${api}/image/resources/resource_trade_credits.webp`}/>
                                             <Text ml={1} fontSize={'2xl'}>{trade.cost}</Text>                                
                                         </Flex>
-
                                         <HiOutlineSwitchHorizontal fontSize={'30px'}/>
                                     </Flex>
-                        
-                                    <SimpleGrid w={'10vw'} columns={[1, 2]} spacing={3} overflow={'auto'} maxH={'100%'} sx={scrollStyle}>
+                                    <SimpleGrid w={'40%'} columns={2} spacing={[0, 0, 1, 2, 2]} overflow={'auto'} maxH={'100%'} sx={scrollStyle}>
                                         {trade.offer.map((offer) => (
                                             <Flex key={offer.pinImage} p={3} border={'2px solid black'} borderRadius={'lg'} bgColor={offer.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
-                                                <Image  maxW={'60px'} src={`${api}/image/${offer.pinImage}`} fallback={<Spinner/>}/>
+                                                <Image w={['40px', '40px', '40px', '50px', '60px']} maxW={'60px'} src={`${api}/image/${offer.pinImage}`}/>
                                                 <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} >{offer.amount}</Text>
                                             </Flex>
                                         ))}
@@ -144,44 +142,46 @@ export default function MyTrades() {
                                         <Text whiteSpace={"pre"}>{trade.timeLeft.minute > 0 ? ` ${trade.timeLeft.minute}m` : ""}</Text>
                                         <Text whiteSpace={"pre"}>{trade.timeLeft.second > 0 ? ` ${trade.timeLeft.second}s` : ""}</Text>
                                         <Text>{(trade.timeLeft.hour === 0 && trade.timeLeft.minute === 0 && trade.timeLeft.second === 0) ? `> ${trade.timeLeft.hoursPerSeason} hours` : ""}</Text>
-                                    </Flex>             
-                                </Flex>        
+                                    </Flex>
+                                </Flex>
                             </Flex>
-                            <Button onClick={() => {claimTrade(trade.tradeid, value.message)}} my={3}>{value.buttonText}</Button>
-                            <br></br>                                    
+                            <Button minW={['0px', '0px', '0px', '0px', '384px']} maxW={['500px', '500px', '500px', '500px', '30vw']} onClick={() => {claimTrade(trade.tradeid, value.message)}} my={3}>{value.buttonText}</Button>
                             </Flex>
                         </ScaleFade>
                         );
                     })}
-                </HStack>
+                </Stack>
             </Flex>);
         })) : <></>}
 
         <Modal isOpen={isOpen} onClose={onClose} size={'6xl'}>
             <ModalOverlay/>
             <ModalContent>
-            <ModalHeader fontWeight={'normal'}>{acceptData?.complete ? 'Rewards Claimed!' : 'Returned Pins'}<Divider my={2}/></ModalHeader>
-            <ModalCloseButton />
-            <ModalBody>                
-                <SimpleGrid columns={[2,3,4,5]} spacing={3}>
+                <ModalHeader fontWeight={'normal'}>
+                    {acceptData?.complete ? 'Rewards Claimed!' : 'Returned Pins'}
+                    <Divider my={2}/>
+                </ModalHeader>
+                <ModalCloseButton/>
+                <ModalBody>                
+                    <SimpleGrid columns={[2,3,4,5]} spacing={3}>
                     {acceptData?.pins.map((pin, x) => (
                         <Flex key={pin.pinImage} py={'20%'} bgColor={pin.rarityColor} flexDir={'column'} justifyContent={'space-between'} alignItems={'center'} textAlign={'center'} borderRadius={'2xl'} border={'2px solid black'} boxShadow={'rgba(149, 157, 165, 0.2) 0px 8px 24px;'} maxW={'350px'} maxH={'600px'} transform={'scale(0)'} animation={`${contentTransition} 0.5s ease-out ${((x/2)+0.5)}s 1 forwards`}>                                                                                            
                             <Image borderRadius={'xl'} src={`${api}/image/${pin.pinImage}`} loading={'eager'}/>
                             <Text  fontSize={'2xl'} className={'heading-2xl'} mt={1}>{`${pin.amount}x`}</Text>
                         </Flex>
                     ))}
-                </SimpleGrid>
-                <Flex justifyContent={'center'}>
-                    <Link p={3} borderRadius={'lg'} my={5} bgColor={'#a9e8da'} fontSize={'lg'} href={`/collection`}  className={'heading-md'}>View Collection <ExternalLinkIcon mx={'2px'}/></Link>
-                </Flex>      
-            </ModalBody>
+                    </SimpleGrid>
+                    <Flex justifyContent={'center'}>
+                        <Link p={3} borderRadius={'lg'} my={5} bgColor={'#a9e8da'} fontSize={'lg'} href={`/collection`} className={'heading-md'}>View Collection <ExternalLinkIcon mx={'2px'}/></Link>
+                    </Flex>
+                </ModalBody>
 
-            <ModalFooter>
-                <Flex w={'100%'} justifyContent={'space-between'} alignItems={'center'}>
-                    <Text>{acceptData?.complete ? `Accepted By: ${acceptData?.acceptedBy}` : ``}</Text>
-                    <Button mr={3} onClick={onClose}>Close</Button>
-                </Flex>
-            </ModalFooter>
+                <ModalFooter>
+                    <Flex w={'100%'} justifyContent={'space-between'} alignItems={'center'}>
+                        <Text>{acceptData?.complete ? `Accepted By: ${acceptData?.acceptedBy}` : ``}</Text>
+                        <Button mr={3} onClick={onClose}>Close</Button>
+                    </Flex>
+                </ModalFooter>
             </ModalContent>
         </Modal>
     </Flex>

@@ -96,9 +96,9 @@ export default function Gallery() {
                             <Text fontSize={"3xl"} className={"heading-3xl"} mb={5}>{value.name}</Text>        
                             <VStack p={3} spacing={3} bgColor={"blue.500"} borderRadius={"lg"} border={"3px solid"} borderColor={"blue.700"} overflowY={"scroll"} maxH={"80vh"} sx={scrollStyle}>
                                 {value.themes.map((theme) => (
-                                <Flex key={theme.path + theme.displayName} w={["80vw", "80vw", "80vw", "40vw", "40vw"]} bgColor={selected === theme.path ? "green.300" : "lightskyblue"} justifyContent={"space-between"} flexDir={["column", "row", "row", "row", "row"]} p={[2, 3, 4, 4, 4]} borderRadius={"lg"} border={"2px solid black"}>
+                                <Flex key={theme.path + theme.displayName} w={["80vw", "80vw", "70vw", "40vw", "30vw"]} bgColor={selected === theme.path ? "green.300" : "lightskyblue"} justifyContent={"space-between"} flexDir={["column", "row", "row", "row", "row"]} p={[2, 3, 4, 4, 4]} borderRadius={"lg"} border={"2px solid black"}>
                                     <Flex>
-                                        <Image w={["20vw", "20vw", "20vw", "10vw", "10vw"]} h={["20vw", "20vw", "20vw", "10vw", "10vw"]} bgColor={theme.image !== "" ? "#000" : "#0000"} borderRadius={"lg"} border={"2px solid black"} objectFit={"cover"} src={theme.image !== "" ? `${api}/image/${theme.image}` : `${api}/image/misc/bg_3d_model.webp`} boxShadow={"0px 0px 25px #fff"}/>
+                                        <Image w={["20vw", "20vw", "16vw", "10vw", "8vw"]} h={["20vw", "20vw", "16vw", "10vw", "8vw"]} bgColor={theme.image !== "" ? "#000" : "#0000"} borderRadius={"lg"} border={"2px solid black"} objectFit={"cover"} src={theme.image !== "" ? `${api}/image/${theme.image}` : `${api}/image/misc/bg_3d_model.webp`} boxShadow={"0px 0px 25px #fff"}/>
                                         
                                         <Flex flexDir={"column"} mx={"5%"}>
                                             <Text className={"heading-2xl"} mb={[0, 1, 1, 1, 1]} fontSize={["lg", "xl", "2xl", "xl", "2xl"]}>{theme.displayName}</Text>
