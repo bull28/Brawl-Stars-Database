@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { AlertDialog, AlertDialogBody, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, Button, Flex, Image, keyframes, Modal, ModalBody, ModalContent, ModalFooter, SimpleGrid, Spinner, Text, ToastId, useDisclosure, useToast } from '@chakra-ui/react'
+import { AlertDialog, AlertDialogBody, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, Button, Flex, Image, keyframes, Modal, ModalBody, ModalContent, ModalFooter, SimpleGrid, Spinner, Text, ToastId, useDisclosure, useToast, Divider } from '@chakra-ui/react'
 import { BrawlBoxContentsData, BrawlBoxData } from '../types/BrawlBoxData'
 import CountUp from 'react-countup'
 import AuthRequest from '../helpers/AuthRequest'
@@ -43,9 +43,9 @@ export default function BrawlBoxDisplay({data, tokens, loadResources}: {data: Br
     }
 
     return (
-        <Flex py={5} flexDir={'column'} justifyContent={'center'} alignItems={'center'} textAlign={'center'} pos={'relative'} bgColor={'lightskyblue'} px={10} borderRadius={'lg'} cursor={'pointer'} border={'2px solid black'} onClick={onOpen}>
+        <Flex py={5} flexDir={'column'} justifyContent={'center'} alignItems={'center'} textAlign={'center'} pos={'relative'} bgColor={'lightskyblue'} px={[3, 5, 5, 5, 10]} borderRadius={'lg'} cursor={'pointer'} border={'2px solid black'} onClick={onOpen}>
             <Image src={`${api}/image/${data.image}`} fallback={<Spinner/>}/>
-            <Flex w={'100%'} justifyContent={'center'} mt={3}>
+            <Flex w={'100%'} justifyContent={'center'} alignItems={'center'} mt={3}>
                 <Text fontSize={'xl'} className={'heading-2xl'} mr={1}>{data.cost}</Text>
                 <Image w={'22px'} h={'22px'} src={`${api}/image/resources/resource_tokens.webp`}/>
             </Flex>
@@ -57,10 +57,13 @@ export default function BrawlBoxDisplay({data, tokens, loadResources}: {data: Br
                         </AlertDialogHeader>
                         <AlertDialogBody>
                             <Image src={`${api}/image/${data.image}`}/>
+                            <Divider my={2}/>
                             <Text>{data.description}</Text>
+                            <Divider my={2}/>
                             <Flex flexDir={'column'}>
-                                {typeof data !== "undefined" ? <Text whiteSpace={"pre"}>{data.dropsDescription.reduce((previousValue, currentValue) => previousValue + "\n" + currentValue)}</Text> : <></>}
+                                {typeof data !== "undefined" ? <Text fontSize={["sm", "md", "md", "md", "md"]} whiteSpace={"pre-line"}>{data.dropsDescription.reduce((previousValue, currentValue) => previousValue + "\n" + currentValue)}</Text> : <></>}
                             </Flex>
+                            <Divider my={2}/>
                         </AlertDialogBody>
                         <AlertDialogFooter>
                             <Button onClick={onClose} ref={cancelRef}>
@@ -78,31 +81,32 @@ export default function BrawlBoxDisplay({data, tokens, loadResources}: {data: Br
             </AlertDialog>
             <Modal size={'full'} isOpen={isOpen2} onClose={onClose2}>
                 <ModalContent>
-                    <ModalBody>
+                    <ModalBody p={[0, 3, 5, 5, 5]}>
                         <Flex mt={5} w={'100%'} h={'100%'} justifyContent={'center'} alignItems={'center'} textAlign={'center'}>       
-                        <SimpleGrid columns={(boxContents && boxContents.length > 4) ? Math.ceil(boxContents.length / 2) : boxContents?.length} spacing={10}>
-                            {boxContents?.map((content, x) => (        
-                                <Flex key={content.rewardType + content.displayName + content.image} py={'20%'} bgColor={content.backgroundColor} flexDir={'column'} justifyContent={'space-between'} alignItems={'center'} textAlign={'center'} borderRadius={'2xl'} border={'2px solid black'} boxShadow={'rgba(149, 157, 165, 0.2) 0px 8px 24px;'} maxW={'350px'} maxH={'600px'} transform={'scale(0)'} animation={`${contentTransition} 0.5s ease-out ${((x/2)+0.5)}s 1 forwards`} w={'20vw'}>                                    
-                                
-                                    <Text mb={2}  fontSize={'3xl'} className={'heading-2xl'}>{content.displayName}</Text>                                    
-                                    <Image borderRadius={'xl'} src={`${api}/image/${content.image}`} loading={'eager'}/>
-                                    {content.amount > 1 && <Text fontSize={'2xl'} className={'heading-2xl'}>{`+${content.amount}`}</Text>}
-                                    <Text mx={6}  className={'heading-lg'} fontSize={'xl'}>{content.description}</Text>
-                                    <Text mt={'20%'}  className={'heading-lg'} fontSize={'lg'}><CountUp prefix={'Inventory: '} end={content.inventory} duration={1.5}/></Text>
-                                </Flex>               
-                            ))}
-                        </SimpleGrid>       
+                            <SimpleGrid columns={[1, 2, 3, 3, 4].map((value) => Math.min(value, boxContents.length))} spacing={[3, 4, 5, 5, 5]}>
+                                {boxContents.map((content, x) => (
+                                    <Flex key={content.rewardType + content.displayName + content.image} px={[3, 2, 5, 6, 6]} py={'20%'} w={['90vw', '40vw', '27vw', '27vw', '20vw']} bgColor={content.backgroundColor} flexDir={'column'} justifyContent={'space-between'} alignItems={'center'} textAlign={'center'} borderRadius={'2xl'} border={'2px solid black'} boxShadow={'rgba(149, 157, 165, 0.2) 0px 8px 24px;'} transform={'scale(0)'} animation={`${contentTransition} 0.5s ease-out ${((x/2)+0.5)}s 1 forwards`}>
+                                        <Text mb={2} fontSize={['2xl', '2xl', '2xl', '3xl', '3xl']} className={'heading-2xl'}>{content.displayName}</Text>                                    
+                                        <Image borderRadius={'xl'} src={`${api}/image/${content.image}`} loading={'eager'} maxW={['75vw', '30vw', '20vw', '20vw', '20vw']}/>
+                                        {content.amount > 1 && <Text fontSize={'2xl'} className={'heading-2xl'}>{`+${content.amount}`}</Text>}
+                                        <Text mx={0} className={'heading-xl'} fontSize={['lg', 'md', 'lg', 'xl', 'xl']}>{content.description}</Text>
+                                        <Text mt={'20%'}  className={'heading-lg'} fontSize={'lg'}><CountUp prefix={'Inventory: '} end={content.inventory} duration={1.5}/></Text>
+                                    </Flex>
+                                ))}
+                            </SimpleGrid>
                         </Flex>       
                     </ModalBody>
-                    <ModalFooter>                     
+                    <ModalFooter flexDir={['column', 'row', 'row', 'row', 'row']}>                     
                         <Button onClick={() => {loadResources(); onClose2()}}>
                             Close
                         </Button>
-                        <Button onClick={() => {openBox(data.name)}} ml={3}>
-                            <Flex alignItems={"center"}>
-                                <Text mr={3}>Open Again</Text>
-                                <Text mr={0.5}>{data.cost}</Text>
-                                <Image src={`${api}/image/resources/resource_tokens.webp`} w={'22px'}/>
+                        <Button onClick={() => {openBox(data.name)}} ml={[0, 3, 3, 3, 3]} mt={[3, 0, 0, 0, 0]}>
+                            <Flex alignItems={"center"} justifyContent={"center"} flexDir={['column', 'row', 'row', 'row', 'row']}>
+                                <Text mr={[0, 3, 3, 3, 3]}>Open Again</Text>
+                                <Flex alignItems={"center"}>
+                                    <Text mr={[0, 0.5, 0.5, 0.5, 0.5]}>{data.cost}</Text>
+                                    <Image src={`${api}/image/resources/resource_tokens.webp`} w={'22px'}/>
+                                </Flex>
                             </Flex>
                         </Button>
                     </ModalFooter>

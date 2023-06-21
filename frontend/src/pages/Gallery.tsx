@@ -94,7 +94,7 @@ export default function Gallery() {
                     return (
                         <Flex key={key} flexDir={"column"} alignItems={"center"}>
                             <Text fontSize={"3xl"} className={"heading-3xl"} mb={5}>{value.name}</Text>        
-                            <VStack p={3} spacing={3} bgColor={"blue.500"} borderRadius={"lg"} border={"3px solid"} borderColor={"blue.700"} overflowY={"scroll"} minH={["0px", "0px", "0px", "80vh", "80vh"]} maxH={"80vh"} sx={scrollStyle}>
+                            <VStack p={3} spacing={3} bgColor={"blue.500"} borderRadius={"lg"} border={"3px solid"} borderColor={"blue.700"} overflowY={"scroll"} maxH={"80vh"} sx={scrollStyle}>
                                 {value.themes.map((theme) => (
                                 <Flex key={theme.path + theme.displayName} w={["80vw", "80vw", "80vw", "40vw", "40vw"]} bgColor={selected === theme.path ? "green.300" : "lightskyblue"} justifyContent={"space-between"} flexDir={["column", "row", "row", "row", "row"]} p={[2, 3, 4, 4, 4]} borderRadius={"lg"} border={"2px solid black"}>
                                     <Flex>

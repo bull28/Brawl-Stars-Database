@@ -13,6 +13,15 @@ interface PurchaseData{
     result: BrawlBoxContentsData[];
 }
 
+function itemFontSize(length: number): {size: string[]; class: string;}{
+    if (length >= 20){
+        return {size: ["xs", "sm", "md", "md", "md", "lg"], class: "heading-lg"};
+    } else if (length >= 15){
+        return {size: ["sm", "md", "lg", "lg", "lg", "lg"], class: "heading-lg"};
+    }
+    return {size: ["md", "lg", "xl", "xl", "xl", "xl"], class: "heading-xl"};
+}
+
 export default function ShopItem({data, coins, isFeatured, timeLeftString}: {data: ShopData, coins: number, isFeatured?: boolean, timeLeftString: string}) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [accepted, setAccepted] = useState<boolean>()  
@@ -26,7 +35,7 @@ export default function ShopItem({data, coins, isFeatured, timeLeftString}: {dat
 
     if (isFeatured){
         return (
-            <Flex alignItems={'center'} flexDir={'column'} borderRadius={'lg'} onClick={onOpen} w={'35vw'} p={5} cursor={'pointer'} pos={'relative'} background={'linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%)'} bgColor={'#8EC5FC'} border={'3px solid'} borderColor={'blue.400'} _hover={{transform: 'scale(1.1)'}} transition={'transform 0.05s linear'}>                                        
+            <Flex alignItems={'center'} flexDir={'column'} borderRadius={'lg'} onClick={onOpen} w={['90vw', '80vw', '50vw', '35vw', '35vw']} minW={['0%', '0%', '400px', '600px', '600px']} maxW={['400px', '400px', '600px', '600px', '100vw']} p={5} cursor={'pointer'} pos={'relative'} background={'linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%)'} bgColor={'#8EC5FC'} border={'3px solid'} borderColor={'blue.400'} _hover={{transform: 'scale(1.1)'}} transition={'transform 0.05s linear'}>                                        
                 <Flex p={5}>
                     <Image borderRadius={'lg'} src={`${api}/image/${data.image}`}/>
                 </Flex>
@@ -72,7 +81,7 @@ export default function ShopItem({data, coins, isFeatured, timeLeftString}: {dat
         )
     } else{
         return (
-            <Flex alignItems={'center'} flexDir={'column'} borderRadius={'lg'} onClick={onOpen} w={'11vw'} p={5} cursor={'pointer'} pos={'relative'} bgColor={'lightskyblue'} border={'3px solid'} borderColor={'blue.500'} _hover={{
+            <Flex alignItems={'center'} flexDir={'column'} borderRadius={'lg'} onClick={onOpen} p={5} cursor={'pointer'} pos={'relative'} bgColor={'lightskyblue'} border={'3px solid'} borderColor={'blue.500'} _hover={{
             ".top": {transitionDelay: "0s", transform: "scaleX(1)"},
             ".right": {transitionDelay: "0.05s", transform: "scaleY(1)"},
             ".bottom": {transitionDelay: "0.1s", transform: "scaleX(1)"},
@@ -83,14 +92,14 @@ export default function ShopItem({data, coins, isFeatured, timeLeftString}: {dat
                 <Box className='left' pos={'absolute'} display={'block'} background={'blue.500'} transition={`all 0.1s linear`} w={'3px'} height={'100%'} transform={'scaleY(0)'} top={0} left={0} transformOrigin={'bottom left'}></Box>
                 <Box className='right' pos={'absolute'} display={'block'} background={'blue.500'} transition={`all 0.1s linear`} w={'3px'} height={'100%'} transform={'scaleY(0)'} top={0} right={0} transitionDelay={'0.1s'} transformOrigin={'top left'}></Box>
     
-                <Flex p={5}>
+                <Flex p={[2, 3, 3, 3, 4, 5]}>
                     <Image filter={'drop-shadow(0 0 2rem rgb(255, 255, 255));'} borderRadius={'lg'} src={`${api}/image/${data.image}`}/>
                 </Flex>
                 <Flex>                    
-                    <Text fontSize={data.displayName.length >= 20 ? 'md' : (data.displayName.length >= 15 ? 'lg' : 'xl')} lineHeight={8} className={'heading-2xl'}>{data.displayName}</Text>
+                    <Text fontSize={itemFontSize(data.displayName.length).size} lineHeight={[6, 7, 8, 8, 8]} className={itemFontSize(data.displayName.length).class}>{data.displayName}</Text>
                 </Flex>
                 <Flex alignItems={'center'} mt={3}>
-                    <Text fontSize={'lg'}  className={'heading-xl'}>{data.cost}</Text>
+                    <Text fontSize={['sm', 'md', 'lg', 'lg', 'lg', 'xl']}  className={'heading-lg'}>{data.cost}</Text>
                     <Image ml={1} maxH={'30px'} src={`${api}/image/resources/resource_coins.webp`}/>
                 </Flex>
     
@@ -105,8 +114,8 @@ export default function ShopItem({data, coins, isFeatured, timeLeftString}: {dat
                                     <Flex boxShadow={(accepted) ? '0px 0px 50px #fff' : ''} borderRadius={'50%'} >
                                         <Image src={`${api}/image/${data.image}`}/>
                                     </Flex>
-                                    <Text w={'75%'} textAlign={'center'} mt={'5%'} fontSize={'xl'} className={'heading-2xl'}>{data.description}</Text>
-                                    <Flex  fontSize={'xl'} className={'heading-xl'} mt={5}>
+                                    <Text w={['90%', '80%', '75%', '75%', '75%']} textAlign={'center'} mt={'5%'} fontSize={['md', 'lg', 'xl', 'xl', 'xl']} className={'heading-xl'}>{data.description}</Text>
+                                    <Flex fontSize={'xl'} className={'heading-xl'} mt={5}>
                                         {accepted && purchaseData && purchaseData.inventory !== 1 && <CountUp prefix={'Inventory: '} end={purchaseData.inventory} duration={0.5}/>}
                                     </Flex>
                                 </>
@@ -114,7 +123,7 @@ export default function ShopItem({data, coins, isFeatured, timeLeftString}: {dat
                                 <ScaleFade in={true} delay={1}>
                                     {typeof purchaseData !== "undefined" ?
                                         <Flex bgColor={purchaseData.result[0].backgroundColor} flexDir={'column'} alignItems={'center'} justifyContent={'center'} borderRadius={'lg'} textAlign={'center'} py={5} border={'3px solid black'} boxShadow={'0px 0px 50px #fff'}>
-                                            <Text mb={5}  fontSize={'3xl'} className={'heading-3xl'}>{purchaseData.result[0].displayName}</Text>
+                                            <Text mb={5} fontSize={'3xl'} className={'heading-3xl'}>{purchaseData.result[0].displayName}</Text>
                                             <Flex mb={5}>
                                                 <Image border={'2px solid black'} borderRadius={'lg'} src={`${api}/image/${purchaseData.result[0].image}`}/>
                                             </Flex>    

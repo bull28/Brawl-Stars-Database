@@ -77,38 +77,39 @@ export default function AccountDisplay() {
     }, [])
 
 
-  return (
+    return (
     <Flex flexDir={'column'} justifyContent={'center'} alignItems={'center'} textAlign={'center'}>
         {invalid === true ?<Button fontSize={"lg"} className={"heading-lg"} color={"#fff"} onClick={() => {localStorage.removeItem('username'); navigate('/')}}>Log out</Button> : <></>}
+        {typeof data !== "undefined" ?
         <Menu autoSelect={false} closeOnSelect={false}>
             <MenuButton>
-                <Flex justifyContent={'center'} alignItems={'center'} borderRadius={'50%'} border={(data?.avatarColor !== 'rainbow') ? `3px solid ${data?.avatarColor}` : ''} animation={(data?.avatarColor === 'rainbow') ? `${RainbowBorder()} 12s infinite` : ''}>
+                <Flex justifyContent={'center'} alignItems={'center'} borderRadius={'50%'} border={(data.avatarColor !== 'rainbow') ? `3px solid ${data.avatarColor}` : ''} animation={(data.avatarColor === 'rainbow') ? `${RainbowBorder()} 12s infinite` : ''}>
                     <Image loading={'eager'} src={typeof data !== "undefined" ? `${api}/image/${data.avatar}` : undefined} borderRadius={'50%'} w={'50px'}/>
                 </Flex>
             </MenuButton>
             <MenuList>
                 <MenuGroup>
                     <Flex w={'100%'} justifyContent={'center'} alignItems={'center'} textAlign={'center'} my={1}>
-                        <Text fontSize={'xl'}>{data?.username}</Text>
+                        <Text fontSize={`${Math.min(20, 300 / Math.max(1, data.username.length))}px`}>{data.username}</Text>
                     </Flex>
                 </MenuGroup>
                 <MenuDivider/>
                 <MenuGroup>
 
                     <Tooltip label='Tokens are used to open Brawl Boxes and play challenges. Collect them by visiting the website regularly!' placement='left' hasArrow>
-                        <MenuItem><Image maxW={'30px'} src={`${api}/image/resources/resource_tokens.webp`} mr={2}/>{`${data?.tokens ? data.tokens : 0}`}</MenuItem>
+                        <MenuItem><Image maxW={'30px'} src={`${api}/image/resources/resource_tokens.webp`} mr={2}/>{`${data.tokens}`}</MenuItem>
                     </Tooltip>
 
                     <Tooltip label='Token Doubler gives you a bonus token for every token you receive!' placement='left' hasArrow>
-                        <MenuItem><Image maxW={'30px'} src={`${api}/image/resources/resource_token_doubler.webp`} mr={2}/>{`${data?.tokenDoubler ? data.tokenDoubler : 0}`}</MenuItem>    
+                        <MenuItem><Image maxW={'30px'} src={`${api}/image/resources/resource_token_doubler.webp`} mr={2}/>{`${data.tokenDoubler}`}</MenuItem>    
                     </Tooltip>
 
                     <Tooltip label='Coins are used to buy brawlers, accessories, and cosmetic items. Collect them from Brawl Boxes and challenges!' placement='left' hasArrow>
-                        <MenuItem><Image maxW={'30px'} src={`${api}/image/resources/resource_coins.webp`} mr={2}/>{`${data?.coins ? data.coins : 0}`}</MenuItem>
+                        <MenuItem><Image maxW={'30px'} src={`${api}/image/resources/resource_coins.webp`} mr={2}/>{`${data.coins}`}</MenuItem>
                     </Tooltip>
                     
                     <Tooltip label='Trade Credits are used to trade pins with other users!' placement='left' hasArrow>
-                        <MenuItem><Image maxW={'30px'} src={`${api}/image/resources/resource_trade_credits.webp`} mr={2}/>{`${data?.tradeCredits ? data.tradeCredits : 0}`}</MenuItem>    
+                        <MenuItem><Image maxW={'30px'} src={`${api}/image/resources/resource_trade_credits.webp`} mr={2}/>{`${data.tradeCredits}`}</MenuItem>    
                     </Tooltip>
 
                 </MenuGroup>
@@ -134,6 +135,7 @@ export default function AccountDisplay() {
                 
             </MenuList>
         </Menu>
+        : <></>}
         <Tooltip label='Tokens are used to open Brawl Boxes and play challenges. Collect them by visiting the website regularly!' placement={'bottom-start'}>
             {invalid === false ?
                 <Flex justifyContent={'center'} alignItems={'center'} textAlign={'center'} mt={1}> 
@@ -161,7 +163,7 @@ export default function AccountDisplay() {
                 </DrawerBody>
 
                 <DrawerFooter>
-                    <Flex w={'100%'} justifyContent={'space-around'}>
+                    <Flex w={'100%'} justifyContent={'space-around'} flexDir={['column', 'row', 'row', 'row', 'row']}>
                         <Button onClick={() => {navigate('/login')}} boxShadow={'md'} className={'heading-md'} fontWeight={'normal'}>
                             Add Account
                         </Button>
@@ -174,5 +176,5 @@ export default function AccountDisplay() {
             </DrawerContent>
         </Drawer>
     </Flex>
-  )
+    )
 }

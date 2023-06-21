@@ -109,8 +109,8 @@ export default function Collection() {
                         </Flex>
                     </Flex>
                     <Flex flexDir={'column'}>
-                        <Text  className={'heading-2xl'} fontSize={'2xl'} mb={3}>Brawl Boxes</Text>
-                        <HStack bgColor={'blue.800'} p={5} mx={10} maxW={'50vw'}>
+                        <Text className={'heading-2xl'} fontSize={'2xl'} mb={3}>Brawl Boxes</Text>
+                        <HStack bgColor={'blue.800'} p={[2, 4, 5, 5, 5]} mx={10} justifyContent={'center'} maxW={'960px'} wrap={['wrap', 'wrap', 'nowrap', 'nowrap', 'nowrap']}>
                         {brawlBoxData?.map((brawlBox: BrawlBoxData) => (
                             <Flex key={brawlBox.name}>
                                 <BrawlBoxDisplay data={brawlBox} tokens={tokens} loadResources={loadResources}/>
@@ -119,78 +119,77 @@ export default function Collection() {
                         </HStack>
                     </Flex>
                     <Flex flexDir={'column'}>
-                        <Text  className={'heading-2xl'} fontSize={'2xl'} mb={3}>Tokens</Text>                    
+                        <Text className={'heading-2xl'} fontSize={'2xl'} mb={3}>Tokens</Text>
                         <TokenDisplay callback={updateTokens} tokens={tokens}/>
                     </Flex>
                     </Stack>
                 </Flex>
             }
             <Text fontSize={'3xl'} className={'heading-3xl'} my={10}>Brawlers and Pins</Text>
-            {(typeof data !== "undefined" && data.brawlers.length > 0) && <Accordion defaultIndex={[data.brawlers.findIndex((value) => value.name === searchParams.get('brawler'))]} allowMultiple>
-            <SimpleGrid columns={[1,2,3,4]} spacing={3} w={'80vw'} bgColor={'blue.800'} p={5} mb={10}>
-                {data && data.brawlers.map((brawler) => (
-                    <AccordionItem key={brawler.name} border={brawler.unlockedPins === brawler.totalPins ? '3px solid #e7a210' : '3px solid black'}>
+            {(typeof data !== "undefined" && data.brawlers.length > 0) &&
+            <Accordion defaultIndex={[data.brawlers.findIndex((value) => value.name === searchParams.get('brawler'))]} allowMultiple={true} >
+                <SimpleGrid columns={[1, 1, 2, 3, 4]} spacing={3} w={'80vw'} bgColor={'blue.800'} p={5} mb={10}>
+                    {data && data.brawlers.map((brawler) => (
+                        <AccordionItem key={brawler.name}>
                         {({ isExpanded }) => (
-                        <>
-                        <h2 id={brawler.name}>
-                            <AccordionButton bgColor={brawler.rarityColor}>
-                                <Flex flexDir={'column'} mr={5} justifyContent={'center'} alignItems={'center'} textAlign={'center'} w={'100%'} >
-                                    <Flex alignItems={'center'}>
-                                        <Text fontSize={'2xl'} className={'heading-3xl'}  mr={1}>{brawler.displayName}</Text>    
+                            <>
+                            <h2 id={brawler.name}>
+                                <AccordionButton bgColor={brawler.rarityColor} border={brawler.unlockedPins === brawler.totalPins ? '3px solid #e7a210' : '3px solid black'} borderBottom={isExpanded ? 'none' : undefined}>
+                                    <Flex flexDir={'column'} justifyContent={'center'} alignItems={'center'} textAlign={'center'} w={'100%'}>
+                                        <Flex alignItems={'center'}>
+                                            <Text fontSize={'2xl'} className={'heading-2xl'}>{brawler.displayName}</Text>    
+                                        </Flex>
+                                        <HStack spacing={5} my={3} wrap={['wrap', 'nowrap', 'nowrap', 'nowrap', 'nowrap']} justifyContent={'center'}>
+                                            <Box pos={'relative'}>
+                                                <Image filter={!brawler.u ? 'blur(1px)' : 'none'} src={`${api}/image/${brawler.i}`} maxW={'64px'} borderRadius={'lg'}/>
+                                                {!brawler.u && <Box w={'100%'} h={'100%'} bgColor={'rgba(0, 0, 0, 0.5)'} pos={'absolute'} top={0} borderRadius={'lg'}/>}
+                                                {(!brawler.u) && <Icon as={RiLock2Line} pos={'absolute'} fontSize={'25px'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}></Icon>}
+                                            </Box>
+                                            
+                                            <Text color={(brawler.unlockedPins !== brawler.totalPins) ? 'white' : 'gold'} fontSize={'md'} className={'heading-md'}>{`${brawler.unlockedPins}/${brawler.totalPins} Unlocked`}</Text>
+                                            <AccordionIcon/>
+                                        </HStack>
                                     </Flex>
-                                    <HStack spacing={5} my={3}>
-                                        <Box pos={'relative'}>
-                                            <Image filter={!brawler.u ? 'blur(1px)' : 'none'} src={`${api}/image/${brawler.i}`} maxW={'64px'} borderRadius={'lg'}/>
-                                            {!brawler.u && <Box w={'100%'} h={'100%'} bgColor={'rgba(0, 0, 0, 0.5)'} pos={'absolute'} top={0} borderRadius={'lg'}/>}
-                                            {(!brawler.u) && <Icon as={RiLock2Line}  pos={'absolute'} fontSize={'25px'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}></Icon>}
-                                        </Box>
-                                        
-                                        <Text color={(brawler.unlockedPins !== brawler.totalPins) ? 'white' : 'gold'} fontSize={'md'} className={'heading-md'}>{`${brawler.unlockedPins}/${brawler.totalPins} Unlocked`}</Text>
-
-                                        <AccordionIcon/>
+                                </AccordionButton>
+                            </h2>
+                            <AccordionPanel border={brawler.unlockedPins === brawler.totalPins ? '3px solid #e7a210' : '3px solid black'} borderTop={'none'}>
+                                {(isExpanded) && <>
+                                    <HStack overflowX={'scroll'} spacing={3} sx={scrollStyle}> 
+                                        {brawler.pins.map((pin) => (
+                                                <Box key={brawler.name + pin.i} minW={'100px'} bgColor={Object.values(data?.pinRarityColors || {})[pin.r]} p={3} borderRadius={'md'} border={'2px solid black'}>
+                                                    <Image w={'100px'} filter={(pin.a === 0) ? 'grayscale(100%)': 'none'} src={`${api}/image/${brawler.pinFilePath+pin.i}`}/>
+                                                    <Text my={1} color={(pin.a === 0) ? 'gray' : 'white'} fontSize={'lg'} className={'heading-lg'}>{`${pin.a}x`}</Text>
+                                                </Box>
+                                        ))}
                                     </HStack>
-                                </Flex>
-                                
-                            </AccordionButton>      
-                        </h2>
-                        <AccordionPanel>
-                            {(isExpanded) && <>
-
-                            <HStack overflowX={'scroll'} spacing={3} sx={scrollStyle}> 
-                                {brawler.pins.map((pin) => (                                        
-                                        <Box key={brawler.name + pin.i} minW={'100px'} bgColor={Object.values(data?.pinRarityColors || {})[pin.r]} p={3} borderRadius={'md'} border={'2px solid black'}>
-                                            <Image w={'100px'} filter={(pin.a === 0) ? 'grayscale(100%)': 'none'} src={`${api}/image/${brawler.pinFilePath+pin.i}`}/>                            
-                                            <Text my={1} color={(pin.a === 0) ? 'gray' : 'white'} fontSize={'lg'} className={'heading-lg'}>{`${pin.a}x`}</Text>                                            
-                                        </Box>                                                                                                                                                          
-                                ))}                                
-                            </HStack>
-                            </>}
-                            <Center flexDir={'column'} mt={3}>
-                                {!brawler.u && <Tooltip label={'Unlock By Opening Boxes'}><Tag colorScheme={'red'} my={2}>Unlock This Brawler To Collect Pins</Tag></Tooltip>}
-                                <Text mb={'30px'}  className={'heading-sm'}>{`Total ${brawler.displayName} Pins: ${brawler.pinCopies}`}</Text>
-                                <Link href={`/brawlers/${brawler.name}`}  className={'heading-sm'}>View Brawler Page <ExternalLinkIcon mx={'2px'}/></Link>
-                            </Center>
-                        </AccordionPanel>
-                        </>
-                    )}
-                    </AccordionItem>
-                ))}
-            </SimpleGrid>
-            </Accordion>}
+                                </>}
+                                <Center flexDir={'column'} mt={3}>
+                                    {!brawler.u && <Tooltip label={'Unlock By Opening Boxes'}><Tag colorScheme={'red'} my={2}>Unlock This Brawler To Collect Pins</Tag></Tooltip>}
+                                    <Text mb={'30px'}  className={'heading-sm'}>{`Total ${brawler.displayName} Pins: ${brawler.pinCopies}`}</Text>
+                                    <Link href={`/brawlers/${brawler.name}`}  className={'heading-sm'}>View Brawler Page <ExternalLinkIcon mx={'2px'}/></Link>
+                                </Center>
+                            </AccordionPanel>
+                            </>
+                        )}
+                        </AccordionItem>
+                    ))}
+                </SimpleGrid>
+            </Accordion>
+            }
             <Text fontSize={'3xl'} className={'heading-3xl'} my={10}>Accessories</Text>
             <Flex mb={10}>
                 <AccessoryLevel level={level} points={points} upgradePoints={upgradePoints}/>
             </Flex>
-            <SimpleGrid columns={[1,2,3,4]} spacing={3} w={'80vw'} bgColor={'blue.800'} p={5} mb={10}>
+            <SimpleGrid columns={[1, 1, 2, 3, 4]} spacing={3} w={'80vw'} bgColor={'blue.800'} p={5} mb={10}>
                 {data && data.accessories.sort((a, b) => a.unlockLevel - b.unlockLevel).map((accessory) => (
                     <Flex key={accessory.displayName + accessory.image} bgColor={level >= accessory.unlockLevel ? '#a248ff' : '#512480'} flexDir={'column'} alignItems={'center'} border={accessory.unlocked === true ? '3px solid #e7a210' : '3px solid black'}>
-                        <Text fontSize={'2xl'} className={'heading-2xl'}>{accessory.displayName}</Text>
+                        <Text fontSize={['lg', 'xl', '2xl', '2xl', '2xl']} className={'heading-2xl'}>{accessory.displayName}</Text>
                         <Box pos={'relative'} maxW={'40%'} m={2}>
                             <Image filter={accessory.unlocked === true ? 'drop-shadow(0 0 2rem rgb(255, 255, 255));' : ''} src={`${api}/image/${accessory.image}`}/>
                             {accessory.unlocked === false && <Box w={'100%'} h={'100%'} bgColor={'rgba(0, 0, 0, 0.5)'} pos={'absolute'} top={0} borderRadius={'lg'}/>}
-                            {accessory.unlocked === false && <Icon as={RiLock2Line}  pos={'absolute'} fontSize={'25px'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}></Icon>}
+                            {accessory.unlocked === false && <Icon as={RiLock2Line} pos={'absolute'} fontSize={'25px'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}></Icon>}
                         </Box>
-                        <Text fontSize={'md'} className={'heading-md'} mb={1} alignItems={'center'}>{accessory.unlocked === true ? 'Unlocked' : ((level < accessory.unlockLevel) ? `Requires Level ${accessory.unlockLevel}` : accessory.unlockMethod)}</Text>
+                        <Text fontSize={['sm', 'md', 'md', 'md', 'md']} className={'heading-md'} mb={1} alignItems={'center'}>{accessory.unlocked === true ? 'Unlocked' : ((level < accessory.unlockLevel) ? `Requires Level ${accessory.unlockLevel}` : accessory.unlockMethod)}</Text>
                     </Flex>
                 ))}
             </SimpleGrid>

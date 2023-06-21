@@ -52,7 +52,7 @@ export default function EventSideBar({ changeData, changeOffset, startTime }: {c
 
     const mapViewRef = useRef<{ open: () => void}>(null);
 
-    const query = useMediaQuery('(min-width: 400px)')[0]
+    const query = useMediaQuery('(min-width: 600px)')[0]
     const { isOpen, onOpen, onClose } = useDisclosure() 
     const toast = useToast()
 
@@ -189,7 +189,7 @@ export default function EventSideBar({ changeData, changeOffset, startTime }: {c
 
     if (query){
         return (
-            <Flex flexDir={'column'} minH={"80vh"} style={{caretColor: "transparent"}} border={'1px'} borderRadius={'md'} borderColor={'gray.200'} w={'28%'} maxW={'350px'} justifyContent={'space-around'} px={5} mr={10} ml={3} boxShadow={'rgba(99, 99, 99, 0.2) 0px 1px 4px 0px'}>
+            <Flex flexDir={'column'} minH={"80vh"} style={{caretColor: "transparent"}} border={'1px'} borderRadius={'md'} borderColor={'gray.200'} w={'28%'} minW={'250px'} maxW={'350px'} justifyContent={'space-around'} px={5} mr={10} ml={3} boxShadow={'rgba(99, 99, 99, 0.2) 0px 1px 4px 0px'}>
                 <Text fontSize={"2xl"} className={'heading-2xl'} mt={8}>Event Menu</Text>
                 <Divider opacity={1} my={8}/>
                 <RadioGroup onChange={setChoice} value={choice}>

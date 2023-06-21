@@ -50,7 +50,6 @@ export default function Shop() {
 
         for (let x = 0; x < items.length; x++){
             if (items[x].name === "featuredItem"){
-                console.log(items[x]);
                 setFeatured(items[x]);
             } else{
                 for (let y in sortedItems){
@@ -108,11 +107,13 @@ export default function Shop() {
 
     return (
         <Flex flexDir={'column'} alignItems={'center'} minH={'100vh'}>
-            <Flex zIndex={'-1'} w={'100%'} h={'100%'} pos={'absolute'} backgroundImage={require(`../assets/shopbackground${season}.webp`)} backgroundAttachment={'fixed'} backgroundRepeat={'no-repeat'} objectFit={'cover'}/>
+            <Flex zIndex={'-1'} w={'100%'} h={'100%'} pos={'fixed'} objectFit={'cover'} alignItems={'center'} justifyContent={'center'}>
+                <Image w={'100%'} h={'100%'} src={require(`../assets/shopbackground${season}.webp`)}/>
+            </Flex>
             <MovingText title="Shop" color1="#fdf542" color2="#ff9005" fontSize='4xl'/>
             {(getToken() && typeof userInfo !== "undefined") ?
                 <>
-                <Flex pos={'absolute'} right={3} top={3}>
+                <Flex pos={['relative', 'relative', 'absolute', 'absolute', 'absolute']} right={3} top={3}>
                     <Flex justifyContent={'center'} alignItems={'center'} p={3} pl={2} pos={'relative'} borderRadius={'lg'}>
                         <Box w={'100%'} h={'100%'} pos={'absolute'} zIndex={'-1'} bgColor={'blue.500'}border={'2px solid'} borderRadius={'lg'} borderColor={'blue.800'}/>
                         <Flex bgColor={'gray.100'} alignItems={'center'} py={2} px={5} borderRadius={'lg'} boxShadow={'rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;'}>
@@ -135,16 +136,16 @@ export default function Shop() {
                 </Flex>
                 <Flex w={'90%'} justifyContent={'left'}>
                     {typeof items !== "undefined" ?
-                        <Flex justifyContent={'space-between'} flexDir={'column'} p={5}>
+                        <Flex justifyContent={'space-between'} flexDir={'column'} p={[0, 2, 4, 5, 5]}>
                             {Object.keys(items).map((key) => {
                                 const value = items[key as keyof ShopItemCategories];
                                 return (
                                     <Flex key={key} flexDir={'column'}>
-                                        <Flex alignItems={'center'} fontSize={'3xl'} className={'heading-3xl'} ml={5} mb={3} mt={'5vh'}>
+                                        <Flex alignItems={'center'} fontSize={'3xl'} className={'heading-3xl'} ml={[0, 2, 5, 5, 5]} mb={[1, 2, 3, 3, 3]} mt={'5vh'}>
                                             <Text mr={1}>{value.name}</Text>
                                             {value.icon}
                                         </Flex>                        
-                                        <SimpleGrid columns={7} spacing={3}>
+                                        <SimpleGrid columns={[2, 3, 4, 5, 6, 7]} spacing={3}>
                                             {value.items.map((item) => (
                                                 <ScaleFade key={item.name} in={true}><ShopItem data={item} coins={userInfo.coins} timeLeftString={""}/></ScaleFade>
                                             ))}
