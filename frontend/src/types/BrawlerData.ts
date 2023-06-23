@@ -1,7 +1,7 @@
 interface Rarity{
     value: number;
     name: string;
-    color: string
+    color: string;
 }
 
 export interface BrawlerData{

@@ -243,10 +243,10 @@ class EventSlot{
 
         // if gameModeIndex >= 0 then mapIndex is guaranteed to be >= 0 and the map does exist in this event slot
         if (gameModeIndex >= 0){
-            let theGameMode = this.gameModes[gameModeIndex];
+            let gameMode = this.gameModes[gameModeIndex];
 
             // get the list of all possible start times for that map
-            let startTime = theGameMode.getTimeAtMap(mapIndex, this.offset, this.eventDuration);
+            let startTime = gameMode.getTimeAtMap(mapIndex, this.offset, this.eventDuration);
             
             
             // go through all the start times and compute the difference between them and the current time
@@ -277,7 +277,7 @@ class EventSlot{
                 }
 
                 // make sure the game mode is actually active
-                if (this.getCurrentGameMode(thisTime) === theGameMode){
+                if (this.getCurrentGameMode(thisTime) === gameMode){
                     // update lowest time difference
                     const timeDiff = subtractSeasonTimes(thisTime, currentTime);
                     if (seasonTimesLessThan(timeDiff, lowestStartTime) === true){
@@ -409,7 +409,7 @@ export function getModeData(eventList: EventSlot[], modeName: string): GameModeD
                     displayName: thisGameMode.displayName,
                     data: applyGameModeDisplay(thisGameMode.data),
                     maps: []
-                }
+                };
 
                 // only add the list of map names and not the entire json data
                 const allMaps = thisGameMode.maps;
@@ -417,8 +417,8 @@ export function getModeData(eventList: EventSlot[], modeName: string): GameModeD
                 for (let m = 0; m < allMaps.length; m++){
                     if (allMaps[m].hasOwnProperty("name") === true && allMaps[m].hasOwnProperty("displayName") === true){
                         mapList.push({
-                            "name": allMaps[m].name,
-                            "displayName": allMaps[m].displayName
+                            name: allMaps[m].name,
+                            displayName: allMaps[m].displayName
                         });
                     }
                 }
@@ -506,7 +506,7 @@ export function searchForMapName(eventList: EventSlot[], search: {search: string
                         name: map.name,
                         displayName: map.displayName,
                         gameModeData: applyGameModeMapDisplay(mode.name, mode.data)
-                    }
+                    };
                     
 
                     if (thisMapName === query){

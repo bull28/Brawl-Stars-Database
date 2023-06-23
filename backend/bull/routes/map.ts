@@ -62,7 +62,6 @@ router.get("/map/:map", (req, res) => {
 // Search for a specific map by its name
 router.post<{}, {}, MapSearchReqBody>("/mapsearch", (req, res) => {
     let search = req.body;
-    //if the json is not formatted correctly, error will be thrown above
     
     const searchResult = searchForMapName(events, search);
     res.json(searchResult);
