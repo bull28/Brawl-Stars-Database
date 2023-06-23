@@ -27,14 +27,14 @@ export default function Brawler() {
             axios.get(`${api}/skin/${params.brawler}/${res.data.defaultSkin}`)
             .then((skinRes) => {
                 let defaultModel: ModelFiles = {
-                    geometry: `${api}/image/${skinRes.data.model.geometry.path}`,
+                    geometry: skinRes.data.model.geometry.path,
                     winAnimation: undefined,
                     loseAnimation: undefined
                 };
                 if (skinRes.data.model.winAnimation.exists){
-                    defaultModel.winAnimation = `${api}/image/${skinRes.data.model.winAnimation.path}`;
+                    defaultModel.winAnimation = skinRes.data.model.winAnimation.path;
                 } if (skinRes.data.model.loseAnimation.exists){
-                    defaultModel.loseAnimation = `${api}/image/${skinRes.data.model.loseAnimation.path}`;
+                    defaultModel.loseAnimation = skinRes.data.model.loseAnimation.path;
                 }
                 setModel(defaultModel);
             });
@@ -49,7 +49,7 @@ export default function Brawler() {
             <Flex w={'100%'} justifyContent={'center'} mt={3} mb={5}>
                 <Text fontSize={'3xl'} className={'heading-3xl'} color={'white'}>{data.displayName}</Text>
             </Flex>
-            <Stack direction={['column', 'column', 'column', 'column', 'row']} h={['fit-content', 'fit-content', 'fit-content', 'fit-content', '60vh']} w={'100%'} alignItems={'center'} justifyContent={'space-around'} spacing={['3vh', '3vh', '3vh', '3vh', 0]} mb={5}>
+            <Stack direction={['column', 'column', 'column', 'column', 'row']} h={['fit-content', 'fit-content', 'fit-content', 'fit-content', '60vh']} minH={['0px', '0px', '0px', '0px', '600px']} w={'100%'} alignItems={'center'} justifyContent={'space-around'} spacing={['3vh', '3vh', '3vh', '3vh', 0]} mb={5}>
                 <Flex flexDir={'column'} textAlign={'center'} h={'100%'} justifyContent={'center'} alignItems={'center'} w={['100%', '80%', '69%', '50%', '33%']}>
                     <Image src={`${api}/image/${data.image}`} borderRadius={'sm'} fallback={<Spinner/>} objectFit={'contain'} h={'50%'} border={'8px solid black'} mb={7}/>
                     <Flex pos={'relative'} justifyContent={'center'}>
@@ -60,13 +60,15 @@ export default function Brawler() {
                     <Text w={'60%'} color={'white'} fontSize={['x-small', 'sm', 'md']} className={'heading-md'}>{data.description}</Text>
                 </Flex>
 
-                <Flex justifyContent={'center'} alignItems={'center'} h={'100%'} w={['60%', '60%', '50%', '40%', '33%']} bgColor={'#000'} backgroundPosition={'center'} backgroundSize={'cover'} backgroundRepeat={'no-repeat'} border={'3px solid white'}>
+                <Flex justifyContent={'center'} alignItems={'center'} h={['60vw', '60vw', '50vw', '40vw', '100%']} w={['60vw', '60vw', '50vw', '40vw', '33%']} bgColor={'#000'} backgroundPosition={'center'} backgroundSize={'cover'} backgroundRepeat={'no-repeat'} border={'3px solid white'}>
                     <Suspense fallback={<Spinner/>}>
-                        {model.geometry && <AnimationViewer modelFile={model.geometry} winFile={model.winAnimation} loseFile={model.loseAnimation} bgFile={`${api}/image/${cosmetics?.scene}`}/>}
+                        {typeof model.geometry !== "undefined" && typeof cosmetics !== "undefined" &&
+                            <AnimationViewer modelFile={model.geometry} winFile={model.winAnimation} loseFile={model.loseAnimation} lightsFile={undefined} sceneFile={cosmetics.scene} lightIntensity={undefined}/>
+                        }
                     </Suspense>
                 </Flex>
 
-                <Flex w={['100%', '100%', '100%', '100%', '33%']} flexDir={'column'} justifyContent={'center'} alignItems={'center'} maxH={'60vh'}>
+                <Flex w={['100%', '100%', '100%', '100%', '33%']} h={'100%'} maxH={['60vh', '60vh', '60vh', '60vh', '100%']} flexDir={'column'} justifyContent={'center'} alignItems={'center'}>
                     <Text color={'white'} fontSize={'2xl'} className={'heading-2xl'}>Pins</Text>
                     <SimpleGrid columns={[2, 4, 5, 6, 4]} spacing={3} bgColor={'black'} p={3} borderRadius={'md'} w={'90%'} border={'1px solid rgba(255,255,255,0.8)'} overflowY={'scroll'} sx={{
                         '&::-webkit-scrollbar': {

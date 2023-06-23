@@ -79,7 +79,7 @@ export default function BrawlerImage({ brawler, skin, setModel }: BrawlerImagePr
             <Flex alignItems={'center'} alignSelf={'center'} mt={3} mb={1}>
                     {(data.group.icon !== 'skingroups/icons/icon_default.webp') && <Label label={data.group.name}><Image src={`${api}/image/${data.group.icon}`} w={7} mr={3}/></Label>}            
                 <Text fontSize={['md','lg','xl']} className={'heading-lg'} >{data.displayName}</Text>    
-                {(data.model.geometry.exists) && <Icon as={RepeatIcon} ml={3} fontSize={'24px'} cursor={'pointer'} onClick={() => {let skinModel: ModelFiles = {geometry: `${api}/image/${data.model.geometry.path}`, winAnimation: undefined, loseAnimation: undefined}; if (data.model.winAnimation.exists){skinModel.winAnimation = `${api}/image/${data.model.winAnimation.path}`;} if (data.model.loseAnimation.exists){skinModel.loseAnimation = `${api}/image/${data.model.loseAnimation.path}`;} setModel(skinModel); scroll.scrollToTop();}}/>}
+                {(data.model.geometry.exists) && <Icon as={RepeatIcon} ml={3} fontSize={'24px'} cursor={'pointer'} onClick={() => {let skinModel: ModelFiles = {geometry: data.model.geometry.path, winAnimation: undefined, loseAnimation: undefined}; if (data.model.winAnimation.exists){skinModel.winAnimation = data.model.winAnimation.path;} if (data.model.loseAnimation.exists){skinModel.loseAnimation = data.model.loseAnimation.path;} setModel(skinModel); scroll.scrollToTop();}}/>}
             </Flex>
             
             <Flex alignSelf={'center'} mb={1}>

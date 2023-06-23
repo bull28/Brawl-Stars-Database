@@ -1,9 +1,9 @@
-import { Button, Flex, Text } from "@chakra-ui/react";
-import { useRef, Suspense, MutableRefObject, useEffect } from "react";
-import { AmbientLight, AnimationAction, AnimationMixer, Color, DirectionalLight, LoopOnce, Object3D, PerspectiveCamera, Vector3 } from "three";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { Canvas, RootState, useFrame, useLoader, useThree } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import {Button, Flex} from "@chakra-ui/react";
+import {useRef, Suspense, MutableRefObject, useEffect} from "react";
+import {AnimationAction, AnimationMixer, LoopOnce, Object3D, PerspectiveCamera, Vector3} from "three";
+import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader";
+import {Canvas, RootState, useFrame, useLoader, useThree} from "@react-three/fiber";
+import {OrbitControls} from "@react-three/drei";
 import BackgroundScene from "./BackgroundScene";
 import api from "../helpers/APIRoute";
 
@@ -11,71 +11,23 @@ interface AnimationViewerProps{
     modelFile: string;
     winFile: string | undefined;
     loseFile: string | undefined;
-    bgFile: string | undefined;
+    lightsFile: string | undefined;
+    sceneFile: string | undefined;
+    lightIntensity: number | undefined;
 }
 
 interface GltfModelProps{
     modelFile: string;
     winFile: string;
     loseFile: string;
+    lightsFile: string;
     playing: MutableRefObject<number>;
     modelPos: MutableRefObject<Vector3>;
     hasBackground: boolean;
 }
 
-const addLights = (camera: Object3D, hasBackground: boolean) => {
-    const light1X = (Math.sqrt(6)-Math.sqrt(2))/4;
-    const light1Y = 0.0;
-    const light1Z = (Math.sqrt(6)+Math.sqrt(2))/4;
-    const light2X = (Math.sqrt(2))/-4;
-    const light2Y = (Math.sqrt(2))/-2;
-    const light2Z = (Math.sqrt(6))/-4;
-
-
-    // scene backround light
-    const backroundLight = new AmbientLight();
-    backroundLight.intensity = 0.8;
-    backroundLight.color = new Color(0xffffff);
-
-
-    // blue side light
-    const light1Pos = new Object3D();
-    light1Pos.position.set(light1X, light1Y, light1Z);
-
-    const light1 = new DirectionalLight();
-    light1.position.set(light1X * -1, light1Y * -1, light1Z * -1);
-    light1.target = light1Pos;
-
-    if (hasBackground === true){
-        light1.intensity = 0.8;
-        light1.color = new Color(0xffffff);
-    } else{
-        light1.intensity = 3.2;
-        light1.color = new Color(0x24d6ff);//0xc0ffff an alternative color
-    }
-
-
-    // white front light
-    const light2Pos = new Object3D();
-    light2Pos.position.set(light2X, light2Y, light2Z);//direction the light goes toward
-
-    const light2 = new DirectionalLight();
-    light2.position.set(light2X * -1, light2Y * -1, light2Z * -1);//position of the light
-    light2.target = light2Pos;
-
-    light2.intensity = 1.2;
-    light2.color = new Color(0xdfdfdf);
-
-    camera.children = [];//remove all existing lights so there are no duplicates
-    camera.add(backroundLight);
-    camera.add(light1);
-    camera.add(light1Pos);
-    camera.add(light2);
-    camera.add(light2Pos);
-}
-
-const GltfModel = ({modelFile, winFile, loseFile, playing, modelPos, hasBackground}: GltfModelProps) => {
-    const gltf = useLoader(GLTFLoader, modelFile);
+function GltfModel({modelFile, winFile, loseFile, lightsFile, playing, modelPos, hasBackground}: GltfModelProps){
+    const gltf = useLoader(GLTFLoader, `${api}/image/${modelFile}`);
     const initialPose = new Map<string, Vector3>();
 
     // Store the initial pose so the reset button can set the pose back to it
@@ -90,13 +42,13 @@ const GltfModel = ({modelFile, winFile, loseFile, playing, modelPos, hasBackgrou
 
 
     // clampWhenFinished makes it stay on the last frame instead of going back to the first
-    const winAnimation = useLoader(GLTFLoader, winFile);
+    const winAnimation = useLoader(GLTFLoader, `${api}/image/${winFile}`);
     if (winAnimation.animations.length > 0){
         win = mixer.clipAction(winAnimation.animations[0]);
         win.clampWhenFinished = true;
         win.setLoop(LoopOnce, 0);
     }
-    const loseAnimation = useLoader(GLTFLoader, loseFile);
+    const loseAnimation = useLoader(GLTFLoader, `${api}/image/${loseFile}`);
     if (loseAnimation.animations.length > 0){
         lose = mixer.clipAction(loseAnimation.animations[0]);
         lose.clampWhenFinished = true;
@@ -133,7 +85,11 @@ const GltfModel = ({modelFile, winFile, loseFile, playing, modelPos, hasBackgrou
         }
     }
     // Refer to the long comment about how ugly frank is to see where all the numbers came from
-    addLights(BARBARIAN_KING.camera, hasBackground);
+    //addLights(BARBARIAN_KING.camera, hasBackground);
+    const lights = useLoader(GLTFLoader, `${api}/image/${lightsFile}`);
+    BARBARIAN_KING.camera.children = [];
+    BARBARIAN_KING.camera.add(lights.scene);
+
     BARBARIAN_KING.camera.updateProjectionMatrix();
     BARBARIAN_KING.scene.add(BARBARIAN_KING.camera);
 
@@ -193,8 +149,8 @@ const GltfModel = ({modelFile, winFile, loseFile, playing, modelPos, hasBackgrou
     );
 }
 
-const AnimationViewer = (({modelFile, winFile, loseFile, bgFile}: AnimationViewerProps) => {
-    const gltf = useLoader(GLTFLoader, modelFile);// this line does some stuff
+export default function AnimationViewer({modelFile, winFile, loseFile, lightsFile, sceneFile, lightIntensity}: AnimationViewerProps){
+    const gltf = useLoader(GLTFLoader, `${api}/image/${modelFile}`);// this line does some stuff
     gltf.scene.traverse((object: Object3D) => {object.frustumCulled = false;});// and so does this one
     // If you remove these lines then darryl will disappear
 
@@ -202,30 +158,23 @@ const AnimationViewer = (({modelFile, winFile, loseFile, bgFile}: AnimationViewe
     const animationRef = useRef<number>(0);
     const positionRef = useRef<Vector3>(new Vector3(0, 0, 0));
 
-    return(
-        <Flex w={"100%"} h={"100%"} flexDir={"column"}>
-            <Flex w={"100%"} h={"100%"} bgImage={`${api}/image/misc/bg_3d_model.webp`} backgroundPosition={"center"} backgroundSize={"cover"} backgroundRepeat={"no-repeat"}>
-            <Canvas flat={true} camera={{fov: 40, position: [0, 0, 1]}}>
-                <Suspense fallback={null}>
-                    {(bgFile !== undefined && bgFile !== "" && bgFile !== "/image/" && bgFile !== `${api}/image/`) ? <BackgroundScene file={bgFile} modelPos={positionRef}/> : <></>}
-                    <GltfModel modelFile={modelFile} winFile={winFile ? winFile : `${api}/image/misc/empty.glb`} loseFile={loseFile ? loseFile : `${api}/image/misc/empty.glb`} playing={animationRef} modelPos={positionRef} hasBackground={(bgFile !== undefined && bgFile !== "" && bgFile !== "/image/" && bgFile !== `${api}/image/`)}/>
-                    <OrbitControls enablePan={false} maxPolarAngle={Math.PI / 2} maxDistance={150}/>
-                </Suspense>
-            </Canvas>
+    return (
+        <Flex w={"100%"} h={"100%"} flexDir={"column"} alignItems={"center"} pos={"relative"}>
+            <Flex w={"100%"} h={"100%"} flexDir={"column"} bgImage={`${api}/image/misc/bg_3d_model.webp`} bgPos={"center"} bgSize={"cover"} bgRepeat={"no-repeat"}>
+                <Canvas flat={true} camera={{fov: 40, position: [0, 0, 1]}}>
+                    <Suspense fallback={null}>
+                        {(typeof sceneFile === "string" && sceneFile !== "") ? <BackgroundScene file={sceneFile} modelPos={positionRef}/> : <></>}
+                        <ambientLight intensity={typeof lightIntensity === "number" ? lightIntensity : 0.8}/>
+                        <GltfModel modelFile={modelFile} winFile={typeof winFile === "string" ? winFile : "misc/empty.glb"} loseFile={typeof loseFile === "string" ? loseFile : "misc/empty.glb"} lightsFile={typeof lightsFile === "string" ? lightsFile : "misc/default_lights.glb"} playing={animationRef} modelPos={positionRef} hasBackground={(typeof sceneFile === "string" && sceneFile !== "")}/>
+                        <OrbitControls enablePan={false} maxPolarAngle={Math.PI / 2} maxDistance={150}/>
+                    </Suspense>
+                </Canvas>
             </Flex>
-            <Flex h={"5%"} flexDir={"row"} justifyContent={"center"}>
-                <Button isDisabled={(winFile === undefined)} h={"100%"} w={"33%"} onClick={() => {animationRef.current = 1;}}>
-                    <Text fontSize={"md"} className={"heading-md"}>Win</Text>
-                </Button>
-                <Button isDisabled={(loseFile === undefined)} h={"100%"} w={"33%"} onClick={() => {animationRef.current = 2;}}>
-                    <Text fontSize={"md"} className={"heading-md"}>Lose</Text>
-                </Button>
-                <Button isDisabled={(winFile === undefined && loseFile === undefined)} h={"100%"} w={"33%"} onClick={() => {animationRef.current = 3;}}>
-                    <Text fontSize={"md"} className={"heading-md"}>Reset</Text>
-                </Button>
+            <Flex h={"5%"} w={"100%"} flexDir={"row"} justifyContent={"center"} pos={"absolute"} bottom={0}>
+                <Button className={"heading-md"} isDisabled={(typeof winFile === "undefined")} h={"100%"} lineHeight={0} flex={1} onClick={() => {animationRef.current = 1;}}>Win</Button>
+                <Button className={"heading-md"} isDisabled={(typeof loseFile === "undefined")} h={"100%"} lineHeight={0} flex={1} onClick={() => {animationRef.current = 2;}}>Lose</Button>
+                <Button className={"heading-md"} isDisabled={(typeof winFile === "undefined" && typeof loseFile === "undefined")} h={"100%"} lineHeight={0} flex={1} onClick={() => {animationRef.current = 3;}}>Reset</Button>
             </Flex>
         </Flex>
     );
-});
-
-export default AnimationViewer;
+};
