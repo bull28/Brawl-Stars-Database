@@ -84,8 +84,6 @@ function GltfModel({modelFile, winFile, loseFile, lightsFile, playing, modelPos,
             sceneCamera.fov = parameters.fov;
         }
     }
-    // Refer to the long comment about how ugly frank is to see where all the numbers came from
-    //addLights(BARBARIAN_KING.camera, hasBackground);
     const lights = useLoader(GLTFLoader, `${api}/image/${lightsFile}`);
     BARBARIAN_KING.camera.children = [];
     BARBARIAN_KING.camera.add(lights.scene);

@@ -35,3 +35,26 @@ export interface ModelFiles{
     winAnimation: string | undefined;
     loseAnimation: string | undefined;
 }
+
+export interface SkinData{
+    name: string;
+    displayName: string;
+    cost: number;
+    currency: string;
+    costBling: number;
+    requires: string;
+    features: string[];
+    limited: boolean;
+    group: {
+        name: string;
+        image: string;
+        icon: string;
+    };
+    rating: number;
+    image: string;
+    model: {
+        geometry: {exists: boolean, path: string};
+        winAnimation: {exists: boolean, path: string};
+        loseAnimation: {exists: boolean, path: string};
+    };
+}
