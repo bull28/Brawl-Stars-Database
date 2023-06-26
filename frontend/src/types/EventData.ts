@@ -1,4 +1,4 @@
-export interface time{
+export interface SeasonTime{
     season: number;
     hour: number;
     minute: number;
@@ -7,7 +7,7 @@ export interface time{
     maxSeasons: number;
 }
   
-interface eventData{
+interface Event{
     gameMode: {
         name: string;
         displayName: string;
@@ -24,8 +24,34 @@ interface eventData{
     };
 }
 
-export interface event{
-    current: eventData;
-    upcoming: eventData;
-    timeLeft: time;
+export interface EventSlot{
+    current: Event;
+    upcoming: Event;
+    timeLeft: SeasonTime;
 }
+
+export interface EventData{
+    time: SeasonTime;
+    events: EventSlot[];
+}
+
+export interface MapData{
+    name: string;
+    displayName: string;
+    gameMode: {
+        name: string;
+        image: string;
+        backgroundColor: string;
+        textColor: string;
+    };
+    powerLeagueMap: boolean;
+    image: string;
+    bannerImage: string;
+    times: {
+        all: SeasonTime[];
+        next: SeasonTime;
+        duration: SeasonTime;
+    };
+}
+
+export type MapSearchData = Pick<MapData, "name" | "displayName" | "gameMode">;

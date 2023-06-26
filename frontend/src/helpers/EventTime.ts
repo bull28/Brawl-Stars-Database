@@ -1,6 +1,6 @@
-import {time} from "../types/EventData";
+import {SeasonTime} from "../types/EventData";
 
-export default function EventTime(lastUpdate: time, offset: number){
+export default function EventTime(lastUpdate: SeasonTime, offset: number){
     var displaySeconds = (lastUpdate.second - Math.floor(offset / 1000));
     var displayMinutes = (lastUpdate.minute - Math.floor(offset / 60000) + Math.floor(displaySeconds / 60));
     var displayHours = (lastUpdate.hour - Math.floor(offset / 3600000) + Math.floor(displayMinutes / 60));

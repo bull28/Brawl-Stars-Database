@@ -1,13 +1,11 @@
 import axios, {AxiosResponse} from "axios";
 import {SetStateAction, useEffect, useState} from "react";
 import {
-    Flex, Image, Text, Modal,
+    Flex, Image, Text, Modal, Tooltip,
     ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton,
     useDisclosure, Divider, ModalOverlay, Icon
 } from "@chakra-ui/react";
 import {RepeatIcon} from "@chakra-ui/icons";
-import CurrencyIcon from "./CurrencyIcon";
-import Label from "./Label";
 import {animateScroll as scroll} from "react-scroll";
 import {ModelFiles} from "../types/BrawlerData";
 import {SkinData} from "../types/BrawlerData";
@@ -18,6 +16,13 @@ interface SkinViewProps{
     skin: string;
     setModel: React.Dispatch<SetStateAction<ModelFiles>>;
 }
+
+const currencyImages: {[k: string]: string;} = {
+    Gems: "icon_gems.webp",
+    Coins: "icon_coins.webp",
+    ClubCoins: "icon_clubcoins.webp",
+    Bling: "icon_bling.webp"
+};
 
 function getCostText(skin: SkinData): string{
     if (skin.cost > 0){
@@ -37,7 +42,8 @@ export default function SkinView({brawler, skin, setModel}: SkinViewProps){
         axios.get<{}, AxiosResponse<SkinData>>(`${api}/skin/${brawler}/${skin}`)
         .then((res) => {
             setData(res.data);
-        });
+        })
+        .catch((error) => {});
     }, [brawler, skin]);
 
     return (
@@ -49,20 +55,26 @@ export default function SkinView({brawler, skin, setModel}: SkinViewProps){
             </Flex>
             <Flex flexDir={"column"} alignItems={"center"}>
                 <Flex alignItems={"center"} mt={3} mb={1}>
-                    {(data.group.icon !== "skingroups/icons/icon_default.webp") ? <Label label={data.group.name}><Image src={`${api}/image/${data.group.icon}`} w={7} mr={3}/></Label> : <></>}            
+                    {(data.group.icon !== "skingroups/icons/icon_default.webp") ?
+                        <Tooltip label={data.group.name}>
+                            <Image src={`${api}/image/${data.group.icon}`} w={7} mr={3}/>
+                        </Tooltip>
+                        :
+                        <></>
+                    }            
                     <Text fontSize={["md", "lg", "xl"]} className={"heading-lg"} textAlign={"center"}>{data.displayName}</Text>    
-                    {(data.model.geometry.exists) ? <Icon as={RepeatIcon} ml={[1, 1, 3]} cursor={"pointer"} onClick={() => {let skinModel: ModelFiles = {geometry: data.model.geometry.path, winAnimation: undefined, loseAnimation: undefined}; if (data.model.winAnimation.exists){skinModel.winAnimation = data.model.winAnimation.path;} if (data.model.loseAnimation.exists){skinModel.loseAnimation = data.model.loseAnimation.path;} setModel(skinModel); scroll.scrollToTop();}}/> : <></>}
+                    {(data.model.geometry.exists) ? <Icon as={RepeatIcon} ml={[1, 1, 3]} cursor={"pointer"} fontSize={"xl"} onClick={() => {let skinModel: ModelFiles = {geometry: data.model.geometry.path, winAnimation: undefined, loseAnimation: undefined}; if (data.model.winAnimation.exists){skinModel.winAnimation = data.model.winAnimation.path;} if (data.model.loseAnimation.exists){skinModel.loseAnimation = data.model.loseAnimation.path;} setModel(skinModel); scroll.scrollToTop();}}/> : <></>}
                 </Flex>
                 
                 <Flex mb={1} wrap={"wrap"}>
                     <Flex alignItems={"center"} mx={[1, 1, 3]}>
                         <Text fontSize={["lg", "xl"]} className={"heading-xl"} mr={1}>{getCostText(data)}</Text>
-                        <CurrencyIcon type={data.currency !== "" ? data.currency : ""}/>
+                        {Object.hasOwn(currencyImages, data.currency) === true ? <Image src={`${api}/image/resources/${currencyImages[data.currency]}`} alt={data.currency} h={[4, 5, 6]}/> : <></>}
                     </Flex>
                     {(data.costBling > 0) ?
                         <Flex alignItems={"center"} mx={[1, 1, 3]}>
                             <Text fontSize={["lg", "xl"]} className={"heading-xl"} mr={1}>{data.costBling}</Text>
-                            <CurrencyIcon type={"Bling"}/>
+                            {Object.hasOwn(currencyImages, "Bling") === true ? <Image src={`${api}/image/resources/${currencyImages["Bling"]}`} alt={"Bling"} h={[4, 5, 6]}/> : <></>}
                         </Flex>
                         :
                         <></>

@@ -505,7 +505,7 @@ export function searchForMapName(eventList: EventSlot[], search: {search: string
                     const resultObject: MapSearchPreview = {
                         name: map.name,
                         displayName: map.displayName,
-                        gameModeData: applyGameModeMapDisplay(mode.name, mode.data)
+                        gameMode: applyGameModeMapDisplay(mode.name, mode.data)
                     };
                     
 

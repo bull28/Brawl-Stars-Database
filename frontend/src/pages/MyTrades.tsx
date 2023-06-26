@@ -141,7 +141,7 @@ export default function MyTrades() {
                                         <Text whiteSpace={"pre"}>{trade.timeLeft.hour > 0 ? ` ${trade.timeLeft.hour}h` : ""}</Text>
                                         <Text whiteSpace={"pre"}>{trade.timeLeft.minute > 0 ? ` ${trade.timeLeft.minute}m` : ""}</Text>
                                         <Text whiteSpace={"pre"}>{trade.timeLeft.second > 0 ? ` ${trade.timeLeft.second}s` : ""}</Text>
-                                        <Text>{(trade.timeLeft.hour === 0 && trade.timeLeft.minute === 0 && trade.timeLeft.second === 0) ? `> ${trade.timeLeft.hoursPerSeason} hours` : ""}</Text>
+                                        <Text>{(trade.timeLeft.season > 0 && trade.timeLeft.hour === 0 && trade.timeLeft.minute === 0 && trade.timeLeft.second === 0) ? `> ${trade.timeLeft.hoursPerSeason} hours` : ""}</Text>
                                     </Flex>
                                 </Flex>
                             </Flex>

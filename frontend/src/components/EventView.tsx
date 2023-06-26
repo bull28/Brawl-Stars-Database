@@ -1,10 +1,10 @@
 import { Flex, Image, Text } from '@chakra-ui/react'
-import {event} from '../types/EventData'
+import {EventSlot} from '../types/EventData'
 import EventTime from '../helpers/EventTime'
 import api from "../helpers/APIRoute";
 
 interface MapViewProps{
-    event: event;
+    event: EventSlot;
     offset: number;
 }
 

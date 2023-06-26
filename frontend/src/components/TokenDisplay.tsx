@@ -1,14 +1,14 @@
 import { Button, Flex, Image, Text } from "@chakra-ui/react";
 import AuthRequest from '../helpers/AuthRequest'
 import { useEffect, useState } from "react";
-import { time } from "../types/EventData";
+import { SeasonTime } from "../types/EventData";
 import EventTime from "../helpers/EventTime";
 import api from "../helpers/APIRoute";
 
 interface TokenData {
     tokensAvailable: number;
     tokensEarned: number;
-    timeLeft: time;
+    timeLeft: SeasonTime;
 }
 
 export default function TokenDisplay({ callback, tokens }: {callback: () => void, tokens: number | undefined}) {

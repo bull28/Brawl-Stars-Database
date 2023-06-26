@@ -170,7 +170,7 @@ export interface MapPreview{
  * Summary of map data, used when not nested in a game mode object
  */
 export interface MapSearchPreview extends MapPreview{
-    gameModeData: GameModeMapDisplay;
+    gameMode: GameModeMapDisplay;
 }
 
 /**

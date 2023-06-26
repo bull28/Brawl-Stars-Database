@@ -12,40 +12,21 @@ import {
   Image,
   Button,
   Flex,
-  Spinner
+  Spinner,
+  Tooltip
 } from '@chakra-ui/react'
 import axios from 'axios'
-import {time} from "../types/EventData";
+import {SeasonTime, MapData} from "../types/EventData";
 import EventTime from "../helpers/EventTime";
-import Label from "./Label";
 import api from "../helpers/APIRoute";
 
 interface Props{
     map: string;
 }
 
-interface MapData{
-  name: string;
-  displayName: string;
-  gameMode: {
-    name: string;
-    image: string;
-    backgroundColor: string;
-    textColor: string;
-  };
-  powerLeagueMap: boolean;
-  image: string;
-  bannerImage: string;
-  times: {
-    all: time[];
-    next: time;
-    duration: time;
-  };
-}
-
-function eventTimeDays(s: time): string{
+function eventTimeDays(s: SeasonTime): string{
   const days = Math.floor(s.hour / 24);
-  const seasonTime: time = {
+  const seasonTime: SeasonTime = {
     season: s.season,
     hour: s.hour,
     minute: s.minute,
@@ -115,7 +96,7 @@ const MapView = React.forwardRef<{open: () => void}, Props>((props, ref) => {
                 <Image src={`${api}/image/${data.image}`} fallback={<Spinner/>}/>
                 <Flex alignItems={'center'}>
                   <Text fontSize={'2xl'} className={'heading-2xl'}>{eventTimeDays(data.times.next)}</Text>
-                  {data.powerLeagueMap && <Label label={"Power League Map"}><Image h={'35px'} ml={2} src={`${api}/image/skingroups/icons/icon_ranked.webp`}/></Label>}
+                  {data.powerLeagueMap && <Tooltip label={"Power League Map"}><Image h={'35px'} ml={2} src={`${api}/image/skingroups/icons/icon_ranked.webp`}/></Tooltip>}
                 </Flex>
               </>
               :

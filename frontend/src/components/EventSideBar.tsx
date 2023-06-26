@@ -10,21 +10,11 @@ import { Flex, Text, Divider, Icon, RadioGroup, Stack, Radio, Input, Select, Inp
 } from "@chakra-ui/react";
 
 import { HamburgerIcon, SearchIcon } from '@chakra-ui/icons'
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState, useCallback, SetStateAction } from "react";
+import {EventData, MapSearchData} from "../types/EventData";
 import MapView from './MapView';
-import axios from 'axios';
+import axios, {AxiosResponse} from 'axios';
 import api from "../helpers/APIRoute";
-
-interface MapData{
-    name: string;
-    displayName: string;
-    gameModeData: {
-        name: string;
-        image: string;
-        backgroundColor: string;
-        textColor: string;
-    };
-}
 
 interface Timer{
     start: number;
@@ -36,42 +26,49 @@ interface EventMode{
     select: string;
 }
 
+interface EventSideBarProps{
+    changeEvents: React.Dispatch<SetStateAction<EventData | undefined>>;
+    changeOffset: React.Dispatch<SetStateAction<number>>;
+    startTime: Date;
+}
 
-export default function EventSideBar({ changeData, changeOffset, startTime }: {changeData: Function, changeOffset: Function, startTime: Date}){
+function parseTime(time: string[]): number[] | undefined{
+    if (time.filter((value) => isNaN(+value) || value === "").length > 0){
+        return undefined;
+    }
+    return time.map((value) => parseInt(value));
+}
+console.log(parseTime(["", "", ""]));
+console.log(parseTime(["23", "11", ""]));
+console.log(parseTime(["69", "420", "00"]));
+
+
+export default function EventSideBar({changeEvents, changeOffset, startTime}: EventSideBarProps){
     const [choice, setChoice] = useState<string>("current");
     const [select, setSelect] = useState<string>("at_time");
     const [time, setTime] = useState<string[]>(["", "", ""]);
     const [searchText, setSearchText] = useState<string>("");
     const [date, setDate] = useState<string>("");
-    const [maps, setMaps] = useState<MapData[]>([]);
+    const [maps, setMaps] = useState<MapSearchData[]>([]);
     const [map, setMap] = useState<string>("");
     const [timer, updateTimer] = useState<Timer>({start: startTime.getTime(), offset: 0});// Time since the last update
     const [lastUpdate, setlastUpdate] = useState<number>(3600000);// Time at the last update
     const [eventMode, setEventMode] = useState<EventMode>({choice: "current", select: "at_time"});// User's event mode choices, only updated when "Update" is clicked
     const [success, setSuccess] = useState<boolean>(true);// Whether or not the attemped calls to the API were successful
 
-    const mapViewRef = useRef<{ open: () => void}>(null);
+    const mapViewRef = useRef<{open: () => void}>({open: () => {}});
 
     const query = useMediaQuery('(min-width: 600px)')[0]
     const { isOpen, onOpen, onClose } = useDisclosure() 
     const toast = useToast()
 
     const handleTimeChange = (value: string, index: number) => {
-        if (String(value).length < 4){
-            let tempArr = [...time];
+        if (value.length < 4 && index < time.length){
+            let tempArr = time.slice(0);
             tempArr[index] = value;
     
             setTime(tempArr);
         }
-    }
-
-    const getSeconds = (date: string): number => {
-        return Math.floor((new Date(date)).getTime()/1000)
-    }
-
-
-    const search = () => {
-        console.log(searchText)
     }
    
     const update = useCallback((choice1: string, choice2: string) => {
@@ -92,23 +89,23 @@ export default function EventSideBar({ changeData, changeOffset, startTime }: {c
         }
         
         if (endpoint !== ""){
-            axios.get(`${api}${endpoint}`, {params: {hour: time[0], minute: time[1], second: (endpoint === "/event/worldtime") ? getSeconds(date) : time[2]}})
-                .then((res) => {
-                    if (choice1 === "season_time" && choice2 === "at_time"){
-                        setTime([res.data.time.hour, res.data.time.minute, res.data.time.second]);
-                    }
-                    changeData(res.data);
-                    setSuccess(true);
+            axios.get<{}, AxiosResponse<EventData>>(`${api}${endpoint}`, {params: {hour: time[0], minute: time[1], second: (endpoint === "/event/worldtime") ? Math.floor((new Date(date)).getTime() / 1000) : time[2]}})
+            .then((res) => {
+                if (choice1 === "season_time" && choice2 === "at_time"){
+                    setTime([res.data.time.hour.toString(), res.data.time.minute.toString(), res.data.time.second.toString()]);
+                }
+                changeEvents(res.data);
+                setSuccess(true);
 
-                    // Add the milliseconds from the current time to compensate for lower precison
-                    // given by the API. (see below)
-                    // Correct mod is not required since Date.now() is never negative.
-                    setlastUpdate(res.data.time.second * 1000 + Date.now() % 1000);
-                }).catch((error) => {
-                    // This only occurs when the API encounters an error. Incorrectly formatted user input
-                    // is handled by the if-statments above.
-                    setSuccess(false);
-                })
+                // Add the milliseconds from the current time to compensate for lower precison
+                // given by the API. (see below)
+                // Correct mod is not required since Date.now() is never negative.
+                setlastUpdate(res.data.time.second * 1000 + Date.now() % 1000);
+            }).catch((error) => {
+                // This only occurs when the API encounters an error. Incorrectly formatted user input
+                // is handled by the if-statments above.
+                setSuccess(false);
+            });
         } else {
             toast({
                 title: 'Please Enter a Valid Time.',
@@ -117,18 +114,21 @@ export default function EventSideBar({ changeData, changeOffset, startTime }: {c
                 isClosable: true
             })
         }
-    }, [changeData, date, time, toast])
+    }, [changeEvents, date, time, toast])
 
     const openMapView = (m: string) => {
         setMap(m);
-        mapViewRef.current?.open()
+        mapViewRef.current.open()
     }
 
     useEffect(() => {
         axios.post(`${api}/mapsearch`, {search: searchText})
-            .then((res) => {
-                setMaps(res.data)
-            })
+        .then((res) => {
+            setMaps(res.data);
+        })
+        .catch((error) => {
+            setMaps([]);
+        });
     }, [searchText])
 
     useEffect(() => {
@@ -147,17 +147,11 @@ export default function EventSideBar({ changeData, changeOffset, startTime }: {c
                 // If it does, update the events and set offset to 0.
                 if (lastUpdate + elapsed >= 60000){
                     update(eventMode.choice, eventMode.select);
-                    return {
-                        start: Date.now(),
-                        offset: 0
-                    };
+                    return {start: Date.now(), offset: 0};
                 }
 
                 // If an update was not required, return the offset without changing the last update.
-                return {
-                    start: previousTime.start,
-                    offset: elapsed
-                };
+                return {start: previousTime.start, offset: elapsed};
             }
 
             return previousTime;
@@ -167,7 +161,7 @@ export default function EventSideBar({ changeData, changeOffset, startTime }: {c
         return () => {
             clearInterval(id);
         };
-    }, [lastUpdate, timer, eventMode, success, time, update])// <- dependency list
+    }, [lastUpdate, timer, eventMode, success, time, update]);
 
     useEffect(() => {
         // When real-time updating is required, add the milliseconds from the last update to make the display
@@ -190,8 +184,9 @@ export default function EventSideBar({ changeData, changeOffset, startTime }: {c
     if (query){
         return (
             <Flex flexDir={'column'} minH={"80vh"} style={{caretColor: "transparent"}} border={'1px'} borderRadius={'md'} borderColor={'gray.200'} w={'28%'} minW={'250px'} maxW={'350px'} justifyContent={'space-around'} px={5} mr={10} ml={3} boxShadow={'rgba(99, 99, 99, 0.2) 0px 1px 4px 0px'}>
-                <Text fontSize={"2xl"} className={'heading-2xl'} mt={8}>Event Menu</Text>
-                <Divider opacity={1} my={8}/>
+                <Text fontSize={"2xl"} className={'heading-2xl'} mt={6}>Event Menu</Text>
+                <Text>{}</Text>
+                <Divider opacity={1} mt={6} mb={8}/>
                 <RadioGroup onChange={setChoice} value={choice}>
                     <Stack direction={'column'} spacing={[5, 8]}>
                         <Radio value='current'><Text className={"heading-md"}>Current</Text></Radio>
@@ -219,7 +214,7 @@ export default function EventSideBar({ changeData, changeOffset, startTime }: {c
                     <InputGroup>
                         <Input type={'text'} value={searchText} onChange={e => setSearchText(e.target.value)} style={{caretColor: 'auto'}}/>
                         <InputRightElement>
-                            <Icon as={SearchIcon} onClick={search} cursor={'pointer'} fontSize={'xl'}/>
+                            <Icon as={SearchIcon} fontSize={'xl'}/>
                         </InputRightElement>
                     </InputGroup>
                     <Stack overflow={'auto'} overflowX={'hidden'} h={'180px'} mt={1} spacing={0} w={'100%'} sx={{
@@ -234,12 +229,11 @@ export default function EventSideBar({ changeData, changeOffset, startTime }: {c
                         },
                     }}>
                     {maps.map((m) => (
-                        <Button key={m.name} onClick={() => {openMapView(m.name)}} fontSize={['xs', 'xs', 'md', 'lg']} className={"heading-md"} bgColor={'transparent'} py={2} color={m.gameModeData.textColor} fontWeight={'normal'}><Image src={`${api}/image/${m.gameModeData.image}`} h={'100%'} mr={1}></Image>{m.displayName}</Button>
+                        <Button key={m.name + m.gameMode.name} onClick={() => {openMapView(m.name)}} fontSize={['xs', 'xs', 'md', 'lg']} className={"heading-md"} bgColor={'transparent'} py={2} color={m.gameMode.textColor} fontWeight={'normal'}><Image src={`${api}/image/${m.gameMode.image}`} h={'100%'} mr={1}></Image>{m.displayName}</Button>
                     ))}
                     </Stack>
-                    
                 </Flex>
-                    
+
                 <MapView map={map} ref={mapViewRef}/>
             </Flex>
         );
@@ -256,7 +250,7 @@ export default function EventSideBar({ changeData, changeOffset, startTime }: {c
                             <RadioGroup onChange={setChoice} value={choice}>
                             <Stack direction={'column'} spacing={[5, 10]}>
                                 <Radio value='current'>Current</Radio>
-                                <Radio value='season time'>Season Time</Radio>
+                                <Radio value='season_time'>Season Time</Radio>
                                 <Stack direction={'row'} alignItems={'center'}>
                                     <Input type={'number'} onChange={(e) => handleTimeChange(e.target.value, 0)} value={time[0]} style={{caretColor: 'auto'}}/>
                                     <Text>:</Text>
