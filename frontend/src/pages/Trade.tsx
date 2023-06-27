@@ -297,10 +297,6 @@ export default function Trade() {
         toast({title: 'Pin Added!', description: 'Pin successfully added to request.', status: 'success', duration: 2000})
     }
 
-    const redirect = () => {
-        navigate('/mytrades');
-    }
-
     return (
         <Flex justifyContent={'space-evenly'} alignItems={'center'} flexDir={'column'}>      
             <SkullBackground/>
@@ -309,7 +305,7 @@ export default function Trade() {
             {typeof collectionData !== "undefined" &&
             <Flex pos={["relative", "relative", "relative", "relative", "absolute"]} top={0} right={0} p={2.5} m={5}>
                 <Button h={'50px'} mr={3} rightIcon={<AddIcon/>} bgColor={'green.300'} className={'heading-md'} fontWeight={'normal'} onClick={onOpen2}>New Trade</Button>
-                <IconButton borderRadius={'md'} onClick={redirect} cursor={'pointer'} size={'lg'} p={1} colorScheme={(userTradeData && userTradeData?.filter((trade) => trade.accepted === true).length > 0) ? 'whatsapp' : 'twitter'} icon={<BsPersonFill size={"100%"}/>} aria-label="open my trades menu"/>
+                <IconButton borderRadius={'md'} onClick={() => {navigate('/mytrades')}} cursor={'pointer'} size={'lg'} p={1} colorScheme={(userTradeData && userTradeData?.filter((trade) => trade.accepted === true).length > 0) ? 'whatsapp' : 'twitter'} icon={<BsPersonFill size={"100%"}/>} aria-label="open my trades menu"/>
                 {userTradeData && (userTradeData?.filter((trade) => trade.accepted === true).length) > 0 && 
                 <Box pos={'absolute'} top={0} right={0} bgColor={'red.500'} borderRadius={'50%'} w={'25px'} h={'25px'} textAlign={'center'}>
                     <Text >{userTradeData?.filter((trade) => trade.accepted === true).length}</Text>

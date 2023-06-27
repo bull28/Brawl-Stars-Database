@@ -32,17 +32,6 @@ interface EventSideBarProps{
     startTime: Date;
 }
 
-function parseTime(time: string[]): number[] | undefined{
-    if (time.filter((value) => isNaN(+value) || value === "").length > 0){
-        return undefined;
-    }
-    return time.map((value) => parseInt(value));
-}
-console.log(parseTime(["", "", ""]));
-console.log(parseTime(["23", "11", ""]));
-console.log(parseTime(["69", "420", "00"]));
-
-
 export default function EventSideBar({changeEvents, changeOffset, startTime}: EventSideBarProps){
     const [choice, setChoice] = useState<string>("current");
     const [select, setSelect] = useState<string>("at_time");

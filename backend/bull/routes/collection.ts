@@ -50,12 +50,12 @@ const router = express.Router();
 
 // Convert this data stored in files to objects with known types
 const shopItems: ShopList = new Map<string, ShopItem>(Object.entries(shopItemsObject));
-const dropChances: BrawlBoxData = convertBrawlBoxData();
+const dropChancesConverted: BrawlBoxData = convertBrawlBoxData();
 
 // Get a map with only the "visible" boxes
 // These are the ones that the user can send a request to open
 let brawlBoxTypes = new Map<string, BrawlBoxAttributes>();
-dropChances.boxes.forEach((value, key) => {
+dropChancesConverted.boxes.forEach((value, key) => {
     if (isBrawlBoxAttributes(value)){
         brawlBoxTypes.set(key, value);
     }
@@ -273,7 +273,7 @@ router.post<{}, {}, BrawlBoxReqBody>("/brawlbox", databaseErrorHandler<BrawlBoxR
         }
 
         //const BUL = performance.now();
-        const brawlBoxContents = brawlBox(dropChances, boxType, resources, results[0].level);
+        const brawlBoxContents = brawlBox(dropChancesConverted, boxType, resources, results[0].level);
         //const EDGRISBAD = (performance.now() - BUL);
         //console.log("YOUR PROGRAM IS",EDGRISBAD.toString(),"TIMES WORSE THAN E D G R");
 
@@ -394,8 +394,8 @@ router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(asyn
 
         // Get the coin costs for the featured pin
         let featuredCosts: number[] = [];
-        if (typeof dropChances.rewardTypes.get("pinNoDupes") !== "undefined"){
-            const rewardType = dropChances.rewardTypes.get("pinNoDupes")!;
+        if (typeof dropChancesConverted.rewardTypes.get("pinNoDupes") !== "undefined"){
+            const rewardType = dropChancesConverted.rewardTypes.get("pinNoDupes")!;
             if (isRewardTypePin(rewardType)){
                 featuredCosts = rewardType.coinConversion;
             }
@@ -534,8 +534,8 @@ router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(asyn
                 trade_credits: userTradeCredits,
                 accessories: []
             }
-            //buyItemResult = brawlBox(dropChances, "newBrawler", allSkins, tempResourceObject, IMAGE_FILE_EXTENSION);
-            buyItemResult = brawlBox(dropChances, "newBrawler", tempResourceObject, 1);
+            //buyItemResult = brawlBox(dropChancesConverted, "newBrawler", allSkins, tempResourceObject, IMAGE_FILE_EXTENSION);
+            buyItemResult = brawlBox(dropChancesConverted, "newBrawler", tempResourceObject, 1);
 
             if (buyItemResult.length > 0){
                 userItemInventory = 1;
@@ -568,7 +568,6 @@ router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(asyn
 
                 // The featured item can only be bought once per day
                 featuredItem = "";
-                console.log(featuredItem);
             }
         }
 
