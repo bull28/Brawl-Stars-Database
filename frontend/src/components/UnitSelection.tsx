@@ -17,8 +17,8 @@ export default function UnitSelection({data, setSelected}: UnitSelectionProps){
             <Flex flexDir={"column"} bgColor={"gray.800"} alignItems={"center"} borderRadius={"lg"}>
                 <Text fontSize={"2xl"} className={"heading-2xl"}>Select Units</Text>
                 <Divider/>
-                <Flex flexDir={"column"} minW={["90vw", "80vw", "480px", "480px", "480px"]} w={"30vw"} minH={"45vh"} p={2}>
-                    <Flex h={"100%"} flexDir={["column", "column", "row", "row", "row"]}>
+                <Flex flexDir={"column"} minW={["90vw", "80vw", "480px"]} w={"30vw"} minH={"45vh"} p={2}>
+                    <Flex h={"100%"} flexDir={["column", "column", "row"]}>
                         <Flex flexDir={"column"} alignItems={"center"}>
                             <SimpleGrid columns={[5]} spacing={0}>
                                 {data.unitsAvailable.map((value) => {
@@ -29,44 +29,44 @@ export default function UnitSelection({data, setSelected}: UnitSelectionProps){
                             </SimpleGrid>
                         </Flex>
                         {(typeof currentUnit !== "undefined") ?
-                            <Flex w={["100%", "75%", "40%", "40%", "40%"]} pos={"relative"} ml={[0, 0, 2, 2, 2]}>
+                            <Flex w={["100%", "75%", "40%"]} pos={"relative"} ml={[0, 0, 2, 2, 2]}>
                                 <Flex flexDir={"column"} alignItems={"center"} w={"100%"}>
                                     <Text fontSize={"xl"}>{currentUnit.display.displayName}</Text>
                                     <Flex flexDir={"column"} alignItems={"flex-start"} w={"100%"}>
                                         <Divider bgColor={"#fff"} my={1}/>
                                         <Flex w={"100%"}>
-                                            <Text w={"40%"} fontSize={"20px"} lineHeight={"24px"} color={"#ff5"}>Health</Text>
-                                            <Text w={"60%"} fontSize={"20px"} lineHeight={"24px"} color={"#ff5"}>{currentUnit.stats.health}</Text>
+                                            <Text w={"40%"} fontSize={"1.25rem"} lineHeight={"1.5rem"} color={"#ff5"}>Health</Text>
+                                            <Text w={"60%"} fontSize={"1.25rem"} lineHeight={"1.5rem"} color={"#ff5"}>{currentUnit.stats.health}</Text>
                                         </Flex>
                                         {currentUnit.stats.shield > 0 ?
                                             <Flex w={"100%"}>
-                                                <Text w={"40%"} fontSize={"20px"} lineHeight={"24px"} color={"#ff5"}>Shield</Text>
-                                                <Text w={"60%"} fontSize={"20px"} lineHeight={"24px"} color={"#ff5"}>{currentUnit.stats.shield}</Text>
+                                                <Text w={"40%"} fontSize={"1.25rem"} lineHeight={"1.5rem"} color={"#ff5"}>Shield</Text>
+                                                <Text w={"60%"} fontSize={"1.25rem"} lineHeight={"1.5rem"} color={"#ff5"}>{currentUnit.stats.shield}</Text>
                                             </Flex>
                                             :
                                             <></>
                                         }
                                         <Divider bgColor={"#fff"} my={1}/>
                                         <Flex w={"100%"}>
-                                            <Text w={"40%"} fontSize={"20px"} lineHeight={"24px"} color={"#f55"}>Damage</Text>
-                                            <Text w={"60%"} fontSize={"20px"} lineHeight={"24px"} color={"#f55"}>{currentUnit.stats.damage}</Text>
+                                            <Text w={"40%"} fontSize={"1.25rem"} lineHeight={"1.5rem"} color={"#f55"}>Damage</Text>
+                                            <Text w={"60%"} fontSize={"1.25rem"} lineHeight={"1.5rem"} color={"#f55"}>{currentUnit.stats.damage}</Text>
                                         </Flex>
                                         <Flex w={"100%"} >
-                                            <Text w={"40%"} fontSize={"20px"} lineHeight={"24px"} color={"#5ff"}>Range</Text>
-                                            <Text w={"60%"} fontSize={"20px"} lineHeight={"24px"} color={"#5ff"}>{currentUnit.stats.range}</Text>
+                                            <Text w={"40%"} fontSize={"1.25rem"} lineHeight={"1.5rem"} color={"#5ff"}>Range</Text>
+                                            <Text w={"60%"} fontSize={"1.25rem"} lineHeight={"1.5rem"} color={"#5ff"}>{currentUnit.stats.range}</Text>
                                         </Flex>
                                         <Flex w={"100%"}>
-                                            <Text w={"40%"} fontSize={"20px"} lineHeight={"24px"} color={"#5f5"}>Targets</Text>
-                                            <Text w={"60%"} fontSize={"20px"} lineHeight={"24px"} color={"#5f5"}>{currentUnit.stats.targets}</Text>
+                                            <Text w={"40%"} fontSize={"1.25rem"} lineHeight={"1.5rem"} color={"#5f5"}>Targets</Text>
+                                            <Text w={"60%"} fontSize={"1.25rem"} lineHeight={"1.5rem"} color={"#5f5"}>{currentUnit.stats.targets}</Text>
                                         </Flex>
                                         <Flex w={"100%"}>
-                                            <Text w={"40%"} fontSize={"20px"} lineHeight={"24px"} color={"#f5f"}>Speed</Text>
-                                            <Text w={"60%"} fontSize={"20px"} lineHeight={"24px"} color={"#f5f"}>{currentUnit.stats.speed}</Text>
+                                            <Text w={"40%"} fontSize={"1.25rem"} lineHeight={"1.5rem"} color={"#f5f"}>Speed</Text>
+                                            <Text w={"60%"} fontSize={"1.25rem"} lineHeight={"1.5rem"} color={"#f5f"}>{currentUnit.stats.speed}</Text>
                                         </Flex>
                                         <Divider bgColor={"#fff"} my={1}/>
                                         <Flex alignItems={"center"} flexDir={"column"} w={"100%"}>
-                                            {currentUnit.stats.specialMoves === true ? <Flex fontSize={"16px"} lineHeight={"16px"} color={"#ffc700"}>Can jump over units</Flex> : <></>}
-                                            {currentUnit.stats.specialAttacks === true ? <Flex fontSize={"16px"} lineHeight={"16px"} color={"#ffc700"}>Can attack through units</Flex> : <></>}
+                                            {currentUnit.stats.specialMoves === true ? <Flex fontSize={"1rem"} lineHeight={"1rem"} color={"#ffc700"}>Can jump over units</Flex> : <></>}
+                                            {currentUnit.stats.specialAttacks === true ? <Flex fontSize={"1rem"} lineHeight={"1rem"} color={"#ffc700"}>Can attack through units</Flex> : <></>}
                                             {currentUnit.stats.specialMoves === true || currentUnit.stats.specialAttacks === true ? <Divider bgColor={"#fff"} my={1}/> : <></>}
                                         </Flex>
                                         <Flex w={"100%"}>

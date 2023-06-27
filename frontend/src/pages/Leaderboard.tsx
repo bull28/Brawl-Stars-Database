@@ -75,6 +75,8 @@ export default function Leaderboard(){
                         color = "#c9c6f1";
                     } else if (index === 2){
                         color = "#ff9900";
+                    } else if (value.username === username){
+                        color = "blue.300";
                     }
                     return (
                         <Flex key={index} w={"100%"} bgColor={color} px={3} py={0.5} borderRadius={"md"} wrap={"wrap"} overflow={"hidden"} border={value.username === username ? "2px solid #0f0" : "2px solid #000"}>
@@ -84,7 +86,7 @@ export default function Leaderboard(){
                                 </Flex>
                                 <Flex w={"85%"} alignItems={"center"}>
                                     <Image src={`${api}/image/${value.avatar}`} border={"2px solid #fff"} borderRadius={"50%"} h={10} mr={1}/>
-                                    <Text fontSize={value.username.length > 20 ? ["xs", `${15 - (value.username.length - 20) * 0.25}px`, `${15 - (value.username.length - 20) * 0.25}px`, `${20 - (value.username.length - 20) * 0.5}px`, "xl"] : ["md", "md", "lg", "xl", "xl"]} className={"heading-xl"}>{value.username}</Text>
+                                    <Text fontSize={value.username.length > 20 ? ["xs", `${(15 - (value.username.length - 20) * 0.25) / 16}rem`, `${(15 - (value.username.length - 20) * 0.25) / 16}rem`, `${(20 - (value.username.length - 20) * 0.5) / 16}rem`, "xl"] : ["md", "md", "lg", "xl", "xl"]} className={"heading-xl"}>{value.username}</Text>
                                 </Flex>
                             </Flex>
                             <Flex w={["100%", "100%", "40%", "40%", "40%"]}>

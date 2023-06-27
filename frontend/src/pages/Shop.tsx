@@ -38,6 +38,10 @@ export default function Shop() {
     const [userInfo, setUserInfo] = useState<UserInfoProps | undefined>(undefined);
     const [items, setItems] = useState<ShopItemCategories | undefined>(undefined);
 
+    const [timer, updateTimer] = useState<Timer>({start: Date.now(), offset: 0});
+    const [initialTimeLeftms, setNewInitialTime] = useState<number>(((86400 + (new Date(new Date().getFullYear(), 0, 1).getTimezoneOffset() - new Date().getTimezoneOffset()) * 60 - new Date().getHours() * 3600 - new Date().getMinutes() * 60 - new Date().getSeconds()) % 86400) * 1000);
+    const [secondsLeft, updateSecondsLeft] = useState<number>(Math.floor(initialTimeLeftms / 1000));
+
     const organizeData = useCallback((items: ShopData[]) => {
         const sortedItems: ShopItemCategories = {
             avatars: {name: "Avatars", search: "avatar", icon: <BsEmojiLaughing color={'black'}/>, items: []},
@@ -63,16 +67,10 @@ export default function Shop() {
         setItems(sortedItems);
     }, []);
 
-    const season = (((((new Date().getMonth() - 2) % 12) + 12) % 12) / 3);
-
-    const [timer, updateTimer] = useState<Timer>({start: Date.now(), offset: 0});
-    const [initialTimeLeftms, setNewInitialTime] = useState<number>(((86400 + (new Date(new Date().getFullYear(), 0, 1).getTimezoneOffset() - new Date().getTimezoneOffset()) * 60 - new Date().getHours() * 3600 - new Date().getMinutes() * 60 - new Date().getSeconds()) % 86400) * 1000);
-    const [secondsLeft, updateSecondsLeft] = useState<number>(Math.floor(initialTimeLeftms / 1000));
-
     useEffect(() => {        
-        const timer = setInterval(() => {
+        const id = setTimeout(() => {
             updateTimer((previousTime) => {
-                var elapsed: number = Date.now() - previousTime.start;
+                let elapsed: number = Date.now() - previousTime.start;
 
                 let timeLeft: number = Math.floor((initialTimeLeftms - elapsed) / 1000);
                 if (timeLeft >= 3600){
@@ -93,22 +91,22 @@ export default function Shop() {
                     offset: elapsed
                 };
             });
-        }, 200)
+        }, 500);
 
         return (() => {
-            clearInterval(timer);
+            clearTimeout(id);
         });
-    }, [initialTimeLeftms, timer, secondsLeft])
+    }, [initialTimeLeftms, timer, secondsLeft]);
 
     useEffect(() => {
         AuthRequest<ShopData[]>("/shop", {setState: organizeData});
         AuthRequest<UserInfoProps>("/resources", {setState: setUserInfo});
-    }, [organizeData])
+    }, [organizeData]);
 
     return (
         <Flex flexDir={'column'} alignItems={'center'} minH={'100vh'}>
             <Flex zIndex={'-1'} w={'100%'} h={'100%'} pos={'fixed'} objectFit={'cover'} alignItems={'center'} justifyContent={'center'}>
-                <Image w={'100%'} h={'100%'} src={require(`../assets/shopbackground${season}.webp`)}/>
+                <Image w={'100%'} h={'100%'} src={require(`../assets/shopbackground${(((((new Date().getMonth() - 2) % 12) + 12) % 12) / 3)}.webp`)}/>
             </Flex>
             <MovingText title="Shop" color1="#fdf542" color2="#ff9005" fontSize='4xl'/>
             {(getToken() && typeof userInfo !== "undefined") ?

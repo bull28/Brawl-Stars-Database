@@ -305,7 +305,7 @@ export default function Trade() {
             {typeof collectionData !== "undefined" &&
             <Flex pos={["relative", "relative", "relative", "relative", "absolute"]} top={0} right={0} p={2.5} m={5}>
                 <Button h={'50px'} mr={3} rightIcon={<AddIcon/>} bgColor={'green.300'} className={'heading-md'} fontWeight={'normal'} onClick={onOpen2}>New Trade</Button>
-                <IconButton borderRadius={'md'} onClick={() => {navigate('/mytrades')}} cursor={'pointer'} size={'lg'} p={1} colorScheme={(userTradeData && userTradeData?.filter((trade) => trade.accepted === true).length > 0) ? 'whatsapp' : 'twitter'} icon={<BsPersonFill size={"100%"}/>} aria-label="open my trades menu"/>
+                <IconButton borderRadius={'md'} onClick={() => {navigate('/mytrades');}} cursor={'pointer'} size={'lg'} p={1} colorScheme={(userTradeData && userTradeData?.filter((trade) => trade.accepted === true).length > 0) ? 'whatsapp' : 'twitter'} icon={<BsPersonFill size={"100%"}/>} aria-label="open my trades menu"/>
                 {userTradeData && (userTradeData?.filter((trade) => trade.accepted === true).length) > 0 && 
                 <Box pos={'absolute'} top={0} right={0} bgColor={'red.500'} borderRadius={'50%'} w={'25px'} h={'25px'} textAlign={'center'}>
                     <Text >{userTradeData?.filter((trade) => trade.accepted === true).length}</Text>
@@ -418,11 +418,11 @@ export default function Trade() {
             <ModalBody>
                 <Flex w={'100%'} flexDir={'row'}>
                     <Flex w={'50%'} alignItems={'center'} flexDir={'column'}>
-                        <Text mb={5} fontSize={'2xl'} className={'heading-2xl'} >You Give</Text>
+                        <Text mb={5} fontSize={'2xl'} className={'heading-2xl'}>You Give</Text>
                         <SimpleGrid columns={[2,3]} spacing={3} overflow={'auto'} sx={scrollStyle}>
                         {offer.map((pin) => (
                             <Flex p={5} key={pin.name} border={'2px solid black'} borderRadius={'lg'} bgColor={pin.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'} cursor={'pointer'} onClick={() => {setOffer(offer.filter((item) => item !== pin))}}>
-                                <Image  maxW={'60px'} src={`${api}/image/${pin.pinImage}`} fallback={<Spinner/>}/>
+                                <Image maxW={'60px'} src={`${api}/image/${pin.pinImage}`} fallback={<Spinner/>}/>
                                 <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} color={'#f00'}>{`- ${pin.amount}`}</Text>
                             </Flex>
                         ))}
@@ -431,11 +431,11 @@ export default function Trade() {
                     </Flex>
 
                     <Flex w={'50%'} alignItems={'center'} flexDir={'column'}>
-                        <Text mb={5} fontSize={'2xl'} className={'heading-2xl'} >You Receive</Text>
+                        <Text mb={5} fontSize={'2xl'} className={'heading-2xl'}>You Receive</Text>
                         <SimpleGrid columns={[2,3]} spacing={3} overflow={'auto'} sx={scrollStyle}>
                         {req.map((pin) => (
                             <Flex p={5} key={pin.name} border={'2px solid black'} borderRadius={'lg'} bgColor={pin.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'} cursor={'pointer'} onClick={() => {setReq(req.filter((item) => item !== pin))}}>
-                                <Image  maxW={'60px'} src={`${api}/image/${pin.pinImage}`} fallback={<Spinner/>}/>
+                                <Image maxW={'60px'} src={`${api}/image/${pin.pinImage}`} fallback={<Spinner/>}/>
                                 <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} color={'#0f0'}>{`+ ${pin.amount}`}</Text>
                             </Flex>
                         ))}

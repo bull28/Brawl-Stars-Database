@@ -121,34 +121,34 @@ export default function EventSideBar({changeEvents, changeOffset, startTime}: Ev
     }, [searchText])
 
     useEffect(() => {
-        const id = setInterval(() => 
-        updateTimer((previousTime) => {
-            // Pause program if there is an error, a page reload or click on "Update" is required once the error is fixed.
-            if (success === false){
-                return previousTime;
-            }
-
-            // These event mode choices require real-time updating
-            if (eventMode.choice === "current" || (eventMode.choice === "season_time" && eventMode.select === "from_now" && !time.includes(""))){
-                var elapsed: number = Date.now() - previousTime.start;
-                
-                // Update when the last updated time + offset passes multiples of 1 minute.
-                // If it does, update the events and set offset to 0.
-                if (lastUpdate + elapsed >= 60000){
-                    update(eventMode.choice, eventMode.select);
-                    return {start: Date.now(), offset: 0};
+        const id = setTimeout(() => {
+            updateTimer((previousTime) => {
+                // Pause program if there is an error, a page reload or click on "Update" is required once the error is fixed.
+                if (success === false){
+                    return previousTime;
                 }
 
-                // If an update was not required, return the offset without changing the last update.
-                return {start: previousTime.start, offset: elapsed};
-            }
+                // These event mode choices require real-time updating
+                if (eventMode.choice === "current" || (eventMode.choice === "season_time" && eventMode.select === "from_now" && !time.includes(""))){
+                    let elapsed: number = Date.now() - previousTime.start;
+                    
+                    // Update when the last updated time + offset passes multiples of 1 minute.
+                    // If it does, update the events and set offset to 0.
+                    if (lastUpdate + elapsed >= 60000){
+                        update(eventMode.choice, eventMode.select);
+                        return {start: Date.now(), offset: 0};
+                    }
 
-            return previousTime;
-        })
-        , 200)
+                    // If an update was not required, return the offset without changing the last update.
+                    return {start: previousTime.start, offset: elapsed};
+                }
+
+                return previousTime;
+            });
+        }, 200);
 
         return () => {
-            clearInterval(id);
+            clearTimeout(id);
         };
     }, [lastUpdate, timer, eventMode, success, time, update]);
 

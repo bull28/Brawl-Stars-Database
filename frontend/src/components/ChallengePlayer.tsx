@@ -192,15 +192,15 @@ function showStats(unit: UnitState, owner: string): JSX.Element{
     const unitStats = unit.stats;
     const healthFraction = Math.min(1, Math.max(0, unitStats.health / Math.max(1, unitStats.maxHealth)));
 
-    const titleFontSizes = ["20px", "24px", "28px", "28px", "28px"];
-    const fontSizes = ["16px", "16px", "20px", "20px", "20px"];
-    const lineHeights = ["20px", "20px", "24px", "24px", "24px"];
-    const fontSizes2 = ["12px", "16px", "16px", "16px", "16px"];
+    const titleFontSizes = ["1.25rem", "1.5rem", "1.75rem", "1.75rem", "1.75rem"];
+    const fontSizes = ["1rem", "1rem", "1.25rem", "1.25rem", "1.25rem"];
+    const lineHeights = ["1.25rem", "1.25rem", "1.5rem", "1.5rem", "1.5rem"];
+    const fontSizes2 = ["0.75rem", "1rem", "1rem", "1rem", "1rem"];
 
     return (
         <Flex w={"250px"} px={"5px"} bgColor={"gray.800"} flexDir={"column"}>
             <Flex justifyContent={"center"} fontSize={titleFontSizes} mt={2}>{unit.displayName}</Flex>
-            <Flex justifyContent={"center"} fontSize={"16px"}>{`Owner: ${owner}`}</Flex>
+            <Flex justifyContent={"center"} fontSize={"1rem"}>{`Owner: ${owner}`}</Flex>
             <Flex bgColor={"#808080"} w={"100%"} h={"3px"} mt={2} mb={2}/>
             <Flex w={"100%"} alignItems={"center"} flexDir={"column"}>
                 <Text maxW={"100%"} fontSize={fontSizes} whiteSpace={"pre"}>
@@ -521,7 +521,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
         <Flex flexDir={"column"} alignItems={"center"} w={"100%"}>
             {(typeof players !== "undefined" && typeof challenge !== "undefined") ?
                 <Flex flexDir={"column"} maxW={"100vw"}>
-                    <Flex flexDir={["column","row","row","row","row"]}>
+                    <Flex flexDir={["column", "row"]}>
                         <Flex flexDir={"column"} bgColor={"gray.800"} p={2}>
                             <Flex>
                                 <SimpleGrid spacing={1} columns={gridWidth}>{grid.map((value, index) => {
@@ -545,7 +545,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                                         } else if (showRestrictions && restrictionList.findIndex((rect) => (point[0] >= rect.left && point[0] <= rect.right && point[1] >= rect.top && point[1] <= rect.bottom)) !== -1){
                                             color = "#f05031";
                                         }
-                                        return (<Button key={index} w={"50px"} h={"50px"} justifyContent={"center"} alignItems={"center"} fontSize={"12px"} borderRadius={0} color={"#000"} bgColor={color} onClick={() => click(undefined, point)}>{`${point[0]}, ${point[1]}`}</Button>);
+                                        return (<Button key={index} w={"50px"} h={"50px"} justifyContent={"center"} alignItems={"center"} fontSize={"0.75rem"} borderRadius={0} color={"#000"} bgColor={color} onClick={() => click(undefined, point)}>{`${point[0]}, ${point[1]}`}</Button>);
                                     }
                                     
                                     const healthFraction = Math.min(1, Math.max(0, value.stats.health / Math.max(1, value.stats.maxHealth)));
@@ -558,7 +558,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                                     }
 
                                     return (
-                                        <Button key={-1 * value.id - 1} w={"50px"} h={"50px"} fontSize={"16px"} lineHeight={"16px"} bgColor={"#0000"} bgPos={"center"} bgSize={"cover"} bgRepeat={"no-repeat"} alignItems={"flex-start"} justifyContent={"flex-start"} padding={0} borderRadius={0} _hover={{}} _active={{}} border={`2px solid ${borderColor}`} bgImage={value.image !== "" ? `url('${api}/image/${value.image}')`: undefined} isDisabled={preview && (attackActions.has(value.id) || unitButtonDisabled(challenge, currentPlayer, value, lastUnit))} onMouseOver={() => {selectUnit(value);}} onMouseOut={() => {if (!preview || lastUnit?.id !== value.id){selectUnit(undefined);}}} onClick={() => {click(value, point);}}>
+                                        <Button key={-1 * value.id - 1} w={"50px"} h={"50px"} fontSize={"1rem"} lineHeight={"1rem"} bgColor={"#0000"} bgPos={"center"} bgSize={"cover"} bgRepeat={"no-repeat"} alignItems={"flex-start"} justifyContent={"flex-start"} padding={0} borderRadius={0} _hover={{}} _active={{}} border={`2px solid ${borderColor}`} bgImage={value.image !== "" ? `url('${api}/image/${value.image}')`: undefined} isDisabled={preview && (attackActions.has(value.id) || unitButtonDisabled(challenge, currentPlayer, value, lastUnit))} onMouseOver={() => {selectUnit(value);}} onMouseOut={() => {if (!preview || lastUnit?.id !== value.id){selectUnit(undefined);}}} onClick={() => {click(value, point);}}>
                                             <Flex flexDir={"column"} w={"100%"} h={"100%"}>
                                                 {value.weight > 0 || healthFraction < 1 ?
                                                     <Flex w={"100%"} h={"3px"} bgColor={"#333"}>
@@ -595,7 +595,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                                 }
                 
                                 return (
-                                    <Button key={value.id} w={"50px"} h={"50px"} fontSize={"16px"} lineHeight={"16px"} bgColor={"#0000"} bgPos={"center"} bgSize={"cover"} bgRepeat={"no-repeat"} alignItems={"flex-start"} justifyContent={"flex-start"} padding={0} borderRadius={0} _hover={{}} _active={{}} border={`2px solid ${borderColor}`} bgImage={value.image !== "" ? `url('${api}/image/${value.image}')`: undefined} isDisabled={preview && (attackActions.has(value.id) || unitButtonDisabled(challenge, currentPlayer, value, lastUnit))} onMouseOver={() => {selectUnit(value);}} onMouseOut={() => {if (!preview || lastUnit?.id !== value.id){selectUnit(undefined);}}} onClick={() => {click(value, [-1, -1])}}>
+                                    <Button key={value.id} w={"50px"} h={"50px"} fontSize={"1rem"} lineHeight={"1rem"} bgColor={"#0000"} bgPos={"center"} bgSize={"cover"} bgRepeat={"no-repeat"} alignItems={"flex-start"} justifyContent={"flex-start"} padding={0} borderRadius={0} _hover={{}} _active={{}} border={`2px solid ${borderColor}`} bgImage={value.image !== "" ? `url('${api}/image/${value.image}')`: undefined} isDisabled={preview && (attackActions.has(value.id) || unitButtonDisabled(challenge, currentPlayer, value, lastUnit))} onMouseOver={() => {selectUnit(value);}} onMouseOut={() => {if (!preview || lastUnit?.id !== value.id){selectUnit(undefined);}}} onClick={() => {click(value, [-1, -1])}}>
                                         <Flex w={"100%"} h={"100%"} className={"heading-md"}>{value.id}</Flex>
                                     </Button>
                                 );
@@ -634,8 +634,8 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                         <Flex w={"3px"} bgColor={"#808080"}/>
                         {(typeof currentUnit !== "undefined" && currentUnit.player < players.length) ? showStats(currentUnit, players[currentUnit.player].username) : <Flex w={"250px"} px={"5px"} bgColor={"gray.800"} flexDir={"column"}/>}
                     </Flex>
-                    <Flex flexDir={["column", "row", "row", "row", "row"]}>
-                        <Flex flexDir={"column"} w={["90vw", "300px", "300px", "300px", "300px"]}>
+                    <Flex flexDir={["column", "row"]}>
+                        <Flex flexDir={"column"} w={["90vw", "300px"]}>
                             <Flex w={"100%"} minH={"100px"} border={"3px solid #fff"} borderRadius={"3%"} flexDir={"column"}>
                                 {Array.from(moveActions).map((value) => {
                                     // key should be unique because moveActions is a map and maps require keys to be unique
@@ -651,7 +651,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                             </Flex>
                             <Button w={"100%"} className={"heading-md"} onClick={() => {selectUnit(undefined); setShowRestrictions(!showRestrictions);}}>{showRestrictions ? "Hide area restrictions" : "Show area restrictions"}</Button>
                         </Flex>
-                        <Flex flexDir={"column"} w={["90vw", "240px", "240px", "240px", "240px"]}>
+                        <Flex flexDir={"column"} w={["90vw", "240px"]}>
                             {challenge.started === false ? <Button w={"100%"} className={"heading-md"} onClick={() => sendAction("ready")}>Ready</Button> : <></>}
                             <Flex>
                                 <Button className={"heading-md"} isDisabled={challenge.turn !== currentPlayer || currentPlayer < 0 || !challenge.started} onClick={() => sendAction("move")}>Move</Button>

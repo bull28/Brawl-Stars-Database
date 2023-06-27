@@ -59,7 +59,7 @@ export default function Brawler(){
                 <Flex flexDir={"column"} textAlign={"center"} h={"100%"} justifyContent={"center"} alignItems={"center"} w={["100%", "80%", "69%", "50%", "33%"]}>
                     <Image src={`${api}/image/${data.image}`} borderRadius={"sm"} objectFit={"contain"} h={"50%"} border={"8px solid #000"} mb={7}/>
                     <Flex pos={"relative"} justifyContent={"center"}>
-                        <Text pos={"absolute"} background={`linear-gradient(to left, #ffd12e, #ffdaac, #ffd12e, #f29928, #ffd12e)`} w={"120%"} backgroundClip={"text"} color={"transparent"} animation={`${keyframes`0%{background-position: 0px;} 100%{background-position: ${Math.max(1, data.title.length) * 200}px;}`} 60s linear infinite`} fontSize={"xl"} fontStyle={"italic"}>{data.title}</Text>
+                        <Text pos={"absolute"} background={`linear-gradient(to left, #ffd12e, #ffdaac, #ffd12e, #f29928, #ffd12e)`} w={"120%"} backgroundClip={"text"} color={"transparent"} animation={`${keyframes`0%{background-position: 0rem;} 100%{background-position: ${Math.max(1, data.title.length) * 12.5}rem;}`} 60s linear infinite`} fontSize={"xl"} fontStyle={"italic"}>{data.title}</Text>
                         <Text color={"#000"} fontSize={"xl"} fontStyle={"italic"} fontWeight={"bold"} className={`heading-xl`}>{data.title}</Text>
                     </Flex>
                     <Image src={`${api}/image/${data.masteryIcon}`} objectFit={"contain"} h={"20%"} mb={7} mt={2}/>

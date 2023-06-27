@@ -13,14 +13,14 @@ interface DailyRewardDisplayProps{
 
 export default function ChallengeProgress({username, avatar, avatarColor, data}: DailyRewardDisplayProps){
     return (
-        <Flex bgColor={"blue.800"} borderRadius={"lg"} p={2} w={"60%"} flexDir={["column", "row", "row", "row", "row"]}>
-            <Flex flexDir={"column"} mx={[0, 3, 3, 3, 3]} alignItems={"center"} justifyContent={"center"} w={["100%", "40%", "40%", "40%", "40%"]}>
+        <Flex bgColor={"blue.800"} borderRadius={"lg"} p={2} w={"60%"} flexDir={["column", "row"]}>
+            <Flex flexDir={"column"} mx={[0, 3]} alignItems={"center"} justifyContent={"center"} w={["100%", "40%"]}>
                 <Flex w={"50%"} justifyContent={"center"} alignItems={"center"} borderRadius={"50%"} animation={(avatarColor === "rainbow") ? `${RainbowBorder()} 12s infinite` : undefined} border={(avatarColor !== "rainbow") ? `3px solid ${avatarColor}` : undefined}>
                     <Image objectFit={"contain"} src={`${api}/image/${avatar}`} borderRadius={"50%"}/>
                 </Flex>
                 <Text maxW={"100%"} pos={"relative"} mt={1} fontSize={username.length < 15 ? ["sm", "lg"] : ["xs", "md"]} className={"heading-xl"}>{username}</Text>
             </Flex>
-            <Flex w={["100%", "60%", "60%", "60%", "60%"]} flexDir={"column"} mx={[0, 3, 3, 3, 3]} alignItems={"center"} justifyContent={"center"} bgColor={"#00c000"} borderRadius={"lg"} p={1}>
+            <Flex w={["100%", "60%"]} flexDir={"column"} mx={[0, 3]} alignItems={"center"} justifyContent={"center"} bgColor={"#00c000"} borderRadius={"lg"} p={1}>
                 <Text fontSize={["sm", "md", "lg"]} className={"heading-lg"}>Challenge Wins</Text>
                 <Text fontSize={["sm", "md", "lg"]} className={"heading-lg"}>{data.totalWins}</Text>
                 <Divider borderColor={"#000"} my={1}/>
