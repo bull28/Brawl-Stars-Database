@@ -30,7 +30,7 @@ export default function Events(){
             <Flex flexDir={"row"}>
                 <EventSideBar changeEvents={setData} changeOffset={setOffset} startTime={new Date()}/>
                 <Flex flexDir={"column"} mt={10}>
-                {typeof data !== "undefined" && <SimpleGrid columns={[1, 1, 2, 2, 2, 3]} spacing={5} w={"100%"}>
+                {data !== void 0 && <SimpleGrid columns={[1, 1, 2, 2, 2, 3]} spacing={5} w={"100%"}>
                     {data?.events.map((event) => (
                     <EventView event={event} offset={offset} key={event.current.map.name + event.current.gameMode.name}/>
                     ))}

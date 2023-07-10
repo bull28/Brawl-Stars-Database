@@ -69,7 +69,7 @@ export default function AccountDisplay() {
     useEffect(() => {
         AuthRequest<UserInfoProps>("/resources", {setState: setData, fallback: (e) => {
             const error = e as AxiosError;
-            if (typeof error.response !== "undefined" && error.response.status === 404){
+            if (error.response !== void 0 && error.response.status === 404){
                 setInvalid(true);
             }
         }});
@@ -80,11 +80,11 @@ export default function AccountDisplay() {
     return (
     <Flex flexDir={'column'} justifyContent={'center'} alignItems={'center'} textAlign={'center'}>
         {invalid === true ?<Button fontSize={"lg"} className={"heading-lg"} color={"#fff"} onClick={() => {localStorage.removeItem('username'); navigate('/')}}>Log out</Button> : <></>}
-        {typeof data !== "undefined" ?
+        {data !== void 0 ?
         <Menu autoSelect={false} closeOnSelect={false}>
             <MenuButton>
                 <Flex justifyContent={'center'} alignItems={'center'} borderRadius={'50%'} border={(data.avatarColor !== 'rainbow') ? `3px solid ${data.avatarColor}` : ''} animation={(data.avatarColor === 'rainbow') ? `${RainbowBorder()} 12s infinite` : ''}>
-                    <Image loading={'eager'} src={typeof data !== "undefined" ? `${api}/image/${data.avatar}` : undefined} borderRadius={'50%'} w={'50px'}/>
+                    <Image loading={'eager'} src={data !== void 0 ? `${api}/image/${data.avatar}` : undefined} borderRadius={'50%'} w={'50px'}/>
                 </Flex>
             </MenuButton>
             <MenuList>

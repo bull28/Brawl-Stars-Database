@@ -81,7 +81,7 @@ export default function ChallengeMenu(){
 
     useEffect(() => {
         const x = getToken();
-        if (typeof x !== "undefined" && x !== ""){
+        if (x !== void 0 && x !== ""){
             AuthRequest<UnitData>("/challenge/unit", {setState: setUnitList});
             AuthRequest<ChallengeData>("/challenge/all", {setState: setChallengeList});
             AuthRequest<ChallengeWins>("/challenge/progress", {setState: setProgress});
@@ -108,10 +108,10 @@ export default function ChallengeMenu(){
                 <Text fontSize={"4xl"} className={"heading-4xl"}>Challenges</Text>
             </Flex>
             <Stack w={"100%"} mb={"8vh"} mt={"2vh"} justifyContent={"center"} alignItems={"center"} spacing={[3, 3, 3, 3, 0]} direction={["column", "column", "column", "column", "row"]}>
-                <Flex w={(started === false && typeof progress !== "undefined" && typeof resources !== "undefined") ? ["100%", "75%", "50%", "50%", "25%"] : undefined} justifyContent={"center"}>
+                <Flex w={(started === false && progress !== void 0 && resources !== void 0) ? ["100%", "75%", "50%", "50%", "25%"] : undefined} justifyContent={"center"}>
                     <ChallengePlayer address={server} token={token} room={room} createChallenge={challenge} unitChoices={unitChoices} onJoin={onJoin} onStarted={onStarted} setRoomList={getRoomList} loginRef={loginRef}/>
                 </Flex>
-                {(started === false && waiting === false && typeof progress !== "undefined" && typeof resources !== "undefined") ?
+                {(started === false && waiting === false && progress !== void 0 && resources !== void 0) ?
                     <Flex flexDir={"column"} alignItems={"center"} w={["100%", "100%", "100%", "100%", "50%"]} maxW={"720px"}>
                         <ChallengeProgress username={resources.username} avatar={resources.avatar} avatarColor={resources.avatarColor} data={progress}/>
                         <Flex h={"3vh"}/>
@@ -122,7 +122,7 @@ export default function ChallengeMenu(){
                     :
                     <></>
                 }
-                {(started === false && waiting === false && typeof progress !== "undefined" && typeof resources !== "undefined") ?
+                {(started === false && waiting === false && progress !== void 0 && resources !== void 0) ?
                     <Flex w={"25%"} justifyContent={"center"}>
                         <TokenDisplay callback={updateTokens} tokens={resources.tokens}/>
                     </Flex>
@@ -130,7 +130,7 @@ export default function ChallengeMenu(){
                     <></>
                 }
             </Stack>
-            {(loginRef.current === true && started === false && waiting === false && typeof progress !== "undefined" && typeof unitList !== "undefined" && typeof resources !== "undefined" && typeof challengeList !== "undefined") ?
+            {(loginRef.current === true && started === false && waiting === false && progress !== void 0 && unitList !== void 0 && resources !== void 0 && challengeList !== void 0) ?
                 <Stack direction={"column"} spacing={10} mb={"10vh"} alignItems={"center"}>
                     <UnitSelection data={unitList} setSelected={confirmUnitChoices}/>
                     <ChallengeSelection data={challengeList} level={resources.level} setSelected={confirmChallengeChoice}/>

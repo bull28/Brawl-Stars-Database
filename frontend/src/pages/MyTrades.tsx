@@ -92,7 +92,7 @@ export default function MyTrades() {
         <SkullBackground/>
         <Text fontSize={'4xl'} className={'heading-4xl'} mb={3}>My Trades</Text>
         <IconButton pos={'absolute'} top={'2vh'} left={'2vh'} as={ArrowBackIcon} aria-label="back to trades menu" onClick={() => {navigate('/trade')}} cursor={'pointer'}/>
-        {typeof trades !== "undefined" ? (Object.keys(trades).map((key) => {
+        {trades !== void 0 ? (Object.keys(trades).map((key) => {
             const value = trades[key as keyof TradeCategories];
 
             return (

@@ -76,7 +76,7 @@ const MapView = React.forwardRef<{open: () => void}, Props>((props, ref) => {
         <ModalOverlay />
         <ModalContent bgColor={data?.gameMode.backgroundColor}>
           <ModalHeader p={1}>
-            {typeof data !== "undefined" ?
+            {data !== void 0 ?
               <Flex p={2} flexDir={'column'} textAlign={'center'} position={'relative'}>
                 <Image maxH={'80px'} objectFit={'cover'} src={`${api}/image/${data.bannerImage}`} borderRadius={'lg'} fallback={<Spinner/>}/>
                 <Flex position={'absolute'} left={'50%'} top={'50%'} transform={'translate(-50%,-50%)'} w={'100%'} justifyContent={'center'} alignItems={'center'}>
@@ -91,7 +91,7 @@ const MapView = React.forwardRef<{open: () => void}, Props>((props, ref) => {
 
           <ModalCloseButton />
           <ModalBody>
-            {typeof data !== "undefined" ?
+            {data !== void 0 ?
               <>
                 <Image src={`${api}/image/${data.image}`} fallback={<Spinner/>}/>
                 <Flex alignItems={'center'}>

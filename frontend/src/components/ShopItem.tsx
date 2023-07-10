@@ -121,7 +121,7 @@ export default function ShopItem({data, coins, isFeatured, timeLeftString}: {dat
                                 </>
                                 :
                                 <ScaleFade in={true} delay={1}>
-                                    {typeof purchaseData !== "undefined" ?
+                                    {purchaseData !== void 0 ?
                                         <Flex bgColor={purchaseData.result[0].backgroundColor} flexDir={'column'} alignItems={'center'} justifyContent={'center'} borderRadius={'lg'} textAlign={'center'} py={5} border={'3px solid black'} boxShadow={'0px 0px 50px #fff'}>
                                             <Text mb={5} fontSize={'3xl'} className={'heading-3xl'}>{purchaseData.result[0].displayName}</Text>
                                             <Flex mb={5}>

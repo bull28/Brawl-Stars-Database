@@ -302,7 +302,7 @@ export default function Trade() {
             <SkullBackground/>
             <IconButton aria-label='open filter' as={HamburgerIcon} pos={'absolute'} top={0} left={0} m={5} mt={"69px"} onClick={onOpen}></IconButton>
             <Text fontSize={'4xl'} className={'heading-4xl'}>Trade</Text>
-            {typeof collectionData !== "undefined" &&
+            {collectionData !== void 0 &&
             <Flex pos={["relative", "relative", "relative", "relative", "absolute"]} top={0} right={0} p={2.5} m={5}>
                 <Button h={'50px'} mr={3} rightIcon={<AddIcon/>} bgColor={'green.300'} className={'heading-md'} fontWeight={'normal'} onClick={onOpen2}>New Trade</Button>
                 <IconButton borderRadius={'md'} onClick={() => {navigate('/mytrades');}} cursor={'pointer'} size={'lg'} p={1} colorScheme={(userTradeData && userTradeData?.filter((trade) => trade.accepted === true).length > 0) ? 'whatsapp' : 'twitter'} icon={<BsPersonFill size={"100%"}/>} aria-label="open my trades menu"/>
@@ -313,7 +313,7 @@ export default function Trade() {
                 }
             </Flex>}
             <Flex mt={3}>
-                {typeof resources !== "undefined" ?
+                {resources !== void 0 ?
                 <Flex>
                     <HStack spacing={1} alignItems={'center'} justifyContent={'center'} wrap={'wrap'}>
                         <Flex py={'15px'} px={4} h={'50px'} bgColor={'#f98f92'} justifyContent={'center'} alignItems={'center'} borderRadius={'5%'}>

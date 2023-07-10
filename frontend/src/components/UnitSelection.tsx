@@ -28,7 +28,7 @@ export default function UnitSelection({data, setSelected}: UnitSelectionProps){
                                 })}
                             </SimpleGrid>
                         </Flex>
-                        {(typeof currentUnit !== "undefined") ?
+                        {(currentUnit !== void 0) ?
                             <Flex w={["100%", "75%", "40%"]} pos={"relative"} ml={[0, 0, 2, 2, 2]}>
                                 <Flex flexDir={"column"} alignItems={"center"} w={"100%"}>
                                     <Text fontSize={"xl"}>{currentUnit.display.displayName}</Text>

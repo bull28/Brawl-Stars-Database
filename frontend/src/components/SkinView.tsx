@@ -48,7 +48,7 @@ export default function SkinView({brawler, skin, setModel}: SkinViewProps){
 
     return (
     <>
-    {typeof data !== "undefined" ?
+    {data !== void 0 ?
         <Flex flexDir={"column"} h={"100%"}>
             <Flex h={"90%"} p={[0, 1]} bgImage={`${api}/image/${data.group.image}`} borderRadius={"lg"} onClick={onOpen} border={data.limited ? "4px solid #ffd700" : "none"} bgPos={"center"} bgSize={"cover"} bgRepeat={"no-repeat"} justifyContent={"center"}>
                 <Image objectFit={"contain"} src={`${api}/image/${data.image}`} alt={data.displayName}/>

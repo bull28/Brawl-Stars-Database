@@ -112,7 +112,7 @@ function GltfModel({modelFile, winFile, loseFile, lightsFile, playing, modelPos,
             if (initialPose.size > 0){
                 gltf.scene.traverse((object) => {
                     const p = initialPose.get(object.name);
-                    if (typeof p !== "undefined"){
+                    if (p !== void 0){
                         object.position.copy(p);
                     }
                 })
@@ -131,7 +131,7 @@ function GltfModel({modelFile, winFile, loseFile, lightsFile, playing, modelPos,
             if (initialPose.size > 0){
                 gltf.scene.traverse((object) => {
                     const p = initialPose.get(object.name);
-                    if (typeof p !== "undefined"){
+                    if (p !== void 0){
                         object.position.copy(p);
                     }
                 })
@@ -161,17 +161,17 @@ export default function AnimationViewer({modelFile, winFile, loseFile, lightsFil
             <Flex w={"100%"} h={"100%"} flexDir={"column"} bgImage={`${api}/image/misc/bg_3d_model.webp`} bgPos={"center"} bgSize={"cover"} bgRepeat={"no-repeat"}>
                 <Canvas flat={true} camera={{fov: 40, position: [0, 0, 1]}}>
                     <Suspense fallback={null}>
-                        {(typeof sceneFile === "string" && sceneFile !== "") ? <BackgroundScene file={sceneFile} modelPos={positionRef}/> : <></>}
-                        <ambientLight intensity={typeof lightIntensity === "number" ? lightIntensity : 0.8}/>
-                        <GltfModel modelFile={modelFile} winFile={typeof winFile === "string" ? winFile : "misc/empty.glb"} loseFile={typeof loseFile === "string" ? loseFile : "misc/empty.glb"} lightsFile={typeof lightsFile === "string" ? lightsFile : "misc/default_lights.glb"} playing={animationRef} modelPos={positionRef} hasBackground={(typeof sceneFile === "string" && sceneFile !== "")}/>
+                        {(sceneFile !== void 0 && sceneFile !== "") ? <BackgroundScene file={sceneFile} modelPos={positionRef}/> : <></>}
+                        <ambientLight intensity={lightIntensity !== void 0 ? lightIntensity : 0.8}/>
+                        <GltfModel modelFile={modelFile} winFile={winFile !== void 0 ? winFile : "misc/empty.glb"} loseFile={loseFile !== void 0 ? loseFile : "misc/empty.glb"} lightsFile={lightsFile !== void 0 ? lightsFile : "misc/default_lights.glb"} playing={animationRef} modelPos={positionRef} hasBackground={(sceneFile !== void 0 && sceneFile !== "")}/>
                         <OrbitControls enablePan={false} maxPolarAngle={Math.PI / 2} maxDistance={150}/>
                     </Suspense>
                 </Canvas>
             </Flex>
             <Flex h={"5%"} w={"100%"} flexDir={"row"} justifyContent={"center"} pos={"absolute"} bottom={0}>
-                <Button className={"heading-md"} isDisabled={(typeof winFile === "undefined")} h={"100%"} lineHeight={0} flex={1} onClick={() => {animationRef.current = 1;}}>Win</Button>
-                <Button className={"heading-md"} isDisabled={(typeof loseFile === "undefined")} h={"100%"} lineHeight={0} flex={1} onClick={() => {animationRef.current = 2;}}>Lose</Button>
-                <Button className={"heading-md"} isDisabled={(typeof winFile === "undefined" && typeof loseFile === "undefined")} h={"100%"} lineHeight={0} flex={1} onClick={() => {animationRef.current = 3;}}>Reset</Button>
+                <Button className={"heading-md"} isDisabled={(winFile === void 0)} h={"100%"} lineHeight={0} flex={1} onClick={() => {animationRef.current = 1;}}>Win</Button>
+                <Button className={"heading-md"} isDisabled={(loseFile === void 0)} h={"100%"} lineHeight={0} flex={1} onClick={() => {animationRef.current = 2;}}>Lose</Button>
+                <Button className={"heading-md"} isDisabled={(winFile === void 0 && loseFile === void 0)} h={"100%"} lineHeight={0} flex={1} onClick={() => {animationRef.current = 3;}}>Reset</Button>
             </Flex>
         </Flex>
     );

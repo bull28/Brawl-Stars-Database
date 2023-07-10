@@ -1,5 +1,5 @@
-import {useEffect, useState} from "react";
-import {Flex, Text, SimpleGrid, Image, Icon, Link, Stack, keyframes} from "@chakra-ui/react";
+import {useEffect, useState, Suspense} from "react";
+import {Flex, Text, SimpleGrid, Image, Icon, Link, Stack, keyframes, Spinner} from "@chakra-ui/react";
 import {useParams} from "react-router-dom";
 import axios, {AxiosResponse} from "axios";
 import SkinView from "../components/SkinView";
@@ -47,8 +47,8 @@ export default function Brawler(){
 
   return (
     <>
-    {typeof data !== "undefined" ?
-        <Flex flexDir={"column"} w={"100%"} maxW={"100vw"} justifyContent={"center"} alignItems={"center"} bgColor={data.rarity.color}>
+    {data !== void 0 ?
+        <Flex flexDir={"column"} w={"100%"} maxW={"100vw"} justifyContent={"center"} alignItems={"center"} bgColor={data.rarity.color} overflowX={"hidden"}>
             <Link pos={"absolute"} left={[0, 10]} top={[0, 5]} href={"/brawlers"}>
                 <Icon as={ArrowBackIcon} fontSize={"3xl"} color={"#fff"}/>
             </Link>
@@ -67,8 +67,10 @@ export default function Brawler(){
                 </Flex>
 
                 <Flex justifyContent={"center"} alignItems={"center"} h={["60vw", "60vw", "50vw", "40vw", "100%"]} w={["60vw", "60vw", "50vw", "40vw", "33%"]} bgColor={"#000"} backgroundPosition={"center"} backgroundSize={"cover"} backgroundRepeat={"no-repeat"} border={"3px solid #fff"}>
-                    {typeof model.geometry !== "undefined" && typeof cosmetics !== "undefined" &&
-                        <AnimationViewer modelFile={model.geometry} winFile={model.winAnimation} loseFile={model.loseAnimation} lightsFile={undefined} sceneFile={cosmetics.scene} lightIntensity={undefined}/>
+                    {model.geometry !== void 0 && cosmetics !== void 0 &&
+                        <Suspense fallback={<Spinner/>}>
+                            <AnimationViewer modelFile={model.geometry} winFile={model.winAnimation} loseFile={model.loseAnimation} lightsFile={undefined} sceneFile={cosmetics.scene} lightIntensity={undefined}/>
+                        </Suspense>
                     }
                 </Flex>
 

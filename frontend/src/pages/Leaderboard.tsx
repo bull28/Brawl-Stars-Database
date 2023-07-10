@@ -39,7 +39,7 @@ export default function Leaderboard(){
         // they are logged in, it will display their current rank
         // Not being logged in here is not an error
         const token = getToken();
-        if (typeof token !== "undefined"){
+        if (token !== void 0){
             axios.post<{}, AxiosResponse<UserInfoProps>>(`${api}/resources`, {token: token})
             .then((res) => {
                 setUsername(res.data.username);
@@ -55,7 +55,7 @@ export default function Leaderboard(){
         <Flex flexDir={"column"} alignItems={"center"}>
             <SkullBackground/>
             <Text fontSize={"4xl"} className={"heading-4xl"} mb={5}>Challenge Leaderboard</Text>
-            {(typeof data !== "undefined") ? <Text fontSize={"xl"} className={"heading-xl"} mb={2}>{getRank(data, username)}</Text> : <></>}
+            {(data !== void 0) ? <Text fontSize={"xl"} className={"heading-xl"} mb={2}>{getRank(data, username)}</Text> : <></>}
             <Flex w={"90vw"} maxW={"1280px"} bgColor={"gray.800"} mb={2} px={3} borderRadius={"md"} wrap={"wrap"}>
                 <Flex w={["100%", "100%", "60%", "60%", "60%"]} alignItems={"center"}>
                     <Text w={"15%"} fontSize={["xs", "lg", "xl", "xl", "xl"]} className={"heading-xl"}>Rank</Text>
@@ -80,21 +80,21 @@ export default function Leaderboard(){
                     }
                     return (
                         <Flex key={index} w={"100%"} bgColor={color} px={3} py={0.5} borderRadius={"md"} wrap={"wrap"} overflow={"hidden"} border={value.username === username ? "2px solid #0f0" : "2px solid #000"}>
-                            <Flex w={["100%", "100%", "60%", "60%", "60%"]}>
+                            <Flex w={["100%", "100%", "60%"]}>
                                 <Flex w={"15%"} alignItems={"center"}>
                                     <Text fontSize={"xl"} className={"heading-xl"} color={value.username === username ? "#0f0" : "#fff"}>{index + 1}</Text>
                                 </Flex>
                                 <Flex w={"85%"} alignItems={"center"}>
                                     <Image src={`${api}/image/${value.avatar}`} border={"2px solid #fff"} borderRadius={"50%"} h={10} mr={1}/>
-                                    <Text fontSize={value.username.length > 20 ? ["xs", `${(15 - (value.username.length - 20) * 0.25) / 16}rem`, `${(15 - (value.username.length - 20) * 0.25) / 16}rem`, `${(20 - (value.username.length - 20) * 0.5) / 16}rem`, "xl"] : ["md", "md", "lg", "xl", "xl"]} className={"heading-xl"}>{value.username}</Text>
+                                    <Text fontSize={value.username.length > 20 ? ["xs", `${(15 - (value.username.length - 20) * 0.25) / 16}rem`, `${(15 - (value.username.length - 20) * 0.25) / 16}rem`, `${(20 - (value.username.length - 20) * 0.5) / 16}rem`, "xl"] : ["md", "md", "lg", "xl"]} className={"heading-xl"}>{value.username}</Text>
                                 </Flex>
                             </Flex>
-                            <Flex w={["100%", "100%", "40%", "40%", "40%"]}>
-                                <Flex w={["15%", "15%", "25%", "25%", "25%"]} alignItems={"center"}>
-                                    <Text fontSize={["lg", "lg", "xl", "xl", "xl"]} className={"heading-xl"}>{value.level}</Text>
+                            <Flex w={["100%", "100%", "40%"]}>
+                                <Flex w={["15%", "15%", "25%"]} alignItems={"center"}>
+                                    <Text fontSize={["lg", "lg", "xl"]} className={"heading-xl"}>{value.level}</Text>
                                 </Flex>
-                                <Flex w={["85%", "85%", "75%", "75%", "75%"]} alignItems={"center"}>
-                                    <Text fontSize={["md", "lg", "xl", "xl", "xl"]} className={"heading-xl"}>{value.upgradePoints > 0 ? `${displayLong(value.points)} / ${displayShort(value.upgradePoints)}` : `${displayLong(value.points)}`}</Text>
+                                <Flex w={["85%", "85%", "75%"]} alignItems={"center"}>
+                                    <Text fontSize={["md", "lg", "xl"]} className={"heading-xl"}>{value.upgradePoints > 0 ? `${displayLong(value.points)} / ${displayShort(value.upgradePoints)}` : `${displayLong(value.points)}`}</Text>
                                 </Flex>
                             </Flex>
                         </Flex>

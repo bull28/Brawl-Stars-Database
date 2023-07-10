@@ -81,9 +81,9 @@ export default function Gallery() {
         <Flex flexDir={"column"} alignItems={"center"}>
             <Text fontSize={"4xl"} className={"heading-4xl"}>Gallery</Text>
         </Flex>
-        {(typeof cosmetics !== "undefined" && typeof themes !== "undefined") ?
+        {(cosmetics !== void 0 && themes !== void 0) ?
             <Flex flexDir={"column"} alignItems={"center"}>
-            <SimpleGrid columns={[1, 1, 1, 2, 2]} spacingX={"5vw"} spacingY={[5, 10]}>
+            <SimpleGrid columns={[1, 1, 1, 2]} spacingX={"5vw"} spacingY={[5, 10]}>
                 {Object.keys(themes).map((key) => {
                     const value = themes[key as keyof ThemeCategories];
                     let selected = "";
@@ -96,7 +96,7 @@ export default function Gallery() {
                             <Text fontSize={"3xl"} className={"heading-3xl"} mb={5}>{value.name}</Text>        
                             <VStack p={3} spacing={3} bgColor={"blue.500"} borderRadius={"lg"} border={"3px solid"} borderColor={"blue.700"} overflowY={"scroll"} maxH={"80vh"} sx={scrollStyle}>
                                 {value.themes.map((theme) => (
-                                <Flex key={theme.path + theme.displayName} w={["80vw", "80vw", "70vw", "40vw", "30vw"]} bgColor={selected === theme.path ? "green.300" : "lightskyblue"} justifyContent={"space-between"} flexDir={["column", "row", "row", "row", "row"]} p={[2, 3, 4, 4, 4]} borderRadius={"lg"} border={"2px solid black"}>
+                                <Flex key={theme.path + theme.displayName} w={["80vw", "80vw", "70vw", "40vw", "30vw"]} bgColor={selected === theme.path ? "green.300" : "lightskyblue"} justifyContent={"space-between"} flexDir={["column", "row"]} p={[2, 3, 4]} borderRadius={"lg"} border={"2px solid black"}>
                                     <Flex>
                                         <Image w={["20vw", "20vw", "16vw", "10vw", "8vw"]} h={["20vw", "20vw", "16vw", "10vw", "8vw"]} bgColor={theme.image !== "" ? "#000" : "#0000"} borderRadius={"lg"} border={"2px solid black"} objectFit={"cover"} src={theme.image !== "" ? `${api}/image/${theme.image}` : `${api}/image/misc/bg_3d_model.webp`} boxShadow={"0px 0px 25px #fff"}/>
                                         

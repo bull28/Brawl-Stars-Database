@@ -2051,7 +2051,7 @@
                     "image": "bg_ranked.webp",
                     "icon": "icon_ranked.webp"
                 },
-                "limited": true,
+                "limited": false,
                 "image": "rocketgirldelivery.webp",
                 "model": {
                     "geometry": "rocketgirldelivery.glb",
@@ -2781,6 +2781,15 @@
             {
                 "name": "elprimo_rey",
                 "image": "elprimo_rey.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF11E"
+                }
+            },
+            {
+                "name": "elprimo_brown",
+                "image": "elprimo_brown.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -4404,9 +4413,9 @@
                     "Effects"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Golden Brawl Ball",
+                    "image": "bg_goldenball.webp",
+                    "icon": "icon_goldenball.webp"
                 },
                 "limited": false,
                 "image": "tntdudefootball.webp",
@@ -5307,6 +5316,33 @@
                     "loseAnimation": "arcaderetropolis_lose.glb"
                 },
                 "rating": 0
+            },
+            {
+                "name": "arcadehauntedhouse",
+                "displayName": "Haunted House 8-Bit",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Enchanted Woods",
+                    "image": "bg_enchanted.webp",
+                    "icon": "icon_enchanted.webp"
+                },
+                "limited": false,
+                "image": "arcadehauntedhouse.webp",
+                "model": {
+                    "geometry": "arcadehauntedhouse.glb",
+                    "winAnimation": "arcadehauntedhouse_win.glb",
+                    "loseAnimation": "arcadehauntedhouse_lose.glb"
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -5421,6 +5457,24 @@
             {
                 "name": "8bit_lny_2020",
                 "image": "8bit_lny_2020.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF11E"
+                }
+            },
+            {
+                "name": "8bit_ranked",
+                "image": "8bit_ranked.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF11E"
+                }
+            },
+            {
+                "name": "8bit_enchanted",
+                "image": "8bit_enchanted.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -5850,9 +5904,9 @@
                     "Effects"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Golden Brawl Ball",
+                    "image": "bg_goldenball.webp",
+                    "icon": "icon_goldenball.webp"
                 },
                 "limited": false,
                 "image": "barrelbotfootball.webp",
@@ -6529,6 +6583,15 @@
                     "name": "Legendary",
                     "color": "#FDF11E"
                 }
+            },
+            {
+                "name": "penny_ranked",
+                "image": "penny_ranked.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF11E"
+                }
             }
         ]
     },
@@ -6671,9 +6734,9 @@
             {
                 "name": "whirlwinddarktide",
                 "displayName": "Dark Tide Carl",
-                "cost": 29,
+                "cost": 39,
                 "currency": "Gems",
-                "costBling": 1000,
+                "costBling": 1500,
                 "requires": "Captain Carl",
                 "features": [
                     "Brawler Model",
@@ -7296,6 +7359,15 @@
             {
                 "name": "jacky_bt21",
                 "image": "jacky_bt21.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF11E"
+                }
+            },
+            {
+                "name": "jacky_ranked",
+                "image": "jacky_ranked.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -9744,6 +9816,33 @@
                     "loseAnimation": "baseballbubblegum_lose.glb"
                 },
                 "rating": 0
+            },
+            {
+                "name": "baseballpirate",
+                "displayName": "Cursed Pirate Bibi",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Cursed Pirates",
+                    "image": "bg_cursed.webp",
+                    "icon": "icon_cursed.webp"
+                },
+                "limited": false,
+                "image": "baseballpirate.webp",
+                "model": {
+                    "geometry": "baseballpirate.glb",
+                    "winAnimation": "baseballpirate_win.glb",
+                    "loseAnimation": "baseballpirate_lose.glb"
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -9858,6 +9957,15 @@
             {
                 "name": "bibi_vigilante",
                 "image": "bibi_vigilante.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF11E"
+                }
+            },
+            {
+                "name": "bibi_cursed",
+                "image": "bibi_cursed.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -11007,6 +11115,33 @@
                     "loseAnimation": "assaultshotgunarcade_lose.glb"
                 },
                 "rating": 0
+            },
+            {
+                "name": "assaultshotguntreasure",
+                "displayName": "Sunken Chest Griff",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Cursed Pirates",
+                    "image": "bg_cursed.webp",
+                    "icon": "icon_cursed.webp"
+                },
+                "limited": false,
+                "image": "assaultshotguntreasure.webp",
+                "model": {
+                    "geometry": "assaultshotguntreasure.glb",
+                    "winAnimation": "assaultshotguntreasure_win.glb",
+                    "loseAnimation": "assaultshotguntreasure_lose.glb"
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -11112,6 +11247,15 @@
             {
                 "name": "griff_lny_2023",
                 "image": "griff_lny_2023.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF11E"
+                }
+            },
+            {
+                "name": "griff_cursed",
+                "image": "griff_cursed.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -11545,6 +11689,56 @@
                     "geometry": "cannongirlsilver.glb",
                     "winAnimation": "cannongirlsilver_win.glb",
                     "loseAnimation": "cannongirlsilver_lose.glb"
+                },
+                "rating": 0
+            },
+            {
+                "name": "cannongirlunicorn",
+                "displayName": "Unicorn Bonnie",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "",
+                    "image": "bg_default.webp",
+                    "icon": "icon_default.webp"
+                },
+                "limited": false,
+                "image": "cannongirlunicorn.webp",
+                "model": {
+                    "geometry": "cannongirlunicorn.glb",
+                    "winAnimation": "cannongirlunicorn_win.glb",
+                    "loseAnimation": "cannongirlunicorn_lose.glb"
+                },
+                "rating": 0
+            },
+            {
+                "name": "cannongirlsoccer",
+                "displayName": "Footbonnie",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "Golden Brawl Ball",
+                    "image": "bg_goldenball.webp",
+                    "icon": "icon_goldenball.webp"
+                },
+                "limited": false,
+                "image": "cannongirlsoccer.webp",
+                "model": {
+                    "geometry": "cannongirlsoccer.glb",
+                    "winAnimation": "cannongirlsoccer_win.glb",
+                    "loseAnimation": "cannongirlsoccer_lose.glb"
                 },
                 "rating": 0
             }
@@ -12375,7 +12569,7 @@
             },
             {
                 "name": "blackholeblue",
-                "displayName": "Iris Tara",
+                "displayName": "Stara",
                 "cost": 29,
                 "currency": "Gems",
                 "costBling": 1000,
@@ -14217,6 +14411,15 @@
                     "name": "Legendary",
                     "color": "#FDF11E"
                 }
+            },
+            {
+                "name": "byron_ranked",
+                "image": "byron_ranked.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF11E"
+                }
             }
         ]
     },
@@ -14959,6 +15162,161 @@
         ]
     },
     {
+        "name": "doug",
+        "displayName": "Doug",
+        "rarity": {
+            "value": 4,
+            "name": "Mythic",
+            "color": "#FE0521"
+        },
+        "image": "portrait_doug.webp",
+        "defaultSkin": "reviverdefault",
+        "title": "Wiener",
+        "masteryIcon": "mastery_icon_doug.webp",
+        "description": "Doug's hot dogs will extend your friends' shelf life.",
+        "skins": [
+            {
+                "name": "reviverdefault",
+                "displayName": "Doug",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "requires": "",
+                "features": [],
+                "group": {
+                    "name": "",
+                    "image": "bg_default.webp",
+                    "icon": "icon_default.webp"
+                },
+                "limited": false,
+                "image": "reviverdefault.webp",
+                "model": {
+                    "geometry": "reviverdefault.glb",
+                    "winAnimation": "reviverdefault_win.glb",
+                    "loseAnimation": "reviverdefault_lose.glb"
+                },
+                "rating": 0
+            },
+            {
+                "name": "reviverdraco",
+                "displayName": "Draco Doug",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "",
+                    "image": "bg_default.webp",
+                    "icon": "icon_default.webp"
+                },
+                "limited": false,
+                "image": "reviverdraco.webp",
+                "model": {
+                    "geometry": "reviverdraco.glb",
+                    "winAnimation": "reviverdraco_win.glb",
+                    "loseAnimation": "reviverdraco_lose.glb"
+                },
+                "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "name": "doug_default",
+                "image": "doug_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94D6F4"
+                }
+            },
+            {
+                "name": "doug_happy",
+                "image": "doug_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94D6F4"
+                }
+            },
+            {
+                "name": "doug_sad",
+                "image": "doug_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94D6F4"
+                }
+            },
+            {
+                "name": "doug_angry",
+                "image": "doug_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94D6F4"
+                }
+            },
+            {
+                "name": "doug_gg",
+                "image": "doug_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2EDD1B"
+                }
+            },
+            {
+                "name": "doug_clap",
+                "image": "doug_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2EDD1B"
+                }
+            },
+            {
+                "name": "doug_thanks",
+                "image": "doug_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#B116EC"
+                }
+            },
+            {
+                "name": "doug_sweat",
+                "image": "doug_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#B116EC"
+                }
+            },
+            {
+                "name": "doug_special",
+                "image": "doug_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#B116EC"
+                }
+            },
+            {
+                "name": "doug_facepalm",
+                "image": "doug_facepalm.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF11E"
+                }
+            }
+        ]
+    },
+    {
         "name": "spike",
         "displayName": "Spike",
         "rarity": {
@@ -15405,9 +15763,9 @@
                     "Animations"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Flaming",
+                    "image": "bg_phoenix.webp",
+                    "icon": "icon_phoenix.webp"
                 },
                 "limited": false,
                 "image": "crowpheonix.webp",
@@ -15737,6 +16095,87 @@
             {
                 "name": "crow_super",
                 "image": "crow_super.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF11E"
+                }
+            },
+            {
+                "name": "crow_phoenix_default",
+                "image": "crow_phoenix_default.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF11E"
+                }
+            },
+            {
+                "name": "crow_phoenix_happy",
+                "image": "crow_phoenix_happy.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF11E"
+                }
+            },
+            {
+                "name": "crow_phoenix_sad",
+                "image": "crow_phoenix_sad.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF11E"
+                }
+            },
+            {
+                "name": "crow_phoenix_angry",
+                "image": "crow_phoenix_angry.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF11E"
+                }
+            },
+            {
+                "name": "crow_phoenix_gg",
+                "image": "crow_phoenix_gg.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF11E"
+                }
+            },
+            {
+                "name": "crow_phoenix_clap",
+                "image": "crow_phoenix_clap.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF11E"
+                }
+            },
+            {
+                "name": "crow_phoenix_thanks",
+                "image": "crow_phoenix_thanks.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF11E"
+                }
+            },
+            {
+                "name": "crow_phoenix_sweat",
+                "image": "crow_phoenix_sweat.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF11E"
+                }
+            },
+            {
+                "name": "crow_phoenix_special",
+                "image": "crow_phoenix_special.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -16808,6 +17247,33 @@
                     "loseAnimation": "mechadudejaguar_lose.glb"
                 },
                 "rating": 0
+            },
+            {
+                "name": "mechadudepirate",
+                "displayName": "Megalodon",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Cursed Pirates",
+                    "image": "bg_cursed.webp",
+                    "icon": "icon_cursed.webp"
+                },
+                "limited": false,
+                "image": "mechadudepirate.webp",
+                "model": {
+                    "geometry": "mechadudepirate.glb",
+                    "winAnimation": "mechadudepirate_win.glb",
+                    "loseAnimation": "mechadudepirate_lose.glb"
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -16927,6 +17393,15 @@
                     "name": "Legendary",
                     "color": "#FDF11E"
                 }
+            },
+            {
+                "name": "meg_cursed",
+                "image": "meg_cursed.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF11E"
+                }
             }
         ]
     },
@@ -17040,6 +17515,33 @@
                     "loseAnimation": "jestersilver_lose.glb"
                 },
                 "rating": 0
+            },
+            {
+                "name": "jesterwoodspirit",
+                "displayName": "Wood Spirit Chester",
+                "cost": 79,
+                "currency": "Gems",
+                "costBling": 2750,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Enchanted Woods",
+                    "image": "bg_enchanted.webp",
+                    "icon": "icon_enchanted.webp"
+                },
+                "limited": false,
+                "image": "jesterwoodspirit.webp",
+                "model": {
+                    "geometry": "jesterwoodspirit.glb",
+                    "winAnimation": "jesterwoodspirit_win.glb",
+                    "loseAnimation": "jesterwoodspirit_lose.glb"
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -17127,6 +17629,15 @@
             {
                 "name": "chester_facepalm",
                 "image": "chester_facepalm.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF11E"
+                }
+            },
+            {
+                "name": "chester_enchanted",
+                "image": "chester_enchanted.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -17649,6 +18160,33 @@
                     "loseAnimation": "powerlevelersilver_lose.glb"
                 },
                 "rating": 0
+            },
+            {
+                "name": "powerlevelerkraken",
+                "displayName": "Kraken Surge",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Supercell Make",
+                    "image": "bg_default.webp",
+                    "icon": "icon_sc_make.webp"
+                },
+                "limited": false,
+                "image": "powerlevelerkraken.webp",
+                "model": {
+                    "geometry": "powerlevelerkraken.glb",
+                    "winAnimation": "powerlevelerkraken_win.glb",
+                    "loseAnimation": "powerlevelerkraken_lose.glb"
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -17821,6 +18359,15 @@
                     "value": 2,
                     "name": "Epic",
                     "color": "#B116EC"
+                }
+            },
+            {
+                "name": "surge_cursed",
+                "image": "surge_cursed.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF11E"
                 }
             }
         ]
@@ -18376,6 +18923,33 @@
                     "loseAnimation": "icedudesilver_lose.glb"
                 },
                 "rating": 0
+            },
+            {
+                "name": "icedudestonetroll",
+                "displayName": "Stone Troll Lou",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Power League",
+                    "image": "bg_ranked.webp",
+                    "icon": "icon_ranked.webp"
+                },
+                "limited": true,
+                "image": "icedudestonetroll.webp",
+                "model": {
+                    "geometry": "icedudestonetroll.glb",
+                    "winAnimation": "icedudestonetroll_win.glb",
+                    "loseAnimation": "icedudestonetroll_lose.glb"
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -18553,6 +19127,15 @@
             {
                 "name": "lou_brawlentines",
                 "image": "lou_brawlentines.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF11E"
+                }
+            },
+            {
+                "name": "lou_ranked",
+                "image": "lou_ranked.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -19640,6 +20223,15 @@
             {
                 "name": "buzz_candyland",
                 "image": "buzz_candyland.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF11E"
+                }
+            },
+            {
+                "name": "buzz_ranked",
+                "image": "buzz_ranked.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -21252,6 +21844,33 @@
                     "loseAnimation": "jetpackgirlpopstar_lose.glb"
                 },
                 "rating": 0
+            },
+            {
+                "name": "jetpackgirldarkfairy",
+                "displayName": "Dark Fairy Janet",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Enchanted Woods",
+                    "image": "bg_enchanted.webp",
+                    "icon": "icon_enchanted.webp"
+                },
+                "limited": false,
+                "image": "jetpackgirldarkfairy.webp",
+                "model": {
+                    "geometry": "jetpackgirldarkfairy.glb",
+                    "winAnimation": "jetpackgirldarkfairy_win.glb",
+                    "loseAnimation": "jetpackgirldarkfairy_lose.glb"
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -21438,6 +22057,15 @@
             {
                 "name": "janet_popstar",
                 "image": "janet_popstar.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF11E"
+                }
+            },
+            {
+                "name": "janet_enchanted",
+                "image": "janet_enchanted.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -23283,6 +23911,269 @@
             {
                 "name": "maisie_snake_special",
                 "image": "maisie_snake_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#B116EC"
+                }
+            }
+        ]
+    },
+    {
+        "name": "cordelius",
+        "displayName": "Cordelius",
+        "rarity": {
+            "value": 6,
+            "name": "Chromatic",
+            "color": "#F87628"
+        },
+        "image": "portrait_cordelius.webp",
+        "defaultSkin": "duelistdefault",
+        "title": "Toxic",
+        "masteryIcon": "mastery_icon_cordelius.webp",
+        "description": "Gardener and caretaker of the Enchanted Forest. Obsesses over mushrooms and is hostile towards strangers.",
+        "skins": [
+            {
+                "name": "duelistdefault",
+                "displayName": "Cordelius",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "requires": "",
+                "features": [],
+                "group": {
+                    "name": "",
+                    "image": "bg_default.webp",
+                    "icon": "icon_default.webp"
+                },
+                "limited": false,
+                "image": "duelistdefault.webp",
+                "model": {
+                    "geometry": "duelistdefault.glb",
+                    "winAnimation": "duelistdefault_win.glb",
+                    "loseAnimation": "duelistdefault_lose.glb"
+                },
+                "rating": 0
+            },
+            {
+                "name": "duelisttoxic",
+                "displayName": "Poison Cap Cordelius",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "",
+                    "image": "bg_default.webp",
+                    "icon": "icon_default.webp"
+                },
+                "limited": false,
+                "image": "duelisttoxic.webp",
+                "model": {
+                    "geometry": "duelisttoxic.glb",
+                    "winAnimation": "duelisttoxic_win.glb",
+                    "loseAnimation": "duelisttoxic_lose.glb"
+                },
+                "rating": 0
+            },
+            {
+                "name": "duelistbrain",
+                "displayName": "Sporemind Cordelius",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Brawl Pass",
+                    "image": "bg_default.webp",
+                    "icon": "icon_brawlpass.webp"
+                },
+                "limited": true,
+                "image": "duelistbrain.webp",
+                "model": {
+                    "geometry": "duelistbrain.glb",
+                    "winAnimation": "duelistbrain_win.glb",
+                    "loseAnimation": "duelistbrain_lose.glb"
+                },
+                "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "name": "cordelius_default",
+                "image": "cordelius_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94D6F4"
+                }
+            },
+            {
+                "name": "cordelius_happy",
+                "image": "cordelius_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94D6F4"
+                }
+            },
+            {
+                "name": "cordelius_sad",
+                "image": "cordelius_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94D6F4"
+                }
+            },
+            {
+                "name": "cordelius_angry",
+                "image": "cordelius_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94D6F4"
+                }
+            },
+            {
+                "name": "cordelius_gg",
+                "image": "cordelius_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2EDD1B"
+                }
+            },
+            {
+                "name": "cordelius_clap",
+                "image": "cordelius_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2EDD1B"
+                }
+            },
+            {
+                "name": "cordelius_thanks",
+                "image": "cordelius_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#B116EC"
+                }
+            },
+            {
+                "name": "cordelius_sweat",
+                "image": "cordelius_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#B116EC"
+                }
+            },
+            {
+                "name": "cordelius_special",
+                "image": "cordelius_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#B116EC"
+                }
+            },
+            {
+                "name": "cordelius_facepalm",
+                "image": "cordelius_facepalm.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#FDF11E"
+                }
+            },
+            {
+                "name": "cordelius_brain_default",
+                "image": "cordelius_brain_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94D6F4"
+                }
+            },
+            {
+                "name": "cordelius_brain_happy",
+                "image": "cordelius_brain_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94D6F4"
+                }
+            },
+            {
+                "name": "cordelius_brain_sad",
+                "image": "cordelius_brain_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94D6F4"
+                }
+            },
+            {
+                "name": "cordelius_brain_angry",
+                "image": "cordelius_brain_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94D6F4"
+                }
+            },
+            {
+                "name": "cordelius_brain_gg",
+                "image": "cordelius_brain_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2EDD1B"
+                }
+            },
+            {
+                "name": "cordelius_brain_clap",
+                "image": "cordelius_brain_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2EDD1B"
+                }
+            },
+            {
+                "name": "cordelius_brain_thanks",
+                "image": "cordelius_brain_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#B116EC"
+                }
+            },
+            {
+                "name": "cordelius_brain_sweat",
+                "image": "cordelius_brain_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#B116EC"
+                }
+            },
+            {
+                "name": "cordelius_brain_special",
+                "image": "cordelius_brain_special.webp",
                 "rarity": {
                     "value": 2,
                     "name": "Epic",

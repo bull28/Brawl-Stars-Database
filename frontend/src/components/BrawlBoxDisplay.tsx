@@ -29,7 +29,7 @@ export default function BrawlBoxDisplay({data, tokens, loadResources}: {data: Br
             onOpen2()
         }, fallback: function(error: Error) {
             const e = error as AxiosError;
-            if (typeof e.response !== "undefined" && e.response.status === 403){
+            if (e.response !== void 0 && e.response.status === 403){
                 if (!toast.isActive(toastRef.current)){
                     toastRef.current = toast({
                         description: `You don't have enough tokens to open this box!`,
@@ -61,7 +61,7 @@ export default function BrawlBoxDisplay({data, tokens, loadResources}: {data: Br
                             <Text>{data.description}</Text>
                             <Divider my={2}/>
                             <Flex flexDir={'column'}>
-                                {typeof data !== "undefined" ? <Text fontSize={["sm", "md", "md", "md", "md"]} whiteSpace={"pre-line"}>{data.dropsDescription.reduce((previousValue, currentValue) => previousValue + "\n" + currentValue)}</Text> : <></>}
+                                {data !== void 0 ? <Text fontSize={["sm", "md", "md", "md", "md"]} whiteSpace={"pre-line"}>{data.dropsDescription.reduce((previousValue, currentValue) => previousValue + "\n" + currentValue)}</Text> : <></>}
                             </Flex>
                             <Divider my={2}/>
                         </AlertDialogBody>

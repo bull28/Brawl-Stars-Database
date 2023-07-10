@@ -70,7 +70,7 @@ export default function Collection() {
                                 </Box>
                             </Tooltip>
                             
-                            {typeof data !== "undefined" ?
+                            {data !== void 0 ?
                                 <VStack spacing={1}>
                                     <Text className={'heading-md'}  fontSize={'md'}>Brawlers Unlocked:</Text>
                                     {(data.unlockedBrawlers >= data.totalBrawlers) ?
@@ -126,7 +126,7 @@ export default function Collection() {
                 </Flex>
             }
             <Text fontSize={'3xl'} className={'heading-3xl'} my={10}>Brawlers and Pins</Text>
-            {(typeof data !== "undefined" && data.brawlers.length > 0) &&
+            {(data !== void 0 && data.brawlers.length > 0) &&
             <Accordion defaultIndex={[data.brawlers.findIndex((value) => value.name === searchParams.get('brawler'))]} allowMultiple={true} >
                 <SimpleGrid columns={[1, 1, 2, 3, 4]} spacing={3} w={'80vw'} bgColor={'blue.800'} p={5} mb={10}>
                     {data && data.brawlers.map((brawler) => (

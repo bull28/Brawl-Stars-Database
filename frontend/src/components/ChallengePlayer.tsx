@@ -167,17 +167,17 @@ function pointInRange(start: Point, target: Point, range: number): boolean{
 function unitButtonDisabled(challenge: ChallengeManagerState["challenge"] | undefined, player: number, unit: UnitState, lastUnit: UnitState | undefined): boolean{
     // Returns whether the button corresponding to "unit" should be disabled
     // given the current phase, current player, and the last unit clicked on
-    if (typeof challenge === "undefined"){
+    if (challenge === void 0){
         return false;
     }
 
     if (challenge.phase === 0){
-        if (typeof lastUnit !== "undefined" && unit.id !== lastUnit.id){
+        if (lastUnit !== void 0 && unit.id !== lastUnit.id){
             // A unit cannot move to a position that already contains a unit
             return true;
         }
     } else if (challenge.phase === 1){
-        if (typeof lastUnit !== "undefined"){
+        if (lastUnit !== void 0){
             if ((unit.player === player && unit.id !== lastUnit.id) || pointInRange(lastUnit.position, unit.position, lastUnit.stats.range) === false){
                 // The player cannot attack their own unit or another unit outside its range
                 return true;
@@ -289,14 +289,14 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
     }
     // Click on a unit or position on the grid
     const click = (unit: UnitState | undefined, p: Point): void => {
-        if (typeof challenge === "undefined"){
+        if (challenge === void 0){
             return;
         }
-        if (typeof unit !== "undefined"){
+        if (unit !== void 0){
             if (challenge.phase === 0){
                 // Move phase expects clicks on a unit then a position
                 // If the same unit is clicked twice, reset the state
-                if (typeof lastUnit !== "undefined" && lastUnit.id === unit.id){
+                if (lastUnit !== void 0 && lastUnit.id === unit.id){
                     setLastUnit(undefined);
                     return;
                 } else{
@@ -306,7 +306,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                 // Attack phase expects clicks on a unit then another unit
                 // if the existing last unit is not undefined, add action with that
                 // unit and the given id.
-                if (typeof lastUnit !== "undefined" && lastUnit.id !== unit.id){
+                if (lastUnit !== void 0 && lastUnit.id !== unit.id){
                     // If they click on a unit after already clicking on an attacker, add it to the targets
                     if (lastTargets.includes(unit.id) === false){
                         const newTargets = lastTargets.concat([unit.id]);
@@ -322,7 +322,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                             setLastTargets(newTargets);
                         }
                     }
-                } else if (typeof lastUnit !== "undefined" && lastUnit.id === unit.id){
+                } else if (lastUnit !== void 0 && lastUnit.id === unit.id){
                     if (lastTargets.length > 0){
                         // When they click on the attacker unit, add the attack request
                         // with all the targets they clicked on since they clicked on the attacker
@@ -345,7 +345,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
             // On move phase, it may execute when another unit is clicked
             if (challenge.phase === 0){
                 // Move phase expects clicks on a unit then a position
-                if (typeof lastUnit !== "undefined"){
+                if (lastUnit !== void 0){
                     setMoveActions(new Map(moveActions.set(lastUnit.id, p)));
                     setLastUnit(undefined);
                     setLastTargets([]);
@@ -361,7 +361,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
     const sendAction = (action: string): void => {
         setLastUnit(undefined);
         setLastTargets([]);
-        if (typeof socket !== "undefined"){
+        if (socket !== void 0){
             if (action === "move" || action === "activate"){
                 socket.emit("action", action, Array.from(moveActions).map((value) => ({unit: value[0], position: value[1]})));
             } else if (action === "attack"){
@@ -380,7 +380,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
     }, [address]);
 
     useEffect(() => {
-        if (typeof socket !== "undefined"){
+        if (socket !== void 0){
             socket.removeAllListeners();
             socket.on("state", (data) => {
                 onStarted();
@@ -449,7 +449,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
     let gridWidth = 1;
     let gridHeight = 1;
 
-    if (typeof challenge !== "undefined"){
+    if (challenge !== void 0){
         gridWidth = Math.max(gridWidth, challenge.gridSize[0]);
         gridHeight = Math.max(gridHeight, challenge.gridSize[1]);
         
@@ -472,7 +472,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
             // If move actions has the current unit id as a key then show that unit
             // at the new location if preview mode is on
             const newPoint = moveActions.get(unit.id);
-            if (preview && typeof newPoint !== "undefined"){
+            if (preview && newPoint !== void 0){
                 p = pointToIndex(newPoint, gridWidth);
             }
 
@@ -485,7 +485,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
         if (preview){
             for (let unit of challenge.inactive){
                 const newPoint = moveActions.get(unit.id);
-                if (typeof newPoint !== "undefined"){
+                if (newPoint !== void 0){
                     const p = pointToIndex(newPoint, gridWidth);
     
                     if (p < grid.length){
@@ -496,9 +496,9 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
         }
         
         // Get the position of the unit that is currently being hovered over
-        if (typeof currentUnit !== "undefined"){
+        if (currentUnit !== void 0){
             const newPoint = moveActions.get(currentUnit.id);
-            if (preview && typeof newPoint !== "undefined"){
+            if (preview && newPoint !== void 0){
                 // In preview mode, set the current position to the temporary point
                 // so the user can see the range of a unit at its new location after it moves
                 currentPosition = newPoint;
@@ -519,7 +519,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
     
     return (
         <Flex flexDir={"column"} alignItems={"center"} w={"100%"}>
-            {(typeof players !== "undefined" && typeof challenge !== "undefined") ?
+            {(players !== void 0 && challenge !== void 0) ?
                 <Flex flexDir={"column"} maxW={"100vw"}>
                     <Flex flexDir={["column", "row"]}>
                         <Flex flexDir={"column"} bgColor={"gray.800"} p={2}>
@@ -528,8 +528,8 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                                     const point = indexToPoint(index, gridWidth);
                                     
                                     let inRange = false;
-                                    if (typeof currentPosition !== "undefined" && typeof currentUnit !== "undefined"){
-                                        if (challenge.phase !== 1 || typeof lastUnit === "undefined" || (currentUnit.player === challenge.turn)){
+                                    if (currentPosition !== void 0 && currentUnit !== void 0){
+                                        if (challenge.phase !== 1 || lastUnit === void 0 || (currentUnit.player === challenge.turn)){
                                             // Prevent showing attack range of opponent units when setting targets
                                             // Range of opponent units is usually not necessary when determining which targets to attack
                                             // If it were to be helpful, the player can always check before setting targets
@@ -538,7 +538,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                                         }
                                     }
                     
-                                    if (typeof value === "undefined"){
+                                    if (value === void 0){
                                         let color = "#808080";
                                         if (inRange){
                                             color = "#0f0";
@@ -551,7 +551,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                                     const healthFraction = Math.min(1, Math.max(0, value.stats.health / Math.max(1, value.stats.maxHealth)));
                     
                                     let borderColor = playerColor(value.player, currentPlayer);
-                                    if (typeof lastUnit !== "undefined" && lastUnit.id === value.id){
+                                    if (lastUnit !== void 0 && lastUnit.id === value.id){
                                         borderColor = "#ff0";
                                     } else if (lastTargets.includes(value.id)){
                                         borderColor = "#f0f";
@@ -567,7 +567,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                                                     :
                                                     <></>
                                                 }
-                                                <Flex color={(typeof currentUnit !== "undefined" && inRange) ? (currentTargets.includes(value.id) ? "#f4f" : "#0f0") : "#fff"} className={"heading-md"}>{value.id}</Flex>
+                                                <Flex color={(currentUnit !== void 0 && inRange) ? (currentTargets.includes(value.id) ? "#f4f" : "#0f0") : "#fff"} className={"heading-md"}>{value.id}</Flex>
                                             </Flex>
                                         </Button>
                                     );
@@ -588,7 +588,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                                 backgroundColor: "rgba(0, 0, 0, 0)"
                             }}}>{challenge.inactive.map((value) => {
                                 let borderColor = playerColor(value.player, currentPlayer);
-                                if (typeof lastUnit !== "undefined" && lastUnit.id === value.id){
+                                if (lastUnit !== void 0 && lastUnit.id === value.id){
                                     borderColor = "#ff0";
                                 } else if (lastTargets.includes(value.id)){
                                     borderColor = "#f0f";
@@ -632,7 +632,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                             </Stack>
                         </Flex>
                         <Flex w={"3px"} bgColor={"#808080"}/>
-                        {(typeof currentUnit !== "undefined" && currentUnit.player < players.length) ? showStats(currentUnit, players[currentUnit.player].username) : <Flex w={"250px"} px={"5px"} bgColor={"gray.800"} flexDir={"column"}/>}
+                        {(currentUnit !== void 0 && currentUnit.player < players.length) ? showStats(currentUnit, players[currentUnit.player].username) : <Flex w={"250px"} px={"5px"} bgColor={"gray.800"} flexDir={"column"}/>}
                     </Flex>
                     <Flex flexDir={["column", "row"]}>
                         <Flex flexDir={"column"} w={["90vw", "300px"]}>
@@ -665,20 +665,20 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                 :
                 <Flex alignItems={"center"} justifyContent={"center"} w={"100%"}>
                     <Flex flexDir={"column"} alignItems={"center"} minW={"10vw"} w={"100%"}>
-                        {(typeof socket !== "undefined" && loginRef.current === true) ?
+                        {(socket !== void 0 && loginRef.current === true) ?
                             <Flex justifyContent={"center"} w={"80%"}>
                                 <Flex flexDir={"column"} w={"100%"} bgColor={"gray.800"} p={2} borderRadius={"lg"}>
                                     <Input id={"challenge"} onChange={changeInput}/>
                                     
-                                    <Button maxW={"100%"} fontSize={"lg"} onClick={() => { if (typeof createChallenge !== "undefined"){ setConfirm({title: "Create Challenge?", text: createChallenge.displayName, cost: createChallenge.acceptCost, action: () => {socket.emit("create", createChallenge.challengeid, unitChoices.map((value) => value.name));}}); onOpenConfirm(); } else if (inputText.length > 0){socket.emit("create", parseInt(inputText), unitChoices.map((value) => value.name));} else{toast({description: "No challenge id specified", status: "error", duration: 4500, isClosable: true});} }}>Create Challenge</Button>
-                                    <Flex mb={5} px={1} justifyContent={"center"} borderRadius={"md"} maxW={"100%"} bgColor={"gray.700"}>{typeof createChallenge !== "undefined" ? createChallenge.displayName : " "}</Flex>
-                                    <Button maxW={"100%"} fontSize={"lg"} onClick={() => { if (typeof room !== "undefined"){ setConfirm({title: "Join Challenge?", text: `${room.username}'s Room`, cost: room.acceptCost, action: () => {socket.emit("join", room.username, unitChoices.map((value) => value.name));}}); onOpenConfirm(); } else if (inputText.length > 0){socket.emit("join", inputText, unitChoices.map((value) => value.name));} else{toast({description: "No room name specified", status: "error", duration: 4500, isClosable: true}); } }}>Join Challenge</Button>
-                                    <Flex mb={5} px={1} justifyContent={"center"} borderRadius={"md"} maxW={"100%"} bgColor={"gray.700"}>{typeof room !== "undefined" ? room.username : " "}</Flex>
+                                    <Button maxW={"100%"} fontSize={"lg"} onClick={() => { if (createChallenge !== void 0){ setConfirm({title: "Create Challenge?", text: createChallenge.displayName, cost: createChallenge.acceptCost, action: () => {socket.emit("create", createChallenge.challengeid, unitChoices.map((value) => value.name));}}); onOpenConfirm(); } else if (inputText.length > 0){socket.emit("create", parseInt(inputText), unitChoices.map((value) => value.name));} else{toast({description: "No challenge id specified", status: "error", duration: 4500, isClosable: true});} }}>Create Challenge</Button>
+                                    <Flex mb={5} px={1} justifyContent={"center"} borderRadius={"md"} maxW={"100%"} bgColor={"gray.700"}>{createChallenge !== void 0 ? createChallenge.displayName : " "}</Flex>
+                                    <Button maxW={"100%"} fontSize={"lg"} onClick={() => { if (room !== void 0){ setConfirm({title: "Join Challenge?", text: `${room.username}'s Room`, cost: room.acceptCost, action: () => {socket.emit("join", room.username, unitChoices.map((value) => value.name));}}); onOpenConfirm(); } else if (inputText.length > 0){socket.emit("join", inputText, unitChoices.map((value) => value.name));} else{toast({description: "No room name specified", status: "error", duration: 4500, isClosable: true}); } }}>Join Challenge</Button>
+                                    <Flex mb={5} px={1} justifyContent={"center"} borderRadius={"md"} maxW={"100%"} bgColor={"gray.700"}>{room !== void 0 ? room.username : " "}</Flex>
                                     <Button maxW={"100%"} fontSize={"lg"} onClick={() => socket.emit("rooms", token)}>Refresh Room List</Button>
                                 </Flex>
                             </Flex>
                             :
-                            ((typeof socket !== "undefined" && socket.connected === true) ?
+                            ((socket !== void 0 && socket.connected === true) ?
                                 <Flex flexDir={"column"} alignItems={"center"} bgColor={"gray.800"} p={2} borderRadius={"lg"}>
                                     <Text fontSize={"2xl"} mb={2} mx={3}>You must be logged in to play challenges.</Text>
                                     <Button onClick={() => navigate("/login")}>Log In</Button>
@@ -695,7 +695,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
             <Flex flexDir={"column"}>
                 <Modal isOpen={isOpen} onClose={onClose}>
                     <ModalOverlay/>
-                        {typeof reward !== "undefined" ?
+                        {reward !== void 0 ?
                             <ModalContent p={3} border={`3px solid ${winText(reward.winner).color}`}>
                                 <ModalHeader fontWeight={"normal"} fontSize={"3xl"} className={"heading-3xl"} textAlign={"center"} color={winText(reward.winner).color}>{winText(reward.winner).text}</ModalHeader>
                                 <ModalCloseButton/>
@@ -716,7 +716,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                                             :
                                             <></>
                                         }
-                                        {(typeof reward.reward.accessory !== "undefined") ?
+                                        {(reward.reward.accessory !== void 0) ?
                                             <Flex flexDir={"column"} alignItems={"center"} mt={10}>
                                                 <Text fontSize={"2xl"} className={"heading-2xl"}>New Accessory Unlocked!</Text>
                                                 <Image src={`${api}/image/${reward.reward.accessory.image}`} maxW={"50%"}/>

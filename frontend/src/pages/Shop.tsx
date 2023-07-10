@@ -106,10 +106,10 @@ export default function Shop() {
     return (
         <Flex flexDir={'column'} alignItems={'center'} minH={'100vh'}>
             <Flex zIndex={'-1'} w={'100%'} h={'100%'} pos={'fixed'} objectFit={'cover'} alignItems={'center'} justifyContent={'center'}>
-                <Image w={'100%'} h={'100%'} src={require(`../assets/shopbackground${(((((new Date().getMonth() - 2) % 12) + 12) % 12) / 3)}.webp`)}/>
+                <Image w={'100%'} h={'100%'} src={require(`../assets/shopbackground${Math.floor(((((new Date().getMonth() - 2) % 12) + 12) % 12) / 3)}.webp`)}/>
             </Flex>
             <MovingText title="Shop" color1="#fdf542" color2="#ff9005" fontSize='4xl'/>
-            {(getToken() && typeof userInfo !== "undefined") ?
+            {(getToken() && userInfo !== void 0) ?
                 <>
                 <Flex pos={['relative', 'relative', 'absolute', 'absolute', 'absolute']} right={3} top={3}>
                     <Flex justifyContent={'center'} alignItems={'center'} p={3} pl={2} pos={'relative'} borderRadius={'lg'}>
@@ -124,7 +124,7 @@ export default function Shop() {
                     </Flex>
                 </Flex>
                 <Flex flexDir={'column'} alignItems={'center'} pb={'5vh'} pt={'10vh'}>  
-                    {typeof featured !== "undefined" ?
+                    {featured !== void 0 ?
                         <ScaleFade in={true}>
                             <ShopItem data={featured} coins={userInfo.coins} isFeatured={true} timeLeftString={EventTime({season: 0, hour: Math.floor(secondsLeft / 3600), minute: Math.floor(secondsLeft / 60) % 60, second: secondsLeft % 60, hoursPerSeason: 336, maxSeasons: 2}, 0)}/>
                         </ScaleFade>
@@ -133,7 +133,7 @@ export default function Shop() {
                     }
                 </Flex>
                 <Flex w={'90%'} justifyContent={'left'}>
-                    {typeof items !== "undefined" ?
+                    {items !== void 0 ?
                         <Flex justifyContent={'space-between'} flexDir={'column'} p={[0, 2, 4, 5, 5]}>
                             {Object.keys(items).map((key) => {
                                 const value = items[key as keyof ShopItemCategories];
