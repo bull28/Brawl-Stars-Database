@@ -1,0 +1,32 @@
+{
+  "name": "brawl-stars-database",
+  "version": "1.0.0",
+  "description": "KING GOLM",
+  "main": "index.js",
+  "scripts": {
+    "dev": "turbo dev --no-daemon",
+    "build": "turbo build --no-daemon",
+    "start": "turbo start --no-daemon",
+    "lint": "turbo lint --no-daemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bull28/Brawl-Stars-Database.git"
+  },
+  "keywords": [
+    "bull"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bull28/Brawl-Stars-Database/issues"
+  },
+  "homepage": "https://github.com/bull28/Brawl-Stars-Database#readme",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "dependencies": {
+    "turbo": "^1.10.12"
+  }
+}

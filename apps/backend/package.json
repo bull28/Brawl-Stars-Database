@@ -7,7 +7,9 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "ash": "nodemon ./build/index.js",
         "frank": "nodemon --exec \"swc bull -d build --copy-files -C module.type=commonjs\" -e ts,json --watch bull",
-        "piper": "npx tsc && nodemon ./build/index.js"
+        "piper": "npx tsc && nodemon ./build/index.js",
+        "dev": "npx tsc && nodemon ./build/index.js",
+        "start": "npx tsc && node ./build/index.js"
     },
     "author": "",
     "license": "ISC",

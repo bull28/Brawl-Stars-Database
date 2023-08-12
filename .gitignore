@@ -1,4 +1,5 @@
-backend/build/
+build
+.turbo
 
 # Logs
 logs
