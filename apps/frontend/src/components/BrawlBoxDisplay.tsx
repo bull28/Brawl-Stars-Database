@@ -4,7 +4,7 @@ import { BrawlBoxContentsData, BrawlBoxData } from '../types/BrawlBoxData'
 import CountUp from 'react-countup'
 import AuthRequest from '../helpers/AuthRequest'
 import { AxiosError } from 'axios'
-import api from "../helpers/APIRoute";
+import cdn from "../helpers/CDNRoute";
 
 export default function BrawlBoxDisplay({data, tokens, loadResources}: {data: BrawlBoxData; tokens: number | undefined; loadResources: () => void;}){
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -44,10 +44,10 @@ export default function BrawlBoxDisplay({data, tokens, loadResources}: {data: Br
 
     return (
         <Flex py={5} flexDir={'column'} justifyContent={'center'} alignItems={'center'} textAlign={'center'} pos={'relative'} bgColor={'lightskyblue'} px={[3, 5, 5, 5, 10]} borderRadius={'lg'} cursor={'pointer'} border={'2px solid black'} onClick={onOpen}>
-            <Image src={`${api}/image/${data.image}`} fallback={<Spinner/>}/>
+            <Image src={`${cdn}/image/${data.image}`} fallback={<Spinner/>}/>
             <Flex w={'100%'} justifyContent={'center'} alignItems={'center'} mt={3}>
                 <Text fontSize={'xl'} className={'heading-2xl'} mr={1}>{data.cost}</Text>
-                <Image w={'22px'} h={'22px'} src={`${api}/image/resources/resource_tokens.webp`}/>
+                <Image w={'22px'} h={'22px'} src={`${cdn}/image/resources/resource_tokens.webp`}/>
             </Flex>
             <AlertDialog isOpen={isOpen} onClose={onClose} leastDestructiveRef={cancelRef}>
                 <AlertDialogOverlay>
@@ -56,7 +56,7 @@ export default function BrawlBoxDisplay({data, tokens, loadResources}: {data: Br
                             {data.displayName}
                         </AlertDialogHeader>
                         <AlertDialogBody>
-                            <Image src={`${api}/image/${data.image}`}/>
+                            <Image src={`${cdn}/image/${data.image}`}/>
                             <Divider my={2}/>
                             <Text>{data.description}</Text>
                             <Divider my={2}/>
@@ -72,7 +72,7 @@ export default function BrawlBoxDisplay({data, tokens, loadResources}: {data: Br
                             <Button colorScheme={(tokens && (tokens < data.cost)) ? 'red' : 'facebook'} onClick={() => {openBox(data.name)}} ml={3}>
                                 <Flex alignItems={'center'} justifyContent={'center'} textAlign={'center'}>
                                     <Text fontSize={'lg'} mr={1}>{data.cost}</Text>
-                                    <Image src={`${api}/image/resources/resource_tokens.webp`} w={'22px'}/>
+                                    <Image src={`${cdn}/image/resources/resource_tokens.webp`} w={'22px'}/>
                                 </Flex>
                             </Button>
                         </AlertDialogFooter>
@@ -87,7 +87,7 @@ export default function BrawlBoxDisplay({data, tokens, loadResources}: {data: Br
                                 {boxContents.map((content, x) => (
                                     <Flex key={content.rewardType + content.displayName + content.image} px={[3, 2, 5, 6, 6]} py={'20%'} w={['90vw', '40vw', '27vw', '27vw', '20vw']} bgColor={content.backgroundColor} flexDir={'column'} justifyContent={'space-between'} alignItems={'center'} textAlign={'center'} borderRadius={'2xl'} border={'2px solid black'} boxShadow={'rgba(149, 157, 165, 0.2) 0px 8px 24px;'} transform={'scale(0)'} animation={`${contentTransition} 0.5s ease-out ${((x/2)+0.5)}s 1 forwards`}>
                                         <Text mb={2} fontSize={['2xl', '2xl', '2xl', '3xl', '3xl']} className={'heading-2xl'}>{content.displayName}</Text>                                    
-                                        <Image borderRadius={'xl'} src={`${api}/image/${content.image}`} loading={'eager'} maxW={['75vw', '30vw', '20vw', '20vw', '20vw']}/>
+                                        <Image borderRadius={'xl'} src={`${cdn}/image/${content.image}`} loading={'eager'} maxW={['75vw', '30vw', '20vw', '20vw', '20vw']}/>
                                         {content.amount > 1 && <Text fontSize={'2xl'} className={'heading-2xl'}>{`+${content.amount}`}</Text>}
                                         <Text mx={0} className={'heading-xl'} fontSize={['lg', 'md', 'lg', 'xl', 'xl']}>{content.description}</Text>
                                         <Text mt={'20%'}  className={'heading-lg'} fontSize={'lg'}><CountUp prefix={'Inventory: '} end={content.inventory} duration={1.5}/></Text>
@@ -105,7 +105,7 @@ export default function BrawlBoxDisplay({data, tokens, loadResources}: {data: Br
                                 <Text mr={[0, 3, 3, 3, 3]}>Open Again</Text>
                                 <Flex alignItems={"center"}>
                                     <Text mr={[0, 0.5, 0.5, 0.5, 0.5]}>{data.cost}</Text>
-                                    <Image src={`${api}/image/resources/resource_tokens.webp`} w={'22px'}/>
+                                    <Image src={`${cdn}/image/resources/resource_tokens.webp`} w={'22px'}/>
                                 </Flex>
                             </Flex>
                         </Button>

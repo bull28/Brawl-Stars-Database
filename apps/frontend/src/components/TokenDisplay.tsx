@@ -3,7 +3,7 @@ import AuthRequest from '../helpers/AuthRequest'
 import { useEffect, useState } from "react";
 import { SeasonTime } from "../types/EventData";
 import EventTime from "../helpers/EventTime";
-import api from "../helpers/APIRoute";
+import cdn from "../helpers/CDNRoute";
 
 interface TokenData {
     tokensAvailable: number;
@@ -28,13 +28,13 @@ export default function TokenDisplay({ callback, tokens }: {callback: () => void
 
     return (
         <Flex flexDir={'column'} border={'3px solid black'} bgColor={'aquamarine'} p={3} justifyContent={'center'} alignItems={'center'} textAlign={'center'} pos={'relative'}>        
-            <Image src={`${api}/image/resources/resource_tokens.webp`}/>
+            <Image src={`${cdn}/image/resources/resource_tokens.webp`}/>
             <Text className={'heading-md'} fontSize={'md'}>{`Tokens Available: ${data !== void 0 ? data.tokensAvailable : "0"}`}</Text>
             {(data?.tokensAvailable && data?.tokensAvailable > 0) ? <Button my={5} className={'heading-md'} fontSize={'md'} fontWeight={'normal'} color={'#fff'} onClick={claimTokens}>Claim Tokens!</Button> : <Button my={5} className={'heading-md'} fontSize={'md'} fontWeight={'normal'} color={'#fff'} isDisabled>Claim Tokens!</Button>}
             <Text whiteSpace={'pre'} className={'heading-md'} fontSize={'md'}>{data !== void 0 ? `Next Tokens Available in\n${EventTime(data.timeLeft, 0)}!` : " \n "}</Text>
             <Flex flexDir={'row'} mt={5}>
                 <Text fontSize={'2xl'} className={'heading-2xl'}>{tokens}</Text>
-                <Image w={'40px'} ml={1} src={`${api}/image/resources/resource_tokens.webp`}/>
+                <Image w={'40px'} ml={1} src={`${cdn}/image/resources/resource_tokens.webp`}/>
             </Flex>
         </Flex>
     )

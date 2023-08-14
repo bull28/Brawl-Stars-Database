@@ -6,7 +6,7 @@ import { GrPowerReset } from 'react-icons/gr'
 import { BrawlBoxContentsData } from '../types/BrawlBoxData'
 import CountUp from 'react-countup'
 import { useNavigate } from 'react-router-dom'
-import api from "../helpers/APIRoute";
+import cdn from "../helpers/CDNRoute";
 
 interface PurchaseData{
     inventory: number;
@@ -37,14 +37,14 @@ export default function ShopItem({data, coins, isFeatured, timeLeftString}: {dat
         return (
             <Flex alignItems={'center'} flexDir={'column'} borderRadius={'lg'} onClick={onOpen} w={['90vw', '80vw', '50vw', '35vw', '35vw']} minW={['0%', '0%', '400px', '600px', '600px']} maxW={['400px', '400px', '600px', '600px', '100vw']} p={5} cursor={'pointer'} pos={'relative'} background={'linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%)'} bgColor={'#8EC5FC'} border={'3px solid'} borderColor={'blue.400'} _hover={{transform: 'scale(1.05)'}} transition={'transform 0.1s linear'}>                                        
                 <Flex p={5}>
-                    <Image loading={'eager'} w={'200px'} h={'200px'} borderRadius={'lg'} src={`${api}/image/${data.image}`}/>
+                    <Image loading={'eager'} w={'200px'} h={'200px'} borderRadius={'lg'} src={`${cdn}/image/${data.image}`}/>
                 </Flex>
                 <Flex>                    
                     <Text fontSize={'2xl'}  className={'heading-2xl'}>{data.displayName}</Text>
                 </Flex>
                 <Flex alignItems={'center'} mt={3}>
                     <Text fontSize={'xl'}  className={'heading-xl'}>{data.cost}</Text>
-                    <Image ml={1} maxH={'30px'} src={`${api}/image/resources/resource_coins.webp`}/>
+                    <Image ml={1} maxH={'30px'} src={`${cdn}/image/resources/resource_coins.webp`}/>
                 </Flex>
                 <Flex w={'100%'} justifyContent={'right'} mt={5}>
                     <Flex px={5} py={3} borderRadius={'30px'} bgColor={'lightskyblue'} alignItems={'center'} border={'2px solid'} borderColor={'blue.500'}>
@@ -60,7 +60,7 @@ export default function ShopItem({data, coins, isFeatured, timeLeftString}: {dat
                         <ModalBody>
                             <Flex justifyContent={'center'}>
                                 <Flex boxShadow={(accepted) ? '0px 0px 50px #fff' : ''} borderRadius={'50%'}>
-                                    <Image src={`${api}/image/${data.image}`}/>
+                                    <Image src={`${cdn}/image/${data.image}`}/>
                                 </Flex>                                    
                             </Flex>
                         </ModalBody>
@@ -72,7 +72,7 @@ export default function ShopItem({data, coins, isFeatured, timeLeftString}: {dat
                                     View Collection
                                 </Button>
                                 :
-                                <Button className={'heading-md buttonGreen'} color={(coins < data.cost) ? 'red.500' : 'white'} onClick={() => {purchase(data.name)}}>{data.cost}<Image ml={1} maxH={'25px'} src={`${api}/image/resources/resource_coins.webp`}/></Button>
+                                <Button className={'heading-md buttonGreen'} color={(coins < data.cost) ? 'red.500' : 'white'} onClick={() => {purchase(data.name)}}>{data.cost}<Image ml={1} maxH={'25px'} src={`${cdn}/image/resources/resource_coins.webp`}/></Button>
                             }
                         </ModalFooter>
                         </ModalContent>
@@ -93,14 +93,14 @@ export default function ShopItem({data, coins, isFeatured, timeLeftString}: {dat
                 <Box className='right' pos={'absolute'} display={'block'} background={'blue.500'} transition={`all 0.1s linear`} w={'3px'} height={'100%'} transform={'scaleY(0)'} top={0} right={0} transitionDelay={'0.1s'} transformOrigin={'top left'}></Box>
     
                 <Flex p={[2, 3, 3, 3, 4, 5]}>
-                    <Image filter={'drop-shadow(0 0 2rem rgb(255, 255, 255));'} borderRadius={'lg'} src={`${api}/image/${data.image}`}/>
+                    <Image filter={'drop-shadow(0 0 2rem rgb(255, 255, 255));'} borderRadius={'lg'} src={`${cdn}/image/${data.image}`}/>
                 </Flex>
                 <Flex>                    
                     <Text fontSize={itemFontSize(data.displayName.length).size} lineHeight={[6, 7, 8, 8, 8]} className={itemFontSize(data.displayName.length).class}>{data.displayName}</Text>
                 </Flex>
                 <Flex alignItems={'center'} mt={3}>
                     <Text fontSize={['sm', 'md', 'lg', 'lg', 'lg', 'xl']}  className={'heading-lg'}>{data.cost}</Text>
-                    <Image ml={1} maxH={'30px'} src={`${api}/image/resources/resource_coins.webp`}/>
+                    <Image ml={1} maxH={'30px'} src={`${cdn}/image/resources/resource_coins.webp`}/>
                 </Flex>
     
                 <Modal isOpen={isOpen} onClose={onClose} size={'3xl'} preserveScrollBarGap={true}>
@@ -112,7 +112,7 @@ export default function ShopItem({data, coins, isFeatured, timeLeftString}: {dat
                                 {(( purchaseData?.result.length || 0 ) < 1) ?
                                 <>
                                     <Flex boxShadow={(accepted) ? '0px 0px 50px #fff' : ''} borderRadius={'50%'} >
-                                        <Image src={`${api}/image/${data.image}`}/>
+                                        <Image src={`${cdn}/image/${data.image}`}/>
                                     </Flex>
                                     <Text w={['90%', '80%', '75%', '75%', '75%']} textAlign={'center'} mt={'5%'} fontSize={['md', 'lg', 'xl', 'xl', 'xl']} className={'heading-xl'}>{data.description}</Text>
                                     <Flex fontSize={'xl'} className={'heading-xl'} mt={5}>
@@ -125,7 +125,7 @@ export default function ShopItem({data, coins, isFeatured, timeLeftString}: {dat
                                         <Flex bgColor={purchaseData.result[0].backgroundColor} flexDir={'column'} alignItems={'center'} justifyContent={'center'} borderRadius={'lg'} textAlign={'center'} py={5} border={'3px solid black'} boxShadow={'0px 0px 50px #fff'}>
                                             <Text mb={5} fontSize={'3xl'} className={'heading-3xl'}>{purchaseData.result[0].displayName}</Text>
                                             <Flex mb={5}>
-                                                <Image border={'2px solid black'} borderRadius={'lg'} src={`${api}/image/${purchaseData.result[0].image}`}/>
+                                                <Image border={'2px solid black'} borderRadius={'lg'} src={`${cdn}/image/${purchaseData.result[0].image}`}/>
                                             </Flex>    
                                             <Text mb={5} fontSize={'xl'} className={'heading-2xl'}>{purchaseData.result[0].description}</Text>                                  
                                         </Flex>
@@ -142,7 +142,7 @@ export default function ShopItem({data, coins, isFeatured, timeLeftString}: {dat
                             {accepted ? 
                                 <></>
                                 :
-                                <Button className={'heading-md'} color={(coins < data.cost) ? 'red.500' : 'white'} onClick={() => {purchase(data.name)}}>{data.cost}<Image ml={1} maxH={'25px'} src={`${api}/image/resources/resource_coins.webp`}/></Button>
+                                <Button className={'heading-md'} color={(coins < data.cost) ? 'red.500' : 'white'} onClick={() => {purchase(data.name)}}>{data.cost}<Image ml={1} maxH={'25px'} src={`${cdn}/image/resources/resource_coins.webp`}/></Button>
                             }
 
                             {(( purchaseData?.result.length || 0 ) < 1) ?

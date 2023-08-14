@@ -8,6 +8,7 @@ import {BrawlerData, ModelFiles, SkinData} from "../types/BrawlerData";
 import AnimationViewer from "../components/AnimationViewer";
 import AuthRequest from "../helpers/AuthRequest";
 import {CosmeticData} from "../types/CosmeticData";
+import cdn from "../helpers/CDNRoute";
 import api from "../helpers/APIRoute";
 
 export default function Brawler(){
@@ -57,12 +58,12 @@ export default function Brawler(){
             </Flex>
             <Stack direction={["column", "column", "column", "column", "row"]} h={["fit-content", "fit-content", "fit-content", "fit-content", "60vh"]} minH={["0px", "0px", "0px", "0px", "600px"]} w={"100%"} alignItems={"center"} justifyContent={"center"} spacing={["3vh", "3vh", "3vh", "3vh", "0vh"]} mb={5}>
                 <Flex flexDir={"column"} textAlign={"center"} h={"100%"} justifyContent={"center"} alignItems={"center"} w={["100%", "80%", "69%", "50%", "33%"]}>
-                    <Image src={`${api}/image/${data.image}`} borderRadius={"sm"} objectFit={"contain"} h={"50%"} border={"8px solid #000"} mb={7}/>
+                    <Image src={`${cdn}/image/${data.image}`} borderRadius={"sm"} objectFit={"contain"} h={"50%"} border={"8px solid #000"} mb={7}/>
                     <Flex pos={"relative"} justifyContent={"center"}>
                         <Text pos={"absolute"} background={`linear-gradient(to left, #ffd12e, #ffdaac, #ffd12e, #f29928, #ffd12e)`} w={"120%"} backgroundClip={"text"} color={"transparent"} animation={`${keyframes`0%{background-position: 0rem;} 100%{background-position: ${Math.max(1, data.title.length) * 12.5}rem;}`} 60s linear infinite`} fontSize={"xl"} fontStyle={"italic"}>{data.title}</Text>
                         <Text color={"#000"} fontSize={"xl"} fontStyle={"italic"} fontWeight={"bold"} className={`heading-xl`}>{data.title}</Text>
                     </Flex>
-                    <Image src={`${api}/image/${data.masteryIcon}`} objectFit={"contain"} h={"20%"} mb={7} mt={2}/>
+                    <Image src={`${cdn}/image/${data.masteryIcon}`} objectFit={"contain"} h={"20%"} mb={7} mt={2}/>
                     <Text w={["90%", "60%"]} color={"#fff"} fontSize={["sm", "md"]} className={"heading-md"}>{data.description}</Text>
                 </Flex>
 
@@ -89,7 +90,7 @@ export default function Brawler(){
                     }}>
                         {data.pins.map((pin) => (
                             <Flex bgColor={pin.rarity.color} borderRadius={"lg"} p={1} key={pin.image} border={"1px solid #ffffff80"}>
-                                <Image src={`${api}/image/${pin.image}`}/>
+                                <Image src={`${cdn}/image/${pin.image}`}/>
                             </Flex>
                         ))}
                     </SimpleGrid>

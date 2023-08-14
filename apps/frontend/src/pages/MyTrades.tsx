@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 import SkullBackground from '../components/SkullBackground'
 import {UserInfoProps} from '../types/AccountData'
 import {scrollStyle} from "../themes/scrollbar";
-import api from "../helpers/APIRoute";
+import cdn from "../helpers/CDNRoute";
 
 interface TradeAcceptData{
     complete: boolean;
@@ -114,14 +114,14 @@ export default function MyTrades() {
                                     <SimpleGrid w={'40%'} columns={2} spacing={[0, 0, 1, 2, 2]} overflow={'auto'} maxH={'100%'} sx={scrollStyle}>
                                         {trade.request.map((request) => (
                                             <Flex key={request.pinImage} p={3} border={'2px solid black'} borderRadius={'lg'} bgColor={request.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
-                                                <Image w={['40px', '40px', '50px', '50px', '60px']} maxW={'60px'} src={`${api}/image/${request.pinImage}`}/>
+                                                <Image w={['40px', '40px', '50px', '50px', '60px']} maxW={'60px'} src={`${cdn}/image/${request.pinImage}`}/>
                                                 <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} >{request.amount}</Text>
                                             </Flex>
                                         ))}
                                     </SimpleGrid>
                                     <Flex flexDir={'column'} justifyContent={'space-evenly'} alignItems={'center'} mx={'1vw'} w={'20%'} h={'100%'}>
                                         <Flex alignItems={'center'} flexDir={['column', 'row', 'row', 'row', 'row']}>
-                                            <Image w={'30px'} h={'30px'} src={`${api}/image/resources/resource_trade_credits.webp`}/>
+                                            <Image w={'30px'} h={'30px'} src={`${cdn}/image/resources/resource_trade_credits.webp`}/>
                                             <Text ml={1} fontSize={'2xl'}>{trade.cost}</Text>                                
                                         </Flex>
                                         <HiOutlineSwitchHorizontal fontSize={'30px'}/>
@@ -129,7 +129,7 @@ export default function MyTrades() {
                                     <SimpleGrid w={'40%'} columns={2} spacing={[0, 0, 1, 2, 2]} overflow={'auto'} maxH={'100%'} sx={scrollStyle}>
                                         {trade.offer.map((offer) => (
                                             <Flex key={offer.pinImage} p={3} border={'2px solid black'} borderRadius={'lg'} bgColor={offer.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'}>
-                                                <Image w={['40px', '40px', '40px', '50px', '60px']} maxW={'60px'} src={`${api}/image/${offer.pinImage}`}/>
+                                                <Image w={['40px', '40px', '40px', '50px', '60px']} maxW={'60px'} src={`${cdn}/image/${offer.pinImage}`}/>
                                                 <Text pos={'absolute'} className={'heading-lg'} top={0} right={1} fontSize={'lg'} >{offer.amount}</Text>
                                             </Flex>
                                         ))}
@@ -166,7 +166,7 @@ export default function MyTrades() {
                     <SimpleGrid columns={[2,3,4,5]} spacing={3}>
                     {acceptData?.pins.map((pin, x) => (
                         <Flex key={pin.pinImage} py={'20%'} bgColor={pin.rarityColor} flexDir={'column'} justifyContent={'space-between'} alignItems={'center'} textAlign={'center'} borderRadius={'2xl'} border={'2px solid black'} boxShadow={'rgba(149, 157, 165, 0.2) 0px 8px 24px;'} maxW={'350px'} maxH={'600px'} transform={'scale(0)'} animation={`${contentTransition} 0.5s ease-out ${((x/2)+0.5)}s 1 forwards`}>                                                                                            
-                            <Image borderRadius={'xl'} src={`${api}/image/${pin.pinImage}`} loading={'eager'}/>
+                            <Image borderRadius={'xl'} src={`${cdn}/image/${pin.pinImage}`} loading={'eager'}/>
                             <Text  fontSize={'2xl'} className={'heading-2xl'} mt={1}>{`${pin.amount}x`}</Text>
                         </Flex>
                     ))}

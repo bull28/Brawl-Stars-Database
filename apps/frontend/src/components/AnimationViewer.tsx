@@ -5,7 +5,7 @@ import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader";
 import {Canvas, RootState, useFrame, useLoader, useThree} from "@react-three/fiber";
 import {OrbitControls} from "@react-three/drei";
 import BackgroundScene from "./BackgroundScene";
-import api from "../helpers/APIRoute";
+import cdn from "../helpers/CDNRoute";
 
 interface AnimationViewerProps{
     modelFile: string;
@@ -27,7 +27,7 @@ interface GltfModelProps{
 }
 
 function GltfModel({modelFile, winFile, loseFile, lightsFile, playing, modelPos, hasBackground}: GltfModelProps){
-    const gltf = useLoader(GLTFLoader, `${api}/image/${modelFile}`);
+    const gltf = useLoader(GLTFLoader, `${cdn}/image/${modelFile}`);
     const initialPose = new Map<string, Vector3>();
 
     // Store the initial pose so the reset button can set the pose back to it
@@ -42,13 +42,13 @@ function GltfModel({modelFile, winFile, loseFile, lightsFile, playing, modelPos,
 
 
     // clampWhenFinished makes it stay on the last frame instead of going back to the first
-    const winAnimation = useLoader(GLTFLoader, `${api}/image/${winFile}`);
+    const winAnimation = useLoader(GLTFLoader, `${cdn}/image/${winFile}`);
     if (winAnimation.animations.length > 0){
         win = mixer.clipAction(winAnimation.animations[0]);
         win.clampWhenFinished = true;
         win.setLoop(LoopOnce, 0);
     }
-    const loseAnimation = useLoader(GLTFLoader, `${api}/image/${loseFile}`);
+    const loseAnimation = useLoader(GLTFLoader, `${cdn}/image/${loseFile}`);
     if (loseAnimation.animations.length > 0){
         lose = mixer.clipAction(loseAnimation.animations[0]);
         lose.clampWhenFinished = true;
@@ -84,7 +84,7 @@ function GltfModel({modelFile, winFile, loseFile, lightsFile, playing, modelPos,
             sceneCamera.fov = parameters.fov;
         }
     }
-    const lights = useLoader(GLTFLoader, `${api}/image/${lightsFile}`);
+    const lights = useLoader(GLTFLoader, `${cdn}/image/${lightsFile}`);
     BARBARIAN_KING.camera.children = [];
     BARBARIAN_KING.camera.add(lights.scene);
 
@@ -148,7 +148,7 @@ function GltfModel({modelFile, winFile, loseFile, lightsFile, playing, modelPos,
 }
 
 export default function AnimationViewer({modelFile, winFile, loseFile, lightsFile, sceneFile, lightIntensity}: AnimationViewerProps){
-    const gltf = useLoader(GLTFLoader, `${api}/image/${modelFile}`);// this line does some stuff
+    const gltf = useLoader(GLTFLoader, `${cdn}/image/${modelFile}`);// this line does some stuff
     gltf.scene.traverse((object: Object3D) => {object.frustumCulled = false;});// and so does this one
     // If you remove these lines then darryl will disappear
 
@@ -158,7 +158,7 @@ export default function AnimationViewer({modelFile, winFile, loseFile, lightsFil
 
     return (
         <Flex w={"100%"} h={"100%"} flexDir={"column"} alignItems={"center"} pos={"relative"}>
-            <Flex w={"100%"} h={"100%"} flexDir={"column"} bgImage={`${api}/image/misc/bg_3d_model.webp`} bgPos={"center"} bgSize={"cover"} bgRepeat={"no-repeat"}>
+            <Flex w={"100%"} h={"100%"} flexDir={"column"} bgImage={`${cdn}/image/misc/bg_3d_model.webp`} bgPos={"center"} bgSize={"cover"} bgRepeat={"no-repeat"}>
                 <Canvas flat={true} camera={{fov: 40, position: [0, 0, 1]}} resize={{scroll: false}}>
                     <Suspense fallback={null}>
                         {(sceneFile !== void 0 && sceneFile !== "") ? <BackgroundScene file={sceneFile} modelPos={positionRef}/> : <></>}
