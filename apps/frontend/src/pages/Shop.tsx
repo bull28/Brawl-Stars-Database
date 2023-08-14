@@ -5,7 +5,7 @@ import { MdOutlineGeneratingTokens } from 'react-icons/md'
 import { BiLandscape } from 'react-icons/bi'
 import MovingText from '../components/MovingText'
 import ShopItem from '../components/ShopItem'
-import AuthRequest, { getToken } from '../helpers/AuthRequest'
+import AuthRequest from '../helpers/AuthRequest'
 import { RainbowBorder } from '../themes/animations'
 import { UserInfoProps } from '../types/AccountData'
 import ShopData from '../types/ShopData'
@@ -37,7 +37,8 @@ export default function Shop() {
     const [featured, setFeatured] = useState<ShopData | undefined>(undefined);
     const [userInfo, setUserInfo] = useState<UserInfoProps | undefined>(undefined);
     const [items, setItems] = useState<ShopItemCategories | undefined>(undefined);
-    const [isLoggedIn, setLoggedIn] = useState<boolean>()
+    const [isLoggedIn, setLoggedIn] = useState<boolean>();
+    const [featuredLoaded, setFeaturedLoaded] = useState<boolean>(false);
 
     const [timer, updateTimer] = useState<Timer>({start: Date.now(), offset: 0});
     const [initialTimeLeftms, setNewInitialTime] = useState<number>(((86400 + (new Date(new Date().getFullYear(), 0, 1).getTimezoneOffset() - new Date().getTimezoneOffset()) * 60 - new Date().getHours() * 3600 - new Date().getMinutes() * 60 - new Date().getSeconds()) % 86400) * 1000);
@@ -105,7 +106,7 @@ export default function Shop() {
     }, [organizeData]);
 
     return (
-        <Flex flexDir={'column'} alignItems={'center'} minH={'100vh'} pb={'5vh'}>
+        <Flex flexDir={'column'} alignItems={'center'} minH={'100vh'} pb={featuredLoaded ? '5vh' : '100vh'} transition={'padding-bottom 0.5s ease-out'}>
             <Flex zIndex={'-1'} w={'100%'} h={'100%'} pos={'fixed'} alignItems={'center'} justifyContent={'center'}>
                 <Image objectFit={'cover'} w={'100%'} h={'100%'} src={require(`../assets/shopbackground${Math.floor(((((new Date().getMonth() - 2) % 12) + 12) % 12) / 3)}.webp`)}/>
             </Flex>
@@ -117,16 +118,16 @@ export default function Shop() {
                         <Box w={'100%'} h={'100%'} pos={'absolute'} zIndex={'-1'} bgColor={'blue.500'}border={'2px solid'} borderRadius={'lg'} borderColor={'blue.800'}/>
                         <Flex bgColor={'gray.100'} alignItems={'center'} py={2} px={5} borderRadius={'lg'} boxShadow={'rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;'}>
                             <Text className={'heading-lg'}>{userInfo.coins}</Text>
-                            <Image ml={1} maxH={'40px'} src={`${api}/image/resources/resource_coins.webp`}/>
+                            <Image ml={1} w={'30px'} h={'30px'} src={`${api}/image/resources/resource_coins.webp`}/>
                         </Flex>
                         <Flex justifyContent={'center'} alignItems={'center'} borderRadius={'50%'} animation={(userInfo.avatarColor === 'rainbow') ? `${RainbowBorder()} 12s infinite` : ''} border={(userInfo.avatarColor !== 'rainbow') ? `3px solid ${userInfo.avatarColor}` : ''} ml={3}>
-                            <Image loading={'eager'} src={`${api}/image/${userInfo.avatar}`} borderRadius={'50%'} w={'50px'}/>
+                            <Image loading={'eager'} src={`${api}/image/${userInfo.avatar}`} borderRadius={'50%'} w={'50px'} h={'50px'}/>
                         </Flex>
                     </Flex>
                 </Flex>
                 <Flex flexDir={'column'} alignItems={'center'} pb={'5vh'} pt={'10vh'}>  
                     {featured !== void 0 ?
-                        <ScaleFade in={true}>
+                        <ScaleFade in={true} onViewportEnter={() => setFeaturedLoaded(true)}>
                             <ShopItem data={featured} coins={userInfo.coins} isFeatured={true} timeLeftString={EventTime({season: 0, hour: Math.floor(secondsLeft / 3600), minute: Math.floor(secondsLeft / 60) % 60, second: secondsLeft % 60, hoursPerSeason: 336, maxSeasons: 2}, 0)}/>
                         </ScaleFade>
                         :
@@ -138,7 +139,8 @@ export default function Shop() {
                         <Flex justifyContent={'space-between'} flexDir={'column'} p={[0, 2, 4, 5, 5]}>
                             {Object.keys(items).map((key) => {
                                 const value = items[key as keyof ShopItemCategories];
-                                return (
+
+                                return (value.items.length > 0) && (
                                     <Flex key={key} flexDir={'column'}>
                                         <Flex alignItems={'center'} fontSize={'3xl'} className={'heading-3xl'} ml={[0, 2, 5, 5, 5]} mb={[1, 2, 3, 3, 3]} mt={'5vh'}>
                                             <Text mr={1}>{value.name}</Text>

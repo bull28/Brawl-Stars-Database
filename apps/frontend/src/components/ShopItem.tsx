@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Image, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, ModalOverlay, ScaleFade, Skeleton, Text, useDisclosure } from '@chakra-ui/react'
+import { Box, Button, Flex, Image, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, ModalOverlay, ScaleFade, Text, useDisclosure } from '@chakra-ui/react'
 import AuthRequest from '../helpers/AuthRequest'
 import ShopData from '../types/ShopData'
 import { useState } from 'react'
@@ -35,9 +35,9 @@ export default function ShopItem({data, coins, isFeatured, timeLeftString}: {dat
 
     if (isFeatured){
         return (
-            <Flex alignItems={'center'} flexDir={'column'} borderRadius={'lg'} onClick={onOpen} w={['90vw', '80vw', '50vw', '35vw', '35vw']} minW={['0%', '0%', '400px', '600px', '600px']} maxW={['400px', '400px', '600px', '600px', '100vw']} p={5} cursor={'pointer'} pos={'relative'} background={'linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%)'} bgColor={'#8EC5FC'} border={'3px solid'} borderColor={'blue.400'} _hover={{transform: 'scale(1.1)'}} transition={'transform 0.05s linear'}>                                        
+            <Flex alignItems={'center'} flexDir={'column'} borderRadius={'lg'} onClick={onOpen} w={['90vw', '80vw', '50vw', '35vw', '35vw']} minW={['0%', '0%', '400px', '600px', '600px']} maxW={['400px', '400px', '600px', '600px', '100vw']} p={5} cursor={'pointer'} pos={'relative'} background={'linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%)'} bgColor={'#8EC5FC'} border={'3px solid'} borderColor={'blue.400'} _hover={{transform: 'scale(1.05)'}} transition={'transform 0.1s linear'}>                                        
                 <Flex p={5}>
-                    <Image borderRadius={'lg'} src={`${api}/image/${data.image}`}/>
+                    <Image loading={'eager'} w={'200px'} h={'200px'} borderRadius={'lg'} src={`${api}/image/${data.image}`}/>
                 </Flex>
                 <Flex>                    
                     <Text fontSize={'2xl'}  className={'heading-2xl'}>{data.displayName}</Text>
