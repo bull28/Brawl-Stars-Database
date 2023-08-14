@@ -1,7 +1,7 @@
 import {Flex, Text, Image, Button, SimpleGrid, Divider} from "@chakra-ui/react";
 import {RoomDataDisplay, RoomName} from "../types/ChallengeData";
 import {animateScroll} from "react-scroll";
-import api from "../helpers/APIRoute";
+import cdn from "../helpers/CDNRoute";
 
 interface RoomSelectionProps{
     data: RoomDataDisplay;
@@ -41,7 +41,7 @@ export default function UnitSelection({data, level, setSelected}: RoomSelectionP
                                         return (
                                             <Flex key={player.username + player.key.toString()} alignItems={"center"} wrap={"wrap"}>
                                                 <Flex h={10} justifyContent={"center"} alignItems={"center"} borderRadius={"50%"} border={"2px solid #fff"}>
-                                                    <Image h={"100%"} objectFit={"contain"} borderRadius={"50%"} src={player.avatar !== "" ? `${api}/image/${player.avatar}` : `${api}/image/avatars/free/default.webp`}/>
+                                                    <Image h={"100%"} objectFit={"contain"} borderRadius={"50%"} src={player.avatar !== "" ? `${cdn}/image/${player.avatar}` : `${cdn}/image/avatars/free/default.webp`}/>
                                                 </Flex>
                                                 <Text fontSize={(player.username.length < 10 ? "16px" : `${Math.floor((160 + (player.username.length - 10) * 5) / player.username.length)}px`)} overflow={"hidden"} ml={2}>{player.username !== "" ? player.username : "Empty"}</Text>
                                             </Flex>
@@ -53,7 +53,7 @@ export default function UnitSelection({data, level, setSelected}: RoomSelectionP
                                         <Text w={"80%"} className={"heading-md"}>{`Requires Level ${value.requiredLevel}`}</Text>
                                         <Button w={"20%"} isDisabled={level < value.requiredLevel} onClick={() => {setSelected({username: value.username, acceptCost: value.acceptCost}); animateScroll.scrollToTop();}}>
                                             <Text fontSize={"lg"}>{value.acceptCost}</Text>
-                                            <Image ml={1} src={`${api}/image/resources/resource_tokens.webp`} h={5}/>
+                                            <Image ml={1} src={`${cdn}/image/resources/resource_tokens.webp`} h={5}/>
                                         </Button>
                                     </Flex>
                                 </Flex>

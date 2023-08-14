@@ -2,7 +2,7 @@ import {Flex, Text, Divider, Image} from "@chakra-ui/react";
 import {ChallengeWins} from "../types/ChallengeData";
 import EventTime from "../helpers/EventTime";
 import {RainbowBorder} from "../themes/animations";
-import api from "../helpers/APIRoute";
+import cdn from "../helpers/CDNRoute";
 
 interface DailyRewardDisplayProps{
     username: string;
@@ -16,7 +16,7 @@ export default function ChallengeProgress({username, avatar, avatarColor, data}:
         <Flex bgColor={"blue.800"} borderRadius={"lg"} p={2} w={"60%"} flexDir={["column", "row"]}>
             <Flex flexDir={"column"} mx={[0, 3]} alignItems={"center"} justifyContent={"center"} w={["100%", "40%"]}>
                 <Flex w={"50%"} justifyContent={"center"} alignItems={"center"} borderRadius={"50%"} animation={(avatarColor === "rainbow") ? `${RainbowBorder()} 12s infinite` : undefined} border={(avatarColor !== "rainbow") ? `3px solid ${avatarColor}` : undefined}>
-                    <Image objectFit={"contain"} src={`${api}/image/${avatar}`} borderRadius={"50%"}/>
+                    <Image objectFit={"contain"} src={`${cdn}/image/${avatar}`} borderRadius={"50%"}/>
                 </Flex>
                 <Text maxW={"100%"} pos={"relative"} mt={1} fontSize={username.length < 15 ? ["sm", "lg"] : ["xs", "md"]} className={"heading-xl"}>{username}</Text>
             </Flex>

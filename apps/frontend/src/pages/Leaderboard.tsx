@@ -5,6 +5,7 @@ import axios, {AxiosResponse} from "axios";
 import {getToken} from "../helpers/AuthRequest";
 import {displayShort, displayLong} from "../helpers/LargeNumberDisplay";
 import {UserInfoProps} from "../types/AccountData";
+import cdn from "../helpers/CDNRoute";
 import api from "../helpers/APIRoute";
 
 type LeaderboardData = {
@@ -85,7 +86,7 @@ export default function Leaderboard(){
                                     <Text fontSize={"xl"} className={"heading-xl"} color={value.username === username ? "#0f0" : "#fff"}>{index + 1}</Text>
                                 </Flex>
                                 <Flex w={"85%"} alignItems={"center"}>
-                                    <Image src={`${api}/image/${value.avatar}`} border={"2px solid #fff"} borderRadius={"50%"} h={10} mr={1}/>
+                                    <Image src={`${cdn}/image/${value.avatar}`} border={"2px solid #fff"} borderRadius={"50%"} h={10} mr={1}/>
                                     <Text fontSize={value.username.length > 20 ? ["xs", `${(15 - (value.username.length - 20) * 0.25) / 16}rem`, `${(15 - (value.username.length - 20) * 0.25) / 16}rem`, `${(20 - (value.username.length - 20) * 0.5) / 16}rem`, "xl"] : ["md", "md", "lg", "xl"]} className={"heading-xl"}>{value.username}</Text>
                                 </Flex>
                             </Flex>

@@ -14,6 +14,7 @@ import { useEffect, useRef, useState, useCallback, SetStateAction } from "react"
 import {EventData, MapSearchData} from "../types/EventData";
 import MapView from './MapView';
 import axios, {AxiosResponse} from 'axios';
+import cdn from "../helpers/CDNRoute";
 import api from "../helpers/APIRoute";
 
 interface Timer{
@@ -218,7 +219,7 @@ export default function EventSideBar({changeEvents, changeOffset, startTime}: Ev
                         },
                     }}>
                     {maps.map((m) => (
-                        <Button key={m.name + m.gameMode.name} onClick={() => {openMapView(m.name)}} fontSize={['xs', 'xs', 'md', 'lg']} className={"heading-md"} bgColor={'transparent'} py={2} color={m.gameMode.textColor} fontWeight={'normal'}><Image src={`${api}/image/${m.gameMode.image}`} h={'100%'} mr={1}></Image>{m.displayName}</Button>
+                        <Button key={m.name + m.gameMode.name} onClick={() => {openMapView(m.name)}} fontSize={['xs', 'xs', 'md', 'lg']} className={"heading-md"} bgColor={'transparent'} py={2} color={m.gameMode.textColor} fontWeight={'normal'}><Image src={`${cdn}/image/${m.gameMode.image}`} h={'100%'} mr={1}></Image>{m.displayName}</Button>
                     ))}
                     </Stack>
                 </Flex>

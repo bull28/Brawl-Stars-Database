@@ -9,6 +9,7 @@ import {RepeatIcon} from "@chakra-ui/icons";
 import {animateScroll as scroll} from "react-scroll";
 import {ModelFiles} from "../types/BrawlerData";
 import {SkinData} from "../types/BrawlerData";
+import cdn from "../helpers/CDNRoute";
 import api from "../helpers/APIRoute";
 
 interface SkinViewProps{
@@ -50,14 +51,14 @@ export default function SkinView({brawler, skin, setModel}: SkinViewProps){
     <>
     {data !== void 0 ?
         <Flex flexDir={"column"} h={"100%"}>
-            <Flex h={"90%"} p={[0, 1]} bgImage={`${api}/image/${data.group.image}`} borderRadius={"lg"} onClick={onOpen} border={data.limited ? "4px solid #ffd700" : "none"} bgPos={"center"} bgSize={"cover"} bgRepeat={"no-repeat"} justifyContent={"center"}>
-                <Image objectFit={"contain"} src={`${api}/image/${data.image}`} alt={data.displayName}/>
+            <Flex h={"90%"} p={[0, 1]} bgImage={`${cdn}/image/${data.group.image}`} borderRadius={"lg"} onClick={onOpen} border={data.limited ? "4px solid #ffd700" : "none"} bgPos={"center"} bgSize={"cover"} bgRepeat={"no-repeat"} justifyContent={"center"}>
+                <Image objectFit={"contain"} src={`${cdn}/image/${data.image}`} alt={data.displayName}/>
             </Flex>
             <Flex flexDir={"column"} alignItems={"center"}>
                 <Flex alignItems={"center"} mt={3} mb={1}>
                     {(data.group.icon !== "skingroups/icons/icon_default.webp") ?
                         <Tooltip label={data.group.name}>
-                            <Image src={`${api}/image/${data.group.icon}`} w={7} mr={3}/>
+                            <Image src={`${cdn}/image/${data.group.icon}`} w={7} mr={3}/>
                         </Tooltip>
                         :
                         <></>
@@ -69,12 +70,12 @@ export default function SkinView({brawler, skin, setModel}: SkinViewProps){
                 <Flex mb={1} wrap={"wrap"}>
                     <Flex alignItems={"center"} mx={[1, 1, 3]}>
                         <Text fontSize={["lg", "xl"]} className={"heading-xl"} mr={1}>{getCostText(data)}</Text>
-                        {Object.hasOwn(currencyImages, data.currency) === true ? <Image src={`${api}/image/resources/${currencyImages[data.currency]}`} alt={data.currency} h={[4, 5, 6]}/> : <></>}
+                        {Object.hasOwn(currencyImages, data.currency) === true ? <Image src={`${cdn}/image/resources/${currencyImages[data.currency]}`} alt={data.currency} h={[4, 5, 6]}/> : <></>}
                     </Flex>
                     {(data.costBling > 0) ?
                         <Flex alignItems={"center"} mx={[1, 1, 3]}>
                             <Text fontSize={["lg", "xl"]} className={"heading-xl"} mr={1}>{data.costBling}</Text>
-                            {Object.hasOwn(currencyImages, "Bling") === true ? <Image src={`${api}/image/resources/${currencyImages["Bling"]}`} alt={"Bling"} h={[4, 5, 6]}/> : <></>}
+                            {Object.hasOwn(currencyImages, "Bling") === true ? <Image src={`${cdn}/image/resources/${currencyImages["Bling"]}`} alt={"Bling"} h={[4, 5, 6]}/> : <></>}
                         </Flex>
                         :
                         <></>
