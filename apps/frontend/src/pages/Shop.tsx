@@ -37,6 +37,7 @@ export default function Shop() {
     const [featured, setFeatured] = useState<ShopData | undefined>(undefined);
     const [userInfo, setUserInfo] = useState<UserInfoProps | undefined>(undefined);
     const [items, setItems] = useState<ShopItemCategories | undefined>(undefined);
+    const [isLoggedIn, setLoggedIn] = useState<boolean>()
 
     const [timer, updateTimer] = useState<Timer>({start: Date.now(), offset: 0});
     const [initialTimeLeftms, setNewInitialTime] = useState<number>(((86400 + (new Date(new Date().getFullYear(), 0, 1).getTimezoneOffset() - new Date().getTimezoneOffset()) * 60 - new Date().getHours() * 3600 - new Date().getMinutes() * 60 - new Date().getSeconds()) % 86400) * 1000);
@@ -99,17 +100,17 @@ export default function Shop() {
     }, [initialTimeLeftms, timer, secondsLeft]);
 
     useEffect(() => {
-        AuthRequest<ShopData[]>("/shop", {setState: organizeData});
+        AuthRequest<ShopData[]>("/shop", {setState: organizeData, fallback: () => setLoggedIn(false)});      
         AuthRequest<UserInfoProps>("/resources", {setState: setUserInfo});
     }, [organizeData]);
 
     return (
-        <Flex flexDir={'column'} alignItems={'center'} minH={'100vh'}>
-            <Flex zIndex={'-1'} w={'100%'} h={'100%'} pos={'fixed'} objectFit={'cover'} alignItems={'center'} justifyContent={'center'}>
-                <Image w={'100%'} h={'100%'} src={require(`../assets/shopbackground${Math.floor(((((new Date().getMonth() - 2) % 12) + 12) % 12) / 3)}.webp`)}/>
+        <Flex flexDir={'column'} alignItems={'center'} minH={'100vh'} pb={'5vh'}>
+            <Flex zIndex={'-1'} w={'100%'} h={'100%'} pos={'fixed'} alignItems={'center'} justifyContent={'center'}>
+                <Image objectFit={'cover'} w={'100%'} h={'100%'} src={require(`../assets/shopbackground${Math.floor(((((new Date().getMonth() - 2) % 12) + 12) % 12) / 3)}.webp`)}/>
             </Flex>
             <MovingText title="Shop" color1="#fdf542" color2="#ff9005" fontSize='4xl'/>
-            {(getToken() && userInfo !== void 0) ?
+            {userInfo &&
                 <>
                 <Flex pos={['relative', 'relative', 'absolute', 'absolute', 'absolute']} right={3} top={3}>
                     <Flex justifyContent={'center'} alignItems={'center'} p={3} pl={2} pos={'relative'} borderRadius={'lg'}>
@@ -157,7 +158,8 @@ export default function Shop() {
                     }
                 </Flex>
                 </>
-                :
+            }
+            {(isLoggedIn === false) &&
                 <>
                 <Flex flexDir={'column'} alignItems={'center'} w={'100vw'} h={'100vh'} justifyContent={'center'} pos={'absolute'}>
                     <Flex flexDir={'column'} alignItems={'center'} justifyContent={'center'} bgColor={'lightskyblue'} border={'2px solid'} borderColor={'blue.500'} borderRadius={'lg'} p={5}>

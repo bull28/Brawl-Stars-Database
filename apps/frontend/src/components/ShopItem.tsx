@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Image, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, ModalOverlay, ScaleFade, Text, useDisclosure } from '@chakra-ui/react'
+import { Box, Button, Flex, Image, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, ModalOverlay, ScaleFade, Skeleton, Text, useDisclosure } from '@chakra-ui/react'
 import AuthRequest from '../helpers/AuthRequest'
 import ShopData from '../types/ShopData'
 import { useState } from 'react'
@@ -53,7 +53,7 @@ export default function ShopItem({data, coins, isFeatured, timeLeftString}: {dat
                     </Flex>
                 </Flex>
     
-                <Modal isOpen={isOpen} onClose={onClose} size={'3xl'}>
+                <Modal isOpen={isOpen} onClose={onClose} size={'3xl'} preserveScrollBarGap={true}>
                     <ModalOverlay />
                         <ModalContent bgColor={(accepted) ? '#9f9' : 'lightskyblue'} border={'2px solid '}>
                         <ModalHeader fontSize={'2xl'}  className={'heading-2xl'} fontWeight={'normal'}>{accepted ? 'Purchase Successful!' : `Purchase ${data.displayName}`}</ModalHeader>
@@ -103,7 +103,7 @@ export default function ShopItem({data, coins, isFeatured, timeLeftString}: {dat
                     <Image ml={1} maxH={'30px'} src={`${api}/image/resources/resource_coins.webp`}/>
                 </Flex>
     
-                <Modal isOpen={isOpen} onClose={onClose} size={'3xl'}>
+                <Modal isOpen={isOpen} onClose={onClose} size={'3xl'} preserveScrollBarGap={true}>
                     <ModalOverlay />
                         <ModalContent bgColor={(accepted) ? '#9f9' : 'lightskyblue'} border={'2px solid '}>
                         <ModalHeader fontSize={'2xl'}  className={'heading-2xl'} fontWeight={'normal'}>{accepted ? 'Purchase Successful!' : `Purchase ${data.displayName}`}</ModalHeader>
