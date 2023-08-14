@@ -6252,7 +6252,7 @@
         "defaultSkin": "artillerygaldefault",
         "title": "The Salty",
         "masteryIcon": "mastery_icon_penny.webp",
-        "description": "A rebel without a cause, mischievous Penny rules the high seas. She's a bonafide menace on the lookout for adventure and will stop at nothing for plunder.",
+        "description": "A rebel without a cause, mischievous Penny rules the \"high seas\". She's a bonafide menace on the lookout for adventure and will stop at nothing for plunder.",
         "skins": [
             {
                 "name": "artillerygaldefault",
@@ -11591,7 +11591,7 @@
         "defaultSkin": "cannongirldefault",
         "title": "The Reckless",
         "masteryIcon": "mastery_icon_bonnie.webp",
-        "description": "Bonnie and her inanimate cannon Clyde are usually up to no good. Who would have thought that this cute little girl would cause so much mayhem?",
+        "description": "Bonnie and her inanimate cannon \"Clyde\" are usually up to no good. Who would have thought that this cute little girl would cause so much mayhem?",
         "skins": [
             {
                 "name": "cannongirldefault",
@@ -17093,7 +17093,7 @@
         "defaultSkin": "mechadudedefault",
         "title": "Tech Support 2.0",
         "masteryIcon": "mastery_icon_meg.webp",
-        "description": "Meg has a basic form and an advanced form where she hops inside her trusted Mecha suit. The suit gradually loses health, returning Meg to her basic form when the Mecha suit is destroyed.",
+        "description": "Meg starts the game in her trusty Mecha suit. Meg returns to her basic form when the Mecha suit is destroyed, but can use her super to get back into it.",
         "skins": [
             {
                 "name": "mechadudedefault",
@@ -19156,7 +19156,7 @@
         "defaultSkin": "ruffsdefault",
         "title": "Colonel",
         "masteryIcon": "mastery_icon_ruffs.webp",
-        "description": "He may bark orders at his subordinates, but Colonel Ruffs is a very good boy! Possessing a serious and calm demeanor, Ruffs keeps his dog traits hidden, unless there's a game of fetch going on!",
+        "description": "He may bark orders at his subordinates, but Colonel Ruffs is a very good boy! Usually a calming presence, his canine instincts kick in whenever there's a game of fetch nearby.",
         "skins": [
             {
                 "name": "ruffsdefault",

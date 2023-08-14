@@ -159,10 +159,10 @@ export default function AnimationViewer({modelFile, winFile, loseFile, lightsFil
     return (
         <Flex w={"100%"} h={"100%"} flexDir={"column"} alignItems={"center"} pos={"relative"}>
             <Flex w={"100%"} h={"100%"} flexDir={"column"} bgImage={`${api}/image/misc/bg_3d_model.webp`} bgPos={"center"} bgSize={"cover"} bgRepeat={"no-repeat"}>
-                <Canvas flat={true} camera={{fov: 40, position: [0, 0, 1]}}>
+                <Canvas flat={true} camera={{fov: 40, position: [0, 0, 1]}} resize={{scroll: false}}>
                     <Suspense fallback={null}>
                         {(sceneFile !== void 0 && sceneFile !== "") ? <BackgroundScene file={sceneFile} modelPos={positionRef}/> : <></>}
-                        <ambientLight intensity={lightIntensity !== void 0 ? lightIntensity : 0.8}/>
+                        <ambientLight intensity={lightIntensity !== void 0 ? lightIntensity : 2.5}/>
                         <GltfModel modelFile={modelFile} winFile={winFile !== void 0 ? winFile : "misc/empty.glb"} loseFile={loseFile !== void 0 ? loseFile : "misc/empty.glb"} lightsFile={lightsFile !== void 0 ? lightsFile : "misc/default_lights.glb"} playing={animationRef} modelPos={positionRef} hasBackground={(sceneFile !== void 0 && sceneFile !== "")}/>
                         <OrbitControls enablePan={false} maxPolarAngle={Math.PI / 2} maxDistance={150}/>
                     </Suspense>
