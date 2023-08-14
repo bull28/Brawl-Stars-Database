@@ -359,13 +359,13 @@ router.post<{}, {}, AcceptReqBody>("/accept", databaseErrorHandler<AcceptReqBody
                 const brawler = collectionData[x.brawler];
                 // If the user already has the pin in their collection, add the amount they will receive
                 if (brawler.hasOwnProperty(x.pin) === true){
-                    brawler[x.pin], brawler[x.pin] + x.amount;
+                    brawler[x.pin] = brawler[x.pin] + x.amount;
                     //collectionData[x.brawler][x.pin] += x.amount;
                 }
                 // If the user has the brawler but not the pin, add the new pin to their collection
                 // and set its amount to the amount given in the trade
                 else{
-                    brawler[x.pin], x.amount;
+                    brawler[x.pin] = x.amount;
                     //collectionData[x.brawler][x.pin] = x.amount;
                 }
                 tradedItems.push(x);
@@ -499,7 +499,7 @@ router.post<{}, {}, CloseReqBody>("/close", databaseErrorHandler<CloseReqBody>(a
                     //collectionData[x.brawler][x.pin] += x.amount;
                 }
                 else{
-                    brawler[x.pin], x.amount;
+                    brawler[x.pin] = x.amount;
                     //collectionData[x.brawler][x.pin] = x.amount;
                 }
                 tradedItems.push(x);
