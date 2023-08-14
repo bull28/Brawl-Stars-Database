@@ -4,7 +4,7 @@ import SkullBackground from "../components/SkullBackground";
 import AuthRequest from "../helpers/AuthRequest";
 import {CosmeticData, ThemeProps} from "../types/CosmeticData";
 import {scrollStyle} from "../themes/scrollbar";
-import api from "../helpers/APIRoute";
+import cdn from "../helpers/CDNRoute";
 
 interface Category{
     name: string;
@@ -98,7 +98,7 @@ export default function Gallery() {
                                 {value.themes.map((theme) => (
                                 <Flex key={theme.path + theme.displayName} w={["80vw", "80vw", "70vw", "40vw", "30vw"]} bgColor={selected === theme.path ? "green.300" : "lightskyblue"} justifyContent={"space-between"} flexDir={["column", "row"]} p={[2, 3, 4]} borderRadius={"lg"} border={"2px solid black"}>
                                     <Flex>
-                                        <Image w={["20vw", "20vw", "16vw", "10vw", "8vw"]} h={["20vw", "20vw", "16vw", "10vw", "8vw"]} bgColor={theme.image !== "" ? "#000" : "#0000"} borderRadius={"lg"} border={"2px solid black"} objectFit={"cover"} src={theme.image !== "" ? `${api}/image/${theme.image}` : `${api}/image/misc/bg_3d_model.webp`} boxShadow={"0px 0px 25px #fff"}/>
+                                        <Image w={["20vw", "20vw", "16vw", "10vw", "8vw"]} h={["20vw", "20vw", "16vw", "10vw", "8vw"]} bgColor={theme.image !== "" ? "#000" : "#0000"} borderRadius={"lg"} border={"2px solid black"} objectFit={"cover"} src={theme.image !== "" ? `${cdn}/image/${theme.image}` : `${cdn}/image/misc/bg_3d_model.webp`} boxShadow={"0px 0px 25px #fff"}/>
                                         
                                         <Flex flexDir={"column"} mx={"5%"}>
                                             <Text className={"heading-2xl"} mb={[0, 1, 1, 1, 1]} fontSize={["lg", "xl", "2xl", "xl", "2xl"]}>{theme.displayName}</Text>

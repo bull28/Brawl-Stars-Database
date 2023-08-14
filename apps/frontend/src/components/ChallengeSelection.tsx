@@ -2,7 +2,7 @@ import {Flex, Text, Image, Button, SimpleGrid, Divider} from "@chakra-ui/react";
 import {ChallengeName, ChallengeData} from "../types/ChallengeData";
 import {displayLong} from "../helpers/LargeNumberDisplay";
 import {animateScroll} from "react-scroll";
-import api from "../helpers/APIRoute";
+import cdn from "../helpers/CDNRoute";
 
 interface ChallengeSelectionProps{
     data: ChallengeData;
@@ -45,11 +45,11 @@ export default function ChallengeSelection({data, level, setSelected}: Challenge
                                         <Flex w={"50%"} flexDir={"column"} alignItems={"center"} justifyContent={"center"}>
                                             <Flex alignItems={"center"}>
                                                 <Text fontSize={"lg"} className={"heading-lg"} mr={1}>{displayLong(value.reward.coins)}</Text>
-                                                <Image src={`${api}/image/resources/resource_coins.webp`} h={5}/>
+                                                <Image src={`${cdn}/image/resources/resource_coins.webp`} h={5}/>
                                             </Flex>
                                             <Flex alignItems={"center"}>
                                                 <Text fontSize={"lg"} className={"heading-lg"} mr={1}>{displayLong(value.reward.points)}</Text>
-                                                <Image src={`${api}/image/resources/resource_challenge_points.webp`} h={5}/>
+                                                <Image src={`${cdn}/image/resources/resource_challenge_points.webp`} h={5}/>
                                             </Flex>
                                         </Flex>
                                         {(value.reward.accessory.displayName !== "") ?
@@ -57,7 +57,7 @@ export default function ChallengeSelection({data, level, setSelected}: Challenge
                                                 <Text fontSize={"lg"} className={"heading-lg"}>New Accessory</Text>
                                                 <Flex alignItems={"center"}>
                                                     <Text fontSize={value.reward.accessory.displayName.length < 20 ? "lg" : "md"} className={value.reward.accessory.displayName.length < 20 ? "heading-lg" : "heading-md"} mr={1}>{value.reward.accessory.displayName}</Text>
-                                                    <Image src={`${api}/image/${value.reward.accessory.image}`} objectFit={"contain"} h={6}/>
+                                                    <Image src={`${cdn}/image/${value.reward.accessory.image}`} objectFit={"contain"} h={6}/>
                                                 </Flex>
                                             </Flex>
                                             :
@@ -76,7 +76,7 @@ export default function ChallengeSelection({data, level, setSelected}: Challenge
                                         <Text w={"80%"} className={"heading-md"}>{`Requires Level ${value.requiredLevel}`}</Text>
                                         <Button w={"20%"} isDisabled={level < value.requiredLevel} onClick={() => {setSelected({challengeid: value.challengeid, displayName: value.displayName, acceptCost: value.acceptCost}); animateScroll.scrollToTop();}}>
                                             <Text fontSize={"lg"}>{value.acceptCost}</Text>
-                                            <Image ml={1} src={`${api}/image/resources/resource_tokens.webp`} h={5}/>
+                                            <Image ml={1} src={`${cdn}/image/resources/resource_tokens.webp`} h={5}/>
                                         </Button>
                                     </Flex>
                                 </Flex>

@@ -2,7 +2,7 @@ import { Flex, Image, keyframes } from "@chakra-ui/react";
 import { useState, useEffect } from 'react'
 import AuthRequest from "../helpers/AuthRequest";
 import {CosmeticData} from "../types/CosmeticData";
-import api from "../helpers/APIRoute";
+import cdn from "../helpers/CDNRoute";
 
 export default function SkullBackground({bg, icon}: {bg?: string; icon?: string;}) {
 
@@ -42,9 +42,9 @@ export default function SkullBackground({bg, icon}: {bg?: string; icon?: string;
     return (
         <Flex pos={'fixed'} overflow={'hidden'} zIndex={'-1'} top={0} w={'100%'} h={'100%'} alignItems={'center'} justifyContent={'center'}>     
         {cosmetics && <>               
-            <Image w={'100vw'} h={'255.7407407vh'} objectFit={'cover'} animation={`${animation1} 175s linear infinite reverse`} pos={'absolute'} src={`${api}/image/${cosmetics.icon}`}/>
-            <Image w={'100vw'} h={'255.7407407vh'} objectFit={'cover'} animation={`${animation2} 175s linear infinite reverse`} pos={'absolute'} src={`${api}/image/${cosmetics.icon}`}/>
-            <Image w={'100%'} h={'100%'} src={`${api}/image/${cosmetics.background}`}/>
+            <Image w={'100vw'} h={'255.7407407vh'} objectFit={'cover'} animation={`${animation1} 175s linear infinite reverse`} pos={'absolute'} src={`${cdn}/image/${cosmetics.icon}`}/>
+            <Image w={'100vw'} h={'255.7407407vh'} objectFit={'cover'} animation={`${animation2} 175s linear infinite reverse`} pos={'absolute'} src={`${cdn}/image/${cosmetics.icon}`}/>
+            <Image w={'100%'} h={'100%'} src={`${cdn}/image/${cosmetics.background}`}/>
         </>}
         </Flex>
         

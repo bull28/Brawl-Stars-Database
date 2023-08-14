@@ -2,7 +2,7 @@ import {MutableRefObject} from "react";
 import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader";
 import {useFrame, useLoader} from "@react-three/fiber";
 import {Vector3} from "three";
-import api from "../helpers/APIRoute";
+import cdn from "../helpers/CDNRoute";
 
 interface BackgroundSceneProps{
     file: string;
@@ -14,7 +14,7 @@ export default function BackgroundScene({file, modelPos}: BackgroundSceneProps){
     // The scene background can be moved according to which brawler
     // is in the scene using the modelPos ref. For now, only moving
     // in the y-direction is necessary.
-    const gltf = useLoader(GLTFLoader, `${api}/image/${file}`);
+    const gltf = useLoader(GLTFLoader, `${cdn}/image/${file}`);
 
     gltf.scene.traverse((object) => {
         object.frustumCulled = false;
