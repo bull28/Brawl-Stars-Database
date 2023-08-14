@@ -1,5 +1,6 @@
 build
 .turbo
+transfer.sh
 
 # Logs
 logs
