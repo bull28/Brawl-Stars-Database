@@ -10,8 +10,6 @@
         "outputs": ["build/**"]
       },
       "lint": {},
-      "start": {
-          "dependsOn": ["build"]
-      }
+      "start": {}
     }
   }

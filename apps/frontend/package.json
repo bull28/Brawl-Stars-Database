@@ -10,7 +10,6 @@
     "server": "cd ../backend && npm run ash",
     "dev": "react-scripts start"
   },
-  "proxy": "http://localhost:6969",
   "eslintConfig": {
     "extends": [
       "react-app",
