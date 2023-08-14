@@ -1,4 +1,6 @@
-backend/build/
+build
+.turbo
+transfer.sh
 
 # Logs
 logs
