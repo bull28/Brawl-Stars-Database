@@ -70,12 +70,12 @@ export default function SkinView({brawler, skin, setModel}: SkinViewProps){
                 <Flex mb={1} wrap={"wrap"}>
                     <Flex alignItems={"center"} mx={[1, 1, 3]}>
                         <Text fontSize={["lg", "xl"]} className={"heading-xl"} mr={1}>{getCostText(data)}</Text>
-                        {Object.hasOwn(currencyImages, data.currency) === true ? <Image src={`${cdn}/image/resources/${currencyImages[data.currency]}`} alt={data.currency} h={[4, 5, 6]}/> : <></>}
+                        {currencyImages.hasOwnProperty(data.currency) === true ? <Image src={`${cdn}/image/resources/${currencyImages[data.currency]}`} alt={data.currency} h={[4, 5, 6]}/> : <></>}
                     </Flex>
                     {(data.costBling > 0) ?
                         <Flex alignItems={"center"} mx={[1, 1, 3]}>
                             <Text fontSize={["lg", "xl"]} className={"heading-xl"} mr={1}>{data.costBling}</Text>
-                            {Object.hasOwn(currencyImages, "Bling") === true ? <Image src={`${cdn}/image/resources/${currencyImages["Bling"]}`} alt={"Bling"} h={[4, 5, 6]}/> : <></>}
+                            {currencyImages.hasOwnProperty("Bling") === true ? <Image src={`${cdn}/image/resources/${currencyImages["Bling"]}`} alt={"Bling"} h={[4, 5, 6]}/> : <></>}
                         </Flex>
                         :
                         <></>

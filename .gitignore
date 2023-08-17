@@ -1,6 +1,7 @@
 build
 .turbo
 transfer.sh
+apps/backend/assets
 
 # Logs
 logs
