@@ -115,6 +115,10 @@ class GameMode{
      * @returns array with all possible times, in hours after the map rotation reset
      */
     getTimeAtMap(mapIndex: number, offset: number, eventDuration: number): number[]{
+        if (eventDuration <= 0){
+            return [];
+        }
+        
         mapIndex = mod(mapIndex, this.maps.length);
         let startTime = mapIndex * this.rotationTime;
         startTime += offset;
@@ -170,6 +174,10 @@ class EventSlot{
         seasonHour -= this.offset;
         seasonHour = mod(seasonHour, MAP_CYCLE_HOURS);
 
+        if (this.eventDuration <= 0){
+            return this.gameModes[0];
+        }
+
         let gameModeIndex = Math.floor(seasonHour / this.eventDuration);
         gameModeIndex = mod(gameModeIndex, this.gameModes.length);
 
@@ -187,6 +195,13 @@ class EventSlot{
     }
 
     getEventTimeLeft(seasonTime: SeasonTime): SeasonTime{
+        // Some maps are no longer in the ladder rotation but are power league maps
+        // The program should be able to show these maps but they should not be in
+        // the active events
+        if (this.eventDuration <= 0){
+            return new SeasonTime(0, 0, 0, 0);
+        }
+
         let seasonHour = seasonTime.hour;
         seasonHour -= this.offset;
 
@@ -292,7 +307,7 @@ class EventSlot{
         }
 
         result.all = validStartTimes;
-        if (this.getCurrentGameMap(currentTime).name !== mapName){
+        if (this.getCurrentGameMap(currentTime).name !== mapName && validStartTimes.length > 0){
             result.next = subtractSeasonTimes(lowestStartTime, new SeasonTime(0, 0, 0, 1));
         }
         result.duration = new SeasonTime(0, this.eventDuration, 0, 0);
@@ -566,11 +581,15 @@ export function getAllEvents(eventList: EventSlot[], seasonTime: SeasonTime): Cu
     let allEvents: CurrentEvent[] = [];
 
     for (let x = 0; x < eventList.length; x++){
-        allEvents.push({
-            current: getEventData(eventList[x], seasonTime),
-            upcoming: getEventData(eventList[x], addSeasonTimes(seasonTime, new SeasonTime(0, eventList[x].eventDuration, 0, 0))),
-            timeLeft: eventList[x].getEventTimeLeft(seasonTime)
-        });
+        // Events with duration 0 are special event slots because they are reserved for
+        // maps that are still in the game but not in the ladder rotation such as power league maps
+        if (eventList[x].eventDuration > 0){
+            allEvents.push({
+                current: getEventData(eventList[x], seasonTime),
+                upcoming: getEventData(eventList[x], addSeasonTimes(seasonTime, new SeasonTime(0, eventList[x].eventDuration, 0, 0))),
+                timeLeft: eventList[x].getEventTimeLeft(seasonTime)
+            });
+        }
     }
 
     return {
@@ -589,7 +608,9 @@ for (let x = 0; x < eventList.length; x++){
         gameModes.push(new GameMode(eventList[x].gameModes[y]));
     }
 
-    events.push(new EventSlot(gameModes, eventList[x].eventDuration, eventList[x].offset));
+    if (gameModes.length > 0){
+        events.push(new EventSlot(gameModes, eventList[x].eventDuration, eventList[x].offset));
+    }
 }
 
 // Last updated: Brawl Pass Season 17

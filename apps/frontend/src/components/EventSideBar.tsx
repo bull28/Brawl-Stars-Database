@@ -10,9 +10,8 @@ import { Flex, Text, Divider, Icon, RadioGroup, Stack, Radio, Input, Select, Inp
 } from "@chakra-ui/react";
 
 import { HamburgerIcon, SearchIcon } from '@chakra-ui/icons'
-import { useEffect, useRef, useState, useCallback, SetStateAction } from "react";
+import { useEffect, useState, useCallback, SetStateAction } from "react";
 import {EventData, MapSearchData} from "../types/EventData";
-import MapView from './MapView';
 import axios, {AxiosResponse} from 'axios';
 import cdn from "../helpers/CDNRoute";
 import api from "../helpers/APIRoute";
@@ -30,34 +29,34 @@ interface EventMode{
 interface EventSideBarProps{
     changeEvents: React.Dispatch<SetStateAction<EventData | undefined>>;
     changeOffset: React.Dispatch<SetStateAction<number>>;
+    openMapView: (m: string) => void;
     startTime: Date;
 }
 
-export default function EventSideBar({changeEvents, changeOffset, startTime}: EventSideBarProps){
+export default function EventSideBar({changeEvents, changeOffset, openMapView, startTime}: EventSideBarProps){
     const [choice, setChoice] = useState<string>("current");
-    const [select, setSelect] = useState<string>("at_time");
+    const [select, setSelect] = useState<string>("from_now");
     const [time, setTime] = useState<string[]>(["", "", ""]);
     const [searchText, setSearchText] = useState<string>("");
     const [date, setDate] = useState<string>("");
     const [maps, setMaps] = useState<MapSearchData[]>([]);
-    const [map, setMap] = useState<string>("");
     const [timer, updateTimer] = useState<Timer>({start: startTime.getTime(), offset: 0});// Time since the last update
     const [lastUpdate, setlastUpdate] = useState<number>(3600000);// Time at the last update
-    const [eventMode, setEventMode] = useState<EventMode>({choice: "current", select: "at_time"});// User's event mode choices, only updated when "Update" is clicked
+    const [eventMode, setEventMode] = useState<EventMode>({choice: "current", select: "from_now"});// User's event mode choices, only updated when "Update" is clicked
     const [success, setSuccess] = useState<boolean>(true);// Whether or not the attemped calls to the API were successful
-
-    const mapViewRef = useRef<{open: () => void}>({open: () => {}});
 
     const query = useMediaQuery('(min-width: 600px)')[0]
     const { isOpen, onOpen, onClose } = useDisclosure() 
     const toast = useToast()
 
     const handleTimeChange = (value: string, index: number) => {
-        if (value.length < 4 && index < time.length){
+        if (value.length < 5 && index < time.length){
             let tempArr = time.slice(0);
             tempArr[index] = value;
     
             setTime(tempArr);
+
+            setChoice("season_time");
         }
     }
    
@@ -67,7 +66,7 @@ export default function EventSideBar({changeEvents, changeOffset, startTime}: Ev
         if (choice1 === "current"){
             endpoint = "/event/current"
 
-        } else if (choice1 === "season_time" && !time.includes("")){
+        } else if (choice1 === "season_time"){
             if (choice2 === "at_time"){
                 endpoint = `/event/seasontime`
             } else if (choice2 === "from_now"){
@@ -79,7 +78,14 @@ export default function EventSideBar({changeEvents, changeOffset, startTime}: Ev
         }
         
         if (endpoint !== ""){
-            axios.get<{}, AxiosResponse<EventData>>(`${api}${endpoint}`, {params: {hour: time[0], minute: time[1], second: (endpoint === "/event/worldtime") ? Math.floor((new Date(date)).getTime() / 1000) : time[2]}})
+            const timeValues = time.map<number>((value) => {
+                const x = parseInt(value);
+                if (isNaN(x)){
+                    return 0;
+                }
+                return x;
+            });
+            axios.get<{}, AxiosResponse<EventData>>(`${api}${endpoint}`, {params: {hour: timeValues[0], minute: timeValues[1], second: (endpoint === "/event/worldtime") ? Math.floor((new Date(date)).getTime() / 1000) : timeValues[2]}})
             .then((res) => {
                 if (choice1 === "season_time" && choice2 === "at_time"){
                     setTime([res.data.time.hour.toString(), res.data.time.minute.toString(), res.data.time.second.toString()]);
@@ -106,11 +112,6 @@ export default function EventSideBar({changeEvents, changeOffset, startTime}: Ev
         }
     }, [changeEvents, date, time, toast])
 
-    const openMapView = (m: string) => {
-        setMap(m);
-        mapViewRef.current.open()
-    }
-
     useEffect(() => {
         axios.post(`${api}/mapsearch`, {search: searchText})
         .then((res) => {
@@ -130,7 +131,7 @@ export default function EventSideBar({changeEvents, changeOffset, startTime}: Ev
                 }
 
                 // These event mode choices require real-time updating
-                if (eventMode.choice === "current" || (eventMode.choice === "season_time" && eventMode.select === "from_now" && !time.includes(""))){
+                if (eventMode.choice === "current" || (eventMode.choice === "season_time" && eventMode.select === "from_now")){// && !time.includes("")
                     let elapsed: number = Date.now() - previousTime.start;
                     
                     // Update when the last updated time + offset passes multiples of 1 minute.
@@ -164,7 +165,7 @@ export default function EventSideBar({changeEvents, changeOffset, startTime}: Ev
         // When real-time updating is not required, the precision given by the API is sufficient because the
         // returned events will always be the same, no matter what time the endpoint was called at.
 
-        if (eventMode.choice === "current" || (eventMode.choice === "season_time" && eventMode.select === "from_now" && !time.includes(""))){
+        if (eventMode.choice === "current" || (eventMode.choice === "season_time" && eventMode.select === "from_now")){// && !time.includes("")
             changeOffset(lastUpdate % 1000 + timer.offset);
         } else{
             changeOffset(timer.offset);
@@ -188,12 +189,12 @@ export default function EventSideBar({changeEvents, changeOffset, startTime}: Ev
                             <Text>:</Text>
                             <Input type={'number'} onChange={(e) => handleTimeChange(e.target.value, 2)} value={time[2]} style={{caretColor: 'auto'}}/>
                         </Stack>
-                        <Select onChange={(e) => setSelect(e.target.value)} value={select}>
+                        <Select onChange={(e) => {setSelect(e.target.value); setChoice("season_time");}} value={select}>
+                            <option value='from_now'>From Now</option>
                             <option value='at_time'>At Time</option>
-                            <option value='from_now'>From Now</option>                            
                         </Select>
                         <Radio value='world_time'><Text className={"heading-md"}>World Time</Text></Radio>
-                        <Input type={'datetime-local'} onChange={(e) => setDate(e.target.value)} value={date}/>
+                        <Input type={'datetime-local'} onChange={(e) => {setDate(e.target.value); setChoice("world_time");}} value={date}/>
                         <Button type={'button'} onClick={() => {setEventMode({choice: choice, select: select}); update(choice, select); updateTimer({start: Date.now(), offset: 0});}}>Update</Button>
                     </Stack>
                 </RadioGroup>
@@ -202,7 +203,7 @@ export default function EventSideBar({changeEvents, changeOffset, startTime}: Ev
 
                 <Flex alignItems={'center'} alignContent={'center'} textAlign={'center'} flexDir={'column'} pb={5}>
                     <InputGroup>
-                        <Input type={'text'} value={searchText} onChange={e => setSearchText(e.target.value)} style={{caretColor: 'auto'}}/>
+                        <Input type={'text'} value={searchText} onChange={e => {setSearchText(e.target.value)}} style={{caretColor: 'auto'}}/>
                         <InputRightElement>
                             <Icon as={SearchIcon} fontSize={'xl'}/>
                         </InputRightElement>
@@ -223,8 +224,6 @@ export default function EventSideBar({changeEvents, changeOffset, startTime}: Ev
                     ))}
                     </Stack>
                 </Flex>
-
-                <MapView map={map} ref={mapViewRef}/>
             </Flex>
         );
     } else {
@@ -248,12 +247,12 @@ export default function EventSideBar({changeEvents, changeOffset, startTime}: Ev
                                     <Text>:</Text>
                                     <Input type={'number'} onChange={(e) => handleTimeChange(e.target.value, 2)} value={time[2]} style={{caretColor: 'auto'}}/>
                                 </Stack>
-                                <Select onChange={(e) => setSelect(e.target.value)} value={select}>
+                                <Select onChange={(e) => {setSelect(e.target.value); setChoice("season_time");}} value={select}>
+                                    <option value='from_now'>From Now</option>
                                     <option value='at_time'>At Time</option>
-                                    <option value='from_now'>From Now</option>                            
                                 </Select>
-                                <Radio value='world time'>World Time</Radio>
-                                <Input type={'datetime-local'} onChange={(e) => setDate(e.target.value)} value={date}/>
+                                <Radio value='world_time'>World Time</Radio>
+                                <Input type={'datetime-local'} onChange={(e) => {setDate(e.target.value); setChoice("world_time");}} value={date}/>
                                 <Button type={'button'} onClick={() => {setEventMode({choice: choice, select: select}); update(choice, select); updateTimer({start: Date.now(), offset: 0}); onClose();}}>Update</Button>
                             </Stack>
                             </RadioGroup>

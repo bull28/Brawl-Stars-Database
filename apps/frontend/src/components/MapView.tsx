@@ -25,7 +25,8 @@ interface Props{
     map: string;
 }
 
-function eventTimeDays(s: SeasonTime): string{
+function eventTimeDays(data: MapData): string{
+  const s = data.times.next;
   const days = Math.floor(s.hour / 24);
   const seasonTime: SeasonTime = {
     season: s.season,
@@ -38,7 +39,13 @@ function eventTimeDays(s: SeasonTime): string{
   if (days <= 0){
     const result = EventTime(seasonTime, 0);
     if (result === "0s"){
-      return "Currently Active";
+      if (data.times.all.length > 0){
+        return "Currently Active";
+      } else if (data.powerLeagueMap){
+        return "Only in Power League";
+      } else{
+        return "Not Active on Ladder";
+      }
     }
     return `Starts in ${result}`;
   }
@@ -96,7 +103,7 @@ const MapView = React.forwardRef<{open: () => void}, Props>((props, ref) => {
               <>
                 <Image src={`${cdn}/image/${data.image}`} fallback={<Spinner/>}/>
                 <Flex alignItems={'center'}>
-                  <Text fontSize={'2xl'} className={'heading-2xl'}>{eventTimeDays(data.times.next)}</Text>
+                  <Text fontSize={'2xl'} className={'heading-2xl'}>{eventTimeDays(data)}</Text>
                   {data.powerLeagueMap && <Tooltip label={"Power League Map"}><Image h={'35px'} ml={2} src={`${cdn}/image/skingroups/icons/icon_ranked.webp`}/></Tooltip>}
                 </Flex>
               </>

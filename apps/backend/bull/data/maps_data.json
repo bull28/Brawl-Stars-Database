@@ -1,90 +1,6 @@
 [
     {
         "name": "EventSlot1",
-        "displayName": "Gem Grab",
-        "eventDuration": 24,
-        "offset": 0,
-        "gameModes": [
-            {
-                "name": "gemgrab",
-                "displayName": "Gem Grab",
-                "rotationTime": 24,
-                "data": {
-                    "image": "gemgrab.webp",
-                    "backgroundColor": "#9A3DF3",
-                    "textColor": "#D852FF"
-                },
-                "maps": [
-                    {
-                        "name": "rustic-arcade",
-                        "displayName": "Rustic Arcade",
-                        "gameMode": "gemgrab",
-                        "powerLeagueMap": false,
-                        "image": "rustic-arcade.webp",
-                        "bannerImage": "darrylsship.webp"
-                    },
-                    {
-                        "name": "double-swoosh",
-                        "displayName": "Double Swoosh",
-                        "gameMode": "gemgrab",
-                        "powerLeagueMap": true,
-                        "image": "double-swoosh.webp",
-                        "bannerImage": "enchantedforest.webp"
-                    },
-                    {
-                        "name": "deathcap-trap",
-                        "displayName": "Deathcap Trap",
-                        "gameMode": "gemgrab",
-                        "powerLeagueMap": false,
-                        "image": "deathcap-trap.webp",
-                        "bannerImage": "canyon.webp"
-                    },
-                    {
-                        "name": "undermine",
-                        "displayName": "Undermine",
-                        "gameMode": "gemgrab",
-                        "powerLeagueMap": false,
-                        "image": "undermine.webp",
-                        "bannerImage": "canyon.webp"
-                    },
-                    {
-                        "name": "minecart-madness",
-                        "displayName": "Minecart Madness",
-                        "gameMode": "gemgrab",
-                        "powerLeagueMap": false,
-                        "image": "minecart-madness.webp",
-                        "bannerImage": "mine.webp"
-                    },
-                    {
-                        "name": "hard-rock-mine",
-                        "displayName": "Hard Rock Mine",
-                        "gameMode": "gemgrab",
-                        "powerLeagueMap": true,
-                        "image": "hard-rock-mine.webp",
-                        "bannerImage": "mine.webp"
-                    },
-                    {
-                        "name": "gem-fort",
-                        "displayName": "Gem Fort",
-                        "gameMode": "gemgrab",
-                        "powerLeagueMap": false,
-                        "image": "gem-fort.webp",
-                        "bannerImage": "rumblejungle.webp"
-                    },
-                    {
-                        "name": "crystal-arcade",
-                        "displayName": "Crystal Arcade",
-                        "gameMode": "gemgrab",
-                        "powerLeagueMap": true,
-                        "image": "crystal-arcade.webp",
-                        "bannerImage": "waterpark.webp"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "name": "EventSlot2",
         "displayName": "Showdown",
         "eventDuration": 24,
         "offset": 12,
@@ -100,43 +16,35 @@
                 },
                 "maps": [
                     {
-                        "name": "double-trouble",
-                        "displayName": "Double Trouble",
-                        "gameMode": "showdown",
-                        "powerLeagueMap": false,
-                        "image": "double-trouble.webp",
-                        "bannerImage": "canyonshowdown.webp"
-                    },
-                    {
                         "name": "feast-or-famine",
                         "displayName": "Feast or Famine",
                         "gameMode": "showdown",
                         "powerLeagueMap": false,
                         "image": "feast-or-famine.webp",
+                        "bannerImage": "robotfactoryshowdown.webp"
+                    },
+                    {
+                        "name": "acid-lakes",
+                        "displayName": "Acid Lakes",
+                        "gameMode": "showdown",
+                        "powerLeagueMap": false,
+                        "image": "acid-lakes.webp",
                         "bannerImage": "canyonshowdown.webp"
                     },
                     {
-                        "name": "rockwall-brawl",
-                        "displayName": "Rockwall Brawl",
+                        "name": "cavern-churn",
+                        "displayName": "Cavern Churn",
                         "gameMode": "showdown",
                         "powerLeagueMap": false,
-                        "image": "rockwall-brawl.webp",
-                        "bannerImage": "canyonshowdown.webp"
+                        "image": "cavern-churn.webp",
+                        "bannerImage": "robotfactoryshowdown.webp"
                     },
                     {
-                        "name": "scorched-stone",
-                        "displayName": "Scorched Stone",
+                        "name": "dried-up-river",
+                        "displayName": "Dried Up River",
                         "gameMode": "showdown",
                         "powerLeagueMap": false,
-                        "image": "scorched-stone.webp",
-                        "bannerImage": "canyonshowdown.webp"
-                    },
-                    {
-                        "name": "flying-fantasies",
-                        "displayName": "Flying Fantasies",
-                        "gameMode": "showdown",
-                        "powerLeagueMap": false,
-                        "image": "flying-fantasies.webp",
+                        "image": "dried-up-river.webp",
                         "bannerImage": "canyonshowdown.webp"
                     },
                     {
@@ -148,19 +56,27 @@
                         "bannerImage": "canyonshowdown.webp"
                     },
                     {
-                        "name": "cavern-churn",
-                        "displayName": "Cavern Churn",
+                        "name": "dark-passage",
+                        "displayName": "Dark Passage",
                         "gameMode": "showdown",
                         "powerLeagueMap": false,
-                        "image": "cavern-churn.webp",
+                        "image": "dark-passage.webp",
+                        "bannerImage": "robotfactoryshowdown.webp"
+                    },
+                    {
+                        "name": "flying-fantasies",
+                        "displayName": "Flying Fantasies",
+                        "gameMode": "showdown",
+                        "powerLeagueMap": false,
+                        "image": "flying-fantasies.webp",
                         "bannerImage": "canyonshowdown.webp"
                     },
                     {
-                        "name": "acid-lakes",
-                        "displayName": "Acid Lakes",
+                        "name": "rockwall-brawl",
+                        "displayName": "Rockwall Brawl",
                         "gameMode": "showdown",
                         "powerLeagueMap": false,
-                        "image": "acid-lakes.webp",
+                        "image": "rockwall-brawl.webp",
                         "bannerImage": "canyonshowdown.webp"
                     }
                 ]
@@ -168,10 +84,10 @@
         ]
     },
     {
-        "name": "EventSlot3",
+        "name": "EventSlot2",
         "displayName": "Brawl Ball",
         "eventDuration": 24,
-        "offset": 18,
+        "offset": 0,
         "gameModes": [
             {
                 "name": "brawlball",
@@ -184,28 +100,12 @@
                 },
                 "maps": [
                     {
-                        "name": "center-stage",
-                        "displayName": "Center Stage",
+                        "name": "pinhole-punt",
+                        "displayName": "Pinhole Punt",
                         "gameMode": "brawlball",
                         "powerLeagueMap": false,
-                        "image": "center-stage.webp",
+                        "image": "pinhole-punt.webp",
                         "bannerImage": "bbarena.webp"
-                    },
-                    {
-                        "name": "pinball-dreams",
-                        "displayName": "Pinball Dreams",
-                        "gameMode": "brawlball",
-                        "powerLeagueMap": true,
-                        "image": "pinball-dreams.webp",
-                        "bannerImage": "grassfield.webp"
-                    },
-                    {
-                        "name": "beach-ball",
-                        "displayName": "Beach Ball",
-                        "gameMode": "brawlball",
-                        "powerLeagueMap": false,
-                        "image": "beach-ball.webp",
-                        "bannerImage": "grassfieldbeachball.webp"
                     },
                     {
                         "name": "sneaky-fields",
@@ -216,18 +116,34 @@
                         "bannerImage": "grassfield.webp"
                     },
                     {
+                        "name": "stepping-stones",
+                        "displayName": "Stepping Stones",
+                        "gameMode": "brawlball",
+                        "powerLeagueMap": false,
+                        "image": "stepping-stones.webp",
+                        "bannerImage": "bbarena.webp"
+                    },
+                    {
                         "name": "super-beach",
                         "displayName": "Super Beach",
                         "gameMode": "brawlball",
-                        "powerLeagueMap": false,
+                        "powerLeagueMap": true,
                         "image": "super-beach.webp",
                         "bannerImage": "grassfieldbeachball.webp"
+                    },
+                    {
+                        "name": "pinball-dreams",
+                        "displayName": "Pinball Dreams",
+                        "gameMode": "brawlball",
+                        "powerLeagueMap": false,
+                        "image": "pinball-dreams.webp",
+                        "bannerImage": "grassfield.webp"
                     },
                     {
                         "name": "backyard-bowl",
                         "displayName": "Backyard Bowl",
                         "gameMode": "brawlball",
-                        "powerLeagueMap": false,
+                        "powerLeagueMap": true,
                         "image": "backyard-bowl.webp",
                         "bannerImage": "grassfield.webp"
                     },
@@ -240,150 +156,22 @@
                         "bannerImage": "grassfield.webp"
                     },
                     {
-                        "name": "pinhole-punt",
-                        "displayName": "Pinhole Punt",
+                        "name": "penalty-kick",
+                        "displayName": "Penalty Kick",
                         "gameMode": "brawlball",
-                        "powerLeagueMap": true,
-                        "image": "pinhole-punt.webp",
-                        "bannerImage": "bbarena.webp"
+                        "powerLeagueMap": false,
+                        "image": "penalty-kick.webp",
+                        "bannerImage": "grassfieldbeachball.webp"
                     }
                 ]
             }
         ]
     },
     {
-        "name": "EventSlot4",
-        "displayName": "Community Events",
+        "name": "EventSlot3",
+        "displayName": "Team Events",
         "eventDuration": 24,
-        "offset": 0,
-        "gameModes": [
-            {
-                "name": "takedown",
-                "displayName": "Takedown",
-                "rotationTime": 48,
-                "data": {
-                    "image": "takedown.webp",
-                    "backgroundColor": "#B606B0",
-                    "textColor": "#3891FF"
-                },
-                "maps": [
-                    {
-                        "name": "roundabout",
-                        "displayName": "Roundabout",
-                        "gameMode": "takedown",
-                        "powerLeagueMap": false,
-                        "image": "roundabout.webp",
-                        "bannerImage": "canyonshowdown.webp"
-                    },
-                    {
-                        "name": "ring-of-death",
-                        "displayName": "Ring of Death",
-                        "gameMode": "takedown",
-                        "powerLeagueMap": false,
-                        "image": "ring-of-death.webp",
-                        "bannerImage": "canyonshowdown.webp"
-                    },
-                    {
-                        "name": "poison-fields",
-                        "displayName": "Poison Fields",
-                        "gameMode": "takedown",
-                        "powerLeagueMap": false,
-                        "image": "poison-fields.webp",
-                        "bannerImage": "canyonshowdown.webp"
-                    },
-                    {
-                        "name": "fractions",
-                        "displayName": "Fractions",
-                        "gameMode": "takedown",
-                        "powerLeagueMap": false,
-                        "image": "fractions.webp",
-                        "bannerImage": "canyonshowdown.webp"
-                    }
-                ]
-            },
-            {
-                "name": "wipeout",
-                "displayName": "Wipeout",
-                "rotationTime": 48,
-                "data": {
-                    "image": "wipeout.webp",
-                    "backgroundColor": "#FE1BB8",
-                    "textColor": "#24D6FF"
-                },
-                "maps": [
-                    {
-                        "name": "infinite-doom",
-                        "displayName": "Infinite Doom",
-                        "gameMode": "wipeout",
-                        "powerLeagueMap": true,
-                        "image": "infinite-doom.webp",
-                        "bannerImage": "enchantedforest.webp"
-                    },
-                    {
-                        "name": "slayers-paradise",
-                        "displayName": "Slayer's Paradise",
-                        "gameMode": "wipeout",
-                        "powerLeagueMap": false,
-                        "image": "slayers-paradise.webp",
-                        "bannerImage": "waterpark.webp"
-                    },
-                    {
-                        "name": "snake-prairie",
-                        "displayName": "Snake Prairie",
-                        "gameMode": "wipeout",
-                        "powerLeagueMap": false,
-                        "image": "snake-prairie.webp",
-                        "bannerImage": "rumblejungle.webp"
-                    },
-                    {
-                        "name": "shooting-star",
-                        "displayName": "Shooting Star",
-                        "gameMode": "wipeout",
-                        "powerLeagueMap": true,
-                        "image": "shooting-star.webp",
-                        "bannerImage": "enchantedforest.webp"
-                    },
-                    {
-                        "name": "hideout",
-                        "displayName": "Hideout",
-                        "gameMode": "wipeout",
-                        "powerLeagueMap": false,
-                        "image": "hideout.webp",
-                        "bannerImage": "darrylsship.webp"
-                    },
-                    {
-                        "name": "canal-grande",
-                        "displayName": "Canal Grande",
-                        "gameMode": "wipeout",
-                        "powerLeagueMap": true,
-                        "image": "canal-grande.webp",
-                        "bannerImage": "waterpark.webp"
-                    },
-                    {
-                        "name": "layer-cake",
-                        "displayName": "Layer Cake",
-                        "gameMode": "wipeout",
-                        "powerLeagueMap": false,
-                        "image": "layer-cake.webp",
-                        "bannerImage": "rumblejungle.webp"
-                    },
-                    {
-                        "name": "dry-season",
-                        "displayName": "Dry Season",
-                        "gameMode": "wipeout",
-                        "powerLeagueMap": false,
-                        "image": "dry-season.webp",
-                        "bannerImage": "canyon.webp"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "name": "EventSlot5",
-        "displayName": "Team Events 1",
-        "eventDuration": 24,
-        "offset": 6,
+        "offset": 18,
         "gameModes": [
             {
                 "name": "knockout",
@@ -399,57 +187,9 @@
                         "name": "out-in-the-open",
                         "displayName": "Out in the Open",
                         "gameMode": "knockout",
-                        "powerLeagueMap": false,
+                        "powerLeagueMap": true,
                         "image": "out-in-the-open.webp",
-                        "bannerImage": "waterpark.webp"
-                    },
-                    {
-                        "name": "flaring-phoenix",
-                        "displayName": "Flaring Phoenix",
-                        "gameMode": "knockout",
-                        "powerLeagueMap": true,
-                        "image": "flaring-phoenix.webp",
-                        "bannerImage": "enchantedforest.webp"
-                    },
-                    {
-                        "name": "belles-rock",
-                        "displayName": "Belle's Rock",
-                        "gameMode": "knockout",
-                        "powerLeagueMap": true,
-                        "image": "belles-rock.webp",
-                        "bannerImage": "canyon.webp"
-                    },
-                    {
-                        "name": "flowing-springs",
-                        "displayName": "Flowing Springs",
-                        "gameMode": "knockout",
-                        "powerLeagueMap": false,
-                        "image": "flowing-springs.webp",
-                        "bannerImage": "waterpark.webp"
-                    },
-                    {
-                        "name": "deep-end",
-                        "displayName": "Deep End",
-                        "gameMode": "knockout",
-                        "powerLeagueMap": false,
-                        "image": "deep-end.webp",
-                        "bannerImage": "enchantedforest.webp"
-                    },
-                    {
-                        "name": "healthy-middle-ground",
-                        "displayName": "Healthy Middle Ground",
-                        "gameMode": "knockout",
-                        "powerLeagueMap": false,
-                        "image": "healthy-middle-ground.webp",
-                        "bannerImage": "mine.webp"
-                    },
-                    {
-                        "name": "x-marks-the-spot",
-                        "displayName": "X Marks the Spot",
-                        "gameMode": "knockout",
-                        "powerLeagueMap": false,
-                        "image": "x-marks-the-spot.webp",
-                        "bannerImage": "darrylsship.webp"
+                        "bannerImage": "ghostmetro.webp"
                     },
                     {
                         "name": "goldarm-gulch",
@@ -457,24 +197,152 @@
                         "gameMode": "knockout",
                         "powerLeagueMap": true,
                         "image": "goldarm-gulch.webp",
-                        "bannerImage": "canyon.webp"
+                        "bannerImage": "rangerranch.webp"
+                    },
+                    {
+                        "name": "belles-rock",
+                        "displayName": "Belle's Rock",
+                        "gameMode": "knockout",
+                        "powerLeagueMap": true,
+                        "image": "belles-rock.webp",
+                        "bannerImage": "robotfactory.webp"
+                    },
+                    {
+                        "name": "flaring-phoenix",
+                        "displayName": "Flaring Phoenix",
+                        "gameMode": "knockout",
+                        "powerLeagueMap": false,
+                        "image": "flaring-phoenix.webp",
+                        "bannerImage": "enchantedforest.webp"
                     }
                 ]
             },
             {
-                "name": "bounty",
-                "displayName": "Bounty",
+                "name": "gemgrab",
+                "displayName": "Gem Grab",
                 "rotationTime": 48,
                 "data": {
-                    "image": "bounty.webp",
-                    "backgroundColor": "#00CFFF",
+                    "image": "gemgrab.webp",
+                    "backgroundColor": "#9A3DF3",
+                    "textColor": "#D852FF"
+                },
+                "maps": [
+                    {
+                        "name": "crystal-arcade",
+                        "displayName": "Crystal Arcade",
+                        "gameMode": "gemgrab",
+                        "powerLeagueMap": false,
+                        "image": "crystal-arcade.webp",
+                        "bannerImage": "rangerranch.webp"
+                    },
+                    {
+                        "name": "last-stop",
+                        "displayName": "Last Stop",
+                        "gameMode": "gemgrab",
+                        "powerLeagueMap": true,
+                        "image": "last-stop.webp",
+                        "bannerImage": "ghostmetro.webp"
+                    },
+                    {
+                        "name": "hard-rock-mine",
+                        "displayName": "Hard Rock Mine",
+                        "gameMode": "gemgrab",
+                        "powerLeagueMap": true,
+                        "image": "hard-rock-mine.webp",
+                        "bannerImage": "mine.webp"
+                    },
+                    {
+                        "name": "double-swoosh",
+                        "displayName": "Double Swoosh",
+                        "gameMode": "gemgrab",
+                        "powerLeagueMap": true,
+                        "image": "double-swoosh.webp",
+                        "bannerImage": "enchantedforest.webp"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "EventSlot4",
+        "displayName": "Community Events",
+        "eventDuration": 24,
+        "offset": 0,
+        "gameModes": [
+            {
+                "name": "siege",
+                "displayName": "Siege",
+                "rotationTime": 48,
+                "data": {
+                    "image": "siege.webp",
+                    "backgroundColor": "#F05031",
+                    "textColor": "#FF6847"
+                },
+                "maps": [
+                    {
+                        "name": "factory-rush",
+                        "displayName": "Factory Rush",
+                        "gameMode": "siege",
+                        "powerLeagueMap": false,
+                        "image": "factory-rush.webp",
+                        "bannerImage": "scrapyard.webp"
+                    },
+                    {
+                        "name": "some-assembly-required",
+                        "displayName": "Some Assembly Required",
+                        "gameMode": "siege",
+                        "powerLeagueMap": false,
+                        "image": "some-assembly-required.webp",
+                        "bannerImage": "scrapyard.webp"
+                    },
+                    {
+                        "name": "nuts--bolts",
+                        "displayName": "Nuts & Bolts",
+                        "gameMode": "siege",
+                        "powerLeagueMap": false,
+                        "image": "nuts--bolts.webp",
+                        "bannerImage": "scrapyard.webp"
+                    },
+                    {
+                        "name": "bot-drop",
+                        "displayName": "Bot Drop",
+                        "gameMode": "siege",
+                        "powerLeagueMap": false,
+                        "image": "bot-drop.webp",
+                        "bannerImage": "scrapyard.webp"
+                    }
+                ]
+            },
+            {
+                "name": "wipeout",
+                "displayName": "Wipeout",
+                "rotationTime": 48,
+                "data": {
+                    "image": "wipeout.webp",
+                    "backgroundColor": "#FE1BB8",
                     "textColor": "#24D6FF"
                 },
                 "maps": [
                     {
+                        "name": "shooting-star",
+                        "displayName": "Shooting Star",
+                        "gameMode": "wipeout",
+                        "powerLeagueMap": true,
+                        "image": "shooting-star.webp",
+                        "bannerImage": "ghostmetro.webp"
+                    },
+                    {
+                        "name": "layer-bake",
+                        "displayName": "Layer Bake",
+                        "gameMode": "wipeout",
+                        "powerLeagueMap": true,
+                        "image": "layer-bake.webp",
+                        "bannerImage": "ghostmetro.webp"
+                    },
+                    {
                         "name": "infinite-doom",
                         "displayName": "Infinite Doom",
-                        "gameMode": "bounty",
+                        "gameMode": "wipeout",
                         "powerLeagueMap": true,
                         "image": "infinite-doom.webp",
                         "bannerImage": "enchantedforest.webp"
@@ -482,145 +350,21 @@
                     {
                         "name": "slayers-paradise",
                         "displayName": "Slayer's Paradise",
-                        "gameMode": "bounty",
+                        "gameMode": "wipeout",
                         "powerLeagueMap": false,
                         "image": "slayers-paradise.webp",
-                        "bannerImage": "waterpark.webp"
-                    },
-                    {
-                        "name": "snake-prairie",
-                        "displayName": "Snake Prairie",
-                        "gameMode": "bounty",
-                        "powerLeagueMap": false,
-                        "image": "snake-prairie.webp",
-                        "bannerImage": "rumblejungle.webp"
-                    },
-                    {
-                        "name": "shooting-star",
-                        "displayName": "Shooting Star",
-                        "gameMode": "bounty",
-                        "powerLeagueMap": true,
-                        "image": "shooting-star.webp",
-                        "bannerImage": "enchantedforest.webp"
-                    },
-                    {
-                        "name": "hideout",
-                        "displayName": "Hideout",
-                        "gameMode": "bounty",
-                        "powerLeagueMap": false,
-                        "image": "hideout.webp",
-                        "bannerImage": "darrylsship.webp"
-                    },
-                    {
-                        "name": "canal-grande",
-                        "displayName": "Canal Grande",
-                        "gameMode": "bounty",
-                        "powerLeagueMap": true,
-                        "image": "canal-grande.webp",
-                        "bannerImage": "waterpark.webp"
-                    },
-                    {
-                        "name": "layer-cake",
-                        "displayName": "Layer Cake",
-                        "gameMode": "bounty",
-                        "powerLeagueMap": false,
-                        "image": "layer-cake.webp",
-                        "bannerImage": "rumblejungle.webp"
-                    },
-                    {
-                        "name": "dry-season",
-                        "displayName": "Dry Season",
-                        "gameMode": "bounty",
-                        "powerLeagueMap": false,
-                        "image": "dry-season.webp",
-                        "bannerImage": "canyon.webp"
+                        "bannerImage": "rangerranch.webp"
                     }
                 ]
             }
         ]
     },
     {
-        "name": "EventSlot6",
-        "displayName": "Team Events 2",
-        "eventDuration": 24,
-        "offset": 6,
+        "name": "EventSlot5",
+        "displayName": "Power League Only",
+        "eventDuration": 0,
+        "offset": 0,
         "gameModes": [
-            {
-                "name": "hotzone",
-                "displayName": "Hot Zone",
-                "rotationTime": 48,
-                "data": {
-                    "image": "hotzone.webp",
-                    "backgroundColor": "#E33B50",
-                    "textColor": "#FF4343"
-                },
-                "maps": [
-                    {
-                        "name": "parallel-plays",
-                        "displayName": "Parallel Plays",
-                        "gameMode": "hotzone",
-                        "powerLeagueMap": false,
-                        "image": "parallel-plays.webp",
-                        "bannerImage": "mine.webp"
-                    },
-                    {
-                        "name": "split",
-                        "displayName": "Split",
-                        "gameMode": "hotzone",
-                        "powerLeagueMap": false,
-                        "image": "split.webp",
-                        "bannerImage": "canyon.webp"
-                    },
-                    {
-                        "name": "dueling-beetles",
-                        "displayName": "Dueling Beetles",
-                        "gameMode": "hotzone",
-                        "powerLeagueMap": true,
-                        "image": "dueling-beetles.webp",
-                        "bannerImage": "enchantedforest.webp"
-                    },
-                    {
-                        "name": "open-business",
-                        "displayName": "Open Business",
-                        "gameMode": "hotzone",
-                        "powerLeagueMap": false,
-                        "image": "open-business.webp",
-                        "bannerImage": "enchantedforest.webp"
-                    },
-                    {
-                        "name": "temple-of-boom",
-                        "displayName": "Temple of Boom",
-                        "gameMode": "hotzone",
-                        "powerLeagueMap": false,
-                        "image": "temple-of-boom.webp",
-                        "bannerImage": "rumblejungle.webp"
-                    },
-                    {
-                        "name": "open-zone",
-                        "displayName": "Open Zone",
-                        "gameMode": "hotzone",
-                        "powerLeagueMap": true,
-                        "image": "open-zone.webp",
-                        "bannerImage": "waterpark.webp"
-                    },
-                    {
-                        "name": "iron-cover",
-                        "displayName": "Iron Cover",
-                        "gameMode": "hotzone",
-                        "powerLeagueMap": false,
-                        "image": "iron-cover.webp",
-                        "bannerImage": "darrylsship.webp"
-                    },
-                    {
-                        "name": "ring-of-fire",
-                        "displayName": "Ring of Fire",
-                        "gameMode": "hotzone",
-                        "powerLeagueMap": true,
-                        "image": "ring-of-fire.webp",
-                        "bannerImage": "waterpark.webp"
-                    }
-                ]
-            },
             {
                 "name": "heist",
                 "displayName": "Heist",
@@ -632,60 +376,12 @@
                 },
                 "maps": [
                     {
-                        "name": "safe-zone",
-                        "displayName": "Safe Zone",
-                        "gameMode": "heist",
-                        "powerLeagueMap": true,
-                        "image": "safe-zone.webp",
-                        "bannerImage": "rumblejungle.webp"
-                    },
-                    {
-                        "name": "bridge-too-far",
-                        "displayName": "Bridge Too Far",
-                        "gameMode": "heist",
-                        "powerLeagueMap": false,
-                        "image": "bridge-too-far.webp",
-                        "bannerImage": "canyon.webp"
-                    },
-                    {
-                        "name": "center-control",
-                        "displayName": "Center Control",
-                        "gameMode": "heist",
-                        "powerLeagueMap": false,
-                        "image": "center-control.webp",
-                        "bannerImage": "waterpark.webp"
-                    },
-                    {
-                        "name": "cover-crowd",
-                        "displayName": "Cover Crowd",
-                        "gameMode": "heist",
-                        "powerLeagueMap": false,
-                        "image": "cover-crowd.webp",
-                        "bannerImage": "darrylsship.webp"
-                    },
-                    {
-                        "name": "pit-stop",
-                        "displayName": "Pit Stop",
-                        "gameMode": "heist",
-                        "powerLeagueMap": true,
-                        "image": "pit-stop.webp",
-                        "bannerImage": "enchantedforest.webp"
-                    },
-                    {
-                        "name": "split-second",
-                        "displayName": "Split Second",
-                        "gameMode": "heist",
-                        "powerLeagueMap": false,
-                        "image": "split-second.webp",
-                        "bannerImage": "waterpark.webp"
-                    },
-                    {
                         "name": "hot-potato",
                         "displayName": "Hot Potato",
                         "gameMode": "heist",
-                        "powerLeagueMap": false,
+                        "powerLeagueMap": true,
                         "image": "hot-potato.webp",
-                        "bannerImage": "enchantedforest.webp"
+                        "bannerImage": "ghostmetro.webp"
                     },
                     {
                         "name": "kaboom-canyon",
@@ -693,6 +389,50 @@
                         "gameMode": "heist",
                         "powerLeagueMap": true,
                         "image": "kaboom-canyon.webp",
+                        "bannerImage": "canyon.webp"
+                    },
+                    {
+                        "name": "safe-zone",
+                        "displayName": "Safe Zone",
+                        "gameMode": "heist",
+                        "powerLeagueMap": true,
+                        "image": "safe-zone.webp",
+                        "bannerImage": "robotfactory.webp"
+                    }
+                ]
+            },
+            {
+                "name": "hotzone",
+                "displayName": "Hot Zone",
+                "rotationTime": 48,
+                "data": {
+                    "image": "hotzone.webp",
+                    "backgroundColor": "#E33B50",
+                    "textColor": "#FF4343"
+                },
+                "maps": [
+                    {
+                        "name": "dueling-beetles",
+                        "displayName": "Dueling Beetles",
+                        "gameMode": "hotzone",
+                        "powerLeagueMap": true,
+                        "image": "dueling-beetles.webp",
+                        "bannerImage": "robotfactory.webp"
+                    },
+                    {
+                        "name": "ring-of-fire",
+                        "displayName": "Ring of Fire",
+                        "gameMode": "hotzone",
+                        "powerLeagueMap": true,
+                        "image": "ring-of-fire.webp",
+                        "bannerImage": "ghostmetro.webp"
+                    },
+                    {
+                        "name": "split",
+                        "displayName": "Split",
+                        "gameMode": "hotzone",
+                        "powerLeagueMap": true,
+                        "image": "split.webp",
                         "bannerImage": "canyon.webp"
                     }
                 ]

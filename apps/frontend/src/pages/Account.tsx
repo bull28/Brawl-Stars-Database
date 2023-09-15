@@ -4,7 +4,6 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserInfoProps } from "../types/AccountData";
 import { MdOutlineEdit } from 'react-icons/md'
-import { BsFillPersonFill } from "react-icons/bs";
 import { RiKeyFill } from "react-icons/ri";
 import AvatarSelect from '../components/AvatarSelect';
 import { getToken } from "../helpers/AuthRequest";
@@ -16,7 +15,6 @@ import api from "../helpers/APIRoute";
 export default function Account() {
   const [data, setData] = useState<UserInfoProps>()
   const [avatar, setAvatar] = useState<string>("")
-  const [username, setUsername] = useState<string>("")
   const [oldPassword, setOldPassword] = useState<string>("")
   const [newPassword, setNewPassword] = useState<string>("")
 
@@ -29,7 +27,6 @@ export default function Account() {
   const setAllData = useCallback((data: UserInfoProps) => {
     setData(data);
     setAvatar(data.avatar);
-    setUsername(data.username);
   }, []);
 
   useEffect(() => {
@@ -95,10 +92,6 @@ export default function Account() {
         </Flex>
         <FormControl w={'fit-content'} textAlign={'left'} mt={5}>
           <Stack direction={'column'} spacing={6}>
-            <Box>
-              <FormLabel><Flex alignItems={'center'}><Text mr={1}>Username</Text><BsFillPersonFill/></Flex></FormLabel>
-              <Input type='text' value={username} onChange={(e) => {setUsername(e.target.value)}} style={{caretColor: 'auto'}}/>
-            </Box>
             <Box>
               <FormLabel><Flex alignItems={'center'}><Text mr={1}>Change Password</Text><RiKeyFill/></Flex></FormLabel>
               <InputGroup flexDir={'column'}>
