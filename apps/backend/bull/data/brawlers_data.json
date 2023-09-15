@@ -16105,81 +16105,81 @@
                 "name": "crow_phoenix_default",
                 "image": "crow_phoenix_default.webp",
                 "rarity": {
-                    "value": 3,
-                    "name": "Legendary",
-                    "color": "#FDF11E"
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94D6F4"
                 }
             },
             {
                 "name": "crow_phoenix_happy",
                 "image": "crow_phoenix_happy.webp",
                 "rarity": {
-                    "value": 3,
-                    "name": "Legendary",
-                    "color": "#FDF11E"
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94D6F4"
                 }
             },
             {
                 "name": "crow_phoenix_sad",
                 "image": "crow_phoenix_sad.webp",
                 "rarity": {
-                    "value": 3,
-                    "name": "Legendary",
-                    "color": "#FDF11E"
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94D6F4"
                 }
             },
             {
                 "name": "crow_phoenix_angry",
                 "image": "crow_phoenix_angry.webp",
                 "rarity": {
-                    "value": 3,
-                    "name": "Legendary",
-                    "color": "#FDF11E"
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94D6F4"
                 }
             },
             {
                 "name": "crow_phoenix_gg",
                 "image": "crow_phoenix_gg.webp",
                 "rarity": {
-                    "value": 3,
-                    "name": "Legendary",
-                    "color": "#FDF11E"
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2EDD1B"
                 }
             },
             {
                 "name": "crow_phoenix_clap",
                 "image": "crow_phoenix_clap.webp",
                 "rarity": {
-                    "value": 3,
-                    "name": "Legendary",
-                    "color": "#FDF11E"
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2EDD1B"
                 }
             },
             {
                 "name": "crow_phoenix_thanks",
                 "image": "crow_phoenix_thanks.webp",
                 "rarity": {
-                    "value": 3,
-                    "name": "Legendary",
-                    "color": "#FDF11E"
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#B116EC"
                 }
             },
             {
                 "name": "crow_phoenix_sweat",
                 "image": "crow_phoenix_sweat.webp",
                 "rarity": {
-                    "value": 3,
-                    "name": "Legendary",
-                    "color": "#FDF11E"
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#B116EC"
                 }
             },
             {
                 "name": "crow_phoenix_special",
                 "image": "crow_phoenix_special.webp",
                 "rarity": {
-                    "value": 3,
-                    "name": "Legendary",
-                    "color": "#FDF11E"
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#B116EC"
                 }
             }
         ]

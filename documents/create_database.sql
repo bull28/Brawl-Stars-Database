@@ -3,7 +3,6 @@
 
 -- Note: Do not run these lines if the tables do not already exist
 DROP TABLE cosmetics;
-DROP TABLE challenges;
 DROP TABLE trades;
 DROP TABLE users;
 
@@ -17,7 +16,6 @@ CREATE TABLE users (
     token_doubler INT DEFAULT 0,
     coins INT DEFAULT 0,
     trade_credits INT DEFAULT 0,
-    level INT DEFAULT 1,
     points BIGINT DEFAULT 0,
     active_avatar VARCHAR(200) NOT NULL,
     brawlers TEXT NOT NULL,
@@ -74,18 +72,6 @@ CREATE TABLE cosmetics (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4 COLLATE utf8mb4_bin;
 -- -----------------------------------------------------------------------------------------------------
-
--- Create the user challenges table
-CREATE TABLE challenges (
-    username VARCHAR(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-    last_win BIGINT DEFAULT 0,
-    total_wins BIGINT DEFAULT 0,
-    completed TEXT NOT NULL,
-    PRIMARY KEY (username),
-    FOREIGN KEY (username) REFERENCES users(username) ON UPDATE CASCADE ON DELETE CASCADE)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4 COLLATE utf8mb4_bin;
--- -----------------------------------------------------------------------------------------------------
 delimiter //
 
 -- Automatically adds a user to the cosmetics table if they are added to the main table
@@ -95,8 +81,6 @@ FOR EACH ROW
 BEGIN
     INSERT INTO cosmetics (username, background, icon, music, scene) VALUES
     (NEW.username, '', '', '', '');
-    INSERT INTO challenges (username, last_win, completed) VALUES
-    (NEW.username, 0, '[]');
 END//
 
 -- Prevents users from having more than 10 active trades
@@ -154,8 +138,8 @@ INSERT INTO users (username, password, active_avatar, brawlers, avatars, themes,
 );
 
 UPDATE users SET token_doubler = 625 WHERE username = 'p2w';
-UPDATE users SET level = 30, coins = 805010 WHERE username = 'p2wisbad';
-UPDATE users SET level = 30, coins = 240028 WHERE username = 'p2wisbadisbad';
+UPDATE users SET points = 12000000, coins = 805010 WHERE username = 'p2wisbad';
+UPDATE users SET points = 12000000, coins = 240024 WHERE username = 'p2wisbadisbad';
 -- -----------------------------------------------------------------------------------------------------
 DELETE FROM trades;
 
@@ -178,5 +162,4 @@ INSERT INTO trades (creator, offer, request, expiration, creator_avatar, creator
 SELECT * FROM users;
 SELECT * FROM trades;
 SELECT * FROM cosmetics;
-SELECT * FROM challenges;
 -- -----------------------------------------------------------------------------------------------------

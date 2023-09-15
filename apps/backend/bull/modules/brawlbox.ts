@@ -1,7 +1,6 @@
 import allSkins from "../data/brawlers_data.json";
 import dropChances from "../data/brawlbox_data.json";
 import {IMAGE_FILE_EXTENSION, PIN_IMAGE_DIR, PORTRAIT_IMAGE_DIR, AVATAR_SPECIAL_DIR, RESOURCE_IMAGE_DIR} from "../data/constants";
-import {requiredLevels, getAccessoryDisplay} from "./accessories";
 import {
     Pin,
     UserResources, 
@@ -13,12 +12,11 @@ import {
     RewardTypeBrawler, 
     RewardTypeBonusNumber, 
     RewardTypeBonusString, 
-    RewardTypeAccessory, 
     BrawlBoxDrop
 } from "../types";
 
 type UnknownBoxType = BrawlBoxAttributes | HiddenBrawlBoxAttributes;
-type UnknownRewardType = RewardTypeCurrency | RewardTypePin | RewardTypeBrawler | RewardTypeBonusNumber | RewardTypeBonusString | RewardTypeAccessory;
+type UnknownRewardType = RewardTypeCurrency | RewardTypePin | RewardTypeBrawler | RewardTypeBonusNumber | RewardTypeBonusString;
 
 // These first 5 functions narrow a box or reward type to a specific type
 // so properties can be accessed on it.
@@ -82,25 +80,6 @@ function isRewardTypeBonusString(object: UnknownRewardType): object is RewardTyp
         );
     }
     return isBonus;
-}
-
-function isRewardTypeAccessory(object: UnknownRewardType): object is RewardTypeAccessory{
-    const rewards = object as RewardTypeAccessory;
-    if (Array.isArray(rewards.pmfobject) === false){
-        return false;
-    }
-    let isAccessory = true;
-    isAccessory = (typeof rewards.nothingWeight === "number" && typeof rewards.nothingCoinConversion === "number");
-
-    for (let x = 0; x < rewards.pmfobject.length; x++){
-        isAccessory = isAccessory && (
-            typeof rewards.pmfobject[x].value === "string" &&
-            typeof rewards.pmfobject[x].weight === "number" &&
-            typeof rewards.pmfobject[x].minWeight === "number" &&
-            typeof rewards.pmfobject[x].coinConversion === "number"
-        );
-    }
-    return isAccessory;
 }
 
 /**
@@ -231,7 +210,7 @@ function getDuplicateColor(oldColorString: string, factor: number): string{
  * @param resources object containing all the user's resources (this object will change)
  * @returns array of the items the user received
  */
-export default function brawlBox(dropChances: BrawlBoxData, boxType: string, resources: UserResources, accessoryLevel: number): BrawlBoxDrop[]{
+export default function brawlBox(dropChances: BrawlBoxData, boxType: string, resources: UserResources): BrawlBoxDrop[]{
     if (typeof resources === "undefined"){
         return [];
     }
@@ -318,10 +297,6 @@ export default function brawlBox(dropChances: BrawlBoxData, boxType: string, res
                 const bonusBox = dropChances.boxes.get(x);
                 if (typeof bonusBox !== "undefined"){
                     drop = selectBonus(bonusBox, dropChances.rewardTypes, resources);
-                }
-            } else if (x === "accessory"){
-                if (typeof rewardType !== "undefined" && isRewardTypeAccessory(rewardType)){
-                    drop = selectAccessory(rewardType, resources, accessoryLevel);
                 }
             }
 
@@ -688,72 +663,6 @@ function selectBrawler(brawlerDropChances: RewardTypeBrawler, resources: UserRes
 
         result.rewardType = "coins";
         result.amount = brawlerDropChances.coinConversion[selectedRarity];
-    }
-
-    return result;
-}
-
-function selectAccessory(accessoryDropChances: RewardTypeAccessory, resources: UserResources, accessoryLevel: number): BrawlBoxDrop{
-    let result: BrawlBoxDrop = {
-        displayName: "",
-        rewardType: "empty",
-        amount: 1,
-        inventory: 0,
-        image: "",
-        backgroundColor: "#000000",
-        description: ""
-    };
-
-    const availableAccessories = accessoryDropChances.pmfobject.filter((reward) => {
-        // reward has {value (accessory name), weight, coinConversion}
-        const level = requiredLevels.get(reward.value);
-        if (typeof level !== "undefined"){
-            return (accessoryLevel >= level);
-        }
-        return false;
-    });
-
-    const accessorypmf = availableAccessories.map((reward) => {
-        if (resources.accessories.includes(reward.value)){
-            // minWeight makes duplicate accessories less likely to drop
-            return reward.minWeight;
-        }
-        return reward.weight;
-    });
-
-
-    const selectedIndex = RNG(accessorypmf);
-
-    if (selectedIndex >= 0){
-        const reward = availableAccessories[selectedIndex];
-
-        if (resources.accessories.includes(reward.value) === false){
-            // If the user does not already have the accessory, they will unlock it
-            const display = getAccessoryDisplay(reward.value);
-            if (typeof display !== "undefined"){
-                resources.accessories.push(reward.value);
-
-                result.displayName = display.displayName;
-                result.rewardType = "accessory";
-                result.image = display.image;
-                result.backgroundColor = "#A248FF";
-                result.description = "This accessory unlocks a new unit that can be used in challenges.";
-                result.inventory = 1;
-            }
-        } else{
-            // If they do have the accessory, it is converted to coins
-            resources.coins += reward.coinConversion;
-
-            result.rewardType = "coins";
-            result.amount = reward.coinConversion;
-        }
-    } else{
-        // If there are no accessories available, give the "nothing" reward
-        // If accessorypmf is empty, RNG returns -1
-        resources.coins += accessoryDropChances.nothingCoinConversion;
-
-        result.rewardType = "coins";
-        result.amount = accessoryDropChances.nothingCoinConversion;
     }
 
     return result;

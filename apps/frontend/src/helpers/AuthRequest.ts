@@ -37,12 +37,13 @@ interface AuthRequestConfigProps<T>{
         data?: string;
     };
     errorToastMessage?: string;
+    server?: string;
 }
 
-export default async function AuthRequest<T>(endpoint:string, config: AuthRequestConfigProps<T>) {
+export default async function AuthRequest<T>(endpoint: string, config: AuthRequestConfigProps<T>) {
     const { toast } = createStandaloneToast()
 
-    axios.post(`${api}${endpoint}`, {token: getToken(), ...config.data})
+    axios.post(`${config.server ? config.server : api}${endpoint}`, {token: getToken(), ...config.data})
         .then((res) => {
             if (config.setState){
                 config.setState(res.data);

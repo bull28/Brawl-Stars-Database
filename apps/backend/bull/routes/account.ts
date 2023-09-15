@@ -246,7 +246,10 @@ router.post<{}, {}, UpdateReqBody>("/update", databaseErrorHandler<UpdateReqBody
             currentPassword: currentPassword
         });
 
-        // updateResults.affectedRows === 0 checked
+        if (updateResults.affectedRows === 0){
+            res.status(401).send("Current password is incorrect.");
+            return;
+        }
 
         const userInfo = signToken(currentUsername);
         res.json(userInfo);

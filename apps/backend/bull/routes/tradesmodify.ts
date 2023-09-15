@@ -128,8 +128,9 @@ router.post<{}, {}, CreateReqBody>("/create", databaseErrorHandler<CreateReqBody
             return;
         }
 
+        // Accessories are only required here to get the collection data
         // Get the user's avatar color and that will be the text color when displaying all trades
-        userAvatarColor = formatCollectionData(collectionData, userAccessories, userResources.level).avatarColor;
+        userAvatarColor = formatCollectionData(collectionData, userAccessories).avatarColor;
 
 
         // Not enough trade credits

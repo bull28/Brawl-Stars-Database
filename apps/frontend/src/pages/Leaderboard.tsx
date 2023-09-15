@@ -6,7 +6,7 @@ import {getToken} from "../helpers/AuthRequest";
 import {displayShort, displayLong} from "../helpers/LargeNumberDisplay";
 import {UserInfoProps} from "../types/AccountData";
 import cdn from "../helpers/CDNRoute";
-import api from "../helpers/APIRoute";
+import api, {server} from "../helpers/APIRoute";
 
 type LeaderboardData = {
     username: string;
@@ -29,7 +29,7 @@ export default function Leaderboard(){
     }
 
     useEffect(() => {
-        axios.get<{}, AxiosResponse<LeaderboardData>>(`${api}/challenge/leaderboard`)
+        axios.get<{}, AxiosResponse<LeaderboardData>>(`${server}/challenge/leaderboard`)
         .then((res) => {
             setData(res.data);
         }).catch((error) => {

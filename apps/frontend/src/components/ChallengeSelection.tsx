@@ -61,7 +61,7 @@ export default function ChallengeSelection({data, level, setSelected}: Challenge
                                                 </Flex>
                                             </Flex>
                                             :
-                                            (value.players > 1 ?
+                                            (value.players > 1 && !69 ?
                                                 <Flex w={"50%"} flexDir={"column"} alignItems={"center"} justifyContent={"center"}>
                                                     <Text className={"heading-md"}>Rewards depend on</Text>
                                                     <Text className={"heading-md"}>opponents' strengths</Text>

@@ -16,7 +16,6 @@ import {validateToken} from "../modules/authenticate";
 import brawlBox, {convertBrawlBoxData, isBrawlBoxAttributes, isRewardTypePin, rarityNames} from "../modules/brawlbox";
 import {formatCollectionData, getShopItems, refreshFeaturedItem} from "../modules/pins";
 import {MAP_CYCLE_HOURS, mod, realToTime} from "../modules/maps";
-import {getRequiredPoints} from "../modules/accessories";
 import {
     databaseErrorHandler, 
     parseBrawlers, 
@@ -112,8 +111,10 @@ router.post<{}, {}, TokenReqBody>("/resources", databaseErrorHandler<TokenReqBod
     if (username !== ""){
         const results = await getResources({username: username});
 
-        const level = results[0].level;
-        const requiredPoints = getRequiredPoints(level);
+        //const level = results[0].level;
+        //const requiredPoints = getRequiredPoints(level);
+        const level = 1;
+        const requiredPoints = 1;
         let points = results[0].points;
 
         if (requiredPoints >= 1){
@@ -123,7 +124,7 @@ router.post<{}, {}, TokenReqBody>("/resources", databaseErrorHandler<TokenReqBod
         let collection: CollectionData;
         let wildCards: number[] = [];
         try{
-            collection = formatCollectionData(parseBrawlers(results[0].brawlers), parseStringArray(results[0].accessories), level);
+            collection = formatCollectionData(parseBrawlers(results[0].brawlers), parseStringArray(results[0].accessories));
             wildCards = parseNumberArray(results[0].wild_card_pins);
         } catch (error){
             res.status(500).send("Collection data could not be loaded.");
@@ -195,7 +196,7 @@ router.post<{}, {}, TokenReqBody>("/collection", databaseErrorHandler<TokenReqBo
             return;
         }
 
-        const collection = formatCollectionData(collectionData, userAccessories, results[0].level);
+        const collection = formatCollectionData(collectionData, userAccessories);
         res.json(collection);
     } else{
         res.status(401).send("Invalid token.");
@@ -258,22 +259,20 @@ router.post<{}, {}, BrawlBoxReqBody>("/brawlbox", databaseErrorHandler<BrawlBoxR
             tokens: results[0].tokens,
             token_doubler: results[0].token_doubler,
             coins: results[0].coins,
-            trade_credits: results[0].trade_credits,
-            accessories: []
+            trade_credits: results[0].trade_credits
         };
 
         try{
             resources.brawlers = parseBrawlers(results[0].brawlers);
             resources.avatars = parseStringArray(results[0].avatars);
             resources.wild_card_pins = parseNumberArray(results[0].wild_card_pins);
-            resources.accessories = parseStringArray(results[0].accessories);
         } catch (error){
             res.status(500).send("Collection data could not be loaded.");
             return;
         }
 
         //const BUL = performance.now();
-        const brawlBoxContents = brawlBox(dropChancesConverted, boxType, resources, results[0].level);
+        const brawlBoxContents = brawlBox(dropChancesConverted, boxType, resources);
         //const EDGRISBAD = (performance.now() - BUL);
         //console.log("YOUR PROGRAM IS",EDGRISBAD.toString(),"TIMES WORSE THAN E D G R");
 
@@ -288,7 +287,6 @@ router.post<{}, {}, BrawlBoxReqBody>("/brawlbox", databaseErrorHandler<BrawlBoxR
             brawlers: stringifyBrawlers(resources.brawlers),
             avatars: JSON.stringify(resources.avatars),
             wild_card_pins: JSON.stringify(resources.wild_card_pins),
-            accessories: JSON.stringify(resources.accessories),
             tokens: resources.tokens,
             token_doubler: resources.token_doubler,
             coins: resources.coins,
@@ -327,17 +325,18 @@ router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(asyn
         let userAvatars: DatabaseAvatars;
         let userThemes: DatabaseThemes;
         let userScenes: DatabaseScenes;
-        let userAccessories: DatabaseAccessories;
+        //let userAccessories: DatabaseAccessories;
         let userCoins = results[0].coins;
         let featuredItem = results[0].featured_item;
         let userTradeCredits = results[0].trade_credits;
-        let level = results[0].level;
+        //let level = results[0].level;
+        let level = 1;
         try{
             userBrawlers = parseBrawlers(results[0].brawlers);
             userAvatars = parseStringArray(results[0].avatars);
             userThemes = parseStringArray(results[0].themes);
             userScenes = parseStringArray(results[0].scenes);
-            userAccessories = parseStringArray(results[0].accessories);
+            //userAccessories = parseStringArray(results[0].accessories);
         } catch (error){
             res.status(500).send("Collection data could not be loaded.");
             return;
@@ -408,8 +407,7 @@ router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(asyn
                 brawlers: userBrawlers,
                 avatars: userAvatars,
                 themes: userThemes,
-                scenes: userScenes,
-                accessories: userAccessories
+                scenes: userScenes
             },
             level,
             featuredItem,
@@ -448,9 +446,6 @@ router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(asyn
                         itemPreview.displayName = sceneMap.get(sceneName)!;
                         itemPreview.image = SCENE_IMAGE_DIR + sceneName + "_preview" + IMAGE_FILE_EXTENSION;
                     }
-                } else if (thisItemType === "accessory"){
-                    // Accessory items already have their image paths added
-                    itemPreview.image = value.image;
                 } else if (thisItemType === "featuredPin"){
                     // Featured pin already has the image extension since it is stored in brawlers data
                     itemPreview.image = PIN_IMAGE_DIR + value.image;
@@ -532,18 +527,14 @@ router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(asyn
                 token_doubler: 0,
                 coins: userCoins,
                 trade_credits: userTradeCredits,
-                accessories: []
             }
             //buyItemResult = brawlBox(dropChancesConverted, "newBrawler", allSkins, tempResourceObject, IMAGE_FILE_EXTENSION);
-            buyItemResult = brawlBox(dropChancesConverted, "newBrawler", tempResourceObject, 1);
+            buyItemResult = brawlBox(dropChancesConverted, "newBrawler", tempResourceObject);
 
             if (buyItemResult.length > 0){
                 userItemInventory = 1;
                 // The "stringify" function already sorts the brawlers' names
             }
-        } else if (itemData.itemType === "accessory"){
-            userAccessories.push(itemData.extraData);
-            userItemInventory = 1;
         } else if (itemData.itemType === "featuredPin"){
             // The extraData of the itemData has already been checked when getting shop items
             // so this is guaranteed to be a valid brawler and pin name. It just has to check
@@ -580,7 +571,6 @@ router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(asyn
             avatars: JSON.stringify(userAvatars),
             themes: JSON.stringify(userThemes),
             scenes: JSON.stringify(userScenes),
-            accessories: JSON.stringify(userAccessories),
             featured_item: featuredItem,
             username: username
         });

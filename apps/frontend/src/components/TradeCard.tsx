@@ -34,7 +34,6 @@ export default function TradeCard({ data }: {data: TradeData}) {
         .then((res) => {
             setReceived(res.data)
             setCompletion(true)
-            console.log(res.data)
         })
         .catch(function(err){
             toast({title: 'Error', description: err.response.data, status: 'error', duration: 5000, isClosable: true})

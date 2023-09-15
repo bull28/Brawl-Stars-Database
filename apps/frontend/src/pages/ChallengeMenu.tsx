@@ -82,9 +82,10 @@ export default function ChallengeMenu(){
     useEffect(() => {
         const x = getToken();
         if (x !== void 0 && x !== ""){
-            AuthRequest<UnitData>("/challenge/unit", {setState: setUnitList});
-            AuthRequest<ChallengeData>("/challenge/all", {setState: setChallengeList});
-            AuthRequest<ChallengeWins>("/challenge/progress", {setState: setProgress});
+            // All challenge-related endpoints are now on the same port as the socket.io server
+            AuthRequest<UnitData>("/challenge/unit", {setState: setUnitList, server: server});
+            AuthRequest<ChallengeData>("/challenge/all", {setState: setChallengeList, server: server});
+            AuthRequest<ChallengeWins>("/challenge/progress", {setState: setProgress, server: server});
             AuthRequest<UserInfoProps>("/resources", {setState: setResources});
             setToken(x);
         }

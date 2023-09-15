@@ -97,7 +97,7 @@ export default function Collection() {
                                         <Text fontSize={'lg'} className={'heading-lg'} color={'white'}>{data.pinCopies}</Text>
                                     }
                                     <Text className={'heading-md'} fontSize={'md'}>Accessories Unlocked:</Text>
-                                    {(data.unlockedAccessories >= data.totalAccessories) ?
+                                    {(data.unlockedAccessories >= data.totalAccessories && data.unlockedAccessories > 0) ?
                                         <MovingText title={`${data.unlockedAccessories}/${data.totalAccessories}`} color1="#fdf542" color2="#ff9005" fontSize={'lg'}/>
                                         :
                                         <Text fontSize={'lg'} className={'heading-lg'} color={'white'}>{`${data.unlockedAccessories}/${data.totalAccessories}`}</Text>

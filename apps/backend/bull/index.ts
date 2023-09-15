@@ -11,23 +11,14 @@ import account from "./routes/account";
 import collection from "./routes/collection";
 import tradesview from "./routes/tradesview";
 import tradesmodify from "./routes/tradesmodify";
-import challenge from "./routes/challenge";
-
-import server from "./server";
 
 const app = express();
 let port = 6969;
-let serverPort = 11600;
 
 if (typeof process.env["PORT"] !== "undefined"){
     const portString = process.env["PORT"];
     if (!isNaN(+portString)){
         port = parseInt(portString);
-    }
-} if (typeof process.env["SERVER_PORT"] !== "undefined"){
-    const portString = process.env["SERVER_PORT"];
-    if (!isNaN(+portString)){
-        serverPort = parseInt(portString);
     }
 }
 
@@ -53,7 +44,6 @@ app.use("/", account);
 app.use("/", collection);
 app.use("/trade", tradesview);
 app.use("/trade", tradesmodify);
-app.use("/challenge", challenge);
 
 // Error handler
 app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
@@ -66,5 +56,3 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 });
 
 app.listen(port, () => console.log(port));
-
-server.listen(serverPort, () => console.log(serverPort));

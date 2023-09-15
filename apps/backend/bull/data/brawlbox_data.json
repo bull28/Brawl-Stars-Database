@@ -7,7 +7,7 @@
             {"types": ["coins", "tokenDoubler"], "properties": ["minAmount", "maxAmount"]},
             {"types": ["wildcard", "brawler", "brawlerLowRarity"], "properties": ["raritypmf", "minraritypmf", "coinConversion"]},
             {"types": ["pin", "pinLowRarity", "pinHighRarity", "pinNoDupes"], "properties": ["raritypmf", "minraritypmf", "newPinWeight", "coinConversion"]},
-            {"types": ["tradeCredits", "avatar", "accessory"], "properties": ["pmfobject"]}
+            {"types": ["tradeCredits", "avatar"], "properties": ["pmfobject"]}
         ]
     },
     "boxes": {
@@ -15,21 +15,21 @@
             "displayName": "Brawl Box",
             "cost": 100,
             "image": "brawlbox_default",
-            "description": "Contains a variety of items including brawlers, pins, bonus items, and accessories.",
+            "description": "Contains a variety of items including brawlers, pins, and bonus items.",
             "dropsDescription": [
                 "Coins: 120 - 180",
                 "Draw 1: Pin: 2/3, Brawler: 1/3",
                 "Draw 2: Pin: 1/2, Wild Card Pin: 1/4, Bonus Item: 1/4",
-                "Draw 3: Pin: 2/5, Accessory: 1/10, Nothing: 1/2",
-                "Duplicate brawlers and accessories are converted to coins."
+                "Draw 3: Pin: 2/5, Nothing: 3/5",
+                "Duplicate brawlers are converted to coins."
             ],
             "draws": [
-                [0, 1, 0, 0, 0, 0, 0],
-                [0, 0, 2, 0, 1, 0, 0],
-                [0, 0, 2, 1, 0, 1, 0],
-                [5, 0, 4, 0, 0, 0, 1]
+                [0, 1, 0, 0, 0, 0],
+                [0, 0, 2, 0, 1, 0],
+                [0, 0, 2, 1, 0, 1],
+                [3, 0, 2, 0, 0, 0]
             ],
-            "rewardTypeValues": ["nothing", "coins", "pin", "wildcard", "brawler", "bonus", "accessory"]
+            "rewardTypeValues": ["nothing", "coins", "pin", "wildcard", "brawler", "bonus"]
         },
         "pinPack": {
             "displayName": "Pin Pack",
@@ -84,19 +84,16 @@
             "displayName": "Not a Brawl Box",
             "cost": 200,
             "image": "brawlbox_crate",
-            "description": "Contains coins, bonus items, and accessories. Has a higher chance to give bonus items and accessories.",
+            "description": "Contains coins and bonus items. Has a higher chance to give bonus items.",
             "dropsDescription": [
                 "Coins: 120 - 180",
-                "Draw 1: Bonus Item: 1/2, Nothing: 1/2",
-                "Draw 2: Accessory: 1/4, Nothing: 3/4",
-                "Duplicate accessories are converted to coins."
+                "Draw 1: Bonus Item: 1/2, Nothing: 1/2"
             ],
             "draws": [
-                [0, 1, 0, 0],
-                [1, 0, 1, 0],
-                [3, 0, 0, 1]
+                [0, 1, 0],
+                [1, 0, 1]
             ],
-            "rewardTypeValues": ["nothing", "coins", "bonus", "accessory"]
+            "rewardTypeValues": ["nothing", "coins", "bonus"]
         },
         "newBrawler": {
             "cost": 0,
@@ -185,24 +182,6 @@
                 {"value": "viking_bull", "weight": 3},
                 {"value": "angry_darryl", "weight": 2},
                 {"value": "STOMPER", "weight": 1}
-            ]
-        },
-        "accessory": {
-            "nothingWeight": 0,
-            "nothingCoinConversion": 5,
-            "pmfobject": [
-                {"value": "jacky", "weight": 50, "minWeight": 5, "coinConversion": 360},
-                {"value": "stu", "weight": 50, "minWeight": 5, "coinConversion": 360},
-                {"value": "janet", "weight": 40, "minWeight": 4, "coinConversion": 450},
-                {"value": "leon", "weight": 30, "minWeight": 4, "coinConversion": 450},
-                {"value": "sam", "weight": 20, "minWeight": 3, "coinConversion": 600},
-                {"value": "colt", "weight": 16, "minWeight": 2, "coinConversion": 750},
-                {"value": "barley", "weight": 12, "minWeight": 2, "coinConversion": 750},
-                {"value": "buster", "weight": 10, "minWeight": 1, "coinConversion": 1200},
-                {"value": "fang", "weight": 8, "minWeight": 1, "coinConversion": 1200},
-                {"value": "colette", "weight": 6, "minWeight": 1, "coinConversion": 1200},
-                {"value": "bea", "weight": 5, "minWeight": 1, "coinConversion": 1200},
-                {"value": "frank", "weight": 3, "minWeight": 1, "coinConversion": 1200}
             ]
         }
     }
