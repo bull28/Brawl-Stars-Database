@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "lib": ["es2022", "dom"],
+        "outDir": "build",
+        "rootDir": "darryl",
+        "strict": true,
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "esModuleInterop": true,
+        "removeComments": true,
+        "resolveJsonModule": true,
+        "exactOptionalPropertyTypes": true,
+        "noPropertyAccessFromIndexSignature": true
+    },
+    "include": [
+        "./darryl/**/*"
+    ]
+}
