@@ -404,7 +404,7 @@ export default function Trade() {
             </SimpleGrid>
         </Flex>
 
-        <Flex justifyContent={'right'} alignItems={'center'} w={'95%'} mb={5}>
+        <Flex justifyContent={'right'} alignItems={'center'} w={'95%'} mb={10}>
             <IconButton aria-label='previous page' as={ChevronLeftIcon} onClick={previousPage}/>
             <Flex w={'50px'} bgColor={'gray.200'} h={'100%'} borderRadius={'lg'} justifyContent={'center'} alignItems={'center'}>
                 <Text fontSize={'2xl'}  className={'heading-2xl'}>{filter.page}</Text>

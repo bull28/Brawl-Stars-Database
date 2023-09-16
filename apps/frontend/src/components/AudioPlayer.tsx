@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
-import { Flex, IconButton } from "@chakra-ui/react";
-import {HiMusicNote, HiOutlineRefresh} from "react-icons/hi";
+import { Flex, IconButton, Link } from "@chakra-ui/react";
+import {HiMusicNote, HiOutlineRefresh, HiHome} from "react-icons/hi";
 import AuthRequest from "../helpers/AuthRequest";
 import {CosmeticData} from "../types/CosmeticData";
 import cdn from "../helpers/CDNRoute";
@@ -39,7 +39,10 @@ export default function AudioPlayer() {
     }, [audio]);
     
     return (
-        <Flex pos={"fixed"} right={0} bottom={0}>
+        <Flex pos={["relative", "relative", "fixed"]} right={0} bottom={0} float={["right", "right", "none"]}>
+            <Link href={"/"}>
+                <IconButton icon={<HiHome size={"100%"}/>} bgColor={'blue.500'} p={1} aria-label="play/pause music"/>
+            </Link>
             <IconButton onClick={toggle} icon={<HiMusicNote size={"100%"}/>} bgColor={'blue.500'} p={1} aria-label="play/pause music"/>
             <IconButton onClick={() => {AuthRequest<CosmeticData>("/cosmetic", {setState: setAudioSrc});}} icon={<HiOutlineRefresh size={"100%"}/>} bgColor={'blue.500'} p={1} aria-label="play/pause music"/>
         </Flex>
