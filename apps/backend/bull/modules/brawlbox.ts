@@ -24,31 +24,31 @@ type UnknownRewardType = RewardTypeCurrency | RewardTypePin | RewardTypeBrawler 
 export function isBrawlBoxAttributes(object: UnknownBoxType): object is BrawlBoxAttributes{
     const values = object as BrawlBoxAttributes;
     return (
-        typeof values.displayName !== "undefined" && typeof values.description !== "undefined" &&
-        typeof values.dropsDescription !== "undefined"
+        values.displayName !== void 0 && values.description !== void 0 &&
+        values.dropsDescription !== void 0
     );
 }
 
 function isRewardTypeCurrency(object: UnknownRewardType): object is RewardTypeCurrency{
     const rewards = object as RewardTypeCurrency;
     return (
-        typeof rewards.minAmount !== "undefined" && typeof rewards.maxAmount !== "undefined"
+        rewards.minAmount !== void 0 && rewards.maxAmount !== void 0
     );
 }
 
 export function isRewardTypePin(object: UnknownRewardType): object is RewardTypePin{
     const rewards = object as RewardTypePin;
     return (
-        typeof rewards.raritypmf !== "undefined" && typeof rewards.minraritypmf !== "undefined" &&
-        typeof rewards.newPinWeight !== "undefined" && typeof rewards.coinConversion !== "undefined"
+        rewards.raritypmf !== void 0 && rewards.minraritypmf !== void 0 &&
+        rewards.newPinWeight !== void 0 && rewards.coinConversion !== void 0
     );
 }
 
 function isRewardTypeBrawler(object: UnknownRewardType): object is RewardTypeBrawler{
     const rewards = object as RewardTypeBrawler;
     return (
-        typeof rewards.raritypmf !== "undefined" && typeof rewards.minraritypmf !== "undefined" &&
-        typeof rewards.coinConversion !== "undefined"
+        rewards.raritypmf !== void 0 && rewards.minraritypmf !== void 0 &&
+        rewards.coinConversion !== void 0
     );
 }
 
@@ -88,7 +88,7 @@ function isRewardTypeBonusString(object: UnknownRewardType): object is RewardTyp
  * @returns brawl box data
  */
 export function convertBrawlBoxData(): BrawlBoxData{
-    let brawlBox: BrawlBoxData = {
+    const brawlBox: BrawlBoxData = {
         boxes: new Map<string, UnknownBoxType>(),
         rewardTypes: new Map<string, UnknownRewardType>()
     }
@@ -127,7 +127,6 @@ function RNG(options: number[]): number{
 
     let index = 0;
     let found = false;
-    
     
     for (let x = 0; x < options.length; x++){
         if (found === false){
@@ -211,7 +210,7 @@ function getDuplicateColor(oldColorString: string, factor: number): string{
  * @returns array of the items the user received
  */
 export default function brawlBox(dropChances: BrawlBoxData, boxType: string, resources: UserResources): BrawlBoxDrop[]{
-    if (typeof resources === "undefined"){
+    if (resources === void 0){
         return [];
     }
 
@@ -257,7 +256,7 @@ export default function brawlBox(dropChances: BrawlBoxData, boxType: string, res
     let selections: string[] = [];
     for (let x of draws){
         let thisReward = rewardTypeValues[RNG(x)];
-        if (typeof thisReward !== "undefined"){
+        if (thisReward !== void 0){
             selections.push(thisReward);
         }
     }
@@ -277,25 +276,25 @@ export default function brawlBox(dropChances: BrawlBoxData, boxType: string, res
             
             const rewardType = dropChances.rewardTypes.get(x);
             if (x === "coins"){
-                if (typeof rewardType !== "undefined" && isRewardTypeCurrency(rewardType)){
+                if (rewardType !== void 0 && isRewardTypeCurrency(rewardType)){
                     drop = selectCoins(rewardType, resources);
                 }
             } else if (x === "pin" || x === "pinLowRarity" || x === "pinHighRarity" || x === "pinNoDupes"){
-                if (typeof rewardType !== "undefined" && isRewardTypePin(rewardType)){
+                if (rewardType !== void 0 && isRewardTypePin(rewardType)){
                     drop = selectPin(rewardType, resources);
                 }
             } else if (x === "wildcard"){
                 // Wild card pins use the brawler reward type
-                if (typeof rewardType !== "undefined" && isRewardTypeBrawler(rewardType)){
+                if (rewardType !== void 0 && isRewardTypeBrawler(rewardType)){
                     drop = selectWildCardPin(rewardType, resources);
                 }
             } else if (x === "brawler" || x === "brawlerLowRarity" || x === "brawlerHighRarity"){
-                if (typeof rewardType !== "undefined" && isRewardTypeBrawler(rewardType)){
+                if (rewardType !== void 0 && isRewardTypeBrawler(rewardType)){
                     drop = selectBrawler(rewardType, resources);
                 }
             } else if (x === "bonus"){
                 const bonusBox = dropChances.boxes.get(x);
-                if (typeof bonusBox !== "undefined"){
+                if (bonusBox !== void 0){
                     drop = selectBonus(bonusBox, dropChances.rewardTypes, resources);
                 }
             }
@@ -400,8 +399,7 @@ function selectPin(pinDropChances: RewardTypePin, resources: UserResources): Bra
                         // chosen, the link to the pin object can be easily found without storing the
                         // entire pin data in an array.
 
-                        //availablePins.push([brawlerIndex, pinIndex]);
-                        if (typeof pinAmount !== "undefined" && pinAmount > 0){
+                        if (pinAmount !== void 0 && pinAmount > 0){
                             duplicatePins[pinRarity].push([brawlerIndex, pinIndex]);
                         } else{
                             pinsByRarity[pinRarity].push([brawlerIndex, pinIndex]);
@@ -505,7 +503,7 @@ function selectPin(pinDropChances: RewardTypePin, resources: UserResources): Bra
         // data has not been updated to include the new pins. Because new pins are added automatically here, an
         // update to every user in the database when a new pin gets released is not necessary.
         let brawlerInCollection = userCollection[brawlerObject.name];
-        if (typeof brawlerInCollection !== "undefined"){
+        if (brawlerInCollection !== void 0){
             if (brawlerInCollection.hasOwnProperty(pinObject.name) === false){
                 brawlerInCollection[pinObject.name] = 1;
             } else{
@@ -569,7 +567,7 @@ function selectWildCardPin(wildCardDropChances: RewardTypeBrawler, resources: Us
         // Instead of needing to get the rarity colors by looking through
         // the allSkins array, get them from the rarityNames map.
         const rarityData = rarityNames.get(selectedRarity);
-        if (typeof rarityData !== "undefined"){
+        if (rarityData !== void 0){
             rarityName = rarityData.name;
             rarityColor = rarityData.color;
         }
@@ -683,11 +681,11 @@ function selectBonus(allBonusDrops: HiddenBrawlBoxAttributes, rewardTypes: Brawl
     let bonuspmf = [0, 0, 0];
 
     const avatarDropChances = rewardTypes.get("avatar");
-    if (typeof avatarDropChances === "undefined" || !isRewardTypeBonusString(avatarDropChances)){
+    if (avatarDropChances === void 0 || !isRewardTypeBonusString(avatarDropChances)){
         return result;
     }
     const specialAvatars = avatarDropChances.pmfobject;// list of all avatars
-    if (typeof specialAvatars === "undefined"){
+    if (specialAvatars === void 0){
         return result;
     }
 
@@ -734,7 +732,7 @@ function selectBonus(allBonusDrops: HiddenBrawlBoxAttributes, rewardTypes: Brawl
         //const tradeCreditValues = [1, 2, 3, 5, 10, 69];
         
         const rewardDropChances = rewardTypes.get(allBonusDrops.rewardTypeValues[0]);
-        if (typeof rewardDropChances !== "undefined" && isRewardTypeBonusNumber(rewardDropChances)){
+        if (rewardDropChances !== void 0 && isRewardTypeBonusNumber(rewardDropChances)){
             const tradeCreditDrops = rewardDropChances.pmfobject;
 
             let selectedIndex = RNG(tradeCreditDrops.map((value) => value.weight));
@@ -754,7 +752,7 @@ function selectBonus(allBonusDrops: HiddenBrawlBoxAttributes, rewardTypes: Brawl
     // Token doubler
     else if (selection === "tokenDoubler"){
         const rewardDropChances = rewardTypes.get(allBonusDrops.rewardTypeValues[1]);
-        if (typeof rewardDropChances !== "undefined" && isRewardTypeCurrency(rewardDropChances)){
+        if (rewardDropChances !== void 0 && isRewardTypeCurrency(rewardDropChances)){
             const amounts = rewardDropChances;
             let rewardAmount = 0;
             if (amounts.minAmount === amounts.maxAmount){

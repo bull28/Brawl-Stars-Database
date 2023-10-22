@@ -38,7 +38,7 @@ router.get("/gamemode/:gamemode", (req, res) => {
     const gameMode = req.params.gamemode;
 
     const gameModeData = getModeData(events, gameMode);
-    if (typeof gameModeData === "undefined"){
+    if (gameModeData === void 0){
         res.status(404).send("Game mode not found.");
         return;
     }
@@ -51,7 +51,7 @@ router.get("/map/:map", (req, res) => {
     const map = req.params.map;
     
     const mapData = getMapData(events, map, realToTime(Date.now()));
-    if (typeof mapData === "undefined"){
+    if (mapData === void 0){
         res.status(404).send("Map not found.");
         return;
     }

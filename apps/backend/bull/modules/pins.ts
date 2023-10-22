@@ -103,9 +103,9 @@ export function formatCollectionData(userCollection: DatabaseBrawlers, userAcces
                 // If the brawler is unlocked, check to see if the name of the current
                 // pin appears in the corresponding value. If it appears, the current
                 // pin is unlocked.
-                if (typeof pinData !== "undefined"){
+                if (pinData !== void 0){
                     const pinCount = pinData[pin.name];
-                    if (typeof pinCount !== "undefined"){
+                    if (pinCount !== void 0){
                         if (pinCount > 0){
                             
                             unlockedPins++;
@@ -183,7 +183,7 @@ export function getAvatars(allAvatars: AvatarList, userCollection: DatabaseBrawl
     let avatars: DatabaseAvatars = [];
     let unlockedBrawlers: string[] = [];
 
-    if (typeof allAvatars.free === "undefined" || typeof allAvatars.special === "undefined"){
+    if (allAvatars.free === void 0 || allAvatars.special === void 0){
         return avatars;
     }
 
@@ -211,7 +211,7 @@ export function getAvatars(allAvatars: AvatarList, userCollection: DatabaseBrawl
         // database, only the file name
         const filePaths = avatar.split("/");
         const avatarName = filePaths[filePaths.length - 1].split(".")[0];
-        if (typeof avatarName !== "undefined" && userAvatars.includes(avatarName) === true){
+        if (avatarName !== void 0 && userAvatars.includes(avatarName) === true){
             avatars.push(AVATAR_IMAGE_DIR + avatar);
         }
 
@@ -243,7 +243,7 @@ export function getThemes(allThemes: ThemeList, allScenes: SceneList, userThemes
     let themes: {[k: string]: Map<string, string>;} = {};
     let scenes: {[k: string]: ThemeScenePreview} = {};
 
-    if (typeof allThemes.free === "undefined" && typeof allThemes.special === "undefined"){
+    if (allThemes.free === void 0 && allThemes.special === void 0){
         return {
             background: [],
             icon: [],
@@ -293,12 +293,7 @@ export function getThemes(allThemes: ThemeList, allScenes: SceneList, userThemes
     // Load all the scene names from the map first
     sceneMap.forEach((value, key) => {
         if (userScenes.includes(key) === true || key === "default"){
-            scenes[key] = {
-                displayName: value,
-                path: "",
-                preview: "",
-                background: ""
-            };
+            scenes[key] = {displayName: value, path: "", preview: "", background: ""};
         }
     });
 
@@ -335,27 +330,22 @@ export function getThemes(allThemes: ThemeList, allScenes: SceneList, userThemes
     }
 
     // The data is required to be grouped by file type instead of theme name
-    let themesResult: ThemeData = {
-        "background": [],
-        "icon": [],
-        "music": [],
-        "scene": []
-    };
+    let themesResult: ThemeData = {"background": [], "icon": [], "music": [], "scene": []};
 
     for (let key in themes){
         const value = themes[key];
         const themeName = themeMap.get(key);
-        if (typeof themeName !== "undefined"){
+        if (themeName !== void 0){
 
             const backgroundPath = value.get("background");
             const iconPath = value.get("icon");
             const iconPreview = value.get("selectpreview");
             const musicPath = value.get("music");
 
-            if (typeof backgroundPath !== "undefined" &&
-            typeof iconPath !== "undefined" &&
-            typeof iconPreview !== "undefined" &&
-            typeof musicPath !== "undefined"){
+            if (backgroundPath !== void 0 &&
+            iconPath !== void 0 &&
+            iconPreview !== void 0 &&
+            musicPath !== void 0){
                 themesResult.background.push({
                     displayName: themeName,
                     path: backgroundPath
@@ -391,12 +381,7 @@ export function getThemes(allThemes: ThemeList, allScenes: SceneList, userThemes
  * @returns object containing file names of the cosmetics
  */
 export function getCosmetics(allThemes: ThemeList, allScenes: SceneList, cosmeticsData: DatabaseCosmetics): DatabaseCosmetics{
-    let setCosmetics: DatabaseCosmetics = {
-        background: "",
-        icon: "",
-        music: "",
-        scene: ""
-    };
+    let setCosmetics: DatabaseCosmetics = {background: "", icon: "", music: "", scene: ""};
 
     // First, get the list of all default cosmetics
     const defaultThemes = allThemes.free.filter((value) => value.includes("default_"));
@@ -430,12 +415,12 @@ export function getCosmetics(allThemes: ThemeList, allScenes: SceneList, cosmeti
                     result = allThemes.special.find((value) => value.includes(cosmeticsData[k]));
                 }
 
-                if (typeof result !== "undefined"){
+                if (result !== void 0){
                     setCosmetics[x] = THEME_IMAGE_DIR + result;
                 }
             } else if (x === "scene"){
                 const result = allScenes.find((value) => value.includes(cosmeticsData[k]));
-                if (typeof result !== "undefined"){
+                if (result !== void 0){
                     setCosmetics[x] = SCENE_IMAGE_DIR + result;
                 }
             }
@@ -602,7 +587,7 @@ export function refreshFeaturedItem(userCollection: DatabaseBrawlers): string{
                 for (let pinIndex = 0; pinIndex < brawler.pins.length; pinIndex++){
                     //const pinRarity = brawler.pins[pinIndex].rarity.value;
                     const pinAmount = userCollection[brawler.name][brawler.pins[pinIndex].name];
-                    if (typeof pinAmount !== "undefined" && pinAmount > 0){
+                    if (pinAmount !== void 0 && pinAmount > 0){
                         duplicatePins.push(brawler.name + "/" + brawler.pins[pinIndex].name);
                     } else{
                         newPins.push(brawler.name + "/" + brawler.pins[pinIndex].name);
@@ -736,11 +721,7 @@ function getAchievementItems(userAvatars: DatabaseAvatars, userThemes: DatabaseT
         themes.add("yellow_face");
     }
 
-    return {
-        avatars: avatars,
-        themes: themes,
-        scenes: scenes
-    };
+    return {avatars: avatars, themes: themes, scenes: scenes};
 }
 
 /**

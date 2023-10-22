@@ -31,7 +31,7 @@ router.get("/brawler/:brawler", (req, res) => {
     const brawlerName = req.params.brawler;
     
     const brawler = getBrawler(allSkins, brawlerName);
-    if (typeof brawler === "undefined"){
+    if (brawler === void 0){
         res.status(404).send("Brawler not found.");
         return;
     }
@@ -47,13 +47,13 @@ router.get("/skin/:brawler/:skin", (req, res) => {
     const skinName = req.params.skin;
 
     const brawler = getBrawler(allSkins, brawlerName);
-    if (typeof brawler === "undefined"){
+    if (brawler === void 0){
         res.status(404).send("Brawler or skin not found.");
         return;
     }
 
     const skin = getSkin(brawler, skinName);
-    if (typeof skin === "undefined"){
+    if (skin === void 0){
         res.status(404).send("Skin not found.");
         return;
     }

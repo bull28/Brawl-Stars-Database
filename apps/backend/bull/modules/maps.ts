@@ -473,7 +473,7 @@ export function getMapData(eventList: EventSlot[], mapName: string, currentTime:
             if (mapSearchResult >= 0){
                 mapInThisSlot = eventList[x].gameModes[y].getMap(mapSearchResult);
 
-                if (typeof mapInThisSlot !== "undefined"){
+                if (mapInThisSlot !== void 0){
                     const mapSlotData: MapData = {
                         name: mapInThisSlot.name,
                         displayName: mapInThisSlot.displayName,

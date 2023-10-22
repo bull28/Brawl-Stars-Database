@@ -110,7 +110,7 @@ function tradeCostMultiplier(amount: number): number{
 export function getTradeCost(offerPins: TradePinValid[], requestPins: TradePinValid[]): number{
     let totalTradeCost = 0.0;
 
-    if (typeof offerPins === "undefined" || typeof requestPins === "undefined"){
+    if (offerPins === void 0 || requestPins === void 0){
         return totalTradeCost;
     }
 

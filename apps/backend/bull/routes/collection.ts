@@ -108,68 +108,69 @@ router.post<{}, {}, TokenReqBody>("/resources", databaseErrorHandler<TokenReqBod
     }
     const username = validateToken(req.body.token);
 
-    if (username !== ""){
-        const results = await getResources({username: username});
-
-        //const level = results[0].level;
-        //const requiredPoints = getRequiredPoints(level);
-        const level = 1;
-        const requiredPoints = 1;
-        let points = results[0].points;
-
-        if (requiredPoints >= 1){
-            points = Math.min(points, requiredPoints - 1);
-        }
-
-        let collection: CollectionData;
-        let wildCards: number[] = [];
-        try{
-            collection = formatCollectionData(parseBrawlers(results[0].brawlers), parseStringArray(results[0].accessories));
-            wildCards = parseNumberArray(results[0].wild_card_pins);
-        } catch (error){
-            res.status(500).send("Collection data could not be loaded.");
-            return;
-        }
-
-        let wildCardPins: WildCardData[] = [];
-
-        for (let x = 0; x < wildCards.length; x++){
-            const rarity = rarityNames.get(x);
-            if (typeof rarity !== "undefined"){
-                wildCardPins.push({
-                    rarityName: rarity.name,
-                    rarityColor: rarity.color,
-                    amount: wildCards[x]
-                });
-            } else{
-                wildCardPins.push({
-                    rarityName: "",
-                    rarityColor: "#000000",
-                    amount: wildCards[x]
-                });
-            }
-        }
-
-        // If there are no pins of a specific rarity, the rarity name in wildCardPins
-        // will be empty. This is fine because wild card pins of that rarity have no use
-        // since there are no pins of that rarity that exist.
-        
-        res.json({
-            username: results[0].username,
-            avatar: AVATAR_IMAGE_DIR + results[0].active_avatar + IMAGE_FILE_EXTENSION,
-            avatarColor: collection.avatarColor,
-            tokens: results[0].tokens,
-            tokenDoubler: results[0].token_doubler,
-            coins: results[0].coins,
-            level: level,
-            points: points,
-            upgradePoints: requiredPoints,
-            tradeCredits: results[0].trade_credits,
-            wildCardPins: wildCardPins
-        });
-    } else{
+    if (username === ""){
         res.status(401).send("Invalid token.");
+        return;
     }
+
+    const results = await getResources({username: username});
+
+    //const level = results[0].level;
+    //const requiredPoints = getRequiredPoints(level);
+    const level = 1;
+    const requiredPoints = 1;
+    let points = results[0].points;
+
+    if (requiredPoints >= 1){
+        points = Math.min(points, requiredPoints - 1);
+    }
+
+    let collection: CollectionData;
+    let wildCards: number[] = [];
+    try{
+        collection = formatCollectionData(parseBrawlers(results[0].brawlers), parseStringArray(results[0].accessories));
+        wildCards = parseNumberArray(results[0].wild_card_pins);
+    } catch (error){
+        res.status(500).send("Collection data could not be loaded.");
+        return;
+    }
+
+    let wildCardPins: WildCardData[] = [];
+
+    for (let x = 0; x < wildCards.length; x++){
+        const rarity = rarityNames.get(x);
+        if (rarity !== void 0){
+            wildCardPins.push({
+                rarityName: rarity.name,
+                rarityColor: rarity.color,
+                amount: wildCards[x]
+            });
+        } else{
+            wildCardPins.push({
+                rarityName: "",
+                rarityColor: "#000000",
+                amount: wildCards[x]
+            });
+        }
+    }
+
+    // If there are no pins of a specific rarity, the rarity name in wildCardPins
+    // will be empty. This is fine because wild card pins of that rarity have no use
+    // since there are no pins of that rarity that exist.
+    
+    res.json({
+        username: results[0].username,
+        avatar: AVATAR_IMAGE_DIR + results[0].active_avatar + IMAGE_FILE_EXTENSION,
+        avatarColor: collection.avatarColor,
+        tokens: results[0].tokens,
+        tokenDoubler: results[0].token_doubler,
+        coins: results[0].coins,
+        level: level,
+        points: points,
+        upgradePoints: requiredPoints,
+        tradeCredits: results[0].trade_credits,
+        wildCardPins: wildCardPins
+    });
 }));
 
 // Get a user's collection of brawlers and pins
@@ -180,27 +181,28 @@ router.post<{}, {}, TokenReqBody>("/collection", databaseErrorHandler<TokenReqBo
     }
     const username = validateToken(req.body.token);
 
-    if (username !== ""){
-        // beforeUpdate contains at least as much information as necessary here
-        // This is used to avoid creating another database query function that is
-        // very similar to an existing one.
-        const results = await beforeUpdate({username: username});
-
-        let collectionData: DatabaseBrawlers;
-        let userAccessories: DatabaseAccessories;
-        try{
-            collectionData = parseBrawlers(results[0].brawlers);
-            userAccessories = parseStringArray(results[0].accessories);
-        } catch (error){
-            res.status(500).send("Collection data could not be loaded.");
-            return;
-        }
-
-        const collection = formatCollectionData(collectionData, userAccessories);
-        res.json(collection);
-    } else{
+    if (username === ""){
         res.status(401).send("Invalid token.");
+        return;
     }
+
+    // beforeUpdate contains at least as much information as necessary here
+    // This is used to avoid creating another database query function that is
+    // very similar to an existing one.
+    const results = await beforeUpdate({username: username});
+
+    let collectionData: DatabaseBrawlers;
+    let userAccessories: DatabaseAccessories;
+    try{
+        collectionData = parseBrawlers(results[0].brawlers);
+        userAccessories = parseStringArray(results[0].accessories);
+    } catch (error){
+        res.status(500).send("Collection data could not be loaded.");
+        return;
+    }
+
+    const collection = formatCollectionData(collectionData, userAccessories);
+    res.json(collection);
 }));
 
 // Opens a brawl box and returns the results to the user
@@ -241,66 +243,67 @@ router.post<{}, {}, BrawlBoxReqBody>("/brawlbox", databaseErrorHandler<BrawlBoxR
     }
     // From here on, the brawl box type is guaranteed to exist in the map
 
-    if (username !== ""){
-        // getResources contains at least enough information as necessary here
-        const results = await getResources({username: username});
-        
-        // results.length === 0 checked
-
-        if (results[0].tokens < brawlBoxTypes.get(boxType)!.cost){
-            res.status(403).send("You cannot afford to open this Box!");
-            return;
-        }
-
-        let resources: UserResources = {
-            brawlers: {},
-            avatars: [],
-            wild_card_pins: [],
-            tokens: results[0].tokens,
-            token_doubler: results[0].token_doubler,
-            coins: results[0].coins,
-            trade_credits: results[0].trade_credits
-        };
-
-        try{
-            resources.brawlers = parseBrawlers(results[0].brawlers);
-            resources.avatars = parseStringArray(results[0].avatars);
-            resources.wild_card_pins = parseNumberArray(results[0].wild_card_pins);
-        } catch (error){
-            res.status(500).send("Collection data could not be loaded.");
-            return;
-        }
-
-        //const BUL = performance.now();
-        const brawlBoxContents = brawlBox(dropChancesConverted, boxType, resources);
-        //const EDGRISBAD = (performance.now() - BUL);
-        //console.log("YOUR PROGRAM IS",EDGRISBAD.toString(),"TIMES WORSE THAN E D G R");
-
-        if (brawlBoxContents.length === 0){
-            res.status(500).send("This Box contained a manufacturing defect.");
-            return;
-        }
-
-        // The "stringify" function already sorts the brawlers' names
-
-        const updateResults = await afterBrawlBox({
-            brawlers: stringifyBrawlers(resources.brawlers),
-            avatars: JSON.stringify(resources.avatars),
-            wild_card_pins: JSON.stringify(resources.wild_card_pins),
-            tokens: resources.tokens,
-            token_doubler: resources.token_doubler,
-            coins: resources.coins,
-            trade_credits: resources.trade_credits,
-            username: username
-        });
-
-        // updateResults.affectedRows === 0 checked
-
-        // brawl box contents already have image file paths added
-        res.json(brawlBoxContents);
-    } else{
+    if (username === ""){
         res.status(401).send("Invalid token.");
+        return;
     }
+
+    // getResources contains at least enough information as necessary here
+    const results = await getResources({username: username});
+    
+    // results.length === 0 checked
+
+    if (results[0].tokens < brawlBoxTypes.get(boxType)!.cost){
+        res.status(403).send("You cannot afford to open this Box!");
+        return;
+    }
+
+    let resources: UserResources = {
+        brawlers: {},
+        avatars: [],
+        wild_card_pins: [],
+        tokens: results[0].tokens,
+        token_doubler: results[0].token_doubler,
+        coins: results[0].coins,
+        trade_credits: results[0].trade_credits
+    };
+
+    try{
+        resources.brawlers = parseBrawlers(results[0].brawlers);
+        resources.avatars = parseStringArray(results[0].avatars);
+        resources.wild_card_pins = parseNumberArray(results[0].wild_card_pins);
+    } catch (error){
+        res.status(500).send("Collection data could not be loaded.");
+        return;
+    }
+
+    //const BUL = performance.now();
+    const brawlBoxContents = brawlBox(dropChancesConverted, boxType, resources);
+    //const EDGRISBAD = (performance.now() - BUL);
+    //console.log("YOUR PROGRAM IS",EDGRISBAD.toString(),"TIMES WORSE THAN E D G R");
+
+    if (brawlBoxContents.length === 0){
+        res.status(500).send("This Box contained a manufacturing defect.");
+        return;
+    }
+
+    // The "stringify" function already sorts the brawlers' names
+
+    const updateResults = await afterBrawlBox({
+        brawlers: stringifyBrawlers(resources.brawlers),
+        avatars: JSON.stringify(resources.avatars),
+        wild_card_pins: JSON.stringify(resources.wild_card_pins),
+        tokens: resources.tokens,
+        token_doubler: resources.token_doubler,
+        coins: resources.coins,
+        trade_credits: resources.trade_credits,
+        username: username
+    });
+
+    // updateResults.affectedRows === 0 checked
+
+    // brawl box contents already have image file paths added
+    res.json(brawlBoxContents);
 }));
 
 // View or buy item(s) from the (coins) shop
@@ -316,274 +319,268 @@ router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(asyn
 
     const username = validateToken(req.body.token);
 
-    if (username !== ""){
-        const results = await beforeShop({username: username});
+    if (username === ""){
+        res.status(401).send("Invalid token.");
+        return;
+    }
 
-        // results.length === 0 checked
+    const results = await beforeShop({username: username});
 
-        let userBrawlers: DatabaseBrawlers;
-        let userAvatars: DatabaseAvatars;
-        let userThemes: DatabaseThemes;
-        let userScenes: DatabaseScenes;
-        //let userAccessories: DatabaseAccessories;
-        let userCoins = results[0].coins;
-        let featuredItem = results[0].featured_item;
-        let userTradeCredits = results[0].trade_credits;
-        //let level = results[0].level;
-        let level = 1;
-        try{
-            userBrawlers = parseBrawlers(results[0].brawlers);
-            userAvatars = parseStringArray(results[0].avatars);
-            userThemes = parseStringArray(results[0].themes);
-            userScenes = parseStringArray(results[0].scenes);
-            //userAccessories = parseStringArray(results[0].accessories);
-        } catch (error){
-            res.status(500).send("Collection data could not be loaded.");
-            return;
+    // results.length === 0 checked
+
+    let userBrawlers: DatabaseBrawlers;
+    let userAvatars: DatabaseAvatars;
+    let userThemes: DatabaseThemes;
+    let userScenes: DatabaseScenes;
+    //let userAccessories: DatabaseAccessories;
+    let userCoins = results[0].coins;
+    let featuredItem = results[0].featured_item;
+    let userTradeCredits = results[0].trade_credits;
+    //let level = results[0].level;
+    let level = 1;
+    try{
+        userBrawlers = parseBrawlers(results[0].brawlers);
+        userAvatars = parseStringArray(results[0].avatars);
+        userThemes = parseStringArray(results[0].themes);
+        userScenes = parseStringArray(results[0].scenes);
+        //userAccessories = parseStringArray(results[0].accessories);
+    } catch (error){
+        res.status(500).send("Collection data could not be loaded.");
+        return;
+    }
+
+    // Determine whether the featured item should be refreshed
+    let currentTime = Date.now();
+    let currentSeasonTime = realToTime(currentTime);
+
+    let refreshed = false;
+
+    let hoursSinceLastLogin = (currentTime - results[0].last_login) / 3600000;
+    if (hoursSinceLastLogin >= MAP_CYCLE_HOURS){
+        refreshed = true;
+    } else{
+        //currentSeasonTime = new maps.SeasonTime(1, 219, 0, 0);
+        let currentSeason = currentSeasonTime.season;
+        let currentHour = currentSeasonTime.hour;
+
+        let lastLoginTime = realToTime(results[0].last_login);
+        //lastLoginTime = new maps.SeasonTime(0, 327, 0, 0);
+        let lastLoginHour = lastLoginTime.hour;
+
+        
+        // Explanation for the different cases is in claimtokens
+        let seasonDiff = currentSeason - lastLoginTime.season;
+        if (seasonDiff > 0){
+            currentSeason -= seasonDiff;
+            currentHour += currentSeasonTime.hoursPerSeason * seasonDiff;
+        } else if (seasonDiff < 0){
+            currentSeason -= seasonDiff;
+            currentHour += currentSeasonTime.hoursPerSeason * mod(seasonDiff, currentSeasonTime.maxSeasons);
+        } else if (currentHour < lastLoginHour){
+            currentHour += currentSeasonTime.hoursPerSeason * currentSeasonTime.maxSeasons;
         }
 
-        // Determine whether the featured item should be refreshed
-        let currentTime = Date.now();
-        let currentSeasonTime = realToTime(currentTime);
-
-        let refreshed = false;
-
-        let hoursSinceLastLogin = (currentTime - results[0].last_login) / 3600000;
-        if (hoursSinceLastLogin >= MAP_CYCLE_HOURS){
+        if (Math.floor(currentHour / FEATURED_REFRESH_HOURS) * FEATURED_REFRESH_HOURS > lastLoginHour){
             refreshed = true;
-        } else{
-            //currentSeasonTime = new maps.SeasonTime(1, 219, 0, 0);
-            let currentSeason = currentSeasonTime.season;
-            let currentHour = currentSeasonTime.hour;
-
-            let lastLoginTime = realToTime(results[0].last_login);
-            //lastLoginTime = new maps.SeasonTime(0, 327, 0, 0);
-            let lastLoginHour = lastLoginTime.hour;
-
-            
-            // Explanation for the different cases is in claimtokens
-            let seasonDiff = currentSeason - lastLoginTime.season;
-            if (seasonDiff > 0){
-                currentSeason -= seasonDiff;
-                currentHour += currentSeasonTime.hoursPerSeason * seasonDiff;
-            } else if (seasonDiff < 0){
-                currentSeason -= seasonDiff;
-                currentHour += currentSeasonTime.hoursPerSeason * mod(seasonDiff, currentSeasonTime.maxSeasons);
-            } else if (currentHour < lastLoginHour){
-                currentHour += currentSeasonTime.hoursPerSeason * currentSeasonTime.maxSeasons;
-            }
-
-            if (Math.floor(currentHour / FEATURED_REFRESH_HOURS) * FEATURED_REFRESH_HOURS > lastLoginHour){
-                refreshed = true;
-            }
         }
+    }
 
-        if (refreshed === true){
-            let newFeaturedItem = refreshFeaturedItem(userBrawlers);
-            if (newFeaturedItem !== ""){
-                featuredItem = newFeaturedItem;
-            }
+    if (refreshed === true){
+        let newFeaturedItem = refreshFeaturedItem(userBrawlers);
+        if (newFeaturedItem !== ""){
+            featuredItem = newFeaturedItem;
         }
+    }
 
 
-        let shopItemsCopy: ShopList = new Map<string, ShopItem>(shopItems);
-        //shopItems.forEach((value, key) => {
-        //    shopItemsCopy.set(key, value);
-        //});
+    let shopItemsCopy: ShopList = new Map<string, ShopItem>(shopItems);
+    //shopItems.forEach((value, key) => {
+    //    shopItemsCopy.set(key, value);
+    //});
 
-        // Get the coin costs for the featured pin
-        let featuredCosts: number[] = [];
-        if (typeof dropChancesConverted.rewardTypes.get("pinNoDupes") !== "undefined"){
-            const rewardType = dropChancesConverted.rewardTypes.get("pinNoDupes")!;
-            if (isRewardTypePin(rewardType)){
-                featuredCosts = rewardType.coinConversion;
-            }
+    // Get the coin costs for the featured pin
+    let featuredCosts: number[] = [];
+    if (dropChancesConverted.rewardTypes.get("pinNoDupes") !== void 0){
+        const rewardType = dropChancesConverted.rewardTypes.get("pinNoDupes")!;
+        if (isRewardTypePin(rewardType)){
+            featuredCosts = rewardType.coinConversion;
         }
+    }
 
-        // Out of all the shop items, remove all of them that the user cannot buy right now
-        const availableShopItems = getShopItems(
-            shopItemsCopy,
-            {
-                brawlers: userBrawlers,
-                avatars: userAvatars,
-                themes: userThemes,
-                scenes: userScenes
-            },
-            level,
-            featuredItem,
-            featuredCosts
-        );
+    // Out of all the shop items, remove all of them that the user cannot buy right now
+    const availableShopItems = getShopItems(
+        shopItemsCopy, {
+            brawlers: userBrawlers,
+            avatars: userAvatars,
+            themes: userThemes,
+            scenes: userScenes
+        }, level, featuredItem, featuredCosts
+    );
 
-        // If they do not provide an item to buy, show all items
-        if (typeof req.body.item !== "string"){
-            let shopItemList: ShopItemPreview[] = [];
-            availableShopItems.forEach((value, key) => {
-                let itemPreview: ShopItemPreview = {
-                    name: key,
-                    displayName: value.displayName,
-                    cost: value.cost,
-                    image: "",
-                    amount: value.amount,
-                    description: value.description
-                };
-                // The user does not need to know about itemType and extraData
-                const thisItemType = value.itemType;
+    // If they do not provide an item to buy, show all items
+    if (typeof req.body.item !== "string"){
+        let shopItemList: ShopItemPreview[] = [];
+        availableShopItems.forEach((value, key) => {
+            let itemPreview: ShopItemPreview = {
+                name: key,
+                displayName: value.displayName,
+                cost: value.cost,
+                image: "",
+                amount: value.amount,
+                description: value.description
+            };
+            // The user does not need to know about itemType and extraData
+            const thisItemType = value.itemType;
 
-                // Avatars have their image stored in extraData because the image is required
-                // when adding it to the user's inventory
-                // All other item types' images are only for display
-                if (thisItemType === "avatar" || thisItemType === "achievementAvatar"){
-                    itemPreview.image = AVATAR_SPECIAL_DIR + value.extraData + IMAGE_FILE_EXTENSION;
-                } else if (thisItemType === "theme" || thisItemType === "achievementTheme"){
-                    const themeName = value.extraData;
-                    if (themeMap.has(themeName) === true){
-                        itemPreview.displayName = themeMap.get(themeName)!;
-                        itemPreview.image = THEME_SPECIAL_DIR + themeName + "_preview" + IMAGE_FILE_EXTENSION;
-                    }
-                } else if (thisItemType === "scene" || thisItemType === "achievementScene"){
-                    const sceneName = value.extraData;
-                    if (sceneMap.has(sceneName) === true){
-                        itemPreview.displayName = sceneMap.get(sceneName)!;
-                        itemPreview.image = SCENE_IMAGE_DIR + sceneName + "_preview" + IMAGE_FILE_EXTENSION;
-                    }
-                } else if (thisItemType === "featuredPin"){
-                    // Featured pin already has the image extension since it is stored in brawlers data
-                    itemPreview.image = PIN_IMAGE_DIR + value.image;
-                } else{
-                    // Only add the image directory if the image is not empty string
-                    if (value.image !== ""){
-                        itemPreview.image = RESOURCE_IMAGE_DIR + value.image + IMAGE_FILE_EXTENSION;
-                    }
+            // Avatars have their image stored in extraData because the image is required
+            // when adding it to the user's inventory
+            // All other item types' images are only for display
+            if (thisItemType === "avatar" || thisItemType === "achievementAvatar"){
+                itemPreview.image = AVATAR_SPECIAL_DIR + value.extraData + IMAGE_FILE_EXTENSION;
+            } else if (thisItemType === "theme" || thisItemType === "achievementTheme"){
+                const themeName = value.extraData;
+                if (themeMap.has(themeName) === true){
+                    itemPreview.displayName = themeMap.get(themeName)!;
+                    itemPreview.image = THEME_SPECIAL_DIR + themeName + "_preview" + IMAGE_FILE_EXTENSION;
                 }
-
-                shopItemList.push(itemPreview);
-            });
-
-
-            const updateResults = await updateFeaturedItem({
-                last_login: currentTime,
-                featured_item: featuredItem,
-                username: username
-            });
-
-            // updateResults.affectedRows === 0 checked
-
-            res.json(shopItemList);
-            return;
-        }
-
-
-        // All code below is for when the user does provide an item to buy
-        if (availableShopItems.has(req.body.item) === false){
-            res.status(404).send("Item is not currently available.");
-            return;
-        }
-
-        // This object contains all the data of the item the user is currently buying
-        // Keys of availableShopItems and shopItemsCopy are the same except
-        // availableShopItems is modified to include data sent to the user, since
-        // the actual item data is required here, use shopItemsCopy instead
-        const itemData = shopItemsCopy.get(req.body.item);
-
-        if (typeof itemData === "undefined"){
-            res.status(404).send("Item is not currently available.");
-            return;
-        }
-
-        if (userCoins < itemData.cost){
-            res.status(403).send("You cannot afford this item!");
-            return;
-        }
-
-        // All costs in this shop are in coins
-        userCoins -= itemData.cost;
-
-        // Add the item to the user's inventory
-        // Do a different operation based on the type of the item
-        // Later, buyItemResult may contain more than just brawl box results
-        // so update the type////////////////////////////////////////////
-        let buyItemResult: BrawlBoxDrop[] = [];
-        let userItemInventory = 0;
-        if (itemData.itemType === "tradeCredits"){
-            userTradeCredits += itemData.amount;
-            userItemInventory = userTradeCredits;
-        } else if (itemData.itemType === "avatar" || itemData.itemType === "achievementAvatar"){
-            userAvatars.push(itemData.extraData);
-            userItemInventory = 1;
-        } else if (itemData.itemType === "theme" || itemData.itemType === "achievementTheme"){
-            userThemes.push(itemData.extraData);
-            userItemInventory = 1;
-        } else if (itemData.itemType === "scene" || itemData.itemType === "achievementScene"){
-            userScenes.push(itemData.extraData);
-            userItemInventory = 1;
-        } else if (itemData.itemType === "brawler"){
-            // The brawl box opener needs a resources object so provide a temporary object
-            // with some of the fields set to default values
-            let tempResourceObject: UserResources = {
-                brawlers: userBrawlers,
-                avatars: userAvatars,
-                wild_card_pins: [],
-                tokens: 0,
-                token_doubler: 0,
-                coins: userCoins,
-                trade_credits: userTradeCredits,
-            }
-            //buyItemResult = brawlBox(dropChancesConverted, "newBrawler", allSkins, tempResourceObject, IMAGE_FILE_EXTENSION);
-            buyItemResult = brawlBox(dropChancesConverted, "newBrawler", tempResourceObject);
-
-            if (buyItemResult.length > 0){
-                userItemInventory = 1;
-                // The "stringify" function already sorts the brawlers' names
-            }
-        } else if (itemData.itemType === "featuredPin"){
-            // The extraData of the itemData has already been checked when getting shop items
-            // so this is guaranteed to be a valid brawler and pin name. It just has to check
-            // whether the user already owns the pin or not then modify their collection.
-
-            const pinName = itemData.extraData.split("/");
-            // Index 0 is the brawler, index 1 is the pin
-
-            if (userBrawlers.hasOwnProperty(pinName[0]) === true){
-                const brawler = userBrawlers[pinName[0]];
-                if (brawler.hasOwnProperty(pinName[1]) === true){
-                    // User already has the pin
-                    brawler[pinName[1]] = brawler[pinName[1]] + itemData.amount;
-                } else{
-                    // User does not have the pin yet
-                    brawler[pinName[1]] = itemData.amount;
+            } else if (thisItemType === "scene" || thisItemType === "achievementScene"){
+                const sceneName = value.extraData;
+                if (sceneMap.has(sceneName) === true){
+                    itemPreview.displayName = sceneMap.get(sceneName)!;
+                    itemPreview.image = SCENE_IMAGE_DIR + sceneName + "_preview" + IMAGE_FILE_EXTENSION;
                 }
-                // This is not undefined because both cases of pin exists in
-                // brawler map were already checked and if the key was not there
-                // then it was added.
-                userItemInventory = brawler[pinName[1]];
-
-                // The featured item can only be bought once per day
-                featuredItem = "";
+            } else if (thisItemType === "featuredPin"){
+                // Featured pin already has the image extension since it is stored in brawlers data
+                itemPreview.image = PIN_IMAGE_DIR + value.image;
+            } else{
+                // Only add the image directory if the image is not empty string
+                if (value.image !== ""){
+                    itemPreview.image = RESOURCE_IMAGE_DIR + value.image + IMAGE_FILE_EXTENSION;
+                }
             }
-        }
 
-        // Write back to the database after all values have been modified
-        const updateResults = await afterShop({
+            shopItemList.push(itemPreview);
+        });
+
+
+        const updateResults = await updateFeaturedItem({
             last_login: currentTime,
-            coins: userCoins,
-            trade_credits: userTradeCredits,
-            brawlers: stringifyBrawlers(userBrawlers),
-            avatars: JSON.stringify(userAvatars),
-            themes: JSON.stringify(userThemes),
-            scenes: JSON.stringify(userScenes),
             featured_item: featuredItem,
             username: username
         });
 
         // updateResults.affectedRows === 0 checked
 
-        res.json({
-            inventory: userItemInventory,
-            result: buyItemResult
-        });
-    } else{
-        res.status(401).send("Invalid token.");
+        res.json(shopItemList);
+        return;
     }
+
+
+    // All code below is for when the user does provide an item to buy
+    if (availableShopItems.has(req.body.item) === false){
+        res.status(404).send("Item is not currently available.");
+        return;
+    }
+
+    // This object contains all the data of the item the user is currently buying
+    // Keys of availableShopItems and shopItemsCopy are the same except
+    // availableShopItems is modified to include data sent to the user, since
+    // the actual item data is required here, use shopItemsCopy instead
+    const itemData = shopItemsCopy.get(req.body.item);
+
+    if (itemData === void 0){
+        res.status(404).send("Item is not currently available.");
+        return;
+    }
+
+    if (userCoins < itemData.cost){
+        res.status(403).send("You cannot afford this item!");
+        return;
+    }
+
+    // All costs in this shop are in coins
+    userCoins -= itemData.cost;
+
+    // Add the item to the user's inventory
+    // Do a different operation based on the type of the item
+    // Later, buyItemResult may contain more than just brawl box results
+    // so update the type////////////////////////////////////////////
+    let buyItemResult: BrawlBoxDrop[] = [];
+    let userItemInventory = 0;
+    if (itemData.itemType === "tradeCredits"){
+        userTradeCredits += itemData.amount;
+        userItemInventory = userTradeCredits;
+    } else if (itemData.itemType === "avatar" || itemData.itemType === "achievementAvatar"){
+        userAvatars.push(itemData.extraData);
+        userItemInventory = 1;
+    } else if (itemData.itemType === "theme" || itemData.itemType === "achievementTheme"){
+        userThemes.push(itemData.extraData);
+        userItemInventory = 1;
+    } else if (itemData.itemType === "scene" || itemData.itemType === "achievementScene"){
+        userScenes.push(itemData.extraData);
+        userItemInventory = 1;
+    } else if (itemData.itemType === "brawler"){
+        // The brawl box opener needs a resources object so provide a temporary object
+        // with some of the fields set to default values
+        let tempResourceObject: UserResources = {
+            brawlers: userBrawlers,
+            avatars: userAvatars,
+            wild_card_pins: [],
+            tokens: 0,
+            token_doubler: 0,
+            coins: userCoins,
+            trade_credits: userTradeCredits,
+        }
+        //buyItemResult = brawlBox(dropChancesConverted, "newBrawler", allSkins, tempResourceObject, IMAGE_FILE_EXTENSION);
+        buyItemResult = brawlBox(dropChancesConverted, "newBrawler", tempResourceObject);
+
+        if (buyItemResult.length > 0){
+            userItemInventory = 1;
+            // The "stringify" function already sorts the brawlers' names
+        }
+    } else if (itemData.itemType === "featuredPin"){
+        // The extraData of the itemData has already been checked when getting shop items
+        // so this is guaranteed to be a valid brawler and pin name. It just has to check
+        // whether the user already owns the pin or not then modify their collection.
+
+        const pinName = itemData.extraData.split("/");
+        // Index 0 is the brawler, index 1 is the pin
+
+        if (userBrawlers.hasOwnProperty(pinName[0]) === true){
+            const brawler = userBrawlers[pinName[0]];
+            if (brawler.hasOwnProperty(pinName[1]) === true){
+                // User already has the pin
+                brawler[pinName[1]] = brawler[pinName[1]] + itemData.amount;
+            } else{
+                // User does not have the pin yet
+                brawler[pinName[1]] = itemData.amount;
+            }
+            // This is not undefined because both cases of pin exists in
+            // brawler map were already checked and if the key was not there
+            // then it was added.
+            userItemInventory = brawler[pinName[1]];
+
+            // The featured item can only be bought once per day
+            featuredItem = "";
+        }
+    }
+
+    // Write back to the database after all values have been modified
+    const updateResults = await afterShop({
+        last_login: currentTime,
+        coins: userCoins,
+        trade_credits: userTradeCredits,
+        brawlers: stringifyBrawlers(userBrawlers),
+        avatars: JSON.stringify(userAvatars),
+        themes: JSON.stringify(userThemes),
+        scenes: JSON.stringify(userScenes),
+        featured_item: featuredItem,
+        username: username
+    });
+
+    // updateResults.affectedRows === 0 checked
+
+    res.json({inventory: userItemInventory, result: buyItemResult});
 }));
 
 export default router;

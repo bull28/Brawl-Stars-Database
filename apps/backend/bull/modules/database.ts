@@ -40,26 +40,26 @@ let COSMETIC_TABLE_NAME = "cosmetics";
 
 // Read environment variables first before connecting
 
-if (typeof process.env["DATABASE_HOST"] !== "undefined"){
+if (process.env["DATABASE_HOST"] !== void 0){
     databaseLogin.host = process.env["DATABASE_HOST"];
-} if (typeof process.env["DATABASE_PORT"] !== "undefined"){
+} if (process.env["DATABASE_PORT"] !== void 0){
     const portString = process.env["DATABASE_PORT"];
     if (isNaN(+portString) === false){
         databaseLogin.port = parseInt(portString);
     }
-} if (typeof process.env["DATABASE_USER"] !== "undefined"){
+} if (process.env["DATABASE_USER"] !== void 0){
     databaseLogin.user = process.env["DATABASE_USER"];
-} if (typeof process.env["DATABASE_PASSWORD"] !== "undefined"){
+} if (process.env["DATABASE_PASSWORD"] !== void 0){
     databaseLogin.password = process.env["DATABASE_PASSWORD"];
-} if (typeof process.env["DATABASE_NAME"] !== "undefined"){
+} if (process.env["DATABASE_NAME"] !== void 0){
     databaseLogin.database = process.env["DATABASE_NAME"];
 }
 
-if (typeof process.env["DATABASE_TABLE_NAME"] !== "undefined"){
+if (process.env["DATABASE_TABLE_NAME"] !== void 0){
     TABLE_NAME = process.env["DATABASE_TABLE_NAME"];
-} if (typeof process.env["DATABASE_TRADE_TABLE_NAME"] !== "undefined"){
+} if (process.env["DATABASE_TRADE_TABLE_NAME"] !== void 0){
     TRADE_TABLE_NAME = process.env["DATABASE_TRADE_TABLE_NAME"];
-} if (typeof process.env["DATABASE_COSMETIC_TABLE_NAME"] !== "undefined"){
+} if (process.env["DATABASE_COSMETIC_TABLE_NAME"] !== void 0){
     COSMETIC_TABLE_NAME = process.env["DATABASE_COSMETIC_TABLE_NAME"];
 }
 
@@ -93,18 +93,18 @@ process.on("SIGINT", () => {
 
 
 function isDatabaseError(error: Error): error is mysql2.QueryError{
-    if (typeof (error as mysql2.QueryError).errno !== "undefined"){
+    if ((error as mysql2.QueryError).errno !== void 0){
         return true;
     }
     return false;
 }
 
 function isEmptyResultsError(error: Error): error is EmptyResultsError{
-    return (typeof (error as EmptyResultsError).ash !== "undefined");
+    return ((error as EmptyResultsError).ash !== void 0);
 }
 
 function isNoUpdateError(error: Error): error is NoUpdateError{
-    return (typeof (error as NoUpdateError).frank !== "undefined");
+    return ((error as NoUpdateError).frank !== void 0);
 }
 
 type ExpressCallback<R, Q> = (req: Request<{}, {}, R, Q>, res: Response, next: NextFunction) => void;

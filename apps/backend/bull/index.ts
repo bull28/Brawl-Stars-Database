@@ -15,7 +15,7 @@ import tradesmodify from "./routes/tradesmodify";
 const app = express();
 let port = 6969;
 
-if (typeof process.env["PORT"] !== "undefined"){
+if (process.env["PORT"] !== void 0){
     const portString = process.env["PORT"];
     if (!isNaN(+portString)){
         port = parseInt(portString);
@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.use((req, res, next) => {
     (bodyParser.json())(req, res, (error) => {
-        if (typeof error !== "undefined"){
+        if (error !== void 0){
             res.status(400).send("Incorrectly formatted json.");
             return;
         }

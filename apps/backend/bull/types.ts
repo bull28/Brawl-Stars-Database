@@ -690,7 +690,7 @@ export type DatabaseAccessories = string[];
 /**
  * Full accessory data sent to the user when not in a challenge
  */
-export interface AccessoryData{
+interface AccessoryData{
     displayName: string;
     unitName: string;
     image: string;
