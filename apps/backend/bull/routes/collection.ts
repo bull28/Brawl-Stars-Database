@@ -13,7 +13,7 @@ import {
     SCENE_IMAGE_DIR
 } from "../data/constants";
 import {validateToken} from "../modules/authenticate";
-import brawlBox, {convertBrawlBoxData, isBrawlBoxAttributes, isRewardTypePin, rarityNames} from "../modules/brawlbox";
+import brawlBox, {boxList, rarityNames, canOpenBox} from "../modules/brawlbox";
 import {formatCollectionData, getShopItems, refreshFeaturedItem} from "../modules/pins";
 import {MAP_CYCLE_HOURS, mod, realToTime} from "../modules/maps";
 import {
@@ -30,9 +30,7 @@ import {
     updateFeaturedItem
 } from "../modules/database";
 import {
-    BrawlBoxData, 
     BrawlBoxDrop, 
-    BrawlBoxAttributes, 
     CollectionData, 
     DatabaseAvatars, 
     DatabaseBrawlers, 
@@ -49,32 +47,13 @@ const router = express.Router();
 
 // Convert this data stored in files to objects with known types
 const shopItems: ShopList = new Map<string, ShopItem>(Object.entries(shopItemsObject));
-const dropChancesConverted: BrawlBoxData = convertBrawlBoxData();
-
-// Get a map with only the "visible" boxes
-// These are the ones that the user can send a request to open
-let brawlBoxTypes = new Map<string, BrawlBoxAttributes>();
-dropChancesConverted.boxes.forEach((value, key) => {
-    if (isBrawlBoxAttributes(value)){
-        brawlBoxTypes.set(key, value);
-    }
-});
+const featuredCosts = [160, 320, 800, 1600, 4800];
 
 // Type of wild card data sent to the user
 interface WildCardData{
     rarityName: string;
     rarityColor: string;
     amount: number;
-}
-
-// Type of brawl box information sent to the user
-interface BrawlBoxPreview{
-    name: string;
-    displayName: string;
-    cost: number;
-    image: string;
-    description: string;
-    dropsDescription: string[];
 }
 
 // Type of shop item information sent to the user
@@ -215,33 +194,12 @@ router.post<{}, {}, BrawlBoxReqBody>("/brawlbox", databaseErrorHandler<BrawlBoxR
     // If the user does not specify a box type, send all the available boxes
     // If they do specify a box type, check to make sure that box actually exists.
     if (typeof req.body.boxType !== "string"){
-        // Format it in an array when sending to the user
-        let brawlBoxList: BrawlBoxPreview[] = [];
-        brawlBoxTypes.forEach((value, key) => {
-            let thisBox: BrawlBoxPreview = {
-                name: key,
-                displayName: value.displayName,
-                cost: value.cost,
-                image: RESOURCE_IMAGE_DIR + value.image + IMAGE_FILE_EXTENSION,
-                description: value.description,
-                dropsDescription: value.dropsDescription,
-            };
-            // The user does not need to know the drops and rewardTypes values
-            brawlBoxList.push(thisBox);
-        });
-
-        res.json(brawlBoxList);
+        res.json(boxList);
         return;        
     }
 
     const username = validateToken(req.body.token);
     const boxType = req.body.boxType;
-
-    if (brawlBoxTypes.has(boxType) === false){
-        res.status(400).send("Box type does not exist.");
-        return;
-    }
-    // From here on, the brawl box type is guaranteed to exist in the map
 
     if (username === ""){
         res.status(401).send("Invalid token.");
@@ -253,7 +211,13 @@ router.post<{}, {}, BrawlBoxReqBody>("/brawlbox", databaseErrorHandler<BrawlBoxR
     
     // results.length === 0 checked
 
-    if (results[0].tokens < brawlBoxTypes.get(boxType)!.cost){
+    // Make sure the box exists and the user has enough tokens
+    const validBox = canOpenBox(boxType, results[0].tokens);
+    if (validBox === 400){
+        res.status(400).send("Box type does not exist.");
+        return;
+    }
+    if (validBox === 403){
         res.status(403).send("You cannot afford to open this Box!");
         return;
     }
@@ -278,7 +242,7 @@ router.post<{}, {}, BrawlBoxReqBody>("/brawlbox", databaseErrorHandler<BrawlBoxR
     }
 
     //const BUL = performance.now();
-    const brawlBoxContents = brawlBox(dropChancesConverted, boxType, resources);
+    const brawlBoxContents = brawlBox(boxType, resources);
     //const EDGRISBAD = (performance.now() - BUL);
     //console.log("YOUR PROGRAM IS",EDGRISBAD.toString(),"TIMES WORSE THAN E D G R");
 
@@ -394,18 +358,6 @@ router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(asyn
 
 
     let shopItemsCopy: ShopList = new Map<string, ShopItem>(shopItems);
-    //shopItems.forEach((value, key) => {
-    //    shopItemsCopy.set(key, value);
-    //});
-
-    // Get the coin costs for the featured pin
-    let featuredCosts: number[] = [];
-    if (dropChancesConverted.rewardTypes.get("pinNoDupes") !== void 0){
-        const rewardType = dropChancesConverted.rewardTypes.get("pinNoDupes")!;
-        if (isRewardTypePin(rewardType)){
-            featuredCosts = rewardType.coinConversion;
-        }
-    }
 
     // Out of all the shop items, remove all of them that the user cannot buy right now
     const availableShopItems = getShopItems(
@@ -532,7 +484,7 @@ router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(asyn
             trade_credits: userTradeCredits,
         }
         //buyItemResult = brawlBox(dropChancesConverted, "newBrawler", allSkins, tempResourceObject, IMAGE_FILE_EXTENSION);
-        buyItemResult = brawlBox(dropChancesConverted, "newBrawler", tempResourceObject);
+        buyItemResult = brawlBox("newBrawler", tempResourceObject);
 
         if (buyItemResult.length > 0){
             userItemInventory = 1;

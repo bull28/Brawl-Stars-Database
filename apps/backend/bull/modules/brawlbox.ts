@@ -1,115 +1,33 @@
 import allSkins from "../data/brawlers_data.json";
-import dropChances from "../data/brawlbox_data.json";
 import {IMAGE_FILE_EXTENSION, PIN_IMAGE_DIR, PORTRAIT_IMAGE_DIR, AVATAR_SPECIAL_DIR, RESOURCE_IMAGE_DIR} from "../data/constants";
-import {
-    Pin,
-    UserResources, 
-    BrawlBoxData, 
-    BrawlBoxAttributes, 
-    HiddenBrawlBoxAttributes, 
-    RewardTypeCurrency, 
-    RewardTypePin, 
-    RewardTypeBrawler, 
-    RewardTypeBonusNumber, 
-    RewardTypeBonusString, 
-    BrawlBoxDrop
-} from "../types";
+import {Pin, UserResources, BrawlBoxDrop} from "../types";
 
-type UnknownBoxType = BrawlBoxAttributes | HiddenBrawlBoxAttributes;
-type UnknownRewardType = RewardTypeCurrency | RewardTypePin | RewardTypeBrawler | RewardTypeBonusNumber | RewardTypeBonusString;
-
-// These first 5 functions narrow a box or reward type to a specific type
-// so properties can be accessed on it.
-
-export function isBrawlBoxAttributes(object: UnknownBoxType): object is BrawlBoxAttributes{
-    const values = object as BrawlBoxAttributes;
-    return (
-        values.displayName !== void 0 && values.description !== void 0 &&
-        values.dropsDescription !== void 0
-    );
+// Contains the cost, draws, and probabilities for a Brawl Box
+interface BrawlBox{
+    cost: number;
+    draws: number[][];
+    rewards: Reward[];
+    display?: {
+        name: string;
+        image: string;
+        description: string;
+        dropsDescription: string[];
+    };
 }
 
-function isRewardTypeCurrency(object: UnknownRewardType): object is RewardTypeCurrency{
-    const rewards = object as RewardTypeCurrency;
-    return (
-        rewards.minAmount !== void 0 && rewards.maxAmount !== void 0
-    );
-}
-
-export function isRewardTypePin(object: UnknownRewardType): object is RewardTypePin{
-    const rewards = object as RewardTypePin;
-    return (
-        rewards.raritypmf !== void 0 && rewards.minraritypmf !== void 0 &&
-        rewards.newPinWeight !== void 0 && rewards.coinConversion !== void 0
-    );
-}
-
-function isRewardTypeBrawler(object: UnknownRewardType): object is RewardTypeBrawler{
-    const rewards = object as RewardTypeBrawler;
-    return (
-        rewards.raritypmf !== void 0 && rewards.minraritypmf !== void 0 &&
-        rewards.coinConversion !== void 0
-    );
-}
-
-function isRewardTypeBonusNumber(object: UnknownRewardType): object is RewardTypeBonusNumber{
-    const rewards = object as RewardTypeBonusNumber;
-    if (Array.isArray(rewards.pmfobject) === false){
-        return false;
-    }
-    let isBonus = true;
-    for (let x = 0; x < rewards.pmfobject.length; x++){
-        isBonus = isBonus && (
-            typeof rewards.pmfobject[x].value === "number" &&
-            typeof rewards.pmfobject[x].weight === "number"
-        );
-    }
-    return isBonus;
-}
-
-function isRewardTypeBonusString(object: UnknownRewardType): object is RewardTypeBonusString{
-    const rewards = object as RewardTypeBonusString;
-    if (Array.isArray(rewards.pmfobject) === false){
-        return false;
-    }
-    let isBonus = true;
-    for (let x = 0; x < rewards.pmfobject.length; x++){
-        isBonus = isBonus && (
-            typeof rewards.pmfobject[x].value === "string" &&
-            typeof rewards.pmfobject[x].weight === "number"
-        );
-    }
-    return isBonus;
+// Type of brawl box information sent to the user
+interface BrawlBoxPreview{
+    name: string;
+    displayName: string;
+    cost: number;
+    image: string;
+    description: string;
+    dropsDescription: string[];
 }
 
 /**
- * Converts the brawl box drop chances in the data file to an object
- * of a specific type that can be used in other functions.
- * @returns brawl box data
- */
-export function convertBrawlBoxData(): BrawlBoxData{
-    const brawlBox: BrawlBoxData = {
-        boxes: new Map<string, UnknownBoxType>(),
-        rewardTypes: new Map<string, UnknownRewardType>()
-    }
-
-    for (let x in dropChances.boxes){
-        let k = x as keyof typeof dropChances.boxes;
-        brawlBox.boxes.set(x, dropChances.boxes[k]);
-    }
-
-    for (let x in dropChances.rewardTypes){
-        let k = x as keyof typeof dropChances.rewardTypes;
-        brawlBox.rewardTypes.set(x, dropChances.rewardTypes[k]);
-    }
-
-    return brawlBox;
-}
-
-/**
- * Takes in a probability mass function encoded in an array and
- * randomly selects an index. The probability of an index in the array
- * being selected is the value at that index / the sum of all values.
+ * Takes in a probability distribution encoded in an array and randomly selects an index. The probability of an index in
+ * the array being selected is the value at that index / the sum of all values.
  * @param options array of numbers
  * @returns index of the number randomly selected
  */
@@ -141,639 +59,571 @@ function RNG(options: number[]): number{
     return index;
 }
 
-/**
- * Multiplies a color code's value by a factor, between 0 and 1 to
- * provide a darker version of the rarity color when receiving
- * duplicate pins. Any invalid inputs will return a gray color.
- * @param oldColorString hex code of the color ("#" + 6 digits)
- * @param factor amount to multiply brightness by, must be in [0.0, 1.0]
- * @returns modified hex code of the color
- */
-function getDuplicateColor(oldColorString: string, factor: number): string{
-    const color = oldColorString.slice(1, oldColorString.length);
-    let newColorString = "#808080";
-
-    // Check whether the provided string is valid
-    if (color.length !== 6){
-        return newColorString;
-    } if (factor < 0.0 || factor > 1.0){
-        return newColorString;
-    } if (color.includes("-") === true){
-        return newColorString;
+class Reward{
+    createDropResult(): BrawlBoxDrop{
+        return {
+            displayName: "",
+            rewardType: "empty",
+            amount: 1,
+            inventory: 0,
+            image: "",
+            backgroundColor: "#000000",
+            description: ""
+        };
     }
 
-    let colorHex = parseInt(color, 16);
-    if (isNaN(colorHex) === true){
-        return newColorString;
+    getReward(resources: UserResources): BrawlBoxDrop{
+        return this.createDropResult();
     }
-
-    // The toString method converts hex digits to lowercase letters so if the
-    // original was uppercase then convert the result to uppercase
-    const isUpperCase = color.toUpperCase() === color;
-
-    // Multiply each of the red, green, and blue values by the brightness factor
-    // colorHex is never negative so "%" works here
-    colorHex = Math.floor(colorHex * factor / 65536) * 65536 + Math.floor((colorHex % 65536) * factor / 256) * 256 + Math.floor((colorHex % 256) * factor);
-
-    // Convert the new hex value to a string then return it
-    newColorString = colorHex.toString(16);
-    
-    // Make sure the new string has exactly 6 digits
-    // If the new string has more than 6 then remove the higher order bits
-    // If the new string has less than 6 then add zeros from the left
-    if (newColorString.length > 6){
-        newColorString = newColorString.slice(newColorString.length - 6, newColorString.length);
-    } else{
-        const missingDigits = 6 - newColorString.length;
-        for (let x = 0; x < missingDigits; x++){
-            newColorString = "0" + newColorString;
-        }
-    }
-
-    if (isUpperCase === true){
-        newColorString = newColorString.toUpperCase();
-    }
-    newColorString = "#" + newColorString;
-
-    return newColorString;
 }
 
-/**
- * Opens a Brawl Box and directly adds the contents of it to the user.
- * All Brawl Boxes are guaranteed to contain at least one item. If a
- * box is opened and there is no item, an error occurred somewhere.
- * A valid dropChances object must be passed to this function. This
- * function adds all required file extensions to images.
- * @param dropChances valid brawl box drop chances object
- * @param boxType type of brawl box to open
- * @param resources object containing all the user's resources (this object will change)
- * @returns array of the items the user received
- */
-export default function brawlBox(dropChances: BrawlBoxData, boxType: string, resources: UserResources): BrawlBoxDrop[]{
-    if (resources === void 0){
-        return [];
+class CoinsReward extends Reward{
+    baseAmount: number;
+    range: number;
+
+    constructor(baseAmount: number = 150, range: number = 30){
+        super();
+
+        this.baseAmount = baseAmount;
+        this.range = range;
     }
 
-    const resourceProperties = [
-        "brawlers",
-        "avatars",
-        "wild_card_pins",
-        "tokens",
-        "token_doubler",
-        "coins",
-        "trade_credits"
-    ];
-    
-    let missingProperties = false;
-    for (let x of resourceProperties){
-        if (resources.hasOwnProperty(x) === false){
-            missingProperties = true;
-        }
-    }
-
-    if (missingProperties === true){
-        // User is missing some resource information
-        return [];
-    }
-
-    if (boxType === "bonus" || dropChances.boxes.has(boxType) === false){
-        // Brawl Box type does not exist
-        return [];
-    }
-
-    // All types of brawl boxes are guaranteed to give at least one drop, even coins
-    // If a brawl box gives nothing then an error can be sent back
-
-    // Deduct tokens to pay for the brawl box
-    resources.tokens -= dropChances.boxes.get(boxType)!.cost;
-
-    let rewards: BrawlBoxDrop[] = [];
-    let coinsReward = 0;
-    
-    const draws = dropChances.boxes.get(boxType)!.draws;
-    const rewardTypeValues = dropChances.boxes.get(boxType)!.rewardTypeValues;
-
-    let selections: string[] = [];
-    for (let x of draws){
-        let thisReward = rewardTypeValues[RNG(x)];
-        if (thisReward !== void 0){
-            selections.push(thisReward);
-        }
-    }
-
-    for (let x of selections){
-        if (x !== "nothing"){
-            let drop = {
-                displayName: "",
-                rewardType: "empty",
-                amount: 1,
-                inventory: 0,
-                image: "",
-                backgroundColor: "#000000",
-                description: ""
-            };
-
-            
-            const rewardType = dropChances.rewardTypes.get(x);
-            if (x === "coins"){
-                if (rewardType !== void 0 && isRewardTypeCurrency(rewardType)){
-                    drop = selectCoins(rewardType, resources);
-                }
-            } else if (x === "pin" || x === "pinLowRarity" || x === "pinHighRarity" || x === "pinNoDupes"){
-                if (rewardType !== void 0 && isRewardTypePin(rewardType)){
-                    drop = selectPin(rewardType, resources);
-                }
-            } else if (x === "wildcard"){
-                // Wild card pins use the brawler reward type
-                if (rewardType !== void 0 && isRewardTypeBrawler(rewardType)){
-                    drop = selectWildCardPin(rewardType, resources);
-                }
-            } else if (x === "brawler" || x === "brawlerLowRarity" || x === "brawlerHighRarity"){
-                if (rewardType !== void 0 && isRewardTypeBrawler(rewardType)){
-                    drop = selectBrawler(rewardType, resources);
-                }
-            } else if (x === "bonus"){
-                const bonusBox = dropChances.boxes.get(x);
-                if (bonusBox !== void 0){
-                    drop = selectBonus(bonusBox, dropChances.rewardTypes, resources);
-                }
-            }
-
-            if (drop.rewardType === "coins"){
-                coinsReward += drop.amount;
-            } else if (drop.rewardType !== "empty"){
-                rewards.push(drop);
-            }
-        }
-    }
-
-    // Add all coin rewards together at the same time
-    if (coinsReward > 0){
-        rewards.splice(0, 0, {
-            displayName: "Coins",
+    createDropResult(): BrawlBoxDrop{
+        return {
+            displayName: "",
             rewardType: "coins",
-            amount: coinsReward,
-            inventory: resources.coins,
-            image: RESOURCE_IMAGE_DIR + "resource_coins_200x" + IMAGE_FILE_EXTENSION,
-            backgroundColor: "#8CA0E0",
-            description: "Spend these on special avatars and other items in the shop."
-        });
+            amount: 0,
+            inventory: 0,
+            image: "",
+            backgroundColor: "",
+            description: ""
+        };
     }
 
-    return rewards;
-}
+    getReward(resources: UserResources): BrawlBoxDrop{
+        const result = this.createDropResult();
 
-// All select... functions do the same operation but give a
-// different reward type. They take in objects representing
-// drop chances and the player's resources.
-// They then randomly select a drop and add it to the player's
-// resources and return an object describing the drop.
+        let rewardAmount = 0;
+        if (this.range <= 0){
+            rewardAmount = this.baseAmount;
+        } else{
+            rewardAmount = Math.floor(this.baseAmount - this.range + Math.random() * (this.range * 2 + 1));
+        }
 
-function selectCoins(coinsDropChances: RewardTypeCurrency, resources: UserResources): BrawlBoxDrop{
-    const amounts = coinsDropChances;
-    let rewardAmount = 0;
-    if (amounts.minAmount === amounts.maxAmount){
-        rewardAmount = amounts.minAmount;
-    } else{
-        rewardAmount = Math.floor(amounts.minAmount + Math.random() * (amounts.maxAmount - amounts.minAmount + 1));
-    }
+        resources.coins += rewardAmount;
+        result.amount = rewardAmount;
 
-    resources.coins += rewardAmount;
-
-    return ({
-        displayName: "",
-        rewardType: "coins",
-        amount: rewardAmount,
-        inventory: 0,
-        image: "",
-        backgroundColor: "",
-        description: ""
-    });
-}
-
-function selectPin(pinDropChances: RewardTypePin, resources: UserResources): BrawlBoxDrop{
-    let result: BrawlBoxDrop = {
-        displayName: "",
-        rewardType: "empty",
-        amount: 1,
-        inventory: 0,
-        image: "",
-        backgroundColor: "#000000",
-        description: ""
-    };
-
-    let userCollection = resources.brawlers;
-    //raritypmf = [36, 15, 6, 3, 0];
-    //raritypmf = [0, 0, 0, 0, 0];
-    //raritypmf = pinDropChances.raritypmf;
-    let modifiedRaritypmf = [0, 0, 0, 0, 0];
-    const raritypmf = pinDropChances.raritypmf;
-    const minraritypmf = pinDropChances.minraritypmf;
-    const newPinWeight = pinDropChances.newPinWeight;
-    let pinsByRarity: [number, number][][] = [[], [], [], [], []];
-    let duplicatePins: [number, number][][] = [[], [], [], [], []];
-
-    if (raritypmf.length !== minraritypmf.length){
         return result;
     }
-    if (raritypmf.length !== pinDropChances.coinConversion.length){
-        return result;
+}
+
+class TokenDoublerReward extends Reward{
+    baseAmount: number;
+
+    constructor(baseAmount: number = 250){
+        super();
+
+        this.baseAmount = baseAmount;
     }
+
+    getReward(resources: UserResources): BrawlBoxDrop{
+        const result = this.createDropResult();
+
+        let rewardAmount = this.baseAmount;
+        if (rewardAmount <= 0){
+            return result;
+        }
+
+        resources.token_doubler += rewardAmount;
+
+        result.displayName = "Token Doubler";
+        result.rewardType = "tokenDoubler";
+        result.image = RESOURCE_IMAGE_DIR + "resource_token_doubler_200x" + IMAGE_FILE_EXTENSION;
+        result.amount = rewardAmount;
+        result.inventory = resources.token_doubler;
+        result.backgroundColor = "#00da48";
+        result.description = `Doubles the next ${rewardAmount} tokens collected.`;
+
+        return result;
+
+    }
+}
+
+class PinReward extends Reward{
+    rarityDist: number[];
+    minRarityDist: number[];
+    newPinWeight: number[];
+    coinConversion: number[];
+
+    constructor(quality: number = 1, rarity: number = -1){
+        super();
+
+        // Higher-quality pin rewards increase the probability of higher-rarity pins being selected.
+        if (quality === 1){
+            // Normal quality
+            this.rarityDist = [40, 30, 15, 10, 5];
+            this.minRarityDist = [32, 24, 12, 8, 4];
+            this.newPinWeight = [5, 5, 3, 1, 1];
+            this.coinConversion = [20, 50, 100, 150, 250];
+        } else if (quality === 2){
+            // High-rarity quality
+            this.rarityDist = [36, 24, 15, 9, 6];
+            this.minRarityDist = [24, 16, 10, 6, 4];
+            this.newPinWeight = [10, 10, 10, 10, 10];
+            this.coinConversion = [20, 50, 100, 150, 250];
+        } else if (quality === 3){
+            // No duplicates
+            this.rarityDist = [36, 15, 5, 3, 1];
+            this.minRarityDist = [0, 0, 0, 0, 0];
+            this.newPinWeight = [0, 0, 0, 0, 0];
+            this.coinConversion = [160, 320, 800, 1600, 4800];
+        } else{
+            // Low-rarity quality
+            this.rarityDist = [36, 24, 0, 0, 0];
+            this.minRarityDist = [36, 24, 0, 0, 0];
+            this.newPinWeight = [1, 1, 1, 1, 1];
+            this.coinConversion = [20, 50, 0, 0, 0];
+        }
+
+        if (rarity >= 0){
+            // Setting rarity > 0 forces a certain rarity to be selected
+            for (let x = 0; x < this.rarityDist.length; x++){
+                if (x !== rarity){
+                    this.rarityDist[x] = 0;
+                    this.minRarityDist[x] = 0;
+                }
+            }
+        }
+    }
+
+    getDuplicateColor(oldColorString: string, factor: number): string{
+        const color = oldColorString.slice(1, oldColorString.length);
+        let newColorString = "#808080";
     
-    let availablePins: [number, number][] = [];
+        // Check whether the provided string is valid
+        if (color.length !== 6){
+            return newColorString;
+        } if (factor < 0.0 || factor > 1.0){
+            return newColorString;
+        } if (color.includes("-") === true){
+            return newColorString;
+        }
+    
+        let colorHex = parseInt(color, 16);
+        if (isNaN(colorHex) === true){
+            return newColorString;
+        }
+    
+        // Multiply each of the RGB values by the brightness factor. colorHex is never negative so "%" works here
+        colorHex = Math.floor(colorHex * factor / 65536) * 65536 + Math.floor((colorHex % 65536) * factor / 256) * 256 + Math.floor((colorHex % 256) * factor);
+    
+        // Convert the new hex value to a string then return it
+        newColorString = colorHex.toString(16);
+        
+        // Make sure the new string has exactly 6 digits
+        // If the new string has more than 6 then remove the higher order bits
+        // If the new string has less than 6 then add zeros from the left
+        if (newColorString.length > 6){
+            newColorString = newColorString.slice(newColorString.length - 6, newColorString.length);
+        } else{
+            const missingDigits = 6 - newColorString.length;
+            for (let x = 0; x < missingDigits; x++){
+                newColorString = "0" + newColorString;
+            }
+        }
 
-    for (let brawlerIndex = 0; brawlerIndex < allSkins.length; brawlerIndex++){
-        let brawler = allSkins[brawlerIndex];
+        newColorString = "#" + newColorString;
+    
+        return newColorString;
+    }
 
-        //let missingProperties = (!(brawler.hasOwnProperty("name") && brawler.hasOwnProperty("pins")));
-        if (brawler.hasOwnProperty("name") === true && brawler.hasOwnProperty("pins") === true){
-            //let hasBrawler = userCollection.hasOwnProperty(brawler.name);
+    getReward(resources: UserResources): BrawlBoxDrop{
+        const result = this.createDropResult();
 
-            if (userCollection.hasOwnProperty(brawler.name) === true){
-                for (let pinIndex = 0; pinIndex < brawler.pins.length; pinIndex++){
-                    const pinRarity = brawler.pins[pinIndex].rarity.value;
-                    const pinAmount = userCollection[brawler.name][brawler.pins[pinIndex].name];
-                    //if (pinRarity < pinsByRarity.length && userCollection[brawler.name].includes(brawler.pins[pinIndex].name) === false){
-                    if (pinRarity < pinsByRarity.length){
-                        // Add the brawler's index and the pin's index so when the random pin has to be
-                        // chosen, the link to the pin object can be easily found without storing the
-                        // entire pin data in an array.
+        if (this.rarityDist.length !== this.minRarityDist.length || this.rarityDist.length !== this.coinConversion.length){
+            return result;
+        }
 
-                        if (pinAmount !== void 0 && pinAmount > 0){
-                            duplicatePins[pinRarity].push([brawlerIndex, pinIndex]);
-                        } else{
-                            pinsByRarity[pinRarity].push([brawlerIndex, pinIndex]);
+        let userCollection = resources.brawlers;
+        let modifiedRarityDist = [0, 0, 0, 0, 0];
+        let pinsByRarity: [number, number][][] = [[], [], [], [], []];
+        let duplicatePins: [number, number][][] = [[], [], [], [], []];
+        
+        let availablePins: [number, number][] = [];
+
+        for (let brawlerIndex = 0; brawlerIndex < allSkins.length; brawlerIndex++){
+            let brawler = allSkins[brawlerIndex];
+
+            if (brawler.hasOwnProperty("name") === true && brawler.hasOwnProperty("pins") === true){
+
+                if (userCollection.hasOwnProperty(brawler.name) === true){
+                    for (let pinIndex = 0; pinIndex < brawler.pins.length; pinIndex++){
+                        const pinRarity = brawler.pins[pinIndex].rarity.value;
+                        const pinAmount = userCollection[brawler.name][brawler.pins[pinIndex].name];
+                        if (pinRarity < pinsByRarity.length){
+                            // Add the brawler's index and the pin's index so when the random pin has to be chosen, the
+                            // link to the pin object can be easily found without storing the entire pin data in an array.
+
+                            if (pinAmount !== void 0 && pinAmount > 0){
+                                duplicatePins[pinRarity].push([brawlerIndex, pinIndex]);
+                            } else{
+                                pinsByRarity[pinRarity].push([brawlerIndex, pinIndex]);
+                            }
                         }
                     }
                 }
             }
         }
-    }
 
-    // Rarities that have all pins collected will have a lower chance of
-    // being selected. This chance is stored in minraritypmf.
-    // Since this affects the drop chances even when all pins are collected,
-    // resulting in more copies of high-rarity pins, the relative rarities
-    // are the same in minraritypmf as they are in raritypmf.
+        // Rarities that have all pins collected will have a lower chance of being selected. This chance is stored in
+        // minRarityDist. The values are set such that this only affects drop chances when some rarities are incomplete.
+        // When all rarities are complete, the drop chances are the same as they are when all rarities are incomplete.
 
-    for (let r = 0; r < modifiedRaritypmf.length; r++){
-        // newPinWeight modifies the chances of getting duplicates
-        if (pinsByRarity[r].length === 0){
-            modifiedRaritypmf[r] = minraritypmf[r];
-        } else{
-            modifiedRaritypmf[r] = raritypmf[r];
-        }
-        
-        if (r < pinCounts.length){
-            modifiedRaritypmf[r] *= pinCounts[r];
-        }
-
-        // Multiply each rarity's probability by the number of pins in that rarity
-        // divided by the total number of pins
-
-        // As more pins get added, some rarities may end up with many more pins
-        // than others. Some rarities such as legendary end up with many pins because
-        // new brawl pass brawlers keep getting added and most new skins have
-        // exclusive pins whereas the rare rarity has much fewer pins because each
-        // new brawler only has 2 rare pins. Also, there is only 1 custom pin (rarity 4)
-        // so every time a custom pin is given, it will be that same pin. This makes
-        // that pin appear much more common than it is supposed to be.
-
-        // Because of the differences in pin counts across rarities, it can take much
-        // longer to get all the legendary pins, compared to rare pins. To balance this,
-        // multiplying probabilities by the number of pins makes rarities with more pins
-        // more likely to drop, while making higher rarities overall less likely to drop.
-    }
-
-    // RNG does not require the distribution to be normalized
-    let selectedRarity = RNG(modifiedRaritypmf);
-
-
-    let duplicate = false;// used to determine whether the pin received was a duplicate then send the correct message to the user
-    if (selectedRarity >= 0){
-        const newPinCount = pinsByRarity[selectedRarity].length;
-        const duplicatePinCount = duplicatePins[selectedRarity].length;
-
-        let duplicateProbability = 0;
-        // Every pin that can be collected has a weight which represents how likely it is to
-        // be chosen.
-        
-        // The probability of a specific pin being chosen is its weight divided by the sum of all pins' weight in that rarity.
-        
-        // To make it easier to collect new pins when a user does not yet have them all,
-        // new pins' weight are multiplied by newPinWeight[selectedRarity], making them
-        // more likely to drop than duplicate pins.
-
-        // If there are no more new pins available (pinsByRarity[selectedRarity].length === 0)
-        // then every pin will be a duplicate, as long as there are also duplicate pins available.
-        // In this case, the value of duplicateProbability does not do anything.
-        // If the selected rarity has no pins available, coins will be given instead.
-
-        if (duplicatePinCount > 0 && newPinWeight[selectedRarity] > 0){
-            //duplicateProbability = (1 / newPinWeight[selectedRarity]) * (duplicatePinCount / (newPinCount + duplicatePinCount));
-            duplicateProbability = (duplicatePinCount / (newPinCount * newPinWeight[selectedRarity] + duplicatePinCount));
-        }
-        
-        //if (newPinWeight[selectedRarity] > 0) console.log("Selected Rarity:", selectedRarity, " New Pins:", newPinCount, " Duplicate Pins:", duplicatePinCount,
-        //    " Probability of a new pin: ", newPinCount * newPinWeight[selectedRarity], "/", (newPinCount * newPinWeight[selectedRarity] + duplicatePinCount),
-        //    " Probability of a duplicate pin:", duplicatePinCount, "/", (newPinCount * newPinWeight[selectedRarity] + duplicatePinCount)
-        //);
-
-        // Math.random() > duplicateProbability is the same as Math.random() < (1 - duplicateProbability)
-        if (Math.random() >= duplicateProbability && newPinCount > 0){
-            availablePins = pinsByRarity[selectedRarity];
-        } else if (duplicatePinCount > 0){
-            duplicate = true;
-            availablePins = duplicatePins[selectedRarity];
-        }
-    }
-
-    // If there are pins available to collect, randomly select one and add it.
-    // Otherwise, give coins as an alternative reward.
-    if (availablePins.length > 0){
-        const selectedPin = availablePins[Math.floor(Math.random() * availablePins.length)];
-        const brawlerObject = allSkins[selectedPin[0]];
-        const pinObject = brawlerObject.pins[selectedPin[1]];
-        //userCollection[allSkins[selectedPin[0]].name].push(pinObject.name);
-        //userCollection[brawlerObject.name] = userCollection[brawlerObject.name].concat([pinObject.name]);
-
-        // Usually, all the pins must be stored in the database with an amount, even if they are not unlocked yet.
-        // In case a certain pin was selected to be given and it does not already exist, create a new property in
-        // the object and set its value to 1. This may happen when new pins are released and the existing players'
-        // data has not been updated to include the new pins. Because new pins are added automatically here, an
-        // update to every user in the database when a new pin gets released is not necessary.
-        let brawlerInCollection = userCollection[brawlerObject.name];
-        if (brawlerInCollection !== void 0){
-            if (brawlerInCollection.hasOwnProperty(pinObject.name) === false){
-                brawlerInCollection[pinObject.name] = 1;
+        for (let r = 0; r < modifiedRarityDist.length; r++){
+            // newPinWeight modifies the chances of getting duplicates
+            if (pinsByRarity[r].length === 0){
+                modifiedRarityDist[r] = this.minRarityDist[r];
             } else{
-                brawlerInCollection[pinObject.name] = brawlerInCollection[pinObject.name] + 1;
+                modifiedRarityDist[r] = this.rarityDist[r];
+            }
+            
+            if (r < pinCounts.length){
+                modifiedRarityDist[r] *= pinCounts[r];
             }
 
-            //result.displayName = "New Pin";
-            result.rewardType = "pin";
-            result.image = PIN_IMAGE_DIR + brawlerObject.name + "/" + pinObject.image;// add the brawler's name directory
-            result.backgroundColor = pinObject.rarity.color;
-            result.description = "A Pin for " + brawlerObject.displayName + ".";
-            result.inventory = brawlerInCollection[pinObject.name];
-            // pinObject.name is guaranteed to be in the collection map because it was checked above
+            // Multiply each rarity's probability by the number of pins in that rarity divided by the total pins.
 
-            if (duplicate === true){
-                result.displayName = "Duplicate Pin";
-                result.backgroundColor = getDuplicateColor(pinObject.rarity.color, 0.75);
-            } else{
-                result.displayName = "New Pin";
+            // As more pins get added, some rarities may end up with many more pins than others. Some rarities such as
+            // legendary end up with many pins because new brawl pass brawlers keep getting added and most new skins
+            // have exclusive pins whereas the rare rarity has much fewer pins because each new brawler only has 2 rare
+            // pins. Also, there is only 1 custom pin (rarity 4) so every time a custom pin is given, it will be that
+            // same pin. This makes that pin appear much more common than it is supposed to be.
+
+            // Because of differences in pin counts across rarities, it can take much longer to get all the legendary
+            // pins, compared to rare pins. To balance this, multiplying probabilities by the number of pins makes
+            // rarities with more pins more likely to drop, while making higher rarities overall less likely to drop.
+        }
+
+        // RNG does not require the distribution to be normalized
+        let selectedRarity = RNG(modifiedRarityDist);
+
+
+        let isDuplicate = false;
+        if (selectedRarity >= 0){
+            const newPinCount = pinsByRarity[selectedRarity].length;
+            const duplicatePinCount = duplicatePins[selectedRarity].length;
+
+            let duplicateProbability = 0;
+            // Every pin that can be collected has a weight which represents how likely it is to be chosen.
+            
+            // The probability of a pin being chosen is its weight divided by the sum of all weights in that rarity.
+            
+            // To make it easier to collect new pins when a user does not yet have them all, new pins' weight are
+            // multiplied by newPinWeight[selectedRarity], making them more likely to drop than duplicate pins.
+
+            // If there are no more new pins available (pinsByRarity[selectedRarity].length === 0) then every pin will
+            // be a duplicate, as long as there are also duplicate pins available. In this case, the value of
+            // duplicateProbability does nothing. If the selected rarity has no pins available, coins are given instead.
+
+            if (duplicatePinCount > 0 && this.newPinWeight[selectedRarity] > 0){
+                //duplicateProbability = (1 / newPinWeight[selectedRarity]) * (duplicatePinCount / (newPinCount + duplicatePinCount));
+                duplicateProbability = (duplicatePinCount / (newPinCount * this.newPinWeight[selectedRarity] + duplicatePinCount));
+            }
+            
+            //if (newPinWeight[selectedRarity] > 0) console.log("Selected Rarity:", selectedRarity, " New Pins:", newPinCount, " Duplicate Pins:", duplicatePinCount,
+            //    " Probability of a new pin: ", newPinCount * newPinWeight[selectedRarity], "/", (newPinCount * newPinWeight[selectedRarity] + duplicatePinCount),
+            //    " Probability of a duplicate pin:", duplicatePinCount, "/", (newPinCount * newPinWeight[selectedRarity] + duplicatePinCount)
+            //);
+            
+            if (Math.random() >= duplicateProbability && newPinCount > 0){
+                availablePins = pinsByRarity[selectedRarity];
+            } else if (duplicatePinCount > 0){
+                isDuplicate = true;
+                availablePins = duplicatePins[selectedRarity];
             }
         }
 
-    } else if (pinDropChances.coinConversion[selectedRarity] > 0){
-        resources.coins += pinDropChances.coinConversion[selectedRarity];
+        // If there are pins available, randomly select one and add it. Otherwise, give coins as an alternative reward.
+        if (availablePins.length > 0){
+            const selectedPin = availablePins[Math.floor(Math.random() * availablePins.length)];
+            const brawlerObject = allSkins[selectedPin[0]];
+            const pinObject = brawlerObject.pins[selectedPin[1]];
 
-        result.rewardType = "coins";
-        result.amount = pinDropChances.coinConversion[selectedRarity];
+            // Usually, all the pins must be stored in the database with an amount, even if they are not unlocked yet.
+            // In case a certain pin was selected to be given and it does not already exist, create a new property in
+            // the object and set its value to 1. This may happen when new pins are released and the existing players'
+            // data has not been updated to include the new pins. Because new pins are added automatically here, an
+            // update to every user in the database when a new pin gets released is not necessary.
+            let brawlerInCollection = userCollection[brawlerObject.name];
+            if (brawlerInCollection !== void 0){
+                if (brawlerInCollection.hasOwnProperty(pinObject.name) === false){
+                    brawlerInCollection[pinObject.name] = 1;
+                } else{
+                    brawlerInCollection[pinObject.name] = brawlerInCollection[pinObject.name] + 1;
+                }
+
+                result.rewardType = "pin";
+                result.image = PIN_IMAGE_DIR + brawlerObject.name + "/" + pinObject.image;// add the brawler's name directory
+                result.backgroundColor = pinObject.rarity.color;
+                result.description = `A Pin for ${brawlerObject.displayName}.`;
+                result.inventory = brawlerInCollection[pinObject.name];
+                // pinObject.name is guaranteed to be in the collection map because it was checked above
+
+                if (isDuplicate === true){
+                    result.displayName = "Duplicate Pin";
+                    result.backgroundColor = this.getDuplicateColor(pinObject.rarity.color, 0.75);
+                } else{
+                    result.displayName = "New Pin";
+                }
+            }
+
+        } else if (this.coinConversion[selectedRarity] > 0){
+            resources.coins += this.coinConversion[selectedRarity];
+            result.rewardType = "coins";
+            result.amount = this.coinConversion[selectedRarity];
+        }
+
+        return result;
     }
-
-    return result;
 }
 
-function selectWildCardPin(wildCardDropChances: RewardTypeBrawler, resources: UserResources): BrawlBoxDrop{
-    let result: BrawlBoxDrop = {
-        displayName: "",
-        rewardType: "empty",
-        amount: 1,
-        inventory: 0,
-        image: "",
-        backgroundColor: "#000000",
-        description: ""
-    };
+class WildCardPinReward extends Reward{
+    rarityDist: number[];
 
-    //raritypmf = [36, 15, 6, 3, 0];
-    const raritypmf = wildCardDropChances.raritypmf;
+    constructor(rarity: number = -1){
+        super();
 
-    // If the wild card pins array is incorrectly formatted
-    // fix it before adding a wild card pin
-    if (resources.wild_card_pins.length < raritypmf.length){
-        resources.wild_card_pins = [];
-        for (let x = 0; x < raritypmf.length; x++){
-            resources.wild_card_pins.push(0);
-        }
-    }
+        this.rarityDist = [36, 15, 6, 3, 0];
 
-    let selectedRarity = RNG(raritypmf);
-    if (selectedRarity >= 0){
-        let rarityName = "";
-        let rarityColor = "#000000";
-
-        // Instead of needing to get the rarity colors by looking through
-        // the allSkins array, get them from the rarityNames map.
-        const rarityData = rarityNames.get(selectedRarity);
-        if (rarityData !== void 0){
-            rarityName = rarityData.name;
-            rarityColor = rarityData.color;
-        }
-
-
-        resources.wild_card_pins[selectedRarity]++;
-
-        result.displayName = rarityName + " Wild Card Pin";
-        result.rewardType = "wildcard";
-        result.image = RESOURCE_IMAGE_DIR + "wildcard_pin" + IMAGE_FILE_EXTENSION;
-        result.backgroundColor = rarityColor;
-        result.description = "This can be used in place of a Pin of " + rarityName + " rarity when accepting a trade.";
-        result.inventory = resources.wild_card_pins[selectedRarity];
-    }
-    // Wild card pins can always be collected so there is no coins
-    // alternative reward available here.
-
-    return result;
-}
-
-function selectBrawler(brawlerDropChances: RewardTypeBrawler, resources: UserResources): BrawlBoxDrop{
-    // Refer to selectPins for comments, most of the logic is the
-    // same except brawlers are being added instead of pins
-    let result: BrawlBoxDrop = {
-        displayName: "",
-        rewardType: "empty",
-        amount: 1,
-        inventory: 0,
-        image: "",
-        backgroundColor: "#000000",
-        description: ""
-    };
-
-    let userCollection = resources.brawlers;
-    //raritypmf = [32, 16, 8, 4, 2, 1, 1];
-    //raritypmf = [0, 0, 0, 0, 0, 0, 0];
-    let modifiedRaritypmf = [0, 0, 0, 0, 0, 0, 0];
-    const raritypmf = brawlerDropChances.raritypmf;
-    const minraritypmf = brawlerDropChances.minraritypmf;
-    let brawlersByRarity: number[][] = [[], [], [], [], [], [], []];
-
-    if (raritypmf.length !== minraritypmf.length){
-        return result;
-    }
-    if (brawlerDropChances.coinConversion.length !== raritypmf.length){
-        return result;
-    }
-
-    let availableBrawlers: number[] = [];
-
-    for (let brawlerIndex = 0; brawlerIndex < allSkins.length; brawlerIndex++){
-        let brawler = allSkins[brawlerIndex];
-
-        if (brawler.hasOwnProperty("name") === true && brawler.hasOwnProperty("rarity") === true){
-            const brawlerRarity = brawler.rarity.value;
-            if (brawlerRarity < brawlersByRarity.length && userCollection.hasOwnProperty(brawler.name) === false){
-                //availableBrawlers.push(brawlerIndex);
-                brawlersByRarity[brawlerRarity].push(brawlerIndex);
+        if (rarity >= 0){
+            // Setting rarity > 0 forces a certain rarity to be selected
+            for (let x = 0; x < this.rarityDist.length; x++){
+                if (x !== rarity){
+                    this.rarityDist[x] = 0;
+                }
             }
         }
     }
 
-    for (let r = 0; r < modifiedRaritypmf.length; r++){
-        if (brawlersByRarity[r].length === 0){
-            modifiedRaritypmf[r] = minraritypmf[r];
+    getReward(resources: UserResources): BrawlBoxDrop{
+        const result = this.createDropResult();
+
+        // If the wild card pins array is incorrectly formatted, fix it before adding a wild card pin
+        if (resources.wild_card_pins.length < this.rarityDist.length){
+            resources.wild_card_pins = [];
+            for (let x = 0; x < this.rarityDist.length; x++){
+                resources.wild_card_pins.push(0);
+            }
+        }
+
+        let selectedRarity = RNG(this.rarityDist);
+        if (selectedRarity >= 0){
+            let rarityName = "";
+            let rarityColor = "#000000";
+
+            // Instead of getting the rarity colors by looking through the allSkins array, get them from rarityNames
+            const rarityData = rarityNames.get(selectedRarity);
+            if (rarityData !== void 0){
+                rarityName = rarityData.name;
+                rarityColor = rarityData.color;
+            }
+
+
+            resources.wild_card_pins[selectedRarity]++;
+
+            result.displayName = rarityName + " Wild Card Pin";
+            result.rewardType = "wildcard";
+            result.image = RESOURCE_IMAGE_DIR + "wildcard_pin" + IMAGE_FILE_EXTENSION;
+            result.backgroundColor = rarityColor;
+            result.description = `This can be used in place of a Pin of ${rarityName} rarity when accepting a trade.`;
+            result.inventory = resources.wild_card_pins[selectedRarity];
+        }
+        // Wild card pins can always be collected so there is no coins alternative reward available here.
+
+        return result;
+    }
+}
+
+class BrawlerReward extends Reward{
+    rarityDist: number[];
+    minRarityDist: number[];
+    coinConversion: number;
+
+    constructor(quality: number = 1, rarity: number = -1){
+        super();
+
+        // Unlike pins, brawlers can only be collected once. If all brawlers of the selected rarity are collected,
+        // give coins instead. The coins given do not depend on the rarity selected since only some rarities can be
+        // selected once they are completed.
+
+        // Quality and rarity work the same way as they do for pins
+        if (quality === 1){
+            // Normal quality
+            this.rarityDist = [32, 16, 8, 4, 2, 1, 1];
+            this.minRarityDist = [0, 0, 0, 1, 1, 0, 0];
+            this.coinConversion = 100;
+        } else if (quality === 2){
+            // No duplicates
+            this.rarityDist = [32, 16, 8, 4, 2, 1, 1];
+            this.minRarityDist = [0, 0, 0, 0, 0, 0, 0];
+            this.coinConversion = 0;
         } else{
-            modifiedRaritypmf[r] = raritypmf[r];
-        }
-    }
-
-    let selectedRarity = RNG(modifiedRaritypmf);
-    if (selectedRarity >= 0){
-        availableBrawlers = brawlersByRarity[selectedRarity];
-    }
-
-    if (availableBrawlers.length > 0){
-        const selectedIndex = availableBrawlers[Math.floor(Math.random() * availableBrawlers.length)];
-        const brawlerObject = allSkins[selectedIndex];
-        if (userCollection.hasOwnProperty(brawlerObject.name) === false){
-            userCollection[brawlerObject.name] = {};
+            // Low-rarity quality
+            this.rarityDist = [24, 16, 16, 8, 0, 0, 0];
+            this.minRarityDist = [0, 0, 0, 0, 0, 0, 0];
+            this.coinConversion = 50;
         }
 
-        result.displayName = brawlerObject.displayName;
-        result.rewardType = "brawler";
-        result.image = PORTRAIT_IMAGE_DIR + brawlerObject.image;
-        result.backgroundColor = brawlerObject.rarity.color;
-        result.description = brawlerObject.description;
-        result.inventory = 1;
-    } else if (brawlerDropChances.coinConversion[selectedRarity] > 0){
-        resources.coins += brawlerDropChances.coinConversion[selectedRarity];
-
-        result.rewardType = "coins";
-        result.amount = brawlerDropChances.coinConversion[selectedRarity];
-    }
-
-    return result;
-}
-
-function selectBonus(allBonusDrops: HiddenBrawlBoxAttributes, rewardTypes: BrawlBoxData["rewardTypes"], resources: UserResources): BrawlBoxDrop{
-    let result: BrawlBoxDrop = {
-        displayName: "",
-        rewardType: "empty",
-        amount: 1,
-        inventory: 0,
-        image: "",
-        backgroundColor: "#000000",
-        description: ""
-    };
-
-    let userAvatars = resources.avatars;
-    let bonuspmf = [0, 0, 0];
-
-    const avatarDropChances = rewardTypes.get("avatar");
-    if (avatarDropChances === void 0 || !isRewardTypeBonusString(avatarDropChances)){
-        return result;
-    }
-    const specialAvatars = avatarDropChances.pmfobject;// list of all avatars
-    if (specialAvatars === void 0){
-        return result;
-    }
-
-    // Before choosing a bonus reward type, determine whether the user
-    // has avatars to collect. Do this here so the array does not have
-    // to be traversed more than once.
-    let availableAvatars: RewardTypeBonusString["pmfobject"] = [];
-    for (let avatarIndex = 0; avatarIndex < specialAvatars.length; avatarIndex++){
-        if (typeof specialAvatars[avatarIndex].value === "string"){
-            if ((userAvatars.includes(specialAvatars[avatarIndex].value)) === false){
-                availableAvatars.push(specialAvatars[avatarIndex]);
+        if (rarity >= 0){
+            for (let x = 0; x < this.rarityDist.length; x++){
+                if (x !== rarity){
+                    this.rarityDist[x] = 0;
+                    this.minRarityDist[x] = 0;
+                }
             }
         }
     }
 
-    const bonusDraws = allBonusDrops.draws[0];
-    if (bonusDraws.length !== bonuspmf.length){
-        return result;
-    }
+    getReward(resources: UserResources): BrawlBoxDrop{
+        const result = this.createDropResult();
 
-    for (let x = 0; x < bonusDraws.length; x++){
-        if (allBonusDrops.rewardTypeValues[x] === "avatar"){
-            if (availableAvatars.length === 0){
-                // If there are no avatars available, remove the option to drop one
-                bonuspmf[x] = 0;
+        if (this.rarityDist.length !== this.minRarityDist.length){
+            return result;
+        }
+
+        let userCollection = resources.brawlers;
+        let modifiedRarityDist = [0, 0, 0, 0, 0, 0, 0];
+        let brawlersByRarity: number[][] = [[], [], [], [], [], [], []];
+
+        let availableBrawlers: number[] = [];
+
+        for (let brawlerIndex = 0; brawlerIndex < allSkins.length; brawlerIndex++){
+            let brawler = allSkins[brawlerIndex];
+
+            if (brawler.hasOwnProperty("name") === true && brawler.hasOwnProperty("rarity") === true){
+                const brawlerRarity = brawler.rarity.value;
+                if (brawlerRarity < brawlersByRarity.length && userCollection.hasOwnProperty(brawler.name) === false){
+                    brawlersByRarity[brawlerRarity].push(brawlerIndex);
+                }
+            }
+        }
+
+        for (let r = 0; r < modifiedRarityDist.length; r++){
+            if (brawlersByRarity[r].length === 0){
+                modifiedRarityDist[r] = this.minRarityDist[r];
             } else{
-                bonuspmf[x] = bonusDraws[x];
+                modifiedRarityDist[r] = this.rarityDist[r];
             }
-        } else{
-            bonuspmf[x] = bonusDraws[x];
         }
+
+        let selectedRarity = RNG(modifiedRarityDist);
+        if (selectedRarity >= 0){
+            availableBrawlers = brawlersByRarity[selectedRarity];
+        }
+
+        if (availableBrawlers.length > 0){
+            const selectedIndex = availableBrawlers[Math.floor(Math.random() * availableBrawlers.length)];
+            const brawlerObject = allSkins[selectedIndex];
+            if (userCollection.hasOwnProperty(brawlerObject.name) === false){
+                userCollection[brawlerObject.name] = {};
+            }
+
+            result.displayName = brawlerObject.displayName;
+            result.rewardType = "brawler";
+            result.image = PORTRAIT_IMAGE_DIR + brawlerObject.image;
+            result.backgroundColor = brawlerObject.rarity.color;
+            result.description = brawlerObject.description;
+            result.inventory = 1;
+        } else{
+            // if (this.coinConversion[selectedRarity] > 0){
+            resources.coins += this.coinConversion;
+            result.rewardType = "coins";
+            result.amount = this.coinConversion;
+        }
+
+        return result;
+    }
+}
+
+class TradeCreditsReward extends Reward{
+    drops: {value: number; weight: number;}[];
+
+    constructor(){
+        super();
+
+        this.drops = [
+            {value: 1, weight: 347},
+            {value: 2, weight: 972},
+            {value: 3, weight: 480},
+            {value: 5, weight: 160},
+            {value: 10, weight: 40},
+            {value: 69, weight: 1}
+        ];
     }
 
-    let selection = "";
-    let selectedBonus = RNG(bonuspmf);
+    getReward(resources: UserResources): BrawlBoxDrop{
+        const result = this.createDropResult();
 
-    if (selectedBonus >= 0){
-        selection = allBonusDrops.rewardTypeValues[selectedBonus];
+        let selectedIndex = RNG(this.drops.map((value) => value.weight));
+        if (selectedIndex < 0){
+            return result;
+        }
+        resources.trade_credits += this.drops[selectedIndex].value;
+
+        result.displayName = "Trade Credits";
+        result.rewardType = "tradeCredits";
+        result.image = RESOURCE_IMAGE_DIR + "resource_trade_credits_200x" + IMAGE_FILE_EXTENSION;
+        result.amount = this.drops[selectedIndex].value;
+        result.inventory = resources.trade_credits;
+        result.backgroundColor = "#389cfc";
+        result.description = "Use these to trade pins with other users. Higher-rarity pins require more credits to trade.";
+
+        return result;
+    }
+}
+
+class AvatarReward extends Reward{
+    drops: {value: string; weight: number;}[];
+    coinConversion: number;
+
+    constructor(){
+        super();
+
+        this.drops = [
+            {value: "brawlbox_icon", weight: 5},
+            {value: "bush", weight: 4},
+            {value: "viking_bull", weight: 3},
+            {value: "angry_darryl", weight: 2},
+            {value: "STOMPER", weight: 1}
+        ];
+        this.coinConversion = 100;
     }
 
-    // Trade credits
-    if (selection === "tradeCredits"){
-        //const tradeCreditpmf = [347, 972, 480, 160, 40, 1];
-        //const tradeCreditValues = [1, 2, 3, 5, 10, 69];
+    getReward(resources: UserResources): BrawlBoxDrop{
+        const result = this.createDropResult();
+
+        let userAvatars = resources.avatars;
+
+        // Before choosing a bonus reward type, determine whether the user
+        // has avatars to collect. Do this here so the array does not have
+        // to be traversed more than once.
+        let availableAvatars: typeof this.drops = [];
+        for (let avatarIndex = 0; avatarIndex < this.drops.length; avatarIndex++){
+            if (typeof this.drops[avatarIndex].value === "string"){
+                if (userAvatars.includes(this.drops[avatarIndex].value) === false){
+                    availableAvatars.push(this.drops[avatarIndex]);
+                }
+            }
+        }
         
-        const rewardDropChances = rewardTypes.get(allBonusDrops.rewardTypeValues[0]);
-        if (rewardDropChances !== void 0 && isRewardTypeBonusNumber(rewardDropChances)){
-            const tradeCreditDrops = rewardDropChances.pmfobject;
-
-            let selectedIndex = RNG(tradeCreditDrops.map((value) => value.weight));
-            if (selectedIndex >= 0 && typeof tradeCreditDrops[selectedIndex].value === "number"){
-                resources.trade_credits += tradeCreditDrops[selectedIndex].value as number;
-
-                result.displayName = "Trade Credits";
-                result.rewardType = "tradeCredits";
-                result.image = RESOURCE_IMAGE_DIR + "resource_trade_credits_200x" + IMAGE_FILE_EXTENSION;
-                result.amount = tradeCreditDrops[selectedIndex].value as number;
-                result.inventory = resources.trade_credits;
-                result.backgroundColor = "#389CFC";
-                result.description = "Use these to trade pins with other users. Higher-rarity pins require more credits to trade.";
-            }
+        if (availableAvatars.length === 0){
+            // If no avatar is available, give coins instead.
+            resources.coins += this.coinConversion;
+            result.rewardType = "coins";
+            result.amount = this.coinConversion;
+            return result;
         }
-    }
-    // Token doubler
-    else if (selection === "tokenDoubler"){
-        const rewardDropChances = rewardTypes.get(allBonusDrops.rewardTypeValues[1]);
-        if (rewardDropChances !== void 0 && isRewardTypeCurrency(rewardDropChances)){
-            const amounts = rewardDropChances;
-            let rewardAmount = 0;
-            if (amounts.minAmount === amounts.maxAmount){
-                rewardAmount = amounts.minAmount;
-            } else{
-                rewardAmount = Math.floor(amounts.minAmount + Math.random() * (amounts.maxAmount - amounts.minAmount + 1));
-            }
 
-            resources.token_doubler += rewardAmount;
-
-            result.displayName = "Token Doubler";
-            result.rewardType = "tokenDoubler";
-            result.image = RESOURCE_IMAGE_DIR + "resource_token_doubler_200x" + IMAGE_FILE_EXTENSION;
-            result.amount = rewardAmount;
-            result.inventory = resources.token_doubler;
-            result.backgroundColor = "#00DA48";
-            result.description = "Doubles the next " + rewardAmount.toString() + " tokens collected.";
-        }
-    }
-    // Avatar
-    else if (selection === "avatar"){
         let selectedIndex = RNG(availableAvatars.map((value) => value.weight));
         if (selectedIndex >= 0 && typeof availableAvatars[selectedIndex].value === "string"){
             userAvatars.push(availableAvatars[selectedIndex].value);
@@ -781,25 +631,22 @@ function selectBonus(allBonusDrops: HiddenBrawlBoxAttributes, rewardTypes: Brawl
             result.displayName = "New Avatar";
             result.rewardType = "avatar";
             result.image = AVATAR_SPECIAL_DIR + availableAvatars[selectedIndex].value + IMAGE_FILE_EXTENSION;
-            result.backgroundColor = "#F7831C";
+            result.backgroundColor = "#f7831c";
             result.description = "Select this avatar in the account settings.";
             result.inventory = 1;
         }
-    }
 
-    return result;
+        return result;
+    }
 }
 
-// Initialize data that will not change when boxes are opened but requires
-// searching through the allSkins array to obtain.
+// Initialize data that will not change but requires searching through the allSkins array to obtain.
 
-// Stores (number of pins in each rarity / total pins)
-// Used when selecting pins
+// Stores (number of pins in each rarity / total pins). Used when selecting pins.
 let pinCounts = [0, 0, 0, 0, 0];
 let totalPins = 0;
 
-// Maps a rarity value to its color and name
-// Used when selecting wild card pins
+// Maps a rarity value to its color and name. Used when selecting wild card pins.
 export const rarityNames = new Map<number, Omit<Pin["rarity"], "value">>();
 
 for (let brawlerIndex = 0; brawlerIndex < allSkins.length; brawlerIndex++){
@@ -824,4 +671,221 @@ for (let brawlerIndex = 0; brawlerIndex < allSkins.length; brawlerIndex++){
 }
 for (let x = 0; x < pinCounts.length; x++){
     pinCounts[x] /= totalPins;
+}
+
+// List of all brawl boxes
+const boxes: {[k: string]: BrawlBox} = {
+    "brawlBox": {
+        cost: 100,
+        draws: [
+            [0, 1, 0, 0, 0, 0, 0],
+            [0, 0, 2, 0, 1, 0, 0],
+            [0, 0, 10, 5, 0, 3, 2],
+            [3, 0, 2, 0, 0, 0, 0]
+        ],
+        rewards: [
+            new Reward(),
+            new CoinsReward(150, 30),
+            new PinReward(1),
+            new WildCardPinReward(),
+            new BrawlerReward(1),
+            new TradeCreditsReward(),
+            new TokenDoublerReward(250)
+        ],
+        display: {
+            name: "Brawl Box",
+            image: "brawlbox_default",
+            description: "Contains a variety of items including brawlers, pins, and bonus items.",
+            dropsDescription: [
+                "Coins: 120 - 180",
+                "Draw 1: Pin: 2/3, Brawler: 1/3",
+                "Draw 2: Pin: 1/2, Wild Card Pin: 1/4, Bonus Item: 1/4",
+                "Draw 3: Pin: 2/5, Nothing: 3/5",
+                "Duplicate brawlers are converted to coins."
+            ]
+        }
+    },
+    "pinPack": {
+        cost: 80,
+        draws: [
+            [0, 1, 2],
+            [0, 1, 0],
+            [2, 1, 0],
+            [2, 1, 0],
+            [2, 1, 0],
+            [2, 1, 0]
+        ],
+        rewards: [
+            new Reward(),
+            new PinReward(2),
+            new WildCardPinReward()
+        ],
+        display: {
+            name: "Pin Pack",
+            image: "brawlbox_pinpack",
+            description: "Contains only pins but has a higher chance to give rarer pins and lower chance to give duplicate pins.",
+            dropsDescription: [
+                "Coins: 0",
+                "Draw 1: Pin: 1",
+                "Draw 2: Pin: 1/3, Wild Card Pin: 2/3",
+                "Draws 3 to 6: Pin: 1/3, Nothing: 2/3"
+            ]
+        }
+    },
+    "megaBox": {
+        cost: 240,
+        draws: [
+            [1, 0, 0, 0, 0, 0],
+            [0, 1, 0, 0, 0, 0],
+            [0, 1, 0, 0, 0, 0],
+            [0, 1, 0, 0, 0, 0],
+            [0, 8, 6, 5, 4, 1],
+            [0, 1, 1, 0, 0, 0],
+            [0, 1, 3, 0, 0, 0]
+        ],
+        rewards: [
+            new CoinsReward(750, 150),
+            new PinReward(0),
+            new BrawlerReward(0),
+            new TradeCreditsReward(),
+            new TokenDoublerReward(250),
+            new AvatarReward()
+        ],
+        display: {
+            name: "Mega Box",
+            image: "brawlbox_megabox",
+            description: "Contains many coins, brawlers, and pins. Does not contain any brawlers above Epic rarity or pins above Rare rarity.",
+            dropsDescription: [
+                "Coins: 600 - 900",
+                "Draws 1 to 3: Pin: 1",
+                "Draw 4: Pin: 1/3, Brawler: 1/4, Bonus Item: 5/12",
+                "Draw 5: Pin: 1/2, Brawler: 1/2",
+                "Draw 6: Pin: 1/4, Brawler: 3/4",
+                "Duplicate brawlers are converted to coins."
+            ]
+        }
+    },
+    "newBrawler": {
+        cost: 0,
+        draws: [
+            [1]
+        ],
+        rewards: [
+            new BrawlerReward(2)
+        ]
+    }
+};
+
+/**
+ * Opens one Brawl Box and adds resources to the user. This function modifies the resources object passed to it.
+ * All Brawl Boxes are guaranteed to contain at least one item. If a box is opened and there is no item, an error
+ * occurred somewhere. This function also adds all required file extensions to images.
+ * @param box Brawl Box to open
+ * @param resources object containing all the user's resources
+ * @returns array of the items the user received
+ */
+function openBox(box: BrawlBox, resources: UserResources): BrawlBoxDrop[]{
+    if (resources === void 0){
+        return [];
+    }
+    
+    let valid = true;
+    for (let x of [
+        "brawlers", "avatars", "wild_card_pins", "tokens",
+        "token_doubler", "coins", "trade_credits"
+    ]){
+        if (resources.hasOwnProperty(x) === false){
+            // Resources object missing properties
+            valid = false;
+        }
+    }
+    for (let x = 0; x < box.draws.length; x++){
+        if (box.draws[x].length !== box.rewards.length){
+            // Box draw arrays have incorrect lengths
+            valid = false;
+        }
+    }
+
+    if (valid === false){
+        return [];
+    }
+
+    resources.tokens -= box.cost;
+
+    const rewards: BrawlBoxDrop[] = [];
+    let coinsReward = 0;
+
+    // Contains an array of rewards that will be added. Each element is an index in this.rewards.
+    const selections = box.draws.map((value) => RNG(value))
+    .filter((value) => value >= 0 && value < box.rewards.length);
+
+    for (let x = 0; x < selections.length; x++){
+        const drop = box.rewards[selections[x]].getReward(resources);
+
+        if (drop.rewardType === "coins"){
+            coinsReward += drop.amount;
+        } else if (drop.rewardType !== "empty"){
+            rewards.push(drop);
+        }
+    }
+
+    // All coin rewards are added together in one drop object
+    if (coinsReward > 0){
+        rewards.splice(0, 0, {
+            displayName: "Coins",
+            rewardType: "coins",
+            amount: coinsReward,
+            inventory: resources.coins,
+            image: RESOURCE_IMAGE_DIR + "resource_coins_200x" + IMAGE_FILE_EXTENSION,
+            backgroundColor: "#8ca0e0",
+            description: "Spend these on special avatars and other items in the shop."
+        });
+    }
+
+    return rewards;
+}
+
+/**
+ * Checks if the user is able to open the box they are requesting. Since is more than one reason why the user may not
+ * be able to open a box, return a status code corresponding to the reason why the user can or cannot open the box.
+ * @param boxName name of the box
+ * @param tokens user't token count
+ * @returns status code
+ */
+export function canOpenBox(boxName: string, tokens: number): number{
+    if (boxes.hasOwnProperty(boxName) === false){
+        return 400;
+    }
+
+    const box = boxes[boxName];
+    if (box.cost <= 0){
+        return 400;
+    }
+    if (tokens < box.cost){
+        return 403;
+    }
+    return 200;
+}
+
+export const boxList: BrawlBoxPreview[] = [];
+for (let x in boxes){
+    const display = boxes[x].display;
+    if (boxes[x].cost > 0 && display !== void 0){
+        boxList.push({
+            name: x,
+            displayName: display.name,
+            cost: boxes[x].cost,
+            image: RESOURCE_IMAGE_DIR + display.image + IMAGE_FILE_EXTENSION,
+            description: display.description,
+            dropsDescription: display.dropsDescription
+        });
+    }
+}
+
+export default function brawlBox(boxName: string, resources: UserResources): BrawlBoxDrop[]{
+    if (boxes.hasOwnProperty(boxName) === true){
+        return openBox(boxes[boxName], resources);
+    } else{
+        return [];
+    }
 }
