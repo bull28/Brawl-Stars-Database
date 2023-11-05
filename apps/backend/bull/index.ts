@@ -13,6 +13,7 @@ import tradesview from "./routes/tradesview";
 import tradesmodify from "./routes/tradesmodify";
 
 const app = express();
+app.disable("x-powered-by");
 let port = 6969;
 
 if (process.env["PORT"] !== void 0){
