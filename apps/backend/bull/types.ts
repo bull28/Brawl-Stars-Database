@@ -418,7 +418,7 @@ export interface ThemeData{
 /**
  * Attributes of a shop item from the data file
  */
-export interface ShopItem{
+export interface ShopItemData{
     displayName: string;
     cost: number;
     itemType: string;
@@ -431,7 +431,7 @@ export interface ShopItem{
 /**
  * Shop data file represented as a map from shop item names to their objects
  */
-export type ShopList = Map<string, ShopItem>;
+export type ShopList = Map<string, ShopItemData>;
 
 /**
  * Cosmetic items that are only available in the shop for users who have
@@ -454,6 +454,9 @@ export interface AchievementItems{
 export interface UserResources{
     brawlers: DatabaseBrawlers;
     avatars: DatabaseAvatars;
+    themes: DatabaseThemes;
+    scenes: DatabaseScenes;
+    accessories: DatabaseAccessories;
     wild_card_pins: DatabaseWildCard;
     tokens: number;
     token_doubler: number;

@@ -457,7 +457,6 @@ export async function updateLastClaim(values: LastClaimValues): Promise<ResultSe
 
 
 interface ResourcesResult extends RowDataPacket{
-    username: string;
     active_avatar: string;
     tokens: number;
     token_doubler: number;
@@ -466,13 +465,15 @@ interface ResourcesResult extends RowDataPacket{
     points: number;
     brawlers: string;
     avatars: string;
+    themes: string;
+    scenes: string;
     accessories: string;
     wild_card_pins: string;
 }
 export async function getResources(values: UsernameValues): Promise<ResourcesResult[]>{
     const valuesArray = [values.username];
     return queryDatabase<typeof valuesArray, ResourcesResult[]>(connection, valuesArray, false,
-        `SELECT username, active_avatar, tokens, token_doubler, coins, trade_credits, points, brawlers, avatars, accessories, wild_card_pins FROM ${TABLE_NAME} WHERE username = ?;`);
+        `SELECT active_avatar, tokens, token_doubler, coins, trade_credits, points, brawlers, avatars, themes, scenes, accessories, wild_card_pins FROM ${TABLE_NAME} WHERE username = ?;`);
 }
 
 
