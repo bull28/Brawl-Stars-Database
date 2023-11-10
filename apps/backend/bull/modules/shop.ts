@@ -1,9 +1,9 @@
-import {getCollectionScore} from "../modules/pins";
-import {BrawlBoxDrop, UserResources, ShopItemData, CollectionData, AchievementItems, DatabaseBrawlers} from "../types";
-import brawlBox from "./brawlbox";
 import allSkins from "../data/brawlers_data.json";
-import shopItemsObject from "../data/coinsshop_data.json";
 import {themeMap, sceneMap, AVATAR_SPECIAL_DIR, IMAGE_FILE_EXTENSION, PIN_IMAGE_DIR, RESOURCE_IMAGE_DIR, THEME_SPECIAL_DIR, SCENE_IMAGE_DIR} from "../data/constants";
+import brawlBox from "./brawlbox";
+import {getCollectionScore} from "./pins";
+import shopItemsObject from "../data/coinsshop_data.json";
+import {BrawlBoxDrop, UserResources, ShopItemData, CollectionData, AchievementItems, DatabaseBrawlers} from "../types";
 
 interface ShopItemPreview{
     name: string;

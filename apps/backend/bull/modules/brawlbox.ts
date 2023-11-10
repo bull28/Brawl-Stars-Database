@@ -120,7 +120,7 @@ class CoinsReward extends Reward{
 class TokenDoublerReward extends Reward{
     baseAmount: number;
 
-    constructor(baseAmount: number = 250){
+    constructor(baseAmount: number = 200){
         super();
 
         this.baseAmount = baseAmount;
@@ -690,7 +690,7 @@ const boxes: {[k: string]: BrawlBox} = {
             new WildCardPinReward(),
             new BrawlerReward(1),
             new TradeCreditsReward(),
-            new TokenDoublerReward(250)
+            new TokenDoublerReward(200)
         ],
         display: {
             name: "Brawl Box",
@@ -748,7 +748,7 @@ const boxes: {[k: string]: BrawlBox} = {
             new PinReward(0),
             new BrawlerReward(0),
             new TradeCreditsReward(),
-            new TokenDoublerReward(250),
+            new TokenDoublerReward(200),
             new AvatarReward()
         ],
         display: {

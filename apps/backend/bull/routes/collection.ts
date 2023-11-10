@@ -272,7 +272,7 @@ router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(asyn
     // Tokens, token doubler, and wild card pins are not read by the shop methods and their values do not matter here
 
     let featuredItem = results[0].featured_item;
-    let level = 1;
+    let level = 30;
     try{
         resources.brawlers = parseBrawlers(results[0].brawlers);
         resources.avatars = parseStringArray(results[0].avatars);

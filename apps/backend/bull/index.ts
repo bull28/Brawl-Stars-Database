@@ -46,6 +46,10 @@ app.use("/", collection);
 app.use("/trade", tradesview);
 app.use("/trade", tradesmodify);
 
+app.get("/bullgame", (req, res) => {
+    res.sendFile(path.join(__dirname, "..", "assets", "index.html"));
+});
+
 // Error handler
 app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
     console.error(error.stack);    
