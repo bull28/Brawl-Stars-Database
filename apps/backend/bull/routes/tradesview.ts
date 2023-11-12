@@ -2,7 +2,7 @@ import express from "express";
 import {AVATAR_IMAGE_DIR, IMAGE_FILE_EXTENSION, TRADES_PER_PAGE} from "../data/constants";
 import {databaseErrorHandler, parseTradePins, viewTradeAll, viewTradeID, viewTradeUser} from "../modules/database";
 import {formatTradeData, getTradeTimeLeft} from "../modules/trades";
-import {TradeAllData, TradePinValid, TradeUserData} from "../types";
+import {Empty, TradeAllData, TradePinValid, TradeUserData} from "../types";
 
 const router = express.Router();
 
@@ -26,7 +26,7 @@ interface TradeAllReqBody{
 
 
 // Get details about a specific trade
-router.get<{}, {}, {}, TradeQuery>("/id", databaseErrorHandler<{}, TradeQuery>(async (req, res) => {
+router.get<Empty, Empty, Empty, TradeQuery>("/id", databaseErrorHandler<Empty, TradeQuery>(async (req, res) => {
     const tradeidString = req.query.tradeid;
 
     if (isNaN(+tradeidString) === true){
@@ -68,7 +68,7 @@ router.get<{}, {}, {}, TradeQuery>("/id", databaseErrorHandler<{}, TradeQuery>(a
 }));
 
 // Get all active trades a user currently has
-router.post<{}, {}, TradeUserReqBody>("/user", databaseErrorHandler<TradeUserReqBody>(async (req, res) => {
+router.post<Empty, Empty, TradeUserReqBody>("/user", databaseErrorHandler<TradeUserReqBody>(async (req, res) => {
     const username = req.body.username;
 
     if (typeof username !== "string"){
@@ -80,7 +80,7 @@ router.post<{}, {}, TradeUserReqBody>("/user", databaseErrorHandler<TradeUserReq
 
     // results.length === 0 does not need to be checked
 
-    let tradeList: TradeUserData[] = [];
+    const tradeList: TradeUserData[] = [];
     let validTrades = true;
     for (let x = 0; x < results.length; x++){
         const trade = results[x];
@@ -114,7 +114,7 @@ router.post<{}, {}, TradeUserReqBody>("/user", databaseErrorHandler<TradeUserReq
 }));
 
 // Get all trades that match specific filters and sorting methods
-router.post<{}, {}, TradeAllReqBody>("/all", databaseErrorHandler<TradeAllReqBody>(async (req, res) => {
+router.post<Empty, Empty, TradeAllReqBody>("/all", databaseErrorHandler<TradeAllReqBody>(async (req, res) => {
     const sortMethod = req.body.sortMethod;
 
     let filterColumn = "offer";
@@ -166,7 +166,7 @@ router.post<{}, {}, TradeAllReqBody>("/all", databaseErrorHandler<TradeAllReqBod
     // results.length === 0 does not need to be checked
 
     
-    let tradeList: TradeAllData[] = [];
+    const tradeList: TradeAllData[] = [];
     let validTrades = true;
     for (let x = 0; x < results.length; x++){
         const trade = results[x];

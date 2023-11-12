@@ -18,7 +18,7 @@ import {
     getResources, 
     updateFeaturedItem
 } from "../modules/database";
-import {CollectionData, DatabaseBrawlers, UserResources, DatabaseAccessories} from "../types";
+import {Empty, CollectionData, DatabaseBrawlers, UserResources, DatabaseAccessories} from "../types";
 
 const router = express.Router();
 
@@ -44,7 +44,7 @@ interface ShopReqBody extends TokenReqBody{
 
 
 // Get a user's username and amounts of various resources
-router.post<{}, {}, TokenReqBody>("/resources", databaseErrorHandler<TokenReqBody>(async (req, res) => {
+router.post<Empty, Empty, TokenReqBody>("/resources", databaseErrorHandler<TokenReqBody>(async (req, res) => {
     if (typeof req.body.token !== "string"){
         res.status(400).send("Token is missing.");
         return;
@@ -78,7 +78,7 @@ router.post<{}, {}, TokenReqBody>("/resources", databaseErrorHandler<TokenReqBod
         return;
     }
 
-    let wildCardPins: WildCardData[] = [];
+    const wildCardPins: WildCardData[] = [];
 
     for (let x = 0; x < wildCards.length; x++){
         const rarity = rarityNames.get(x);
@@ -117,7 +117,7 @@ router.post<{}, {}, TokenReqBody>("/resources", databaseErrorHandler<TokenReqBod
 }));
 
 // Get a user's collection of brawlers and pins
-router.post<{}, {}, TokenReqBody>("/collection", databaseErrorHandler<TokenReqBody>(async (req, res) => {
+router.post<Empty, Empty, TokenReqBody>("/collection", databaseErrorHandler<TokenReqBody>(async (req, res) => {
     if (typeof req.body.token !== "string"){
         res.status(400).send("Token is missing.");
         return;
@@ -148,7 +148,7 @@ router.post<{}, {}, TokenReqBody>("/collection", databaseErrorHandler<TokenReqBo
 }));
 
 // Opens a brawl box and returns the results to the user
-router.post<{}, {}, BrawlBoxReqBody>("/brawlbox", databaseErrorHandler<BrawlBoxReqBody>(async (req, res) => {
+router.post<Empty, Empty, BrawlBoxReqBody>("/brawlbox", databaseErrorHandler<BrawlBoxReqBody>(async (req, res) => {
     if (typeof req.body.token !== "string"){
         res.status(400).send("Token is missing.");
         return;
@@ -220,7 +220,7 @@ router.post<{}, {}, BrawlBoxReqBody>("/brawlbox", databaseErrorHandler<BrawlBoxR
 
     // The "stringify" function already sorts the brawlers' names
 
-    const updateResults = await afterBrawlBox({
+    await afterBrawlBox({
         brawlers: stringifyBrawlers(resources.brawlers),
         avatars: JSON.stringify(resources.avatars),
         wild_card_pins: JSON.stringify(resources.wild_card_pins),
@@ -238,7 +238,7 @@ router.post<{}, {}, BrawlBoxReqBody>("/brawlbox", databaseErrorHandler<BrawlBoxR
 }));
 
 // View or buy item(s) from the (coins) shop
-router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(async (req, res) => {
+router.post<Empty, Empty, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(async (req, res) => {
     if (typeof req.body.token !== "string"){
         res.status(400).send("Token is missing.");
         return;
@@ -272,7 +272,7 @@ router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(asyn
     // Tokens, token doubler, and wild card pins are not read by the shop methods and their values do not matter here
 
     let featuredItem = results[0].featured_item;
-    let level = 30;
+    const level = 30;
     try{
         resources.brawlers = parseBrawlers(results[0].brawlers);
         resources.avatars = parseStringArray(results[0].avatars);
@@ -288,26 +288,23 @@ router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(asyn
 
 
     // Determine whether the featured item should be refreshed
-    let currentTime = Date.now();
-    let currentSeasonTime = realToTime(currentTime);
+    const currentTime = Date.now();
+    const currentSeasonTime = realToTime(currentTime);
 
     let refreshed = false;
 
-    let hoursSinceLastLogin = (currentTime - results[0].last_login) / 3600000;
+    const hoursSinceLastLogin = (currentTime - results[0].last_login) / 3600000;
     if (hoursSinceLastLogin >= MAP_CYCLE_HOURS){
         refreshed = true;
     } else{
-        //currentSeasonTime = new maps.SeasonTime(1, 219, 0, 0);
         let currentSeason = currentSeasonTime.season;
         let currentHour = currentSeasonTime.hour;
 
-        let lastLoginTime = realToTime(results[0].last_login);
-        //lastLoginTime = new maps.SeasonTime(0, 327, 0, 0);
-        let lastLoginHour = lastLoginTime.hour;
-
+        const lastLoginTime = realToTime(results[0].last_login);
+        const lastLoginHour = lastLoginTime.hour;
         
         // Explanation for the different cases is in claimtokens
-        let seasonDiff = currentSeason - lastLoginTime.season;
+        const seasonDiff = currentSeason - lastLoginTime.season;
         if (seasonDiff > 0){
             currentSeason -= seasonDiff;
             currentHour += currentSeasonTime.hoursPerSeason * seasonDiff;
@@ -324,7 +321,7 @@ router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(asyn
     }
 
     if (refreshed === true){
-        let newFeaturedItem = refreshFeaturedItem(resources.brawlers);
+        const newFeaturedItem = refreshFeaturedItem(resources.brawlers);
         if (newFeaturedItem !== ""){
             featuredItem = newFeaturedItem;
         }
@@ -335,7 +332,7 @@ router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(asyn
     if (typeof req.body.item !== "string"){
         const preview = getAllItemsPreview(resources, collection, achievements, featuredItem);
 
-        const updateResults = await updateFeaturedItem({
+        await updateFeaturedItem({
             last_login: currentTime,
             featured_item: featuredItem,
             username: username
@@ -375,7 +372,7 @@ router.post<{}, {}, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody>(asyn
     }
 
     // Write back to the database after all values have been modified
-    const updateResults = await afterShop({
+    await afterShop({
         last_login: currentTime,
         coins: resources.coins,
         trade_credits: resources.trade_credits,

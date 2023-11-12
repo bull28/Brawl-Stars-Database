@@ -26,7 +26,7 @@ import {
  * @returns collection summary object
  */
 export function formatCollectionData(userCollection: DatabaseBrawlers, userAccessories: DatabaseAccessories): CollectionData{
-    let collection: CollectionData = {
+    const collection: CollectionData = {
         unlockedBrawlers: 0,
         completedBrawlers: 0,
         totalBrawlers: 0,
@@ -59,8 +59,8 @@ export function formatCollectionData(userCollection: DatabaseBrawlers, userAcces
         // so they do not have to be checked individually as
         // they are used
         let missingProperties = false;
-        for (let j of includeFromBrawler){
-            if (brawler.hasOwnProperty(j) === false){
+        for (const j of includeFromBrawler){
+            if (Object.hasOwn(brawler, j) === false){
                 missingProperties = true;
             }
         }
@@ -70,13 +70,13 @@ export function formatCollectionData(userCollection: DatabaseBrawlers, userAcces
         // be unlocked either.
         let hasBrawler = false;
         if (missingProperties === false){
-            hasBrawler = userCollection.hasOwnProperty(brawler.name);
+            hasBrawler = Object.hasOwn(userCollection, brawler.name);
             if (hasBrawler === true){
                 collection.unlockedBrawlers++;
             }
             collection.totalBrawlers++;
     
-            let brawlerPins: CollectionPin[] = [];
+            const brawlerPins: CollectionPin[] = [];
 
             let pinData: DatabaseBrawlers[string] | undefined = undefined;
             if (hasBrawler === true){
@@ -86,20 +86,15 @@ export function formatCollectionData(userCollection: DatabaseBrawlers, userAcces
             for (let y = 0; y < brawler.pins.length; y++){
                 const pin = brawler.pins[y];
 
-                let thisPin: CollectionPin = {
-                    i: pin.image,
-                    r: pin.rarity.value,
-                    a: 0
-                };
+                let amount = 0;
 
                 if (rarityColors.has(pin.rarity.value) === false){
                     rarityColors.set(pin.rarity.value, pin.rarity.color);
                 }
 
-                // If the brawler appears in userCollection as a key, it is unlocked
-                // If the brawler is unlocked, check to see if the name of the current
-                // pin appears in the corresponding value. If it appears, the current
-                // pin is unlocked.
+                // If the brawler appears in userCollection as a key, it is unlocked.
+                // If the brawler is unlocked, check to see if the name of the current pin appears in the corresponding
+                // value. If it appears, the currentpin is unlocked.
                 if (pinData !== void 0){
                     const pinCount = pinData[pin.name];
                     if (pinCount !== void 0){
@@ -110,17 +105,21 @@ export function formatCollectionData(userCollection: DatabaseBrawlers, userAcces
                         }
                         pinCopies += pinCount;
                         collection.pinCopies += pinCount;
-                        thisPin.a = pinCount;
+                        amount = pinCount;
                     }
                 }
 
                 totalPins++;
                 collection.totalPins++;
 
-                brawlerPins.push(thisPin);
+                brawlerPins.push({
+                    i: pin.image,
+                    r: pin.rarity.value,
+                    a: amount
+                });
             }
 
-            let thisBrawler: CollectionBrawler = {
+            const thisBrawler: CollectionBrawler = {
                 name: brawler.name,
                 displayName: brawler.displayName,
                 rarityColor: "#000000",
@@ -133,7 +132,7 @@ export function formatCollectionData(userCollection: DatabaseBrawlers, userAcces
                 pins: brawlerPins
             };
 
-            if (brawler.rarity.hasOwnProperty("color") === true){
+            if (Object.hasOwn(brawler.rarity, "color") === true){
                 thisBrawler.rarityColor = brawler.rarity.color;
             }
 
@@ -177,8 +176,8 @@ export function formatCollectionData(userCollection: DatabaseBrawlers, userAcces
  * @returns array of all avatar image names
  */
 export function getAvatars(allAvatars: AvatarList, userCollection: DatabaseBrawlers, userAvatars: DatabaseAvatars): DatabaseAvatars{
-    let avatars: DatabaseAvatars = [];
-    let unlockedBrawlers: string[] = [];
+    const avatars: DatabaseAvatars = [];
+    const unlockedBrawlers: string[] = [];
 
     if (allAvatars.free === void 0 || allAvatars.special === void 0){
         return avatars;
@@ -191,9 +190,9 @@ export function getAvatars(allAvatars: AvatarList, userCollection: DatabaseBrawl
 
     for (let x = 0; x < allSkins.length; x++){
         const brawler = allSkins[x];
-        if (brawler.hasOwnProperty("name") === true && brawler.hasOwnProperty("image") === true){
+        if (Object.hasOwn(brawler, "name") === true && Object.hasOwn(brawler, "image") === true){
             // If the user has the brawler unlocked, add the avatar as an option
-            if (userCollection.hasOwnProperty(brawler.name) === true){
+            if (Object.hasOwn(userCollection, brawler.name) === true){
                 unlockedBrawlers.push(brawler.image.split(".")[0]);
             }
         }
@@ -237,8 +236,8 @@ export function getAvatars(allAvatars: AvatarList, userCollection: DatabaseBrawl
  * @returns themes, gropued by type
  */
 export function getThemes(allThemes: ThemeList, allScenes: SceneList, userThemes: DatabaseThemes, userScenes: DatabaseScenes): ThemeData{
-    let themes: {[k: string]: Map<string, string>;} = {};
-    let scenes: {[k: string]: ThemeScenePreview} = {};
+    const themes: Record<string, Map<string, string>> = {};
+    const scenes: Record<string, ThemeScenePreview> = {};
 
     if (allThemes.free === void 0 && allThemes.special === void 0){
         return {
@@ -249,8 +248,8 @@ export function getThemes(allThemes: ThemeList, allScenes: SceneList, userThemes
         };
     }
 
-    for (let t in allThemes){
-        for (let theme of allThemes[t as keyof ThemeList]){
+    for (const t in allThemes){
+        for (const theme of allThemes[t as keyof ThemeList]){
             let themeType = "";
             if (theme.includes("_icon") === true){
                 themeType = "icon";
@@ -269,7 +268,7 @@ export function getThemes(allThemes: ThemeList, allScenes: SceneList, userThemes
                 const filePaths = theme.split("/");
                 const themeName = filePaths[filePaths.length - 1].split("_" + themeType)[0];
                 if (themeMap.has(themeName) === true){
-                    if (themes.hasOwnProperty(themeName) === false){
+                    if (Object.hasOwn(themes, themeName) === false){
                         themes[themeName] = new Map<string, string>();
                     }
     
@@ -297,7 +296,7 @@ export function getThemes(allThemes: ThemeList, allScenes: SceneList, userThemes
     // Go through all the files in the scenes directory and set the
     // correct attribute of each scene object depending on whether
     // the file is a scene model, preview, or background
-    for (let scene of allScenes){
+    for (const scene of allScenes){
         let sceneType = "";
         if (scene.includes("_scene") === true){
             sceneType = "path";
@@ -319,7 +318,7 @@ export function getThemes(allThemes: ThemeList, allScenes: SceneList, userThemes
             if (sceneName in scenes){
                 // Model path is already contained in the scene map
                 const sceneObject = scenes[sceneName];
-                if (sceneObject.hasOwnProperty(sceneType) === true){
+                if (Object.hasOwn(sceneObject, sceneType) === true){
                     sceneObject[sceneType as keyof typeof sceneObject] = SCENE_IMAGE_DIR + scene;
                 }
             }
@@ -327,9 +326,9 @@ export function getThemes(allThemes: ThemeList, allScenes: SceneList, userThemes
     }
 
     // The data is required to be grouped by file type instead of theme name
-    let themesResult: ThemeData = {"background": [], "icon": [], "music": [], "scene": []};
+    const themesResult: ThemeData = {"background": [], "icon": [], "music": [], "scene": []};
 
-    for (let key in themes){
+    for (const key in themes){
         const value = themes[key];
         const themeName = themeMap.get(key);
         if (themeName !== void 0){
@@ -360,7 +359,7 @@ export function getThemes(allThemes: ThemeList, allScenes: SceneList, userThemes
             }
         }
     }
-    for (let key in scenes){
+    for (const key in scenes){
         // All scene objects have the same type so they can be added directly
         themesResult.scene.push(scenes[key]);
     }
@@ -378,13 +377,13 @@ export function getThemes(allThemes: ThemeList, allScenes: SceneList, userThemes
  * @returns object containing file names of the cosmetics
  */
 export function getCosmetics(allThemes: ThemeList, allScenes: SceneList, cosmeticsData: DatabaseCosmetics): DatabaseCosmetics{
-    let setCosmetics: DatabaseCosmetics = {background: "", icon: "", music: "", scene: ""};
+    const setCosmetics: DatabaseCosmetics = {background: "", icon: "", music: "", scene: ""};
 
     // First, get the list of all default cosmetics
     const defaultThemes = allThemes.free.filter((value) => value.includes("default_"));
 
     // Initialize the object sent to the user with the default cosmetics
-    for (let x of defaultThemes){
+    for (const x of defaultThemes){
         if (x.includes("_background") === true){
             setCosmetics.background = THEME_IMAGE_DIR + x;
         } else if (x.includes("_icon") === true){
@@ -396,8 +395,8 @@ export function getCosmetics(allThemes: ThemeList, allScenes: SceneList, cosmeti
 
     // For all of the cosmetics returned from the database that are not empty string,
     // update the object with that cosmetic's name
-    for (let x in cosmeticsData){
-        let k = x as keyof DatabaseCosmetics;
+    for (const x in cosmeticsData){
+        const k = x as keyof DatabaseCosmetics;
         if (cosmeticsData[k] !== ""){
             if (x === "background" || x === "icon" || x === "music"){
                 // Since the file extension might is not always the same, use the file name

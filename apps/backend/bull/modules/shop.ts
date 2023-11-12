@@ -212,11 +212,11 @@ class FeaturedItem extends ShopItem{
         const pinName = featuredPin.split("/");
         try{
             // The featured pin is valid only if the user has the brawler unlocked
-            if (userBrawlers.hasOwnProperty(pinName[0]) === true){
-                for (let brawler in allSkins){
+            if (Object.hasOwn(userBrawlers, pinName[0]) === true){
+                for (const brawler in allSkins){
                     if (allSkins[brawler].name === pinName[0]){
                         const brawlerPins = allSkins[brawler].pins;
-                        for (let pin in brawlerPins){
+                        for (const pin in brawlerPins){
                             if (brawlerPins[pin].name === pinName[1]){
                                 this.display.name = `Featured ${brawlerPins[pin].rarity.name} Pin`;
                                 this.display.image = allSkins[brawler].name + "/" + brawlerPins[pin].image;
@@ -264,9 +264,9 @@ class FeaturedItem extends ShopItem{
         const pinName = this.pin.split("/");
         // Index 0 is the brawler, index 1 is the pin
 
-        if (resources.brawlers.hasOwnProperty(pinName[0]) === true){
+        if (Object.hasOwn(resources.brawlers, pinName[0]) === true){
             const brawler = resources.brawlers[pinName[0]];
-            if (brawler.hasOwnProperty(pinName[1]) === true){
+            if (Object.hasOwn(brawler, pinName[1]) === true){
                 // User already has the pin
                 brawler[pinName[1]] = brawler[pinName[1]] + this.amount;
             } else{
@@ -294,7 +294,7 @@ let featuredItemData: ShopItemData | undefined;
 // When the user wants to buy an item, the shop route needs a copy of a featured item since that item is different for
 // all users. When the user only wants to view items, the same featured item object can be reused since the only data
 // going to the shop route is the result of getDisplay (which is a new object).
-let tempFeaturedItem = new FeaturedItem({
+const tempFeaturedItem = new FeaturedItem({
     "displayName": "Featured Item",
     "cost": 5000,
     "itemType": "featured",
@@ -333,7 +333,7 @@ for (let x = 0; x < shopData.length; x++){
  * @returns map from item names to item objects
  */
 export function getAllItems(resources: UserResources, collection: CollectionData, achievements: AchievementItems, featuredPin: string): Map<string, ShopItem>{
-    let items = new Map<string, ShopItem>();
+    const items = new Map<string, ShopItem>();
 
     if (featuredItemData !== void 0){
         const featured = new FeaturedItem(featuredItemData);
@@ -361,7 +361,7 @@ export function getAllItems(resources: UserResources, collection: CollectionData
  * @returns array of preview objects
  */
 export function getAllItemsPreview(resources: UserResources, collection: CollectionData, achievements: AchievementItems, featuredPin: string): ShopItemPreview[]{
-    let items: ShopItemPreview[] = [];
+    const items: ShopItemPreview[] = [];
 
     if (featuredItemData !== void 0){
         tempFeaturedItem.updateData(featuredPin, resources.brawlers);
@@ -386,18 +386,18 @@ export function getAllItemsPreview(resources: UserResources, collection: Collect
  * @returns string in "brawler/pin" format
  */
 export function refreshFeaturedItem(userBrawlers: DatabaseBrawlers): string{
-    let newPins: string[] = [];
-    let duplicatePins: string[] = [];
+    const newPins: string[] = [];
+    const duplicatePins: string[] = [];
 
     // A call to formatCollectionData costs more time than looping through the array
     // here and only storing data required to select a featured pin.
     
     for (let brawlerIndex = 0; brawlerIndex < allSkins.length; brawlerIndex++){
-        let brawler = allSkins[brawlerIndex];
+        const brawler = allSkins[brawlerIndex];
         
-        if (brawler.hasOwnProperty("name") === true && brawler.hasOwnProperty("pins") === true){
+        if (Object.hasOwn(brawler, "name") === true && Object.hasOwn(brawler, "pins") === true){
             // Only offer pins from brawlers the user owns
-            if (userBrawlers.hasOwnProperty(brawler.name) === true){
+            if (Object.hasOwn(userBrawlers, brawler.name) === true){
                 for (let pinIndex = 0; pinIndex < brawler.pins.length; pinIndex++){
                     //const pinRarity = brawler.pins[pinIndex].rarity.value;
                     const pinAmount = userBrawlers[brawler.name][brawler.pins[pinIndex].name];
@@ -434,7 +434,7 @@ export function refreshFeaturedItem(userBrawlers: DatabaseBrawlers): string{
  * @returns object with avatar, theme, and scene extraData strings
  */
 export function getAchievementItems(resources: UserResources, collection: CollectionData, accessoryLevel: number): AchievementItems{
-    let avatars = new Set<string>();
+    const avatars = new Set<string>();
 
     const score = getCollectionScore(collection);
 
@@ -447,7 +447,7 @@ export function getAchievementItems(resources: UserResources, collection: Collec
     // This will contain the index of the highest tiered avatar the user currently has
     let tier = -1;
 
-    for (let x in resources.avatars){
+    for (const x in resources.avatars){
         if (resources.avatars[x].includes("collection") === true){
             tier = Math.max(tier, tierOrder.indexOf(resources.avatars[x]));            
         }
@@ -490,7 +490,7 @@ export function getAchievementItems(resources: UserResources, collection: Collec
     }
 
 
-    let themes = new Set<string>();
+    const themes = new Set<string>();
 
     // Legendary set scene is available when the user has at least half of the brawlers completed
     if (collection.completedBrawlers / Math.max(1, collection.totalBrawlers) >= 0.5){
@@ -498,7 +498,7 @@ export function getAchievementItems(resources: UserResources, collection: Collec
     }
 
 
-    let scenes = new Set<string>();
+    const scenes = new Set<string>();
 
     // Stunt Show scene is available when the user has at least half of the brawlers unlocked
     if (collection.unlockedBrawlers / Math.max(1, collection.totalBrawlers) >= 0.5){

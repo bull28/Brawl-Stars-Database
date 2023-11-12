@@ -20,13 +20,13 @@ import {
     updateCosmetics, 
     updateLastClaim
 } from "../modules/database";
-import {AvatarList, DatabaseAvatars, DatabaseBrawlers, DatabaseCosmetics, DatabaseScenes, DatabaseThemes, SceneList, ThemeList} from "../types";
+import {Empty, AvatarList, DatabaseAvatars, DatabaseBrawlers, DatabaseCosmetics, DatabaseScenes, DatabaseThemes, SceneList, ThemeList} from "../types";
 
 const router = express.Router();
 
 
-let allAvatars: AvatarList = {free: [], special: []};
-let allThemes: ThemeList = {free: [], special: []};
+const allAvatars: AvatarList = {free: [], special: []};
+const allThemes: ThemeList = {free: [], special: []};
 let allScenes: SceneList = [];
 readFreeAvatars().then((data) => {
     if (data !== void 0){
@@ -80,9 +80,9 @@ interface ClaimTokensReqBody extends TokenReqBody{
 
 
 // Accepts user credentials and returns a token if they are valid
-router.post<{}, {}, LoginReqBody>("/login", databaseErrorHandler<LoginReqBody>(async (req, res) => {
-    let username = req.body.username;
-    let password = req.body.password;
+router.post<Empty, Empty, LoginReqBody>("/login", databaseErrorHandler<LoginReqBody>(async (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
 
     if (typeof username !== "string" || typeof password !== "string"){
         res.status(400).send("Username or password is missing.");
@@ -106,9 +106,9 @@ router.post<{}, {}, LoginReqBody>("/login", databaseErrorHandler<LoginReqBody>(a
 }));
 
 // Creates a new account then returns a token with the given credentials
-router.post<{}, {}, LoginReqBody>("/signup", databaseErrorHandler<LoginReqBody>(async (req, res) => {
-    let username = req.body.username;
-    let password = req.body.password;
+router.post<Empty, Empty, LoginReqBody>("/signup", databaseErrorHandler<LoginReqBody>(async (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
 
     if ((typeof username === "string" && typeof password === "string") === false){
         res.status(400).send("Username or password is missing.");
@@ -131,18 +131,17 @@ router.post<{}, {}, LoginReqBody>("/signup", databaseErrorHandler<LoginReqBody>(
     // If there are enough brawlers in the game, give the user 3 to start
     // so they do not keep getting coins instead of pins because they have
     // no brawlers unlocked.
-    let startingBrawlers: DatabaseBrawlers = {};
+    const startingBrawlers: DatabaseBrawlers = {};
     if (allSkins.length >= 10){
         for (let x = 0; x < 3; x++){
-            if (allSkins[x].hasOwnProperty("name") === true){
-                // even though the pins are supposed to be here, when the user
-                // unlocks them, they will be inserted as a new key with value 0
+            if (Object.hasOwn(allSkins[x], "name") === true){
+                // New pin unlocks are inserted as a new key with value 0
                 startingBrawlers[allSkins[x].name] = {};
             }
         }
     }
 
-    const updateResults = await createNewUser({
+    await createNewUser({
         username: username,
         password: password,
         active_avatar: "free/default",
@@ -169,8 +168,8 @@ router.post<{}, {}, LoginReqBody>("/signup", databaseErrorHandler<LoginReqBody>(
 }));
 
 // Updates an account's information
-router.post<{}, {}, UpdateReqBody>("/update", databaseErrorHandler<UpdateReqBody>(async (req, res) => {
-    let token = req.body.token;
+router.post<Empty, Empty, UpdateReqBody>("/update", databaseErrorHandler<UpdateReqBody>(async (req, res) => {
+    const token = req.body.token;
     let currentPassword = req.body.currentPassword;
     let newPassword = req.body.newPassword;
     let newAvatar = req.body.newAvatar;
@@ -180,7 +179,7 @@ router.post<{}, {}, UpdateReqBody>("/update", databaseErrorHandler<UpdateReqBody
         return;
     }
 
-    let currentUsername = validateToken(token);
+    const currentUsername = validateToken(token);
     if (currentUsername === ""){
         res.status(401).send("Invalid token.");
         return;
@@ -261,7 +260,7 @@ router.post<{}, {}, UpdateReqBody>("/update", databaseErrorHandler<UpdateReqBody
 }));
 
 // Get the list of all avatars the user is allowed to select
-router.post<{}, {}, TokenReqBody>("/avatar", databaseErrorHandler<TokenReqBody>(async (req, res) => {
+router.post<Empty, Empty, TokenReqBody>("/avatar", databaseErrorHandler<TokenReqBody>(async (req, res) => {
     if (typeof req.body.token !== "string"){
         res.status(400).send("Token is missing.");
         return;
@@ -292,7 +291,7 @@ router.post<{}, {}, TokenReqBody>("/avatar", databaseErrorHandler<TokenReqBody>(
 }));
 
 // Get the list of all themes and scenes the user is allowed to select
-router.post<{}, {}, TokenReqBody>("/theme", databaseErrorHandler<TokenReqBody>(async (req, res) => {
+router.post<Empty, Empty, TokenReqBody>("/theme", databaseErrorHandler<TokenReqBody>(async (req, res) => {
     if (typeof req.body.token !== "string"){
         res.status(400).send("Token is missing.");
         return;
@@ -320,9 +319,9 @@ router.post<{}, {}, TokenReqBody>("/theme", databaseErrorHandler<TokenReqBody>(a
 }));
 
 // Get and set user cosmetic items
-router.post<{}, {}, CosmeticReqBody>("/cosmetic", databaseErrorHandler<CosmeticReqBody>(async (req, res) => {
+router.post<Empty, Empty, CosmeticReqBody>("/cosmetic", databaseErrorHandler<CosmeticReqBody>(async (req, res) => {
     // This object stores a validated copy of the user's request to change cosmetics
-    let setCosmetics: DatabaseCosmetics = {
+    const setCosmetics: DatabaseCosmetics = {
         background: "", icon: "", music: "", scene: ""
     };
 
@@ -341,8 +340,7 @@ router.post<{}, {}, CosmeticReqBody>("/cosmetic", databaseErrorHandler<CosmeticR
 
         // results.length === 0 checked
 
-        let cosmeticsData = results[0];
-        res.json(getCosmetics(allThemes, allScenes, cosmeticsData));
+        res.json(getCosmetics(allThemes, allScenes, results[0]));
         return;
     }
 
@@ -350,7 +348,7 @@ router.post<{}, {}, CosmeticReqBody>("/cosmetic", databaseErrorHandler<CosmeticR
     // If req.body.setCosmetics is not formatted correctly or is some other data type
     // then an error will be sent here.
     try{
-        for (let x in req.body.setCosmetics){
+        for (const x in req.body.setCosmetics){
             if (x === "background" || x === "icon" || x === "music"){
                 // Remove the file extension and the directory because that information
                 // is common among all themes and only the necessary information has to
@@ -385,9 +383,9 @@ router.post<{}, {}, CosmeticReqBody>("/cosmetic", databaseErrorHandler<CosmeticR
     // If the user wants to set their cosmetics, first validate their
     // selections by checking the database values.
     let validCosmetics = true;
-    for (let x in setCosmetics){
+    for (const x in setCosmetics){
         // Empty string means set to default
-        let k = x as keyof typeof setCosmetics;
+        const k = x as keyof DatabaseCosmetics;
         if (setCosmetics[k] !== ""){
             if (x === "background" || x === "icon" || x === "music"){
                 const filePaths = setCosmetics[x].split("/");
@@ -439,7 +437,7 @@ router.post<{}, {}, CosmeticReqBody>("/cosmetic", databaseErrorHandler<CosmeticR
         return;
     }
 
-    const updateResults = await updateCosmetics({
+    await updateCosmetics({
         background: setCosmetics.background,
         icon: setCosmetics.icon,
         music: setCosmetics.music,
@@ -454,7 +452,7 @@ router.post<{}, {}, CosmeticReqBody>("/cosmetic", databaseErrorHandler<CosmeticR
 }));
 
 // Claim any available tokens and/or get the time until tokens are available again
-router.post<{}, {}, ClaimTokensReqBody>("/claimtokens", databaseErrorHandler<ClaimTokensReqBody>(async (req, res) => {
+router.post<Empty, Empty, ClaimTokensReqBody>("/claimtokens", databaseErrorHandler<ClaimTokensReqBody>(async (req, res) => {
     if (typeof req.body.token !== "string"){
         res.status(400).send("Token is missing.");
         return;
@@ -470,18 +468,18 @@ router.post<{}, {}, ClaimTokensReqBody>("/claimtokens", databaseErrorHandler<Cla
 
     // results.length === 0 checked
 
-    let userResults = results[0];
-    if ((userResults.hasOwnProperty("username") &&
-    userResults.hasOwnProperty("last_claim") &&
-    userResults.hasOwnProperty("tokens") &&
-    userResults.hasOwnProperty("token_doubler")) === false){
+    const userResults = results[0];
+    if ((Object.hasOwn(userResults, "username") &&
+    Object.hasOwn(userResults, "last_claim") &&
+    Object.hasOwn(userResults, "tokens") &&
+    Object.hasOwn(userResults, "token_doubler")) === false){
         res.status(500).send("Database is not set up properly.");
         return;
     }
 
     // Add tokens based on how much time has passed since they last logged in
-    let currentTime = Date.now();
-    let currentSeasonTime = realToTime(currentTime);
+    const currentTime = Date.now();
+    const currentSeasonTime = realToTime(currentTime);
 
     // Batches of tokens to be given to the player
     let rewardsGiven = 0;
@@ -492,7 +490,7 @@ router.post<{}, {}, ClaimTokensReqBody>("/claimtokens", databaseErrorHandler<Cla
     // to receive maximum rewards so give them the maximum reward for all times
     // longer than 2 weeks, even though the map rotation can handle times
     // between 2 and 4 weeks.
-    let hoursSinceLastLogin = (currentTime - userResults.last_claim) / 3600000;
+    const hoursSinceLastLogin = (currentTime - userResults.last_claim) / 3600000;
     if (hoursSinceLastLogin >= MAP_CYCLE_HOURS){
         rewardsGiven = MAX_REWARD_STACK;
     } else{
@@ -500,14 +498,14 @@ router.post<{}, {}, ClaimTokensReqBody>("/claimtokens", databaseErrorHandler<Cla
         let currentSeason = currentSeasonTime.season;
         let currentHour = currentSeasonTime.hour;
 
-        let lastLoginTime = realToTime(userResults.last_claim);
+        const lastLoginTime = realToTime(userResults.last_claim);
         //lastLoginTime = new maps.SeasonTime(0, 327, 0, 0);
         //let lastLoginSeason = lastLoginTime.season;
-        let lastLoginHour = lastLoginTime.hour;
+        const lastLoginHour = lastLoginTime.hour;
         
         // Since reward times must be compared on the same season, "carry over"
         // cases, where the season values are not the same, must be handled
-        let seasonDiff = currentSeason - lastLoginTime.season;
+        const seasonDiff = currentSeason - lastLoginTime.season;
         if (seasonDiff > 0){
             // Case 1: Positive carry over
             // Represents a case where the map rotation reset since the last login
@@ -564,7 +562,7 @@ router.post<{}, {}, ClaimTokensReqBody>("/claimtokens", databaseErrorHandler<Cla
         
         // Rewards are given at multiples of 6 hours in the season so find the last multiple of
         // 6 before the current time then compare it to the last login time.
-        let lastRewardHour = Math.floor(currentHour / HOURS_PER_REWARD) * HOURS_PER_REWARD;
+        const lastRewardHour = Math.floor(currentHour / HOURS_PER_REWARD) * HOURS_PER_REWARD;
 
         // The user can claim rewards as long as their last login hour is less than the last
         // reward hour. Since rewards are given at the very start of the hour, a last login
@@ -623,7 +621,7 @@ router.post<{}, {}, ClaimTokensReqBody>("/claimtokens", databaseErrorHandler<Cla
         return;
     }
 
-    const updateResults = await updateLastClaim({
+    await updateLastClaim({
         last_claim: currentTime,
         tokens: newTokenAmount,
         token_doubler: activeTokenDoubler,

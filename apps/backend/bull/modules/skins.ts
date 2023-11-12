@@ -16,7 +16,7 @@ function skinModelExists(model: ModelData): ModelData{
 
 export function getBrawler(allSkins: Brawler[], name: string): Brawler | undefined{
     for (let x = 0; x < allSkins.length; x++){
-        if (allSkins[x].hasOwnProperty("name") === true){
+        if (Object.hasOwn(allSkins[x], "name") === true){
             if (allSkins[x].name === name){
                 return allSkins[x];
             }
@@ -26,9 +26,9 @@ export function getBrawler(allSkins: Brawler[], name: string): Brawler | undefin
 }
 
 export function getSkin(brawler: Brawler, skinName: string): Skin | undefined{
-    if (brawler.hasOwnProperty("skins") === true){
+    if (Object.hasOwn(brawler, "skins") === true){
         for (let x = 0; x < brawler.skins.length; x++){
-            if (brawler.skins[x].hasOwnProperty("name") === true){
+            if (Object.hasOwn(brawler.skins[x], "name") === true){
                 if (brawler.skins[x].name === skinName){
                     return brawler.skins[x];
                 }
@@ -47,14 +47,14 @@ export function getSkin(brawler: Brawler, skinName: string): Skin | undefined{
  * @returns copy of the brawler data
  */
 export function getBrawlerData(brawler: Brawler): BrawlerData{
-    let brawlerSkins: BrawlerData["skins"] = [];
+    const brawlerSkins: BrawlerData["skins"] = [];
 
     let brawlerName = "";
-    if (brawler.hasOwnProperty("name") === true){
+    if (Object.hasOwn(brawler, "name") === true){
         brawlerName = brawler.name;
     }
 
-    if (brawler.hasOwnProperty("skins") === true){
+    if (Object.hasOwn(brawler, "skins") === true){
         for (let x = 0; x < brawler.skins.length; x++){
             const thisBrawler = brawler.skins[x];
             brawlerSkins.push({
@@ -64,8 +64,8 @@ export function getBrawlerData(brawler: Brawler): BrawlerData{
         }
     }
 
-    let brawlerPins: BrawlerData["pins"] = [];
-    if (brawler.hasOwnProperty("pins") === true){
+    const brawlerPins: BrawlerData["pins"] = [];
+    if (Object.hasOwn(brawler, "pins") === true){
         for (let x = 0; x < brawler.pins.length; x++){
             const thisPin = brawler.pins[x];
             brawlerPins.push({
@@ -107,7 +107,7 @@ export function getBrawlerData(brawler: Brawler): BrawlerData{
  * @returns copy of the skin data
  */
 export function getSkinData(skin: Skin, brawlerName: string): SkinData{
-    let skinFeatures: Skin["features"] = [];
+    const skinFeatures: Skin["features"] = [];
     for (let x = 0 ; x < skin.features.length; x++){
         skinFeatures.push(skin.features[x]);
     }

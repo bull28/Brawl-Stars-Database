@@ -9,7 +9,7 @@ const router = express.Router();
 
 // Get the entire list of brawlers
 router.get("/brawler", (req, res) => {
-    let allBrawlers: BrawlerPreview[] = [];
+    const allBrawlers: BrawlerPreview[] = [];
     for (let x = 0; x < allSkins.length; x++){
         const brawler = allSkins[x] as BrawlerPreview;
         allBrawlers.push({

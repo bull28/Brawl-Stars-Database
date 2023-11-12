@@ -1,6 +1,6 @@
 import {Request, Response, NextFunction} from "express";
 import mysql2, {Pool, RowDataPacket, ResultSetHeader} from "mysql2";
-import {DatabaseBrawlers, TradePinValid} from "../types";
+import {Empty, DatabaseBrawlers, TradePinValid} from "../types";
 
 // Custom error classes for common database errors
 
@@ -83,7 +83,7 @@ function closeConnection(callback: () => void): void{
         console.log("Database connection ended");
     });   
     callback();
-};
+}
 
 process.on("SIGINT", () => {
     closeConnection(() => {
@@ -107,7 +107,7 @@ function isNoUpdateError(error: Error): error is NoUpdateError{
     return ((error as NoUpdateError).frank !== void 0);
 }
 
-type ExpressCallback<R, Q> = (req: Request<{}, {}, R, Q>, res: Response, next: NextFunction) => void;
+type ExpressCallback<R, Q> = (req: Request<Empty, Empty, R, Q>, res: Response, next: NextFunction) => void;
 
 /**
  * Error handler for async endpoint callbacks. This function will send
@@ -117,8 +117,8 @@ type ExpressCallback<R, Q> = (req: Request<{}, {}, R, Q>, res: Response, next: N
  * @param callback callback for an endpoint
  * @returns callback with a promise
  */
-export function databaseErrorHandler<R, Q = {}>(callback: ExpressCallback<R, Q>): ExpressCallback<R, Q>{
-    return (req: Request<{}, {}, R, Q>, res: Response, next: NextFunction) => {
+export function databaseErrorHandler<R, Q = unknown>(callback: ExpressCallback<R, Q>): ExpressCallback<R, Q>{
+    return (req: Request<Empty, Empty, R, Q>, res: Response, next: NextFunction) => {
         Promise.resolve(callback(req, res, next)).catch((reason) => {
             const error = reason as Error;
             if (isDatabaseError(error)){
@@ -256,10 +256,10 @@ export function parseBrawlers(brawlerString: string): DatabaseBrawlers{
     try{
         const data = JSON.parse(brawlerString);
 
-        for (let x in data){
+        for (const x in data){
             if (typeof x === "string" && typeof data[x] === "object"){
                 const pinMap: DatabaseBrawlers[string] = {};
-                for (let y in data[x]){
+                for (const y in data[x]){
                     if (typeof y === "string" && typeof data[x][y] === "number"){
                         pinMap[y] = data[x][y];
                     }

@@ -72,7 +72,7 @@ class Reward{
         };
     }
 
-    getReward(resources: UserResources): BrawlBoxDrop{
+    getReward(_resources: UserResources): BrawlBoxDrop{
         return this.createDropResult();
     }
 }
@@ -129,7 +129,7 @@ class TokenDoublerReward extends Reward{
     getReward(resources: UserResources): BrawlBoxDrop{
         const result = this.createDropResult();
 
-        let rewardAmount = this.baseAmount;
+        const rewardAmount = this.baseAmount;
         if (rewardAmount <= 0){
             return result;
         }
@@ -244,19 +244,19 @@ class PinReward extends Reward{
             return result;
         }
 
-        let userCollection = resources.brawlers;
-        let modifiedRarityDist = [0, 0, 0, 0, 0];
-        let pinsByRarity: [number, number][][] = [[], [], [], [], []];
-        let duplicatePins: [number, number][][] = [[], [], [], [], []];
+        const userCollection = resources.brawlers;
+        const modifiedRarityDist = [0, 0, 0, 0, 0];
+        const pinsByRarity: [number, number][][] = [[], [], [], [], []];
+        const duplicatePins: [number, number][][] = [[], [], [], [], []];
         
         let availablePins: [number, number][] = [];
 
         for (let brawlerIndex = 0; brawlerIndex < allSkins.length; brawlerIndex++){
-            let brawler = allSkins[brawlerIndex];
+            const brawler = allSkins[brawlerIndex];
 
-            if (brawler.hasOwnProperty("name") === true && brawler.hasOwnProperty("pins") === true){
+            if (Object.hasOwn(brawler, "name") === true && Object.hasOwn(brawler, "pins") === true){
 
-                if (userCollection.hasOwnProperty(brawler.name) === true){
+                if (Object.hasOwn(userCollection, brawler.name) === true){
                     for (let pinIndex = 0; pinIndex < brawler.pins.length; pinIndex++){
                         const pinRarity = brawler.pins[pinIndex].rarity.value;
                         const pinAmount = userCollection[brawler.name][brawler.pins[pinIndex].name];
@@ -305,7 +305,7 @@ class PinReward extends Reward{
         }
 
         // RNG does not require the distribution to be normalized
-        let selectedRarity = RNG(modifiedRarityDist);
+        const selectedRarity = RNG(modifiedRarityDist);
 
 
         let isDuplicate = false;
@@ -354,9 +354,9 @@ class PinReward extends Reward{
             // the object and set its value to 1. This may happen when new pins are released and the existing players'
             // data has not been updated to include the new pins. Because new pins are added automatically here, an
             // update to every user in the database when a new pin gets released is not necessary.
-            let brawlerInCollection = userCollection[brawlerObject.name];
+            const brawlerInCollection = userCollection[brawlerObject.name];
             if (brawlerInCollection !== void 0){
-                if (brawlerInCollection.hasOwnProperty(pinObject.name) === false){
+                if (Object.hasOwn(brawlerInCollection, pinObject.name) === false){
                     brawlerInCollection[pinObject.name] = 1;
                 } else{
                     brawlerInCollection[pinObject.name] = brawlerInCollection[pinObject.name] + 1;
@@ -416,7 +416,7 @@ class WildCardPinReward extends Reward{
             }
         }
 
-        let selectedRarity = RNG(this.rarityDist);
+        const selectedRarity = RNG(this.rarityDist);
         if (selectedRarity >= 0){
             let rarityName = "";
             let rarityColor = "#000000";
@@ -491,18 +491,18 @@ class BrawlerReward extends Reward{
             return result;
         }
 
-        let userCollection = resources.brawlers;
-        let modifiedRarityDist = [0, 0, 0, 0, 0, 0, 0];
-        let brawlersByRarity: number[][] = [[], [], [], [], [], [], []];
+        const userCollection = resources.brawlers;
+        const modifiedRarityDist = [0, 0, 0, 0, 0, 0, 0];
+        const brawlersByRarity: number[][] = [[], [], [], [], [], [], []];
 
         let availableBrawlers: number[] = [];
 
         for (let brawlerIndex = 0; brawlerIndex < allSkins.length; brawlerIndex++){
-            let brawler = allSkins[brawlerIndex];
+            const brawler = allSkins[brawlerIndex];
 
-            if (brawler.hasOwnProperty("name") === true && brawler.hasOwnProperty("rarity") === true){
+            if (Object.hasOwn(brawler, "name") === true && Object.hasOwn(brawler, "rarity") === true){
                 const brawlerRarity = brawler.rarity.value;
-                if (brawlerRarity < brawlersByRarity.length && userCollection.hasOwnProperty(brawler.name) === false){
+                if (brawlerRarity < brawlersByRarity.length && Object.hasOwn(userCollection, brawler.name) === false){
                     brawlersByRarity[brawlerRarity].push(brawlerIndex);
                 }
             }
@@ -516,7 +516,7 @@ class BrawlerReward extends Reward{
             }
         }
 
-        let selectedRarity = RNG(modifiedRarityDist);
+        const selectedRarity = RNG(modifiedRarityDist);
         if (selectedRarity >= 0){
             availableBrawlers = brawlersByRarity[selectedRarity];
         }
@@ -524,7 +524,7 @@ class BrawlerReward extends Reward{
         if (availableBrawlers.length > 0){
             const selectedIndex = availableBrawlers[Math.floor(Math.random() * availableBrawlers.length)];
             const brawlerObject = allSkins[selectedIndex];
-            if (userCollection.hasOwnProperty(brawlerObject.name) === false){
+            if (Object.hasOwn(userCollection, brawlerObject.name) === false){
                 userCollection[brawlerObject.name] = {};
             }
 
@@ -564,7 +564,7 @@ class TradeCreditsReward extends Reward{
     getReward(resources: UserResources): BrawlBoxDrop{
         const result = this.createDropResult();
 
-        let selectedIndex = RNG(this.drops.map((value) => value.weight));
+        const selectedIndex = RNG(this.drops.map((value) => value.weight));
         if (selectedIndex < 0){
             return result;
         }
@@ -602,12 +602,12 @@ class AvatarReward extends Reward{
     getReward(resources: UserResources): BrawlBoxDrop{
         const result = this.createDropResult();
 
-        let userAvatars = resources.avatars;
+        const userAvatars = resources.avatars;
 
         // Before choosing a bonus reward type, determine whether the user
         // has avatars to collect. Do this here so the array does not have
         // to be traversed more than once.
-        let availableAvatars: typeof this.drops = [];
+        const availableAvatars: typeof this.drops = [];
         for (let avatarIndex = 0; avatarIndex < this.drops.length; avatarIndex++){
             if (typeof this.drops[avatarIndex].value === "string"){
                 if (userAvatars.includes(this.drops[avatarIndex].value) === false){
@@ -624,7 +624,7 @@ class AvatarReward extends Reward{
             return result;
         }
 
-        let selectedIndex = RNG(availableAvatars.map((value) => value.weight));
+        const selectedIndex = RNG(availableAvatars.map((value) => value.weight));
         if (selectedIndex >= 0 && typeof availableAvatars[selectedIndex].value === "string"){
             userAvatars.push(availableAvatars[selectedIndex].value);
             
@@ -643,16 +643,16 @@ class AvatarReward extends Reward{
 // Initialize data that will not change but requires searching through the allSkins array to obtain.
 
 // Stores (number of pins in each rarity / total pins). Used when selecting pins.
-let pinCounts = [0, 0, 0, 0, 0];
+const pinCounts = [0, 0, 0, 0, 0];
 let totalPins = 0;
 
 // Maps a rarity value to its color and name. Used when selecting wild card pins.
 export const rarityNames = new Map<number, Omit<Pin["rarity"], "value">>();
 
 for (let brawlerIndex = 0; brawlerIndex < allSkins.length; brawlerIndex++){
-    let brawler = allSkins[brawlerIndex];
+    const brawler = allSkins[brawlerIndex];
 
-    if (brawler.hasOwnProperty("name") === true && brawler.hasOwnProperty("pins") === true){
+    if (Object.hasOwn(brawler, "name") === true && Object.hasOwn(brawler, "pins") === true){
         for (let pinIndex = 0; pinIndex < brawler.pins.length; pinIndex++){
             const pinRarity = brawler.pins[pinIndex].rarity.value;
             if (pinRarity < pinCounts.length){
@@ -790,11 +790,11 @@ function openBox(box: BrawlBox, resources: UserResources): BrawlBoxDrop[]{
     }
     
     let valid = true;
-    for (let x of [
+    for (const x of [
         "brawlers", "avatars", "wild_card_pins", "tokens",
         "token_doubler", "coins", "trade_credits"
     ]){
-        if (resources.hasOwnProperty(x) === false){
+        if (Object.hasOwn(resources, x) === false){
             // Resources object missing properties
             valid = false;
         }
@@ -853,7 +853,7 @@ function openBox(box: BrawlBox, resources: UserResources): BrawlBoxDrop[]{
  * @returns status code
  */
 export function canOpenBox(boxName: string, tokens: number): number{
-    if (boxes.hasOwnProperty(boxName) === false){
+    if (Object.hasOwn(boxes, boxName) === false){
         return 400;
     }
 
@@ -868,7 +868,7 @@ export function canOpenBox(boxName: string, tokens: number): number{
 }
 
 export const boxList: BrawlBoxPreview[] = [];
-for (let x in boxes){
+for (const x in boxes){
     const display = boxes[x].display;
     if (boxes[x].cost > 0 && display !== void 0){
         boxList.push({
@@ -883,7 +883,7 @@ for (let x in boxes){
 }
 
 export default function brawlBox(boxName: string, resources: UserResources): BrawlBoxDrop[]{
-    if (boxes.hasOwnProperty(boxName) === true){
+    if (Object.hasOwn(boxes, boxName) === true){
         return openBox(boxes[boxName], resources);
     } else{
         return [];

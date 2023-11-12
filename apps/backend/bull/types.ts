@@ -2,6 +2,15 @@ import allSkins from "./data/brawlers_data.json";
 import eventList from "./data/maps_data.json";
 
 //------------------------------------------------------------------------------------------------//
+//                                           Route Types                                          //
+//------------------------------------------------------------------------------------------------//
+
+/**
+ * Empty object used for a route callback
+ */
+export type Empty = Record<string, never>;
+
+//------------------------------------------------------------------------------------------------//
 //                                          Brawler Types                                         //
 //------------------------------------------------------------------------------------------------//
 
@@ -265,11 +274,7 @@ export interface UserTokenResult{
 /**
  * Parsed format of the brawler object that is stored in the database as text
  */
-export type DatabaseBrawlers = {
-    [k: string]: {
-        [k: string]: number;
-    };
-}
+export type DatabaseBrawlers = Record<string, Record<string, number>>;
 
 /**
  * Formatted collection data

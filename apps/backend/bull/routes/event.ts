@@ -1,5 +1,6 @@
 import express from "express";
 import {events, SeasonTime, realToTime, getAllEvents, addSeasonTimes, isValidTimeQuery} from "../modules/maps";
+import {Empty, CurrentEventsData} from "../types";
 
 const router = express.Router();
 
@@ -19,7 +20,7 @@ router.get("/current", (req, res) => {
 });
 
 // Get events active using a season time
-router.get<{}, {}, {}, TimeQuery>("/seasontime", (req, res) => {
+router.get<Empty, string | CurrentEventsData, Empty, TimeQuery>("/seasontime", (req, res) => {
     const hourString = req.query.hour;
     const minuteString = req.query.minute;
     const secondString = req.query.second;
@@ -40,7 +41,7 @@ router.get<{}, {}, {}, TimeQuery>("/seasontime", (req, res) => {
 });
 
 // Get events active a time interval later in the season
-router.get<{}, {}, {}, TimeQuery>("/later", (req, res) => {
+router.get<Empty, string | CurrentEventsData, Empty, TimeQuery>("/later", (req, res) => {
     const hourString = req.query.hour;
     const minuteString = req.query.minute;
     const secondString = req.query.second;
@@ -63,7 +64,7 @@ router.get<{}, {}, {}, TimeQuery>("/later", (req, res) => {
 });
 
 // Get currently active events
-router.get<{}, {}, {}, TimeQuery>("/worldtime", (req, res) => {
+router.get<Empty, string | CurrentEventsData, Empty, TimeQuery>("/worldtime", (req, res) => {
     const realSeconds = req.query.second;
 
     if (isNaN(+realSeconds) === true){

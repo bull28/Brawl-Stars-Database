@@ -2,7 +2,7 @@ import express from "express";
 import {validateToken} from "../modules/authenticate";
 import {formatTradeData, getTimeTradeCost, getTradeCost, validatePins} from "../modules/trades";
 import {formatCollectionData} from "../modules/pins";
-import {DatabaseBrawlers, DatabaseWildCard, TradePin, TradePinValid, DatabaseAccessories} from "../types";
+import {Empty, DatabaseBrawlers, DatabaseWildCard, TradePin, TradePinValid, DatabaseAccessories} from "../types";
 import {
     databaseErrorHandler, 
     parseBrawlers, 
@@ -47,7 +47,7 @@ interface CloseReqBody{
 
 
 // Create a new trade
-router.post<{}, {}, CreateReqBody>("/create", databaseErrorHandler<CreateReqBody>(async (req, res) => {
+router.post<Empty, Empty, CreateReqBody>("/create", databaseErrorHandler<CreateReqBody>(async (req, res) => {
     if (typeof req.body.token !== "string"){
         res.status(400).send("Token is missing.");
         return;
@@ -75,8 +75,8 @@ router.post<{}, {}, CreateReqBody>("/create", databaseErrorHandler<CreateReqBody
     }
 
     // Run the function to validate the user's pin requests
-    let offerPins = validatePins(req.body.offer, searchByName);
-    let requestPins = validatePins(req.body.request, searchByName);
+    const offerPins = validatePins(req.body.offer, searchByName);
+    const requestPins = validatePins(req.body.request, searchByName);
 
     if (offerPins.length > 10 || requestPins.length > 10){
         res.status(400).send("Too many pins in request or offer.");
@@ -119,8 +119,7 @@ router.post<{}, {}, CreateReqBody>("/create", databaseErrorHandler<CreateReqBody
 
     // results.length === 0 checked
 
-    let userResources = results[0];
-    let userAvatarColor = "#FFFFFF";
+    const userResources = results[0];
 
     let collectionData: DatabaseBrawlers;
     let userAccessories: DatabaseAccessories;
@@ -134,7 +133,7 @@ router.post<{}, {}, CreateReqBody>("/create", databaseErrorHandler<CreateReqBody
 
     // Accessories are only required here to get the collection data
     // Get the user's avatar color and that will be the text color when displaying all trades
-    userAvatarColor = formatCollectionData(collectionData, userAccessories).avatarColor;
+    const userAvatarColor = formatCollectionData(collectionData, userAccessories).avatarColor;
 
 
     // Not enough trade credits
@@ -144,10 +143,10 @@ router.post<{}, {}, CreateReqBody>("/create", databaseErrorHandler<CreateReqBody
     }
 
     let hasRequiredPins = true;
-    for (let x of offerPins){
-        if (collectionData.hasOwnProperty(x.brawler) === true){
+    for (const x of offerPins){
+        if (Object.hasOwn(collectionData, x.brawler) === true){
             const brawler = collectionData[x.brawler];
-            if (brawler.hasOwnProperty(x.pin) === true){
+            if (Object.hasOwn(brawler, x.pin) === true){
                 const pinAmount = brawler[x.pin];
                 if (pinAmount < x.amount){
                     hasRequiredPins = false;
@@ -156,9 +155,7 @@ router.post<{}, {}, CreateReqBody>("/create", databaseErrorHandler<CreateReqBody
                     // pins and the trade has to be cancelled with only some of their pins removed, the new collection
                     // is not written to the database unless the trade was successful.
                     brawler[x.pin] = pinAmount - x.amount;
-                    //collectionData[x.brawler][x.pin] -= x.amount;
                 }
-                //console.log(collectionData[x.brawler][x.pin]);
             } else{
                 // They do not have the pin unlockd for that brawler
                 hasRequiredPins = false;
@@ -181,7 +178,7 @@ router.post<{}, {}, CreateReqBody>("/create", databaseErrorHandler<CreateReqBody
     // tradeHours defaults to 2 days expiry time
     const tradeExpiration = Date.now() + tradeHours * 3600000;
 
-    const updateResults = await createTrade({
+    await createTrade({
         creator: username,
         creator_avatar: userResources.active_avatar,
         creator_color: userAvatarColor,
@@ -204,7 +201,7 @@ router.post<{}, {}, CreateReqBody>("/create", databaseErrorHandler<CreateReqBody
 
 
     // Update the user's data after their resources and pins have been changed
-    const updateUserResults = await afterTrade({
+    await afterTrade({
         brawlers: stringifyBrawlers(collectionData),
         trade_credits: userResources.trade_credits,
         wild_card_pins: userResources.wild_card_pins,
@@ -217,14 +214,14 @@ router.post<{}, {}, CreateReqBody>("/create", databaseErrorHandler<CreateReqBody
 }));
 
 // Accept an existing trade
-router.post<{}, {}, AcceptReqBody>("/accept", databaseErrorHandler<AcceptReqBody>(async (req, res) => {
+router.post<Empty, Empty, AcceptReqBody>("/accept", databaseErrorHandler<AcceptReqBody>(async (req, res) => {
     if (typeof req.body.token !== "string"){
         res.status(400).send("Token is missing.");
         return;
     }
     const username = validateToken(req.body.token);
 
-    let tradeid = req.body.tradeid;
+    const tradeid = req.body.tradeid;
 
     if (username === "" || tradeid === void 0){
         res.status(401).send("Invalid token.");
@@ -248,7 +245,7 @@ router.post<{}, {}, AcceptReqBody>("/accept", databaseErrorHandler<AcceptReqBody
     // results.length === 0 checked
 
     // Load the data then get the trade data and compare then
-    let userResources = results[0];
+    const userResources = results[0];
 
     let collectionData: DatabaseBrawlers;
     let wildCardPins: DatabaseWildCard;
@@ -269,7 +266,7 @@ router.post<{}, {}, AcceptReqBody>("/accept", databaseErrorHandler<AcceptReqBody
 
     // getTrade.length === 0 checked
 
-    let tradeResults = getTrade[0];
+    const tradeResults = getTrade[0];
 
     // Trying to accept their own trade...
     if (tradeResults.creator === username){
@@ -298,31 +295,28 @@ router.post<{}, {}, AcceptReqBody>("/accept", databaseErrorHandler<AcceptReqBody
     }
 
     let hasRequiredPins = true;
-    for (let x of requestPins){
+    for (const x of requestPins){
         // First check if they have the required pins in their collection
-        if (collectionData.hasOwnProperty(x.brawler) === true){
+        if (Object.hasOwn(collectionData, x.brawler) === true){
             const brawler = collectionData[x.brawler];
-            if (brawler.hasOwnProperty(x.pin) === true){
-                let collectionPinCount = brawler[x.pin];
+            if (Object.hasOwn(brawler, x.pin) === true){
+                const collectionPinCount = brawler[x.pin];
                 if (collectionPinCount >= x.amount){
                     // User has all the required pins
                     brawler[x.pin] = collectionPinCount - x.amount;
-                    //collectionData[x.brawler][x.pin] -= x.amount;
                 } else if (collectionPinCount > 0){
                     // User has some pins but not the full required amount
-                    let missingPins = x.amount - collectionPinCount;
+                    const missingPins = x.amount - collectionPinCount;
                     if (wildCardPins[x.rarityValue] >= missingPins){
                         // If they have enough wild card pins to fill the remainder, set their pins
                         // to 0 then deduct the missing pins from their wild card pins.
                         wildCardPins[x.rarityValue] -= missingPins;
                         brawler[x.pin] = 0;
-                        //collectionData[x.brawler][x.pin] -= collectionPinCount;
                     } else{
                         hasRequiredPins = false;
                     }
                 } else{
-                    // User has none of the required pins
-                    // In this case, check for wild card pins below
+                    // User has none of the required pins. In this case, check for wild card pins below
                     hasRequiredPins = false;
                 }
             } else{
@@ -357,14 +351,14 @@ router.post<{}, {}, AcceptReqBody>("/accept", databaseErrorHandler<AcceptReqBody
     userResources.trade_credits -= totalTradeCost;
 
     // Array of pins the user received which will be sent to them as information
-    let tradedItems: TradePinValid[] = [];
+    const tradedItems: TradePinValid[] = [];
 
     let hasRequiredBrawlers = true;
-    for (let x of offerPins){
-        if (collectionData.hasOwnProperty(x.brawler) === true){
+    for (const x of offerPins){
+        if (Object.hasOwn(collectionData, x.brawler) === true){
             const brawler = collectionData[x.brawler];
             // If the user already has the pin in their collection, add the amount they will receive
-            if (brawler.hasOwnProperty(x.pin) === true){
+            if (Object.hasOwn(brawler, x.pin) === true){
                 brawler[x.pin] = brawler[x.pin] + x.amount;
                 //collectionData[x.brawler][x.pin] += x.amount;
             }
@@ -389,7 +383,7 @@ router.post<{}, {}, AcceptReqBody>("/accept", databaseErrorHandler<AcceptReqBody
     }
 
 
-    const updateResults = await afterTrade({
+    await afterTrade({
         brawlers: stringifyBrawlers(collectionData),
         wild_card_pins: JSON.stringify(wildCardPins),
         trade_credits: userResources.trade_credits,
@@ -402,8 +396,7 @@ router.post<{}, {}, AcceptReqBody>("/accept", databaseErrorHandler<AcceptReqBody
 
     // Set the trade's status to accepted and accepted_by to the user's name
 
-
-    const updateTrade = await afterTradeAccept({
+    await afterTradeAccept({
         expiration: 0,
         accepted: 1,
         accepted_by: username,
@@ -416,14 +409,14 @@ router.post<{}, {}, AcceptReqBody>("/accept", databaseErrorHandler<AcceptReqBody
 }));
 
 // Close a trade, collecting rewards if successful or refunding payment if unsuccessful
-router.post<{}, {}, CloseReqBody>("/close", databaseErrorHandler<CloseReqBody>(async (req, res) => {
+router.post<Empty, Empty, CloseReqBody>("/close", databaseErrorHandler<CloseReqBody>(async (req, res) => {
     if (typeof req.body.token !== "string"){
         res.status(400).send("Token is missing.");
         return;
     }
     const username = validateToken(req.body.token);
 
-    let tradeid = req.body.tradeid;
+    const tradeid = req.body.tradeid;
 
     if (username === "" || tradeid === void 0){
         res.status(401).send("Invalid token.");
@@ -442,7 +435,7 @@ router.post<{}, {}, CloseReqBody>("/close", databaseErrorHandler<CloseReqBody>(a
     // Load the data then get the trade data and compare then
     let collectionData: DatabaseBrawlers;
     let userTradeCredits = results[0].trade_credits;
-    let wildCards = results[0].wild_card_pins;
+    const wildCards = results[0].wild_card_pins;
     try{
         collectionData = parseBrawlers(results[0].brawlers);
     } catch (error){
@@ -456,7 +449,7 @@ router.post<{}, {}, CloseReqBody>("/close", databaseErrorHandler<CloseReqBody>(a
 
     // getTrade.length === 0 checked
     
-    let tradeResults = getTrade[0];
+    const tradeResults = getTrade[0];
 
     if (tradeResults.creator !== username){
         res.status(401).send("You did not create this trade!");
@@ -494,20 +487,18 @@ router.post<{}, {}, CloseReqBody>("/close", databaseErrorHandler<CloseReqBody>(a
     }
 
     // Array of pins the user received which will be sent to them as information
-    let tradedItems: TradePinValid[] = [];
+    const tradedItems: TradePinValid[] = [];
 
 
     let hasRequiredBrawlers = true;
-    for (let x of addPinsFrom){
-        if (collectionData.hasOwnProperty(x.brawler) === true){
+    for (const x of addPinsFrom){
+        if (Object.hasOwn(collectionData, x.brawler) === true){
             const brawler = collectionData[x.brawler];
-            if (brawler.hasOwnProperty(x.pin) === true){
+            if (Object.hasOwn(brawler, x.pin) === true){
                 brawler[x.pin] = brawler[x.pin] + x.amount;
-                //collectionData[x.brawler][x.pin] += x.amount;
             }
             else{
                 brawler[x.pin] = x.amount;
-                //collectionData[x.brawler][x.pin] = x.amount;
             }
             tradedItems.push(x);
         } else{
@@ -526,7 +517,7 @@ router.post<{}, {}, CloseReqBody>("/close", databaseErrorHandler<CloseReqBody>(a
     const acceptedBy = getTrade[0].accepted_by;
 
     // Update the user's data after their resources and pins have been changed
-    const updateResults = await afterTrade({
+    await afterTrade({
         brawlers: stringifyBrawlers(collectionData),
         trade_credits: userTradeCredits,
         wild_card_pins: wildCards,
@@ -536,7 +527,7 @@ router.post<{}, {}, CloseReqBody>("/close", databaseErrorHandler<CloseReqBody>(a
     // updateResults.affectedRows === 0 checked
 
     // Remove the trade from the database
-    const deleteResults = await afterTradeClose({tradeid: tradeid});
+    await afterTradeClose({tradeid: tradeid});
 
     // deleteResults.affectedRows === 0 checked
 
