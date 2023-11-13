@@ -1,19 +1,20 @@
 {
     "compilerOptions": {
-        "target": "es2016",
+        "target": "es2022",
         "module": "commonjs",
-        "lib": ["es2022", "dom"],
+        "lib": ["es2023", "dom"],
         "outDir": "build",
         "rootDir": "bull",
-        "strict": true,
-        "noImplicitAny": true,
-        "noImplicitReturns": true,
-        "noImplicitThis": true,
         "esModuleInterop": true,
+        "skipLibCheck": true,
         "removeComments": true,
         "resolveJsonModule": true,
+        "strict": true,        
         "exactOptionalPropertyTypes": true,
-        "noPropertyAccessFromIndexSignature": true
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitReturns": true,
+        "noPropertyAccessFromIndexSignature": true,
+        "forceConsistentCasingInFileNames": true
     },
     "include": [
         "./bull/**/*"

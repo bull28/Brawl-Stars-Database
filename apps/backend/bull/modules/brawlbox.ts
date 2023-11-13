@@ -72,7 +72,7 @@ class Reward{
         };
     }
 
-    getReward(_resources: UserResources): BrawlBoxDrop{
+    getReward(resources: UserResources): BrawlBoxDrop{
         return this.createDropResult();
     }
 }
