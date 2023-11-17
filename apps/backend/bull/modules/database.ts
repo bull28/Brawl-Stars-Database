@@ -1,6 +1,6 @@
 import {Request, Response, NextFunction} from "express";
 import mysql2, {Pool, RowDataPacket, ResultSetHeader} from "mysql2";
-import {Empty, DatabaseBrawlers, TradePinValid} from "../types";
+import {Empty, DatabaseBrawlers, DatabaseBadges, TradePinValid} from "../types";
 
 // Custom error classes for common database errors
 
@@ -36,6 +36,8 @@ const databaseLogin: mysql2.PoolOptions = {
 let TABLE_NAME = "users";
 let TRADE_TABLE_NAME = "trades";
 let COSMETIC_TABLE_NAME = "cosmetics";
+let GAME_TABLE_NAME = "bullgame";
+let REPORT_TABLE_NAME = "reports";
 
 
 // Read environment variables first before connecting
@@ -61,6 +63,10 @@ if (process.env["DATABASE_TABLE_NAME"] !== void 0){
     TRADE_TABLE_NAME = process.env["DATABASE_TRADE_TABLE_NAME"];
 } if (process.env["DATABASE_COSMETIC_TABLE_NAME"] !== void 0){
     COSMETIC_TABLE_NAME = process.env["DATABASE_COSMETIC_TABLE_NAME"];
+} if (process.env["GAME_TABLE_NAME"] !== void 0){
+    COSMETIC_TABLE_NAME = process.env["GAME_TABLE_NAME"];
+} if (process.env["REPORT_TABLE_NAME"] !== void 0){
+    COSMETIC_TABLE_NAME = process.env["REPORT_TABLE_NAME"];
 }
 
 
@@ -124,7 +130,12 @@ export function databaseErrorHandler<R, Q = unknown>(callback: ExpressCallback<R
             if (isDatabaseError(error)){
                 // This represents sql errors (duplicate primary key, foreign key violated, ...)
                 if (error.errno === 1062){
+                    // Duplicate primary key
                     res.status(401).send("Username (or something else) already exists.");
+                    return;
+                } else if (error.errno === 1644){
+                    // Trigger threw an error
+                    res.status(403).send(error.message);
                     return;
                 }
                 res.status(500).send("Could not connect to database.");    
@@ -302,6 +313,23 @@ export function parseTradePins(tradeString: string): TradePinValid[]{
     return tradeList;
 }
 
+export function parseBadges(badgesString: string): DatabaseBadges{
+    const badges: DatabaseBadges = {};
+    try{
+        const data = JSON.parse(badgesString);
+
+        for (const x in data){
+            if (typeof x === "string" && typeof data[x] === "number"){
+                badges[x] = data[x];
+            }
+        }
+    } catch (error){
+        throw new Error("Collection data could not be loaded.");
+    }
+
+    return badges;
+}
+
 export function stringifyBrawlers(brawlers: DatabaseBrawlers): string{
     const result: DatabaseBrawlers = Object.keys(brawlers).sort().reduce((object, key) => {
         object[key] = brawlers[key];
@@ -477,6 +505,29 @@ export async function getResources(values: UsernameValues): Promise<ResourcesRes
 }
 
 
+interface ResourcesValues{
+    tokens: number;
+    token_doubler: number;
+    coins: number;
+    trade_credits: number;
+    points: number;
+    brawlers: string;
+    avatars: string;
+    wild_card_pins: string;
+    themes: string;
+    scenes: string;
+    accessories: string;
+    username: string;
+}
+export async function setResources(values: ResourcesValues): Promise<ResultSetHeader>{
+    const valuesArray = [
+        values.tokens, values.token_doubler, values.coins, values.trade_credits, values.points, values.brawlers, values.avatars, values.wild_card_pins, values.themes, values.scenes, values.accessories, values.username
+    ];
+    return updateDatabase<typeof valuesArray>(connection, valuesArray, false,
+        `UPDATE ${TABLE_NAME} SET tokens = ?, token_doubler = ?, coins = ?, trade_credits = ?, points = ?, brawlers = ?, avatars = ?, wild_card_pins = ?, themes = ?, scenes = ?, accessories = ? WHERE username = ?;`);
+}
+
+
 interface BeforeShopResult extends RowDataPacket{
     last_login: number;
     coins: number;
@@ -491,25 +542,6 @@ export async function beforeShop(values: UsernameValues): Promise<BeforeShopResu
     const valuesArray = [values.username];
     return queryDatabase<typeof valuesArray, BeforeShopResult[]>(connection, valuesArray, false,
         `SELECT last_login, coins, trade_credits, brawlers, avatars, themes, scenes, featured_item FROM ${TABLE_NAME} WHERE username = ?;`);
-}
-
-
-interface BrawlBoxResultValues{
-    brawlers: string;
-    avatars: string;
-    wild_card_pins: string;
-    tokens: number;
-    token_doubler: number;
-    coins: number;
-    trade_credits: number;
-    username: string;
-}
-export async function afterBrawlBox(values: BrawlBoxResultValues): Promise<ResultSetHeader>{
-    const valuesArray = [
-        values.brawlers, values.avatars, values.wild_card_pins, values.tokens, values.token_doubler, values.coins, values.trade_credits, values.username
-    ];
-    return updateDatabase<typeof valuesArray>(connection, valuesArray, false,
-        `UPDATE ${TABLE_NAME} SET brawlers = ?, avatars = ?, wild_card_pins = ?, tokens = ?, token_doubler = ?, coins = ?, trade_credits = ? WHERE username = ?;`);
 }
 
 
@@ -702,4 +734,111 @@ export async function viewTradeAll(values: TradeViewAllValues): Promise<TradeVie
     ];
     return queryDatabase<typeof valuesArray, TradeViewAllResult[]>(connection, valuesArray, true,
         `SELECT tradeid, creator, creator_avatar, creator_color, offer, request, trade_credits, expiration FROM ${TRADE_TABLE_NAME} WHERE ${values.filterColumn} LIKE ? AND expiration > ? ORDER BY ${values.sortString} LIMIT ?, ?;`);
+}
+
+
+interface GameProgressResult extends RowDataPacket{
+    last_game: number;
+    enemy: string;
+    player: string;
+    location: string;
+    achievement: string;
+    best_scores: string;
+}
+export async function getGameProgress(values: UsernameValues): Promise<GameProgressResult[]>{
+    const valuesArray = [values.username];
+    return queryDatabase<typeof valuesArray, GameProgressResult[]>(connection, valuesArray, false,
+        `SELECT last_game, enemy, player, location, achievement, best_scores FROM ${GAME_TABLE_NAME} WHERE username = ?;`);
+}
+
+
+interface GameProgressValues{
+    last_game: number;
+    enemy: string;
+    player: string;
+    location: string;
+    achievement: string;
+    best_scores: string;
+    username: string;
+}
+export async function setGameProgess(values: GameProgressValues): Promise<ResultSetHeader>{
+    const valuesArray = [
+        values.last_game, values.enemy, values.player, values.location, values.achievement, values.best_scores, values.username
+    ];
+    return updateDatabase<typeof valuesArray>(connection, valuesArray, false,
+        `UPDATE ${GAME_TABLE_NAME} SET last_game = ?, enemy = ?, player = ?, location = ?, achievement = ?, best_scores = ? WHERE username = ?;`);
+}
+
+
+interface ReportValues{
+    username: string;
+    end_time: number;
+    version: number;
+    stats: string;
+}
+export async function addReport(values: ReportValues): Promise<ResultSetHeader>{
+    const valuesArray = [
+        values.username, values.end_time, values.version, values.stats
+    ];
+    return updateDatabase<typeof valuesArray>(connection, valuesArray, false,
+        `INSERT INTO ${REPORT_TABLE_NAME} (username, end_time, version, stats) VALUES (?, ?, ?, ?);`);
+}
+
+
+interface ReportIDValues{
+    reportid: number;
+}
+interface ReportStatsResult extends RowDataPacket{
+    username: string;
+    version: number;
+    stats: string;
+}
+export async function getReport(values: ReportIDValues): Promise<ReportStatsResult[]>{
+    const valuesArray = [values.reportid];
+    return queryDatabase<typeof valuesArray, ReportStatsResult[]>(connection, valuesArray, false,
+        `SELECT username, version, stats FROM ${REPORT_TABLE_NAME} WHERE reportid = ?;`);
+}
+
+
+interface ReportAllResult extends RowDataPacket{
+    reportid: number;
+    end_time: number;
+    version: number;
+    stats: string;
+}
+export async function getAllReports(values: UsernameValues): Promise<ReportAllResult[]>{
+    const valuesArray = [values.username];
+    return queryDatabase<typeof valuesArray, ReportAllResult[]>(connection, valuesArray, true,
+        `SELECT reportid, end_time, version, stats FROM ${REPORT_TABLE_NAME} WHERE username = ?;`);
+}
+
+
+export async function deleteReport(values: ReportIDValues): Promise<ResultSetHeader>{
+    const valuesArray = [values.reportid];
+    return updateDatabase<typeof valuesArray>(connection, valuesArray, false,
+        `DELETE FROM ${REPORT_TABLE_NAME} WHERE reportid = ?;`);
+}
+
+
+interface ResourcesProgressResult extends RowDataPacket{
+    tokens: number;
+    token_doubler: number;
+    coins: number;
+    trade_credits: number;
+    points: number;
+    brawlers: string;
+    avatars: string;
+    themes: string;
+    scenes: string;
+    accessories: string;
+    wild_card_pins: string;
+    player: string;
+    location: string;
+    achievement: string;
+    best_scores: string;
+}
+export async function getResourcesAndProgress(values: UsernameValues): Promise<ResourcesProgressResult[]>{
+    const valuesArray = [values.username, values.username];
+    return queryDatabase<typeof valuesArray, ResourcesProgressResult[]>(connection, valuesArray, false,
+        `SELECT U.active_avatar, U.tokens, U.token_doubler, U.coins, U.trade_credits, U.points, U.brawlers, U.avatars, U.themes, U.scenes, U.accessories, U.wild_card_pins, G.enemy, G.player, G.location, G.achievement, G.best_scores FROM ${TABLE_NAME} U, ${GAME_TABLE_NAME} G WHERE U.username = ? AND G.username = ?;`);
 }

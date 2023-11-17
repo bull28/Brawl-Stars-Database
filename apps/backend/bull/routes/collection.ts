@@ -11,11 +11,11 @@ import {
     parseNumberArray, 
     parseStringArray, 
     stringifyBrawlers, 
-    afterBrawlBox, 
     afterShop, 
     beforeShop, 
     beforeUpdate, 
     getResources, 
+    setResources, 
     updateFeaturedItem
 } from "../modules/database";
 import {Empty, CollectionData, DatabaseBrawlers, UserResources, DatabaseAccessories} from "../types";
@@ -220,7 +220,7 @@ router.post<Empty, Empty, BrawlBoxReqBody>("/brawlbox", databaseErrorHandler<Bra
 
     // The "stringify" function already sorts the brawlers' names
 
-    await afterBrawlBox({
+    await setResources({
         brawlers: stringifyBrawlers(resources.brawlers),
         avatars: JSON.stringify(resources.avatars),
         wild_card_pins: JSON.stringify(resources.wild_card_pins),
@@ -228,6 +228,10 @@ router.post<Empty, Empty, BrawlBoxReqBody>("/brawlbox", databaseErrorHandler<Bra
         token_doubler: resources.token_doubler,
         coins: resources.coins,
         trade_credits: resources.trade_credits,
+        points: results[0].points,
+        themes: results[0].themes,
+        scenes: results[0].scenes,
+        accessories: results[0].accessories,
         username: username
     });
 

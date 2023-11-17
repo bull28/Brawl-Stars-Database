@@ -130,7 +130,7 @@ router.post<Empty, Empty, TradeAllReqBody>("/all", databaseErrorHandler<TradeAll
     } else if (sortMethod === "lowcost"){
         sortString = "trade_credits";
     } else if (sortMethod === "highcost"){
-        sortString = "trade_credits DESC"
+        sortString = "trade_credits DESC";
     }
 
     // Only return a few trades at a time. The user can switch to a later

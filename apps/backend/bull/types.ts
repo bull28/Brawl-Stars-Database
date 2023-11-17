@@ -562,6 +562,11 @@ export interface TradeAllData extends TradeData{
 export type DatabaseAccessories = string[];
 
 /**
+ * Parsed format of the badges object that is stored in the database as text
+ */
+export type DatabaseBadges = Record<string, number>;
+
+/**
  * Full accessory data sent to the user when not in a challenge
  */
 interface AccessoryData{
@@ -571,6 +576,25 @@ interface AccessoryData{
     unlocked: boolean;
     unlockLevel: number;
     unlockMethod: string;
+}
+
+//------------------------------------------------------------------------------------------------//
+//                                        Game Report Types                                       //
+//------------------------------------------------------------------------------------------------//
+
+/**
+ * Player stats report obtained from the game
+ */
+export type GameReport = [number, number, number[]];
+
+/**
+ * Information required to show a report to the user
+ */
+export interface ReportPreview{
+    reportid: number;
+    endTime: number;
+    cost: number;
+    stats: number[];
 }
 
 //------------------------------------------------------------------------------------------------//

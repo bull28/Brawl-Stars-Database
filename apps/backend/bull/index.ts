@@ -11,6 +11,7 @@ import account from "./routes/account";
 import collection from "./routes/collection";
 import tradesview from "./routes/tradesview";
 import tradesmodify from "./routes/tradesmodify";
+import report from "./routes/report";
 
 const app = express();
 app.disable("x-powered-by");
@@ -45,6 +46,7 @@ app.use("/", account);
 app.use("/", collection);
 app.use("/trade", tradesview);
 app.use("/trade", tradesmodify);
+app.use("/report", report);
 
 app.get("/bullgame", (req, res) => {
     res.sendFile(path.join(__dirname, "..", "assets", "index.html"));
