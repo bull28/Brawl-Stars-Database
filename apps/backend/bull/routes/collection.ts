@@ -1,7 +1,8 @@
 import express from "express";
 import {AVATAR_IMAGE_DIR, FEATURED_REFRESH_HOURS, IMAGE_FILE_EXTENSION} from "../data/constants";
 import {validateToken} from "../modules/authenticate";
-import brawlBox, {boxList, rarityNames, canOpenBox} from "../modules/brawlbox";
+import {rarityNames} from "../modules/rewards";
+import brawlBox, {boxList, canOpenBox} from "../modules/brawlbox";
 import {formatCollectionData} from "../modules/pins";
 import {getAllItems, getAllItemsPreview, refreshFeaturedItem, getAchievementItems} from "../modules/shop";
 import {MAP_CYCLE_HOURS, mod, realToTime} from "../modules/maps";
