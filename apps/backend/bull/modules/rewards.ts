@@ -1,6 +1,12 @@
 import allSkins from "../data/brawlers_data.json";
-import {IMAGE_FILE_EXTENSION, PIN_IMAGE_DIR, PORTRAIT_IMAGE_DIR, AVATAR_SPECIAL_DIR, RESOURCE_IMAGE_DIR} from "../data/constants";
+import {IMAGE_FILE_EXTENSION, PIN_IMAGE_DIR, PORTRAIT_IMAGE_DIR, AVATAR_SPECIAL_DIR, THEME_SPECIAL_DIR, RESOURCE_IMAGE_DIR, themeMap} from "../data/constants";
 import {Pin, UserResources, BrawlBoxDrop} from "../types";
+
+// Probability distribution where each option has a string value
+type NamedDistribution = {
+    value: string;
+    weight: number;
+}[];
 
 /**
  * Takes in a probability distribution encoded in an array and randomly selects an index. The probability of an index in
@@ -602,36 +608,41 @@ export class TradeCreditsReward extends Reward{
 }
 
 export class AvatarReward extends Reward{
-    drops: {value: string; weight: number;}[];
+    drops: NamedDistribution;
     coinConversion: number;
 
-    constructor(){
+    constructor(drops?: NamedDistribution){
         super();
 
-        this.drops = [
-            {value: "brawlbox_icon", weight: 5},
-            {value: "bush", weight: 4},
-            {value: "viking_bull", weight: 3},
-            {value: "angry_darryl", weight: 2},
-            {value: "STOMPER", weight: 1}
-        ];
+        this.drops = [];
+        if (drops !== void 0){
+            for (let x = 0; x < drops.length; x++){
+                this.drops.push({value: drops[x].value, weight: drops[x].weight});
+            }
+        } else{
+            this.drops = [
+                {value: "brawlbox_icon", weight: 5},
+                {value: "bush", weight: 4},
+                {value: "viking_bull", weight: 3},
+                {value: "angry_darryl", weight: 2},
+                {value: "STOMPER", weight: 1}
+            ];
+        }
+
         this.coinConversion = 100;
     }
 
     getReward(resources: UserResources): BrawlBoxDrop{
         const result = this.createDropResult();
 
-        const userAvatars = resources.avatars;
-
-        // The user can only receive avatars they do not have yet.
-        const availableAvatars: typeof this.drops = [];
-        for (let avatarIndex = 0; avatarIndex < this.drops.length; avatarIndex++){
-            if (userAvatars.includes(this.drops[avatarIndex].value) === false){
-                availableAvatars.push(this.drops[avatarIndex]);
+        const available: NamedDistribution = [];
+        for (let x = 0; x < this.drops.length; x++){
+            if (resources.avatars.includes(this.drops[x].value) === false){
+                available.push(this.drops[x]);
             }
         }
         
-        if (availableAvatars.length === 0){
+        if (available.length === 0){
             // If no avatar is available, give coins instead.
             resources.coins += this.coinConversion;
             result.rewardType = "coins";
@@ -639,15 +650,82 @@ export class AvatarReward extends Reward{
             return result;
         }
 
-        const selectedIndex = RNG(availableAvatars.map((value) => value.weight));
-        if (selectedIndex >= 0 && typeof availableAvatars[selectedIndex].value === "string"){
-            userAvatars.push(availableAvatars[selectedIndex].value);
+        const selectedIndex = RNG(available.map((value) => value.weight));
+        if (selectedIndex >= 0){
+            resources.avatars.push(available[selectedIndex].value);
             
             result.displayName = "New Avatar";
             result.rewardType = "avatar";
-            result.image = AVATAR_SPECIAL_DIR + availableAvatars[selectedIndex].value + IMAGE_FILE_EXTENSION;
+            result.image = AVATAR_SPECIAL_DIR + available[selectedIndex].value + IMAGE_FILE_EXTENSION;
             result.backgroundColor = "#f7831c";
             result.description = "Select this avatar in the account settings.";
+            result.inventory = 1;
+        }
+
+        return result;
+    }
+}
+
+export class ThemeReward extends Reward{
+    drops: NamedDistribution;
+    coinConversion: number;
+
+    constructor(drops?: NamedDistribution){
+        super();
+
+        this.drops = [];
+        if (drops !== void 0){
+            for (let x = 0; x < drops.length; x++){
+                this.drops.push({value: drops[x].value, weight: drops[x].weight});
+            }
+        } else{
+            this.drops = [
+                {value: "retro", weight: 1},
+                {value: "mecha", weight: 1},
+                {value: "pirate", weight: 1},
+                {value: "lny_20", weight: 1},
+                {value: "psg", weight: 1},
+                {value: "taras_bazaar", weight: 1},
+                {value: "super_city", weight: 1},
+                {value: "giftshop", weight: 1},
+                {value: "lunar", weight: 1},
+                {value: "waterpark", weight: 1}
+            ];
+        }
+
+        this.coinConversion = 500;
+    }
+
+    getReward(resources: UserResources): BrawlBoxDrop{
+        const result = this.createDropResult();
+
+        const available: NamedDistribution = [];
+        for (let x = 0; x < this.drops.length; x++){
+            if (resources.themes.includes(this.drops[x].value) === false){
+                available.push(this.drops[x]);
+            }
+        }
+        
+        if (available.length === 0){
+            resources.coins += this.coinConversion;
+            result.rewardType = "coins";
+            result.amount = this.coinConversion;
+            return result;
+        }
+
+        const selectedIndex = RNG(available.map((value) => value.weight));
+        if (selectedIndex >= 0){
+            if (themeMap.has(available[selectedIndex].value) === false){
+                return result;
+            }
+
+            resources.themes.push(available[selectedIndex].value);
+            
+            result.displayName = "New Theme";
+            result.rewardType = "theme";
+            result.image = THEME_SPECIAL_DIR + available[selectedIndex].value + "_preview" + IMAGE_FILE_EXTENSION;
+            result.backgroundColor = "#f7831c";
+            result.description = "Select this theme in the gallery.";
             result.inventory = 1;
         }
 

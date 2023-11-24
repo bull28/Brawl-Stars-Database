@@ -126,14 +126,14 @@ router.post<Empty, Empty, ClaimReqBody>("/claim", databaseErrorHandler<ClaimReqB
         claim = true;
     }
 
-    /*const results = await getReport({reportid: req.body.reportid});
+    const results = await getReport({reportid: req.body.reportid});
 
     // results.length === 0 checked
     
     if (results[0].username !== username){
         res.status(401).send("Cannot claim rewards from another player's game!");
         return;
-    }*/
+    }
 
     // If the user wants to claim, add resources and progress here
 

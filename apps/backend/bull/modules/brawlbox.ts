@@ -1,4 +1,3 @@
-import allSkins from "../data/brawlers_data.json";
 import {IMAGE_FILE_EXTENSION, RESOURCE_IMAGE_DIR} from "../data/constants";
 import {
     RNG, 
@@ -10,7 +9,8 @@ import {
     WildCardPinReward, 
     BrawlerReward, 
     TradeCreditsReward, 
-    AvatarReward
+    AvatarReward, 
+    ThemeReward
 } from "./rewards";
 import {UserResources, BrawlBoxDrop} from "../types";
 
@@ -148,21 +148,6 @@ const boxes: {[k: string]: BrawlBox} = {
         ],
         rewards: [
             new BrawlerReward([32, 16, 8, 4, 2, 1, 1], [0, 0, 0, 0, 0, 0, 0], 0)
-        ]
-    },
-    "hankBox": {
-        cost: 0,
-        draws: [
-            [1, 0, 0],
-            [0, 1, 0],
-            [0, 0, 1]
-        ],
-        rewards: [
-            //new FixedRarityPinReward(3),
-            //new FixedRarityPinReward(3),
-            new TokenDoublerReward(),
-            new TokenDoublerReward(),
-            new WildCardPinReward()
         ]
     }
 };
