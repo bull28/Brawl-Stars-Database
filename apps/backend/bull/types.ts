@@ -588,6 +588,31 @@ interface AccessoryData{
 export type GameReport = [number, number, number[]];
 
 /**
+ * Data from a game report required to update progress
+ */
+export interface ReportData{
+    player: {
+        difficulty: number;
+        brawler: number;
+        starPower: number;
+        gears: number[];
+    };
+    score: {
+        total: number;
+        categories: {
+            completion: number;
+            time: number;
+            destination: number;
+            health: number;
+            gear: number;
+            enemy: number;
+        };
+    };
+    achievements: Set<string>;
+    badges: Map<string, number>;
+}
+
+/**
  * Information required to show a report to the user
  */
 export interface ReportPreview{
@@ -596,5 +621,6 @@ export interface ReportPreview{
     cost: number;
     stats: number[];
 }
+
 
 //------------------------------------------------------------------------------------------------//

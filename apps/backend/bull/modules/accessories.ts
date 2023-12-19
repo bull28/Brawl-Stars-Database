@@ -1,4 +1,4 @@
-import {GameReport} from "../types";
+import {GameReport, ReportData, ReportPreview} from "../types";
 
 // Type used by the game when calculating scores
 interface ScorePerformance{
@@ -10,6 +10,11 @@ interface ScorePerformance{
     gearScore: number;
 }
 
+const REPORT_FORMAT = {
+    player: [0, 4], gears: [4, 6], score: [6, 12],
+    achievements: [12, 19], upgrades: [19, 25], visited: [25, 33],
+    levels: [33, 81], enemies: [81, 105], length: [0, 105]
+};
 const SCORE_CONSTANTS = {
     stages: [
         {completion: 10, time: 0, baseReward: 10},
@@ -152,11 +157,7 @@ export function validateReport(report: GameReport): boolean{
     }
 
     const data = report[2];
-    const format = {
-        player: [0, 4], gears: [4, 6], score: [6, 12],
-        achievements: [12, 19], upgrades: [19, 25], visited: [25, 33],
-        levels: [33, 81], enemies: [81, 105], length: [0, 105]
-    };
+    const format = REPORT_FORMAT;
     let valid = true;
 
     if (data.length !== format.length[1] - format.length[0]){
@@ -281,4 +282,112 @@ export function validateReport(report: GameReport): boolean{
     }
     
     return valid;
+}
+
+
+const badgeList = [
+    //{name: "meteor", category: "enemy"},
+    //{name: "robot", category: "enemy"},
+    {name: "shelly", category: "enemy", value: 2},
+    {name: "colt", category: "enemy", value: 3},
+    {name: "rt", category: "enemy", value: 4},
+    {name: "elprimo", category: "enemy", value: 5},
+    {name: "8bit", category: "enemy", value: 6},
+    {name: "belle", category: "enemy", value: 7},
+    {name: "jessie", category: "enemy", value: 8},
+    {name: "eve", category: "enemy", value: 9},
+    {name: "mortis", category: "enemy", value: 10},
+    {name: "frank", category: "enemy", value: 11},
+    {name: "bea", category: "enemy", value: 12},
+    {name: "colette", category: "enemy", value: 13},
+    {name: "lola", category: "enemy", value: 14},
+    {name: "bibi", category: "enemy", value: 15},
+    {name: "mandy", category: "enemy", value: 16},
+    {name: "ash", category: "enemy", value: 17},
+    {name: "bonnie", category: "enemy", value: 18},
+    {name: "amber", category: "enemy", value: 19},
+    {name: "max", category: "enemy", value: 20},
+    {name: "meg", category: "enemy", value: 21},
+    //{name: "hank", category: "enemy"},
+    //{name: "bull", category: "enemy"},
+    {name: "spike", category: "player", value: 0},
+    {name: "gus", category: "player", value: 1},
+    {name: "emz", category: "player", value: 2},
+    {name: "darryl", category: "player", value: 3},
+    {name: "tara", category: "player", value: 4},
+    {name: "piper", category: "player", value: 5},
+    {name: "crow", category: "player", value: 6},
+    {name: "oldtown", category: "location", value: 2},
+    {name: "warehouse", category: "location", value: 3},
+    {name: "ghoststation", category: "location", value: 4},
+    {name: "giftshop", category: "location", value: 5},
+    {name: "retropolis", category: "location", value: 6},
+    {name: "candyland", category: "location", value: 7},
+    {name: "stuntshow", category: "location", value: 8},
+    {name: "supercity", category: "location", value: 9},
+    {name: "arcade", category: "location", value: 10}
+];/////////////////////////////////////////////////
+
+function extractReportPreview(report: GameReport): ReportPreview | undefined{
+    // Gets a report object that is only for displaying to the user
+    return undefined;
+}
+
+function extractReportData(report: GameReport): ReportData | undefined{
+    // Gets a report object that the server uses, this object is not shown to the user
+    if (validateReport(report) === false){
+        return undefined;
+    }
+
+    const data = report[2];
+    const format = REPORT_FORMAT;
+    const p = format.player[0];
+    const s = format.score[0];
+    const a = format.achievements[0];
+
+    const enemies = data.slice(format.enemies[0], format.enemies[1]);
+    const visited = data.slice(format.visited[0], format.visited[1]);
+
+    const achievements = new Set<string>();
+
+    const badges = new Map<string, number>();
+
+    for (let x = 0; x < badgeList.length; x++){
+        const b = badgeList[x];
+        if (b.category === "enemy"){
+            if (b.value < enemies.length && enemies[b.value] > 0){
+                badges.set(b.name, enemies[b.value]);
+            }
+        } else if (b.category === "player"){
+            if (b.value === data[p + 2]){
+                badges.set(b.name, 1);
+            }
+        } else if (b.category === "location"){
+            if (visited.includes(b.value) === true){
+                badges.set(b.name, 1);
+            }
+        }
+    }
+
+    return {
+        player: {
+            difficulty: data[p + 1],
+            brawler: data[p + 2],
+            starPower: data[p + 3],
+            gears: data.slice(format.gears[0], format.gears[1])
+        },
+        score: {
+            total: data[p],
+            categories: {
+                completion: data[s],
+                time: data[s + 1],
+                destination: data[s + 2],
+                health: data[s + 3],
+                gear: data[s + 4],
+                enemy: data[s + 5]
+            }
+        },
+        achievements: achievements,
+        badges: badges
+    };
 }
