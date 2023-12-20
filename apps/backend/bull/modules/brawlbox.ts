@@ -122,7 +122,7 @@ const boxes: {[k: string]: BrawlBox} = {
         rewards: [
             new CoinsReward(750, 150),
             new PinReward([36, 24, 0, 0, 0], [36, 24, 0, 0, 0], [1, 1, 1, 1, 1], [20, 50, 0, 0, 0]),
-            new BrawlerReward([24, 16, 16, 8, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], 50),
+            new BrawlerReward([0, 24, 24, 16, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], 50),
             new TradeCreditsReward(),
             new TokenDoublerReward(200),
             new AvatarReward()
@@ -147,7 +147,7 @@ const boxes: {[k: string]: BrawlBox} = {
             [1]
         ],
         rewards: [
-            new BrawlerReward([32, 16, 8, 4, 2, 1, 1], [0, 0, 0, 0, 0, 0, 0], 0)
+            new BrawlerReward([0, 30, 15, 12, 6, 1, 0], [0, 0, 0, 0, 0, 0, 0], 0)
         ]
     }
 };

@@ -498,7 +498,7 @@ export class BrawlerReward extends Reward{
     constructor(rarityDist?: number[], minRarityDist?: number[], coinConversion?: number){
         super();
 
-        this.rarityDist = copyDistribution([32, 16, 8, 4, 2, 1, 1], rarityDist);
+        this.rarityDist = copyDistribution([0, 30, 15, 12, 6, 1, 0], rarityDist);
         this.minRarityDist = copyDistribution([0, 0, 0, 1, 1, 0, 0], minRarityDist);
         this.coinConversion = 100;
         if (coinConversion !== void 0){
