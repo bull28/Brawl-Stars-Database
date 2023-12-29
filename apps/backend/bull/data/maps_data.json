@@ -148,11 +148,11 @@
                         "bannerImage": "grassfield.webp"
                     },
                     {
-                        "name": "coarse-course",
-                        "displayName": "Coarse Course",
+                        "name": "power-shot",
+                        "displayName": "Power Shot",
                         "gameMode": "brawlball",
                         "powerLeagueMap": false,
-                        "image": "coarse-course.webp",
+                        "image": "power-shot.webp",
                         "bannerImage": "grassfield.webp"
                     },
                     {
