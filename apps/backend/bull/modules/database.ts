@@ -747,7 +747,7 @@ interface GameProgressResult extends RowDataPacket{
 }
 export async function getGameProgress(values: UsernameValues): Promise<GameProgressResult[]>{
     const valuesArray = [values.username];
-    return queryDatabase<typeof valuesArray, GameProgressResult[]>(connection, valuesArray, false,
+    return queryDatabase<typeof valuesArray, GameProgressResult[]>(connection, valuesArray, true,
         `SELECT last_game, enemy, player, location, achievement, best_scores FROM ${GAME_TABLE_NAME} WHERE username = ?;`);
 }
 

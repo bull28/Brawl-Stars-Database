@@ -17,6 +17,8 @@ export const THEME_IMAGE_DIR = "themes/";
 export const THEME_SPECIAL_DIR = "themes/special/";
 export const SCENE_IMAGE_DIR = "scenes/";
 export const ACCESSORY_IMAGE_DIR = "accessories/";
+export const GAME_GEAR_IMAGE_DIR = "bullgame/images/resources/";
+export const GAME_BRAWLER_IMAGE_DIR = "bullgame/images/characters/";
 
 export const HOURS_PER_REWARD = 6;
 export const TOKENS_PER_REWARD = 150;
@@ -57,3 +59,25 @@ export const sceneMap = new Map<string, string>([
     ["giftshop", "Gift Shop"],
     ["arcade", "Arcade"]
 ]);
+
+export const gameDifficulties = ["Difficulty 1", "Difficulty 2", "Difficulty 3", "Difficulty 4", "Difficulty 5", "Difficulty 6"];
+
+export const gameBrawlers = [
+    {displayName: "Spike", image: "spike_brawlidays"},
+    {displayName: "Gus", image: "crow_happy"},
+    {displayName: "Emz", image: "emz_make"},
+    {displayName: "Darryl", image: "darryl_megabox_02"},
+    {displayName: "Tara", image: "tara_lny_2020"},
+    {displayName: "Piper", image: "piper_ranked"},
+    {displayName: "Crow", image: "crow_happy"}
+];
+
+export const gameGears = [
+    {displayName: "Speed", image: "gear_speed"},
+    {displayName: "Health", image: "gear_health"},
+    {displayName: "Shield", image: "gear_shield"},
+    {displayName: "Damage", image: "gear_damage"},
+    {displayName: "Energy", image: "gear_energy"},
+    {displayName: "Ability", image: "gear_ability"},
+    {displayName: "Score", image: "gear_score"}
+];

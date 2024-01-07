@@ -1,3 +1,4 @@
+import {IMAGE_FILE_EXTENSION, GAME_GEAR_IMAGE_DIR, GAME_BRAWLER_IMAGE_DIR, gameDifficulties, gameBrawlers, gameGears} from "../data/constants";
 import {GameReport, ReportData, ReportPreview} from "../types";
 
 // Type used by the game when calculating scores
@@ -13,7 +14,7 @@ interface ScorePerformance{
 const REPORT_FORMAT = {
     player: [0, 4], gears: [4, 6], score: [6, 12],
     achievements: [12, 19], upgrades: [19, 25], visited: [25, 33],
-    levels: [33, 81], enemies: [81, 105], length: [0, 105]
+    levels: [33, 81], enemies: [81, 106], length: [0, 106]
 };
 const SCORE_CONSTANTS = {
     stages: [
@@ -28,7 +29,8 @@ const SCORE_CONSTANTS = {
     ],
     maxScores: {completion: 300, time: 150, destination: 50, health: 50, gear: 30, enemy: 20},
     bonusEnemies: [
-        {name: "hank", index: 22, score: 20}
+        {name: "hank", index: 22, score: 6},
+        {name: "buster", index: 23, score: 14}
     ]
 };
 
@@ -96,13 +98,13 @@ function getFinalScore(reports: number[], enemyCounts: number[]): number[]{
             const t = Math.max(0.5, report.timeSpent / 1000);
             let multiplier = 0;
             if (t < 1){
-                multiplier = 1.5 - 121/112*(t-0.5) + 9/28*(t-0.5)*(t-0.5)*(t-0.5);
+                multiplier = ((9/28*(t-0.5))*(t-0.5) - 121/112)*(t-0.5) + 1.5;
             } else if (t < 2){
-                multiplier = 1 - 47/56*(t-1) + 27/56*(t-1)*(t-1) - 1/7*(t-1)*(t-1)*(t-1);
+                multiplier = ((-1/7*(t-1) + 27/56)*(t-1) - 47/56)*(t-1) + 1;
             } else if (t < 3){
-                multiplier = 0.5 - 17/56*(t-2) + 3/56*(t-2)*(t-2);
+                multiplier = (3/56*(t-2) - 17/56)*(t-2) + 0.5;
             } else if (t < 5){
-                multiplier = 0.25 - 11/56*(t-3) + 3/56*(t-3)*(t-3) - 1/112*(t-3)*(t-3)*(t-3);
+                multiplier = ((-1/112*(t-3) + 3/56)*(t-3) - 11/56)*(t-3) + 0.25;
             }
             score.time += stages[x].time * multiplier;
         } else{
@@ -141,13 +143,13 @@ function getFinalScore(reports: number[], enemyCounts: number[]): number[]{
  * @returns false if the report is definitely invalid, true if it is reasonable enough
  */
 export function validateReport(report: GameReport): boolean{
-    // Last updated: version 64
+    // Last updated: version 67
 
     if (report.length !== 3){
         // Invalid report length
         return false;
     }
-    if (report[0] < 64){
+    if (report[0] < 67){
         // Old report version
         return false;
     }
@@ -247,7 +249,7 @@ export function validateReport(report: GameReport): boolean{
     // The special (boss and bonus) enemies should not be defeated more than once
     const brawlerOffset = format.enemies[0] + 2;
     const specialOffset = format.enemies[0] + 22;
-    for (let x = format["enemies"][0]; x < format.enemies[1]; x++){
+    for (let x = format.enemies[0]; x < format.enemies[1]; x++){
         if (x < brawlerOffset){
             if (data[x] > 80){
                 valid = false;
@@ -326,14 +328,49 @@ const badgeList = [
     {name: "stuntshow", category: "location", value: 8},
     {name: "supercity", category: "location", value: 9},
     {name: "arcade", category: "location", value: 10}
-];/////////////////////////////////////////////////
+];
 
-function extractReportPreview(report: GameReport): ReportPreview | undefined{
+export function extractReportPreviewStats(stats: number[]): ReportPreview["stats"] | undefined{
     // Gets a report object that is only for displaying to the user
-    return undefined;
+    // The report does not need to be validated because the report preview is only for displaying to the user and it is
+    // never used to determine progression anywhere
+    const format = REPORT_FORMAT;
+    const p = format.player[0];
+
+    if (stats.length !== format.length[1]){
+        return undefined;
+    }
+
+    const selectedBrawler = stats[p + 2];
+    let brawler = {displayName: "", image: ""};
+    if (selectedBrawler < gameBrawlers.length){
+        brawler.displayName = gameBrawlers[selectedBrawler].displayName;
+        brawler.image = GAME_BRAWLER_IMAGE_DIR + gameBrawlers[selectedBrawler].image + IMAGE_FILE_EXTENSION;
+    }
+
+    // This contains an array of the gear numbers the player used 
+    const gearIndex = stats.slice(format.gears[0], format.gears[1]);
+
+    let gears: {displayName: string; image: string;}[] = [];
+    for (let x = 0; x < gearIndex.length; x++){
+        if (gearIndex[x] < gameGears.length){
+            gears.push({
+                displayName: gameGears[gearIndex[x]].displayName,
+                image: GAME_GEAR_IMAGE_DIR + gameGears[gearIndex[x]].image + IMAGE_FILE_EXTENSION
+            });
+        }
+    }
+    
+    return {
+        score: stats[p],
+        difficulty: (stats[p + 1] < gameDifficulties.length ? gameDifficulties[stats[p + 1]] : ""),
+        brawler: brawler,
+        starPower: stats[p + 3],
+        gears: gears
+    };
 }
 
-function extractReportData(report: GameReport): ReportData | undefined{
+export function extractReportData(report: GameReport): ReportData | undefined{
     // Gets a report object that the server uses, this object is not shown to the user
     if (validateReport(report) === false){
         return undefined;
@@ -347,8 +384,6 @@ function extractReportData(report: GameReport): ReportData | undefined{
 
     const enemies = data.slice(format.enemies[0], format.enemies[1]);
     const visited = data.slice(format.visited[0], format.visited[1]);
-
-    const achievements = new Set<string>();
 
     const badges = new Map<string, number>();
 
@@ -367,6 +402,48 @@ function extractReportData(report: GameReport): ReportData | undefined{
                 badges.set(b.name, 1);
             }
         }
+    }
+    
+    // Achivement badges depend on the values in the achievements section of the report
+
+    // Win 100 times on any difficulty
+    if (data[s] >= SCORE_CONSTANTS.maxScores.completion){
+        // If the completion score is maxed, the player won
+        badges.set("wins", 1);
+    }
+    // Defeat 50000 enemies
+    if (data[a + 1] > 0){
+        // The player gets progress towards this achievement by defeating at least one enemy
+        badges.set("enemies", data[a + 1]);
+    }
+    // Win without moving
+    if (data[a + 4] === 0){
+        badges.set("nomove", 1);
+    }
+    // Win without purchasing upgrades or using gears
+    if (data[a + 2] === 0){
+        // First, check if the player used gears. If they did not use any, check upgrade levels.
+        let upgraded = false;
+        for (let x = format.upgrades[0]; x < format.upgrades[1]; x++){
+            if (data[x] > 0){
+                upgraded = true;
+            }
+        }
+        if (upgraded === false){
+            badges.set("noupgrades", 1);
+        }
+    }
+    // Win without taking any damage
+    if (data[a + 3] === 0){
+        badges.set("nodamage", 1);
+    }
+    // Win in under 90 seconds
+    if (data[a] < 90){
+        badges.set("fastwin", 1);
+    }
+    // Get a score of 600 on difficulty 6
+    if (data[p] >= 600 && data[p + 1] >= 5){
+        badges.set("perfect", 1);
     }
 
     return {
@@ -387,7 +464,6 @@ function extractReportData(report: GameReport): ReportData | undefined{
                 enemy: data[s + 5]
             }
         },
-        achievements: achievements,
         badges: badges
     };
 }

@@ -1,5 +1,5 @@
 import express from "express";
-import {validateReport} from "../modules/accessories";
+import {validateReport, extractReportPreviewStats, extractReportData} from "../modules/accessories";
 import {validateToken} from "../modules/authenticate";
 import {databaseErrorHandler, parseNumberArray, getGameProgress, setGameProgess, addReport, getReport, getAllReports, deleteReport, getResourcesAndProgress} from "../modules/database";
 import {Empty, GameReport, ReportPreview} from "../types";
@@ -25,22 +25,27 @@ router.post<Empty, Empty, SaveReqBody>("/save", databaseErrorHandler<SaveReqBody
     const username = req.body.username;
     const report = req.body.report;
 
-    if (typeof username !== "string"){
-        res.status(400).json({resend: true, message: "Username is missing."});
+    if (typeof username !== "string" || username.length === 0){
+        res.status(400).send("Username is missing.");
         return;
     }
 
     if (validateReport(report) === false){
-        res.status(400).json({resend: false, message: "Invalid report."});
+        res.status(403).send("Invalid report.");
         return;
     }
 
     const results = await getGameProgress({username: username});
 
+    if (results.length === 0){
+        res.status(404).send("Could not find the user.");
+        return;
+    }
+
     // If the current game ended before or at the same time as the last game in the database, the current report is a
     // duplicate and should not be added to the database. The value of last_game should only ever increase.
     if (report[1] <= results[0].last_game){
-        res.status(403).json({resend: false, message: "You cannot save the same game more than once."});
+        res.status(403).send("Cannot save the same game more than once.");
         return;
     }
 
@@ -61,7 +66,7 @@ router.post<Empty, Empty, SaveReqBody>("/save", databaseErrorHandler<SaveReqBody
         username: username
     });
     
-    res.json({resend: false});
+    res.send("Score successfully saved.");
 }));
 
 router.post<Empty, Empty, TokenReqBody>("/all", databaseErrorHandler<TokenReqBody>(async (req, res) => {
@@ -81,19 +86,24 @@ router.post<Empty, Empty, TokenReqBody>("/all", databaseErrorHandler<TokenReqBod
     const reportList: ReportPreview[] = [];
     let validReports = true;
     for (let x = 0; x < results.length; x++){
-        let stats: number[] = [];
+        // This contains a GameReport's stats (sequence of numbers)
+        let report: number[] = [];
         try{
-            stats = parseNumberArray(results[x].stats);
+            report = parseNumberArray(results[x].stats);
         } catch (error){
             validReports = false;
         }
-        
-        reportList.push({
-            reportid: results[x].reportid,
-            endTime: results[x].end_time,
-            cost: 200,
-            stats: stats
-        });
+
+        const stats = extractReportPreviewStats(report);
+
+        if (stats !== undefined){
+            reportList.push({
+                reportid: results[x].reportid,
+                endTime: results[x].end_time,
+                cost: 200,
+                stats: stats
+            });
+        }
     }
 
     if (validReports === false){

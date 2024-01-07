@@ -608,7 +608,6 @@ export interface ReportData{
             enemy: number;
         };
     };
-    achievements: Set<string>;
     badges: Map<string, number>;
 }
 
@@ -619,7 +618,19 @@ export interface ReportPreview{
     reportid: number;
     endTime: number;
     cost: number;
-    stats: number[];
+    stats: {
+        score: number;
+        difficulty: string;
+        brawler: {
+            displayName: string;
+            image: string;
+        };
+        starPower: number;
+        gears: {
+            displayName: string;
+            image: string;
+        }[];
+    };
 }
 
 
