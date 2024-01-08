@@ -161,7 +161,7 @@ const boxes: {[k: string]: BrawlBox} = {
  * @returns array of the items the user received
  */
 function openBox(box: BrawlBox, resources: UserResources): BrawlBoxDrop[]{
-    if (resources === void 0){
+    if (resources === undefined){
         return [];
     }
     
@@ -246,7 +246,7 @@ export function canOpenBox(boxName: string, tokens: number): number{
 export const boxList: BrawlBoxPreview[] = [];
 for (const x in boxes){
     const display = boxes[x].display;
-    if (boxes[x].cost > 0 && display !== void 0){
+    if (boxes[x].cost > 0 && display !== undefined){
         boxList.push({
             name: x,
             displayName: display.name,

@@ -608,6 +608,7 @@ export interface ReportData{
             enemy: number;
         };
     };
+    coins: [number, number];
     badges: Map<string, number>;
 }
 

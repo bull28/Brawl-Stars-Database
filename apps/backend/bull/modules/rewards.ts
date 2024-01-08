@@ -8,6 +8,13 @@ type NamedDistribution = {
     weight: number;
 }[];
 
+// For accessories, there needs to be a distribution for the type of accessory (enemy, player, location) and for each
+// type, there needs to be a distribution for the actual accessories
+type AccessoryDistribution = {
+    accessories: string[];
+    weight: number;
+}[];
+
 /**
  * Takes in a probability distribution encoded in an array and randomly selects an index. The probability of an index in
  * the array being selected is the value at that index / the sum of all values.
@@ -82,7 +89,7 @@ function getDuplicateColor(oldColorString: string, factor: number): string{
 }
 
 function copyDistribution(d: number[], input?: number[]): number[]{
-    if (input !== void 0 && input.length === d.length){
+    if (input !== undefined && input.length === d.length){
         for (let x = 0; x < input.length; x++){
             d[x] = input[x];
         }
@@ -209,7 +216,7 @@ export class PinReward extends Reward{
                         // Add the brawler's index and the pin's index so when the random pin has to be chosen, the
                         // link to the pin object can be easily found without storing the entire pin data in an array.
 
-                        if (pinAmount !== void 0 && pinAmount > 0){
+                        if (pinAmount !== undefined && pinAmount > 0){
                             duplicatePins[pinRarity].push([brawlerIndex, pinIndex]);
                         } else{
                             pinsByRarity[pinRarity].push([brawlerIndex, pinIndex]);
@@ -299,7 +306,7 @@ export class PinReward extends Reward{
             // data has not been updated to include the new pins. Because new pins are added automatically here, an
             // update to every user in the database when a new pin gets released is not necessary.
             const brawlerInCollection = userCollection[brawlerObject.name];
-            if (brawlerInCollection !== void 0){
+            if (brawlerInCollection !== undefined){
                 if (Object.hasOwn(brawlerInCollection, pinObject.name) === false){
                     brawlerInCollection[pinObject.name] = 1;
                 } else{
@@ -346,7 +353,7 @@ export class FixedRarityPinReward extends Reward{
         this.newPinWeight = 1;
         this.coinConversion = 0;
 
-        if (rarity !== void 0){
+        if (rarity !== undefined){
             this.rarity = rarity;
 
             // If newPinWeight or coinConversion are not specified, set their values to the default values used for pins
@@ -355,9 +362,9 @@ export class FixedRarityPinReward extends Reward{
             } if (rarity < defaultConversions.length){
                 this.coinConversion = defaultConversions[rarity];
             }
-        } if (newPinWeight !== void 0){
+        } if (newPinWeight !== undefined){
             this.newPinWeight = newPinWeight;
-        } if (coinConversion !== void 0){
+        } if (coinConversion !== undefined){
             this.coinConversion = coinConversion;
         }
     }
@@ -379,7 +386,7 @@ export class FixedRarityPinReward extends Reward{
                 for (let pinIndex = 0; pinIndex < brawler.pins.length; pinIndex++){
                     const pinAmount = userCollection[brawler.name][brawler.pins[pinIndex].name];
                     if (this.rarity === brawler.pins[pinIndex].rarity.value){
-                        if (pinAmount !== void 0 && pinAmount > 0){
+                        if (pinAmount !== undefined && pinAmount > 0){
                             duplicatePins.push([brawlerIndex, pinIndex]);
                         } else{
                             pinsByRarity.push([brawlerIndex, pinIndex]);
@@ -412,7 +419,7 @@ export class FixedRarityPinReward extends Reward{
             const pinObject = brawlerObject.pins[selectedPin[1]];
 
             const brawlerInCollection = userCollection[brawlerObject.name];
-            if (brawlerInCollection !== void 0){
+            if (brawlerInCollection !== undefined){
                 if (Object.hasOwn(brawlerInCollection, pinObject.name) === false){
                     brawlerInCollection[pinObject.name] = 1;
                 } else{
@@ -469,7 +476,7 @@ export class WildCardPinReward extends Reward{
 
             // Instead of getting the rarity colors by looking through the allSkins array, get them from rarityNames
             const rarityData = rarityNames.get(selectedRarity);
-            if (rarityData !== void 0){
+            if (rarityData !== undefined){
                 rarityName = rarityData.name;
                 rarityColor = rarityData.color;
             }
@@ -501,7 +508,7 @@ export class BrawlerReward extends Reward{
         this.rarityDist = copyDistribution([0, 30, 15, 12, 6, 1, 0], rarityDist);
         this.minRarityDist = copyDistribution([0, 0, 0, 1, 1, 0, 0], minRarityDist);
         this.coinConversion = 100;
-        if (coinConversion !== void 0){
+        if (coinConversion !== undefined){
             this.coinConversion = coinConversion;
         }
 
@@ -615,7 +622,7 @@ export class AvatarReward extends Reward{
         super();
 
         this.drops = [];
-        if (drops !== void 0){
+        if (drops !== undefined){
             for (let x = 0; x < drops.length; x++){
                 this.drops.push({value: drops[x].value, weight: drops[x].weight});
             }
@@ -674,7 +681,7 @@ export class ThemeReward extends Reward{
         super();
 
         this.drops = [];
-        if (drops !== void 0){
+        if (drops !== undefined){
             for (let x = 0; x < drops.length; x++){
                 this.drops.push({value: drops[x].value, weight: drops[x].weight});
             }
@@ -726,6 +733,108 @@ export class ThemeReward extends Reward{
             result.image = THEME_SPECIAL_DIR + available[selectedIndex].value + "_preview" + IMAGE_FILE_EXTENSION;
             result.backgroundColor = "#f7831c";
             result.description = "Select this theme in the gallery.";
+            result.inventory = 1;
+        }
+
+        return result;
+    }
+}
+
+export class AccessoryReward extends Reward{
+    drops: AccessoryDistribution;
+    coinConversion: number;
+
+    constructor(drops?: AccessoryDistribution){
+        super();
+
+        this.drops = [];
+        if (drops !== undefined){
+            for (let x = 0; x < drops.length; x++){
+                const accessories: string[] = [];
+                
+                const a = drops[x].accessories;
+                for (let y = 0; y < a.length; y++){
+                    accessories.push(a[y]);
+                };
+                this.drops.push({accessories: accessories, weight: drops[x].weight});
+            }
+        } else{
+            // Initially, for each type of accessory, all drops are equally likely. The drop chances are then adjusted
+            // based on the player's badges when they claim rewards.
+            this.drops = [
+                {
+                    weight: 2,
+                    accessories: [
+                        "shelly", "colt", "lola", "max", "meg"
+                        //{value: "shelly", weight: 5},{value: "colt", weight: 4},{value: "lola", weight: 4},{value: "max", weight: 4},{value: "meg", weight: 4}
+                    ]
+                },
+                {
+                    weight: 2,
+                    accessories: [
+                        "oldtown", "warehouse", "ghoststation", "giftshop"
+                        //{value: "oldtown", weight: 4},{value: "warehouse", weight: 4},{value: "ghoststation", weight: 3},{value: "giftshop", weight: 6}
+                    ]
+                }
+            ];
+        }
+
+        this.coinConversion = 100;
+    }
+
+    getCoinReward(resources: UserResources): BrawlBoxDrop{
+        const result = this.createDropResult();
+        resources.coins += this.coinConversion;
+        result.rewardType = "coins";
+        result.amount = this.coinConversion;
+        return result;
+    }
+
+    getReward(resources: UserResources, badges?: Map<string, number>): BrawlBoxDrop{
+        // All accessory types have a chance of being selected, even if the user owns all accessories of that type
+        if (badges === undefined){
+            return this.getCoinReward(resources);
+        }
+
+        const dropIndex = RNG(this.drops.map((value) => value.weight));
+        if (dropIndex < 0){
+            return this.getCoinReward(resources);
+        }
+
+        const dist = this.drops[dropIndex].accessories;
+
+        const available: NamedDistribution = [];
+        for (let x = 0; x < dist.length; x++){
+            if (resources.accessories.includes(dist[x]) === false){
+                // Each accessory's base weight is multipled by the number of badges the player collected from the game.
+                // This makes accessories for enemies more common if the player defeated that enemy more times and it
+                // also does not allow the player to obtain accessories for enemies they did not defeat. A similar case
+                // is true for player and location accessories.
+
+                const badgeCount = badges.get(dist[x]);
+                if (badgeCount !== undefined && badgeCount > 0){
+                    available.push({value: dist[x], weight: badgeCount});
+                }
+            }
+        }
+        console.log(available);
+
+        if (available.length === 0){
+            return this.getCoinReward(resources);
+        }
+
+        const result = this.createDropResult();
+
+        const selectedIndex = RNG(available.map((value) => value.weight));
+        if (selectedIndex >= 0){
+            resources.accessories.push(available[selectedIndex].value);
+            
+            //result.displayName = "New Accessory";
+            result.displayName = available[selectedIndex].value;
+            result.rewardType = "accessory";
+            //result.image = AVATAR_SPECIAL_DIR + available[selectedIndex].value + IMAGE_FILE_EXTENSION;
+            result.backgroundColor = "#f7831c";
+            result.description = "";
             result.inventory = 1;
         }
 

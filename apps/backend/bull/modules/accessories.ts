@@ -286,48 +286,45 @@ export function validateReport(report: GameReport): boolean{
     return valid;
 }
 
-
-const badgeList = [
-    //{name: "meteor", category: "enemy"},
-    //{name: "robot", category: "enemy"},
-    {name: "shelly", category: "enemy", value: 2},
-    {name: "colt", category: "enemy", value: 3},
-    {name: "rt", category: "enemy", value: 4},
-    {name: "elprimo", category: "enemy", value: 5},
-    {name: "8bit", category: "enemy", value: 6},
-    {name: "belle", category: "enemy", value: 7},
-    {name: "jessie", category: "enemy", value: 8},
-    {name: "eve", category: "enemy", value: 9},
-    {name: "mortis", category: "enemy", value: 10},
-    {name: "frank", category: "enemy", value: 11},
-    {name: "bea", category: "enemy", value: 12},
-    {name: "colette", category: "enemy", value: 13},
-    {name: "lola", category: "enemy", value: 14},
-    {name: "bibi", category: "enemy", value: 15},
-    {name: "mandy", category: "enemy", value: 16},
-    {name: "ash", category: "enemy", value: 17},
-    {name: "bonnie", category: "enemy", value: 18},
-    {name: "amber", category: "enemy", value: 19},
-    {name: "max", category: "enemy", value: 20},
-    {name: "meg", category: "enemy", value: 21},
-    //{name: "hank", category: "enemy"},
-    //{name: "bull", category: "enemy"},
-    {name: "spike", category: "player", value: 0},
-    {name: "gus", category: "player", value: 1},
-    {name: "emz", category: "player", value: 2},
-    {name: "darryl", category: "player", value: 3},
-    {name: "tara", category: "player", value: 4},
-    {name: "piper", category: "player", value: 5},
-    {name: "crow", category: "player", value: 6},
-    {name: "oldtown", category: "location", value: 2},
-    {name: "warehouse", category: "location", value: 3},
-    {name: "ghoststation", category: "location", value: 4},
-    {name: "giftshop", category: "location", value: 5},
-    {name: "retropolis", category: "location", value: 6},
-    {name: "candyland", category: "location", value: 7},
-    {name: "stuntshow", category: "location", value: 8},
-    {name: "supercity", category: "location", value: 9},
-    {name: "arcade", category: "location", value: 10}
+const badgeList: {name: string; category: string; index: number; coins: [number, number]}[] = [
+    {name: "meteor", category: "enemy", index: 0, coins: [2, 2]},
+    {name: "robot", category: "enemy", index: 1, coins: [4, 4]},
+    {name: "shelly", category: "enemy", index: 2, coins: [7, 9]},
+    {name: "colt", category: "enemy", index: 3, coins: [11, 13]},
+    {name: "rt", category: "enemy", index: 4, coins: [12, 14]},
+    {name: "elprimo", category: "enemy", index: 5, coins: [15, 17]},
+    {name: "8bit", category: "enemy", index: 6, coins: [16, 18]},
+    {name: "belle", category: "enemy", index: 7, coins: [17, 19]},
+    {name: "jessie", category: "enemy", index: 8, coins: [18, 20]},
+    {name: "eve", category: "enemy", index: 9, coins: [18, 22]},
+    {name: "mortis", category: "enemy", index: 10, coins: [19, 23]},
+    {name: "frank", category: "enemy", index: 11, coins: [22, 26]},
+    {name: "bea", category: "enemy", index: 12, coins: [23, 27]},
+    {name: "colette", category: "enemy", index: 13, coins: [24, 28]},
+    {name: "lola", category: "enemy", index: 14, coins: [29, 35]},
+    {name: "bibi", category: "enemy", index: 15, coins: [31, 37]},
+    {name: "mandy", category: "enemy", index: 16, coins: [33, 39]},
+    {name: "ash", category: "enemy", index: 17, coins: [36, 44]},
+    {name: "bonnie", category: "enemy", index: 18, coins: [40, 48]},
+    {name: "amber", category: "enemy", index: 19, coins: [65, 75]},
+    {name: "max", category: "enemy", index: 20, coins: [50, 58]},
+    {name: "meg", category: "enemy", index: 21, coins: [84, 96]},
+    {name: "spike", category: "player", index: 0, coins: [0, 0]},
+    {name: "gus", category: "player", index: 1, coins: [0, 0]},
+    {name: "emz", category: "player", index: 2, coins: [0, 0]},
+    {name: "darryl", category: "player", index: 3, coins: [0, 0]},
+    {name: "tara", category: "player", index: 4, coins: [0, 0]},
+    {name: "piper", category: "player", index: 5, coins: [0, 0]},
+    {name: "crow", category: "player", index: 6, coins: [0, 0]},
+    {name: "oldtown", category: "location", index: 2, coins: [0, 0]},
+    {name: "warehouse", category: "location", index: 3, coins: [0, 0]},
+    {name: "ghoststation", category: "location", index: 4, coins: [0, 0]},
+    {name: "giftshop", category: "location", index: 5, coins: [0, 0]},
+    {name: "retropolis", category: "location", index: 6, coins: [0, 0]},
+    {name: "candyland", category: "location", index: 7, coins: [0, 0]},
+    {name: "stuntshow", category: "location", index: 8, coins: [0, 0]},
+    {name: "supercity", category: "location", index: 9, coins: [0, 0]},
+    {name: "arcade", category: "location", index: 10, coins: [0, 0]}
 ];
 
 export function extractReportPreviewStats(stats: number[]): ReportPreview["stats"] | undefined{
@@ -384,30 +381,53 @@ export function extractReportData(report: GameReport): ReportData | undefined{
 
     const enemies = data.slice(format.enemies[0], format.enemies[1]);
     const visited = data.slice(format.visited[0], format.visited[1]);
+    const win = data[s] >= SCORE_CONSTANTS.maxScores.completion;
+    const difficulty = data[p + 1];
 
+    let minCoins = 0;
+    let maxCoins = 0;
     const badges = new Map<string, number>();
 
     for (let x = 0; x < badgeList.length; x++){
         const b = badgeList[x];
+        let badgeCount = 0;
+
         if (b.category === "enemy"){
-            if (b.value < enemies.length && enemies[b.value] > 0){
-                badges.set(b.name, enemies[b.value]);
+            if (b.index < enemies.length && enemies[b.index] > 0){
+                badgeCount = enemies[b.index];
             }
         } else if (b.category === "player"){
-            if (b.value === data[p + 2]){
-                badges.set(b.name, 1);
+            if (b.index === data[p + 2] && win === true){
+                badgeCount = 1;
             }
         } else if (b.category === "location"){
-            if (visited.includes(b.value) === true){
-                badges.set(b.name, 1);
+            if (visited.includes(b.index) === true){
+                badgeCount = 1;
             }
+        }
+
+        if (badgeCount > 0 && difficulty >= 0){
+            // More enemy, player, and location badges are given on higher difficulty
+            let multiplier = 1;
+            if (difficulty <= 4){
+                multiplier = 2 + difficulty;
+            } else{
+                multiplier = 6 + difficulty * 2 - 8;
+            }
+            badges.set(b.name, Math.floor(badgeCount * multiplier));
+        }
+
+        if (b.coins[0] <= b.coins[1]){
+            // Coin rewards are not affected by the difficulty
+            minCoins += b.coins[0] * badgeCount;
+            maxCoins += b.coins[1] * badgeCount;
         }
     }
     
     // Achivement badges depend on the values in the achievements section of the report
 
     // Win 100 times on any difficulty
-    if (data[s] >= SCORE_CONSTANTS.maxScores.completion){
+    if (win === true){
         // If the completion score is maxed, the player won
         badges.set("wins", 1);
     }
@@ -442,13 +462,13 @@ export function extractReportData(report: GameReport): ReportData | undefined{
         badges.set("fastwin", 1);
     }
     // Get a score of 600 on difficulty 6
-    if (data[p] >= 600 && data[p + 1] >= 5){
+    if (data[p] >= 600 && difficulty >= 5){
         badges.set("perfect", 1);
     }
 
     return {
         player: {
-            difficulty: data[p + 1],
+            difficulty: difficulty,
             brawler: data[p + 2],
             starPower: data[p + 3],
             gears: data.slice(format.gears[0], format.gears[1])
@@ -464,6 +484,7 @@ export function extractReportData(report: GameReport): ReportData | undefined{
                 enemy: data[s + 5]
             }
         },
+        coins: [minCoins, maxCoins],
         badges: badges
     };
 }
