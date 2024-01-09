@@ -196,6 +196,7 @@ router.post<Empty, Empty, BrawlBoxReqBody>("/brawlbox", databaseErrorHandler<Bra
         tokens: results[0].tokens,
         token_doubler: results[0].token_doubler,
         coins: results[0].coins,
+        points: results[0].points,
         trade_credits: results[0].trade_credits
     };
 
@@ -272,6 +273,7 @@ router.post<Empty, Empty, ShopReqBody>("/shop", databaseErrorHandler<ShopReqBody
         tokens: 0,
         token_doubler: 0,
         coins: results[0].coins,
+        points: 0,
         trade_credits: results[0].trade_credits
     };
     // Tokens, token doubler, and wild card pins are not read by the shop methods and their values do not matter here

@@ -1,5 +1,6 @@
 import allSkins from "../data/brawlers_data.json";
 import {IMAGE_FILE_EXTENSION, PIN_IMAGE_DIR, PORTRAIT_IMAGE_DIR, AVATAR_SPECIAL_DIR, THEME_SPECIAL_DIR, RESOURCE_IMAGE_DIR, themeMap} from "../data/constants";
+import {getAccessory} from "../modules/accessories";
 import {Pin, UserResources, BrawlBoxDrop} from "../types";
 
 // Probability distribution where each option has a string value
@@ -97,6 +98,19 @@ function copyDistribution(d: number[], input?: number[]): number[]{
     return d;
 }
 
+export function createCoinsReward(coins: number, inventory: number = 0): BrawlBoxDrop{
+    // Creates a brawl box drop with the name, description, and image for a coins reward
+    return {
+        displayName: "Coins",
+        rewardType: "coins",
+        amount: coins,
+        inventory: inventory,
+        image: RESOURCE_IMAGE_DIR + "resource_coins_200x" + IMAGE_FILE_EXTENSION,
+        backgroundColor: "#8ca0e0",
+        description: "Spend these on special avatars and other items in the shop."
+    };
+}
+
 export class Reward{
     createDropResult(): BrawlBoxDrop{
         return {
@@ -150,27 +164,70 @@ export class TokenDoublerReward extends Reward{
 
     constructor(baseAmount: number = 200){
         super();
-
         this.baseAmount = baseAmount;
     }
 
+    createDropResult(): BrawlBoxDrop{
+        return {
+            displayName: "Token Doubler",
+            rewardType: "tokenDoubler",
+            amount: 0,
+            inventory: 0,
+            image: RESOURCE_IMAGE_DIR + "resource_token_doubler_200x" + IMAGE_FILE_EXTENSION,
+            backgroundColor: "#00da48",
+            description: ""
+        };
+    }
+
     getReward(resources: UserResources): BrawlBoxDrop{
+        if (this.baseAmount < 0){
+            // Empty reward is given if the base reward amount is negative
+            return super.createDropResult();
+        }
         const result = this.createDropResult();
 
-        const rewardAmount = this.baseAmount;
-        if (rewardAmount <= 0){
-            return result;
-        }
+        resources.token_doubler += this.baseAmount;
 
-        resources.token_doubler += rewardAmount;
-
-        result.displayName = "Token Doubler";
-        result.rewardType = "tokenDoubler";
-        result.image = RESOURCE_IMAGE_DIR + "resource_token_doubler_200x" + IMAGE_FILE_EXTENSION;
-        result.amount = rewardAmount;
+        result.amount = this.baseAmount;
         result.inventory = resources.token_doubler;
-        result.backgroundColor = "#00da48";
-        result.description = `Doubles the next ${rewardAmount} tokens collected.`;
+        result.description = `Doubles the next ${this.baseAmount} tokens collected.`;
+
+        return result;
+    }
+}
+
+export class PointsReward extends Reward{
+    baseAmount: number;
+
+    constructor(baseAmount: number = 1){
+        super();
+        this.baseAmount = baseAmount;
+    }
+
+    createDropResult(): BrawlBoxDrop{
+        return {
+            displayName: "Challenge Points",
+            rewardType: "points",
+            amount: 0,
+            inventory: 0,
+            image: RESOURCE_IMAGE_DIR + "resource_challenge_points_200x" + IMAGE_FILE_EXTENSION,
+            backgroundColor: "#00da48",
+            description: ""
+        };
+    }
+
+    getReward(resources: UserResources, multiplier: number = 0): BrawlBoxDrop{
+        if (multiplier < 1 || this.baseAmount < 0){
+            // Empty reward is given if the multiplier is less than 1
+            return super.createDropResult();
+        }
+        const result = this.createDropResult();
+
+        const rewardAmount = Math.floor(this.baseAmount * multiplier);
+        resources.points += rewardAmount;
+
+        result.amount = rewardAmount;
+        result.inventory = resources.points;
 
         return result;
     }
@@ -744,45 +801,48 @@ export class AccessoryReward extends Reward{
     drops: AccessoryDistribution;
     coinConversion: number;
 
-    constructor(drops?: AccessoryDistribution){
+    constructor(weights?: number[]){
         super();
 
-        this.drops = [];
-        if (drops !== undefined){
-            for (let x = 0; x < drops.length; x++){
-                const accessories: string[] = [];
-                
-                const a = drops[x].accessories;
-                for (let y = 0; y < a.length; y++){
-                    accessories.push(a[y]);
-                };
-                this.drops.push({accessories: accessories, weight: drops[x].weight});
+        // Initially, for each type of accessory, all drops are equally likely. The drop chances are then adjusted
+        // based on the player's badges when they claim rewards.
+        this.drops = [
+            {
+                weight: 1,
+                accessories: [
+                    "shelly", "colt", "rt", "elprimo",
+                    "8bit", "belle", "jessie", "eve",
+                    "mortis", "frank", "bea", "colette",
+                    "lola", "bibi", "mandy", "ash",
+                    "bonnie", "amber", "max", "meg"
+                ]
+            },
+            {
+                weight: 1,
+                accessories: [
+                    "spike", "gus", "emz", "darryl", "tara", "piper", "crow"
+                ]
+            },
+            {
+                weight: 1,
+                accessories: [
+                    "oldtown", "warehouse", "ghoststation", "giftshop",
+                    "retropolis", "candyland", "stuntshow", "supercity",
+                    "arcade"
+                ]
             }
-        } else{
-            // Initially, for each type of accessory, all drops are equally likely. The drop chances are then adjusted
-            // based on the player's badges when they claim rewards.
-            this.drops = [
-                {
-                    weight: 2,
-                    accessories: [
-                        "shelly", "colt", "lola", "max", "meg"
-                        //{value: "shelly", weight: 5},{value: "colt", weight: 4},{value: "lola", weight: 4},{value: "max", weight: 4},{value: "meg", weight: 4}
-                    ]
-                },
-                {
-                    weight: 2,
-                    accessories: [
-                        "oldtown", "warehouse", "ghoststation", "giftshop"
-                        //{value: "oldtown", weight: 4},{value: "warehouse", weight: 4},{value: "ghoststation", weight: 3},{value: "giftshop", weight: 6}
-                    ]
-                }
-            ];
+        ];
+        if (weights !== undefined){
+            const len = Math.min(weights.length, this.drops.length);
+            for (let x = 0; x < len; x++){
+                this.drops[x].weight = weights[x];
+            }
         }
 
         this.coinConversion = 100;
     }
 
-    getCoinReward(resources: UserResources): BrawlBoxDrop{
+    dropCoins(resources: UserResources): BrawlBoxDrop{
         const result = this.createDropResult();
         resources.coins += this.coinConversion;
         result.rewardType = "coins";
@@ -793,12 +853,12 @@ export class AccessoryReward extends Reward{
     getReward(resources: UserResources, badges?: Map<string, number>): BrawlBoxDrop{
         // All accessory types have a chance of being selected, even if the user owns all accessories of that type
         if (badges === undefined){
-            return this.getCoinReward(resources);
+            return this.dropCoins(resources);
         }
 
         const dropIndex = RNG(this.drops.map((value) => value.weight));
         if (dropIndex < 0){
-            return this.getCoinReward(resources);
+            return this.dropCoins(resources);
         }
 
         const dist = this.drops[dropIndex].accessories;
@@ -817,10 +877,9 @@ export class AccessoryReward extends Reward{
                 }
             }
         }
-        console.log(available);
 
         if (available.length === 0){
-            return this.getCoinReward(resources);
+            return this.dropCoins(resources);
         }
 
         const result = this.createDropResult();
@@ -828,14 +887,17 @@ export class AccessoryReward extends Reward{
         const selectedIndex = RNG(available.map((value) => value.weight));
         if (selectedIndex >= 0){
             resources.accessories.push(available[selectedIndex].value);
-            
-            //result.displayName = "New Accessory";
-            result.displayName = available[selectedIndex].value;
-            result.rewardType = "accessory";
-            //result.image = AVATAR_SPECIAL_DIR + available[selectedIndex].value + IMAGE_FILE_EXTENSION;
-            result.backgroundColor = "#f7831c";
-            result.description = "";
-            result.inventory = 1;
+
+            // This accessory data is a copy of the original and contains the image path
+            const data = getAccessory(available[selectedIndex].value);
+            if (data !== undefined){
+                result.displayName = data.displayName;
+                result.rewardType = "accessory";
+                result.image = data.image;
+                result.backgroundColor = "#f7831c";
+                result.description = "This accessory increases your collection score.";
+                result.inventory = 1;
+            }
         }
 
         return result;

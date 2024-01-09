@@ -466,6 +466,7 @@ export interface UserResources{
     tokens: number;
     token_doubler: number;
     coins: number;
+    points: number;
     trade_credits: number;
 }
 
@@ -567,15 +568,14 @@ export type DatabaseAccessories = string[];
 export type DatabaseBadges = Record<string, number>;
 
 /**
- * Full accessory data sent to the user when not in a challenge
+ * Full accessory data sent to the user
  */
-interface AccessoryData{
+export interface AccessoryData{
+    name: string;
+    category: string;
     displayName: string;
-    unitName: string;
     image: string;
-    unlocked: boolean;
-    unlockLevel: number;
-    unlockMethod: string;
+    badges: number;
 }
 
 //------------------------------------------------------------------------------------------------//
@@ -608,6 +608,7 @@ export interface ReportData{
             enemy: number;
         };
     };
+    enemies: number;
     coins: [number, number];
     badges: Map<string, number>;
 }

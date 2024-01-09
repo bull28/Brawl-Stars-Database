@@ -1,5 +1,5 @@
-import {IMAGE_FILE_EXTENSION, GAME_GEAR_IMAGE_DIR, GAME_BRAWLER_IMAGE_DIR, gameDifficulties, gameBrawlers, gameGears} from "../data/constants";
-import {GameReport, ReportData, ReportPreview} from "../types";
+import {ACCESSORY_IMAGE_DIR, IMAGE_FILE_EXTENSION, GAME_GEAR_IMAGE_DIR, GAME_BRAWLER_IMAGE_DIR, gameDifficulties, gameBrawlers, gameGears} from "../data/constants";
+import {AccessoryData, GameReport, ReportData, ReportPreview} from "../types";
 
 // Type used by the game when calculating scores
 interface ScorePerformance{
@@ -286,6 +286,59 @@ export function validateReport(report: GameReport): boolean{
     return valid;
 }
 
+const accessories: AccessoryData[] = [
+    {name: "shelly", category: "enemy", displayName: "", image: "accessory_shelly", badges: 500},
+    {name: "colt", category: "enemy", displayName: "", image: "accessory_colt", badges: 500},
+    {name: "rt", category: "enemy", displayName: "", image: "accessory_rt", badges: 500},
+    {name: "elprimo", category: "enemy", displayName: "", image: "accessory_elprimo", badges: 500},
+    {name: "8bit", category: "enemy", displayName: "", image: "accessory_8bit", badges: 500},
+    {name: "belle", category: "enemy", displayName: "", image: "accessory_belle", badges: 500},
+    {name: "jessie", category: "enemy", displayName: "", image: "accessory_jessie", badges: 500},
+    {name: "eve", category: "enemy", displayName: "", image: "accessory_eve", badges: 500},
+    {name: "mortis", category: "enemy", displayName: "", image: "accessory_mortis", badges: 500},
+    {name: "frank", category: "enemy", displayName: "", image: "accessory_frank", badges: 500},
+    {name: "bea", category: "enemy", displayName: "", image: "accessory_bea", badges: 500},
+    {name: "colette", category: "enemy", displayName: "", image: "accessory_colette", badges: 500},
+    {name: "lola", category: "enemy", displayName: "", image: "accessory_lola", badges: 500},
+    {name: "bibi", category: "enemy", displayName: "", image: "accessory_bibi", badges: 500},
+    {name: "mandy", category: "enemy", displayName: "", image: "accessory_mandy", badges: 500},
+    {name: "ash", category: "enemy", displayName: "", image: "accessory_ash", badges: 500},
+    {name: "bonnie", category: "enemy", displayName: "", image: "accessory_bonnie", badges: 500},
+    {name: "amber", category: "enemy", displayName: "", image: "accessory_amber", badges: 500},
+    {name: "max", category: "enemy", displayName: "", image: "accessory_max", badges: 500},
+    {name: "meg", category: "enemy", displayName: "", image: "accessory_meg", badges: 500},
+    {name: "spike", category: "player", displayName: "", image: "accessory_spike", badges: 100},
+    {name: "gus", category: "player", displayName: "", image: "accessory_gus", badges: 100},
+    {name: "emz", category: "player", displayName: "", image: "accessory_emz", badges: 100},
+    {name: "darryl", category: "player", displayName: "", image: "accessory_darryl", badges: 100},
+    {name: "tara", category: "player", displayName: "", image: "accessory_tara", badges: 100},
+    {name: "piper", category: "player", displayName: "", image: "accessory_piper", badges: 100},
+    {name: "crow", category: "player", displayName: "", image: "accessory_crow", badges: 100},
+    {name: "player8", category: "player", displayName: "", image: "", badges: 100},
+    {name: "player9", category: "player", displayName: "", image: "", badges: 100},
+    {name: "oldtown", category: "location", displayName: "", image: "accessory_oldtown", badges: 250},
+    {name: "warehouse", category: "location", displayName: "", image: "accessory_warehouse", badges: 250},
+    {name: "ghoststation", category: "location", displayName: "", image: "accessory_ghoststation", badges: 250},
+    {name: "giftshop", category: "location", displayName: "", image: "accessory_giftshop", badges: 250},
+    {name: "retropolis", category: "location", displayName: "", image: "accessory_retropolis", badges: 250},
+    {name: "candyland", category: "location", displayName: "", image: "accessory_candyland", badges: 250},
+    {name: "stuntshow", category: "location", displayName: "", image: "accessory_stuntshow", badges: 250},
+    {name: "supercity", category: "location", displayName: "", image: "accessory_supercity", badges: 250},
+    {name: "arcade", category: "location", displayName: "", image: "accessory_arcade", badges: 250},
+    {name: "wins", category: "achievement", displayName: "", image: "accessory_wins", badges: 100},
+    {name: "enemies", category: "achievement", displayName: "", image: "accessory_enemies", badges: 50000},
+    {name: "nomove", category: "achievement", displayName: "", image: "accessory_nomove", badges: 1},
+    {name: "noupgrades", category: "achievement", displayName: "", image: "accessory_noupgrades", badges: 1},
+    {name: "nodamage", category: "achievement", displayName: "", image: "accessory_nodamage", badges: 1},
+    {name: "fastwin", category: "achievement", displayName: "", image: "accessory_fastwin", badges: 1},
+    {name: "perfect", category: "achievement", displayName: "", image: "accessory_perfect", badges: 1},
+    {name: "mastery1", category: "mastery", displayName: "", image: "accessory_mastery1", badges: 1},
+    {name: "mastery2", category: "mastery", displayName: "", image: "accessory_mastery2", badges: 1},
+    {name: "mastery3", category: "mastery", displayName: "", image: "accessory_mastery3", badges: 1},
+    {name: "mastery4", category: "mastery", displayName: "", image: "accessory_mastery4", badges: 1},
+    {name: "mastery5", category: "mastery", displayName: "", image: "accessory_mastery5", badges: 1}
+];
+
 const badgeList: {name: string; category: string; index: number; coins: [number, number]}[] = [
     {name: "meteor", category: "enemy", index: 0, coins: [2, 2]},
     {name: "robot", category: "enemy", index: 1, coins: [4, 4]},
@@ -326,6 +379,26 @@ const badgeList: {name: string; category: string; index: number; coins: [number,
     {name: "supercity", category: "location", index: 9, coins: [0, 0]},
     {name: "arcade", category: "location", index: 10, coins: [0, 0]}
 ];
+
+export function getAccessory(name: string): AccessoryData | undefined{
+    let index = -1;
+    for (let x = 0; x < accessories.length; x++){
+        if (accessories[x].name === name){
+            index = x;
+        }
+    }
+    if (index < 0){
+        return undefined;
+    }
+
+    return {
+        name: accessories[index].name,
+        category: accessories[index].category,
+        displayName: accessories[index].displayName,
+        image: ACCESSORY_IMAGE_DIR + accessories[index].image + IMAGE_FILE_EXTENSION,
+        badges: accessories[index].badges
+    };
+}
 
 export function extractReportPreviewStats(stats: number[]): ReportPreview["stats"] | undefined{
     // Gets a report object that is only for displaying to the user
@@ -383,6 +456,7 @@ export function extractReportData(report: GameReport): ReportData | undefined{
     const visited = data.slice(format.visited[0], format.visited[1]);
     const win = data[s] >= SCORE_CONSTANTS.maxScores.completion;
     const difficulty = data[p + 1];
+    const enemiesDefeated = data[a + 1];
 
     let minCoins = 0;
     let maxCoins = 0;
@@ -432,9 +506,9 @@ export function extractReportData(report: GameReport): ReportData | undefined{
         badges.set("wins", 1);
     }
     // Defeat 50000 enemies
-    if (data[a + 1] > 0){
+    if (enemiesDefeated > 0){
         // The player gets progress towards this achievement by defeating at least one enemy
-        badges.set("enemies", data[a + 1]);
+        badges.set("enemies", enemiesDefeated);
     }
     // Win without moving
     if (data[a + 4] === 0){
@@ -484,6 +558,7 @@ export function extractReportData(report: GameReport): ReportData | undefined{
                 enemy: data[s + 5]
             }
         },
+        enemies: enemiesDefeated,
         coins: [minCoins, maxCoins],
         badges: badges
     };
