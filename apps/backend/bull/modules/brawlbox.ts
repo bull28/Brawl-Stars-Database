@@ -159,87 +159,87 @@ const gameBoxes: GameBrawlBox[] = [
     {
         maxQuality: 240,
         draws: [
-            {quality: 70,    minQuality: 0,     reward: new FixedRarityPinReward(0)},
-            {quality: 240,   minQuality: 12,    reward: new FixedRarityPinReward(1)},
-            {quality: 640,   minQuality: 24,    reward: new TradeCreditsReward()},
-            {quality: 1120,  minQuality: 24,    reward: new TokenDoublerReward(300)},
-            {quality: 240,   minQuality: 60,    reward: new BrawlerReward([0, 40, 24, 0, 0, 0, 0])},
-            {quality: 240,   minQuality: 120,   reward: new WildCardPinReward([1, 0, 0, 0, 0])},
-            {quality: 2400,  minQuality: 224,   reward: new AccessoryReward([80, 64, 96])}
+            {quality: 240,  minQuality: 60,    reward: new BrawlerReward([0, 40, 24, 0, 0, 0, 0])},
+            {quality: 70,   minQuality: 0,     reward: new FixedRarityPinReward(0)},
+            {quality: 240,  minQuality: 12,    reward: new FixedRarityPinReward(1)},
+            {quality: 240,  minQuality: 120,   reward: new WildCardPinReward([1, 0, 0, 0, 0])},
+            {quality: 640,  minQuality: 24,    reward: new TradeCreditsReward()},
+            {quality: 1120, minQuality: 24,    reward: new TokenDoublerReward(300)},
+            {quality: 2400, minQuality: 224,   reward: new AccessoryReward([80, 64, 96])}
         ],
         points: new PointsReward(8)
     },
     {
         maxQuality: 320,
         draws: [
-            {quality: 90,    minQuality: 0 ,    reward: new FixedRarityPinReward(0)},
-            {quality: 180,   minQuality: 16,    reward: new FixedRarityPinReward(1)},
-            {quality: 640,   minQuality: 32,    reward: new TradeCreditsReward()},
-            {quality: 1120,  minQuality: 32,    reward: new TokenDoublerReward(300)},
-            {quality: 320,   minQuality: 80,    reward: new BrawlerReward([0, 24, 24, 16, 0, 0, 0])},
-            {quality: 320,   minQuality: 160,   reward: new WildCardPinReward([12, 5, 0, 0, 0])},
-            {quality: 2000,  minQuality: 272,   reward: new AccessoryReward([90, 60, 90])}
+            {quality: 320,  minQuality: 80,    reward: new BrawlerReward([0, 24, 24, 16, 0, 0, 0])},
+            {quality: 90,   minQuality: 0 ,    reward: new FixedRarityPinReward(0)},
+            {quality: 180,  minQuality: 16,    reward: new FixedRarityPinReward(1)},
+            {quality: 320,  minQuality: 160,   reward: new WildCardPinReward([12, 5, 0, 0, 0])},
+            {quality: 640,  minQuality: 32,    reward: new TradeCreditsReward()},
+            {quality: 1120, minQuality: 32,    reward: new TokenDoublerReward(300)},
+            {quality: 2000, minQuality: 272,   reward: new AccessoryReward([90, 60, 90])}
         ],
         points: new PointsReward(12)
     },
     {
         maxQuality: 360,
         draws: [
-            {quality: 90,    minQuality: 0,     reward: new FixedRarityPinReward(0)},
-            {quality: 180,   minQuality: 18,    reward: new FixedRarityPinReward(1)},
-            {quality: 720,   minQuality: 108,   reward: new FixedRarityPinReward(2)},
-            {quality: 600,   minQuality: 36,    reward: new TradeCreditsReward()},
-            {quality: 1120,  minQuality: 36,    reward: new TokenDoublerReward(300)},
-            {quality: 360,   minQuality: 90,    reward: new BrawlerReward([0, 12, 24, 20, 8, 0, 0])},
-            {quality: 360,   minQuality: 180,   reward: new WildCardPinReward([12, 6, 0, 0, 0])},
-            {quality: 1800,  minQuality: 304,   reward: new AccessoryReward([100, 56, 84])}
+            {quality: 360,  minQuality: 90,    reward: new BrawlerReward([0, 12, 24, 20, 8, 0, 0])},
+            {quality: 90,   minQuality: 0,     reward: new FixedRarityPinReward(0)},
+            {quality: 180,  minQuality: 18,    reward: new FixedRarityPinReward(1)},
+            {quality: 720,  minQuality: 108,   reward: new FixedRarityPinReward(2)},
+            {quality: 360,  minQuality: 180,   reward: new WildCardPinReward([12, 6, 0, 0, 0])},
+            {quality: 600,  minQuality: 36,    reward: new TradeCreditsReward()},
+            {quality: 1120, minQuality: 36,    reward: new TokenDoublerReward(300)},
+            {quality: 1800, minQuality: 304,   reward: new AccessoryReward([100, 56, 84])}
         ],
         points: new PointsReward(18)
     },
     {
         maxQuality: 440,
         draws: [
-            {quality: 100,   minQuality: 0,     reward: new FixedRarityPinReward(0)},
-            {quality: 200,   minQuality: 22,    reward: new FixedRarityPinReward(1)},
-            {quality: 600,   minQuality: 132,   reward: new FixedRarityPinReward(2)},
-            {quality: 576,   minQuality: 44,    reward: new TradeCreditsReward()},
-            {quality: 1120,  minQuality: 44,    reward: new TokenDoublerReward(300)},
-            {quality: 440,   minQuality: 110,   reward: new BrawlerReward([0, 0, 28, 24, 12, 0, 0])},
-            {quality: 440,   minQuality: 220,   reward: new WildCardPinReward([12, 5, 2, 0, 0])},
-            {quality: 1760,  minQuality: 384,   reward: new AccessoryReward([105, 54, 81])}
+            {quality: 440,  minQuality: 110,   reward: new BrawlerReward([0, 0, 28, 24, 12, 0, 0])},
+            {quality: 100,  minQuality: 0,     reward: new FixedRarityPinReward(0)},
+            {quality: 200,  minQuality: 22,    reward: new FixedRarityPinReward(1)},
+            {quality: 600,  minQuality: 132,   reward: new FixedRarityPinReward(2)},
+            {quality: 440,  minQuality: 220,   reward: new WildCardPinReward([12, 5, 2, 0, 0])},
+            {quality: 576,  minQuality: 44,    reward: new TradeCreditsReward()},
+            {quality: 1120, minQuality: 44,    reward: new TokenDoublerReward(300)},
+            {quality: 1760, minQuality: 384,   reward: new AccessoryReward([105, 54, 81])}
         ],
         points: new PointsReward(36)
     },
     {
         maxQuality: 480,
         draws: [
-            {quality: 104,   minQuality: 0,     reward: new FixedRarityPinReward(0)},
-            {quality: 192,   minQuality: 24,    reward: new FixedRarityPinReward(1)},
-            {quality: 384,   minQuality: 144,   reward: new FixedRarityPinReward(2)},
-            {quality: 960,   minQuality: 240,   reward: new FixedRarityPinReward(3)},
-            {quality: 576,   minQuality: 48,    reward: new TradeCreditsReward()},
-            {quality: 1000,  minQuality: 48,    reward: new TokenDoublerReward(300)},
-            {quality: 480,   minQuality: 120,   reward: new BrawlerReward([0, 0, 20, 24, 12, 8, 0])},
-            {quality: 480,   minQuality: 240,   reward: new WildCardPinReward([18, 8, 4, 0, 0])},
-            {quality: 14400, minQuality: 440,   reward: new ThemeReward()},
-            {quality: 1600,  minQuality: 416,   reward: new AccessoryReward([110, 52, 78])}
+            {quality: 480,  minQuality: 120,   reward: new BrawlerReward([0, 0, 20, 24, 12, 8, 0])},
+            {quality: 104,  minQuality: 0,     reward: new FixedRarityPinReward(0)},
+            {quality: 192,  minQuality: 24,    reward: new FixedRarityPinReward(1)},
+            {quality: 384,  minQuality: 144,   reward: new FixedRarityPinReward(2)},
+            {quality: 960,  minQuality: 240,   reward: new FixedRarityPinReward(3)},
+            {quality: 480,  minQuality: 240,   reward: new WildCardPinReward([18, 8, 4, 0, 0])},
+            {quality: 576,  minQuality: 48,    reward: new TradeCreditsReward()},
+            {quality: 1000, minQuality: 48,    reward: new TokenDoublerReward(300)},
+            {quality: 14400,minQuality: 440,   reward: new ThemeReward()},
+            {quality: 1600, minQuality: 416,   reward: new AccessoryReward([110, 52, 78])}
         ],
         points: new PointsReward(80)
     },
     {
         maxQuality: 640,
         draws: [
-            {quality: 128,   minQuality: 0,     reward: new FixedRarityPinReward(0)},
-            {quality: 216,   minQuality: 32,    reward: new FixedRarityPinReward(1)},
-            {quality: 320,   minQuality: 192,   reward: new FixedRarityPinReward(2)},
-            {quality: 640,   minQuality: 320,   reward: new FixedRarityPinReward(3)},
-            {quality: 576,   minQuality: 64,    reward: new TradeCreditsReward()},
-            {quality: 1000,  minQuality: 64,    reward: new TokenDoublerReward(300)},
-            {quality: 640,   minQuality: 160,   reward: new BrawlerReward([0, 0, 0, 28, 24, 12, 0])},
-            {quality: 640,   minQuality: 320,   reward: new WildCardPinReward([15, 8, 5, 2, 0])},
-            {quality: 12800, minQuality: 520,   reward: new ThemeReward()},
-            {quality: 64000, minQuality: 600,   reward: new AvatarReward()},
-            {quality: 1280,  minQuality: 560,   reward: new AccessoryReward([120, 48, 72])}
+            {quality: 640,  minQuality: 160,   reward: new BrawlerReward([0, 0, 0, 28, 24, 12, 0])},
+            {quality: 128,  minQuality: 0,     reward: new FixedRarityPinReward(0)},
+            {quality: 216,  minQuality: 32,    reward: new FixedRarityPinReward(1)},
+            {quality: 320,  minQuality: 192,   reward: new FixedRarityPinReward(2)},
+            {quality: 640,  minQuality: 320,   reward: new FixedRarityPinReward(3)},
+            {quality: 640,  minQuality: 320,   reward: new WildCardPinReward([15, 8, 5, 2, 0])},
+            {quality: 576,  minQuality: 64,    reward: new TradeCreditsReward()},
+            {quality: 1000, minQuality: 64,    reward: new TokenDoublerReward(300)},
+            {quality: 12800,minQuality: 520,   reward: new ThemeReward()},
+            {quality: 64000,minQuality: 600,   reward: new AvatarReward()},
+            {quality: 1280, minQuality: 560,   reward: new AccessoryReward([120, 48, 72])}
         ],
         points: new PointsReward(240)
     }

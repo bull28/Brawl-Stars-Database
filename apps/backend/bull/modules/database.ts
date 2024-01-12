@@ -739,34 +739,28 @@ export async function viewTradeAll(values: TradeViewAllValues): Promise<TradeVie
 
 interface GameProgressResult extends RowDataPacket{
     last_game: number;
-    enemy: string;
-    player: string;
-    location: string;
-    achievement: string;
+    badges: string;
     best_scores: string;
 }
 export async function getGameProgress(values: UsernameValues): Promise<GameProgressResult[]>{
     const valuesArray = [values.username];
     return queryDatabase<typeof valuesArray, GameProgressResult[]>(connection, valuesArray, true,
-        `SELECT last_game, enemy, player, location, achievement, best_scores FROM ${GAME_TABLE_NAME} WHERE username = ?;`);
+        `SELECT last_game, badges, best_scores FROM ${GAME_TABLE_NAME} WHERE username = ?;`);
 }
 
 
 interface GameProgressValues{
     last_game: number;
-    enemy: string;
-    player: string;
-    location: string;
-    achievement: string;
+    badges: string;
     best_scores: string;
     username: string;
 }
-export async function setGameProgess(values: GameProgressValues): Promise<ResultSetHeader>{
+export async function setGameProgress(values: GameProgressValues): Promise<ResultSetHeader>{
     const valuesArray = [
-        values.last_game, values.enemy, values.player, values.location, values.achievement, values.best_scores, values.username
+        values.last_game, values.badges, values.best_scores, values.username
     ];
     return updateDatabase<typeof valuesArray>(connection, valuesArray, false,
-        `UPDATE ${GAME_TABLE_NAME} SET last_game = ?, enemy = ?, player = ?, location = ?, achievement = ?, best_scores = ? WHERE username = ?;`);
+        `UPDATE ${GAME_TABLE_NAME} SET last_game = ?, badges = ?, best_scores = ? WHERE username = ?;`);
 }
 
 
@@ -832,13 +826,12 @@ interface ResourcesProgressResult extends RowDataPacket{
     scenes: string;
     accessories: string;
     wild_card_pins: string;
-    player: string;
-    location: string;
-    achievement: string;
+    last_game: number;
+    badges: string;
     best_scores: string;
 }
 export async function getResourcesAndProgress(values: UsernameValues): Promise<ResourcesProgressResult[]>{
     const valuesArray = [values.username, values.username];
     return queryDatabase<typeof valuesArray, ResourcesProgressResult[]>(connection, valuesArray, false,
-        `SELECT U.active_avatar, U.tokens, U.token_doubler, U.coins, U.trade_credits, U.points, U.brawlers, U.avatars, U.themes, U.scenes, U.accessories, U.wild_card_pins, G.enemy, G.player, G.location, G.achievement, G.best_scores FROM ${TABLE_NAME} U, ${GAME_TABLE_NAME} G WHERE U.username = ? AND G.username = ?;`);
+        `SELECT U.active_avatar, U.tokens, U.token_doubler, U.coins, U.trade_credits, U.points, U.brawlers, U.avatars, U.themes, U.scenes, U.accessories, U.wild_card_pins, G.last_game, G.badges, G.best_scores FROM ${TABLE_NAME} U, ${GAME_TABLE_NAME} G WHERE U.username = ? AND G.username = ?;`);
 }

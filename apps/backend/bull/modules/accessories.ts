@@ -1,5 +1,5 @@
 import {ACCESSORY_IMAGE_DIR, IMAGE_FILE_EXTENSION, GAME_GEAR_IMAGE_DIR, GAME_BRAWLER_IMAGE_DIR, gameDifficulties, gameBrawlers, gameGears} from "../data/constants";
-import {AccessoryData, GameReport, ReportData, ReportPreview} from "../types";
+import {DatabaseAccessories, DatabaseBadges, CollectionAccessory, AccessoryPreview, AccessoryData, GameReport, ReportData, ReportPreview} from "../types";
 
 // Type used by the game when calculating scores
 interface ScorePerformance{
@@ -286,7 +286,14 @@ export function validateReport(report: GameReport): boolean{
     return valid;
 }
 
-const accessories: AccessoryData[] = [
+interface Accessory{
+    name: string;
+    category: string;
+    displayName: string;
+    image: string;
+    badges: number;
+}
+const accessories: Accessory[] = [
     {name: "shelly", category: "enemy", displayName: "", image: "accessory_shelly", badges: 500},
     {name: "colt", category: "enemy", displayName: "", image: "accessory_colt", badges: 500},
     {name: "rt", category: "enemy", displayName: "", image: "accessory_rt", badges: 500},
@@ -339,7 +346,13 @@ const accessories: AccessoryData[] = [
     {name: "mastery5", category: "mastery", displayName: "", image: "accessory_mastery5", badges: 1}
 ];
 
-const badgeList: {name: string; category: string; index: number; coins: [number, number]}[] = [
+interface BadgeStorage{
+    name: string;
+    category: string;
+    index: number;
+    coins: [number, number];
+}
+const badgeList: BadgeStorage[] = [
     {name: "meteor", category: "enemy", index: 0, coins: [2, 2]},
     {name: "robot", category: "enemy", index: 1, coins: [4, 4]},
     {name: "shelly", category: "enemy", index: 2, coins: [7, 9]},
@@ -380,7 +393,7 @@ const badgeList: {name: string; category: string; index: number; coins: [number,
     {name: "arcade", category: "location", index: 10, coins: [0, 0]}
 ];
 
-export function getAccessory(name: string): AccessoryData | undefined{
+export function getAccessoryPreview(name: string): AccessoryPreview | undefined{
     let index = -1;
     for (let x = 0; x < accessories.length; x++){
         if (accessories[x].name === name){
@@ -392,26 +405,69 @@ export function getAccessory(name: string): AccessoryData | undefined{
     }
 
     return {
-        name: accessories[index].name,
-        category: accessories[index].category,
+        //name: accessories[index].name,
+        //category: accessories[index].category,
         displayName: accessories[index].displayName,
         image: ACCESSORY_IMAGE_DIR + accessories[index].image + IMAGE_FILE_EXTENSION,
-        badges: accessories[index].badges
+        //badges: accessories[index].badges
+        description: "Rare drop from nothing"
     };
 }
 
-export function extractReportPreviewStats(stats: number[]): ReportPreview["stats"] | undefined{
+export function getAccessoryCollection(userAccessories: DatabaseAccessories): CollectionAccessory[]{
+    const collection: CollectionAccessory[] = [];
+    
+    for (let x = 0; x < accessories.length; x++){
+        const a = accessories[x];
+        collection.push({
+            name: a.name,
+            displayName: a.displayName,
+            image: ACCESSORY_IMAGE_DIR + a.image + IMAGE_FILE_EXTENSION,
+            unlocked: userAccessories.includes(a.name)
+        });
+    }
+
+    return collection;
+}
+
+export function getAccessoryData(userAccessories: DatabaseAccessories, badges: DatabaseBadges): AccessoryData[]{
+    const collection: AccessoryData[] = [];
+
+    for (let x = 0; x < accessories.length; x++){
+        const a = accessories[x];
+
+        let badgeCount = 0;
+        if (Object.hasOwn(badges, a.name) === true){
+            badgeCount = badges[a.name];
+        }
+
+        collection.push({
+            name: a.name,
+            category: a.category,
+            displayName: a.displayName,
+            image: ACCESSORY_IMAGE_DIR + a.image + IMAGE_FILE_EXTENSION,
+            unlocked: userAccessories.includes(a.name),
+            badgesCollected: badgeCount,
+            badgesRequired: a.badges,
+            badgeImage: ""
+        });
+    }
+
+    return collection;
+}
+
+export function extractReportPreviewStats(data: number[]): ReportPreview["stats"] | undefined{
     // Gets a report object that is only for displaying to the user
     // The report does not need to be validated because the report preview is only for displaying to the user and it is
     // never used to determine progression anywhere
     const format = REPORT_FORMAT;
     const p = format.player[0];
 
-    if (stats.length !== format.length[1]){
+    if (data.length !== format.length[1] - format.length[0]){
         return undefined;
     }
 
-    const selectedBrawler = stats[p + 2];
+    const selectedBrawler = data[p + 2];
     let brawler = {displayName: "", image: ""};
     if (selectedBrawler < gameBrawlers.length){
         brawler.displayName = gameBrawlers[selectedBrawler].displayName;
@@ -419,7 +475,7 @@ export function extractReportPreviewStats(stats: number[]): ReportPreview["stats
     }
 
     // This contains an array of the gear numbers the player used 
-    const gearIndex = stats.slice(format.gears[0], format.gears[1]);
+    const gearIndex = data.slice(format.gears[0], format.gears[1]);
 
     let gears: {displayName: string; image: string;}[] = [];
     for (let x = 0; x < gearIndex.length; x++){
@@ -432,25 +488,24 @@ export function extractReportPreviewStats(stats: number[]): ReportPreview["stats
     }
     
     return {
-        score: stats[p],
-        difficulty: (stats[p + 1] < gameDifficulties.length ? gameDifficulties[stats[p + 1]] : ""),
+        score: data[p],
+        difficulty: (data[p + 1] < gameDifficulties.length ? gameDifficulties[data[p + 1]] : ""),
         brawler: brawler,
-        starPower: stats[p + 3],
+        starPower: data[p + 3],
         gears: gears
     };
 }
 
-export function extractReportData(report: GameReport): ReportData | undefined{
+export function extractReportData(data: number[]): ReportData | undefined{
     // Gets a report object that the server uses, this object is not shown to the user
-    if (validateReport(report) === false){
-        return undefined;
-    }
-
-    const data = report[2];
     const format = REPORT_FORMAT;
     const p = format.player[0];
     const s = format.score[0];
     const a = format.achievements[0];
+
+    if (data.length !== format.length[1] - format.length[0]){
+        return undefined;
+    }
 
     const enemies = data.slice(format.enemies[0], format.enemies[1]);
     const visited = data.slice(format.visited[0], format.visited[1]);

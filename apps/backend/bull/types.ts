@@ -293,7 +293,7 @@ export interface CollectionData{
     avatarColor: string;
     pinRarityColors: string[];
     brawlers: CollectionBrawler[];
-    accessories: AccessoryData[];
+    accessories: CollectionAccessory[];
 }
 
 /**
@@ -568,6 +568,25 @@ export type DatabaseAccessories = string[];
 export type DatabaseBadges = Record<string, number>;
 
 /**
+ * Accessory object in formatted collection data
+ */
+export interface CollectionAccessory{
+    name: string;
+    displayName: string;
+    image: string;
+    unlocked: boolean;
+}
+
+/**
+ * Information required to display an accessory in a brawl box
+ */
+export interface AccessoryPreview{
+    displayName: string;
+    image: string;
+    description: string;
+}
+
+/**
  * Full accessory data sent to the user
  */
 export interface AccessoryData{
@@ -575,7 +594,10 @@ export interface AccessoryData{
     category: string;
     displayName: string;
     image: string;
-    badges: number;
+    unlocked: boolean;
+    badgesCollected: number;
+    badgesRequired: number;
+    badgeImage: string;
 }
 
 //------------------------------------------------------------------------------------------------//
@@ -634,6 +656,5 @@ export interface ReportPreview{
         }[];
     };
 }
-
 
 //------------------------------------------------------------------------------------------------//

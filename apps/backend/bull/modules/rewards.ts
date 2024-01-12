@@ -1,6 +1,6 @@
 import allSkins from "../data/brawlers_data.json";
 import {IMAGE_FILE_EXTENSION, PIN_IMAGE_DIR, PORTRAIT_IMAGE_DIR, AVATAR_SPECIAL_DIR, THEME_SPECIAL_DIR, RESOURCE_IMAGE_DIR, themeMap} from "../data/constants";
-import {getAccessory} from "../modules/accessories";
+import {getAccessoryPreview} from "../modules/accessories";
 import {Pin, UserResources, BrawlBoxDrop} from "../types";
 
 // Probability distribution where each option has a string value
@@ -889,13 +889,13 @@ export class AccessoryReward extends Reward{
             resources.accessories.push(available[selectedIndex].value);
 
             // This accessory data is a copy of the original and contains the image path
-            const data = getAccessory(available[selectedIndex].value);
+            const data = getAccessoryPreview(available[selectedIndex].value);
             if (data !== undefined){
                 result.displayName = data.displayName;
                 result.rewardType = "accessory";
                 result.image = data.image;
                 result.backgroundColor = "#f7831c";
-                result.description = "This accessory increases your collection score.";
+                result.description = data.description;
                 result.inventory = 1;
             }
         }
