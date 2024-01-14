@@ -1,10 +1,9 @@
 import express from "express";
-import {validateToken} from "../modules/authenticate";
 import {formatTradeData, getTimeTradeCost, getTradeCost, validatePins} from "../modules/trades";
 import {formatCollectionData} from "../modules/pins";
-import {Empty, DatabaseBrawlers, DatabaseWildCard, TradePin, TradePinValid, DatabaseAccessories} from "../types";
+import {Empty, TokenReqBody, DatabaseBrawlers, DatabaseWildCard, TradePin, TradePinValid, DatabaseAccessories} from "../types";
 import {
-    databaseErrorHandler, 
+    loginErrorHandler, 
     parseBrawlers, 
     parseNumberArray, 
     parseStringArray, 
@@ -23,8 +22,7 @@ import {
 const router = express.Router();
 
 
-interface CreateReqBody{
-    token: string;
+interface CreateReqBody extends TokenReqBody{
     tradeDurationHours: number;
     offer: TradePin[];
     request: TradePin[];
@@ -32,35 +30,27 @@ interface CreateReqBody{
     getCost: boolean;
 }
 
-interface AcceptReqBody{
-    token: string;
+interface AcceptReqBody extends TokenReqBody{
     tradeid: number;
     forceAccept: boolean;
     useWildCards: boolean;
 }
 
-interface CloseReqBody{
-    token: string;
+interface CloseReqBody extends TokenReqBody{
     tradeid: number;
     forceAccept: boolean;
 }
 
 
 // Create a new trade
-router.post<Empty, Empty, CreateReqBody>("/create", databaseErrorHandler<CreateReqBody>(async (req, res) => {
-    if (typeof req.body.token !== "string"){
-        res.status(400).send("Token is missing.");
-        return;
-    }
-    const username = validateToken(req.body.token);
-
+router.post<Empty, Empty, CreateReqBody>("/create", loginErrorHandler<CreateReqBody>(async (req, res, username) => {
     let searchByName = false;
     if (req.body.searchByName === true){
         searchByName = true;
     }
 
     let tradeHours = 48;
-    if (req.body.tradeDurationHours !== void 0){
+    if (req.body.tradeDurationHours !== undefined){
         tradeHours = req.body.tradeDurationHours;
     }
     if (tradeHours < 1 || tradeHours > 336){
@@ -69,8 +59,8 @@ router.post<Empty, Empty, CreateReqBody>("/create", databaseErrorHandler<CreateR
         return;
     }
 
-    if (username === "" || req.body.offer === void 0 || req.body.request === void 0){
-        res.status(401).send("Invalid token.");
+    if (req.body.offer === undefined || req.body.request === undefined){
+        res.status(401).send("Offer or request is missing.");
         return;
     }
 
@@ -214,17 +204,11 @@ router.post<Empty, Empty, CreateReqBody>("/create", databaseErrorHandler<CreateR
 }));
 
 // Accept an existing trade
-router.post<Empty, Empty, AcceptReqBody>("/accept", databaseErrorHandler<AcceptReqBody>(async (req, res) => {
-    if (typeof req.body.token !== "string"){
-        res.status(400).send("Token is missing.");
-        return;
-    }
-    const username = validateToken(req.body.token);
-
+router.post<Empty, Empty, AcceptReqBody>("/accept", loginErrorHandler<AcceptReqBody>(async (req, res, username) => {
     const tradeid = req.body.tradeid;
 
-    if (username === "" || tradeid === void 0){
-        res.status(401).send("Invalid token.");
+    if (tradeid === undefined){
+        res.status(401).send("Trade ID is missing.");
         return;
     }
 
@@ -409,17 +393,11 @@ router.post<Empty, Empty, AcceptReqBody>("/accept", databaseErrorHandler<AcceptR
 }));
 
 // Close a trade, collecting rewards if successful or refunding payment if unsuccessful
-router.post<Empty, Empty, CloseReqBody>("/close", databaseErrorHandler<CloseReqBody>(async (req, res) => {
-    if (typeof req.body.token !== "string"){
-        res.status(400).send("Token is missing.");
-        return;
-    }
-    const username = validateToken(req.body.token);
-
+router.post<Empty, Empty, CloseReqBody>("/close", loginErrorHandler<CloseReqBody>(async (req, res, username) => {
     const tradeid = req.body.tradeid;
 
-    if (username === "" || tradeid === void 0){
-        res.status(401).send("Invalid token.");
+    if (tradeid === undefined){
+        res.status(401).send("Trade ID is missing.");
         return;
     }
 

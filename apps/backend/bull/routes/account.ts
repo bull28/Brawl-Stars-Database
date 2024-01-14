@@ -6,6 +6,7 @@ import {readFreeAvatars, readSpecialAvatars, readFreeThemes, readSpecialThemes, 
 import {getAvatars, getCosmetics, getThemes} from "../modules/pins";
 import {MAP_CYCLE_HOURS, SeasonTime, mod, realToTime, subtractSeasonTimes} from "../modules/maps";
 import {
+    loginErrorHandler, 
     databaseErrorHandler, 
     getUnlockedCosmetics, 
     parseStringArray, 
@@ -20,7 +21,7 @@ import {
     updateCosmetics, 
     updateLastClaim
 } from "../modules/database";
-import {Empty, AvatarList, DatabaseAvatars, DatabaseBrawlers, DatabaseCosmetics, DatabaseScenes, DatabaseThemes, SceneList, ThemeList} from "../types";
+import {Empty, TokenReqBody, AvatarList, DatabaseAvatars, DatabaseBrawlers, DatabaseCosmetics, DatabaseScenes, DatabaseThemes, SceneList, ThemeList} from "../types";
 
 const router = express.Router();
 
@@ -29,35 +30,31 @@ const allAvatars: AvatarList = {free: [], special: []};
 const allThemes: ThemeList = {free: [], special: []};
 let allScenes: SceneList = [];
 readFreeAvatars().then((data) => {
-    if (data !== void 0){
+    if (data !== undefined){
         allAvatars.free = data;
     }
 });
 readSpecialAvatars().then((data) => {
-    if (data !== void 0){
+    if (data !== undefined){
         allAvatars.special = data;
     }
 });
 readFreeThemes().then((data) => {
-    if (data !== void 0){
+    if (data !== undefined){
         allThemes.free = data;
     }
 });
 readSpecialThemes().then((data) => {
-    if (data !== void 0){
+    if (data !== undefined){
         allThemes.special = data;
     }
 });
 readScenes().then((data) => {
-    if (data !== void 0){
+    if (data !== undefined){
         allScenes = data;
     }
 });
 
-
-interface TokenReqBody{
-    token: string;
-}
 
 interface LoginReqBody{
     username: string;
@@ -168,20 +165,13 @@ router.post<Empty, Empty, LoginReqBody>("/signup", databaseErrorHandler<LoginReq
 }));
 
 // Updates an account's information
-router.post<Empty, Empty, UpdateReqBody>("/update", databaseErrorHandler<UpdateReqBody>(async (req, res) => {
-    const token = req.body.token;
+router.post<Empty, Empty, UpdateReqBody>("/update", loginErrorHandler<UpdateReqBody>(async (req, res, currentUsername) => {
     let currentPassword = req.body.currentPassword;
     let newPassword = req.body.newPassword;
     let newAvatar = req.body.newAvatar;
 
-    if (typeof token !== "string" || typeof newPassword !== "string" || typeof newAvatar !== "string"){
-        res.status(400).send("Token is missing.");
-        return;
-    }
-
-    const currentUsername = validateToken(token);
-    if (currentUsername === ""){
-        res.status(401).send("Invalid token.");
+    if (typeof newPassword !== "string" || typeof newAvatar !== "string"){
+        res.status(400).send("New password or new avatar is missing.");
         return;
     }
     
@@ -212,7 +202,7 @@ router.post<Empty, Empty, UpdateReqBody>("/update", databaseErrorHandler<UpdateR
     if (newPassword === ""){
         currentPassword = results[0].password;
         newPassword = results[0].password;
-    } else if (currentPassword === void 0){
+    } else if (currentPassword === undefined){
         res.status(400).send("Current password is required to change password.");
         return;
     }
@@ -260,18 +250,7 @@ router.post<Empty, Empty, UpdateReqBody>("/update", databaseErrorHandler<UpdateR
 }));
 
 // Get the list of all avatars the user is allowed to select
-router.post<Empty, Empty, TokenReqBody>("/avatar", databaseErrorHandler<TokenReqBody>(async (req, res) => {
-    if (typeof req.body.token !== "string"){
-        res.status(400).send("Token is missing.");
-        return;
-    }
-    const username = validateToken(req.body.token);
-
-    if (username === ""){
-        res.status(401).send("Invalid token.");
-        return;
-    }
-
+router.post<Empty, Empty, TokenReqBody>("/avatar", loginErrorHandler<TokenReqBody>(async (req, res, username) => {
     // beforeUpdate contains at least as much information as necessary here
     // This is used to avoid creating another database query function that is
     // very similar to an existing one.
@@ -291,18 +270,7 @@ router.post<Empty, Empty, TokenReqBody>("/avatar", databaseErrorHandler<TokenReq
 }));
 
 // Get the list of all themes and scenes the user is allowed to select
-router.post<Empty, Empty, TokenReqBody>("/theme", databaseErrorHandler<TokenReqBody>(async (req, res) => {
-    if (typeof req.body.token !== "string"){
-        res.status(400).send("Token is missing.");
-        return;
-    }
-    const username = validateToken(req.body.token);
-
-    if (username === ""){
-        res.status(401).send("Invalid token.");
-        return;
-    }
-
+router.post<Empty, Empty, TokenReqBody>("/theme", loginErrorHandler<TokenReqBody>(async (req, res, username) => {
     const results = await getUnlockedCosmetics({username: username});
     let userThemes: DatabaseThemes;
     let userScenes: DatabaseScenes;
@@ -326,16 +294,20 @@ router.post<Empty, Empty, CosmeticReqBody>("/cosmetic", databaseErrorHandler<Cos
     };
 
     // A token is only required to set cosmetics
-    // Getting cosmetics with no token will return the default
+    // Getting cosmetics with no token will return the default when no user is logged in
     if (typeof req.body.token !== "string"){
         res.json(getCosmetics(allThemes, allScenes, setCosmetics));
         return;
     }
     const username = validateToken(req.body.token);
+    if (username === ""){
+        res.status(401).send("Invalid token.");
+        return;
+    }
     
     // If the user does not provide any cosmetics to set,
     // get their currently active cosmetics then return
-    if (req.body.setCosmetics === void 0){
+    if (req.body.setCosmetics === undefined){
         const results = await getActiveCosmetics({username: username});
 
         // results.length === 0 checked
@@ -360,11 +332,6 @@ router.post<Empty, Empty, CosmeticReqBody>("/cosmetic", databaseErrorHandler<Cos
         }
     } catch (error){
         res.status(400).send("Request to set cosmetics is not formatted correctly.");
-        return;
-    }
-
-    if (username === ""){
-        res.status(401).send("Invalid token.");
         return;
     }
 
@@ -412,7 +379,7 @@ router.post<Empty, Empty, CosmeticReqBody>("/cosmetic", databaseErrorHandler<Cos
                         // free themes since the database does not store free themes, meaning
                         // there is no other way to tell if the theme they are trying to set
                         // actually exists.
-                        if (allThemes.free.find((value) => value.includes(themeNameFull)) === void 0){
+                        if (allThemes.free.find((value) => value.includes(themeNameFull)) === undefined){
                             validCosmetics = false;
                         }
                     } else if (userThemes.includes(themeName) === false){
@@ -452,18 +419,7 @@ router.post<Empty, Empty, CosmeticReqBody>("/cosmetic", databaseErrorHandler<Cos
 }));
 
 // Claim any available tokens and/or get the time until tokens are available again
-router.post<Empty, Empty, ClaimTokensReqBody>("/claimtokens", databaseErrorHandler<ClaimTokensReqBody>(async (req, res) => {
-    if (typeof req.body.token !== "string"){
-        res.status(400).send("Token is missing.");
-        return;
-    }
-    const username = validateToken(req.body.token);
-
-    if (username === ""){
-        res.status(401).send("Invalid token.");
-        return;
-    }
-
+router.post<Empty, Empty, ClaimTokensReqBody>("/claimtokens", loginErrorHandler<ClaimTokensReqBody>(async (req, res, username) => {
     const results = await getLastClaim({username: username});
 
     // results.length === 0 checked

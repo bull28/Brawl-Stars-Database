@@ -1,9 +1,9 @@
 import express from "express";
 import {validateReport, extractReportPreviewStats, extractReportData} from "../modules/accessories";
 import {getGameReward} from "../modules/brawlbox";
-import {validateToken} from "../modules/authenticate";
 import {
     databaseErrorHandler, 
+    loginErrorHandler, 
     parseBrawlers, 
     parseNumberArray, 
     parseStringArray, 
@@ -18,14 +18,10 @@ import {
     deleteReport, 
     getResourcesAndProgress
 } from "../modules/database";
-import {Empty, UserResources, DatabaseBadges, GameReport, ReportPreview} from "../types";
+import {Empty, TokenReqBody, UserResources, DatabaseBadges, GameReport, ReportPreview} from "../types";
 
 const router = express.Router();
 
-
-interface TokenReqBody{
-    token: string;
-}
 
 interface SaveReqBody{
     username: string;
@@ -82,18 +78,7 @@ router.post<Empty, Empty, SaveReqBody>("/save", databaseErrorHandler<SaveReqBody
     res.send("Score successfully saved.");
 }));
 
-router.post<Empty, Empty, TokenReqBody>("/all", databaseErrorHandler<TokenReqBody>(async (req, res) => {
-    if (typeof req.body.token !== "string"){
-        res.status(400).send("Token is missing.");
-        return;
-    }
-    const username = validateToken(req.body.token);
-
-    if (username === ""){
-        res.status(401).send("Invalid token.");
-        return;
-    }
-
+router.post<Empty, Empty, TokenReqBody>("/all", loginErrorHandler<TokenReqBody>(async (req, res, username) => {
     const results = await getAllReports({username: username});
 
     const reportList: ReportPreview[] = [];
@@ -127,18 +112,7 @@ router.post<Empty, Empty, TokenReqBody>("/all", databaseErrorHandler<TokenReqBod
     res.json(reportList);
 }));
 
-router.post<Empty, Empty, ClaimReqBody>("/claim", databaseErrorHandler<ClaimReqBody>(async (req, res) => {
-    if (typeof req.body.token !== "string"){
-        res.status(400).send("Token is missing.");
-        return;
-    }
-    const username = validateToken(req.body.token);
-
-    if (username === ""){
-        res.status(401).send("Invalid token.");
-        return;
-    }
-
+router.post<Empty, Empty, ClaimReqBody>("/claim", loginErrorHandler<ClaimReqBody>(async (req, res, username) => {
     if (typeof req.body.reportid !== "number"){
         res.status(400).send("Report ID must be a number.");
         return;
@@ -230,8 +204,8 @@ router.post<Empty, Empty, ClaimReqBody>("/claim", databaseErrorHandler<ClaimReqB
         }
     });
 
-    // Set resources
-    /*await setResources({
+    // Update resources and badges
+    await setResources({
         brawlers: stringifyBrawlers(resources.brawlers),
         avatars: JSON.stringify(resources.avatars),
         wild_card_pins: JSON.stringify(resources.wild_card_pins),
@@ -250,9 +224,9 @@ router.post<Empty, Empty, ClaimReqBody>("/claim", databaseErrorHandler<ClaimReqB
         badges: JSON.stringify(badges),
         best_scores: results[0].best_scores,
         username: username
-    });*/
+    });
 
-    //await deleteReport({reportid: req.body.reportid});
+    await deleteReport({reportid: req.body.reportid});
 
     res.json(reward);
 }));

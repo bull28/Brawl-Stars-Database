@@ -469,7 +469,7 @@ export function extractReportPreviewStats(data: number[]): ReportPreview["stats"
 
     const selectedBrawler = data[p + 2];
     let brawler = {displayName: "", image: ""};
-    if (selectedBrawler < gameBrawlers.length){
+    if (selectedBrawler >= 0 && selectedBrawler < gameBrawlers.length){
         brawler.displayName = gameBrawlers[selectedBrawler].displayName;
         brawler.image = GAME_BRAWLER_IMAGE_DIR + gameBrawlers[selectedBrawler].image + IMAGE_FILE_EXTENSION;
     }
@@ -479,7 +479,7 @@ export function extractReportPreviewStats(data: number[]): ReportPreview["stats"
 
     let gears: {displayName: string; image: string;}[] = [];
     for (let x = 0; x < gearIndex.length; x++){
-        if (gearIndex[x] < gameGears.length){
+        if (gearIndex[x] >= 0 && gearIndex[x] < gameGears.length){
             gears.push({
                 displayName: gameGears[gearIndex[x]].displayName,
                 image: GAME_GEAR_IMAGE_DIR + gameGears[gearIndex[x]].image + IMAGE_FILE_EXTENSION

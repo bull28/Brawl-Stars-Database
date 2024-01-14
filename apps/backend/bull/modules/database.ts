@@ -1,6 +1,7 @@
 import {Request, Response, NextFunction} from "express";
 import mysql2, {Pool, RowDataPacket, ResultSetHeader} from "mysql2";
-import {Empty, DatabaseBrawlers, DatabaseBadges, TradePinValid} from "../types";
+import {validateToken} from "./authenticate";
+import {Empty, TokenReqBody, DatabaseBrawlers, DatabaseBadges, TradePinValid} from "../types";
 
 // Custom error classes for common database errors
 
@@ -42,30 +43,30 @@ let REPORT_TABLE_NAME = "reports";
 
 // Read environment variables first before connecting
 
-if (process.env["DATABASE_HOST"] !== void 0){
+if (process.env["DATABASE_HOST"] !== undefined){
     databaseLogin.host = process.env["DATABASE_HOST"];
-} if (process.env["DATABASE_PORT"] !== void 0){
+} if (process.env["DATABASE_PORT"] !== undefined){
     const portString = process.env["DATABASE_PORT"];
     if (isNaN(+portString) === false){
         databaseLogin.port = parseInt(portString);
     }
-} if (process.env["DATABASE_USER"] !== void 0){
+} if (process.env["DATABASE_USER"] !== undefined){
     databaseLogin.user = process.env["DATABASE_USER"];
-} if (process.env["DATABASE_PASSWORD"] !== void 0){
+} if (process.env["DATABASE_PASSWORD"] !== undefined){
     databaseLogin.password = process.env["DATABASE_PASSWORD"];
-} if (process.env["DATABASE_NAME"] !== void 0){
+} if (process.env["DATABASE_NAME"] !== undefined){
     databaseLogin.database = process.env["DATABASE_NAME"];
 }
 
-if (process.env["DATABASE_TABLE_NAME"] !== void 0){
+if (process.env["DATABASE_TABLE_NAME"] !== undefined){
     TABLE_NAME = process.env["DATABASE_TABLE_NAME"];
-} if (process.env["DATABASE_TRADE_TABLE_NAME"] !== void 0){
+} if (process.env["DATABASE_TRADE_TABLE_NAME"] !== undefined){
     TRADE_TABLE_NAME = process.env["DATABASE_TRADE_TABLE_NAME"];
-} if (process.env["DATABASE_COSMETIC_TABLE_NAME"] !== void 0){
+} if (process.env["DATABASE_COSMETIC_TABLE_NAME"] !== undefined){
     COSMETIC_TABLE_NAME = process.env["DATABASE_COSMETIC_TABLE_NAME"];
-} if (process.env["GAME_TABLE_NAME"] !== void 0){
+} if (process.env["GAME_TABLE_NAME"] !== undefined){
     COSMETIC_TABLE_NAME = process.env["GAME_TABLE_NAME"];
-} if (process.env["REPORT_TABLE_NAME"] !== void 0){
+} if (process.env["REPORT_TABLE_NAME"] !== undefined){
     COSMETIC_TABLE_NAME = process.env["REPORT_TABLE_NAME"];
 }
 
@@ -99,60 +100,97 @@ process.on("SIGINT", () => {
 
 
 function isDatabaseError(error: Error): error is mysql2.QueryError{
-    if ((error as mysql2.QueryError).errno !== void 0){
+    if ((error as mysql2.QueryError).errno !== undefined){
         return true;
     }
     return false;
 }
 
 function isEmptyResultsError(error: Error): error is EmptyResultsError{
-    return ((error as EmptyResultsError).ash !== void 0);
+    return ((error as EmptyResultsError).ash !== undefined);
 }
 
 function isNoUpdateError(error: Error): error is NoUpdateError{
-    return ((error as NoUpdateError).frank !== void 0);
+    return ((error as NoUpdateError).frank !== undefined);
+}
+
+/**
+ * Gets the message and status code for an error when a route callback fails.
+ * @param reason promise rejection reason
+ * @returns error status code and message
+ */
+function getErrorMessage(reason: any): {status: number; message: string;}{
+    // The reason is used to determine what type of error occurred
+    const error = reason as Error;
+    if (isDatabaseError(error)){
+        // This represents sql errors (duplicate primary key, foreign key violated, ...)
+        if (error.errno === 1062){
+            // Duplicate primary key
+            return {status: 401, message: "Username (or something else) already exists."};
+        } else if (error.errno === 1644){
+            // Trigger threw an error
+            return {status: 403, message: error.message};
+        }
+        return {status: 500, message: "Could not connect to database."};
+    } else if (isEmptyResultsError(error)){
+        return {status: error.ash, message: error.message};
+    } else if (isNoUpdateError(error)){
+        return {status: error.frank, message: error.message};
+    } else{
+        // This represents all other errors (no connection, king golm, ...)
+        if (typeof reason === "string"){
+            // If a reason was provided then send that reason to the user
+            return {status: 500, message: reason};
+        } else{
+            // Otherwise, send a generic error message
+            return {status: 500, message: "Some other error occurred."};
+        }
+    }
 }
 
 type ExpressCallback<R, Q> = (req: Request<Empty, Empty, R, Q>, res: Response, next: NextFunction) => void;
 
+type UsernameCallback<R extends TokenReqBody, Q> = (req: Request<Empty, Empty, R, Q>, res: Response, username: string, next: NextFunction) => void;
+
 /**
- * Error handler for async endpoint callbacks. This function will send
- * the appropriate error message to the user if anything fails while
- * getting data from the database. R is the type of the request body
- * and Q is the type of the query parameters.
+ * Error handler for async endpoint callbacks that do not require authentication. This function will send the
+ * appropriate error message to the user if anything fails while getting data from the database. R is the type of the 
+ * request body and Q is the type of the query parameters.
  * @param callback callback for an endpoint
  * @returns callback with a promise
  */
 export function databaseErrorHandler<R, Q = unknown>(callback: ExpressCallback<R, Q>): ExpressCallback<R, Q>{
     return (req: Request<Empty, Empty, R, Q>, res: Response, next: NextFunction) => {
         Promise.resolve(callback(req, res, next)).catch((reason) => {
-            const error = reason as Error;
-            if (isDatabaseError(error)){
-                // This represents sql errors (duplicate primary key, foreign key violated, ...)
-                if (error.errno === 1062){
-                    // Duplicate primary key
-                    res.status(401).send("Username (or something else) already exists.");
-                    return;
-                } else if (error.errno === 1644){
-                    // Trigger threw an error
-                    res.status(403).send(error.message);
-                    return;
-                }
-                res.status(500).send("Could not connect to database.");    
-            } else if (isEmptyResultsError(error)){
-                res.status(error.ash).send(error.message);
-            } else if (isNoUpdateError(error)){
-                res.status(error.frank).send(error.message);
-            } else{
-                // This represents all other errors (no connection, king golm, ...)
-                if (typeof reason === "string"){
-                    // If a reason was provided then send that reason to the user
-                    res.status(500).send(reason);
-                } else{
-                    // Otherwise, send a generic error message
-                    res.status(500).send("Some other error occurred.");
-                }
-            }
+            const errorData = getErrorMessage(reason);
+            res.status(errorData.status).send(errorData.message);
+        });
+    }
+}
+
+/**
+ * Error handler for async endpoint callbacks that require authentication. This function will send the appropriate error
+ * message to the user if anything fails while getting data from the database or the provided token is invalid. R is the
+ * type of the request body and Q is the type of the query parameters. R must have a token: string property.
+ * @param callback callback for an endpoint
+ * @returns callback with a promise
+ */
+export function loginErrorHandler<R extends TokenReqBody, Q = unknown>(callback: UsernameCallback<R, Q>): ExpressCallback<R, Q>{
+    return (req: Request<Empty, Empty, R, Q>, res: Response, next: NextFunction) => {
+        if (typeof req.body.token !== "string"){
+            res.status(400).send("Token is missing.");
+            return;
+        }
+        const username = validateToken(req.body.token);
+
+        if (username === ""){
+            res.status(401).send("Invalid token.");
+            return;
+        }
+
+        Promise.resolve(callback(req, res, username, next)).catch((reason) => {
+            const errorData = getErrorMessage(reason);
+            res.status(errorData.status).send(errorData.message);
         });
     }
 }

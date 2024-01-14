@@ -10,6 +10,13 @@ import eventList from "./data/maps_data.json";
  */
 export type Empty = Record<string, never>;
 
+/**
+ * Request body type for a route that requires authentication
+ */
+export interface TokenReqBody{
+    token: string;
+}
+
 //------------------------------------------------------------------------------------------------//
 //                                          Brawler Types                                         //
 //------------------------------------------------------------------------------------------------//
