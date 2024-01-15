@@ -12,12 +12,13 @@ import collection from "./routes/collection";
 import tradesview from "./routes/tradesview";
 import tradesmodify from "./routes/tradesmodify";
 import report from "./routes/report";
+import accessory from "./routes/accessory";
 
 const app = express();
 app.disable("x-powered-by");
 let port = 6969;
 
-if (process.env["PORT"] !== void 0){
+if (process.env["PORT"] !== undefined){
     const portString = process.env["PORT"];
     if (!isNaN(+portString)){
         port = parseInt(portString);
@@ -29,7 +30,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.use((req, res, next) => {
     (bodyParser.json())(req, res, (error) => {
-        if (error !== void 0){
+        if (error !== undefined){
             res.status(400).send("Incorrectly formatted json.");
             return;
         }
@@ -47,6 +48,7 @@ app.use("/", collection);
 app.use("/trade", tradesview);
 app.use("/trade", tradesmodify);
 app.use("/report", report);
+app.use("/accessory", accessory);
 
 app.get("/bullgame", (req, res) => {
     res.sendFile(path.join(__dirname, "..", "assets", "index.html"));

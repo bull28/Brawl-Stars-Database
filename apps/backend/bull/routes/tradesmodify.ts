@@ -60,7 +60,7 @@ router.post<Empty, Empty, CreateReqBody>("/create", loginErrorHandler<CreateReqB
     }
 
     if (req.body.offer === undefined || req.body.request === undefined){
-        res.status(401).send("Offer or request is missing.");
+        res.status(400).send("Offer or request is missing.");
         return;
     }
 
@@ -208,7 +208,7 @@ router.post<Empty, Empty, AcceptReqBody>("/accept", loginErrorHandler<AcceptReqB
     const tradeid = req.body.tradeid;
 
     if (tradeid === undefined){
-        res.status(401).send("Trade ID is missing.");
+        res.status(400).send("Trade ID is missing.");
         return;
     }
 
@@ -397,7 +397,7 @@ router.post<Empty, Empty, CloseReqBody>("/close", loginErrorHandler<CloseReqBody
     const tradeid = req.body.tradeid;
 
     if (tradeid === undefined){
-        res.status(401).send("Trade ID is missing.");
+        res.status(400).send("Trade ID is missing.");
         return;
     }
 

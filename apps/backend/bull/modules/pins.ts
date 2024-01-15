@@ -1,5 +1,6 @@
 import allSkins from "../data/brawlers_data.json";
 import {themeMap, sceneMap, PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR, AVATAR_IMAGE_DIR, THEME_IMAGE_DIR, SCENE_IMAGE_DIR} from "../data/constants";
+import {getAccessoryCollection} from "./accessories";
 import {
     CollectionData, 
     CollectionBrawler, 
@@ -148,14 +149,14 @@ export function formatCollectionData(userCollection: DatabaseBrawlers, userAcces
         collection.pinRarityColors.push(value);
     });
 
-    /*const accessories = getAllAccessories(userAccessories, accessoryLevel);
+    const accessories = getAccessoryCollection(userAccessories);
     for (let x = 0; x < accessories.length; x++){
         if (accessories[x].unlocked === true){
             collection.unlockedAccessories++;
         }
         collection.totalAccessories++;
     }
-    collection.accessories = accessories;*/
+    collection.accessories = accessories;
 
     getCollectionScore(collection);
 

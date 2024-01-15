@@ -826,7 +826,7 @@ export class AccessoryReward extends Reward{
             {
                 weight: 1,
                 accessories: [
-                    "oldtown", "warehouse", "ghoststation", "giftshop",
+                    "oldtown", "biodome", "ghoststation", "giftshop",
                     "retropolis", "candyland", "stuntshow", "supercity",
                     "arcade"
                 ]

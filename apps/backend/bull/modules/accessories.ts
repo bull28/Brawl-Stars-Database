@@ -290,60 +290,60 @@ interface Accessory{
     name: string;
     category: string;
     displayName: string;
-    image: string;
+    unlock: string;
     badges: number;
 }
 const accessories: Accessory[] = [
-    {name: "shelly", category: "enemy", displayName: "", image: "accessory_shelly", badges: 500},
-    {name: "colt", category: "enemy", displayName: "", image: "accessory_colt", badges: 500},
-    {name: "rt", category: "enemy", displayName: "", image: "accessory_rt", badges: 500},
-    {name: "elprimo", category: "enemy", displayName: "", image: "accessory_elprimo", badges: 500},
-    {name: "8bit", category: "enemy", displayName: "", image: "accessory_8bit", badges: 500},
-    {name: "belle", category: "enemy", displayName: "", image: "accessory_belle", badges: 500},
-    {name: "jessie", category: "enemy", displayName: "", image: "accessory_jessie", badges: 500},
-    {name: "eve", category: "enemy", displayName: "", image: "accessory_eve", badges: 500},
-    {name: "mortis", category: "enemy", displayName: "", image: "accessory_mortis", badges: 500},
-    {name: "frank", category: "enemy", displayName: "", image: "accessory_frank", badges: 500},
-    {name: "bea", category: "enemy", displayName: "", image: "accessory_bea", badges: 500},
-    {name: "colette", category: "enemy", displayName: "", image: "accessory_colette", badges: 500},
-    {name: "lola", category: "enemy", displayName: "", image: "accessory_lola", badges: 500},
-    {name: "bibi", category: "enemy", displayName: "", image: "accessory_bibi", badges: 500},
-    {name: "mandy", category: "enemy", displayName: "", image: "accessory_mandy", badges: 500},
-    {name: "ash", category: "enemy", displayName: "", image: "accessory_ash", badges: 500},
-    {name: "bonnie", category: "enemy", displayName: "", image: "accessory_bonnie", badges: 500},
-    {name: "amber", category: "enemy", displayName: "", image: "accessory_amber", badges: 500},
-    {name: "max", category: "enemy", displayName: "", image: "accessory_max", badges: 500},
-    {name: "meg", category: "enemy", displayName: "", image: "accessory_meg", badges: 500},
-    {name: "spike", category: "player", displayName: "", image: "accessory_spike", badges: 100},
-    {name: "gus", category: "player", displayName: "", image: "accessory_gus", badges: 100},
-    {name: "emz", category: "player", displayName: "", image: "accessory_emz", badges: 100},
-    {name: "darryl", category: "player", displayName: "", image: "accessory_darryl", badges: 100},
-    {name: "tara", category: "player", displayName: "", image: "accessory_tara", badges: 100},
-    {name: "piper", category: "player", displayName: "", image: "accessory_piper", badges: 100},
-    {name: "crow", category: "player", displayName: "", image: "accessory_crow", badges: 100},
-    {name: "player8", category: "player", displayName: "", image: "", badges: 100},
-    {name: "player9", category: "player", displayName: "", image: "", badges: 100},
-    {name: "oldtown", category: "location", displayName: "", image: "accessory_oldtown", badges: 250},
-    {name: "warehouse", category: "location", displayName: "", image: "accessory_warehouse", badges: 250},
-    {name: "ghoststation", category: "location", displayName: "", image: "accessory_ghoststation", badges: 250},
-    {name: "giftshop", category: "location", displayName: "", image: "accessory_giftshop", badges: 250},
-    {name: "retropolis", category: "location", displayName: "", image: "accessory_retropolis", badges: 250},
-    {name: "candyland", category: "location", displayName: "", image: "accessory_candyland", badges: 250},
-    {name: "stuntshow", category: "location", displayName: "", image: "accessory_stuntshow", badges: 250},
-    {name: "supercity", category: "location", displayName: "", image: "accessory_supercity", badges: 250},
-    {name: "arcade", category: "location", displayName: "", image: "accessory_arcade", badges: 250},
-    {name: "wins", category: "achievement", displayName: "", image: "accessory_wins", badges: 100},
-    {name: "enemies", category: "achievement", displayName: "", image: "accessory_enemies", badges: 50000},
-    {name: "nomove", category: "achievement", displayName: "", image: "accessory_nomove", badges: 1},
-    {name: "noupgrades", category: "achievement", displayName: "", image: "accessory_noupgrades", badges: 1},
-    {name: "nodamage", category: "achievement", displayName: "", image: "accessory_nodamage", badges: 1},
-    {name: "fastwin", category: "achievement", displayName: "", image: "accessory_fastwin", badges: 1},
-    {name: "perfect", category: "achievement", displayName: "", image: "accessory_perfect", badges: 1},
-    {name: "mastery1", category: "mastery", displayName: "", image: "accessory_mastery1", badges: 1},
-    {name: "mastery2", category: "mastery", displayName: "", image: "accessory_mastery2", badges: 1},
-    {name: "mastery3", category: "mastery", displayName: "", image: "accessory_mastery3", badges: 1},
-    {name: "mastery4", category: "mastery", displayName: "", image: "accessory_mastery4", badges: 1},
-    {name: "mastery5", category: "mastery", displayName: "", image: "accessory_mastery5", badges: 1}
+    {name: "shelly", category: "enemy", displayName: "Shelly's Shotgun", unlock: "Defeat Shelly enemies.", badges: 500},
+    {name: "colt", category: "enemy", displayName: "Colt's Revolvers", unlock: "Defeat Colt enemies.", badges: 500},
+    {name: "rt", category: "enemy", displayName: "R-T's Camera", unlock: "Defeat R-T enemies.", badges: 500},
+    {name: "elprimo", category: "enemy", displayName: "El Primo's Belt", unlock: "Defeat El Primo enemies.", badges: 500},
+    {name: "8bit", category: "enemy", displayName: "8-Bit's Turret", unlock: "Defeat 8-Bit enemies.", badges: 500},
+    {name: "belle", category: "enemy", displayName: "Belle's Rifle", unlock: "Defeat Belle enemies.", badges: 500},
+    {name: "jessie", category: "enemy", displayName: "Jessie's Backpack", unlock: "Defeat Jessie enemies.", badges: 500},
+    {name: "eve", category: "enemy", displayName: "Eve's Spaceship", unlock: "Defeat Eve enemies.", badges: 500},
+    {name: "mortis", category: "enemy", displayName: "Mortis' Shovel", unlock: "Defeat Mortis enemies.", badges: 500},
+    {name: "frank", category: "enemy", displayName: "Frank's Hammer", unlock: "Defeat Frank enemies.", badges: 500},
+    {name: "bea", category: "enemy", displayName: "Bea's Bee", unlock: "Defeat Bea enemies.", badges: 500},
+    {name: "colette", category: "enemy", displayName: "Colette's Scrapbook", unlock: "Defeat Colette enemies.", badges: 500},
+    {name: "lola", category: "enemy", displayName: "Lola's Scarf", unlock: "Defeat Lola enemies.", badges: 500},
+    {name: "bibi", category: "enemy", displayName: "Bibi's Bat", unlock: "Defeat Bibi enemies.", badges: 500},
+    {name: "mandy", category: "enemy", displayName: "Mandy's Candy Dispenser", unlock: "Defeat Mandy enemies.", badges: 500},
+    {name: "ash", category: "enemy", displayName: "Ash's Broom", unlock: "Defeat Ash enemies.", badges: 500},
+    {name: "bonnie", category: "enemy", displayName: "Bonnie's Cannon", unlock: "Defeat Bonnie enemies.", badges: 500},
+    {name: "amber", category: "enemy", displayName: "Amber's Fire Staff", unlock: "Defeat Amber enemies.", badges: 500},
+    {name: "max", category: "enemy", displayName: "Max's Energy Drink", unlock: "Defeat Max enemies.", badges: 500},
+    {name: "meg", category: "enemy", displayName: "Meg's Mech", unlock: "Defeat Meg enemies.", badges: 500},
+    {name: "spike", category: "player", displayName: "Spike's Cactus", unlock: "Win with Spike.", badges: 100},
+    {name: "gus", category: "player", displayName: "Gus' Balloon", unlock: "Win with Gus.", badges: 100},
+    {name: "emz", category: "player", displayName: "Emz' Spray", unlock: "Win with Emz.", badges: 100},
+    {name: "darryl", category: "player", displayName: "Darryl's Barrel", unlock: "Win with Darryl.", badges: 100},
+    {name: "tara", category: "player", displayName: "Tara's Cards", unlock: "Win with Tara.", badges: 100},
+    {name: "piper", category: "player", displayName: "Piper's Umbrella", unlock: "Win with Piper.", badges: 100},
+    {name: "crow", category: "player", displayName: "Crow's Daggers", unlock: "Win with Crow.", badges: 100},
+    {name: "maisie", category: "player", displayName: "Maisie's Metal Arm", unlock: "Currently unobtainable.", badges: 100},
+    {name: "stu", category: "player", displayName: "Stu's Wheel", unlock: "Currently unobtainable.", badges: 100},
+    {name: "oldtown", category: "location", displayName: "Barley's Bottle", unlock: "Complete levels at Old Town.", badges: 250},
+    {name: "biodome", category: "location", displayName: "Rosa's Gloves", unlock: "Complete levels at Biodome.", badges: 250},
+    {name: "ghoststation", category: "location", displayName: "Golden Ticket", unlock: "Complete levels at Ghost Station.", badges: 250},
+    {name: "giftshop", category: "location", displayName: "Gift Shop Shirt", unlock: "Complete Levels at Gift Shop.", badges: 250},
+    {name: "retropolis", category: "location", displayName: "Neon Light", unlock: "Complete levels at Retropolis.", badges: 250},
+    {name: "candyland", category: "location", displayName: "Starr Candy", unlock: "Complete levels at Candyland.", badges: 250},
+    {name: "stuntshow", category: "location", displayName: "Janet's Microphone", unlock: "Complete levels at Stunt Show.", badges: 250},
+    {name: "supercity", category: "location", displayName: "Surge's Energy Drink", unlock: "Complete levels at Super City.", badges: 250},
+    {name: "arcade", category: "location", displayName: "Arcade Machine", unlock: "Complete Levels at Arcade.", badges: 250},
+    {name: "wins", category: "achievement", displayName: "Bull's Shotgun", unlock: "Win in any difficulty.", badges: 100},
+    {name: "enemies", category: "achievement", displayName: "Omega Box", unlock: "Defeat enemies.", badges: 50000},
+    {name: "nomove", category: "achievement", displayName: "Charlie's Cocoon", unlock: "Win without moving. Abilities are allowed.", badges: 1},
+    {name: "noupgrades", category: "achievement", displayName: "Bling Stack", unlock: "Win without purchasing upgrades or using gears.", badges: 1},
+    {name: "nodamage", category: "achievement", displayName: "Poco's Guitar", unlock: "Win without taking any damage.", badges: 1},
+    {name: "fastwin", category: "achievement", displayName: "Fang's Shoe", unlock: "Win in under 90 seconds.", badges: 1},
+    {name: "perfect", category: "achievement", displayName: "Championship Trophy", unlock: "Get a score of 600 on difficulty 6.", badges: 1},
+    {name: "mastery1", category: "mastery", displayName: "", unlock: "Currently unobtainable.", badges: 1},
+    {name: "mastery2", category: "mastery", displayName: "", unlock: "Currently unobtainable.", badges: 1},
+    {name: "mastery3", category: "mastery", displayName: "", unlock: "Currently unobtainable.", badges: 1},
+    {name: "mastery4", category: "mastery", displayName: "", unlock: "Currently unobtainable.", badges: 1},
+    {name: "mastery5", category: "mastery", displayName: "", unlock: "Currently unobtainable.", badges: 1}
 ];
 
 interface BadgeStorage{
@@ -393,7 +393,12 @@ const badgeList: BadgeStorage[] = [
     {name: "arcade", category: "location", index: 10, coins: [0, 0]}
 ];
 
-export function getAccessoryPreview(name: string): AccessoryPreview | undefined{
+/**
+ * Searches the list of accessories for one that matches the given name.
+ * @param name accessory name
+ * @returns reference to the accessory object
+ */
+function getAccessoryByName(name: string): Accessory | undefined{
     let index = -1;
     for (let x = 0; x < accessories.length; x++){
         if (accessories[x].name === name){
@@ -403,12 +408,20 @@ export function getAccessoryPreview(name: string): AccessoryPreview | undefined{
     if (index < 0){
         return undefined;
     }
+    return accessories[index];
+}
+
+export function getAccessoryPreview(name: string): AccessoryPreview | undefined{
+    const a = getAccessoryByName(name);
+    if (a === undefined){
+        return undefined;
+    }
 
     return {
         //name: accessories[index].name,
         //category: accessories[index].category,
-        displayName: accessories[index].displayName,
-        image: ACCESSORY_IMAGE_DIR + accessories[index].image + IMAGE_FILE_EXTENSION,
+        displayName: a.displayName,
+        image: `${ACCESSORY_IMAGE_DIR}accessory_${a.name}${IMAGE_FILE_EXTENSION}`,
         //badges: accessories[index].badges
         description: "Rare drop from nothing"
     };
@@ -422,7 +435,7 @@ export function getAccessoryCollection(userAccessories: DatabaseAccessories): Co
         collection.push({
             name: a.name,
             displayName: a.displayName,
-            image: ACCESSORY_IMAGE_DIR + a.image + IMAGE_FILE_EXTENSION,
+            image: `${ACCESSORY_IMAGE_DIR}accessory_${a.name}${IMAGE_FILE_EXTENSION}`,
             unlocked: userAccessories.includes(a.name)
         });
     }
@@ -438,22 +451,37 @@ export function getAccessoryData(userAccessories: DatabaseAccessories, badges: D
 
         let badgeCount = 0;
         if (Object.hasOwn(badges, a.name) === true){
-            badgeCount = badges[a.name];
+            badgeCount = Math.min(badges[a.name], a.badges);
         }
 
         collection.push({
             name: a.name,
             category: a.category,
             displayName: a.displayName,
-            image: ACCESSORY_IMAGE_DIR + a.image + IMAGE_FILE_EXTENSION,
+            image: `${ACCESSORY_IMAGE_DIR}accessory_${a.name}${IMAGE_FILE_EXTENSION}`,
             unlocked: userAccessories.includes(a.name),
-            badgesCollected: badgeCount,
-            badgesRequired: a.badges,
-            badgeImage: ""
+            badge: {
+                collected: badgeCount,
+                required: a.badges,
+                image: "",
+                unlockMethod: a.unlock
+            }
         });
     }
 
     return collection;
+}
+
+export function canClaimAccessory(userAccessories: DatabaseAccessories, badges: DatabaseBadges, name: string): boolean{
+    const a = getAccessoryByName(name);
+    if (a === undefined){
+        return false;
+    }
+
+    if (Object.hasOwn(badges, a.name) === true){
+        return userAccessories.includes(a.name) === false && badges[a.name] >= a.badges;
+    }
+    return false;
 }
 
 export function extractReportPreviewStats(data: number[]): ReportPreview["stats"] | undefined{

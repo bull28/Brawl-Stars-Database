@@ -28,11 +28,12 @@ interface SaveReqBody{
     report: GameReport;
 }
 
-interface ClaimReqBody extends TokenReqBody{
+interface ClaimReportReqBody extends TokenReqBody{
     reportid: number;
     claim: boolean;
 }
 
+// Save a game report
 router.post<Empty, Empty, SaveReqBody>("/save", databaseErrorHandler<SaveReqBody>(async (req, res) => {
     const username = req.body.username;
     const report = req.body.report;
@@ -78,6 +79,7 @@ router.post<Empty, Empty, SaveReqBody>("/save", databaseErrorHandler<SaveReqBody
     res.send("Score successfully saved.");
 }));
 
+// Get all reports a user currently has unclaimed
 router.post<Empty, Empty, TokenReqBody>("/all", loginErrorHandler<TokenReqBody>(async (req, res, username) => {
     const results = await getAllReports({username: username});
 
@@ -112,7 +114,8 @@ router.post<Empty, Empty, TokenReqBody>("/all", loginErrorHandler<TokenReqBody>(
     res.json(reportList);
 }));
 
-router.post<Empty, Empty, ClaimReqBody>("/claim", loginErrorHandler<ClaimReqBody>(async (req, res, username) => {
+// Claim resources from a saved report
+router.post<Empty, Empty, ClaimReportReqBody>("/claim", loginErrorHandler<ClaimReportReqBody>(async (req, res, username) => {
     if (typeof req.body.reportid !== "number"){
         res.status(400).send("Report ID must be a number.");
         return;

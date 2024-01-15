@@ -100,10 +100,7 @@ process.on("SIGINT", () => {
 
 
 function isDatabaseError(error: Error): error is mysql2.QueryError{
-    if ((error as mysql2.QueryError).errno !== undefined){
-        return true;
-    }
-    return false;
+    return ((error as mysql2.QueryError).errno !== undefined);
 }
 
 function isEmptyResultsError(error: Error): error is EmptyResultsError{
@@ -872,4 +869,27 @@ export async function getResourcesAndProgress(values: UsernameValues): Promise<R
     const valuesArray = [values.username, values.username];
     return queryDatabase<typeof valuesArray, ResourcesProgressResult[]>(connection, valuesArray, false,
         `SELECT U.active_avatar, U.tokens, U.token_doubler, U.coins, U.trade_credits, U.points, U.brawlers, U.avatars, U.themes, U.scenes, U.accessories, U.wild_card_pins, G.last_game, G.badges, G.best_scores FROM ${TABLE_NAME} U, ${GAME_TABLE_NAME} G WHERE U.username = ? AND G.username = ?;`);
+}
+
+
+interface BeforeAccessoryResult extends RowDataPacket{
+    points: number;
+    accessories: string;
+    badges: string;
+}
+export async function beforeAccessory(values: UsernameValues): Promise<BeforeAccessoryResult[]>{
+    const valuesArray = [values.username, values.username];
+    return queryDatabase<typeof valuesArray, ResourcesProgressResult[]>(connection, valuesArray, false,
+        `SELECT U.points, U.accessories, G.badges FROM ${TABLE_NAME} U, ${GAME_TABLE_NAME} G WHERE U.username = ? AND G.username = ?;`);
+}
+
+
+interface AccessoryClaimValues{
+    accessories: string;
+    username: string;
+}
+export async function updateAccessories(values: AccessoryClaimValues): Promise<ResultSetHeader>{
+    const valuesArray = [values.accessories, values.username];
+    return updateDatabase<typeof valuesArray>(connection, valuesArray, false,
+        `UPDATE ${TABLE_NAME} SET accessories = ? WHERE username = ?;`);
 }

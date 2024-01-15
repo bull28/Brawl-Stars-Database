@@ -602,9 +602,12 @@ export interface AccessoryData{
     displayName: string;
     image: string;
     unlocked: boolean;
-    badgesCollected: number;
-    badgesRequired: number;
-    badgeImage: string;
+    badge: {
+        collected: number;
+        required: number;
+        image: string;
+        unlockMethod: string;
+    };
 }
 
 //------------------------------------------------------------------------------------------------//
