@@ -14,15 +14,8 @@ interface ClaimAccessoryReqBody extends TokenReqBody{
 router.post<Empty, Empty, TokenReqBody>("/all", loginErrorHandler<TokenReqBody>(async (req, res, username) => {
     const results = await beforeAccessory({username: username});
 
-    let accessories: DatabaseAccessories;
-    let badges: DatabaseBadges;
-    try{
-        accessories = parseStringArray(results[0].accessories);
-        badges = parseBadges(results[0].badges);
-    } catch (error){
-        res.status(500).send("Collection data could not be loaded.");
-        return;
-    }
+    const accessories: DatabaseAccessories = parseStringArray(results[0].accessories);
+    const badges: DatabaseBadges = parseBadges(results[0].badges);
 
     const data = getAccessoryData(accessories, badges);
 
@@ -39,18 +32,11 @@ router.post<Empty, Empty, ClaimAccessoryReqBody>("/claim", loginErrorHandler<Cla
 
     const results = await beforeAccessory({username: username});
 
-    let accessories: DatabaseAccessories;
-    let badges: DatabaseBadges;
-    try{
-        accessories = parseStringArray(results[0].accessories);
-        badges = parseBadges(results[0].badges);
-    } catch (error){
-        res.status(500).send("Collection data could not be loaded.");
-        return;
-    }
+    const accessories: DatabaseAccessories = parseStringArray(results[0].accessories);
+    const badges: DatabaseBadges = parseBadges(results[0].badges);
 
     const hasAccessory = accessories.includes(name);
-    
+
     if (canClaimAccessory(accessories, badges, name) === false){
         if (hasAccessory === true){
             res.status(403).send("You have already claimed this accessory.");

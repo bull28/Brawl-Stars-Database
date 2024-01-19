@@ -257,7 +257,7 @@ function openBox(box: BrawlBox, resources: UserResources): BrawlBoxDrop[]{
     if (resources === undefined){
         return [];
     }
-    
+
     let valid = true;
     for (const x of [
         "brawlers", "avatars", "wild_card_pins", "tokens",
@@ -340,7 +340,7 @@ export function getGameReward(resources: UserResources, report: ReportData): Bra
     if (resources === undefined){
         return [];
     }
-    
+
     let valid = true;
     for (const x of [
         "brawlers", "avatars", "wild_card_pins", "tokens",
@@ -370,7 +370,7 @@ export function getGameReward(resources: UserResources, report: ReportData): Bra
             rewards.push(drop);
         }
     }
-    
+
     for (let x = 0; x < box.draws.length; x++){
         const draw = box.draws[x];
         let count = 0;
@@ -385,7 +385,7 @@ export function getGameReward(resources: UserResources, report: ReportData): Bra
         } else{
             count = Math.floor(count);
         }
-        
+
         for (let i = 0; i < count; i++){
             let drop: BrawlBoxDrop;
             if (draw.reward instanceof AccessoryReward){

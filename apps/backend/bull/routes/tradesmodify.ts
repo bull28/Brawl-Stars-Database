@@ -97,9 +97,9 @@ router.post<Empty, Empty, CreateReqBody>("/create", loginErrorHandler<CreateReqB
     const timeTradeCost = getTimeTradeCost(tradeHours);
     const totalTradeCost = Math.ceil((tradeCost + timeTradeCost) / 10);
 
-    // At this point, the trade is a valid trade (the user may not have the requirements or resources
-    // to create it though). The value returned here is the number of trade credits it would require
-    // to create a trade with the given offer, request, and duration.
+    // At this point, the trade is a valid trade (the user may not have the requirements or resources to create it
+    // though). The value returned here is the number of trade credits it would require to create a trade with the
+    // given offer, request, and duration.
     if (req.body.getCost === true){
         res.json({tradeCost: totalTradeCost});
         return;
@@ -111,15 +111,8 @@ router.post<Empty, Empty, CreateReqBody>("/create", loginErrorHandler<CreateReqB
 
     const userResources = results[0];
 
-    let collectionData: DatabaseBrawlers;
-    let userAccessories: DatabaseAccessories;
-    try{
-        collectionData = parseBrawlers(userResources.brawlers);
-        userAccessories = parseStringArray(userResources.accessories);
-    } catch (error){
-        res.status(500).send("Collection data could not be loaded.");
-        return;
-    }
+    const collectionData: DatabaseBrawlers = parseBrawlers(userResources.brawlers);
+    const userAccessories: DatabaseAccessories = parseStringArray(userResources.accessories);
 
     // Accessories are only required here to get the collection data
     // Get the user's avatar color and that will be the text color when displaying all trades
@@ -212,9 +205,9 @@ router.post<Empty, Empty, AcceptReqBody>("/accept", loginErrorHandler<AcceptReqB
         return;
     }
 
-    // useWildCards makes the server check if the user has a wild card pin to use instead when they are missing a required pin
-    // forceAccept makes the server accept the trade anyway even if the user would not be able to collect a pin because they
-    // do not have the brawler unlocked.
+    // useWildCards makes the server check if the user has a wild card pin to use instead when they are missing a
+    // required pin. forceAccept makes the server accept the trade anyway even if the user would not be able to collect
+    // a pin because they do not have the brawler unlocked.
     let useWildCards = false;
     let forceAccept = false;
     if (req.body.useWildCards === true){
@@ -231,15 +224,8 @@ router.post<Empty, Empty, AcceptReqBody>("/accept", loginErrorHandler<AcceptReqB
     // Load the data then get the trade data and compare then
     const userResources = results[0];
 
-    let collectionData: DatabaseBrawlers;
-    let wildCardPins: DatabaseWildCard;
-    try{
-        collectionData = parseBrawlers(userResources.brawlers);
-        wildCardPins = parseNumberArray(userResources.wild_card_pins);
-    } catch (error){
-        res.status(500).send("Collection data could not be loaded.");
-        return;
-    }
+    const collectionData: DatabaseBrawlers = parseBrawlers(userResources.brawlers);
+    const wildCardPins: DatabaseWildCard = parseNumberArray(userResources.wild_card_pins);
 
     // Get the trade data for the tradeid specified by the user
     const getTrade = await getTradeAccept({
@@ -258,15 +244,8 @@ router.post<Empty, Empty, AcceptReqBody>("/accept", loginErrorHandler<AcceptReqB
         return;
     }
 
-    let offerPins: TradePinValid[];
-    let requestPins: TradePinValid[];
-    try{
-        offerPins = parseTradePins(tradeResults.offer);
-        requestPins = parseTradePins(tradeResults.request);
-    } catch (error){
-        res.status(500).send("Trade data could not be loaded.");
-        return;
-    }
+    const offerPins: TradePinValid[] = parseTradePins(tradeResults.offer);
+    const requestPins: TradePinValid[] = parseTradePins(tradeResults.request);
 
     // The acceptor does not pay any time cost for the trade
     const tradeCost = tradeResults.trade_credits;
@@ -321,8 +300,7 @@ router.post<Empty, Empty, AcceptReqBody>("/accept", loginErrorHandler<AcceptReqB
             }
         }
     }
-    // If they still do not have the required pins, check their wild card pins only
-    // if they enabled that option
+    // If they still do not have the required pins, check their wild card pins only if they enabled that option
 
 
     // User does not have the pins the trade creator wants
@@ -344,13 +322,11 @@ router.post<Empty, Empty, AcceptReqBody>("/accept", loginErrorHandler<AcceptReqB
             // If the user already has the pin in their collection, add the amount they will receive
             if (Object.hasOwn(brawler, x.pin) === true){
                 brawler[x.pin] = brawler[x.pin] + x.amount;
-                //collectionData[x.brawler][x.pin] += x.amount;
             }
-            // If the user has the brawler but not the pin, add the new pin to their collection
-            // and set its amount to the amount given in the trade
+            // If the user has the brawler but not the pin, add the new pin to their collection and set its amount to
+            // the amount given in the trade
             else{
                 brawler[x.pin] = x.amount;
-                //collectionData[x.brawler][x.pin] = x.amount;
             }
             tradedItems.push(x);
         } else{
@@ -359,8 +335,9 @@ router.post<Empty, Empty, AcceptReqBody>("/accept", loginErrorHandler<AcceptReqB
         // If the user does not have the brawler unlocked, they cannot receive the pin.
     }
 
-    // If the user does not have the brawlers unlocked, they have the option to accept anyway
-    // and not collect those pins or for the server to prevent them from accepting.
+    // If the user does not have the brawlers unlocked, they have the option to accept anyway and not collect those pins
+    // or for the server to prevent them from accepting. This may be used to get the number of active trades under the
+    // limit so the user can create another trade.
     if (forceAccept === false && hasRequiredBrawlers === false){
         res.status(403).send("You do not have the necessary brawlers unlocked to accept the trade.");
         return;
@@ -411,22 +388,16 @@ router.post<Empty, Empty, CloseReqBody>("/close", loginErrorHandler<CloseReqBody
     // results.length === 0 checked
 
     // Load the data then get the trade data and compare then
-    let collectionData: DatabaseBrawlers;
+    const collectionData: DatabaseBrawlers = parseBrawlers(results[0].brawlers);
     let userTradeCredits = results[0].trade_credits;
     const wildCards = results[0].wild_card_pins;
-    try{
-        collectionData = parseBrawlers(results[0].brawlers);
-    } catch (error){
-        res.status(500).send("Collection data could not be loaded.");
-        return;
-    }
 
 
     // Get the trade data for the tradeid specified by the user
     const getTrade = await getTradeClose({tradeid: tradeid});
 
     // getTrade.length === 0 checked
-    
+
     const tradeResults = getTrade[0];
 
     if (tradeResults.creator !== username){
@@ -434,32 +405,22 @@ router.post<Empty, Empty, CloseReqBody>("/close", loginErrorHandler<CloseReqBody
         return;
     }
 
-    let offerPins: TradePinValid[];
-    let requestPins: TradePinValid[];
-    try{
-        offerPins = parseTradePins(tradeResults.offer);
-        requestPins = parseTradePins(tradeResults.request);
-    } catch (error){
-        res.status(500).send("Trade data could not be loaded.");
-        return;
-    }
+    const offerPins: TradePinValid[] = parseTradePins(tradeResults.offer);
+    const requestPins: TradePinValid[] = parseTradePins(tradeResults.request);
 
-    // The time cost for the trade had to be stored in the database
-    // in case the user cancels the trade, there will be a way to find
-    // out how many credits they spent on the time.
+    // The time cost for the trade had to be stored in the database in case the user cancels the trade, there will be a
+    // way to find out how many credits they spent on the time.
     const tradeCost = tradeResults.trade_credits;
     const timeTradeCost = tradeResults.trade_credits_time;
     const totalTradeCost = Math.ceil((tradeCost + timeTradeCost) / 10);
 
-    // Based on whether the trade was complete or not, pins will be added
-    // back from either the offer or request
+    // Based on whether the trade was completed or not, pins will be added back from either the offer or request
     let addPinsFrom: TradePinValid[] = [];
     if (tradeResults.accepted === 1){
         // If the trade was completed, add pins from the request
         addPinsFrom = requestPins;
     } else{
-        // If the trade was expired or no one accepted it, add pins back from the offer
-        // Also refund the trade credits they paid to create the trade
+        // If no one accepted it, add pins back from the offer and refund the trade credits paid to create the trade
         addPinsFrom = offerPins;
         userTradeCredits += totalTradeCost;
     }

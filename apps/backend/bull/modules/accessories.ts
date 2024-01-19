@@ -282,7 +282,7 @@ export function validateReport(report: GameReport): boolean{
         // The sum of all score categories should equal the sum calculated by the game
         return false;
     }
-    
+
     return valid;
 }
 
@@ -325,7 +325,7 @@ const accessories: Accessory[] = [
     {name: "stu", category: "player", displayName: "Stu's Wheel", unlock: "Currently unobtainable.", badges: 100},
     {name: "oldtown", category: "location", displayName: "Barley's Bottle", unlock: "Complete levels at Old Town.", badges: 250},
     {name: "biodome", category: "location", displayName: "Rosa's Gloves", unlock: "Complete levels at Biodome.", badges: 250},
-    {name: "ghoststation", category: "location", displayName: "Golden Ticket", unlock: "Complete levels at Ghost Station.", badges: 250},
+    {name: "ghoststation", category: "location", displayName: "Train Tickets", unlock: "Complete levels at Ghost Station.", badges: 250},
     {name: "giftshop", category: "location", displayName: "Gift Shop Shirt", unlock: "Complete Levels at Gift Shop.", badges: 250},
     {name: "retropolis", category: "location", displayName: "Neon Light", unlock: "Complete levels at Retropolis.", badges: 250},
     {name: "candyland", category: "location", displayName: "Starr Candy", unlock: "Complete levels at Candyland.", badges: 250},
@@ -339,11 +339,11 @@ const accessories: Accessory[] = [
     {name: "nodamage", category: "achievement", displayName: "Poco's Guitar", unlock: "Win without taking any damage.", badges: 1},
     {name: "fastwin", category: "achievement", displayName: "Fang's Shoe", unlock: "Win in under 90 seconds.", badges: 1},
     {name: "perfect", category: "achievement", displayName: "Championship Trophy", unlock: "Get a score of 600 on difficulty 6.", badges: 1},
-    {name: "mastery1", category: "mastery", displayName: "", unlock: "Currently unobtainable.", badges: 1},
-    {name: "mastery2", category: "mastery", displayName: "", unlock: "Currently unobtainable.", badges: 1},
-    {name: "mastery3", category: "mastery", displayName: "", unlock: "Currently unobtainable.", badges: 1},
-    {name: "mastery4", category: "mastery", displayName: "", unlock: "Currently unobtainable.", badges: 1},
-    {name: "mastery5", category: "mastery", displayName: "", unlock: "Currently unobtainable.", badges: 1}
+    {name: "mastery1", category: "mastery", displayName: "Bronze Mastery Medal", unlock: "Currently unobtainable.", badges: 1},
+    {name: "mastery2", category: "mastery", displayName: "Silver Mastery Medal", unlock: "Currently unobtainable.", badges: 1},
+    {name: "mastery3", category: "mastery", displayName: "Gold Mastery Medal", unlock: "Currently unobtainable.", badges: 1},
+    {name: "mastery4", category: "mastery", displayName: "Diamond Mastery Medal", unlock: "Currently unobtainable.", badges: 1},
+    {name: "mastery5", category: "mastery", displayName: "Amethyst Mastery Medal", unlock: "Currently unobtainable.", badges: 1}
 ];
 
 interface BadgeStorage{
@@ -429,7 +429,7 @@ export function getAccessoryPreview(name: string): AccessoryPreview | undefined{
 
 export function getAccessoryCollection(userAccessories: DatabaseAccessories): CollectionAccessory[]{
     const collection: CollectionAccessory[] = [];
-    
+
     for (let x = 0; x < accessories.length; x++){
         const a = accessories[x];
         collection.push({
@@ -514,7 +514,7 @@ export function extractReportPreviewStats(data: number[]): ReportPreview["stats"
             });
         }
     }
-    
+
     return {
         score: data[p],
         difficulty: (data[p + 1] < gameDifficulties.length ? gameDifficulties[data[p + 1]] : ""),
@@ -580,7 +580,7 @@ export function extractReportData(data: number[]): ReportData | undefined{
             maxCoins += b.coins[1] * badgeCount;
         }
     }
-    
+
     // Achivement badges depend on the values in the achievements section of the report
 
     // Win 100 times on any difficulty

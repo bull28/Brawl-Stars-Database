@@ -19,9 +19,8 @@ import {
 } from "../types";
 
 /**
- * Reads a user's brawler and pin collection from the database and organizes it
- * in an array with useful properties for displaying the collection on-screen.
- * Also analyzes the collection and gives a score based on how close it is to
+ * Reads a user's brawler and pin collection from the database and organizes it in an array with useful properties for
+ * displaying the collection on-screen. Also analyzes the collection and gives a score based on how close it is to
  * completion. All image files have their appropriate file paths added.
  * @param userCollection parsed brawlers object from the database
  * @returns collection summary object
@@ -56,9 +55,7 @@ export function formatCollectionData(userCollection: DatabaseBrawlers, userAcces
         let totalPins = 0;
         let pinCopies = 0;
 
-        // Check that all desired properties exist all at once
-        // so they do not have to be checked individually as
-        // they are used
+        // Check that all desired properties exist all at once so they do not have to be checked individually later
         let missingProperties = false;
         for (const j of includeFromBrawler){
             if (Object.hasOwn(brawler, j) === false){
@@ -66,9 +63,8 @@ export function formatCollectionData(userCollection: DatabaseBrawlers, userAcces
             }
         }
 
-        // This determines whether to check for unlocked pins
-        // If a brawler is not unlocked, none of their pins can
-        // be unlocked either.
+        // This determines whether to check for unlocked pins. If a brawler is not unlocked, none of their pins can be
+        // unlocked either.
         let hasBrawler = false;
         if (missingProperties === false){
             hasBrawler = Object.hasOwn(userCollection, brawler.name);
@@ -76,14 +72,14 @@ export function formatCollectionData(userCollection: DatabaseBrawlers, userAcces
                 collection.unlockedBrawlers++;
             }
             collection.totalBrawlers++;
-    
+
             const brawlerPins: CollectionPin[] = [];
 
             let pinData: DatabaseBrawlers[string] | undefined = undefined;
             if (hasBrawler === true){
                 pinData = userCollection[brawler.name];
             }
-    
+
             for (let y = 0; y < brawler.pins.length; y++){
                 const pin = brawler.pins[y];
 
@@ -95,12 +91,11 @@ export function formatCollectionData(userCollection: DatabaseBrawlers, userAcces
 
                 // If the brawler appears in userCollection as a key, it is unlocked.
                 // If the brawler is unlocked, check to see if the name of the current pin appears in the corresponding
-                // value. If it appears, the currentpin is unlocked.
-                if (pinData !== void 0){
+                // value. If it appears, the current pin is unlocked.
+                if (pinData !== undefined){
                     const pinCount = pinData[pin.name];
-                    if (pinCount !== void 0){
+                    if (pinCount !== undefined){
                         if (pinCount > 0){
-                            
                             unlockedPins++;
                             collection.unlockedPins++;
                         }
@@ -164,13 +159,10 @@ export function formatCollectionData(userCollection: DatabaseBrawlers, userAcces
 }
 
 /**
- * Returns a complete list of all avatars a user is able to select.
- * All free avatars are included and the user's special avatars collected
- * are compared with the list of all special avatars to determine which
- * special avatars they can select. Their collection is also used to
- * determine which portrait avatars are available. This function returns
- * avatars with their file extension. The array userAvatars does not
- * contain file paths.
+ * Returns a complete list of all avatars a user is able to select. All free avatars are included and the user's special
+ * avatars collected are compared with the list of all special avatars to determine which special avatars they can
+ * select. Their collection is required to determine which portrait avatars are available. This function returns avatars
+ * with their file extension. The array userAvatars does not contain file paths.
  * @param allAvatars object containing all free and special avatars
  * @param userCollection parsed brawlers object from the database
  * @param userAvatars parsed array of avatars from the database
@@ -180,7 +172,7 @@ export function getAvatars(allAvatars: AvatarList, userCollection: DatabaseBrawl
     const avatars: DatabaseAvatars = [];
     const unlockedBrawlers: string[] = [];
 
-    if (allAvatars.free === void 0 || allAvatars.special === void 0){
+    if (allAvatars.free === undefined || allAvatars.special === undefined){
         return avatars;
     }
 
@@ -204,18 +196,15 @@ export function getAvatars(allAvatars: AvatarList, userCollection: DatabaseBrawl
 
         // If a special avatar is unlocked, add it to the array.
 
-        // The entire path of avatars is no longer stored in the
-        // database, only the file name
+        // The entire path of avatars is no longer stored in the database, only the file name
         const filePaths = avatar.split("/");
         const avatarName = filePaths[filePaths.length - 1].split(".")[0];
-        if (avatarName !== void 0 && userAvatars.includes(avatarName) === true){
+        if (avatarName !== undefined && userAvatars.includes(avatarName) === true){
             avatars.push(AVATAR_IMAGE_DIR + avatar);
         }
-
-        // If a special avatar is not unlocked, the only other way that
-        // it can be used is if it is a brawler portrait and if the brawler
-        // is unlocked, the portrait is made available.
-        // In order for this to happen, the file names must be the same.
+        // If a special avatar is not unlocked, the only other way that it can be used is if it is a brawler portrait
+        // and if the brawler is unlocked, the portrait is available. In order for this to happen, the avatar file name
+        // must be the same as the brawler portrait file name.
         else if (unlockedBrawlers.includes(avatarName) === true){
             avatars.push(AVATAR_IMAGE_DIR + avatar);
         }
@@ -225,11 +214,9 @@ export function getAvatars(allAvatars: AvatarList, userCollection: DatabaseBrawl
 }
 
 /**
- * Returns a complete list of all themes a user is able to select.
- * All free themes are available to anyone. Special themes are only
- * obtainable from the shop. This function takes the name of a theme
- * bundle and classifies each image as either background, icon, or
- * any other type of item that may be contained in a bundle.
+ * Returns a complete list of all themes a user is able to select. All free themes are included and only special themes
+ * that the user obtained are included. This function takes the name of a theme bundle and classifies each image as
+ * either background, icon, or any other type of item that may be contained in a bundle.
  * @param allThemes object containing all free and special themes
  * @param allScenes array containing all scenes
  * @param userThemes parsed array of themes from the database
@@ -240,13 +227,8 @@ export function getThemes(allThemes: ThemeList, allScenes: SceneList, userThemes
     const themes: Record<string, Map<string, string>> = {};
     const scenes: Record<string, ThemeScenePreview> = {};
 
-    if (allThemes.free === void 0 && allThemes.special === void 0){
-        return {
-            background: [],
-            icon: [],
-            music: [],
-            scene: []
-        };
+    if (allThemes.free === undefined && allThemes.special === undefined){
+        return {background: [], icon: [], music: [], scene: []};
     }
 
     for (const t in allThemes){
@@ -262,17 +244,16 @@ export function getThemes(allThemes: ThemeList, allScenes: SceneList, userThemes
                 themeType = "music";
             }
             // Add more types if they become available
-    
+
             if (themeType !== ""){
-                // Check if the theme map contains the current theme name and if it
-                // does, add it to the themes, grouped by name
+                // If the theme map contains the current theme name, add it to the themes, grouped by name
                 const filePaths = theme.split("/");
                 const themeName = filePaths[filePaths.length - 1].split("_" + themeType)[0];
                 if (themeMap.has(themeName) === true){
                     if (Object.hasOwn(themes, themeName) === false){
                         themes[themeName] = new Map<string, string>();
                     }
-    
+
                     if (t === "free"){
                         themes[themeName].set(themeType, THEME_IMAGE_DIR + theme);
                     } else if (t === "special"){
@@ -294,9 +275,8 @@ export function getThemes(allThemes: ThemeList, allScenes: SceneList, userThemes
         }
     });
 
-    // Go through all the files in the scenes directory and set the
-    // correct attribute of each scene object depending on whether
-    // the file is a scene model, preview, or background
+    // Go through all the files in the scenes directory and set the correct attribute of each scene object depending on
+    // whether the file is a scene model, preview, or background
     for (const scene of allScenes){
         let sceneType = "";
         if (scene.includes("_scene") === true){
@@ -332,17 +312,17 @@ export function getThemes(allThemes: ThemeList, allScenes: SceneList, userThemes
     for (const key in themes){
         const value = themes[key];
         const themeName = themeMap.get(key);
-        if (themeName !== void 0){
+        if (themeName !== undefined){
 
             const backgroundPath = value.get("background");
             const iconPath = value.get("icon");
             const iconPreview = value.get("selectpreview");
             const musicPath = value.get("music");
 
-            if (backgroundPath !== void 0 &&
-            iconPath !== void 0 &&
-            iconPreview !== void 0 &&
-            musicPath !== void 0){
+            if (
+                backgroundPath !== undefined && iconPath !== undefined &&
+                iconPreview !== undefined && musicPath !== undefined
+            ){
                 themesResult.background.push({
                     displayName: themeName,
                     path: backgroundPath
@@ -369,9 +349,8 @@ export function getThemes(allThemes: ThemeList, allScenes: SceneList, userThemes
 }
 
 /**
- * Searches the list of themes and scenes to match cosmetic names from
- * the database to the actual cosmetics. If cosmeticsData is not provided
- * or is empty, the default cosmetics will be returned.
+ * Searches the list of themes and scenes to match cosmetic names from the database to the actual cosmetics. If
+ * cosmeticsData is not provided or is empty, the default cosmetics will be returned.
  * @param allThemes object containing all free and special themes
  * @param allScenes array containing all scenes
  * @param cosmeticsData cosmetics result object from the database
@@ -394,17 +373,15 @@ export function getCosmetics(allThemes: ThemeList, allScenes: SceneList, cosmeti
         }
     }
 
-    // For all of the cosmetics returned from the database that are not empty string,
-    // update the object with that cosmetic's name
+    // For all of the cosmetics from the database that are not empty string, update the object with that cosmetic's name
     for (const x in cosmeticsData){
         const k = x as keyof DatabaseCosmetics;
         if (cosmeticsData[k] !== ""){
             if (x === "background" || x === "icon" || x === "music"){
-                // Since the file extension might is not always the same, use the file name
-                // from the allThemes/allScenes arrays
+                // Since the file extension might is not always the same, use the file name from the arrays
 
-                // cosmeticsData[k] stores only whether the cosmetic is free/special
-                // and its name. Both of those are contained in allThemes or allScenes.
+                // cosmeticsData[k] stores only whether the cosmetic is free/special and its name. Both of those are
+                // contained in allThemes or allScenes.
                 let result: string | undefined = undefined;
                 if (cosmeticsData[k].includes("free/") === true){
                     result = allThemes.free.find((value) => value.includes(cosmeticsData[k]));
@@ -412,12 +389,12 @@ export function getCosmetics(allThemes: ThemeList, allScenes: SceneList, cosmeti
                     result = allThemes.special.find((value) => value.includes(cosmeticsData[k]));
                 }
 
-                if (result !== void 0){
+                if (result !== undefined){
                     setCosmetics[x] = THEME_IMAGE_DIR + result;
                 }
             } else if (x === "scene"){
                 const result = allScenes.find((value) => value.includes(cosmeticsData[k]));
-                if (result !== void 0){
+                if (result !== undefined){
                     setCosmetics[x] = SCENE_IMAGE_DIR + result;
                 }
             }
@@ -428,8 +405,7 @@ export function getCosmetics(allThemes: ThemeList, allScenes: SceneList, cosmeti
 }
 
 /**
- * Sets the collectionScore and avatarColor fields of a collection object
- * based on how close it is to completion.
+ * Sets the collectionScore and avatarColor fields of a collection object based on how close it is to completion.
  * @param collection formatted collection object
  * @returns numeric value of collection score
  */
@@ -450,12 +426,11 @@ export function getCollectionScore(collection: CollectionData): number{
     // Use larger numbers and floor to avoid non-exact representations of floating point numbers causing errors
     //const overallScore = Math.floor(400 * pinScore + 200 * brawlerScore + 50 * completionScore + 150 * duplicateScore + 400 * accessoryScore);
     const overallScore = Math.floor(600 * pinScore + 300 * brawlerScore + 100 * completionScore + 200 * duplicateScore);
-    
+
     let grade = "X";
     let color = "#000000";
     let progress = 0;
 
-    // bad code but it needs to be faster
     if      (overallScore < 1)      { grade = "X" ; color = "#ffffff"; progress = 0                          ; }
     else if (overallScore < 30)     { grade = "D" ; color = "#808080"; progress = (overallScore -    0) /  30; }
     else if (overallScore < 60)     { grade = "C-"; color = "#80c080"; progress = (overallScore -   30) /  30; }

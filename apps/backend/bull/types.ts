@@ -391,8 +391,7 @@ interface ThemePreview{
 /**
  * Information required to preview an icon on the gallery screen
  * 
- * The icon's image is not suitable for a preview so an alternative
- * image must be displayed
+ * The icon's image is not suitable for a preview so an alternative image must be displayed
  */
 interface ThemeIconPreview{
     displayName: string;
@@ -403,8 +402,7 @@ interface ThemeIconPreview{
 /**
  * Information required to preview a scene on the gallery screen
  * 
- * Also includes a background that can be used with the scene instead
- * of the default 3D model background
+ * Also includes a background that can be used with the scene instead of the default background
  */
 export interface ThemeScenePreview{
     displayName: string;
@@ -446,8 +444,7 @@ export interface ShopItemData{
 export type ShopList = Map<string, ShopItemData>;
 
 /**
- * Cosmetic items that are only available in the shop for users who have
- * made enough progress in their collection
+ * Cosmetic items are only available for users who have made enough progress in their collection
  */
 export interface AchievementItems{
     avatars: Set<string>;

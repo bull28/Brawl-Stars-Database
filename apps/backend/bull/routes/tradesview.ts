@@ -41,15 +41,8 @@ router.get<Empty, Empty, Empty, TradeQuery>("/id", databaseErrorHandler<Empty, T
 
     const tradeResults = results[0];
 
-    let offerPins: TradePinValid[];
-    let requestPins: TradePinValid[];
-    try{
-        offerPins = parseTradePins(tradeResults.offer);
-        requestPins = parseTradePins(tradeResults.request);
-    } catch (error){
-        res.status(500).send("Trade data could not be loaded.");
-        return;
-    }
+    const offerPins: TradePinValid[] = parseTradePins(tradeResults.offer);
+    const requestPins: TradePinValid[] = parseTradePins(tradeResults.request);
 
     // Trade costs are stored in the database as 10 times the amount of credits required
     res.json({
@@ -81,18 +74,11 @@ router.post<Empty, Empty, TradeUserReqBody>("/user", databaseErrorHandler<TradeU
     // results.length === 0 does not need to be checked
 
     const tradeList: TradeUserData[] = [];
-    let validTrades = true;
     for (let x = 0; x < results.length; x++){
         const trade = results[x];
 
-        let offerPins: TradePinValid[] = [];
-        let requestPins: TradePinValid[] = [];
-        try{
-            offerPins = parseTradePins(trade.offer);
-            requestPins = parseTradePins(trade.request);
-        } catch (error){
-            validTrades = false;
-        }
+        const offerPins: TradePinValid[] = parseTradePins(trade.offer);
+        const requestPins: TradePinValid[] = parseTradePins(trade.request);
 
         tradeList.push({
             tradeid: trade.tradeid,
@@ -102,12 +88,6 @@ router.post<Empty, Empty, TradeUserReqBody>("/user", databaseErrorHandler<TradeU
             timeLeft: getTradeTimeLeft(trade.expiration),
             accepted: (trade.accepted === 1)
         });
-    }
-
-    // Wait until after the for loop to handle the error
-    if (validTrades === false){
-        res.status(500).send("Trade data could not be loaded.");
-        return;
     }
 
     res.json(tradeList);
@@ -133,8 +113,7 @@ router.post<Empty, Empty, TradeAllReqBody>("/all", databaseErrorHandler<TradeAll
         sortString = "trade_credits DESC";
     }
 
-    // Only return a few trades at a time. The user can switch to a later
-    // page to view more trades.
+    // Only return a few trades at a time. The user can switch to a later page to view more trades.
     if (req.body.page > 0){
         limitStart = TRADES_PER_PAGE * (req.body.page - 1);
     }
@@ -144,8 +123,7 @@ router.post<Empty, Empty, TradeAllReqBody>("/all", databaseErrorHandler<TradeAll
         filterColumn = "request";
     }
 
-    // Apply filters by either pin or brawler
-    // If a filter by pin is specified, it overrides the filter by brawler
+    // Apply filters by either pin or brawler. If a filter by pin is specified, it overrides the filter by brawler.
     if (typeof req.body.pin === "string" && req.body.pin !== ""){
         filterString = '%"pin":"' + req.body.pin + '"%';
     } else if (typeof req.body.pinImage === "string" && req.body.pinImage !== ""){
@@ -165,20 +143,13 @@ router.post<Empty, Empty, TradeAllReqBody>("/all", databaseErrorHandler<TradeAll
 
     // results.length === 0 does not need to be checked
 
-    
+
     const tradeList: TradeAllData[] = [];
-    let validTrades = true;
     for (let x = 0; x < results.length; x++){
         const trade = results[x];
 
-        let offerPins: TradePinValid[] = [];
-        let requestPins: TradePinValid[] = [];
-        try{
-            offerPins = parseTradePins(trade.offer);
-            requestPins = parseTradePins(trade.request);
-        } catch (error){
-            validTrades = false;
-        }
+        const offerPins: TradePinValid[] = parseTradePins(trade.offer);
+        const requestPins: TradePinValid[] = parseTradePins(trade.request);
 
         // Unlike for the user, this endpoint does not return expired trades
         tradeList.push({
@@ -193,11 +164,6 @@ router.post<Empty, Empty, TradeAllReqBody>("/all", databaseErrorHandler<TradeAll
             request: formatTradeData(requestPins),
             timeLeft: getTradeTimeLeft(trade.expiration)
         });
-    }
-
-    if (validTrades === false){
-        res.status(500).send("Trade data could not be loaded.");
-        return;
     }
 
     res.json(tradeList);

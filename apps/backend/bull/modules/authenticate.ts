@@ -27,8 +27,8 @@ export function signToken(username: string): UserTokenResult{
 export function validateToken(token: string): string{
     try{
         const data = jsonwebtoken.verify(token, secret) as UsernameJwtPayload;
-            
-        if (data.username === void 0){
+
+        if (data.username === undefined){
             return "";
         }
         return data.username;

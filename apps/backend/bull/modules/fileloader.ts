@@ -300,7 +300,7 @@ export async function readScenes(): Promise<string[]>{
 }
 
 // Use this function to get all the model files that exist
-async function readModels(): Promise<string[]>{    
+async function readModels(): Promise<string[]>{
     return (await Promise.all<Promise<string[]>>((
         await fspromises.readdir(`${ASSETS_ROOT_DIR}models`)
         .then((result) => result)

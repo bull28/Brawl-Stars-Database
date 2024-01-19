@@ -36,7 +36,7 @@ export function RNG(options: number[]): number{
 
     let index = 0;
     let found = false;
-    
+
     for (let x = 0; x < options.length; x++){
         if (found === false){
             weightRemaining -= options[x];
@@ -46,7 +46,7 @@ export function RNG(options: number[]): number{
             }
         }
     }
-    
+
     return index;
 }
 
@@ -73,7 +73,7 @@ function getDuplicateColor(oldColorString: string, factor: number): string{
 
     // Convert the new hex value to a string then return it
     newColorString = colorHex.toString(16);
-    
+
     // Make sure the new string has exactly 6 digits
     if (newColorString.length > 6){
         newColorString = newColorString.slice(newColorString.length - 6, newColorString.length);
@@ -259,7 +259,7 @@ export class PinReward extends Reward{
         const modifiedRarityDist = [0, 0, 0, 0, 0];
         const pinsByRarity: [number, number][][] = [[], [], [], [], []];
         const duplicatePins: [number, number][][] = [[], [], [], [], []];
-        
+
         let availablePins: [number, number][] = [];
 
         for (let brawlerIndex = 0; brawlerIndex < allSkins.length; brawlerIndex++){
@@ -294,7 +294,7 @@ export class PinReward extends Reward{
             } else{
                 modifiedRarityDist[r] = this.rarityDist[r];
             }
-            
+
             if (r < pinCounts.length){
                 modifiedRarityDist[r] *= pinCounts[r];
             }
@@ -323,9 +323,9 @@ export class PinReward extends Reward{
 
             let duplicateProbability = 0;
             // Every pin that can be collected has a weight which represents how likely it is to be chosen.
-            
+
             // The probability of a pin being chosen is its weight divided by the sum of all weights in that rarity.
-            
+
             // To make it easier to collect new pins when a user does not yet have them all, new pins' weight are
             // multiplied by newPinWeight[selectedRarity], making them more likely to drop than duplicate pins.
 
@@ -337,12 +337,12 @@ export class PinReward extends Reward{
                 //duplicateProbability = (1 / newPinWeight[selectedRarity]) * (duplicatePinCount / (newPinCount + duplicatePinCount));
                 duplicateProbability = (duplicatePinCount / (newPinCount * this.newPinWeight[selectedRarity] + duplicatePinCount));
             }
-            
+
             //if (newPinWeight[selectedRarity] > 0) console.log("Selected Rarity:", selectedRarity, " New Pins:", newPinCount, " Duplicate Pins:", duplicatePinCount,
             //    " Probability of a new pin: ", newPinCount * newPinWeight[selectedRarity], "/", (newPinCount * newPinWeight[selectedRarity] + duplicatePinCount),
             //    " Probability of a duplicate pin:", duplicatePinCount, "/", (newPinCount * newPinWeight[selectedRarity] + duplicatePinCount)
             //);
-            
+
             if (Math.random() >= duplicateProbability && newPinCount > 0){
                 availablePins = pinsByRarity[selectedRarity];
             } else if (duplicatePinCount > 0){
@@ -434,7 +434,7 @@ export class FixedRarityPinReward extends Reward{
         const userCollection = resources.brawlers;
         const pinsByRarity: [number, number][] = [];
         const duplicatePins: [number, number][] = [];
-        
+
         let availablePins: [number, number][] = [];
 
         for (let brawlerIndex = 0; brawlerIndex < allSkins.length; brawlerIndex++){
@@ -462,7 +462,7 @@ export class FixedRarityPinReward extends Reward{
         if (duplicatePinCount > 0 && this.newPinWeight > 0){
             duplicateProbability = (duplicatePinCount / (newPinCount * this.newPinWeight + duplicatePinCount));
         }
-        
+
         if (Math.random() >= duplicateProbability && newPinCount > 0){
             availablePins = pinsByRarity;
         } else if (duplicatePinCount > 0){
@@ -705,7 +705,7 @@ export class AvatarReward extends Reward{
                 available.push(this.drops[x]);
             }
         }
-        
+
         if (available.length === 0){
             // If no avatar is available, give coins instead.
             resources.coins += this.coinConversion;
@@ -717,7 +717,7 @@ export class AvatarReward extends Reward{
         const selectedIndex = RNG(available.map((value) => value.weight));
         if (selectedIndex >= 0){
             resources.avatars.push(available[selectedIndex].value);
-            
+
             result.displayName = "New Avatar";
             result.rewardType = "avatar";
             result.image = AVATAR_SPECIAL_DIR + available[selectedIndex].value + IMAGE_FILE_EXTENSION;
@@ -769,7 +769,7 @@ export class ThemeReward extends Reward{
                 available.push(this.drops[x]);
             }
         }
-        
+
         if (available.length === 0){
             resources.coins += this.coinConversion;
             result.rewardType = "coins";
@@ -784,7 +784,7 @@ export class ThemeReward extends Reward{
             }
 
             resources.themes.push(available[selectedIndex].value);
-            
+
             result.displayName = "New Theme";
             result.rewardType = "theme";
             result.image = THEME_SPECIAL_DIR + available[selectedIndex].value + "_preview" + IMAGE_FILE_EXTENSION;

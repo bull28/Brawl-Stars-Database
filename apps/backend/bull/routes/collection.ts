@@ -18,7 +18,7 @@ import {
     setResources, 
     updateFeaturedItem
 } from "../modules/database";
-import {Empty, TokenReqBody, CollectionData, DatabaseBrawlers, UserResources, DatabaseAccessories} from "../types";
+import {Empty, TokenReqBody, UserResources} from "../types";
 
 const router = express.Router();
 
@@ -53,15 +53,8 @@ router.post<Empty, Empty, TokenReqBody>("/resources", loginErrorHandler<TokenReq
         points = Math.min(points, requiredPoints - 1);
     }
 
-    let collection: CollectionData;
-    let wildCards: number[] = [];
-    try{
-        collection = formatCollectionData(parseBrawlers(results[0].brawlers), parseStringArray(results[0].accessories));
-        wildCards = parseNumberArray(results[0].wild_card_pins);
-    } catch (error){
-        res.status(500).send("Collection data could not be loaded.");
-        return;
-    }
+    const wildCards: number[] = parseNumberArray(results[0].wild_card_pins);
+    const collection = formatCollectionData(parseBrawlers(results[0].brawlers), parseStringArray(results[0].accessories));
 
     const wildCardPins: WildCardData[] = [];
 
@@ -82,10 +75,9 @@ router.post<Empty, Empty, TokenReqBody>("/resources", loginErrorHandler<TokenReq
         }
     }
 
-    // If there are no pins of a specific rarity, the rarity name in wildCardPins
-    // will be empty. This is fine because wild card pins of that rarity have no use
-    // since there are no pins of that rarity that exist.
-    
+    // If there are no pins of a specific rarity, the rarity name in wildCardPins will be empty. This is fine because
+    // wild card pins of that rarity have no use since there are no pins of that rarity that exist.
+
     res.json({
         username: username,
         avatar: AVATAR_IMAGE_DIR + results[0].active_avatar + IMAGE_FILE_EXTENSION,
@@ -107,17 +99,7 @@ router.post<Empty, Empty, TokenReqBody>("/collection", loginErrorHandler<TokenRe
     // This is used to avoid creating another database query function that is very similar to an existing one.
     const results = await beforeUpdate({username: username});
 
-    let collectionData: DatabaseBrawlers;
-    let userAccessories: DatabaseAccessories;
-    try{
-        collectionData = parseBrawlers(results[0].brawlers);
-        userAccessories = parseStringArray(results[0].accessories);
-    } catch (error){
-        res.status(500).send("Collection data could not be loaded.");
-        return;
-    }
-
-    const collection = formatCollectionData(collectionData, userAccessories);
+    const collection = formatCollectionData(parseBrawlers(results[0].brawlers), parseStringArray(results[0].accessories));
     res.json(collection);
 }));
 
@@ -127,35 +109,34 @@ router.post<Empty, Empty, BrawlBoxReqBody>("/brawlbox", loginErrorHandler<BrawlB
     // If they do specify a box type, check to make sure that box actually exists.
     if (typeof req.body.boxType !== "string"){
         res.json(boxList);
-        return;        
+        return;
     }
 
-    //const username = validateToken(req.body.token);
     const boxType = req.body.boxType;
 
     // getResources contains at least enough information as necessary here
     const results = await getResources({username: username});
-    
+
     // results.length === 0 checked
 
     // Make sure the box exists and the user has enough tokens
-    const validBox = canOpenBox(boxType, results[0].tokens);
-    if (validBox === 400){
+    const validBoxCode = canOpenBox(boxType, results[0].tokens);
+    if (validBoxCode === 400){
         res.status(400).send("Box type does not exist.");
         return;
     }
-    if (validBox === 403){
+    if (validBoxCode === 403){
         res.status(403).send("You cannot afford to open this Box!");
         return;
     }
 
     const resources: UserResources = {
-        brawlers: {},
-        avatars: [],
-        themes: [],
+        brawlers: parseBrawlers(results[0].brawlers),
+        avatars: parseStringArray(results[0].avatars),
+        themes: parseStringArray(results[0].themes),
         scenes: [],
         accessories: [],
-        wild_card_pins: [],
+        wild_card_pins: parseNumberArray(results[0].wild_card_pins),
         tokens: results[0].tokens,
         token_doubler: results[0].token_doubler,
         coins: results[0].coins,
@@ -163,23 +144,11 @@ router.post<Empty, Empty, BrawlBoxReqBody>("/brawlbox", loginErrorHandler<BrawlB
         trade_credits: results[0].trade_credits
     };
 
-    try{
-        resources.brawlers = parseBrawlers(results[0].brawlers);
-        resources.avatars = parseStringArray(results[0].avatars);
-        resources.themes = parseStringArray(results[0].themes);
-        resources.wild_card_pins = parseNumberArray(results[0].wild_card_pins);
-    } catch (error){
-        res.status(500).send("Collection data could not be loaded.");
-        return;
-    }
-
-    //const BUL = performance.now();
     const brawlBoxContents = brawlBox(boxType, resources);
-    //const EDGRISBAD = (performance.now() - BUL);
-    //console.log("YOUR PROGRAM IS",EDGRISBAD.toString(),"TIMES WORSE THAN E D G R");
 
     if (brawlBoxContents.length === 0){
-        res.status(500).send("This Box contained a manufacturing defect.");
+        // Any Brawl Box available from this endpoint should always contain at least one item
+        res.status(500).send("This Brawl Box contained a manufacturing defect.");
         return;
     }
 
@@ -215,10 +184,10 @@ router.post<Empty, Empty, ShopReqBody>("/shop", loginErrorHandler<ShopReqBody>(a
     // Both the shop and Brawl Box use the same type of resource object in their inputs. Any properties of this object
     // not set to database values are not read by the shop methods and are only there to maintain a consistent type.
     const resources: UserResources = {
-        brawlers: {},
-        avatars: [],
-        themes: [],
-        scenes: [],
+        brawlers: parseBrawlers(results[0].brawlers),
+        avatars: parseStringArray(results[0].avatars),
+        themes: parseStringArray(results[0].themes),
+        scenes: parseStringArray(results[0].scenes),
         accessories: [],
         wild_card_pins: [],
         tokens: 0,
@@ -231,16 +200,7 @@ router.post<Empty, Empty, ShopReqBody>("/shop", loginErrorHandler<ShopReqBody>(a
 
     let featuredItem = results[0].featured_item;
     const level = 30;
-    try{
-        resources.brawlers = parseBrawlers(results[0].brawlers);
-        resources.avatars = parseStringArray(results[0].avatars);
-        resources.themes = parseStringArray(results[0].themes);
-        resources.scenes = parseStringArray(results[0].scenes);
-    } catch (error){
-        res.status(500).send("Collection data could not be loaded.");
-        return;
-    }
-    
+
     const collection = formatCollectionData(resources.brawlers, resources.accessories);
     const achievements = getAchievementItems(resources, collection, level);
 
@@ -260,7 +220,7 @@ router.post<Empty, Empty, ShopReqBody>("/shop", loginErrorHandler<ShopReqBody>(a
 
         const lastLoginTime = realToTime(results[0].last_login);
         const lastLoginHour = lastLoginTime.hour;
-        
+
         // Explanation for the different cases is in claimtokens
         const seasonDiff = currentSeason - lastLoginTime.season;
         if (seasonDiff > 0){
@@ -285,7 +245,7 @@ router.post<Empty, Empty, ShopReqBody>("/shop", loginErrorHandler<ShopReqBody>(a
         }
     }
 
-    
+
     // If they do not provide an item to buy, show all items
     if (typeof req.body.item !== "string"){
         const preview = getAllItemsPreview(resources, collection, achievements, featuredItem);

@@ -335,7 +335,7 @@ for (let x = 0; x < shopData.length; x++){
 export function getAllItems(resources: UserResources, collection: CollectionData, achievements: AchievementItems, featuredPin: string): Map<string, ShopItem>{
     const items = new Map<string, ShopItem>();
 
-    if (featuredItemData !== void 0){
+    if (featuredItemData !== undefined){
         const featured = new FeaturedItem(featuredItemData);
         featured.updateData(featuredPin, resources.brawlers);
         if (featured.isAvailable(resources, collection, achievements) === true){
@@ -363,7 +363,7 @@ export function getAllItems(resources: UserResources, collection: CollectionData
 export function getAllItemsPreview(resources: UserResources, collection: CollectionData, achievements: AchievementItems, featuredPin: string): ShopItemPreview[]{
     const items: ShopItemPreview[] = [];
 
-    if (featuredItemData !== void 0){
+    if (featuredItemData !== undefined){
         tempFeaturedItem.updateData(featuredPin, resources.brawlers);
         if (tempFeaturedItem.isAvailable(resources, collection, achievements) === true){
             items.push(tempFeaturedItem.getDisplay("featuredItem"));
@@ -389,19 +389,17 @@ export function refreshFeaturedItem(userBrawlers: DatabaseBrawlers): string{
     const newPins: string[] = [];
     const duplicatePins: string[] = [];
 
-    // A call to formatCollectionData costs more time than looping through the array
-    // here and only storing data required to select a featured pin.
-    
+    // A call to formatCollectionData costs more time than looping through the array here and only storing data required
+    // to select a featured pin
     for (let brawlerIndex = 0; brawlerIndex < allSkins.length; brawlerIndex++){
         const brawler = allSkins[brawlerIndex];
-        
+
         if (Object.hasOwn(brawler, "name") === true && Object.hasOwn(brawler, "pins") === true){
             // Only offer pins from brawlers the user owns
             if (Object.hasOwn(userBrawlers, brawler.name) === true){
                 for (let pinIndex = 0; pinIndex < brawler.pins.length; pinIndex++){
-                    //const pinRarity = brawler.pins[pinIndex].rarity.value;
                     const pinAmount = userBrawlers[brawler.name][brawler.pins[pinIndex].name];
-                    if (pinAmount !== void 0 && pinAmount > 0){
+                    if (pinAmount !== undefined && pinAmount > 0){
                         duplicatePins.push(brawler.name + "/" + brawler.pins[pinIndex].name);
                     } else{
                         newPins.push(brawler.name + "/" + brawler.pins[pinIndex].name);
@@ -410,7 +408,7 @@ export function refreshFeaturedItem(userBrawlers: DatabaseBrawlers): string{
             }
         }
     }
-    
+
     let selectedPin = "";
 
     // If the user can receive new pins, select one to offer
@@ -430,10 +428,10 @@ export function refreshFeaturedItem(userBrawlers: DatabaseBrawlers): string{
  * which the user is able to purchase from the shop, given their current progress.
  * @param resources object containing all the user's resources
  * @param collection formatted collection object
- * @param accessoryLevel user's accessory level
+ * @param level user's level
  * @returns object with avatar, theme, and scene extraData strings
  */
-export function getAchievementItems(resources: UserResources, collection: CollectionData, accessoryLevel: number): AchievementItems{
+export function getAchievementItems(resources: UserResources, collection: CollectionData, level: number): AchievementItems{
     const avatars = new Set<string>();
 
     const score = getCollectionScore(collection);
@@ -443,15 +441,15 @@ export function getAchievementItems(resources: UserResources, collection: Collec
         "collection_01", "collection_02", "collection_03", "collection_04",
         "collection_05", "collection_06", "collection_07", "collection_08"
     ];
-    
+
     // This will contain the index of the highest tiered avatar the user currently has
     let tier = -1;
 
     for (const x in resources.avatars){
         if (resources.avatars[x].includes("collection") === true){
-            tier = Math.max(tier, tierOrder.indexOf(resources.avatars[x]));            
+            tier = Math.max(tier, tierOrder.indexOf(resources.avatars[x]));
         }
-    }    
+    }
 
     // The user can buy the next tiered avatar if and only if they meet the
     // collection score requirement. Only one tiered avatar is offered at a time.
@@ -510,20 +508,20 @@ export function getAchievementItems(resources: UserResources, collection: Collec
     }
 
 
-    // All of the following items require a certain accessory level to unlock
-    if (accessoryLevel >= 12){
+    // All of the following items require a certain level to unlock
+    if (level >= 12){
         themes.add("starrforce");
-    } if (accessoryLevel >= 15){
+    } if (level >= 15){
         themes.add("deepsea");
-    } if (accessoryLevel >= 18){
+    } if (level >= 18){
         scenes.add("giftshop");
-    } if (accessoryLevel >= 21){
+    } if (level >= 21){
         themes.add("darkmas");
-    } if (accessoryLevel >= 24){
+    } if (level >= 24){
         themes.add("mandy");
-    } if (accessoryLevel >= 27){
+    } if (level >= 27){
         scenes.add("arcade");
-    } if (accessoryLevel >= 30){
+    } if (level >= 30){
         avatars.add("space");
         themes.add("yellow_face");
     }

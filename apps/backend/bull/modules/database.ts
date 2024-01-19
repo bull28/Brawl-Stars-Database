@@ -133,15 +133,12 @@ function getErrorMessage(reason: any): {status: number; message: string;}{
         return {status: error.ash, message: error.message};
     } else if (isNoUpdateError(error)){
         return {status: error.frank, message: error.message};
-    } else{
+    } else if (typeof error.message === "string"){
         // This represents all other errors (no connection, king golm, ...)
-        if (typeof reason === "string"){
-            // If a reason was provided then send that reason to the user
-            return {status: 500, message: reason};
-        } else{
-            // Otherwise, send a generic error message
-            return {status: 500, message: "Some other error occurred."};
-        }
+        return {status: 500, message: error.message};
+    } else{
+        // Otherwise, send a generic error message
+        return {status: 500, message: "Some other error occurred."};
     }
 }
 
@@ -151,7 +148,7 @@ type UsernameCallback<R extends TokenReqBody, Q> = (req: Request<Empty, Empty, R
 
 /**
  * Error handler for async endpoint callbacks that do not require authentication. This function will send the
- * appropriate error message to the user if anything fails while getting data from the database. R is the type of the 
+ * appropriate error message to the user if anything fails while getting data from the database. R is the type of the
  * request body and Q is the type of the query parameters.
  * @param callback callback for an endpoint
  * @returns callback with a promise
@@ -193,10 +190,9 @@ export function loginErrorHandler<R extends TokenReqBody, Q = unknown>(callback:
 }
 
 /**
- * Queries the database with the given prepared statement and values.
- * Returns a promise that resolves to the result if successful, or
- * throws the error from the database if unsuccessful. This function
- * should only be used when the query returns results.
+ * Queries the database with the given prepared statement and values. Returns a promise that resolves to the result if
+ * successful, or throws the error from the database if unsuccessful. This function should only be used when the query
+ * returns results.
  * @param connection database connection
  * @param values prepared statement values
  * @param allowEmptyResults whether or not to throw an error when results are empty
@@ -225,10 +221,9 @@ async function queryDatabase<Values, Result extends RowDataPacket[]>(connection:
 }
 
 /**
- * Executes an update to the database with the given prepared statement
- * and values. Returns a promise that resolves to a result set header if 
- * successful, or throws the error from the database if unsuccessful.
- * This function should only be used when the query does not return results.
+ * Executes an update to the database with the given prepared statement and values. Returns a promise that resolves to a
+ * result set header if successful, or throws the error from the database if unsuccessful. This function should only be
+ * used when the query does not return results.
  * @param connection database connection
  * @param values prepared statement values
  * @param allowNoUpdate whether or not to throw an error when no rows were updated
@@ -274,7 +269,7 @@ export function parseStringArray(input: string): string[]{
     } catch (error){
         throw new Error("Collection data could not be loaded.");
     }
-    
+
     return result;
 }
 
@@ -293,7 +288,7 @@ export function parseNumberArray(input: string): number[]{
     } catch (error){
         throw new Error("Collection data could not be loaded.");
     }
-    
+
     return result;
 }
 
@@ -322,27 +317,30 @@ export function parseBrawlers(brawlerString: string): DatabaseBrawlers{
 
 export function parseTradePins(tradeString: string): TradePinValid[]{
     const tradeList: TradePinValid[] = [];
+    try{
+        const data = JSON.parse(tradeString);
 
-    const data = JSON.parse(tradeString);
+        if (Array.isArray(data) === true){
+            for (let x = 0; x < data.length; x++){
+                const pin = data[x];
 
-    if (Array.isArray(data) === true){
-        for (let x = 0; x < data.length; x++){
-            const pin = data[x];
-
-            if (typeof pin.brawler === "string" &&
-            typeof pin.pin === "string" &&
-            typeof pin.amount === "number" &&
-            typeof pin.rarityValue === "number" &&
-            typeof pin.rarityColor === "string"){
-                tradeList.push({
-                    brawler: pin.brawler,
-                    pin: pin.pin,
-                    amount: pin.amount,
-                    rarityValue: pin.rarityValue,
-                    rarityColor: pin.rarityColor
-                });
+                if (typeof pin.brawler === "string" &&
+                typeof pin.pin === "string" &&
+                typeof pin.amount === "number" &&
+                typeof pin.rarityValue === "number" &&
+                typeof pin.rarityColor === "string"){
+                    tradeList.push({
+                        brawler: pin.brawler,
+                        pin: pin.pin,
+                        amount: pin.amount,
+                        rarityValue: pin.rarityValue,
+                        rarityColor: pin.rarityColor
+                    });
+                }
             }
         }
+    } catch (error){
+        throw new Error("Trade data could not be loaded.");
     }
 
     return tradeList;
@@ -370,7 +368,7 @@ export function stringifyBrawlers(brawlers: DatabaseBrawlers): string{
         object[key] = brawlers[key];
         return object;
     }, {} as DatabaseBrawlers);
-    
+
     return JSON.stringify(result);
 }
 

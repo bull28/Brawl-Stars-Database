@@ -56,7 +56,7 @@ app.get("/bullgame", (req, res) => {
 
 // Error handler
 app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
-    console.error(error.stack);    
+    console.error(error.stack);
     next();
 });
 

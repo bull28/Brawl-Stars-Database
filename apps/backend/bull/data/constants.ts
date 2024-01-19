@@ -60,7 +60,14 @@ export const sceneMap = new Map<string, string>([
     ["arcade", "Arcade"]
 ]);
 
-export const gameDifficulties = ["Difficulty 1", "Difficulty 2", "Difficulty 3", "Difficulty 4", "Difficulty 5", "Difficulty 6"];
+export const gameDifficulties = [
+    "Difficulty 1",
+    "Difficulty 2",
+    "Difficulty 3",
+    "Difficulty 4",
+    "Difficulty 5",
+    "Difficulty 6"
+];
 
 export const gameBrawlers = [
     {displayName: "Spike", image: "spike_brawlidays"},

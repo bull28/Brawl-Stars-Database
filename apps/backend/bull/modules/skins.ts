@@ -5,7 +5,6 @@ import {Brawler, Skin, BrawlerData, SkinData, ModelData} from "../types";
 function skinModelExists(model: ModelData): ModelData{
     let key: keyof ModelData;
     for (key in model){
-        //model[key].exists = fs.existsSync(ASSETS_ROOT_DIR + model[key].path);
         model[key].exists = modelFiles.has(model[key].path);
         if (model[key].exists === false){
             model[key].path = "";
@@ -39,10 +38,8 @@ export function getSkin(brawler: Brawler, skinName: string): Skin | undefined{
 }
 
 /**
- * Adds all the necessary file paths to any images in a
- * brawler's data. Also adds an array containing the names
- * and display names of the brawler's skins. This function
- * also adds all necessary file paths.
+ * Adds all the necessary file paths to any images in a brawler's data. Also adds an array containing the names and
+ * display names of the brawler's skins. This function adds all necessary file paths.
  * @param brawler brawler to get data for
  * @returns copy of the brawler data
  */
@@ -100,8 +97,7 @@ export function getBrawlerData(brawler: Brawler): BrawlerData{
 }
 
 /**
- * Adds all the necessary file paths to any images in a skin's data.
- * This function also adds all necessary file paths.
+ * Adds all the necessary file paths to any images in a skin's data. This function adds all necessary file paths.
  * @param skin skin to get data for
  * @param brawlerName name of the brawler that the skin belongs to
  * @returns copy of the skin data

@@ -75,7 +75,7 @@ router.post<Empty, Empty, SaveReqBody>("/save", databaseErrorHandler<SaveReqBody
         best_scores: results[0].best_scores,
         username: username
     });
-    
+
     res.send("Score successfully saved.");
 }));
 
@@ -84,17 +84,8 @@ router.post<Empty, Empty, TokenReqBody>("/all", loginErrorHandler<TokenReqBody>(
     const results = await getAllReports({username: username});
 
     const reportList: ReportPreview[] = [];
-    let validReports = true;
     for (let x = 0; x < results.length; x++){
-        // This contains a GameReport's stats (sequence of numbers)
-        let data: number[] = [];
-        try{
-            data = parseNumberArray(results[x].stats);
-        } catch (error){
-            validReports = false;
-        }
-
-        const stats = extractReportPreviewStats(data);
+        const stats = extractReportPreviewStats(parseNumberArray(results[x].stats));
 
         if (stats !== undefined){
             reportList.push({
@@ -106,11 +97,6 @@ router.post<Empty, Empty, TokenReqBody>("/all", loginErrorHandler<TokenReqBody>(
         }
     }
 
-    if (validReports === false){
-        res.status(500).send("Report data could not be loaded.");
-        return;
-    }
-    
     res.json(reportList);
 }));
 
@@ -129,7 +115,7 @@ router.post<Empty, Empty, ClaimReportReqBody>("/claim", loginErrorHandler<ClaimR
     const reportResults = await getReport({reportid: req.body.reportid});
 
     // results.length === 0 checked
-    
+
     if (reportResults[0].username !== username){
         res.status(401).send("Cannot claim rewards from another player's game!");
         return;
@@ -143,15 +129,7 @@ router.post<Empty, Empty, ClaimReportReqBody>("/claim", loginErrorHandler<ClaimR
     }
 
     // Get the report from the database
-    let data: number[] = [];
-    try{
-        data = parseNumberArray(reportResults[0].stats);
-    } catch (error){
-        res.status(500).send("Report data could not be loaded.");
-        return;
-    }
-
-    const report = extractReportData(data);
+    const report = extractReportData(parseNumberArray(reportResults[0].stats));
     if (report === undefined){
         res.status(500).send("Report data could not be loaded.");
         return;
@@ -163,31 +141,19 @@ router.post<Empty, Empty, ClaimReportReqBody>("/claim", loginErrorHandler<ClaimR
     const results = await getResourcesAndProgress({username: username});
 
     const resources: UserResources = {
-        brawlers: {},
-        avatars: [],
-        themes: [],
+        brawlers: parseBrawlers(results[0].brawlers),
+        avatars: parseStringArray(results[0].avatars),
+        themes: parseStringArray(results[0].themes),
         scenes: [],
-        accessories: [],
-        wild_card_pins: [],
+        accessories: parseStringArray(results[0].accessories),
+        wild_card_pins: parseNumberArray(results[0].wild_card_pins),
         tokens: results[0].tokens,
         token_doubler: results[0].token_doubler,
         coins: results[0].coins,
         points: results[0].points,
         trade_credits: results[0].trade_credits
     };
-    let badges: DatabaseBadges;
-
-    try{
-        resources.brawlers = parseBrawlers(results[0].brawlers);
-        resources.avatars = parseStringArray(results[0].avatars);
-        resources.themes = parseStringArray(results[0].themes);
-        resources.accessories = parseStringArray(results[0].accessories);
-        resources.wild_card_pins = parseNumberArray(results[0].wild_card_pins);
-        badges = parseBadges(results[0].badges);
-    } catch (error){
-        res.status(500).send("Collection data could not be loaded.");
-        return;
-    }
+    const badges: DatabaseBadges = parseBadges(results[0].badges);
 
     // All rewards cost the same number of tokens to claim
     if (resources.tokens < 200){
@@ -208,6 +174,7 @@ router.post<Empty, Empty, ClaimReportReqBody>("/claim", loginErrorHandler<ClaimR
     });
 
     // Update resources and badges
+    // Scenes cannot be obtained as rewards from the game so set their value to what was already in the database
     await setResources({
         brawlers: stringifyBrawlers(resources.brawlers),
         avatars: JSON.stringify(resources.avatars),
@@ -216,10 +183,10 @@ router.post<Empty, Empty, ClaimReportReqBody>("/claim", loginErrorHandler<ClaimR
         token_doubler: resources.token_doubler,
         coins: resources.coins,
         trade_credits: resources.trade_credits,
-        points: results[0].points,
-        themes: results[0].themes,
+        points: resources.points,
+        themes: JSON.stringify(resources.themes),
         scenes: results[0].scenes,
-        accessories: results[0].accessories,
+        accessories: JSON.stringify(resources.accessories),
         username: username
     });
     await setGameProgress({
