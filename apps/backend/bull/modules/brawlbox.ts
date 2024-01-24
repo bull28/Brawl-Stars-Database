@@ -2,10 +2,10 @@ import {IMAGE_FILE_EXTENSION, RESOURCE_IMAGE_DIR} from "../data/constants";
 import {
     RNG, 
     createCoinsReward, 
+    createPointsReward, 
     Reward, 
     CoinsReward, 
     TokenDoublerReward, 
-    PointsReward, 
     PinReward, 
     FixedRarityPinReward, 
     WildCardPinReward, 
@@ -38,7 +38,6 @@ interface GameBrawlBox{
         minQuality: number;
         reward: Reward;
     }[];
-    points?: PointsReward;
 }
 
 // Type of brawl box information sent to the user
@@ -166,8 +165,7 @@ const gameBoxes: GameBrawlBox[] = [
             {quality: 640,  minQuality: 24,    reward: new TradeCreditsReward()},
             {quality: 1120, minQuality: 24,    reward: new TokenDoublerReward(300)},
             {quality: 2400, minQuality: 224,   reward: new AccessoryReward([80, 64, 96])}
-        ],
-        points: new PointsReward(8)
+        ]
     },
     {
         maxQuality: 320,
@@ -179,8 +177,7 @@ const gameBoxes: GameBrawlBox[] = [
             {quality: 640,  minQuality: 32,    reward: new TradeCreditsReward()},
             {quality: 1120, minQuality: 32,    reward: new TokenDoublerReward(300)},
             {quality: 2000, minQuality: 272,   reward: new AccessoryReward([90, 60, 90])}
-        ],
-        points: new PointsReward(12)
+        ]
     },
     {
         maxQuality: 360,
@@ -193,8 +190,7 @@ const gameBoxes: GameBrawlBox[] = [
             {quality: 600,  minQuality: 36,    reward: new TradeCreditsReward()},
             {quality: 1120, minQuality: 36,    reward: new TokenDoublerReward(300)},
             {quality: 1800, minQuality: 304,   reward: new AccessoryReward([100, 56, 84])}
-        ],
-        points: new PointsReward(18)
+        ]
     },
     {
         maxQuality: 440,
@@ -207,8 +203,7 @@ const gameBoxes: GameBrawlBox[] = [
             {quality: 576,  minQuality: 44,    reward: new TradeCreditsReward()},
             {quality: 1120, minQuality: 44,    reward: new TokenDoublerReward(300)},
             {quality: 1760, minQuality: 384,   reward: new AccessoryReward([105, 54, 81])}
-        ],
-        points: new PointsReward(36)
+        ]
     },
     {
         maxQuality: 480,
@@ -223,8 +218,7 @@ const gameBoxes: GameBrawlBox[] = [
             {quality: 1000, minQuality: 48,    reward: new TokenDoublerReward(300)},
             {quality: 14400,minQuality: 440,   reward: new ThemeReward()},
             {quality: 1600, minQuality: 416,   reward: new AccessoryReward([110, 52, 78])}
-        ],
-        points: new PointsReward(80)
+        ]
     },
     {
         maxQuality: 640,
@@ -240,8 +234,7 @@ const gameBoxes: GameBrawlBox[] = [
             {quality: 12800,minQuality: 520,   reward: new ThemeReward()},
             {quality: 64000,minQuality: 600,   reward: new AvatarReward()},
             {quality: 1280, minQuality: 560,   reward: new AccessoryReward([120, 48, 72])}
-        ],
-        points: new PointsReward(240)
+        ]
     }
 ];
 
@@ -284,7 +277,7 @@ function openBox(box: BrawlBox, resources: UserResources): BrawlBoxDrop[]{
     const rewards: BrawlBoxDrop[] = [];
     let coinsReward = 0;
 
-    // Contains an array of rewards that will be added. Each element is an index in this.rewards.
+    // Contains an array of rewards that will be added. Each element is an index in box.rewards.
     const selections = box.draws.map((value) => RNG(value))
     .filter((value) => value >= 0 && value < box.rewards.length);
 
@@ -364,12 +357,8 @@ export function getGameReward(resources: UserResources, report: ReportData): Bra
     let coinsReward = 0;
 
     // The points reward is separate from all other rewards because it is given exactly once, no matter the box quality
-    if (box.points !== undefined){
-        const drop = box.points.getReward(resources, report.score.total);
-        if (drop.rewardType !== "empty"){
-            rewards.push(drop);
-        }
-    }
+    resources.points += report.points;
+    rewards.push(createPointsReward(report.points, resources.points));
 
     for (let x = 0; x < box.draws.length; x++){
         const draw = box.draws[x];

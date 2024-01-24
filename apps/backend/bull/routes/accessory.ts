@@ -1,5 +1,5 @@
 import express from "express";
-import {getAccessoryPreview, getAccessoryData, canClaimAccessory} from "../modules/accessories";
+import {getMasteryLevel, getAccessoryPreview, getAccessoryData, canClaimAccessory} from "../modules/accessories";
 import {loginErrorHandler, parseStringArray, parseBadges, beforeAccessory, updateAccessories} from "../modules/database";
 import {Empty, TokenReqBody, DatabaseAccessories, DatabaseBadges} from "../types";
 
@@ -60,6 +60,15 @@ router.post<Empty, Empty, ClaimAccessoryReqBody>("/claim", loginErrorHandler<Cla
     const preview = getAccessoryPreview(name);
 
     res.json(preview);
+}));
+
+// Get the current mastery level
+router.post<Empty, Empty, TokenReqBody>("/level", loginErrorHandler<TokenReqBody>(async (req, res, username) => {
+    const results = await beforeAccessory({username: username});
+
+    const level = getMasteryLevel(results[0].points);
+
+    res.json(level);
 }));
 
 export default router;

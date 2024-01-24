@@ -1,5 +1,5 @@
-import {ACCESSORY_IMAGE_DIR, IMAGE_FILE_EXTENSION, GAME_GEAR_IMAGE_DIR, GAME_BRAWLER_IMAGE_DIR, gameDifficulties, gameBrawlers, gameGears} from "../data/constants";
-import {DatabaseAccessories, DatabaseBadges, CollectionAccessory, AccessoryPreview, AccessoryData, GameReport, ReportData, ReportPreview} from "../types";
+import {RESOURCE_IMAGE_DIR, ACCESSORY_IMAGE_DIR, IMAGE_FILE_EXTENSION, GAME_GEAR_IMAGE_DIR, GAME_BRAWLER_IMAGE_DIR, gameDifficulties, gameBrawlers, gameGears} from "../data/constants";
+import {DatabaseAccessories, DatabaseBadges, CollectionAccessory, AccessoryPreview, AccessoryData, LevelData, GameReport, ReportData, ReportPreview} from "../types";
 
 // Type used by the game when calculating scores
 interface ScorePerformance{
@@ -9,6 +9,14 @@ interface ScorePerformance{
     destination: number;
     healthPenalty: number;
     gearScore: number;
+}
+
+interface Accessory{
+    name: string;
+    category: string;
+    displayName: string;
+    unlock: string;
+    badges: number;
 }
 
 const REPORT_FORMAT = {
@@ -85,7 +93,7 @@ function getFinalScore(reports: number[], enemyCounts: number[]): number[]{
                 success = false;
             }
 
-            totalHealthPenalty += Math.min(20, report.healthPenalty);
+            totalHealthPenalty += Math.min(40, report.healthPenalty / 500);
 
             if (report.totalValue <= 0){
                 score.completion += stages[x].completion;
@@ -97,14 +105,16 @@ function getFinalScore(reports: number[], enemyCounts: number[]): number[]{
 
             const t = Math.max(0.5, report.timeSpent / 1000);
             let multiplier = 0;
-            if (t < 1){
-                multiplier = ((9/28*(t-0.5))*(t-0.5) - 121/112)*(t-0.5) + 1.5;
+            if (t < 0.75){
+                multiplier = ((-2156/481*(t-0.5))*(t-0.5) - 423/1924)*(t-0.5) + 1.5;
+            } else if (t < 1){
+                multiplier = ((3084/481*(t-0.75) -1617/481)*(t-0.75) - 510/481)*(t-0.75) + 1.375;
+            } else if (t < 1.5){
+                multiplier = ((-355/481*(t-1) + 696/481)*(t-1) - 2961/1924)*(t-1) + 1;
             } else if (t < 2){
-                multiplier = ((-1/7*(t-1) + 27/56)*(t-1) - 47/56)*(t-1) + 1;
+                multiplier = ((-47/481*(t-1.5) + 327/962)*(t-1.5) - 621/962)*(t-1.5) + 0.5;
             } else if (t < 3){
-                multiplier = (3/56*(t-2) - 17/56)*(t-2) + 0.5;
-            } else if (t < 5){
-                multiplier = ((-1/112*(t-3) + 3/56)*(t-3) - 11/56)*(t-3) + 0.25;
+                multiplier = ((-31/481*(t-2) + 93/481)*(t-2) - 729/1924)*(t-2) + 0.25;
             }
             score.time += stages[x].time * multiplier;
         } else{
@@ -129,7 +139,7 @@ function getFinalScore(reports: number[], enemyCounts: number[]): number[]{
     score.destination = Math.min(maxScores.destination, Math.floor(score.destination));
     score.gear = Math.min(maxScores.gear, Math.floor(score.gear));
     score.enemy = Math.min(maxScores.enemy, Math.max(0, totalEnemyBonus));
-    score.health = Math.min(maxScores.health, Math.max(0, Math.floor(maxScores.health - totalHealthPenalty + 20)));
+    score.health = Math.min(maxScores.health, Math.max(0, Math.floor(maxScores.health - totalHealthPenalty + 30)));
 
     return [score.completion, score.time, score.destination, score.health, score.gear, score.enemy];
 }
@@ -209,7 +219,7 @@ export function validateReport(report: GameReport): boolean{
 
     // The upgrades cannot be more than each upgrade type limit
     const upgrades = data.slice(format.upgrades[0], format.upgrades[1]);
-    const maxUpgrades = [16, 16, 12, 5, 5, 6];
+    const maxUpgrades = [16, 16, 10, 7, 5, 6];
     if (upgrades.length < maxUpgrades.length){
         return false;
     }
@@ -286,13 +296,7 @@ export function validateReport(report: GameReport): boolean{
     return valid;
 }
 
-interface Accessory{
-    name: string;
-    category: string;
-    displayName: string;
-    unlock: string;
-    badges: number;
-}
+
 const accessories: Accessory[] = [
     {name: "shelly", category: "enemy", displayName: "Shelly's Shotgun", unlock: "Defeat Shelly enemies.", badges: 500},
     {name: "colt", category: "enemy", displayName: "Colt's Revolvers", unlock: "Defeat Colt enemies.", badges: 500},
@@ -302,7 +306,7 @@ const accessories: Accessory[] = [
     {name: "belle", category: "enemy", displayName: "Belle's Rifle", unlock: "Defeat Belle enemies.", badges: 500},
     {name: "jessie", category: "enemy", displayName: "Jessie's Backpack", unlock: "Defeat Jessie enemies.", badges: 500},
     {name: "eve", category: "enemy", displayName: "Eve's Spaceship", unlock: "Defeat Eve enemies.", badges: 500},
-    {name: "mortis", category: "enemy", displayName: "Mortis' Shovel", unlock: "Defeat Mortis enemies.", badges: 500},
+    {name: "mortis", category: "enemy", displayName: "Mortis's Shovel", unlock: "Defeat Mortis enemies.", badges: 500},
     {name: "frank", category: "enemy", displayName: "Frank's Hammer", unlock: "Defeat Frank enemies.", badges: 500},
     {name: "bea", category: "enemy", displayName: "Bea's Bee", unlock: "Defeat Bea enemies.", badges: 500},
     {name: "colette", category: "enemy", displayName: "Colette's Scrapbook", unlock: "Defeat Colette enemies.", badges: 500},
@@ -315,8 +319,8 @@ const accessories: Accessory[] = [
     {name: "max", category: "enemy", displayName: "Max's Energy Drink", unlock: "Defeat Max enemies.", badges: 500},
     {name: "meg", category: "enemy", displayName: "Meg's Mech", unlock: "Defeat Meg enemies.", badges: 500},
     {name: "spike", category: "player", displayName: "Spike's Cactus", unlock: "Win with Spike.", badges: 100},
-    {name: "gus", category: "player", displayName: "Gus' Balloon", unlock: "Win with Gus.", badges: 100},
-    {name: "emz", category: "player", displayName: "Emz' Spray", unlock: "Win with Emz.", badges: 100},
+    {name: "gus", category: "player", displayName: "Gus's Balloon", unlock: "Win with Gus.", badges: 100},
+    {name: "emz", category: "player", displayName: "Emz's Spray", unlock: "Win with Emz.", badges: 100},
     {name: "darryl", category: "player", displayName: "Darryl's Barrel", unlock: "Win with Darryl.", badges: 100},
     {name: "tara", category: "player", displayName: "Tara's Cards", unlock: "Win with Tara.", badges: 100},
     {name: "piper", category: "player", displayName: "Piper's Umbrella", unlock: "Win with Piper.", badges: 100},
@@ -346,13 +350,7 @@ const accessories: Accessory[] = [
     {name: "mastery5", category: "mastery", displayName: "Amethyst Mastery Medal", unlock: "Currently unobtainable.", badges: 1}
 ];
 
-interface BadgeStorage{
-    name: string;
-    category: string;
-    index: number;
-    coins: [number, number];
-}
-const badgeList: BadgeStorage[] = [
+const badgeList = [
     {name: "meteor", category: "enemy", index: 0, coins: [2, 2]},
     {name: "robot", category: "enemy", index: 1, coins: [4, 4]},
     {name: "shelly", category: "enemy", index: 2, coins: [7, 9]},
@@ -383,7 +381,7 @@ const badgeList: BadgeStorage[] = [
     {name: "piper", category: "player", index: 5, coins: [0, 0]},
     {name: "crow", category: "player", index: 6, coins: [0, 0]},
     {name: "oldtown", category: "location", index: 2, coins: [0, 0]},
-    {name: "warehouse", category: "location", index: 3, coins: [0, 0]},
+    {name: "biodome", category: "location", index: 3, coins: [0, 0]},
     {name: "ghoststation", category: "location", index: 4, coins: [0, 0]},
     {name: "giftshop", category: "location", index: 5, coins: [0, 0]},
     {name: "retropolis", category: "location", index: 6, coins: [0, 0]},
@@ -392,6 +390,71 @@ const badgeList: BadgeStorage[] = [
     {name: "supercity", category: "location", index: 9, coins: [0, 0]},
     {name: "arcade", category: "location", index: 10, coins: [0, 0]}
 ];
+
+const masteryLevels = [
+           0,     2000,     6000,    10000,    20000,    30000,
+       40000,    60000,    80000,   120000,   180000,   240000,
+      300000,   400000,   500000,   600000,   800000,  1000000,
+     1200000,  1500000,  1800000,  2400000,  3000000,  4000000,
+     5000000,  6000000,  8000000, 10000000, 12000000, 16000000,
+    20000000,       -1
+];
+
+const levelImages = [
+    {minLevel: 0, color: "#808080", image: "mastery_empty"},
+    {minLevel: 1, color: "#d67d59", image: "mastery_level_0"},
+    {minLevel: 6, color: "#ff9900", image: "mastery_level_1"},
+    {minLevel: 12, color: "#c9c6f1", image: "mastery_level_2"},
+    {minLevel: 18, color: "#ffef49", image: "mastery_level_3"},
+    {minLevel: 24, color: "#33ffff", image: "mastery_level_4"},
+    {minLevel: 30, color: "#ff00ff", image: "mastery_level_5"}
+];
+
+const pointsRewards = [
+    [8, 8, 8, 8],
+    [10, 12, 12, 12],
+    [12, 16, 16, 18],
+    [16, 24, 32, 36],
+    [20, 40, 64, 80],
+    [24, 60, 160, 240]
+];
+
+export function getMasteryLevel(points: number): LevelData{
+    points = Math.floor(points);
+
+    const result: LevelData = {
+        level: -1,
+        points: points,
+        nextLevel: 1,
+        image: "",
+        color: "#000000"
+    };
+
+    let x = 0;
+    while (x < masteryLevels.length && result.level < 0){
+        // Find the first level where the user does not have enough points. That level is 1 higher than the user's
+        // current level. Levels are the same as indexes in the array.
+        if (points < masteryLevels[x] || masteryLevels[x] < 0){
+            result.nextLevel = masteryLevels[x];
+            result.level = x - 1;
+        }
+        x++;
+    }
+
+    x = 0;
+    while (x < levelImages.length && result.image === ""){
+        // Find the first index in levelImages where the user's level is not higher than the next index's minLevel.
+        // This index contains the user's current level image and color. If the end of the array is reached without
+        // finding an index then the user has the highest available image and color level.
+        if (x >= levelImages.length - 1 || (x < levelImages.length - 1 && result.level < levelImages[x + 1].minLevel)){
+            result.image = RESOURCE_IMAGE_DIR + levelImages[x].image + IMAGE_FILE_EXTENSION;
+            result.color = levelImages[x].color;
+        }
+        x++;
+    }
+
+    return result;
+}
 
 /**
  * Searches the list of accessories for one that matches the given name.
@@ -412,22 +475,21 @@ function getAccessoryByName(name: string): Accessory | undefined{
 }
 
 export function getAccessoryPreview(name: string): AccessoryPreview | undefined{
+    // Used for accessories in brawl boxes
     const a = getAccessoryByName(name);
     if (a === undefined){
         return undefined;
     }
 
     return {
-        //name: accessories[index].name,
-        //category: accessories[index].category,
         displayName: a.displayName,
         image: `${ACCESSORY_IMAGE_DIR}accessory_${a.name}${IMAGE_FILE_EXTENSION}`,
-        //badges: accessories[index].badges
-        description: "Rare drop from nothing"
+        description: "This item increases your collection score."
     };
 }
 
 export function getAccessoryCollection(userAccessories: DatabaseAccessories): CollectionAccessory[]{
+    // Used for accessories in the collection object
     const collection: CollectionAccessory[] = [];
 
     for (let x = 0; x < accessories.length; x++){
@@ -444,6 +506,7 @@ export function getAccessoryCollection(userAccessories: DatabaseAccessories): Co
 }
 
 export function getAccessoryData(userAccessories: DatabaseAccessories, badges: DatabaseBadges): AccessoryData[]{
+    // Used for the endpoint that gets the list of accessories
     const collection: AccessoryData[] = [];
 
     for (let x = 0; x < accessories.length; x++){
@@ -536,10 +599,37 @@ export function extractReportData(data: number[]): ReportData | undefined{
     }
 
     const enemies = data.slice(format.enemies[0], format.enemies[1]);
-    const visited = data.slice(format.visited[0], format.visited[1]);
     const win = data[s] >= SCORE_CONSTANTS.maxScores.completion;
     const difficulty = data[p + 1];
     const enemiesDefeated = data[a + 1];
+
+    const visited = data.slice(format.visited[0], format.visited[1]);
+    const stages = convertLevelReports(data.slice(format.levels[0], format.levels[1]));
+    const len = Math.min(visited.length, stages.length);
+
+    const visitedWins = new Set<number>();
+    for (let x = 0; x < len; x++){
+        if (stages[x].defeatedValue === stages[x].totalValue && stages[x].totalValue > 0){
+            visitedWins.add(visited[x]);
+        }
+    }
+
+    // The number of points given is based on the difficulty. If the player lost, the points will be decreased depending
+    // on how early in the game they lost.
+    let points = 0;
+    if (difficulty < pointsRewards.length && pointsRewards[difficulty].length >= 4){
+        const m = pointsRewards[difficulty];
+        if (win === true && visitedWins.size >= SCORE_CONSTANTS.stages.length){
+            points = m[3];
+        } else if (visitedWins.size >= 7){
+            points = m[2];
+        } else if (visitedWins.size >= 4){
+            points = m[1];
+        } else{
+            points = m[0];
+        }
+    }
+    points = Math.floor(points * data[p]);
 
     let minCoins = 0;
     let maxCoins = 0;
@@ -558,7 +648,7 @@ export function extractReportData(data: number[]): ReportData | undefined{
                 badgeCount = 1;
             }
         } else if (b.category === "location"){
-            if (visited.includes(b.index) === true){
+            if (visitedWins.has(b.index) === true){
                 badgeCount = 1;
             }
         }
@@ -643,6 +733,7 @@ export function extractReportData(data: number[]): ReportData | undefined{
         },
         enemies: enemiesDefeated,
         coins: [minCoins, maxCoins],
+        points: points,
         badges: badges
     };
 }

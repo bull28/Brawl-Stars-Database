@@ -607,6 +607,17 @@ export interface AccessoryData{
     };
 }
 
+/**
+ * Information about a user's mastery level
+ */
+export interface LevelData{
+    level: number;
+    points: number;
+    nextLevel: number;
+    image: string;
+    color: string;
+}
+
 //------------------------------------------------------------------------------------------------//
 //                                        Game Report Types                                       //
 //------------------------------------------------------------------------------------------------//
@@ -639,6 +650,7 @@ export interface ReportData{
     };
     enemies: number;
     coins: [number, number];
+    points: number;
     badges: Map<string, number>;
 }
 

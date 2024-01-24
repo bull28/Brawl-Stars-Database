@@ -111,6 +111,19 @@ export function createCoinsReward(coins: number, inventory: number = 0): BrawlBo
     };
 }
 
+export function createPointsReward(points: number, inventory: number = 0): BrawlBoxDrop{
+    // Creates a brawl box drop with the name, description, and image for a points reward
+    return {
+        displayName: "Challenge Points",
+        rewardType: "points",
+        amount: points,
+        inventory: inventory,
+        image: RESOURCE_IMAGE_DIR + "resource_challenge_points_200x" + IMAGE_FILE_EXTENSION,
+        backgroundColor: "#00da48",
+        description: ""
+    };
+}
+
 export class Reward{
     createDropResult(): BrawlBoxDrop{
         return {
@@ -191,43 +204,6 @@ export class TokenDoublerReward extends Reward{
         result.amount = this.baseAmount;
         result.inventory = resources.token_doubler;
         result.description = `Doubles the next ${this.baseAmount} tokens collected.`;
-
-        return result;
-    }
-}
-
-export class PointsReward extends Reward{
-    baseAmount: number;
-
-    constructor(baseAmount: number = 1){
-        super();
-        this.baseAmount = baseAmount;
-    }
-
-    createDropResult(): BrawlBoxDrop{
-        return {
-            displayName: "Challenge Points",
-            rewardType: "points",
-            amount: 0,
-            inventory: 0,
-            image: RESOURCE_IMAGE_DIR + "resource_challenge_points_200x" + IMAGE_FILE_EXTENSION,
-            backgroundColor: "#00da48",
-            description: ""
-        };
-    }
-
-    getReward(resources: UserResources, multiplier: number = 0): BrawlBoxDrop{
-        if (multiplier < 1 || this.baseAmount < 0){
-            // Empty reward is given if the multiplier is less than 1
-            return super.createDropResult();
-        }
-        const result = this.createDropResult();
-
-        const rewardAmount = Math.floor(this.baseAmount * multiplier);
-        resources.points += rewardAmount;
-
-        result.amount = rewardAmount;
-        result.inventory = resources.points;
 
         return result;
     }
