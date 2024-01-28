@@ -114,7 +114,7 @@ export function createCoinsReward(coins: number, inventory: number = 0): BrawlBo
 export function createPointsReward(points: number, inventory: number = 0): BrawlBoxDrop{
     // Creates a brawl box drop with the name, description, and image for a points reward
     return {
-        displayName: "Challenge Points",
+        displayName: "Bullgame Mastery",
         rewardType: "points",
         amount: points,
         inventory: inventory,

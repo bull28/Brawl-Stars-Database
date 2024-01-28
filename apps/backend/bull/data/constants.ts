@@ -79,6 +79,11 @@ export const gameBrawlers = [
     {displayName: "Crow", image: "crow_happy"}
 ];
 
+export const gameStarPowers = [
+    {displayName: "Star Power 1", image: "star_power_1"},
+    {displayName: "Star Power 2", image: "star_power_2"}
+];
+
 export const gameGears = [
     {displayName: "Speed", image: "gear_speed"},
     {displayName: "Health", image: "gear_health"},

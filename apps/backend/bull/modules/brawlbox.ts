@@ -357,8 +357,10 @@ export function getGameReward(resources: UserResources, report: ReportData): Bra
     let coinsReward = 0;
 
     // The points reward is separate from all other rewards because it is given exactly once, no matter the box quality
-    resources.points += report.points;
-    rewards.push(createPointsReward(report.points, resources.points));
+    if (report.points > 0){
+        resources.points += report.points;
+        rewards.push(createPointsReward(report.points, resources.points));
+    }
 
     for (let x = 0; x < box.draws.length; x++){
         const draw = box.draws[x];

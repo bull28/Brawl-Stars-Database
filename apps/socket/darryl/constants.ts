@@ -2,7 +2,7 @@ export const IMAGE_FILE_EXTENSION = ".webp";
 export const ASSETS_ROOT_DIR = "assets/images/";
 export const AVATAR_IMAGE_DIR = "avatars/";
 export const AVATAR_SPECIAL_DIR = "avatars/special/";
-export const ACCESSORY_IMAGE_DIR = "accessories/";
+export const ACCESSORY_IMAGE_DIR = "portraits/";
 
 export const CHALLENGE_LOSS_MULTIPLIER = 5;
 export const CHALLENGE_WIN_MULTIPLIER = 15;

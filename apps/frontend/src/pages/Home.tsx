@@ -53,7 +53,7 @@ export default function Home(){
 
                 <SimpleGrid columns={[1,1,3]} spacing={[5, 10, 15, 20]}>
                     <SmallTile link={'/shop'}>Shop</SmallTile>
-                    <SmallTile link={'/challenges'}>Challenges</SmallTile>
+                    <SmallTile link={'/bullgame'}>Bullgame</SmallTile>
                     <SmallTile link={''}>About/Options</SmallTile>
                 </SimpleGrid>
                 

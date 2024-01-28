@@ -25,7 +25,7 @@ export function changeToken(username: string, token: string){
 
 interface AuthRequestConfigProps<T>{
     setState?: (data: T) => void;
-    data?: {};
+    data?: Record<string, any>;
     callback?: () => void;
     fallback?: (error: Error) => void;
     navigate?: boolean;

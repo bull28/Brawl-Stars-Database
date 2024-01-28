@@ -663,12 +663,17 @@ export interface ReportPreview{
     cost: number;
     stats: {
         score: number;
+        enemies: number;
+        win: boolean;
         difficulty: string;
         brawler: {
             displayName: string;
             image: string;
         };
-        starPower: number;
+        starPower: {
+            displayName: string;
+            image: string;
+        };
         gears: {
             displayName: string;
             image: string;

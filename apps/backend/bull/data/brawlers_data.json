@@ -13384,197 +13384,6 @@
         ]
     },
     {
-        "name": "hank",
-        "displayName": "Hank",
-        "rarity": {
-            "value": 3,
-            "name": "Epic",
-            "color": "#b116ec"
-        },
-        "image": "portrait_hank.webp",
-        "defaultSkin": "fishtankdefault",
-        "title": "Lil' Tenant",
-        "masteryIcon": "mastery_icon_hank.webp",
-        "description": "Hank is a one-shrimp, one-tank army on a mission to liberate sea life from kitchens and markets everywhere. Chefs, consider yourselves on notice!",
-        "skins": [
-            {
-                "name": "fishtankdefault",
-                "displayName": "Hank",
-                "cost": 0,
-                "currency": "",
-                "costBling": -1,
-                "requires": "",
-                "features": [],
-                "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
-                },
-                "limited": false,
-                "image": "fishtankdefault.webp",
-                "model": {
-                    "geometry": "fishtankdefault.glb",
-                    "winAnimation": "fishtankdefault_win.glb",
-                    "loseAnimation": "fishtankdefault_lose.glb"
-                },
-                "rating": 0
-            },
-            {
-                "name": "fishtankshark",
-                "displayName": "Shark Tank Hank",
-                "cost": 29,
-                "currency": "Gems",
-                "costBling": 1000,
-                "requires": "",
-                "features": [
-                    "Brawler Model",
-                    "Texture"
-                ],
-                "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
-                },
-                "limited": false,
-                "image": "fishtankshark.webp",
-                "model": {
-                    "geometry": "fishtankshark.glb",
-                    "winAnimation": "fishtankshark_win.glb",
-                    "loseAnimation": "fishtankshark_lose.glb"
-                },
-                "rating": 0
-            },
-            {
-                "name": "fishtankwasteland",
-                "displayName": "Rodeo Hank",
-                "cost": 199,
-                "currency": "Gems",
-                "costBling": -1,
-                "requires": "",
-                "features": [
-                    "Brawler Model",
-                    "Texture",
-                    "Animations",
-                    "Effects"
-                ],
-                "group": {
-                    "name": "Wasteland",
-                    "image": "bg_default.webp",
-                    "icon": "icon_wasteland.webp"
-                },
-                "limited": false,
-                "image": "fishtankwasteland.webp",
-                "model": {
-                    "geometry": "fishtankwasteland.glb",
-                    "winAnimation": "fishtankwasteland_win.glb",
-                    "loseAnimation": "fishtankwasteland_lose.glb"
-                },
-                "rating": 0
-            }
-        ],
-        "pins": [
-            {
-                "name": "hank_default",
-                "image": "hank_default.webp",
-                "rarity": {
-                    "value": 0,
-                    "name": "Common",
-                    "color": "#94d6f4"
-                }
-            },
-            {
-                "name": "hank_happy",
-                "image": "hank_happy.webp",
-                "rarity": {
-                    "value": 0,
-                    "name": "Common",
-                    "color": "#94d6f4"
-                }
-            },
-            {
-                "name": "hank_sad",
-                "image": "hank_sad.webp",
-                "rarity": {
-                    "value": 0,
-                    "name": "Common",
-                    "color": "#94d6f4"
-                }
-            },
-            {
-                "name": "hank_angry",
-                "image": "hank_angry.webp",
-                "rarity": {
-                    "value": 0,
-                    "name": "Common",
-                    "color": "#94d6f4"
-                }
-            },
-            {
-                "name": "hank_gg",
-                "image": "hank_gg.webp",
-                "rarity": {
-                    "value": 1,
-                    "name": "Rare",
-                    "color": "#2edd1b"
-                }
-            },
-            {
-                "name": "hank_clap",
-                "image": "hank_clap.webp",
-                "rarity": {
-                    "value": 1,
-                    "name": "Rare",
-                    "color": "#2edd1b"
-                }
-            },
-            {
-                "name": "hank_thanks",
-                "image": "hank_thanks.webp",
-                "rarity": {
-                    "value": 2,
-                    "name": "Epic",
-                    "color": "#b116ec"
-                }
-            },
-            {
-                "name": "hank_sweat",
-                "image": "hank_sweat.webp",
-                "rarity": {
-                    "value": 2,
-                    "name": "Epic",
-                    "color": "#b116ec"
-                }
-            },
-            {
-                "name": "hank_special",
-                "image": "hank_special.webp",
-                "rarity": {
-                    "value": 2,
-                    "name": "Epic",
-                    "color": "#b116ec"
-                }
-            },
-            {
-                "name": "hank_facepalm",
-                "image": "hank_facepalm.webp",
-                "rarity": {
-                    "value": 3,
-                    "name": "Legendary",
-                    "color": "#fdf11e"
-                }
-            },
-            {
-                "name": "hank_wasteland",
-                "image": "hank_wasteland.webp",
-                "rarity": {
-                    "value": 3,
-                    "name": "Legendary",
-                    "color": "#fdf11e"
-                }
-            }
-        ]
-    },
-    {
         "name": "gale",
         "displayName": "Gale",
         "rarity": {
@@ -16695,6 +16504,197 @@
             {
                 "name": "maisie_overcharge",
                 "image": "maisie_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            }
+        ]
+    },
+    {
+        "name": "hank",
+        "displayName": "Hank",
+        "rarity": {
+            "value": 3,
+            "name": "Epic",
+            "color": "#b116ec"
+        },
+        "image": "portrait_hank.webp",
+        "defaultSkin": "fishtankdefault",
+        "title": "Lil' Tenant",
+        "masteryIcon": "mastery_icon_hank.webp",
+        "description": "Hank is a one-shrimp, one-tank army on a mission to liberate sea life from kitchens and markets everywhere. Chefs, consider yourselves on notice!",
+        "skins": [
+            {
+                "name": "fishtankdefault",
+                "displayName": "Hank",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "requires": "",
+                "features": [],
+                "group": {
+                    "name": "",
+                    "image": "bg_default.webp",
+                    "icon": "icon_default.webp"
+                },
+                "limited": false,
+                "image": "fishtankdefault.webp",
+                "model": {
+                    "geometry": "fishtankdefault.glb",
+                    "winAnimation": "fishtankdefault_win.glb",
+                    "loseAnimation": "fishtankdefault_lose.glb"
+                },
+                "rating": 0
+            },
+            {
+                "name": "fishtankshark",
+                "displayName": "Shark Tank Hank",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "",
+                    "image": "bg_default.webp",
+                    "icon": "icon_default.webp"
+                },
+                "limited": false,
+                "image": "fishtankshark.webp",
+                "model": {
+                    "geometry": "fishtankshark.glb",
+                    "winAnimation": "fishtankshark_win.glb",
+                    "loseAnimation": "fishtankshark_lose.glb"
+                },
+                "rating": 0
+            },
+            {
+                "name": "fishtankwasteland",
+                "displayName": "Rodeo Hank",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Wasteland",
+                    "image": "bg_default.webp",
+                    "icon": "icon_wasteland.webp"
+                },
+                "limited": false,
+                "image": "fishtankwasteland.webp",
+                "model": {
+                    "geometry": "fishtankwasteland.glb",
+                    "winAnimation": "fishtankwasteland_win.glb",
+                    "loseAnimation": "fishtankwasteland_lose.glb"
+                },
+                "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "name": "hank_default",
+                "image": "hank_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "hank_happy",
+                "image": "hank_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "hank_sad",
+                "image": "hank_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "hank_angry",
+                "image": "hank_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "hank_gg",
+                "image": "hank_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "hank_clap",
+                "image": "hank_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "hank_thanks",
+                "image": "hank_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "hank_sweat",
+                "image": "hank_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "hank_special",
+                "image": "hank_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "hank_facepalm",
+                "image": "hank_facepalm.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "hank_wasteland",
+                "image": "hank_wasteland.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -20004,775 +20004,6 @@
         ]
     },
     {
-        "name": "gray",
-        "displayName": "Gray",
-        "rarity": {
-            "value": 4,
-            "name": "Mythic",
-            "color": "#fe0521"
-        },
-        "image": "portrait_gray.webp",
-        "defaultSkin": "doormandefault",
-        "title": "The Shady",
-        "masteryIcon": "mastery_icon_gray.webp",
-        "description": "Gray styles himself as a character in an old silent film. He takes the act seriously but sometimes forgets to keep his mouth shut when doing finger bullets.",
-        "skins": [
-            {
-                "name": "doormandefault",
-                "displayName": "Gray",
-                "cost": 0,
-                "currency": "",
-                "costBling": -1,
-                "requires": "",
-                "features": [],
-                "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
-                },
-                "limited": false,
-                "image": "doormandefault.webp",
-                "model": {
-                    "geometry": "doormandefault.glb",
-                    "winAnimation": "doormandefault_win.glb",
-                    "loseAnimation": "doormandefault_lose.glb"
-                },
-                "rating": 0
-            },
-            {
-                "name": "doormanrunaway",
-                "displayName": "Runaway Gray",
-                "cost": 29,
-                "currency": "Gems",
-                "costBling": 1000,
-                "requires": "",
-                "features": [
-                    "Brawler Model",
-                    "Texture"
-                ],
-                "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
-                },
-                "limited": false,
-                "image": "doormanrunaway.webp",
-                "model": {
-                    "geometry": "doormanrunaway.glb",
-                    "winAnimation": "doormanrunaway_win.glb",
-                    "loseAnimation": "doormanrunaway_lose.glb"
-                },
-                "rating": 0
-            },
-            {
-                "name": "doormandetective",
-                "displayName": "Detective Gray",
-                "cost": 79,
-                "currency": "Gems",
-                "costBling": 2750,
-                "requires": "",
-                "features": [
-                    "Brawler Model",
-                    "Texture",
-                    "Animations",
-                    "Effects"
-                ],
-                "group": {
-                    "name": "License to Brawl",
-                    "image": "bg_hub.webp",
-                    "icon": "icon_hub.webp"
-                },
-                "limited": false,
-                "image": "doormandetective.webp",
-                "model": {
-                    "geometry": "doormandetective.glb",
-                    "winAnimation": "doormandetective_win.glb",
-                    "loseAnimation": "doormandetective_lose.glb"
-                },
-                "rating": 0
-            },
-            {
-                "name": "doormandoormandetectivechroma",
-                "displayName": "Detective Gray Noir Edition",
-                "cost": 29,
-                "currency": "Gems",
-                "costBling": 1000,
-                "requires": "Detective Gray",
-                "features": [
-                    "Brawler Model",
-                    "Texture",
-                    "Animations",
-                    "Effects"
-                ],
-                "group": {
-                    "name": "License to Brawl",
-                    "image": "bg_hub.webp",
-                    "icon": "icon_hub.webp"
-                },
-                "limited": false,
-                "image": "doormandoormandetectivechroma.webp",
-                "model": {
-                    "geometry": "doormandoormandetectivechroma.glb",
-                    "winAnimation": "doormandoormandetectivechroma_win.glb",
-                    "loseAnimation": "doormandoormandetectivechroma_lose.glb"
-                },
-                "rating": 0
-            },
-            {
-                "name": "doormangold",
-                "displayName": "True Gold Gray",
-                "cost": 25000,
-                "currency": "Coins",
-                "costBling": -1,
-                "requires": "True Silver Gray",
-                "features": [
-                    "Brawler Model",
-                    "Texture"
-                ],
-                "group": {
-                    "name": "True Gold",
-                    "image": "bg_gold.webp",
-                    "icon": "icon_gold.webp"
-                },
-                "limited": false,
-                "image": "doormangold.webp",
-                "model": {
-                    "geometry": "doormangold.glb",
-                    "winAnimation": "doormangold_win.glb",
-                    "loseAnimation": "doormangold_lose.glb"
-                },
-                "rating": 0
-            },
-            {
-                "name": "doormansilver",
-                "displayName": "True Silver Gray",
-                "cost": 10000,
-                "currency": "Coins",
-                "costBling": -1,
-                "requires": "",
-                "features": [
-                    "Brawler Model",
-                    "Texture"
-                ],
-                "group": {
-                    "name": "True Silver",
-                    "image": "bg_silver.webp",
-                    "icon": "icon_silver.webp"
-                },
-                "limited": false,
-                "image": "doormansilver.webp",
-                "model": {
-                    "geometry": "doormansilver.glb",
-                    "winAnimation": "doormansilver_win.glb",
-                    "loseAnimation": "doormansilver_lose.glb"
-                },
-                "rating": 0
-            }
-        ],
-        "pins": [
-            {
-                "name": "gray_default",
-                "image": "gray_default.webp",
-                "rarity": {
-                    "value": 0,
-                    "name": "Common",
-                    "color": "#94d6f4"
-                }
-            },
-            {
-                "name": "gray_happy",
-                "image": "gray_happy.webp",
-                "rarity": {
-                    "value": 0,
-                    "name": "Common",
-                    "color": "#94d6f4"
-                }
-            },
-            {
-                "name": "gray_sad",
-                "image": "gray_sad.webp",
-                "rarity": {
-                    "value": 0,
-                    "name": "Common",
-                    "color": "#94d6f4"
-                }
-            },
-            {
-                "name": "gray_angry",
-                "image": "gray_angry.webp",
-                "rarity": {
-                    "value": 0,
-                    "name": "Common",
-                    "color": "#94d6f4"
-                }
-            },
-            {
-                "name": "gray_gg",
-                "image": "gray_gg.webp",
-                "rarity": {
-                    "value": 1,
-                    "name": "Rare",
-                    "color": "#2edd1b"
-                }
-            },
-            {
-                "name": "gray_clap",
-                "image": "gray_clap.webp",
-                "rarity": {
-                    "value": 1,
-                    "name": "Rare",
-                    "color": "#2edd1b"
-                }
-            },
-            {
-                "name": "gray_thanks",
-                "image": "gray_thanks.webp",
-                "rarity": {
-                    "value": 2,
-                    "name": "Epic",
-                    "color": "#b116ec"
-                }
-            },
-            {
-                "name": "gray_sweat",
-                "image": "gray_sweat.webp",
-                "rarity": {
-                    "value": 2,
-                    "name": "Epic",
-                    "color": "#b116ec"
-                }
-            },
-            {
-                "name": "gray_special",
-                "image": "gray_special.webp",
-                "rarity": {
-                    "value": 2,
-                    "name": "Epic",
-                    "color": "#b116ec"
-                }
-            },
-            {
-                "name": "gray_facepalm",
-                "image": "gray_facepalm.webp",
-                "rarity": {
-                    "value": 3,
-                    "name": "Legendary",
-                    "color": "#fdf11e"
-                }
-            },
-            {
-                "name": "gray_hub",
-                "image": "gray_hub.webp",
-                "rarity": {
-                    "value": 3,
-                    "name": "Legendary",
-                    "color": "#fdf11e"
-                }
-            }
-        ]
-    },
-    {
-        "name": "willow",
-        "displayName": "Willow",
-        "rarity": {
-            "value": 4,
-            "name": "Mythic",
-            "color": "#fe0521"
-        },
-        "image": "portrait_willow.webp",
-        "defaultSkin": "puppeteerdefault",
-        "title": "Is in your head!",
-        "masteryIcon": "mastery_icon_willow.webp",
-        "description": "Willow works as a gondoliera in the Love Swamp. She gives couples in search of a romantic evening the creepiest, most unsettling time they could imagine.",
-        "skins": [
-            {
-                "name": "puppeteerdefault",
-                "displayName": "Willow",
-                "cost": 0,
-                "currency": "",
-                "costBling": -1,
-                "requires": "",
-                "features": [],
-                "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
-                },
-                "limited": false,
-                "image": "puppeteerdefault.webp",
-                "model": {
-                    "geometry": "puppeteerdefault.glb",
-                    "winAnimation": "puppeteerdefault_win.glb",
-                    "loseAnimation": "puppeteerdefault_lose.glb"
-                },
-                "rating": 0
-            },
-            {
-                "name": "puppeteeraxl",
-                "displayName": "Axl Willow",
-                "cost": 29,
-                "currency": "Gems",
-                "costBling": 1000,
-                "requires": "",
-                "features": [
-                    "Brawler Model",
-                    "Texture"
-                ],
-                "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
-                },
-                "limited": false,
-                "image": "puppeteeraxl.webp",
-                "model": {
-                    "geometry": "puppeteeraxl.glb",
-                    "winAnimation": "puppeteeraxl_win.glb",
-                    "loseAnimation": "puppeteeraxl_lose.glb"
-                },
-                "rating": 0
-            },
-            {
-                "name": "puppeteerwasteland",
-                "displayName": "Scorpion Willow",
-                "cost": 79,
-                "currency": "Gems",
-                "costBling": 2750,
-                "requires": "",
-                "features": [
-                    "Brawler Model",
-                    "Texture",
-                    "Animations",
-                    "Effects"
-                ],
-                "group": {
-                    "name": "Wasteland",
-                    "image": "bg_default.webp",
-                    "icon": "icon_wasteland.webp"
-                },
-                "limited": false,
-                "image": "puppeteerwasteland.webp",
-                "model": {
-                    "geometry": "puppeteerwasteland.glb",
-                    "winAnimation": "puppeteerwasteland_win.glb",
-                    "loseAnimation": "puppeteerwasteland_lose.glb"
-                },
-                "rating": 0
-            }
-        ],
-        "pins": [
-            {
-                "name": "willow_default",
-                "image": "willow_default.webp",
-                "rarity": {
-                    "value": 0,
-                    "name": "Common",
-                    "color": "#94d6f4"
-                }
-            },
-            {
-                "name": "willow_happy",
-                "image": "willow_happy.webp",
-                "rarity": {
-                    "value": 0,
-                    "name": "Common",
-                    "color": "#94d6f4"
-                }
-            },
-            {
-                "name": "willow_sad",
-                "image": "willow_sad.webp",
-                "rarity": {
-                    "value": 0,
-                    "name": "Common",
-                    "color": "#94d6f4"
-                }
-            },
-            {
-                "name": "willow_angry",
-                "image": "willow_angry.webp",
-                "rarity": {
-                    "value": 0,
-                    "name": "Common",
-                    "color": "#94d6f4"
-                }
-            },
-            {
-                "name": "willow_gg",
-                "image": "willow_gg.webp",
-                "rarity": {
-                    "value": 1,
-                    "name": "Rare",
-                    "color": "#2edd1b"
-                }
-            },
-            {
-                "name": "willow_clap",
-                "image": "willow_clap.webp",
-                "rarity": {
-                    "value": 1,
-                    "name": "Rare",
-                    "color": "#2edd1b"
-                }
-            },
-            {
-                "name": "willow_thanks",
-                "image": "willow_thanks.webp",
-                "rarity": {
-                    "value": 2,
-                    "name": "Epic",
-                    "color": "#b116ec"
-                }
-            },
-            {
-                "name": "willow_sweat",
-                "image": "willow_sweat.webp",
-                "rarity": {
-                    "value": 2,
-                    "name": "Epic",
-                    "color": "#b116ec"
-                }
-            },
-            {
-                "name": "willow_special",
-                "image": "willow_special.webp",
-                "rarity": {
-                    "value": 2,
-                    "name": "Epic",
-                    "color": "#b116ec"
-                }
-            },
-            {
-                "name": "willow_facepalm",
-                "image": "willow_facepalm.webp",
-                "rarity": {
-                    "value": 3,
-                    "name": "Legendary",
-                    "color": "#fdf11e"
-                }
-            },
-            {
-                "name": "willow_wasteland",
-                "image": "willow_wasteland.webp",
-                "rarity": {
-                    "value": 3,
-                    "name": "Legendary",
-                    "color": "#fdf11e"
-                }
-            }
-        ]
-    },
-    {
-        "name": "doug",
-        "displayName": "Doug",
-        "rarity": {
-            "value": 4,
-            "name": "Mythic",
-            "color": "#fe0521"
-        },
-        "image": "portrait_doug.webp",
-        "defaultSkin": "reviverdefault",
-        "title": "Wiener",
-        "masteryIcon": "mastery_icon_doug.webp",
-        "description": "Doug's hot dogs will extend your friends' shelf life.",
-        "skins": [
-            {
-                "name": "reviverdefault",
-                "displayName": "Doug",
-                "cost": 0,
-                "currency": "",
-                "costBling": -1,
-                "requires": "",
-                "features": [],
-                "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
-                },
-                "limited": false,
-                "image": "reviverdefault.webp",
-                "model": {
-                    "geometry": "reviverdefault.glb",
-                    "winAnimation": "reviverdefault_win.glb",
-                    "loseAnimation": "reviverdefault_lose.glb"
-                },
-                "rating": 0
-            },
-            {
-                "name": "reviverdraco",
-                "displayName": "Draco Doug",
-                "cost": 29,
-                "currency": "Gems",
-                "costBling": 1000,
-                "requires": "",
-                "features": [
-                    "Brawler Model",
-                    "Texture"
-                ],
-                "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
-                },
-                "limited": false,
-                "image": "reviverdraco.webp",
-                "model": {
-                    "geometry": "reviverdraco.glb",
-                    "winAnimation": "reviverdraco_win.glb",
-                    "loseAnimation": "reviverdraco_lose.glb"
-                },
-                "rating": 0
-            }
-        ],
-        "pins": [
-            {
-                "name": "doug_default",
-                "image": "doug_default.webp",
-                "rarity": {
-                    "value": 0,
-                    "name": "Common",
-                    "color": "#94d6f4"
-                }
-            },
-            {
-                "name": "doug_happy",
-                "image": "doug_happy.webp",
-                "rarity": {
-                    "value": 0,
-                    "name": "Common",
-                    "color": "#94d6f4"
-                }
-            },
-            {
-                "name": "doug_sad",
-                "image": "doug_sad.webp",
-                "rarity": {
-                    "value": 0,
-                    "name": "Common",
-                    "color": "#94d6f4"
-                }
-            },
-            {
-                "name": "doug_angry",
-                "image": "doug_angry.webp",
-                "rarity": {
-                    "value": 0,
-                    "name": "Common",
-                    "color": "#94d6f4"
-                }
-            },
-            {
-                "name": "doug_gg",
-                "image": "doug_gg.webp",
-                "rarity": {
-                    "value": 1,
-                    "name": "Rare",
-                    "color": "#2edd1b"
-                }
-            },
-            {
-                "name": "doug_clap",
-                "image": "doug_clap.webp",
-                "rarity": {
-                    "value": 1,
-                    "name": "Rare",
-                    "color": "#2edd1b"
-                }
-            },
-            {
-                "name": "doug_thanks",
-                "image": "doug_thanks.webp",
-                "rarity": {
-                    "value": 2,
-                    "name": "Epic",
-                    "color": "#b116ec"
-                }
-            },
-            {
-                "name": "doug_sweat",
-                "image": "doug_sweat.webp",
-                "rarity": {
-                    "value": 2,
-                    "name": "Epic",
-                    "color": "#b116ec"
-                }
-            },
-            {
-                "name": "doug_special",
-                "image": "doug_special.webp",
-                "rarity": {
-                    "value": 2,
-                    "name": "Epic",
-                    "color": "#b116ec"
-                }
-            },
-            {
-                "name": "doug_facepalm",
-                "image": "doug_facepalm.webp",
-                "rarity": {
-                    "value": 3,
-                    "name": "Legendary",
-                    "color": "#fdf11e"
-                }
-            }
-        ]
-    },
-    {
-        "name": "chuck",
-        "displayName": "Chuck",
-        "rarity": {
-            "value": 4,
-            "name": "Mythic",
-            "color": "#fe0521"
-        },
-        "image": "portrait_chuck.webp",
-        "defaultSkin": "conductordefault",
-        "title": "The Maestro",
-        "masteryIcon": "mastery_icon_chuck.webp",
-        "description": "Once a brilliant maestro, now a train conductor, Chuck traded the symphonies of the concert halls for the cacophonies of the Ghost Station, all in the hope of discovering the next big thing in music!",
-        "skins": [
-            {
-                "name": "conductordefault",
-                "displayName": "Chuck",
-                "cost": 0,
-                "currency": "",
-                "costBling": -1,
-                "requires": "",
-                "features": [],
-                "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
-                },
-                "limited": false,
-                "image": "conductordefault.webp",
-                "model": {
-                    "geometry": "conductordefault.glb",
-                    "winAnimation": "conductordefault_win.glb",
-                    "loseAnimation": "conductordefault_lose.glb"
-                },
-                "rating": 0
-            },
-            {
-                "name": "conductorrare",
-                "displayName": "Inferno Chuck",
-                "cost": 29,
-                "currency": "Gems",
-                "costBling": 1000,
-                "requires": "",
-                "features": [
-                    "Brawler Model",
-                    "Texture"
-                ],
-                "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
-                },
-                "limited": false,
-                "image": "conductorrare.webp",
-                "model": {
-                    "geometry": "conductorrare.glb",
-                    "winAnimation": "conductorrare_win.glb",
-                    "loseAnimation": "conductorrare_lose.glb"
-                },
-                "rating": 0
-            }
-        ],
-        "pins": [
-            {
-                "name": "chuck_default",
-                "image": "chuck_default.webp",
-                "rarity": {
-                    "value": 0,
-                    "name": "Common",
-                    "color": "#94d6f4"
-                }
-            },
-            {
-                "name": "chuck_happy",
-                "image": "chuck_happy.webp",
-                "rarity": {
-                    "value": 0,
-                    "name": "Common",
-                    "color": "#94d6f4"
-                }
-            },
-            {
-                "name": "chuck_sad",
-                "image": "chuck_sad.webp",
-                "rarity": {
-                    "value": 0,
-                    "name": "Common",
-                    "color": "#94d6f4"
-                }
-            },
-            {
-                "name": "chuck_angry",
-                "image": "chuck_angry.webp",
-                "rarity": {
-                    "value": 0,
-                    "name": "Common",
-                    "color": "#94d6f4"
-                }
-            },
-            {
-                "name": "chuck_gg",
-                "image": "chuck_gg.webp",
-                "rarity": {
-                    "value": 1,
-                    "name": "Rare",
-                    "color": "#2edd1b"
-                }
-            },
-            {
-                "name": "chuck_clap",
-                "image": "chuck_clap.webp",
-                "rarity": {
-                    "value": 1,
-                    "name": "Rare",
-                    "color": "#2edd1b"
-                }
-            },
-            {
-                "name": "chuck_thanks",
-                "image": "chuck_thanks.webp",
-                "rarity": {
-                    "value": 2,
-                    "name": "Epic",
-                    "color": "#b116ec"
-                }
-            },
-            {
-                "name": "chuck_sweat",
-                "image": "chuck_sweat.webp",
-                "rarity": {
-                    "value": 2,
-                    "name": "Epic",
-                    "color": "#b116ec"
-                }
-            },
-            {
-                "name": "chuck_special",
-                "image": "chuck_special.webp",
-                "rarity": {
-                    "value": 2,
-                    "name": "Epic",
-                    "color": "#b116ec"
-                }
-            },
-            {
-                "name": "chuck_facepalm",
-                "image": "chuck_facepalm.webp",
-                "rarity": {
-                    "value": 3,
-                    "name": "Legendary",
-                    "color": "#fdf11e"
-                }
-            }
-        ]
-    },
-    {
         "name": "lou",
         "displayName": "Lou",
         "rarity": {
@@ -23756,6 +22987,274 @@
         ]
     },
     {
+        "name": "gray",
+        "displayName": "Gray",
+        "rarity": {
+            "value": 4,
+            "name": "Mythic",
+            "color": "#fe0521"
+        },
+        "image": "portrait_gray.webp",
+        "defaultSkin": "doormandefault",
+        "title": "The Shady",
+        "masteryIcon": "mastery_icon_gray.webp",
+        "description": "Gray styles himself as a character in an old silent film. He takes the act seriously but sometimes forgets to keep his mouth shut when doing finger bullets.",
+        "skins": [
+            {
+                "name": "doormandefault",
+                "displayName": "Gray",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "requires": "",
+                "features": [],
+                "group": {
+                    "name": "",
+                    "image": "bg_default.webp",
+                    "icon": "icon_default.webp"
+                },
+                "limited": false,
+                "image": "doormandefault.webp",
+                "model": {
+                    "geometry": "doormandefault.glb",
+                    "winAnimation": "doormandefault_win.glb",
+                    "loseAnimation": "doormandefault_lose.glb"
+                },
+                "rating": 0
+            },
+            {
+                "name": "doormanrunaway",
+                "displayName": "Runaway Gray",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "",
+                    "image": "bg_default.webp",
+                    "icon": "icon_default.webp"
+                },
+                "limited": false,
+                "image": "doormanrunaway.webp",
+                "model": {
+                    "geometry": "doormanrunaway.glb",
+                    "winAnimation": "doormanrunaway_win.glb",
+                    "loseAnimation": "doormanrunaway_lose.glb"
+                },
+                "rating": 0
+            },
+            {
+                "name": "doormandetective",
+                "displayName": "Detective Gray",
+                "cost": 79,
+                "currency": "Gems",
+                "costBling": 2750,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "License to Brawl",
+                    "image": "bg_hub.webp",
+                    "icon": "icon_hub.webp"
+                },
+                "limited": false,
+                "image": "doormandetective.webp",
+                "model": {
+                    "geometry": "doormandetective.glb",
+                    "winAnimation": "doormandetective_win.glb",
+                    "loseAnimation": "doormandetective_lose.glb"
+                },
+                "rating": 0
+            },
+            {
+                "name": "doormandoormandetectivechroma",
+                "displayName": "Detective Gray Noir Edition",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "requires": "Detective Gray",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "License to Brawl",
+                    "image": "bg_hub.webp",
+                    "icon": "icon_hub.webp"
+                },
+                "limited": false,
+                "image": "doormandoormandetectivechroma.webp",
+                "model": {
+                    "geometry": "doormandoormandetectivechroma.glb",
+                    "winAnimation": "doormandoormandetectivechroma_win.glb",
+                    "loseAnimation": "doormandoormandetectivechroma_lose.glb"
+                },
+                "rating": 0
+            },
+            {
+                "name": "doormangold",
+                "displayName": "True Gold Gray",
+                "cost": 25000,
+                "currency": "Coins",
+                "costBling": -1,
+                "requires": "True Silver Gray",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "True Gold",
+                    "image": "bg_gold.webp",
+                    "icon": "icon_gold.webp"
+                },
+                "limited": false,
+                "image": "doormangold.webp",
+                "model": {
+                    "geometry": "doormangold.glb",
+                    "winAnimation": "doormangold_win.glb",
+                    "loseAnimation": "doormangold_lose.glb"
+                },
+                "rating": 0
+            },
+            {
+                "name": "doormansilver",
+                "displayName": "True Silver Gray",
+                "cost": 10000,
+                "currency": "Coins",
+                "costBling": -1,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "True Silver",
+                    "image": "bg_silver.webp",
+                    "icon": "icon_silver.webp"
+                },
+                "limited": false,
+                "image": "doormansilver.webp",
+                "model": {
+                    "geometry": "doormansilver.glb",
+                    "winAnimation": "doormansilver_win.glb",
+                    "loseAnimation": "doormansilver_lose.glb"
+                },
+                "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "name": "gray_default",
+                "image": "gray_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "gray_happy",
+                "image": "gray_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "gray_sad",
+                "image": "gray_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "gray_angry",
+                "image": "gray_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "gray_gg",
+                "image": "gray_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "gray_clap",
+                "image": "gray_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "gray_thanks",
+                "image": "gray_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "gray_sweat",
+                "image": "gray_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "gray_special",
+                "image": "gray_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "gray_facepalm",
+                "image": "gray_facepalm.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "gray_hub",
+                "image": "gray_hub.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            }
+        ]
+    },
+    {
         "name": "rt",
         "displayName": "R-T",
         "rarity": {
@@ -24014,6 +23513,507 @@
                     "value": 2,
                     "name": "Epic",
                     "color": "#b116ec"
+                }
+            }
+        ]
+    },
+    {
+        "name": "willow",
+        "displayName": "Willow",
+        "rarity": {
+            "value": 4,
+            "name": "Mythic",
+            "color": "#fe0521"
+        },
+        "image": "portrait_willow.webp",
+        "defaultSkin": "puppeteerdefault",
+        "title": "Is in your head!",
+        "masteryIcon": "mastery_icon_willow.webp",
+        "description": "Willow works as a gondoliera in the Love Swamp. She gives couples in search of a romantic evening the creepiest, most unsettling time they could imagine.",
+        "skins": [
+            {
+                "name": "puppeteerdefault",
+                "displayName": "Willow",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "requires": "",
+                "features": [],
+                "group": {
+                    "name": "",
+                    "image": "bg_default.webp",
+                    "icon": "icon_default.webp"
+                },
+                "limited": false,
+                "image": "puppeteerdefault.webp",
+                "model": {
+                    "geometry": "puppeteerdefault.glb",
+                    "winAnimation": "puppeteerdefault_win.glb",
+                    "loseAnimation": "puppeteerdefault_lose.glb"
+                },
+                "rating": 0
+            },
+            {
+                "name": "puppeteeraxl",
+                "displayName": "Axl Willow",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "",
+                    "image": "bg_default.webp",
+                    "icon": "icon_default.webp"
+                },
+                "limited": false,
+                "image": "puppeteeraxl.webp",
+                "model": {
+                    "geometry": "puppeteeraxl.glb",
+                    "winAnimation": "puppeteeraxl_win.glb",
+                    "loseAnimation": "puppeteeraxl_lose.glb"
+                },
+                "rating": 0
+            },
+            {
+                "name": "puppeteerwasteland",
+                "displayName": "Scorpion Willow",
+                "cost": 79,
+                "currency": "Gems",
+                "costBling": 2750,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Wasteland",
+                    "image": "bg_default.webp",
+                    "icon": "icon_wasteland.webp"
+                },
+                "limited": false,
+                "image": "puppeteerwasteland.webp",
+                "model": {
+                    "geometry": "puppeteerwasteland.glb",
+                    "winAnimation": "puppeteerwasteland_win.glb",
+                    "loseAnimation": "puppeteerwasteland_lose.glb"
+                },
+                "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "name": "willow_default",
+                "image": "willow_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "willow_happy",
+                "image": "willow_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "willow_sad",
+                "image": "willow_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "willow_angry",
+                "image": "willow_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "willow_gg",
+                "image": "willow_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "willow_clap",
+                "image": "willow_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "willow_thanks",
+                "image": "willow_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "willow_sweat",
+                "image": "willow_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "willow_special",
+                "image": "willow_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "willow_facepalm",
+                "image": "willow_facepalm.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "willow_wasteland",
+                "image": "willow_wasteland.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            }
+        ]
+    },
+    {
+        "name": "doug",
+        "displayName": "Doug",
+        "rarity": {
+            "value": 4,
+            "name": "Mythic",
+            "color": "#fe0521"
+        },
+        "image": "portrait_doug.webp",
+        "defaultSkin": "reviverdefault",
+        "title": "Wiener",
+        "masteryIcon": "mastery_icon_doug.webp",
+        "description": "Doug's hot dogs will extend your friends' shelf life.",
+        "skins": [
+            {
+                "name": "reviverdefault",
+                "displayName": "Doug",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "requires": "",
+                "features": [],
+                "group": {
+                    "name": "",
+                    "image": "bg_default.webp",
+                    "icon": "icon_default.webp"
+                },
+                "limited": false,
+                "image": "reviverdefault.webp",
+                "model": {
+                    "geometry": "reviverdefault.glb",
+                    "winAnimation": "reviverdefault_win.glb",
+                    "loseAnimation": "reviverdefault_lose.glb"
+                },
+                "rating": 0
+            },
+            {
+                "name": "reviverdraco",
+                "displayName": "Draco Doug",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "",
+                    "image": "bg_default.webp",
+                    "icon": "icon_default.webp"
+                },
+                "limited": false,
+                "image": "reviverdraco.webp",
+                "model": {
+                    "geometry": "reviverdraco.glb",
+                    "winAnimation": "reviverdraco_win.glb",
+                    "loseAnimation": "reviverdraco_lose.glb"
+                },
+                "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "name": "doug_default",
+                "image": "doug_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "doug_happy",
+                "image": "doug_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "doug_sad",
+                "image": "doug_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "doug_angry",
+                "image": "doug_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "doug_gg",
+                "image": "doug_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "doug_clap",
+                "image": "doug_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "doug_thanks",
+                "image": "doug_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "doug_sweat",
+                "image": "doug_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "doug_special",
+                "image": "doug_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "doug_facepalm",
+                "image": "doug_facepalm.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            }
+        ]
+    },
+    {
+        "name": "chuck",
+        "displayName": "Chuck",
+        "rarity": {
+            "value": 4,
+            "name": "Mythic",
+            "color": "#fe0521"
+        },
+        "image": "portrait_chuck.webp",
+        "defaultSkin": "conductordefault",
+        "title": "The Maestro",
+        "masteryIcon": "mastery_icon_chuck.webp",
+        "description": "Once a brilliant maestro, now a train conductor, Chuck traded the symphonies of the concert halls for the cacophonies of the Ghost Station, all in the hope of discovering the next big thing in music!",
+        "skins": [
+            {
+                "name": "conductordefault",
+                "displayName": "Chuck",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "requires": "",
+                "features": [],
+                "group": {
+                    "name": "",
+                    "image": "bg_default.webp",
+                    "icon": "icon_default.webp"
+                },
+                "limited": false,
+                "image": "conductordefault.webp",
+                "model": {
+                    "geometry": "conductordefault.glb",
+                    "winAnimation": "conductordefault_win.glb",
+                    "loseAnimation": "conductordefault_lose.glb"
+                },
+                "rating": 0
+            },
+            {
+                "name": "conductorrare",
+                "displayName": "Inferno Chuck",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "",
+                    "image": "bg_default.webp",
+                    "icon": "icon_default.webp"
+                },
+                "limited": false,
+                "image": "conductorrare.webp",
+                "model": {
+                    "geometry": "conductorrare.glb",
+                    "winAnimation": "conductorrare_win.glb",
+                    "loseAnimation": "conductorrare_lose.glb"
+                },
+                "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "name": "chuck_default",
+                "image": "chuck_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "chuck_happy",
+                "image": "chuck_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "chuck_sad",
+                "image": "chuck_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "chuck_angry",
+                "image": "chuck_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "chuck_gg",
+                "image": "chuck_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "chuck_clap",
+                "image": "chuck_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "chuck_thanks",
+                "image": "chuck_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "chuck_sweat",
+                "image": "chuck_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "chuck_special",
+                "image": "chuck_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "chuck_facepalm",
+                "image": "chuck_facepalm.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
                 }
             }
         ]
@@ -26874,247 +26874,6 @@
         ]
     },
     {
-        "name": "chester",
-        "displayName": "Chester",
-        "rarity": {
-            "value": 5,
-            "name": "Legendary",
-            "color": "#fdf11e"
-        },
-        "image": "portrait_chester.webp",
-        "defaultSkin": "jesterdefault",
-        "title": "Jack of all Trades",
-        "masteryIcon": "mastery_icon_chester.webp",
-        "description": "Chester makes vicious fun of anyone in sight, trying to get under their skin. The more hate he gets, the better... especially if that hater is Mandy!",
-        "skins": [
-            {
-                "name": "jesterdefault",
-                "displayName": "Chester",
-                "cost": 0,
-                "currency": "",
-                "costBling": -1,
-                "requires": "",
-                "features": [],
-                "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
-                },
-                "limited": false,
-                "image": "jesterdefault.webp",
-                "model": {
-                    "geometry": "jesterdefault.glb",
-                    "winAnimation": "jesterdefault_win.glb",
-                    "loseAnimation": "jesterdefault_lose.glb"
-                },
-                "rating": 0
-            },
-            {
-                "name": "jesterghost",
-                "displayName": "Dark Chester",
-                "cost": 29,
-                "currency": "Gems",
-                "costBling": 1000,
-                "requires": "",
-                "features": [
-                    "Brawler Model",
-                    "Texture"
-                ],
-                "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
-                },
-                "limited": false,
-                "image": "jesterghost.webp",
-                "model": {
-                    "geometry": "jesterghost.glb",
-                    "winAnimation": "jesterghost_win.glb",
-                    "loseAnimation": "jesterghost_lose.glb"
-                },
-                "rating": 0
-            },
-            {
-                "name": "jestergold",
-                "displayName": "True Gold Chester",
-                "cost": 25000,
-                "currency": "Coins",
-                "costBling": -1,
-                "requires": "True Silver Chester",
-                "features": [
-                    "Brawler Model",
-                    "Texture"
-                ],
-                "group": {
-                    "name": "True Gold",
-                    "image": "bg_gold.webp",
-                    "icon": "icon_gold.webp"
-                },
-                "limited": false,
-                "image": "jestergold.webp",
-                "model": {
-                    "geometry": "jestergold.glb",
-                    "winAnimation": "jestergold_win.glb",
-                    "loseAnimation": "jestergold_lose.glb"
-                },
-                "rating": 0
-            },
-            {
-                "name": "jestersilver",
-                "displayName": "True Silver Chester",
-                "cost": 10000,
-                "currency": "Coins",
-                "costBling": -1,
-                "requires": "",
-                "features": [
-                    "Brawler Model",
-                    "Texture"
-                ],
-                "group": {
-                    "name": "True Silver",
-                    "image": "bg_silver.webp",
-                    "icon": "icon_silver.webp"
-                },
-                "limited": false,
-                "image": "jestersilver.webp",
-                "model": {
-                    "geometry": "jestersilver.glb",
-                    "winAnimation": "jestersilver_win.glb",
-                    "loseAnimation": "jestersilver_lose.glb"
-                },
-                "rating": 0
-            },
-            {
-                "name": "jesterwoodspirit",
-                "displayName": "Wood Spirit Chester",
-                "cost": 79,
-                "currency": "Gems",
-                "costBling": 2750,
-                "requires": "",
-                "features": [
-                    "Brawler Model",
-                    "Texture",
-                    "Animations",
-                    "Effects"
-                ],
-                "group": {
-                    "name": "Enchanted Woods",
-                    "image": "bg_enchanted.webp",
-                    "icon": "icon_enchanted.webp"
-                },
-                "limited": false,
-                "image": "jesterwoodspirit.webp",
-                "model": {
-                    "geometry": "jesterwoodspirit.glb",
-                    "winAnimation": "jesterwoodspirit_win.glb",
-                    "loseAnimation": "jesterwoodspirit_lose.glb"
-                },
-                "rating": 0
-            }
-        ],
-        "pins": [
-            {
-                "name": "chester_default",
-                "image": "chester_default.webp",
-                "rarity": {
-                    "value": 0,
-                    "name": "Common",
-                    "color": "#94d6f4"
-                }
-            },
-            {
-                "name": "chester_happy",
-                "image": "chester_happy.webp",
-                "rarity": {
-                    "value": 0,
-                    "name": "Common",
-                    "color": "#94d6f4"
-                }
-            },
-            {
-                "name": "chester_sad",
-                "image": "chester_sad.webp",
-                "rarity": {
-                    "value": 0,
-                    "name": "Common",
-                    "color": "#94d6f4"
-                }
-            },
-            {
-                "name": "chester_angry",
-                "image": "chester_angry.webp",
-                "rarity": {
-                    "value": 0,
-                    "name": "Common",
-                    "color": "#94d6f4"
-                }
-            },
-            {
-                "name": "chester_gg",
-                "image": "chester_gg.webp",
-                "rarity": {
-                    "value": 1,
-                    "name": "Rare",
-                    "color": "#2edd1b"
-                }
-            },
-            {
-                "name": "chester_clap",
-                "image": "chester_clap.webp",
-                "rarity": {
-                    "value": 1,
-                    "name": "Rare",
-                    "color": "#2edd1b"
-                }
-            },
-            {
-                "name": "chester_thanks",
-                "image": "chester_thanks.webp",
-                "rarity": {
-                    "value": 2,
-                    "name": "Epic",
-                    "color": "#b116ec"
-                }
-            },
-            {
-                "name": "chester_sweat",
-                "image": "chester_sweat.webp",
-                "rarity": {
-                    "value": 2,
-                    "name": "Epic",
-                    "color": "#b116ec"
-                }
-            },
-            {
-                "name": "chester_special",
-                "image": "chester_special.webp",
-                "rarity": {
-                    "value": 2,
-                    "name": "Epic",
-                    "color": "#b116ec"
-                }
-            },
-            {
-                "name": "chester_facepalm",
-                "image": "chester_facepalm.webp",
-                "rarity": {
-                    "value": 3,
-                    "name": "Legendary",
-                    "color": "#fdf11e"
-                }
-            },
-            {
-                "name": "chester_enchanted",
-                "image": "chester_enchanted.webp",
-                "rarity": {
-                    "value": 3,
-                    "name": "Legendary",
-                    "color": "#fdf11e"
-                }
-            }
-        ]
-    },
-    {
         "name": "surge",
         "displayName": "Surge",
         "rarity": {
@@ -27481,6 +27240,247 @@
             {
                 "name": "surge_cursed",
                 "image": "surge_cursed.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            }
+        ]
+    },
+    {
+        "name": "chester",
+        "displayName": "Chester",
+        "rarity": {
+            "value": 5,
+            "name": "Legendary",
+            "color": "#fdf11e"
+        },
+        "image": "portrait_chester.webp",
+        "defaultSkin": "jesterdefault",
+        "title": "Jack of all Trades",
+        "masteryIcon": "mastery_icon_chester.webp",
+        "description": "Chester makes vicious fun of anyone in sight, trying to get under their skin. The more hate he gets, the better... especially if that hater is Mandy!",
+        "skins": [
+            {
+                "name": "jesterdefault",
+                "displayName": "Chester",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "requires": "",
+                "features": [],
+                "group": {
+                    "name": "",
+                    "image": "bg_default.webp",
+                    "icon": "icon_default.webp"
+                },
+                "limited": false,
+                "image": "jesterdefault.webp",
+                "model": {
+                    "geometry": "jesterdefault.glb",
+                    "winAnimation": "jesterdefault_win.glb",
+                    "loseAnimation": "jesterdefault_lose.glb"
+                },
+                "rating": 0
+            },
+            {
+                "name": "jesterghost",
+                "displayName": "Dark Chester",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "",
+                    "image": "bg_default.webp",
+                    "icon": "icon_default.webp"
+                },
+                "limited": false,
+                "image": "jesterghost.webp",
+                "model": {
+                    "geometry": "jesterghost.glb",
+                    "winAnimation": "jesterghost_win.glb",
+                    "loseAnimation": "jesterghost_lose.glb"
+                },
+                "rating": 0
+            },
+            {
+                "name": "jestergold",
+                "displayName": "True Gold Chester",
+                "cost": 25000,
+                "currency": "Coins",
+                "costBling": -1,
+                "requires": "True Silver Chester",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "True Gold",
+                    "image": "bg_gold.webp",
+                    "icon": "icon_gold.webp"
+                },
+                "limited": false,
+                "image": "jestergold.webp",
+                "model": {
+                    "geometry": "jestergold.glb",
+                    "winAnimation": "jestergold_win.glb",
+                    "loseAnimation": "jestergold_lose.glb"
+                },
+                "rating": 0
+            },
+            {
+                "name": "jestersilver",
+                "displayName": "True Silver Chester",
+                "cost": 10000,
+                "currency": "Coins",
+                "costBling": -1,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "True Silver",
+                    "image": "bg_silver.webp",
+                    "icon": "icon_silver.webp"
+                },
+                "limited": false,
+                "image": "jestersilver.webp",
+                "model": {
+                    "geometry": "jestersilver.glb",
+                    "winAnimation": "jestersilver_win.glb",
+                    "loseAnimation": "jestersilver_lose.glb"
+                },
+                "rating": 0
+            },
+            {
+                "name": "jesterwoodspirit",
+                "displayName": "Wood Spirit Chester",
+                "cost": 79,
+                "currency": "Gems",
+                "costBling": 2750,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Enchanted Woods",
+                    "image": "bg_enchanted.webp",
+                    "icon": "icon_enchanted.webp"
+                },
+                "limited": false,
+                "image": "jesterwoodspirit.webp",
+                "model": {
+                    "geometry": "jesterwoodspirit.glb",
+                    "winAnimation": "jesterwoodspirit_win.glb",
+                    "loseAnimation": "jesterwoodspirit_lose.glb"
+                },
+                "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "name": "chester_default",
+                "image": "chester_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "chester_happy",
+                "image": "chester_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "chester_sad",
+                "image": "chester_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "chester_angry",
+                "image": "chester_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "chester_gg",
+                "image": "chester_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "chester_clap",
+                "image": "chester_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "chester_thanks",
+                "image": "chester_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "chester_sweat",
+                "image": "chester_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "chester_special",
+                "image": "chester_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "chester_facepalm",
+                "image": "chester_facepalm.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "chester_enchanted",
+                "image": "chester_enchanted.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",

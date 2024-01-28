@@ -213,7 +213,7 @@ const defaultUnit: UnitOptionsStorage = {
 const fighter: UnitOptionsStorage = {
     display: {
         displayName: "Fighter",
-        image: "icon_fighter"
+        image: "../bullgame/images/resources/gear_damage"
     },
     stats: {
         health: 5000,
@@ -236,7 +236,7 @@ const fighter: UnitOptionsStorage = {
 const tank: UnitOptionsStorage = {
     display: {
         displayName: "Tank",
-        image: "icon_tank"
+        image: "../bullgame/images/resources/gear_shield"
     },
     stats: {
         health: 10800,
@@ -259,7 +259,7 @@ const tank: UnitOptionsStorage = {
 const controller: UnitOptionsStorage = {
     display: {
         displayName: "Controller",
-        image: "icon_controller"
+        image: "../bullgame/images/resources/gear_score"
     },
     stats: {
         health: 6400,
@@ -282,7 +282,7 @@ const controller: UnitOptionsStorage = {
 const sharpshooter: UnitOptionsStorage = {
     display: {
         displayName: "Sharpshooter",
-        image: "icon_sharpshooter"
+        image: "../bullgame/images/resources/gear_ability"
     },
     stats: {
         health: 1600,
@@ -305,7 +305,7 @@ const sharpshooter: UnitOptionsStorage = {
 const assassin: UnitOptionsStorage = {
     display: {
         displayName: "Assassin",
-        image: "icon_assassin"
+        image: "../bullgame/images/resources/gear_speed"
     },
     stats: {
         health: 3200,

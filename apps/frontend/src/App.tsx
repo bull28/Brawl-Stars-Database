@@ -17,6 +17,8 @@ const Shop = lazy(() => import('./pages/Shop'));
 const AudioPlayer = lazy(() => import('./components/AudioPlayer'));
 const ChallengeMenu = lazy(() => import('./pages/ChallengeMenu'));
 const Leaderboard = lazy(() => import('./pages/Leaderboard'));
+const GameMenu = lazy(() => import('./pages/GameMenu'));
+const GameRewards = lazy(() => import('./pages/GameRewards'));
 
 function App() {
 
@@ -38,6 +40,8 @@ function App() {
           <Route path="/trade" element={<Suspense fallback={<></>}><Trade/></Suspense>}/>
           <Route path="/mytrades" element={<Suspense fallback={<></>}><MyTrades/></Suspense>}/>
           <Route path="/shop" element={<Suspense fallback={<></>}><Shop/></Suspense>}/>
+          <Route path="/bullgame" element={<Suspense fallback={<></>}><GameMenu/></Suspense>}/>
+          <Route path="/bullgame/rewards" element={<Suspense fallback={<></>}><GameRewards/></Suspense>}/>
           <Route path="/challenges" element={<Suspense fallback={<></>}><ChallengeMenu/></Suspense>}/>
           <Route path="/leaderboard" element={<Suspense fallback={<></>}><Leaderboard/></Suspense>}/>
           <Route path="*" element={<Suspense fallback={<></>}><NotFound/></Suspense>}/>        

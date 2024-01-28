@@ -1,4 +1,4 @@
-import {RESOURCE_IMAGE_DIR, ACCESSORY_IMAGE_DIR, IMAGE_FILE_EXTENSION, GAME_GEAR_IMAGE_DIR, GAME_BRAWLER_IMAGE_DIR, gameDifficulties, gameBrawlers, gameGears} from "../data/constants";
+import {RESOURCE_IMAGE_DIR, ACCESSORY_IMAGE_DIR, IMAGE_FILE_EXTENSION, GAME_GEAR_IMAGE_DIR, GAME_BRAWLER_IMAGE_DIR, gameDifficulties, gameBrawlers, gameStarPowers, gameGears} from "../data/constants";
 import {DatabaseAccessories, DatabaseBadges, CollectionAccessory, AccessoryPreview, AccessoryData, LevelData, GameReport, ReportData, ReportPreview} from "../types";
 
 // Type used by the game when calculating scores
@@ -557,18 +557,29 @@ export function extractReportPreviewStats(data: number[]): ReportPreview["stats"
     if (data.length !== format.length[1] - format.length[0]){
         return undefined;
     }
+    
+    const win = data[format.score[0]] >= SCORE_CONSTANTS.maxScores.completion;
+    const enemiesDefeated = data[format.achievements[0] + 1];
 
     const selectedBrawler = data[p + 2];
-    let brawler = {displayName: "", image: ""};
+    const brawler = {displayName: "", image: ""};
     if (selectedBrawler >= 0 && selectedBrawler < gameBrawlers.length){
         brawler.displayName = gameBrawlers[selectedBrawler].displayName;
         brawler.image = GAME_BRAWLER_IMAGE_DIR + gameBrawlers[selectedBrawler].image + IMAGE_FILE_EXTENSION;
     }
 
+    // The index is always 1 less than the star power number, star power 0 means no star power used
+    const starPower = {displayName: "No Star Power", image: ""};
+    const spIndex = data[p + 3] - 1;
+    if (spIndex >= 0 && spIndex < gameStarPowers.length){
+        // Star power images are stored in the same directory as gear images
+        starPower.displayName = gameStarPowers[spIndex].displayName;
+        starPower.image = GAME_GEAR_IMAGE_DIR + gameStarPowers[spIndex].image + IMAGE_FILE_EXTENSION;
+    }
+
     // This contains an array of the gear numbers the player used 
     const gearIndex = data.slice(format.gears[0], format.gears[1]);
-
-    let gears: {displayName: string; image: string;}[] = [];
+    const gears: {displayName: string; image: string;}[] = [];
     for (let x = 0; x < gearIndex.length; x++){
         if (gearIndex[x] >= 0 && gearIndex[x] < gameGears.length){
             gears.push({
@@ -580,9 +591,11 @@ export function extractReportPreviewStats(data: number[]): ReportPreview["stats"
 
     return {
         score: data[p],
+        enemies: enemiesDefeated,
+        win: win,
         difficulty: (data[p + 1] < gameDifficulties.length ? gameDifficulties[data[p + 1]] : ""),
         brawler: brawler,
-        starPower: data[p + 3],
+        starPower: starPower,
         gears: gears
     };
 }
