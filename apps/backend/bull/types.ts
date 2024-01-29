@@ -572,6 +572,17 @@ export type DatabaseAccessories = string[];
 export type DatabaseBadges = Record<string, number>;
 
 /**
+ * Represents a reward of badges for an accessory
+ * 
+ * This shows the user the progress they made towards unlocking an accessory
+ */
+export interface BadgeReward{
+    displayName: string;
+    unlock: string;
+    amount: number;
+}
+
+/**
  * Accessory object in formatted collection data
  */
 export interface CollectionAccessory{

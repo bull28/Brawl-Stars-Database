@@ -1,5 +1,5 @@
 import {RESOURCE_IMAGE_DIR, ACCESSORY_IMAGE_DIR, IMAGE_FILE_EXTENSION, GAME_GEAR_IMAGE_DIR, GAME_BRAWLER_IMAGE_DIR, gameDifficulties, gameBrawlers, gameStarPowers, gameGears} from "../data/constants";
-import {DatabaseAccessories, DatabaseBadges, CollectionAccessory, AccessoryPreview, AccessoryData, LevelData, GameReport, ReportData, ReportPreview} from "../types";
+import {DatabaseAccessories, DatabaseBadges, BadgeReward, CollectionAccessory, AccessoryPreview, AccessoryData, LevelData, GameReport, ReportData, ReportPreview} from "../types";
 
 // Type used by the game when calculating scores
 interface ScorePerformance{
@@ -330,12 +330,12 @@ const accessories: Accessory[] = [
     {name: "oldtown", category: "location", displayName: "Barley's Bottle", unlock: "Complete levels at Old Town.", badges: 250},
     {name: "biodome", category: "location", displayName: "Rosa's Gloves", unlock: "Complete levels at Biodome.", badges: 250},
     {name: "ghoststation", category: "location", displayName: "Train Tickets", unlock: "Complete levels at Ghost Station.", badges: 250},
-    {name: "giftshop", category: "location", displayName: "Gift Shop Shirt", unlock: "Complete Levels at Gift Shop.", badges: 250},
+    {name: "giftshop", category: "location", displayName: "Gift Shop Shirt", unlock: "Complete levels at Gift Shop.", badges: 250},
     {name: "retropolis", category: "location", displayName: "Neon Light", unlock: "Complete levels at Retropolis.", badges: 250},
     {name: "candyland", category: "location", displayName: "Starr Candy", unlock: "Complete levels at Candyland.", badges: 250},
     {name: "stuntshow", category: "location", displayName: "Janet's Microphone", unlock: "Complete levels at Stunt Show.", badges: 250},
     {name: "supercity", category: "location", displayName: "Surge's Energy Drink", unlock: "Complete levels at Super City.", badges: 250},
-    {name: "arcade", category: "location", displayName: "Arcade Machine", unlock: "Complete Levels at Arcade.", badges: 250},
+    {name: "arcade", category: "location", displayName: "Arcade Machine", unlock: "Complete levels at Arcade.", badges: 250},
     {name: "wins", category: "achievement", displayName: "Bull's Shotgun", unlock: "Win in any difficulty.", badges: 100},
     {name: "enemies", category: "achievement", displayName: "Omega Box", unlock: "Defeat enemies.", badges: 50000},
     {name: "nomove", category: "achievement", displayName: "Charlie's Cocoon", unlock: "Win without moving. Abilities are allowed.", badges: 1},
@@ -545,6 +545,24 @@ export function canClaimAccessory(userAccessories: DatabaseAccessories, badges: 
         return userAccessories.includes(a.name) === false && badges[a.name] >= a.badges;
     }
     return false;
+}
+
+export function getBadgeRewardPreview(reward: Map<string, number>): BadgeReward[]{
+    const preview: BadgeReward[] = [];
+
+    for (let x = 0; x < accessories.length; x++){
+        const a = accessories[x];
+        const amount = reward.get(a.name);
+        if (amount !== undefined){
+            preview.push({
+                displayName: a.displayName,
+                unlock: a.unlock,
+                amount: amount
+            });
+        }
+    }
+
+    return preview;
 }
 
 export function extractReportPreviewStats(data: number[]): ReportPreview["stats"] | undefined{

@@ -561,6 +561,19 @@ export async function setResources(values: ResourcesValues): Promise<ResultSetHe
 }
 
 
+interface PointsValues{
+    points: number;
+    username: string;
+}
+export async function setPoints(values: PointsValues): Promise<ResultSetHeader>{
+    const valuesArray = [
+        values.points, values.username
+    ];
+    return updateDatabase<typeof valuesArray>(connection, valuesArray, false,
+        `UPDATE ${TABLE_NAME} SET points = ? WHERE username = ?;`);
+}
+
+
 interface BeforeShopResult extends RowDataPacket{
     last_login: number;
     coins: number;
@@ -842,7 +855,7 @@ export async function getAllReports(values: UsernameValues): Promise<ReportAllRe
 
 export async function deleteReport(values: ReportIDValues): Promise<ResultSetHeader>{
     const valuesArray = [values.reportid];
-    return updateDatabase<typeof valuesArray>(connection, valuesArray, false,
+    return updateDatabase<typeof valuesArray>(connection, valuesArray, true,
         `DELETE FROM ${REPORT_TABLE_NAME} WHERE reportid = ?;`);
 }
 

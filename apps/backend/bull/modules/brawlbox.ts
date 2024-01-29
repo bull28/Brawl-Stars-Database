@@ -322,14 +322,15 @@ export function canOpenBox(boxName: string, tokens: number): number{
 }
 
 /**
- * Gets all rewards for one run of the game. The game rewards a brawl boxe based on which difficulty the user played.
+ * Gets all rewards for one run of the game. The game rewards a brawl box based on which difficulty the user played.
  * The number of enemies defeated during the run determines the quality of the box. This function modifies the
  * resources object passed to it.
  * @param resources object containing all the user's resources
  * @param report valid game report
+ * @param fullReward whether to claim the full reward or only claim mastery
  * @returns array of the items the user received
  */
-export function getGameReward(resources: UserResources, report: ReportData): BrawlBoxDrop[]{
+export function getGameReward(resources: UserResources, report: ReportData, fullReward: boolean = true): BrawlBoxDrop[]{
     if (resources === undefined){
         return [];
     }
@@ -360,6 +361,10 @@ export function getGameReward(resources: UserResources, report: ReportData): Bra
     if (report.points > 0){
         resources.points += report.points;
         rewards.push(createPointsReward(report.points, resources.points));
+    }
+
+    if (fullReward === false){
+        return rewards;
     }
 
     for (let x = 0; x < box.draws.length; x++){

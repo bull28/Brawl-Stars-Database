@@ -1,5 +1,5 @@
 import express from "express";
-import {validateReport, extractReportPreviewStats, extractReportData} from "../modules/accessories";
+import {validateReport, getBadgeRewardPreview, extractReportPreviewStats, extractReportData} from "../modules/accessories";
 import {getGameReward} from "../modules/brawlbox";
 import {
     databaseErrorHandler, 
@@ -10,6 +10,7 @@ import {
     parseBadges, 
     stringifyBrawlers, 
     setResources, 
+    setPoints, 
     getGameProgress, 
     setGameProgress, 
     addReport, 
@@ -121,13 +122,6 @@ router.post<Empty, Empty, ClaimReportReqBody>("/claim", loginErrorHandler<ClaimR
         return;
     }
 
-    if (claim === false){
-        // If the user does not want to claim rewards, delete the report
-        await deleteReport({reportid: req.body.reportid});
-        res.json([]);
-        return;
-    }
-
     // Get the report from the database
     const report = extractReportData(parseNumberArray(reportResults[0].stats));
     if (report === undefined){
@@ -154,8 +148,19 @@ router.post<Empty, Empty, ClaimReportReqBody>("/claim", loginErrorHandler<ClaimR
         trade_credits: results[0].trade_credits
     };
     const badges: DatabaseBadges = parseBadges(results[0].badges);
+    
+    if (claim === false){
+        // If the user only wants to claim mastery, add it here then return. Claiming mastery only is free.
+        const partialReward = getGameReward(resources, report, false);
 
-    // All rewards cost the same number of tokens to claim
+        await deleteReport({reportid: req.body.reportid});
+        await setPoints({points: resources.points, username: username});
+
+        res.json({resources: partialReward, badges: []});
+        return;
+    }
+
+    // If the user wants to claim the full reward, deduct tokens here. All rewards cost the same number of tokens.
     if (resources.tokens < 200){
         res.status(403).send("You cannot afford to claim these rewards!");
         return;
@@ -172,6 +177,8 @@ router.post<Empty, Empty, ClaimReportReqBody>("/claim", loginErrorHandler<ClaimR
             badges[key] = value;
         }
     });
+
+    await deleteReport({reportid: req.body.reportid});
 
     // Update resources and badges
     // Scenes cannot be obtained as rewards from the game so set their value to what was already in the database
@@ -196,9 +203,7 @@ router.post<Empty, Empty, ClaimReportReqBody>("/claim", loginErrorHandler<ClaimR
         username: username
     });
 
-    await deleteReport({reportid: req.body.reportid});
-
-    res.json(reward);
+    res.json({resources: reward, badges: getBadgeRewardPreview(report.badges)});
 }));
 
 export default router;

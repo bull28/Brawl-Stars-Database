@@ -16,3 +16,9 @@ export interface BrawlBoxContentsData{
     backgroundColor: string;
     description: string;
 }
+
+export interface BrawlBoxBadgesData{
+    displayName: string;
+    unlock: string;
+    amount: number;
+}

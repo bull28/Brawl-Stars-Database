@@ -2,12 +2,12 @@ import {useEffect, useState, useCallback} from "react";
 import AuthRequest from "../helpers/AuthRequest";
 import {
     Flex, Text, Image, Button, SimpleGrid,
-    Modal, ModalOverlay, ModalContent, ModalBody, ModalHeader, ModalCloseButton, ModalFooter, Divider, useDisclosure
+    Modal, ModalOverlay, ModalContent, ModalBody, ModalHeader, ModalCloseButton, ModalFooter, Divider, useDisclosure, useToast
 } from "@chakra-ui/react";
 import SkullBackground from "../components/SkullBackground";
 import cdn from "../helpers/CDNRoute";
 import EventTime from "../helpers/EventTime";
-import {BrawlBoxContentsData} from "../types/BrawlBoxData";
+import {BrawlBoxContentsData, BrawlBoxBadgesData} from "../types/BrawlBoxData";
 import BrawlBoxContents from "../components/BrawlBoxContents";
 
 interface Reward{
@@ -33,21 +33,36 @@ interface Reward{
         }[];
     };
 }
+interface ClaimResult{
+    resources: BrawlBoxContentsData[];
+    badges: BrawlBoxBadgesData[];
+}
 
 export default function GameRewards(){
     const [data, setData] = useState<Reward[]>([]);
     const [currentReward, setCurrentReward] = useState<Reward | undefined>();
-    const [boxContents, setBoxContents] = useState<BrawlBoxContentsData[]>([]);
+    const [boxContents, setBoxContents] = useState<ClaimResult | undefined>();
 
+    const toast = useToast();
     const {isOpen, onOpen, onClose} = useDisclosure();
     const {isOpen: isOpen2, onOpen: onOpen2, onClose: onClose2} = useDisclosure();
 
     const claimReward = (reportid: number, claim: boolean): void => {
-        AuthRequest<BrawlBoxContentsData[]>("/report/claim", {data: {reportid: reportid, claim: claim}, setState: (brawlbox) => {
-            console.log(brawlbox);
-            setBoxContents(brawlbox);
-            onOpen2();
-        }});
+        AuthRequest<ClaimResult>("/report/claim", {
+            data: {reportid: reportid, claim: claim},
+            setState: (brawlbox) => {
+                setBoxContents(brawlbox);
+                onOpen2();
+            },
+            fallback: (error) => {
+                toast({
+                    description: "You don't have enough tokens to purchase this reward.",
+                    status: "error",
+                    duration: 3000,
+                    isClosable: true
+                });
+            }
+        });
     }
 
     const loadRewards = useCallback(() => {
@@ -57,7 +72,6 @@ export default function GameRewards(){
             for (let x = 0; x < data.length; x++){
                 data[x].endTime = Math.floor((currentTime - data[x].endTime) / 1000);
             }
-            console.log(data);
             setData(data);
         }});
     }, []);
@@ -86,7 +100,8 @@ export default function GameRewards(){
                 "&::-webkit-scrollbar-corner": {
                 backgroundColor: "rgba(0, 0, 0, 0)"
                 }
-            }}>{data.map((value) => {
+            }}>
+            {data.map((value) => {
                 let timeString = "";
 
                 if (value.endTime > 86400){
@@ -106,7 +121,8 @@ export default function GameRewards(){
                         </Flex>
                     </Flex>
                 );
-            })}</SimpleGrid>
+            })}
+            </SimpleGrid>
             :
             <Text>No rewards to claim</Text>
             }
@@ -141,7 +157,7 @@ export default function GameRewards(){
                             </Flex>
                         </Flex>
                         :
-                        <Flex>No Reward Available</Flex>
+                        <Flex>No reward available</Flex>
                         }
                     </ModalBody>
                 </ModalContent>
@@ -149,7 +165,9 @@ export default function GameRewards(){
             <Modal size={"full"} isOpen={isOpen2} onClose={onClose2} scrollBehavior={"inside"}>
                 <ModalContent>
                     <ModalBody p={[0, 3, 5, 5, 5]}>
-                        <BrawlBoxContents boxContents={boxContents}/>
+                        {boxContents !== undefined &&
+                            <BrawlBoxContents boxContents={boxContents.resources} badges={boxContents.badges.filter((value) => value.amount > 0)}/>
+                        }
                     </ModalBody>
                     <ModalFooter flexDir={["column", "row", "row", "row", "row"]}>                     
                         <Button onClick={() => {onClose2(); loadRewards();}}>Close</Button>

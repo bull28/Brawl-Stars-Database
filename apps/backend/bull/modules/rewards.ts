@@ -119,7 +119,7 @@ export function createPointsReward(points: number, inventory: number = 0): Brawl
         amount: points,
         inventory: inventory,
         image: RESOURCE_IMAGE_DIR + "resource_challenge_points_200x" + IMAGE_FILE_EXTENSION,
-        backgroundColor: "#00da48",
+        backgroundColor: "#9a3df3",
         description: ""
     };
 }
