@@ -70,13 +70,13 @@ export const gameDifficulties = [
 ];
 
 export const gameBrawlers = [
-    {displayName: "Spike", image: "spike_brawlidays"},
-    {displayName: "Gus", image: "crow_happy"},
-    {displayName: "Emz", image: "emz_make"},
-    {displayName: "Darryl", image: "darryl_megabox_02"},
-    {displayName: "Tara", image: "tara_lny_2020"},
-    {displayName: "Piper", image: "piper_ranked"},
-    {displayName: "Crow", image: "crow_happy"}
+    {displayName: "Spike", image: "icon_spike"},
+    {displayName: "Gus", image: "icon_gus"},
+    {displayName: "Emz", image: "icon_emz"},
+    {displayName: "Darryl", image: "icon_darryl"},
+    {displayName: "Tara", image: "icon_tara"},
+    {displayName: "Piper", image: "icon_piper"},
+    {displayName: "Crow", image: "icon_crow"}
 ];
 
 export const gameStarPowers = [
