@@ -13,11 +13,8 @@ export interface BrawlerCollectionData{
 
 export interface AccessoryData{
     displayName: string;
-    unitName: string;
     image: string;
     unlocked: boolean;
-    unlockLevel: number;
-    unlockMethod: string;
 }
 
 export interface CollectionData{

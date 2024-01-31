@@ -6,12 +6,26 @@ export interface UserInfoProps{
     tradeCredits: number;
     avatar: string;
     avatarColor: string;
-    wildCardPins: [{
+    wildCardPins: {
         rarityName: string;
         rarityColor: string;
         amount: number;
-    }];
+    }[];
+    mastery: {
+        level: number;
+        points: number;
+        currentLevel: number;
+        nextLevel: number;
+        image: string;
+        color: string;
+    }
+}
+
+export interface MasteryData{
     level: number;
     points: number;
-    upgradePoints: number;
+    currentLevel: number;
+    nextLevel: number;
+    image: string;
+    color: string;
 }

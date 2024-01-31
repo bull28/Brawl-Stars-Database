@@ -5,7 +5,6 @@ import AuthRequest, {getToken} from "../helpers/AuthRequest";
 import {Flex, Text, Stack, Button} from "@chakra-ui/react";
 import SkullBackground from "../components/SkullBackground";
 import TokenDisplay from "../components/TokenDisplay";
-import AccessoryLevel from "../components/AccessoryLevel";
 import {UnitImage, ChallengeName, RoomName, ChallengeWins, UnitData, RoomData, RoomDataDisplay, ChallengeData} from "../types/ChallengeData";
 import ChallengeProgress from "../components/ChallengeProgress";
 import UnitSelection from "../components/UnitSelection";
@@ -116,7 +115,6 @@ export default function ChallengeMenu(){
                     <Flex flexDir={"column"} alignItems={"center"} w={["100%", "100%", "100%", "100%", "50%"]} maxW={"720px"}>
                         <ChallengeProgress username={resources.username} avatar={resources.avatar} avatarColor={resources.avatarColor} data={progress}/>
                         <Flex h={"3vh"}/>
-                        <AccessoryLevel level={resources.level} points={resources.points} upgradePoints={resources.upgradePoints}/>
                         <Flex h={"2vh"}/>
                         <Button bgColor={"gray.800"} _hover={{"backgroundColor": "gray.600"}} onClick={() => navigate("/leaderboard")}>Challenge Leaderboard</Button>
                     </Flex>
@@ -134,8 +132,8 @@ export default function ChallengeMenu(){
             {(loginRef.current === true && started === false && waiting === false && progress !== void 0 && unitList !== void 0 && resources !== void 0 && challengeList !== void 0) ?
                 <Stack direction={"column"} spacing={10} mb={"10vh"} alignItems={"center"}>
                     <UnitSelection data={unitList} setSelected={confirmUnitChoices}/>
-                    <ChallengeSelection data={challengeList} level={resources.level} setSelected={confirmChallengeChoice}/>
-                    <RoomSelection data={roomList} level={resources.level} setSelected={confirmRoomChoice}/>
+                    <ChallengeSelection data={challengeList} level={resources.mastery.level} setSelected={confirmChallengeChoice}/>
+                    <RoomSelection data={roomList} level={resources.mastery.level} setSelected={confirmRoomChoice}/>
                 </Stack>
                 :
                 <></>

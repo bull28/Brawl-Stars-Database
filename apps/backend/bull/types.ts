@@ -621,9 +621,10 @@ export interface AccessoryData{
 /**
  * Information about a user's mastery level
  */
-export interface LevelData{
+export interface MasteryData{
     level: number;
     points: number;
+    currentLevel: number;
     nextLevel: number;
     image: string;
     color: string;

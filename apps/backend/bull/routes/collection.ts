@@ -5,6 +5,7 @@ import brawlBox, {boxList, canOpenBox} from "../modules/brawlbox";
 import {formatCollectionData} from "../modules/pins";
 import {getAllItems, getAllItemsPreview, refreshFeaturedItem, getAchievementItems} from "../modules/shop";
 import {MAP_CYCLE_HOURS, mod, realToTime} from "../modules/maps";
+import {getMasteryLevel} from "../modules/accessories";
 import {
     loginErrorHandler, 
     parseBrawlers, 
@@ -43,15 +44,7 @@ interface ShopReqBody extends TokenReqBody{
 router.post<Empty, Empty, TokenReqBody>("/resources", loginErrorHandler<TokenReqBody>(async (req, res, username) => {
     const results = await getResources({username: username});
 
-    //const level = results[0].level;
-    //const requiredPoints = getRequiredPoints(level);
-    const level = 1;
-    const requiredPoints = 1;
-    let points = results[0].points;
-
-    if (requiredPoints >= 1){
-        points = Math.min(points, requiredPoints - 1);
-    }
+    const mastery = getMasteryLevel(results[0].points);
 
     const wildCards: number[] = parseNumberArray(results[0].wild_card_pins);
     const collection = formatCollectionData(parseBrawlers(results[0].brawlers), parseStringArray(results[0].accessories));
@@ -85,9 +78,7 @@ router.post<Empty, Empty, TokenReqBody>("/resources", loginErrorHandler<TokenReq
         tokens: results[0].tokens,
         tokenDoubler: results[0].token_doubler,
         coins: results[0].coins,
-        level: level,
-        points: points,
-        upgradePoints: requiredPoints,
+        mastery: mastery,
         tradeCredits: results[0].trade_credits,
         wildCardPins: wildCardPins
     });

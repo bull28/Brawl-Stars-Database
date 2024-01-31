@@ -11,7 +11,6 @@ import AuthRequest from '../helpers/AuthRequest'
 import { RainbowBackground, RainbowBorder } from '../themes/animations'
 import MovingText from '../components/MovingText'
 import SkullBackground from '../components/SkullBackground'
-import AccessoryLevel from "../components/AccessoryLevel";
 import {UserInfoProps} from '../types/AccountData'
 import {scrollStyle} from "../themes/scrollbar";
 import cdn from "../helpers/CDNRoute";
@@ -21,15 +20,9 @@ export default function Collection() {
     const [brawlBoxData, setBrawlBoxData] = useState<BrawlBoxData[]>()
     const [searchParams] = useSearchParams()
     const [tokens, setTokens] = useState<number>(0)
-    const [level, setLevel] = useState<number>(1)
-    const [points, setPoints] = useState<number>(0)
-    const [upgradePoints, setUpgradePoints] = useState<number>(1)
 
     const setAllResources = useCallback((data: UserInfoProps) => {
         setTokens(data.tokens);
-        setLevel(data.level);
-        setPoints(data.points);
-        setUpgradePoints(data.upgradePoints);
     }, []);
 
     const updateTokens = useCallback(() => {
@@ -177,19 +170,16 @@ export default function Collection() {
             </Accordion>
             }
             <Text fontSize={'3xl'} className={'heading-3xl'} my={10}>Accessories</Text>
-            <Flex mb={10}>
-                <AccessoryLevel level={level} points={points} upgradePoints={upgradePoints}/>
-            </Flex>
             <SimpleGrid columns={[1, 1, 2, 3, 4]} spacing={3} w={'80vw'} bgColor={'blue.800'} p={5} mb={10}>
-                {data && data.accessories.sort((a, b) => a.unlockLevel - b.unlockLevel).map((accessory) => (
-                    <Flex key={accessory.displayName + accessory.image} bgColor={level >= accessory.unlockLevel ? '#a248ff' : '#512480'} flexDir={'column'} alignItems={'center'} border={accessory.unlocked === true ? '3px solid #e7a210' : '3px solid black'}>
+                {data && data.accessories.map((accessory) => (
+                    <Flex key={accessory.displayName + accessory.image} bgColor={accessory.unlocked ? '#a248ff' : '#512480'} flexDir={'column'} alignItems={'center'} border={accessory.unlocked === true ? '3px solid #e7a210' : '3px solid black'}>
                         <Text fontSize={['lg', 'xl', '2xl', '2xl', '2xl']} className={'heading-2xl'}>{accessory.displayName}</Text>
                         <Box pos={'relative'} maxW={'40%'} m={2}>
                             <Image filter={accessory.unlocked === true ? 'drop-shadow(0 0 2rem rgb(255, 255, 255));' : ''} src={`${cdn}/image/${accessory.image}`}/>
                             {accessory.unlocked === false && <Box w={'100%'} h={'100%'} bgColor={'rgba(0, 0, 0, 0.5)'} pos={'absolute'} top={0} borderRadius={'lg'}/>}
                             {accessory.unlocked === false && <Icon as={RiLock2Line} pos={'absolute'} fontSize={'25px'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}></Icon>}
                         </Box>
-                        <Text fontSize={['sm', 'md', 'md', 'md', 'md']} className={'heading-md'} mb={1} alignItems={'center'}>{accessory.unlocked === true ? 'Unlocked' : ((level < accessory.unlockLevel) ? `Requires Level ${accessory.unlockLevel}` : accessory.unlockMethod)}</Text>
+                        <Text fontSize={['sm', 'md', 'md', 'md', 'md']} className={'heading-md'} mb={1} alignItems={'center'}>{accessory.unlocked === true ? 'Unlocked' : 'Not Unlocked'}</Text>
                     </Flex>
                 ))}
             </SimpleGrid>

@@ -63,12 +63,12 @@ router.post<Empty, Empty, ClaimAccessoryReqBody>("/claim", loginErrorHandler<Cla
 }));
 
 // Get the current mastery level
-router.post<Empty, Empty, TokenReqBody>("/level", loginErrorHandler<TokenReqBody>(async (req, res, username) => {
+router.post<Empty, Empty, TokenReqBody>("/mastery", loginErrorHandler<TokenReqBody>(async (req, res, username) => {
     const results = await beforeAccessory({username: username});
 
-    const level = getMasteryLevel(results[0].points);
+    const mastery = getMasteryLevel(results[0].points);
 
-    res.json(level);
+    res.json(mastery);
 }));
 
 export default router;

@@ -1,5 +1,5 @@
 import {RESOURCE_IMAGE_DIR, ACCESSORY_IMAGE_DIR, IMAGE_FILE_EXTENSION, GAME_GEAR_IMAGE_DIR, GAME_BRAWLER_IMAGE_DIR, gameDifficulties, gameBrawlers, gameStarPowers, gameGears} from "../data/constants";
-import {DatabaseAccessories, DatabaseBadges, BadgeReward, CollectionAccessory, AccessoryPreview, AccessoryData, LevelData, GameReport, ReportData, ReportPreview} from "../types";
+import {DatabaseAccessories, DatabaseBadges, BadgeReward, CollectionAccessory, AccessoryPreview, AccessoryData, MasteryData, GameReport, ReportData, ReportPreview} from "../types";
 
 // Type used by the game when calculating scores
 interface ScorePerformance{
@@ -419,12 +419,13 @@ const pointsRewards = [
     [24, 60, 160, 240]
 ];
 
-export function getMasteryLevel(points: number): LevelData{
-    points = Math.floor(points);
+export function getMasteryLevel(points: number): MasteryData{
+    points = Math.floor(Math.max(0, points));
 
-    const result: LevelData = {
+    const result: MasteryData = {
         level: -1,
         points: points,
+        currentLevel: 0,
         nextLevel: 1,
         image: "",
         color: "#000000"
@@ -435,6 +436,11 @@ export function getMasteryLevel(points: number): LevelData{
         // Find the first level where the user does not have enough points. That level is 1 higher than the user's
         // current level. Levels are the same as indexes in the array.
         if (points < masteryLevels[x] || masteryLevels[x] < 0){
+            if (x >= 1){
+                // Points required to get to the current level
+                result.currentLevel = masteryLevels[x - 1];
+            }
+            // Points required to get to the next level
             result.nextLevel = masteryLevels[x];
             result.level = x - 1;
         }
