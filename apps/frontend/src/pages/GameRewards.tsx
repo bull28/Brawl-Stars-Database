@@ -2,41 +2,19 @@ import {useEffect, useState, useCallback} from "react";
 import {useNavigate} from "react-router-dom";
 import AuthRequest from "../helpers/AuthRequest";
 import {
-    Flex, Text, Image, Button, SimpleGrid, IconButton,
+    Flex, Box, Text, Image, Button, SimpleGrid, IconButton,
     Modal, ModalOverlay, ModalContent, ModalBody, ModalHeader, ModalCloseButton, ModalFooter, Divider, useDisclosure, useToast
 } from "@chakra-ui/react";
 import {ArrowBackIcon} from "@chakra-ui/icons";
 import SkullBackground from "../components/SkullBackground";
-import cdn from "../helpers/CDNRoute";
 import EventTime from "../helpers/EventTime";
 import {BrawlBoxContentsData, BrawlBoxBadgesData} from "../types/BrawlBoxData";
 import BrawlBoxContents from "../components/BrawlBoxContents";
 import {UserInfoProps} from "../types/AccountData";
+import {Reward} from "../types/GameData";
 import TokenDisplay from "../components/TokenDisplay";
+import cdn from "../helpers/CDNRoute";
 
-interface Reward{
-    reportid: number;
-    endTime: number;
-    cost: number;
-    stats: {
-        score: number;
-        enemies: number;
-        win: boolean;
-        difficulty: string;
-        brawler: {
-            displayName: string;
-            image: string;
-        };
-        starPower: {
-            displayName: string;
-            image: string;
-        };
-        gears: {
-            displayName: string;
-            image: string;
-        }[];
-    };
-}
 interface ClaimResult{
     resources: BrawlBoxContentsData[];
     badges: BrawlBoxBadgesData[];
@@ -91,9 +69,9 @@ export default function GameRewards(){
         <Flex flexDir={"column"} alignItems={"center"}>
             <SkullBackground/>
             <IconButton pos={["relative", "absolute"]} top={["0", "2vh"]} left={["0", "2vh"]} alignSelf={"flex-start"} as={ArrowBackIcon} aria-label="Back to game menu" onClick={() => {navigate("/bullgame")}} cursor={"pointer"}/>
-            <Flex justifyContent={"center"}>
+            <Box justifyContent={"center"}>
                 <Text fontSize={"4xl"} className={"heading-4xl"}>Bullgame Rewards</Text>
-            </Flex>
+            </Box>
             <Flex w={"100%"} my={"3vh"} justifyContent={"space-around"} alignItems={"center"} wrap={"wrap"}>
                 <Flex w={"40vw"} minW={"min(20em, 80vw)"} flexDir={"column"} bgColor={"#000000b6"} gap={"1vh"} fontSize={["md", "md", "lg"]} className={"heading-lg"} borderRadius={"lg"} p={5} my={2}>
                     <Text>Completing a game run and saving your score gives Bullgame mastery points. For each run, there are two additional rewards that can be purchased with tokens.</Text>
@@ -103,7 +81,7 @@ export default function GameRewards(){
                 </Flex>
                 {resources !== undefined ? <TokenDisplay callback={updateTokens} tokens={resources !== undefined ? resources.tokens : 0}/> : <></>}
             </Flex>
-            <Flex w={"80vw"} h={"50vh"} minH={"30em"} mb={"2em"} borderRadius={"lg"} bgColor={"gray.800"}>
+            <Box w={"80vw"} h={"50vh"} minH={"30em"} mb={"2em"} borderRadius={"lg"} bgColor={"gray.800"}>
                 {data.length > 0 ?
                 <SimpleGrid w={"100%"} h={"fit-content"} maxH={"100%"} columns={[1, 1, 2, 2, 3]} spacing={2} overflow={"auto"} alignItems={"flex-start"} p={2} sx={{
                     "&::-webkit-scrollbar": {
@@ -131,13 +109,13 @@ export default function GameRewards(){
                         timeString = `${EventTime({season: 0, hour: 0, minute: 0, second: endTime, hoursPerSeason: 384, maxSeasons: 7}, 0)} ago`;
                     }
                     return (
-                        <Flex key={value.reportid} flexDir={"column"} bgColor={"blue.800"} borderRadius={"lg"} border={"2px solid #000"}>
+                        <Box key={value.reportid} bgColor={"blue.800"} borderRadius={"lg"} border={"2px solid #000"}>
                             <Flex justifyContent={"space-between"} alignItems={"center"} w={"100%"} bgColor={value.stats.win ? "#0f0" : "#f00"} wrap={"wrap"} borderTopRadius={"md"} px={2} py={1}>
                                 <Text fontSize={["md", "lg", "lg", "xl"]} className={"heading-xl"}>{`${value.stats.difficulty} ${value.stats.win ? "Win" : "Loss"}`}</Text>
                                 <Text fontSize={["sm", "sm", "sm", "md"]} className={"heading-md"}>{timeString}</Text>
                             </Flex>
                             <Flex justifyContent={"space-between"} alignItems={["flex-start", "flex-end"]} flexDir={["column", "row"]} fontSize={["sm", "md", "md", "lg"]} p={2} pt={1}>
-                                <Flex flexDir={"column"}>
+                                <Box>
                                     <Text>{`Score: ${value.stats.score}`}</Text>
                                     <Text>{`Enemies Defeated: ${value.stats.enemies}`}</Text>
                                     <Flex alignItems={"center"}>
@@ -150,17 +128,17 @@ export default function GameRewards(){
                                             <Image key={gear.displayName} h={8} mr={1} src={`${cdn}/image/${gear.image}`}/>
                                         ))}
                                     </Flex>
-                                </Flex>
+                                </Box>
                                 <Button px={6} onClick={() => {setReward(value); onOpen();}}>Claim</Button>
                             </Flex>
-                        </Flex>
+                        </Box>
                     );
                 })}
                 </SimpleGrid>
                 :
                 <Text w={"100%"} textAlign={"center"} fontSize={["xl", "2xl"]} my={3}>No rewards to claim</Text>
                 }
-            </Flex>
+            </Box>
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay/>
                 <ModalContent p={[0, 3]} border={`3px solid #fff`} color={"#fff"}>
@@ -169,7 +147,7 @@ export default function GameRewards(){
                     <Divider/>
                     <ModalBody>
                         {reward !== undefined ?
-                        <Flex flexDir={"column"} fontSize={["md", "lg", "lg", "xl"]} className={"heading-xl"}>
+                        <Box fontSize={["md", "lg", "lg", "xl"]} className={"heading-xl"}>
                             <Text>{new Date(reward.endTime).toLocaleString()}</Text>
                             <Divider my={1}/>
                             <Text>{reward.stats.difficulty}</Text>
@@ -177,7 +155,7 @@ export default function GameRewards(){
                             <Text>{`Enemies Defeated: ${reward.stats.enemies}`}</Text>
                             <Divider my={1}/>
                             <Flex w={"100%"} flexDir={["column", "row"]}>
-                                <Flex flexDir={"column"} flex={1}>
+                                <Box flex={1}>
                                     <Flex alignItems={"center"}>
                                         <Image h={8} mr={1} src={`${cdn}/image/${reward.stats.brawler.image}`}/>
                                         <Text>{reward.stats.brawler.displayName}</Text>
@@ -186,37 +164,37 @@ export default function GameRewards(){
                                         <Image h={8} mr={1} src={`${cdn}/image/${reward.stats.starPower.image}`}/>
                                         <Text>{reward.stats.starPower.displayName}</Text>
                                     </Flex>
-                                </Flex>
-                                <Flex flexDir={"column"} flex={1}>
+                                </Box>
+                                <Box flex={1}>
                                     {reward.stats.gears.map((gear) => (
                                         <Flex key={gear.displayName} alignItems={"center"}>
                                             <Image h={8} mr={1} src={`${cdn}/image/${gear.image}`}/>
                                             <Text>{gear.displayName}</Text>
                                         </Flex>
                                     ))}
-                                </Flex>
+                                </Box>
                             </Flex>
                             <Divider my={1}/>
                             <Flex flexDir={["column", "row"]} w={"100%"} mt={5} fontSize={"md"} className={"heading-md"}>
-                                <Flex flex={1} flexDir={"column"} h={"fit-content"} p={[0, 2]} alignItems={"center"}>
-                                    <Text>Mastery Only</Text>
+                                <Box flex={1} h={"fit-content"} p={[0, 2]}>
+                                    <Text textAlign={"center"}>Mastery Only</Text>
                                     <Button w={"100%"} onClick={() => {onClose(); claimReward(reward.reportid, false);}}>
                                         <Text fontSize={"xl"} color={"#5f5"}>FREE</Text>
                                     </Button>
-                                </Flex>
-                                <Flex flex={1} flexDir={"column"} h={"fit-content"} p={[0, 2]} alignItems={"center"}>
-                                    <Text>All Rewards</Text>
+                                </Box>
+                                <Box flex={1} h={"fit-content"} p={[0, 2]}>
+                                    <Text textAlign={"center"}>All Rewards</Text>
                                     <Button w={"100%"} onClick={() => {onClose(); claimReward(reward.reportid, true);}}>
                                         <Flex fontSize={"xl"}>
                                             <Text color={resources !== undefined && resources.tokens >= reward.cost ? "#5f5" : "#f55"}>{reward.cost}</Text>
                                             <Image ml={1} src={`${cdn}/image/resources/resource_tokens.webp`} h={5}/>
                                         </Flex>
                                     </Button>
-                                </Flex>
+                                </Box>
                             </Flex>
-                        </Flex>
+                        </Box>
                         :
-                        <Flex>No reward available</Flex>
+                        <Box>No reward available</Box>
                         }
                     </ModalBody>
                 </ModalContent>

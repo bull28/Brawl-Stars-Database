@@ -4,7 +4,7 @@ import {displayLong} from "../helpers/LargeNumberDisplay";
 import {MasteryData} from "../types/AccountData";
 import cdn from "../helpers/CDNRoute";
 
-export default function AccessoryLevel({data: {level, points, currentLevel, nextLevel, image, color}}: {data: MasteryData;}){
+export default function MasteryDisplay({data: {level, points, currentLevel, nextLevel, image, color}}: {data: MasteryData;}){
     return (
         <Flex bgColor={"blue.800"} w={["90vw", "90vw", "37.5em"]} maxW={"37.5em"} flexDir={"column"} alignItems={"center"} p={"0.5em"} border={(nextLevel < 0 && level > 1) ? "0.25em solid #d852ff" : "0.25em solid #000"}>
             {(nextLevel < 0 && level > 1) ?
@@ -25,7 +25,7 @@ export default function AccessoryLevel({data: {level, points, currentLevel, next
                                 <Flex pos={"absolute"} w={(nextLevel > 0 && nextLevel > currentLevel) ? `${Math.max(0, Math.min(1, (points - currentLevel) / (nextLevel - currentLevel))) * 100}%` : "100%"} h={"100%"} bgColor={"#8000f0"}/>
                             </Flex>
                         </Flex>
-                        <Flex pos={"absolute"} w={"100%"} justifyContent={"center"} alignItems={"center"} h={["1.5em", "2em", "2.5em"]}>
+                        <Flex pos={"absolute"} w={"100%"} justifyContent={"center"} alignItems={"center"} h={["1.5em", "2em", "2.5em"]} pl={"10%" /* Remove padding to center the text on the entire display, not just the bar */}>
                             <Text pos={"absolute"} maxW={"100%"} textAlign={"center"} className={"heading-xl"} lineHeight={1} fontSize={["sm", "lg"]} zIndex={70}>{nextLevel > 0 ? `${displayLong(points)} / ${displayLong(nextLevel)}` : `${displayLong(points)}`}</Text>
                         </Flex>
                     </Flex>
