@@ -40,6 +40,10 @@ app.use((req, res, next) => {
 
 app.use("/image", express.static(path.join("assets", "images")));
 
+app.get("/", (req, res) => {
+    res.send("FRANK API");
+});
+
 app.use("/", brawler);
 app.use("/", map);
 app.use("/event", event);

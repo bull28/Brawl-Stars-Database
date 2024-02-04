@@ -4,6 +4,7 @@ import {formatCollectionData} from "../modules/pins";
 import {Empty, TokenReqBody, DatabaseBrawlers, DatabaseWildCard, TradePin, TradePinValid, DatabaseAccessories} from "../types";
 import {
     loginErrorHandler, 
+    transaction, 
     parseBrawlers, 
     parseNumberArray, 
     parseStringArray, 
@@ -344,27 +345,23 @@ router.post<Empty, Empty, AcceptReqBody>("/accept", loginErrorHandler<AcceptReqB
     }
 
 
-    await afterTrade({
-        brawlers: stringifyBrawlers(collectionData),
-        wild_card_pins: JSON.stringify(wildCardPins),
-        trade_credits: userResources.trade_credits,
-        username: username
+    await transaction(async (connection) => {
+        await afterTrade({
+            brawlers: stringifyBrawlers(collectionData),
+            wild_card_pins: JSON.stringify(wildCardPins),
+            trade_credits: userResources.trade_credits,
+            username: username
+        }, connection);
+
+        // At this point, the update to the user was successful so the trade can be marked as completed
+        // Set the trade's status to accepted and accepted_by to the user's name
+        await afterTradeAccept({
+            expiration: 0,
+            accepted: 1,
+            accepted_by: username,
+            tradeid: tradeid
+        }, connection);
     });
-
-    // updateResults.affectedRows === 0 checked
-
-    // At this point, the update to the user was successful so the trade can be marked as completed
-
-    // Set the trade's status to accepted and accepted_by to the user's name
-
-    await afterTradeAccept({
-        expiration: 0,
-        accepted: 1,
-        accepted_by: username,
-        tradeid: tradeid
-    });
-
-    // updateTrade.affectedRows === 0 checked
 
     res.json(formatTradeData(tradedItems));
 }));
@@ -455,20 +452,20 @@ router.post<Empty, Empty, CloseReqBody>("/close", loginErrorHandler<CloseReqBody
     // Tell the user who accepted their trade
     const acceptedBy = getTrade[0].accepted_by;
 
-    // Update the user's data after their resources and pins have been changed
-    await afterTrade({
-        brawlers: stringifyBrawlers(collectionData),
-        trade_credits: userTradeCredits,
-        wild_card_pins: wildCards,
-        username: username
+
+    await transaction(async (connection) => {
+        // Update the user's data after their resources and pins have been changed
+        await afterTrade({
+            brawlers: stringifyBrawlers(collectionData),
+            trade_credits: userTradeCredits,
+            wild_card_pins: wildCards,
+            username: username
+        }, connection);
+
+        // Remove the trade from the database
+        await afterTradeClose({tradeid: tradeid}, connection);
     });
 
-    // updateResults.affectedRows === 0 checked
-
-    // Remove the trade from the database
-    await afterTradeClose({tradeid: tradeid});
-
-    // deleteResults.affectedRows === 0 checked
 
     let tradeSuccess = false;
     if (tradeResults.accepted === 1){

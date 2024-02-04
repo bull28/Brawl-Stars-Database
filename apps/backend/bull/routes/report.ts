@@ -4,6 +4,7 @@ import {getGameReward} from "../modules/brawlbox";
 import {
     databaseErrorHandler, 
     loginErrorHandler, 
+    transaction, 
     parseBrawlers, 
     parseNumberArray, 
     parseStringArray, 
@@ -63,18 +64,19 @@ router.post<Empty, Empty, SaveReqBody>("/save", databaseErrorHandler<SaveReqBody
         return;
     }
 
-    await addReport({
-        username: username,
-        end_time: report[1],
-        version: report[0],
-        stats: JSON.stringify(report[2])
-    });
-
-    await setGameProgress({
-        last_game: report[1],
-        badges: results[0].badges,
-        best_scores: results[0].best_scores,
-        username: username
+    await transaction(async (connection) => {
+        await addReport({
+            username: username,
+            end_time: report[1],
+            version: report[0],
+            stats: JSON.stringify(report[2])
+        }, connection);
+        await setGameProgress({
+            last_game: report[1],
+            badges: results[0].badges,
+            best_scores: results[0].best_scores,
+            username: username
+        }, connection);
     });
 
     res.send("Score successfully saved.");
@@ -148,13 +150,15 @@ router.post<Empty, Empty, ClaimReportReqBody>("/claim", loginErrorHandler<ClaimR
         trade_credits: results[0].trade_credits
     };
     const badges: DatabaseBadges = parseBadges(results[0].badges);
-    
+
     if (claim === false){
         // If the user only wants to claim mastery, add it here then return. Claiming mastery only is free.
         const partialReward = getGameReward(resources, report, false);
 
-        await deleteReport({reportid: req.body.reportid});
-        await setPoints({points: resources.points, username: username});
+        await transaction(async (connection) => {
+            await deleteReport({reportid: req.body.reportid}, connection);
+            await setPoints({points: resources.points, username: username}, connection);
+        });
 
         res.json({resources: partialReward, badges: []});
         return;
@@ -178,29 +182,31 @@ router.post<Empty, Empty, ClaimReportReqBody>("/claim", loginErrorHandler<ClaimR
         }
     });
 
-    await deleteReport({reportid: req.body.reportid});
+    await transaction(async (connection) => {
+        await deleteReport({reportid: req.body.reportid}, connection);
 
-    // Update resources and badges
-    // Scenes cannot be obtained as rewards from the game so set their value to what was already in the database
-    await setResources({
-        brawlers: stringifyBrawlers(resources.brawlers),
-        avatars: JSON.stringify(resources.avatars),
-        wild_card_pins: JSON.stringify(resources.wild_card_pins),
-        tokens: resources.tokens,
-        token_doubler: resources.token_doubler,
-        coins: resources.coins,
-        trade_credits: resources.trade_credits,
-        points: resources.points,
-        themes: JSON.stringify(resources.themes),
-        scenes: results[0].scenes,
-        accessories: JSON.stringify(resources.accessories),
-        username: username
-    });
-    await setGameProgress({
-        last_game: results[0].last_game,
-        badges: JSON.stringify(badges),
-        best_scores: results[0].best_scores,
-        username: username
+        // Update resources and badges
+        // Scenes cannot be obtained as rewards from the game so set their value to what was already in the database
+        await setResources({
+            brawlers: stringifyBrawlers(resources.brawlers),
+            avatars: JSON.stringify(resources.avatars),
+            wild_card_pins: JSON.stringify(resources.wild_card_pins),
+            tokens: resources.tokens,
+            token_doubler: resources.token_doubler,
+            coins: resources.coins,
+            trade_credits: resources.trade_credits,
+            points: resources.points,
+            themes: JSON.stringify(resources.themes),
+            scenes: results[0].scenes,
+            accessories: JSON.stringify(resources.accessories),
+            username: username
+        }, connection);
+        await setGameProgress({
+            last_game: results[0].last_game,
+            badges: JSON.stringify(badges),
+            best_scores: results[0].best_scores,
+            username: username
+        }, connection);
     });
 
     res.json({resources: reward, badges: getBadgeRewardPreview(report.badges)});

@@ -5,7 +5,7 @@
     "main": "index.ts",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "frank": "nodemon --exec \"swc bull -d build --copy-files -C module.type=commonjs\" -e ts,json --watch bull",
+        "frank": "nodemon --exec \"swc bull -d build --copy-files --strip-leading-paths -C module.type=commonjs\" -e ts,json --watch bull",
         "piper": "tsc && nodemon ./build/index.js",
         "dev": "nodemon ./build/index.js",
 	    "build": "tsc",
@@ -16,21 +16,21 @@
     "dependencies": {
         "body-parser": "^1.20.2",
         "cors": "^2.8.5",
-        "dotenv": "^16.3.1",
+        "dotenv": "^16.4.1",
         "express": "^4.18.2",
         "jsonwebtoken": "^9.0.2",
-        "mysql2": "^3.6.3"
+        "mysql2": "^3.9.1"
     },
     "devDependencies": {
-        "@swc/cli": "^0.1.62",
-        "@swc/core": "^1.3.96",
+        "@swc/cli": "^0.3.6",
+        "@swc/core": "^1.3.107",
         "@types/body-parser": "^1.19.5",
-        "@types/cors": "^2.8.16",
+        "@types/cors": "^2.8.17",
         "@types/express": "^4.17.21",
         "@types/jsonwebtoken": "^9.0.5",
-        "@types/mysql": "^2.15.24",
-        "@types/node": "^20.9.0",
-        "nodemon": "^3.0.1",
-        "typescript": "^5.2.2"
+        "@types/mysql": "^2.15.25",
+        "@types/node": "^20.11.16",
+        "nodemon": "^3.0.3",
+        "typescript": "^5.3.3"
     }
 }
