@@ -5,7 +5,7 @@ import {Empty, GameModePreview, MapSearchPreview} from "../types";
 const router = express.Router();
 
 
-interface MapSearchReqBody{
+interface MapSearchQuery{
     search: string;
 }
 
@@ -59,11 +59,12 @@ router.get("/map/:map", (req, res) => {
     res.json(mapData);
 });
 
-// Search for a specific map by its name
-router.post<Empty, MapSearchPreview[], MapSearchReqBody>("/mapsearch", (req, res) => {
-    const search = req.body;
 
-    if (typeof search.search !== "string"){
+// Search for a specific map by its name
+router.get<Empty, MapSearchPreview[], Empty, MapSearchQuery>("/mapsearch", (req, res) => {
+    const search = req.query.search;
+
+    if (typeof search !== "string"){
         res.json([]);
         return;
     }

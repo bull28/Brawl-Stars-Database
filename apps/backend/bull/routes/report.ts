@@ -181,6 +181,7 @@ router.post<Empty, Empty, ClaimReportReqBody>("/claim", loginErrorHandler<ClaimR
             badges[key] = value;
         }
     });
+    const badgeReward = getBadgeRewardPreview(resources.accessories, report.badges);
 
     await transaction(async (connection) => {
         await deleteReport({reportid: req.body.reportid}, connection);
@@ -209,7 +210,7 @@ router.post<Empty, Empty, ClaimReportReqBody>("/claim", loginErrorHandler<ClaimR
         }, connection);
     });
 
-    res.json({resources: reward, badges: getBadgeRewardPreview(report.badges)});
+    res.json({resources: reward, badges: badgeReward});
 }));
 
 export default router;

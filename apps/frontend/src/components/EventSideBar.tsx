@@ -113,7 +113,7 @@ export default function EventSideBar({changeEvents, changeOffset, openMapView, s
     }, [changeEvents, date, time, toast])
 
     useEffect(() => {
-        axios.post(`${api}/mapsearch`, {search: searchText})
+        axios.get(`${api}/mapsearch`, {params: {search: searchText}})
         .then((res) => {
             setMaps(res.data);
         })

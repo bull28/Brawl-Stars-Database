@@ -2,7 +2,7 @@ import express from "express";
 import allSkins from "../data/brawlers_data.json";
 import {HOURS_PER_REWARD, TOKENS_PER_REWARD, MAX_REWARD_STACK, AVATAR_IMAGE_DIR, THEME_IMAGE_DIR, SCENE_IMAGE_DIR} from "../data/constants";
 import {signToken, validateToken} from "../modules/authenticate";
-import {readFreeAvatars, readSpecialAvatars, readFreeThemes, readSpecialThemes, readScenes} from "../modules/fileloader";
+import {freeAvatarFiles, specialAvatarFiles, freeThemeFiles, specialThemeFiles, sceneFiles} from "../modules/fileloader";
 import {getAvatars, getCosmetics, getThemes} from "../modules/pins";
 import {MAP_CYCLE_HOURS, SeasonTime, mod, realToTime, subtractSeasonTimes} from "../modules/maps";
 import {
@@ -26,34 +26,9 @@ import {Empty, TokenReqBody, AvatarList, DatabaseAvatars, DatabaseBrawlers, Data
 const router = express.Router();
 
 
-const allAvatars: AvatarList = {free: [], special: []};
-const allThemes: ThemeList = {free: [], special: []};
-let allScenes: SceneList = [];
-readFreeAvatars().then((data) => {
-    if (data !== undefined){
-        allAvatars.free = data;
-    }
-});
-readSpecialAvatars().then((data) => {
-    if (data !== undefined){
-        allAvatars.special = data;
-    }
-});
-readFreeThemes().then((data) => {
-    if (data !== undefined){
-        allThemes.free = data;
-    }
-});
-readSpecialThemes().then((data) => {
-    if (data !== undefined){
-        allThemes.special = data;
-    }
-});
-readScenes().then((data) => {
-    if (data !== undefined){
-        allScenes = data;
-    }
-});
+const allAvatars: AvatarList = {free: freeAvatarFiles, special: specialAvatarFiles};
+const allThemes: ThemeList = {free: freeThemeFiles, special: specialThemeFiles};
+const allScenes: SceneList = sceneFiles;
 
 
 interface LoginReqBody{

@@ -1,13 +1,14 @@
-import {modelFiles} from "../modules/fileloader";
 import {PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR, SKIN_IMAGE_DIR, SKIN_MODEL_DIR, SKINGROUP_ICON_DIR, SKINGROUP_IMAGE_DIR, MASTERY_IMAGE_DIR} from "../data/constants";
 import {Brawler, Skin, BrawlerData, SkinData, ModelData} from "../types";
 
-function skinModelExists(model: ModelData): ModelData{
+function skinModelExists(brawlerName: string, model: ModelData): ModelData{
     let key: keyof ModelData;
     for (key in model){
-        model[key].exists = modelFiles.has(model[key].path);
-        if (model[key].exists === false){
-            model[key].path = "";
+        if (model[key].path !== ""){
+            model[key].exists = true;
+            model[key].path = SKIN_MODEL_DIR + brawlerName + "/" + model[key].path;
+        } else{
+            model[key].exists = false;
         }
     }
     return model;
@@ -124,18 +125,18 @@ export function getSkinData(skin: Skin, brawlerName: string): SkinData{
         limited: skin.limited,
         rating: skin.rating,
         image: SKIN_IMAGE_DIR + brawlerName + "/" + skin.image,
-        model: skinModelExists({
+        model: skinModelExists(brawlerName, {
             geometry: {
                 exists: false,
-                path: SKIN_MODEL_DIR + brawlerName + "/" + skin.model.geometry
+                path: skin.model.geometry
             },
             winAnimation: {
                 exists: false,
-                path: SKIN_MODEL_DIR + brawlerName + "/" + skin.model.winAnimation
+                path: skin.model.winAnimation
             },
             loseAnimation: {
                 exists: false,
-                path: SKIN_MODEL_DIR + brawlerName + "/" + skin.model.loseAnimation
+                path: skin.model.loseAnimation
             }
         })
     }

@@ -421,11 +421,11 @@ export function getCollectionScore(collection: CollectionData): number{
     const completionScore = collection.completedBrawlers / collection.totalBrawlers;
     const pinScore = collection.unlockedPins / collection.totalPins;
     const duplicateScore = collection.pinCopies / (collection.pinCopies + collection.totalPins - collection.unlockedPins);
-    //const accessoryScore = collection.unlockedAccessories / collection.totalAccessories;
+    const accessoryScore = collection.unlockedAccessories / collection.totalAccessories;
 
     // Use larger numbers and floor to avoid non-exact representations of floating point numbers causing errors
-    //const overallScore = Math.floor(400 * pinScore + 200 * brawlerScore + 50 * completionScore + 150 * duplicateScore + 400 * accessoryScore);
-    const overallScore = Math.floor(600 * pinScore + 300 * brawlerScore + 100 * completionScore + 200 * duplicateScore);
+    const overallScore = Math.floor(400 * pinScore + 200 * brawlerScore + 50 * completionScore + 150 * duplicateScore + 400 * accessoryScore);
+    //const overallScore = Math.floor(600 * pinScore + 300 * brawlerScore + 100 * completionScore + 200 * duplicateScore);
 
     let grade = "X";
     let color = "#000000";

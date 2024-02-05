@@ -553,18 +553,21 @@ export function canClaimAccessory(userAccessories: DatabaseAccessories, badges: 
     return false;
 }
 
-export function getBadgeRewardPreview(reward: Map<string, number>): BadgeReward[]{
+export function getBadgeRewardPreview(userAccessories: DatabaseAccessories, reward: Map<string, number>): BadgeReward[]{
     const preview: BadgeReward[] = [];
 
     for (let x = 0; x < accessories.length; x++){
         const a = accessories[x];
-        const amount = reward.get(a.name);
-        if (amount !== undefined){
-            preview.push({
-                displayName: a.displayName,
-                unlock: a.unlock,
-                amount: amount
-            });
+        // Only show progress towards accessories that are not unlocked
+        if (userAccessories.includes(a.name) === false){
+            const amount = reward.get(a.name);
+            if (amount !== undefined){
+                preview.push({
+                    displayName: a.displayName,
+                    unlock: a.unlock,
+                    amount: amount
+                });
+            }
         }
     }
 
@@ -742,7 +745,7 @@ export function extractReportData(data: number[]): ReportData | undefined{
         badges.set("nodamage", 1);
     }
     // Win in under 90 seconds
-    if (data[a] < 90){
+    if (data[a] < 90000){
         badges.set("fastwin", 1);
     }
     // Get a score of 600 on difficulty 6

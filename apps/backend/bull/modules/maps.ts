@@ -454,17 +454,15 @@ export function getMapData(eventList: EventSlot[], mapName: string, currentTime:
     return result;
 }
 
-export function searchForMapName(eventList: EventSlot[], search: {search: string}): MapSearchPreview[]{
+export function searchForMapName(eventList: EventSlot[], search: string): MapSearchPreview[]{
     const result: MapSearchPreview[] = [];
     const exactMatch: MapSearchPreview[] = [];
     const startsWith: MapSearchPreview[] = [];
     const onlyContains: MapSearchPreview[] = [];
 
-    let query = "";
-    if (Object.hasOwn(search, "search") === true){
-        query = search.search;
-        query = query.toLowerCase();
-    }
+    const query = search.toLowerCase();
+    console.log(query);
+
     for (const event of eventList){
         for (const mode of event.gameModes){
             for (const map of mode.maps){
