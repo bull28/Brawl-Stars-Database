@@ -461,7 +461,6 @@ export function searchForMapName(eventList: EventSlot[], search: string): MapSea
     const onlyContains: MapSearchPreview[] = [];
 
     const query = search.toLowerCase();
-    console.log(query);
 
     for (const event of eventList){
         for (const mode of event.gameModes){

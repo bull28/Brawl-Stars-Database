@@ -20,9 +20,9 @@ interface Accessory{
 }
 
 const REPORT_FORMAT = {
-    player: [0, 4], gears: [4, 6], score: [6, 12],
-    achievements: [12, 19], upgrades: [19, 25], visited: [25, 33],
-    levels: [33, 81], enemies: [81, 106], length: [0, 106]
+    mode: [0, 1], player: [1, 5], gears: [5, 7], score: [7, 13],
+    achievements: [13, 20], upgrades: [20, 26], stats: [26, 34], visited: [34, 42],
+    levels: [42, 90], enemies: [90, 115], length: [0, 115]
 };
 const SCORE_CONSTANTS = {
     stages: [
@@ -125,7 +125,7 @@ function getFinalScore(reports: number[], enemyCounts: number[]): number[]{
         score.completion = Math.min(maxScores.completion - 1, Math.floor(score.completion));
         score.time = 0;
         score.destination = 0;
-        score.gear = Math.min(maxScores.gear, Math.floor(score.gear));
+        score.gear = 0;
         score.enemy = 0;
         return [score.completion, score.time, score.destination, score.health, score.gear, score.enemy];
     }
@@ -153,13 +153,13 @@ function getFinalScore(reports: number[], enemyCounts: number[]): number[]{
  * @returns false if the report is definitely invalid, true if it is reasonable enough
  */
 export function validateReport(report: GameReport): boolean{
-    // Last updated: version 67
+    // Last updated: version 68
 
     if (report.length !== 3){
         // Invalid report length
         return false;
     }
-    if (report[0] < 67){
+    if (report[0] < 68){
         // Old report version
         return false;
     }
@@ -193,6 +193,12 @@ export function validateReport(report: GameReport): boolean{
     // happening through normal gameplay and are guaranteed to be invalid. Many of the values here are set based on
     // various game mechanics. They need to be updated if those mechanics in the game are updated.
 
+    // The game mode must be 0 or 2
+    const gameMode = data[format.mode[0]];
+    if (gameMode !== 0 && gameMode !== 2){
+        return false;
+    }
+
     // The difficulty must be between 0 and 5
     const difficulty = data[format.player[0] + 1];
     if (difficulty < 0 || difficulty > 5){
@@ -217,14 +223,13 @@ export function validateReport(report: GameReport): boolean{
         return false;
     }
 
-    // The upgrades cannot be more than each upgrade type limit
-    const upgrades = data.slice(format.upgrades[0], format.upgrades[1]);
-    const maxUpgrades = [16, 16, 10, 7, 5, 6];
-    if (upgrades.length < maxUpgrades.length){
-        return false;
-    }
-    for (let x = 0; x < maxUpgrades.length; x++){
-        if (upgrades[x] > maxUpgrades[x] || upgrades[x] < 0){
+    // The enemy stats multiplier must not be decreasing for each level
+    const stats = data.slice(format.stats[0], format.stats[1]);
+    let maxStats = 0;
+    for (let x = 0; x < stats.length; x++){
+        if (stats[x] >= maxStats){
+            maxStats = stats[x];
+        } else{
             valid = false;
         }
     }
@@ -242,15 +247,20 @@ export function validateReport(report: GameReport): boolean{
             if (visited[x] >= 0){
                 valid = false;
             }
-        } else if (visitedAllowed[x].includes(visited[x]) === false){
-            // If an invalid entry is encountered, the only other values it is allowed to be are < 0
-            if (visited[x] < 0){
-                // If the entry is < 0, the player lost on this level
-                hasLost = true;
-            } else{
-                // If the entry is >= 0, the data is invalid
-                valid = false;
+        } else if (gameMode === 0){
+            if (visitedAllowed[x].includes(visited[x]) === false){
+                // If an invalid entry is encountered, the only other values it is allowed to be are < 0
+                if (visited[x] < 0){
+                    // If the entry is < 0, the player lost on this level
+                    hasLost = true;
+                } else{
+                    // If the entry is >= 0, the data is invalid
+                    valid = false;
+                }
             }
+        } else if (gameMode === 2 && visited[x] < 0){
+            // In game mode 2, there are no restrictions on which levels can be visited
+            hasLost = true;
         }
     }
 
@@ -275,22 +285,36 @@ export function validateReport(report: GameReport): boolean{
         }
     }
 
-    // Calculating the overall score from the level reports should equal the overall score calculated by the game
-    let totalScore = 0;
-    const finalScore = getFinalScore(data.slice(format.levels[0], format.levels[1]), data.slice(format.enemies[0], format.enemies[1]));
-    if (finalScore.length !== format.score[1] - format.score[0]){
-        return false;
-    }
-    for (let x = 0; x < finalScore.length; x++){
-        if (finalScore[x] !== data[format.score[0] + x]){
-            valid = false;
-        } else{
-            totalScore += finalScore[x];
+    if (gameMode === 0){
+        // The upgrades cannot be more than each upgrade type limit
+        const upgrades = data.slice(format.upgrades[0], format.upgrades[1]);
+        const maxUpgrades = [16, 16, 10, 7, 5, 6];
+        if (upgrades.length < maxUpgrades.length){
+            return false;
         }
-    }
-    if (data[format.player[0]] !== totalScore){
-        // The sum of all score categories should equal the sum calculated by the game
-        return false;
+        for (let x = 0; x < maxUpgrades.length; x++){
+            if (upgrades[x] > maxUpgrades[x] || upgrades[x] < 0){
+                valid = false;
+            }
+        }
+
+        // Calculating the overall score from the level reports should equal the overall score calculated by the game
+        let totalScore = 0;
+        const finalScore = getFinalScore(data.slice(format.levels[0], format.levels[1]), data.slice(format.enemies[0], format.enemies[1]));
+        if (finalScore.length !== format.score[1] - format.score[0]){
+            return false;
+        }
+        for (let x = 0; x < finalScore.length; x++){
+            if (finalScore[x] !== data[format.score[0] + x]){
+                valid = false;
+            } else{
+                totalScore += finalScore[x];
+            }
+        }
+        if (data[format.player[0]] !== totalScore){
+            // The sum of all score categories should equal the sum calculated by the game
+            return false;
+        }
     }
 
     return valid;

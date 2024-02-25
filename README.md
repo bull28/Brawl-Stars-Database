@@ -2,4 +2,4 @@
 
 KING GOLM
 
-![](https://www.kindpng.com/picc/m/165-1654152_transparent-viking-png-bull-brawl-stars-png-download.png)
+![](https://raw.githubusercontent.com/bull28/Brawl-Stars-Database/master/documents/ui_concepts/KING_GOLM.png)
