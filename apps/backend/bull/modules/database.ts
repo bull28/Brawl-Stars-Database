@@ -900,13 +900,14 @@ interface ReportValues{
     username: string;
     end_time: number;
     version: number;
+    title: string;
     stats: string;
 }
 export async function addReport(values: ReportValues, connection?: PoolConnection): Promise<ResultSetHeader>{
     const valuesArray = [
-        values.username, values.end_time, values.version, values.stats
+        values.username, values.end_time, values.version, values.title, values.stats
     ];
-    const query = `INSERT INTO ${REPORT_TABLE_NAME} (username, end_time, version, stats) VALUES (?, ?, ?, ?);`;
+    const query = `INSERT INTO ${REPORT_TABLE_NAME} (username, end_time, version, title, stats) VALUES (?, ?, ?, ?, ?);`;
     if (connection !== undefined){
         return transactionUpdate<typeof valuesArray>(connection, valuesArray, false, query);
     }
@@ -933,12 +934,13 @@ interface ReportAllResult extends RowDataPacket{
     reportid: number;
     end_time: number;
     version: number;
+    title: string;
     stats: string;
 }
 export async function getAllReports(values: UsernameValues): Promise<ReportAllResult[]>{
     const valuesArray = [values.username];
     return queryDatabase<typeof valuesArray, ReportAllResult[]>(pool, valuesArray, true,
-        `SELECT reportid, end_time, version, stats FROM ${REPORT_TABLE_NAME} WHERE username = ?;`);
+        `SELECT reportid, end_time, version, title, stats FROM ${REPORT_TABLE_NAME} WHERE username = ?;`);
 }
 
 

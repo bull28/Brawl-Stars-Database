@@ -76,7 +76,9 @@ export const gameBrawlers = [
     {displayName: "Darryl", image: "icon_darryl"},
     {displayName: "Tara", image: "icon_tara"},
     {displayName: "Piper", image: "icon_piper"},
-    {displayName: "Crow", image: "icon_crow"}
+    {displayName: "Crow", image: "icon_crow"},
+    {displayName: "Stu", image: "icon_stu"},
+    {displayName: "Maisie", image: "icon_maisie"}
 ];
 
 export const gameStarPowers = [

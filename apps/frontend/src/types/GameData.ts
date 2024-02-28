@@ -2,6 +2,7 @@ export interface Reward{
     reportid: number;
     endTime: number;
     cost: number;
+    title: string;
     stats: {
         score: number;
         enemies: number;

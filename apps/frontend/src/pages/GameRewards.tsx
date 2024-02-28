@@ -111,7 +111,7 @@ export default function GameRewards(){
                     return (
                         <Box key={value.reportid} bgColor={"blue.800"} borderRadius={"lg"} border={"2px solid #000"}>
                             <Flex justifyContent={"space-between"} alignItems={"center"} w={"100%"} bgColor={value.stats.win ? "#0f0" : "#f00"} wrap={"wrap"} borderTopRadius={"md"} px={2} py={1}>
-                                <Text fontSize={["md", "lg", "lg", "xl"]} className={"heading-xl"}>{`${value.stats.difficulty} ${value.stats.win ? "Win" : "Loss"}`}</Text>
+                                <Text fontSize={["md", "lg", "lg", "xl"]} className={"heading-xl"}>{`${value.title} ${value.stats.win ? "Win" : "Loss"}`}</Text>
                                 <Text fontSize={["sm", "sm", "sm", "md"]} className={"heading-md"}>{timeString}</Text>
                             </Flex>
                             <Flex justifyContent={"space-between"} alignItems={["flex-start", "flex-end"]} flexDir={["column", "row"]} fontSize={["sm", "md", "md", "lg"]} p={2} pt={1}>

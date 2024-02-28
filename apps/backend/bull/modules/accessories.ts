@@ -153,7 +153,7 @@ function getFinalScore(reports: number[], enemyCounts: number[]): number[]{
  * @returns false if the report is definitely invalid, true if it is reasonable enough
  */
 export function validateReport(report: GameReport): boolean{
-    // Last updated: version 68
+    // Last updated: version 69
 
     if (report.length !== 3){
         // Invalid report length
@@ -349,8 +349,8 @@ const accessories: Accessory[] = [
     {name: "tara", category: "player", displayName: "Tara's Cards", unlock: "Win with Tara.", badges: 100},
     {name: "piper", category: "player", displayName: "Piper's Umbrella", unlock: "Win with Piper.", badges: 100},
     {name: "crow", category: "player", displayName: "Crow's Daggers", unlock: "Win with Crow.", badges: 100},
-    {name: "maisie", category: "player", displayName: "Maisie's Metal Arm", unlock: "Currently unobtainable.", badges: 100},
-    {name: "stu", category: "player", displayName: "Stu's Wheel", unlock: "Currently unobtainable.", badges: 100},
+    {name: "stu", category: "player", displayName: "Stu's Wheel", unlock: "Win with Stu.", badges: 100},
+    {name: "maisie", category: "player", displayName: "Maisie's Metal Arm", unlock: "Win with Maisie.", badges: 100},
     {name: "oldtown", category: "location", displayName: "Barley's Bottle", unlock: "Complete levels at Old Town.", badges: 250},
     {name: "biodome", category: "location", displayName: "Rosa's Gloves", unlock: "Complete levels at Biodome.", badges: 250},
     {name: "ghoststation", category: "location", displayName: "Train Tickets", unlock: "Complete levels at Ghost Station.", badges: 250},
@@ -404,6 +404,8 @@ const badgeList = [
     {name: "tara", category: "player", index: 4, coins: [0, 0]},
     {name: "piper", category: "player", index: 5, coins: [0, 0]},
     {name: "crow", category: "player", index: 6, coins: [0, 0]},
+    {name: "stu", category: "player", index: 7, coins: [0, 0]},
+    {name: "maisie", category: "player", index: 8, coins: [0, 0]},
     {name: "oldtown", category: "location", index: 2, coins: [0, 0]},
     {name: "biodome", category: "location", index: 3, coins: [0, 0]},
     {name: "ghoststation", category: "location", index: 4, coins: [0, 0]},
@@ -598,6 +600,16 @@ export function getBadgeRewardPreview(userAccessories: DatabaseAccessories, rewa
     return preview;
 }
 
+export function extractReportGameMode(data: number[]): number{
+    // Gets the game mode from a valid report
+    const format = REPORT_FORMAT;
+
+    if (data.length !== format.length[1] - format.length[0]){
+        return -1;
+    }
+    return data[format.mode[0]];
+}
+
 export function extractReportPreviewStats(data: number[]): ReportPreview["stats"] | undefined{
     // Gets a report object that is only for displaying to the user
     // The report does not need to be validated because the report preview is only for displaying to the user and it is
@@ -666,6 +678,7 @@ export function extractReportData(data: number[]): ReportData | undefined{
     const win = data[s] >= SCORE_CONSTANTS.maxScores.completion;
     const difficulty = data[p + 1];
     const enemiesDefeated = data[a + 1];
+    const gameMode = data[format.mode[0]];
 
     const visited = data.slice(format.visited[0], format.visited[1]);
     const stages = convertLevelReports(data.slice(format.levels[0], format.levels[1]));
@@ -678,20 +691,33 @@ export function extractReportData(data: number[]): ReportData | undefined{
         }
     }
 
-    // The number of points given is based on the difficulty. If the player lost, the points will be decreased depending
-    // on how early in the game they lost.
     let points = 0;
-    if (difficulty < pointsRewards.length && pointsRewards[difficulty].length >= 4){
-        const m = pointsRewards[difficulty];
-        if (win === true && visitedWins.size >= SCORE_CONSTANTS.stages.length){
-            points = m[3];
-        } else if (visitedWins.size >= 7){
-            points = m[2];
-        } else if (visitedWins.size >= 4){
-            points = m[1];
-        } else{
-            points = m[0];
+    let badgeMultiplier = 1;
+    if (gameMode === 0){
+        // The number of points given is based on the difficulty. If the player lost, the points will be decreased
+        // depending on how early in the game they lost.
+        if (difficulty < pointsRewards.length && pointsRewards[difficulty].length >= 4){
+            const m = pointsRewards[difficulty];
+            if (win === true && visitedWins.size >= SCORE_CONSTANTS.stages.length){
+                points = m[3];
+            } else if (visitedWins.size >= 7){
+                points = m[2];
+            } else if (visitedWins.size >= 4){
+                points = m[1];
+            } else{
+                points = m[0];
+            }
         }
+        // More enemy, player, and location badges are given on higher difficulty
+        if (difficulty <= 4){
+            badgeMultiplier = 2 + difficulty;
+        } else{
+            badgeMultiplier = 6 + difficulty * 2 - 8;
+        }
+    } else if (gameMode === 2){
+        // For challenges, points and badges given depend on the strength of the challenge
+        points = 1;
+        badgeMultiplier = 2;
     }
     points = Math.floor(points * data[p]);
 
@@ -718,14 +744,7 @@ export function extractReportData(data: number[]): ReportData | undefined{
         }
 
         if (badgeCount > 0 && difficulty >= 0){
-            // More enemy, player, and location badges are given on higher difficulty
-            let multiplier = 1;
-            if (difficulty <= 4){
-                multiplier = 2 + difficulty;
-            } else{
-                multiplier = 6 + difficulty * 2 - 8;
-            }
-            badges.set(b.name, Math.floor(badgeCount * multiplier));
+            badges.set(b.name, Math.floor(badgeCount * badgeMultiplier));
         }
 
         if (b.coins[0] <= b.coins[1]){
@@ -747,34 +766,38 @@ export function extractReportData(data: number[]): ReportData | undefined{
         // The player gets progress towards this achievement by defeating at least one enemy
         badges.set("enemies", enemiesDefeated);
     }
-    // Win without moving
-    if (data[a + 4] === 0){
-        badges.set("nomove", 1);
-    }
-    // Win without purchasing upgrades or using gears
-    if (data[a + 2] === 0){
-        // First, check if the player used gears. If they did not use any, check upgrade levels.
-        let upgraded = false;
-        for (let x = format.upgrades[0]; x < format.upgrades[1]; x++){
-            if (data[x] > 0){
-                upgraded = true;
+
+    // Some achievements are only available in the default game mode
+    if (gameMode === 0){
+        // Win without moving
+        if (data[a + 4] === 0){
+            badges.set("nomove", 1);
+        }
+        // Win without purchasing upgrades or using gears
+        if (data[a + 2] === 0){
+            // First, check if the player used gears. If they did not use any, check upgrade levels.
+            let upgraded = false;
+            for (let x = format.upgrades[0]; x < format.upgrades[1]; x++){
+                if (data[x] > 0){
+                    upgraded = true;
+                }
+            }
+            if (upgraded === false){
+                badges.set("noupgrades", 1);
             }
         }
-        if (upgraded === false){
-            badges.set("noupgrades", 1);
+        // Win without taking any damage
+        if (data[a + 3] === 0){
+            badges.set("nodamage", 1);
         }
-    }
-    // Win without taking any damage
-    if (data[a + 3] === 0){
-        badges.set("nodamage", 1);
-    }
-    // Win in under 90 seconds
-    if (data[a] < 90000){
-        badges.set("fastwin", 1);
-    }
-    // Get a score of 600 on difficulty 6
-    if (data[p] >= 600 && difficulty >= 5){
-        badges.set("perfect", 1);
+        // Win in under 90 seconds
+        if (data[a] < 90000){
+            badges.set("fastwin", 1);
+        }
+        // Get a score of 600 on difficulty 6
+        if (data[p] >= 600 && difficulty >= 5){
+            badges.set("perfect", 1);
+        }
     }
 
     return {

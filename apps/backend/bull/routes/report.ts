@@ -1,5 +1,5 @@
 import express from "express";
-import {validateReport, getBadgeRewardPreview, extractReportPreviewStats, extractReportData} from "../modules/accessories";
+import {validateReport, getBadgeRewardPreview, extractReportGameMode, extractReportPreviewStats, extractReportData} from "../modules/accessories";
 import {getGameReward} from "../modules/brawlbox";
 import {
     databaseErrorHandler, 
@@ -27,6 +27,8 @@ const router = express.Router();
 
 interface SaveReqBody{
     username: string;
+    key?: string;
+    title?: string;
     report: GameReport;
 }
 
@@ -37,12 +39,15 @@ interface ClaimReportReqBody extends TokenReqBody{
 
 // Save a game report
 router.post<Empty, Empty, SaveReqBody>("/save", databaseErrorHandler<SaveReqBody>(async (req, res) => {
-    const username = req.body.username;
+    const inputUser = req.body.username;
+    const key = req.body.key;
     const report = req.body.report;
 
-    if (typeof username !== "string" || username.length === 0){
-        res.status(400).send("Username is missing.");
-        return;
+    let reportTitle = "";
+    let saveToUser = "";
+
+    if (typeof req.body.title === "string" && req.body.title.length < 50){
+        reportTitle = req.body.title;
     }
 
     if (validateReport(report) === false){
@@ -50,7 +55,26 @@ router.post<Empty, Empty, SaveReqBody>("/save", databaseErrorHandler<SaveReqBody
         return;
     }
 
-    const results = await getGameProgress({username: username});
+    const gameMode = extractReportGameMode(report[2]);
+    if (gameMode === 0){
+        // In the default game mode, no key is required and the username can be sent from the game to the server
+        if (typeof inputUser !== "string" || inputUser.length === 0){
+            res.status(400).send("Username is missing.");
+            return;
+        }
+        saveToUser = inputUser;
+    } else{
+        // In all other game modes, a key is used to identify the challenge. The key is stored in the database with its
+        // corresponding username so the user to save the report to can be determined using only the key.
+        if (typeof key !== "string"){
+            res.status(400).send("Username is missing.");
+            return;
+        }
+        // Get the username associated with the given challenge key
+        saveToUser = key;
+    }
+
+    const results = await getGameProgress({username: saveToUser});
 
     if (results.length === 0){
         res.status(404).send("Could not find the user.");
@@ -66,16 +90,17 @@ router.post<Empty, Empty, SaveReqBody>("/save", databaseErrorHandler<SaveReqBody
 
     await transaction(async (connection) => {
         await addReport({
-            username: username,
+            username: saveToUser,
             end_time: report[1],
             version: report[0],
+            title: reportTitle,
             stats: JSON.stringify(report[2])
         }, connection);
         await setGameProgress({
             last_game: report[1],
             badges: results[0].badges,
             best_scores: results[0].best_scores,
-            username: username
+            username: saveToUser
         }, connection);
     });
 
@@ -95,6 +120,7 @@ router.post<Empty, Empty, TokenReqBody>("/all", loginErrorHandler<TokenReqBody>(
                 reportid: results[x].reportid,
                 endTime: results[x].end_time,
                 cost: 200,
+                title: results[x].title,
                 stats: stats
             });
         }
