@@ -42,7 +42,7 @@ function eventTimeDays(data: MapData): string{
       if (data.times.all.length > 0){
         return "Currently Active";
       } else if (data.powerLeagueMap){
-        return "Only in Power League";
+        return "Only in Ranked";
       } else{
         return "Not Active on Ladder";
       }
@@ -104,7 +104,7 @@ const MapView = React.forwardRef<{open: () => void}, Props>((props, ref) => {
                 <Image src={`${cdn}/image/${data.image}`} fallback={<Spinner/>}/>
                 <Flex alignItems={'center'}>
                   <Text fontSize={'2xl'} className={'heading-2xl'}>{eventTimeDays(data)}</Text>
-                  {data.powerLeagueMap && <Tooltip label={"Power League Map"}><Image h={'35px'} ml={2} src={`${cdn}/image/skingroups/icons/icon_ranked.webp`}/></Tooltip>}
+                  {data.powerLeagueMap && <Tooltip label={"Ranked Map"}><Image h={'35px'} ml={2} src={`${cdn}/image/skingroups/icons/icon_ranked.webp`}/></Tooltip>}
                 </Flex>
               </>
               :
