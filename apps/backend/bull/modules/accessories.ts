@@ -22,7 +22,7 @@ interface Accessory{
 const REPORT_FORMAT = {
     mode: [0, 1], player: [1, 5], gears: [5, 7], score: [7, 13],
     achievements: [13, 20], upgrades: [20, 26], stats: [26, 34], visited: [34, 42],
-    levels: [42, 90], enemies: [90, 115], length: [0, 115]
+    levels: [42, 90], enemies: [90, 119], length: [0, 119]
 };
 const SCORE_CONSTANTS = {
     stages: [
@@ -159,7 +159,7 @@ export function validateReport(report: GameReport): boolean{
         // Invalid report length
         return false;
     }
-    if (report[0] < 68){
+    if (report[0] < 71){
         // Old report version
         return false;
     }
@@ -236,7 +236,7 @@ export function validateReport(report: GameReport): boolean{
 
     // The visited levels must be unique and only certain values are allowed at certain indexes
     const visited = data.slice(format.visited[0], format.visited[1]);
-    const visitedAllowed = [[0], [1], [2, 3, 4, 5], [2, 3, 4, 5], [6, 7, 8, 9], [6, 7, 8, 9], [10], [11]];
+    const visitedAllowed = [[0], [1], [2, 3, 4, 5], [3, 4, 5, 6], [7, 8, 9, 10], [8, 9, 10, 11], [12], [13]];
     if (visited.length < visitedAllowed.length){
         return false;
     }
@@ -268,7 +268,7 @@ export function validateReport(report: GameReport): boolean{
     // The brawler enemies should not be defeated more than 12 times
     // The special (boss and bonus) enemies should not be defeated more than once
     const brawlerOffset = format.enemies[0] + 2;
-    const specialOffset = format.enemies[0] + 22;
+    const specialOffset = format.enemies[0] + 26;
     for (let x = format.enemies[0]; x < format.enemies[1]; x++){
         if (x < brawlerOffset){
             if (data[x] > 80){
@@ -385,18 +385,22 @@ const badgeList = [
     {name: "belle", category: "enemy", index: 7, coins: [17, 19]},
     {name: "jessie", category: "enemy", index: 8, coins: [18, 20]},
     {name: "eve", category: "enemy", index: 9, coins: [18, 22]},
-    {name: "mortis", category: "enemy", index: 10, coins: [19, 23]},
+    {name: "mortis", category: "enemy", index: 10, coins: [18, 22]},
     {name: "frank", category: "enemy", index: 11, coins: [22, 26]},
-    {name: "bea", category: "enemy", index: 12, coins: [23, 27]},
-    {name: "colette", category: "enemy", index: 13, coins: [24, 28]},
-    {name: "lola", category: "enemy", index: 14, coins: [29, 35]},
-    {name: "bibi", category: "enemy", index: 15, coins: [31, 37]},
-    {name: "mandy", category: "enemy", index: 16, coins: [33, 39]},
-    {name: "ash", category: "enemy", index: 17, coins: [36, 44]},
-    {name: "bonnie", category: "enemy", index: 18, coins: [40, 48]},
-    {name: "amber", category: "enemy", index: 19, coins: [65, 75]},
-    {name: "max", category: "enemy", index: 20, coins: [50, 58]},
-    {name: "meg", category: "enemy", index: 21, coins: [84, 96]},
+    {name: "jacky", category: "enemy", index: 12, coins: [19, 23]},
+    {name: "mrp", category: "enemy", index: 13, coins: [22, 26]},
+    {name: "bea", category: "enemy", index: 14, coins: [23, 27]},
+    {name: "colette", category: "enemy", index: 15, coins: [24, 28]},
+    {name: "lola", category: "enemy", index: 16, coins: [29, 35]},
+    {name: "bibi", category: "enemy", index: 17, coins: [30, 36]},
+    {name: "mandy", category: "enemy", index: 18, coins: [31, 37]},
+    {name: "ash", category: "enemy", index: 19, coins: [36, 44]},
+    {name: "pearl", category: "enemy", index: 20, coins: [33, 39]},
+    {name: "leon", category: "enemy", index: 21, coins: [48, 56]},
+    {name: "bonnie", category: "enemy", index: 22, coins: [40, 48]},
+    {name: "amber", category: "enemy", index: 23, coins: [65, 75]},
+    {name: "max", category: "enemy", index: 24, coins: [52, 60]},
+    {name: "meg", category: "enemy", index: 25, coins: [84, 96]},
     {name: "spike", category: "player", index: 0, coins: [0, 0]},
     {name: "gus", category: "player", index: 1, coins: [0, 0]},
     {name: "emz", category: "player", index: 2, coins: [0, 0]},
@@ -409,12 +413,14 @@ const badgeList = [
     {name: "oldtown", category: "location", index: 2, coins: [0, 0]},
     {name: "biodome", category: "location", index: 3, coins: [0, 0]},
     {name: "ghoststation", category: "location", index: 4, coins: [0, 0]},
-    {name: "giftshop", category: "location", index: 5, coins: [0, 0]},
-    {name: "retropolis", category: "location", index: 6, coins: [0, 0]},
-    {name: "candyland", category: "location", index: 7, coins: [0, 0]},
-    {name: "stuntshow", category: "location", index: 8, coins: [0, 0]},
-    {name: "supercity", category: "location", index: 9, coins: [0, 0]},
-    {name: "arcade", category: "location", index: 10, coins: [0, 0]}
+    {name: "snowtel", category: "location", index: 5, coins: [0, 0]},
+    {name: "giftshop", category: "location", index: 6, coins: [0, 0]},
+    {name: "retropolis", category: "location", index: 7, coins: [0, 0]},
+    {name: "candyland", category: "location", index: 8, coins: [0, 0]},
+    {name: "rumblejungle", category: "location", index: 9, coins: [0, 0]},
+    {name: "stuntshow", category: "location", index: 10, coins: [0, 0]},
+    {name: "supercity", category: "location", index: 11, coins: [0, 0]},
+    {name: "arcade", category: "location", index: 12, coins: [0, 0]}
 ];
 
 const masteryLevels = [
