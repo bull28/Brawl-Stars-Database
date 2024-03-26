@@ -22,7 +22,7 @@ interface Accessory{
 const REPORT_FORMAT = {
     mode: [0, 1], player: [1, 5], gears: [5, 7], score: [7, 13],
     achievements: [13, 20], upgrades: [20, 26], stats: [26, 34], visited: [34, 42],
-    levels: [42, 90], enemies: [90, 119], length: [0, 119]
+    levels: [42, 90], enemies: [90, 120], length: [0, 120]
 };
 const SCORE_CONSTANTS = {
     stages: [
@@ -37,8 +37,8 @@ const SCORE_CONSTANTS = {
     ],
     maxScores: {completion: 300, time: 150, destination: 50, health: 50, gear: 30, enemy: 20},
     bonusEnemies: [
-        {name: "hank", index: 22, score: 6},
-        {name: "buster", index: 23, score: 14}
+        {name: "hank", index: 26, score: 6},
+        {name: "buster", index: 27, score: 14}
     ]
 };
 
@@ -153,13 +153,13 @@ function getFinalScore(reports: number[], enemyCounts: number[]): number[]{
  * @returns false if the report is definitely invalid, true if it is reasonable enough
  */
 export function validateReport(report: GameReport): boolean{
-    // Last updated: version 69
+    // Last updated: version 72
 
     if (report.length !== 3){
         // Invalid report length
         return false;
     }
-    if (report[0] < 71){
+    if (report[0] < 72){
         // Old report version
         return false;
     }
@@ -401,6 +401,7 @@ const badgeList = [
     {name: "amber", category: "enemy", index: 23, coins: [65, 75]},
     {name: "max", category: "enemy", index: 24, coins: [52, 60]},
     {name: "meg", category: "enemy", index: 25, coins: [84, 96]},
+    {name: "siegebase", category: "enemy", index: 28, coins: [320, 400]},
     {name: "spike", category: "player", index: 0, coins: [0, 0]},
     {name: "gus", category: "player", index: 1, coins: [0, 0]},
     {name: "emz", category: "player", index: 2, coins: [0, 0]},
