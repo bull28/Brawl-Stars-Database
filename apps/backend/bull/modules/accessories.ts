@@ -775,7 +775,7 @@ export function extractReportData(data: number[]): ReportData | undefined{
     }
 
     // Some achievements are only available in the default game mode
-    if (gameMode === 0){
+    if (gameMode === 0 && win === true){
         // Win without moving
         if (data[a + 4] === 0){
             badges.set("nomove", 1);

@@ -1,4 +1,5 @@
 import {Request, Response, NextFunction} from "express";
+import {Query, ParamsDictionary} from "express-serve-static-core";
 import mysql2, {Pool, PoolConnection, RowDataPacket, ResultSetHeader} from "mysql2";
 import {validateToken} from "./authenticate";
 import {Empty, TokenReqBody, DatabaseBrawlers, DatabaseBadges, TradePinValid} from "../types";
@@ -140,19 +141,19 @@ function getErrorMessage(error: Error): {status: number; message: string;}{
     }
 }
 
-type ExpressCallback<R, Q> = (req: Request<Empty, Empty, R, Q>, res: Response, next: NextFunction) => void;
+type ExpressCallback<R, Q, P> = (req: Request<P, Empty, R, Q>, res: Response, next: NextFunction) => void;
 
-type UsernameCallback<R extends TokenReqBody, Q> = (req: Request<Empty, Empty, R, Q>, res: Response, username: string, next: NextFunction) => void;
+type UsernameCallback<R extends TokenReqBody, Q, P> = (req: Request<P, Empty, R, Q>, res: Response, username: string, next: NextFunction) => void;
 
 /**
  * Error handler for async endpoint callbacks that do not require authentication. This function will send the
  * appropriate error message to the user if anything fails while getting data from the database. R is the type of the
- * request body and Q is the type of the query parameters.
+ * request body and Q is the type of the query and P is the type of the request parameters.
  * @param callback callback for an endpoint
  * @returns callback with a promise
  */
-export function databaseErrorHandler<R, Q = unknown>(callback: ExpressCallback<R, Q>): ExpressCallback<R, Q>{
-    return (req: Request<Empty, Empty, R, Q>, res: Response, next: NextFunction) => {
+export function databaseErrorHandler<R, Q = Query, P = ParamsDictionary>(callback: ExpressCallback<R, Q, P>): ExpressCallback<R, Q, P>{
+    return (req: Request<P, Empty, R, Q>, res: Response, next: NextFunction) => {
         Promise.resolve(callback(req, res, next)).catch((reason) => {
             const errorData = getErrorMessage(reason);
             res.status(errorData.status).send(errorData.message);
@@ -163,12 +164,13 @@ export function databaseErrorHandler<R, Q = unknown>(callback: ExpressCallback<R
 /**
  * Error handler for async endpoint callbacks that require authentication. This function will send the appropriate error
  * message to the user if anything fails while getting data from the database or the provided token is invalid. R is the
- * type of the request body and Q is the type of the query parameters. R must have a token: string property.
+ * type of the request body and Q is the type of the query and P is the type of the request parameters. R must have a
+ * token: string property.
  * @param callback callback for an endpoint
  * @returns callback with a promise
  */
-export function loginErrorHandler<R extends TokenReqBody, Q = unknown>(callback: UsernameCallback<R, Q>): ExpressCallback<R, Q>{
-    return (req: Request<Empty, Empty, R, Q>, res: Response, next: NextFunction) => {
+export function loginErrorHandler<R extends TokenReqBody, Q = Query, P = ParamsDictionary>(callback: UsernameCallback<R, Q, P>): ExpressCallback<R, Q, P>{
+    return (req: Request<P, Empty, R, Q>, res: Response, next: NextFunction) => {
         if (typeof req.body.token !== "string"){
             res.status(400).send("Token is missing.");
             return;
