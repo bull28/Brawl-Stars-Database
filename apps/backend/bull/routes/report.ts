@@ -18,7 +18,9 @@ import {
     getReport, 
     getAllReports, 
     deleteReport, 
-    getResourcesAndProgress
+    getResourcesAndProgress,
+    getChallenge,
+    deleteChallenge
 } from "../modules/database";
 import {Empty, TokenReqBody, UserResources, DatabaseBadges, GameReport, ReportPreview} from "../types";
 
@@ -45,6 +47,7 @@ router.post<Empty, Empty, SaveReqBody>("/save", databaseErrorHandler<SaveReqBody
 
     let reportTitle = "";
     let saveToUser = "";
+    let isChallenge = false;
 
     if (typeof req.body.title === "string" && req.body.title.length < 50){
         reportTitle = req.body.title;
@@ -70,8 +73,19 @@ router.post<Empty, Empty, SaveReqBody>("/save", databaseErrorHandler<SaveReqBody
             res.status(400).send("Username is missing.");
             return;
         }
-        // Get the username associated with the given challenge key
-        saveToUser = key;
+
+        // Get the username associated with the given challenge key then save the report with that username
+        const challenges = await getChallenge({key: key});
+        if (challenges[0].accepted !== 1){
+            res.status(403).send("This challenge has not been accepted yet.");
+            return;
+        }
+        saveToUser = challenges[0].accepted_by;
+
+        // All active challenges except those with no owner are deleted once completed
+        if (challenges[0].owner !== ""){
+            isChallenge = true;
+        }
     }
 
     const results = await getGameProgress({username: saveToUser});
@@ -102,6 +116,10 @@ router.post<Empty, Empty, SaveReqBody>("/save", databaseErrorHandler<SaveReqBody
             best_scores: results[0].best_scores,
             username: saveToUser
         }, connection);
+
+        if (isChallenge === true && typeof key === "string"){
+            await deleteChallenge({key: key}, connection);
+        }
     });
 
     res.send("Score successfully saved.");

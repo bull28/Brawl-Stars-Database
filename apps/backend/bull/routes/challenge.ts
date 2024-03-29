@@ -1,7 +1,7 @@
 import express from "express";
 import {getMasteryLevel} from "../modules/accessories";
 import {getGameMod} from "../modules/challenges";
-import {databaseErrorHandler, parseNumberArray, parseChallengeWaves, beforeAccessory, getChallenge} from "../modules/database";
+import {databaseErrorHandler, parseNumberArray, parseChallengeWaves, beforeAccessory, getChallenge, acceptChallenge} from "../modules/database";
 import {Empty, TokenReqBody, ChallengeWave} from "../types";
 
 const router = express.Router();
@@ -20,10 +20,11 @@ router.post<Empty, Empty, ChallengeKeyReqBody>("/get", databaseErrorHandler<Chal
     }
     const results = await getChallenge({key: key});
 
-    if (results.length === 0){
-        res.status(404).send("Challenge not found.");
+    if (results[0].accepted !== 0){
+        res.status(403).send("This challenge has already been accepted.");
         return;
     }
+
     const stats: number[] = parseNumberArray(results[0].stats);
     const waves: ChallengeWave[] = parseChallengeWaves(results[0].waves);
 
@@ -38,6 +39,11 @@ router.post<Empty, Empty, ChallengeKeyReqBody>("/get", databaseErrorHandler<Chal
         stats: stats,
         waves: waves
     });
+
+    // When the game makes a request for the challenge data, it will set the active challenge's accepted value to 1. If
+    // the accepted value is 1, any more requests for that same challenge will not be allowed. This prevents the user
+    // from refreshing the page and restarting the challenge if they were about to lose.
+    await acceptChallenge({key: key});
     res.json(mod);
 }));
 

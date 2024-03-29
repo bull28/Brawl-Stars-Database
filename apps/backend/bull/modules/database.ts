@@ -40,6 +40,8 @@ let TRADE_TABLE_NAME = "trades";
 let COSMETIC_TABLE_NAME = "cosmetics";
 let GAME_TABLE_NAME = "bullgame";
 let REPORT_TABLE_NAME = "reports";
+let CHALLENGE_TABLE_NAME = "challenges";
+let ACTIVE_CHALLENGE_TABLE_NAME = "activechallenges";
 
 
 // Read environment variables first before connecting
@@ -195,7 +197,7 @@ export function loginErrorHandler<R extends TokenReqBody, Q = Query, P = ParamsD
  * returns results.
  * @param connection database connection
  * @param values prepared statement values
- * @param allowEmptyResults whether or not to throw an error when results are empty
+ * @param allowEmptyResults whether or not to allow an empty results array (true) or throw an error (false)
  * @param query sql query string
  * @returns promise resolving to the result
  */
@@ -226,7 +228,7 @@ async function queryDatabase<Values, Result extends RowDataPacket[]>(connection:
  * used when the query does not return results.
  * @param connection database connection
  * @param values prepared statement values
- * @param allowNoUpdate whether or not to throw an error when no rows were updated
+ * @param allowNoUpdate whether or not to allow updating no rows (true) or to throw an error (false)
  * @param query sql query string
  * @returns promise resolving to the result set header
  */
@@ -1044,6 +1046,7 @@ interface ActiveChallengeValues{
 interface ChallengeResult extends RowDataPacket{
     owner: string;
     accepted_by: string;
+    accepted: number;
     difficulty: number;
     levels: number;
     stats: string;
@@ -1051,11 +1054,23 @@ interface ChallengeResult extends RowDataPacket{
 }
 export async function getChallenge(values: ActiveChallengeValues): Promise<ChallengeResult[]>{
     const valuesArray = [values.key];
-    return queryDatabase<typeof valuesArray, ChallengeResult[]>(pool, valuesArray, true,
-        `SELECT C.username AS owner, A.accepted_by, C.difficulty, C.levels, C.stats, C.waves FROM challenges C, activechallenges A WHERE C.challengeid = A.challengeid AND A.active_key = ?;`);
+    return queryDatabase<typeof valuesArray, ChallengeResult[]>(pool, valuesArray, false,
+        `SELECT C.username AS owner, A.accepted_by, A.accepted, C.difficulty, C.levels, C.stats, C.waves FROM ${CHALLENGE_TABLE_NAME} C, ${ACTIVE_CHALLENGE_TABLE_NAME} A WHERE C.challengeid = A.challengeid AND A.active_key = ?;`);
 }
-// export async function getChallenge(values: ChallengeIDValues): Promise<ChallengeResult[]>{
-//     const valuesArray = [values.challengeid];
-//     return queryDatabase<typeof valuesArray, ChallengeResult[]>(pool, valuesArray, false,
-//         `SELECT username, difficulty, levels, stats, waves FROM challenges WHERE challengeid = ?;`);
-// }
+
+
+export async function acceptChallenge(values: ActiveChallengeValues): Promise<ResultSetHeader>{
+    const valuesArray = [values.key];
+    const query = `UPDATE ${ACTIVE_CHALLENGE_TABLE_NAME} SET accepted = 1 WHERE active_key = ?;`;
+    return updateDatabase<typeof valuesArray>(pool, valuesArray, false, query);
+}
+
+
+export async function deleteChallenge(values: ActiveChallengeValues, connection?: PoolConnection): Promise<ResultSetHeader>{
+    const valuesArray = [values.key];
+    const query = `DELETE FROM ${ACTIVE_CHALLENGE_TABLE_NAME} WHERE active_key = ?;`;
+    if (connection !== undefined){
+        return transactionUpdate<typeof valuesArray>(connection, valuesArray, true, query);
+    }
+    return updateDatabase<typeof valuesArray>(pool, valuesArray, true, query);
+}

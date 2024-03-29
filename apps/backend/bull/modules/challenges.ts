@@ -95,8 +95,6 @@ export function getGameMod(key: string, masteryLevel: number, data: ChallengeDat
             i++;
         }
     }
-    //console.log(player);
-    //console.log(completionMax, timeMax, completionScore, timeScore);
 
     // Insert objects into the enemy stats, stages, and levels. Each of these arrays must have length equal to the
     // number of stages.
@@ -150,10 +148,18 @@ export function getGameMod(key: string, masteryLevel: number, data: ChallengeDat
                     wave.push(enemy);
                 }
             }
+
+            let delay = 0;
+            if (levels[data.waves[x].level].waves.length > 0){
+                // The first wave in each level starts immediately. All other waves start after some delay, depending
+                // on how many enemies are in the previous wave.
+                delay = 10;
+            }
             levels[data.waves[x].level].waves.push({
                 names: [wave],
                 multiple: Array.from(multiple).map((value) => ({name: value[0], count: [value[1]]})),
-                delay: 0
+                delay: delay,
+                maxEnemies: 10
             });
         }
     }
@@ -197,21 +203,3 @@ export function getGameMod(key: string, masteryLevel: number, data: ChallengeDat
         }
     };
 }
-
-/*
-{
-    levelid: number;
-    waves: {
-        names: string[][];
-        multiple: {
-            name: string;
-            count: number[];
-        }[];
-        delay: number;
-    };
-    background: string;
-    displayName: string;
-    stages: number[];
-    destination: number;
-}
-*/

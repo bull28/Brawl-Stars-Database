@@ -745,6 +745,7 @@ export interface ChallengeGameMod{
                 count: number[];
             }[];
             delay: number;
+            maxEnemies: number;
         }[];
         background: string;
         displayName: string;
@@ -762,69 +763,8 @@ export interface ChallengeGameMod{
     playerUpgradeValues: {
         [k in "health" | "damage" | "healing" | "speed" | "ability" | "lifeSteal"]: {
             value: [number, number];
-        }
+        };
     };
 }
-/*
-"options?": {
-        "key?": "string",
-        "gameMode?": "number",
-        "gameName?": "string",
-        "antialias?": "boolean",
-        "startingPower?": "number",
-        "startingGears?": "number",
-        "addBonusEnemies?": "boolean",
-        "maxReportLevels?": "number"
-    },
-    "difficulties?": [{
-        "difficultyid": "number",
-        "name": "string",
-        "countTier": "number",
-        "strengthTier": "number",
-        "healthBonusReq": "number",
-        "timePerEnemy": "number",
-        "enemyStats": ["number", 1],
-    }, 1],
-    "stages?": [{
-        "completion": "number",
-        "time": "number",
-        "powerReward": "number",
-        "gearsReward": "number"
-    }, 1],
-    "levels?": [{
-        "levelid": "number",
-        "waves": [{
-            "names": [["string"]],
-            "multiple": [{
-                "name": "string",
-                "count": ["number"]
-            }],
-            "delay?": "number",
-            "maxEnemies?": "number",
-            "onDifficulty?": "number"
-        }],
-        "background": "string",
-        "displayName": "string",
-        "stages": ["number", 2],
-        "destination": "number"
-    }, 1],
-    "maxScores?": {
-        "completion": "number",
-        "time": "number",
-        "destination": "number",
-        "health": "number",
-        "gear": "number",
-        "enemy": "number"
-    },
-    "playerUpgradeValues?": Object.fromEntries(
-        ["health?", "damage?", "healing?", "speed?", "ability?", "lifeSteal?"].map((value) => 
-            [value, {
-                "value?": ["number"],
-                "cost?": ["number"],
-                "maxLevel?": "number"
-            }]
-        )
-    )
-*/
 
 //------------------------------------------------------------------------------------------------//
