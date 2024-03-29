@@ -229,7 +229,8 @@ export function validateReport(report: GameReport): boolean{
     for (let x = 0; x < stats.length; x++){
         if (stats[x] >= maxStats){
             maxStats = stats[x];
-        } else{
+        } else if (stats[x] >= 0){
+            // If fewer levels were played, all other entries will be -1 which shouldn't count as decreasing multiplier
             valid = false;
         }
     }

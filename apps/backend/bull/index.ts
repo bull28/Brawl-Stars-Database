@@ -13,6 +13,7 @@ import tradesview from "./routes/tradesview";
 import tradesmodify from "./routes/tradesmodify";
 import report from "./routes/report";
 import accessory from "./routes/accessory";
+import challenge from "./routes/challenge";
 
 const app = express();
 app.disable("x-powered-by");
@@ -53,6 +54,7 @@ app.use("/trade", tradesview);
 app.use("/trade", tradesmodify);
 app.use("/report", report);
 app.use("/accessory", accessory);
+app.use("/challenge", challenge);
 
 app.get("/bullgame", (req, res) => {
     res.sendFile(path.join(__dirname, "..", "assets", "index.html"));

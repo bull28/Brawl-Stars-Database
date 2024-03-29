@@ -2,7 +2,7 @@ import {Request, Response, NextFunction} from "express";
 import {Query, ParamsDictionary} from "express-serve-static-core";
 import mysql2, {Pool, PoolConnection, RowDataPacket, ResultSetHeader} from "mysql2";
 import {validateToken} from "./authenticate";
-import {Empty, TokenReqBody, DatabaseBrawlers, DatabaseBadges, TradePinValid} from "../types";
+import {Empty, TokenReqBody, DatabaseBrawlers, DatabaseBadges, TradePinValid, ChallengeWave} from "../types";
 
 // Custom error classes for common database errors
 
@@ -431,6 +431,42 @@ export function parseBadges(badgesString: string): DatabaseBadges{
     }
 
     return badges;
+}
+
+export function parseChallengeWaves(wavesString: string): ChallengeWave[]{
+    const waves: ChallengeWave[] = [];
+    try{
+        const data = JSON.parse(wavesString);
+
+        if (Array.isArray(data) === true){
+            for (let x = 0; x < data.length; x++){
+                let valid = true;
+                const enemies = data[x].enemies;
+                if (Array.isArray(enemies) === true){
+                    for (let i = 0; i < enemies.length; i++){
+                        if (typeof enemies[i] !== "string"){
+                            valid = false;
+                        }
+                    }
+                } else{
+                    valid = false;
+                }
+                if (valid === true && typeof data[x].level === "number"){
+                    waves.push({
+                        level: data[x].level,
+                        enemies: data[x].enemies
+                    });
+                } else{
+                    // Either all or none of the waves must be valid. Having some of the waves valid will result in an
+                    // easier challenge with fewer waves than intended.
+                    throw new Error("Invalid wave");
+                }
+            }
+        }
+    } catch (error){
+        throw new Error("Challenge data could not be loaded.");
+    }
+    return waves;
 }
 
 export function stringifyBrawlers(brawlers: DatabaseBrawlers): string{
@@ -1000,3 +1036,26 @@ export async function updateAccessories(values: AccessoryClaimValues): Promise<R
     return updateDatabase<typeof valuesArray>(pool, valuesArray, false,
         `UPDATE ${TABLE_NAME} SET accessories = ? WHERE username = ?;`);
 }
+
+
+interface ActiveChallengeValues{
+    key: string;
+}
+interface ChallengeResult extends RowDataPacket{
+    owner: string;
+    accepted_by: string;
+    difficulty: number;
+    levels: number;
+    stats: string;
+    waves: string;
+}
+export async function getChallenge(values: ActiveChallengeValues): Promise<ChallengeResult[]>{
+    const valuesArray = [values.key];
+    return queryDatabase<typeof valuesArray, ChallengeResult[]>(pool, valuesArray, true,
+        `SELECT C.username AS owner, A.accepted_by, C.difficulty, C.levels, C.stats, C.waves FROM challenges C, activechallenges A WHERE C.challengeid = A.challengeid AND A.active_key = ?;`);
+}
+// export async function getChallenge(values: ChallengeIDValues): Promise<ChallengeResult[]>{
+//     const valuesArray = [values.challengeid];
+//     return queryDatabase<typeof valuesArray, ChallengeResult[]>(pool, valuesArray, false,
+//         `SELECT username, difficulty, levels, stats, waves FROM challenges WHERE challengeid = ?;`);
+// }
