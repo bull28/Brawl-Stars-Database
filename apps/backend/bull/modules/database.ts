@@ -454,10 +454,13 @@ export function parseChallengeWaves(wavesString: string): ChallengeWave[]{
                     valid = false;
                 }
                 if (valid === true && typeof data[x].level === "number"){
-                    waves.push({
-                        level: data[x].level,
-                        enemies: data[x].enemies
-                    });
+                    const wave: ChallengeWave = {level: data[x].level, enemies: enemies};
+                    if (typeof data[x].delay === "number"){
+                        wave.delay = data[x].delay;
+                    } if (typeof data[x].maxEnemies === "number"){
+                        wave.maxEnemies = data[x].maxEnemies;
+                    }
+                    waves.push(wave);
                 } else{
                     // Either all or none of the waves must be valid. Having some of the waves valid will result in an
                     // easier challenge with fewer waves than intended.
@@ -1052,23 +1055,52 @@ interface ChallengeResult extends RowDataPacket{
     stats: string;
     waves: string;
 }
-export async function getChallenge(values: ActiveChallengeValues): Promise<ChallengeResult[]>{
+export async function getActiveChallenge(values: ActiveChallengeValues): Promise<ChallengeResult[]>{
     const valuesArray = [values.key];
     return queryDatabase<typeof valuesArray, ChallengeResult[]>(pool, valuesArray, false,
         `SELECT C.username AS owner, A.accepted_by, A.accepted, C.difficulty, C.levels, C.stats, C.waves FROM ${CHALLENGE_TABLE_NAME} C, ${ACTIVE_CHALLENGE_TABLE_NAME} A WHERE C.challengeid = A.challengeid AND A.active_key = ?;`);
 }
 
 
-export async function acceptChallenge(values: ActiveChallengeValues): Promise<ResultSetHeader>{
+export async function acceptActiveChallenge(values: ActiveChallengeValues): Promise<ResultSetHeader>{
     const valuesArray = [values.key];
     const query = `UPDATE ${ACTIVE_CHALLENGE_TABLE_NAME} SET accepted = 1 WHERE active_key = ?;`;
     return updateDatabase<typeof valuesArray>(pool, valuesArray, false, query);
 }
 
 
-export async function deleteChallenge(values: ActiveChallengeValues, connection?: PoolConnection): Promise<ResultSetHeader>{
+export async function deleteActiveChallenge(values: ActiveChallengeValues, connection?: PoolConnection): Promise<ResultSetHeader>{
     const valuesArray = [values.key];
     const query = `DELETE FROM ${ACTIVE_CHALLENGE_TABLE_NAME} WHERE active_key = ?;`;
+    if (connection !== undefined){
+        return transactionUpdate<typeof valuesArray>(connection, valuesArray, true, query);
+    }
+    return updateDatabase<typeof valuesArray>(pool, valuesArray, true, query);
+}
+
+
+interface CreateChallengeValues{
+    username: string;
+    difficulty: number;
+    levels: number;
+    stats: string;
+    waves: string;
+}
+export async function createChallenge(values: CreateChallengeValues, connection?: PoolConnection): Promise<ResultSetHeader>{
+    const valuesArray = [
+        values.username, values.difficulty, values.levels, values.stats, values.waves
+    ];
+    const query = `INSERT INTO ${CHALLENGE_TABLE_NAME} (username, difficulty, levels, stats, waves) VALUES (?, ?, ?, ?, ?);`;
+    if (connection !== undefined){
+        return transactionUpdate<typeof valuesArray>(connection, valuesArray, false, query);
+    }
+    return updateDatabase<typeof valuesArray>(pool, valuesArray, false, query);
+}
+
+
+export async function deleteChallenge(values: UsernameValues, connection?: PoolConnection): Promise<ResultSetHeader>{
+    const valuesArray = [values.username];
+    const query = `DELETE FROM ${CHALLENGE_TABLE_NAME} WHERE username = ?;`;
     if (connection !== undefined){
         return transactionUpdate<typeof valuesArray>(connection, valuesArray, true, query);
     }

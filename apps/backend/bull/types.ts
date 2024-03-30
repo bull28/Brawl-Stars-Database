@@ -698,11 +698,24 @@ export interface ReportPreview{
 //                                         Challenge Types                                        //
 //------------------------------------------------------------------------------------------------//
 
+/**
+ * Storage of one wave in a challenge
+ */
 export interface ChallengeWave{
     level: number;
     enemies: string[];
+    delay?: number;
+    maxEnemies?: number;
 }
 
+/**
+ * Format of challenge waves that the user inputs
+ */
+export type UserWaves = Pick<ChallengeWave, "level" | "enemies">[];
+
+/**
+ * Data required to create a game modification object for a challenge
+ */
 export interface ChallengeData{
     owner: string;
     difficulty: number;
@@ -711,6 +724,9 @@ export interface ChallengeData{
     waves: ChallengeWave[];
 }
 
+/**
+ * Game modification object for a challenge, sent to the game
+ */
 export interface ChallengeGameMod{
     options: {
         key: string;

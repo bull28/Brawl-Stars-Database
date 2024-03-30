@@ -19,8 +19,8 @@ import {
     getAllReports, 
     deleteReport, 
     getResourcesAndProgress,
-    getChallenge,
-    deleteChallenge
+    getActiveChallenge,
+    deleteActiveChallenge
 } from "../modules/database";
 import {Empty, TokenReqBody, UserResources, DatabaseBadges, GameReport, ReportPreview} from "../types";
 
@@ -75,7 +75,7 @@ router.post<Empty, Empty, SaveReqBody>("/save", databaseErrorHandler<SaveReqBody
         }
 
         // Get the username associated with the given challenge key then save the report with that username
-        const challenges = await getChallenge({key: key});
+        const challenges = await getActiveChallenge({key: key});
         if (challenges[0].accepted !== 1){
             res.status(403).send("This challenge has not been accepted yet.");
             return;
@@ -118,7 +118,7 @@ router.post<Empty, Empty, SaveReqBody>("/save", databaseErrorHandler<SaveReqBody
         }, connection);
 
         if (isChallenge === true && typeof key === "string"){
-            await deleteChallenge({key: key}, connection);
+            await deleteActiveChallenge({key: key}, connection);
         }
     });
 
