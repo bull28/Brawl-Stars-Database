@@ -1,7 +1,7 @@
 import express from "express";
 import allSkins from "../data/brawlers_data.json";
 import {HOURS_PER_REWARD, TOKENS_PER_REWARD, MAX_REWARD_STACK, AVATAR_IMAGE_DIR, THEME_IMAGE_DIR, SCENE_IMAGE_DIR} from "../data/constants";
-import {signToken, validateToken} from "../modules/authenticate";
+import {signToken, validateToken, hashPassword, checkPassword} from "../modules/authenticate";
 import {freeAvatarFiles, specialAvatarFiles, freeThemeFiles, specialThemeFiles, sceneFiles} from "../modules/fileloader";
 import {getAvatars, getCosmetics, getThemes} from "../modules/pins";
 import {MAP_CYCLE_HOURS, SeasonTime, mod, realToTime, subtractSeasonTimes} from "../modules/maps";
@@ -60,19 +60,24 @@ router.post<Empty, Empty, LoginReqBody>("/login", databaseErrorHandler<LoginReqB
         res.status(400).send("Username or password is missing.");
         return;
     }
-    const results = await userLogin({username: username, password: password});
+    const results = await userLogin({username: username});
 
     if (results.length === 0){
         res.status(401).send("Incorrect username or password.");
         return;
     }
-
-    const userResults = results[0];
-    if (typeof userResults.username !== "string"){
+    if (typeof results[0].password !== "string"){
         res.status(500).send("Database is not set up properly.");
         return;
     }
-    const userInfo = signToken(userResults.username);
+
+    const match = await checkPassword(results[0].password, password);
+    if (match === false){
+        res.status(401).send("Incorrect username or password.");
+        return;
+    }
+
+    const userInfo = signToken(results[0].username);
     res.json(userInfo);
 }));
 
@@ -94,10 +99,6 @@ router.post<Empty, Empty, LoginReqBody>("/signup", databaseErrorHandler<LoginReq
         res.status(400).send("Username or password is too short. Minimum username length is 2 and password length is 3.");
         return;
     }
-    if (password.includes(" ") === true){
-        res.status(400).send("Password cannot contain spaces.");
-        return;
-    }
 
     // If there are enough brawlers in the game, give the user 3 to start so they do not keep getting coins instead of
     // pins because they have no brawlers unlocked.
@@ -111,28 +112,16 @@ router.post<Empty, Empty, LoginReqBody>("/signup", databaseErrorHandler<LoginReq
         }
     }
 
+    const hash = await hashPassword(password);
+
     await createNewUser({
         username: username,
-        password: password,
+        password: hash,
         active_avatar: "free/default",
         brawlers: stringifyBrawlers(startingBrawlers),
     });
 
-    const results = await userLogin({username: username, password: password});
-
-    // At this point, the query was successful so either the login is successful or the username/password are incorrect
-
-    if (results.length === 0){
-        res.status(401).send("Incorrect username or password.");
-        return;
-    }
-
-    const userResults = results[0];
-    if (typeof userResults.username !== "string"){
-        res.status(500).send("Database is not set up properly.");
-        return;
-    }
-    const userInfo = signToken(userResults.username);
+    const userInfo = signToken(username);
     res.json(userInfo);
 }));
 
@@ -144,11 +133,6 @@ router.post<Empty, Empty, UpdateReqBody>("/update", loginErrorHandler<UpdateReqB
 
     if (typeof newPassword !== "string" || typeof newAvatar !== "string"){
         res.status(400).send("New password or new avatar is missing.");
-        return;
-    }
-
-    if (newPassword.includes(" ") === true){
-        res.status(400).send("Password cannot contain spaces.");
         return;
     }
     if (newPassword !== "" && newPassword.length < 3){
@@ -164,12 +148,24 @@ router.post<Empty, Empty, UpdateReqBody>("/update", loginErrorHandler<UpdateReqB
     const userBrawlers: DatabaseBrawlers = parseBrawlers(results[0].brawlers);
     const userAvatars: DatabaseAvatars = parseStringArray(results[0].avatars);
 
-    if (newPassword === ""){
-        currentPassword = results[0].password;
-        newPassword = results[0].password;
-    } else if (currentPassword === undefined){
-        res.status(400).send("Current password is required to change password.");
-        return;
+    // By default, the password will not be changed so set the new password hash to the same as what was already there.
+    // If the user specifies a non-empty string as a new password, check their current password and if it is valid,
+    // hash their new password then set their password to that.
+    let newPasswordHash = results[0].password;
+
+    if (newPassword !== ""){
+        if (currentPassword === undefined){
+            res.status(400).send("Current password is required to change password.");
+            return;
+        }
+
+        const match = await checkPassword(results[0].password, currentPassword);
+        if (match === false){
+            res.status(401).send("Current password is incorrect.");
+            return;
+        }
+
+        newPasswordHash = await hashPassword(newPassword);
     }
 
     // To avoid storing file extensions in the database, newAvatar must contain only the avatar name. If the user does
@@ -196,17 +192,11 @@ router.post<Empty, Empty, UpdateReqBody>("/update", loginErrorHandler<UpdateReqB
         newAvatar = newAvatarName[0].replace(AVATAR_IMAGE_DIR, "");
     }
 
-    const updateResults = await updateAccount({
-        newPassword: newPassword,
+    await updateAccount({
+        newPassword: newPasswordHash,
         newAvatar: newAvatar,
-        username: currentUsername,
-        currentPassword: currentPassword
+        username: currentUsername
     });
-
-    if (updateResults.affectedRows === 0){
-        res.status(401).send("Current password is incorrect.");
-        return;
-    }
 
     const userInfo = signToken(currentUsername);
     res.json(userInfo);

@@ -499,19 +499,14 @@ export async function selectLastID(): Promise<LastInsertID[]>{
 }
 
 
-interface LoginValues{
+interface LoginResult extends RowDataPacket{
     username: string;
     password: string;
 }
-interface LoginResult extends RowDataPacket{
-    username: string;
-}
-export async function userLogin(values: LoginValues): Promise<LoginResult[]>{
-    const valuesArray = [
-        values.username, values.password
-    ];
+export async function userLogin(values: UsernameValues): Promise<LoginResult[]>{
+    const valuesArray = [values.username];
     return queryDatabase<typeof valuesArray, LoginResult[]>(pool, valuesArray, true,
-        `SELECT username FROM ${TABLE_NAME} WHERE username = ? AND password = ?;`);
+        `SELECT username, password FROM ${TABLE_NAME} WHERE username = ?;`);
 }
 
 
@@ -549,14 +544,13 @@ interface UpdateAccountValues{
     newPassword: string;
     newAvatar: string;
     username: string;
-    currentPassword: string;
 }
 export async function updateAccount(values: UpdateAccountValues): Promise<ResultSetHeader>{
     const valuesArray = [
-        values.newPassword, values.newAvatar, values.username, values.currentPassword
+        values.newPassword, values.newAvatar, values.username
     ];
-    return updateDatabase<typeof valuesArray>(pool, valuesArray, true,
-        `UPDATE ${TABLE_NAME} SET password = ?, active_avatar = ? WHERE username = ? AND password = ?;`);
+    return updateDatabase<typeof valuesArray>(pool, valuesArray, false,
+        `UPDATE ${TABLE_NAME} SET password = ?, active_avatar = ? WHERE username = ?;`);
 }
 
 

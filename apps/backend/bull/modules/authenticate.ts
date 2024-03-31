@@ -1,4 +1,5 @@
 import jsonwebtoken, {UsernameJwtPayload} from "jsonwebtoken";
+import {randomBytes, scrypt, timingSafeEqual} from "crypto";
 import {UserTokenResult} from "../types";
 
 declare module "jsonwebtoken"{
@@ -8,6 +9,10 @@ declare module "jsonwebtoken"{
 }
 
 const secret: jsonwebtoken.Secret = "THE KING WINS AGAIN";
+const saltBytes = 32;
+const hashLength = 64;
+const hashCost = 4096;
+const hashSplit = "BULL";
 
 export function signToken(username: string): UserTokenResult{
     const user: UsernameJwtPayload = {
@@ -35,4 +40,34 @@ export function validateToken(token: string): string{
     } catch (error){
         return "";
     }
+}
+
+export async function hashPassword(password: string): Promise<string>{
+    return new Promise((resolve, reject) => {
+        const salt = randomBytes(saltBytes).toString("hex");
+        scrypt(password, salt, hashLength, {cost: hashCost}, (error, passwordHash) => {
+            if (error !== null){
+                reject(error);
+            }
+            resolve(`${passwordHash.toString("hex")}${hashSplit}${salt}`);
+        });
+    });
+}
+
+export async function checkPassword(stored: string, password: string): Promise<boolean>{
+    return new Promise((resolve, reject) => {
+        const storedValues = stored.split(hashSplit);
+        if (storedValues.length !== 2){
+            reject(new Error("Database is not set up properly."));
+        }
+
+        const storedHash = Buffer.from(storedValues[0], "hex");
+        const salt = storedValues[1];
+        scrypt(password, salt, hashLength, {cost: hashCost}, (error, passwordHash) => {
+            if (error !== null){
+                reject(error);
+            }
+            resolve(timingSafeEqual(storedHash, passwordHash));
+        });
+    });
 }
