@@ -809,6 +809,7 @@ export function extractReportData(data: number[]): ReportData | undefined{
     }
 
     return {
+        gameMode: gameMode,
         player: {
             difficulty: difficulty,
             brawler: data[p + 2],

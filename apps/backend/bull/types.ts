@@ -643,6 +643,7 @@ export type GameReport = [number, number, number[]];
  * Data from a game report required to update progress
  */
 export interface ReportData{
+    gameMode: number;
     player: {
         difficulty: number;
         brawler: number;

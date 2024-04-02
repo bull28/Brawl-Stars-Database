@@ -1,5 +1,6 @@
 import express from "express";
 import {randomUUID} from "crypto";
+import {CHALLENGE_REPORT_COST} from "../data/constants";
 import {getMasteryLevel} from "../modules/accessories";
 import {getGameMod, createChallengeData} from "../modules/challenges";
 import {
@@ -8,6 +9,8 @@ import {
     transaction, 
     parseNumberArray, 
     parseChallengeWaves, 
+    getResources, 
+    setTokens, 
     beforeAccessory, 
     createActiveChallenge, 
     getActiveChallenge, 
@@ -65,8 +68,8 @@ router.post<Empty, Empty, ChallengeKeyReqBody>("/get", databaseErrorHandler<Chal
     });
 
     // When the game makes a request for the challenge data, it will set the active challenge's accepted value to 1. If
-    // the accepted value is 1, any more requests for that same challenge will not be allowed. This prevents the user
-    // from refreshing the page and restarting the challenge if they were about to lose.
+    // the accepted value is 1, any future requests for that same challenge will not be allowed. This prevents the user
+    // from refreshing the page and trying the challenge again if they were about to lose.
     await acceptActiveChallenge({key: key});
     res.json(mod);
 }));
@@ -110,9 +113,19 @@ router.post<Empty, Empty, ChallengeStartReqBody>("/start", loginErrorHandler<Cha
         return;
     }
 
+    // Tokens are deducted when creating a challenge but claiming the reward from that challenge is free
+    const results = await getResources({username: username});
+    let tokens = results[0].tokens;
+
+    if (tokens < CHALLENGE_REPORT_COST){
+        res.status(403).send("You cannot afford to start a challenge!");
+        return;
+    }
+    tokens -= CHALLENGE_REPORT_COST;
+
     // Check that the challenge with the given id actually exists before adding an active challenge with that id
-    const results = await getChallenge({challengeid: challengeid});
-    if (results.length === 0){
+    const challenges = await getChallenge({challengeid: challengeid});
+    if (challenges.length === 0){
         res.status(404).send("Challenge does not exist.");
         return;
     }
@@ -120,6 +133,7 @@ router.post<Empty, Empty, ChallengeStartReqBody>("/start", loginErrorHandler<Cha
     const key: string = randomUUID();
 
     await transaction(async (connection) => {
+        await setTokens({tokens: tokens, username: username}, connection);
         await deleteActiveChallenge({key: "", username: username}, connection);
         await createActiveChallenge({
             key: key,
@@ -127,7 +141,8 @@ router.post<Empty, Empty, ChallengeStartReqBody>("/start", loginErrorHandler<Cha
             username: username
         }, connection);
     });
-    res.json({});
+
+    res.json({key: key});
 }));
 
 export default router;

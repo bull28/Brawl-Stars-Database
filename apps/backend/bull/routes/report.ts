@@ -1,4 +1,5 @@
 import express from "express";
+import {DEFAULT_REPORT_COST} from "../data/constants";
 import {validateReport, getBadgeRewardPreview, extractReportGameMode, extractReportPreviewStats, extractReportData} from "../modules/accessories";
 import {getGameReward} from "../modules/brawlbox";
 import {
@@ -131,13 +132,14 @@ router.post<Empty, Empty, TokenReqBody>("/all", loginErrorHandler<TokenReqBody>(
 
     const reportList: ReportPreview[] = [];
     for (let x = 0; x < results.length; x++){
-        const stats = extractReportPreviewStats(parseNumberArray(results[x].stats));
+        const data = parseNumberArray(results[x].stats);
+        const stats = extractReportPreviewStats(data);
 
         if (stats !== undefined){
             reportList.push({
                 reportid: results[x].reportid,
                 endTime: results[x].end_time,
-                cost: 200,
+                cost: extractReportGameMode(data) === 0 ? DEFAULT_REPORT_COST : 0,
                 title: results[x].title,
                 stats: stats
             });
@@ -208,12 +210,15 @@ router.post<Empty, Empty, ClaimReportReqBody>("/claim", loginErrorHandler<ClaimR
         return;
     }
 
-    // If the user wants to claim the full reward, deduct tokens here. All rewards cost the same number of tokens.
-    if (resources.tokens < 200){
-        res.status(403).send("You cannot afford to claim these rewards!");
-        return;
+    // If the user wants to claim the full reward, deduct tokens here. All rewards from game mode 0 cost the same amount
+    // of tokens and all rewards from other game modes do not cost anything to claim.
+    if (report.gameMode === 0){
+        if (resources.tokens < DEFAULT_REPORT_COST){
+            res.status(403).send("You cannot afford to claim these rewards!");
+            return;
+        }
+        resources.tokens -= DEFAULT_REPORT_COST;
     }
-    resources.tokens -= 200;
 
     // Open brawl box and add badges
     const reward = getGameReward(resources, report);

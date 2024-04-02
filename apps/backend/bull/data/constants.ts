@@ -28,6 +28,9 @@ export const FEATURED_REFRESH_HOURS = 24;
 
 export const TRADES_PER_PAGE = 20;
 
+export const DEFAULT_REPORT_COST = 200;
+export const CHALLENGE_REPORT_COST = 100;
+
 export const themeMap = new Map<string, string>([
     ["default", "Default"],
     ["retro", "Retropolis"],
@@ -47,7 +50,7 @@ export const themeMap = new Map<string, string>([
     ["deepsea", "Deep Sea"],
     ["darkmas", "Dark Brawlidays"],
     ["mandy", "Candyland"],
-    ["yellow_face", " "]
+    ["yellow_face", "\u00a0"]
 ]);
 
 export const sceneMap = new Map<string, string>([

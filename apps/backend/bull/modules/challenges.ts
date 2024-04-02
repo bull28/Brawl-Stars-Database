@@ -1,3 +1,4 @@
+import {RNG} from "./rewards";
 import {UserWaves, ChallengeData, ChallengeGameMod} from "../types";
 
 type PlayerUpgrades = {
@@ -22,24 +23,24 @@ const stagePoints: [number, number][][] = [
     [[120, 75], [180, 105]],
     [[60, 45], [90, 60], [150, 75]]
 ];
-const destinations = [
+const destinations: {levelid: number; weight: number; background: string; displayName: string;}[][] = [
     [
-        {levelid: 1, background: "hub", displayName: "Starr Park Hub"}
+        {levelid: 1, weight: 1, background: "hub", displayName: "Starr Park Hub"}
     ],
     [
-        {levelid: 2, background: "oldtown", displayName: "Old Town"},
-        {levelid: 3, background: "biodome", displayName: "Biodome"},
-        {levelid: 4, background: "ghostmetro", displayName: "Ghost Station"},
-        {levelid: 5, background: "snowtel", displayName: "Snowtel"},
-        {levelid: 6, background: "giftshop", displayName: "Gift Shop"}
+        {levelid: 2, weight: 1, background: "oldtown", displayName: "Old Town"},
+        {levelid: 3, weight: 1, background: "biodome", displayName: "Biodome"},
+        {levelid: 4, weight: 1, background: "ghostmetro", displayName: "Ghost Station"},
+        {levelid: 5, weight: 1, background: "snowtel", displayName: "Snowtel"},
+        {levelid: 6, weight: 1, background: "giftshop", displayName: "Gift Shop"}
     ],
     [
-        {levelid: 7, background: "retropolis", displayName: "Retropolis"},
-        {levelid: 8, background: "candystand", displayName: "Candyland"},
-        {levelid: 9, background: "rumblejungle", displayName: "Rumble Jungle"},
-        {levelid: 10, background: "stuntshow", displayName: "Stunt Show"},
-        {levelid: 11, background: "minicity", displayName: "Super City"},
-        {levelid: 12, background: "arcade", displayName: "Arcade"}
+        {levelid: 7, weight: 1, background: "retropolis", displayName: "Retropolis"},
+        {levelid: 8, weight: 1, background: "candystand", displayName: "Candyland"},
+        {levelid: 9, weight: 1, background: "rumblejungle", displayName: "Rumble Jungle"},
+        {levelid: 10, weight: 1, background: "stuntshow", displayName: "Stunt Show"},
+        {levelid: 11, weight: 1, background: "minicity", displayName: "Super City"},
+        {levelid: 12, weight: 1, background: "arcade", displayName: "Arcade"}
     ]
 ];
 const offenseUpgrades: {[k in keyof PlayerUpgrades["offense"]]: [number, number][];} = {
@@ -116,15 +117,18 @@ export function getGameMod(key: string, masteryLevel: number, data: ChallengeDat
         });
 
         if (x < destinations.length){
-            const d = destinations[x][Math.floor(Math.random() * destinations[x].length)];
-            levels.push({
-                levelid: d.levelid,
-                waves: [],
-                background: d.background,
-                displayName: d.displayName,
-                stages: [x, x],
-                destination: 0
-            });
+            const i = RNG(destinations[x].map((value) => value.weight));
+            if (i >= 0){
+                const d = destinations[x][i];
+                levels.push({
+                    levelid: d.levelid,
+                    waves: [],
+                    background: d.background,
+                    displayName: d.displayName,
+                    stages: [x, x],
+                    destination: 0
+                });
+            }
         }
     }
 
@@ -171,7 +175,7 @@ export function getGameMod(key: string, masteryLevel: number, data: ChallengeDat
         },
         difficulties: [{
             difficultyid: difficulty,
-            name: "Challenge Difficulty",
+            name: `${data.owner}'s Challenge`,
             countTier: 0,
             strengthTier: difficulty,
             healthBonusReq: 0.5,
