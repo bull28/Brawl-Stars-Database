@@ -1,4 +1,5 @@
 import express from "express";
+import {randomUUID} from "crypto";
 import {getMasteryLevel} from "../modules/accessories";
 import {getGameMod, createChallengeData} from "../modules/challenges";
 import {
@@ -8,9 +9,12 @@ import {
     parseNumberArray, 
     parseChallengeWaves, 
     beforeAccessory, 
+    createActiveChallenge, 
     getActiveChallenge, 
     acceptActiveChallenge, 
+    deleteActiveChallenge, 
     createChallenge, 
+    getChallenge, 
     deleteChallenge
 } from "../modules/database";
 import {Empty, TokenReqBody, ChallengeWave, UserWaves} from "../types";
@@ -24,6 +28,11 @@ interface ChallengeKeyReqBody{
 
 interface ChallengeCreateReqBody extends TokenReqBody{
     waves: UserWaves;
+}
+
+interface ChallengeStartReqBody extends TokenReqBody{
+    // Later, this will not be necessary when there is automatic challenge matchmaking
+    challengeid: number;
 }
 
 // Get the list of all accessories
@@ -83,6 +92,7 @@ router.post<Empty, Empty, ChallengeCreateReqBody>("/create", loginErrorHandler<C
         await deleteChallenge({username: username}, connection);
         await createChallenge({
             username: username,
+            strength: 0,
             difficulty: challengeData.difficulty,
             levels: challengeData.levels,
             stats: JSON.stringify(challengeData.stats),
@@ -90,7 +100,34 @@ router.post<Empty, Empty, ChallengeCreateReqBody>("/create", loginErrorHandler<C
         }, connection);
     });
 
-    res.json("Challenge successfully created");
+    res.send("Challenge successfully created");
+}));
+
+router.post<Empty, Empty, ChallengeStartReqBody>("/start", loginErrorHandler<ChallengeStartReqBody>(async (req, res, username) => {
+    const challengeid = req.body.challengeid;
+    if (typeof challengeid !== "number"){
+        res.status(400).send("Invalid challenge id.");
+        return;
+    }
+
+    // Check that the challenge with the given id actually exists before adding an active challenge with that id
+    const results = await getChallenge({challengeid: challengeid});
+    if (results.length === 0){
+        res.status(404).send("Challenge does not exist.");
+        return;
+    }
+
+    const key: string = randomUUID();
+
+    await transaction(async (connection) => {
+        await deleteActiveChallenge({key: "", username: username}, connection);
+        await createActiveChallenge({
+            key: key,
+            challengeid: challengeid,
+            username: username
+        }, connection);
+    });
+    res.json({});
 }));
 
 export default router;

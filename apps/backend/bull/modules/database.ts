@@ -201,7 +201,7 @@ export function loginErrorHandler<R extends TokenReqBody, Q = Query, P = ParamsD
  * @param query sql query string
  * @returns promise resolving to the result
  */
-async function queryDatabase<Values, Result extends RowDataPacket[]>(connection: Pool, values: Values, allowEmptyResults: boolean, query: string): Promise<Result>{
+async function queryDatabase<Result extends RowDataPacket[]>(connection: Pool, values: (string | number)[], allowEmptyResults: boolean, query: string): Promise<Result>{
     if (success === false){
         return new Promise<Result>((resolve, reject) => {
             reject("Could not connect to database.");
@@ -232,7 +232,7 @@ async function queryDatabase<Values, Result extends RowDataPacket[]>(connection:
  * @param query sql query string
  * @returns promise resolving to the result set header
  */
-async function updateDatabase<Values>(connection: Pool, values: Values, allowNoUpdate: boolean, query: string): Promise<ResultSetHeader>{
+async function updateDatabase(connection: Pool, values: (string | number)[], allowNoUpdate: boolean, query: string): Promise<ResultSetHeader>{
     if (success === false){
         return new Promise<ResultSetHeader>((resolve, reject) => {
             reject("Could not connect to database.");
@@ -263,7 +263,7 @@ async function updateDatabase<Values>(connection: Pool, values: Values, allowNoU
  * @param query sql query string
  * @returns promise resolving to the result set header
  */
-async function transactionUpdate<Values>(connection: PoolConnection, values: Values, allowNoUpdate: boolean, query: string): Promise<ResultSetHeader>{
+async function transactionUpdate(connection: PoolConnection, values: (string | number)[], allowNoUpdate: boolean, query: string): Promise<ResultSetHeader>{
     return new Promise<ResultSetHeader>((resolve, reject) => {
         connection.query<ResultSetHeader>(query, values, (error, results) => {
             if (error !== null && error !== undefined){
@@ -494,7 +494,7 @@ interface LastInsertID extends RowDataPacket{
     lastid: string;
 }
 export async function selectLastID(): Promise<LastInsertID[]>{
-    return queryDatabase<never[], LastInsertID[]>(pool, [], false,
+    return queryDatabase<LastInsertID[]>(pool, [], false,
         "SELECT LAST_INSERT_ID() AS lastid");
 }
 
@@ -505,7 +505,7 @@ interface LoginResult extends RowDataPacket{
 }
 export async function userLogin(values: UsernameValues): Promise<LoginResult[]>{
     const valuesArray = [values.username];
-    return queryDatabase<typeof valuesArray, LoginResult[]>(pool, valuesArray, true,
+    return queryDatabase<LoginResult[]>(pool, valuesArray, true,
         `SELECT username, password FROM ${TABLE_NAME} WHERE username = ?;`);
 }
 
@@ -520,7 +520,7 @@ export async function createNewUser(values: NewUserValues): Promise<ResultSetHea
     const valuesArray = [
         values.username, values.password, values.active_avatar, values.brawlers, "[]", "[]", "[]", "[]", "[]", ""
     ];
-    return updateDatabase<typeof valuesArray>(pool, valuesArray, false,
+    return updateDatabase(pool, valuesArray, false,
         `INSERT INTO ${TABLE_NAME} (username, password, active_avatar, brawlers, avatars, themes, scenes, accessories, wild_card_pins, featured_item) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);`);
 }
 
@@ -535,7 +535,7 @@ interface BeforeUpdateResult extends RowDataPacket{
 }
 export async function beforeUpdate(values: UsernameValues): Promise<BeforeUpdateResult[]>{
     const valuesArray = [values.username];
-    return queryDatabase<typeof valuesArray, BeforeUpdateResult[]>(pool, valuesArray, false,
+    return queryDatabase<BeforeUpdateResult[]>(pool, valuesArray, false,
         `SELECT username, password, active_avatar, brawlers, avatars, accessories FROM ${TABLE_NAME} WHERE username = ?;`);
 }
 
@@ -549,7 +549,7 @@ export async function updateAccount(values: UpdateAccountValues): Promise<Result
     const valuesArray = [
         values.newPassword, values.newAvatar, values.username
     ];
-    return updateDatabase<typeof valuesArray>(pool, valuesArray, false,
+    return updateDatabase(pool, valuesArray, false,
         `UPDATE ${TABLE_NAME} SET password = ?, active_avatar = ? WHERE username = ?;`);
 }
 
@@ -560,7 +560,7 @@ interface UnlockedCosmeticsResult extends RowDataPacket{
 }
 export async function getUnlockedCosmetics(values: UsernameValues): Promise<UnlockedCosmeticsResult[]>{
     const valuesArray = [values.username];
-    return queryDatabase<typeof valuesArray, UnlockedCosmeticsResult[]>(pool, valuesArray, false,
+    return queryDatabase<UnlockedCosmeticsResult[]>(pool, valuesArray, false,
         `SELECT themes, scenes FROM ${TABLE_NAME} WHERE username = ?;`);
 }
 
@@ -573,7 +573,7 @@ interface ActiveCosmeticsResult extends RowDataPacket{
 }
 export async function getActiveCosmetics(values: UsernameValues): Promise<ActiveCosmeticsResult[]>{
     const valuesArray = [values.username];
-    return queryDatabase<typeof valuesArray, ActiveCosmeticsResult[]>(pool, valuesArray, false,
+    return queryDatabase<ActiveCosmeticsResult[]>(pool, valuesArray, false,
         `SELECT background, icon, music, scene FROM ${COSMETIC_TABLE_NAME} WHERE username = ?;`);
 }
 
@@ -589,7 +589,7 @@ export async function updateCosmetics(values: UpdateCosmeticsValues): Promise<Re
     const valuesArray = [
         values.background, values.icon, values.music, values.scene, values.username
     ];
-    return updateDatabase<typeof valuesArray>(pool, valuesArray, false,
+    return updateDatabase(pool, valuesArray, false,
         `UPDATE ${COSMETIC_TABLE_NAME} SET background = ?, icon = ?, music = ?, scene = ? WHERE username = ?;`);
 }
 
@@ -602,7 +602,7 @@ interface LastClaimResult extends RowDataPacket{
 }
 export async function getLastClaim(values: UsernameValues): Promise<LastClaimResult[]>{
     const valuesArray = [values.username];
-    return queryDatabase<typeof valuesArray, LastClaimResult[]>(pool, valuesArray, false,
+    return queryDatabase<LastClaimResult[]>(pool, valuesArray, false,
         `SELECT username, last_claim, tokens, token_doubler FROM ${TABLE_NAME} WHERE username = ?;`);
 }
 
@@ -617,7 +617,7 @@ export async function updateLastClaim(values: LastClaimValues): Promise<ResultSe
     const valuesArray = [
         values.last_claim, values.tokens, values.token_doubler, values.username
     ];
-    return updateDatabase<typeof valuesArray>(pool, valuesArray, false,
+    return updateDatabase(pool, valuesArray, false,
         `UPDATE ${TABLE_NAME} SET last_claim = ?, tokens = ?, token_doubler = ? WHERE username = ?;`);
 }
 
@@ -638,7 +638,7 @@ interface ResourcesResult extends RowDataPacket{
 }
 export async function getResources(values: UsernameValues): Promise<ResourcesResult[]>{
     const valuesArray = [values.username];
-    return queryDatabase<typeof valuesArray, ResourcesResult[]>(pool, valuesArray, false,
+    return queryDatabase<ResourcesResult[]>(pool, valuesArray, false,
         `SELECT active_avatar, tokens, token_doubler, coins, trade_credits, points, brawlers, avatars, themes, scenes, accessories, wild_card_pins FROM ${TABLE_NAME} WHERE username = ?;`);
 }
 
@@ -663,9 +663,9 @@ export async function setResources(values: ResourcesValues, connection?: PoolCon
     ];
     const query = `UPDATE ${TABLE_NAME} SET tokens = ?, token_doubler = ?, coins = ?, trade_credits = ?, points = ?, brawlers = ?, avatars = ?, wild_card_pins = ?, themes = ?, scenes = ?, accessories = ? WHERE username = ?;`;
     if (connection !== undefined){
-        return transactionUpdate<typeof valuesArray>(connection, valuesArray, false, query);
+        return transactionUpdate(connection, valuesArray, false, query);
     }
-    return updateDatabase<typeof valuesArray>(pool, valuesArray, false, query);
+    return updateDatabase(pool, valuesArray, false, query);
 }
 
 
@@ -679,9 +679,9 @@ export async function setPoints(values: PointsValues, connection?: PoolConnectio
     ];
     const query = `UPDATE ${TABLE_NAME} SET points = ? WHERE username = ?;`;
     if (connection !== undefined){
-        return transactionUpdate<typeof valuesArray>(connection, valuesArray, false, query);
+        return transactionUpdate(connection, valuesArray, false, query);
     }
-    return updateDatabase<typeof valuesArray>(pool, valuesArray, false, query);
+    return updateDatabase(pool, valuesArray, false, query);
 }
 
 
@@ -697,7 +697,7 @@ interface BeforeShopResult extends RowDataPacket{
 }
 export async function beforeShop(values: UsernameValues): Promise<BeforeShopResult[]>{
     const valuesArray = [values.username];
-    return queryDatabase<typeof valuesArray, BeforeShopResult[]>(pool, valuesArray, false,
+    return queryDatabase<BeforeShopResult[]>(pool, valuesArray, false,
         `SELECT last_login, coins, trade_credits, brawlers, avatars, themes, scenes, featured_item FROM ${TABLE_NAME} WHERE username = ?;`);
 }
 
@@ -711,7 +711,7 @@ export async function updateFeaturedItem(values: FeaturedItemValues): Promise<Re
     const valuesArray = [
         values.last_login, values.featured_item, values.username
     ];
-    return updateDatabase<typeof valuesArray>(pool, valuesArray, false,
+    return updateDatabase(pool, valuesArray, false,
         `UPDATE ${TABLE_NAME} SET last_login = ?, featured_item = ? WHERE username = ?;`);
 }
 
@@ -731,7 +731,7 @@ export async function afterShop(values: ShopValues): Promise<ResultSetHeader>{
     const valuesArray = [
         values.last_login, values.coins, values.trade_credits, values.brawlers, values.avatars, values.themes, values.scenes, values.featured_item, values.username
     ];
-    return updateDatabase<typeof valuesArray>(pool, valuesArray, false,
+    return updateDatabase(pool, valuesArray, false,
         `UPDATE ${TABLE_NAME} SET last_login = ?, coins = ?, trade_credits = ?, brawlers = ?, avatars = ?, themes = ?, scenes = ?, featured_item = ? WHERE username = ?;`);
 }
 
@@ -745,7 +745,7 @@ interface BeforeTradeResult extends RowDataPacket{
 }
 export async function beforeTrade(values: UsernameValues): Promise<BeforeTradeResult[]>{
     const valuesArray = [values.username];
-    return queryDatabase<typeof valuesArray, BeforeTradeResult[]>(pool, valuesArray, false,
+    return queryDatabase<BeforeTradeResult[]>(pool, valuesArray, false,
         `SELECT brawlers, active_avatar, trade_credits, wild_card_pins, accessories FROM ${TABLE_NAME} WHERE username = ?;`);
 }
 
@@ -764,7 +764,7 @@ export async function createTrade(values: TradeCreateValues): Promise<ResultSetH
     const valuesArray = [
         values.creator, values.creator_avatar, values.creator_color, values.offer, values.request, values.trade_credits, values.trade_credits_time, values.expiration
     ];
-    return updateDatabase<typeof valuesArray>(pool, valuesArray, false,
+    return updateDatabase(pool, valuesArray, false,
         `INSERT INTO ${TRADE_TABLE_NAME} (creator, creator_avatar, creator_color, offer, request, trade_credits, trade_credits_time, expiration) VALUES (?, ?, ?, ?, ?, ?, ?, ?);`);
 }
 
@@ -781,9 +781,9 @@ export async function afterTrade(values: TradeUpdateValues, connection?: PoolCon
     ];
     const query = `UPDATE ${TABLE_NAME} SET brawlers = ?, wild_card_pins = ?, trade_credits = ? WHERE username = ?;`;
     if (connection !== undefined){
-        return transactionUpdate<typeof valuesArray>(connection, valuesArray, false, query);
+        return transactionUpdate(connection, valuesArray, false, query);
     }
-    return updateDatabase<typeof valuesArray>(pool, valuesArray, false, query);
+    return updateDatabase(pool, valuesArray, false, query);
 }
 
 
@@ -804,7 +804,7 @@ export async function getTradeAccept(values: TradeAcceptValues): Promise<TradeAc
     const valuesArray = [
         values.tradeid, values.minExpiration, values.accepted
     ];
-    return queryDatabase<typeof valuesArray, TradeAcceptResult[]>(pool, valuesArray, false,
+    return queryDatabase<TradeAcceptResult[]>(pool, valuesArray, false,
         `SELECT creator, offer, request, trade_credits FROM ${TRADE_TABLE_NAME} WHERE tradeid = ? AND expiration > ? AND accepted = ?;`);
 }
 
@@ -821,9 +821,9 @@ export async function afterTradeAccept(values: TradeAcceptUpdateValues, connecti
     ];
     const query = `UPDATE ${TRADE_TABLE_NAME} SET expiration = ?, accepted = ?, accepted_by = ? WHERE tradeid = ?;`;
     if (connection !== undefined){
-        return transactionUpdate<typeof valuesArray>(connection, valuesArray, false, query);
+        return transactionUpdate(connection, valuesArray, false, query);
     }
-    return updateDatabase<typeof valuesArray>(pool, valuesArray, false, query);
+    return updateDatabase(pool, valuesArray, false, query);
 }
 
 
@@ -835,7 +835,7 @@ interface TradeCloseResult extends TradeAcceptResult{
 }
 export async function getTradeClose(values: TradeIDValues): Promise<TradeCloseResult[]>{
     const valuesArray = [values.tradeid];
-    return queryDatabase<typeof valuesArray, TradeCloseResult[]>(pool, valuesArray, false,
+    return queryDatabase<TradeCloseResult[]>(pool, valuesArray, false,
         `SELECT creator, offer, request, trade_credits, trade_credits_time, expiration, accepted, accepted_by FROM ${TRADE_TABLE_NAME} WHERE tradeid = ?;`);
 }
 
@@ -844,9 +844,9 @@ export async function afterTradeClose(values: TradeIDValues, connection?: PoolCo
     const valuesArray = [values.tradeid];
     const query = `DELETE FROM ${TRADE_TABLE_NAME} WHERE tradeid = ?;`;
     if (connection !== undefined){
-        return transactionUpdate<typeof valuesArray>(connection, valuesArray, false, query);
+        return transactionUpdate(connection, valuesArray, false, query);
     }
-    return updateDatabase<typeof valuesArray>(pool, valuesArray, false, query);
+    return updateDatabase(pool, valuesArray, false, query);
 }
 
 
@@ -866,7 +866,7 @@ interface TradeViewIDResult extends TradeViewResult{
 }
 export async function viewTradeID(values: TradeIDValues): Promise<TradeViewIDResult[]>{
     const valuesArray = [values.tradeid];
-    return queryDatabase<typeof valuesArray, TradeViewIDResult[]>(pool, valuesArray, false,
+    return queryDatabase<TradeViewIDResult[]>(pool, valuesArray, false,
         `SELECT tradeid, creator, creator_avatar, creator_color, offer, request, trade_credits, expiration, accepted, accepted_by FROM ${TRADE_TABLE_NAME} WHERE tradeid = ?;`);
 }
 
@@ -876,7 +876,7 @@ interface TradeViewUserResult extends TradeViewResult{
 }
 export async function viewTradeUser(values: UsernameValues): Promise<TradeViewUserResult[]>{
     const valuesArray = [values.username];
-    return queryDatabase<typeof valuesArray, TradeViewUserResult[]>(pool, valuesArray, true,
+    return queryDatabase<TradeViewUserResult[]>(pool, valuesArray, true,
         `SELECT tradeid, offer, request, trade_credits, expiration, accepted FROM ${TRADE_TABLE_NAME} WHERE creator = ?;`);
 }
 
@@ -898,7 +898,7 @@ export async function viewTradeAll(values: TradeViewAllValues): Promise<TradeVie
     const valuesArray = [
         values.filterString, values.minExpiration, values.limitStart, values.limitAmount
     ];
-    return queryDatabase<typeof valuesArray, TradeViewAllResult[]>(pool, valuesArray, true,
+    return queryDatabase<TradeViewAllResult[]>(pool, valuesArray, true,
         `SELECT tradeid, creator, creator_avatar, creator_color, offer, request, trade_credits, expiration FROM ${TRADE_TABLE_NAME} WHERE ${values.filterColumn} LIKE ? AND expiration > ? ORDER BY ${values.sortString} LIMIT ?, ?;`);
 }
 
@@ -910,7 +910,7 @@ interface GameProgressResult extends RowDataPacket{
 }
 export async function getGameProgress(values: UsernameValues): Promise<GameProgressResult[]>{
     const valuesArray = [values.username];
-    return queryDatabase<typeof valuesArray, GameProgressResult[]>(pool, valuesArray, true,
+    return queryDatabase<GameProgressResult[]>(pool, valuesArray, true,
         `SELECT last_game, badges, best_scores FROM ${GAME_TABLE_NAME} WHERE username = ?;`);
 }
 
@@ -927,9 +927,9 @@ export async function setGameProgress(values: GameProgressValues, connection?: P
     ];
     const query = `UPDATE ${GAME_TABLE_NAME} SET last_game = ?, badges = ?, best_scores = ? WHERE username = ?;`;
     if (connection !== undefined){
-        return transactionUpdate<typeof valuesArray>(connection, valuesArray, false, query);
+        return transactionUpdate(connection, valuesArray, false, query);
     }
-    return updateDatabase<typeof valuesArray>(pool, valuesArray, false, query);
+    return updateDatabase(pool, valuesArray, false, query);
 }
 
 
@@ -946,9 +946,9 @@ export async function addReport(values: ReportValues, connection?: PoolConnectio
     ];
     const query = `INSERT INTO ${REPORT_TABLE_NAME} (username, end_time, version, title, stats) VALUES (?, ?, ?, ?, ?);`;
     if (connection !== undefined){
-        return transactionUpdate<typeof valuesArray>(connection, valuesArray, false, query);
+        return transactionUpdate(connection, valuesArray, false, query);
     }
-    return updateDatabase<typeof valuesArray>(pool, valuesArray, false, query);
+    return updateDatabase(pool, valuesArray, false, query);
 }
 
 
@@ -962,7 +962,7 @@ interface ReportStatsResult extends RowDataPacket{
 }
 export async function getReport(values: ReportIDValues): Promise<ReportStatsResult[]>{
     const valuesArray = [values.reportid];
-    return queryDatabase<typeof valuesArray, ReportStatsResult[]>(pool, valuesArray, false,
+    return queryDatabase<ReportStatsResult[]>(pool, valuesArray, false,
         `SELECT username, version, stats FROM ${REPORT_TABLE_NAME} WHERE reportid = ?;`);
 }
 
@@ -976,7 +976,7 @@ interface ReportAllResult extends RowDataPacket{
 }
 export async function getAllReports(values: UsernameValues): Promise<ReportAllResult[]>{
     const valuesArray = [values.username];
-    return queryDatabase<typeof valuesArray, ReportAllResult[]>(pool, valuesArray, true,
+    return queryDatabase<ReportAllResult[]>(pool, valuesArray, true,
         `SELECT reportid, end_time, version, title, stats FROM ${REPORT_TABLE_NAME} WHERE username = ?;`);
 }
 
@@ -985,9 +985,9 @@ export async function deleteReport(values: ReportIDValues, connection?: PoolConn
     const valuesArray = [values.reportid];
     const query = `DELETE FROM ${REPORT_TABLE_NAME} WHERE reportid = ?;`;
     if (connection !== undefined){
-        return transactionUpdate<typeof valuesArray>(connection, valuesArray, true, query);
+        return transactionUpdate(connection, valuesArray, true, query);
     }
-    return updateDatabase<typeof valuesArray>(pool, valuesArray, true, query);
+    return updateDatabase(pool, valuesArray, true, query);
 }
 
 
@@ -1009,7 +1009,7 @@ interface ResourcesProgressResult extends RowDataPacket{
 }
 export async function getResourcesAndProgress(values: UsernameValues): Promise<ResourcesProgressResult[]>{
     const valuesArray = [values.username, values.username];
-    return queryDatabase<typeof valuesArray, ResourcesProgressResult[]>(pool, valuesArray, false,
+    return queryDatabase<ResourcesProgressResult[]>(pool, valuesArray, false,
         `SELECT U.active_avatar, U.tokens, U.token_doubler, U.coins, U.trade_credits, U.points, U.brawlers, U.avatars, U.themes, U.scenes, U.accessories, U.wild_card_pins, G.last_game, G.badges, G.best_scores FROM ${TABLE_NAME} U, ${GAME_TABLE_NAME} G WHERE U.username = ? AND G.username = ?;`);
 }
 
@@ -1021,7 +1021,7 @@ interface BeforeAccessoryResult extends RowDataPacket{
 }
 export async function beforeAccessory(values: UsernameValues): Promise<BeforeAccessoryResult[]>{
     const valuesArray = [values.username, values.username];
-    return queryDatabase<typeof valuesArray, ResourcesProgressResult[]>(pool, valuesArray, false,
+    return queryDatabase<ResourcesProgressResult[]>(pool, valuesArray, false,
         `SELECT U.points, U.accessories, G.badges FROM ${TABLE_NAME} U, ${GAME_TABLE_NAME} G WHERE U.username = ? AND G.username = ?;`);
 }
 
@@ -1032,7 +1032,7 @@ interface AccessoryClaimValues{
 }
 export async function updateAccessories(values: AccessoryClaimValues): Promise<ResultSetHeader>{
     const valuesArray = [values.accessories, values.username];
-    return updateDatabase<typeof valuesArray>(pool, valuesArray, false,
+    return updateDatabase(pool, valuesArray, false,
         `UPDATE ${TABLE_NAME} SET accessories = ? WHERE username = ?;`);
 }
 
@@ -1040,7 +1040,11 @@ export async function updateAccessories(values: AccessoryClaimValues): Promise<R
 interface ActiveChallengeValues{
     key: string;
 }
-interface ChallengeResult extends RowDataPacket{
+interface CreateActiveValues extends ActiveChallengeValues{
+    challengeid: number;
+    username: string;
+}
+interface ActiveChallengeResult extends RowDataPacket{
     owner: string;
     accepted_by: string;
     accepted: number;
@@ -1049,32 +1053,52 @@ interface ChallengeResult extends RowDataPacket{
     stats: string;
     waves: string;
 }
-export async function getActiveChallenge(values: ActiveChallengeValues): Promise<ChallengeResult[]>{
+export async function createActiveChallenge(values: CreateActiveValues, connection?: PoolConnection): Promise<ResultSetHeader>{
+    const valuesArray = [
+        values.key, values.challengeid, values.username
+    ];
+    const query = `INSERT INTO ${ACTIVE_CHALLENGE_TABLE_NAME} (active_key, challengeid, accepted_by) VALUES (?, ?, ?);`;
+    if (connection !== undefined){
+        return transactionUpdate(connection, valuesArray, false, query);
+    }
+    return updateDatabase(pool, valuesArray, false, query);
+}
+
+
+export async function getActiveChallenge(values: ActiveChallengeValues): Promise<ActiveChallengeResult[]>{
     const valuesArray = [values.key];
-    return queryDatabase<typeof valuesArray, ChallengeResult[]>(pool, valuesArray, false,
+    return queryDatabase<ActiveChallengeResult[]>(pool, valuesArray, false,
         `SELECT C.username AS owner, A.accepted_by, A.accepted, C.difficulty, C.levels, C.stats, C.waves FROM ${CHALLENGE_TABLE_NAME} C, ${ACTIVE_CHALLENGE_TABLE_NAME} A WHERE C.challengeid = A.challengeid AND A.active_key = ?;`);
 }
 
 
 export async function acceptActiveChallenge(values: ActiveChallengeValues): Promise<ResultSetHeader>{
     const valuesArray = [values.key];
-    const query = `UPDATE ${ACTIVE_CHALLENGE_TABLE_NAME} SET accepted = 1 WHERE active_key = ?;`;
-    return updateDatabase<typeof valuesArray>(pool, valuesArray, false, query);
+    return updateDatabase(pool, valuesArray, false,
+        `UPDATE ${ACTIVE_CHALLENGE_TABLE_NAME} SET accepted = 1 WHERE active_key = ?;`);
 }
 
 
-export async function deleteActiveChallenge(values: ActiveChallengeValues, connection?: PoolConnection): Promise<ResultSetHeader>{
-    const valuesArray = [values.key];
-    const query = `DELETE FROM ${ACTIVE_CHALLENGE_TABLE_NAME} WHERE active_key = ?;`;
-    if (connection !== undefined){
-        return transactionUpdate<typeof valuesArray>(connection, valuesArray, true, query);
+export async function deleteActiveChallenge(values: ActiveChallengeValues & Partial<UsernameValues>, connection?: PoolConnection): Promise<ResultSetHeader>{
+    let query = `DELETE FROM ${ACTIVE_CHALLENGE_TABLE_NAME} WHERE active_key = ?;`;
+    const valuesArray: (string | number)[] = [];
+    if (values.username !== undefined){
+        valuesArray.push(values.username);
+        query = `DELETE FROM ${ACTIVE_CHALLENGE_TABLE_NAME} WHERE accepted_by = ?;`;
+    } else{
+        valuesArray.push(values.key);
     }
-    return updateDatabase<typeof valuesArray>(pool, valuesArray, true, query);
+
+    if (connection !== undefined){
+        return transactionUpdate(connection, valuesArray, true, query);
+    }
+    return updateDatabase(pool, valuesArray, true, query);
 }
 
 
 interface CreateChallengeValues{
     username: string;
+    strength: number;
     difficulty: number;
     levels: number;
     stats: string;
@@ -1082,13 +1106,27 @@ interface CreateChallengeValues{
 }
 export async function createChallenge(values: CreateChallengeValues, connection?: PoolConnection): Promise<ResultSetHeader>{
     const valuesArray = [
-        values.username, values.difficulty, values.levels, values.stats, values.waves
+        values.username, values.strength, values.difficulty, values.levels, values.stats, values.waves
     ];
-    const query = `INSERT INTO ${CHALLENGE_TABLE_NAME} (username, difficulty, levels, stats, waves) VALUES (?, ?, ?, ?, ?);`;
+    const query = `INSERT INTO ${CHALLENGE_TABLE_NAME} (username, strength, difficulty, levels, stats, waves) VALUES (?, ?, ?, ?, ?, ?);`;
     if (connection !== undefined){
-        return transactionUpdate<typeof valuesArray>(connection, valuesArray, false, query);
+        return transactionUpdate(connection, valuesArray, false, query);
     }
-    return updateDatabase<typeof valuesArray>(pool, valuesArray, false, query);
+    return updateDatabase(pool, valuesArray, false, query);
+}
+
+
+interface ChallengeIDValues{
+    challengeid: number;
+}
+interface ChallengeResult extends ChallengeIDValues, CreateChallengeValues, RowDataPacket{}
+export async function getChallenge(values: ChallengeIDValues & Partial<UsernameValues>): Promise<ChallengeResult[]>{
+    if (values.username !== undefined){
+        return queryDatabase<ChallengeResult[]>(pool, [values.username], true,
+            `SELECT challengeid, username, strength, difficulty, levels, stats, waves FROM ${CHALLENGE_TABLE_NAME} WHERE username = ?;`);
+    }
+    return queryDatabase<ChallengeResult[]>(pool, [values.challengeid], true,
+        `SELECT challengeid, username, strength, difficulty, levels, stats, waves FROM ${CHALLENGE_TABLE_NAME} WHERE challengeid = ?;`);
 }
 
 
@@ -1096,7 +1134,7 @@ export async function deleteChallenge(values: UsernameValues, connection?: PoolC
     const valuesArray = [values.username];
     const query = `DELETE FROM ${CHALLENGE_TABLE_NAME} WHERE username = ?;`;
     if (connection !== undefined){
-        return transactionUpdate<typeof valuesArray>(connection, valuesArray, true, query);
+        return transactionUpdate(connection, valuesArray, true, query);
     }
-    return updateDatabase<typeof valuesArray>(pool, valuesArray, true, query);
+    return updateDatabase(pool, valuesArray, true, query);
 }

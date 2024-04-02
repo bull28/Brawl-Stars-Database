@@ -505,7 +505,7 @@ export interface TradePin{
 }
 
 /**
- * A pin in a trade that has been validated had its rarity determined
+ * A pin in a trade that has been validated and had its rarity determined
  * 
  * Validating a pin replaces the pin attribute with its name
  */
