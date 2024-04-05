@@ -17,11 +17,11 @@ type PlayerUpgrades = {
         waves: number[][];
     };
 }
-
 const stagePoints: [number, number][][] = [
     [[300, 180]],
     [[120, 75], [180, 105]],
-    [[60, 45], [90, 60], [150, 75]]
+    [[60, 45], [90, 60], [150, 75]],
+    [[45, 35], [60, 40], [75, 45], [120, 60]]
 ];
 const destinations: {levelid: number; weight: number; background: string; displayName: string;}[][] = [
     [
@@ -31,34 +31,74 @@ const destinations: {levelid: number; weight: number; background: string; displa
         {levelid: 2, weight: 1, background: "oldtown", displayName: "Old Town"},
         {levelid: 3, weight: 1, background: "biodome", displayName: "Biodome"},
         {levelid: 4, weight: 1, background: "ghostmetro", displayName: "Ghost Station"},
-        {levelid: 5, weight: 1, background: "snowtel", displayName: "Snowtel"},
-        {levelid: 6, weight: 1, background: "giftshop", displayName: "Gift Shop"}
     ],
     [
-        {levelid: 7, weight: 1, background: "retropolis", displayName: "Retropolis"},
-        {levelid: 8, weight: 1, background: "candystand", displayName: "Candyland"},
+        {levelid: 5, weight: 3, background: "snowtel", displayName: "Snowtel"},
+        {levelid: 6, weight: 3, background: "giftshop", displayName: "Gift Shop"},
+        {levelid: 7, weight: 2, background: "retropolis", displayName: "Retropolis"},
+        {levelid: 8, weight: 2, background: "candystand", displayName: "Candyland"},
+    ],
+    [
         {levelid: 9, weight: 1, background: "rumblejungle", displayName: "Rumble Jungle"},
         {levelid: 10, weight: 1, background: "stuntshow", displayName: "Stunt Show"},
         {levelid: 11, weight: 1, background: "minicity", displayName: "Super City"},
-        {levelid: 12, weight: 1, background: "arcade", displayName: "Arcade"}
+        {levelid: 12, weight: 2, background: "arcade", displayName: "Arcade"}
     ]
 ];
 const offenseUpgrades: {[k in keyof PlayerUpgrades["offense"]]: [number, number][];} = {
-    startingPower: [[0, 0], [1, 5], [29, 30]],
-    startingGears: [[0, 3]],
-    powerPerStage: [[0, 0], [1, 10], [29, 20]],
-    gearsPerStage: [[0, 1], [1, 2]],
-    health: [[0, 2], [16, 2.25], [26, 2.5]],
-    damage: [[0, 2], [16, 2.25], [26, 2.5]],
-    healing: [[0, 2], [2, 3], [14, 4]],
+    startingPower: [[0, 0]],
+    startingGears: [[0, 2], [6, 3], [12, 4], [18, 5], [24, 6]],
+    powerPerStage: [
+        [ 0,  0],
+        [ 1,  3], [ 3,  4], [ 5,  5],
+        [ 7,  6], [ 9,  9], [11, 12],
+        [13, 18], [15, 24], [17, 30],
+        [19, 36], [21, 42], [23, 48],
+        [25, 56], [27, 64], [29, 72]
+    ],
+    gearsPerStage: [[0, 0], [10, 1], [20, 2], [30, 3]],
+    health: [[0, 2], [14, 2.25], [26, 2.5]],
+    damage: [[0, 2], [14, 2.25], [26, 2.5]],
+    healing: [[0, 2], [2, 3], [16, 4]],
     speed: [[0, 0], [4, 1], [22, 2]],
     ability: [[0, 1]],
     lifeSteal: [[0, 0], [8, 0.5], [28, 1]]
 };
-const defenseUpgrades: (PlayerUpgrades["defense"] & {minLevel: number;})[] = [
-    {minLevel: 0, difficulty: 0, maxEnemies: [12], enemyStats: [2], waves: [[12]]},
-    {minLevel: 11, difficulty: 3, maxEnemies: [60, 80, 100], enemyStats: [2.5, 4, 6], waves: [[16, 20, 24], [20, 24, 36], [20, 32, 48]]},
-    {minLevel: 30, difficulty: 3, maxEnemies: [60, 80, 100], enemyStats: [2.5, 4, 6], waves: [[16, 20, 24], [20, 24, 36], [20, 32, 48]]}
+const defenseUpgradesOdd: (Pick<PlayerUpgrades["defense"], "difficulty" | "enemyStats">)[] = [
+    {difficulty: 0, enemyStats: [2.00, 2.00, 2.00, 2.00]},// Level 0
+    {difficulty: 0, enemyStats: [2.00, 2.00, 2.00, 2.00]},// Level 1
+    {difficulty: 0, enemyStats: [2.00, 2.00, 2.00, 2.00]},// Level 3
+    {difficulty: 0, enemyStats: [2.00, 2.25, 2.00, 2.00]},
+    {difficulty: 0, enemyStats: [2.00, 2.25, 2.00, 2.00]},
+    {difficulty: 1, enemyStats: [2.00, 2.25, 2.00, 2.00]},
+    {difficulty: 1, enemyStats: [2.00, 2.50, 2.00, 2.00]},
+    {difficulty: 1, enemyStats: [2.00, 2.75, 2.00, 2.00]},
+    {difficulty: 1, enemyStats: [2.25, 2.75, 3.75, 2.00]},
+    {difficulty: 1, enemyStats: [2.25, 3.00, 4.00, 2.00]},
+    {difficulty: 2, enemyStats: [2.25, 3.00, 4.00, 2.00]},
+    {difficulty: 2, enemyStats: [2.25, 3.25, 4.25, 2.00]},
+    {difficulty: 2, enemyStats: [2.25, 3.50, 4.50, 2.00]},
+    {difficulty: 2, enemyStats: [2.50, 3.75, 4.75, 5.75]},
+    {difficulty: 2, enemyStats: [2.50, 4.00, 5.00, 6.00]},
+    {difficulty: 3, enemyStats: [2.50, 4.00, 5.00, 6.00]}// Level 29
+];
+const defenseUpgradesEven: (Pick<PlayerUpgrades["defense"], "maxEnemies" | "waves">)[] = [
+    {maxEnemies: [12], waves: [[12]]},// Level 0
+    {maxEnemies: [20], waves: [[12, 8]]},// Level 2
+    {maxEnemies: [20], waves: [[15, 10]]},// Level 4
+    {maxEnemies: [20, 12], waves: [[15, 10], [15]]},
+    {maxEnemies: [20, 12], waves: [[15, 10], [15]]},
+    {maxEnemies: [20, 24], waves: [[15, 10], [15, 15]]},
+    {maxEnemies: [20, 24], waves: [[15, 10], [15, 15]]},
+    {maxEnemies: [24, 36], waves: [[15, 15], [20, 25]]},
+    {maxEnemies: [24, 36, 20], waves: [[18, 18], [24, 30], [18, 12]]},
+    {maxEnemies: [24, 36, 20], waves: [[18, 18], [24, 30], [18, 12]]},
+    {maxEnemies: [24, 36, 44], waves: [[18, 18], [24, 30], [18, 24, 24]]},
+    {maxEnemies: [32, 40, 60], waves: [[18, 30], [24, 36], [24, 30, 36]]},
+    {maxEnemies: [32, 40, 60], waves: [[18, 30], [24, 36], [24, 30, 36]]},
+    {maxEnemies: [32, 40, 60, 32], waves: [[18, 30], [24, 36], [24, 30, 36], [24, 24]]},
+    {maxEnemies: [32, 40, 60, 68], waves: [[18, 30], [24, 36], [24, 30, 36], [30, 36, 36]]},
+    {maxEnemies: [40, 48, 64, 88], waves: [[24, 36], [30, 42], [24, 30, 42], [30, 42, 60]]}// Level 30
 ];
 const sharedEnemies = new Set<string>(["meteor", "meleerobot", "rangedrobot", "fastrobot"]);
 const enemyValues = new Map<string, {displayName: string; value: number; minLevel: number; maxCount: number;}>([
@@ -116,10 +156,10 @@ export function getGameMod(key: string, masteryLevel: number, data: ChallengeDat
             gearsReward: player.gearsPerStage
         });
 
-        if (x < destinations.length){
-            const i = RNG(destinations[x].map((value) => value.weight));
+        if (x < destinations.length || destinations.length > 0){
+            const i = RNG(destinations[Math.min(x, destinations.length - 1)].map((value) => value.weight));
             if (i >= 0){
-                const d = destinations[x][i];
+                const d = destinations[Math.min(x, destinations.length - 1)][i];
                 levels.push({
                     levelid: d.levelid,
                     waves: [],
@@ -232,21 +272,15 @@ function getPlayerUpgrades(masteryLevel: number): PlayerUpgrades{
         }
     }
 
-    let i = 0;
-    let found = false;
-    while (i < defenseUpgrades.length && found === false){
-        // Search for defense upgrades in the same way as offense upgrades then copy the values into the result
-        if (i >= defenseUpgrades.length - 1 || (i < defenseUpgrades.length - 1 && masteryLevel < defenseUpgrades[i + 1].minLevel)){
-            found = true;
-            const defense = defenseUpgrades[i];
-            upgrades.defense.difficulty = defense.difficulty;
-            upgrades.defense.maxEnemies = defense.maxEnemies.map((value) => value);
-            upgrades.defense.enemyStats = defense.enemyStats.map((value) => value);
-            upgrades.defense.waves = defense.waves.map((value) => value.map((wave) => wave));
-        } else{
-            i++;
-        }
-    }
+    // The odd upgrades array has level requirements [0, 1, 3, 5, ...]
+    // The even upgrades array has level requirements [0, 2, 4, 6, ...]
+    const oddIndex = Math.min(Math.ceil(Math.max(0, masteryLevel) / 2), defenseUpgradesOdd.length - 1);
+    const evenIndex = Math.min(Math.floor(Math.max(0, masteryLevel) / 2), defenseUpgradesEven.length - 1);
+
+    upgrades.defense.maxEnemies = defenseUpgradesEven[evenIndex].maxEnemies.map((value) => value);
+    upgrades.defense.waves = defenseUpgradesEven[evenIndex].waves.map((value) => value.map((wave) => wave));
+    upgrades.defense.difficulty = defenseUpgradesOdd[oddIndex].difficulty;
+    upgrades.defense.enemyStats = defenseUpgradesOdd[oddIndex].enemyStats.map((value) => value).slice(0, upgrades.defense.maxEnemies.length);
     
     return upgrades;
 }
