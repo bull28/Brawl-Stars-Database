@@ -735,6 +735,7 @@ export interface ChallengeGameMod{
         gameName: string;
         startingPower: number;
         startingGears: number;
+        bonusResources: boolean;
         addBonusEnemies: boolean;
         maxReportLevels: number;
     };

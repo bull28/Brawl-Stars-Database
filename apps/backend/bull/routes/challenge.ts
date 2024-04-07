@@ -2,7 +2,7 @@ import express from "express";
 import {randomUUID} from "crypto";
 import {CHALLENGE_REPORT_COST} from "../data/constants";
 import {getMasteryLevel} from "../modules/accessories";
-import {getGameMod, createChallengeData} from "../modules/challenges";
+import {createChallengeData, getChallengeStrength, getGameMod} from "../modules/challenges";
 import {
     databaseErrorHandler, 
     loginErrorHandler, 
@@ -90,12 +90,14 @@ router.post<Empty, Empty, ChallengeCreateReqBody>("/create", loginErrorHandler<C
         return;
     }
 
+    const strength = getChallengeStrength(challengeData);
+
     await transaction(async (connection) => {
         // Each user can only have one challenge at a time so delete any existing challenge before creating a new one
         await deleteChallenge({username: username}, connection);
         await createChallenge({
             username: username,
-            strength: 0,
+            strength: strength,
             difficulty: challengeData.difficulty,
             levels: challengeData.levels,
             stats: JSON.stringify(challengeData.stats),

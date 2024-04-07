@@ -16,6 +16,14 @@ type PlayerUpgrades = {
         enemyStats: number[];
         waves: number[][];
     };
+};
+interface EnemyData{
+    displayName: string;
+    value: number;
+    strength: number;
+    minLevel: number;
+    maxCount: number;
+    maxStageCount: number;
 }
 const stagePoints: [number, number][][] = [
     [[300, 180]],
@@ -100,13 +108,289 @@ const defenseUpgradesEven: (Pick<PlayerUpgrades["defense"], "maxEnemies" | "wave
     {maxEnemies: [32, 40, 60, 68], waves: [[18, 30], [24, 36], [24, 30, 36], [30, 36, 36]]},
     {maxEnemies: [40, 48, 64, 88], waves: [[24, 36], [30, 42], [24, 30, 42], [30, 42, 60]]}// Level 30
 ];
-const sharedEnemies = new Set<string>(["meteor", "meleerobot", "rangedrobot", "fastrobot"]);
-const enemyValues = new Map<string, {displayName: string; value: number; minLevel: number; maxCount: number;}>([
-    ["meteor", {displayName: "Meteor", value: 1, minLevel: 0, maxCount: 5}],
-    ["meleerobot", {displayName: "Melee Robot", value: 2, minLevel: 0, maxCount: 5}],
-    ["rangedrobot", {displayName: "Ranged Robot", value: 2, minLevel: 0, maxCount: 5}],
-    ["fastrobot", {displayName: "Fast Robot", value: 2, minLevel: 0, maxCount: 5}]
+const sharedEnemies = new Set<string>(["meteor", "meleerobot", "rangedrobot", "fastrobot", "r2"]);
+const enemyValues = new Map<string, EnemyData>([
+    ["meteor", {
+        displayName: "Meteor", value: 1, strength: 1, minLevel: 0, maxCount: 20, maxStageCount: 10
+    }],
+    ["r2", {
+        displayName: "Robot", value: 2, strength: 1, minLevel: 0, maxCount: 25, maxStageCount: 10
+    }],
+    ["shelly", {
+        displayName: "Shelly", value: 4, strength: 1, minLevel: 0, maxCount: 10, maxStageCount: 4
+    }],
+    ["colt", {
+        displayName: "Colt", value: 6, strength: 1, minLevel: 0, maxCount: 10, maxStageCount: 4
+    }],
+    ["rt", {
+        displayName: "R-T", value: 6, strength: 1, minLevel: 1, maxCount: 8, maxStageCount: 4
+    }],
+    ["elprimo", {
+        displayName: "El Primo", value: 8, strength: 1, minLevel: 1, maxCount: 8, maxStageCount: 4
+    }],
+    ["8bit", {
+        displayName: "8-Bit", value: 8, strength: 1, minLevel: 1, maxCount: 8, maxStageCount: 3
+    }],
+    ["belle", {
+        displayName: "Belle", value: 9, strength: 1, minLevel: 3, maxCount: 8, maxStageCount: 3
+    }],
+    ["jessie", {
+        displayName: "Jessie", value: 9, strength: 1, minLevel: 3, maxCount: 8, maxStageCount: 3
+    }],
+    ["eve", {
+        displayName: "Eve", value: 10, strength: 1, minLevel: 3, maxCount: 8, maxStageCount: 3
+    }],
+    ["mortis", {
+        displayName: "Mortis", value: 10, strength: 1, minLevel: 4, maxCount: 8, maxStageCount: 3
+    }],
+    ["frank", {
+        displayName: "Frank", value: 12, strength: 1, minLevel: 4, maxCount: 8, maxStageCount: 3
+    }],
+    ["jacky", {
+        displayName: "Jacky", value: 10, strength: 1, minLevel: 5, maxCount: 8, maxStageCount: 3
+    }],
+    ["mrp", {
+        displayName: "Mr. P", value: 12, strength: 1, minLevel: 5, maxCount: 8, maxStageCount: 3
+    }],
+    ["bea", {
+        displayName: "Bea", value: 12, strength: 1, minLevel: 7, maxCount: 8, maxStageCount: 3
+    }],
+    ["colette", {
+        displayName: "Colette", value: 12, strength: 1, minLevel: 7, maxCount: 8, maxStageCount: 3
+    }],
+    ["lola", {
+        displayName: "Lola", value: 16, strength: 1, minLevel: 8, maxCount: 6, maxStageCount: 2
+    }],
+    ["bibi", {
+        displayName: "Bibi", value: 16, strength: 1, minLevel: 8, maxCount: 6, maxStageCount: 2
+    }],
+    ["mandy", {
+        displayName: "Mandy", value: 16, strength: 1, minLevel: 12, maxCount: 6, maxStageCount: 2
+    }],
+    ["ash", {
+        displayName: "Ash", value: 20, strength: 1, minLevel: 18, maxCount: 5, maxStageCount: 2
+    }],
+    ["pearl", {
+        displayName: "Pearl", value: 16, strength: 1, minLevel: 12, maxCount: 6, maxStageCount: 2
+    }],
+    ["leon", {
+        displayName: "Leon", value: 24, strength: 1, minLevel: 18, maxCount: 3, maxStageCount: 1
+    }],
+    ["bonnie", {
+        displayName: "Bonnie", value: 20, strength: 1, minLevel: 18, maxCount: 4, maxStageCount: 1
+    }],
+    ["amber", {
+        displayName: "Amber", value: 30, strength: 1, minLevel: 24, maxCount: 2, maxStageCount: 1
+    }],
+    ["max", {
+        displayName: "Max", value: 24, strength: 1, minLevel: 24, maxCount: 2, maxStageCount: 1
+    }],
+    ["meg", {
+        displayName: "Meg", value: 36, strength: 1, minLevel: 24, maxCount: 2, maxStageCount: 1
+    }],
+    ["siegebase", {
+        displayName: "Siege Base", value: 0, strength: 1, minLevel: 0, maxCount: 0, maxStageCount: 0
+    }]
 ]);
+
+class Counter{
+    map: Map<string, number>;
+
+    constructor(){
+        // Counts the number of times each string is added to this map.
+        this.map = new Map<string, number>();
+    }
+
+    add(key: string, amount: number): number{
+        const oldValue = this.map.get(key);
+        let newValue = amount;
+        if (oldValue !== undefined){
+            newValue += oldValue;
+        }
+        this.map.set(key, newValue);
+        return newValue;
+    }
+
+    clear(): void{
+        this.map.clear();
+    }
+}
+
+function getPlayerUpgrades(masteryLevel: number): PlayerUpgrades{
+    const upgrades: PlayerUpgrades = {
+        offense: {
+            startingPower: 0, startingGears: 0, powerPerStage: 0, gearsPerStage: 0,
+            health: 2, damage: 2, healing: 2, speed: 0, ability: 1, lifeSteal: 0
+        },
+        defense: {
+            difficulty: 0,
+            maxEnemies: [12],
+            enemyStats: [2],
+            waves: [[12]]
+        }
+    };
+
+    for (const x in upgrades.offense){
+        const stat = offenseUpgrades[x as keyof PlayerUpgrades["offense"]];
+        let i = 0;
+        let found = false;
+        while (i < stat.length && found === false){
+            // Find the first element in this stat's upgrade values where the user's mastery level is less than the next
+            // element's required mastery level (index 0 in the upgrade value is the required mastery level).
+            if (i >= stat.length - 1 || (i < stat.length - 1 && masteryLevel < stat[i + 1][0])){
+                upgrades.offense[x as keyof PlayerUpgrades["offense"]] = stat[i][1];
+                found = true;
+            }
+            i++;
+        }
+    }
+
+    // The odd upgrades array has level requirements [0, 1, 3, 5, ...]
+    // The even upgrades array has level requirements [0, 2, 4, 6, ...]
+    const oddIndex = Math.min(Math.ceil(Math.max(0, masteryLevel) / 2), defenseUpgradesOdd.length - 1);
+    const evenIndex = Math.min(Math.floor(Math.max(0, masteryLevel) / 2), defenseUpgradesEven.length - 1);
+
+    upgrades.defense.maxEnemies = defenseUpgradesEven[evenIndex].maxEnemies.map((value) => value);
+    upgrades.defense.waves = defenseUpgradesEven[evenIndex].waves.map((value) => value.map((wave) => wave));
+    upgrades.defense.difficulty = defenseUpgradesOdd[oddIndex].difficulty;
+    upgrades.defense.enemyStats = defenseUpgradesOdd[oddIndex].enemyStats.map((value) => value).slice(0, upgrades.defense.maxEnemies.length);
+    
+    return upgrades;
+}
+
+export function createChallengeData(masteryLevel: number, waves: UserWaves): {message: string; data: ChallengeData | undefined}{
+    // Get the player upgrade values from their mastery level
+    const upgrades = getPlayerUpgrades(masteryLevel).defense;
+
+    const gameStages = Math.max(1, Math.min(8, upgrades.maxEnemies.length, upgrades.enemyStats.length, upgrades.waves.length));
+    const setWaves: ChallengeData["waves"] = [];
+
+    let message = "";
+
+    // For each enemy, there is a limit on the number of times it can appear in the same stage, as well as a limit on
+    // the number of times it can appear across all stages in the challenge.
+    // These counters store the number of times the user has added each enemy
+    //const counts = new Map<string, number>();
+    const globalCounts = new Counter();
+    const stageCounts = new Map<number, Counter>();
+    // Stores the number of remaining waves for each stage
+    const waveCounts = upgrades.waves.map((value) => value.length);
+    // Stores the number of enemies remaining for each stage
+    const waveValues = upgrades.maxEnemies.map((value) => value);
+    // Stores the last wave's value for each stage
+    const lastWave = upgrades.maxEnemies.map((value) => 0);
+    
+    let x = 0;
+    while (x < waves.length && message === ""){
+        const stage = waves[x].level;
+        const enemies = waves[x].enemies;
+        if (stage === undefined || enemies === undefined || Array.isArray(enemies) === false){
+            message = "Challenge waves incorrectly formatted.";
+        }
+        // Stage number for this wave cannot be greater than the maximum allowed number of stages in the challenge
+        if (stage >= gameStages || stage < 0 || waveCounts[stage] <= 0){
+            message = `Too many waves are included in level ${stage + 1}`;
+        }
+
+        if (message === ""){
+            waveCounts[stage]--;
+
+            // Keep track of enemy counts in each stage
+            if (stageCounts.has(stage) === false){
+                stageCounts.set(stage, new Counter());
+            }
+            const counts = stageCounts.get(stage)!;
+
+            // Total value of all enemies in this wave
+            let waveValue = 0;
+
+            for (let x = 0; x < enemies.length; x++){
+                const values = enemyValues.get(enemies[x]);
+
+                if (values !== undefined && masteryLevel >= values.minLevel){
+                    waveValue += values.value;
+
+                    // Check that the current enemy is not added too many times in either the current stage or globally
+                    if (globalCounts.add(enemies[x], 1) > values.maxCount){
+                        message = `Too many ${values.displayName} enemies in the challenge. There can be at most ${values.maxCount}.`;
+                    }
+                    if (counts.add(enemies[x], 1) > values.maxStageCount){
+                        message = `Too many ${values.displayName} enemies in level ${stage + 1}. There can be at most ${values.maxStageCount} per level.`;
+                    }
+                } else{
+                    if (values === undefined){
+                        message = `${enemies[x]} is not a valid enemy.`;
+                    } else{
+                        message = `Mastery level must be at least ${values.minLevel} to use ${values.displayName}.`;
+                    }
+                }
+            }
+
+            // The current wave's value cannot be more than the maximum value allowed for this wave in this stage
+            const waveInLevel = upgrades.waves[stage].length - waveCounts[stage] - 1;
+            if (waveValue > upgrades.waves[stage][waveInLevel]){
+                message = `Too many enemies included in level ${stage + 1}, wave ${waveInLevel + 1}.`;
+            }
+
+            // The total value of all enemies in this stage cannot be more than the maximum value allowed for this stage
+            waveValues[stage] -= waveValue;
+            if (waveValues[stage] < 0){
+                message = `Too many enemies included in level ${stage + 1}.`;
+            }
+
+            // The delay for the current wave depends on the number of enemies in the previous wave for this stage
+            setWaves.push({
+                level: waves[x].level,
+                enemies: waves[x].enemies,
+                delay: lastWave[stage] * 0.5
+            });
+
+            // This only works if waves are added to each stage in the order that they appear in
+            lastWave[stage] = waveValue;
+        }
+
+        x++;
+    }
+    stageCounts.clear();
+    globalCounts.clear();
+
+    if (message !== ""){
+        return {message: message, data: undefined};
+    }
+
+    const stats = upgrades.enemyStats.filter((value) => value > 0).sort((a, b) => a - b);
+
+    return {
+        message: message,
+        data: {
+            owner: "",
+            difficulty: upgrades.difficulty,
+            levels: gameStages,
+            stats: stats,
+            waves: setWaves
+        }
+    };
+}
+
+export function getChallengeStrength(data: ChallengeData): number{
+    let strength = 0;
+    const diff = 2 + data.difficulty;
+    
+    for (let x = 0; x < data.waves.length; x++){
+        const enemies = data.waves[x].enemies;
+        const stats = (data.waves[x].level < data.stats.length ? data.stats[data.waves[x].level] : 1) * 4;
+
+        for (let i = 0; i < enemies.length; i++){
+            const values = enemyValues.get(enemies[i]);
+
+            if (values !== undefined){
+                strength += values.value * values.strength * (stats + diff);
+            }
+        }
+    }
+
+    return Math.floor(strength);
+}
 
 export function getGameMod(key: string, masteryLevel: number, data: ChallengeData): ChallengeGameMod{
     const gameStages = Math.max(1, Math.min(8, Math.floor(data.levels)));
@@ -210,6 +494,7 @@ export function getGameMod(key: string, masteryLevel: number, data: ChallengeDat
             gameName: `${data.owner}'s Challenge`,
             startingPower: player.startingPower,
             startingGears: player.startingGears,
+            bonusResources: false,
             addBonusEnemies: false,
             maxReportLevels: 8
         },
@@ -239,138 +524,6 @@ export function getGameMod(key: string, masteryLevel: number, data: ChallengeDat
             speed: {value: [player.speed, 1]},
             ability: {value: [player.ability, -10]},
             lifeSteal: {value: [player.lifeSteal, 2]}
-        }
-    };
-}
-
-function getPlayerUpgrades(masteryLevel: number): PlayerUpgrades{
-    const upgrades: PlayerUpgrades = {
-        offense: {
-            startingPower: 0, startingGears: 0, powerPerStage: 0, gearsPerStage: 0,
-            health: 2, damage: 2, healing: 2, speed: 0, ability: 1, lifeSteal: 0
-        },
-        defense: {
-            difficulty: 0,
-            maxEnemies: [12],
-            enemyStats: [2],
-            waves: [[12]]
-        }
-    };
-
-    for (const x in upgrades.offense){
-        const stat = offenseUpgrades[x as keyof PlayerUpgrades["offense"]];
-        let i = 0;
-        let found = false;
-        while (i < stat.length && found === false){
-            // Find the first element in this stat's upgrade values where the user's mastery level is less than the next
-            // element's required mastery level (index 0 in the upgrade value is the required mastery level).
-            if (i >= stat.length - 1 || (i < stat.length - 1 && masteryLevel < stat[i + 1][0])){
-                upgrades.offense[x as keyof PlayerUpgrades["offense"]] = stat[i][1];
-                found = true;
-            }
-            i++;
-        }
-    }
-
-    // The odd upgrades array has level requirements [0, 1, 3, 5, ...]
-    // The even upgrades array has level requirements [0, 2, 4, 6, ...]
-    const oddIndex = Math.min(Math.ceil(Math.max(0, masteryLevel) / 2), defenseUpgradesOdd.length - 1);
-    const evenIndex = Math.min(Math.floor(Math.max(0, masteryLevel) / 2), defenseUpgradesEven.length - 1);
-
-    upgrades.defense.maxEnemies = defenseUpgradesEven[evenIndex].maxEnemies.map((value) => value);
-    upgrades.defense.waves = defenseUpgradesEven[evenIndex].waves.map((value) => value.map((wave) => wave));
-    upgrades.defense.difficulty = defenseUpgradesOdd[oddIndex].difficulty;
-    upgrades.defense.enemyStats = defenseUpgradesOdd[oddIndex].enemyStats.map((value) => value).slice(0, upgrades.defense.maxEnemies.length);
-    
-    return upgrades;
-}
-
-export function createChallengeData(masteryLevel: number, waves: UserWaves): {message: string; data: ChallengeData | undefined}{
-    // Get the player upgrade values from their mastery level
-    const upgrades = getPlayerUpgrades(masteryLevel).defense;
-
-    const gameStages = Math.max(1, Math.min(8, upgrades.maxEnemies.length, upgrades.enemyStats.length, upgrades.waves.length));
-
-    let message = "";
-
-    // Stores the number of times the user has added each enemy
-    const counts = new Map<string, number>();
-    // Stores the number of remaining waves for each stage
-    const waveCounts = upgrades.waves.map((value) => value.length);
-    // Stores the number of enemies remaining for each stage
-    const waveValues = upgrades.maxEnemies.map((value) => value);
-    
-    let x = 0;
-    while (x < waves.length && message === ""){
-        const stage = waves[x].level;
-        const enemies = waves[x].enemies;
-        if (stage === undefined || enemies === undefined || Array.isArray(enemies) === false){
-            message = "Challenge waves incorrectly formatted.";
-        }
-        // Stage number for this wave cannot be greater than the maximum allowed number of stages in the challenge
-        if (stage >= gameStages || stage < 0 || waveCounts[stage] <= 0){
-            message = `Too many waves are included in level ${stage + 1}`;
-        }
-
-        if (message === ""){
-            waveCounts[stage]--;
-
-            // Total value of all enemies in this wave
-            let waveValue = 0;
-
-            for (let x = 0; x < enemies.length; x++){
-                const values = enemyValues.get(enemies[x]);
-
-                if (values !== undefined && masteryLevel >= values.minLevel){
-                    waveValue += values.value;
-                    // Find the current enemy in the map of counted enemies and add 1 to it
-                    const count = counts.get(enemies[x]);
-                    if (count !== undefined){
-                        if (count + 1 > values.maxCount){
-                            message = `Too many ${values.displayName} enemies in the challenge. There can be at most ${values.maxCount}.`;
-                        } else{
-                            counts.set(enemies[x], count + 1);
-                        }
-                    } else{
-                        counts.set(enemies[x], 1);
-                    }
-                } else{
-                    if (values === undefined){
-                        message = `${enemies[x]} is not a valid enemy.`;
-                    } else{
-                        message = `Mastery level must be at least ${values.minLevel} to use ${values.displayName}.`;
-                    }
-                }
-            }
-
-            // The current wave's value cannot be more than the maximum value allowed for this wave in this stage
-            const waveInLevel = upgrades.waves[stage].length - waveCounts[stage] - 1;
-            if (waveValue > upgrades.waves[stage][waveInLevel]){
-                message = `Too many enemies included in level ${stage + 1}, wave ${waveInLevel + 1}.`;
-            }
-
-            // The total value of all enemies in this stage cannot be more than the maximum value allowed for this stage
-            waveValues[stage] -= waveValue;
-            if (waveValues[stage] < 0){
-                message = `Too many enemies included in level ${stage + 1}.`;
-            }
-        }
-        x++;
-    }
-    if (message !== ""){
-        return {message: message, data: undefined};
-    }
-
-    const stats = upgrades.enemyStats.filter((value) => value > 0).sort((a, b) => a - b);
-
-    return {
-        message: message,
-        data: {
-            owner: "",
-            difficulty: upgrades.difficulty,
-            levels: gameStages,
-            stats: stats,
-            waves: waves
         }
     };
 }
