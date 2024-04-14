@@ -26,11 +26,10 @@ export default function TradeCard({ data }: {data: TradeData}) {
 
     const confirmTrade = () => {
         axios.post(`${api}/trade/accept`, {
-            token: getToken(),
             tradeid:  data.tradeid,
             useWildCards: true,
             forceAccept: false
-        })
+        }, {headers: {"Authorization": `Bearer ${getToken()}`}})
         .then((res) => {
             setReceived(res.data)
             setCompletion(true)
@@ -86,7 +85,7 @@ export default function TradeCard({ data }: {data: TradeData}) {
                     </SimpleGrid>
                 </Flex>
                 <Flex w={'90%'} justifyContent={'space-between'} wrap={['wrap', 'nowrap']}>
-                    <Text fontSize={['sm', 'md']} whiteSpace={"pre"} color={(data.timeLeft.hour < 5 && data.timeLeft.season === 0) ? 'red.500' : 'white'}>{(data.timeLeft.hour === 0 && data.timeLeft.minute === 0 && data.timeLeft.second === 0) ? `> ${data.timeLeft.hoursPerSeason} hours` : EventTime(data.timeLeft, 0)}</Text>
+                    <Text fontSize={['sm', 'md']} whiteSpace={"pre"} color={data.timeLeft < 18000 ? 'red.500' : 'white'}>{data.timeLeft > 1382400 ? `> 384 hours` : EventTime({season: 0, hour: 0, minute: 0, second: data.timeLeft, hoursPerSeason: 0, maxSeasons: 0}, 0)}</Text>
                     <Text fontSize={['sm', 'md']} >{data.creator.username}</Text>                   
                 </Flex>
             </Flex>

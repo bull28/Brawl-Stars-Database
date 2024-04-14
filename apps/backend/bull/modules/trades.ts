@@ -1,6 +1,5 @@
 import allSkins from "../data/brawlers_data.json";
 import {IMAGE_FILE_EXTENSION, PIN_IMAGE_DIR} from "../data/constants";
-import {MAP_CYCLE_HOURS, SeasonTime, addSeasonTimes} from "./maps";
 import {Pin, TradePin, TradePinData, TradePinValid} from "../types";
 
 /**
@@ -146,19 +145,14 @@ export function getTimeTradeCost(tradeHours: number): number{
 }
 
 /**
- * Calculates the time left for a trade using the expiration time from the database. Returns [1, 0, 0, 0] for all times
- * greater than 1 season. If expired, returns [0, 0, 0, 0].
+ * Calculates the number of seconds left for a trade using the expiration time from the database.
  * @param expiration expiration time stored in the database
- * @returns time represented as SeasonTime
+ * @returns time in seconds
  */
-export function getTradeTimeLeft(expiration: number): SeasonTime{
-    const tradeSecondsLeft = Math.floor((expiration - Date.now()) / 1000);
-    let tradeTimeLeft = new SeasonTime(0, 0, 0, 0);
-    if (tradeSecondsLeft > MAP_CYCLE_HOURS * 3600){
-        tradeTimeLeft = new SeasonTime(1, 0, 0, 0);
-    } else if (tradeSecondsLeft > 0){
-        tradeTimeLeft = addSeasonTimes(tradeTimeLeft, new SeasonTime(0, 0, 0, tradeSecondsLeft));
+export function getTradeTimeLeft(expiration: number): number{
+    const secondsLeft = Math.floor((expiration - Date.now()) / 1000);
+    if (secondsLeft < 0){
+        return 0;
     }
-
-    return tradeTimeLeft;
+    return secondsLeft;
 }

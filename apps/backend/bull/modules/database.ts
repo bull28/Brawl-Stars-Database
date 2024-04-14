@@ -2,7 +2,7 @@ import {Request, Response, NextFunction} from "express";
 import {Query, ParamsDictionary} from "express-serve-static-core";
 import mysql2, {Pool, PoolConnection, RowDataPacket, ResultSetHeader} from "mysql2";
 import {validateToken} from "./authenticate";
-import {Empty, TokenReqBody, DatabaseBrawlers, DatabaseBadges, TradePinValid, ChallengeWave} from "../types";
+import {Empty, DatabaseBrawlers, DatabaseBadges, TradePinValid, ChallengeWave} from "../types";
 
 // Custom error classes for common database errors
 
@@ -41,7 +41,7 @@ let COSMETIC_TABLE_NAME = "cosmetics";
 let GAME_TABLE_NAME = "bullgame";
 let REPORT_TABLE_NAME = "reports";
 let CHALLENGE_TABLE_NAME = "challenges";
-let ACTIVE_CHALLENGE_TABLE_NAME = "activechallenges";
+let ACTIVE_TABLE_NAME = "activechallenges";
 
 
 // Read environment variables first before connecting
@@ -67,10 +67,14 @@ if (process.env["DATABASE_TABLE_NAME"] !== undefined){
     TRADE_TABLE_NAME = process.env["DATABASE_TRADE_TABLE_NAME"];
 } if (process.env["DATABASE_COSMETIC_TABLE_NAME"] !== undefined){
     COSMETIC_TABLE_NAME = process.env["DATABASE_COSMETIC_TABLE_NAME"];
-} if (process.env["GAME_TABLE_NAME"] !== undefined){
-    GAME_TABLE_NAME = process.env["GAME_TABLE_NAME"];
-} if (process.env["REPORT_TABLE_NAME"] !== undefined){
-    REPORT_TABLE_NAME = process.env["REPORT_TABLE_NAME"];
+} if (process.env["DATABASE_GAME_TABLE_NAME"] !== undefined){
+    GAME_TABLE_NAME = process.env["DATABASE_GAME_TABLE_NAME"];
+} if (process.env["DATABASE_REPORT_TABLE_NAME"] !== undefined){
+    REPORT_TABLE_NAME = process.env["DATABASE_REPORT_TABLE_NAME"];
+} if (process.env["DATABASE_CHALLENGE_TABLE_NAME"] !== undefined){
+    CHALLENGE_TABLE_NAME = process.env["DATABASE_CHALLENGE_TABLE_NAME"];
+} if (process.env["DATABASE_ACTIVE_TABLE_NAME"] !== undefined){
+    ACTIVE_TABLE_NAME = process.env["DATABASE_ACTIVE_TABLE_NAME"];
 }
 
 
@@ -697,11 +701,12 @@ interface BeforeShopResult extends RowDataPacket{
     avatars: string;
     themes: string;
     scenes: string;
+    accessories: string;
     featured_item: string;
 }
 export async function beforeShop(values: UsernameValues): Promise<BeforeShopResult[]>{
     return queryDatabase<BeforeShopResult[]>(pool, [values.username], false,
-        `SELECT last_login, coins, trade_credits, brawlers, avatars, themes, scenes, featured_item FROM ${TABLE_NAME} WHERE username = ?;`);
+        `SELECT last_login, coins, trade_credits, brawlers, avatars, themes, scenes, accessories, featured_item FROM ${TABLE_NAME} WHERE username = ?;`);
 }
 
 
@@ -1045,7 +1050,7 @@ export async function createActiveChallenge(values: CreateActiveValues, connecti
     const valuesArray = [
         values.key, values.challengeid, values.username
     ];
-    const query = `INSERT INTO ${ACTIVE_CHALLENGE_TABLE_NAME} (active_key, challengeid, accepted_by) VALUES (?, ?, ?);`;
+    const query = `INSERT INTO ${ACTIVE_TABLE_NAME} (active_key, challengeid, accepted_by) VALUES (?, ?, ?);`;
     if (connection !== undefined){
         return transactionUpdate(connection, valuesArray, false, query);
     }
@@ -1055,22 +1060,22 @@ export async function createActiveChallenge(values: CreateActiveValues, connecti
 
 export async function getActiveChallenge(values: ActiveChallengeValues): Promise<ActiveChallengeResult[]>{
     return queryDatabase<ActiveChallengeResult[]>(pool, [values.key], false,
-        `SELECT C.username AS owner, A.accepted_by, A.accepted, C.difficulty, C.levels, C.stats, C.waves FROM ${CHALLENGE_TABLE_NAME} C, ${ACTIVE_CHALLENGE_TABLE_NAME} A WHERE C.challengeid = A.challengeid AND A.active_key = ?;`);
+        `SELECT C.username AS owner, A.accepted_by, A.accepted, C.difficulty, C.levels, C.stats, C.waves FROM ${CHALLENGE_TABLE_NAME} C, ${ACTIVE_TABLE_NAME} A WHERE C.challengeid = A.challengeid AND A.active_key = ?;`);
 }
 
 
 export async function acceptActiveChallenge(values: ActiveChallengeValues): Promise<ResultSetHeader>{
     return updateDatabase(pool, [values.key], false,
-        `UPDATE ${ACTIVE_CHALLENGE_TABLE_NAME} SET accepted = 1 WHERE active_key = ?;`);
+        `UPDATE ${ACTIVE_TABLE_NAME} SET accepted = 1 WHERE active_key = ?;`);
 }
 
 
 export async function deleteActiveChallenge(values: ActiveChallengeValues & Partial<UsernameValues>, connection?: PoolConnection): Promise<ResultSetHeader>{
-    let query = `DELETE FROM ${ACTIVE_CHALLENGE_TABLE_NAME} WHERE active_key = ?;`;
+    let query = `DELETE FROM ${ACTIVE_TABLE_NAME} WHERE active_key = ?;`;
     const valuesArray: (string | number)[] = [];
     if (values.username !== undefined){
         valuesArray.push(values.username);
-        query = `DELETE FROM ${ACTIVE_CHALLENGE_TABLE_NAME} WHERE accepted_by = ?;`;
+        query = `DELETE FROM ${ACTIVE_TABLE_NAME} WHERE accepted_by = ?;`;
     } else{
         valuesArray.push(values.key);
     }

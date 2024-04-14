@@ -8,11 +8,15 @@ declare module "jsonwebtoken"{
     }
 }
 
-const secret: jsonwebtoken.Secret = "THE KING WINS AGAIN";
+let secret: jsonwebtoken.Secret = "THE KING WINS AGAIN";
 const saltBytes = 32;
 const hashLength = 64;
 const hashCost = 4096;
 const hashSplit = "BULL";
+
+if (process.env["TOKEN_SECRET"] !== undefined){
+    secret = process.env["TOKEN_SECRET"];
+}
 
 export function signToken(username: string): UserTokenResult{
     const user: UsernameJwtPayload = {

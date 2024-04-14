@@ -7,6 +7,7 @@ import { ArrowBackIcon, ExternalLinkIcon } from '@chakra-ui/icons'
 import { useNavigate } from 'react-router-dom'
 import SkullBackground from '../components/SkullBackground'
 import {UserInfoProps} from '../types/AccountData'
+import EventTime from "../helpers/EventTime";
 import {scrollStyle} from "../themes/scrollbar";
 import cdn from "../helpers/CDNRoute";
 
@@ -53,7 +54,7 @@ export default function MyTrades() {
         for (let x = 0; x < trades.length; x++){
             if (trades[x].accepted === true){
                 sortedTrades.accepted.trades.push(trades[x]);
-            } else if (trades[x].timeLeft.hour > 0 || trades[x].timeLeft.minute > 0 || trades[x].timeLeft.second > 0){
+            } else if (trades[x].timeLeft > 0){
                 sortedTrades.pending.trades.push(trades[x]);
             } else if (trades[x].accepted === false){
                 // trades[x].timeLeft.hour === 0 && trades[x].timeLeft.minute === 0 && trades[x].timeLeft.second === 0
@@ -137,11 +138,8 @@ export default function MyTrades() {
                                 </Flex>
                                 
                                 <Flex w={'90%'} justifyContent={'space-between'}>
-                                    <Flex color={(trade.timeLeft.hour < 5 && trade.timeLeft.season === 0) ? 'red.500' : 'white'}>
-                                        <Text whiteSpace={"pre"}>{trade.timeLeft.hour > 0 ? ` ${trade.timeLeft.hour}h` : ""}</Text>
-                                        <Text whiteSpace={"pre"}>{trade.timeLeft.minute > 0 ? ` ${trade.timeLeft.minute}m` : ""}</Text>
-                                        <Text whiteSpace={"pre"}>{trade.timeLeft.second > 0 ? ` ${trade.timeLeft.second}s` : ""}</Text>
-                                        <Text>{(trade.timeLeft.season > 0 && trade.timeLeft.hour === 0 && trade.timeLeft.minute === 0 && trade.timeLeft.second === 0) ? `> ${trade.timeLeft.hoursPerSeason} hours` : ""}</Text>
+                                    <Flex color={trade.timeLeft < 18000 ? 'red.500' : 'white'}>
+                                        <Text whiteSpace={"pre"}>{trade.timeLeft > 1382400 ? `> 384 hours` : EventTime({season: 0, hour: 0, minute: 0, second: trade.timeLeft, hoursPerSeason: 0, maxSeasons: 0}, 0)}</Text>
                                     </Flex>
                                 </Flex>
                             </Flex>

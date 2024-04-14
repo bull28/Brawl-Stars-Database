@@ -92,13 +92,12 @@ export default function Trade() {
 
         if (offerObject.length > 0 || reqObject.length > 0){
             axios.post(`${api}/trade/create`, {
-                token: getToken(),
                 searchByName: true,
                 offer: offerObject,
                 request: reqObject,
                 tradeDurationHours: tradeLength,
                 getCost: true
-            }).then((res) => {
+            }, {headers: {"Authorization": `Bearer ${getToken()}`}}).then((res) => {
                 setTradeCost(res.data.tradeCost)
             }).catch((error) => {});
         } else {
@@ -224,7 +223,7 @@ export default function Trade() {
             request: reqObject,
             tradeDurationHours: tradeLength,
             getCost: false
-        })
+        }, {headers: {"Authorization": `Bearer ${getToken()}`}})
         .then(() => {
             window.location.reload()
         })
@@ -400,7 +399,7 @@ export default function Trade() {
                     </DrawerContent>
                 </Drawer>
             <SimpleGrid columns={[1,1,2,2,3]} spacing={3}>
-                {results?.filter((trade) => (trade.creator.username.toLowerCase().includes(filter.username.toLowerCase()) && !(trade.timeLeft.hour === trade.timeLeft.minute && trade.timeLeft.hour === trade.timeLeft.second && trade.timeLeft.hour === trade.timeLeft.season && trade.timeLeft.hour === 0))).map((trade) => <Flex key={trade.tradeid}><ScaleFade in={true}><TradeCard data={trade}/></ScaleFade></Flex>)}
+                {results?.filter((trade) => (trade.creator.username.toLowerCase().includes(filter.username.toLowerCase()) && !(trade.timeLeft === 0))).map((trade) => <Flex key={trade.tradeid}><ScaleFade in={true}><TradeCard data={trade}/></ScaleFade></Flex>)}
             </SimpleGrid>
         </Flex>
 

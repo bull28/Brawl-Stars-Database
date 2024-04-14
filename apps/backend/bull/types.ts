@@ -532,7 +532,7 @@ interface TradeData{
     cost: number;
     offer: TradePinData[];
     request: TradePinData[];
-    timeLeft: SeasonTimeData;
+    timeLeft: number;
 }
 
 /**

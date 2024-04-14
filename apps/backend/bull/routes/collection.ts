@@ -2,7 +2,7 @@ import express from "express";
 import {AVATAR_IMAGE_DIR, FEATURED_REFRESH_HOURS, IMAGE_FILE_EXTENSION} from "../data/constants";
 import {rarityNames} from "../modules/rewards";
 import brawlBox, {boxList, canOpenBox} from "../modules/brawlbox";
-import {formatCollectionData} from "../modules/pins";
+import {formatCollectionData, getCollectionScore} from "../modules/pins";
 import {getAllItems, getAllItemsPreview, refreshFeaturedItem, getAchievementItems} from "../modules/shop";
 import {MAP_CYCLE_HOURS, mod, realToTime} from "../modules/maps";
 import {getMasteryLevel} from "../modules/accessories";
@@ -179,7 +179,7 @@ router.post<Empty, Empty, ShopReqBody>("/shop", loginErrorHandler<ShopReqBody>(a
         avatars: parseStringArray(results[0].avatars),
         themes: parseStringArray(results[0].themes),
         scenes: parseStringArray(results[0].scenes),
-        accessories: [],
+        accessories: parseStringArray(results[0].accessories),
         wild_card_pins: [],
         tokens: 0,
         token_doubler: 0,
@@ -193,7 +193,8 @@ router.post<Empty, Empty, ShopReqBody>("/shop", loginErrorHandler<ShopReqBody>(a
     const level = 30;
 
     const collection = formatCollectionData(resources.brawlers, resources.accessories);
-    const achievements = getAchievementItems(resources, collection, level);
+    const score = getCollectionScore(collection);
+    const achievements = getAchievementItems(resources, collection, score, level);
 
 
     // Determine whether the featured item should be refreshed

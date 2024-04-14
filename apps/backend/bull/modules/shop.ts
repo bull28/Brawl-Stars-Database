@@ -1,8 +1,7 @@
 import allSkins from "../data/brawlers_data.json";
+import shopItemsObject from "../data/coinsshop_data.json";
 import {themeMap, sceneMap, AVATAR_SPECIAL_DIR, IMAGE_FILE_EXTENSION, PIN_IMAGE_DIR, RESOURCE_IMAGE_DIR, THEME_SPECIAL_DIR, SCENE_IMAGE_DIR} from "../data/constants";
 import brawlBox from "./brawlbox";
-import {getCollectionScore} from "./pins";
-import shopItemsObject from "../data/coinsshop_data.json";
 import {BrawlBoxDrop, UserResources, ShopItemData, CollectionData, AchievementItems, DatabaseBrawlers} from "../types";
 
 interface ShopItemPreview{
@@ -428,13 +427,14 @@ export function refreshFeaturedItem(userBrawlers: DatabaseBrawlers): string{
  * which the user is able to purchase from the shop, given their current progress.
  * @param resources object containing all the user's resources
  * @param collection formatted collection object
+ * @param score collection score calculated from the collection object
  * @param level user's level
  * @returns object with avatar, theme, and scene extraData strings
  */
-export function getAchievementItems(resources: UserResources, collection: CollectionData, level: number): AchievementItems{
+export function getAchievementItems(resources: UserResources, collection: CollectionData, score: number, level: number): AchievementItems{
     const avatars = new Set<string>();
 
-    const score = getCollectionScore(collection);
+    //const score = getCollectionScore(collection);
 
     // Order of unlocking tiered avatars ("hardest" challenge sprays !!!)
     const tierOrder = [
