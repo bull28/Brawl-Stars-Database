@@ -72,7 +72,7 @@ export default function AccountDisplay() {
             if (error.response !== void 0 && error.response.status === 404){
                 setInvalid(true);
             }
-        }});
+        }}, false);
         setTokenData(parseTokens(localStorage.getItem("tokens")));
     }, [])
 

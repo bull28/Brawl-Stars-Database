@@ -112,7 +112,7 @@ export default function Trade() {
     }, [offer, req, tradeLength, getCost]);
 
     useEffect(() => {
-        AuthRequest<UserInfoProps>("/resources", {setState: setAllResources});
+        AuthRequest<UserInfoProps>("/resources", {setState: setAllResources}, false);
     }, [setAllResources]);
     
     useEffect(() => {
@@ -134,7 +134,7 @@ export default function Trade() {
     }, [filter.brawler]);
 
     useEffect(() => {
-        AuthRequest<CollectionData>("/collection", {setState: setCollectionData});
+        AuthRequest<CollectionData>("/collection", {setState: setCollectionData}, false);
     }, []);
 
     const getTrades = useCallback(() => {

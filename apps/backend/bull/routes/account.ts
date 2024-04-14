@@ -36,7 +36,7 @@ interface LoginReqBody{
     password: string;
 }
 
-interface UpdateReqBody extends TokenReqBody{
+interface UpdateReqBody{
     currentPassword: string;
     newPassword: string;
     newAvatar: string;
@@ -46,7 +46,7 @@ interface CosmeticReqBody extends TokenReqBody{
     setCosmetics: DatabaseCosmetics;
 }
 
-interface ClaimTokensReqBody extends TokenReqBody{
+interface ClaimTokensReqBody{
     claim: boolean;
 }
 
@@ -203,7 +203,8 @@ router.post<Empty, Empty, UpdateReqBody>("/update", loginErrorHandler<UpdateReqB
 }));
 
 // Get the list of all avatars the user is allowed to select
-router.post<Empty, Empty, TokenReqBody>("/avatar", loginErrorHandler<TokenReqBody>(async (req, res, username) => {
+//router.post<Empty, Empty, TokenReqBody>("/avatar", loginErrorHandler<TokenReqBody>(async (req, res, username) => {
+router.get("/avatar", loginErrorHandler(async (req, res, username) => {
     // beforeUpdate contains at least as much information as necessary here.
     // This is used to avoid creating another database query function that is very similar to an existing one.
     const results = await beforeUpdate({username: username});
@@ -215,7 +216,7 @@ router.post<Empty, Empty, TokenReqBody>("/avatar", loginErrorHandler<TokenReqBod
 }));
 
 // Get the list of all themes and scenes the user is allowed to select
-router.post<Empty, Empty, TokenReqBody>("/theme", loginErrorHandler<TokenReqBody>(async (req, res, username) => {
+router.get("/theme", loginErrorHandler(async (req, res, username) => {
     const results = await getUnlockedCosmetics({username: username});
     const userThemes: DatabaseThemes = parseStringArray(results[0].themes);
     const userScenes: DatabaseScenes = parseStringArray(results[0].scenes);

@@ -27,7 +27,7 @@ export default function GameRewards(){
     
     const [resources, setResources] = useState<UserInfoProps | undefined>(undefined);
     const updateTokens = useCallback(() => {
-        AuthRequest<UserInfoProps>("/resources", {setState: setResources});
+        AuthRequest<UserInfoProps>("/resources", {setState: setResources}, false);
     }, []);
 
     const navigate = useNavigate();
@@ -54,11 +54,11 @@ export default function GameRewards(){
     }
 
     const loadRewards = useCallback(() => {
-        AuthRequest<UserInfoProps>("/resources", {setState: setResources});
+        AuthRequest<UserInfoProps>("/resources", {setState: setResources}, false);
         AuthRequest<Reward[]>("/report/all", {setState: (data) => {
             data = data.reverse();
             setData(data);
-        }});
+        }}, false);
     }, []);
 
     useEffect(() => {

@@ -44,7 +44,7 @@ export default function ChallengeMenu(){
     
     // Called by the challenge player when creating a challenge
     const updateTokens = useCallback(() => {
-        AuthRequest<UserInfoProps>("/resources", {setState: setResources});
+        AuthRequest<UserInfoProps>("/resources", {setState: setResources}, false);
     }, []);
     // Called by the challenge player when joining a challenge
     const onJoin = useCallback(() => {
@@ -85,7 +85,7 @@ export default function ChallengeMenu(){
             AuthRequest<UnitData>("/challenge/unit", {setState: setUnitList, server: server});
             AuthRequest<ChallengeData>("/challenge/all", {setState: setChallengeList, server: server});
             AuthRequest<ChallengeWins>("/challenge/progress", {setState: setProgress, server: server});
-            AuthRequest<UserInfoProps>("/resources", {setState: setResources});
+            AuthRequest<UserInfoProps>("/resources", {setState: setResources}, false);
             setToken(x);
         }
 

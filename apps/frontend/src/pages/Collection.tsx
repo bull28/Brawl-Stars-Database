@@ -26,11 +26,11 @@ export default function Collection() {
     }, []);
 
     const updateTokens = useCallback(() => {
-        AuthRequest<UserInfoProps>("/resources", {setState: setAllResources});
+        AuthRequest<UserInfoProps>("/resources", {setState: setAllResources}, false);
     }, [setAllResources]);
 
     const loadResources = useCallback(() => {
-        AuthRequest<CollectionData>("/collection", {setState: setData, navigate: true});
+        AuthRequest<CollectionData>("/collection", {setState: setData, navigate: true}, false);
         AuthRequest<BrawlBoxData[]>("/brawlbox", {setState: setBrawlBoxData});
         updateTokens();
     }, [updateTokens]);

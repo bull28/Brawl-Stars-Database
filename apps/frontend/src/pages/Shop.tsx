@@ -102,7 +102,7 @@ export default function Shop() {
 
     useEffect(() => {
         AuthRequest<ShopData[]>("/shop", {setState: organizeData, fallback: () => setLoggedIn(false)});      
-        AuthRequest<UserInfoProps>("/resources", {setState: setUserInfo});
+        AuthRequest<UserInfoProps>("/resources", {setState: setUserInfo}, false);
     }, [organizeData]);
 
     return (

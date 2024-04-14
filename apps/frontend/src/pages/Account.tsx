@@ -31,7 +31,7 @@ export default function Account() {
 
   useEffect(() => {
     if (localStorage.getItem('username')){
-     AuthRequest<UserInfoProps>("/resources", {setState: setAllData, navigate: true});
+     AuthRequest<UserInfoProps>("/resources", {setState: setAllData, navigate: true}, false);
     } else {
       navigate('/login')
     }

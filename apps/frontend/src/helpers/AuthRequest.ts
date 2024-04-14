@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, {AxiosError, AxiosResponse} from 'axios'
 import { createStandaloneToast } from '@chakra-ui/react'
 import api from './APIRoute';
 
@@ -40,36 +40,63 @@ interface AuthRequestConfigProps<T>{
     server?: string;
 }
 
-export default async function AuthRequest<T>(endpoint: string, config: AuthRequestConfigProps<T>) {
-    const { toast } = createStandaloneToast()
+export default async function AuthRequest<T>(endpoint: string, config: AuthRequestConfigProps<T>, post: boolean = true) {
+    const { toast } = createStandaloneToast();
+    let token = getToken();
+    if (config.data && typeof config.data.token === "string"){
+        token = config.data.token;
+    }
 
-    axios.post(`${config.server ? config.server : api}${endpoint}`, {token: getToken(), ...config.data})
-        .then((res) => {
-            if (config.setState){
-                config.setState(res.data);
-            }
+    const callback1 = (res: AxiosResponse<T>) => {
+        if (config.setState){
+            config.setState(res.data);
+        }
 
-            if (config.message){
-                if (config.message.data){
-                    toast({...config.message, duration: 3000, isClosable: true, description: config.message.description?.replace('$', res.data[config.message.data])})
-                } else {
-                    toast({...config.message, duration: 3000, isClosable: true})
+        if (config.message){
+            if (config.message.data && config.message.description){
+                let desc = config.message.description;
+                const data = res.data as Record<string, string>;
+                if (typeof res.data === "object" && data[config.message.data] !== undefined){
+                    desc = desc.replace("$", data[config.message.data])
+                } else{
+                    desc = desc.replace("$", "");
                 }
+                //toast({...config.message, duration: 3000, isClosable: true, description: config.message.description?.replace('$', res.data[config.message.data])})
+                toast({...config.message, duration: 3000, isClosable: true, description: desc});
+            } else {
+                toast({...config.message, duration: 3000, isClosable: true});
             }
-            
-        }).then(config.callback ? config.callback :  () => {
+        }
+    };
+    const callback2 = config.callback ? config.callback : () => {};
+    const callbackError = config.fallback ? config.fallback : (error: AxiosError) => {
+        if (error.response === undefined){
+            return;
+        }
 
-        }).catch(config.fallback ? config.fallback : function(error) {
-            if (error.response.status === 400 || error.response.status === 401){
-                localStorage.removeItem('username')
+        if (error.response.status === 400 || error.response.status === 401){
+            localStorage.removeItem('username')
 
-                if (config.navigate){
-                    document.location.replace('/login')
-                }
+            if (config.navigate){
+                document.location.replace('/login')
             }
+        }
 
-            if (config.errorToastMessage){
-                toast({title: config.errorToastMessage, description: error.response.data, status: 'error', duration: 3000, isClosable: true})
-            }
-        })
+        if (config.errorToastMessage){
+            toast({title: config.errorToastMessage, description: error.response.data ? error.response.data as string : "An error occurred.", status: 'error', duration: 3000, isClosable: true})
+        }
+    }
+
+    if (post){
+        axios.post(
+            `${config.server ? config.server : api}${endpoint}`,
+            {token: getToken(), ...config.data},
+            {headers: {"Authorization": `Bearer ${token}`}}
+        ).then(callback1).then(callback2).catch(callbackError);
+    } else{
+        axios.get(
+            `${config.server ? config.server : api}${endpoint}`,
+            {headers: {"Authorization": `Bearer ${token}`}}
+        ).then(callback1).then(callback2).catch(callbackError);
+    }
 }

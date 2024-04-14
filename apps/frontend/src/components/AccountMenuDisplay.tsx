@@ -18,7 +18,7 @@ export default function AccountMenuDisplay({ username, token, toggleRemove }: Pr
     const toast = useToast()
 
     useEffect(() => {
-        AuthRequest<UserInfoProps>("/resources", {setState: setData, data: {token: token}});
+        AuthRequest<UserInfoProps>("/resources", {setState: setData, data: {token: token}}, false);
     }, [token])
 
 

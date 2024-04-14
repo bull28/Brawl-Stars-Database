@@ -44,7 +44,7 @@ export default function GameMenu(){
     }
 
     const loadAccessories = useCallback(() => {
-        AuthRequest<Accessory[]>("/accessory/all", {setState: setAccessories});
+        AuthRequest<Accessory[]>("/accessory/all", {setState: setAccessories}, false);
     }, []);
 
     useEffect(() => {
@@ -55,7 +55,7 @@ export default function GameMenu(){
             AuthRequest<Record<string, unknown>[]>("/report/all", {setState: (data1) => {
                 // The type of this value does not matter, only the length is used
                 setRewardCount(data1.length);
-            }});
+            }}, false);
 
             loadAccessories();
         }, fallback: (error) => {
@@ -72,7 +72,7 @@ export default function GameMenu(){
                     });
                 }
             }
-        }});
+        }}, false);
     }, [toast, loadAccessories]);
 
     return (

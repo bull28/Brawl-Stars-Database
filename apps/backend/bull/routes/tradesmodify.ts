@@ -1,7 +1,7 @@
 import express from "express";
 import {formatTradeData, getTimeTradeCost, getTradeCost, validatePins} from "../modules/trades";
 import {formatCollectionData} from "../modules/pins";
-import {Empty, TokenReqBody, DatabaseBrawlers, DatabaseWildCard, TradePin, TradePinValid, DatabaseAccessories} from "../types";
+import {Empty, DatabaseBrawlers, DatabaseWildCard, TradePin, TradePinValid, DatabaseAccessories} from "../types";
 import {
     loginErrorHandler, 
     transaction, 
@@ -23,7 +23,7 @@ import {
 const router = express.Router();
 
 
-interface CreateReqBody extends TokenReqBody{
+interface CreateReqBody{
     tradeDurationHours: number;
     offer: TradePin[];
     request: TradePin[];
@@ -31,13 +31,13 @@ interface CreateReqBody extends TokenReqBody{
     getCost: boolean;
 }
 
-interface AcceptReqBody extends TokenReqBody{
+interface AcceptReqBody{
     tradeid: number;
     forceAccept: boolean;
     useWildCards: boolean;
 }
 
-interface CloseReqBody extends TokenReqBody{
+interface CloseReqBody{
     tradeid: number;
     forceAccept: boolean;
 }

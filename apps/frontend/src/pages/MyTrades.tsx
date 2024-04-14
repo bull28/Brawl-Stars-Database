@@ -69,7 +69,7 @@ export default function MyTrades() {
     }, []);
 
     useEffect(() => {
-        AuthRequest<UserInfoProps>("/resources", {setState: setResourcesUsername});
+        AuthRequest<UserInfoProps>("/resources", {setState: setResourcesUsername}, false);
     }, [setResourcesUsername])
 
     const getTrades = useCallback(() => {

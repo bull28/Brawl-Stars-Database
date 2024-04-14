@@ -145,7 +145,7 @@ function getErrorMessage(error: Error): {status: number; message: string;}{
 
 type ExpressCallback<R, Q, P> = (req: Request<P, Empty, R, Q>, res: Response, next: NextFunction) => void;
 
-type UsernameCallback<R extends TokenReqBody, Q, P> = (req: Request<P, Empty, R, Q>, res: Response, username: string, next: NextFunction) => void;
+type UsernameCallback<R, Q, P> = (req: Request<P, Empty, R, Q>, res: Response, username: string, next: NextFunction) => void;
 
 /**
  * Error handler for async endpoint callbacks that do not require authentication. This function will send the
@@ -154,7 +154,7 @@ type UsernameCallback<R extends TokenReqBody, Q, P> = (req: Request<P, Empty, R,
  * @param callback callback for an endpoint
  * @returns callback with a promise
  */
-export function databaseErrorHandler<R, Q = Query, P = ParamsDictionary>(callback: ExpressCallback<R, Q, P>): ExpressCallback<R, Q, P>{
+export function databaseErrorHandler<R = Empty, Q = Query, P = ParamsDictionary>(callback: ExpressCallback<R, Q, P>): ExpressCallback<R, Q, P>{
     return (req: Request<P, Empty, R, Q>, res: Response, next: NextFunction) => {
         Promise.resolve(callback(req, res, next)).catch((reason) => {
             const errorData = getErrorMessage(reason);
@@ -171,13 +171,19 @@ export function databaseErrorHandler<R, Q = Query, P = ParamsDictionary>(callbac
  * @param callback callback for an endpoint
  * @returns callback with a promise
  */
-export function loginErrorHandler<R extends TokenReqBody, Q = Query, P = ParamsDictionary>(callback: UsernameCallback<R, Q, P>): ExpressCallback<R, Q, P>{
+export function loginErrorHandler<R = Empty, Q = Query, P = ParamsDictionary>(callback: UsernameCallback<R, Q, P>): ExpressCallback<R, Q, P>{
     return (req: Request<P, Empty, R, Q>, res: Response, next: NextFunction) => {
-        if (typeof req.body.token !== "string"){
+        if (typeof req.headers.authorization !== "string"){
             res.status(400).send("Token is missing.");
             return;
         }
-        const username = validateToken(req.body.token);
+        const [authType, token] = req.headers.authorization.split(" ");
+        if (authType.toLowerCase() !== "bearer" || token === undefined){
+            res.status(400).send("Token is missing.");
+            return;
+        }
+
+        const username = validateToken(token);
 
         if (username === ""){
             res.status(401).send("Invalid token.");

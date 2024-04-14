@@ -20,7 +20,7 @@ import {
     getChallenge, 
     deleteChallenge
 } from "../modules/database";
-import {Empty, TokenReqBody, ChallengeWave, UserWaves} from "../types";
+import {Empty, ChallengeWave, UserWaves} from "../types";
 
 const router = express.Router();
 
@@ -29,16 +29,16 @@ interface ChallengeKeyReqBody{
     key: string;
 }
 
-interface ChallengeCreateReqBody extends TokenReqBody{
+interface ChallengeCreateReqBody{
     waves: UserWaves;
 }
 
-interface ChallengeStartReqBody extends TokenReqBody{
+interface ChallengeStartReqBody{
     // Later, this will not be necessary when there is automatic challenge matchmaking
     challengeid: number;
 }
 
-// Get the list of all accessories
+// Get game modification data for an active challenge
 router.post<Empty, Empty, ChallengeKeyReqBody>("/get", databaseErrorHandler<ChallengeKeyReqBody>(async (req, res) => {
     const key = req.body.key;
     if (typeof key !== "string"){
@@ -74,6 +74,7 @@ router.post<Empty, Empty, ChallengeKeyReqBody>("/get", databaseErrorHandler<Chal
     res.json(mod);
 }));
 
+// Create a new challenge
 router.post<Empty, Empty, ChallengeCreateReqBody>("/create", loginErrorHandler<ChallengeCreateReqBody>(async (req, res, username) => {
     if (req.body.waves === undefined || Array.isArray(req.body.waves) === false){
         res.status(400).send("Challenge waves incorrectly formatted.");
@@ -108,6 +109,7 @@ router.post<Empty, Empty, ChallengeCreateReqBody>("/create", loginErrorHandler<C
     res.send("Challenge successfully created");
 }));
 
+// Find a challenge and set it as active for the current user
 router.post<Empty, Empty, ChallengeStartReqBody>("/start", loginErrorHandler<ChallengeStartReqBody>(async (req, res, username) => {
     const challengeid = req.body.challengeid;
     if (typeof challengeid !== "number"){

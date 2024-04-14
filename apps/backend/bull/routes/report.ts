@@ -23,7 +23,7 @@ import {
     getActiveChallenge,
     deleteActiveChallenge
 } from "../modules/database";
-import {Empty, TokenReqBody, UserResources, DatabaseBadges, GameReport, ReportPreview} from "../types";
+import {Empty, UserResources, DatabaseBadges, GameReport, ReportPreview} from "../types";
 
 const router = express.Router();
 
@@ -35,7 +35,7 @@ interface SaveReqBody{
     report: GameReport;
 }
 
-interface ClaimReportReqBody extends TokenReqBody{
+interface ClaimReportReqBody{
     reportid: number;
     claim: boolean;
 }
@@ -127,7 +127,7 @@ router.post<Empty, Empty, SaveReqBody>("/save", databaseErrorHandler<SaveReqBody
 }));
 
 // Get all reports a user currently has unclaimed
-router.post<Empty, Empty, TokenReqBody>("/all", loginErrorHandler<TokenReqBody>(async (req, res, username) => {
+router.get("/all", loginErrorHandler(async (req, res, username) => {
     const results = await getAllReports({username: username});
 
     const reportList: ReportPreview[] = [];

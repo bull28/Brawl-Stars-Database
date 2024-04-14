@@ -19,7 +19,7 @@ import {
     setResources, 
     updateFeaturedItem
 } from "../modules/database";
-import {Empty, TokenReqBody, UserResources} from "../types";
+import {Empty, UserResources} from "../types";
 
 const router = express.Router();
 
@@ -31,17 +31,17 @@ interface WildCardData{
     amount: number;
 }
 
-interface BrawlBoxReqBody extends TokenReqBody{
+interface BrawlBoxReqBody{
     boxType: string;
 }
 
-interface ShopReqBody extends TokenReqBody{
+interface ShopReqBody{
     item: string;
 }
 
 
 // Get a user's username and amounts of various resources
-router.post<Empty, Empty, TokenReqBody>("/resources", loginErrorHandler<TokenReqBody>(async (req, res, username) => {
+router.get("/resources", loginErrorHandler(async (req, res, username) => {
     const results = await getResources({username: username});
 
     const mastery = getMasteryLevel(results[0].points);
@@ -85,7 +85,7 @@ router.post<Empty, Empty, TokenReqBody>("/resources", loginErrorHandler<TokenReq
 }));
 
 // Get a user's collection of brawlers and pins
-router.post<Empty, Empty, TokenReqBody>("/collection", loginErrorHandler<TokenReqBody>(async (req, res, username) => {
+router.get("/collection", loginErrorHandler(async (req, res, username) => {
     // beforeUpdate contains at least as much information as necessary here.
     // This is used to avoid creating another database query function that is very similar to an existing one.
     const results = await beforeUpdate({username: username});

@@ -37,7 +37,7 @@ const AvatarSelect = React.forwardRef<{open: () => void}, Props>((props, ref) =>
     )
     
     useEffect(() => {
-      AuthRequest<string[]>("/avatar", {setState: setAvatars});
+      AuthRequest<string[]>("/avatar", {setState: setAvatars}, false);
     }, [])
 
     return (
