@@ -12,7 +12,7 @@ export default function SkullBackground({bg, icon}: {bg?: string; icon?: string;
         if (bg && icon){
             setCosmetics({background: bg, icon: icon, music: "", scene: ""});
         } else {
-            AuthRequest<CosmeticData>("/cosmetic", {setState: setCosmetics});
+            AuthRequest<CosmeticData>("/cosmetic", {setState: setCosmetics}, false);
         }
     }, [bg, icon])
     

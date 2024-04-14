@@ -68,7 +68,7 @@ export default function Gallery() {
 
     useEffect(() => {
         AuthRequest<ThemeProps>("/theme", {setState: organizeData}, false);
-        AuthRequest<CosmeticData>("/cosmetic", {setState: setCosmetics});
+        AuthRequest<CosmeticData>("/cosmetic", {setState: setCosmetics}, false);
     }, [organizeData]);
 
     const saveChanges = () => {

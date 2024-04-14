@@ -18,7 +18,7 @@ export default function Brawler(){
     const [cosmetics, setCosmetics] = useState<CosmeticData | undefined>(undefined);
     
     useEffect(() => {
-        AuthRequest<CosmeticData>("/cosmetic", {setState: setCosmetics});
+        AuthRequest<CosmeticData>("/cosmetic", {setState: setCosmetics}, false);
     }, []);
 
     useEffect(() => {

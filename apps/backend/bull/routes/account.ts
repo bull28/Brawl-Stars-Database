@@ -21,7 +21,7 @@ import {
     updateCosmetics, 
     updateLastClaim
 } from "../modules/database";
-import {Empty, TokenReqBody, AvatarList, DatabaseAvatars, DatabaseBrawlers, DatabaseCosmetics, DatabaseScenes, DatabaseThemes, SceneList, ThemeList} from "../types";
+import {Empty, AvatarList, DatabaseAvatars, DatabaseBrawlers, DatabaseCosmetics, DatabaseScenes, DatabaseThemes, SceneList, ThemeList} from "../types";
 
 const router = express.Router();
 
@@ -42,7 +42,7 @@ interface UpdateReqBody{
     newAvatar: string;
 }
 
-interface CosmeticReqBody extends TokenReqBody{
+interface CosmeticReqBody{
     setCosmetics: DatabaseCosmetics;
 }
 
@@ -225,34 +225,32 @@ router.get("/theme", loginErrorHandler(async (req, res, username) => {
     res.json(themes);
 }));
 
-// Get and set user cosmetic items
-router.post<Empty, Empty, CosmeticReqBody>("/cosmetic", databaseErrorHandler<CosmeticReqBody>(async (req, res) => {
+// Get a user's currently active cosmetic items
+router.get("/cosmetic", databaseErrorHandler(async (req, res) => {
+    if (typeof req.headers.authorization === "string"){
+        const [authType, token] = req.headers.authorization.split(" ");
+        if (authType.toLowerCase() === "bearer" && token !== undefined){
+            const username = validateToken(token);
+            if (username !== ""){
+                const results = await getActiveCosmetics({username: username});
+                res.json(getCosmetics(allThemes, allScenes, results[0]));
+                return;
+            }
+        }
+    }
+
+    // Getting cosmetics with no token will return the default when no user is logged in
+    res.json(getCosmetics(allThemes, allScenes, {
+        background: "", icon: "", music: "", scene: ""
+    }));
+}));
+
+// Set a user's active cosmetic items
+router.post<Empty, Empty, CosmeticReqBody>("/cosmetic", loginErrorHandler<CosmeticReqBody>(async (req, res, username) => {
     // This object stores a validated copy of the user's request to change cosmetics
     const setCosmetics: DatabaseCosmetics = {
         background: "", icon: "", music: "", scene: ""
     };
-
-    // A token is only required to set cosmetics
-    // Getting cosmetics with no token will return the default when no user is logged in
-    if (typeof req.body.token !== "string"){
-        res.json(getCosmetics(allThemes, allScenes, setCosmetics));
-        return;
-    }
-    const username = validateToken(req.body.token);
-    if (username === ""){
-        res.status(401).send("Invalid token.");
-        return;
-    }
-
-    // If the user does not provide any cosmetics to set, get their currently active cosmetics then return
-    if (req.body.setCosmetics === undefined){
-        const results = await getActiveCosmetics({username: username});
-
-        // results.length === 0 checked
-
-        res.json(getCosmetics(allThemes, allScenes, results[0]));
-        return;
-    }
 
     // Try to read which cosmetics the user wants to set
     // If req.body.setCosmetics is not formatted correctly or is some other data type then an error will be sent here.

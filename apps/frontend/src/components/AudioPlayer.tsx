@@ -20,7 +20,7 @@ export default function AudioPlayer() {
     }, [audio]);
     
     useEffect(() => {
-        AuthRequest<CosmeticData>("/cosmetic", {setState: setAudioSrc});
+        AuthRequest<CosmeticData>("/cosmetic", {setState: setAudioSrc}, false);
     }, [setAudioSrc]);
 
     useEffect(() => {
@@ -44,7 +44,7 @@ export default function AudioPlayer() {
                 <IconButton icon={<HiHome size={"100%"}/>} bgColor={'blue.500'} p={1} aria-label="play/pause music"/>
             </Link>
             <IconButton onClick={toggle} icon={<HiMusicNote size={"100%"}/>} bgColor={'blue.500'} p={1} aria-label="play/pause music"/>
-            <IconButton onClick={() => {AuthRequest<CosmeticData>("/cosmetic", {setState: setAudioSrc});}} icon={<HiOutlineRefresh size={"100%"}/>} bgColor={'blue.500'} p={1} aria-label="play/pause music"/>
+            <IconButton onClick={() => {AuthRequest<CosmeticData>("/cosmetic", {setState: setAudioSrc}, false);}} icon={<HiOutlineRefresh size={"100%"}/>} bgColor={'blue.500'} p={1} aria-label="play/pause music"/>
         </Flex>
     );
 };
