@@ -44,7 +44,7 @@ export default function Account() {
   const handleUpdate = () => {
     toast.closeAll();
 
-    axios.post(`${api}/update`, {currentPassword: oldPassword, newPassword: newPassword, newAvatar: avatar, token: getToken()})
+    axios.post(`${api}/update`, {currentPassword: oldPassword, newPassword: newPassword, newAvatar: avatar}, {headers: {"Authorization": `Bearer ${getToken()}`}})
       .then((res) => {
         toast({
           title: 'Success',

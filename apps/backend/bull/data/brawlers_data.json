@@ -420,6 +420,33 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "shotgungirlsquad",
+                "displayName": "Squad Buster Shelly",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Squad Busters",
+                    "image": "bg_default.webp",
+                    "icon": "icon_squad.webp"
+                },
+                "limited": false,
+                "image": "shotgungirlsquad.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -575,6 +602,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "shelly_squad",
+                "image": "shelly_squad.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -626,9 +662,9 @@
                     "Pet Model"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Animal Kingdom",
+                    "image": "bg_jungle.webp",
+                    "icon": "icon_animals.webp"
                 },
                 "limited": false,
                 "image": "shamanpanda.webp",
@@ -703,9 +739,9 @@
                     "Brawler Model"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Animal Kingdom",
+                    "image": "bg_jungle.webp",
+                    "icon": "icon_animals.webp"
                 },
                 "limited": false,
                 "image": "shamankoala.webp",
@@ -869,6 +905,60 @@
                 },
                 "limited": false,
                 "image": "shamandarkcircus.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "shamangodzilla",
+                "displayName": "Mechagodzilla Nita",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Godzilla",
+                    "image": "bg_godzilla.webp",
+                    "icon": "icon_godzilla.webp"
+                },
+                "limited": false,
+                "image": "shamangodzilla.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "shamandragon_black",
+                "displayName": "Rui Shou Nita",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Ranked",
+                    "image": "bg_ranked.webp",
+                    "icon": "icon_ranked.webp"
+                },
+                "limited": true,
+                "image": "shamandragon_black.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -1093,6 +1183,33 @@
                     "name": "Epic",
                     "color": "#b116ec"
                 }
+            },
+            {
+                "name": "nita_ranked_02",
+                "image": "nita_ranked_02.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "nita_godzilla",
+                "image": "nita_godzilla.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "nita_overcharge",
+                "image": "nita_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -1143,9 +1260,9 @@
                     "Brawler Model"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Vibing",
+                    "image": "bg_music.webp",
+                    "icon": "icon_music.webp"
                 },
                 "limited": false,
                 "image": "gunslingerrockstar.webp",
@@ -1447,9 +1564,9 @@
                     "Animations"
                 ],
                 "group": {
-                    "name": "",
+                    "name": "City Troubles",
                     "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "icon": "icon_city.webp"
                 },
                 "limited": false,
                 "image": "gunslingerheist.webp",
@@ -1573,7 +1690,7 @@
             {
                 "name": "gunslingermechagold",
                 "displayName": "Paragon Mecha Colt",
-                "cost": 299,
+                "cost": 49,
                 "currency": "Gems",
                 "costBling": -1,
                 "requires": "Mecha Colt",
@@ -1602,7 +1719,7 @@
             {
                 "name": "gunslingermechapurple",
                 "displayName": "Renegade Mecha Colt",
-                "cost": 299,
+                "cost": 49,
                 "currency": "Gems",
                 "costBling": -1,
                 "requires": "Mecha Colt",
@@ -1858,6 +1975,15 @@
             {
                 "name": "colt_mechapurple",
                 "image": "colt_mechapurple.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "colt_player",
+                "image": "colt_player.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -2121,9 +2247,9 @@
                     "Effects"
                 ],
                 "group": {
-                    "name": "Club Series",
-                    "image": "bg_clubleague.webp",
-                    "icon": "icon_clubleague.webp"
+                    "name": "Animal Kingdom",
+                    "image": "bg_jungle.webp",
+                    "icon": "icon_animals.webp"
                 },
                 "limited": false,
                 "image": "bulldudelion.webp",
@@ -2358,8 +2484,8 @@
                     "Sounds"
                 ],
                 "group": {
-                    "name": "Super City Summers",
-                    "image": "bg_default.webp",
+                    "name": "Summer of Brawl",
+                    "image": "bg_summer.webp",
                     "icon": "icon_summer.webp"
                 },
                 "limited": false,
@@ -2382,9 +2508,9 @@
                     "Brawler Model"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Vibing",
+                    "image": "bg_music.webp",
+                    "icon": "icon_music.webp"
                 },
                 "limited": false,
                 "image": "rocketgirlboombox.webp",
@@ -2651,6 +2777,222 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "rocketgirlvirus",
+                "displayName": "Hacker Brock",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Brawl Pass",
+                    "image": "bg_default.webp",
+                    "icon": "icon_brawlpass.webp"
+                },
+                "limited": true,
+                "image": "rocketgirlvirus.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "rocketgirlranger_red",
+                "displayName": "Super Ranger Brock Red",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Max Force",
+                    "image": "bg_maxforce.webp",
+                    "icon": "icon_maxforce.webp"
+                },
+                "limited": false,
+                "image": "rocketgirlranger_red.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "rocketgirlranger_blue",
+                "displayName": "Super Ranger Brock Blue",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Max Force",
+                    "image": "bg_maxforce.webp",
+                    "icon": "icon_maxforce.webp"
+                },
+                "limited": false,
+                "image": "rocketgirlranger_blue.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "rocketgirlranger_yellow",
+                "displayName": "Super Ranger Brock Yellow",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Max Force",
+                    "image": "bg_maxforce.webp",
+                    "icon": "icon_maxforce.webp"
+                },
+                "limited": false,
+                "image": "rocketgirlranger_yellow.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "rocketgirlranger_pink",
+                "displayName": "Super Ranger Brock Pink",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Max Force",
+                    "image": "bg_maxforce.webp",
+                    "icon": "icon_maxforce.webp"
+                },
+                "limited": false,
+                "image": "rocketgirlranger_pink.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "rocketgirlranger_black",
+                "displayName": "Super Ranger Brock Black",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Max Force",
+                    "image": "bg_maxforce.webp",
+                    "icon": "icon_maxforce.webp"
+                },
+                "limited": false,
+                "image": "rocketgirlranger_black.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "rocketgirlvirusrgb",
+                "displayName": "RGB Hacker Brock",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Brawl Pass",
+                    "image": "bg_default.webp",
+                    "icon": "icon_brawlpass.webp"
+                },
+                "limited": true,
+                "image": "rocketgirlvirusrgb.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "rocketgirlvirusgold",
+                "displayName": "Master Hacker Brock",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Brawl Pass",
+                    "image": "bg_default.webp",
+                    "icon": "icon_brawlpass.webp"
+                },
+                "limited": true,
+                "image": "rocketgirlvirusgold.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -2788,6 +3130,96 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "brock_virus",
+                "image": "brock_virus.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "brock_ranger_black",
+                "image": "brock_ranger_black.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "brock_ranger_blue",
+                "image": "brock_ranger_blue.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "brock_ranger_pink",
+                "image": "brock_ranger_pink.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "brock_ranger_red",
+                "image": "brock_ranger_red.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "brock_ranger_yellow",
+                "image": "brock_ranger_yellow.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "brock_music",
+                "image": "brock_music.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "brock_virusrgb",
+                "image": "brock_virusrgb.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "brock_virusgold",
+                "image": "brock_virusgold.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "brock_overcharge",
+                "image": "brock_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -2840,9 +3272,9 @@
                     "Animations"
                 ],
                 "group": {
-                    "name": "",
+                    "name": "Misc",
                     "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "icon": "icon_misc.webp"
                 },
                 "limited": false,
                 "image": "luchadorrudo.webp",
@@ -2866,9 +3298,9 @@
                     "Animations"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Royals",
+                    "image": "bg_onceupon.webp",
+                    "icon": "icon_royals.webp"
                 },
                 "limited": false,
                 "image": "luchadorrey.webp",
@@ -3476,9 +3908,9 @@
                     "Effects"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "True Gold",
+                    "image": "bg_gold.webp",
+                    "icon": "icon_gold.webp"
                 },
                 "limited": false,
                 "image": "barkeepgold.webp",
@@ -3554,9 +3986,9 @@
                     "Effects"
                 ],
                 "group": {
-                    "name": "",
+                    "name": "Starry Meal",
                     "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "icon": "icon_meal.webp"
                 },
                 "limited": false,
                 "image": "barkeepmaple.webp",
@@ -4274,8 +4706,8 @@
                     "Effects"
                 ],
                 "group": {
-                    "name": "Super City Summers",
-                    "image": "bg_default.webp",
+                    "name": "Summer of Brawl",
+                    "image": "bg_summer.webp",
                     "icon": "icon_summer.webp"
                 },
                 "limited": false,
@@ -4705,8 +5137,8 @@
                     "Effects"
                 ],
                 "group": {
-                    "name": "Super City Summers",
-                    "image": "bg_default.webp",
+                    "name": "Summer of Brawl",
+                    "image": "bg_summer.webp",
                     "icon": "icon_summer.webp"
                 },
                 "limited": false,
@@ -5167,9 +5599,9 @@
                     "Voice"
                 ],
                 "group": {
-                    "name": "Robots & Monsters",
-                    "image": "bg_robotsmonsters.webp",
-                    "icon": "icon_robotsmonsters.webp"
+                    "name": "Max Force",
+                    "image": "bg_maxforce.webp",
+                    "icon": "icon_maxforce.webp"
                 },
                 "limited": false,
                 "image": "tntdudemecha.webp",
@@ -5355,9 +5787,9 @@
                     "Effects"
                 ],
                 "group": {
-                    "name": "Club Series",
-                    "image": "bg_clubleague.webp",
-                    "icon": "icon_clubleague.webp"
+                    "name": "Wasteland",
+                    "image": "bg_default.webp",
+                    "icon": "icon_wasteland.webp"
                 },
                 "limited": false,
                 "image": "tntdudetoxic.webp",
@@ -5608,84 +6040,84 @@
                 }
             },
             {
-                "name": "dynamike_robotsmonsters_default",
-                "image": "dynamike_robotsmonsters_default.webp",
+                "name": "dynamike_maxforce_default",
+                "image": "dynamike_maxforce_default.webp",
                 "rarity": {
-                    "value": 0,
-                    "name": "Common",
-                    "color": "#94d6f4"
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
                 }
             },
             {
-                "name": "dynamike_robotsmonsters_happy",
-                "image": "dynamike_robotsmonsters_happy.webp",
+                "name": "dynamike_maxforce_happy",
+                "image": "dynamike_maxforce_happy.webp",
                 "rarity": {
-                    "value": 0,
-                    "name": "Common",
-                    "color": "#94d6f4"
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
                 }
             },
             {
-                "name": "dynamike_robotsmonsters_sad",
-                "image": "dynamike_robotsmonsters_sad.webp",
+                "name": "dynamike_maxforce_sad",
+                "image": "dynamike_maxforce_sad.webp",
                 "rarity": {
-                    "value": 0,
-                    "name": "Common",
-                    "color": "#94d6f4"
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
                 }
             },
             {
-                "name": "dynamike_robotsmonsters_angry",
-                "image": "dynamike_robotsmonsters_angry.webp",
+                "name": "dynamike_maxforce_angry",
+                "image": "dynamike_maxforce_angry.webp",
                 "rarity": {
-                    "value": 0,
-                    "name": "Common",
-                    "color": "#94d6f4"
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
                 }
             },
             {
-                "name": "dynamike_robotsmonsters_gg",
-                "image": "dynamike_robotsmonsters_gg.webp",
+                "name": "dynamike_maxforce_gg",
+                "image": "dynamike_maxforce_gg.webp",
                 "rarity": {
-                    "value": 1,
-                    "name": "Rare",
-                    "color": "#2edd1b"
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
                 }
             },
             {
-                "name": "dynamike_robotsmonsters_clap",
-                "image": "dynamike_robotsmonsters_clap.webp",
+                "name": "dynamike_maxforce_clap",
+                "image": "dynamike_maxforce_clap.webp",
                 "rarity": {
-                    "value": 1,
-                    "name": "Rare",
-                    "color": "#2edd1b"
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
                 }
             },
             {
-                "name": "dynamike_robotsmonsters_thanks",
-                "image": "dynamike_robotsmonsters_thanks.webp",
+                "name": "dynamike_maxforce_thanks",
+                "image": "dynamike_maxforce_thanks.webp",
                 "rarity": {
-                    "value": 2,
-                    "name": "Epic",
-                    "color": "#b116ec"
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
                 }
             },
             {
-                "name": "dynamike_robotsmonsters_sweat",
-                "image": "dynamike_robotsmonsters_sweat.webp",
+                "name": "dynamike_maxforce_sweat",
+                "image": "dynamike_maxforce_sweat.webp",
                 "rarity": {
-                    "value": 2,
-                    "name": "Epic",
-                    "color": "#b116ec"
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
                 }
             },
             {
-                "name": "dynamike_robotsmonsters_special",
-                "image": "dynamike_robotsmonsters_special.webp",
+                "name": "dynamike_maxforce_special",
+                "image": "dynamike_maxforce_special.webp",
                 "rarity": {
-                    "value": 2,
-                    "name": "Epic",
-                    "color": "#b116ec"
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
                 }
             },
             {
@@ -5709,6 +6141,15 @@
             {
                 "name": "dynamike_ranked",
                 "image": "dynamike_ranked.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "dynamike_wasteland",
+                "image": "dynamike_wasteland.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -5766,9 +6207,9 @@
                     "Effects"
                 ],
                 "group": {
-                    "name": "Robots & Monsters",
-                    "image": "bg_robotsmonsters.webp",
-                    "icon": "icon_robotsmonsters.webp"
+                    "name": "Max Force",
+                    "image": "bg_maxforce.webp",
+                    "icon": "icon_maxforce.webp"
                 },
                 "limited": false,
                 "image": "clusterbombmonster.webp",
@@ -5908,6 +6349,87 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "clusterbombdudegodzilla",
+                "displayName": "Mecha-Tick Ghidorah",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Brawl Pass",
+                    "image": "bg_default.webp",
+                    "icon": "icon_brawlpass.webp"
+                },
+                "limited": true,
+                "image": "clusterbombdudegodzilla.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "clusterbombdudegodzilladark",
+                "displayName": "Mecha-Tick Ghidorah Dark",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Brawl Pass",
+                    "image": "bg_default.webp",
+                    "icon": "icon_brawlpass.webp"
+                },
+                "limited": true,
+                "image": "clusterbombdudegodzilladark.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "clusterbombdudegodzillagold",
+                "displayName": "Mecha-Tick Ghidorah Light",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Brawl Pass",
+                    "image": "bg_default.webp",
+                    "icon": "icon_brawlpass.webp"
+                },
+                "limited": true,
+                "image": "clusterbombdudegodzillagold.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -6027,6 +6549,42 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "tick_godzilla",
+                "image": "tick_godzilla.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "tick_godzilladark",
+                "image": "tick_godzilladark.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "tick_godzillagold",
+                "image": "tick_godzillagold.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "tick_overcharge",
+                "image": "tick_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -6077,8 +6635,8 @@
                     "Brawler Model"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
+                    "name": "Gaming",
+                    "image": "bg_lny_2023.webp",
                     "icon": "icon_default.webp"
                 },
                 "limited": false,
@@ -6272,6 +6830,33 @@
                 },
                 "limited": true,
                 "image": "arcadeviruschroma.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "arcadepiano_black",
+                "displayName": "Piano 8-Bit",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Ranked",
+                    "image": "bg_ranked.webp",
+                    "icon": "icon_ranked.webp"
+                },
+                "limited": true,
+                "image": "arcadepiano_black.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -6568,6 +7153,15 @@
                     "name": "Epic",
                     "color": "#b116ec"
                 }
+            },
+            {
+                "name": "8bit_ranked_02",
+                "image": "8bit_ranked_02.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -6619,9 +7213,9 @@
                     "Effects"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Royals",
+                    "image": "bg_onceupon.webp",
+                    "icon": "icon_royals.webp"
                 },
                 "limited": false,
                 "image": "trickshotgold.webp",
@@ -6773,9 +7367,9 @@
                     "Effects"
                 ],
                 "group": {
-                    "name": "Club Series",
-                    "image": "bg_clubleague.webp",
-                    "icon": "icon_clubleague.webp"
+                    "name": "Animal Kingdom",
+                    "image": "bg_jungle.webp",
+                    "icon": "icon_animals.webp"
                 },
                 "limited": false,
                 "image": "trickshotdudechicken.webp",
@@ -7579,6 +8173,33 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "artillerydudesmuggler_orange",
+                "displayName": "Moon-curser Penny",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Ranked",
+                    "image": "bg_ranked.webp",
+                    "icon": "icon_ranked.webp"
+                },
+                "limited": true,
+                "image": "artillerydudesmuggler_orange.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -7711,6 +8332,15 @@
             {
                 "name": "penny_ranked",
                 "image": "penny_ranked.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "penny_ranked_02",
+                "image": "penny_ranked_02.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -8025,9 +8655,9 @@
                     "Texture"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Clash Stories",
+                    "image": "bg_claship.webp",
+                    "icon": "icon_claship.webp"
                 },
                 "limited": false,
                 "image": "whirlwindgoblin.webp",
@@ -8207,9 +8837,9 @@
                     "Texture"
                 ],
                 "group": {
-                    "name": "",
+                    "name": "City Troubles",
                     "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "icon": "icon_city.webp"
                 },
                 "limited": false,
                 "image": "drillerconstructor.webp",
@@ -8235,9 +8865,9 @@
                     "Voice"
                 ],
                 "group": {
-                    "name": "Robots & Monsters",
-                    "image": "bg_robotsmonsters.webp",
-                    "icon": "icon_robotsmonsters.webp"
+                    "name": "Max Force",
+                    "image": "bg_maxforce.webp",
+                    "icon": "icon_maxforce.webp"
                 },
                 "limited": false,
                 "image": "drillermonster.webp",
@@ -8378,6 +9008,33 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "drillerjetski_purple",
+                "displayName": "Wave Hopper Jacky",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Ranked",
+                    "image": "bg_ranked.webp",
+                    "icon": "icon_ranked.webp"
+                },
+                "limited": true,
+                "image": "drillerjetski_purple.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -8490,6 +9147,15 @@
                 }
             },
             {
+                "name": "jacky_maxforce",
+                "image": "jacky_maxforce.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
                 "name": "jacky_ranked",
                 "image": "jacky_ranked.webp",
                 "rarity": {
@@ -8501,6 +9167,15 @@
             {
                 "name": "jacky_overcharge",
                 "image": "jacky_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "jacky_ranked_02",
+                "image": "jacky_ranked_02.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -8634,9 +9309,9 @@
                     "Texture"
                 ],
                 "group": {
-                    "name": "",
+                    "name": "Misc",
                     "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "icon": "icon_misc.webp"
                 },
                 "limited": false,
                 "image": "soulcollectorrare.webp",
@@ -8972,9 +9647,9 @@
                     "Texture"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Rumble Jungle Heroes",
+                    "image": "bg_jungle.webp",
+                    "icon": "icon_jungle.webp"
                 },
                 "limited": false,
                 "image": "bowdudewarrior.webp",
@@ -9254,15 +9929,6 @@
                 }
             },
             {
-                "name": "bo_mecha",
-                "image": "bo_mecha.webp",
-                "rarity": {
-                    "value": 3,
-                    "name": "Legendary",
-                    "color": "#fdf11e"
-                }
-            },
-            {
                 "name": "bo_mechawhite",
                 "image": "bo_mechawhite.webp",
                 "rarity": {
@@ -9314,6 +9980,87 @@
                     "value": 3,
                     "name": "Legendary",
                     "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "bo_mecha_default",
+                "image": "bo_mecha_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "bo_mecha_happy",
+                "image": "bo_mecha_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "bo_mecha_sad",
+                "image": "bo_mecha_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "bo_mecha_angry",
+                "image": "bo_mecha_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "bo_mecha_gg",
+                "image": "bo_mecha_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "bo_mecha_clap",
+                "image": "bo_mecha_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "bo_mecha_thanks",
+                "image": "bo_mecha_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "bo_mecha_sweat",
+                "image": "bo_mecha_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "bo_mecha_special",
+                "image": "bo_mecha_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
                 }
             }
         ]
@@ -10098,9 +10845,9 @@
                     "Brawler Model"
                 ],
                 "group": {
-                    "name": "",
+                    "name": "Misc",
                     "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "icon": "icon_misc.webp"
                 },
                 "limited": false,
                 "image": "sniperpink.webp",
@@ -10509,8 +11256,8 @@
                     "Turret Model"
                 ],
                 "group": {
-                    "name": "Super City Summers",
-                    "image": "bg_default.webp",
+                    "name": "Summer of Brawl",
+                    "image": "bg_summer.webp",
                     "icon": "icon_summer.webp"
                 },
                 "limited": false,
@@ -10614,9 +11361,9 @@
                     "Effects"
                 ],
                 "group": {
-                    "name": "",
+                    "name": "City Troubles",
                     "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "icon": "icon_city.webp"
                 },
                 "limited": false,
                 "image": "minigundudebroker.webp",
@@ -10858,9 +11605,9 @@
                     "Brawler Model"
                 ],
                 "group": {
-                    "name": "",
+                    "name": "Misc",
                     "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "icon": "icon_misc.webp"
                 },
                 "limited": false,
                 "image": "frankcaveman.webp",
@@ -10884,9 +11631,9 @@
                     "Effects"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Vibing",
+                    "image": "bg_music.webp",
+                    "icon": "icon_music.webp"
                 },
                 "limited": false,
                 "image": "hammerdudedj.webp",
@@ -11079,6 +11826,31 @@
                 },
                 "limited": false,
                 "image": "hammerdudeclashkingchromablue.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "hammerdudevacation",
+                "displayName": "Parasol Frank",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "Summer of Brawl",
+                    "image": "bg_summer.webp",
+                    "icon": "icon_summer.webp"
+                },
+                "limited": false,
+                "image": "hammerdudevacation.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -11471,9 +12243,9 @@
                     "Effects"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Max Force",
+                    "image": "bg_maxforce.webp",
+                    "icon": "icon_maxforce.webp"
                 },
                 "limited": false,
                 "image": "baseballvigilante.webp",
@@ -11496,9 +12268,9 @@
                     "Texture"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "THE BAD RANDOMS",
+                    "image": "bg_punk.webp",
+                    "icon": "icon_punk.webp"
                 },
                 "limited": false,
                 "image": "baseballwarrior.webp",
@@ -11666,6 +12438,33 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "baseballgamer_remake",
+                "displayName": "Gamer Bibi",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Lunar Brawl",
+                    "image": "bg_lny_2020.webp",
+                    "icon": "icon_lny_2020.webp"
+                },
+                "limited": false,
+                "image": "baseballgamer_remake.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -11778,8 +12577,8 @@
                 }
             },
             {
-                "name": "bibi_vigilante",
-                "image": "bibi_vigilante.webp",
+                "name": "bibi_maxforce",
+                "image": "bibi_maxforce.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -11893,6 +12692,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "bibi_lny_02",
+                "image": "bibi_lny_02.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -11943,9 +12751,9 @@
                     "Brawler Model"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Animal Kingdom",
+                    "image": "bg_jungle.webp",
+                    "icon": "icon_animals.webp"
                 },
                 "limited": false,
                 "image": "beesniperladybug.webp",
@@ -11971,9 +12779,9 @@
                     "Voice"
                 ],
                 "group": {
-                    "name": "Robots & Monsters",
-                    "image": "bg_robotsmonsters.webp",
-                    "icon": "icon_robotsmonsters.webp"
+                    "name": "Max Force",
+                    "image": "bg_maxforce.webp",
+                    "icon": "icon_maxforce.webp"
                 },
                 "limited": false,
                 "image": "beesnipermonster.webp",
@@ -12113,6 +12921,33 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "beesnipervirus",
+                "displayName": "Bea Byte",
+                "cost": 79,
+                "currency": "Gems",
+                "costBling": 2750,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "CyberBrawl",
+                    "image": "bg_hacker.webp",
+                    "icon": "icon_hacker.webp"
+                },
+                "limited": false,
+                "image": "beesnipervirus.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -12241,6 +13076,24 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "bea_hacker",
+                "image": "bea_hacker.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "bea_maxforce",
+                "image": "bea_maxforce.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -12292,8 +13145,8 @@
                     "Texture"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
+                    "name": "Gaming",
+                    "image": "bg_lny_2023.webp",
                     "icon": "icon_default.webp"
                 },
                 "limited": false,
@@ -12755,9 +13608,9 @@
                     "Texture"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Max Force",
+                    "image": "bg_maxforce.webp",
+                    "icon": "icon_maxforce.webp"
                 },
                 "limited": false,
                 "image": "enragervigilante.webp",
@@ -13889,9 +14742,9 @@
                     "Texture"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Sugar Rush",
+                    "image": "bg_candyland.webp",
+                    "icon": "icon_candyland.webp"
                 },
                 "limited": false,
                 "image": "cannongirlunicorn.webp",
@@ -14912,6 +15765,15 @@
             {
                 "name": "colette_line",
                 "image": "colette_line.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "colette_lny",
+                "image": "colette_lny.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -16622,9 +17484,9 @@
                     "Texture"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Vibing",
+                    "image": "bg_music.webp",
+                    "icon": "icon_music.webp"
                 },
                 "limited": false,
                 "image": "beamermc.webp",
@@ -16944,9 +17806,9 @@
                     "Texture"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "CyberBrawl",
+                    "image": "bg_hacker.webp",
+                    "icon": "icon_hacker.webp"
                 },
                 "limited": false,
                 "image": "maisiemaisiecyber.webp",
@@ -16975,7 +17837,7 @@
                     "image": "bg_default.webp",
                     "icon": "icon_brawlpass.webp"
                 },
-                "limited": true,
+                "limited": false,
                 "image": "maisiesnake.webp",
                 "model": {
                     "geometry": "maisiesnake.glb",
@@ -17302,9 +18164,9 @@
                     "Texture"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Deep Sea League",
+                    "image": "bg_deepsea.webp",
+                    "icon": "icon_deepsea.webp"
                 },
                 "limited": false,
                 "image": "fishtankshark.webp",
@@ -17493,9 +18355,9 @@
                     "Texture"
                 ],
                 "group": {
-                    "name": "",
+                    "name": "City Troubles",
                     "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "icon": "icon_city.webp"
                 },
                 "limited": false,
                 "image": "cookerrare.webp",
@@ -17815,12 +18677,39 @@
                     "Texture"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
+                    "name": "Gaming",
+                    "image": "bg_lny_2023.webp",
                     "icon": "icon_default.webp"
                 },
                 "limited": false,
                 "image": "twinsrare.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "twinsvirus",
+                "displayName": "Glitch Larry & Lawrie",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Ranked",
+                    "image": "bg_ranked.webp",
+                    "icon": "icon_ranked.webp"
+                },
+                "limited": true,
+                "image": "twinsvirus.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -17919,6 +18808,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "twins_ranked",
+                "image": "twins_ranked.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -17970,9 +18868,9 @@
                     "Texture"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Enchanted Woods",
+                    "image": "bg_enchanted.webp",
+                    "icon": "icon_enchanted.webp"
                 },
                 "limited": false,
                 "image": "insectmanrare.webp",
@@ -18327,8 +19225,8 @@
                     "Texture"
                 ],
                 "group": {
-                    "name": "Super City Summers",
-                    "image": "bg_default.webp",
+                    "name": "Summer of Brawl",
+                    "image": "bg_summer.webp",
                     "icon": "icon_summer.webp"
                 },
                 "limited": false,
@@ -18444,6 +19342,31 @@
                 },
                 "limited": false,
                 "image": "undertakerundertakerhockey.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "undertakergala",
+                "displayName": "Gala Mortis",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "License to Brawl",
+                    "image": "bg_hub.webp",
+                    "icon": "icon_hub.webp"
+                },
+                "limited": false,
+                "image": "undertakergala.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -18709,9 +19632,9 @@
                     "Brawler Model"
                 ],
                 "group": {
-                    "name": "",
+                    "name": "Misc",
                     "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "icon": "icon_misc.webp"
                 },
                 "limited": false,
                 "image": "blackholeblue.webp",
@@ -18879,6 +19802,33 @@
                     "loseAnimation": "blackholeworldfinal_lose.glb"
                 },
                 "rating": 0
+            },
+            {
+                "name": "blackholestreetninja_remake",
+                "displayName": "Urban Ninja Tara",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Lunar Brawl",
+                    "image": "bg_lny_2020.webp",
+                    "icon": "icon_lny_2020.webp"
+                },
+                "limited": false,
+                "image": "blackholestreetninja_remake.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -18993,6 +19943,15 @@
             {
                 "name": "tara_lny_2020",
                 "image": "tara_lny_2020.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "tara_lny_02",
+                "image": "tara_lny_02.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -19166,6 +20125,33 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "hookdudemake",
+                "displayName": "Dark Samurai Gene",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Supercell Make",
+                    "image": "bg_default.webp",
+                    "icon": "icon_sc_make.webp"
+                },
+                "limited": false,
+                "image": "hookdudemake.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -19276,6 +20262,24 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "gene_make",
+                "image": "gene_make.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "gene_overcharge",
+                "image": "gene_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -19326,9 +20330,9 @@
                     "Brawler Model"
                 ],
                 "group": {
-                    "name": "",
+                    "name": "Misc",
                     "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "icon": "icon_misc.webp"
                 },
                 "limited": false,
                 "image": "speedygt.webp",
@@ -19351,9 +20355,9 @@
                     "Texture"
                 ],
                 "group": {
-                    "name": "Robots & Monsters",
-                    "image": "bg_robotsmonsters.webp",
-                    "icon": "icon_robotsmonsters.webp"
+                    "name": "Max Force",
+                    "image": "bg_maxforce.webp",
+                    "icon": "icon_maxforce.webp"
                 },
                 "limited": false,
                 "image": "speedytracksuit.webp",
@@ -19508,9 +20512,9 @@
                     "Effects"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Rumble Jungle Heroes",
+                    "image": "bg_jungle.webp",
+                    "icon": "icon_jungle.webp"
                 },
                 "limited": false,
                 "image": "speedyblackpanther.webp",
@@ -19639,6 +20643,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "max_overcharge",
+                "image": "max_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -19690,9 +20703,9 @@
                     "Turret Model"
                 ],
                 "group": {
-                    "name": "",
+                    "name": "City Troubles",
                     "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "icon": "icon_city.webp"
                 },
                 "limited": false,
                 "image": "spawnerdudeagentp.webp",
@@ -19961,15 +20974,6 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
-            },
-            {
-                "name": "mrp_goldenweek_03",
-                "image": "mrp_goldenweek_03.webp",
-                "rarity": {
-                    "value": 3,
-                    "name": "Legendary",
-                    "color": "#fdf11e"
-                }
             }
         ]
     },
@@ -20021,8 +21025,8 @@
                     "Texture"
                 ],
                 "group": {
-                    "name": "Super City Summers",
-                    "image": "bg_default.webp",
+                    "name": "Summer of Brawl",
+                    "image": "bg_summer.webp",
                     "icon": "icon_summer.webp"
                 },
                 "limited": false,
@@ -20495,6 +21499,58 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "snakeoiltropical",
+                "displayName": "Beach Byron",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "Summer of Brawl",
+                    "image": "bg_summer.webp",
+                    "icon": "icon_summer.webp"
+                },
+                "limited": false,
+                "image": "snakeoiltropical.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "snakeoilwizard_white",
+                "displayName": "Byron the White",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Ranked",
+                    "image": "bg_ranked.webp",
+                    "icon": "icon_ranked.webp"
+                },
+                "limited": true,
+                "image": "snakeoilwizard_white.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -20614,6 +21670,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "byron_ranked_02",
+                "image": "byron_ranked_02.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -20667,9 +21732,9 @@
                     "Effects"
                 ],
                 "group": {
-                    "name": "Action Heroes",
-                    "image": "bg_action.webp",
-                    "icon": "icon_action.webp"
+                    "name": "Max Force",
+                    "image": "bg_maxforce.webp",
+                    "icon": "icon_maxforce.webp"
                 },
                 "limited": false,
                 "image": "stickybombveteran.webp",
@@ -20694,9 +21759,9 @@
                     "Effects"
                 ],
                 "group": {
-                    "name": "Club Series",
-                    "image": "bg_clubleague.webp",
-                    "icon": "icon_clubleague.webp"
+                    "name": "Misc",
+                    "image": "bg_default.webp",
+                    "icon": "icon_misc.webp"
                 },
                 "limited": false,
                 "image": "stickybombpotato.webp",
@@ -20850,9 +21915,9 @@
                     "Texture"
                 ],
                 "group": {
-                    "name": "",
+                    "name": "Misc",
                     "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "icon": "icon_misc.webp"
                 },
                 "limited": false,
                 "image": "stickybomboffice.webp",
@@ -20974,8 +22039,8 @@
                 }
             },
             {
-                "name": "squeak_veteran",
-                "image": "squeak_veteran.webp",
+                "name": "squeak_maxforce",
+                "image": "squeak_maxforce.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -21927,9 +22992,9 @@
                     "Texture"
                 ],
                 "group": {
-                    "name": "Robots & Monsters",
-                    "image": "bg_robotsmonsters.webp",
-                    "icon": "icon_robotsmonsters.webp"
+                    "name": "Max Force",
+                    "image": "bg_maxforce.webp",
+                    "icon": "icon_maxforce.webp"
                 },
                 "limited": false,
                 "image": "ropedudekaiju.webp",
@@ -22014,6 +23079,120 @@
                 },
                 "limited": true,
                 "image": "ropedudefenrirblack.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "ropedudegodzilla",
+                "displayName": "Godzilla Buzz",
+                "cost": 799,
+                "currency": "Gems",
+                "costBling": -1,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Voice",
+                    "Takedown"
+                ],
+                "group": {
+                    "name": "Godzilla",
+                    "image": "bg_godzilla.webp",
+                    "icon": "icon_godzilla.webp"
+                },
+                "limited": false,
+                "image": "ropedudegodzilla.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "ropedudedirector_blue",
+                "displayName": "Filmmaker Buzz",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Ranked",
+                    "image": "bg_ranked.webp",
+                    "icon": "icon_ranked.webp"
+                },
+                "limited": true,
+                "image": "ropedudedirector_blue.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "ropedudegodzillared",
+                "displayName": "Red Godzilla Buzz",
+                "cost": 799,
+                "currency": "Gems",
+                "costBling": -1,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Voice",
+                    "Takedown"
+                ],
+                "group": {
+                    "name": "Godzilla",
+                    "image": "bg_godzilla.webp",
+                    "icon": "icon_godzilla.webp"
+                },
+                "limited": false,
+                "image": "ropedudegodzillared.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "ropedudegodzillablack",
+                "displayName": "Black Godzilla Buzz",
+                "cost": 799,
+                "currency": "Gems",
+                "costBling": -1,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Voice",
+                    "Takedown"
+                ],
+                "group": {
+                    "name": "Godzilla",
+                    "image": "bg_godzilla.webp",
+                    "icon": "icon_godzilla.webp"
+                },
+                "limited": false,
+                "image": "ropedudegodzillablack.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -22242,6 +23421,114 @@
             {
                 "name": "buzz_overcharge",
                 "image": "buzz_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "buzz_godzilla_default",
+                "image": "buzz_godzilla_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "buzz_godzilla_happy",
+                "image": "buzz_godzilla_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "buzz_godzilla_sad",
+                "image": "buzz_godzilla_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "buzz_godzilla_angry",
+                "image": "buzz_godzilla_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "buzz_godzilla_gg",
+                "image": "buzz_godzilla_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "buzz_godzilla_clap",
+                "image": "buzz_godzilla_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "buzz_godzilla_thanks",
+                "image": "buzz_godzilla_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "buzz_godzilla_sweat",
+                "image": "buzz_godzilla_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "buzz_godzilla_special",
+                "image": "buzz_godzilla_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "buzz_ranked_02",
+                "image": "buzz_ranked_02.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "buzz_godzillared",
+                "image": "buzz_godzillared.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "buzz_godzillablack",
+                "image": "buzz_godzillablack.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -22497,6 +23784,33 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "kickerdudevirus",
+                "displayName": "Fanguard",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "CyberBrawl",
+                    "image": "bg_hacker.webp",
+                    "icon": "icon_hacker.webp"
+                },
+                "limited": false,
+                "image": "kickerdudevirus.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -22724,6 +24038,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "fang_hacker",
+                "image": "fang_hacker.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -22860,6 +24183,33 @@
                 },
                 "limited": true,
                 "image": "fleabiker.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "fleagodzilla",
+                "displayName": "Mothra Eve",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Ranked",
+                    "image": "bg_ranked.webp",
+                    "icon": "icon_ranked.webp"
+                },
+                "limited": true,
+                "image": "fleagodzilla.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -23048,6 +24398,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "eve_ranked",
+                "image": "eve_ranked.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -23176,9 +24535,9 @@
                     "Texture"
                 ],
                 "group": {
-                    "name": "Action Heroes",
-                    "image": "bg_action.webp",
-                    "icon": "icon_action.webp"
+                    "name": "Max Force",
+                    "image": "bg_maxforce.webp",
+                    "icon": "icon_maxforce.webp"
                 },
                 "limited": false,
                 "image": "jetpackgirltopgun.webp",
@@ -23203,9 +24562,9 @@
                     "Effects"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Vibing",
+                    "image": "bg_music.webp",
+                    "icon": "icon_music.webp"
                 },
                 "limited": false,
                 "image": "jetpackgirlpopstar.webp",
@@ -23444,8 +24803,8 @@
                 }
             },
             {
-                "name": "janet_topgun",
-                "image": "janet_topgun.webp",
+                "name": "janet_maxforce",
+                "image": "janet_maxforce.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -24508,9 +25867,9 @@
                     "Texture"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Max Force",
+                    "image": "bg_maxforce.webp",
+                    "icon": "icon_maxforce.webp"
                 },
                 "limited": false,
                 "image": "splitterpolice.webp",
@@ -24794,9 +26153,9 @@
                     "Texture"
                 ],
                 "group": {
-                    "name": "",
+                    "name": "Misc",
                     "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "icon": "icon_misc.webp"
                 },
                 "limited": false,
                 "image": "puppeteeraxl.webp",
@@ -24827,6 +26186,56 @@
                 },
                 "limited": false,
                 "image": "puppeteerwasteland.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "puppeteergold",
+                "displayName": "True Gold Willow",
+                "cost": 25000,
+                "currency": "Coins",
+                "costBling": -1,
+                "requires": "True Silver Willow",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "True Gold",
+                    "image": "bg_gold.webp",
+                    "icon": "icon_gold.webp"
+                },
+                "limited": false,
+                "image": "puppeteergold.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "puppeteersilver",
+                "displayName": "True Silver Willow",
+                "cost": 10000,
+                "currency": "Coins",
+                "costBling": -1,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "True Silver",
+                    "image": "bg_silver.webp",
+                    "icon": "icon_silver.webp"
+                },
+                "limited": false,
+                "image": "puppeteersilver.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -24985,9 +26394,9 @@
                     "Texture"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Once Upon",
+                    "image": "bg_onceupon.webp",
+                    "icon": "icon_onceupon.webp"
                 },
                 "limited": false,
                 "image": "reviverdraco.webp",
@@ -25190,11 +26599,11 @@
                     "Texture"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Brawl-o-ween",
+                    "image": "bg_brawloween.webp",
+                    "icon": "icon_brawloween.webp"
                 },
-                "limited": false,
+                "limited": true,
                 "image": "conductorrare.webp",
                 "model": {
                     "geometry": "",
@@ -25225,6 +26634,56 @@
                 },
                 "limited": false,
                 "image": "conductorscorpion.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "conductorgold",
+                "displayName": "True Gold Chuck",
+                "cost": 25000,
+                "currency": "Coins",
+                "costBling": -1,
+                "requires": "True Silver Chuck",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "True Gold",
+                    "image": "bg_gold.webp",
+                    "icon": "icon_gold.webp"
+                },
+                "limited": false,
+                "image": "conductorgold.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "conductorsilver",
+                "displayName": "True Silver Chuck",
+                "cost": 10000,
+                "currency": "Coins",
+                "costBling": -1,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "True Silver",
+                    "image": "bg_silver.webp",
+                    "icon": "icon_silver.webp"
+                },
+                "limited": false,
+                "image": "conductorsilver.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -25482,12 +26941,91 @@
                     "Texture"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Max Force",
+                    "image": "bg_maxforce.webp",
+                    "icon": "icon_maxforce.webp"
                 },
                 "limited": false,
                 "image": "cocoonerrare.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "cocoonervirus",
+                "displayName": "Virus Charlie",
+                "cost": 299,
+                "currency": "Gems",
+                "costBling": -1,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Voice",
+                    "Takedown"
+                ],
+                "group": {
+                    "name": "CyberBrawl",
+                    "image": "bg_hacker.webp",
+                    "icon": "icon_hacker.webp"
+                },
+                "limited": false,
+                "image": "cocoonervirus.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "cocoonergold",
+                "displayName": "True Gold Charlie",
+                "cost": 25000,
+                "currency": "Coins",
+                "costBling": -1,
+                "requires": "True Silver Charlie",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "True Gold",
+                    "image": "bg_gold.webp",
+                    "icon": "icon_gold.webp"
+                },
+                "limited": false,
+                "image": "cocoonergold.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "cocoonersilver",
+                "displayName": "True Silver Charlie",
+                "cost": 10000,
+                "currency": "Coins",
+                "costBling": -1,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "True Silver",
+                    "image": "bg_silver.webp",
+                    "icon": "icon_silver.webp"
+                },
+                "limited": false,
+                "image": "cocoonersilver.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -25676,6 +27214,87 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "charlie_virus_default",
+                "image": "charlie_virus_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "charlie_virus_happy",
+                "image": "charlie_virus_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "charlie_virus_sad",
+                "image": "charlie_virus_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "charlie_virus_angry",
+                "image": "charlie_virus_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "charlie_virus_gg",
+                "image": "charlie_virus_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "charlie_virus_clap",
+                "image": "charlie_virus_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "charlie_virus_thanks",
+                "image": "charlie_virus_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "charlie_virus_sweat",
+                "image": "charlie_virus_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "charlie_virus_special",
+                "image": "charlie_virus_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
             }
         ]
     },
@@ -25756,9 +27375,9 @@
                     "Texture"
                 ],
                 "group": {
-                    "name": "",
+                    "name": "City Troubles",
                     "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "icon": "icon_city.webp"
                 },
                 "limited": false,
                 "image": "leaperrare.webp",
@@ -25789,6 +27408,56 @@
                 },
                 "limited": false,
                 "image": "leaperdarkxmas.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "leapergold",
+                "displayName": "True Gold Mico",
+                "cost": 25000,
+                "currency": "Coins",
+                "costBling": -1,
+                "requires": "True Silver Mico",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "True Gold",
+                    "image": "bg_gold.webp",
+                    "icon": "icon_gold.webp"
+                },
+                "limited": false,
+                "image": "leapergold.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "leapersilver",
+                "displayName": "True Silver Mico",
+                "cost": 10000,
+                "currency": "Coins",
+                "costBling": -1,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "True Silver",
+                    "image": "bg_silver.webp",
+                    "icon": "icon_silver.webp"
+                },
+                "limited": false,
+                "image": "leapersilver.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -26037,9 +27706,9 @@
                     "Texture"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Northern Saga",
+                    "image": "bg_norsegods.webp",
+                    "icon": "icon_norsegods.webp"
                 },
                 "limited": false,
                 "image": "axejugglerrare.webp",
@@ -26145,6 +27814,161 @@
         ]
     },
     {
+        "name": "lily",
+        "displayName": "Lily",
+        "rarity": {
+            "value": 4,
+            "name": "Mythic",
+            "color": "#fe0521"
+        },
+        "image": "portrait_lily.webp",
+        "defaultSkin": "ambusherdefault",
+        "title": "Backstabber",
+        "masteryIcon": "mastery_icon_lily.webp",
+        "description": "A nerd at heart and a total witchcraft buff, Lily's thirst for knowledge once led her into the Enchanted Woods, where an incident involving a firefly and a carnivorous plant would change her life forever...",
+        "skins": [
+            {
+                "name": "ambusherdefault",
+                "displayName": "Lily",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "requires": "",
+                "features": [],
+                "group": {
+                    "name": "",
+                    "image": "bg_default.webp",
+                    "icon": "icon_default.webp"
+                },
+                "limited": false,
+                "image": "ambusherdefault.webp",
+                "model": {
+                    "geometry": "ambusherdefault.glb",
+                    "winAnimation": "ambusherdefault_win.glb",
+                    "loseAnimation": "ambusherdefault_lose.glb"
+                },
+                "rating": 0
+            },
+            {
+                "name": "ambusherrare",
+                "displayName": "Strawberry Lily",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "",
+                    "image": "bg_default.webp",
+                    "icon": "icon_default.webp"
+                },
+                "limited": false,
+                "image": "ambusherrare.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "name": "lily_default",
+                "image": "lily_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "lily_happy",
+                "image": "lily_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "lily_sad",
+                "image": "lily_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "lily_angry",
+                "image": "lily_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "lily_gg",
+                "image": "lily_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "lily_clap",
+                "image": "lily_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "lily_thanks",
+                "image": "lily_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "lily_sweat",
+                "image": "lily_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "lily_special",
+                "image": "lily_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "lily_facepalm",
+                "image": "lily_facepalm.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            }
+        ]
+    },
+    {
         "name": "spike",
         "displayName": "Spike",
         "rarity": {
@@ -26219,9 +28043,9 @@
                     "Sounds"
                 ],
                 "group": {
-                    "name": "Robots & Monsters",
-                    "image": "bg_robotsmonsters.webp",
-                    "icon": "icon_robotsmonsters.webp"
+                    "name": "Max Force",
+                    "image": "bg_maxforce.webp",
+                    "icon": "icon_maxforce.webp"
                 },
                 "limited": false,
                 "image": "cactusmecha.webp",
@@ -26670,8 +28494,8 @@
                 }
             },
             {
-                "name": "spike_robotsmonsters",
-                "image": "spike_robotsmonsters.webp",
+                "name": "spike_maxforce",
+                "image": "spike_maxforce.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -26728,9 +28552,9 @@
                     "Texture"
                 ],
                 "group": {
-                    "name": "",
+                    "name": "Misc",
                     "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "icon": "icon_misc.webp"
                 },
                 "limited": false,
                 "image": "crowwhite.webp",
@@ -27304,8 +29128,8 @@
                     "Effects"
                 ],
                 "group": {
-                    "name": "Super City Summers",
-                    "image": "bg_default.webp",
+                    "name": "Summer of Brawl",
+                    "image": "bg_summer.webp",
                     "icon": "icon_summer.webp"
                 },
                 "limited": false,
@@ -27433,8 +29257,8 @@
                     "Effects"
                 ],
                 "group": {
-                    "name": "Super City Summers",
-                    "image": "bg_default.webp",
+                    "name": "Summer of Brawl",
+                    "image": "bg_summer.webp",
                     "icon": "icon_summer.webp"
                 },
                 "limited": false,
@@ -27485,9 +29309,9 @@
                     "Texture"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Animal Kingdom",
+                    "image": "bg_jungle.webp",
+                    "icon": "icon_animals.webp"
                 },
                 "limited": false,
                 "image": "ninjacat.webp",
@@ -27557,7 +29381,7 @@
             {
                 "name": "ninjamechalight",
                 "displayName": "Radiant Mecha Leon",
-                "cost": 299,
+                "cost": 49,
                 "currency": "Gems",
                 "costBling": -1,
                 "requires": "Mecha Leon",
@@ -27586,7 +29410,7 @@
             {
                 "name": "ninjamechadark",
                 "displayName": "Shadow Mecha Leon",
-                "cost": 299,
+                "cost": 49,
                 "currency": "Gems",
                 "costBling": -1,
                 "requires": "Mecha Leon",
@@ -27888,9 +29712,9 @@
                     "Brawler Model"
                 ],
                 "group": {
-                    "name": "",
+                    "name": "Misc",
                     "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "icon": "icon_misc.webp"
                 },
                 "limited": false,
                 "image": "sandstormsleepy.webp",
@@ -28031,6 +29855,33 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "sandstormmake",
+                "displayName": "Nightmare Sandy",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Supercell Make",
+                    "image": "bg_default.webp",
+                    "icon": "icon_sc_make.webp"
+                },
+                "limited": false,
+                "image": "sandstormmake.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -28136,6 +29987,24 @@
             {
                 "name": "sandy_giftshop",
                 "image": "sandy_giftshop.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "sandy_make",
+                "image": "sandy_make.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "sandy_overcharge",
+                "image": "sandy_overcharge.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -28260,15 +30129,17 @@
             {
                 "name": "firedudefrost",
                 "displayName": "Frost Queen Amber",
-                "cost": 149,
+                "cost": 299,
                 "currency": "Gems",
-                "costBling": 5000,
+                "costBling": -1,
                 "requires": "",
                 "features": [
                     "Brawler Model",
                     "Texture",
                     "Animations",
-                    "Effects"
+                    "Effects",
+                    "Voice",
+                    "Takedown"
                 ],
                 "group": {
                     "name": "Dark Winter Tales",
@@ -28386,12 +30257,84 @@
                 }
             },
             {
-                "name": "amber_darkmas",
-                "image": "amber_darkmas.webp",
+                "name": "amber_frost_default",
+                "image": "amber_frost_default.webp",
                 "rarity": {
-                    "value": 3,
-                    "name": "Legendary",
-                    "color": "#fdf11e"
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "amber_frost_happy",
+                "image": "amber_frost_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "amber_frost_sad",
+                "image": "amber_frost_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "amber_frost_angry",
+                "image": "amber_frost_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "amber_frost_gg",
+                "image": "amber_frost_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "amber_frost_clap",
+                "image": "amber_frost_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "amber_frost_thanks",
+                "image": "amber_frost_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "amber_frost_sweat",
+                "image": "amber_frost_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "amber_frost_special",
+                "image": "amber_frost_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
                 }
             }
         ]
@@ -28554,7 +30497,7 @@
                     "image": "bg_ranked.webp",
                     "icon": "icon_ranked.webp"
                 },
-                "limited": true,
+                "limited": false,
                 "image": "mechadudejaguar.webp",
                 "model": {
                     "geometry": "",
@@ -28794,9 +30737,9 @@
                     "Effects"
                 ],
                 "group": {
-                    "name": "",
+                    "name": "Misc",
                     "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "icon": "icon_misc.webp"
                 },
                 "limited": false,
                 "image": "powerlevelerdiy.webp",
@@ -28931,6 +30874,33 @@
                 },
                 "limited": false,
                 "image": "powerlevelergenie.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "powerlevelerknight_red",
+                "displayName": "Scarlet Paladin Surge",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "group": {
+                    "name": "Max Force",
+                    "image": "bg_maxforce.webp",
+                    "icon": "icon_maxforce.webp"
+                },
+                "limited": false,
+                "image": "powerlevelerknight_red.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -29128,6 +31098,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "surge_maxforce",
+                "image": "surge_maxforce.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -29179,11 +31158,11 @@
                     "Texture"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Brawl-o-ween",
+                    "image": "bg_brawloween.webp",
+                    "icon": "icon_brawloween.webp"
                 },
-                "limited": false,
+                "limited": true,
                 "image": "jesterghost.webp",
                 "model": {
                     "geometry": "",
@@ -29456,9 +31435,9 @@
                     "Texture"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Enchanted Woods",
+                    "image": "bg_enchanted.webp",
+                    "icon": "icon_enchanted.webp"
                 },
                 "limited": false,
                 "image": "duelisttoxic.webp",
@@ -29877,11 +31856,11 @@
                     "Texture"
                 ],
                 "group": {
-                    "name": "",
-                    "image": "bg_default.webp",
-                    "icon": "icon_default.webp"
+                    "name": "Tales of the Sea",
+                    "image": "bg_pirates.webp",
+                    "icon": "icon_pirates.webp"
                 },
-                "limited": false,
+                "limited": true,
                 "image": "attacherrare.webp",
                 "model": {
                     "geometry": "",
@@ -29937,6 +31916,56 @@
                 },
                 "limited": true,
                 "image": "attacherboxerchromadarkpaw.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "attachergold",
+                "displayName": "True Gold Kit",
+                "cost": 25000,
+                "currency": "Coins",
+                "costBling": -1,
+                "requires": "True Silver Kit",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "True Gold",
+                    "image": "bg_gold.webp",
+                    "icon": "icon_gold.webp"
+                },
+                "limited": false,
+                "image": "attachergold.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "attachersilver",
+                "displayName": "True Silver Kit",
+                "cost": 10000,
+                "currency": "Coins",
+                "costBling": -1,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "True Silver",
+                    "image": "bg_silver.webp",
+                    "icon": "icon_silver.webp"
+                },
+                "limited": false,
+                "image": "attachersilver.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -30057,6 +32086,161 @@
             {
                 "name": "kit_boxerdark",
                 "image": "kit_boxerdark.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            }
+        ]
+    },
+    {
+        "name": "draco",
+        "displayName": "Draco",
+        "rarity": {
+            "value": 5,
+            "name": "Legendary",
+            "color": "#fdf11e"
+        },
+        "image": "portrait_draco.webp",
+        "defaultSkin": "dragonriderdefault",
+        "title": "Dungeon Master",
+        "masteryIcon": "mastery_icon_draco.webp",
+        "description": "Riding his inflatable dragon and setting off fireworks, Draco promises a show-stopping finale every night. With his electric guitar blaring and his flame-spewing ride rocking the crowd, he turns the fantasy up to eleven!",
+        "skins": [
+            {
+                "name": "dragonriderdefault",
+                "displayName": "Draco",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "requires": "",
+                "features": [],
+                "group": {
+                    "name": "",
+                    "image": "bg_default.webp",
+                    "icon": "icon_default.webp"
+                },
+                "limited": false,
+                "image": "dragonriderdefault.webp",
+                "model": {
+                    "geometry": "dragonriderdefault.glb",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "dragonriderrare",
+                "displayName": "Dark Knight Draco",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "group": {
+                    "name": "",
+                    "image": "bg_default.webp",
+                    "icon": "icon_default.webp"
+                },
+                "limited": false,
+                "image": "dragonriderrare.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "name": "draco_default",
+                "image": "draco_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "draco_happy",
+                "image": "draco_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "draco_sad",
+                "image": "draco_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "draco_angry",
+                "image": "draco_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "draco_gg",
+                "image": "draco_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "draco_clap",
+                "image": "draco_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "draco_thanks",
+                "image": "draco_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "draco_sweat",
+                "image": "draco_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "draco_special",
+                "image": "draco_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "draco_facepalm",
+                "image": "draco_facepalm.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
