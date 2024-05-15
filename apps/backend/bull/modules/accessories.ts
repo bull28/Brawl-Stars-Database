@@ -20,9 +20,9 @@ interface Accessory{
 }
 
 const REPORT_FORMAT = {
-    mode: [0, 1], player: [1, 5], gears: [5, 7], score: [7, 13],
-    achievements: [13, 20], upgrades: [20, 26], stats: [26, 34], visited: [34, 42],
-    levels: [42, 90], enemies: [90, 120], length: [0, 120]
+    mode: [0, 1], player: [1, 5], gears: [5, 7], accessories: [7, 11], score: [11, 17],
+    achievements: [17, 24], upgrades: [24, 30], stats: [30, 38], visited: [38, 46],
+    levels: [46, 94], enemies: [94, 124], length: [0, 124]
 };
 const SCORE_CONSTANTS = {
     stages: [
@@ -153,13 +153,13 @@ function getFinalScore(reports: number[], enemyCounts: number[]): number[]{
  * @returns false if the report is definitely invalid, true if it is reasonable enough
  */
 export function validateReport(report: GameReport): boolean{
-    // Last updated: version 72
+    // Last updated: version 75
 
     if (report.length !== 3){
         // Invalid report length
         return false;
     }
-    if (report[0] < 72){
+    if (report[0] < 75){
         // Old report version
         return false;
     }
@@ -814,7 +814,8 @@ export function extractReportData(data: number[]): ReportData | undefined{
             difficulty: difficulty,
             brawler: data[p + 2],
             starPower: data[p + 3],
-            gears: data.slice(format.gears[0], format.gears[1])
+            gears: data.slice(format.gears[0], format.gears[1]),
+            accessories: data.slice(format.accessories[0], format.accessories[1])
         },
         score: {
             total: data[p],

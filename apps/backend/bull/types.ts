@@ -649,6 +649,7 @@ export interface ReportData{
         brawler: number;
         starPower: number;
         gears: number[];
+        accessories: number[];
     };
     score: {
         total: number;
