@@ -127,6 +127,9 @@ export default function GameRewards(){
                                         {value.stats.gears.map((gear) => (
                                             <Image key={gear.displayName} h={8} mr={1} src={`${cdn}/image/${gear.image}`}/>
                                         ))}
+                                        {value.stats.accessories.map((accessory) => (
+                                            <Image key={accessory.displayName} h={8} mr={1} src={`${cdn}/image/${accessory.image}`}/>
+                                        ))}
                                     </Flex>
                                 </Box>
                                 <Button px={6} onClick={() => {setReward(value); onOpen();}}>Claim</Button>
@@ -174,6 +177,19 @@ export default function GameRewards(){
                                     ))}
                                 </Box>
                             </Flex>
+                            <Divider my={1}/>
+                            <Box>
+                                {reward.stats.accessories.length > 0 ?
+                                    reward.stats.accessories.map((accessory) => (
+                                        <Flex key={accessory.displayName} alignItems={"center"}>
+                                            <Image h={8} mr={1} src={`${cdn}/image/${accessory.image}`}/>
+                                            <Text>{accessory.displayName}</Text>
+                                        </Flex>
+                                    ))
+                                    :
+                                    <Text>No accessories used</Text>
+                                }
+                            </Box>
                             <Divider my={1}/>
                             <Flex flexDir={["column", "row"]} w={"100%"} mt={5} fontSize={"md"} className={"heading-md"}>
                                 <Box flex={1} h={"fit-content"} p={[0, 2]}>

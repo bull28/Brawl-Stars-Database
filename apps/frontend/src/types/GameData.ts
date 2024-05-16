@@ -20,6 +20,10 @@ export interface Reward{
             displayName: string;
             image: string;
         }[];
+        accessories: {
+            displayName: string;
+            image: string;
+        }[];
     };
 }
 

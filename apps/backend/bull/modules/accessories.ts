@@ -199,9 +199,9 @@ export function validateReport(report: GameReport): boolean{
         return false;
     }
 
-    // The difficulty must be between 0 and 5
+    // The difficulty must be between 0 and 9
     const difficulty = data[format.player[0] + 1];
-    if (difficulty < 0 || difficulty > 5){
+    if (difficulty < 0 || difficulty > 9){
         return false;
     }
 
@@ -221,6 +221,14 @@ export function validateReport(report: GameReport): boolean{
     const enemiesDefeated = data[format.achievements[0] + 1];
     if (enemiesDefeated > 750){
         return false;
+    }
+
+    // Accessories are not allowed on difficulty 5 or lower
+    const accs = data.slice(format.accessories[0], format.accessories[1]);
+    for (let x = 0; x < accs.length; x++){
+        if (accs[x] >= 0 && difficulty <= 5){
+            valid = false;
+        }
     }
 
     // The enemy stats multiplier must not be decreasing for each level
@@ -323,6 +331,26 @@ export function validateReport(report: GameReport): boolean{
 
 
 const accessories: Accessory[] = [
+    {name: "default1", category: "", displayName: "Supply Drop", unlock: "Reach Mastery Level 4.", badges: 1},
+    {name: "default2", category: "", displayName: "Green Supply Drop", unlock: "Reach Mastery Level 4.", badges: 1},
+    {name: "default3", category: "", displayName: "Red Supply Drop", unlock: "Reach Mastery Level 4.", badges: 1},
+    {name: "default4", category: "", displayName: "Defensive Potion", unlock: "Reach Mastery Level 4.", badges: 1},
+    {name: "default5", category: "", displayName: "Offensive Potion", unlock: "Reach Mastery Level 4.", badges: 1},
+    {name: "shop1", category: "", displayName: "Healing Potion", unlock: "Buy from the Shop.", badges: 1},
+    {name: "shop2", category: "", displayName: "Life Steal Potion", unlock: "Buy from the Shop.", badges: 1},
+    {name: "shop3", category: "", displayName: "Strength Potion", unlock: "Buy from the Shop.", badges: 1},
+    {name: "shop4", category: "", displayName: "Speed Potion", unlock: "Buy from the Shop.", badges: 1},
+    {name: "shop5", category: "", displayName: "Nani's Drone", unlock: "Buy from the Shop.", badges: 1},
+    {name: "shop6", category: "", displayName: "Brock's Rocket Launcher", unlock: "Buy from the Shop.", badges: 1},
+    {name: "shop7", category: "", displayName: "Pam's Healing Station", unlock: "Buy from the Shop.", badges: 1},
+    {name: "shop8", category: "", displayName: "Iron Wall", unlock: "Buy from the Shop.", badges: 1},
+    {name: "brawlbox1", category: "", displayName: "Angelo's Bow", unlock: "Unlock from Brawl Boxes.", badges: 1},
+    {name: "brawlbox2", category: "", displayName: "Healing Skull", unlock: "Unlock from Brawl Boxes.", badges: 1},
+    {name: "brawlbox3", category: "", displayName: "Power Skull", unlock: "Unlock from Brawl Boxes.", badges: 1},
+    {name: "brawlbox4", category: "", displayName: "Sam's Knuckle Busters", unlock: "Unlock from Brawl Boxes.", badges: 1},
+    {name: "brawlbox5", category: "", displayName: "Doug's Hot Dog", unlock: "Unlock from Brawl Boxes.", badges: 1},
+    {name: "brawlbox6", category: "", displayName: "Buster's Projector", unlock: "Unlock from Brawl Boxes.", badges: 1},
+    {name: "brawlbox7", category: "", displayName: "Ability Juice", unlock: "Unlock from Brawl Boxes.", badges: 1},
     {name: "shelly", category: "enemy", displayName: "Shelly's Shotgun", unlock: "Defeat Shelly enemies.", badges: 500},
     {name: "colt", category: "enemy", displayName: "Colt's Revolvers", unlock: "Defeat Colt enemies.", badges: 500},
     {name: "rt", category: "enemy", displayName: "R-T's Camera", unlock: "Defeat R-T enemies.", badges: 500},
@@ -333,12 +361,16 @@ const accessories: Accessory[] = [
     {name: "eve", category: "enemy", displayName: "Eve's Spaceship", unlock: "Defeat Eve enemies.", badges: 500},
     {name: "mortis", category: "enemy", displayName: "Mortis's Shovel", unlock: "Defeat Mortis enemies.", badges: 500},
     {name: "frank", category: "enemy", displayName: "Frank's Hammer", unlock: "Defeat Frank enemies.", badges: 500},
+    {name: "jacky", category: "enemy", displayName: "Jacky's Drill", unlock: "Defeat Jacky enemies.", badges: 500},
+    {name: "mrp", category: "enemy", displayName: "Mr. P's Suitcase", unlock: "Defeat Mr. P enemies.", badges: 500},
     {name: "bea", category: "enemy", displayName: "Bea's Bee", unlock: "Defeat Bea enemies.", badges: 500},
     {name: "colette", category: "enemy", displayName: "Colette's Scrapbook", unlock: "Defeat Colette enemies.", badges: 500},
     {name: "lola", category: "enemy", displayName: "Lola's Scarf", unlock: "Defeat Lola enemies.", badges: 500},
     {name: "bibi", category: "enemy", displayName: "Bibi's Bat", unlock: "Defeat Bibi enemies.", badges: 500},
     {name: "mandy", category: "enemy", displayName: "Mandy's Candy Dispenser", unlock: "Defeat Mandy enemies.", badges: 500},
     {name: "ash", category: "enemy", displayName: "Ash's Broom", unlock: "Defeat Ash enemies.", badges: 500},
+    {name: "pearl", category: "enemy", displayName: "Pearl's Cookie", unlock: "Defeat Pearl enemies.", badges: 500},
+    {name: "leon", category: "enemy", displayName: "Leon's Lollipop", unlock: "Defeat Leon enemies.", badges: 500},
     {name: "bonnie", category: "enemy", displayName: "Bonnie's Cannon", unlock: "Defeat Bonnie enemies.", badges: 500},
     {name: "amber", category: "enemy", displayName: "Amber's Fire Staff", unlock: "Defeat Amber enemies.", badges: 500},
     {name: "max", category: "enemy", displayName: "Max's Energy Drink", unlock: "Defeat Max enemies.", badges: 500},
@@ -355,24 +387,30 @@ const accessories: Accessory[] = [
     {name: "oldtown", category: "location", displayName: "Barley's Bottle", unlock: "Complete levels at Old Town.", badges: 250},
     {name: "biodome", category: "location", displayName: "Rosa's Gloves", unlock: "Complete levels at Biodome.", badges: 250},
     {name: "ghoststation", category: "location", displayName: "Train Tickets", unlock: "Complete levels at Ghost Station.", badges: 250},
+    {name: "snowtel", category: "location", displayName: "Lou's Ice Cream", unlock: "Complete levels at Snowtel.", badges: 1},
     {name: "giftshop", category: "location", displayName: "Gift Shop Shirt", unlock: "Complete levels at Gift Shop.", badges: 250},
     {name: "retropolis", category: "location", displayName: "Neon Light", unlock: "Complete levels at Retropolis.", badges: 250},
     {name: "candyland", category: "location", displayName: "Starr Candy", unlock: "Complete levels at Candyland.", badges: 250},
+    {name: "rumblejungle", category: "location", displayName: "Nita's Bear Hat", unlock: "Complete levels at Rumble Jungle.", badges: 1},
     {name: "stuntshow", category: "location", displayName: "Janet's Microphone", unlock: "Complete levels at Stunt Show.", badges: 250},
     {name: "supercity", category: "location", displayName: "Surge's Energy Drink", unlock: "Complete levels at Super City.", badges: 250},
     {name: "arcade", category: "location", displayName: "Arcade Machine", unlock: "Complete levels at Arcade.", badges: 250},
     {name: "wins", category: "achievement", displayName: "Bull's Shotgun", unlock: "Win in any difficulty.", badges: 100},
     {name: "enemies", category: "achievement", displayName: "Omega Box", unlock: "Defeat enemies.", badges: 50000},
+    {name: "challenges", category: "achievement", displayName: "Starr Drop", unlock: "Complete challenges.", badges: 100},
     {name: "nomove", category: "achievement", displayName: "Charlie's Cocoon", unlock: "Win without moving. Abilities are allowed.", badges: 1},
     {name: "noupgrades", category: "achievement", displayName: "Bling Stack", unlock: "Win without purchasing upgrades or using gears.", badges: 1},
     {name: "nodamage", category: "achievement", displayName: "Poco's Guitar", unlock: "Win without taking any damage.", badges: 1},
     {name: "fastwin", category: "achievement", displayName: "Fang's Shoe", unlock: "Win in under 90 seconds.", badges: 1},
-    {name: "perfect", category: "achievement", displayName: "Championship Trophy", unlock: "Get a score of 600 on difficulty 6.", badges: 1},
-    {name: "mastery1", category: "mastery", displayName: "Bronze Mastery Medal", unlock: "Currently unobtainable.", badges: 1},
-    {name: "mastery2", category: "mastery", displayName: "Silver Mastery Medal", unlock: "Currently unobtainable.", badges: 1},
-    {name: "mastery3", category: "mastery", displayName: "Gold Mastery Medal", unlock: "Currently unobtainable.", badges: 1},
-    {name: "mastery4", category: "mastery", displayName: "Diamond Mastery Medal", unlock: "Currently unobtainable.", badges: 1},
-    {name: "mastery5", category: "mastery", displayName: "Amethyst Mastery Medal", unlock: "Currently unobtainable.", badges: 1}
+    {name: "perfect1", category: "achievement", displayName: "Championship Trophy", unlock: "Get a score of 600 on difficulty 6.", badges: 1},
+    {name: "perfect2", category: "achievement", displayName: "Hypercharged Token", unlock: "Get a score of 600 on difficulty 10.", badges: 1},
+    {name: "mastery1", category: "", displayName: "Bronze Medal", unlock: "Reach Mastery Level 4.", badges: 1},
+    {name: "mastery2", category: "", displayName: "Silver Medal", unlock: "Reach Mastery Level 8.", badges: 1},
+    {name: "mastery3", category: "", displayName: "Gold Medal", unlock: "Reach Mastery Level 12.", badges: 1},
+    {name: "mastery4", category: "", displayName: "Diamond Medal", unlock: "Reach Mastery Level 16.", badges: 1},
+    {name: "mastery5", category: "", displayName: "Mythic Medal", unlock: "Reach Mastery Level 20.", badges: 1},
+    {name: "mastery6", category: "", displayName: "Legendary Medal", unlock: "Reach Mastery Level 25.", badges: 1},
+    {name: "mastery7", category: "", displayName: "Masters Medal", unlock: "Reach Mastery Level 30.", badges: 1}
 ];
 
 const badgeList = [
@@ -450,7 +488,11 @@ const pointsRewards = [
     [12, 16, 16, 18],
     [16, 24, 32, 36],
     [20, 40, 64, 80],
-    [24, 60, 160, 240]
+    [24, 60, 160, 240],
+    [120, 120, 120, 120],
+    [200, 200, 200, 200],
+    [300, 300, 300, 300],
+    [600, 600, 600, 600]
 ];
 
 export function getMasteryLevel(points: number): MasteryData{
@@ -660,6 +702,17 @@ export function extractReportPreviewStats(data: number[]): ReportPreview["stats"
         }
     }
 
+    const accsIndex = data.slice(format.accessories[0], format.accessories[1]);
+    const accsUsed: {displayName: string; image: string;}[] = [];
+    for (let x = 0; x < accsIndex.length; x++){
+        if (accsIndex[x] >= 0 && accsIndex[x] < accessories.length){
+            accsUsed.push({
+                displayName: accessories[accsIndex[x]].displayName,
+                image: `${ACCESSORY_IMAGE_DIR}accessory_${accessories[accsIndex[x]].name}${IMAGE_FILE_EXTENSION}`
+            });
+        }
+    }
+
     return {
         score: data[p],
         enemies: enemiesDefeated,
@@ -667,7 +720,8 @@ export function extractReportPreviewStats(data: number[]): ReportPreview["stats"
         difficulty: (data[p + 1] < gameDifficulties.length ? gameDifficulties[data[p + 1]] : ""),
         brawler: brawler,
         starPower: starPower,
-        gears: gears
+        gears: gears,
+        accessories: accsUsed
     };
 }
 
@@ -719,8 +773,10 @@ export function extractReportData(data: number[]): ReportData | undefined{
         // More enemy, player, and location badges are given on higher difficulty
         if (difficulty <= 4){
             badgeMultiplier = 2 + difficulty;
+        } else if (difficulty === 5){
+            badgeMultiplier = 8;
         } else{
-            badgeMultiplier = 6 + difficulty * 2 - 8;
+            badgeMultiplier = 6 + difficulty * 2 - 12;
         }
     } else if (gameMode === 2){
         // For challenges, points and badges given depend on the strength of the challenge
@@ -768,6 +824,10 @@ export function extractReportData(data: number[]): ReportData | undefined{
     if (win === true){
         // If the completion score is maxed, the player won
         badges.set("wins", 1);
+        // Win challenges
+        if (gameMode === 2){
+            badges.set("challenges", 1);
+        }
     }
     // Defeat 50000 enemies
     if (enemiesDefeated > 0){
@@ -803,7 +863,7 @@ export function extractReportData(data: number[]): ReportData | undefined{
             badges.set("fastwin", 1);
         }
         // Get a score of 600 on difficulty 6
-        if (data[p] >= 600 && difficulty >= 5){
+        if (data[p] >= 600 && difficulty === 5){
             badges.set("perfect", 1);
         }
     }
@@ -834,3 +894,7 @@ export function extractReportData(data: number[]): ReportData | undefined{
         badges: badges
     };
 }
+
+const dataa = [0, 600, 5, 6, 2, 0, 3, 0, 1, 2, 3, 300, 150, 50, 50, 30, 20, 290865, 662, 19, 196723, 8, 409, 23, 13, 14, 10, 5, 5, 6, 8, 10, 12, 15, 18, 21, 24, 24, 0, 1, 5, 6, 10, 11, 12, 13, 16, 16, 206, 0, 0, 30, 36, 36, 478, 0, 0, 30, 60, 60, 331, 6, 0, 30, 66, 66, 424, 8, 0, 30, 100, 100, 582, 16, 0, 30, 120, 120, 555, 20, 0, 30, 120, 120, 559, 0, 0, 30, 144, 144, 517, 0, 0, 30, 14, 48, 2, 3, 1, 4, 1, 1, 1, 2, 1, 0, 1, 1, 2, 2, 0, 1, 2, 0, 0, 0, 1, 1, 1, 2, 1, 1, 0, 1];
+//console.log(validateReport([75, Date.now(), dataa]));
+console.log(extractReportData(dataa));
