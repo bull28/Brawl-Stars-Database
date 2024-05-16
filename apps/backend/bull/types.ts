@@ -450,6 +450,7 @@ export interface AchievementItems{
     avatars: Set<string>;
     themes: Set<string>;
     scenes: Set<string>;
+    accessories: Set<string>;
 }
 
 //------------------------------------------------------------------------------------------------//

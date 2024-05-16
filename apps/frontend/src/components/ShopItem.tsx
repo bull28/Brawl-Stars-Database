@@ -81,7 +81,7 @@ export default function ShopItem({data, coins, isFeatured, timeLeftString}: {dat
         )
     } else{
         return (
-            <Flex alignItems={'center'} flexDir={'column'} borderRadius={'lg'} onClick={onOpen} p={5} cursor={'pointer'} pos={'relative'} bgColor={'lightskyblue'} border={'3px solid'} borderColor={'blue.500'} _hover={{
+            <Flex alignItems={'center'} justifyContent={'space-between'} flexDir={'column'} h={'100%'} borderRadius={'lg'} onClick={onOpen} p={5} cursor={'pointer'} pos={'relative'} bgColor={'lightskyblue'} border={'3px solid'} borderColor={'blue.500'} _hover={{
             ".top": {transitionDelay: "0s", transform: "scaleX(1)"},
             ".right": {transitionDelay: "0.05s", transform: "scaleY(1)"},
             ".bottom": {transitionDelay: "0.1s", transform: "scaleX(1)"},
@@ -96,10 +96,10 @@ export default function ShopItem({data, coins, isFeatured, timeLeftString}: {dat
                     <Image filter={'drop-shadow(0 0 2rem rgb(255, 255, 255));'} borderRadius={'lg'} src={`${cdn}/image/${data.image}`}/>
                 </Flex>
                 <Flex>                    
-                    <Text fontSize={itemFontSize(data.displayName.length).size} lineHeight={[6, 7, 8, 8, 8]} className={itemFontSize(data.displayName.length).class}>{data.displayName}</Text>
+                    <Text textAlign={'center'} fontSize={itemFontSize(data.displayName.length).size} lineHeight={[6, 7, 8, 8, 8]} className={itemFontSize(data.displayName.length).class}>{data.displayName}</Text>
                 </Flex>
                 <Flex alignItems={'center'} mt={3}>
-                    <Text fontSize={['sm', 'md', 'lg', 'lg', 'lg', 'xl']}  className={'heading-lg'}>{data.cost}</Text>
+                    <Text fontSize={['sm', 'md', 'lg', 'lg', 'lg', 'xl']} className={'heading-lg'}>{data.cost}</Text>
                     <Image ml={1} maxH={'30px'} src={`${cdn}/image/resources/resource_coins.webp`}/>
                 </Flex>
     

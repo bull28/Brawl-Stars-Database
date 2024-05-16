@@ -9,13 +9,6 @@ type NamedDistribution = {
     weight: number;
 }[];
 
-// For accessories, there needs to be a distribution for the type of accessory (enemy, player, location) and for each
-// type, there needs to be a distribution for the actual accessories
-type AccessoryDistribution = {
-    accessories: string[];
-    weight: number;
-}[];
-
 /**
  * Takes in a probability distribution encoded in an array and randomly selects an index. The probability of an index in
  * the array being selected is the value at that index / the sum of all values.
@@ -774,46 +767,28 @@ export class ThemeReward extends Reward{
 }
 
 export class AccessoryReward extends Reward{
-    drops: AccessoryDistribution;
+    drops: NamedDistribution;
     coinConversion: number;
 
     constructor(weights?: number[]){
         super();
 
-        // Initially, for each type of accessory, all drops are equally likely. The drop chances are then adjusted
-        // based on the player's badges when they claim rewards.
+        // For now, only these specific accessories can drop and they are obtainable from brawl boxes only
         this.drops = [
-            {
-                weight: 1,
-                accessories: [
-                    "shelly", "colt", "rt", "elprimo",
-                    "8bit", "belle", "jessie", "eve",
-                    "mortis", "frank", "bea", "colette",
-                    "lola", "bibi", "mandy", "ash",
-                    "bonnie", "amber", "max", "meg"
-                ]
-            },
-            {
-                weight: 1,
-                accessories: [
-                    "spike", "gus", "emz", "darryl", "tara", "piper", "crow"
-                ]
-            },
-            {
-                weight: 1,
-                accessories: [
-                    "oldtown", "biodome", "ghoststation", "giftshop",
-                    "retropolis", "candyland", "stuntshow", "supercity",
-                    "arcade"
-                ]
-            }
+            {value: "brawlbox1", weight: 1},
+            {value: "brawlbox2", weight: 1},
+            {value: "brawlbox3", weight: 1},
+            {value: "brawlbox4", weight: 1},
+            {value: "brawlbox5", weight: 1},
+            {value: "brawlbox6", weight: 1},
+            {value: "brawlbox7", weight: 1}
         ];
-        if (weights !== undefined){
-            const len = Math.min(weights.length, this.drops.length);
-            for (let x = 0; x < len; x++){
-                this.drops[x].weight = weights[x];
-            }
-        }
+        // if (weights !== undefined){
+        //     const len = Math.min(weights.length, this.drops.length);
+        //     for (let x = 0; x < len; x++){
+        //         this.drops[x].weight = weights[x];
+        //     }
+        // }
 
         this.coinConversion = 100;
     }
@@ -837,20 +812,10 @@ export class AccessoryReward extends Reward{
             return this.dropCoins(resources);
         }
 
-        const dist = this.drops[dropIndex].accessories;
-
         const available: NamedDistribution = [];
-        for (let x = 0; x < dist.length; x++){
-            if (resources.accessories.includes(dist[x]) === false){
-                // Each accessory's base weight is multipled by the number of badges the player collected from the game.
-                // This makes accessories for enemies more common if the player defeated that enemy more times and it
-                // also does not allow the player to obtain accessories for enemies they did not defeat. A similar case
-                // is true for player and location accessories.
-
-                const badgeCount = badges.get(dist[x]);
-                if (badgeCount !== undefined && badgeCount > 0){
-                    available.push({value: dist[x], weight: badgeCount});
-                }
+        for (let x = 0; x < this.drops.length; x++){
+            if (resources.accessories.includes(this.drops[x].value) === false){
+                available.push(this.drops[x]);
             }
         }
 

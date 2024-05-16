@@ -697,6 +697,7 @@ interface BeforeShopResult extends RowDataPacket{
     last_login: number;
     coins: number;
     trade_credits: number;
+    points: number;
     brawlers: string;
     avatars: string;
     themes: string;
@@ -706,7 +707,7 @@ interface BeforeShopResult extends RowDataPacket{
 }
 export async function beforeShop(values: UsernameValues): Promise<BeforeShopResult[]>{
     return queryDatabase<BeforeShopResult[]>(pool, [values.username], false,
-        `SELECT last_login, coins, trade_credits, brawlers, avatars, themes, scenes, accessories, featured_item FROM ${TABLE_NAME} WHERE username = ?;`);
+        `SELECT last_login, coins, trade_credits, points, brawlers, avatars, themes, scenes, accessories, featured_item FROM ${TABLE_NAME} WHERE username = ?;`);
 }
 
 
@@ -731,14 +732,15 @@ interface ShopValues{
     avatars: string;
     themes: string;
     scenes: string;
+    accessories: string;
     featured_item: string;
     username: string;
 }
 export async function afterShop(values: ShopValues): Promise<ResultSetHeader>{
     return updateDatabase(pool, [
-        values.last_login, values.coins, values.trade_credits, values.brawlers, values.avatars, values.themes, values.scenes, values.featured_item, values.username
+        values.last_login, values.coins, values.trade_credits, values.brawlers, values.avatars, values.themes, values.scenes, values.accessories, values.featured_item, values.username
     ], false,
-        `UPDATE ${TABLE_NAME} SET last_login = ?, coins = ?, trade_credits = ?, brawlers = ?, avatars = ?, themes = ?, scenes = ?, featured_item = ? WHERE username = ?;`);
+        `UPDATE ${TABLE_NAME} SET last_login = ?, coins = ?, trade_credits = ?, brawlers = ?, avatars = ?, themes = ?, scenes = ?, accessories = ?, featured_item = ? WHERE username = ?;`);
 }
 
 

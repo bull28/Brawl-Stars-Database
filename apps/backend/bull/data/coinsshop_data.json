@@ -204,7 +204,7 @@
         "image": "",
         "extraData": "space",
         "amount": 1,
-        "description": "This avatar is a reward for reaching accessory level 30. There is no error in loading an image: this avatar is intended to be fully transparent."
+        "description": "This avatar is a reward for reaching mastery level 30. There is no error in loading an image: this avatar is intended to be fully transparent."
     },
     "theme1": {
         "displayName": "",
@@ -330,7 +330,7 @@
         "image": "",
         "extraData": "starrforce",
         "amount": 1,
-        "description": "This theme is a reward for reaching accessory level 12. It contains a new background, icon style, and music."
+        "description": "This theme is a reward for reaching mastery level 12. It contains a new background, icon style, and music."
     },
     "theme15": {
         "displayName": "",
@@ -339,7 +339,7 @@
         "image": "",
         "extraData": "deepsea",
         "amount": 1,
-        "description": "This theme is a reward for reaching accessory level 15. It contains a new background, icon style, and music."
+        "description": "This theme is a reward for reaching mastery level 15. It contains a new background, icon style, and music."
     },
     "theme16": {
         "displayName": "",
@@ -348,7 +348,7 @@
         "image": "",
         "extraData": "darkmas",
         "amount": 1,
-        "description": "This theme is a reward for reaching accessory level 21. It contains a new background, icon style, and music."
+        "description": "This theme is a reward for reaching mastery level 21. It contains a new background, icon style, and music."
     },
     "theme17": {
         "displayName": "",
@@ -357,7 +357,7 @@
         "image": "",
         "extraData": "mandy",
         "amount": 1,
-        "description": "This theme is a reward for reaching accessory level 24. It contains a new background, icon style, and music."
+        "description": "This theme is a reward for reaching mastery level 24. It contains a new background, icon style, and music."
     },
     "theme0": {
         "displayName": "",
@@ -366,7 +366,7 @@
         "image": "",
         "extraData": "yellow_face",
         "amount": 1,
-        "description": "This theme is a reward for reaching accessory level 30. It contains a new background, icon style, and music."
+        "description": "This theme is a reward for reaching mastery level 30. It contains a new background, icon style, and music."
     },
     "scene1": {
         "displayName": "",
@@ -411,7 +411,7 @@
         "image": "",
         "extraData": "giftshop",
         "amount": 1,
-        "description": "This scene is a reward for reaching accessory level 18. It adds a new background scene for the 3D model viewer."
+        "description": "This scene is a reward for reaching mastery level 18. It adds a new background scene for the 3D model viewer."
     },
     "scene6": {
         "displayName": "",
@@ -420,6 +420,78 @@
         "image": "",
         "extraData": "arcade",
         "amount": 1,
-        "description": "This scene is a reward for reaching accessory level 27. It adds a new background scene for the 3D model viewer."
+        "description": "This scene is a reward for reaching mastery level 27. It adds a new background scene for the 3D model viewer."
+    },
+    "accessory1": {
+        "displayName": "",
+        "cost": 2000,
+        "itemType": "achievementAccessory",
+        "image": "",
+        "extraData": "shop1",
+        "amount": 1,
+        "description": ""
+    },
+    "accessory2": {
+        "displayName": "",
+        "cost": 2000,
+        "itemType": "achievementAccessory",
+        "image": "",
+        "extraData": "shop2",
+        "amount": 1,
+        "description": ""
+    },
+    "accessory3": {
+        "displayName": "",
+        "cost": 2000,
+        "itemType": "achievementAccessory",
+        "image": "",
+        "extraData": "shop3",
+        "amount": 1,
+        "description": ""
+    },
+    "accessory4": {
+        "displayName": "",
+        "cost": 2000,
+        "itemType": "achievementAccessory",
+        "image": "",
+        "extraData": "shop4",
+        "amount": 1,
+        "description": ""
+    },
+    "accessory5": {
+        "displayName": "",
+        "cost": 3000,
+        "itemType": "achievementAccessory",
+        "image": "",
+        "extraData": "shop5",
+        "amount": 1,
+        "description": ""
+    },
+    "accessory6": {
+        "displayName": "",
+        "cost": 3000,
+        "itemType": "achievementAccessory",
+        "image": "",
+        "extraData": "shop6",
+        "amount": 1,
+        "description": ""
+    },
+    "accessory7": {
+        "displayName": "",
+        "cost": 3000,
+        "itemType": "achievementAccessory",
+        "image": "",
+        "extraData": "shop7",
+        "amount": 1,
+        "description": ""
+    },
+    "accessory8": {
+        "displayName": "",
+        "cost": 3000,
+        "itemType": "achievementAccessory",
+        "image": "",
+        "extraData": "shop8",
+        "amount": 1,
+        "description": ""
     }
 }

@@ -1,6 +1,7 @@
 import allSkins from "../data/brawlers_data.json";
 import shopItemsObject from "../data/coinsshop_data.json";
 import {themeMap, sceneMap, AVATAR_SPECIAL_DIR, IMAGE_FILE_EXTENSION, PIN_IMAGE_DIR, RESOURCE_IMAGE_DIR, THEME_SPECIAL_DIR, SCENE_IMAGE_DIR} from "../data/constants";
+import {getAccessoryPreview} from "./accessories";
 import brawlBox from "./brawlbox";
 import {BrawlBoxDrop, UserResources, ShopItemData, CollectionData, AchievementItems, DatabaseBrawlers} from "../types";
 
@@ -186,6 +187,29 @@ class SceneItem extends CosmeticItem{
     }
 }
 
+class AccessoryItem extends CosmeticItem{
+    constructor(data: ShopItemData){
+        // Adding accessories to the collection is very similar to adding cosmetic items so the same class is used
+        super(data);
+
+        const accsPreview = getAccessoryPreview(this.cosmeticName);
+        if (accsPreview !== undefined){
+            this.display.name = accsPreview.displayName;
+            this.display.image = accsPreview.image;
+            this.display.description = accsPreview.description;
+        }
+    }
+
+    isAvailable(resources: UserResources, collection: CollectionData, achievements: AchievementItems): boolean{
+        return (!resources.accessories.includes(this.cosmeticName)) && (achievements.accessories.has(this.cosmeticName) || !this.achievement);
+    }
+
+    buyItem(resources: UserResources): [number, BrawlBoxDrop[]]{
+        resources.accessories.push(this.cosmeticName);
+        return [1, []];
+    }
+}
+
 class FeaturedItem extends ShopItem{
     available: boolean;
     pin: string;
@@ -317,6 +341,8 @@ for (let x = 0; x < shopData.length; x++){
         shopItems.set(shopData[x][0], new ThemeItem(shopData[x][1]));
     } else if (type === "scene" || type === "achievementScene"){
         shopItems.set(shopData[x][0], new SceneItem(shopData[x][1]));
+    } else if (type === "accessory" || type === "achievementAccessory"){
+        shopItems.set(shopData[x][0], new AccessoryItem(shopData[x][1]));
     } else if (type === "featured"){
         featuredItemData = shopData[x][1];
     }
@@ -526,5 +552,20 @@ export function getAchievementItems(resources: UserResources, collection: Collec
         themes.add("yellow_face");
     }
 
-    return {avatars: avatars, themes: themes, scenes: scenes};
+
+    const accessories = new Set<string>();
+
+    // Later, change these to their actual level requirements
+    if (level >= 4){
+        accessories.add("shop1");
+        accessories.add("shop2");
+        accessories.add("shop3");
+        accessories.add("shop4");
+        accessories.add("shop5");
+        accessories.add("shop6");
+        accessories.add("shop7");
+        accessories.add("shop8");
+    }
+
+    return {avatars: avatars, themes: themes, scenes: scenes, accessories: accessories};
 }

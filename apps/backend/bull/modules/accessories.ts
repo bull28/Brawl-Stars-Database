@@ -227,7 +227,8 @@ export function validateReport(report: GameReport): boolean{
     const accs = data.slice(format.accessories[0], format.accessories[1]);
     for (let x = 0; x < accs.length; x++){
         if (accs[x] >= 0 && difficulty <= 5){
-            valid = false;
+            // Enable this when adding difficulties 6 - 9
+            //valid = false;
         }
     }
 
@@ -387,11 +388,11 @@ const accessories: Accessory[] = [
     {name: "oldtown", category: "location", displayName: "Barley's Bottle", unlock: "Complete levels at Old Town.", badges: 250},
     {name: "biodome", category: "location", displayName: "Rosa's Gloves", unlock: "Complete levels at Biodome.", badges: 250},
     {name: "ghoststation", category: "location", displayName: "Train Tickets", unlock: "Complete levels at Ghost Station.", badges: 250},
-    {name: "snowtel", category: "location", displayName: "Lou's Ice Cream", unlock: "Complete levels at Snowtel.", badges: 1},
+    {name: "snowtel", category: "location", displayName: "Lou's Ice Cream", unlock: "Complete levels at Snowtel.", badges: 250},
     {name: "giftshop", category: "location", displayName: "Gift Shop Shirt", unlock: "Complete levels at Gift Shop.", badges: 250},
     {name: "retropolis", category: "location", displayName: "Neon Light", unlock: "Complete levels at Retropolis.", badges: 250},
     {name: "candyland", category: "location", displayName: "Starr Candy", unlock: "Complete levels at Candyland.", badges: 250},
-    {name: "rumblejungle", category: "location", displayName: "Nita's Bear Hat", unlock: "Complete levels at Rumble Jungle.", badges: 1},
+    {name: "rumblejungle", category: "location", displayName: "Nita's Bear Hat", unlock: "Complete levels at Rumble Jungle.", badges: 250},
     {name: "stuntshow", category: "location", displayName: "Janet's Microphone", unlock: "Complete levels at Stunt Show.", badges: 250},
     {name: "supercity", category: "location", displayName: "Surge's Energy Drink", unlock: "Complete levels at Super City.", badges: 250},
     {name: "arcade", category: "location", displayName: "Arcade Machine", unlock: "Complete levels at Arcade.", badges: 250},
@@ -894,7 +895,3 @@ export function extractReportData(data: number[]): ReportData | undefined{
         badges: badges
     };
 }
-
-const dataa = [0, 600, 5, 6, 2, 0, 3, 0, 1, 2, 3, 300, 150, 50, 50, 30, 20, 290865, 662, 19, 196723, 8, 409, 23, 13, 14, 10, 5, 5, 6, 8, 10, 12, 15, 18, 21, 24, 24, 0, 1, 5, 6, 10, 11, 12, 13, 16, 16, 206, 0, 0, 30, 36, 36, 478, 0, 0, 30, 60, 60, 331, 6, 0, 30, 66, 66, 424, 8, 0, 30, 100, 100, 582, 16, 0, 30, 120, 120, 555, 20, 0, 30, 120, 120, 559, 0, 0, 30, 144, 144, 517, 0, 0, 30, 14, 48, 2, 3, 1, 4, 1, 1, 1, 2, 1, 0, 1, 1, 2, 2, 0, 1, 2, 0, 0, 0, 1, 1, 1, 2, 1, 1, 0, 1];
-//console.log(validateReport([75, Date.now(), dataa]));
-console.log(extractReportData(dataa));

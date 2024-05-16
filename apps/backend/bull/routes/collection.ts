@@ -184,13 +184,13 @@ router.post<Empty, Empty, ShopReqBody>("/shop", loginErrorHandler<ShopReqBody>(a
         tokens: 0,
         token_doubler: 0,
         coins: results[0].coins,
-        points: 0,
+        points: results[0].points,
         trade_credits: results[0].trade_credits
     };
     // Tokens, token doubler, and wild card pins are not read by the shop methods and their values do not matter here
 
     let featuredItem = results[0].featured_item;
-    const level = 30;
+    const level = getMasteryLevel(resources.points).level;
 
     const collection = formatCollectionData(resources.brawlers, resources.accessories);
     const score = getCollectionScore(collection);
@@ -290,6 +290,7 @@ router.post<Empty, Empty, ShopReqBody>("/shop", loginErrorHandler<ShopReqBody>(a
         avatars: JSON.stringify(resources.avatars),
         themes: JSON.stringify(resources.themes),
         scenes: JSON.stringify(resources.scenes),
+        accessories: JSON.stringify(resources.accessories),
         featured_item: featuredItem,
         username: username
     });
