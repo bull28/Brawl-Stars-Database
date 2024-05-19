@@ -20,9 +20,9 @@ interface Accessory{
 }
 
 const REPORT_FORMAT = {
-    mode: [0, 1], player: [1, 5], gears: [5, 7], accessories: [7, 11], score: [11, 17],
-    achievements: [17, 24], upgrades: [24, 30], stats: [30, 38], visited: [38, 46],
-    levels: [46, 94], enemies: [94, 124], length: [0, 124]
+    mode: [0, 1], player: [1, 5], gears: [5, 7], accessories: [7, 12], score: [12, 18],
+    achievements: [18, 25], upgrades: [25, 31], stats: [31, 39], visited: [39, 47],
+    levels: [47, 95], enemies: [95, 125], length: [0, 125]
 };
 const SCORE_CONSTANTS = {
     stages: [
@@ -217,9 +217,9 @@ export function validateReport(report: GameReport): boolean{
         return false;
     }
 
-    // The total enemies defeated cannot be more than 750
+    // The total enemies defeated cannot be more than 1000
     const enemiesDefeated = data[format.achievements[0] + 1];
-    if (enemiesDefeated > 750){
+    if (enemiesDefeated > 1000){
         return false;
     }
 
@@ -332,24 +332,24 @@ export function validateReport(report: GameReport): boolean{
 
 
 const accessories: Accessory[] = [
-    {name: "default1", category: "", displayName: "Supply Drop", unlock: "Reach Mastery Level 4.", badges: 1},
-    {name: "default2", category: "", displayName: "Green Supply Drop", unlock: "Reach Mastery Level 4.", badges: 1},
-    {name: "default3", category: "", displayName: "Red Supply Drop", unlock: "Reach Mastery Level 4.", badges: 1},
-    {name: "default4", category: "", displayName: "Defensive Potion", unlock: "Reach Mastery Level 4.", badges: 1},
-    {name: "default5", category: "", displayName: "Offensive Potion", unlock: "Reach Mastery Level 4.", badges: 1},
+    {name: "default1", category: "", displayName: "Supply Drop", unlock: "Reach Mastery Level 6.", badges: 1},
+    {name: "default2", category: "", displayName: "Green Supply Drop", unlock: "Reach Mastery Level 6.", badges: 1},
+    {name: "default3", category: "", displayName: "Red Supply Drop", unlock: "Reach Mastery Level 6.", badges: 1},
+    {name: "default4", category: "", displayName: "Defensive Potion", unlock: "Reach Mastery Level 6.", badges: 1},
+    {name: "default5", category: "", displayName: "Offensive Potion", unlock: "Reach Mastery Level 6.", badges: 1},
     {name: "shop1", category: "", displayName: "Healing Potion", unlock: "Buy from the Shop.", badges: 1},
     {name: "shop2", category: "", displayName: "Life Steal Potion", unlock: "Buy from the Shop.", badges: 1},
     {name: "shop3", category: "", displayName: "Strength Potion", unlock: "Buy from the Shop.", badges: 1},
     {name: "shop4", category: "", displayName: "Speed Potion", unlock: "Buy from the Shop.", badges: 1},
-    {name: "shop5", category: "", displayName: "Nani's Drone", unlock: "Buy from the Shop.", badges: 1},
-    {name: "shop6", category: "", displayName: "Brock's Rocket Launcher", unlock: "Buy from the Shop.", badges: 1},
-    {name: "shop7", category: "", displayName: "Pam's Healing Station", unlock: "Buy from the Shop.", badges: 1},
-    {name: "shop8", category: "", displayName: "Iron Wall", unlock: "Buy from the Shop.", badges: 1},
-    {name: "brawlbox1", category: "", displayName: "Angelo's Bow", unlock: "Unlock from Brawl Boxes.", badges: 1},
-    {name: "brawlbox2", category: "", displayName: "Healing Skull", unlock: "Unlock from Brawl Boxes.", badges: 1},
-    {name: "brawlbox3", category: "", displayName: "Power Skull", unlock: "Unlock from Brawl Boxes.", badges: 1},
-    {name: "brawlbox4", category: "", displayName: "Sam's Knuckle Busters", unlock: "Unlock from Brawl Boxes.", badges: 1},
-    {name: "brawlbox5", category: "", displayName: "Doug's Hot Dog", unlock: "Unlock from Brawl Boxes.", badges: 1},
+    {name: "shop5", category: "", displayName: "Iron Wall", unlock: "Buy from the Shop.", badges: 1},
+    {name: "shop6", category: "", displayName: "Pam's Healing Station", unlock: "Buy from the Shop.", badges: 1},
+    {name: "shop7", category: "", displayName: "Nani's Drone", unlock: "Buy from the Shop.", badges: 1},
+    {name: "shop8", category: "", displayName: "Brock's Rocket Launcher", unlock: "Buy from the Shop.", badges: 1},
+    {name: "brawlbox1", category: "", displayName: "Healing Skull", unlock: "Unlock from Brawl Boxes.", badges: 1},
+    {name: "brawlbox2", category: "", displayName: "Sam's Knuckle Busters", unlock: "Unlock from Brawl Boxes.", badges: 1},
+    {name: "brawlbox3", category: "", displayName: "Doug's Hot Dog", unlock: "Unlock from Brawl Boxes.", badges: 1},
+    {name: "brawlbox4", category: "", displayName: "Angelo's Bow", unlock: "Unlock from Brawl Boxes.", badges: 1},
+    {name: "brawlbox5", category: "", displayName: "Power Skull", unlock: "Unlock from Brawl Boxes.", badges: 1},
     {name: "brawlbox6", category: "", displayName: "Buster's Projector", unlock: "Unlock from Brawl Boxes.", badges: 1},
     {name: "brawlbox7", category: "", displayName: "Ability Juice", unlock: "Unlock from Brawl Boxes.", badges: 1},
     {name: "shelly", category: "enemy", displayName: "Shelly's Shotgun", unlock: "Defeat Shelly enemies.", badges: 500},
@@ -405,7 +405,7 @@ const accessories: Accessory[] = [
     {name: "fastwin", category: "achievement", displayName: "Fang's Shoe", unlock: "Win in under 90 seconds.", badges: 1},
     {name: "perfect1", category: "achievement", displayName: "Championship Trophy", unlock: "Get a score of 600 on difficulty 6.", badges: 1},
     {name: "perfect2", category: "achievement", displayName: "Hypercharged Token", unlock: "Get a score of 600 on difficulty 10.", badges: 1},
-    {name: "mastery1", category: "", displayName: "Bronze Medal", unlock: "Reach Mastery Level 4.", badges: 1},
+    {name: "mastery1", category: "", displayName: "Bronze Medal", unlock: "Reach Mastery Level 6.", badges: 1},
     {name: "mastery2", category: "", displayName: "Silver Medal", unlock: "Reach Mastery Level 8.", badges: 1},
     {name: "mastery3", category: "", displayName: "Gold Medal", unlock: "Reach Mastery Level 12.", badges: 1},
     {name: "mastery4", category: "", displayName: "Diamond Medal", unlock: "Reach Mastery Level 16.", badges: 1},
@@ -490,10 +490,10 @@ const pointsRewards = [
     [16, 24, 32, 36],
     [20, 40, 64, 80],
     [24, 60, 160, 240],
-    [120, 120, 120, 120],
-    [200, 200, 200, 200],
-    [300, 300, 300, 300],
-    [600, 600, 600, 600]
+    [12, 30, 80, 120],
+    [20, 50, 120, 200],
+    [30, 72, 180, 300],
+    [48, 96, 300, 600]
 ];
 
 export function getMasteryLevel(points: number): MasteryData{
@@ -539,6 +539,10 @@ export function getMasteryLevel(points: number): MasteryData{
     return result;
 }
 
+function accessoryImageName(name: string): string{
+    return `${ACCESSORY_IMAGE_DIR}accessory_${name}${IMAGE_FILE_EXTENSION}`;
+}
+
 /**
  * Searches the list of accessories for one that matches the given name.
  * @param name accessory name
@@ -566,7 +570,7 @@ export function getAccessoryPreview(name: string): AccessoryPreview | undefined{
 
     return {
         displayName: a.displayName,
-        image: `${ACCESSORY_IMAGE_DIR}accessory_${a.name}${IMAGE_FILE_EXTENSION}`,
+        image: accessoryImageName(a.name),
         description: "This item increases your collection score."
     };
 }
@@ -580,7 +584,7 @@ export function getAccessoryCollection(userAccessories: DatabaseAccessories): Co
         collection.push({
             name: a.name,
             displayName: a.displayName,
-            image: `${ACCESSORY_IMAGE_DIR}accessory_${a.name}${IMAGE_FILE_EXTENSION}`,
+            image: accessoryImageName(a.name),
             unlocked: userAccessories.includes(a.name)
         });
     }
@@ -604,7 +608,7 @@ export function getAccessoryData(userAccessories: DatabaseAccessories, badges: D
             name: a.name,
             category: a.category,
             displayName: a.displayName,
-            image: `${ACCESSORY_IMAGE_DIR}accessory_${a.name}${IMAGE_FILE_EXTENSION}`,
+            image: accessoryImageName(a.name),
             unlocked: userAccessories.includes(a.name),
             badge: {
                 collected: badgeCount,
@@ -863,9 +867,16 @@ export function extractReportData(data: number[]): ReportData | undefined{
         if (data[a] < 90000){
             badges.set("fastwin", 1);
         }
-        // Get a score of 600 on difficulty 6
-        if (data[p] >= 600 && difficulty === 5){
-            badges.set("perfect", 1);
+        // Get a perfect score
+        if (data[p] >= 600){
+            // Get a score of 600 on difficulty 6
+            if (difficulty === 5){
+                badges.set("perfect1", 1);
+            }
+            // Get a score of 600 on difficulty 10
+            if (difficulty === 9){
+                badges.set("perfect2", 1);
+            }
         }
     }
 

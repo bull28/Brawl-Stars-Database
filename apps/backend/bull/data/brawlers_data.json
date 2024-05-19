@@ -3667,7 +3667,7 @@
                     "image": "bg_babyshark.webp",
                     "icon": "icon_babyshark.webp"
                 },
-                "limited": false,
+                "limited": true,
                 "image": "luchadorbabyshark.webp",
                 "model": {
                     "geometry": "",
@@ -18832,7 +18832,7 @@
         "defaultSkin": "insectmandefault",
         "title": "Bloodthirsty",
         "masteryIcon": "mastery_icon_angelo.webp",
-        "description": "Angelo is the Love Swamp's resident cupid-turned-mosquito. They buzz around the canals looking for lovebirds to dazzle with their irresistible charm, even if those require a little extra, pointy incentive.",
+        "description": "Angelo is the Love Swamp's resident cupid-turned-mosquito. He buzzes around the canals looking for lovebirds to dazzle with his irresistible charm, even if those require a little extra, pointy incentive.",
         "skins": [
             {
                 "name": "insectmandefault",

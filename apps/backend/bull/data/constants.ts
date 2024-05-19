@@ -69,7 +69,11 @@ export const gameDifficulties = [
     "Difficulty 3",
     "Difficulty 4",
     "Difficulty 5",
-    "Difficulty 6"
+    "Difficulty 6",
+    "Difficulty 7",
+    "Difficulty 8",
+    "Difficulty 9",
+    "Difficulty 10"
 ];
 
 export const gameBrawlers = [

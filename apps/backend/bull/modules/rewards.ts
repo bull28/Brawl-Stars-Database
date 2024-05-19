@@ -770,7 +770,7 @@ export class AccessoryReward extends Reward{
     drops: NamedDistribution;
     coinConversion: number;
 
-    constructor(weights?: number[]){
+    constructor(){
         super();
 
         // For now, only these specific accessories can drop and they are obtainable from brawl boxes only
@@ -783,12 +783,6 @@ export class AccessoryReward extends Reward{
             {value: "brawlbox6", weight: 1},
             {value: "brawlbox7", weight: 1}
         ];
-        // if (weights !== undefined){
-        //     const len = Math.min(weights.length, this.drops.length);
-        //     for (let x = 0; x < len; x++){
-        //         this.drops[x].weight = weights[x];
-        //     }
-        // }
 
         this.coinConversion = 100;
     }
