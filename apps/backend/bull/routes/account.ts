@@ -118,7 +118,7 @@ router.post<Empty, Empty, LoginReqBody>("/signup", databaseErrorHandler<LoginReq
         username: username,
         password: hash,
         active_avatar: "free/default",
-        brawlers: stringifyBrawlers(startingBrawlers),
+        brawlers: stringifyBrawlers(startingBrawlers)
     });
 
     const userInfo = signToken(username);

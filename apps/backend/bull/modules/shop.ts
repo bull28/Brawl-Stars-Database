@@ -556,7 +556,7 @@ export function getAchievementItems(resources: UserResources, collection: Collec
     const accessories = new Set<string>();
 
     // Later, change these to their actual level requirements
-    if (level >= 4){
+    if (level >= 6){
         accessories.add("shop1");
         accessories.add("shop2");
         accessories.add("shop3");
@@ -565,6 +565,19 @@ export function getAchievementItems(resources: UserResources, collection: Collec
         accessories.add("shop6");
         accessories.add("shop7");
         accessories.add("shop8");
+        accessories.add("mastery1");
+    } if (level >= 8){
+        accessories.add("mastery2");
+    } if (level >= 12){
+        accessories.add("mastery3");
+    } if (level >= 16){
+        accessories.add("mastery4");
+    } if (level >= 20){
+        accessories.add("mastery5");
+    } if (level >= 25){
+        accessories.add("mastery6");
+    } if (level >= 30){
+        accessories.add("mastery7");
     }
 
     return {avatars: avatars, themes: themes, scenes: scenes, accessories: accessories};
