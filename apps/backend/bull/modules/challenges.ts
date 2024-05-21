@@ -1,5 +1,6 @@
+import staticChallenges from "../data/challenges_data.json";
 import {RNG} from "./rewards";
-import {UserWaves, ChallengeData, ChallengeGameMod} from "../types";
+import {DatabaseAccessories, GameModUpgradeValues, UserWaves, ChallengeData, ChallengeGameMod} from "../types";
 
 type PlayerUpgrades = {
     offense: {
@@ -7,8 +8,9 @@ type PlayerUpgrades = {
         startingGears: number;
         powerPerStage: number;
         gearsPerStage: number;
+        maxAccessories: number;
     } & {
-        [k in keyof ChallengeGameMod["playerUpgradeValues"]]: number;
+        [k in keyof GameModUpgradeValues]: number;
     };
     defense: {
         difficulty: number;
@@ -65,30 +67,31 @@ const offenseUpgrades: {[k in keyof PlayerUpgrades["offense"]]: [number, number]
         [25, 56], [27, 64], [29, 72]
     ],
     gearsPerStage: [[0, 0], [10, 1], [20, 2], [30, 3]],
-    health: [[0, 2], [14, 2.25], [26, 2.5]],
-    damage: [[0, 2], [14, 2.25], [26, 2.5]],
-    healing: [[0, 2], [2, 3], [16, 4]],
-    speed: [[0, 0], [4, 1], [22, 2]],
+    maxAccessories: [[0, 0], [6, 1], [12, 2], [18, 3], [24, 4], [30, 5]],
+    health: [[0, 100]],
+    damage: [[0, 100]],
+    healing: [[0, 100]],
+    speed: [[0, 0]],
     ability: [[0, 1]],
-    lifeSteal: [[0, 0], [8, 0.5], [28, 1]]
+    lifeSteal: [[0, 0]]
 };
 const defenseUpgradesOdd: (Pick<PlayerUpgrades["defense"], "difficulty" | "enemyStats">)[] = [
-    {difficulty: 0, enemyStats: [2.00, 2.00, 2.00, 2.00]},// Level 0
-    {difficulty: 0, enemyStats: [2.00, 2.00, 2.00, 2.00]},// Level 1
-    {difficulty: 0, enemyStats: [2.00, 2.00, 2.00, 2.00]},// Level 3
-    {difficulty: 0, enemyStats: [2.00, 2.25, 2.00, 2.00]},
-    {difficulty: 0, enemyStats: [2.00, 2.25, 2.00, 2.00]},
-    {difficulty: 1, enemyStats: [2.00, 2.25, 2.00, 2.00]},
-    {difficulty: 1, enemyStats: [2.00, 2.50, 2.00, 2.00]},
-    {difficulty: 1, enemyStats: [2.00, 2.75, 2.00, 2.00]},
-    {difficulty: 1, enemyStats: [2.25, 2.75, 3.75, 2.00]},
-    {difficulty: 1, enemyStats: [2.25, 3.00, 4.00, 2.00]},
-    {difficulty: 2, enemyStats: [2.25, 3.00, 4.00, 2.00]},
-    {difficulty: 2, enemyStats: [2.25, 3.25, 4.25, 2.00]},
-    {difficulty: 2, enemyStats: [2.25, 3.50, 4.50, 2.00]},
-    {difficulty: 2, enemyStats: [2.50, 3.75, 4.75, 5.75]},
-    {difficulty: 2, enemyStats: [2.50, 4.00, 5.00, 6.00]},
-    {difficulty: 3, enemyStats: [2.50, 4.00, 5.00, 6.00]}// Level 29
+    {difficulty: 0, enemyStats: [100.0, 100.0, 100.0, 100.0]},// Level 0
+    {difficulty: 0, enemyStats: [100.0, 100.0, 100.0, 100.0]},// Level 1
+    {difficulty: 0, enemyStats: [100.0, 100.0, 100.0, 100.0]},// Level 3
+    {difficulty: 0, enemyStats: [100.0, 112.5, 100.0, 100.0]},
+    {difficulty: 0, enemyStats: [100.0, 112.5, 100.0, 100.0]},
+    {difficulty: 1, enemyStats: [100.0, 112.5, 100.0, 100.0]},
+    {difficulty: 1, enemyStats: [100.0, 125.0, 100.0, 100.0]},
+    {difficulty: 1, enemyStats: [100.0, 137.5, 100.0, 100.0]},
+    {difficulty: 1, enemyStats: [112.5, 137.5, 187.5, 100.0]},
+    {difficulty: 1, enemyStats: [112.5, 150.0, 200.0, 100.0]},
+    {difficulty: 2, enemyStats: [112.5, 150.0, 200.0, 100.0]},
+    {difficulty: 2, enemyStats: [112.5, 162.5, 212.5, 100.0]},
+    {difficulty: 2, enemyStats: [112.5, 175.0, 225.0, 100.0]},
+    {difficulty: 2, enemyStats: [125.0, 187.5, 237.5, 287.5]},
+    {difficulty: 2, enemyStats: [125.0, 200.0, 250.0, 300.0]},
+    {difficulty: 3, enemyStats: [125.0, 200.0, 250.0, 300.0]}// Level 29
 ];
 const defenseUpgradesEven: (Pick<PlayerUpgrades["defense"], "maxEnemies" | "waves">)[] = [
     {maxEnemies: [12], waves: [[12]]},// Level 0
@@ -219,13 +222,13 @@ class Counter{
 function getPlayerUpgrades(masteryLevel: number): PlayerUpgrades{
     const upgrades: PlayerUpgrades = {
         offense: {
-            startingPower: 0, startingGears: 0, powerPerStage: 0, gearsPerStage: 0,
-            health: 2, damage: 2, healing: 2, speed: 0, ability: 1, lifeSteal: 0
+            startingPower: 0, startingGears: 0, powerPerStage: 0, gearsPerStage: 0, maxAccessories: 0,
+            health: 100, damage: 100, healing: 100, speed: 0, ability: 1, lifeSteal: 0
         },
         defense: {
             difficulty: 0,
             maxEnemies: [12],
-            enemyStats: [2],
+            enemyStats: [100],
             waves: [[12]]
         }
     };
@@ -254,7 +257,7 @@ function getPlayerUpgrades(masteryLevel: number): PlayerUpgrades{
     upgrades.defense.waves = defenseUpgradesEven[evenIndex].waves.map((value) => value.map((wave) => wave));
     upgrades.defense.difficulty = defenseUpgradesOdd[oddIndex].difficulty;
     upgrades.defense.enemyStats = defenseUpgradesOdd[oddIndex].enemyStats.map((value) => value).slice(0, upgrades.defense.maxEnemies.length);
-    
+
     return upgrades;
 }
 
@@ -270,7 +273,6 @@ export function createChallengeData(masteryLevel: number, waves: UserWaves): {me
     // For each enemy, there is a limit on the number of times it can appear in the same stage, as well as a limit on
     // the number of times it can appear across all stages in the challenge.
     // These counters store the number of times the user has added each enemy
-    //const counts = new Map<string, number>();
     const globalCounts = new Counter();
     const stageCounts = new Map<number, Counter>();
     // Stores the number of remaining waves for each stage
@@ -279,7 +281,7 @@ export function createChallengeData(masteryLevel: number, waves: UserWaves): {me
     const waveValues = upgrades.maxEnemies.map((value) => value);
     // Stores the last wave's value for each stage
     const lastWave = upgrades.maxEnemies.map((value) => 0);
-    
+
     let x = 0;
     while (x < waves.length && message === ""){
         const stage = waves[x].level;
@@ -375,10 +377,10 @@ export function createChallengeData(masteryLevel: number, waves: UserWaves): {me
 export function getChallengeStrength(data: ChallengeData): number{
     let strength = 0;
     const diff = 2 + data.difficulty;
-    
+
     for (let x = 0; x < data.waves.length; x++){
         const enemies = data.waves[x].enemies;
-        const stats = (data.waves[x].level < data.stats.length ? data.stats[data.waves[x].level] : 1) * 4;
+        const stats = (data.waves[x].level < data.stats.length ? data.stats[data.waves[x].level] : 100) / 12.5;
 
         for (let i = 0; i < enemies.length; i++){
             const values = enemyValues.get(enemies[i]);
@@ -392,12 +394,45 @@ export function getChallengeStrength(data: ChallengeData): number{
     return Math.floor(strength);
 }
 
-export function getGameMod(key: string, masteryLevel: number, data: ChallengeData): ChallengeGameMod{
+export function getStaticGameMod(key: string): ChallengeGameMod | undefined{
+    if (key === "expert"){
+        // Expert levels (difficulties 7 to 10)
+        return {
+            options: staticChallenges.expertLevels.options,
+            difficulties: staticChallenges.expertLevels.difficulties,
+            levels: staticChallenges.expertLevels.levels,
+            playerAccessories: staticChallenges.expertLevels.playerAccessories
+        };
+    } else if (enemyValues.has(key) === true){
+        const enemyName = enemyValues.get(key)!.displayName;
+        const data = staticChallenges.practiceMode.find((value) => value.enemy === key);
+        if (data !== undefined){
+            return {
+                options: {key: key, gameName: `Practice Mode vs. ${enemyName}`, gameMode: 1},
+                stages: [{completion: 300, time: 150, powerReward: 0, gearsReward: 0}],
+                levels: [{
+                    levelid: 1,
+                    waves: [{names: [[data.enemy]], multiple: []}],
+                    background: data.background,
+                    displayName: "Practice Level",
+                    stages: [0, 0],
+                    destination: 0
+                }],
+                maxScores: {completion: 300, time: 150, destination: 0, health: 50, gear: 0, enemy: 0},
+                playerUpgradeValues: {healing: {value: [200, 0.02]}, lifeSteal: {value: [100, 0.02]}}
+            };
+        }
+    }
+    return undefined;
+}
+
+export function getKeyGameMod(key: string, masteryLevel: number, accessories: DatabaseAccessories, data: ChallengeData): ChallengeGameMod{
     const gameStages = Math.max(1, Math.min(8, Math.floor(data.levels)));
     const difficulty = Math.max(0, Math.floor(data.difficulty));
     const enemyStats: number[] = [];
     const stages: ChallengeGameMod["stages"] = [];
     const levels: ChallengeGameMod["levels"] = [];
+    const playerAccessories = accessories.filter((value) => typeof value === "string");
 
     let completionMax = 0;
     let timeMax = 0;
@@ -496,6 +531,7 @@ export function getGameMod(key: string, masteryLevel: number, data: ChallengeDat
             startingGears: player.startingGears,
             bonusResources: false,
             addBonusEnemies: false,
+            maxAccessories: player.maxAccessories,
             maxReportLevels: 8
         },
         difficulties: [{
@@ -517,13 +553,14 @@ export function getGameMod(key: string, masteryLevel: number, data: ChallengeDat
             gear: 30,
             enemy: 0
         },
+        playerAccessories: playerAccessories,
         playerUpgradeValues: {
-            health: {value: [player.health, 4]},
-            damage: {value: [player.damage, 4]},
-            healing: {value: [player.healing, 1]},
+            health: {value: [player.health, 0.08]},
+            damage: {value: [player.damage, 0.08]},
+            healing: {value: [player.healing, 0.02]},
             speed: {value: [player.speed, 1]},
             ability: {value: [player.ability, -10]},
-            lifeSteal: {value: [player.lifeSteal, 2]}
+            lifeSteal: {value: [player.lifeSteal, 0.02]}
         }
     };
 }

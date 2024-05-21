@@ -1,23 +1,23 @@
 [
     {
         "name": "default1", "category": "", "displayName": "Supply Drop",
-        "description": "Increases health and damage.", "unlock": "Rewarded at Mastery Level 6.", "badges": 1
+        "description": "Increases health and damage.", "unlock": "Win on difficulty 1.", "badges": 1
     },
     {
         "name": "default2", "category": "", "displayName": "Green Supply Drop",
-        "description": "Increases health and damage.", "unlock": "Rewarded at Mastery Level 6.", "badges": 1
+        "description": "Increases health and damage.", "unlock": "Win on difficulty 2.", "badges": 1
     },
     {
         "name": "default3", "category": "", "displayName": "Red Supply Drop",
-        "description": "Increases health and damage.", "unlock": "Rewarded at Mastery Level 6.", "badges": 1
+        "description": "Increases health and damage.", "unlock": "Win on difficulty 2.", "badges": 1
     },
     {
         "name": "default4", "category": "", "displayName": "Defensive Potion",
-        "description": "Increases health and healing.", "unlock": "Rewarded at Mastery Level 6.", "badges": 1
+        "description": "Increases health and healing.", "unlock": "Win on difficulty 3.", "badges": 1
     },
     {
         "name": "default5", "category": "", "displayName": "Offensive Potion",
-        "description": "Increases damage and speed.", "unlock": "Rewarded at Mastery Level 6.", "badges": 1
+        "description": "Increases damage and speed.", "unlock": "Win on difficulty 3.", "badges": 1
     },
     {
         "name": "shop1", "category": "", "displayName": "Healing Potion",
@@ -233,11 +233,11 @@
     },
     {
         "name": "retropolis", "category": "location", "displayName": "Neon Light",
-        "description": "", "unlock": "Complete levels at Retropolis.", "badges": 250
+        "description": "Damage marks from enemies are less effective.", "unlock": "Complete levels at Retropolis.", "badges": 250
     },
     {
         "name": "candyland", "category": "location", "displayName": "Starr Candy",
-        "description": "", "unlock": "Complete levels at Candyland.", "badges": 250
+        "description": "When defeating an enemy, gain speed for a few seconds.", "unlock": "Complete levels at Candyland.", "badges": 250
     },
     {
         "name": "rumblejungle", "category": "location", "displayName": "Nita's Bear Hat",
@@ -256,39 +256,39 @@
         "description": "Defeating enemies increases damage for the rest of the level.", "unlock": "Complete levels at Arcade.", "badges": 250
     },
     {
-        "name": "wins", "category": "achievement", "displayName": "Bull's Shotgun",
+        "name": "wins", "category": "", "displayName": "Bull's Shotgun",
         "description": "Increases attack reload speed.", "unlock": "Win in any difficulty.", "badges": 100
     },
     {
-        "name": "enemies", "category": "achievement", "displayName": "Omega Box",
+        "name": "enemies", "category": "", "displayName": "Omega Box",
         "description": "Increases the quality of brawl box rewards.", "unlock": "Defeat enemies.", "badges": 50000
     },
     {
-        "name": "challenges", "category": "achievement", "displayName": "Starr Drop",
+        "name": "challenges", "category": "", "displayName": "Starr Drop",
         "description": "Gain more mastery points from rewards.", "unlock": "Complete challenges.", "badges": 100
     },
     {
-        "name": "nomove", "category": "achievement", "displayName": "Charlie's Cocoon",
+        "name": "nomove", "category": "", "displayName": "Charlie's Cocoon",
         "description": "When at low health, take less damage.", "unlock": "Win without moving. Abilities are allowed.", "badges": 1
     },
     {
-        "name": "noupgrades", "category": "achievement", "displayName": "Bling Stack",
+        "name": "noupgrades", "category": "", "displayName": "Bling Stack",
         "description": "The first gear activation in each level does not consume a gear token.", "unlock": "Win without purchasing upgrades or using gears.", "badges": 1
     },
     {
-        "name": "nodamage", "category": "achievement", "displayName": "Poco's Guitar",
+        "name": "nodamage", "category": "", "displayName": "Poco's Guitar",
         "description": "Increases healing when out of combat.", "unlock": "Win without taking any damage.", "badges": 1
     },
     {
-        "name": "fastwin", "category": "achievement", "displayName": "Fang's Shoe",
+        "name": "fastwin", "category": "", "displayName": "Fang's Shoe",
         "description": "When defeating an enemy, partially recharge the ability.", "unlock": "Win in under 90 seconds.", "badges": 1
     },
     {
-        "name": "perfect1", "category": "achievement", "displayName": "Championship Trophy",
+        "name": "perfect1", "category": "", "displayName": "Championship Trophy",
         "description": "Increases game score.", "unlock": "Get a score of 600 on difficulty 6.", "badges": 1
     },
     {
-        "name": "perfect2", "category": "achievement", "displayName": "Hypercharged Token",
+        "name": "perfect2", "category": "", "displayName": "Hypercharged Token",
         "description": "Increases health, damage, healing, speed, and life steal.", "unlock": "Get a score of 600 on difficulty 10.", "badges": 1
     },
     {

@@ -604,7 +604,7 @@ export function extractReportPreviewStats(data: number[]): ReportPreview["stats"
     if (data.length !== format.length[1] - format.length[0]){
         return undefined;
     }
-    
+
     const win = data[format.score[0]] >= SCORE_CONSTANTS.maxScores.completion;
     const enemiesDefeated = data[format.achievements[0] + 1];
 
@@ -771,6 +771,20 @@ export function extractReportData(data: number[]): ReportData | undefined{
 
     // Some achievements are only available in the default game mode
     if (gameMode === 0 && win === true){
+        // Win on difficulty 1
+        if (difficulty === 0){
+            badges.set("default1", 1);
+        }
+        // Win on difficulty 2
+        if (difficulty === 1){
+            badges.set("default2", 1);
+            badges.set("default3", 1);
+        }
+        // Win on difficulty 3
+        if (difficulty === 2){
+            badges.set("default4", 1);
+            badges.set("default5", 1);
+        }
         // Win without moving
         if (data[a + 4] === 0){
             badges.set("nomove", 1);

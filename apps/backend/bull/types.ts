@@ -707,6 +707,15 @@ export interface ReportPreview{
 //------------------------------------------------------------------------------------------------//
 
 /**
+ * Data for player upgrade values in a game modification object
+ */
+export type GameModUpgradeValues = {
+    [k in "health" | "damage" | "healing" | "speed" | "ability" | "lifeSteal"]: {
+        value: [number, number];
+    };
+};
+
+/**
  * Storage of one wave in a challenge
  */
 export interface ChallengeWave{
@@ -736,7 +745,7 @@ export interface ChallengeData{
  * Game modification object for a challenge, sent to the game
  */
 export interface ChallengeGameMod{
-    options: {
+    options?: Partial<{
         key: string;
         gameMode: number;
         gameName: string;
@@ -744,9 +753,10 @@ export interface ChallengeGameMod{
         startingGears: number;
         bonusResources: boolean;
         addBonusEnemies: boolean;
+        maxAccessories: number;
         maxReportLevels: number;
-    };
-    difficulties: {
+    }>;
+    difficulties?: {
         difficultyid: number;
         name: string;
         countTier: number;
@@ -755,13 +765,13 @@ export interface ChallengeGameMod{
         timePerEnemy: number;
         enemyStats: number[];
     }[];
-    stages: {
+    stages?: {
         completion: number;
         time: number;
         powerReward: number;
         gearsReward: number;
     }[];
-    levels: {
+    levels?: {
         levelid: number;
         waves: {
             names: string[][];
@@ -769,15 +779,16 @@ export interface ChallengeGameMod{
                 name: string;
                 count: number[];
             }[];
-            delay: number;
-            maxEnemies: number;
+            delay?: number;
+            maxEnemies?: number;
+            onDifficulty?: number;
         }[];
         background: string;
         displayName: string;
         stages: number[];
         destination: number;
     }[];
-    maxScores: {
+    maxScores?: {
         completion: number;
         time: number;
         destination: number;
@@ -785,11 +796,8 @@ export interface ChallengeGameMod{
         gear: number;
         enemy: number;
     };
-    playerUpgradeValues: {
-        [k in "health" | "damage" | "healing" | "speed" | "ability" | "lifeSteal"]: {
-            value: [number, number];
-        };
-    };
+    playerAccessories?: string[];
+    playerUpgradeValues?: Partial<GameModUpgradeValues>;
 }
 
 //------------------------------------------------------------------------------------------------//

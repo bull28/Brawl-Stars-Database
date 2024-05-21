@@ -1,0 +1,364 @@
+{
+    "expertLevels": {
+        "options": {
+            "maxAccessories": 5
+        },
+        "difficulties": [
+            {
+                "difficultyid": 6,
+                "name": "Difficulty 7",
+                "countTier": 0,
+                "strengthTier": 2,
+                "healthBonusReq": 0.5,
+                "timePerEnemy": 0.75,
+                "enemyStats": [100.0, 125.0, 150.0, 175.0, 200.0, 237.5, 275.0, 300.0]
+            },
+            {
+                "difficultyid": 7,
+                "name": "Difficulty 8",
+                "countTier": 0,
+                "strengthTier": 3,
+                "healthBonusReq": 0.5,
+                "timePerEnemy": 0.75,
+                "enemyStats": [100.0, 125.0, 150.0, 175.0, 212.5, 250.0, 300.0, 312.5]
+            },
+            {
+                "difficultyid": 8,
+                "name": "Difficulty 9",
+                "countTier": 1,
+                "strengthTier": 3,
+                "healthBonusReq": 0.5,
+                "timePerEnemy": 0.75,
+                "enemyStats": [100.0, 125.0, 150.0, 187.5, 225.0, 262.5, 312.5, 325.0]
+            },
+            {
+                "difficultyid": 9,
+                "name": "Difficulty 10",
+                "countTier": 2,
+                "strengthTier": 4,
+                "healthBonusReq": 0.5,
+                "timePerEnemy": 0.75,
+                "enemyStats": [100.0, 125.0, 162.5, 200.0, 237.5, 275.0, 325.0, 350.0]
+            }
+        ],
+        "levels": [
+            {
+                "levelid": 0,
+                "waves": [
+                    {"names": [["firstmeteor"]], "multiple": []},
+                    {"names": [], "multiple": [{"name": "meteor", "count": [1]}, {"name": "meleerobot", "count": [1]}], "delay": 1},
+                    {"names": [["shelly", "colt"]], "multiple": [], "delay": 2, "maxEnemies": 10},
+                    {"names": [[], [], ["rt"]], "multiple": [{"name": "rangedrobot", "count": [0, 1]}, {"name": "fastrobot", "count": [0, 1]}], "delay": 5, "maxEnemies": 2}
+                ],
+                "background": "entrance",
+                "displayName": "Starr Park Entrance",
+                "stages": [0, 0],
+                "destination": 0
+            },
+            {
+                "levelid": 1,
+                "waves": [
+                    {"names": [], "multiple": [{"name": "meleerobot", "count": [0, 0, 1]}, {"name": "rangedrobot", "count": [0, 2]}, {"name": "fastrobot", "count": [2]}]},
+                    {"names": [["shelly", "colt"]], "multiple": [], "delay": 5, "maxEnemies": 10},
+                    {"names": [[], [], ["r10"]], "multiple": [], "delay": 5, "maxEnemies": 2},
+                    {"names": [["rt", "elprimo"]], "multiple": [], "delay": 1}
+                ],
+                "background": "hub",
+                "displayName": "Starr Park Hub",
+                "stages": [1, 1],
+                "destination": 0
+            },
+            {
+                "levelid": 2,
+                "waves": [
+                    {"names": [], "multiple": [{"name": "meteor", "count": [3]}, {"name": "r2", "count": [2]}]},
+                    {"names": [[], ["r8"], ["r4"]], "multiple": [], "delay": 4, "maxEnemies": 10},
+                    {"names": [["r12"], [], ["r8"]], "multiple": [], "delay": 6, "maxEnemies": 2},
+                    {"names": [["8bit"]], "multiple": [], "delay": 1},
+                    {"names": [["belle"]], "multiple": [], "delay": 4, "maxEnemies": 1}
+                ],
+                "background": "oldtown",
+                "displayName": "Old Town",
+                "stages": [2, 2],
+                "destination": 0
+            },
+            {
+                "levelid": 3,
+                "waves": [
+                    {"names": [], "multiple": [{"name": "meteor", "count": [3]}, {"name": "r2", "count": [3]}]},
+                    {"names": [[], ["r8"], ["r4"]], "multiple": [], "delay": 5, "maxEnemies": 10},
+                    {"names": [["r12"], [], ["r8"]], "multiple": [], "delay": 6, "maxEnemies": 2},
+                    {"names": [["jessie"]], "multiple": [], "delay": 1},
+                    {"names": [["eve"]], "multiple": [], "delay": 5, "maxEnemies": 1}
+                ],
+                "background": "biodome",
+                "displayName": "Biodome",
+                "stages": [2, 3],
+                "destination": 0
+            },
+            {
+                "levelid": 4,
+                "waves": [
+                    {"names": [["r10"]], "multiple": []},
+                    {"names": [["r4", "r8"]], "multiple": [], "delay": 5, "maxEnemies": 10},
+                    {"names": [[], ["r8"], ["r9"]], "multiple": [{"name": "meteor", "count": [0, 0, 3]}, {"name": "r2", "count": [0, 0, 1]}], "delay": 6, "maxEnemies": 2},
+                    {"names": [["mortis"]], "multiple": [], "delay": 1},
+                    {"names": [["frank"]], "multiple": [], "delay": 5, "maxEnemies": 1}
+                ],
+                "background": "ghostmetro",
+                "displayName": "Ghost Station",
+                "stages": [2, 3],
+                "destination": 4
+            },
+            {
+                "levelid": 5,
+                "waves": [
+                    {"names": [["r12"]], "multiple": []},
+                    {"names": [["r6", "r8"]], "multiple": [], "delay": 6, "maxEnemies": 10},
+                    {"names": [[], ["r8"], ["r16"]], "multiple": [], "delay": 7, "maxEnemies": 2},
+                    {"names": [["jacky"]], "multiple": [], "delay": 1},
+                    {"names": [["mrp"]], "multiple": [], "delay": 5, "maxEnemies": 1}
+                ],
+                "background": "snowtel",
+                "displayName": "Snowtel",
+                "stages": [2, 3],
+                "destination": 6
+            },
+            {
+                "levelid": 6,
+                "waves": [
+                    {"names": [["r12"]], "multiple": []},
+                    {"names": [["r9", "r9"]], "multiple": [], "delay": 6, "maxEnemies": 10},
+                    {"names": [[], ["r10"], ["r16"]], "multiple": [], "delay": 9, "maxEnemies": 2},
+                    {"names": [["bea"]], "multiple": [], "delay": 1},
+                    {"names": [["colette"]], "multiple": [], "delay": 6, "maxEnemies": 1}
+                ],
+                "background": "giftshop",
+                "displayName": "Gift Shop",
+                "stages": [3, 3],
+                "destination": 8
+            },
+            {
+                "levelid": 7,
+                "waves": [
+                    {"names": [["r10"]], "multiple": []},
+                    {"names": [["r9", "r9"]], "multiple": [], "delay": 5, "maxEnemies": 10},
+                    {"names": [[], ["r12"], ["r16"]], "multiple": [], "delay": 9, "maxEnemies": 2},
+                    {"names": [["lola"]], "multiple": [], "delay": 1},
+                    {"names": [["bibi"]], "multiple": [], "delay": 8, "maxEnemies": 1}
+                ],
+                "background": "retropolis",
+                "displayName": "Retropolis",
+                "stages": [4, 4],
+                "destination": 0
+            },
+            {
+                "levelid": 8,
+                "waves": [
+                    {"names": [["r12"]], "multiple": []},
+                    {"names": [["r4", "r6", "r10"]], "multiple": [], "delay": 6, "maxEnemies": 10},
+                    {"names": [[], ["r12"], ["r16"]], "multiple": [], "delay": 10, "maxEnemies": 2},
+                    {"names": [["mandy"]], "multiple": [], "delay": 1},
+                    {"names": [["ash"]], "multiple": [], "delay": 8, "maxEnemies": 1}
+                ],
+                "background": "candystand",
+                "displayName": "Candyland",
+                "stages": [4, 5],
+                "destination": 0
+            },
+            {
+                "levelid": 9,
+                "waves": [
+                    {"names": [["r8", "r12"]], "multiple": []},
+                    {"names": [["r10", "r10"]], "multiple": [], "delay": 10, "maxEnemies": 10},
+                    {"names": [[], ["r12"], ["r16"]], "multiple": [], "delay": 10, "maxEnemies": 2},
+                    {"names": [["pearl"]], "multiple": [], "delay": 1},
+                    {"names": [["leon"]], "multiple": [], "delay": 8, "maxEnemies": 1}
+                ],
+                "background": "rumblejungle",
+                "displayName": "Rumble Jungle",
+                "stages": [4, 5],
+                "destination": 12
+            },
+            {
+                "levelid": 10,
+                "waves": [
+                    {"names": [["r8", "r12"]], "multiple": []},
+                    {"names": [["r10", "r10"]], "multiple": [], "delay": 10, "maxEnemies": 10},
+                    {"names": [[], ["r6", "r8"], ["r16"]], "multiple": [], "delay": 10, "maxEnemies": 2},
+                    {"names": [["bonnie"]], "multiple": [], "delay": 1},
+                    {"names": [["amber"]], "multiple": [], "delay": 10, "maxEnemies": 1}
+                ],
+                "background": "stuntshow",
+                "displayName": "Stunt Show",
+                "stages": [4, 5],
+                "destination": 16
+            },
+            {
+                "levelid": 11,
+                "waves": [
+                    {"names": [["r10", "r10"]], "multiple": []},
+                    {"names": [["r12", "r16"]], "multiple": [], "delay": 10, "maxEnemies": 10},
+                    {"names": [[], ["r16"], ["r20"]], "multiple": [], "delay": 14, "maxEnemies": 2},
+                    {"names": [["max"]], "multiple": [], "delay": 1},
+                    {"names": [["meg"]], "multiple": [], "delay": 12, "maxEnemies": 1}
+                ],
+                "background": "minicity",
+                "displayName": "Super City",
+                "stages": [5, 5],
+                "destination": 20
+            },
+            {
+                "levelid": 12,
+                "waves": [
+                    {"names": [["g6", "g12"]], "multiple": [], "onDifficulty": 6},
+                    {"names": [["g12", "g20"]], "multiple": [], "delay": 1, "onDifficulty": 6},
+                    {"names": [["g10", "g16"]], "multiple": [], "delay": 1, "onDifficulty": 6},
+                    {"names": [["g24"]], "multiple": [], "delay": 13, "maxEnemies": 2, "onDifficulty": 6},
+    
+                    {"names": [["g8", "g16"]], "multiple": [], "onDifficulty": 7},
+                    {"names": [["g12", "g20"]], "multiple": [], "delay": 1,"onDifficulty": 7},
+                    {"names": [["g10", "g20"]], "multiple": [], "delay": 1, "onDifficulty": 7},
+                    {"names": [["g30"]], "multiple": [], "delay": 15, "maxEnemies": 2, "onDifficulty": 7},
+    
+                    {"names": [["g8", "g16"]], "multiple": [], "onDifficulty": 8},
+                    {"names": [["g12", "g30"]], "multiple": [], "delay": 1, "onDifficulty": 8},
+                    {"names": [["g10", "g20"]], "multiple": [], "delay": 1, "onDifficulty": 8},
+                    {"names": [["g36"]], "multiple": [], "delay": 15, "maxEnemies": 2, "onDifficulty": 8},
+    
+                    {"names": [["g8", "g20"]], "multiple": [], "onDifficulty": 9},
+                    {"names": [["g10", "g12"]], "multiple": [], "delay": 1, "onDifficulty": 9},
+                    {"names": [["g30"]], "multiple": [], "delay": 11, "maxEnemies": 2, "onDifficulty": 9},
+                    {"names": [["g16", "g24"]], "multiple": [], "delay": 1, "onDifficulty": 9},
+                    {"names": [["g36"]], "multiple": [], "delay": 20, "maxEnemies": 2, "onDifficulty": 9}
+                ],
+                "background": "arcade",
+                "displayName": "Arcade",
+                "stages": [6, 6],
+                "destination": 0
+            },
+            {
+                "levelid": 13,
+                "waves": [
+                    {"names": [["bull"]], "multiple": []}
+                ],
+                "background": "rooftop",
+                "displayName": "Rooftop",
+                "stages": [7, 7],
+                "destination": 0
+            }
+        ],
+        "playerAccessories": [
+            "default1", "default2", "default3", "default4", "default5", "shop1", "shop2", "shop3", "shop4", "shop5",
+            "shop6", "shop7", "shop8", "brawlbox1", "brawlbox2", "brawlbox3", "brawlbox4", "brawlbox5", "brawlbox6", "brawlbox7",
+            "shelly", "colt", "rt", "elprimo", "8bit", "belle", "jessie", "eve", "mortis", "frank",
+            "jacky", "mrp", "bea", "colette", "lola", "bibi", "mandy", "ash", "pearl", "leon",
+            "bonnie", "amber", "max", "meg", "spike", "gus", "emz", "darryl", "tara", "piper",
+            "crow", "stu", "maisie", "oldtown", "biodome", "ghoststation", "snowtel", "giftshop", "retropolis", "candyland",
+            "rumblejungle", "stuntshow", "supercity", "arcade", "wins", "enemies", "challenges", "nomove", "noupgrades", "nodamage",
+            "fastwin", "perfect1", "perfect2", "mastery1", "mastery2", "mastery3", "mastery4", "mastery5", "mastery6", "mastery7"
+        ]
+    },
+    "practiceMode": [
+        {
+            "enemy": "shelly",
+            "background": "entrance"
+        },
+        {
+            "enemy": "colt",
+            "background": "entrance"
+        },
+        {
+            "enemy": "rt",
+            "background": "hub"
+        },
+        {
+            "enemy": "elprimo",
+            "background": "hub"
+        },
+        {
+            "enemy": "8bit",
+            "background": "oldtown"
+        },
+        {
+            "enemy": "belle",
+            "background": "oldtown"
+        },
+        {
+            "enemy": "jessie",
+            "background": "biodome"
+        },
+        {
+            "enemy": "eve",
+            "background": "biodome"
+        },
+        {
+            "enemy": "mortis",
+            "background": "ghostmetro"
+        },
+        {
+            "enemy": "frank",
+            "background": "ghostmetro"
+        },
+        {
+            "enemy": "jacky",
+            "background": "snowtel"
+        },
+        {
+            "enemy": "mrp",
+            "background": "snowtel"
+        },
+        {
+            "enemy": "bea",
+            "background": "giftshop"
+        },
+        {
+            "enemy": "colette",
+            "background": "giftshop"
+        },
+        {
+            "enemy": "lola",
+            "background": "retropolis"
+        },
+        {
+            "enemy": "bibi",
+            "background": "retropolis"
+        },
+        {
+            "enemy": "mandy",
+            "background": "candystand"
+        },
+        {
+            "enemy": "ash",
+            "background": "candystand"
+        },
+        {
+            "enemy": "pearl",
+            "background": "rumblejungle"
+        },
+        {
+            "enemy": "leon",
+            "background": "rumblejungle"
+        },
+        {
+            "enemy": "bonnie",
+            "background": "stuntshow"
+        },
+        {
+            "enemy": "amber",
+            "background": "stuntshow"
+        },
+        {
+            "enemy": "max",
+            "background": "minicity"
+        },
+        {
+            "enemy": "meg",
+            "background": "minicity"
+        },
+        {
+            "enemy": "siegebase",
+            "background": "arcade"
+        }
+    ]
+}

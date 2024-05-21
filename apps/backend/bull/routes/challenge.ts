@@ -2,11 +2,12 @@ import express from "express";
 import {randomUUID} from "crypto";
 import {CHALLENGE_REPORT_COST} from "../data/constants";
 import {getMasteryLevel} from "../modules/accessories";
-import {createChallengeData, getChallengeStrength, getGameMod} from "../modules/challenges";
+import {createChallengeData, getChallengeStrength, getStaticGameMod, getKeyGameMod} from "../modules/challenges";
 import {
     databaseErrorHandler, 
     loginErrorHandler, 
     transaction, 
+    parseStringArray, 
     parseNumberArray, 
     parseChallengeWaves, 
     getResources, 
@@ -20,7 +21,7 @@ import {
     getChallenge, 
     deleteChallenge
 } from "../modules/database";
-import {Empty, ChallengeWave, UserWaves} from "../types";
+import {Empty, DatabaseAccessories, ChallengeWave, UserWaves} from "../types";
 
 const router = express.Router();
 
@@ -45,8 +46,26 @@ router.post<Empty, Empty, ChallengeKeyReqBody>("/get", databaseErrorHandler<Chal
         res.status(404).send("Challenge not found.");
         return;
     }
+
+    // Challenge keys with length less than 30 identify static challenges that are the same for all players. They can be
+    // played as many times as the player wishes to for free. If one of these challenges allows the player to save their
+    // score, they input their username at the end of the game like in classic mode.
+    if (key.length <= 30){
+        const mod = getStaticGameMod(key);
+        if (mod === undefined){
+            res.status(404).send("Challenge not found.");
+            return;
+        }
+        res.json(mod);
+        return;
+    }
+
     const results = await getActiveChallenge({key: key});
 
+    if (results.length === 0){
+        res.status(404).send("Challenge not found.");
+        return;
+    }
     if (results[0].accepted !== 0){
         res.status(403).send("This challenge has already been accepted.");
         return;
@@ -55,11 +74,11 @@ router.post<Empty, Empty, ChallengeKeyReqBody>("/get", databaseErrorHandler<Chal
     const stats: number[] = parseNumberArray(results[0].stats);
     const waves: ChallengeWave[] = parseChallengeWaves(results[0].waves);
 
-    // Only the mastery points are required from this data
     const userData = await beforeAccessory({username: results[0].accepted_by});
     const mastery = getMasteryLevel(userData[0].points);
+    const accessories: DatabaseAccessories = parseStringArray(userData[0].accessories);
 
-    const mod = getGameMod(key, mastery.level, {
+    const mod = getKeyGameMod(key, mastery.level, accessories, {
         owner: results[0].owner,
         difficulty: results[0].difficulty,
         levels: results[0].levels,
