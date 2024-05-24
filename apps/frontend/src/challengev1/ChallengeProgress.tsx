@@ -1,5 +1,5 @@
 import {Flex, Text, Divider, Image} from "@chakra-ui/react";
-import {ChallengeWins} from "../types/ChallengeData";
+import {ChallengeWins} from "./ChallengeV1Data";
 import EventTime from "../helpers/EventTime";
 import {RainbowBorder} from "../themes/animations";
 import cdn from "../helpers/CDNRoute";

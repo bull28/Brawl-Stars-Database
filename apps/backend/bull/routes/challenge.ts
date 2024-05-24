@@ -153,6 +153,15 @@ router.post<Empty, Empty, ChallengeStartReqBody>("/start", loginErrorHandler<Cha
         return;
     }
 
+    // Send a list of enemies that will appear in the challenge to the user
+    const waves: ChallengeWave[] = parseChallengeWaves(challenges[0].waves);
+    const enemies = new Set<string>();
+    for (let x = 0; x < waves.length; x++){
+        for (let i = 0; i < waves[x].enemies.length; i++){
+            enemies.add(waves[x].enemies[i]);
+        }
+    }
+
     const key: string = randomUUID();
 
     await transaction(async (connection) => {
@@ -165,7 +174,11 @@ router.post<Empty, Empty, ChallengeStartReqBody>("/start", loginErrorHandler<Cha
         }, connection);
     });
 
-    res.json({key: key});
+    res.json({
+        key: key,
+        displayName: `${challenges[0].username}'s Challenge`,
+        enemies: Array.from(enemies)
+    });
 }));
 
 export default router;

@@ -5,7 +5,7 @@ import {
     Flex, Text, Stack, Image, Input, Button, SimpleGrid, useToast,
     Modal, ModalOverlay, ModalContent, ModalBody, ModalHeader, ModalCloseButton, Divider, useDisclosure
 } from "@chakra-ui/react";
-import {UnitImage, ChallengeName, RoomName, RoomData} from "../types/ChallengeData";
+import {UnitImage, ChallengeName, RoomName, RoomData} from "./ChallengeV1Data";
 import {displayLong} from "../helpers/LargeNumberDisplay";
 import cdn from "../helpers/CDNRoute";
 

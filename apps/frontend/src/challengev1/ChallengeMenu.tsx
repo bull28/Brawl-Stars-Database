@@ -1,15 +1,15 @@
-import ChallengePlayer from "../components/ChallengePlayer";
+import ChallengePlayer from "./ChallengePlayer";
 import {useEffect, useState, useCallback, useRef} from "react";
 import {useNavigate} from "react-router-dom";
 import AuthRequest, {getToken} from "../helpers/AuthRequest";
 import {Flex, Text, Stack, Button} from "@chakra-ui/react";
 import SkullBackground from "../components/SkullBackground";
 import TokenDisplay from "../components/TokenDisplay";
-import {UnitImage, ChallengeName, RoomName, ChallengeWins, UnitData, RoomData, RoomDataDisplay, ChallengeData} from "../types/ChallengeData";
-import ChallengeProgress from "../components/ChallengeProgress";
-import UnitSelection from "../components/UnitSelection";
-import ChallengeSelection from "../components/ChallengeSelection";
-import RoomSelection from "../components/RoomSelection";
+import {UnitImage, ChallengeName, RoomName, ChallengeWins, UnitData, RoomData, RoomDataDisplay, ChallengeData} from "./ChallengeV1Data";
+import ChallengeProgress from "./ChallengeProgress";
+import UnitSelection from "./UnitSelection";
+import ChallengeSelection from "./ChallengeSelection";
+import RoomSelection from "./RoomSelection";
 import {UserInfoProps} from "../types/AccountData";
 import {server} from "../helpers/APIRoute";
 

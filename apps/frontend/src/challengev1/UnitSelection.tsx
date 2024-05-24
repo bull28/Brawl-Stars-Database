@@ -1,6 +1,6 @@
 import {Flex, Text, Image, Button, SimpleGrid, HStack, Divider} from "@chakra-ui/react";
 import {useState} from "react";
-import {UnitImage, UnitData} from "../types/ChallengeData";
+import {UnitImage, UnitData} from "./ChallengeV1Data";
 import cdn from "../helpers/CDNRoute";
 
 interface UnitSelectionProps{

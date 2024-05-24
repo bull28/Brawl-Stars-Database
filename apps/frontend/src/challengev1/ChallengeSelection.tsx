@@ -1,5 +1,5 @@
 import {Flex, Text, Image, Button, SimpleGrid, Divider} from "@chakra-ui/react";
-import {ChallengeName, ChallengeData} from "../types/ChallengeData";
+import {ChallengeName, ChallengeData} from "./ChallengeV1Data";
 import {displayLong} from "../helpers/LargeNumberDisplay";
 import {animateScroll} from "react-scroll";
 import cdn from "../helpers/CDNRoute";

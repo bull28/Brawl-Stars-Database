@@ -40,3 +40,9 @@ export interface Accessory{
         unlockMethod: string;
     };
 }
+
+export interface ChallengeStartData{
+    key: string;
+    displayName: string;
+    enemies: string[];
+}
