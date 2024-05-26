@@ -1,6 +1,7 @@
 {
     "expertLevels": {
         "options": {
+            "gameMode": 1,
             "maxAccessories": 5
         },
         "difficulties": [

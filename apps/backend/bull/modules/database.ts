@@ -1043,6 +1043,7 @@ interface ActiveChallengeResult extends RowDataPacket{
     owner: string;
     accepted_by: string;
     accepted: number;
+    preset: string;
     difficulty: number;
     levels: number;
     stats: string;
@@ -1062,7 +1063,7 @@ export async function createActiveChallenge(values: CreateActiveValues, connecti
 
 export async function getActiveChallenge(values: ActiveChallengeValues): Promise<ActiveChallengeResult[]>{
     return queryDatabase<ActiveChallengeResult[]>(pool, [values.key], true,
-        `SELECT C.username AS owner, A.accepted_by, A.accepted, C.difficulty, C.levels, C.stats, C.waves FROM ${CHALLENGE_TABLE_NAME} C, ${ACTIVE_TABLE_NAME} A WHERE C.challengeid = A.challengeid AND A.active_key = ?;`);
+        `SELECT C.username AS owner, A.accepted_by, A.accepted, C.preset, C.difficulty, C.levels, C.stats, C.waves FROM ${CHALLENGE_TABLE_NAME} C, ${ACTIVE_TABLE_NAME} A WHERE C.challengeid = A.challengeid AND A.active_key = ?;`);
 }
 
 
@@ -1091,6 +1092,7 @@ export async function deleteActiveChallenge(values: ActiveChallengeValues & Part
 
 interface CreateChallengeValues{
     username: string;
+    preset: string;
     strength: number;
     difficulty: number;
     levels: number;
@@ -1099,9 +1101,9 @@ interface CreateChallengeValues{
 }
 export async function createChallenge(values: CreateChallengeValues, connection?: PoolConnection): Promise<ResultSetHeader>{
     const valuesArray = [
-        values.username, values.strength, values.difficulty, values.levels, values.stats, values.waves
+        values.username, values.preset, values.strength, values.difficulty, values.levels, values.stats, values.waves
     ];
-    const query = `INSERT INTO ${CHALLENGE_TABLE_NAME} (username, strength, difficulty, levels, stats, waves) VALUES (?, ?, ?, ?, ?, ?);`;
+    const query = `INSERT INTO ${CHALLENGE_TABLE_NAME} (username, preset, strength, difficulty, levels, stats, waves) VALUES (?, ?, ?, ?, ?, ?, ?);`;
     if (connection !== undefined){
         return transactionUpdate(connection, valuesArray, false, query);
     }
@@ -1116,10 +1118,10 @@ interface ChallengeResult extends ChallengeIDValues, CreateChallengeValues, RowD
 export async function getChallenge(values: ChallengeIDValues & Partial<UsernameValues>): Promise<ChallengeResult[]>{
     if (values.username !== undefined){
         return queryDatabase<ChallengeResult[]>(pool, [values.username], true,
-            `SELECT challengeid, username, strength, difficulty, levels, stats, waves FROM ${CHALLENGE_TABLE_NAME} WHERE username = ?;`);
+            `SELECT challengeid, username, preset, strength, difficulty, levels, stats, waves FROM ${CHALLENGE_TABLE_NAME} WHERE username = ?;`);
     }
     return queryDatabase<ChallengeResult[]>(pool, [values.challengeid], true,
-        `SELECT challengeid, username, strength, difficulty, levels, stats, waves FROM ${CHALLENGE_TABLE_NAME} WHERE challengeid = ?;`);
+        `SELECT challengeid, username, preset, strength, difficulty, levels, stats, waves FROM ${CHALLENGE_TABLE_NAME} WHERE challengeid = ?;`);
 }
 
 

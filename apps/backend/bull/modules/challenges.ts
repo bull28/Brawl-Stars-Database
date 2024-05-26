@@ -394,15 +394,25 @@ export function getChallengeStrength(data: ChallengeData): number{
     return Math.floor(strength);
 }
 
-export function getStaticGameMod(key: string): ChallengeGameMod | undefined{
+export function getStaticGameMod(key: string, masteryLevel: number, accessories: DatabaseAccessories): ChallengeGameMod | undefined{
+    const upgrades = getPlayerUpgrades(masteryLevel).offense;
+    const playerAccessories = accessories.filter((value) => typeof value === "string");
     if (key === "expert"){
         // Expert levels (difficulties 7 to 10)
+        return {
+            options: {maxAccessories: upgrades.maxAccessories},
+            difficulties: staticChallenges.expertLevels.difficulties,
+            levels: staticChallenges.expertLevels.levels,
+            playerAccessories: playerAccessories
+        };
+    } else if (key === "expertpractice"){
+        // Expert levels where all accessories are unlocked but score cannot be saved
         return {
             options: staticChallenges.expertLevels.options,
             difficulties: staticChallenges.expertLevels.difficulties,
             levels: staticChallenges.expertLevels.levels,
             playerAccessories: staticChallenges.expertLevels.playerAccessories
-        };
+        }
     } else if (enemyValues.has(key) === true){
         const enemyName = enemyValues.get(key)!.displayName;
         const data = staticChallenges.practiceMode.find((value) => value.enemy === key);

@@ -47,19 +47,6 @@ router.post<Empty, Empty, ChallengeKeyReqBody>("/get", databaseErrorHandler<Chal
         return;
     }
 
-    // Challenge keys with length less than 30 identify static challenges that are the same for all players. They can be
-    // played as many times as the player wishes to for free. If one of these challenges allows the player to save their
-    // score, they input their username at the end of the game like in classic mode.
-    if (key.length <= 30){
-        const mod = getStaticGameMod(key);
-        if (mod === undefined){
-            res.status(404).send("Challenge not found.");
-            return;
-        }
-        res.json(mod);
-        return;
-    }
-
     const results = await getActiveChallenge({key: key});
 
     if (results.length === 0){
@@ -71,13 +58,25 @@ router.post<Empty, Empty, ChallengeKeyReqBody>("/get", databaseErrorHandler<Chal
         return;
     }
 
-    const stats: number[] = parseNumberArray(results[0].stats);
-    const waves: ChallengeWave[] = parseChallengeWaves(results[0].waves);
-
     const userData = await beforeAccessory({username: results[0].accepted_by});
     const mastery = getMasteryLevel(userData[0].points);
     const accessories: DatabaseAccessories = parseStringArray(userData[0].accessories);
 
+    // Challenges with a non-empty preset value identify static levels that are not in the challenge game mode but
+    // require some player progression/upgrades data. These challenges do not cost tokens to start and the player saves
+    // their progress at the end of the level like in classic mode.
+    if (results[0].preset !== ""){
+        const mod = getStaticGameMod(results[0].preset, mastery.level, accessories);
+        if (mod === undefined){
+            res.status(404).send("Challenge not found.");
+            return;
+        }
+        res.json(mod);
+        return;
+    }
+
+    const stats: number[] = parseNumberArray(results[0].stats);
+    const waves: ChallengeWave[] = parseChallengeWaves(results[0].waves);
     const mod = getKeyGameMod(key, mastery.level, accessories, {
         owner: results[0].owner,
         difficulty: results[0].difficulty,
@@ -117,6 +116,7 @@ router.post<Empty, Empty, ChallengeCreateReqBody>("/create", loginErrorHandler<C
         await deleteChallenge({username: username}, connection);
         await createChallenge({
             username: username,
+            preset: "",
             strength: strength,
             difficulty: challengeData.difficulty,
             levels: challengeData.levels,
@@ -136,15 +136,8 @@ router.post<Empty, Empty, ChallengeStartReqBody>("/start", loginErrorHandler<Cha
         return;
     }
 
-    // Tokens are deducted when creating a challenge but claiming the reward from that challenge is free
     const results = await getResources({username: username});
     let tokens = results[0].tokens;
-
-    if (tokens < CHALLENGE_REPORT_COST){
-        res.status(403).send("You cannot afford to start a challenge!");
-        return;
-    }
-    tokens -= CHALLENGE_REPORT_COST;
 
     // Check that the challenge with the given id actually exists before adding an active challenge with that id
     const challenges = await getChallenge({challengeid: challengeid});
@@ -153,12 +146,23 @@ router.post<Empty, Empty, ChallengeStartReqBody>("/start", loginErrorHandler<Cha
         return;
     }
 
-    // Send a list of enemies that will appear in the challenge to the user
-    const waves: ChallengeWave[] = parseChallengeWaves(challenges[0].waves);
+    let waves: ChallengeWave[] = [];
     const enemies = new Set<string>();
-    for (let x = 0; x < waves.length; x++){
-        for (let i = 0; i < waves[x].enemies.length; i++){
-            enemies.add(waves[x].enemies[i]);
+
+    if (challenges[0].preset === ""){
+        // Non-preset challenges cost tokens to start but are free to claim
+        if (tokens < CHALLENGE_REPORT_COST){
+            res.status(403).send("You cannot afford to start a challenge!");
+            return;
+        }
+        tokens -= CHALLENGE_REPORT_COST;
+
+        // For non-preset challenges, send a list of enemies that will appear in the challenge to the user
+        waves = parseChallengeWaves(challenges[0].waves);
+        for (let x = 0; x < waves.length; x++){
+            for (let i = 0; i < waves[x].enemies.length; i++){
+                enemies.add(waves[x].enemies[i]);
+            }
         }
     }
 
@@ -176,7 +180,7 @@ router.post<Empty, Empty, ChallengeStartReqBody>("/start", loginErrorHandler<Cha
 
     res.json({
         key: key,
-        displayName: `${challenges[0].username}'s Challenge`,
+        displayName: (challenges[0].preset === "" ? `${challenges[0].username}'s Challenge` : challenges[0].username),
         enemies: Array.from(enemies)
     });
 }));
