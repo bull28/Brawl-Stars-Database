@@ -404,11 +404,13 @@ const masteryLevels = [
 const levelImages = [
     {minLevel: 0, color: "#808080", image: "mastery_empty"},
     {minLevel: 1, color: "#d67d59", image: "mastery_level_0"},
-    {minLevel: 6, color: "#ff9900", image: "mastery_level_1"},
-    {minLevel: 12, color: "#c9c6f1", image: "mastery_level_2"},
-    {minLevel: 18, color: "#ffef49", image: "mastery_level_3"},
-    {minLevel: 24, color: "#33ffff", image: "mastery_level_4"},
-    {minLevel: 30, color: "#ff00ff", image: "mastery_level_5"}
+    {minLevel: 4, color: "#ff9900", image: "mastery_level_1"},
+    {minLevel: 8, color: "#c9c6f1", image: "mastery_level_2"},
+    {minLevel: 12, color: "#ffef49", image: "mastery_level_3"},
+    {minLevel: 16, color: "#33ffff", image: "mastery_level_4"},
+    {minLevel: 20, color: "#ff00ff", image: "mastery_level_5"},
+    {minLevel: 25, color: "#f75363", image: "mastery_level_6"},
+    {minLevel: 30, color: "#a67fff", image: "mastery_level_7"}
 ];
 
 const pointsRewards = [

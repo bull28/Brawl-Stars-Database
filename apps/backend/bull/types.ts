@@ -707,13 +707,79 @@ export interface ReportPreview{
 //------------------------------------------------------------------------------------------------//
 
 /**
+ * Full description of an enemy sent to the user
+ */
+export interface EnemyData{
+    image: string;
+    data: {
+        displayName: string;
+        description: string;
+        strengthTier: string;
+        value: number;
+        health: number;
+        speed: number;
+        attacks: {
+            displayName: string;
+            minDamage: number;
+            maxDamage: number;
+            damageType: number;
+            range: number;
+            reload: number;
+            knockback: number;
+            fireDamage: number;
+            description: string;
+        }[];
+        enemies: {
+            count: number;
+            data: EnemyData["data"];
+        }[];
+    }
+}
+
+/**
  * Data for player upgrade values in a game modification object
  */
-export type GameModUpgradeValues = {
+type GameModUpgradeValues = {
     [k in "health" | "damage" | "healing" | "speed" | "ability" | "lifeSteal"]: {
         value: [number, number];
     };
 };
+
+/**
+ * Player's offense and defense upgrade progression values in challenges
+ */
+export type PlayerUpgrades = {
+    offense: {
+        startingPower: number;
+        startingGears: number;
+        powerPerStage: number;
+        gearsPerStage: number;
+        maxAccessories: number;
+    } & {
+        [k in keyof GameModUpgradeValues]: number;
+    };
+    defense: {
+        difficulty: number;
+        maxEnemies: number[];
+        enemyStats: number[];
+        waves: number[][];
+    };
+};
+
+/**
+ * Player upgrade progression and enemies available in challenges, sent to the user
+ */
+export interface ChallengeUpgrades{
+    offense: PlayerUpgrades["offense"];
+    defense: PlayerUpgrades["defense"];
+    enemies: {
+        name: string;
+        displayName: string;
+        image: string;
+        value: number;
+        maxCount: number;
+    }[];
+}
 
 /**
  * Storage of one wave in a challenge

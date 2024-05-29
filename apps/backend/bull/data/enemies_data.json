@@ -1,0 +1,1045 @@
+{
+    "meteor": {
+        "displayName": "Meteor",
+        "description": "Moves in a straight line and bounces off the edges of the map. Deals damage if it collides with you.",
+        "strengthTier": "",
+        "value": 1,
+        "health": 400,
+        "speed": 20,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 80,
+                "maxDamage": 80,
+                "damageType": 0,
+                "range": 1,
+                "reload": 1,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": ""
+            }
+        ],
+        "enemies": []
+    },
+    "meleerobot": {
+        "displayName": "Melee Robot",
+        "description": "Slowly follows you and has a short-ranged attack.",
+        "strengthTier": "",
+        "value": 2,
+        "health": 1200,
+        "speed": 12,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 120,
+                "maxDamage": 120,
+                "damageType": 0,
+                "range": 15,
+                "reload": 0.8,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": ""
+            }
+        ],
+        "enemies": []
+    },
+    "rangedrobot": {
+        "displayName": "Ranged Robot",
+        "description": "Slowly follows you and has a long-ranged attack.",
+        "strengthTier": "",
+        "value": 2,
+        "health": 960,
+        "speed": 8,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 160,
+                "maxDamage": 160,
+                "damageType": 0,
+                "range": 60,
+                "reload": 1.5,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": ""
+            }
+        ],
+        "enemies": []
+    },
+    "fastrobot": {
+        "displayName": "Fast Robot",
+        "description": "Quickly follows you and has a short-ranged attack.",
+        "strengthTier": "",
+        "value": 2,
+        "health": 1000,
+        "speed": 22,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 200,
+                "maxDamage": 200,
+                "damageType": 0,
+                "range": 20,
+                "reload": 1,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": ""
+            }
+        ],
+        "enemies": []
+    },
+    "shelly": {
+        "displayName": "Shelly",
+        "description": "Attacks with a shotgun and has medium range.",
+        "strengthTier": "Gains movement speed.",
+        "value": 4,
+        "health": 2000,
+        "speed": 8,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 280,
+                "maxDamage": 280,
+                "damageType": 0,
+                "range": 40,
+                "reload": 1.5,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": "Shoots 5 small projectiles in a cone pattern, dealing more damage at short range."
+            }
+        ],
+        "enemies": []
+    },
+    "colt": {
+        "displayName": "Colt",
+        "description": "Occasionally receives a buff, temporarily increasing its movement and reload speed.",
+        "strengthTier": "Receives the speed buff more often.",
+        "value": 6,
+        "health": 2400,
+        "speed": 8,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 288,
+                "maxDamage": 288,
+                "damageType": 0,
+                "range": 60,
+                "reload": 1.7,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": ""
+            }
+        ],
+        "enemies": []
+    },
+    "rt": {
+        "displayName": "R-T",
+        "description": "Gains movement speed the farther it is away from you.",
+        "strengthTier": "Predicts your movement with its attacks more often.",
+        "value": 6,
+        "health": 3000,
+        "speed": 9,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 432,
+                "maxDamage": 432,
+                "damageType": 0,
+                "range": 100,
+                "reload": 1.8,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": "Has a chance to be shot towards the direction you are moving instead of your current location."
+            }
+        ],
+        "enemies": []
+    },
+    "elprimo": {
+        "displayName": "El Primo",
+        "description": "Every few seconds, jumps to your location and deals knockback on landing.",
+        "strengthTier": "Jumps more often and moves through the air faster.",
+        "value": 8,
+        "health": 4200,
+        "speed": 10,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 400,
+                "maxDamage": 400,
+                "damageType": 0,
+                "range": 15,
+                "reload": 1.2,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": ""
+            },
+            {
+                "displayName": "Jump Attack",
+                "minDamage": 280,
+                "maxDamage": 280,
+                "damageType": 0,
+                "range": 10,
+                "reload": 5,
+                "knockback": 50,
+                "fireDamage": 0,
+                "description": "Used 0.5x as often if you are close to El Primo but 5x as often if you are far away."
+            }
+        ],
+        "enemies": []
+    },
+    "8bit": {
+        "displayName": "8-Bit",
+        "description": "Moves very slowly but can teleport a short distance every few seconds.",
+        "strengthTier": "Teleports farther and more often.",
+        "value": 8,
+        "health": 4800,
+        "speed": 3,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 320,
+                "maxDamage": 320,
+                "damageType": 0,
+                "range": 75,
+                "reload": 0.9,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": ""
+            }
+        ],
+        "enemies": []
+    },
+    "belle": {
+        "displayName": "Belle",
+        "description": "Attacks apply a damage mark if they hit, increasing damage you receive from all sources for a few seconds.",
+        "strengthTier": "Damage marks are stronger and last longer.",
+        "value": 9,
+        "health": 4000,
+        "speed": 10,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 384,
+                "maxDamage": 384,
+                "damageType": 0,
+                "range": 100,
+                "reload": 1.6,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": "Deals a small amount of knockback if you are too close."
+            }
+        ],
+        "enemies": []
+    },
+    "jessie": {
+        "displayName": "Jessie",
+        "description": "Spawns a stationary turret that attacks you. Defeating the turret will deal a large amount of damage to Jessie.",
+        "strengthTier": "Turret projectiles travel farther, move faster, and are shot more often.",
+        "value": 9,
+        "health": 5600,
+        "speed": 8,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 360,
+                "maxDamage": 360,
+                "damageType": 0,
+                "range": 60,
+                "reload": 2,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": ""
+            }
+        ],
+        "enemies": [
+            {
+                "count": 1,
+                "data": {
+                    "displayName": "Jessie Turret",
+                    "description": "",
+                    "strengthTier": "",
+                    "value": 0,
+                    "health": 3000,
+                    "speed": 40,
+                    "attacks": [
+                        {
+                            "displayName": "Default Attack",
+                            "minDamage": 128,
+                            "maxDamage": 128,
+                            "damageType": 0,
+                            "range": 50,
+                            "reload": 0.5,
+                            "knockback": 0,
+                            "fireDamage": 0,
+                            "description": ""
+                        }
+                    ],
+                    "enemies": []
+                }
+            }
+        ]
+    },
+    "eve": {
+        "displayName": "Eve",
+        "description": "When reaching half health, spawns three pets that must be defeated before Eve can be damaged any further.",
+        "strengthTier": "Pets move faster and deal additional damage over time.",
+        "value": 10,
+        "health": 4000,
+        "speed": 9,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 336,
+                "maxDamage": 336,
+                "damageType": 0,
+                "range": 60,
+                "reload": 1.3,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": ""
+            }
+        ],
+        "enemies": [
+            {
+                "count": 3,
+                "data": {
+                    "displayName": "Eve Pet",
+                    "description": "",
+                    "strengthTier": "",
+                    "value": 0,
+                    "health": 1000,
+                    "speed": 16,
+                    "attacks": [
+                        {
+                            "displayName": "Default Attack",
+                            "minDamage": 48,
+                            "maxDamage": 48,
+                            "damageType": 0,
+                            "range": 50,
+                            "reload": 0.4,
+                            "knockback": 0,
+                            "fireDamage": 0,
+                            "description": ""
+                        }
+                    ],
+                    "enemies": []
+                }
+            }
+        ]
+    },
+    "mortis": {
+        "displayName": "Mortis",
+        "description": "Dashes towards you with its attacks and deals damage to you if you get hit by a dash.",
+        "strengthTier": "Gains movement speed and starts with more dashes.",
+        "value": 10,
+        "health": 5600,
+        "speed": 14,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 240,
+                "maxDamage": 240,
+                "damageType": 0,
+                "range": 15,
+                "reload": 1.1,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": "Mortis dashes towards you when using this attack."
+            }
+        ],
+        "enemies": []
+    },
+    "frank": {
+        "displayName": "Frank",
+        "description": "Deals damage in a wide area and stuns you if you get hit by an attack.",
+        "strengthTier": "Gains movement speed and stuns for a longer duration.",
+        "value": 12,
+        "health": 8000,
+        "speed": 9,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 600,
+                "maxDamage": 600,
+                "damageType": 0,
+                "range": 60,
+                "reload": 3.2,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": "Shoots 7 projectiles in a cone pattern, dealing the same amount of damage at all ranges."
+            }
+        ],
+        "enemies": []
+    },
+    "jacky": {
+        "displayName": "Jacky",
+        "description": "Receives less damage if you are not within its attack range.",
+        "strengthTier": "Damage taken is reduced by a larger amount when out of range.",
+        "value": 10,
+        "health": 5400,
+        "speed": 18,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 264,
+                "maxDamage": 264,
+                "damageType": 0,
+                "range": 15,
+                "reload": 0.9,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": "Deals damage in a circle around Jacky."
+            }
+        ],
+        "enemies": []
+    },
+    "mrp": {
+        "displayName": "Mr. P",
+        "description": "Spawns two porters that protect Mr. P from all damage while they are active.",
+        "strengthTier": "Defeating the porters will deactivate them for less time.",
+        "value": 12,
+        "health": 3200,
+        "speed": 10,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 224,
+                "maxDamage": 224,
+                "damageType": 0,
+                "range": 60,
+                "reload": 1.4,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": ""
+            }
+        ],
+        "enemies": [
+            {
+                "count": 2,
+                "data": {
+                    "displayName": "Mr. P Porter",
+                    "description": "Defeating this porter will temporarily deactivate it, allowing Mr. P to be damaged for a few seconds.",
+                    "strengthTier": "",
+                    "value": 0,
+                    "health": 800,
+                    "speed": 14,
+                    "attacks": [
+                        {
+                            "displayName": "Default Attack",
+                            "minDamage": 72,
+                            "maxDamage": 72,
+                            "damageType": 0,
+                            "range": 50,
+                            "reload": 0.6,
+                            "knockback": 0,
+                            "fireDamage": 0,
+                            "description": ""
+                        }
+                    ],
+                    "enemies": []
+                }
+            }
+        ]
+    },
+    "bea": {
+        "displayName": "Bea",
+        "description": "Deals more damage the more times its attacks hit you, up to a maximum of 3x damage.",
+        "strengthTier": "Requires fewer hits against you to reach maximum damage.",
+        "value": 12,
+        "health": 5400,
+        "speed": 16,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 200,
+                "maxDamage": 600,
+                "damageType": 0,
+                "range": 90,
+                "reload": 1,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": ""
+            }
+        ],
+        "enemies": []
+    },
+    "colette": {
+        "displayName": "Colette",
+        "description": "Damage that Colette receives is capped at 5% of its maximum health per attack.",
+        "strengthTier": "Attacks and charges more often.",
+        "value": 12,
+        "health": 4800,
+        "speed": 10,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 10,
+                "maxDamage": 10,
+                "damageType": 1,
+                "range": 80,
+                "reload": 0.4,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": ""
+            },
+            {
+                "displayName": "Dash Attack",
+                "minDamage": 25,
+                "maxDamage": 25,
+                "damageType": 2,
+                "range": 50,
+                "reload": 10,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": "Colette dashes forward then backward, dealing damage up to 2 times if you are hit by the dash."
+            }
+        ],
+        "enemies": []
+    },
+    "lola": {
+        "displayName": "Lola",
+        "description": "Spawns a clone of itself that also attacks you. Defeating the real Lola will remove the clone.",
+        "strengthTier": "Makes it harder to tell which Lola is real.",
+        "value": 16,
+        "health": 6600,
+        "speed": 10,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 360,
+                "maxDamage": 360,
+                "damageType": 0,
+                "range": 50,
+                "reload": 1.2,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": ""
+            }
+        ],
+        "enemies": [
+            {
+                "count": 1,
+                "data": {
+                    "displayName": "Lola Clone",
+                    "description": "",
+                    "strengthTier": "",
+                    "value": 0,
+                    "health": 6600,
+                    "speed": 8,
+                    "attacks": [
+                        {
+                            "displayName": "Default Attack",
+                            "minDamage": 360,
+                            "maxDamage": 360,
+                            "damageType": 0,
+                            "range": 50,
+                            "reload": 1.2,
+                            "knockback": 0,
+                            "fireDamage": 0,
+                            "description": ""
+                        }
+                    ],
+                    "enemies": []
+                }
+            }
+        ]
+    },
+    "bibi": {
+        "displayName": "Bibi",
+        "description": "Alternates between using long-ranged and short-ranged attacks every few seconds.",
+        "strengthTier": "Gains movement speed and protection when its knockback attack is available.",
+        "value": 16,
+        "health": 8000,
+        "speed": 24,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 720,
+                "maxDamage": 720,
+                "damageType": 0,
+                "range": 20,
+                "reload": 2,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": "Deals knockback the first time this attack is used in each attack cycle."
+            },
+            {
+                "displayName": "Ranged Attack",
+                "minDamage": 288,
+                "maxDamage": 288,
+                "damageType": 0,
+                "range": 80,
+                "reload": 1,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": ""
+            }
+        ],
+        "enemies": []
+    },
+    "mandy": {
+        "displayName": "Mandy",
+        "description": "Has very long range and receives less damage if you are not standing still.",
+        "strengthTier": "Time between its attacks becomes more variable but average damage per second remains the same.",
+        "value": 16,
+        "health": 6000,
+        "speed": 5,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 1200,
+                "maxDamage": 1200,
+                "damageType": 0,
+                "range": 160,
+                "reload": 2.4,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": ""
+            }
+        ],
+        "enemies": []
+    },
+    "ash": {
+        "displayName": "Ash",
+        "description": "Has a rage bar that increases its speed and damage when it is filled. Dealing damage to Ash increases its rage but not dealing damage to Ash slowly decreases its rage.",
+        "strengthTier": "Rage increases faster and decreases slower.",
+        "value": 20,
+        "health": 9000,
+        "speed": 12,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 440,
+                "maxDamage": 440,
+                "damageType": 0,
+                "range": 30,
+                "reload": 1.5,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": ""
+            }
+        ],
+        "enemies": []
+    },
+    "pearl": {
+        "displayName": "Pearl",
+        "description": "Has a heat bar that increases damage when it is filled. Heat increases slowly when Pearl is not attacking but decreases every time Pearl attacks.",
+        "strengthTier": "Heat increases faster and decreases slower.",
+        "value": 16,
+        "health": 7200,
+        "speed": 14,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 576,
+                "maxDamage": 576,
+                "damageType": 0,
+                "range": 75,
+                "reload": 1.3,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": "Shoots 6 projectiles towards the direction you are moving instead of your current location."
+            },
+            {
+                "displayName": "Explosion Attack",
+                "minDamage": 1600,
+                "maxDamage": 1600,
+                "damageType": 0,
+                "range": 15,
+                "reload": 0,
+                "knockback": 80,
+                "fireDamage": 0,
+                "description": "Deals damage in an explosion when Pearl is defeated."
+            }
+        ],
+        "enemies": []
+    },
+    "leon": {
+        "displayName": "Leon",
+        "description": "Every few seconds, becomes invisible and tries to sneak up on you. When reaching 1/4 health, becomes invisible for a long time while shooting projectiles.",
+        "strengthTier": "Gains movement speed while invisible and stays invisible for longer.",
+        "value": 24,
+        "health": 8800,
+        "speed": 16,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 768,
+                "maxDamage": 768,
+                "damageType": 0,
+                "range": 70,
+                "reload": 1.4,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": ""
+            }
+        ],
+        "enemies": []
+    },
+    "bonnie": {
+        "displayName": "Bonnie",
+        "description": "Starts in cannon form then after getting damaged, it launches Bonnie. The cannon and Bonnie then must be damaged in alternating order until they are both defeated.",
+        "strengthTier": "Both cannon and Bonnie gain movement speed while protected. The cannon gains movement and attack speed after Bonnie is defeated.",
+        "value": 20,
+        "health": 7200,
+        "speed": 9,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 400,
+                "maxDamage": 400,
+                "damageType": 0,
+                "range": 70,
+                "reload": 1.7,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": ""
+            },
+            {
+                "displayName": "Air Attack",
+                "minDamage": 20,
+                "maxDamage": 20,
+                "damageType": 1,
+                "range": 80,
+                "reload": 5,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": "Shot from the air down to the ground. A red circle will appear where this attack will land."
+            }
+        ],
+        "enemies": [
+            {
+                "count": 1,
+                "data": {
+                    "displayName": "Bonnie Small",
+                    "description": "",
+                    "strengthTier": "",
+                    "value": 0,
+                    "health": 3600,
+                    "speed": 20,
+                    "attacks": [
+                        {
+                            "displayName": "Default Attack",
+                            "minDamage": 648,
+                            "maxDamage": 648,
+                            "damageType": 0,
+                            "range": 30,
+                            "reload": 1.2,
+                            "knockback": 0,
+                            "fireDamage": 0,
+                            "description": ""
+                        },
+                        {
+                            "displayName": "Launch Attack",
+                            "minDamage": 800,
+                            "maxDamage": 800,
+                            "damageType": 0,
+                            "range": 15,
+                            "reload": 0,
+                            "knockback": 0,
+                            "fireDamage": 0,
+                            "description": "Bonnie deals damage when landing after being launched from the cannon."
+                        }
+                    ],
+                    "enemies": []
+                }
+            }
+        ]
+    },
+    "amber": {
+        "displayName": "Amber",
+        "description": "At 2/3 and 1/3 health, becomes protected and enters fire phase for a few seconds. During this phase, Amber shoots many fireballs that must be dodged until the phase ends.",
+        "strengthTier": "Attacks more frequently and shoots fireballs closer together, making them harder to dodge.",
+        "value": 30,
+        "health": 9600,
+        "speed": 26,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 64,
+                "maxDamage": 64,
+                "damageType": 0,
+                "range": 65,
+                "reload": 0.1,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": ""
+            },
+            {
+                "displayName": "Fireball Attack",
+                "minDamage": 240,
+                "maxDamage": 400,
+                "damageType": 0,
+                "range": 88,
+                "reload": 0.5,
+                "knockback": 0,
+                "fireDamage": 800,
+                "description": "Shoots 3 to 5 large projectiles in a cone pattern, dealing more damage at short range. This attack can be dodged by moving between the projectiles."
+            }
+        ],
+        "enemies": []
+    },
+    "max": {
+        "displayName": "Max",
+        "description": "Every few seconds, Max dashes in the direction it is moving or teleports to a random location around you. Also teleports away if it is cornered or too far away from you.",
+        "strengthTier": "Dodges more unpredictably, teleports more often, dashes more often, and gains movement speed.",
+        "value": 24,
+        "health": 6400,
+        "speed": 20,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 1280,
+                "maxDamage": 1280,
+                "damageType": 0,
+                "range": 60,
+                "reload": 1.6,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": ""
+            }
+        ],
+        "enemies": []
+    },
+    "meg": {
+        "displayName": "Meg",
+        "description": "Starts inside a mech that must be defeated before Meg can be damaged.",
+        "strengthTier": "The mech gains movement speed the more it has been damaged and the toolbox moves slowly instead of being stationary.",
+        "value": 36,
+        "health": 2400,
+        "speed": 28,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 80,
+                "maxDamage": 80,
+                "damageType": 0,
+                "range": 120,
+                "reload": 1,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": ""
+            }
+        ],
+        "enemies": [
+            {
+                "count": 1,
+                "data": {
+                    "displayName": "Meg Mech",
+                    "description": "At 2/3, 1/3, and 0 health, becomes protected from all damage. The protection can be removed by having the mech collide with the toolbox while using its charge attack.",
+                    "strengthTier": "",
+                    "value": 0,
+                    "health": 14400,
+                    "speed": 12,
+                    "attacks": [
+                        {
+                            "displayName": "Default Attack",
+                            "minDamage": 1152,
+                            "maxDamage": 1728,
+                            "damageType": 0,
+                            "range": 90,
+                            "reload": 1.8,
+                            "knockback": 0,
+                            "fireDamage": 0,
+                            "description": "Deals 1.5x damage if the mech is within range of the toolbox."
+                        },
+                        {
+                            "displayName": "Charge Attack",
+                            "minDamage": 1200,
+                            "maxDamage": 1200,
+                            "damageType": 0,
+                            "range": 10,
+                            "reload": 7,
+                            "knockback": 75,
+                            "fireDamage": 0,
+                            "description": "Quickly runs in a straight line towards your current location."
+                        }
+                    ],
+                    "enemies": []
+                }
+            }
+        ]
+    },
+    "hank": {
+        "displayName": "Hank",
+        "description": "Spins a bubble around itself for a few seconds before releasing it. Gives bonus score if defeated before releasing 2 bubbles.",
+        "strengthTier": "",
+        "value": 0,
+        "health": 3200,
+        "speed": 10,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 800,
+                "maxDamage": 800,
+                "damageType": 0,
+                "range": 1,
+                "reload": 6,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": "Charges up a bubble while spinning around then releases it, dealing damage in a random direction."
+            }
+        ],
+        "enemies": []
+    },
+    "buster": {
+        "displayName": "Buster",
+        "description": "Has a bar with an indicator moving back and forth. Timing your attack so it hits Buster when the indicator is in the middle of the bar deals 1 damage.",
+        "strengthTier": "",
+        "value": 0,
+        "health": 6,
+        "speed": 12,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 280,
+                "maxDamage": 280,
+                "damageType": 0,
+                "range": 55,
+                "reload": 1,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": "Only used when Buster is attacked."
+            }
+        ],
+        "enemies": []
+    },
+    "siegebase": {
+        "displayName": "Siege Base",
+        "description": "Spawns bolts around it that can be picked up. Picking up bolts increases both the damage the Siege Base receives from you and the damage it deals to you.",
+        "strengthTier": "",
+        "value": 0,
+        "health": 24000,
+        "speed": 1,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 192,
+                "maxDamage": 480,
+                "damageType": 0,
+                "range": 100,
+                "reload": 0.8,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": "Shot towards the direction you are moving instead of your current location. Deals more damage the more bolts you have picked up."
+            }
+        ],
+        "enemies": []
+    },
+    "bull": {
+        "displayName": "Bull",
+        "description": "Boss fight consists of multiple phases, depending on the difficulty. Can spawn enemies and create strike zones that deal damage if you are not standing in the correct location.",
+        "strengthTier": "Increases health, uses more attacks, gains movement speed, and adds more phases to the fight.",
+        "value": 16,
+        "health": 12000,
+        "speed": 10,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 480,
+                "maxDamage": 480,
+                "damageType": 0,
+                "range": 75,
+                "reload": 1.2,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": "Shoots 3 small projectiles in a cone pattern, dealing more damage at short range."
+            },
+            {
+                "displayName": "Pull Attack",
+                "minDamage": 120,
+                "maxDamage": 120,
+                "damageType": 0,
+                "range": 110,
+                "reload": 4,
+                "knockback": 50,
+                "fireDamage": 0,
+                "description": "Shoots a single projectile that pulls you towards Bull."
+            },
+            {
+                "displayName": "Charge Attack",
+                "minDamage": 800,
+                "maxDamage": 800,
+                "damageType": 0,
+                "range": 60,
+                "reload": 6,
+                "knockback": 70,
+                "fireDamage": 0,
+                "description": "Quickly runs in a straight line towards your current location."
+            },
+            {
+                "displayName": "Fireball Attack",
+                "minDamage": 240,
+                "maxDamage": 240,
+                "damageType": 0,
+                "range": 100,
+                "reload": 2.5,
+                "knockback": 0,
+                "fireDamage": 240,
+                "description": "Shoots 2 projectiles towards you from 2 different edges of the map."
+            },
+            {
+                "displayName": "Strike Attack",
+                "minDamage": 30,
+                "maxDamage": 30,
+                "damageType": 1,
+                "range": 10,
+                "reload": 3,
+                "knockback": 0,
+                "fireDamage": 240,
+                "description": "When a green square appears on the ground, stay in the square or this attack will be used on you."
+            }
+        ],
+        "enemies": [
+            {
+                "count": 4,
+                "data": {
+                    "displayName": "Bull Laser",
+                    "description": "Stationary turret spawned by Bull. Defeating the laser will temporarily deactivate it and reset its damage to the minimum when it becomes active again.",
+                    "strengthTier": "",
+                    "value": 1,
+                    "health": 600,
+                    "speed": 5,
+                    "attacks": [
+                        {
+                            "displayName": "Default Attack",
+                            "minDamage": 40,
+                            "maxDamage": 200,
+                            "damageType": 0,
+                            "range": 10,
+                            "reload": 2,
+                            "knockback": 0,
+                            "fireDamage": 0,
+                            "description": "Deals constant, unavoidable damage that increases over time."
+                        }
+                    ],
+                    "enemies": []
+                }
+            },
+            {
+                "count": 1,
+                "data": {
+                    "displayName": "Rocket Attack",
+                    "description": "Can be spawned by Bull multiple times. Follows you and deals damage and knockback if it collides. Hitting the rocket when it is very close to you will instantly defeat it.",
+                    "strengthTier": "",
+                    "value": 1,
+                    "health": 2000,
+                    "speed": 50,
+                    "attacks": [
+                        {
+                            "displayName": "Collision Attack",
+                            "minDamage": 600,
+                            "maxDamage": 600,
+                            "damageType": 0,
+                            "range": 1,
+                            "reload": 3,
+                            "knockback": 65,
+                            "fireDamage": 0,
+                            "description": ""
+                        }
+                    ],
+                    "enemies": []
+                }
+            }
+        ]
+    }
+}

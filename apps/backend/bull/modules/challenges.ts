@@ -1,32 +1,42 @@
 import staticChallenges from "../data/challenges_data.json";
+import allEnemies from "../data/enemies_data.json";
+import {IMAGE_FILE_EXTENSION} from "../data/constants";
 import {RNG} from "./rewards";
-import {DatabaseAccessories, GameModUpgradeValues, UserWaves, ChallengeData, ChallengeGameMod} from "../types";
+import {DatabaseAccessories, EnemyData, PlayerUpgrades, ChallengeUpgrades, UserWaves, ChallengeData, ChallengeGameMod} from "../types";
 
-type PlayerUpgrades = {
-    offense: {
-        startingPower: number;
-        startingGears: number;
-        powerPerStage: number;
-        gearsPerStage: number;
-        maxAccessories: number;
-    } & {
-        [k in keyof GameModUpgradeValues]: number;
-    };
-    defense: {
-        difficulty: number;
-        maxEnemies: number[];
-        enemyStats: number[];
-        waves: number[][];
-    };
-};
-interface EnemyData{
+interface EnemyUpgradeData{
     displayName: string;
+    image: string;
     value: number;
     strength: number;
     minLevel: number;
     maxCount: number;
     maxStageCount: number;
 }
+
+class Counter{
+    map: Map<string, number>;
+
+    constructor(){
+        // Counts the number of times each string is added to this map.
+        this.map = new Map<string, number>();
+    }
+
+    add(key: string, amount: number): number{
+        const oldValue = this.map.get(key);
+        let newValue = amount;
+        if (oldValue !== undefined){
+            newValue += oldValue;
+        }
+        this.map.set(key, newValue);
+        return newValue;
+    }
+
+    clear(): void{
+        this.map.clear();
+    }
+}
+
 const stagePoints: [number, number][][] = [
     [[300, 180]],
     [[120, 75], [180, 105]],
@@ -112,111 +122,116 @@ const defenseUpgradesEven: (Pick<PlayerUpgrades["defense"], "maxEnemies" | "wave
     {maxEnemies: [40, 48, 64, 88], waves: [[24, 36], [30, 42], [24, 30, 42], [30, 42, 60]]}// Level 30
 ];
 const sharedEnemies = new Set<string>(["meteor", "meleerobot", "rangedrobot", "fastrobot", "r2"]);
-const enemyValues = new Map<string, EnemyData>([
+const enemyValues = new Map<string, EnemyUpgradeData>([
     ["meteor", {
-        displayName: "Meteor", value: 1, strength: 1, minLevel: 0, maxCount: 20, maxStageCount: 10
+        displayName: "Meteor", image: "", value: 1, strength: 1, minLevel: 0, maxCount: 20, maxStageCount: 10
     }],
     ["r2", {
-        displayName: "Robot", value: 2, strength: 1, minLevel: 0, maxCount: 25, maxStageCount: 10
+        displayName: "Robot", image: "", value: 2, strength: 1, minLevel: 0, maxCount: 25, maxStageCount: 10
     }],
     ["shelly", {
-        displayName: "Shelly", value: 4, strength: 1, minLevel: 0, maxCount: 10, maxStageCount: 4
+        displayName: "Shelly", image: "", value: 4, strength: 1, minLevel: 0, maxCount: 10, maxStageCount: 4
     }],
     ["colt", {
-        displayName: "Colt", value: 6, strength: 1, minLevel: 0, maxCount: 10, maxStageCount: 4
+        displayName: "Colt", image: "", value: 6, strength: 1, minLevel: 0, maxCount: 10, maxStageCount: 4
     }],
     ["rt", {
-        displayName: "R-T", value: 6, strength: 1, minLevel: 1, maxCount: 8, maxStageCount: 4
+        displayName: "R-T", image: "", value: 6, strength: 1, minLevel: 1, maxCount: 8, maxStageCount: 4
     }],
     ["elprimo", {
-        displayName: "El Primo", value: 8, strength: 1, minLevel: 1, maxCount: 8, maxStageCount: 4
+        displayName: "El Primo", image: "", value: 8, strength: 1, minLevel: 1, maxCount: 8, maxStageCount: 4
     }],
     ["8bit", {
-        displayName: "8-Bit", value: 8, strength: 1, minLevel: 1, maxCount: 8, maxStageCount: 3
+        displayName: "8-Bit", image: "", value: 8, strength: 1, minLevel: 1, maxCount: 8, maxStageCount: 3
     }],
     ["belle", {
-        displayName: "Belle", value: 9, strength: 1, minLevel: 3, maxCount: 8, maxStageCount: 3
+        displayName: "Belle", image: "", value: 9, strength: 1, minLevel: 3, maxCount: 8, maxStageCount: 3
     }],
     ["jessie", {
-        displayName: "Jessie", value: 9, strength: 1, minLevel: 3, maxCount: 8, maxStageCount: 3
+        displayName: "Jessie", image: "", value: 9, strength: 1, minLevel: 3, maxCount: 8, maxStageCount: 3
     }],
     ["eve", {
-        displayName: "Eve", value: 10, strength: 1, minLevel: 3, maxCount: 8, maxStageCount: 3
+        displayName: "Eve", image: "", value: 10, strength: 1, minLevel: 3, maxCount: 8, maxStageCount: 3
     }],
     ["mortis", {
-        displayName: "Mortis", value: 10, strength: 1, minLevel: 4, maxCount: 8, maxStageCount: 3
+        displayName: "Mortis", image: "", value: 10, strength: 1, minLevel: 4, maxCount: 8, maxStageCount: 3
     }],
     ["frank", {
-        displayName: "Frank", value: 12, strength: 1, minLevel: 4, maxCount: 8, maxStageCount: 3
+        displayName: "Frank", image: "", value: 12, strength: 1, minLevel: 4, maxCount: 8, maxStageCount: 3
     }],
     ["jacky", {
-        displayName: "Jacky", value: 10, strength: 1, minLevel: 5, maxCount: 8, maxStageCount: 3
+        displayName: "Jacky", image: "", value: 10, strength: 1, minLevel: 5, maxCount: 8, maxStageCount: 3
     }],
     ["mrp", {
-        displayName: "Mr. P", value: 12, strength: 1, minLevel: 5, maxCount: 8, maxStageCount: 3
+        displayName: "Mr. P", image: "", value: 12, strength: 1, minLevel: 5, maxCount: 8, maxStageCount: 3
     }],
     ["bea", {
-        displayName: "Bea", value: 12, strength: 1, minLevel: 7, maxCount: 8, maxStageCount: 3
+        displayName: "Bea", image: "", value: 12, strength: 1, minLevel: 7, maxCount: 8, maxStageCount: 3
     }],
     ["colette", {
-        displayName: "Colette", value: 12, strength: 1, minLevel: 7, maxCount: 8, maxStageCount: 3
+        displayName: "Colette", image: "", value: 12, strength: 1, minLevel: 7, maxCount: 8, maxStageCount: 3
     }],
     ["lola", {
-        displayName: "Lola", value: 16, strength: 1, minLevel: 8, maxCount: 6, maxStageCount: 2
+        displayName: "Lola", image: "", value: 16, strength: 1, minLevel: 8, maxCount: 6, maxStageCount: 2
     }],
     ["bibi", {
-        displayName: "Bibi", value: 16, strength: 1, minLevel: 8, maxCount: 6, maxStageCount: 2
+        displayName: "Bibi", image: "", value: 16, strength: 1, minLevel: 8, maxCount: 6, maxStageCount: 2
     }],
     ["mandy", {
-        displayName: "Mandy", value: 16, strength: 1, minLevel: 12, maxCount: 6, maxStageCount: 2
+        displayName: "Mandy", image: "", value: 16, strength: 1, minLevel: 12, maxCount: 6, maxStageCount: 2
     }],
     ["ash", {
-        displayName: "Ash", value: 20, strength: 1, minLevel: 18, maxCount: 5, maxStageCount: 2
+        displayName: "Ash", image: "", value: 20, strength: 1, minLevel: 18, maxCount: 5, maxStageCount: 2
     }],
     ["pearl", {
-        displayName: "Pearl", value: 16, strength: 1, minLevel: 12, maxCount: 6, maxStageCount: 2
+        displayName: "Pearl", image: "", value: 16, strength: 1, minLevel: 12, maxCount: 6, maxStageCount: 2
     }],
     ["leon", {
-        displayName: "Leon", value: 24, strength: 1, minLevel: 18, maxCount: 3, maxStageCount: 1
+        displayName: "Leon", image: "", value: 24, strength: 1, minLevel: 18, maxCount: 3, maxStageCount: 1
     }],
     ["bonnie", {
-        displayName: "Bonnie", value: 20, strength: 1, minLevel: 18, maxCount: 4, maxStageCount: 1
+        displayName: "Bonnie", image: "", value: 20, strength: 1, minLevel: 18, maxCount: 4, maxStageCount: 1
     }],
     ["amber", {
-        displayName: "Amber", value: 30, strength: 1, minLevel: 24, maxCount: 2, maxStageCount: 1
+        displayName: "Amber", image: "", value: 30, strength: 1, minLevel: 24, maxCount: 2, maxStageCount: 1
     }],
     ["max", {
-        displayName: "Max", value: 24, strength: 1, minLevel: 24, maxCount: 2, maxStageCount: 1
+        displayName: "Max", image: "", value: 24, strength: 1, minLevel: 24, maxCount: 2, maxStageCount: 1
     }],
     ["meg", {
-        displayName: "Meg", value: 36, strength: 1, minLevel: 24, maxCount: 2, maxStageCount: 1
+        displayName: "Meg", image: "", value: 36, strength: 1, minLevel: 24, maxCount: 2, maxStageCount: 1
     }],
     ["siegebase", {
-        displayName: "Siege Base", value: 0, strength: 1, minLevel: 0, maxCount: 0, maxStageCount: 0
+        displayName: "Siege Base", image: "", value: 0, strength: 1, minLevel: 0, maxCount: 0, maxStageCount: 0
     }]
 ]);
-
-class Counter{
-    map: Map<string, number>;
-
-    constructor(){
-        // Counts the number of times each string is added to this map.
-        this.map = new Map<string, number>();
+// Update enemy names and values if the data in allEnemies is different
+enemyValues.forEach((value, key) => {
+    if (Object.hasOwn(allEnemies, key) === true){
+        const data = allEnemies[key as keyof typeof allEnemies];
+        value.displayName = data.displayName;
+        value.value = data.value;
     }
+});
 
-    add(key: string, amount: number): number{
-        const oldValue = this.map.get(key);
-        let newValue = amount;
-        if (oldValue !== undefined){
-            newValue += oldValue;
+export function getEnemies(): EnemyData[]{
+    // Get the full list of enemies, including those that are not available in challenges
+    const enemies: EnemyData[] = [];
+
+    for (const x in allEnemies){
+        let image = "";
+        const extraData = enemyValues.get(x);
+        if (extraData !== undefined && extraData.image !== ""){
+            image = extraData.image + IMAGE_FILE_EXTENSION;
         }
-        this.map.set(key, newValue);
-        return newValue;
+
+        enemies.push({
+            image: image,
+            data: allEnemies[x as keyof typeof allEnemies]
+        });
     }
 
-    clear(): void{
-        this.map.clear();
-    }
+    return enemies;
 }
 
 function getPlayerUpgrades(masteryLevel: number): PlayerUpgrades{
@@ -259,6 +274,29 @@ function getPlayerUpgrades(masteryLevel: number): PlayerUpgrades{
     upgrades.defense.enemyStats = defenseUpgradesOdd[oddIndex].enemyStats.map((value) => value).slice(0, upgrades.defense.maxEnemies.length);
 
     return upgrades;
+}
+
+export function getChallengeUpgrades(masteryLevel: number): ChallengeUpgrades{
+    const upgrades = getPlayerUpgrades(masteryLevel);
+    const enemies: ChallengeUpgrades["enemies"] = [];
+
+    enemyValues.forEach((value, key) => {
+        if (masteryLevel >= value.minLevel && value.maxCount > 0){
+            enemies.push({
+                name: key,
+                displayName: value.displayName,
+                image: (value.image !== "" ? value.image + IMAGE_FILE_EXTENSION : ""),
+                value: value.value,
+                maxCount: value.maxCount
+            });
+        }
+    });
+
+    return {
+        offense: upgrades.offense,
+        defense: upgrades.defense,
+        enemies: enemies
+    };
 }
 
 export function createChallengeData(masteryLevel: number, waves: UserWaves): {message: string; data: ChallengeData | undefined}{
@@ -412,7 +450,7 @@ export function getStaticGameMod(key: string, masteryLevel: number, accessories:
             difficulties: staticChallenges.expertLevels.difficulties,
             levels: staticChallenges.expertLevels.levels,
             playerAccessories: staticChallenges.expertLevels.playerAccessories
-        }
+        };
     } else if (enemyValues.has(key) === true){
         const enemyName = enemyValues.get(key)!.displayName;
         const data = staticChallenges.practiceMode.find((value) => value.enemy === key);
