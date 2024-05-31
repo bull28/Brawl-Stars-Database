@@ -1,8 +1,9 @@
 import express from "express";
 import {randomUUID} from "crypto";
-import {CHALLENGE_REPORT_COST} from "../data/constants";
+import allEnemies from "../data/enemies_data.json";
+import {SKIN_IMAGE_DIR, PIN_IMAGE_DIR, CHALLENGE_REPORT_COST} from "../data/constants";
 import {getMasteryLevel} from "../modules/accessories";
-import {createChallengeData, getChallengeStrength, getStaticGameMod, getKeyGameMod} from "../modules/challenges";
+import {getChallengeUpgrades, createChallengeData, getChallengeStrength, getStaticGameMod, getKeyGameMod} from "../modules/challenges";
 import {
     databaseErrorHandler, 
     loginErrorHandler, 
@@ -21,7 +22,7 @@ import {
     getChallenge, 
     deleteChallenge
 } from "../modules/database";
-import {Empty, DatabaseAccessories, ChallengeWave, UserWaves} from "../types";
+import {Empty, DatabaseAccessories, EnemyData, ChallengeWave, UserWaves} from "../types";
 
 const router = express.Router();
 
@@ -38,6 +39,38 @@ interface ChallengeStartReqBody{
     // Later, this will not be necessary when there is automatic challenge matchmaking
     challengeid: number;
 }
+
+// Get the list of enemies
+router.get("/enemies", (req, res) => {
+    const enemies: EnemyData[] = [];
+
+    for (const x in allEnemies){
+        const data = allEnemies[x as keyof typeof allEnemies];
+
+        // The image is the a brawler pin, the full image is a brawler skin
+        enemies.push({
+            displayName: data.displayName,
+            image: (data.image !== "" ? PIN_IMAGE_DIR + data.image : ""),
+            fullImage: (data.fullImage !== "" ? SKIN_IMAGE_DIR + data.fullImage : ""),
+            description: data.description,
+            strengthTier: data.strengthTier,
+            value: data.value,
+            health: data.health,
+            speed: data.speed,
+            attacks: data.attacks,
+            enemies: data.enemies
+        });
+    }
+
+    res.json(enemies);
+});
+
+// Get upgrades for challenges
+router.get("/upgrades", loginErrorHandler(async (req, res, username) => {
+    const userData = await beforeAccessory({username: username});
+    const upgrades = getChallengeUpgrades(getMasteryLevel(userData[0].points).level);
+    res.json(upgrades);
+}));
 
 // Get game modification data for an active challenge
 router.post<Empty, Empty, ChallengeKeyReqBody>("/get", databaseErrorHandler<ChallengeKeyReqBody>(async (req, res) => {

@@ -710,30 +710,26 @@ export interface ReportPreview{
  * Full description of an enemy sent to the user
  */
 export interface EnemyData{
+    displayName: string;
     image: string;
-    data: {
+    fullImage: string;
+    description: string;
+    strengthTier: string;
+    value: number;
+    health: number;
+    speed: number;
+    attacks: {
         displayName: string;
+        minDamage: number;
+        maxDamage: number;
+        damageType: number;
+        range: number;
+        reload: number;
+        knockback: number;
+        fireDamage: number;
         description: string;
-        strengthTier: string;
-        value: number;
-        health: number;
-        speed: number;
-        attacks: {
-            displayName: string;
-            minDamage: number;
-            maxDamage: number;
-            damageType: number;
-            range: number;
-            reload: number;
-            knockback: number;
-            fireDamage: number;
-            description: string;
-        }[];
-        enemies: {
-            count: number;
-            data: EnemyData["data"];
-        }[];
-    }
+    }[];
+    enemies: ({count: number;} & Omit<EnemyData, "image" | "fullImage" | "enemies">)[];
 }
 
 /**
