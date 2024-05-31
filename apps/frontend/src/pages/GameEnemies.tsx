@@ -5,6 +5,7 @@ import {Flex, Box, Text, Image, IconButton, SimpleGrid, Grid} from "@chakra-ui/r
 import axios, {AxiosResponse} from "axios";
 import {Enemy} from "../types/GameData";
 import SkullBackground from "../components/SkullBackground";
+import {scrollStyle} from "../themes/scrollbar";
 import EnemyAttack from "../components/EnemyAttack";
 import api from "../helpers/APIRoute";
 import cdn from "../helpers/CDNRoute";
@@ -25,6 +26,24 @@ export default function GameEnemies(){
         });
     }, []);
 
+    const speedValues = (speed: number): string => {
+        if (speed <= 0){
+            return "Stationary";
+        } else if (speed < 6){
+            return "Very Slow";
+        } else if (speed < 10){
+            return "Slow";
+        } else if (speed < 16){
+            return "Normal";
+        } else if (speed < 22){
+            return "Fast";
+        }
+        return "Very Fast";
+    };
+
+    const gridAreasEnemies = [`"a a" "b b" "c c" "d d"`, `"a a" "b b" "c c" "d d"`, `"a b" "c c" "d d"`];
+    const gridAreasNoEnemies = [`"a a" "b b" "c c"`, `"a a" "b b" "c c"`, `"a b" "c c"`];
+
     return (
         <Flex flexDir={"column"} alignItems={"center"}>
             <SkullBackground/>
@@ -32,46 +51,86 @@ export default function GameEnemies(){
             <Box justifyContent={"center"}>
                 <Text fontSize={"4xl"} className={"heading-4xl"}>Bullgame Enemies</Text>
             </Box>
-            <Flex w={"100%"} h={"80vh"} bgColor={"gray.800"} flexDir={["column", "column", "column", "row"]}>
-                <Flex bgColor={"gray.600"} overflowY={"scroll"} w={["100vw", "100vw", "48em"]}>
-                    <SimpleGrid columns={[2, 3, 4]} spacing={2} w={"100%"} h={"fit-content"} p={2}>{(enemies.map((value) => 
-                        <Flex bgColor={"#0f0"} key={value.name} flexDir={"column"} alignItems={"center"} p={2} borderRadius={"xl"} onClick={() => setCurrentEnemy(value)}>
-                            <Text fontSize={"xl"} className={"heading-xl"} h={"25%"}>{value.displayName}</Text>
-                            <Image src={`${cdn}/image/${value.image !== "" ? value.image : "skingroups/icons/icon_default.webp"}`} w={"75%"}/>
+            <Flex w={"100%"} maxW={"128em"} h={["fit-content", "fit-content", "fit-content", "90vh"]} bgColor={"gray.800"} flexDir={["column", "column", "column", "row"]} overflowX={"hidden"}>
+                <Flex bgColor={"#000"} overflowY={"scroll"} sx={scrollStyle} w={["100vw", "100vw", "100vw", "35vw"]} maxW={["100vw", "100vw", "100vw", "100vw", "100vw", "48em"]} h={["50vh", "50vh", "50vh", "100%"]}>
+                    <SimpleGrid columns={[2, 3, 5, 3, 4]} spacing={2} w={"100%"} h={"fit-content"} p={"0.5em"}>{(enemies.map((value) => 
+                        <Flex bgColor={"purple.400"} key={value.name} flexDir={"column"} alignItems={"center"} p={2} borderRadius={"xl"} cursor={"pointer"} onClick={() => setCurrentEnemy(value)}>
+                            <Text fontSize={"xl"} className={"heading-xl"}>{value.displayName}</Text>
+                            <Image src={`${cdn}/image/${value.image !== "" ? value.image : "skingroups/icons/icon_default.webp"}`} w={"75%"} draggable={false}/>
                         </Flex>
                     ))}</SimpleGrid>
                 </Flex>
-                <Flex flex={1} bgColor={"green.600"}>
+                <Flex flex={1} bgColor={"gray.600"} overflowY={["visible", "visible", "visible", "scroll"]} sx={scrollStyle}>
                     {currentEnemy !== undefined ?
-                        <Grid templateAreas={`"a b" "c c"`} templateColumns={"1fr 1fr"} w={"100%"}>
-                            <Flex gridArea={"a"} bgColor={"#f00"} flexDir={"column"}>
+                        <Grid templateAreas={currentEnemy.enemies.length > 0 ? gridAreasEnemies : gridAreasNoEnemies} templateColumns={"1fr 1fr"} templateRows={"minmax(25em, max-content) 1fr min-content"} gap={"1em"} w={"100%"} p={"0.5em"}>
+                            <Flex gridArea={"a"} flexDir={"column"}>
                                 <Text fontSize={"3xl"} className={"heading-3xl"}>{currentEnemy.displayName}</Text>
-                                <Text fontSize={"lg"} className={"heading-lg"}>{currentEnemy.description}</Text>
-                                <Flex flexDir={"column"} w={"50%"} gap={2}>
+                                <Text fontSize={"lg"} className={"heading-lg"} lineHeight={1.2}>{currentEnemy.description}</Text>
+                                {/* <Flex flexDir={"column"} w={"50%"} gap={2} pr={2} my={5}> */}
+                                <SimpleGrid columns={[1, 2]} spacing={2} my={5} p={"0.5em"} bgColor={"blue.800"} borderRadius={"xl"}>
                                     <Box className={"enemy-stat-box"}>
-                                        <Text className={"enemy-stat-name"}>Enemy Value</Text>
-                                        <Text className={"enemy-stat-value"}>{currentEnemy.value}</Text>
+                                        <Text variant={"enemyStatName"}>Enemy Value</Text>
+                                        <Text variant={"enemyStatValue"}>{currentEnemy.value}</Text>
+                                    </Box>
+                                    <Box></Box>
+                                    <Box className={"enemy-stat-box"}>
+                                        <Text variant={"enemyStatName"}>Health</Text>
+                                        <Text variant={"enemyStatValue"}>{currentEnemy.health}</Text>
                                     </Box>
                                     <Box className={"enemy-stat-box"}>
-                                        <Text className={"enemy-stat-name"}>Health</Text>
-                                        <Text className={"enemy-stat-value"}>{currentEnemy.health}</Text>
+                                        <Text variant={"enemyStatName"}>Speed</Text>
+                                        <Text variant={"enemyStatValue"}>{speedValues(currentEnemy.speed)}</Text>{/* `${speedValues(currentEnemy.speed)} (${currentEnemy.speed})` */}
                                     </Box>
-                                    <Box className={"enemy-stat-box"}>
-                                        <Text className={"enemy-stat-name"}>Speed</Text>
-                                        <Text className={"enemy-stat-value"}>{currentEnemy.speed}</Text>
+                                </SimpleGrid>
+                                {currentEnemy.strengthTier !== "" &&
+                                    <Box my={3}>
+                                        <Text fontSize={"lg"} className={"heading-lg"}>On higher difficulties:</Text>
+                                        <Text fontSize={"lg"} className={"heading-lg"} lineHeight={1.2}>{currentEnemy.strengthTier}</Text>
                                     </Box>
+                                }
+                            </Flex>
+                            <Flex gridArea={"b"}>
+                                <Flex w={["100%", "100%", "25em"]} h={["20em", "25em"]} justifyContent={"center"} bgColor={currentEnemy.fullImage !== "" ? "blue.800" : ""} borderRadius={"xl"} p={2}>
+                                {currentEnemy.fullImage !== "" &&
+                                    <Image src={`${cdn}/image/${currentEnemy.fullImage}`} maxH={"100%"} objectFit={"contain"}/>
+                                }
                                 </Flex>
                             </Flex>
-                            <Flex gridArea={"b"} bgColor={"#0f0"}></Flex>
-                            <Flex gridArea={"c"} bgColor={"#00f"} flexDir={"column"}>
+                            <Flex gridArea={"c"} flexDir={"column"}>
                                 <Text fontSize={"2xl"} className={"heading-2xl"}>Attacks</Text>
-                                <SimpleGrid columns={2} spacing={"1em"}>{currentEnemy.attacks.map((value) => 
+                                <SimpleGrid columns={[1, 1, 2]} spacing={"1em"}>{currentEnemy.attacks.map((value) => 
                                     <EnemyAttack key={`${value.displayName}${value.minDamage}`} attack={value}/>
                                 )}</SimpleGrid>
                             </Flex>
+                            {currentEnemy.enemies.length > 0 && <Flex gridArea={"d"} flexDir={"column"}>
+                                <Text fontSize={"2xl"} className={"heading-2xl"}>Enemies Spawned</Text>
+                                <Flex flexDir={"column"} gap={8}>{currentEnemy.enemies.map((value) => 
+                                    <Flex key={value.displayName} flexDir={"column"}>
+                                        <Text fontSize={"3xl"} className={"heading-3xl"}>{`${value.displayName} x${value.count}`}</Text>
+                                        <Flex flexDir={"column"} w={["100%", "100%", "50%"]} pr={["0em", "0em", "0.5em"]}>
+                                            <Text fontSize={"lg"} className={"heading-lg"} lineHeight={1.2}>{value.description}</Text>
+                                            <Flex flexDir={["column", "row"]} gap={2} my={5} p={"0.5em"} bgColor={"blue.800"} borderRadius={"xl"}>
+                                                <Box className={"enemy-stat-box"} flex={1}>
+                                                    <Text variant={"enemyStatName"}>Health</Text>
+                                                    <Text variant={"enemyStatValue"}>{value.health}</Text>
+                                                </Box>
+                                                <Box className={"enemy-stat-box"} flex={1}>
+                                                    <Text variant={"enemyStatName"}>Speed</Text>
+                                                    <Text variant={"enemyStatValue"}>{speedValues(value.speed)}</Text>
+                                                </Box>
+                                            </Flex>
+                                        </Flex>
+                                        <SimpleGrid columns={[1, 1, 2]} spacing={"1em"}>{value.attacks.map((value2) => 
+                                            <EnemyAttack key={`${value.displayName}${value2.minDamage}`} attack={value2}/>
+                                        )}</SimpleGrid>
+                                    </Flex>
+                                )}</Flex>
+                            </Flex>}
                         </Grid>
                         :
-                        <Text>Select an enemy to view more details</Text>
+                        <Box p={2}>
+                            <Text fontSize={"2xl"} className={"heading-2xl"}>Select an enemy to view information about it</Text>
+                        </Box>
                     }
                 </Flex>
             </Flex>

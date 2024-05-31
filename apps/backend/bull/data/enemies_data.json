@@ -99,7 +99,7 @@
         "displayName": "Shelly",
         "image": "shelly/shelly_default.webp",
         "fullImage": "shelly/shotgungirloldschool.webp",
-        "description": "Attacks with a shotgun and has medium range.",
+        "description": "Attacks with a short-ranged shotgun.",
         "strengthTier": "Gains movement speed.",
         "value": 4,
         "health": 2000,
@@ -280,7 +280,7 @@
                 "strengthTier": "",
                 "value": 0,
                 "health": 3000,
-                "speed": 40,
+                "speed": 0,
                 "attacks": [
                     {
                         "displayName": "Default Attack",
@@ -301,7 +301,7 @@
         "displayName": "Eve",
         "image": "eve/eve_default.webp",
         "fullImage": "eve/fleadefault.webp",
-        "description": "When reaching half health, spawns three pets that must be defeated before Eve can be damaged any further.",
+        "description": "When reaching 1/2 health, spawns 3 pets that must be defeated before Eve can be damaged any further.",
         "strengthTier": "Pets move faster and deal additional damage over time.",
         "value": 10,
         "health": 4000,
@@ -420,7 +420,7 @@
         "displayName": "Mr. P",
         "image": "mrp/mrp_goldenweek.webp",
         "fullImage": "mrp/spawnerdudedaruma.webp",
-        "description": "Spawns two porters that protect Mr. P from all damage while they are active.",
+        "description": "Spawns 2 porters that protect Mr. P from all damage while they are active.",
         "strengthTier": "Defeating the porters will deactivate them for less time.",
         "value": 12,
         "health": 3200,
@@ -552,7 +552,7 @@
                 "strengthTier": "",
                 "value": 0,
                 "health": 6600,
-                "speed": 8,
+                "speed": 10,
                 "attacks": [
                     {
                         "displayName": "Default Attack",
@@ -574,7 +574,7 @@
         "image": "bibi/bibi_lny_2020.webp",
         "fullImage": "bibi/baseballgamer.webp",
         "description": "Alternates between using long-ranged and short-ranged attacks every few seconds.",
-        "strengthTier": "Gains movement speed and protection when its knockback attack is available.",
+        "strengthTier": "Gains movement speed and receives less damage when its knockback attack is available.",
         "value": 16,
         "health": 8000,
         "speed": 24,
@@ -609,10 +609,10 @@
         "image": "mandy/mandy_lavaqueen_default.webp",
         "fullImage": "mandy/beamerlavaqueen.webp",
         "description": "Has very long range and receives less damage if you are not standing still.",
-        "strengthTier": "Time between its attacks becomes more variable but average damage per second remains the same.",
+        "strengthTier": "Time between attacks becomes more variable but the average damage per second remains the same.",
         "value": 16,
         "health": 6000,
-        "speed": 5,
+        "speed": 0,
         "attacks": [
             {
                 "displayName": "Default Attack",
@@ -641,7 +641,7 @@
             {
                 "displayName": "Default Attack",
                 "minDamage": 440,
-                "maxDamage": 440,
+                "maxDamage": 880,
                 "damageType": 0,
                 "range": 30,
                 "reload": 1.5,
@@ -665,7 +665,7 @@
             {
                 "displayName": "Default Attack",
                 "minDamage": 576,
-                "maxDamage": 576,
+                "maxDamage": 1008,
                 "damageType": 0,
                 "range": 75,
                 "reload": 1.3,
@@ -843,7 +843,7 @@
         "displayName": "Meg",
         "image": "meg/meg_default.webp",
         "fullImage": "meg/mechadudedefault.webp",
-        "description": "Starts inside a mech that must be defeated before Meg can be damaged.",
+        "description": "Starts inside a mech that must be defeated before Meg can be damaged. Spawns a toolbox that increases the mech's damage when it is nearby.",
         "strengthTier": "The mech gains movement speed the more it has been damaged and the toolbox moves slowly instead of being stationary.",
         "value": 36,
         "health": 2400,
@@ -953,7 +953,7 @@
         "strengthTier": "",
         "value": 0,
         "health": 24000,
-        "speed": 1,
+        "speed": 0,
         "attacks": [
             {
                 "displayName": "Default Attack",
@@ -974,10 +974,10 @@
         "image": "bull/bull_hub.webp",
         "fullImage": "bull/bulldudealleycat.webp",
         "description": "Boss fight consists of multiple phases, depending on the difficulty. Can spawn enemies and create strike zones that deal damage if you are not standing in the correct location.",
-        "strengthTier": "Increases health, uses more attacks, gains movement speed, and adds more phases to the fight.",
-        "value": 16,
-        "health": 12000,
-        "speed": 10,
+        "strengthTier": "Increases health, uses more attacks, gains movement speed, and adds more phases to the fight. Stats and attacks currently shown are for the highest difficulty.",
+        "value": 150,
+        "health": 48000,
+        "speed": 16,
         "attacks": [
             {
                 "displayName": "Default Attack",

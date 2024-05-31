@@ -6,6 +6,21 @@ const config = {
             baseStyle: {
                 fontWeight: "normal",
                 color: "white"
+            },
+            variants: {
+                enemyStatName: {
+                    lineHeight: 1.2
+                },
+                enemyStatValue: {
+                    fontSize: "xl",
+                    lineHeight: 1.2,
+                    color: "#0ff"
+                },
+                enemyAttackStatValue: {
+                    fontSize: "xl",
+                    lineHeight: 1.2,
+                    color: "#0f0"
+                }
             }
         },
         FormLabel: {
@@ -72,14 +87,8 @@ const config = {
             },
             ".enemy-stat-box": {
                 backgroundColor: "#000",
-                padding: 1
-            },
-            ".enemy-stat-name": {
-                lineHeight: 1.2
-            },
-            ".enemy-stat-value": {
-                fontSize: "xl",
-                lineHeight: 1.2
+                padding: "0.375em",
+                borderRadius: "lg"
             },
             "*": {
                 caretColor: "transparent"
