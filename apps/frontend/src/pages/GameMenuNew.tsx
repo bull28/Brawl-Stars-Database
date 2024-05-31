@@ -60,7 +60,7 @@ export default function GameMenu(){
                             <Button minW={["50%", "20em"]} bgColor={"gray.800"} _hover={{"backgroundColor": "gray.600"}} fontSize={"inherit"} onClick={() => navigate("/bullgame/rewards")}>{`Claim Rewards ${rewardCount > 0 ? `(${rewardCount})` : ""}`}</Button>
                             <Button minW={["50%", "20em"]} bgColor={"gray.800"} _hover={{"backgroundColor": "gray.600"}} fontSize={"inherit"} onClick={() => navigate("/leaderboard")}>Leaderboard</Button>
                             <Button minW={["50%", "20em"]} bgColor={"gray.800"} _hover={{"backgroundColor": "gray.600"}} fontSize={"inherit"}>View Accessories</Button>
-                            <Button minW={["50%", "20em"]} bgColor={"gray.800"} _hover={{"backgroundColor": "gray.600"}} fontSize={"inherit"}>View Game Enemies</Button>
+                            <Button minW={["50%", "20em"]} bgColor={"gray.800"} _hover={{"backgroundColor": "gray.600"}} fontSize={"inherit"} onClick={() => navigate("/bullgame/enemies")}>View Game Enemies</Button>
                         </Flex>
                         <MasteryDisplay data={mastery}/>
                         </>

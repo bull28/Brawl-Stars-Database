@@ -19,6 +19,7 @@ const ChallengeMenu = lazy(() => import('./challengev1/ChallengeMenu'));
 const Leaderboard = lazy(() => import('./pages/Leaderboard'));
 const GameMenu = lazy(() => import('./pages/GameMenuNew'));
 const GameRewards = lazy(() => import('./pages/GameRewards'));
+const GameEnemies = lazy(() => import('./pages/GameEnemies'));
 const ChallengeStart = lazy(() => import('./pages/ChallengeStart'));
 const ChallengeCreate = lazy(() => import('./pages/ChallengeCreate'));
 
@@ -44,6 +45,7 @@ function App() {
           <Route path="/shop" element={<Suspense fallback={<></>}><Shop/></Suspense>}/>
           <Route path="/bullgame" element={<Suspense fallback={<></>}><GameMenu/></Suspense>}/>
           <Route path="/bullgame/rewards" element={<Suspense fallback={<></>}><GameRewards/></Suspense>}/>
+          <Route path="/bullgame/enemies" element={<Suspense fallback={<></>}><GameEnemies/></Suspense>}/>
           <Route path="/bullgame/challenges" element={<Suspense fallback={<></>}><ChallengeStart/></Suspense>}/>
           <Route path="/bullgame/challenges/create" element={<Suspense fallback={<></>}><ChallengeCreate/></Suspense>}/>
           <Route path="/challengev1" element={<Suspense fallback={<></>}><ChallengeMenu/></Suspense>}/>

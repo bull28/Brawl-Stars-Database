@@ -710,6 +710,7 @@ export interface ReportPreview{
  * Full description of an enemy sent to the user
  */
 export interface EnemyData{
+    name: string;
     displayName: string;
     image: string;
     fullImage: string;
@@ -729,7 +730,9 @@ export interface EnemyData{
         fireDamage: number;
         description: string;
     }[];
-    enemies: ({count: number;} & Omit<EnemyData, "image" | "fullImage" | "enemies">)[];
+    enemies: ({
+        count: number;
+    } & Omit<EnemyData, "name" | "image" | "fullImage" | "enemies">)[];
 }
 
 /**

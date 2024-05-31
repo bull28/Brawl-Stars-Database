@@ -286,7 +286,6 @@ export function getChallengeUpgrades(masteryLevel: number): ChallengeUpgrades{
         enemies: enemies
     };
 }
-console.log(getChallengeUpgrades(30).enemies.map((value) => value.image));
 
 export function createChallengeData(masteryLevel: number, waves: UserWaves): {message: string; data: ChallengeData | undefined}{
     // Get the player upgrade values from their mastery level

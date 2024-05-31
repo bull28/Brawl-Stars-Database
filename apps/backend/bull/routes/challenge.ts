@@ -40,7 +40,7 @@ interface ChallengeStartReqBody{
     challengeid: number;
 }
 
-// Get the list of enemies
+// Get the list of all enemies
 router.get("/enemies", (req, res) => {
     const enemies: EnemyData[] = [];
 
@@ -49,6 +49,7 @@ router.get("/enemies", (req, res) => {
 
         // The image is the a brawler pin, the full image is a brawler skin
         enemies.push({
+            name: x,
             displayName: data.displayName,
             image: (data.image !== "" ? PIN_IMAGE_DIR + data.image : ""),
             fullImage: (data.fullImage !== "" ? SKIN_IMAGE_DIR + data.fullImage : ""),
