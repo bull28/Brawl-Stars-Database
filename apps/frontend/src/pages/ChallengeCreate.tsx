@@ -52,7 +52,6 @@ export default function ChallengeStart(){
 
     useEffect(() => {
         AuthRequest<Upgrades>("/challenge/upgrades", {setState: (data) => {
-            //const upgrades: Upgrades = {"offense":{"startingPower":0,"startingGears":6,"powerPerStage":72,"gearsPerStage":3,"maxAccessories":5,"health":100,"damage":100,"healing":100,"speed":0,"ability":1,"lifeSteal":0},"defense":{"difficulty":3,"maxEnemies":[40,48,64,88],"enemyStats":[125,200,250,300],"waves":[[24,36],[30,42],[24,30,42],[30,42,60]]},"enemies":[{"name":"meteor","displayName":"Meteor","image":"","value":1,"maxCount":20},{"name":"r2","displayName":"Robot","image":"","value":2,"maxCount":25},{"name":"shelly","displayName":"Shelly","image":"pins/shelly/shelly_default.webp","value":4,"maxCount":10},{"name":"colt","displayName":"Colt","image":"pins/colt/colt_default.webp","value":6,"maxCount":10},{"name":"rt","displayName":"R-T","image":"pins/rt/rt_default.webp","value":6,"maxCount":8},{"name":"elprimo","displayName":"El Primo","image":"pins/elprimo/elprimo_hub.webp","value":8,"maxCount":8},{"name":"8bit","displayName":"8-Bit","image":"pins/8bit/8bit_retropolis.webp","value":8,"maxCount":8},{"name":"belle","displayName":"Belle","image":"pins/belle/belle_boss_default.webp","value":9,"maxCount":8},{"name":"jessie","displayName":"Jessie","image":"pins/jessie/jessie_default.webp","value":9,"maxCount":8},{"name":"eve","displayName":"Eve","image":"pins/eve/eve_default.webp","value":10,"maxCount":8},{"name":"mortis","displayName":"Mortis","image":"pins/mortis/mortis_mecha_default.webp","value":10,"maxCount":8},{"name":"frank","displayName":"Frank","image":"pins/frank/frank_make.webp","value":12,"maxCount":8},{"name":"jacky","displayName":"Jacky","image":"pins/jacky/jacky_brawlidays.webp","value":10,"maxCount":8},{"name":"mrp","displayName":"Mr. P","image":"pins/mrp/mrp_goldenweek.webp","value":12,"maxCount":8},{"name":"bea","displayName":"Bea","image":"pins/bea/bea_make.webp","value":12,"maxCount":8},{"name":"colette","displayName":"Colette","image":"pins/colette/colette_ranked.webp","value":12,"maxCount":8},{"name":"lola","displayName":"Lola","image":"pins/lola/lola_villains.webp","value":16,"maxCount":6},{"name":"bibi","displayName":"Bibi","image":"pins/bibi/bibi_lny_2020.webp","value":16,"maxCount":6},{"name":"mandy","displayName":"Mandy","image":"pins/mandy/mandy_lavaqueen_default.webp","value":16,"maxCount":6},{"name":"ash","displayName":"Ash","image":"pins/ash/ash_default.webp","value":20,"maxCount":5},{"name":"pearl","displayName":"Pearl","image":"pins/pearl/pearl_deepsea_default.webp","value":16,"maxCount":6},{"name":"leon","displayName":"Leon","image":"pins/leon/leon_mecha_default.webp","value":24,"maxCount":3},{"name":"bonnie","displayName":"Bonnie","image":"pins/bonnie/bonnie_default.webp","value":20,"maxCount":4},{"name":"amber","displayName":"Amber","image":"pins/amber/amber_frost_default.webp","value":30,"maxCount":2},{"name":"max","displayName":"Max","image":"pins/max/max_special.webp","value":24,"maxCount":2},{"name":"meg","displayName":"Meg","image":"pins/meg/meg_default.webp","value":36,"maxCount":2}]}
             data.enemies.sort((a, b) => a.value - b.value);
 
             const map = new Map<string, number>();
@@ -212,7 +211,7 @@ export default function ChallengeStart(){
             </Box>
             <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
                 <Flex w={"100%"} h={["fit-content", "fit-content", "90vh"]} flexDir={["column", "column", "row"]} gap={10} p={4}>
-                    <Flex flexDir={"column"}>
+                    <Box>
                         <Box overflow={"auto"}>
                             <Grid templateColumns={["4", "6", "3", "6"].map((value) => `repeat(${value}, 1fr)`)} w={"fit-content"} h={"fit-content"} gap={1} bgColor={"gray.800"} p={"0.75em"} borderRadius={"0.75em"}>
                             {enemies.map((value) =>
@@ -230,7 +229,7 @@ export default function ChallengeStart(){
                             </Text>
                         </Box>
                         <Button className={"heading-md"} onClick={() => {create()}}>Create Challenge</Button>
-                    </Flex>
+                    </Box>
 
                     <Flex flexDir={"row"} maxW={"72em"} h={"fit-content"} maxH={"100%"} overflowY={"auto"} gap={5} flex={1} wrap={"wrap"}>
                     {defense.waves.map((stage, stageIndex) => {
@@ -287,9 +286,9 @@ export default function ChallengeStart(){
 
                     <DragOverlay>
                         {activeDisplay &&
-                        <Flex className={"draggable-enemy-box"}>
+                        <Box className={"draggable-enemy-box"}>
                             {getEnemyElement(activeDisplay, 0, false)}
-                        </Flex>
+                        </Box>
                         }
                     </DragOverlay>
                 </Flex>

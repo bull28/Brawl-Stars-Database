@@ -999,7 +999,7 @@
                 "reload": 4,
                 "knockback": 50,
                 "fireDamage": 0,
-                "description": "Shoots a single projectile that pulls you towards Bull."
+                "description": "Shoots a projectile that pulls you towards Bull."
             },
             {
                 "displayName": "Charge Attack",
@@ -1021,7 +1021,7 @@
                 "reload": 2.5,
                 "knockback": 0,
                 "fireDamage": 240,
-                "description": "Shoots 2 projectiles towards you from 2 different edges of the map."
+                "description": "Shoots a projectile towards you from one of the map edges."
             },
             {
                 "displayName": "Strike Attack",
@@ -1043,7 +1043,7 @@
                 "strengthTier": "",
                 "value": 1,
                 "health": 600,
-                "speed": 5,
+                "speed": 0,
                 "attacks": [
                     {
                         "displayName": "Default Attack",

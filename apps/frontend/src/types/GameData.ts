@@ -32,6 +32,7 @@ export interface Accessory{
     category: string;
     displayName: string;
     image: string;
+    description: string;
     unlocked: boolean;
     badge: {
         collected: number;

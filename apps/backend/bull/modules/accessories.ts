@@ -225,15 +225,6 @@ export function validateReport(report: GameReport): boolean{
         return false;
     }
 
-    // Accessories are not allowed on difficulty 5 or lower
-    const accs = data.slice(format.accessories[0], format.accessories[1]);
-    for (let x = 0; x < accs.length; x++){
-        if (accs[x] >= 0 && difficulty <= 5){
-            // Enable this when adding difficulties 6 - 9
-            //valid = false;
-        }
-    }
-
     // The enemy stats multiplier must not be decreasing for each level
     const stats = data.slice(format.stats[0], format.stats[1]);
     let maxStats = 0;
@@ -298,6 +289,14 @@ export function validateReport(report: GameReport): boolean{
     }
 
     if (gameMode === 0){
+        // Accessories are not allowed on difficulty 5 or lower
+        const accs = data.slice(format.accessories[0], format.accessories[1]);
+        for (let x = 0; x < accs.length; x++){
+            if (accs[x] >= 0 && difficulty <= 5){
+                valid = false;
+            }
+        }
+
         // The upgrades cannot be more than each upgrade type limit
         const upgrades = data.slice(format.upgrades[0], format.upgrades[1]);
         const maxUpgrades = [16, 16, 10, 7, 5, 6];

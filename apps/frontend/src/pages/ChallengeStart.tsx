@@ -16,6 +16,14 @@ export default function ChallengeStart(){
     const navigate = useNavigate();
     const toast = useToast();
 
+    const getChallenges = () => {
+        AuthRequest("/challenge/all", {
+            setState: (data) => {
+                console.log(data);
+            }
+        }, false);
+    };
+
     const findChallenge = () => {
         AuthRequest<ChallengeStartData>("/challenge/start", {
             data: {challengeid: parseInt(challengeid)},
@@ -35,7 +43,7 @@ export default function ChallengeStart(){
                 }
             }
         }, true);
-    }
+    };
 
     return (
         <Flex flexDir={"column"} alignItems={"center"}>
@@ -44,7 +52,7 @@ export default function ChallengeStart(){
             <Box justifyContent={"center"}>
                 <Text fontSize={"4xl"} className={"heading-4xl"}>Play Challenge</Text>
             </Box>
-            <Button color={"#fff"} className={"heading-md"} w={"10em"} mt={"10vh"}>Get Challenges</Button>
+            <Button color={"#fff"} className={"heading-md"} w={"10em"} mt={"10vh"} onClick={getChallenges}>Get Challenges</Button>
             <Input maxW={"10em"} mb={"5vh"} value={challengeid} onChange={(event) => setChallengeid(event.target.value)}/>
             <Button display={"block"} h={"fit-content"} px={4} py={2} onClick={findChallenge}>
                 <Text fontSize={"3xl"} className={"heading-3xl"}>Find Challenge</Text>

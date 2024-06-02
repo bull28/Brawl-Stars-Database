@@ -1125,6 +1125,18 @@ export async function getChallenge(values: ChallengeIDValues & Partial<UsernameV
 }
 
 
+interface ChallengeAllResult extends RowDataPacket{
+    challengeid: number;
+    username: string;
+    preset: string;
+    strength: number;
+}
+export async function getAllChallenges(values: UsernameValues): Promise<ChallengeAllResult[]>{
+    return queryDatabase<ChallengeAllResult[]>(pool, [values.username, ""], true,
+        `SELECT challengeid, username, preset, strength FROM ${CHALLENGE_TABLE_NAME} WHERE username = ? OR preset <> ?;`);
+}
+
+
 export async function deleteChallenge(values: UsernameValues, connection?: PoolConnection): Promise<ResultSetHeader>{
     const valuesArray = [values.username];
     const query = `DELETE FROM ${CHALLENGE_TABLE_NAME} WHERE username = ?;`;

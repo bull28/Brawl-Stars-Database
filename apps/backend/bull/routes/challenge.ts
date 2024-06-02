@@ -20,6 +20,7 @@ import {
     deleteActiveChallenge, 
     createChallenge, 
     getChallenge, 
+    getAllChallenges, 
     deleteChallenge
 } from "../modules/database";
 import {Empty, DatabaseAccessories, EnemyData, ChallengeWave, UserWaves} from "../types";
@@ -71,6 +72,12 @@ router.get("/upgrades", loginErrorHandler(async (req, res, username) => {
     const userData = await beforeAccessory({username: username});
     const upgrades = getChallengeUpgrades(getMasteryLevel(userData[0].points).level);
     res.json(upgrades);
+}));
+
+// Get all challenges that a player can directly play
+router.get("/all", loginErrorHandler(async (req, res, username) => {
+    const results = await getAllChallenges({username: username});
+    res.json(results);
 }));
 
 // Get game modification data for an active challenge

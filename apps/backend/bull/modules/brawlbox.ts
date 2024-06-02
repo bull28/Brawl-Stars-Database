@@ -199,7 +199,7 @@ const gameBoxes: GameBrawlBox[] = [
             {quality: 440,  minQuality: 220,   reward: new WildCardPinReward([12, 5, 2, 0, 0])},
             {quality: 576,  minQuality: 44,    reward: new TradeCreditsReward()},
             {quality: 1120, minQuality: 44,    reward: new TokenDoublerReward(300)},
-            {quality: 22000, minQuality: 384,   reward: new AccessoryReward()}
+            {quality: 22000, minQuality: 384,  reward: new AccessoryReward()}
         ]
     },
     {// Difficulty 5
@@ -214,7 +214,7 @@ const gameBoxes: GameBrawlBox[] = [
             {quality: 620,  minQuality: 48,    reward: new TradeCreditsReward()},
             {quality: 1000, minQuality: 48,    reward: new TokenDoublerReward(300)},
             {quality: 14400,minQuality: 440,   reward: new ThemeReward()},
-            {quality: 12000, minQuality: 416,   reward: new AccessoryReward()}
+            {quality: 12000, minQuality: 416,  reward: new AccessoryReward()}
         ]
     },
     {// Difficulty 6

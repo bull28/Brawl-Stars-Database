@@ -571,7 +571,7 @@ export function getKeyGameMod(key: string, masteryLevel: number, accessories: Da
             maxReportLevels: 8
         },
         difficulties: [{
-            difficultyid: difficulty,
+            difficultyid: 0,// difficulty?
             name: `${data.owner}'s Challenge`,
             countTier: 0,
             strengthTier: difficulty,
