@@ -90,6 +90,9 @@ const config = {
                 padding: "0.375em",
                 borderRadius: "lg"
             },
+            ".draggable-enemy-box": {
+                width: "5em", height: "5em", borderRadius: "0.5em", display: "flex", alignItems: "center", justifyContent: "center", backgroundColor: "#4000ff", cursor: "pointer", overflow: "hidden"
+            },
             "*": {
                 caretColor: "transparent"
             }

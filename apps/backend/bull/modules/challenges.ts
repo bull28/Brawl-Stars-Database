@@ -317,7 +317,7 @@ export function createChallengeData(masteryLevel: number, waves: UserWaves): {me
         }
         // Stage number for this wave cannot be greater than the maximum allowed number of stages in the challenge
         if (stage >= gameStages || stage < 0 || waveCounts[stage] <= 0){
-            message = `Too many waves are included in level ${stage + 1}`;
+            message = `Too many waves are included in stage ${stage + 1}`;
         }
 
         if (message === ""){
@@ -343,7 +343,7 @@ export function createChallengeData(masteryLevel: number, waves: UserWaves): {me
                         message = `Too many ${values.displayName} enemies in the challenge. There can be at most ${values.maxCount}.`;
                     }
                     if (counts.add(enemies[x], 1) > values.maxStageCount){
-                        message = `Too many ${values.displayName} enemies in level ${stage + 1}. There can be at most ${values.maxStageCount} per level.`;
+                        message = `Too many ${values.displayName} enemies in stage ${stage + 1}. There can be at most ${values.maxStageCount} per stage.`;
                     }
                 } else{
                     if (values === undefined){
@@ -357,13 +357,13 @@ export function createChallengeData(masteryLevel: number, waves: UserWaves): {me
             // The current wave's value cannot be more than the maximum value allowed for this wave in this stage
             const waveInLevel = upgrades.waves[stage].length - waveCounts[stage] - 1;
             if (waveValue > upgrades.waves[stage][waveInLevel]){
-                message = `Too many enemies included in level ${stage + 1}, wave ${waveInLevel + 1}.`;
+                message = `Too many enemies included in stage ${stage + 1}, wave ${waveInLevel + 1}.`;
             }
 
             // The total value of all enemies in this stage cannot be more than the maximum value allowed for this stage
             waveValues[stage] -= waveValue;
             if (waveValues[stage] < 0){
-                message = `Too many enemies included in level ${stage + 1}.`;
+                message = `Too many enemies included in stage ${stage + 1}.`;
             }
 
             // The delay for the current wave depends on the number of enemies in the previous wave for this stage

@@ -60,14 +60,14 @@ export default function GameEnemies(){
                         </Flex>
                     ))}</SimpleGrid>
                 </Flex>
-                <Flex flex={1} bgColor={"gray.600"} overflowY={["visible", "visible", "visible", "scroll"]} sx={scrollStyle}>
+                <Flex flex={1} bgColor={"#400080"} overflowY={["visible", "visible", "visible", "scroll"]} sx={scrollStyle}>
                     {currentEnemy !== undefined ?
                         <Grid templateAreas={currentEnemy.enemies.length > 0 ? gridAreasEnemies : gridAreasNoEnemies} templateColumns={"1fr 1fr"} templateRows={"minmax(25em, max-content) 1fr min-content"} gap={"1em"} w={"100%"} p={"0.5em"}>
                             <Flex gridArea={"a"} flexDir={"column"}>
                                 <Text fontSize={"3xl"} className={"heading-3xl"}>{currentEnemy.displayName}</Text>
                                 <Text fontSize={"lg"} className={"heading-lg"} lineHeight={1.2}>{currentEnemy.description}</Text>
                                 {/* <Flex flexDir={"column"} w={"50%"} gap={2} pr={2} my={5}> */}
-                                <SimpleGrid columns={[1, 2]} spacing={2} my={5} p={"0.5em"} bgColor={"blue.800"} borderRadius={"xl"}>
+                                <SimpleGrid columns={[1, 2]} spacing={2} my={5} p={"0.5em"} bgColor={"#4000c0"} borderRadius={"xl"}>
                                     <Box className={"enemy-stat-box"}>
                                         <Text variant={"enemyStatName"}>Enemy Value</Text>
                                         <Text variant={"enemyStatValue"}>{currentEnemy.value}</Text>
@@ -90,7 +90,7 @@ export default function GameEnemies(){
                                 }
                             </Flex>
                             <Flex gridArea={"b"}>
-                                <Flex w={["100%", "100%", "25em"]} h={["20em", "25em"]} justifyContent={"center"} bgColor={currentEnemy.fullImage !== "" ? "blue.800" : ""} borderRadius={"xl"} p={2}>
+                                <Flex w={["100%", "100%", "25em"]} h={["20em", "25em"]} justifyContent={"center"} bgColor={currentEnemy.fullImage !== "" ? "#4000c0" : ""} borderRadius={"xl"} p={2}>
                                 {currentEnemy.fullImage !== "" &&
                                     <Image src={`${cdn}/image/${currentEnemy.fullImage}`} maxH={"100%"} objectFit={"contain"}/>
                                 }
@@ -109,7 +109,7 @@ export default function GameEnemies(){
                                         <Text fontSize={"3xl"} className={"heading-3xl"}>{`${value.displayName} x${value.count}`}</Text>
                                         <Flex flexDir={"column"} w={["100%", "100%", "50%"]} pr={["0em", "0em", "0.5em"]}>
                                             <Text fontSize={"lg"} className={"heading-lg"} lineHeight={1.2}>{value.description}</Text>
-                                            <Flex flexDir={["column", "row"]} gap={2} my={5} p={"0.5em"} bgColor={"blue.800"} borderRadius={"xl"}>
+                                            <Flex flexDir={["column", "row"]} gap={2} my={5} p={"0.5em"} bgColor={"#4000c0"} borderRadius={"xl"}>
                                                 <Box className={"enemy-stat-box"} flex={1}>
                                                     <Text variant={"enemyStatName"}>Health</Text>
                                                     <Text variant={"enemyStatValue"}>{value.health}</Text>

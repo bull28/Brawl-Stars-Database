@@ -58,7 +58,7 @@ export default function EnemyAttack({attack}: {attack: Enemy["attacks"][number]}
     }
 
     return (
-        <Flex key={`${attack.displayName}${attack.minDamage}`} flexDir={"column"} bgColor={"blue.800"} p={"0.5em"} borderRadius={"xl"}>
+        <Flex key={`${attack.displayName}${attack.minDamage}`} flexDir={"column"} bgColor={"#4000c0"} p={"0.5em"} borderRadius={"xl"}>
             <Text fontSize={"xl"} className={"heading-xl"}>{attack.displayName}</Text>
             <Text fontSize={"lg"} className={"heading-lg"} lineHeight={1.2} mt={1} mb={3}>{attack.description}</Text>
             <Flex w={"100%"} flex={1} alignItems={"flex-end"}>

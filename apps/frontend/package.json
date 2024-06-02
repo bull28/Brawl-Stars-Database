@@ -29,17 +29,18 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.11.43",
     "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",
     "@types/react-scroll": "^1.8.4",
-    "@types/three": "^0.155.0",
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+    "@types/three": "^0.155.0"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.19",
     "@chakra-ui/react": "^2.7.0",
+    "@dnd-kit/core": "^6.1.0",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "@react-three/drei": "^9.80.2",
