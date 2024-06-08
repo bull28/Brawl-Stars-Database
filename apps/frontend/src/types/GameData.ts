@@ -42,6 +42,13 @@ export interface Accessory{
     };
 }
 
+export interface ChallengePreview{
+    challengeid: number;
+    username: string;
+    preset: string;
+    strength: number;
+}
+
 export interface ChallengeStartData{
     key: string;
     displayName: string;

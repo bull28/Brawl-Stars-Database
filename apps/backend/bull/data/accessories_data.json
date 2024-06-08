@@ -81,99 +81,99 @@
     },
     {
         "name": "shelly", "category": "enemy", "displayName": "Shelly's Shotgun",
-        "description": "Deal more damage to Shelly.", "unlock": "Defeat Shelly enemies.", "badges": 500
+        "description": "Deal more damage and receive less damage when against Shelly.", "unlock": "Defeat Shelly enemies.", "badges": 500
     },
     {
         "name": "colt", "category": "enemy", "displayName": "Colt's Revolvers",
-        "description": "Deal more damage to Colt.", "unlock": "Defeat Colt enemies.", "badges": 500
+        "description": "Deal more damage and receive less damage when against Colt.", "unlock": "Defeat Colt enemies.", "badges": 500
     },
     {
         "name": "rt", "category": "enemy", "displayName": "R-T's Camera",
-        "description": "Deal more damage to R-T.", "unlock": "Defeat R-T enemies.", "badges": 500
+        "description": "Deal more damage and receive less damage when against R-T.", "unlock": "Defeat R-T enemies.", "badges": 500
     },
     {
         "name": "elprimo", "category": "enemy", "displayName": "El Primo's Belt",
-        "description": "Deal more damage to El Primo.", "unlock": "Defeat El Primo enemies.", "badges": 500
+        "description": "Deal more damage and receive less damage when against El Primo.", "unlock": "Defeat El Primo enemies.", "badges": 500
     },
     {
         "name": "8bit", "category": "enemy", "displayName": "8-Bit's Turret",
-        "description": "Deal more damage to 8-Bit.", "unlock": "Defeat 8-Bit enemies.", "badges": 500
+        "description": "Deal more damage and receive less damage when against 8-Bit.", "unlock": "Defeat 8-Bit enemies.", "badges": 500
     },
     {
         "name": "belle", "category": "enemy", "displayName": "Belle's Rifle",
-        "description": "Deal more damage to Belle.", "unlock": "Defeat Belle enemies.", "badges": 500
+        "description": "Deal more damage and receive less damage when against Belle.", "unlock": "Defeat Belle enemies.", "badges": 500
     },
     {
         "name": "jessie", "category": "enemy", "displayName": "Jessie's Backpack",
-        "description": "Deal more damage to Jessie.", "unlock": "Defeat Jessie enemies.", "badges": 500
+        "description": "Deal more damage and receive less damage when against Jessie.", "unlock": "Defeat Jessie enemies.", "badges": 500
     },
     {
         "name": "eve", "category": "enemy", "displayName": "Eve's Spaceship",
-        "description": "Deal more damage to Eve.", "unlock": "Defeat Eve enemies.", "badges": 500
+        "description": "Deal more damage and receive less damage when against Eve.", "unlock": "Defeat Eve enemies.", "badges": 500
     },
     {
         "name": "mortis", "category": "enemy", "displayName": "Mortis's Shovel",
-        "description": "Deal more damage to Mortis.", "unlock": "Defeat Mortis enemies.", "badges": 500
+        "description": "Deal more damage and receive less damage when against Mortis.", "unlock": "Defeat Mortis enemies.", "badges": 500
     },
     {
         "name": "frank", "category": "enemy", "displayName": "Frank's Hammer",
-        "description": "Deal more damage to Frank.", "unlock": "Defeat Frank enemies.", "badges": 500
+        "description": "Deal more damage and receive less damage when against Frank.", "unlock": "Defeat Frank enemies.", "badges": 500
     },
     {
         "name": "jacky", "category": "enemy", "displayName": "Jacky's Drill",
-        "description": "Deal more damage to Jacky.", "unlock": "Defeat Jacky enemies.", "badges": 500
+        "description": "Deal more damage and receive less damage when against Jacky.", "unlock": "Defeat Jacky enemies.", "badges": 500
     },
     {
         "name": "mrp", "category": "enemy", "displayName": "Mr. P's Suitcase",
-        "description": "Deal more damage to Mr. P.", "unlock": "Defeat Mr. P enemies.", "badges": 500
+        "description": "Deal more damage and receive less damage when against Mr. P.", "unlock": "Defeat Mr. P enemies.", "badges": 500
     },
     {
         "name": "bea", "category": "enemy", "displayName": "Bea's Bee",
-        "description": "Deal more damage to Bea.", "unlock": "Defeat Bea enemies.", "badges": 500
+        "description": "Deal more damage and receive less damage when against Bea.", "unlock": "Defeat Bea enemies.", "badges": 500
     },
     {
         "name": "colette", "category": "enemy", "displayName": "Colette's Scrapbook",
-        "description": "Deal more damage to Colette.", "unlock": "Defeat Colette enemies.", "badges": 500
+        "description": "Deal more damage and receive less damage when against Colette.", "unlock": "Defeat Colette enemies.", "badges": 500
     },
     {
         "name": "lola", "category": "enemy", "displayName": "Lola's Scarf",
-        "description": "Deal more damage to Lola.", "unlock": "Defeat Lola enemies.", "badges": 500
+        "description": "Deal more damage and receive less damage when against Lola.", "unlock": "Defeat Lola enemies.", "badges": 500
     },
     {
         "name": "bibi", "category": "enemy", "displayName": "Bibi's Bat",
-        "description": "Deal more damage to Bibi.", "unlock": "Defeat Bibi enemies.", "badges": 500
+        "description": "Deal more damage and receive less damage when against Bibi.", "unlock": "Defeat Bibi enemies.", "badges": 500
     },
     {
         "name": "mandy", "category": "enemy", "displayName": "Mandy's Candy Dispenser",
-        "description": "Deal more damage to Mandy.", "unlock": "Defeat Mandy enemies.", "badges": 500
+        "description": "Deal more damage and receive less damage when against Mandy.", "unlock": "Defeat Mandy enemies.", "badges": 500
     },
     {
         "name": "ash", "category": "enemy", "displayName": "Ash's Broom",
-        "description": "Deal more damage to Ash.", "unlock": "Defeat Ash enemies.", "badges": 500
+        "description": "Deal more damage and receive less damage when against Ash.", "unlock": "Defeat Ash enemies.", "badges": 500
     },
     {
         "name": "pearl", "category": "enemy", "displayName": "Pearl's Cookie",
-        "description": "Deal more damage to Pearl.", "unlock": "Defeat Pearl enemies.", "badges": 500
+        "description": "Deal more damage and receive less damage when against Pearl.", "unlock": "Defeat Pearl enemies.", "badges": 500
     },
     {
         "name": "leon", "category": "enemy", "displayName": "Leon's Lollipop",
-        "description": "Deal more damage to Leon.", "unlock": "Defeat Leon enemies.", "badges": 500
+        "description": "Deal more damage and receive less damage when against Leon.", "unlock": "Defeat Leon enemies.", "badges": 500
     },
     {
         "name": "bonnie", "category": "enemy", "displayName": "Bonnie's Cannon",
-        "description": "Deal more damage to Bonnie.", "unlock": "Defeat Bonnie enemies.", "badges": 500
+        "description": "Deal more damage and receive less damage when against Bonnie.", "unlock": "Defeat Bonnie enemies.", "badges": 500
     },
     {
         "name": "amber", "category": "enemy", "displayName": "Amber's Fire Staff",
-        "description": "Deal more damage to Amber.", "unlock": "Defeat Amber enemies.", "badges": 500
+        "description": "Deal more damage and receive less damage when against Amber.", "unlock": "Defeat Amber enemies.", "badges": 500
     },
     {
         "name": "max", "category": "enemy", "displayName": "Max's Energy Drink",
-        "description": "Deal more damage to Max.", "unlock": "Defeat Max enemies.", "badges": 500
+        "description": "Deal more damage and receive less damage when against Max.", "unlock": "Defeat Max enemies.", "badges": 500
     },
     {
         "name": "meg", "category": "enemy", "displayName": "Meg's Mech",
-        "description": "Deal more damage to Meg.", "unlock": "Defeat Meg enemies.", "badges": 500
+        "description": "Deal more damage and receive less damage when against Meg.", "unlock": "Defeat Meg enemies.", "badges": 500
     },
     {
         "name": "spike", "category": "player", "displayName": "Spike's Cactus",

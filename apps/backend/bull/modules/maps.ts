@@ -236,6 +236,10 @@ class EventSlot{
 
         let lowestStartTime = new SeasonTime(1, 0, 0, 0);
 
+        if (this.eventDuration <= 0 && !1){
+            return result;
+        }
+
         // Search through all the game modes in this event slot to see if the map appears in one of them
         for (let x = 0; x < this.gameModes.length; x++){
             const mapSearchResult = this.gameModes[x].findMapIndex(mapName);
@@ -277,8 +281,14 @@ class EventSlot{
             }
         }
 
+        const currentMap = this.getCurrentGameMap(currentTime);
+        if (currentMap === undefined){
+            // Game modes in the ranked event slot may have 0 maps so this may be undefined since there is no active map
+            return result;
+        }
+
         result.all = validStartTimes;
-        if (this.getCurrentGameMap(currentTime).name !== mapName && validStartTimes.length > 0){
+        if (currentMap.name !== mapName && validStartTimes.length > 0){
             result.next = subtractSeasonTimes(lowestStartTime, new SeasonTime(0, 0, 0, 1));
         }
         result.duration = new SeasonTime(0, this.eventDuration, 0, 0);
@@ -442,7 +452,7 @@ export function getMapData(eventList: EventSlot[], mapName: string, currentTime:
                         displayName: mapInThisSlot.displayName,
                         gameMode: applyGameModeMapDisplay(thisGameMode.name, thisGameMode.data),
                         powerLeagueMap: mapInThisSlot.powerLeagueMap,
-                        image: MAP_IMAGE_DIR + thisGameMode.name + "/" + mapInThisSlot.image,
+                        image: MAP_IMAGE_DIR + thisGameMode.name.replace("ranked", "") + "/" + mapInThisSlot.image,
                         bannerImage: MAP_BANNER_DIR + mapInThisSlot.bannerImage,
                         times: mapTimes
                     };
