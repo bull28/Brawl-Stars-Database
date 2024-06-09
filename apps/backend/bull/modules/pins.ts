@@ -383,6 +383,7 @@ export function getCosmetics(allThemes: ThemeList, allScenes: SceneList, cosmeti
                 // cosmeticsData[k] stores only whether the cosmetic is free/special and its name. Both of those are
                 // contained in allThemes or allScenes.
                 let result: string | undefined = undefined;
+                console.log(cosmeticsData[k]);
                 if (cosmeticsData[k].includes("free/") === true){
                     result = allThemes.free.find((value) => value.includes(cosmeticsData[k]));
                 } else{
@@ -402,6 +403,28 @@ export function getCosmetics(allThemes: ThemeList, allScenes: SceneList, cosmeti
     }
 
     return setCosmetics;
+}
+
+/**
+ * Some newer themes have extra objects in the background. If the selected theme has extra objects, return the image
+ * file containing the objects associated with that background.
+ * @param allThemes object containing all free and special themes
+ * @param backgroundFile name of the background file
+ * @returns image file or empty string if the background has no extra objects
+ */
+export function getExtraBackground(allThemes: ThemeList, backgroundFile: string): string{
+    const extraFileName = backgroundFile.replace(THEME_IMAGE_DIR, "").replace("_background", "_extra");
+    let extra: string | undefined;
+    if (extraFileName.includes("free/") === true){
+        extra = allThemes.free.find((value) => value.includes(extraFileName));
+    } else if (extraFileName.includes("special/") === true){
+        extra = allThemes.special.find((value) => value.includes(extraFileName));
+    }
+
+    if (extra !== undefined){
+        return THEME_IMAGE_DIR + extra;
+    }
+    return "";
 }
 
 /**

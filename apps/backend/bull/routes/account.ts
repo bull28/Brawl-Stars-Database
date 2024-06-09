@@ -3,7 +3,7 @@ import allSkins from "../data/brawlers_data.json";
 import {HOURS_PER_REWARD, TOKENS_PER_REWARD, MAX_REWARD_STACK, AVATAR_IMAGE_DIR, THEME_IMAGE_DIR, SCENE_IMAGE_DIR} from "../data/constants";
 import {signToken, validateToken, hashPassword, checkPassword} from "../modules/authenticate";
 import {freeAvatarFiles, specialAvatarFiles, freeThemeFiles, specialThemeFiles, sceneFiles} from "../modules/fileloader";
-import {getAvatars, getCosmetics, getThemes} from "../modules/pins";
+import {getAvatars, getCosmetics, getExtraBackground, getThemes} from "../modules/pins";
 import {MAP_CYCLE_HOURS, SeasonTime, mod, realToTime, subtractSeasonTimes} from "../modules/maps";
 import {
     loginErrorHandler, 
@@ -244,6 +244,17 @@ router.get("/cosmetic", databaseErrorHandler(async (req, res) => {
         background: "", icon: "", music: "", scene: ""
     }));
 }));
+
+// Get the extra background image for a background cosmetic
+router.get<Empty, string | {extra: string;}, Empty, DatabaseCosmetics>("/cosmetic/extra", (req, res) => {
+    if (typeof req.query.background !== "string"){
+        res.status(400).send("Invalid background file.");
+        return;
+    }
+
+    const extra = getExtraBackground(allThemes, req.query.background);
+    res.json({extra: extra});
+});
 
 // Set a user's active cosmetic items
 router.post<Empty, Empty, CosmeticReqBody>("/cosmetic", loginErrorHandler<CosmeticReqBody>(async (req, res, username) => {

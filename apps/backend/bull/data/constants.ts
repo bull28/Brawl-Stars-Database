@@ -50,6 +50,9 @@ export const themeMap = new Map<string, string>([
     ["deepsea", "Deep Sea"],
     ["darkmas", "Dark Brawlidays"],
     ["mandy", "Candyland"],
+    ["love_swamp", "Swamp of Love"],
+    ["melodie", "Melodie"],
+    ["madevil", "Mad Evil Manor"],
     ["yellow_face", "\u00a0"]
 ]);
 

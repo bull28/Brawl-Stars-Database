@@ -236,9 +236,7 @@ class EventSlot{
 
         let lowestStartTime = new SeasonTime(1, 0, 0, 0);
 
-        if (this.eventDuration <= 0 && !1){
-            return result;
-        }
+        //if (this.eventDuration <= 0){return result;}
 
         // Search through all the game modes in this event slot to see if the map appears in one of them
         for (let x = 0; x < this.gameModes.length; x++){
