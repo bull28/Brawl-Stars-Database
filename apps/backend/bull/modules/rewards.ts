@@ -722,7 +722,10 @@ export class ThemeReward extends Reward{
                 {value: "super_city", weight: 1},
                 {value: "giftshop", weight: 1},
                 {value: "lunar", weight: 1},
-                {value: "waterpark", weight: 1}
+                {value: "waterpark", weight: 1},
+                {value: "love_swamp", weight: 1},
+                {value: "melodie", weight: 1},
+                {value: "madevil", weight: 1}
             ];
         }
 

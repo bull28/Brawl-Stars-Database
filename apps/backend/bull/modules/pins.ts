@@ -383,7 +383,6 @@ export function getCosmetics(allThemes: ThemeList, allScenes: SceneList, cosmeti
                 // cosmeticsData[k] stores only whether the cosmetic is free/special and its name. Both of those are
                 // contained in allThemes or allScenes.
                 let result: string | undefined = undefined;
-                console.log(cosmeticsData[k]);
                 if (cosmeticsData[k].includes("free/") === true){
                     result = allThemes.free.find((value) => value.includes(cosmeticsData[k]));
                 } else{
