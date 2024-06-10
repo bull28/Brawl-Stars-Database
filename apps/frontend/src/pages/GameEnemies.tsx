@@ -2,7 +2,6 @@ import {useState, useEffect} from "react";
 import {Flex, Box, Text, Image, SimpleGrid, Grid} from "@chakra-ui/react";
 import axios, {AxiosResponse} from "axios";
 import {Enemy} from "../types/GameData";
-import SkullBackground from "../components/SkullBackground";
 import {scrollStyle} from "../themes/scrollbar";
 import EnemyAttack from "../components/EnemyAttack";
 import BackButton from "../components/BackButton";
@@ -43,7 +42,6 @@ export default function GameEnemies(){
 
     return (
         <Flex flexDir={"column"} alignItems={"center"}>
-            <SkullBackground/>
             <BackButton/>
             <Box justifyContent={"center"}>
                 <Text fontSize={"4xl"} className={"heading-4xl"}>Bullgame Enemies</Text>

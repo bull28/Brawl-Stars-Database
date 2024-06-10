@@ -5,7 +5,6 @@ import EventView from "../components/EventView";
 import EventSideBar from "../components/EventSideBar";
 import {EventData} from "../types/EventData";
 import MapView from "../components/MapView";
-import SkullBackground from "../components/SkullBackground";
 import BackButton from "../components/BackButton";
 import api from "../helpers/APIRoute";
 
@@ -33,7 +32,6 @@ export default function Events(){
 
     return (
         <Flex flexDir={"column"} justifyContent={"space-between"} w={"100%"}>
-            <SkullBackground/>
             <BackButton/>
             <Flex w={"100%"} textAlign={"center"} justifyContent={"center"}>
                 <Text fontSize={"4xl"} className={"heading-4xl"}>Events</Text>  

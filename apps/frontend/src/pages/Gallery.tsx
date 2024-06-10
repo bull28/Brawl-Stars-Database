@@ -1,9 +1,9 @@
 import { Button, Flex, Image, Text, Link, SimpleGrid, VStack } from "@chakra-ui/react";
 import { useEffect, useState, useCallback } from "react";
-import SkullBackground from "../components/SkullBackground";
 import AuthRequest from "../helpers/AuthRequest";
 import {CosmeticData, ThemeProps} from "../types/CosmeticData";
 import {scrollStyle} from "../themes/scrollbar";
+import SkullBackground from "../components/SkullBackground";
 import BackButton from "../components/BackButton";
 import cdn from "../helpers/CDNRoute";
 

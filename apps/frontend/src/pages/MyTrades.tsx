@@ -4,7 +4,6 @@ import { HiOutlineSwitchHorizontal } from 'react-icons/hi'
 import AuthRequest from '../helpers/AuthRequest'
 import { PinObject, UserTradeData } from '../types/TradeData'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
-import SkullBackground from '../components/SkullBackground'
 import {UserInfoProps} from '../types/AccountData'
 import EventTime from "../helpers/EventTime";
 import {scrollStyle} from "../themes/scrollbar";
@@ -89,7 +88,6 @@ export default function MyTrades() {
 
     return (
     <Flex flexDir={'column'} alignItems={'center'} overflow={'hidden'} pb={10}>
-        <SkullBackground/>
         <BackButton path={"/trade"}/>
         <Text fontSize={'4xl'} className={'heading-4xl'} mb={3}>My Trades</Text>
         {trades !== void 0 ? (Object.keys(trades).map((key) => {

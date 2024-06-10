@@ -1,7 +1,6 @@
 import {useState, useEffect, useCallback} from "react";
 import {Flex, Box, Text, Image, Button, SimpleGrid, Link, Divider, useToast} from "@chakra-ui/react";
 import {AxiosError} from "axios";
-import SkullBackground from "../components/SkullBackground";
 import AuthRequest from "../helpers/AuthRequest";
 import MovingText from "../components/MovingText";
 import {Accessory} from "../types/GameData";
@@ -57,7 +56,6 @@ export default function GameMenu(){
 
     return (
         <Flex flexDir={"column"} alignItems={"center"}>
-            <SkullBackground/>
             <BackButton/>
             <Box justifyContent={"center"}>
                 <Text fontSize={"4xl"} className={"heading-4xl"}>Accessories</Text>

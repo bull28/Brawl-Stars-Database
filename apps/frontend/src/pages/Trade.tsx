@@ -11,7 +11,6 @@ import { useNavigate } from 'react-router-dom'
 import { BsPersonFill } from 'react-icons/bs'
 import { CollectionData } from '../types/CollectionData'
 import { RiLock2Line } from 'react-icons/ri'
-import SkullBackground from '../components/SkullBackground'
 import {scrollStyle} from "../themes/scrollbar";
 import BackButton from '../components/BackButton'
 import cdn from "../helpers/CDNRoute";
@@ -299,8 +298,7 @@ export default function Trade() {
     }
 
     return (
-        <Flex justifyContent={'space-evenly'} alignItems={'center'} flexDir={'column'}>      
-            <SkullBackground/>
+        <Flex justifyContent={'space-evenly'} alignItems={'center'} flexDir={'column'}>
             <BackButton/>
             <IconButton aria-label='open filter' as={HamburgerIcon} pos={'absolute'} top={0} left={0} m={5} mt={"69px"} onClick={onOpen}></IconButton>
             <Text fontSize={'4xl'} className={'heading-4xl'}>Trade</Text>

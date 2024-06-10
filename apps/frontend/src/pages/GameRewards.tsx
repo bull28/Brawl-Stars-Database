@@ -4,7 +4,6 @@ import {
     Flex, Box, Text, Image, Button, SimpleGrid,
     Modal, ModalOverlay, ModalContent, ModalBody, ModalHeader, ModalCloseButton, ModalFooter, Divider, useDisclosure, useToast
 } from "@chakra-ui/react";
-import SkullBackground from "../components/SkullBackground";
 import EventTime from "../helpers/EventTime";
 import {BrawlBoxContentsData, BrawlBoxBadgesData} from "../types/BrawlBoxData";
 import BrawlBoxContents from "../components/BrawlBoxContents";
@@ -65,7 +64,6 @@ export default function GameRewards(){
 
     return (
         <Flex flexDir={"column"} alignItems={"center"}>
-            <SkullBackground/>
             <BackButton/>
             <Box justifyContent={"center"}>
                 <Text fontSize={"4xl"} className={"heading-4xl"}>Bullgame Rewards</Text>

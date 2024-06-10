@@ -1,7 +1,6 @@
 import {useState, useEffect} from "react";
 import {Flex, Box, Text, Image, Button, useToast, Input, Select} from "@chakra-ui/react";
 import {AxiosError} from "axios";
-import SkullBackground from "../components/SkullBackground";
 import AuthRequest from "../helpers/AuthRequest";
 import {ChallengePreview, ChallengeStartData} from "../types/GameData";
 import BackButton from "../components/BackButton";
@@ -63,7 +62,6 @@ export default function ChallengeStart(){
 
     return (
         <Flex flexDir={"column"} alignItems={"center"}>
-            <SkullBackground/>
             <BackButton/>
             <Box justifyContent={"center"}>
                 <Text fontSize={"4xl"} className={"heading-4xl"}>Play Challenge</Text>

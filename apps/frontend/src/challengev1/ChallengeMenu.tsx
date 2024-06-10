@@ -3,7 +3,6 @@ import {useEffect, useState, useCallback, useRef} from "react";
 import {useNavigate} from "react-router-dom";
 import AuthRequest, {getToken} from "../helpers/AuthRequest";
 import {Flex, Text, Stack, Button} from "@chakra-ui/react";
-import SkullBackground from "../components/SkullBackground";
 import TokenDisplay from "../components/TokenDisplay";
 import {UnitImage, ChallengeName, RoomName, ChallengeWins, UnitData, RoomData, RoomDataDisplay, ChallengeData} from "./ChallengeV1Data";
 import ChallengeProgress from "./ChallengeProgress";
@@ -103,7 +102,6 @@ export default function ChallengeMenu(){
 
     return (
         <Flex flexDir={"column"} alignItems={"center"}>
-            <SkullBackground/>
             <Flex justifyContent={"center"}>
                 <Text fontSize={"4xl"} className={"heading-4xl"}>Challenges</Text>
             </Flex>
@@ -116,7 +114,7 @@ export default function ChallengeMenu(){
                         <ChallengeProgress username={resources.username} avatar={resources.avatar} avatarColor={resources.avatarColor} data={progress}/>
                         <Flex h={"3vh"}/>
                         <Flex h={"2vh"}/>
-                        <Button bgColor={"gray.800"} _hover={{"backgroundColor": "gray.600"}} onClick={() => navigate("/leaderboard")}>Challenge Leaderboard</Button>
+                        <Button bgColor={"gray.800"} _hover={{"backgroundColor": "gray.600"}} onClick={() => navigate("/challengev1/leaderboard")}>Challenge Leaderboard</Button>
                     </Flex>
                     :
                     <></>

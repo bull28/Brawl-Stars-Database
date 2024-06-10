@@ -5,7 +5,6 @@ import {AxiosError} from "axios";
 import Draggable from "../components/Draggable";
 import Droppable from "../components/Droppable";
 import AuthRequest from "../helpers/AuthRequest";
-import SkullBackground from "../components/SkullBackground";
 import BackButton from "../components/BackButton";
 import cdn from "../helpers/CDNRoute";
 
@@ -202,7 +201,6 @@ export default function ChallengeStart(){
 
     return (
         <Flex flexDir={"column"} alignItems={"center"}>
-            <SkullBackground/>
             <BackButton/>
             <Box justifyContent={"center"} mb={10}>
                 <Text fontSize={"4xl"} className={"heading-4xl"}>Create Challenge</Text>

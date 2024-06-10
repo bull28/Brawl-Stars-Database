@@ -1,5 +1,4 @@
 import {Flex, Text, Image, VStack} from "@chakra-ui/react";
-import SkullBackground from "../components/SkullBackground";
 import {useState, useEffect} from "react";
 import axios, {AxiosResponse} from "axios";
 import {getToken} from "../helpers/AuthRequest";
@@ -54,7 +53,6 @@ export default function Leaderboard(){
 
     return (
         <Flex flexDir={"column"} alignItems={"center"}>
-            <SkullBackground/>
             <Text fontSize={"4xl"} className={"heading-4xl"} mb={5}>Challenge Leaderboard</Text>
             {(data !== void 0) ? <Text fontSize={"xl"} className={"heading-xl"} mb={2}>{getRank(data, username)}</Text> : <></>}
             <Flex w={"90vw"} maxW={"1280px"} bgColor={"gray.800"} mb={2} px={3} borderRadius={"md"} wrap={"wrap"}>

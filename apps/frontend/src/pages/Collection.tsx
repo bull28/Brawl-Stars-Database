@@ -10,7 +10,6 @@ import TokenDisplay from '../components/TokenDisplay'
 import AuthRequest from '../helpers/AuthRequest'
 import { RainbowBackground, RainbowBorder } from '../themes/animations'
 import MovingText from '../components/MovingText'
-import SkullBackground from '../components/SkullBackground'
 import {UserInfoProps} from '../types/AccountData'
 import {scrollStyle} from "../themes/scrollbar";
 import BackButton from '../components/BackButton'
@@ -41,8 +40,7 @@ export default function Collection() {
     }, [loadResources]);
 
     return (
-        <Flex flexDir={'column'} w={'100%'} justifyContent={'center'} alignItems={'center'} textAlign={'center'} overflowX={'hidden'}>            
-            <SkullBackground/>
+        <Flex flexDir={'column'} w={'100%'} justifyContent={'center'} alignItems={'center'} textAlign={'center'} overflowX={'hidden'}>
             <BackButton/>
             <Text fontSize={'4xl'} className={'heading-4xl'}>Collection</Text>
             {localStorage.getItem('username') && 

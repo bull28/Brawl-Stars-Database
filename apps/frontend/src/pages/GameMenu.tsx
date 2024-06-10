@@ -2,7 +2,6 @@ import {useState, useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 import {Flex, Box, Text, Button, Link, useToast} from "@chakra-ui/react";
 import {AxiosError} from "axios";
-import SkullBackground from "../components/SkullBackground";
 import AuthRequest from "../helpers/AuthRequest";
 import MasteryDisplay from "../components/MasteryDisplay";
 import {MasteryData} from "../types/AccountData";
@@ -45,7 +44,6 @@ export default function GameMenu(){
 
     return (
         <Flex flexDir={"column"} alignItems={"center"}>
-            <SkullBackground/>
             <BackButton/>
             <Box justifyContent={"center"}>
                 <Text fontSize={"4xl"} className={"heading-4xl"}>Bullgame</Text>
