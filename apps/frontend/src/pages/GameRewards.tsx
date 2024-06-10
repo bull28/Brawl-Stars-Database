@@ -1,11 +1,9 @@
 import {useEffect, useState, useCallback} from "react";
-import {useNavigate} from "react-router-dom";
 import AuthRequest from "../helpers/AuthRequest";
 import {
-    Flex, Box, Text, Image, Button, SimpleGrid, IconButton,
+    Flex, Box, Text, Image, Button, SimpleGrid,
     Modal, ModalOverlay, ModalContent, ModalBody, ModalHeader, ModalCloseButton, ModalFooter, Divider, useDisclosure, useToast
 } from "@chakra-ui/react";
-import {ArrowBackIcon} from "@chakra-ui/icons";
 import SkullBackground from "../components/SkullBackground";
 import EventTime from "../helpers/EventTime";
 import {BrawlBoxContentsData, BrawlBoxBadgesData} from "../types/BrawlBoxData";
@@ -13,6 +11,7 @@ import BrawlBoxContents from "../components/BrawlBoxContents";
 import {UserInfoProps} from "../types/AccountData";
 import {Reward} from "../types/GameData";
 import TokenDisplay from "../components/TokenDisplay";
+import BackButton from "../components/BackButton";
 import cdn from "../helpers/CDNRoute";
 
 interface ClaimResult{
@@ -30,7 +29,6 @@ export default function GameRewards(){
         AuthRequest<UserInfoProps>("/resources", {setState: setResources}, false);
     }, []);
 
-    const navigate = useNavigate();
     const toast = useToast();
     const {isOpen, onOpen, onClose} = useDisclosure();
     const {isOpen: isOpen2, onOpen: onOpen2, onClose: onClose2} = useDisclosure();
@@ -68,7 +66,7 @@ export default function GameRewards(){
     return (
         <Flex flexDir={"column"} alignItems={"center"}>
             <SkullBackground/>
-            <IconButton pos={["relative", "absolute"]} top={["0", "2vh"]} left={["0", "2vh"]} alignSelf={"flex-start"} as={ArrowBackIcon} aria-label="Back to game menu" onClick={() => {navigate("/bullgame")}} cursor={"pointer"}/>
+            <BackButton/>
             <Box justifyContent={"center"}>
                 <Text fontSize={"4xl"} className={"heading-4xl"}>Bullgame Rewards</Text>
             </Box>

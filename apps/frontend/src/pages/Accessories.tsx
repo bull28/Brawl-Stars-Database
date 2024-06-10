@@ -5,6 +5,7 @@ import SkullBackground from "../components/SkullBackground";
 import AuthRequest from "../helpers/AuthRequest";
 import MovingText from "../components/MovingText";
 import {Accessory} from "../types/GameData";
+import BackButton from "../components/BackButton";
 import cdn from "../helpers/CDNRoute";
 
 export default function GameMenu(){
@@ -57,6 +58,7 @@ export default function GameMenu(){
     return (
         <Flex flexDir={"column"} alignItems={"center"}>
             <SkullBackground/>
+            <BackButton/>
             <Box justifyContent={"center"}>
                 <Text fontSize={"4xl"} className={"heading-4xl"}>Accessories</Text>
             </Box>

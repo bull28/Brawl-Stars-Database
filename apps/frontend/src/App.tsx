@@ -17,7 +17,7 @@ const Shop = lazy(() => import('./pages/Shop'));
 const AudioPlayer = lazy(() => import('./components/AudioPlayer'));
 const ChallengeMenu = lazy(() => import('./challengev1/ChallengeMenu'));
 const Accessories = lazy(() => import('./pages/Accessories'));
-const Leaderboard = lazy(() => import('./pages/Leaderboard'));
+const Leaderboard = lazy(() => import('./challengev1/Leaderboard'));
 const GameMenu = lazy(() => import('./pages/GameMenu'));
 const GameRewards = lazy(() => import('./pages/GameRewards'));
 const GameEnemies = lazy(() => import('./pages/GameEnemies'));
@@ -34,7 +34,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Suspense fallback={<></>}><Home/></Suspense>}/>
           <Route path="/brawlers" element={<Suspense fallback={<></>}><Brawlers/></Suspense>}/>
-          <Route path="brawlers/:brawler" element={<Suspense fallback={<></>}><Brawler/></Suspense>}/>
+          <Route path="/brawlers/:brawler" element={<Suspense fallback={<></>}><Brawler/></Suspense>}/>
           <Route path="/events" element={<Suspense fallback={<></>}><Events/></Suspense>}/>
           <Route path="/gallery" element={<Suspense fallback={<></>}><Gallery/></Suspense>}/>
           <Route path="/login" element={<Suspense fallback={<></>}><Login/></Suspense>}/>
@@ -44,14 +44,14 @@ function App() {
           <Route path="/trade" element={<Suspense fallback={<></>}><Trade/></Suspense>}/>
           <Route path="/mytrades" element={<Suspense fallback={<></>}><MyTrades/></Suspense>}/>
           <Route path="/shop" element={<Suspense fallback={<></>}><Shop/></Suspense>}/>
-          <Route path="/accessories" element={<Suspense fallback={<></>}><Accessories/></Suspense>}/>
           <Route path="/bullgame" element={<Suspense fallback={<></>}><GameMenu/></Suspense>}/>
+          <Route path="/bullgame/accessories" element={<Suspense fallback={<></>}><Accessories/></Suspense>}/>
           <Route path="/bullgame/rewards" element={<Suspense fallback={<></>}><GameRewards/></Suspense>}/>
           <Route path="/bullgame/enemies" element={<Suspense fallback={<></>}><GameEnemies/></Suspense>}/>
           <Route path="/bullgame/challenges" element={<Suspense fallback={<></>}><ChallengeStart/></Suspense>}/>
-          <Route path="/bullgame/challenges/create" element={<Suspense fallback={<></>}><ChallengeCreate/></Suspense>}/>
+          <Route path="/bullgame/createchallenge" element={<Suspense fallback={<></>}><ChallengeCreate/></Suspense>}/>
           <Route path="/challengev1" element={<Suspense fallback={<></>}><ChallengeMenu/></Suspense>}/>
-          <Route path="/leaderboard" element={<Suspense fallback={<></>}><Leaderboard/></Suspense>}/>
+          <Route path="/challengev1/leaderboard" element={<Suspense fallback={<></>}><Leaderboard/></Suspense>}/>
           <Route path="*" element={<Suspense fallback={<></>}><NotFound/></Suspense>}/>        
         </Routes>
       </BrowserRouter>

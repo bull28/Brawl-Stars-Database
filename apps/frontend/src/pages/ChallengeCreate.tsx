@@ -1,13 +1,12 @@
 import {useState, useEffect} from "react";
-import {useNavigate} from "react-router-dom";
-import {ArrowBackIcon} from "@chakra-ui/icons";
-import {Flex, Box, Text, Image, Button, IconButton, Grid, useToast} from "@chakra-ui/react";
+import {Flex, Box, Text, Image, Button, Grid, useToast} from "@chakra-ui/react";
 import {DndContext, DragEndEvent, DragOverlay, DragStartEvent} from "@dnd-kit/core";
 import {AxiosError} from "axios";
 import Draggable from "../components/Draggable";
 import Droppable from "../components/Droppable";
 import AuthRequest from "../helpers/AuthRequest";
 import SkullBackground from "../components/SkullBackground";
+import BackButton from "../components/BackButton";
 import cdn from "../helpers/CDNRoute";
 
 interface Upgrades{
@@ -47,7 +46,6 @@ export default function ChallengeStart(){
     const [activeDisplay, setActiveDisplay] = useState<string | undefined>();
     const [selected, setSelected] = useState<Record<string, Record<string, number>>>({});
 
-    const navigate = useNavigate();
     const toast = useToast();
 
     useEffect(() => {
@@ -205,7 +203,7 @@ export default function ChallengeStart(){
     return (
         <Flex flexDir={"column"} alignItems={"center"}>
             <SkullBackground/>
-            <IconButton pos={["relative", "absolute"]} top={["0", "2vh"]} left={["0", "2vh"]} alignSelf={"flex-start"} as={ArrowBackIcon} aria-label="Back to game menu" onClick={() => {navigate("/bullgame")}} cursor={"pointer"}/>
+            <BackButton/>
             <Box justifyContent={"center"} mb={10}>
                 <Text fontSize={"4xl"} className={"heading-4xl"}>Create Challenge</Text>
             </Box>

@@ -1,14 +1,14 @@
-import { Box, Button, Divider, Flex, IconButton, Image, keyframes, Link, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, ScaleFade, SimpleGrid, Text, useDisclosure, Stack } from '@chakra-ui/react'
+import { Box, Button, Divider, Flex, Image, keyframes, Link, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, ScaleFade, SimpleGrid, Text, useDisclosure, Stack } from '@chakra-ui/react'
 import { useEffect, useState, useCallback } from 'react'
 import { HiOutlineSwitchHorizontal } from 'react-icons/hi'
 import AuthRequest from '../helpers/AuthRequest'
 import { PinObject, UserTradeData } from '../types/TradeData'
-import { ArrowBackIcon, ExternalLinkIcon } from '@chakra-ui/icons'
-import { useNavigate } from 'react-router-dom'
+import { ExternalLinkIcon } from '@chakra-ui/icons'
 import SkullBackground from '../components/SkullBackground'
 import {UserInfoProps} from '../types/AccountData'
 import EventTime from "../helpers/EventTime";
 import {scrollStyle} from "../themes/scrollbar";
+import BackButton from "../components/BackButton";
 import cdn from "../helpers/CDNRoute";
 
 interface TradeAcceptData{
@@ -37,7 +37,6 @@ export default function MyTrades() {
     const [trades, setTrades] = useState<TradeCategories | undefined>(undefined);
 
     const {isOpen, onOpen, onClose} = useDisclosure();
-    const navigate = useNavigate();
 
     const contentTransition = keyframes`
         from {transform: scale(0.3);}
@@ -91,8 +90,8 @@ export default function MyTrades() {
     return (
     <Flex flexDir={'column'} alignItems={'center'} overflow={'hidden'} pb={10}>
         <SkullBackground/>
+        <BackButton path={"/trade"}/>
         <Text fontSize={'4xl'} className={'heading-4xl'} mb={3}>My Trades</Text>
-        <IconButton pos={'absolute'} top={'2vh'} left={'2vh'} as={ArrowBackIcon} aria-label="back to trades menu" onClick={() => {navigate('/trade')}} cursor={'pointer'}/>
         {trades !== void 0 ? (Object.keys(trades).map((key) => {
             const value = trades[key as keyof TradeCategories];
 

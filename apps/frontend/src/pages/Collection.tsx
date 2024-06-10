@@ -13,6 +13,7 @@ import MovingText from '../components/MovingText'
 import SkullBackground from '../components/SkullBackground'
 import {UserInfoProps} from '../types/AccountData'
 import {scrollStyle} from "../themes/scrollbar";
+import BackButton from '../components/BackButton'
 import cdn from "../helpers/CDNRoute";
 
 export default function Collection() {
@@ -37,33 +38,33 @@ export default function Collection() {
 
     useEffect(() => {
         loadResources();
-    }, [loadResources])
+    }, [loadResources]);
 
     return (
         <Flex flexDir={'column'} w={'100%'} justifyContent={'center'} alignItems={'center'} textAlign={'center'} overflowX={'hidden'}>            
             <SkullBackground/>
-            <Text fontSize={'4xl'} className={'heading-4xl'} >Collection</Text>
+            <BackButton/>
+            <Text fontSize={'4xl'} className={'heading-4xl'}>Collection</Text>
             {localStorage.getItem('username') && 
                 <Flex mt={10} justifyContent={'center'}>
                     <Stack w={'95%'} spacing={'5'} direction={['column', 'column', 'column', 'row']} alignItems={'center'}>
                     <Flex justifyContent={'center'} textAlign={'center'} alignItems={'center'} p={3} borderRadius={'lg'} flexDir={'column'}>
                         <Text fontSize={'2xl'} className={'heading-2xl'}  mb={3}>Collection Score</Text>
                         <Flex animation={(data?.avatarColor === 'rainbow') ? `${RainbowBorder()} 12s infinite` : ''} bgColor={(data?.avatarColor === 'rainbow') ? 'black' : data?.avatarColor} flexDir={'column'} p={10}  border={'3px solid black'} mb={5}>
-                            {(data?.collectionScore === 'S+') ?
-                                <MovingText title={data?.collectionScore || ""} color1="#fdf542" color2="#ff9005" fontSize={'2xl'}/>
-                                :
-                                <Text  className={'heading-2xl'} fontSize={'2xl'}>{data?.collectionScore}</Text>
-                            }
-                            
-                            <Tooltip label={`${data?.scoreProgress && (data?.scoreProgress * 100).toFixed(1)}% to next letter grade`}>
-                                <Box py={2} mt={1} mb={5}>
-                                    <Box w={'100%'} h={'6px'} bgColor={'white'} borderRadius={'sm'}>
-                                        <Box borderRadius={'sm'} h={'6px'} w={data ? `${data?.scoreProgress * 100}%` : '0%'} animation={(data?.avatarColor === 'rainbow') ? `${RainbowBackground()} 12s infinite` : ''} bgColor={'blue.400'}></Box>                            
-                                    </Box>
-                                </Box>
-                            </Tooltip>
-                            
                             {data !== void 0 ?
+                                <>
+                                {(data.collectionScore === 'S+') ?
+                                    <MovingText title={data.collectionScore || ""} color1="#fdf542" color2="#ff9005" fontSize={'2xl'}/>
+                                    :
+                                    <Text  className={'heading-2xl'} fontSize={'2xl'}>{data.collectionScore}</Text>
+                                }
+                                <Tooltip label={`${data.scoreProgress && (data.scoreProgress * 100).toFixed(1)}% to next letter grade`}>
+                                    <Box py={2} mt={1} mb={5}>
+                                        <Box w={'100%'} h={'6px'} bgColor={'white'} borderRadius={'sm'}>
+                                            <Box borderRadius={'sm'} h={'6px'} w={`${data.scoreProgress * 100}%`} animation={(data.avatarColor === 'rainbow') ? `${RainbowBackground()} 12s infinite` : ''} bgColor={'blue.400'}></Box>                            
+                                        </Box>
+                                    </Box>
+                                </Tooltip>
                                 <VStack spacing={1}>
                                     <Text className={'heading-md'}  fontSize={'md'}>Brawlers Unlocked:</Text>
                                     {(data.unlockedBrawlers >= data.totalBrawlers) ?
@@ -96,6 +97,7 @@ export default function Collection() {
                                         <Text fontSize={'lg'} className={'heading-lg'} color={'white'}>{`${data.unlockedAccessories}/${data.totalAccessories}`}</Text>
                                     }
                                 </VStack>
+                                </>
                                 :
                                 <></>
                             }

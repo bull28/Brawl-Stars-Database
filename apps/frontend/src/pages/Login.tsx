@@ -5,6 +5,7 @@ import {Flex, Box, FormControl, FormLabel, Input, FormHelperText, Text, Alert, A
 import {BsFillPersonFill} from 'react-icons/bs';
 import {RiKeyFill} from 'react-icons/ri';
 import { changeToken } from "../helpers/AuthRequest";
+import BackButton from "../components/BackButton";
 import api from "../helpers/APIRoute";
 
 function Login(){
@@ -47,9 +48,9 @@ function Login(){
     }
 
     return(
-        <>
-        <Box w={'100vw'} h={'100vh'} position={'absolute'} zIndex={-1} bgColor={(colorMode === 'dark') ? '' : 'blue.100'}></Box>
         <Flex flexDir={'column'} alignItems={'center'} justifyContent={'center'} w={'100vw'} h={'90vh'}>
+            {/* <Box w={'100vw'} h={'100vh'} position={'absolute'} zIndex={-1} bgColor={(colorMode === 'dark') ? '' : 'blue.100'}></Box> */}
+            <BackButton/>
             <Text fontSize={'3xl'} className={'heading-3xl'}  mb={10}>Log In</Text>
             <Box w={['80%', '50%']} p={6} borderRadius={'xl'} maxW={'500px'} boxShadow={'rgba(149, 157, 165, 0.2) 0px 8px 24px'} bgColor={(colorMode === 'dark') ? 'gray.800' : 'white'}>
                 <form onSubmit={handleLogin}>
@@ -75,7 +76,6 @@ function Login(){
                 </form>
             </Box>    
         </Flex>
-        </>
     )
 }
 

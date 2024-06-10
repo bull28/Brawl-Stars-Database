@@ -1,20 +1,17 @@
 import {useState, useEffect} from "react";
-import {useNavigate} from "react-router-dom";
-import {ArrowBackIcon} from "@chakra-ui/icons";
-import {Flex, Box, Text, Image, IconButton, SimpleGrid, Grid} from "@chakra-ui/react";
+import {Flex, Box, Text, Image, SimpleGrid, Grid} from "@chakra-ui/react";
 import axios, {AxiosResponse} from "axios";
 import {Enemy} from "../types/GameData";
 import SkullBackground from "../components/SkullBackground";
 import {scrollStyle} from "../themes/scrollbar";
 import EnemyAttack from "../components/EnemyAttack";
+import BackButton from "../components/BackButton";
 import api from "../helpers/APIRoute";
 import cdn from "../helpers/CDNRoute";
 
 export default function GameEnemies(){
     const [enemies, setEnemies] = useState<Enemy[]>([]);
     const [currentEnemy, setCurrentEnemy] = useState<Enemy | undefined>();
-
-    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get<{}, AxiosResponse<Enemy[]>>(`${api}/challenge/enemies`)
@@ -47,7 +44,7 @@ export default function GameEnemies(){
     return (
         <Flex flexDir={"column"} alignItems={"center"}>
             <SkullBackground/>
-            <IconButton pos={["relative", "absolute"]} top={["0", "2vh"]} left={["0", "2vh"]} alignSelf={"flex-start"} as={ArrowBackIcon} aria-label="Back to game menu" onClick={() => {navigate("/bullgame")}} cursor={"pointer"}/>
+            <BackButton/>
             <Box justifyContent={"center"}>
                 <Text fontSize={"4xl"} className={"heading-4xl"}>Bullgame Enemies</Text>
             </Box>

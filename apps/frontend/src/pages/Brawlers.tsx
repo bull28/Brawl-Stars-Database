@@ -4,6 +4,7 @@ import axios, {AxiosResponse} from "axios";
 import BrawlerView from "../components/BrawlerView";
 import {Brawler} from "../types/BrawlerData";
 import SkullBackground from "../components/SkullBackground";
+import BackButton from "../components/BackButton";
 import api from "../helpers/APIRoute";
 
 export default function Brawlers(){
@@ -22,6 +23,7 @@ export default function Brawlers(){
     return (
         <Flex w={"100%"} flexDir={"column"} alignItems={"center"}>
             <SkullBackground/>
+            <BackButton/>
             <Text fontSize={"4xl"} className={"heading-4xl"}>Brawlers</Text>
             <Flex w={"95%"} mt={5} mb={[3, 4, 5, 6, 8, 10]} justifyContent={"center"}>
                 <SimpleGrid columns={[2, 3, 4, 5, 6, 7]} spacing={[3, 4, 5, 6, 8, 10]}>

@@ -3,13 +3,13 @@ import { useState, useEffect, useCallback } from 'react'
 import { BsEmojiLaughing, BsPalette, BsPerson } from 'react-icons/bs'
 import { MdOutlineGeneratingTokens } from 'react-icons/md'
 import { BiLandscape } from 'react-icons/bi'
-import MovingText from '../components/MovingText'
 import ShopItem from '../components/ShopItem'
 import AuthRequest from '../helpers/AuthRequest'
 import { RainbowBorder } from '../themes/animations'
 import { UserInfoProps } from '../types/AccountData'
 import ShopData from '../types/ShopData'
 import EventTime from '../helpers/EventTime'
+import BackButton from "../components/BackButton";
 import cdn from "../helpers/CDNRoute";
 
 interface Timer{
@@ -110,7 +110,8 @@ export default function Shop() {
             <Flex zIndex={'-1'} w={'100%'} h={'100%'} pos={'fixed'} alignItems={'center'} justifyContent={'center'}>
                 <Image objectFit={'cover'} w={'100%'} h={'100%'} src={require(`../assets/shopbackground${Math.floor(((((new Date().getMonth() - 2) % 12) + 12) % 12) / 3)}.webp`)}/>
             </Flex>
-            <MovingText title="Shop" color1="#fdf542" color2="#ff9005" fontSize='4xl'/>
+            <BackButton/>
+            <Text fontSize={"4xl"} className={"heading-4xl"}>Shop</Text>
             {userInfo &&
                 <>
                 <Flex pos={['relative', 'relative', 'absolute', 'absolute', 'absolute']} right={3} top={3}>

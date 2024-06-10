@@ -1,11 +1,10 @@
 import {useState, useEffect} from "react";
-import {useNavigate} from "react-router-dom";
-import {ArrowBackIcon} from "@chakra-ui/icons";
-import {Flex, Box, Text, Image, Button, useToast, IconButton, Input, Select} from "@chakra-ui/react";
+import {Flex, Box, Text, Image, Button, useToast, Input, Select} from "@chakra-ui/react";
 import {AxiosError} from "axios";
 import SkullBackground from "../components/SkullBackground";
 import AuthRequest from "../helpers/AuthRequest";
 import {ChallengePreview, ChallengeStartData} from "../types/GameData";
+import BackButton from "../components/BackButton";
 import api from "../helpers/APIRoute";
 import cdn from "../helpers/CDNRoute";
 
@@ -14,7 +13,6 @@ export default function ChallengeStart(){
     const [challengeid, setChallengeid] = useState<string>("-1");
     const [challenge, setChallenge] = useState<ChallengeStartData | undefined>();
 
-    const navigate = useNavigate();
     const toast = useToast();
 
     useEffect(() => {
@@ -66,7 +64,7 @@ export default function ChallengeStart(){
     return (
         <Flex flexDir={"column"} alignItems={"center"}>
             <SkullBackground/>
-            <IconButton pos={["relative", "absolute"]} top={["0", "2vh"]} left={["0", "2vh"]} alignSelf={"flex-start"} as={ArrowBackIcon} aria-label="Back to game menu" onClick={() => {navigate("/bullgame")}} cursor={"pointer"}/>
+            <BackButton/>
             <Box justifyContent={"center"}>
                 <Text fontSize={"4xl"} className={"heading-4xl"}>Play Challenge</Text>
             </Box>

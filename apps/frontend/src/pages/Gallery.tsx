@@ -4,6 +4,7 @@ import SkullBackground from "../components/SkullBackground";
 import AuthRequest from "../helpers/AuthRequest";
 import {CosmeticData, ThemeProps} from "../types/CosmeticData";
 import {scrollStyle} from "../themes/scrollbar";
+import BackButton from "../components/BackButton";
 import cdn from "../helpers/CDNRoute";
 
 interface Category{
@@ -78,6 +79,7 @@ export default function Gallery() {
     return (
     <Flex alignItems={"center"} flexDir={"column"} justifyContent={"space-between"} maxH={"100vh"}>      
         {cosmetics && <SkullBackground bg={cosmetics.background} icon={cosmetics.icon}/>}
+        <BackButton/>
         <Flex flexDir={"column"} alignItems={"center"}>
             <Text fontSize={"4xl"} className={"heading-4xl"}>Gallery</Text>
         </Flex>

@@ -50,8 +50,8 @@ export default function Brawler(){
     <>
     {data !== void 0 ?
         <Flex flexDir={"column"} w={"100%"} maxW={"100vw"} justifyContent={"center"} alignItems={"center"} bgColor={data.rarity.color} overflowX={"hidden"}>
-            <Link pos={"absolute"} left={[0, 10]} top={[0, 5]} href={"/brawlers"}>
-                <Icon as={ArrowBackIcon} fontSize={"3xl"} color={"#fff"}/>
+            <Link pos={"absolute"} left={[0, "0.5em"]} top={[0, "0.5em"]} href={"/brawlers"}>
+                <Icon as={ArrowBackIcon} fontSize={"2.5em"} color={"#fff"}/>
             </Link>
             <Flex w={"100%"} justifyContent={"center"} mt={3} mb={5}>
                 <Text fontSize={"3xl"} className={"heading-3xl"} color={"#fff"}>{data.displayName}</Text>

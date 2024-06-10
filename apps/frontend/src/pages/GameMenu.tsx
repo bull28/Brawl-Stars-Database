@@ -6,6 +6,7 @@ import SkullBackground from "../components/SkullBackground";
 import AuthRequest from "../helpers/AuthRequest";
 import MasteryDisplay from "../components/MasteryDisplay";
 import {MasteryData} from "../types/AccountData";
+import BackButton from "../components/BackButton";
 import api from "../helpers/APIRoute";
 
 export default function GameMenu(){
@@ -45,6 +46,7 @@ export default function GameMenu(){
     return (
         <Flex flexDir={"column"} alignItems={"center"}>
             <SkullBackground/>
+            <BackButton/>
             <Box justifyContent={"center"}>
                 <Text fontSize={"4xl"} className={"heading-4xl"}>Bullgame</Text>
             </Box>
@@ -55,9 +57,9 @@ export default function GameMenu(){
                         <Flex flexDir={"column"} alignItems={"center"} fontSize={"lg"} gap={1}>
                             <Button minW={["50%", "20em"]} bgColor={"gray.800"} _hover={{"backgroundColor": "gray.600"}} fontSize={"inherit"} onClick={() => window.location.href = `${api}/bullgame`}>Play Classic Mode</Button>
                             <Button minW={["50%", "20em"]} bgColor={"gray.800"} _hover={{"backgroundColor": "gray.600"}} fontSize={"inherit"} onClick={() => navigate("/bullgame/challenges")}>Play Challenge</Button>
-                            <Button minW={["50%", "20em"]} bgColor={"gray.800"} _hover={{"backgroundColor": "gray.600"}} fontSize={"inherit"} onClick={() => navigate("/bullgame/challenges/create")}>Create Challenge</Button>
+                            <Button minW={["50%", "20em"]} bgColor={"gray.800"} _hover={{"backgroundColor": "gray.600"}} fontSize={"inherit"} onClick={() => navigate("/bullgame/createchallenge")}>Create Challenge</Button>
                             <Button minW={["50%", "20em"]} bgColor={"gray.800"} _hover={{"backgroundColor": "gray.600"}} fontSize={"inherit"} onClick={() => navigate("/bullgame/rewards")}>{`Claim Rewards ${rewardCount > 0 ? `(${rewardCount})` : ""}`}</Button>
-                            <Button minW={["50%", "20em"]} bgColor={"gray.800"} _hover={{"backgroundColor": "gray.600"}} fontSize={"inherit"} onClick={() => navigate("/accessories")}>View Accessories</Button>
+                            <Button minW={["50%", "20em"]} bgColor={"gray.800"} _hover={{"backgroundColor": "gray.600"}} fontSize={"inherit"} onClick={() => navigate("/bullgame/accessories")}>View Accessories</Button>
                             <Button minW={["50%", "20em"]} bgColor={"gray.800"} _hover={{"backgroundColor": "gray.600"}} fontSize={"inherit"} onClick={() => navigate("/bullgame/enemies")}>View Game Enemies</Button>
                         </Flex>
                         <MasteryDisplay data={mastery}/>
