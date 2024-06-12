@@ -66,17 +66,26 @@ const destinations: {levelid: number; weight: number; background: string; displa
 ];
 const offenseUpgrades: {[k in keyof PlayerUpgrades["offense"]]: [number, number][];} = {
     startingPower: [[0, 0]],
-    startingGears: [[0, 2], [6, 3], [12, 4], [18, 5], [24, 6]],
+    startingGears: [[0, 3], [2, 4]],
     powerPerStage: [
         [ 0,  0],
         [ 1,  3], [ 3,  4], [ 5,  5],
         [ 7,  6], [ 9,  9], [11, 12],
-        [13, 18], [15, 24], [17, 30],
-        [19, 36], [21, 42], [23, 48],
-        [25, 56], [27, 64], [29, 72]
+        [13, 15], [15, 18], [17, 22],
+        [19, 26], [21, 30], [23, 36],
+        [25, 42], [27, 48], [29, 56]
     ],
-    gearsPerStage: [[0, 0], [10, 1], [20, 2], [30, 3]],
-    maxAccessories: [[0, 0], [6, 1], [12, 2], [18, 3], [24, 4], [30, 5]],
+    gearsPerStage: [[0, 0], [6, 1], [12, 2], [24, 3], [28, 4]],
+    maxExtraPower: [
+        [ 0,   0],
+        [ 1,   3], [ 3,   6], [ 5,  9],
+        [ 7,  12], [ 9,  18], [11,  24],
+        [13,  30], [15,  36], [17,  48],
+        [19,  60], [21,  78], [23, 102],
+        [25, 126], [27, 150], [29, 180]
+    ],
+    maxExtraGears: [[0, 0], [6, 1], [12, 2], [16, 4], [24, 6], [26, 9], [28, 12]],
+    maxAccessories: [[0, 0], [4, 2], [10, 3], [20, 4], [30, 5]],
     health: [[0, 100]],
     damage: [[0, 100]],
     healing: [[0, 100]],
@@ -217,7 +226,7 @@ enemyValues.forEach((value, key) => {
 function getPlayerUpgrades(masteryLevel: number): PlayerUpgrades{
     const upgrades: PlayerUpgrades = {
         offense: {
-            startingPower: 0, startingGears: 0, powerPerStage: 0, gearsPerStage: 0, maxAccessories: 0,
+            startingPower: 0, startingGears: 0, powerPerStage: 0, gearsPerStage: 0, maxExtraPower: 0, maxExtraGears: 0, maxAccessories: 0,
             health: 100, damage: 100, healing: 100, speed: 0, ability: 1, lifeSteal: 0
         },
         defense: {
@@ -254,6 +263,30 @@ function getPlayerUpgrades(masteryLevel: number): PlayerUpgrades{
     upgrades.defense.enemyStats = defenseUpgradesOdd[oddIndex].enemyStats.map((value) => value).slice(0, upgrades.defense.maxEnemies.length);
 
     return upgrades;
+}
+
+function stageResourceRewards(stages: number, rewardPerStage: number, maxExtraReward: number): number[]{
+    stages = Math.floor(stages);
+    if (stages <= 0){
+        return [];
+    } if (stages === 1){
+        return [0];
+    }
+
+    // Get power points or gears rewards for all stages using the player's upgrades
+    const rewards: number[] = [];
+    const remainder = maxExtraReward % (stages - 1);
+    for (let x = 0; x < stages - 1; x++){
+        let r = Math.floor(maxExtraReward / (stages - 1));
+        if (x + remainder >= stages - 1){
+            // This adds the remaining rewards to the last few stages instead of the first few stages
+            r++;
+        }
+        rewards.push(Math.min(r, rewardPerStage));
+    }
+    // The last stage always has no reward
+    rewards.push(0);
+    return rewards;
 }
 
 export function getChallengeUpgrades(masteryLevel: number): ChallengeUpgrades{
@@ -425,19 +458,38 @@ export function getStaticGameMod(key: string, masteryLevel: number, accessories:
     const playerAccessories = accessories.filter((value) => typeof value === "string");
     if (key === "expert"){
         // Expert levels (difficulties 7 to 10)
+
+        // In expert levels, there is a base amount of power and gears given to the player (amount is similar to
+        // difficulty 6). The player's extra power and gears from upgrades is then added to that base amount.
+        const stages: Required<ChallengeGameMod>["stages"] = [];
+        const stageData = staticChallenges.expertLevels.stages;
+        const powerRewards = stageResourceRewards(stageData.length, upgrades.powerPerStage, upgrades.maxExtraPower);
+        const gearsRewards = stageResourceRewards(stageData.length, upgrades.gearsPerStage, upgrades.maxExtraGears);
+        for (let x = 0; x < stageData.length; x++){
+            stages.push({
+                completion: stageData[x].completion,
+                time: stageData[x].time,
+                powerReward: stageData[x].powerReward + (x < powerRewards.length ? powerRewards[x] : 0),
+                gearsReward: stageData[x].gearsReward + (x < gearsRewards.length ? gearsRewards[x] : 0)
+            });
+        }
+        
         return {
-            options: {maxAccessories: upgrades.maxAccessories},
+            options: {startingGears: upgrades.startingGears, bonusResources: false, maxAccessories: upgrades.maxAccessories},
             difficulties: staticChallenges.expertLevels.difficulties,
+            stages: stages,
             levels: staticChallenges.expertLevels.levels,
-            playerAccessories: playerAccessories
+            playerAccessories: playerAccessories,
+            playerUpgradeValues: staticChallenges.expertLevels.playerUpgradeValues
         };
     } else if (key === "expertpractice"){
         // Expert levels where all accessories are unlocked but score cannot be saved
         return {
-            options: staticChallenges.expertLevels.options,
+            options: staticChallenges.expertPractice.options,
             difficulties: staticChallenges.expertLevels.difficulties,
             levels: staticChallenges.expertLevels.levels,
-            playerAccessories: staticChallenges.expertLevels.playerAccessories
+            playerAccessories: staticChallenges.expertPractice.playerAccessories,
+            playerUpgradeValues: staticChallenges.expertLevels.playerUpgradeValues
         };
     } else if (enemyValues.has(key) === true){
         const enemyName = enemyValues.get(key)!.displayName;
@@ -491,10 +543,12 @@ export function getKeyGameMod(key: string, masteryLevel: number, accessories: Da
     // completionScore and timeScore are guaranteed to have length = gameStages
 
     // Get the player upgrade values from their mastery level
-    const player = getPlayerUpgrades(masteryLevel).offense;
+    const upgrades = getPlayerUpgrades(masteryLevel).offense;
 
     // Insert objects into the enemy stats, stages, and levels. Each of these arrays must have length equal to the
     // number of stages.
+    const powerRewards = stageResourceRewards(gameStages, upgrades.powerPerStage, upgrades.maxExtraPower);
+    const gearsRewards = stageResourceRewards(gameStages, upgrades.gearsPerStage, upgrades.maxExtraGears);
     for (let x = 0; x < gameStages; x++){
         if (x < data.stats.length){
             enemyStats.push(data.stats[x]);
@@ -504,11 +558,12 @@ export function getKeyGameMod(key: string, masteryLevel: number, accessories: Da
             enemyStats.push(2);
         }
 
+        // Rewards are given for all stages except for the last stage
         stages.push({
             completion: completionScore[x],
             time: timeScore[x],
-            powerReward: player.powerPerStage,
-            gearsReward: player.gearsPerStage
+            powerReward: x < powerRewards.length ? powerRewards[x] : 0,
+            gearsReward: x < gearsRewards.length ? gearsRewards[x] : 0
         });
 
         if (x < destinations.length || destinations.length > 0){
@@ -563,11 +618,11 @@ export function getKeyGameMod(key: string, masteryLevel: number, accessories: Da
             key: key,
             gameMode: 2,
             gameName: `${data.owner}'s Challenge`,
-            startingPower: player.startingPower,
-            startingGears: player.startingGears,
+            startingPower: upgrades.startingPower,
+            startingGears: upgrades.startingGears,
             bonusResources: false,
             addBonusEnemies: false,
-            maxAccessories: player.maxAccessories,
+            maxAccessories: upgrades.maxAccessories,
             maxReportLevels: 8
         },
         difficulties: [{
@@ -591,12 +646,12 @@ export function getKeyGameMod(key: string, masteryLevel: number, accessories: Da
         },
         playerAccessories: playerAccessories,
         playerUpgradeValues: {
-            health: {value: [player.health, 0.08]},
-            damage: {value: [player.damage, 0.08]},
-            healing: {value: [player.healing, 0.02]},
-            speed: {value: [player.speed, 1]},
-            ability: {value: [player.ability, -10]},
-            lifeSteal: {value: [player.lifeSteal, 0.02]}
+            health: {value: [upgrades.health, 0.08]},
+            damage: {value: [upgrades.damage, 0.08]},
+            healing: {value: [upgrades.healing, 0.02]},
+            speed: {value: [upgrades.speed, 1]},
+            ability: {value: [upgrades.ability, -10]},
+            lifeSteal: {value: [upgrades.lifeSteal, 0.02]}
         }
     };
 }

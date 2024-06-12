@@ -155,13 +155,13 @@ function getFinalScore(reports: number[], enemyCounts: number[]): number[]{
  * @returns false if the report is definitely invalid, true if it is reasonable enough
  */
 export function validateReport(report: GameReport): boolean{
-    // Last updated: version 75
+    // Last updated: version 77
 
     if (report.length !== 3){
         // Invalid report length
         return false;
     }
-    if (report[0] < 75){
+    if (report[0] < 77){
         // Old report version
         return false;
     }
@@ -299,7 +299,7 @@ export function validateReport(report: GameReport): boolean{
 
         // The upgrades cannot be more than each upgrade type limit
         const upgrades = data.slice(format.upgrades[0], format.upgrades[1]);
-        const maxUpgrades = [16, 16, 10, 7, 5, 6];
+        const maxUpgrades = difficulty >= 6 ? [20, 20, 12, 8, 6, 7] : [16, 16, 10, 7, 5, 6];
         if (upgrades.length < maxUpgrades.length){
             return false;
         }

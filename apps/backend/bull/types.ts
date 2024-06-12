@@ -740,7 +740,9 @@ export interface EnemyData{
  */
 type GameModUpgradeValues = {
     [k in "health" | "damage" | "healing" | "speed" | "ability" | "lifeSteal"]: {
-        value: [number, number];
+        value?: [number, number];
+        cost?: number[];
+        maxLevel?: number;
     };
 };
 
@@ -753,6 +755,8 @@ export type PlayerUpgrades = {
         startingGears: number;
         powerPerStage: number;
         gearsPerStage: number;
+        maxExtraPower: number;
+        maxExtraGears: number;
         maxAccessories: number;
     } & {
         [k in keyof GameModUpgradeValues]: number;

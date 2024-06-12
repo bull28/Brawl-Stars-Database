@@ -188,21 +188,31 @@ export default function GameRewards(){
                             </Box>
                             <Divider my={1}/>
                             <Flex flexDir={["column", "row"]} w={"100%"} mt={5} fontSize={"md"} className={"heading-md"}>
+                                {reward.cost > 0 ?
+                                <>
+                                    <Box flex={1} h={"fit-content"} p={[0, 2]}>
+                                        <Text textAlign={"center"}>Mastery Only</Text>
+                                        <Button w={"100%"} onClick={() => {onClose(); claimReward(reward.reportid, false);}}>
+                                            <Text fontSize={"xl"} color={"#5f5"}>FREE</Text>
+                                        </Button>
+                                    </Box>
+                                    <Box flex={1} h={"fit-content"} p={[0, 2]}>
+                                        <Text textAlign={"center"}>All Rewards</Text>
+                                        <Button w={"100%"} onClick={() => {onClose(); claimReward(reward.reportid, true);}}>
+                                            <Flex fontSize={"xl"}>
+                                                <Text color={resources !== undefined && resources.tokens >= reward.cost ? "#5f5" : "#f55"}>{reward.cost}</Text>
+                                                <Image ml={1} src={`${cdn}/image/resources/resource_tokens.webp`} h={5}/>
+                                            </Flex>
+                                        </Button>
+                                    </Box>
+                                </>
+                                :
                                 <Box flex={1} h={"fit-content"} p={[0, 2]}>
-                                    <Text textAlign={"center"}>Mastery Only</Text>
-                                    <Button w={"100%"} onClick={() => {onClose(); claimReward(reward.reportid, false);}}>
+                                    <Button w={"100%"} onClick={() => {onClose(); claimReward(reward.reportid, true);}}>
                                         <Text fontSize={"xl"} color={"#5f5"}>FREE</Text>
                                     </Button>
                                 </Box>
-                                <Box flex={1} h={"fit-content"} p={[0, 2]}>
-                                    <Text textAlign={"center"}>All Rewards</Text>
-                                    <Button w={"100%"} onClick={() => {onClose(); claimReward(reward.reportid, true);}}>
-                                        <Flex fontSize={"xl"}>
-                                            <Text color={resources !== undefined && resources.tokens >= reward.cost ? "#5f5" : "#f55"}>{reward.cost}</Text>
-                                            <Image ml={1} src={`${cdn}/image/resources/resource_tokens.webp`} h={5}/>
-                                        </Flex>
-                                    </Button>
-                                </Box>
+                                }
                             </Flex>
                         </Box>
                         :
