@@ -209,7 +209,7 @@
         "description": "Moves very slowly but can teleport a short distance every few seconds.",
         "strengthTier": "Teleports farther and more often.",
         "value": 8,
-        "health": 4800,
+        "health": 4000,
         "speed": 3,
         "attacks": [
             {
@@ -304,7 +304,7 @@
         "description": "When reaching 1/2 health, spawns 3 pets that must be defeated before Eve can be damaged any further.",
         "strengthTier": "Pets move faster and deal additional damage over time.",
         "value": 10,
-        "health": 4000,
+        "health": 3600,
         "speed": 9,
         "attacks": [
             {
@@ -351,13 +351,13 @@
         "description": "Dashes towards you with its attacks and deals damage to you if you get hit by a dash.",
         "strengthTier": "Gains movement speed and starts with more dashes.",
         "value": 10,
-        "health": 5600,
+        "health": 5400,
         "speed": 14,
         "attacks": [
             {
                 "displayName": "Default Attack",
-                "minDamage": 240,
-                "maxDamage": 240,
+                "minDamage": 168,
+                "maxDamage": 168,
                 "damageType": 0,
                 "range": 15,
                 "reload": 1.1,
@@ -399,13 +399,13 @@
         "description": "Receives less damage if you are not within its attack range.",
         "strengthTier": "Damage taken is reduced by a larger amount when out of range.",
         "value": 10,
-        "health": 5400,
+        "health": 4200,
         "speed": 18,
         "attacks": [
             {
                 "displayName": "Default Attack",
-                "minDamage": 264,
-                "maxDamage": 264,
+                "minDamage": 240,
+                "maxDamage": 240,
                 "damageType": 0,
                 "range": 15,
                 "reload": 0.9,

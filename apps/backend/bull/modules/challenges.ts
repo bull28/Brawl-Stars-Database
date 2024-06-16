@@ -7,7 +7,7 @@ import {DatabaseAccessories, PlayerUpgrades, ChallengeUpgrades, UserWaves, Chall
 interface EnemyUpgradeData{
     displayName: string;
     value: number;
-    strength: number;
+    weight: number;
     minLevel: number;
     maxCount: number;
     maxStageCount: number;
@@ -132,85 +132,85 @@ const defenseUpgradesEven: (Pick<PlayerUpgrades["defense"], "maxEnemies" | "wave
 const sharedEnemies = new Set<string>(["meteor", "meleerobot", "rangedrobot", "fastrobot", "r2"]);
 const enemyValues = new Map<string, EnemyUpgradeData>([
     ["meteor", {
-        displayName: "Meteor", value: 1, strength: 1, minLevel: 0, maxCount: 20, maxStageCount: 10
+        displayName: "Meteor", value: 1, weight: 1, minLevel: 0, maxCount: 20, maxStageCount: 10
     }],
     ["r2", {
-        displayName: "Robot", value: 2, strength: 1, minLevel: 0, maxCount: 25, maxStageCount: 10
+        displayName: "Robot", value: 2, weight: 2, minLevel: 0, maxCount: 25, maxStageCount: 10
     }],
     ["shelly", {
-        displayName: "Shelly", value: 4, strength: 1, minLevel: 0, maxCount: 10, maxStageCount: 4
+        displayName: "Shelly", value: 4, weight: 2, minLevel: 0, maxCount: 10, maxStageCount: 4
     }],
     ["colt", {
-        displayName: "Colt", value: 6, strength: 1, minLevel: 0, maxCount: 10, maxStageCount: 4
+        displayName: "Colt", value: 6, weight: 2, minLevel: 0, maxCount: 10, maxStageCount: 4
     }],
     ["rt", {
-        displayName: "R-T", value: 6, strength: 1, minLevel: 1, maxCount: 8, maxStageCount: 4
+        displayName: "R-T", value: 6, weight: 2.5, minLevel: 1, maxCount: 8, maxStageCount: 4
     }],
     ["elprimo", {
-        displayName: "El Primo", value: 8, strength: 1, minLevel: 1, maxCount: 8, maxStageCount: 4
+        displayName: "El Primo", value: 8, weight: 2.5, minLevel: 1, maxCount: 8, maxStageCount: 4
     }],
     ["8bit", {
-        displayName: "8-Bit", value: 8, strength: 1, minLevel: 1, maxCount: 8, maxStageCount: 3
+        displayName: "8-Bit", value: 8, weight: 3, minLevel: 1, maxCount: 8, maxStageCount: 3
     }],
     ["belle", {
-        displayName: "Belle", value: 9, strength: 1, minLevel: 3, maxCount: 8, maxStageCount: 3
+        displayName: "Belle", value: 9, weight: 3, minLevel: 3, maxCount: 8, maxStageCount: 3
     }],
     ["jessie", {
-        displayName: "Jessie", value: 9, strength: 1, minLevel: 3, maxCount: 8, maxStageCount: 3
+        displayName: "Jessie", value: 9, weight: 3, minLevel: 3, maxCount: 8, maxStageCount: 3
     }],
     ["eve", {
-        displayName: "Eve", value: 10, strength: 1, minLevel: 3, maxCount: 8, maxStageCount: 3
+        displayName: "Eve", value: 10, weight: 3, minLevel: 3, maxCount: 8, maxStageCount: 3
     }],
     ["mortis", {
-        displayName: "Mortis", value: 10, strength: 1, minLevel: 4, maxCount: 8, maxStageCount: 3
-    }],
-    ["frank", {
-        displayName: "Frank", value: 12, strength: 1, minLevel: 4, maxCount: 8, maxStageCount: 3
+        displayName: "Mortis", value: 10, weight: 3.5, minLevel: 4, maxCount: 8, maxStageCount: 3
     }],
     ["jacky", {
-        displayName: "Jacky", value: 10, strength: 1, minLevel: 5, maxCount: 8, maxStageCount: 3
+        displayName: "Jacky", value: 10, weight: 3.5, minLevel: 5, maxCount: 8, maxStageCount: 3
+    }],
+    ["frank", {
+        displayName: "Frank", value: 12, weight: 3.5, minLevel: 4, maxCount: 8, maxStageCount: 3
     }],
     ["mrp", {
-        displayName: "Mr. P", value: 12, strength: 1, minLevel: 5, maxCount: 8, maxStageCount: 3
+        displayName: "Mr. P", value: 12, weight: 3.5, minLevel: 5, maxCount: 8, maxStageCount: 3
     }],
     ["bea", {
-        displayName: "Bea", value: 12, strength: 1, minLevel: 7, maxCount: 8, maxStageCount: 3
+        displayName: "Bea", value: 12, weight: 4, minLevel: 7, maxCount: 8, maxStageCount: 3
     }],
     ["colette", {
-        displayName: "Colette", value: 12, strength: 1, minLevel: 7, maxCount: 8, maxStageCount: 3
+        displayName: "Colette", value: 12, weight: 4, minLevel: 7, maxCount: 8, maxStageCount: 3
     }],
     ["lola", {
-        displayName: "Lola", value: 16, strength: 1, minLevel: 8, maxCount: 6, maxStageCount: 2
+        displayName: "Lola", value: 16, weight: 4, minLevel: 8, maxCount: 6, maxStageCount: 2
     }],
     ["bibi", {
-        displayName: "Bibi", value: 16, strength: 1, minLevel: 8, maxCount: 6, maxStageCount: 2
+        displayName: "Bibi", value: 16, weight: 4, minLevel: 8, maxCount: 6, maxStageCount: 2
     }],
     ["mandy", {
-        displayName: "Mandy", value: 16, strength: 1, minLevel: 12, maxCount: 6, maxStageCount: 2
-    }],
-    ["ash", {
-        displayName: "Ash", value: 20, strength: 1, minLevel: 18, maxCount: 5, maxStageCount: 2
+        displayName: "Mandy", value: 16, weight: 4, minLevel: 12, maxCount: 6, maxStageCount: 2
     }],
     ["pearl", {
-        displayName: "Pearl", value: 16, strength: 1, minLevel: 12, maxCount: 6, maxStageCount: 2
+        displayName: "Pearl", value: 16, weight: 4.5, minLevel: 12, maxCount: 6, maxStageCount: 2
+    }],
+    ["ash", {
+        displayName: "Ash", value: 20, weight: 4.5, minLevel: 18, maxCount: 5, maxStageCount: 2
     }],
     ["leon", {
-        displayName: "Leon", value: 24, strength: 1, minLevel: 18, maxCount: 3, maxStageCount: 1
+        displayName: "Leon", value: 24, weight: 4.5, minLevel: 18, maxCount: 3, maxStageCount: 1
     }],
     ["bonnie", {
-        displayName: "Bonnie", value: 20, strength: 1, minLevel: 18, maxCount: 4, maxStageCount: 1
+        displayName: "Bonnie", value: 20, weight: 4.5, minLevel: 18, maxCount: 4, maxStageCount: 1
     }],
     ["amber", {
-        displayName: "Amber", value: 30, strength: 1, minLevel: 24, maxCount: 2, maxStageCount: 1
+        displayName: "Amber", value: 30, weight: 5, minLevel: 24, maxCount: 2, maxStageCount: 1
     }],
     ["max", {
-        displayName: "Max", value: 24, strength: 1, minLevel: 24, maxCount: 2, maxStageCount: 1
+        displayName: "Max", value: 24, weight: 5, minLevel: 24, maxCount: 2, maxStageCount: 1
     }],
     ["meg", {
-        displayName: "Meg", value: 36, strength: 1, minLevel: 24, maxCount: 2, maxStageCount: 1
+        displayName: "Meg", value: 36, weight: 5, minLevel: 24, maxCount: 2, maxStageCount: 1
     }],
     ["siegebase", {
-        displayName: "Siege Base", value: 0, strength: 1, minLevel: 0, maxCount: 0, maxStageCount: 0
+        displayName: "Siege Base", value: 0, weight: 1, minLevel: 0, maxCount: 0, maxStageCount: 0
     }]
 ]);
 // Update enemy names and values if the data in allEnemies is different
@@ -399,15 +399,22 @@ export function createChallengeData(masteryLevel: number, waves: UserWaves): {me
                 message = `Too many enemies included in stage ${stage + 1}.`;
             }
 
-            // The delay for the current wave depends on the number of enemies in the previous wave for this stage
+            // Do not update the last value if the current wave is empty. In this case, the empty wave will have delay
+            // while the next wave that has enemies in it will have no delay. The game will skip the empty wave, causing
+            // the next wave to start instantly.
+            let currentDelay = 0;
+            if (waves[x].enemies.length > 0){
+                currentDelay = lastWave[stage] * 0.5;
+
+                // Storing the last value only works if waves are added to each stage in the order that they appear in
+                lastWave[stage] = waveValue;
+            }
+
             setWaves.push({
                 level: waves[x].level,
                 enemies: waves[x].enemies,
-                delay: lastWave[stage] * 0.5
+                delay: currentDelay
             });
-
-            // This only works if waves are added to each stage in the order that they appear in
-            lastWave[stage] = waveValue;
         }
 
         x++;
@@ -434,23 +441,41 @@ export function createChallengeData(masteryLevel: number, waves: UserWaves): {me
 }
 
 export function getChallengeStrength(data: ChallengeData): number{
-    let strength = 0;
-    const diff = 2 + data.difficulty;
+    let totalEnemies = 0;
+    let totalWeight = 0;
 
+    let maxStat = 100;
+    for (let x = 0; x < data.stats.length; x++){
+        if (data.stats[x] > maxStat){
+            maxStat = data.stats[x];
+        }
+    }
+
+    let totalStats = 0;
     for (let x = 0; x < data.waves.length; x++){
         const enemies = data.waves[x].enemies;
-        const stats = (data.waves[x].level < data.stats.length ? data.stats[data.waves[x].level] : 100) / 12.5;
+        const statIncrease = (data.waves[x].level < data.stats.length ? Math.max(0, data.stats[data.waves[x].level] - 100) : 0);
 
         for (let i = 0; i < enemies.length; i++){
             const values = enemyValues.get(enemies[i]);
-
             if (values !== undefined){
-                strength += values.value * values.strength * (stats + diff);
+                totalEnemies += values.value;
+                totalWeight += values.value * values.weight;
+                totalStats += values.value * statIncrease;
             }
         }
     }
 
-    return Math.floor(strength);
+    if (totalEnemies <= 0 || data.stats.length === 0){
+        return 0;
+    }
+
+    // Weighted average stat increase based on enemies in each level
+    const stats = totalStats * 4 / totalEnemies;
+    // Strength tier
+    const diff = data.difficulty * 50;
+
+    return Math.floor((60 + totalEnemies) * totalWeight / totalEnemies * (100 + stats + diff) / 100);
 }
 
 export function getStaticGameMod(key: string, masteryLevel: number, accessories: DatabaseAccessories): ChallengeGameMod | undefined{
@@ -617,6 +642,7 @@ export function getKeyGameMod(key: string, masteryLevel: number, accessories: Da
         options: {
             key: key,
             gameMode: 2,
+            strength: getChallengeStrength(data),
             gameName: `${data.owner}'s Challenge`,
             startingPower: upgrades.startingPower,
             startingGears: upgrades.startingGears,
@@ -626,7 +652,7 @@ export function getKeyGameMod(key: string, masteryLevel: number, accessories: Da
             maxReportLevels: 8
         },
         difficulties: [{
-            difficultyid: 0,// difficulty?
+            difficultyid: difficulty,
             name: `${data.owner}'s Challenge`,
             countTier: 0,
             strengthTier: difficulty,

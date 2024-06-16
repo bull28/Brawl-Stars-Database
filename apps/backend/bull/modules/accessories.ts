@@ -22,9 +22,9 @@ interface Accessory{
 }
 
 const REPORT_FORMAT = {
-    mode: [0, 1], player: [1, 5], gears: [5, 7], accessories: [7, 12], score: [12, 18],
-    achievements: [18, 25], upgrades: [25, 31], stats: [31, 39], visited: [39, 47],
-    levels: [47, 95], enemies: [95, 125], length: [0, 125]
+    mode: [0, 2], player: [2, 6], gears: [6, 8], accessories: [8, 13], score: [13, 19],
+    achievements: [19, 26], upgrades: [26, 32], stats: [32, 40], visited: [40, 48],
+    levels: [48, 96], enemies: [96, 126], length: [0, 126]
 };
 const SCORE_CONSTANTS = {
     stages: [
@@ -425,6 +425,48 @@ const pointsRewards = [
     [48, 96, 300, 600]
 ];
 
+const strengthRewards = [
+    [    0,   1], [   50,   2], [  100,   3], [  150,   4], [  200,   6], [  250,   8],
+    [  300,  10], [  350,  12], [  400,  15], [  450,  18], [  500,  21], [  550,  24],
+    [  600,  28], [  800,  32], [ 1000,  37], [ 1200,  42], [ 1500,  48], [ 1800,  54],
+    [ 2100,  60], [ 2400,  68], [ 2800,  76], [ 3200,  85], [ 3600,  95], [ 4200, 105],
+    [ 4800, 120], [ 5400, 135], [ 6000, 150], [ 7000, 165], [ 8000, 185], [ 9000, 210],
+    [10000, 240], [12000, 300]
+];
+
+/**
+ * Gets the mastery points reward multiplier for a challenge based on its strength
+ * @param strength challenge strength
+ * @returns mastery multiplier
+ */
+function getStrengthReward(strength: number): number{
+    if (strength < 0){
+        return 0;
+    }
+
+    let x = 0;
+    let reward = 0;
+    while (x < strengthRewards.length && reward === 0){
+        // Find the first strength reward bracket where the current strength is lower than the bracket minimum. That
+        // bracket is 1 higher than the current strength reward bracket.
+        if (x < strengthRewards.length - 1 && strength < strengthRewards[x + 1][0]){
+            // Strength is not in the maximum reward bracket (it is between two brackets)
+            // Index 0 is the strength required, index 1 is the points multiplier at that strength
+            const min = strengthRewards[x];
+            const max = strengthRewards[x + 1];
+            if (max[0] > min[0]){
+                const multiplier = min[1] + Math.floor((strength - min[0]) * ((max[1] - min[1]) / (max[0] - min[0])));
+                reward = multiplier;
+            }
+        } else if (x >= strengthRewards.length - 1){
+            // Strength is in the maximum reward bracket, the maximum reward is always given in this case
+            reward = strengthRewards[x][1];
+        }
+        x++;
+    }
+    return reward;
+}
+
 export function getMasteryLevel(points: number): MasteryData{
     points = Math.floor(Math.max(0, points));
 
@@ -676,6 +718,7 @@ export function extractReportData(data: number[]): ReportData | undefined{
     const difficulty = data[p + 1];
     const enemiesDefeated = data[a + 1];
     const gameMode = data[format.mode[0]];
+    const accs = data.slice(format.accessories[0], format.accessories[1]);
 
     const visited = data.slice(format.visited[0], format.visited[1]);
     const stages = convertLevelReports(data.slice(format.levels[0], format.levels[1]));
@@ -688,8 +731,22 @@ export function extractReportData(data: number[]): ReportData | undefined{
         }
     }
 
+    // Certain accessories increase the amount of coins and mastery points given
+    let badgeMultiplier = 100;
+    let pointsMultiplier = 100;
+    let coinsMultiplier = 100;
+    if (accs.includes(66) === true){
+        pointsMultiplier = 120;
+    }
+    const coinsAccs = [102, 104, 106, 110, 115, 120, 125];
+    // Accessories increasing coins are from 73 to 79. These do not stack so only the last accessory checked is used.
+    for (let x = 0; x < coinsAccs.length; x++){
+        if (accs.includes(73 + x) === true){
+            coinsMultiplier = coinsAccs[x];
+        }
+    }
+
     let points = 0;
-    let badgeMultiplier = 1;
     if (gameMode === 0){
         // The number of points given is based on the difficulty. If the player lost, the points will be decreased
         // depending on how early in the game they lost.
@@ -707,18 +764,19 @@ export function extractReportData(data: number[]): ReportData | undefined{
         }
         // More enemy, player, and location badges are given on higher difficulty
         if (difficulty <= 4){
-            badgeMultiplier = 2 + difficulty;
+            badgeMultiplier = 200 + difficulty * 100;
         } else if (difficulty === 5){
-            badgeMultiplier = 8;
+            badgeMultiplier = 800;
         } else{
-            badgeMultiplier = 6 + difficulty * 2 - 12;
+            badgeMultiplier = 600 + difficulty * 200 - 1200;
         }
     } else if (gameMode === 2){
-        // For challenges, points and badges given depend on the strength of the challenge
-        points = 1;
-        badgeMultiplier = 2;
+        // For challenges, mastery rewards depend on the overall strength of the challenge
+        // Badge rewards depend on the enemy strength tier (this value is stored in the difficulty)
+        points = getStrengthReward(data[format.mode[0] + 1]);
+        badgeMultiplier = 200 + difficulty * 200;
     }
-    points = Math.floor(points * data[p]);
+    points = Math.floor(points * data[p] * pointsMultiplier / 100);
 
     let minCoins = 0;
     let maxCoins = 0;
@@ -743,7 +801,7 @@ export function extractReportData(data: number[]): ReportData | undefined{
         }
 
         if (badgeCount > 0 && difficulty >= 0){
-            badges.set(b.name, Math.floor(badgeCount * badgeMultiplier));
+            badges.set(b.name, Math.floor(badgeCount * badgeMultiplier / 100));
         }
 
         if (b.coins[0] <= b.coins[1]){
@@ -752,6 +810,8 @@ export function extractReportData(data: number[]): ReportData | undefined{
             maxCoins += b.coins[1] * badgeCount;
         }
     }
+    minCoins = Math.floor(minCoins * coinsMultiplier / 100);
+    maxCoins = Math.floor(maxCoins * coinsMultiplier / 100);
 
     // Achivement badges depend on the values in the achievements section of the report
 
@@ -831,7 +891,7 @@ export function extractReportData(data: number[]): ReportData | undefined{
             brawler: data[p + 2],
             starPower: data[p + 3],
             gears: data.slice(format.gears[0], format.gears[1]),
-            accessories: data.slice(format.accessories[0], format.accessories[1])
+            accessories: accs
         },
         score: {
             total: data[p],

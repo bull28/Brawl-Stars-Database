@@ -817,6 +817,7 @@ export interface ChallengeGameMod{
     options?: Partial<{
         key: string;
         gameMode: number;
+        strength: number;
         gameName: string;
         startingPower: number;
         startingGears: number;
