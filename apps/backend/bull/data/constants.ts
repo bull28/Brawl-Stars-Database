@@ -31,6 +31,8 @@ export const TRADES_PER_PAGE = 20;
 export const DEFAULT_REPORT_COST = 200;
 export const CHALLENGE_REPORT_COST = 100;
 
+export const BRAWL_BOX_RARE_DROP = 0.2;
+
 export const themeMap = new Map<string, string>([
     ["default", "Default"],
     ["retro", "Retropolis"],

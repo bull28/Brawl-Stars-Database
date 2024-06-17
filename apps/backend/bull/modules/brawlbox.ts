@@ -1,4 +1,4 @@
-import {IMAGE_FILE_EXTENSION, RESOURCE_IMAGE_DIR} from "../data/constants";
+import {IMAGE_FILE_EXTENSION, RESOURCE_IMAGE_DIR, BRAWL_BOX_RARE_DROP} from "../data/constants";
 import {
     RNG, 
     createCoinsReward, 
@@ -296,6 +296,32 @@ const gameBoxes: GameBrawlBox[] = [
     }
 ];
 
+const challengeLoseBox: GameBrawlBox = {
+    maxQuality: 240,
+    draws: [
+        {quality: 800,  minQuality: 0,     reward: new BrawlerReward([0, 28, 24, 12, 0, 0, 0])},
+        {quality: 160,  minQuality: 0,     reward: new FixedRarityPinReward(0)},
+        {quality: 320,  minQuality: 12,    reward: new FixedRarityPinReward(1)},
+        {quality: 480,  minQuality: 72,    reward: new FixedRarityPinReward(2)},
+        {quality: 960,  minQuality: 120,   reward: new WildCardPinReward([12, 6, 0, 0, 0])}
+    ]
+};
+
+const challengeWinBox: GameBrawlBox = {
+    maxQuality: 240,
+    draws: [
+        {quality: 800,  minQuality: 0,     reward: new BrawlerReward([0, 4, 4, 24, 20, 12, 0])},
+        {quality: 160,  minQuality: 0,     reward: new FixedRarityPinReward(0)},
+        {quality: 320,  minQuality: 12,    reward: new FixedRarityPinReward(1)},
+        {quality: 480,  minQuality: 72,    reward: new FixedRarityPinReward(2)},
+        {quality: 960,  minQuality: 120,   reward: new FixedRarityPinReward(3)},
+        {quality: 960,  minQuality: 120,   reward: new WildCardPinReward([15, 8, 5, 2, 0])},
+        {quality: 1200, minQuality: 24,    reward: new TradeCreditsReward()},
+        {quality: 1280, minQuality: 24,    reward: new TokenDoublerReward(300)},
+        {quality: 4800, minQuality: 0,     reward: new AccessoryReward()}
+    ]
+};
+
 /**
  * Opens one Brawl Box and adds resources to the user. This function modifies the resources object passed to it.
  * All Brawl Boxes are guaranteed to contain at least one item. If a box is opened and there is no item, an error
@@ -409,8 +435,28 @@ export function getGameReward(resources: UserResources, report: ReportData, full
         return [];
     }
 
-    const box = gameBoxes[report.player.difficulty];
+    let box: GameBrawlBox | undefined;
+
+    if (report.gameMode === 0){
+        box = gameBoxes[report.player.difficulty];
+    } else if (report.gameMode === 2){
+        if (report.score.win === true){
+            box = challengeWinBox;
+        } else{
+            box = challengeLoseBox;
+        }
+    }
+
+    if (box === undefined){
+        return [];
+    }
+
     const quality = Math.min(report.enemies, box.maxQuality);
+
+    let rareDropChance = 1;
+    if (report.player.accessories.includes(65) === true){
+        rareDropChance = 1.25;
+    }
 
     const rewards: BrawlBoxDrop[] = [];
     let coinsReward = 0;
@@ -432,7 +478,13 @@ export function getGameReward(resources: UserResources, report: ReportData, full
         // The value of count determines how many rewards this draw gives. The integer part of the value is the number
         // of guaranteed rewards. The fractional part of the value is the chance to get one extra reward.
         if (quality >= draw.minQuality && draw.quality > 0){
-            count = quality / draw.quality;
+            // An accessory can increase the chances of getting rare drops from brawl box rewards. Drops are considered
+            // rare if their chance at the max box quality is less than BRAWL_BOX_RARE_DROP (default 0.25).
+            if (box.maxQuality / draw.quality < BRAWL_BOX_RARE_DROP && rareDropChance > 1){
+                count = Math.min(BRAWL_BOX_RARE_DROP, quality * rareDropChance / draw.quality);
+            } else{
+                count = quality / draw.quality;
+            }
         }
         if (Math.random() < count % 1){
             count = Math.ceil(count);

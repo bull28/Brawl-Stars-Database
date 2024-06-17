@@ -261,7 +261,7 @@
     },
     {
         "name": "enemies", "category": "", "displayName": "Omega Box",
-        "description": "Increases the quality of brawl box rewards.", "unlock": "Defeat enemies.", "badges": 50000
+        "description": "Increases the chance to receive rare drops from brawl box rewards.", "unlock": "Defeat enemies.", "badges": 50000
     },
     {
         "name": "challenges", "category": "", "displayName": "Starr Drop",

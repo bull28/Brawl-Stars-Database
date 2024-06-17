@@ -116,10 +116,10 @@ const defenseUpgradesEven: (Pick<PlayerUpgrades["defense"], "maxEnemies" | "wave
     {maxEnemies: [20], waves: [[12, 8]]},// Level 2
     {maxEnemies: [20], waves: [[15, 10]]},// Level 4
     {maxEnemies: [20, 12], waves: [[15, 10], [15]]},
-    {maxEnemies: [20, 12], waves: [[15, 10], [15]]},
-    {maxEnemies: [20, 24], waves: [[15, 10], [15, 15]]},
-    {maxEnemies: [20, 24], waves: [[15, 10], [15, 15]]},
-    {maxEnemies: [24, 36], waves: [[15, 15], [20, 25]]},
+    {maxEnemies: [20, 12], waves: [[18, 12], [18]]},
+    {maxEnemies: [20, 24], waves: [[18, 12], [18, 18]]},
+    {maxEnemies: [20, 24], waves: [[18, 12], [18, 18]]},
+    {maxEnemies: [24, 36], waves: [[18, 18], [24, 30]]},
     {maxEnemies: [24, 36, 20], waves: [[18, 18], [24, 30], [18, 12]]},
     {maxEnemies: [24, 36, 20], waves: [[18, 18], [24, 30], [18, 12]]},
     {maxEnemies: [24, 36, 44], waves: [[18, 18], [24, 30], [18, 24, 24]]},
@@ -656,8 +656,8 @@ export function getKeyGameMod(key: string, masteryLevel: number, accessories: Da
             name: `${data.owner}'s Challenge`,
             countTier: 0,
             strengthTier: difficulty,
-            healthBonusReq: 0.5,
-            timePerEnemy: 1,
+            healthBonusReq: 0.6,
+            timePerEnemy: 2/3,
             enemyStats: enemyStats
         }],
         stages: stages,

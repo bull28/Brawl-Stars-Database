@@ -654,6 +654,7 @@ export interface ReportData{
         accessories: number[];
     };
     score: {
+        win: boolean;
         total: number;
         categories: {
             completion: number;

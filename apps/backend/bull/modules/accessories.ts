@@ -426,12 +426,12 @@ const pointsRewards = [
 ];
 
 const strengthRewards = [
-    [    0,   1], [   50,   2], [  100,   3], [  150,   4], [  200,   6], [  250,   8],
-    [  300,  10], [  350,  12], [  400,  15], [  450,  18], [  500,  21], [  550,  24],
-    [  600,  28], [  800,  32], [ 1000,  37], [ 1200,  42], [ 1500,  48], [ 1800,  54],
-    [ 2100,  60], [ 2400,  68], [ 2800,  76], [ 3200,  85], [ 3600,  95], [ 4200, 105],
-    [ 4800, 120], [ 5400, 135], [ 6000, 150], [ 7000, 165], [ 8000, 185], [ 9000, 210],
-    [10000, 240], [12000, 300]
+    [    0,   1], [   50,   2], [  100,   3], [  150,   4], [  200,   5], [  250,   6],
+    [  300,   8], [  350,  10], [  400,  12], [  450,  14], [  500,  16], [  550,  18],
+    [  600,  20], [  800,  22], [ 1000,  25], [ 1200,  28], [ 1400,  32], [ 1600,  36],
+    [ 1800,  40], [ 2100,  45], [ 2400,  50], [ 2800,  56], [ 3200,  64], [ 3600,  72],
+    [ 4200,  80], [ 4800,  90], [ 5600, 105], [ 6400, 120], [ 7200, 140], [ 8400, 160],
+    [10000, 200], [12000, 250]
 ];
 
 /**
@@ -635,6 +635,16 @@ export function extractReportGameMode(data: number[]): number{
         return -1;
     }
     return data[format.mode[0]];
+}
+
+export function checkReportStrength(data: number[], expectedStrength: number): boolean{
+    // Checks whether the challenge strength in a report matches the given value or is 0 (no reward)
+    const format = REPORT_FORMAT;
+
+    if (data.length !== format.length[1] - format.length[0]){
+        return false;
+    }
+    return data[format.mode[0] + 1] === expectedStrength || data[format.mode[0] + 1] === 0;
 }
 
 export function extractReportPreviewStats(data: number[]): ReportPreview["stats"] | undefined{
@@ -894,6 +904,7 @@ export function extractReportData(data: number[]): ReportData | undefined{
             accessories: accs
         },
         score: {
+            win: win,
             total: data[p],
             categories: {
                 completion: data[s],

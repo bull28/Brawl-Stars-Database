@@ -1044,6 +1044,7 @@ interface ActiveChallengeResult extends RowDataPacket{
     accepted_by: string;
     accepted: number;
     preset: string;
+    strength: number;
     difficulty: number;
     levels: number;
     stats: string;
@@ -1063,7 +1064,7 @@ export async function createActiveChallenge(values: CreateActiveValues, connecti
 
 export async function getActiveChallenge(values: ActiveChallengeValues): Promise<ActiveChallengeResult[]>{
     return queryDatabase<ActiveChallengeResult[]>(pool, [values.key], true,
-        `SELECT C.username AS owner, A.accepted_by, A.accepted, C.preset, C.difficulty, C.levels, C.stats, C.waves FROM ${CHALLENGE_TABLE_NAME} C, ${ACTIVE_TABLE_NAME} A WHERE C.challengeid = A.challengeid AND A.active_key = ?;`);
+        `SELECT C.username AS owner, A.accepted_by, A.accepted, C.preset, C.strength, C.difficulty, C.levels, C.stats, C.waves FROM ${CHALLENGE_TABLE_NAME} C, ${ACTIVE_TABLE_NAME} A WHERE C.challengeid = A.challengeid AND A.active_key = ?;`);
 }
 
 

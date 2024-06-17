@@ -1,6 +1,6 @@
 import express from "express";
 import {DEFAULT_REPORT_COST} from "../data/constants";
-import {validateReport, getBadgeRewardPreview, extractReportGameMode, extractReportPreviewStats, extractReportData} from "../modules/accessories";
+import {validateReport, getBadgeRewardPreview, extractReportGameMode, checkReportStrength, extractReportPreviewStats, extractReportData} from "../modules/accessories";
 import {getGameReward} from "../modules/brawlbox";
 import {
     databaseErrorHandler, 
@@ -81,6 +81,13 @@ router.post<Empty, Empty, SaveReqBody>("/save", databaseErrorHandler<SaveReqBody
             res.status(403).send("This challenge has not been accepted yet.");
             return;
         }
+
+        // Make sure the strength value in the database matches the strength value given in the report before saving it
+        if (checkReportStrength(report[2], challenges[0].strength) === false){
+            res.status(403).send("Invalid report.");
+            return;
+        }
+
         saveToUser = challenges[0].accepted_by;
 
         // All active challenges except those with no owner are deleted once completed
@@ -165,7 +172,7 @@ router.post<Empty, Empty, ClaimReportReqBody>("/claim", loginErrorHandler<ClaimR
 
     // results.length === 0 checked
 
-    if (reportResults[0].username !== username){
+    if (reportResults[0].username.toLowerCase() !== username.toLowerCase()){
         res.status(401).send("Cannot claim rewards from another player's game!");
         return;
     }
