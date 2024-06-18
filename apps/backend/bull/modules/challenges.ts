@@ -75,13 +75,13 @@ const offenseUpgrades: {[k in keyof PlayerUpgrades["offense"]]: [number, number]
         [19, 26], [21, 30], [23, 36],
         [25, 42], [27, 48], [29, 56]
     ],
-    gearsPerStage: [[0, 0], [6, 1], [12, 2], [24, 3], [28, 4]],
+    gearsPerStage: [[0, 0], [6, 1], [16, 2], [24, 3], [28, 4]],
     maxExtraPower: [
         [ 0,   0],
-        [ 1,   3], [ 3,   6], [ 5,  9],
+        [ 1,   3], [ 3,   6], [ 5,   9],
         [ 7,  12], [ 9,  18], [11,  24],
-        [13,  30], [15,  36], [17,  48],
-        [19,  60], [21,  78], [23, 102],
+        [13,  30], [15,  42], [17,  60],
+        [19,  78], [21,  90], [23, 108],
         [25, 126], [27, 150], [29, 180]
     ],
     maxExtraGears: [[0, 0], [6, 1], [12, 2], [16, 4], [24, 6], [26, 9], [28, 12]],
@@ -99,34 +99,34 @@ const defenseUpgradesOdd: (Pick<PlayerUpgrades["defense"], "difficulty" | "enemy
     {difficulty: 0, enemyStats: [100.0, 100.0, 100.0, 100.0]},// Level 3
     {difficulty: 0, enemyStats: [100.0, 112.5, 100.0, 100.0]},
     {difficulty: 0, enemyStats: [100.0, 112.5, 100.0, 100.0]},
-    {difficulty: 1, enemyStats: [100.0, 112.5, 100.0, 100.0]},
-    {difficulty: 1, enemyStats: [100.0, 125.0, 100.0, 100.0]},
-    {difficulty: 1, enemyStats: [100.0, 137.5, 100.0, 100.0]},
-    {difficulty: 1, enemyStats: [112.5, 137.5, 187.5, 100.0]},
-    {difficulty: 1, enemyStats: [112.5, 150.0, 200.0, 100.0]},
-    {difficulty: 2, enemyStats: [112.5, 150.0, 200.0, 100.0]},
-    {difficulty: 2, enemyStats: [112.5, 162.5, 212.5, 100.0]},
-    {difficulty: 2, enemyStats: [112.5, 175.0, 225.0, 100.0]},
-    {difficulty: 2, enemyStats: [125.0, 187.5, 237.5, 287.5]},
+    {difficulty: 1, enemyStats: [100.0, 112.5, 125.0, 100.0]},
+    {difficulty: 1, enemyStats: [100.0, 112.5, 137.5, 100.0]},
+    {difficulty: 1, enemyStats: [100.0, 125.0, 150.0, 100.0]},
+    {difficulty: 1, enemyStats: [112.5, 137.5, 162.5, 100.0]},
+    {difficulty: 1, enemyStats: [112.5, 150.0, 187.5, 100.0]},
+    {difficulty: 2, enemyStats: [112.5, 150.0, 187.5, 225.0]},
+    {difficulty: 2, enemyStats: [112.5, 162.5, 212.5, 237.5]},
+    {difficulty: 2, enemyStats: [112.5, 175.0, 225.0, 262.5]},
+    {difficulty: 2, enemyStats: [125.0, 187.5, 237.5, 275.0]},
     {difficulty: 2, enemyStats: [125.0, 200.0, 250.0, 300.0]},
     {difficulty: 3, enemyStats: [125.0, 200.0, 250.0, 300.0]}// Level 29
 ];
 const defenseUpgradesEven: (Pick<PlayerUpgrades["defense"], "maxEnemies" | "waves">)[] = [
     {maxEnemies: [12], waves: [[12]]},// Level 0
-    {maxEnemies: [20], waves: [[12, 8]]},// Level 2
-    {maxEnemies: [20], waves: [[15, 10]]},// Level 4
-    {maxEnemies: [20, 12], waves: [[15, 10], [15]]},
-    {maxEnemies: [20, 12], waves: [[18, 12], [18]]},
-    {maxEnemies: [20, 24], waves: [[18, 12], [18, 18]]},
-    {maxEnemies: [20, 24], waves: [[18, 12], [18, 18]]},
-    {maxEnemies: [24, 36], waves: [[18, 18], [24, 30]]},
-    {maxEnemies: [24, 36, 20], waves: [[18, 18], [24, 30], [18, 12]]},
-    {maxEnemies: [24, 36, 20], waves: [[18, 18], [24, 30], [18, 12]]},
-    {maxEnemies: [24, 36, 44], waves: [[18, 18], [24, 30], [18, 24, 24]]},
-    {maxEnemies: [32, 40, 60], waves: [[18, 30], [24, 36], [24, 30, 36]]},
-    {maxEnemies: [32, 40, 60], waves: [[18, 30], [24, 36], [24, 30, 36]]},
-    {maxEnemies: [32, 40, 60, 32], waves: [[18, 30], [24, 36], [24, 30, 36], [24, 24]]},
-    {maxEnemies: [32, 40, 60, 68], waves: [[18, 30], [24, 36], [24, 30, 36], [30, 36, 36]]},
+    {maxEnemies: [20, 12], waves: [[12, 8], [12]]},// Level 2
+    {maxEnemies: [20, 12], waves: [[12, 8], [12]]},// Level 4
+    {maxEnemies: [24, 36], waves: [[15, 15], [20, 25]]},
+    {maxEnemies: [24, 36], waves: [[15, 15], [20, 25]]},
+    {maxEnemies: [32, 36, 20], waves: [[15, 25], [20, 25], [15, 10]]},
+    {maxEnemies: [32, 36, 20], waves: [[18, 30], [24, 30], [18, 12]]},
+    {maxEnemies: [36, 40, 36], waves: [[24, 30], [24, 36], [24, 30]]},
+    {maxEnemies: [40, 40, 56], waves: [[24, 36], [24, 36], [24, 30, 30]]},
+    {maxEnemies: [40, 40, 56], waves: [[24, 36], [24, 36], [24, 30, 30]]},
+    {maxEnemies: [40, 40, 56, 24], waves: [[24, 36], [24, 36], [24, 30, 30], [18, 18]]},
+    {maxEnemies: [40, 44, 60, 36], waves: [[24, 36], [30, 36], [24, 30, 36], [24, 30]]},
+    {maxEnemies: [40, 44, 60, 36], waves: [[24, 36], [30, 36], [24, 30, 36], [24, 30]]},
+    {maxEnemies: [40, 44, 60, 56], waves: [[24, 36], [30, 36], [24, 30, 36], [24, 30, 30]]},
+    {maxEnemies: [40, 44, 60, 76], waves: [[24, 36], [30, 36], [24, 30, 36], [30, 36, 48]]},
     {maxEnemies: [40, 48, 64, 88], waves: [[24, 36], [30, 42], [24, 30, 42], [30, 42, 60]]}// Level 30
 ];
 const sharedEnemies = new Set<string>(["meteor", "meleerobot", "rangedrobot", "fastrobot", "r2"]);
@@ -656,7 +656,7 @@ export function getKeyGameMod(key: string, masteryLevel: number, accessories: Da
             name: `${data.owner}'s Challenge`,
             countTier: 0,
             strengthTier: difficulty,
-            healthBonusReq: 0.6,
+            healthBonusReq: 0.75,
             timePerEnemy: 2/3,
             enemyStats: enemyStats
         }],

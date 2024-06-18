@@ -479,7 +479,7 @@ export function getGameReward(resources: UserResources, report: ReportData, full
         // of guaranteed rewards. The fractional part of the value is the chance to get one extra reward.
         if (quality >= draw.minQuality && draw.quality > 0){
             // An accessory can increase the chances of getting rare drops from brawl box rewards. Drops are considered
-            // rare if their chance at the max box quality is less than BRAWL_BOX_RARE_DROP (default 0.25).
+            // rare if their chance at the max box quality is less than BRAWL_BOX_RARE_DROP (default 0.2).
             if (box.maxQuality / draw.quality < BRAWL_BOX_RARE_DROP && rareDropChance > 1){
                 count = Math.min(BRAWL_BOX_RARE_DROP, quality * rareDropChance / draw.quality);
             } else{
