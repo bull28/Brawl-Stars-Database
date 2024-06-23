@@ -392,7 +392,7 @@ function openBox(box: BrawlBox, resources: UserResources): BrawlBoxDrop[]{
  */
 export function canOpenBox(boxName: string, tokens: number): number{
     if (Object.hasOwn(boxes, boxName) === false){
-        return 400;
+        return 404;
     }
 
     const box = boxes[boxName];

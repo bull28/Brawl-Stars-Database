@@ -350,7 +350,7 @@ export function createChallengeData(masteryLevel: number, waves: UserWaves): {me
         }
         // Stage number for this wave cannot be greater than the maximum allowed number of stages in the challenge
         if (stage >= gameStages || stage < 0 || waveCounts[stage] <= 0){
-            message = `Too many waves are included in stage ${stage + 1}`;
+            message = `Too many waves are included in stage ${stage + 1}.`;
         }
 
         if (message === ""){

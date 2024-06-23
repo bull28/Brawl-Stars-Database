@@ -57,7 +57,13 @@ if (process.env["DATABASE_HOST"] !== undefined){
     databaseLogin.user = process.env["DATABASE_USER"];
 } if (process.env["DATABASE_PASSWORD"] !== undefined){
     databaseLogin.password = process.env["DATABASE_PASSWORD"];
-} if (process.env["DATABASE_NAME"] !== undefined){
+}
+
+if (process.env["NODE_ENV"] === "test"){
+    if (process.env["DATABASE_TEST_NAME"] !== undefined){
+        databaseLogin.database = process.env["DATABASE_TEST_NAME"];
+    }
+} else if (process.env["DATABASE_NAME"] !== undefined){
     databaseLogin.database = process.env["DATABASE_NAME"];
 }
 

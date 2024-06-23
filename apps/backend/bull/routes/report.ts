@@ -77,6 +77,10 @@ router.post<Empty, Empty, SaveReqBody>("/save", databaseErrorHandler<SaveReqBody
 
         // Get the username associated with the given challenge key then save the report with that username
         const challenges = await getActiveChallenge({key: key});
+        if (challenges.length === 0){
+            res.status(404).send("Challenge not found.");
+            return;
+        }
         if (challenges[0].accepted !== 1){
             res.status(403).send("This challenge has not been accepted yet.");
             return;

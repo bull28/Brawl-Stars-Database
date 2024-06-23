@@ -112,8 +112,8 @@ router.post<Empty, Empty, BrawlBoxReqBody>("/brawlbox", loginErrorHandler<BrawlB
 
     // Make sure the box exists and the user has enough tokens
     const validBoxCode = canOpenBox(boxType, results[0].tokens);
-    if (validBoxCode === 400){
-        res.status(400).send("Box type does not exist.");
+    if (validBoxCode === 404){
+        res.status(404).send("Box type does not exist.");
         return;
     }
     if (validBoxCode === 403){

@@ -6,6 +6,7 @@
         "outDir": "build",
         "rootDir": "darryl",
         "strict": true,
+        "skipLibCheck": true,
         "noImplicitAny": true,
         "noImplicitReturns": true,
         "noImplicitThis": true,

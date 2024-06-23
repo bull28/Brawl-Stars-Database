@@ -173,7 +173,7 @@ router.post<Empty, Empty, ChallengeCreateReqBody>("/create", loginErrorHandler<C
 router.post<Empty, Empty, ChallengeStartReqBody>("/start", loginErrorHandler<ChallengeStartReqBody>(async (req, res, username) => {
     const challengeid = req.body.challengeid;
     if (typeof challengeid !== "number"){
-        res.status(400).send("Invalid challenge id.");
+        res.status(400).send("Invalid challenge ID.");
         return;
     }
 
