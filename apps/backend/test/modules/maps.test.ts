@@ -1,6 +1,18 @@
 import {expect} from "chai";
 import {GAMEMODE_IMAGE_DIR, MAP_IMAGE_DIR, MAP_BANNER_DIR} from "../../bull/data/constants";
-import {SeasonTime, mod, isValidTimeQuery, realToTime, addSeasonTimes, subtractSeasonTimes, getModeData, getMapData, events, MAP_CYCLE_HOURS} from "../../bull/modules/maps";
+import {
+    SeasonTime, 
+    mod, 
+    isValidTimeQuery, 
+    realToTime, 
+    addSeasonTimes, 
+    subtractSeasonTimes, 
+    getModeData, 
+    getMapData, 
+    events, 
+    getRewardStacks, 
+    MAP_CYCLE_HOURS
+} from "../../bull/modules/maps";
 
 describe("Events, Game Modes, and Maps module", function(){
     it("Must contain at least 1 event slot", function(){
@@ -126,5 +138,68 @@ describe("Events, Game Modes, and Maps module", function(){
         expect(data.bannerImage).to.equal(MAP_BANNER_DIR + map.bannerImage);
 
         expect(data.times.duration).to.eql(new SeasonTime(0, events[0].eventDuration, 0, 0));
+    });
+
+    describe("Stackable rewards", function(){
+        it("Same season with rewards", function(){
+            // Current: [0, 31, 0, 0], Last claim: [0, 24, 0, 0]
+            const reward = getRewardStacks(
+                new Date(2024, 4, 30, 8, 0).getTime(),
+                new Date(2024, 4, 30, 1, 0).getTime()
+            );
+            expect(reward.stacks).to.equal(1);
+            expect(reward.nextStack.convertToSeconds()).to.equal(18000 - 1);
+        });
+
+        it("Same season with no rewards", function(){
+            // Current: [0, 29, 0, 0], Last claim: [0, 24, 0, 0]
+            const reward = getRewardStacks(
+                new Date(2024, 4, 30, 6, 0).getTime(),
+                new Date(2024, 4, 30, 1, 0).getTime()
+            );
+            expect(reward.stacks).to.equal(0);
+            expect(reward.nextStack.convertToSeconds()).to.equal(3600 - 1);
+        });
+
+        it("Positive season carry over", function(){
+            // Current: [1, 5, 0, 0], Last claim: [0, 357, 0, 0]
+            const reward = getRewardStacks(
+                new Date(2024, 4, 29, 6, 0).getTime(),
+                new Date(2024, 4, 27, 22, 0).getTime()
+            );
+            expect(reward.stacks).to.equal(5);
+            expect(reward.nextStack.convertToSeconds()).to.equal(3600 - 1);
+        });
+
+        it("Negative season carry over", function(){
+            // Current: [0, 5, 0, 0], Last claim: [6, 357, 0, 0]
+            const reward = getRewardStacks(
+                new Date(2024, 4, 13, 6, 0).getTime(),
+                new Date(2024, 4, 11, 22, 0).getTime()
+            );
+            expect(reward.stacks).to.equal(5);
+            expect(reward.nextStack.convertToSeconds()).to.equal(3600 - 1);
+        });
+
+        it("Entire season carry over", function(){
+            // Current: [0, 2, 0, 0], Last claim: [0, 7, 0, 0]
+            const reward = getRewardStacks(
+                new Date(2024, 4, 13, 3, 0).getTime(),
+                new Date(2024, 0, 22, 7, 0).getTime()
+            );
+            // maxSeasons * hoursPerSeason is the maximum number of stacks
+            expect(reward.stacks).to.equal(Math.floor(reward.nextStack.maxSeasons * reward.nextStack.hoursPerSeason / 6 - 1));
+            expect(reward.nextStack.convertToSeconds()).to.equal(14400 - 1);
+        });
+
+        it("Last claim in the future", function(){
+            // Current: [0, 0, 0, 0], Last claim: [0, 2, 0, 0]
+            const reward = getRewardStacks(
+                new Date(2024, 4, 29, 1, 0).getTime(),
+                new Date(2024, 4, 29, 3, 0).getTime()
+            );
+            expect(reward.stacks).to.equal(0);
+            expect(reward.nextStack.convertToSeconds()).to.equal(21600 - 1);
+        });
     });
 });

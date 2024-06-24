@@ -227,6 +227,7 @@ interface SeasonTimeData{
     second: number;
     hoursPerSeason: number;
     maxSeasons: number;
+    convertToSeconds: () => number;
 }
 
 /**
@@ -260,6 +261,16 @@ export interface CurrentEvent{
 export interface CurrentEventsData{
     time: SeasonTimeData;
     events: CurrentEvent[];
+}
+
+/**
+ * Includes the current amount of a stackable reward and the time until the next stack
+ * 
+ * Stacks are given at set times during the season
+ */
+export interface RewardStackTimes{
+    stacks: number;
+    nextStack: SeasonTimeData;
 }
 
 //------------------------------------------------------------------------------------------------//

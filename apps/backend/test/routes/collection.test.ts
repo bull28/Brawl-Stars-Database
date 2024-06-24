@@ -157,7 +157,7 @@ describe("Brawler Collection endpoints", function(){
         it("Featured item does not refresh", async function(){
             const pin = "bull/bull_default";
             await connection.query(`UPDATE ${tables.users} SET last_login = ?, featured_item = ? WHERE username = ?;`,
-                [Date.now(), pin, TEST_USERNAME]
+                [Date.now() + 60000, pin, TEST_USERNAME]
             );
 
             const res = await chai.request(server).post("/shop").auth(TEST_TOKEN, {type: "bearer"});
@@ -171,7 +171,7 @@ describe("Brawler Collection endpoints", function(){
 
         it("Featured item already bought", async function(){
             await connection.query(`UPDATE ${tables.users} SET last_login = ?, featured_item = ? WHERE username = ?;`,
-                [Date.now(), "", TEST_USERNAME]
+                [Date.now() + 60000, "", TEST_USERNAME]
             );
 
             const res = await chai.request(server).post("/shop").auth(TEST_TOKEN, {type: "bearer"});

@@ -4,7 +4,7 @@ import {HOURS_PER_REWARD, TOKENS_PER_REWARD, MAX_REWARD_STACK, AVATAR_IMAGE_DIR,
 import {signToken, validateToken, hashPassword, checkPassword} from "../modules/authenticate";
 import {freeAvatarFiles, specialAvatarFiles, freeThemeFiles, specialThemeFiles, sceneFiles} from "../modules/fileloader";
 import {getAvatars, getCosmetics, getExtraBackground, getThemes} from "../modules/pins";
-import {MAP_CYCLE_HOURS, SeasonTime, mod, realToTime, subtractSeasonTimes} from "../modules/maps";
+import {MAP_CYCLE_HOURS, SeasonTime, mod, realToTime, subtractSeasonTimes, getRewardStacks} from "../modules/maps";
 import {
     loginErrorHandler, 
     databaseErrorHandler, 
@@ -361,87 +361,10 @@ router.post<Empty, Empty, ClaimTokensReqBody>("/claimtokens", loginErrorHandler<
         return;
     }
 
-    // Add tokens based on how much time has passed since they last logged in
     const currentTime = Date.now();
-    const currentSeasonTime = realToTime(currentTime);
-
-    // Batches of tokens to be given to the player
-    let rewardsGiven = 0;
-
-    // The season time does not manage times longer than 4 weeks so if the last login was over 4 weeks ago then give the
-    // player the maximum login reward and reset. A time of 2 weeks is still beyond the amount of time required to
-    // receive maximum rewards so give them the maximum reward for all times longer than 2 weeks, even though the map
-    // rotation can handle times between 2 and 4 weeks.
-    const hoursSinceLastLogin = (currentTime - userResults.last_claim) / 3600000;
-    if (hoursSinceLastLogin >= MAP_CYCLE_HOURS){
-        rewardsGiven = MAX_REWARD_STACK;
-    } else{
-        //currentSeasonTime = new maps.SeasonTime(1, 219, 0, 0);
-        let currentSeason = currentSeasonTime.season;
-        let currentHour = currentSeasonTime.hour;
-
-        const lastLoginTime = realToTime(userResults.last_claim);
-        //lastLoginTime = new maps.SeasonTime(0, 327, 0, 0);
-        const lastLoginHour = lastLoginTime.hour;
-
-        // Reward times must be compared on the same season so must handle cases where season values are not the same
-        const seasonDiff = currentSeason - lastLoginTime.season;
-        if (seasonDiff > 0){
-            // Case 1: Positive carry over
-            // Represents a case where the map rotation reset since the last login but not the ladder season reset
-            // Remove the additional seasons and add a full season worth of hours for each season removed.
-            //
-            // Ex. Current time: [1, 5, 0, 0], Last login: [0, 309, 0, 0]
-            // Remove 1 season and add 336 hours so the comparison becomes [0, 341, 0, 0] and [0, 309, 0, 0]
-            currentSeason -= seasonDiff;
-            currentHour += currentSeasonTime.hoursPerSeason * seasonDiff;
-        } else if (seasonDiff < 0){
-            // Case 2: Negative carry over
-            // Represents a case where the ladder season reset since the last login
-            // The comparison should be done using the higher season number so the lower has to be increased to match it
-            //
-            // Ex. (Note: the maxSeasons is 3 here because this is supposed to work no matter what maxSeasons is)
-            // Current time: [0, 5, 0, 0], Last login: [1, 309, 0, 0], maxSeasons = 3
-            // The desired comparison here is [1, 677, 0, 0] and [1, 309, 0, 0] since [0, 5, 0, 0] is actually an entire
-            // season + a few hours ahead of [1, 309, 0, 0]
-            //
-            // Increase the lower season amount by subtracting seasonDiff
-            // seasonDiff is negative here so subtracting it increases the value
-            // In this example, [0, 5, 0, 0] becomes [1, 5, 0, 0]
-            // Now the correct number of hours must be added to make the time equal again while keeping the season value
-            // unchanged. To avoid negative numbers, add an entire season worth of hours then subtract the amount of
-            // hours added when seasonDiff was subtracted from currentSeason.
-            // In this example, [1, 5, 0, 0] +1008 => [1, 1013, 0, 0] -336 => [1, 677, 0, 0]
-            // These two numbers of hours to be added/subtracted can both be obtained with (seasonDiff % maxSeasons)
-            currentSeason -= seasonDiff;
-            currentHour += currentSeasonTime.hoursPerSeason * mod(seasonDiff, currentSeasonTime.maxSeasons);
-        } else if (currentHour < lastLoginHour){
-            // Case 3: Entire season carry over
-            // Represents a case where almost an entire season has passed since the last login
-            // Add an entire season worth of hours to the current time to represent time passed since the last login.
-            //
-            // Ex. Current time: [0, 7, 0, 0], Last login: [0, 2, 0, 0], maxSeasons = 3
-            // The current time should be treated as [3, 7, 0, 0] but since maxSeasons is 3, the time given by the
-            // function is set to [0, 7, 0, 0] because it is equivalent in terms of the map rotation.
-            currentHour += currentSeasonTime.hoursPerSeason * currentSeasonTime.maxSeasons;
-        }
-
-        // Rewards are given at multiples of HOURS_PER_REWARD hours in the season so find the last multiple before the
-        // current time then compare it to the last login time.
-        const lastRewardHour = Math.floor(currentHour / HOURS_PER_REWARD) * HOURS_PER_REWARD;
-
-        // The user can claim rewards as long as their last login hour is less than the last reward hour. Since rewards
-        // are given at the start of the hour, a last login hour the same as the last reward hour means the user logged
-        // in right after the reward was given and cannot receive it. Their last login time should be treated as the
-        // next hour. To account for this, add 1 to the lastLoginHour.
-        // Ex. [0, 309, 28, 44] is treated the same as [0, 310, 0, 0]
-        rewardsGiven = Math.floor((lastRewardHour - lastLoginHour - 1) / HOURS_PER_REWARD) + 1;// rounded up
-    }
-
-    if (rewardsGiven > MAX_REWARD_STACK){
-        // A maximum of MAX_REWARD_STACK token batches can be stacked at once
-        rewardsGiven = MAX_REWARD_STACK;
-    }
+    const reward = getRewardStacks(currentTime, userResults.last_claim);
+    const rewardsGiven = Math.min(reward.stacks, MAX_REWARD_STACK);
+    const nextRewardTime = reward.nextStack;
 
     let tokenReward = rewardsGiven * TOKENS_PER_REWARD;
     let activeTokenDoubler = userResults.token_doubler;
@@ -462,13 +385,6 @@ router.post<Empty, Empty, ClaimTokensReqBody>("/claimtokens", loginErrorHandler<
         }
     }
     const newTokenAmount = userResults.tokens + tokenReward;
-
-    // To calculate the time until the next reward, only the current time is required.
-    // No other modifications have to be done to the time.
-    const nextRewardTime = subtractSeasonTimes(
-        new SeasonTime(currentSeasonTime.season, Math.floor(currentSeasonTime.hour / HOURS_PER_REWARD + 1) * HOURS_PER_REWARD, 0, -1),
-        currentSeasonTime
-    );
 
     // If the user just wants to see how many tokens are available, send the response without updating the database.
     if (req.body.claim === false){

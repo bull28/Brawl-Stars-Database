@@ -12,7 +12,8 @@ import {
     EventData, 
     CurrentEvent, 
     CurrentEventsData, 
-    GameModeMapDisplay
+    GameModeMapDisplay, 
+    RewardStackTimes
 } from "../types";
 
 export class SeasonTime{
@@ -313,7 +314,7 @@ export function isValidTimeQuery(hour: string, minute: string, second: string): 
 
 /**
  * Converts time after January 1, 1970 to a time after the map rotation reset.
- * @param real seconds
+ * @param real milliseconds
  * @returns SeasonTime
  */
 export function realToTime(real: number): SeasonTime{
@@ -559,6 +560,97 @@ export function getAllEvents(eventList: EventSlot[], seasonTime: SeasonTime): Cu
     };
 }
 
+/**
+ * Calculates the number of rewards a user can claim based on the current time in the season and the time when they last
+ * claimed a reward. This should be used with stackable rewards where one reward is given out every few hours.
+ * @param currentTime current time, in milliseconds after January 1, 1970 
+ * @param lastClaim time when the reward was last claimed, in milliseconds after January 1, 1970
+ * @param hoursPerReward interval that rewards are given at
+ * @returns number of stacks and time until next stack
+ */
+export function getRewardStacks(currentTime: number, lastClaim: number, hoursPerReward: number = 6): RewardStackTimes{
+    // Add tokens based on how much time has passed since they last logged in
+    hoursPerReward = Math.max(1, Math.round(hoursPerReward));
+    const currentSeasonTime = realToTime(currentTime);
+
+    // Stacks to be given to the user
+    let rewardsGiven = 0;
+
+    const hoursSinceLastLogin = (currentTime - lastClaim) / 3600000;
+    if (hoursSinceLastLogin <= 0){
+        rewardsGiven = 0;
+    } else if (hoursSinceLastLogin >= MAP_CYCLE_HOURS * currentSeasonTime.maxSeasons){
+        rewardsGiven = MAP_CYCLE_HOURS * currentSeasonTime.maxSeasons / hoursPerReward;
+    } else{
+        let currentSeason = currentSeasonTime.season;
+        let currentHour = currentSeasonTime.hour;
+
+        const lastLoginTime = realToTime(lastClaim);
+        const lastLoginHour = lastLoginTime.hour;
+
+        // Reward times must be compared on the same season so must handle cases where season values are not the same
+        const seasonDiff = currentSeason - lastLoginTime.season;
+        if (seasonDiff > 0){
+            // Case 1: Positive carry over
+            // Represents a case where the map rotation reset since the last login but not the ladder season reset
+            // Remove the additional seasons and add a full season worth of hours for each season removed.
+            //
+            // Ex. Current time: [1, 5, 0, 0], Last login: [0, 309, 0, 0]
+            // Remove 1 season and add 336 hours so the comparison becomes [0, 341, 0, 0] and [0, 309, 0, 0]
+            currentSeason -= seasonDiff;
+            currentHour += currentSeasonTime.hoursPerSeason * seasonDiff;
+        } else if (seasonDiff < 0){
+            // Case 2: Negative carry over
+            // Represents a case where the ladder season reset since the last login
+            // The comparison should be done using the higher season number so the lower has to be increased to match it
+            //
+            // Ex. (Note: the maxSeasons is 3 here because this is supposed to work no matter what maxSeasons is)
+            // Current time: [0, 5, 0, 0], Last login: [1, 309, 0, 0], maxSeasons = 3
+            // The desired comparison here is [1, 677, 0, 0] and [1, 309, 0, 0] since [0, 5, 0, 0] is actually an entire
+            // season + a few hours ahead of [1, 309, 0, 0]
+            //
+            // Increase the lower season amount by subtracting seasonDiff
+            // seasonDiff is negative here so subtracting it increases the value
+            // In this example, [0, 5, 0, 0] becomes [1, 5, 0, 0]
+            // Now the correct number of hours must be added to make the time equal again while keeping the season value
+            // unchanged. To avoid negative numbers, add an entire season worth of hours then subtract the amount of
+            // hours added when seasonDiff was subtracted from currentSeason.
+            // In this example, [1, 5, 0, 0] +1008 => [1, 1013, 0, 0] -336 => [1, 677, 0, 0]
+            // These two numbers of hours to be added/subtracted can both be obtained with (seasonDiff % maxSeasons)
+            currentSeason -= seasonDiff;
+            currentHour += currentSeasonTime.hoursPerSeason * mod(seasonDiff, currentSeasonTime.maxSeasons);
+        } else if (currentHour < lastLoginHour){
+            // Case 3: Entire season carry over
+            // Represents a case where almost an entire season has passed since the last login
+            // Add an entire season worth of hours to the current time to represent time passed since the last login.
+            //
+            // Ex. Current time: [0, 2, 0, 0], Last login: [0, 7, 0, 0], maxSeasons = 3
+            // The current time should be treated as [3, 2, 0, 0] but since maxSeasons is 3, the time given by the
+            // function is set to [0, 2, 0, 0] because it is equivalent in terms of the map rotation.
+            currentHour += currentSeasonTime.hoursPerSeason * currentSeasonTime.maxSeasons;
+        }
+
+        // Rewards are given at multiples of hoursPerReward in the season so find the last multiple before the current
+        // time then compare it to the last login time.
+        const lastRewardHour = Math.floor(currentHour / hoursPerReward) * hoursPerReward;
+
+        // The user can claim rewards as long as their last login hour is less than the last reward hour. Since rewards
+        // are given at the start of the hour, a last login hour the same as the last reward hour means the user logged
+        // in right after the reward was given and cannot receive it. Their last login time should be treated as the
+        // next hour. To account for this, add 1 to the lastLoginHour.
+        // Ex. [0, 309, 28, 44] is treated the same as [0, 310, 0, 0]
+        rewardsGiven = Math.floor((lastRewardHour - lastLoginHour - 1) / hoursPerReward) + 1;// rounded up
+    }
+
+    return {
+        stacks: rewardsGiven,
+        nextStack: subtractSeasonTimes(
+            new SeasonTime(currentSeasonTime.season, Math.floor(currentSeasonTime.hour / hoursPerReward + 1) * hoursPerReward, 0, -1),
+            currentSeasonTime
+        )
+    };
+}
+
 // Read the data from the maps_data file then create GameMode and EventSlot objects from it.
 export const events: EventSlot[] = [];
 for (let x = 0; x < eventList.length; x++){
@@ -579,5 +671,6 @@ const MAP_CYCLE_SECONDS = 1382400;
 const SEASON_SECONDS = 9676800;
 const MAP_CYCLES_PER_SEASON = 7;
 
+// 2/20/2023 8:00 UTC is the beginning of a map cycle
 const next_season_time = (((86400*365) * (2023-1970)) + (12*86400) + (51*86400) + (8*3600));
 const first_season_time = next_season_time % SEASON_SECONDS;

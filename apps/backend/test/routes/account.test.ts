@@ -1,7 +1,7 @@
 import chai, {expect} from "chai";
 import "chai-http";
 import {Connection} from "mysql2/promise";
-import {IMAGE_FILE_EXTENSION, THEME_SPECIAL_DIR, SCENE_IMAGE_DIR} from "../../bull/data/constants";
+import {IMAGE_FILE_EXTENSION, THEME_SPECIAL_DIR, SCENE_IMAGE_DIR, TOKENS_PER_REWARD, MAX_REWARD_STACK} from "../../bull/data/constants";
 import server from "../../bull/index";
 import {tables} from "../../bull/modules/database";
 import {createConnection, closeConnection, tokens} from "../database_setup";
@@ -18,7 +18,7 @@ describe("Account endpoints", function(){
         await connection.query(
             `INSERT INTO ${tables.users} (username, password, active_avatar, brawlers, avatars, themes, scenes, accessories, wild_card_pins, featured_item) VALUES (?,
             "34e5e29c5ac22ca11dd5a825646a85d2577beb1923c2fa900efa95fce8638ef8ace7c1a4406de0b150a5748a29b893b799869f42a0b8f69ed671261719f29950BULL451a4e40da1e2650d4f20ff1888a787947f88c44cfbe216da89a2f76f7040416",
-            "", "{}", "[]", '["retro"]', '["giftshop"]', "[]", "[]", "");`, [TEST_USERNAME]
+            "", "{}", "[]", ?, ?, "[]", "[]", "");`, [TEST_USERNAME, JSON.stringify(["retro"]), JSON.stringify(["giftshop"])]
         );
     });
 
@@ -135,6 +135,68 @@ describe("Account endpoints", function(){
 
             expect(res).to.have.status(403);
             expect(res.text).to.equal("You are not allowed to use one or more of those cosmetics.");
+        });
+    });
+
+    describe("/claimtokens", function(){
+        it("Get tokens available with no token doubler", async function(){
+            await connection.query(`UPDATE ${tables.users} SET last_claim = ?, token_doubler = ? WHERE username = ?`, [1600000000000, 0, TEST_USERNAME]);
+
+            const res = await chai.request(server).post("/claimtokens").auth(TEST_TOKEN, {type: "bearer"})
+            .send({claim: false});
+
+            expect(res).to.have.status(200);
+            expect(res.body).to.be.an("object");
+            expect(res.body).to.have.keys(["tokensAvailable", "tokensEarned", "timeLeft"]);
+            expect(res.body.timeLeft).to.have.keys(["season", "hour", "minute", "second", "hoursPerSeason", "maxSeasons"]);
+
+            expect(res.body.tokensAvailable).to.equal(TOKENS_PER_REWARD * MAX_REWARD_STACK);
+            expect(res.body.tokensEarned).to.equal(0);
+        });
+
+        it("Get tokens available with token doubler", async function(){
+            await connection.query(`UPDATE ${tables.users} SET last_claim = ?, token_doubler = ? WHERE username = ?`, [1600000000000, 300, TEST_USERNAME]);
+
+            const res = await chai.request(server).post("/claimtokens").auth(TEST_TOKEN, {type: "bearer"})
+            .send({claim: false});
+
+            expect(res).to.have.status(200);
+            expect(res.body).to.be.an("object");
+            expect(res.body).to.have.keys(["tokensAvailable", "tokensEarned", "timeLeft"]);
+            expect(res.body.timeLeft).to.have.keys(["season", "hour", "minute", "second", "hoursPerSeason", "maxSeasons"]);
+
+            expect(res.body.tokensAvailable).to.equal(TOKENS_PER_REWARD * MAX_REWARD_STACK + Math.min(300, TOKENS_PER_REWARD * MAX_REWARD_STACK));
+            expect(res.body.tokensEarned).to.equal(0);
+        });
+
+        it("Claim tokens with no token doubler", async function(){
+            await connection.query(`UPDATE ${tables.users} SET last_claim = ?, token_doubler = ? WHERE username = ?`, [1600000000000, 0, TEST_USERNAME]);
+
+            const res = await chai.request(server).post("/claimtokens").auth(TEST_TOKEN, {type: "bearer"})
+            .send({claim: true});
+
+            expect(res).to.have.status(200);
+            expect(res.body).to.be.an("object");
+            expect(res.body).to.have.keys(["tokensAvailable", "tokensEarned", "timeLeft"]);
+            expect(res.body.timeLeft).to.have.keys(["season", "hour", "minute", "second", "hoursPerSeason", "maxSeasons"]);
+
+            expect(res.body.tokensAvailable).to.equal(0);
+            expect(res.body.tokensEarned).to.equal(TOKENS_PER_REWARD * MAX_REWARD_STACK);
+        });
+
+        it("Claim tokens with token doubler", async function(){
+            await connection.query(`UPDATE ${tables.users} SET last_claim = ?, token_doubler = ? WHERE username = ?`, [1600000000000, 300, TEST_USERNAME]);
+
+            const res = await chai.request(server).post("/claimtokens").auth(TEST_TOKEN, {type: "bearer"})
+            .send({claim: true});
+
+            expect(res).to.have.status(200);
+            expect(res.body).to.be.an("object");
+            expect(res.body).to.have.keys(["tokensAvailable", "tokensEarned", "timeLeft"]);
+            expect(res.body.timeLeft).to.have.keys(["season", "hour", "minute", "second", "hoursPerSeason", "maxSeasons"]);
+
+            expect(res.body.tokensAvailable).to.equal(0);
+            expect(res.body.tokensEarned).to.equal(TOKENS_PER_REWARD * MAX_REWARD_STACK + Math.min(300, TOKENS_PER_REWARD * MAX_REWARD_STACK));
         });
     });
 });

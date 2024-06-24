@@ -4,7 +4,7 @@ import {rarityNames} from "../modules/rewards";
 import brawlBox, {boxList, canOpenBox} from "../modules/brawlbox";
 import {formatCollectionData, getCollectionScore} from "../modules/pins";
 import {getAllItems, getAllItemsPreview, refreshFeaturedItem, getAchievementItems} from "../modules/shop";
-import {MAP_CYCLE_HOURS, mod, realToTime} from "../modules/maps";
+import {MAP_CYCLE_HOURS, mod, realToTime, getRewardStacks} from "../modules/maps";
 import {getMasteryLevel} from "../modules/accessories";
 import {
     loginErrorHandler, 
@@ -199,44 +199,16 @@ router.post<Empty, Empty, ShopReqBody>("/shop", loginErrorHandler<ShopReqBody>(a
 
     // Determine whether the featured item should be refreshed
     const currentTime = Date.now();
-    const currentSeasonTime = realToTime(currentTime);
 
-    let refreshed = false;
-
-    const hoursSinceLastLogin = (currentTime - results[0].last_login) / 3600000;
-    if (hoursSinceLastLogin >= MAP_CYCLE_HOURS){
-        refreshed = true;
-    } else{
-        let currentSeason = currentSeasonTime.season;
-        let currentHour = currentSeasonTime.hour;
-
-        const lastLoginTime = realToTime(results[0].last_login);
-        const lastLoginHour = lastLoginTime.hour;
-
-        // Explanation for the different cases is in claimtokens
-        const seasonDiff = currentSeason - lastLoginTime.season;
-        if (seasonDiff > 0){
-            currentSeason -= seasonDiff;
-            currentHour += currentSeasonTime.hoursPerSeason * seasonDiff;
-        } else if (seasonDiff < 0){
-            currentSeason -= seasonDiff;
-            currentHour += currentSeasonTime.hoursPerSeason * mod(seasonDiff, currentSeasonTime.maxSeasons);
-        } else if (currentHour < lastLoginHour){
-            currentHour += currentSeasonTime.hoursPerSeason * currentSeasonTime.maxSeasons;
-        }
-
-        if (Math.floor(currentHour / FEATURED_REFRESH_HOURS) * FEATURED_REFRESH_HOURS > lastLoginHour){
-            refreshed = true;
-        }
-    }
-
-    if (refreshed === true){
+    // The shop refresh works similarly to stackable rewards. Every FEATURED_REFRESH_HOURS hours, a stack is given. If
+    // there is at least 1 stack then the shop refreshed.
+    const reward = getRewardStacks(currentTime, results[0].last_login, FEATURED_REFRESH_HOURS);
+    if (reward.stacks >= 1){
         const newFeaturedItem = refreshFeaturedItem(resources.brawlers);
         if (newFeaturedItem !== ""){
             featuredItem = newFeaturedItem;
         }
     }
-
 
     // If they do not provide an item to buy, show all items
     if (typeof req.body.item !== "string"){
