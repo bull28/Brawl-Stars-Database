@@ -3,7 +3,8 @@ import "chai-http";
 import {Connection} from "mysql2/promise";
 import {DEFAULT_REPORT_COST} from "../../bull/data/constants";
 import server from "../../bull/index";
-import {createConnection, closeConnection, tables, tokens, sampleGameReport, GAME_VERSION} from "../database_setup";
+import {tables} from "../../bull/modules/database";
+import {createConnection, closeConnection, tokens, sampleGameReport, GAME_VERSION} from "../database_setup";
 
 const TEST_TOKEN = tokens.report;
 const TEST_TOKEN_OTHER_USER = tokens.account;

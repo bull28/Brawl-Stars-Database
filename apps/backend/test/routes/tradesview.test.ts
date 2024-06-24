@@ -3,7 +3,8 @@ import "chai-http";
 import {Connection} from "mysql2/promise";
 import {IMAGE_FILE_EXTENSION, PIN_IMAGE_DIR} from "../../bull/data/constants";
 import server from "../../bull/index";
-import {createConnection, closeConnection, tables} from "../database_setup";
+import {tables} from "../../bull/modules/database";
+import {createConnection, closeConnection} from "../database_setup";
 
 const TEST_USERNAME_CREATE = "tradesCreate";
 const TEST_USERNAME_ACCEPT = "tradesAccept";

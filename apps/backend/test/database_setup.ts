@@ -1,40 +1,17 @@
-import mysql2, {Connection, ConnectionOptions} from "mysql2/promise";
+import mysql2, {Connection, ConnectionOptions, Pool} from "mysql2/promise";
 import {signToken} from "../bull/modules/authenticate";
+import {databaseLogin, tables} from "../bull/modules/database";
 
-const databaseLogin: ConnectionOptions = {
-    host: "localhost",
-    port: 3306,
-    user: "username",
-    password: "password",
-    database: "database"
-};
-
-if (process.env["DATABASE_HOST"] !== undefined){
-    databaseLogin.host = process.env["DATABASE_HOST"];
-} if (process.env["DATABASE_PORT"] !== undefined){
-    const portString = process.env["DATABASE_PORT"];
-    if (isNaN(+portString) === false){
-        databaseLogin.port = parseInt(portString);
-    }
-} if (process.env["DATABASE_USER"] !== undefined){
-    databaseLogin.user = process.env["DATABASE_USER"];
-} if (process.env["DATABASE_PASSWORD"] !== undefined){
-    databaseLogin.password = process.env["DATABASE_PASSWORD"];
-} if (process.env["DATABASE_TEST_NAME"] !== undefined){
-    databaseLogin.database = process.env["DATABASE_TEST_NAME"];
-}
-
-export const tables = {
-    users: "users",
-    trades: "trades",
-    cosmetics: "cosmetics",
-    bullgame: "bullgame",
-    reports: "reports",
-    challenges: "challenges",
-    activechallenges: "activechallenges"
+const testDatabaseLogin: ConnectionOptions = {
+    host: databaseLogin.host,
+    port: databaseLogin.port,
+    user: databaseLogin.user,
+    password: databaseLogin.password,
+    database: databaseLogin.database
 };
 
 export const tokens = {
+    database: signToken("database").token,
     account: signToken("account").token,
     collection: signToken("collection").token,
     tradesCreate: signToken("tradesCreate").token,
@@ -68,18 +45,29 @@ export const sampleGameReport = [
 ];
 export const GAME_VERSION = 77;
 
-export async function createConnection(){
+export async function createConnection(): Promise<Connection>{
     if (process.env["NODE_ENV"] !== "test"){
         throw new Error("Server is not running in test mode.");
     }
-    return mysql2.createConnection(databaseLogin);
+    return mysql2.createConnection(testDatabaseLogin);
 }
 
-export async function closeConnection(connection: Connection){
+export async function closeConnection(connection: Connection): Promise<void>{
     return connection.end();
 }
 
-export async function clearTables(connection: Connection){
+export async function createPool(): Promise<Pool>{
+    if (process.env["NODE_ENV"] !== "test"){
+        throw new Error("Server is not running in test mode.");
+    }
+    return mysql2.createPool(testDatabaseLogin);
+}
+
+export async function closePool(pool: Pool): Promise<void>{
+    return pool.end();
+}
+
+export async function clearTables(connection: Connection): Promise<void>{
     if (process.env["NODE_ENV"] !== "test"){
         throw new Error("Server is not running in test mode.");
     }

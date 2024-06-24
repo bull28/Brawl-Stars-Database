@@ -27,6 +27,7 @@ describe("Brawlers and Skins endpoints", function(){
         it("Brawler does not exist", async function(){
             const res = await chai.request(server).get("/brawler/not-a-brawler");
             expect(res).to.have.status(404);
+            expect(res.text).to.equal("Brawler not found.");
         });
     });
 
@@ -39,11 +40,13 @@ describe("Brawlers and Skins endpoints", function(){
         it("Brawler exists but not skin", async function(){
             const res = await chai.request(server).get("/skin/bull/not-a-bull-skin");
             expect(res).to.have.status(404);
+            expect(res.text).to.equal("Skin not found.");
         });
 
         it("Both brawler and skin do not exist", async function(){
             const res = await chai.request(server).get("/skin/not-a-brawler/not-a-skin");
             expect(res).to.have.status(404);
+            expect(res.text).to.equal("Brawler or skin not found.");
         });
     });
 });

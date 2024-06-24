@@ -263,7 +263,7 @@ router.post<Empty, Empty, ShopReqBody>("/shop", loginErrorHandler<ShopReqBody>(a
     const item = shopItems.get(req.body.item);
 
     if (item === undefined){
-        res.status(404).send("Item is not currently available.");
+        res.status(404).send("Item is currently not available.");
         return;
     }
 

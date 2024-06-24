@@ -3,7 +3,8 @@ import "chai-http";
 import {Connection} from "mysql2/promise";
 import {PIN_IMAGE_DIR, SKIN_IMAGE_DIR, CHALLENGE_REPORT_COST} from "../../bull/data/constants";
 import server from "../../bull/index";
-import {createConnection, closeConnection, tables, tokens} from "../database_setup";
+import {tables} from "../../bull/modules/database";
+import {createConnection, closeConnection, tokens} from "../database_setup";
 
 const TEST_TOKEN = tokens.challenge;
 const TEST_USERNAME = "challenge";

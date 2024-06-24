@@ -3,8 +3,9 @@ import "chai-http";
 import {Connection} from "mysql2/promise";
 import accessoryList from "../../bull/data/accessories_data.json";
 import server from "../../bull/index";
+import {tables} from "../../bull/modules/database";
 import {DatabaseBadges} from "../../bull/types";
-import {createConnection, closeConnection, tables, tokens} from "../database_setup";
+import {createConnection, closeConnection, tokens} from "../database_setup";
 
 const TEST_TOKEN = tokens.accessory;
 const TEST_USERNAME = "accessory";

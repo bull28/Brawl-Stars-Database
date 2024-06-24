@@ -3,7 +3,8 @@ import "chai-http";
 import {Connection} from "mysql2/promise";
 import {IMAGE_FILE_EXTENSION, THEME_SPECIAL_DIR, SCENE_IMAGE_DIR} from "../../bull/data/constants";
 import server from "../../bull/index";
-import {createConnection, closeConnection, tables, tokens} from "../database_setup";
+import {tables} from "../../bull/modules/database";
+import {createConnection, closeConnection, tokens} from "../database_setup";
 
 const TEST_TOKEN = tokens.account;
 const TEST_USERNAME = "account";
@@ -39,11 +40,13 @@ describe("Account endpoints", function(){
         it("Incorrect username", async function(){
             const res = await chai.request(server).post("/login").send({username: "BULL", password: "ash"});
             expect(res).to.have.status(401);
+            expect(res.text).to.equal("Incorrect username or password.");
         });
 
         it("No username and password provided", async function(){
             const res = await chai.request(server).post("/login").send({});
             expect(res).to.have.status(400);
+            expect(res.text).to.equal("Username or password is missing.");
         });
     });
 
@@ -56,14 +59,24 @@ describe("Account endpoints", function(){
             expect(res.body.username).to.equal("signup");
         });
 
-        it("Invalid username and password", async function(){
-            const res = await chai.request(server).post("/signup").send({username: "a", password: "a"});
+        it("Username and password are too short", async function(){
+            const res = await chai.request(server).post("/signup").send({username: "/", password: "/"});
             expect(res).to.have.status(400);
+            expect(res.text).to.equal("Username or password is too short. Minimum username length is 2 and password length is 3.");
+        });
+
+        it("Username and password are too long", async function(){
+            const username = "///////////////////////////////"
+            const password = "/////////////////////////////////////////////////////////////////////////////////////////////////////";
+            const res = await chai.request(server).post("/signup").send({username: username, password: password});
+            expect(res).to.have.status(400);
+            expect(res.text).to.equal("Username or password is too long. Maximum username length is 30 and password length is 100.");
         });
 
         it("No username and password provided", async function(){
             const res = await chai.request(server).post("/signup").send({});
             expect(res).to.have.status(400);
+            expect(res.text).to.equal("Username or password is missing.");
         });
     });
 
@@ -121,6 +134,7 @@ describe("Account endpoints", function(){
             }).auth(TEST_TOKEN, {type: "bearer"});
 
             expect(res).to.have.status(403);
+            expect(res.text).to.equal("You are not allowed to use one or more of those cosmetics.");
         });
     });
 });

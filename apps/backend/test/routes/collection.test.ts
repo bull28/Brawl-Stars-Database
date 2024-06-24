@@ -5,7 +5,8 @@ import accessoryList from "../../bull/data/accessories_data.json";
 import {IMAGE_FILE_EXTENSION, PIN_IMAGE_DIR, AVATAR_IMAGE_DIR} from "../../bull/data/constants";
 import {freeAvatarFiles} from "../../bull/modules/fileloader";
 import server from "../../bull/index";
-import {createConnection, closeConnection, tables, tokens} from "../database_setup";
+import {tables} from "../../bull/modules/database";
+import {createConnection, closeConnection, tokens} from "../database_setup";
 
 const TEST_TOKEN = tokens.collection;
 const TEST_USERNAME = "collection";
@@ -116,12 +117,14 @@ describe("Brawler Collection endpoints", function(){
             const res = await chai.request(server).post("/brawlbox").auth(TEST_TOKEN, {type: "bearer"})
             .send({boxType: "brawlBox"});
             expect(res).to.have.status(403);
+            expect(res.text).to.equal("You cannot afford to open this Box!");
         });
 
         it("Invalid brawl box name", async function(){
             const res = await chai.request(server).post("/brawlbox").auth(TEST_TOKEN, {type: "bearer"})
             .send({boxType: "not-a-brawl-box"});
             expect(res).to.have.status(404);
+            expect(res.text).to.equal("Box type does not exist.");
         });
     });
 
@@ -202,6 +205,7 @@ describe("Brawler Collection endpoints", function(){
             const res = await chai.request(server).post("/shop").auth(TEST_TOKEN, {type: "bearer"})
             .send({item: "tradeCredits1"});
             expect(res).to.have.status(403);
+            expect(res.text).to.equal("You cannot afford this item!");
 
             const [results] = await connection.query(`SELECT trade_credits FROM ${tables.users} WHERE username = ?;`,
                 [TEST_USERNAME]
@@ -213,6 +217,7 @@ describe("Brawler Collection endpoints", function(){
             const res = await chai.request(server).post("/shop").auth(TEST_TOKEN, {type: "bearer"})
             .send({item: "not-a-shop-item"});
             expect(res).to.have.status(404);
+            expect(res.text).to.equal("Item is currently not available.");
         });
     });
 });

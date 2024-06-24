@@ -1,5 +1,10 @@
 import {expect} from "chai";
+import {Connection, Pool} from "mysql2/promise";
 import * as db from "../../bull/modules/database";
+import {createConnection, closeConnection, createPool, closePool, tokens} from "../database_setup";
+
+const TEST_TOKEN = tokens.database;
+const TEST_USERNAME = "database";
 
 const parseError = `["definitely not a parse error//////////""}[:}]'`;
 
@@ -114,5 +119,130 @@ describe("Database Utilities module", function(){
 
         expect(JSON.parse(db.stringifyBrawlers(brawlers))).to.deep.include(brawlers);
         expect(db.stringifyBrawlers({})).to.eql("{}");
+    });
+    
+    describe("Database queries", function(){
+        let pool: Pool;
+        const testTable = db.tables.activechallenges;
+
+        before(async function(){
+            pool = await createPool();
+
+            await pool.query(
+                `INSERT INTO ${testTable} (active_key, challengeid, accepted, accepted_by) VALUES
+                (?, ?, ?, ?),
+                (?, ?, ?, ?),
+                (?, ?, ?, ?),
+                (?, ?, ?, ?);`,
+                [
+                    "test1", 1, 0, "",
+                    "test2", 1, 0, "",
+                    "test3", 1, 0, "",
+                    "test4", 1, 0, ""
+                ]
+            );
+        });
+
+        after(async function(){
+            if (pool !== undefined){
+                await closePool(pool);
+            }
+        });
+
+        it("Successful query", async function(){
+            const results1 = await db.queryDatabase(pool, [], false, `SELECT * FROM ${testTable};`);
+            expect(results1).to.have.lengthOf(4);
+
+            const results2 = await db.queryDatabase(pool, ["BULL"], true, `SELECT * FROM ${testTable} WHERE active_key = ?;`);
+            expect(results2).to.have.lengthOf(0);
+        });
+
+        it("Query results are empty", async function(){
+            let failed = false;
+            try{
+                await db.queryDatabase(pool, ["BULL"], false, `SELECT * FROM ${testTable} WHERE active_key = ?;`);
+            } catch(error){
+                failed = true;
+            }
+            expect(failed).to.be.true;
+        });
+
+        it("Query syntax is incorrect", async function(){
+            let failed = false;
+            try{
+                await db.queryDatabase(pool, [], true, `SELEC * FROM ${testTable}////////////////////////////;`);
+            } catch(error){
+                failed = true;
+            }
+            expect(failed).to.be.true;
+        });
+
+        it("Successful update", async function(){
+            const results1 = await db.updateDatabase(pool, [2, "test2"], false, `UPDATE ${testTable} SET challengeid = ? WHERE active_key = ?;`);
+            expect(results1.affectedRows).to.equal(1);
+
+            const results2 = await db.updateDatabase(pool, [2, "BULL"], true, `UPDATE ${testTable} SET challengeid = ? WHERE active_key = ?;`);
+            expect(results2.affectedRows).to.equal(0);
+        });
+
+        it("Update results are empty", async function(){
+            let failed = false;
+            try{
+                await db.updateDatabase(pool, [2, "BULL"], false, `UPDATE ${testTable} SET challengeid = ? WHERE active_key = ?;`);
+            } catch(error){
+                failed = true;
+            }
+            expect(failed).to.be.true;
+        });
+
+        it("Update syntax is incorrect", async function(){
+            let failed = false;
+            try{
+                await db.updateDatabase(pool, [2, "BULL"], true, `UPDAT ${testTable} SET challengeid = ? WHERE active_key = ?////////////////////////////;`);
+            } catch(error){
+                failed = true;
+            }
+            expect(failed).to.be.true;
+        });
+
+        it("Successful transaction", async function(){
+            await db.transaction(async (connection) => {
+                await db.transactionUpdate(connection, [2, "test3"], false, `UPDATE ${testTable} SET challengeid = ? WHERE active_key = ?;`);
+                await db.transactionUpdate(connection, [3, "test3"], false, `UPDATE ${testTable} SET challengeid = ? WHERE active_key = ?;`);
+            });
+
+            // The transaction should have been committed so the value of challengeid should be 3
+            const [results] = await pool.query(`SELECT challengeid FROM ${testTable} WHERE active_key = ?;`, ["test3"]);
+            expect(results).to.have.lengthOf(1);
+            expect(results[0].challengeid).to.equal(3);
+        });
+
+        it("Unsuccessful transaction due to no update", async function(){
+            try{
+                await db.transaction(async (connection) => {
+                    await db.transactionUpdate(connection, [2, "test4"], false, `UPDATE ${testTable} SET challengeid = ? WHERE active_key = ?;`);
+                    await db.transactionUpdate(connection, [3, "BULL"], false, `UPDATE ${testTable} SET challengeid = ? WHERE active_key = ?;`);
+                });
+            } catch (error){}
+
+            // The transaction should have been rolled back so the value of challengeid should still be 1, not 3
+            const [results] = await pool.query(`SELECT challengeid FROM ${testTable} WHERE active_key = ?;`, ["test4"]);
+            expect(results).to.have.lengthOf(1);
+            expect(results[0].challengeid).to.equal(1);
+        });
+
+        it("Unsuccessful transaction due to syntax error", async function(){
+            try{
+                await db.transaction(async (connection) => {
+                    await db.transactionUpdate(connection, [2, "test4"], false, `UPDATE ${testTable} SET challengeid = ? WHERE active_key = ?;`);
+                    await db.transactionUpdate(connection, [3, "test4"], false, `UPDAT ${testTable} SET challengeid = ? WHERE active_key = ?////////////////////////////;`);
+                });
+            } catch (error){}
+
+            // The transaction should have been rolled back so the value of challengeid should still be 1, not 3
+            const [results] = await pool.query(`SELECT challengeid FROM ${testTable} WHERE active_key = ?;`, ["test4"]);
+            expect(results).to.have.lengthOf(1);
+            expect(results[0].challengeid).to.equal(1);
+        });
     });
 });

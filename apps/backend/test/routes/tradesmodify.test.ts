@@ -5,7 +5,8 @@ import allSkins from "../../bull/data/brawlers_data.json";
 import {IMAGE_FILE_EXTENSION, PIN_IMAGE_DIR} from "../../bull/data/constants";
 import server from "../../bull/index";
 import {TradePin} from "../../bull/types";
-import {createConnection, closeConnection, tables, tokens} from "../database_setup";
+import {tables} from "../../bull/modules/database";
+import {createConnection, closeConnection, tokens} from "../database_setup";
 
 const TEST_TOKEN_CREATE = tokens.tradesCreate;
 const TEST_USERNAME_CREATE = "tradesCreate";

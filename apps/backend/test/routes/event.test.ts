@@ -19,16 +19,19 @@ describe("Game Modes and Maps endpoints", function(){
         it("Missing some values", async function(){
             const res = await chai.request(server).get("/event/seasontime").query({hour: 0});
             expect(res).to.have.status(400);
+            expect(res.text).to.equal("Invalid input.");
         });
 
         it("Invalid inputs", async function(){
             const res = await chai.request(server).get("/event/seasontime").query({hour: "", minute: "", second: ""});
             expect(res).to.have.status(400);
+            expect(res.text).to.equal("Invalid input.");
         });
 
         it("Missing entire query", async function(){
             const res = await chai.request(server).get("/event/seasontime");
             expect(res).to.have.status(400);
+            expect(res.text).to.equal("Invalid input.");
         });
     });
 
@@ -41,16 +44,19 @@ describe("Game Modes and Maps endpoints", function(){
         it("Missing some values", async function(){
             const res = await chai.request(server).get("/event/later").query({hour: 0});
             expect(res).to.have.status(400);
+            expect(res.text).to.equal("Invalid input.");
         });
 
         it("Invalid inputs", async function(){
             const res = await chai.request(server).get("/event/later").query({hour: "", minute: "", second: ""});
             expect(res).to.have.status(400);
+            expect(res.text).to.equal("Invalid input.");
         });
 
         it("Missing entire query", async function(){
             const res = await chai.request(server).get("/event/later");
             expect(res).to.have.status(400);
+            expect(res.text).to.equal("Invalid input.");
         });
     });
 
@@ -63,11 +69,13 @@ describe("Game Modes and Maps endpoints", function(){
         it("Invalid input", async function(){
             const res = await chai.request(server).get("/event/worldtime").query({second: true});
             expect(res).to.have.status(400);
+            expect(res.text).to.equal("Invalid input.");
         });
 
         it("Missing entire query", async function(){
             const res = await chai.request(server).get("/event/worldtime");
             expect(res).to.have.status(400);
+            expect(res.text).to.equal("Invalid input.");
         });
     });
 });

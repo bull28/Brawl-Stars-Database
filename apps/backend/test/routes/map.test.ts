@@ -23,6 +23,7 @@ describe("Game Modes and Maps endpoints", function(){
         it("Game mode does not exist", async function(){
             const res = await chai.request(server).get("/gamemode/not-a-gamemode");
             expect(res).to.have.status(404);
+            expect(res.text).to.equal("Game mode not found.");
         });
     });
 
@@ -35,6 +36,7 @@ describe("Game Modes and Maps endpoints", function(){
         it("Map does not exist", async function(){
             const res = await chai.request(server).get("/map/not-a-map");
             expect(res).to.have.status(404);
+            expect(res.text).to.equal("Map not found.");
         });
     });
 

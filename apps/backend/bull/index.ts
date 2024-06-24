@@ -25,6 +25,12 @@ if (process.env["PORT"] !== undefined){
         port = parseInt(portString);
     }
 }
+if (process.env["NODE_ENV"] === "test" && process.env["TEST_PORT"] !== undefined){
+    const portString = process.env["TEST_PORT"];
+    if (!isNaN(+portString)){
+        port = parseInt(portString);
+    }
+}
 
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
