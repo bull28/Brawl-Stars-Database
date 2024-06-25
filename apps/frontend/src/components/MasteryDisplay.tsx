@@ -4,7 +4,9 @@ import {displayLong} from "../helpers/LargeNumberDisplay";
 import {MasteryData} from "../types/AccountData";
 import cdn from "../helpers/CDNRoute";
 
-export default function MasteryDisplay({data: {level, points, currentLevel, nextLevel, image, color}}: {data: MasteryData;}){
+export default function MasteryDisplay({data: {level, points, current, next}}: {data: MasteryData;}){
+    const {points: currentLevel, image, color} = current;
+    const {points: nextLevel} = next;
     return (
         <Flex bgColor={"blue.800"} w={["90vw", "90vw", "37.5em"]} maxW={"37.5em"} flexDir={"column"} alignItems={"center"} p={"0.5em"} border={(nextLevel < 0 && level > 1) ? "0.25em solid #d852ff" : "0.25em solid #000"}>
             {(nextLevel < 0 && level > 1) ?

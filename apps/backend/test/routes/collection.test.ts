@@ -83,7 +83,7 @@ describe("Brawler Collection endpoints", function(){
 
     describe("/brawlbox", function(){
         it("Getting brawl box names", async function(){
-            const res = await chai.request(server).post("/brawlbox").auth(TEST_TOKEN, {type: "bearer"});
+            const res = await chai.request(server).get("/brawlbox").auth(TEST_TOKEN, {type: "bearer"});
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("array");
 
@@ -125,6 +125,13 @@ describe("Brawler Collection endpoints", function(){
             .send({boxType: "not-a-brawl-box"});
             expect(res).to.have.status(404);
             expect(res.text).to.equal("Box type does not exist.");
+        });
+
+        it("Missing brawl box name", async function(){
+            const res = await chai.request(server).post("/brawlbox").auth(TEST_TOKEN, {type: "bearer"})
+            .send({});
+            expect(res).to.have.status(400);
+            expect(res.text).to.equal("No Box specified.");
         });
     });
 

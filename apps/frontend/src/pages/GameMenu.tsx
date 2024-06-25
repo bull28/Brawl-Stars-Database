@@ -9,7 +9,12 @@ import BackButton from "../components/BackButton";
 import api from "../helpers/APIRoute";
 
 export default function GameMenu(){
-    const [mastery, setMastery] = useState<MasteryData>({level: 0, points: 0, currentLevel: 0, nextLevel: 1, image: "", color: "#000000"});
+    const [mastery, setMastery] = useState<MasteryData>({
+        level: 0, 
+        points: 0,
+        current: {points: 0, image: "", color: "#000000"},
+        next: {points: 1, image: "", color: "#000000"}
+    });
     const [loggedIn, setLoggedIn] = useState<boolean>(false);
     const [rewardCount, setRewardCount] = useState<number>(0);
 

@@ -637,10 +637,16 @@ export interface AccessoryData{
 export interface MasteryData{
     level: number;
     points: number;
-    currentLevel: number;
-    nextLevel: number;
-    image: string;
-    color: string;
+    current: {
+        points: number;
+        image: string;
+        color: string;
+    };
+    next: {
+        points: number;
+        image: string;
+        color: string;
+    };
 }
 
 //------------------------------------------------------------------------------------------------//

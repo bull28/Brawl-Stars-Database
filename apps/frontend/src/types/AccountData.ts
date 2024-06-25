@@ -1,3 +1,19 @@
+export interface MasteryData{
+    level: number;
+    points: number;
+    current: {
+        points: number;
+        image: string;
+        color: string;
+    };
+    next: {
+        points: number;
+        image: string;
+        color: string;
+    };
+}
+
+
 export interface UserInfoProps{
     username: string;
     tokens: number;
@@ -11,21 +27,5 @@ export interface UserInfoProps{
         rarityColor: string;
         amount: number;
     }[];
-    mastery: {
-        level: number;
-        points: number;
-        currentLevel: number;
-        nextLevel: number;
-        image: string;
-        color: string;
-    }
-}
-
-export interface MasteryData{
-    level: number;
-    points: number;
-    currentLevel: number;
-    nextLevel: number;
-    image: string;
-    color: string;
+    mastery: MasteryData;
 }

@@ -128,7 +128,7 @@ describe("Challenges module", function(){
             name: "BULL's Challenge",
             countTier: 0,
             strengthTier: 2,
-            healthBonusReq: 0.75,
+            healthBonusReq: 0.6,
             timePerEnemy: 2/3,
             enemyStats: [100, 150, 200, 250]
         });

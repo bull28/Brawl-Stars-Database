@@ -4,7 +4,7 @@ import {HOURS_PER_REWARD, TOKENS_PER_REWARD, MAX_REWARD_STACK, AVATAR_IMAGE_DIR,
 import {signToken, validateToken, hashPassword, checkPassword} from "../modules/authenticate";
 import {freeAvatarFiles, specialAvatarFiles, freeThemeFiles, specialThemeFiles, sceneFiles} from "../modules/fileloader";
 import {getAvatars, getCosmetics, getExtraBackground, getThemes} from "../modules/pins";
-import {MAP_CYCLE_HOURS, SeasonTime, mod, realToTime, subtractSeasonTimes, getRewardStacks} from "../modules/maps";
+import {getRewardStacks} from "../modules/maps";
 import {
     loginErrorHandler, 
     databaseErrorHandler, 
@@ -362,7 +362,7 @@ router.post<Empty, Empty, ClaimTokensReqBody>("/claimtokens", loginErrorHandler<
     }
 
     const currentTime = Date.now();
-    const reward = getRewardStacks(currentTime, userResults.last_claim);
+    const reward = getRewardStacks(currentTime, userResults.last_claim, HOURS_PER_REWARD);
     const rewardsGiven = Math.min(reward.stacks, MAX_REWARD_STACK);
     const nextRewardTime = reward.nextStack;
 

@@ -656,7 +656,7 @@ export function getKeyGameMod(key: string, masteryLevel: number, accessories: Da
             name: `${data.owner}'s Challenge`,
             countTier: 0,
             strengthTier: difficulty,
-            healthBonusReq: 0.75,
+            healthBonusReq: 0.6,
             timePerEnemy: 2/3,
             enemyStats: enemyStats
         }],

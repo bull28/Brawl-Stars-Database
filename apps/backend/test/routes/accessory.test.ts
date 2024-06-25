@@ -84,7 +84,9 @@ describe("Accessory Collection endpoints", function(){
 
         expect(res).to.have.status(200);
         expect(res.body).to.be.an("object");
-        expect(res.body).to.have.keys(["level", "points", "currentLevel", "nextLevel", "image", "color"]);
+        expect(res.body).to.have.keys(["level", "points", "current", "next"]);
+        expect(res.body.current).to.have.keys(["points", "image", "color"]);
+        expect(res.body.next).to.have.keys(["points", "image", "color"]);
 
         expect(res.body.level).to.equal(30);
         expect(res.body.points).to.equal(20000000);

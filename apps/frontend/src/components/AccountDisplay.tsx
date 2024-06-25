@@ -121,10 +121,10 @@ export default function AccountDisplay() {
                             <Image maxW={'30px'} src={`${cdn}/image/resources/resource_challenge_points.webp`} mr={2}/>
                             <Flex flexDir={'column'}>
                                 <Flex alignItems={"center"}>
-                                    <Image h={5} mr={1} src={`${cdn}/image/${data.mastery.image}`}/>
-                                    <Text color={data.mastery.color}>{`Level ${data.mastery.level}`}</Text>
+                                    <Image h={5} mr={1} src={`${cdn}/image/${data.mastery.current.image}`}/>
+                                    <Text color={data.mastery.current.color}>{`Level ${data.mastery.level}`}</Text>
                                 </Flex>
-                                <Flex>{data.mastery.nextLevel > 0 ? `${displayLong(data.mastery.points)} / ${displayShort(data.mastery.nextLevel)}` : `${displayLong(data.mastery.points)}`}</Flex>
+                                <Flex>{data.mastery.next.points > 0 ? `${displayLong(data.mastery.points)} / ${displayShort(data.mastery.next.points)}` : `${displayLong(data.mastery.points)}`}</Flex>
                             </Flex>
                         </Flex>
                         </MenuItem>    

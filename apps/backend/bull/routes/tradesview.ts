@@ -21,7 +21,6 @@ interface TradeAllReqBody{
     filterInRequest: boolean;
     brawler: string;
     pin: string;
-    pinImage: string;
 }
 
 
@@ -126,8 +125,6 @@ router.post<Empty, Empty, TradeAllReqBody>("/all", databaseErrorHandler<TradeAll
     // Apply filters by either pin or brawler. If a filter by pin is specified, it overrides the filter by brawler.
     if (typeof req.body.pin === "string" && req.body.pin !== ""){
         filterString = '%"pin":"' + req.body.pin + '"%';
-    } else if (typeof req.body.pinImage === "string" && req.body.pinImage !== ""){
-        filterString = '%"pinImage":"' + req.body.pinImage + '"%';
     } else if (typeof req.body.brawler === "string" && req.body.brawler !== ""){
         filterString = '%"brawler":"' + req.body.brawler + '"%';
     }

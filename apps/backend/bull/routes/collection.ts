@@ -4,7 +4,7 @@ import {rarityNames} from "../modules/rewards";
 import brawlBox, {boxList, canOpenBox} from "../modules/brawlbox";
 import {formatCollectionData, getCollectionScore} from "../modules/pins";
 import {getAllItems, getAllItemsPreview, refreshFeaturedItem, getAchievementItems} from "../modules/shop";
-import {MAP_CYCLE_HOURS, mod, realToTime, getRewardStacks} from "../modules/maps";
+import {getRewardStacks} from "../modules/maps";
 import {getMasteryLevel} from "../modules/accessories";
 import {
     loginErrorHandler, 
@@ -94,12 +94,17 @@ router.get("/collection", loginErrorHandler(async (req, res, username) => {
     res.json(collection);
 }));
 
+// Gets the list of all available boxes
+router.get("/brawlbox", loginErrorHandler(async (req, res, username) => {
+    res.json(boxList);
+}));
+
 // Opens a brawl box and returns the results to the user
 router.post<Empty, Empty, BrawlBoxReqBody>("/brawlbox", loginErrorHandler<BrawlBoxReqBody>(async (req, res, username) => {
     // If the user does not specify a box type, send all the available boxes.
     // If they do specify a box type, check to make sure that box actually exists.
     if (typeof req.body.boxType !== "string"){
-        res.json(boxList);
+        res.status(400).send("No Box specified.");
         return;
     }
 

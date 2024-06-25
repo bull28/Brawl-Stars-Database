@@ -473,10 +473,16 @@ export function getMasteryLevel(points: number): MasteryData{
     const result: MasteryData = {
         level: -1,
         points: points,
-        currentLevel: 0,
-        nextLevel: 1,
-        image: "",
-        color: "#000000"
+        current: {
+            points: 0,
+            image: "",
+            color: "#000000"
+        },
+        next: {
+            points: 1,
+            image: "",
+            color: "#000000"
+        }
     };
 
     let x = 0;
@@ -486,23 +492,33 @@ export function getMasteryLevel(points: number): MasteryData{
         if (points < masteryLevels[x] || masteryLevels[x] < 0){
             if (x >= 1){
                 // Points required to get to the current level
-                result.currentLevel = masteryLevels[x - 1];
+                result.current.points = masteryLevels[x - 1];
             }
             // Points required to get to the next level
-            result.nextLevel = masteryLevels[x];
+            result.next.points = masteryLevels[x];
             result.level = x - 1;
         }
         x++;
     }
 
     x = 0;
-    while (x < levelImages.length && result.image === ""){
+    while (x < levelImages.length && result.current.image === ""){
         // Find the first index in levelImages where the user's level is not higher than the next index's minLevel.
         // This index contains the user's current level image and color. If the end of the array is reached without
         // finding an index then the user has the highest available image and color level.
         if (x >= levelImages.length - 1 || (x < levelImages.length - 1 && result.level < levelImages[x + 1].minLevel)){
-            result.image = RESOURCE_IMAGE_DIR + levelImages[x].image + IMAGE_FILE_EXTENSION;
-            result.color = levelImages[x].color;
+            result.current.image = RESOURCE_IMAGE_DIR + levelImages[x].image + IMAGE_FILE_EXTENSION;
+            result.current.color = levelImages[x].color;
+            
+            if (x < levelImages.length - 1 && result.level + 1 >= levelImages[x + 1].minLevel){
+                // Next mastery level meets the minimum level required for the next image
+                result.next.image = RESOURCE_IMAGE_DIR + levelImages[x + 1].image + IMAGE_FILE_EXTENSION;
+                result.next.color = levelImages[x + 1].color;
+            } else{
+                // Next mastery level does not meet the minimum level or there is no next image
+                result.next.image = result.current.image;
+                result.next.color = result.current.color;
+            }
         }
         x++;
     }
