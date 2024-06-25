@@ -13,6 +13,7 @@ const testDatabaseLogin: ConnectionOptions = {
 export const tokens = {
     database: signToken("database").token,
     account: signToken("account").token,
+    accountUpdate: signToken("accountUpdate").token,
     collection: signToken("collection").token,
     tradesCreate: signToken("tradesCreate").token,
     tradesAccept: signToken("tradesAccept").token,

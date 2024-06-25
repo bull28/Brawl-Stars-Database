@@ -16,6 +16,8 @@ export default function GameMenu(){
         next: {points: 1, image: "", color: "#000000"}
     });
     const [loggedIn, setLoggedIn] = useState<boolean>(false);
+    // This is used to prevent the not logged in text from appearing for a short time when the user is logged in
+    const [notLoggedIn, setNotLoggedIn] = useState<boolean>(false);
     const [rewardCount, setRewardCount] = useState<number>(0);
 
     const navigate = useNavigate();
@@ -25,6 +27,7 @@ export default function GameMenu(){
         AuthRequest<MasteryData>("/accessory/mastery", {setState: (data) => {
             setMastery(data);
             setLoggedIn(true);
+            setNotLoggedIn(false);
 
             AuthRequest<Record<string, unknown>[]>("/report/all", {setState: (data1) => {
                 // The type of this value does not matter, only the length is used
@@ -32,6 +35,7 @@ export default function GameMenu(){
             }}, false);
         }, fallback: (error) => {
             setLoggedIn(false);
+            setNotLoggedIn(true);
             const e = error as AxiosError;
             if (e.response !== undefined && e.response.status !== 400 && e.response.status !== 401){
                 const message = e.response.data;
@@ -55,7 +59,7 @@ export default function GameMenu(){
             </Box>
             <Box w={"100%"}>
                 <Flex w={"100%"} flexDir={"column"} gap={5} alignItems={"center"}>
-                    {loggedIn === true ?
+                    {loggedIn &&
                         <>
                         <Flex flexDir={"column"} alignItems={"center"} fontSize={"lg"} gap={1}>
                             <Button minW={["50%", "20em"]} bgColor={"gray.800"} _hover={{"backgroundColor": "gray.600"}} fontSize={"inherit"} onClick={() => window.location.href = `${api}/bullgame`}>Play Classic Mode</Button>
@@ -67,7 +71,8 @@ export default function GameMenu(){
                         </Flex>
                         <MasteryDisplay data={mastery}/>
                         </>
-                        :
+                    }
+                    {notLoggedIn &&
                         <Flex flexDir={"column"} alignItems={"center"} fontSize={"lg"} className={"heading-lg"} gap={"0.5em"}>
                             <Text>You are currently not logged in.</Text>
                             <Text>You can still play the game but you need to be logged in to earn rewards from playing.</Text>

@@ -203,7 +203,6 @@ router.post<Empty, Empty, UpdateReqBody>("/update", loginErrorHandler<UpdateReqB
 }));
 
 // Get the list of all avatars the user is allowed to select
-//router.post<Empty, Empty, TokenReqBody>("/avatar", loginErrorHandler<TokenReqBody>(async (req, res, username) => {
 router.get("/avatar", loginErrorHandler(async (req, res, username) => {
     // beforeUpdate contains at least as much information as necessary here.
     // This is used to avoid creating another database query function that is very similar to an existing one.

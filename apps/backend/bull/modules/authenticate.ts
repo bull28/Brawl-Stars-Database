@@ -11,7 +11,7 @@ declare module "jsonwebtoken"{
 let secret: jsonwebtoken.Secret = "THE KING WINS AGAIN";
 const saltBytes = 32;
 const hashLength = 64;
-const hashCost = 4096;
+const hashCost = process.env["NODE_ENV"] === "test" ? 1024 : 4096;
 const hashSplit = "BULL";
 
 if (process.env["TOKEN_SECRET"] !== undefined){
