@@ -48,8 +48,8 @@ export default function GameEnemies(){
             </Box>
             <Flex w={"100%"} maxW={"128em"} h={["fit-content", "fit-content", "fit-content", "90vh"]} bgColor={"gray.800"} flexDir={["column", "column", "column", "row"]} overflowX={"hidden"}>
                 <Flex bgColor={"#000"} overflowY={"scroll"} sx={scrollStyle} w={["100vw", "100vw", "100vw", "35vw"]} maxW={["100vw", "100vw", "100vw", "100vw", "100vw", "48em"]} h={["50vh", "50vh", "50vh", "100%"]}>
-                    <SimpleGrid columns={[2, 3, 5, 3, 4]} spacing={2} w={"100%"} h={"fit-content"} p={"0.5em"}>{(enemies.map((value) => 
-                        <Flex bgColor={"purple.400"} key={value.name} flexDir={"column"} alignItems={"center"} p={2} borderRadius={"xl"} cursor={"pointer"} onClick={() => setCurrentEnemy(value)}>
+                    <SimpleGrid columns={[2, 3, 5, 3, 4]} spacing={3} w={"100%"} h={"fit-content"} p={"0.5em"}>{(enemies.map((value) => 
+                        <Flex bgColor={"purple.400"} key={value.name} flexDir={"column"} alignItems={"center"} p={3} borderRadius={"xl"} cursor={"pointer"} onClick={() => setCurrentEnemy(value)} transition={"transform 0.15s ease-in"} _hover={{transform: "scale(1.05)", backgroundColor: "purple.300"}}>
                             <Text fontSize={"xl"} className={"heading-xl"}>{value.displayName}</Text>
                             <Image src={`${cdn}/image/${value.image !== "" ? value.image : "skingroups/icons/icon_default.webp"}`} w={"75%"} draggable={false}/>
                         </Flex>

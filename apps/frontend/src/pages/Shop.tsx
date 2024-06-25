@@ -25,19 +25,19 @@ interface Category{
 }
 
 interface ShopItemCategories{
-    avatars: Category;
+    currency: Category;
     brawlers: Category;
     accessories: Category;
-    currency: Category;
+    avatars: Category;
     themes: Category;
     scenes: Category;
 }
 
 export default function Shop() {
-    const [featured, setFeatured] = useState<ShopData | undefined>(undefined);
-    const [userInfo, setUserInfo] = useState<UserInfoProps | undefined>(undefined);
-    const [items, setItems] = useState<ShopItemCategories | undefined>(undefined);
-    const [isLoggedIn, setLoggedIn] = useState<boolean>();
+    const [featured, setFeatured] = useState<ShopData | undefined>();
+    const [userInfo, setUserInfo] = useState<UserInfoProps | undefined>();
+    const [items, setItems] = useState<ShopItemCategories | undefined>();
+    const [loggedIn, setLoggedIn] = useState<boolean | undefined>();
     const [featuredLoaded, setFeaturedLoaded] = useState<boolean>(false);
 
     const [timer, updateTimer] = useState<Timer>({start: Date.now(), offset: 0});
@@ -46,10 +46,10 @@ export default function Shop() {
 
     const organizeData = useCallback((items: ShopData[]) => {
         const sortedItems: ShopItemCategories = {
-            avatars: {name: "Avatars", search: "avatar", icon: <BsEmojiLaughing color={'black'}/>, items: []},
+            currency: {name: "Currency", search: "credit", icon: <MdOutlineGeneratingTokens color={'black'}/>, items: []},
             brawlers: {name: "Brawlers", search: "brawler", icon: <BsPerson color={'black'}/>, items: []},
             accessories: {name: "Accessories", search: "accessory", icon: <BsPerson color={'black'}/>, items: []},
-            currency: {name: "Currency", search: "credit", icon: <MdOutlineGeneratingTokens color={'black'}/>, items: []},
+            avatars: {name: "Avatars", search: "avatar", icon: <BsEmojiLaughing color={'black'}/>, items: []},
             themes: {name: "Themes", search: "theme", icon: <BsPalette color={'black'}/>, items: []},
             scenes: {name: "Scenes", search: "scene", icon: <BiLandscape color={'black'}/>, items: []}
         };
@@ -106,7 +106,7 @@ export default function Shop() {
     }, [organizeData]);
 
     return (
-        <Flex flexDir={'column'} alignItems={'center'} minH={'100vh'} pb={featuredLoaded ? '5vh' : '100vh'} transition={'padding-bottom 0.5s ease-out'}>
+        <Flex flexDir={'column'} alignItems={'center'} minH={'101vh'} pb={featuredLoaded ? '5vh' : '5vh'} transition={'padding-bottom 0.5s ease-out'}>
             <Flex zIndex={'-1'} w={'100%'} h={'100%'} pos={'fixed'} alignItems={'center'} justifyContent={'center'}>
                 <Image objectFit={'cover'} w={'100%'} h={'100%'} src={require(`../assets/shopbackground${Math.floor(((((new Date().getMonth() - 2) % 12) + 12) % 12) / 3)}.webp`)}/>
             </Flex>
@@ -127,16 +127,14 @@ export default function Shop() {
                     </Flex>
                 </Flex>
                 <Flex flexDir={'column'} alignItems={'center'} pb={'5vh'} pt={'10vh'}>  
-                    {featured !== void 0 ?
+                    {featured &&
                         <ScaleFade in={true} onViewportEnter={() => setFeaturedLoaded(true)}>
                             <ShopItem data={featured} coins={userInfo.coins} isFeatured={true} timeLeftString={EventTime({season: 0, hour: Math.floor(secondsLeft / 3600), minute: Math.floor(secondsLeft / 60) % 60, second: secondsLeft % 60, hoursPerSeason: 336, maxSeasons: 2}, 0)}/>
                         </ScaleFade>
-                        :
-                        <></>
                     }
                 </Flex>
                 <Flex w={'90%'} justifyContent={'left'}>
-                    {items !== void 0 ?
+                    {items &&
                         <Flex justifyContent={'space-between'} flexDir={'column'} p={[0, 2, 4, 5, 5]}>
                             {Object.keys(items).map((key) => {
                                 const value = items[key as keyof ShopItemCategories];
@@ -156,21 +154,17 @@ export default function Shop() {
                                 );
                             })}
                         </Flex>
-                        :
-                        <></>
                     }
                 </Flex>
                 </>
             }
-            {(isLoggedIn === false) &&
-                <>
-                <Flex flexDir={'column'} alignItems={'center'} w={'100vw'} h={'100vh'} justifyContent={'center'} pos={'absolute'}>
+            {loggedIn === false &&
+                <Flex flexDir={'column'} alignItems={'center'} w={'100%'} h={'100%'} justifyContent={'center'} pos={'absolute'}>
                     <Flex flexDir={'column'} alignItems={'center'} justifyContent={'center'} bgColor={'lightskyblue'} border={'2px solid'} borderColor={'blue.500'} borderRadius={'lg'} p={5}>
                         <Text fontSize={'2xl'} className={'heading-2xl'} >Please Login to View the Shop</Text>
                         <Link fontSize={'2xl'} className={'heading-xl'} color={'blue.300'} href="/login">Click here to login</Link>
                     </Flex>
                 </Flex>
-                </>
             }
         </Flex>
     )

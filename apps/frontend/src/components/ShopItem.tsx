@@ -56,7 +56,7 @@ export default function ShopItem({data, coins, isFeatured, timeLeftString}: {dat
                 <Modal isOpen={isOpen} onClose={onClose} size={'3xl'} preserveScrollBarGap={true}>
                     <ModalOverlay />
                         <ModalContent bgColor={(accepted) ? '#9f9' : 'lightskyblue'} border={'2px solid '}>
-                        <ModalHeader fontSize={'2xl'}  className={'heading-2xl'} fontWeight={'normal'}>{accepted ? 'Purchase Successful!' : `Purchase ${data.displayName}`}</ModalHeader>
+                        <ModalHeader fontSize={'2xl'} color={'#fff'} className={'heading-2xl'} fontWeight={'normal'}>{accepted ? 'Purchase Successful!' : `Purchase ${data.displayName}`}</ModalHeader>
                         <ModalBody>
                             <Flex justifyContent={'center'}>
                                 <Flex boxShadow={(accepted) ? '0px 0px 50px #fff' : ''} borderRadius={'50%'}>
@@ -66,7 +66,7 @@ export default function ShopItem({data, coins, isFeatured, timeLeftString}: {dat
                         </ModalBody>
     
                         <ModalFooter>
-                            <Button className={'heading-md'} mr={3} onClick={(accepted) ? () => {window.location.reload()} : onClose}>Close</Button>
+                            <Button className={'heading-md'} mr={3} color={'#fff'} onClick={(accepted) ? () => {window.location.reload()} : onClose}>Close</Button>
                             {accepted ? 
                                 <Button className={'heading-md'} mr={3} onClick={() => {navigate('/collection')}}>
                                     View Collection
@@ -106,7 +106,7 @@ export default function ShopItem({data, coins, isFeatured, timeLeftString}: {dat
                 <Modal isOpen={isOpen} onClose={onClose} size={'3xl'} preserveScrollBarGap={true}>
                     <ModalOverlay />
                         <ModalContent bgColor={(accepted) ? '#9f9' : 'lightskyblue'} border={'2px solid '}>
-                        <ModalHeader fontSize={'2xl'}  className={'heading-2xl'} fontWeight={'normal'}>{accepted ? 'Purchase Successful!' : `Purchase ${data.displayName}`}</ModalHeader>
+                        <ModalHeader fontSize={'2xl'} color={'#fff'} className={'heading-2xl'} fontWeight={'normal'}>{accepted ? 'Purchase Successful!' : `Purchase ${data.displayName}`}</ModalHeader>
                         <ModalBody>
                             <Flex flexDir={'column'} alignItems={'center'}>
                                 {(( purchaseData?.result.length || 0 ) < 1) ?
@@ -138,7 +138,7 @@ export default function ShopItem({data, coins, isFeatured, timeLeftString}: {dat
                         </ModalBody>
     
                         <ModalFooter>
-                            <Button className={'heading-md'} mr={3} onClick={(accepted) ? () => {window.location.reload()} : onClose}>Close</Button>
+                            <Button className={'heading-md'} mr={3} color={'#fff'} onClick={(accepted) ? () => {window.location.reload()} : onClose}>Close</Button>
                             {accepted ? 
                                 <></>
                                 :

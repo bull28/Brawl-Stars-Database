@@ -3,7 +3,7 @@ import {Flex, Text, SimpleGrid, Image, Icon, Link, Stack, keyframes, Spinner} fr
 import {useParams} from "react-router-dom";
 import axios, {AxiosResponse} from "axios";
 import SkinView from "../components/SkinView";
-import {ArrowBackIcon, ExternalLinkIcon} from "@chakra-ui/icons";
+import {ArrowBackIcon} from "@chakra-ui/icons";
 import {BrawlerData, ModelFiles, SkinData} from "../types/BrawlerData";
 import AnimationViewer from "../components/AnimationViewer";
 import AuthRequest from "../helpers/AuthRequest";
@@ -48,9 +48,9 @@ export default function Brawler(){
 
   return (
     <>
-    {data !== void 0 ?
+    {data &&
         <Flex flexDir={"column"} w={"100%"} maxW={"100vw"} justifyContent={"center"} alignItems={"center"} bgColor={data.rarity.color} overflowX={"hidden"}>
-            <Link pos={"absolute"} left={[0, "0.5em"]} top={[0, "0.5em"]} href={"/brawlers"}>
+            <Link pos={"absolute"} left={[0, "0.5em"]} top={[0, "0.5em"]} href={`/brawlers?${new URLSearchParams({brawler: data.name})}`}>
                 <Icon as={ArrowBackIcon} fontSize={"2.5em"} color={"#fff"}/>
             </Link>
             <Flex w={"100%"} justifyContent={"center"} mt={3} mb={5}>
@@ -68,7 +68,7 @@ export default function Brawler(){
                 </Flex>
 
                 <Flex justifyContent={"center"} alignItems={"center"} h={["60vw", "60vw", "50vw", "40vw", "100%"]} w={["60vw", "60vw", "50vw", "40vw", "33%"]} bgColor={"#000"} backgroundPosition={"center"} backgroundSize={"cover"} backgroundRepeat={"no-repeat"} border={"3px solid #fff"}>
-                    {model.geometry !== void 0 && cosmetics !== void 0 &&
+                    {model.geometry && cosmetics &&
                         <Suspense fallback={<Spinner/>}>
                             <AnimationViewer modelFile={model.geometry} winFile={model.winAnimation} loseFile={model.loseAnimation} lightsFile={undefined} sceneFile={cosmetics.scene} lightIntensity={undefined}/>
                         </Suspense>
@@ -94,11 +94,11 @@ export default function Brawler(){
                             </Flex>
                         ))}
                     </SimpleGrid>
-                    {localStorage.getItem("username") ? 
+                    {/*localStorage.getItem("username") ? 
                         <Link href={`/collection?brawler=${data.name}`} color={"#fff"} fontSize={"lg"} className={"heading-lg"}>{`View ${data.displayName} Collection `}<ExternalLinkIcon mx={"2px"}/></Link>
                         :
                         <Text color={"#fff"} fontSize={"lg"} className={"heading-lg"}><Link color={"blue.400"} href="/login">Log In</Link> To View Collection</Text>
-                    }
+                    */}
                 </Flex>
             </Stack>
             <SimpleGrid spacing={[4, 3, 5, 5, 5]} columns={[1, 2, 2, 3, 4]} bgColor={"blue.900"} pt={"3vh"} w={"100%"} px={[1, 2, 4, 6, 6]}>{(data.skins).map((skin) => (
@@ -108,8 +108,6 @@ export default function Brawler(){
             ))}
             </SimpleGrid>
         </Flex>
-        :
-        <></>
     }
     </>
     )

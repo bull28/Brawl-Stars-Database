@@ -27,6 +27,8 @@ interface ThemeCategories{
 export default function Gallery() {
     const [themes, setThemes] = useState<ThemeCategories | undefined>(undefined);
     const [cosmetics, setCosmetics] = useState<CosmeticData | undefined>(undefined);
+    const [loggedIn, setLoggedIn] = useState<boolean | undefined>();
+    const [preview, setPreview] = useState<boolean>(false);
 
     const updateCosmeticItem = (cosmetics: CosmeticData, key: string, value: string): CosmeticData => {
         const newCosmetics: CosmeticData = {
@@ -68,12 +70,21 @@ export default function Gallery() {
     }, []);
 
     useEffect(() => {
-        AuthRequest<ThemeProps>("/theme", {setState: organizeData}, false);
-        AuthRequest<CosmeticData>("/cosmetic", {setState: setCosmetics}, false);
+        AuthRequest<ThemeProps>("/theme", {setState: organizeData, fallback: () => setLoggedIn(false)}, false);
+        AuthRequest<CosmeticData>("/cosmetic", {setState: setCosmetics, fallback: () => setLoggedIn(false)}, false);
     }, [organizeData]);
 
     const saveChanges = () => {
-        AuthRequest<CosmeticData>("/cosmetic", {data: {setCosmetics: cosmetics}, message: {title: "Changes Saved!", status: "success", duration: 3000}, errorToastMessage: "Something Went Wrong!"});
+        AuthRequest<CosmeticData>("/cosmetic", {
+            data: {setCosmetics: cosmetics},
+            message: {
+                title: "Changes Saved!",
+                status: "success",
+                duration: 3000
+            },
+            errorToastMessage: "Something Went Wrong!",
+            callback: () => setPreview(false)
+        });
     };
 
     return (
@@ -83,43 +94,47 @@ export default function Gallery() {
         <Flex flexDir={"column"} alignItems={"center"}>
             <Text fontSize={"4xl"} className={"heading-4xl"}>Gallery</Text>
         </Flex>
-        {(cosmetics !== void 0 && themes !== void 0) ?
+        {cosmetics && themes &&
             <Flex flexDir={"column"} alignItems={"center"}>
-            <SimpleGrid columns={[1, 1, 1, 2]} spacingX={"5vw"} spacingY={[5, 10]}>
-                {Object.keys(themes).map((key) => {
-                    const value = themes[key as keyof ThemeCategories];
-                    let selected = "";
-                    if (cosmetics.hasOwnProperty(key)){
-                        selected = cosmetics[key as keyof typeof cosmetics];
-                    }
-                    
-                    return (
-                        <Flex key={key} flexDir={"column"} alignItems={"center"}>
-                            <Text fontSize={"3xl"} className={"heading-3xl"} mb={5}>{value.name}</Text>        
-                            <VStack p={3} spacing={3} bgColor={"blue.500"} borderRadius={"lg"} border={"3px solid"} borderColor={"blue.700"} overflowY={"scroll"} maxH={"80vh"} sx={scrollStyle}>
-                                {value.themes.map((theme) => (
-                                <Flex key={theme.path + theme.displayName} w={["80vw", "80vw", "70vw", "40vw", "30vw"]} bgColor={selected === theme.path ? "green.300" : "lightskyblue"} justifyContent={"space-between"} flexDir={["column", "row"]} p={[2, 3, 4]} borderRadius={"lg"} border={"2px solid black"}>
-                                    <Flex>
-                                        <Image w={["20vw", "20vw", "16vw", "10vw", "8vw"]} h={["20vw", "20vw", "16vw", "10vw", "8vw"]} bgColor={theme.image !== "" ? "#000" : "#0000"} borderRadius={"lg"} border={"2px solid black"} objectFit={"cover"} src={theme.image !== "" ? `${cdn}/image/${theme.image}` : `${cdn}/image/misc/bg_3d_model.webp`} boxShadow={"0px 0px 25px #fff"}/>
-                                        
-                                        <Flex flexDir={"column"} mx={"5%"}>
-                                            <Text className={"heading-2xl"} mb={[0, 1, 1, 1, 1]} fontSize={["lg", "xl", "2xl", "xl", "2xl"]}>{theme.displayName}</Text>
-                                            <Text fontSize={["xs", "sm", "md", "sm", "md"]} className={"heading-md"}>{value.description}</Text>
+                <SimpleGrid columns={[1, 1, 1, 2]} spacingX={"5vw"} spacingY={[5, 10]} visibility={preview ? "hidden" : "visible"}>
+                    {Object.keys(themes).map((key) => {
+                        const value = themes[key as keyof ThemeCategories];
+                        let selected = "";
+                        if (cosmetics.hasOwnProperty(key)){
+                            selected = cosmetics[key as keyof typeof cosmetics];
+                        }
+                        
+                        return (
+                            <Flex key={key} flexDir={"column"} alignItems={"center"}>
+                                <Text fontSize={"3xl"} className={"heading-3xl"} mb={5}>{value.name}</Text>        
+                                <VStack p={3} spacing={3} bgColor={"blue.500"} borderRadius={"lg"} border={"3px solid"} borderColor={"blue.700"} overflowY={"scroll"} maxH={"80vh"} sx={scrollStyle}>
+                                    {value.themes.map((theme) => (
+                                    <Flex key={theme.path + theme.displayName} w={["80vw", "80vw", "70vw", "40vw", "30vw"]} bgColor={selected === theme.path ? "green.300" : "lightskyblue"} justifyContent={"space-between"} flexDir={["column", "row"]} p={[2, 3, 4]} borderRadius={"lg"} border={"2px solid black"}>
+                                        <Flex>
+                                            <Image w={["20vw", "20vw", "16vw", "10vw", "8vw"]} h={["20vw", "20vw", "16vw", "10vw", "8vw"]} bgColor={theme.image !== "" ? "#000" : "#0000"} borderRadius={"lg"} border={"2px solid black"} objectFit={"cover"} src={theme.image !== "" ? `${cdn}/image/${theme.image}` : `${cdn}/image/misc/bg_3d_model.webp`} boxShadow={"0px 0px 25px #fff"}/>
+                                            
+                                            <Flex flexDir={"column"} mx={"5%"}>
+                                                <Text className={"heading-2xl"} mb={[0, 1]} fontSize={["lg", "xl", "2xl", "xl", "2xl"]}>{theme.displayName}</Text>
+                                                <Text fontSize={["xs", "sm", "md", "sm", "md"]} className={"heading-md"}>{value.description}</Text>
+                                            </Flex>
+                                        </Flex>
+                                        <Flex flexDir={"column"} my={2} justifyContent={"space-around"}>                  
+                                            <Button isDisabled={selected === theme.path} onClick={() => {setCosmetics(updateCosmeticItem(cosmetics, key, theme.path))}} fontSize={"xl"} bgColor={"green.500"}>Use</Button>
                                         </Flex>
                                     </Flex>
-                                    <Flex flexDir={"column"} my={2} justifyContent={"space-around"}>                  
-                                        <Button isDisabled={selected === theme.path} onClick={() => {setCosmetics(updateCosmeticItem(cosmetics, key, theme.path))}} fontSize={"xl"} bgColor={"green.500"}>Use</Button>
-                                    </Flex>
-                                </Flex>
-                                ))}
-                            </VStack>
-                        </Flex>
-                    );
-                })}
-            </SimpleGrid>
-            <Button my={"10vh"} fontSize={"2xl"} className={"heading-2xl"} onClick={saveChanges} bgColor={"green.300"} borderColor={"green.500"} border={"2px solid #9f9"} h={"5vh"}>Save</Button>
+                                    ))}
+                                </VStack>
+                            </Flex>
+                        );
+                    })}
+                </SimpleGrid>
+                <Flex my={"10vh"} flexDir={"column"} gap={3}>
+                    <Button fontSize={"2xl"} className={"heading-2xl"} onClick={() => setPreview(!preview)} bgColor={"green.300"} borderColor={"green.500"} border={"2px solid #9f9"} h={"5vh"}>Preview</Button>
+                    <Button fontSize={"2xl"} className={"heading-2xl"} onClick={saveChanges} bgColor={"green.300"} borderColor={"green.500"} border={"2px solid #9f9"} h={"5vh"}>Save</Button>
+                </Flex>
             </Flex>
-            :
+        }
+        {loggedIn === false &&
             <Flex flexDir={"column"} alignItems={"center"} w={"100vw"} h={"100vh"} justifyContent={"center"} pos={"absolute"} zIndex={-1}>
                 <Flex flexDir={"column"} alignItems={"center"} justifyContent={"center"} bgColor={"lightskyblue"} border={"2px solid"} borderColor={"blue.500"} borderRadius={"lg"} p={5}>
                 <Text fontSize={"2xl"} className={"heading-2xl"} >Please login to view the Gallery</Text>
