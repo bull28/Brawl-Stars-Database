@@ -83,7 +83,10 @@ export default function Gallery() {
                 duration: 3000
             },
             errorToastMessage: "Something Went Wrong!",
-            callback: () => setPreview(false)
+            callback: () => {
+                const event = new CustomEvent("updatecosmetics", {detail: cosmetics});
+                document.dispatchEvent(event);
+            }
         });
     };
 

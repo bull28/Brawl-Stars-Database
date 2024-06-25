@@ -1,13 +1,21 @@
-import { Flex, Image, keyframes } from "@chakra-ui/react";
-import { useState, useEffect } from "react"
+import {Flex, Image, keyframes} from "@chakra-ui/react";
+import {useState, useEffect, useCallback} from "react"
 import AuthRequest from "../helpers/AuthRequest";
 import {CosmeticData} from "../types/CosmeticData";
 import cdn from "../helpers/CDNRoute";
 
-export default function SkullBackground({bg, icon}: {bg?: string; icon?: string;}) {
+export default function SkullBackground({bg, icon}: {bg?: string; icon?: string;}){
     const [cosmetics, setCosmetics] = useState<CosmeticData | undefined>();
     const [extraImage, setExtraImage] = useState<string>("");
-    
+
+    const updateBackground = useCallback((event: Event) => {
+        const cosmetics = ((event as CustomEvent).detail as CosmeticData);
+        setCosmetics(cosmetics);
+        AuthRequest<{extra: string;}>(`/cosmetic/extra?${new URLSearchParams({background: cosmetics.background})}`, {
+            setState: (data2) => {setExtraImage(data2.extra);}
+        }, false);
+    }, []);
+
     useEffect(() => {
         if (bg && icon){
             setCosmetics({background: bg, icon: icon, music: "", scene: ""});
@@ -24,7 +32,14 @@ export default function SkullBackground({bg, icon}: {bg?: string; icon?: string;
                 }
             }, false);
         }
-    }, [bg, icon]);    
+    }, [bg, icon]);
+
+    useEffect(() => {
+        document.addEventListener("updatecosmetics", updateBackground);
+        return () => {
+            document.removeEventListener("updatecosmetics", updateBackground);
+        };
+    }, [updateBackground]);
 
     const animation1 = keyframes`
         0% {
@@ -34,7 +49,6 @@ export default function SkullBackground({bg, icon}: {bg?: string; icon?: string;
         100% {
             transform: translateY(255.7407407vh);
         }
-    
     `;
 
     const animation2 = keyframes`
@@ -45,7 +59,6 @@ export default function SkullBackground({bg, icon}: {bg?: string; icon?: string;
         100% {
             transform: translateY(0px);
         }
-    
     `;
 
     return (
@@ -57,6 +70,5 @@ export default function SkullBackground({bg, icon}: {bg?: string; icon?: string;
             <Image minW={"100%"} maxW={"none"} minH={"100%"} zIndex={"1"} pos={"absolute"} src={`${cdn}/image/${cosmetics.background}`}/>
         </>}
         </Flex>
-        
-    )
+    );
 }

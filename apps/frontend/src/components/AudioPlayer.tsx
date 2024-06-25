@@ -1,50 +1,66 @@
 import { useState, useEffect, useCallback } from "react";
 import { Flex, IconButton, Link } from "@chakra-ui/react";
-import {HiMusicNote, HiOutlineRefresh, HiHome} from "react-icons/hi";
+import {HiMusicNote, HiHome} from "react-icons/hi";
 import AuthRequest from "../helpers/AuthRequest";
 import {CosmeticData} from "../types/CosmeticData";
 import cdn from "../helpers/CDNRoute";
 
 export default function AudioPlayer() {
     const [audio] = useState(new Audio());
-    const [playing, setPlaying] = useState<boolean>(false);
-    const toggle = () => setPlaying(!playing);
+
+    const toggle = () => {
+        if (audio.paused){
+            audio.play();
+        } else{
+            audio.pause();
+        }
+    }
+
+    const restartAudio = () => {
+        audio.currentTime = 0;
+        audio.play();
+    };
 
     const setAudioSrc = useCallback((cosmetics: CosmeticData) => {
         if (typeof cosmetics.music === "string"){
-            setPlaying(false);
-            audio.pause();
-            audio.src = `${cdn}/image/${cosmetics.music}`;
-            audio.loop = true;
+            let playing = !audio.paused;
+
+            const newSrc = `${cdn}/image/${cosmetics.music}`;
+
+            if (newSrc !== audio.src){
+                // Only update the audio source if it changed
+                audio.src = `${cdn}/image/${cosmetics.music}`;
+                audio.loop = true;
+                if (playing){
+                    // If the old audio was already playing, play the new audio right after it loads
+                    audio.play();
+                }
+            }
         }
     }, [audio]);
+
+    const updateAudio = useCallback((event: Event) => {
+        const cosmetics = ((event as CustomEvent).detail as CosmeticData);
+        setAudioSrc(cosmetics);
+    }, [setAudioSrc]);
     
     useEffect(() => {
         AuthRequest<CosmeticData>("/cosmetic", {setState: setAudioSrc}, false);
     }, [setAudioSrc]);
 
     useEffect(() => {
-        if (audio.src !== ""){
-            playing ? audio.play() : audio.pause();
-        }
-    }, [playing, audio]);
-    
-    useEffect(() => {
-        audio.addEventListener('ended', () => setPlaying(false));
-
+        document.addEventListener("updatecosmetics", updateAudio);
         return () => {
-            audio.removeEventListener('ended', () => setPlaying(false));
+            document.removeEventListener("updatecosmetics", updateAudio);
         };
-
-    }, [audio]);
+    }, [updateAudio]);
     
     return (
         <Flex pos={["relative", "relative", "fixed"]} right={0} bottom={0} float={["right", "right", "none"]}>
             <Link href={"/"}>
-                <IconButton icon={<HiHome size={"100%"}/>} bgColor={'blue.500'} p={1} aria-label="play/pause music"/>
+                <IconButton icon={<HiHome size={"100%"}/>} bgColor={"blue.500"} p={1} aria-label={"\u{1f44e}"}/>
             </Link>
-            <IconButton onClick={toggle} icon={<HiMusicNote size={"100%"}/>} bgColor={'blue.500'} p={1} aria-label="play/pause music"/>
-            <IconButton onClick={() => {AuthRequest<CosmeticData>("/cosmetic", {setState: setAudioSrc}, false);}} icon={<HiOutlineRefresh size={"100%"}/>} bgColor={'blue.500'} p={1} aria-label="play/pause music"/>
+            <IconButton onClick={toggle} onContextMenu={(event) => {event.preventDefault(); restartAudio();}} icon={<HiMusicNote size={"100%"}/>} bgColor={"blue.500"} p={1} aria-label={"\u{1f44e}"}/>
         </Flex>
     );
 };
