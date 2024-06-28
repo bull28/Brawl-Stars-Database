@@ -180,7 +180,7 @@ export interface GameModeMapDisplay extends GameModeDisplay{
 export interface MapPreview{
     name: MapAttributes["name"];
     displayName: MapAttributes["displayName"];
-};
+}
 
 /**
  * Summary of map data, used when not nested in a game mode object

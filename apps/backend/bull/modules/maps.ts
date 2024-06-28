@@ -16,6 +16,16 @@ import {
     RewardStackTimes
 } from "../types";
 
+// Last updated: Brawl Pass Season 17
+export const MAP_CYCLE_HOURS = 384;
+const MAP_CYCLE_SECONDS = 1382400;
+const SEASON_SECONDS = 9676800;
+const MAP_CYCLES_PER_SEASON = 7;
+
+// 2/20/2023 8:00 UTC is the beginning of a map cycle
+const next_season_time = (((86400*365) * (2023-1970)) + (12*86400) + (51*86400) + (8*3600));
+const first_season_time = next_season_time % SEASON_SECONDS;
+
 export class SeasonTime{
     season: number;
     hour: number;
@@ -383,7 +393,7 @@ function applyGameModeMapDisplay(gameModeName: string, display: GameModeDisplay)
  * @returns copy of the game mode data
  */
 export function getModeData(eventList: EventSlot[], modeName: string): GameModeData | undefined{
-    let result: GameModeData | undefined = undefined;
+    let result: GameModeData | undefined;
     let x = 0;
     let found = false;
 
@@ -433,7 +443,7 @@ export function getModeData(eventList: EventSlot[], modeName: string): GameModeD
  * @returns copy of the map data
  */
 export function getMapData(eventList: EventSlot[], mapName: string, currentTime: SeasonTime): MapData | undefined{
-    let result: MapData | undefined = undefined;
+    let result: MapData | undefined;
     for (let x = 0; x < eventList.length; x++){
         let mapInThisSlot: MapAttributes | undefined;
 
@@ -664,13 +674,3 @@ for (let x = 0; x < eventList.length; x++){
         events.push(new EventSlot(gameModes, eventList[x].eventDuration, eventList[x].offset));
     }
 }
-
-// Last updated: Brawl Pass Season 17
-export const MAP_CYCLE_HOURS = 384;
-const MAP_CYCLE_SECONDS = 1382400;
-const SEASON_SECONDS = 9676800;
-const MAP_CYCLES_PER_SEASON = 7;
-
-// 2/20/2023 8:00 UTC is the beginning of a map cycle
-const next_season_time = (((86400*365) * (2023-1970)) + (12*86400) + (51*86400) + (8*3600));
-const first_season_time = next_season_time % SEASON_SECONDS;

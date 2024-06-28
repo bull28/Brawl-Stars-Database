@@ -75,7 +75,7 @@ export function formatCollectionData(userCollection: DatabaseBrawlers, userAcces
 
             const brawlerPins: CollectionPin[] = [];
 
-            let pinData: DatabaseBrawlers[string] | undefined = undefined;
+            let pinData: DatabaseBrawlers[string] | undefined;
             if (hasBrawler === true){
                 pinData = userCollection[brawler.name];
             }
@@ -382,7 +382,7 @@ export function getCosmetics(allThemes: ThemeList, allScenes: SceneList, cosmeti
 
                 // cosmeticsData[k] stores only whether the cosmetic is free/special and its name. Both of those are
                 // contained in allThemes or allScenes.
-                let result: string | undefined = undefined;
+                let result: string | undefined;
                 if (cosmeticsData[k].includes("free/") === true){
                     result = allThemes.free.find((value) => value.includes(cosmeticsData[k]));
                 } else{

@@ -9,6 +9,41 @@ type NamedDistribution = {
     weight: number;
 }[];
 
+
+// Initialize data that will not change but requires searching through the allSkins array to obtain.
+
+// Stores (number of pins in each rarity / total pins). Used when selecting pins.
+const pinCounts = [0, 0, 0, 0, 0];
+let totalPins = 0;
+
+// Maps a rarity value to its color and name. Used when selecting wild card pins.
+export const rarityNames = new Map<number, Omit<Pin["rarity"], "value">>();
+
+for (let brawlerIndex = 0; brawlerIndex < allSkins.length; brawlerIndex++){
+    const brawler = allSkins[brawlerIndex];
+
+    if (Object.hasOwn(brawler, "name") === true && Object.hasOwn(brawler, "pins") === true){
+        for (let pinIndex = 0; pinIndex < brawler.pins.length; pinIndex++){
+            const pinRarity = brawler.pins[pinIndex].rarity.value;
+            if (pinRarity < pinCounts.length){
+                pinCounts[pinRarity]++;
+                totalPins++
+            }
+
+            if (rarityNames.has(pinRarity) === false){
+                rarityNames.set(pinRarity, {
+                    name: brawler.pins[pinIndex].rarity.name,
+                    color: brawler.pins[pinIndex].rarity.color
+                });
+            }
+        }
+    }
+}
+for (let x = 0; x < pinCounts.length; x++){
+    pinCounts[x] /= totalPins;
+}
+
+
 /**
  * Takes in a probability distribution encoded in an array and randomly selects an index. The probability of an index in
  * the array being selected is the value at that index / the sum of all values.
@@ -840,37 +875,4 @@ export class AccessoryReward extends Reward{
 
         return result;
     }
-}
-
-// Initialize data that will not change but requires searching through the allSkins array to obtain.
-
-// Stores (number of pins in each rarity / total pins). Used when selecting pins.
-const pinCounts = [0, 0, 0, 0, 0];
-let totalPins = 0;
-
-// Maps a rarity value to its color and name. Used when selecting wild card pins.
-export const rarityNames = new Map<number, Omit<Pin["rarity"], "value">>();
-
-for (let brawlerIndex = 0; brawlerIndex < allSkins.length; brawlerIndex++){
-    const brawler = allSkins[brawlerIndex];
-
-    if (Object.hasOwn(brawler, "name") === true && Object.hasOwn(brawler, "pins") === true){
-        for (let pinIndex = 0; pinIndex < brawler.pins.length; pinIndex++){
-            const pinRarity = brawler.pins[pinIndex].rarity.value;
-            if (pinRarity < pinCounts.length){
-                pinCounts[pinRarity]++;
-                totalPins++
-            }
-
-            if (rarityNames.has(pinRarity) === false){
-                rarityNames.set(pinRarity, {
-                    name: brawler.pins[pinIndex].rarity.name,
-                    color: brawler.pins[pinIndex].rarity.color
-                });
-            }
-        }
-    }
-}
-for (let x = 0; x < pinCounts.length; x++){
-    pinCounts[x] /= totalPins;
 }

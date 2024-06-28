@@ -127,8 +127,8 @@ router.post<Empty, Empty, LoginReqBody>("/signup", databaseErrorHandler<LoginReq
 
 // Updates an account's information
 router.post<Empty, Empty, UpdateReqBody>("/update", loginErrorHandler<UpdateReqBody>(async (req, res, currentUsername) => {
-    let currentPassword = req.body.currentPassword;
-    let newPassword = req.body.newPassword;
+    const currentPassword = req.body.currentPassword;
+    const newPassword = req.body.newPassword;
     let newAvatar = req.body.newAvatar;
 
     if (typeof newPassword !== "string" || typeof newAvatar !== "string"){

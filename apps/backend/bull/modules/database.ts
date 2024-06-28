@@ -144,10 +144,9 @@ function getErrorMessage(error: Error): {status: number; message: string;}{
     } else if (typeof error.message === "string"){
         // This represents all other errors (no connection, king golm, ...)
         return {status: 500, message: error.message};
-    } else{
-        // Otherwise, send a generic error message
-        return {status: 500, message: "Some other error occurred."};
     }
+    // Otherwise, send a generic error message
+    return {status: 500, message: "Some other error occurred."};
 }
 
 type ExpressCallback<R, Q, P> = (req: Request<P, Empty, R, Q>, res: Response, next: NextFunction) => void;
@@ -216,22 +215,14 @@ export function loginErrorHandler<R = Empty, Q = Query, P = ParamsDictionary>(ca
  */
 export async function queryDatabase<Result extends RowDataPacket[]>(connection: Pool, values: (string | number)[], allowEmptyResults: boolean, query: string): Promise<Result>{
     if (success === false){
-        return new Promise<Result>((resolve, reject) => {
-            reject(new Error("Could not connect to database."));
-        });
+        throw new Error("Could not connect to database.");
     }
-    return new Promise<Result>(async (resolve, reject) => {
-        try{
-            const [results] = await connection.query<Result>(query, values);
-            if (results.length === 0 && allowEmptyResults === false){
-                reject(new EmptyResultsError("Could not find the content in the database."));
-            } else{
-                resolve(results);
-            }
-        } catch(error){
-            reject(error);
-        }
-    });
+    const [results] = await connection.query<Result>(query, values);
+    if (results.length === 0 && allowEmptyResults === false){
+        throw new EmptyResultsError("Could not find the content in the database.");
+    } else{
+        return results;
+    }
 }
 
 /**
@@ -246,22 +237,14 @@ export async function queryDatabase<Result extends RowDataPacket[]>(connection: 
  */
 export async function updateDatabase(connection: Pool, values: (string | number)[], allowNoUpdate: boolean, query: string): Promise<ResultSetHeader>{
     if (success === false){
-        return new Promise<ResultSetHeader>((resolve, reject) => {
-            reject(new Error("Could not connect to database."));
-        });
+        throw new Error("Could not connect to database.");
     }
-    return new Promise<ResultSetHeader>(async (resolve, reject) => {
-        try{
-            const [results] = await connection.query<ResultSetHeader>(query, values);
-            if (results.affectedRows === 0 && allowNoUpdate === false){
-                reject(new NoUpdateError("Could not update the database."));
-            } else{
-                resolve(results);
-            }
-        } catch(error){
-            reject(error);
-        }
-    });
+    const [results] = await connection.query<ResultSetHeader>(query, values);
+    if (results.affectedRows === 0 && allowNoUpdate === false){
+        throw new NoUpdateError("Could not update the database.");
+    } else{
+        return results;
+    }
 }
 
 /**
@@ -275,19 +258,13 @@ export async function updateDatabase(connection: Pool, values: (string | number)
  * @returns promise resolving to the result set header
  */
 export async function transactionUpdate(connection: PoolConnection, values: (string | number)[], allowNoUpdate: boolean, query: string): Promise<ResultSetHeader>{
-    return new Promise<ResultSetHeader>(async (resolve, reject) => {
-        try{
-            const [results] = await connection.query<ResultSetHeader>(query, values);
-            if (results.affectedRows === 0 && allowNoUpdate === false){
-                await connection.rollback();
-                reject(new NoUpdateError("Could not update the database."));
-            } else{
-                resolve(results);
-            }
-        } catch(error){
-            reject(error);
-        }
-    });
+    const [results] = await connection.query<ResultSetHeader>(query, values);
+    if (results.affectedRows === 0 && allowNoUpdate === false){
+        //await connection.rollback();
+        throw new NoUpdateError("Could not update the database.");
+    } else{
+        return results;
+    }
 }
 
 /**
@@ -298,35 +275,32 @@ export async function transactionUpdate(connection: PoolConnection, values: (str
  */
 export async function transaction(callback: (connection: PoolConnection) => Promise<void>): Promise<void>{
     if (success === false){
-        return new Promise<void>((resolve, reject) => {
-            reject(new Error("Could not connect to database."));
-        });
+        throw new Error("Could not connect to database.");
     }
-    return new Promise<void>(async (resolve, reject) => {
+    try{
+        const connection = await pool.getConnection();
+        await connection.beginTransaction();
+
         try{
-            const connection = await pool.getConnection();
-            await connection.beginTransaction();
-
-            try{
-                await callback(connection);
-            } catch (error){
-                pool.releaseConnection(connection);
-                reject(error);
-            }
-
-            try{
-                await connection.commit();
-                pool.releaseConnection(connection);
-                resolve();
-            } catch (error){
-                await connection.rollback();
-                pool.releaseConnection(connection);
-                reject(error);
-            }
-        } catch(error){
-            reject("Could not connect to database.");
+            await callback(connection);
+        } catch (error){
+            await connection.rollback();
+            pool.releaseConnection(connection);
+            throw error;
         }
-    });
+
+        try{
+            await connection.commit();
+            pool.releaseConnection(connection);
+            return;
+        } catch (error){
+            await connection.rollback();
+            pool.releaseConnection(connection);
+            throw error;
+        }
+    } catch(error){
+        throw new Error("Could not connect to database.");
+    }
 }
 
 

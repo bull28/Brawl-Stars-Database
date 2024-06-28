@@ -540,7 +540,6 @@ for (const x in boxes){
 export default function brawlBox(boxName: string, resources: UserResources): BrawlBoxDrop[]{
     if (Object.hasOwn(boxes, boxName) === true){
         return openBox(boxes[boxName], resources);
-    } else{
-        return [];
     }
+    return [];
 }

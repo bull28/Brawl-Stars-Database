@@ -378,12 +378,10 @@ export function createChallengeData(masteryLevel: number, waves: UserWaves): {me
                     if (counts.add(enemies[x], 1) > values.maxStageCount){
                         message = `Too many ${values.displayName} enemies in stage ${stage + 1}. There can be at most ${values.maxStageCount} per stage.`;
                     }
+                } else if (values === undefined){
+                    message = `${enemies[x]} is not a valid enemy.`;
                 } else{
-                    if (values === undefined){
-                        message = `${enemies[x]} is not a valid enemy.`;
-                    } else{
-                        message = `Mastery level must be at least ${values.minLevel} to use ${values.displayName}.`;
-                    }
+                    message = `Mastery level must be at least ${values.minLevel} to use ${values.displayName}.`;
                 }
             }
 

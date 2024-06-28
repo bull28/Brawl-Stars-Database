@@ -53,7 +53,7 @@ function convertLevelReports(reports: number[]): ScorePerformance[]{
         return [];
     }
 
-    let converted: ScorePerformance[] = [];
+    const converted: ScorePerformance[] = [];
     let hasLost = false;
     for (let level = 0; level < stages * scores; level += scores){
         for (let x = 0; x < scores; x++){
@@ -281,10 +281,8 @@ export function validateReport(report: GameReport): boolean{
             if (data[x] > 12){
                 valid = false;
             }
-        } else{
-            if (data[x] > 1){
-                valid = false;
-            }
+        } else if (data[x] > 1){
+            valid = false;
         }
     }
 

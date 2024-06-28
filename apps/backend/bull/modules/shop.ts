@@ -14,6 +14,8 @@ interface ShopItemPreview{
     description: string;
 }
 
+const featuredCosts = [160, 320, 800, 1600, 4800];
+
 class ShopItem{
     display: {
         name: string;
@@ -306,8 +308,6 @@ class FeaturedItem extends ShopItem{
         return [0, []];
     }
 }
-
-const featuredCosts = [160, 320, 800, 1600, 4800];
 
 const shopItems = new Map<string, ShopItem>();
 
