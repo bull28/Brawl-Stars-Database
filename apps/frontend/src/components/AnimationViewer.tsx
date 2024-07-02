@@ -193,9 +193,9 @@ export default function AnimationViewer({modelFile, winFile, loseFile, lightsFil
     return (
         <Flex w={"100%"} h={"100%"} flexDir={"column"} alignItems={"center"} pos={"relative"}>
             <ErrorBoundary fallbackRender={fallbackRender}>
-                <Flex w={"100%"} h={"100%"} flexDir={"column"} bgImage={`${cdn}/image/misc/bg_3d_model.webp`} bgPos={"center"} bgSize={"cover"} bgRepeat={"no-repeat"}>
+                <Flex w={"100%"} h={"100%"} flexDir={"column"} bgPos={"center"} bgSize={"cover"} bgRepeat={"no-repeat"}>
                     {modelFile === "" ?
-                    <Flex p={5} pt={"4em"} className={"heading-md"}>
+                    <Flex p={5} pt={"4em"} className={"heading-md"} w={"100%"} justifyContent={"center"}>
                         <Text fontSize={"2xl"}>Select a model to view</Text>
                     </Flex>
                     :

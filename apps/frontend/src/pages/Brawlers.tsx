@@ -1,6 +1,6 @@
 import {useEffect, useState, useRef} from "react";
-import {useSearchParams} from "react-router-dom";
-import {Flex, ScaleFade, SimpleGrid, Text} from "@chakra-ui/react";
+import {useSearchParams, useNavigate} from "react-router-dom";
+import {Flex, ScaleFade, SimpleGrid, Text, Button} from "@chakra-ui/react";
 import axios, {AxiosResponse} from "axios";
 import BrawlerView from "../components/BrawlerView";
 import {Brawler} from "../types/BrawlerData";
@@ -11,6 +11,8 @@ export default function Brawlers(){
     const [brawlers, setBrawlers] = useState<Brawler[]>([]);
     const ref = useRef<HTMLDivElement>(null);
     const loaded = useRef<number>(0);
+
+    const navigate = useNavigate();
 
     const [params, setParams] = useSearchParams();
     const scrollToBrawler = params.get("brawler");
@@ -38,6 +40,7 @@ export default function Brawlers(){
         <Flex w={"100%"} flexDir={"column"} alignItems={"center"}>
             <BackButton/>
             <Text fontSize={"4xl"} className={"heading-4xl"}>Brawlers</Text>
+            <Button fontSize={"xl"} className={"heading-xl"} my={3} onClick={() => navigate("/brawlers/modelviewer")}>3D Model Viewer</Button>
             <Flex w={"95%"} mt={5} mb={[3, 4, 5, 6, 8, 10]} justifyContent={"center"} onLoad={loadImage}>
                 <SimpleGrid columns={[2, 3, 4, 5, 6, 7]} spacing={[3, 4, 5, 6, 8, 10]}>
                     {brawlers.map((brawler) =>

@@ -52,6 +52,21 @@ export interface BrawlerData{
     pins: PinPreview[];
 }
 
+/**
+ * Data for all of a brawler's 3D models sent to the user
+ */
+export interface BrawlerModelData{
+    name: string;
+    displayName: string;
+    image: string;
+    skins: {
+        displayName: string;
+        geometry: string;
+        winAnimation: string;
+        loseAnimation: string;
+    }[];
+}
+
 //------------------------------------------------------------------------------------------------//
 //                                           Skin Types                                           //
 //------------------------------------------------------------------------------------------------//

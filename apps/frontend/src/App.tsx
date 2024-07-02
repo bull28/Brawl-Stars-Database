@@ -33,7 +33,7 @@ function BackgroundPages(){
         <Routes>
             <Route path="/brawlers" element={<Suspense fallback={<></>}><Brawlers/></Suspense>}/>
             <Route path="/brawlers/:brawler" element={<Suspense fallback={<></>}><Brawler/></Suspense>}/>
-            <Route path="/modelviewer" element={<Suspense fallback={<></>}><ModelViewer/></Suspense>}/>
+            <Route path="/brawlers/modelviewer" element={<Suspense fallback={<></>}><ModelViewer/></Suspense>}/>
             <Route path="/events" element={<Suspense fallback={<></>}><Events/></Suspense>}/>
             <Route path="/collection" element={<Suspense fallback={<></>}><Collection/></Suspense>}/>
             <Route path="/trade" element={<Suspense fallback={<></>}><Trade/></Suspense>}/>

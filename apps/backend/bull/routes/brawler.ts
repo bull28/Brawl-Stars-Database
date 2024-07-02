@@ -1,8 +1,8 @@
 import express from "express";
 import allSkins from "../data/brawlers_data.json";
-import {PORTRAIT_IMAGE_DIR} from "../data/constants";
+import {PORTRAIT_IMAGE_DIR, SKIN_MODEL_DIR} from "../data/constants";
 import {getBrawler, getSkin, getBrawlerData, getSkinData} from "../modules/skins";
-import {BrawlerPreview} from "../types";
+import {BrawlerPreview, BrawlerModelData} from "../types";
 
 const router = express.Router();
 
@@ -61,6 +61,35 @@ router.get("/skin/:brawler/:skin", (req, res) => {
     const skinData = getSkinData(skin, brawler.name);
 
     res.json(skinData);
+});
+
+// Get the list of all available 3D models
+router.get("/models", (req, res) => {
+    const allModels: BrawlerModelData[] = [];
+    for (let x = 0; x < allSkins.length; x++){
+        const brawler = allSkins[x];
+        const skins: BrawlerModelData["skins"] = [];
+
+        for (let y = 0; y < brawler.skins.length; y++){
+            const model = brawler.skins[y].model;
+            if (model.geometry !== ""){
+                skins.push({
+                    displayName: brawler.skins[y].displayName,
+                    geometry: `${SKIN_MODEL_DIR}${brawler.name}/${model.geometry}`,
+                    winAnimation: model.winAnimation !== "" ? `${SKIN_MODEL_DIR}${brawler.name}/${model.winAnimation}` : "",
+                    loseAnimation: model.loseAnimation !== "" ? `${SKIN_MODEL_DIR}${brawler.name}/${model.loseAnimation}` : ""
+                });
+            }
+        }
+
+        allModels.push({
+            name: brawler.name,
+            displayName: brawler.displayName,
+            image: PORTRAIT_IMAGE_DIR + brawler.image,
+            skins: skins
+        });
+    }
+    res.json(allModels);
 });
 
 export default router;
