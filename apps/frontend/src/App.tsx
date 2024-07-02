@@ -5,6 +5,7 @@ import SkullBackground from "./components/SkullBackground";
 const Home = lazy(() => import("./pages/Home"));
 const Brawlers = lazy(() => import("./pages/Brawlers"));
 const Brawler = lazy(() => import("./pages/Brawler"));
+const ModelViewer = lazy(() => import("./pages/ModelViewer"));
 const Events = lazy(() => import("./pages/Events"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Login = lazy(() => import("./pages/Login"));
@@ -32,6 +33,7 @@ function BackgroundPages(){
         <Routes>
             <Route path="/brawlers" element={<Suspense fallback={<></>}><Brawlers/></Suspense>}/>
             <Route path="/brawlers/:brawler" element={<Suspense fallback={<></>}><Brawler/></Suspense>}/>
+            <Route path="/modelviewer" element={<Suspense fallback={<></>}><ModelViewer/></Suspense>}/>
             <Route path="/events" element={<Suspense fallback={<></>}><Events/></Suspense>}/>
             <Route path="/collection" element={<Suspense fallback={<></>}><Collection/></Suspense>}/>
             <Route path="/trade" element={<Suspense fallback={<></>}><Trade/></Suspense>}/>

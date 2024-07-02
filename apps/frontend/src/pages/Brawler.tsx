@@ -5,7 +5,7 @@ import axios, {AxiosResponse} from "axios";
 import SkinView from "../components/SkinView";
 import {ArrowBackIcon} from "@chakra-ui/icons";
 import {BrawlerData, ModelFiles, SkinData} from "../types/BrawlerData";
-import AnimationViewer from "../components/AnimationViewer";
+import AnimationViewer from "../components/AnimationViewerOld";
 import AuthRequest from "../helpers/AuthRequest";
 import {CosmeticData} from "../types/CosmeticData";
 import cdn from "../helpers/CDNRoute";
