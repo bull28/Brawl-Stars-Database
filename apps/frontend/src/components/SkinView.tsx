@@ -1,13 +1,11 @@
 import axios, {AxiosResponse} from "axios";
-import {SetStateAction, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {
     Flex, Image, Text, Modal, Tooltip,
     ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton,
     useDisclosure, Divider, ModalOverlay, Icon
 } from "@chakra-ui/react";
 import {RepeatIcon} from "@chakra-ui/icons";
-import {animateScroll as scroll} from "react-scroll";
-import {ModelFiles} from "../types/BrawlerData";
 import {SkinData} from "../types/BrawlerData";
 import cdn from "../helpers/CDNRoute";
 import api from "../helpers/APIRoute";
@@ -15,7 +13,6 @@ import api from "../helpers/APIRoute";
 interface SkinViewProps{
     brawler: string;
     skin: string;
-    setModel: React.Dispatch<SetStateAction<ModelFiles>>;
 }
 
 const currencyImages: {[k: string]: string;} = {
@@ -35,7 +32,7 @@ function getCostText(skin: SkinData): string{
     return "Free";
 }
 
-export default function SkinView({brawler, skin, setModel}: SkinViewProps){
+export default function SkinView({brawler, skin}: SkinViewProps){
     const [data, setData] = useState<SkinData | undefined>(undefined);
     const {isOpen, onOpen, onClose} = useDisclosure();
     
@@ -49,22 +46,20 @@ export default function SkinView({brawler, skin, setModel}: SkinViewProps){
 
     return (
     <>
-    {data !== void 0 ?
+    {data &&
         <Flex flexDir={"column"} h={"100%"}>
             <Flex h={"90%"} p={[0, 1]} bgImage={`${cdn}/image/${data.group.image}`} borderRadius={"lg"} onClick={onOpen} border={data.limited ? "4px solid #ffd700" : "none"} bgPos={"center"} bgSize={"cover"} bgRepeat={"no-repeat"} justifyContent={"center"}>
                 <Image objectFit={"contain"} src={`${cdn}/image/${data.image}`} alt={data.displayName}/>
             </Flex>
             <Flex flexDir={"column"} alignItems={"center"}>
                 <Flex alignItems={"center"} mt={3} mb={1}>
-                    {(data.group.icon !== "skingroups/icons/icon_default.webp") ?
+                    {(data.group.icon !== "skingroups/icons/icon_default.webp") &&
                         <Tooltip label={data.group.name}>
                             <Image src={`${cdn}/image/${data.group.icon}`} w={7} mr={3}/>
                         </Tooltip>
-                        :
-                        <></>
                     }            
                     <Text fontSize={["md", "lg", "xl"]} className={"heading-lg"} textAlign={"center"}>{data.displayName}</Text>    
-                    {(data.model.geometry.exists) ? <Icon as={RepeatIcon} ml={[1, 1, 3]} cursor={"pointer"} fontSize={"xl"} onClick={() => {let skinModel: ModelFiles = {geometry: data.model.geometry.path, winAnimation: undefined, loseAnimation: undefined}; if (data.model.winAnimation.exists){skinModel.winAnimation = data.model.winAnimation.path;} if (data.model.loseAnimation.exists){skinModel.loseAnimation = data.model.loseAnimation.path;} setModel(skinModel); scroll.scrollToTop();}}/> : <></>}
+                    {data.model.geometry.exists && <Icon as={RepeatIcon} ml={[1, 1, 3]} cursor={"pointer"} fontSize={"xl"}/>}
                 </Flex>
                 
                 <Flex mb={1} wrap={"wrap"}>
@@ -96,7 +91,7 @@ export default function SkinView({brawler, skin, setModel}: SkinViewProps){
                     <ModalBody>
                         {(data.features.length > 0) ?
                             data.features.map((feature) => (
-                                <Text key={feature}>&#x2022;  {feature}</Text>
+                                <Text key={feature}>&#x2022; {feature}</Text>
                             ))
                             :
                             <Text>This skin has no extra features.</Text>
@@ -106,9 +101,7 @@ export default function SkinView({brawler, skin, setModel}: SkinViewProps){
                 </ModalContent>
             </Modal>
         </Flex>
-        :
-        <></>
-        }
+    }
     </>
     );
 }

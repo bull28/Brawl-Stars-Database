@@ -91,11 +91,11 @@ function GltfModel({modelFile, winFile, loseFile, lightsFile, playing, modelPos,
             sceneCamera.fov = parameters.fov;
         }
     }
-    state.camera.children = [];
-    state.camera.add(lights.scene);
+    sceneCamera.children = [];
+    sceneCamera.add(lights.scene);
 
-    state.camera.updateProjectionMatrix();
-    state.scene.add(state.camera);
+    sceneCamera.updateProjectionMatrix();
+    state.scene.add(sceneCamera);
 
     useFrame((_______________: RootState, delta: number) => {
         // Make the value of playing ref change based on what button the user clicks

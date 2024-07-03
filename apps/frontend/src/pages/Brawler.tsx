@@ -1,29 +1,22 @@
-import {useEffect, useState, Suspense} from "react";
-import {Flex, Text, SimpleGrid, Image, Icon, Link, Stack, keyframes, Spinner} from "@chakra-ui/react";
+import {useEffect, useState} from "react";
+import {Flex, Text, SimpleGrid, Image, Stack, keyframes} from "@chakra-ui/react";
 import {useParams} from "react-router-dom";
 import axios, {AxiosResponse} from "axios";
 import SkinView from "../components/SkinView";
-import {ArrowBackIcon} from "@chakra-ui/icons";
 import {BrawlerData, ModelFiles, SkinData} from "../types/BrawlerData";
-import AnimationViewer from "../components/AnimationViewerOld";
-import AuthRequest from "../helpers/AuthRequest";
-import {CosmeticData} from "../types/CosmeticData";
+import BackButton from "../components/BackButton";
 import cdn from "../helpers/CDNRoute";
 import api from "../helpers/APIRoute";
 
 export default function Brawler(){
     const params = useParams();
-    const [data, setData] = useState<BrawlerData | undefined>(undefined);
-    const [model, setModel] = useState<ModelFiles>({geometry: undefined, winAnimation: undefined, loseAnimation: undefined});
-    const [cosmetics, setCosmetics] = useState<CosmeticData | undefined>(undefined);
-    
-    useEffect(() => {
-        AuthRequest<CosmeticData>("/cosmetic", {setState: setCosmetics}, false);
-    }, []);
+    const [data, setData] = useState<BrawlerData | undefined>();
+    const [defaultSkin, setDefaultSkin] = useState<SkinData | undefined>();
 
     useEffect(() => {
         axios.get<{}, AxiosResponse<BrawlerData>>(`${api}/brawler/${params.brawler}`)
         .then((res) => {
+            res.data.skins = res.data.skins.filter((value) => value.name !== res.data.defaultSkin);
             setData(res.data);
             axios.get<{}, AxiosResponse<SkinData>>(`${api}/skin/${params.brawler}/${res.data.defaultSkin}`)
             .then((skinRes) => {
@@ -37,7 +30,7 @@ export default function Brawler(){
                 } if (skinRes.data.model.loseAnimation.exists){
                     defaultModel.loseAnimation = skinRes.data.model.loseAnimation.path;
                 }
-                setModel(defaultModel);
+                setDefaultSkin(skinRes.data);
             })
             .catch((error) => {});
         })
@@ -46,13 +39,11 @@ export default function Brawler(){
         });
     }, [params]);
 
-  return (
+    return (
     <>
     {data &&
         <Flex flexDir={"column"} w={"100%"} maxW={"100vw"} justifyContent={"center"} alignItems={"center"} bgColor={data.rarity.color} overflowX={"hidden"}>
-            <Link pos={"absolute"} left={[0, "0.5em"]} top={[0, "0.5em"]} href={`/brawlers?${new URLSearchParams({brawler: data.name})}`}>
-                <Icon as={ArrowBackIcon} fontSize={"2.5em"} color={"#fff"}/>
-            </Link>
+            <BackButton path={`/brawlers?${new URLSearchParams({brawler: data.name})}`}/>
             <Flex w={"100%"} justifyContent={"center"} mt={3} mb={5}>
                 <Text fontSize={"3xl"} className={"heading-3xl"} color={"#fff"}>{data.displayName}</Text>
             </Flex>
@@ -67,12 +58,10 @@ export default function Brawler(){
                     <Text w={["90%", "60%"]} color={"#fff"} fontSize={["sm", "md"]} className={"heading-md"}>{data.description}</Text>
                 </Flex>
 
-                <Flex justifyContent={"center"} alignItems={"center"} h={["60vw", "60vw", "50vw", "40vw", "100%"]} w={["60vw", "60vw", "50vw", "40vw", "33%"]} bgColor={"#000"} backgroundPosition={"center"} backgroundSize={"cover"} backgroundRepeat={"no-repeat"} border={"3px solid #fff"}>
-                    {model.geometry && cosmetics &&
-                        <Suspense fallback={<Spinner/>}>
-                            <AnimationViewer modelFile={model.geometry} winFile={model.winAnimation} loseFile={model.loseAnimation} lightsFile={undefined} sceneFile={cosmetics.scene} lightIntensity={undefined}/>
-                        </Suspense>
-                    }
+                <Flex justifyContent={"center"} alignItems={"center"} h={["60vw", "60vw", "50vw", "40vw", "100%"]} w={["60vw", "60vw", "50vw", "40vw", "33%"]} p={2} borderRadius={"xl"} bgColor={"#000"} bgImage={defaultSkin !== undefined ? `url(${cdn}/image/${defaultSkin?.group.image})` : undefined} backgroundPosition={"center"} backgroundSize={"cover"} backgroundRepeat={"no-repeat"}>
+                {defaultSkin !== undefined && 
+                    <Image src={`${cdn}/image/${defaultSkin.image}`} h={"100%"} objectFit={"contain"}/>
+                }
                 </Flex>
 
                 <Flex w={["100%", "100%", "100%", "100%", "33%"]} h={"100%"} maxH={["60vh", "60vh", "60vh", "60vh", "100%"]} flexDir={"column"} justifyContent={"center"} alignItems={"center"}>
@@ -103,12 +92,12 @@ export default function Brawler(){
             </Stack>
             <SimpleGrid spacing={[4, 3, 5, 5, 5]} columns={[1, 2, 2, 3, 4]} bgColor={"blue.900"} pt={"3vh"} w={"100%"} px={[1, 2, 4, 6, 6]}>{(data.skins).map((skin) => (
                 <Flex key={skin.name} flexDir={"column"} m={[1, 2, 3]}>
-                    <SkinView skin={skin.name} brawler={data.name} setModel={setModel}></SkinView>
+                    <SkinView skin={skin.name} brawler={data.name}></SkinView>
                 </Flex>
             ))}
             </SimpleGrid>
         </Flex>
     }
     </>
-    )
+    );
 }

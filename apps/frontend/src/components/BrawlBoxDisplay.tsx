@@ -24,7 +24,7 @@ export default function BrawlBoxDisplay({data, tokens, loadResources}: {data: Br
             onOpen2()
         }, fallback: function(error: Error) {
             const e = error as AxiosError;
-            if (e.response !== void 0 && e.response.status === 403){
+            if (e.response !== undefined && e.response.status === 403){
                 if (!toast.isActive(toastRef.current)){
                     toastRef.current = toast({
                         description: `You don't have enough tokens to open this box!`,
@@ -56,7 +56,7 @@ export default function BrawlBoxDisplay({data, tokens, loadResources}: {data: Br
                             <Text>{data.description}</Text>
                             <Divider my={2}/>
                             <Flex flexDir={'column'}>
-                                {data !== void 0 ? <Text fontSize={["sm", "md", "md", "md", "md"]} whiteSpace={"pre-line"}>{data.dropsDescription.reduce((previousValue, currentValue) => previousValue + "\n" + currentValue)}</Text> : <></>}
+                                {data !== undefined ? <Text fontSize={["sm", "md"]} whiteSpace={"pre-line"}>{data.dropsDescription.reduce((previousValue, currentValue) => previousValue + "\n" + currentValue)}</Text> : <></>}
                             </Flex>
                             <Divider my={2}/>
                         </AlertDialogBody>
@@ -64,7 +64,7 @@ export default function BrawlBoxDisplay({data, tokens, loadResources}: {data: Br
                             <Button onClick={onClose} ref={cancelRef}>
                                 Cancel
                             </Button>
-                            <Button colorScheme={(tokens && (tokens < data.cost)) ? 'red' : 'facebook'} onClick={() => {openBox(data.name)}} ml={3}>
+                            <Button className={"heading-md"} colorScheme={(tokens && (tokens < data.cost)) ? 'red' : 'green'} onClick={() => {openBox(data.name)}} ml={3}>
                                 <Flex alignItems={'center'} justifyContent={'center'} textAlign={'center'}>
                                     <Text fontSize={'lg'} mr={1}>{data.cost}</Text>
                                     <Image src={`${cdn}/image/resources/resource_tokens.webp`} w={'22px'}/>
@@ -76,18 +76,18 @@ export default function BrawlBoxDisplay({data, tokens, loadResources}: {data: Br
             </AlertDialog>
             <Modal size={'full'} isOpen={isOpen2} onClose={onClose2}>
                 <ModalContent>
-                    <ModalBody p={[0, 3, 5, 5, 5]}>
+                    <ModalBody p={[0, 3, 5]}>
                         <BrawlBoxContents boxContents={boxContents}/>
                     </ModalBody>
-                    <ModalFooter flexDir={['column', 'row', 'row', 'row', 'row']}>                     
+                    <ModalFooter flexDir={['column', 'row']}>                     
                         <Button onClick={() => {loadResources(); onClose2()}}>
                             Close
                         </Button>
-                        <Button onClick={() => {openBox(data.name)}} ml={[0, 3, 3, 3, 3]} mt={[3, 0, 0, 0, 0]}>
-                            <Flex alignItems={"center"} justifyContent={"center"} flexDir={['column', 'row', 'row', 'row', 'row']}>
-                                <Text mr={[0, 3, 3, 3, 3]}>Open Again</Text>
+                        <Button onClick={() => {openBox(data.name)}} ml={[0, 3]} mt={[3, 0]}>
+                            <Flex alignItems={"center"} justifyContent={"center"} flexDir={['column', 'row']}>
+                                <Text mr={[0, 3]}>Open Again</Text>
                                 <Flex alignItems={"center"}>
-                                    <Text mr={[0, 0.5, 0.5, 0.5, 0.5]}>{data.cost}</Text>
+                                    <Text mr={[0, 0.5]}>{data.cost}</Text>
                                     <Image src={`${cdn}/image/resources/resource_tokens.webp`} w={'22px'}/>
                                 </Flex>
                             </Flex>
