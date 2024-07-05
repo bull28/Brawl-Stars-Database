@@ -5652,9 +5652,9 @@
                         "icon": "icon_brawlpass.webp"
                     },
                     {
-                        "name": "",
-                        "image": "bg_default.webp",
-                        "icon": "icon_default.webp"
+                        "name": "Calamity Gang",
+                        "image": "bg_outlaw.webp",
+                        "icon": "icon_outlaw.webp"
                     }
                 ],
                 "limited": false,
@@ -14988,7 +14988,7 @@
                 "limited": false,
                 "unlock": "Available in Mega Boxes during the Classic Brawl event",
                 "release": {
-                    "month": 7,
+                    "month": 6,
                     "year": 2024
                 },
                 "image": "frankcavemanred.webp",
@@ -20714,9 +20714,9 @@
                         "icon": "icon_ranked.webp"
                     },
                     {
-                        "name": "",
-                        "image": "bg_default.webp",
-                        "icon": "icon_default.webp"
+                        "name": "Calamity Gang",
+                        "image": "bg_outlaw.webp",
+                        "icon": "icon_outlaw.webp"
                     }
                 ],
                 "limited": false,
@@ -35463,9 +35463,9 @@
                 ],
                 "groups": [
                     {
-                        "name": "",
-                        "image": "bg_default.webp",
-                        "icon": "icon_default.webp"
+                        "name": "Calamity Gang",
+                        "image": "bg_outlaw.webp",
+                        "icon": "icon_outlaw.webp"
                     }
                 ],
                 "limited": false,

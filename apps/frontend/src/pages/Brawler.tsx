@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import {Flex, Text, SimpleGrid, Image, Stack, keyframes} from "@chakra-ui/react";
 import {useParams} from "react-router-dom";
 import axios, {AxiosResponse} from "axios";
+import {animateScroll} from "react-scroll";
 import SkinView from "../components/SkinView";
 import {BrawlerData, ModelFiles, SkinData} from "../types/BrawlerData";
 import BackButton from "../components/BackButton";
@@ -96,6 +97,9 @@ export default function Brawler(){
                 </Flex>
             ))}
             </SimpleGrid>
+            <Flex w={"100%"} justifyContent={"center"} bgColor={"blue.900"} pt={3} pb={1}>
+                <Text fontSize={"xl"} className={"heading-xl"} cursor={"pointer"} onClick={() => animateScroll.scrollToTop({duration: 0})}>Back to top</Text>
+            </Flex>
         </Flex>
     }
     </>

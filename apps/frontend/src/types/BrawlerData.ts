@@ -50,6 +50,11 @@ export interface SkinData{
         image: string;
         icon: string;
     }[];
+    unlock: string;
+    release: {
+        month: number;
+        year: number;
+    };
     rating: number;
     image: string;
     model: {
