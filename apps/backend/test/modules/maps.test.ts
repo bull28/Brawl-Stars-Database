@@ -46,7 +46,7 @@ describe("Events, Game Modes, and Maps module", function(){
     });
 
     it("Convert a time in seconds to a season time", function(){
-        const time = realToTime(1676880000000);
+        const time = realToTime(1719216000000);
         expect(time).to.have.keys(["season", "hour", "minute", "second", "hoursPerSeason", "maxSeasons"]);
         expect(time.season).to.equal(0);
         expect(time.hour).to.equal(0);
@@ -144,8 +144,8 @@ describe("Events, Game Modes, and Maps module", function(){
         it("Same season with rewards", function(){
             // Current: [0, 31, 0, 0], Last claim: [0, 24, 0, 0]
             const reward = getRewardStacks(
-                new Date(2024, 4, 30, 8, 0).getTime(),
-                new Date(2024, 4, 30, 1, 0).getTime()
+                new Date(2024, 5, 25, 8, 0).getTime(),
+                new Date(2024, 5, 25, 1, 0).getTime()
             );
             expect(reward.stacks).to.equal(1);
             expect(reward.nextStack.convertToSeconds()).to.equal(18000 - 1);
@@ -154,28 +154,28 @@ describe("Events, Game Modes, and Maps module", function(){
         it("Same season with no rewards", function(){
             // Current: [0, 29, 0, 0], Last claim: [0, 24, 0, 0]
             const reward = getRewardStacks(
-                new Date(2024, 4, 30, 6, 0).getTime(),
-                new Date(2024, 4, 30, 1, 0).getTime()
+                new Date(2024, 5, 25, 6, 0).getTime(),
+                new Date(2024, 5, 25, 1, 0).getTime()
             );
             expect(reward.stacks).to.equal(0);
             expect(reward.nextStack.convertToSeconds()).to.equal(3600 - 1);
         });
 
         it("Positive season carry over", function(){
-            // Current: [1, 5, 0, 0], Last claim: [0, 357, 0, 0]
+            // Current: [1, 5, 0, 0], Last claim: [0, 549, 0, 0]
             const reward = getRewardStacks(
-                new Date(2024, 4, 29, 6, 0).getTime(),
-                new Date(2024, 4, 27, 22, 0).getTime()
+                new Date(2024, 6, 19, 6, 0).getTime(),
+                new Date(2024, 6, 17, 22, 0).getTime()
             );
             expect(reward.stacks).to.equal(5);
             expect(reward.nextStack.convertToSeconds()).to.equal(3600 - 1);
         });
 
         it("Negative season carry over", function(){
-            // Current: [0, 5, 0, 0], Last claim: [6, 357, 0, 0]
+            // Current: [0, 5, 0, 0], Last claim: [6, 549, 0, 0]
             const reward = getRewardStacks(
-                new Date(2024, 4, 13, 6, 0).getTime(),
-                new Date(2024, 4, 11, 22, 0).getTime()
+                new Date(2024, 5, 24, 6, 0).getTime(),
+                new Date(2024, 5, 22, 22, 0).getTime()
             );
             expect(reward.stacks).to.equal(5);
             expect(reward.nextStack.convertToSeconds()).to.equal(3600 - 1);
@@ -184,8 +184,8 @@ describe("Events, Game Modes, and Maps module", function(){
         it("Entire season carry over", function(){
             // Current: [0, 2, 0, 0], Last claim: [0, 7, 0, 0]
             const reward = getRewardStacks(
-                new Date(2024, 4, 13, 3, 0).getTime(),
-                new Date(2024, 0, 22, 7, 0).getTime()
+                new Date(2024, 5, 24, 3, 0).getTime(),
+                new Date(2024, 0, 8, 7, 0).getTime()
             );
             // maxSeasons * hoursPerSeason is the maximum number of stacks
             expect(reward.stacks).to.equal(Math.floor(reward.nextStack.maxSeasons * reward.nextStack.hoursPerSeason / 6 - 1));
@@ -195,8 +195,8 @@ describe("Events, Game Modes, and Maps module", function(){
         it("Last claim in the future", function(){
             // Current: [0, 0, 0, 0], Last claim: [0, 2, 0, 0]
             const reward = getRewardStacks(
-                new Date(2024, 4, 29, 1, 0).getTime(),
-                new Date(2024, 4, 29, 3, 0).getTime()
+                new Date(2024, 5, 24, 1, 0).getTime(),
+                new Date(2024, 5, 24, 3, 0).getTime()
             );
             expect(reward.stacks).to.equal(0);
             expect(reward.nextStack.convertToSeconds()).to.equal(21600 - 1);

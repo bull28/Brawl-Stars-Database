@@ -58,7 +58,7 @@ export default function Brawler(){
                     <Text w={["90%", "60%"]} color={"#fff"} fontSize={["sm", "md"]} className={"heading-md"}>{data.description}</Text>
                 </Flex>
 
-                <Flex justifyContent={"center"} alignItems={"center"} h={["60vw", "60vw", "50vw", "40vw", "100%"]} w={["60vw", "60vw", "50vw", "40vw", "33%"]} p={2} borderRadius={"xl"} bgColor={"#000"} bgImage={defaultSkin !== undefined ? `url(${cdn}/image/${defaultSkin?.group.image})` : undefined} backgroundPosition={"center"} backgroundSize={"cover"} backgroundRepeat={"no-repeat"}>
+                <Flex justifyContent={"center"} alignItems={"center"} h={["60vw", "60vw", "50vw", "40vw", "100%"]} w={["60vw", "60vw", "50vw", "40vw", "33%"]} p={2} borderRadius={"xl"} bgColor={"#000"} bgImage={defaultSkin !== undefined ? `url(${cdn}/image/${defaultSkin.groups[0].image})` : undefined} backgroundPosition={"center"} backgroundSize={"cover"} backgroundRepeat={"no-repeat"}>
                 {defaultSkin !== undefined && 
                     <Image src={`${cdn}/image/${defaultSkin.image}`} h={"100%"} objectFit={"contain"}/>
                 }

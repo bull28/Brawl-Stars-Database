@@ -4,8 +4,8 @@ import {PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR, SKIN_IMAGE_DIR, SKINGROUP_ICON_DIR, S
 import {getBrawler, getSkin, getBrawlerData, getSkinData} from "../../bull/modules/skins";
 
 describe("Brawlers and Skins module", function(){
-    it("Must contain at least 80 brawlers", function(){
-        expect(allSkins).to.have.lengthOf.at.least(80);
+    it("Must contain at least 82 brawlers", function(){
+        expect(allSkins).to.have.lengthOf.at.least(82);
     });
 
     it("Get brawler and skin objects directly from the data file", function(){
@@ -50,9 +50,8 @@ describe("Brawlers and Skins module", function(){
         expect(skinData).to.be.an("object");
         expect(skinData).to.have.keys([
             "name", "displayName", "cost", "currency", "costBling", "requires",
-            "features", "group", "limited", "rating", "image", "model"
+            "features", "groups", "limited", "unlock", "release", "rating", "image", "model"
         ]);
-        expect(skinData.group).to.have.keys(["name", "image", "icon"]);
         expect(skinData.model).to.have.keys(["geometry", "winAnimation", "loseAnimation"]);
 
         expect(skinData.name).to.equal(skin.name);
@@ -62,13 +61,20 @@ describe("Brawlers and Skins module", function(){
         expect(skinData.costBling).to.equal(skin.costBling);
         expect(skinData.requires).to.equal(skin.requires);
         expect(skinData.limited).to.equal(skin.limited);
+        expect(skinData.unlock).to.equal(skin.unlock);
+        expect(skinData.release.month).to.equal(skin.release.month);
+        expect(skinData.release.year).to.equal(skin.release.year);
         expect(skinData.rating).to.equal(skin.rating);
         expect(skinData.image).to.equal(`${SKIN_IMAGE_DIR}${brawler.name}/${skin.image}`);
         expect(skinData.features).to.be.an("array");
 
-        expect(skinData.group.name).to.equal(skin.group.name);
-        expect(skinData.group.image).to.equal(SKINGROUP_IMAGE_DIR + skin.group.image);
-        expect(skinData.group.icon).to.equal(SKINGROUP_ICON_DIR + skin.group.icon);
+        expect(skinData.groups).to.be.an("array");
+        expect(skinData.groups).to.have.lengthOf(skin.groups.length);
+        for (let x = 0; x < skinData.groups.length; x++){
+            expect(skinData.groups[x].name).to.equal(skin.groups[x].name);
+            expect(skinData.groups[x].image).to.equal(SKINGROUP_IMAGE_DIR + skin.groups[x].image);
+            expect(skinData.groups[x].icon).to.equal(SKINGROUP_ICON_DIR + skin.groups[x].icon);
+        }
 
         expect(skinData.model.geometry.exists).to.be.a("boolean");
         expect(skinData.model.winAnimation.exists).to.be.a("boolean");

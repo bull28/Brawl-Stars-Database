@@ -48,14 +48,14 @@ export default function SkinView({brawler, skin}: SkinViewProps){
     <>
     {data &&
         <Flex flexDir={"column"} h={"100%"}>
-            <Flex h={"90%"} p={[0, 1]} bgImage={`${cdn}/image/${data.group.image}`} borderRadius={"lg"} onClick={onOpen} border={data.limited ? "4px solid #ffd700" : "none"} bgPos={"center"} bgSize={"cover"} bgRepeat={"no-repeat"} justifyContent={"center"}>
+            <Flex h={"90%"} p={[0, 1]} bgImage={`${cdn}/image/${data.groups[0].image}`} borderRadius={"lg"} onClick={onOpen} border={data.limited ? "4px solid #ffd700" : "none"} bgPos={"center"} bgSize={"cover"} bgRepeat={"no-repeat"} justifyContent={"center"}>
                 <Image objectFit={"contain"} src={`${cdn}/image/${data.image}`} alt={data.displayName}/>
             </Flex>
             <Flex flexDir={"column"} alignItems={"center"}>
                 <Flex alignItems={"center"} mt={3} mb={1}>
-                    {(data.group.icon !== "skingroups/icons/icon_default.webp") &&
-                        <Tooltip label={data.group.name}>
-                            <Image src={`${cdn}/image/${data.group.icon}`} w={7} mr={3}/>
+                    {(data.groups[0].icon !== "skingroups/icons/icon_default.webp") &&
+                        <Tooltip label={data.groups[0].name}>
+                            <Image src={`${cdn}/image/${data.groups[0].icon}`} w={7} mr={3}/>
                         </Tooltip>
                     }            
                     <Text fontSize={["md", "lg", "xl"]} className={"heading-lg"} textAlign={"center"}>{data.displayName}</Text>    
@@ -79,7 +79,7 @@ export default function SkinView({brawler, skin}: SkinViewProps){
                 {(data.requires !== "") ?
                     <Text fontSize={["sm", "md"]} className={"heading-md"}>{`Requires ${data.requires}`}</Text>
                     :
-                    <Text fontSize={["sm", "md"]} className={"heading-md"}>{data.group.name === "Brawl Pass" ? "Included in Brawl Pass" : "\u00a0"}</Text>
+                    <Text fontSize={["sm", "md"]} className={"heading-md"}>{data.groups[0].name === "Brawl Pass" ? "Included in Brawl Pass" : "\u00a0"}</Text>
                 }
             </Flex>
             <Modal isOpen={isOpen} onClose={onClose}>

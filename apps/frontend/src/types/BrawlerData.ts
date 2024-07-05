@@ -45,11 +45,11 @@ export interface SkinData{
     requires: string;
     features: string[];
     limited: boolean;
-    group: {
+    groups: {
         name: string;
         image: string;
         icon: string;
-    };
+    }[];
     rating: number;
     image: string;
     model: {

@@ -105,8 +105,17 @@ export function getBrawlerData(brawler: Brawler): BrawlerData{
  */
 export function getSkinData(skin: Skin, brawlerName: string): SkinData{
     const skinFeatures: Skin["features"] = [];
-    for (let x = 0 ; x < skin.features.length; x++){
+    for (let x = 0; x < skin.features.length; x++){
         skinFeatures.push(skin.features[x]);
+    }
+
+    const skinGroups: Skin["groups"] = [];
+    for (let x = 0; x < skin.groups.length; x++){
+        skinGroups.push({
+            name: skin.groups[x].name,
+            image: SKINGROUP_IMAGE_DIR + skin.groups[x].image,
+            icon: SKINGROUP_ICON_DIR + skin.groups[x].icon
+        });
     }
 
     const skinData: SkinData = {
@@ -117,12 +126,13 @@ export function getSkinData(skin: Skin, brawlerName: string): SkinData{
         costBling: skin.costBling,
         requires: skin.requires,
         features: skinFeatures,
-        group: {
-            name: skin.group.name,
-            image: SKINGROUP_IMAGE_DIR + skin.group.image,
-            icon: SKINGROUP_ICON_DIR + skin.group.icon,
-        },
+        groups: skinGroups,
         limited: skin.limited,
+        unlock: skin.unlock,
+        release: {
+            month: skin.release.month,
+            year: skin.release.year
+        },
         rating: skin.rating,
         image: SKIN_IMAGE_DIR + brawlerName + "/" + skin.image,
         model: skinModelExists(brawlerName, {

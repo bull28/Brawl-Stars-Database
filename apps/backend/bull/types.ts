@@ -113,8 +113,10 @@ export interface SkinData{
     costBling: Skin["costBling"];
     requires: Skin["requires"];
     features: Skin["features"];
-    group: Skin["group"];
+    groups: Skin["groups"];
     limited: Skin["limited"];
+    unlock: Skin["unlock"];
+    release: Skin["release"];
     rating: Skin["rating"];
     image: Skin["image"];
     model: ModelData;
