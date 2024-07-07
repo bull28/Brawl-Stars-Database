@@ -22,11 +22,7 @@ export default function GameRewards(){
     const [data, setData] = useState<Reward[]>([]);
     const [reward, setReward] = useState<Reward | undefined>();
     const [boxContents, setBoxContents] = useState<ClaimResult | undefined>();
-    
     const [resources, setResources] = useState<UserInfoProps | undefined>(undefined);
-    const updateTokens = useCallback(() => {
-        AuthRequest<UserInfoProps>("/resources", {setState: setResources}, false);
-    }, []);
 
     const toast = useToast();
     const {isOpen, onOpen, onClose} = useDisclosure();
@@ -56,6 +52,7 @@ export default function GameRewards(){
             data = data.reverse();
             setData(data);
         }}, false);
+        document.dispatchEvent(new CustomEvent("updatetokens"));
     }, []);
 
     useEffect(() => {
@@ -75,7 +72,7 @@ export default function GameRewards(){
                     <Text>Accessory Progress reward: Collect progress towards unlocking accessories.</Text>
                     <Text>The score determines the number of mastery points rewarded. The difficulty played and the number of enemies defeated determines the quality and number of items in the Brawl Box reward.</Text>
                 </Flex>
-                {resources !== undefined ? <TokenDisplay callback={updateTokens} tokens={resources !== undefined ? resources.tokens : 0}/> : <></>}
+                <TokenDisplay/>
             </Flex>
             <Box w={"80vw"} h={"50vh"} minH={"30em"} mb={"2em"} borderRadius={"lg"} bgColor={"gray.800"}>
                 {data.length > 0 ?

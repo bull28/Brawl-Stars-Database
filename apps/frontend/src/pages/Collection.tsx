@@ -25,15 +25,12 @@ export default function Collection() {
         setTokens(data.tokens);
     }, []);
 
-    const updateTokens = useCallback(() => {
-        AuthRequest<UserInfoProps>("/resources", {setState: setAllResources}, false);
-    }, [setAllResources]);
-
     const loadResources = useCallback(() => {
         AuthRequest<CollectionData>("/collection", {setState: setData, navigate: true}, false);
         AuthRequest<BrawlBoxData[]>("/brawlbox", {setState: setBrawlBoxData}, false);
-        updateTokens();
-    }, [updateTokens]);
+        AuthRequest<UserInfoProps>("/resources", {setState: setAllResources}, false);
+        document.dispatchEvent(new CustomEvent("updatetokens"));
+    }, [setAllResources]);
 
     useEffect(() => {
         loadResources();
@@ -113,7 +110,7 @@ export default function Collection() {
                     </Flex>
                     <Flex flexDir={'column'}>
                         <Text className={'heading-2xl'} fontSize={'2xl'} mb={3}>Tokens</Text>
-                        <TokenDisplay callback={updateTokens} tokens={tokens}/>
+                        <TokenDisplay/>
                     </Flex>
                     </Stack>
                 </Flex>

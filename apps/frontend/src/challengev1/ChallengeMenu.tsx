@@ -40,11 +40,7 @@ export default function ChallengeMenu(){
     
     const loginRef = useRef<boolean>(false);
     const navigate = useNavigate();
-    
-    // Called by the challenge player when creating a challenge
-    const updateTokens = useCallback(() => {
-        AuthRequest<UserInfoProps>("/resources", {setState: setResources}, false);
-    }, []);
+
     // Called by the challenge player when joining a challenge
     const onJoin = useCallback(() => {
         setWaiting(true);
@@ -121,7 +117,7 @@ export default function ChallengeMenu(){
                 }
                 {(started === false && waiting === false && progress !== void 0 && resources !== void 0) ?
                     <Flex w={"25%"} justifyContent={"center"}>
-                        <TokenDisplay callback={updateTokens} tokens={resources.tokens}/>
+                        <TokenDisplay/>
                     </Flex>
                     :
                     <></>
