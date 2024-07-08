@@ -3,7 +3,7 @@ import {randomUUID} from "crypto";
 import allEnemies from "../data/enemies_data.json";
 import {SKIN_IMAGE_DIR, PIN_IMAGE_DIR, CHALLENGE_REPORT_COST} from "../data/constants";
 import {getMasteryLevel} from "../modules/accessories";
-import {getChallengeUpgrades, createChallengeData, getChallengeStrength, getStaticGameMod, getKeyGameMod} from "../modules/challenges";
+import {getChallengeUpgrades, createChallengeData, getChallengeStrength, getRatingChange, getStaticGameMod, getKeyGameMod} from "../modules/challenges";
 import {
     databaseErrorHandler, 
     loginErrorHandler, 
@@ -13,6 +13,7 @@ import {
     parseChallengeWaves, 
     getResources, 
     setTokens, 
+    setGameRating, 
     beforeAccessory, 
     createActiveChallenge, 
     getActiveChallenge, 
@@ -74,6 +75,12 @@ router.get("/upgrades", loginErrorHandler(async (req, res, username) => {
     res.json(upgrades);
 }));
 
+// Get challenge rating
+router.get("/rating", loginErrorHandler(async (req, res, username) => {
+    const userData = await beforeAccessory({username: username});
+    res.json({rating: userData[0].rating});
+}));
+
 // Get all challenges that a player can directly play
 router.get("/all", loginErrorHandler(async (req, res, username) => {
     const results = await getAllChallenges({username: username});
@@ -126,10 +133,23 @@ router.post<Empty, Empty, ChallengeKeyReqBody>("/get", databaseErrorHandler<Chal
         waves: waves
     });
 
+    // To avoid the player starting a challenge then leaving to avoid losing rating, they will lose the same amount of
+    // rating they would lose if they scored 0 in the challenge. If the player submits a report, any rating deducted
+    // here will be given back.
+    const ratingChange = getRatingChange(userData[0].rating, results[0].strength, 0);
+
     // When the game makes a request for the challenge data, it will set the active challenge's accepted value to 1. If
     // the accepted value is 1, any future requests for that same challenge will not be allowed. This prevents the user
     // from refreshing the page and trying the challenge again if they were about to lose.
-    await acceptActiveChallenge({key: key});
+    //await acceptActiveChallenge({key: key});
+    await transaction(async (connection) => {
+        await setGameRating({
+            rating: userData[0].rating + ratingChange,
+            last_rating: userData[0].rating,
+            username: results[0].accepted_by
+        }, connection);
+        await acceptActiveChallenge({key: key}, connection);
+    });
     res.json(mod);
 }));
 

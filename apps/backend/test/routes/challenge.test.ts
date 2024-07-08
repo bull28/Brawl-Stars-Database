@@ -50,6 +50,19 @@ describe("Challenge endpoints", function(){
         expect(res).to.have.status(200);
     });
 
+    it("/challenge/rating", async function(){
+        await connection.query(
+            `UPDATE ${tables.bullgame} SET rating = ?, last_rating = ? WHERE username = ?;`,
+            [3000, 4500, TEST_USERNAME]
+        );
+
+        const res = await chai.request(server).get("/challenge/rating").auth(TEST_TOKEN, {type: "bearer"});
+        expect(res).to.have.status(200);
+        expect(res.body).to.be.an("object");
+        expect(res.body).to.have.keys(["rating"]);
+        expect(res.body.rating).to.equal(3000);
+    });
+
     it("/challenge/all", async function(){
         await connection.query(`DELETE FROM ${tables.challenges};`);
         await connection.query(
@@ -81,6 +94,7 @@ describe("Challenge endpoints", function(){
                 `INSERT INTO ${tables.activechallenges} (active_key, challengeid, accepted, accepted_by) VALUES
                 (?, ?, ?, ?),
                 (?, ?, ?, ?),
+                (?, ?, ?, ?),
                 (?, ?, ?, ?);`,
                 [
                     // Used for valid challenge
@@ -88,7 +102,9 @@ describe("Challenge endpoints", function(){
                     // Used for challenge already accepted
                     "test2", 2, 1, TEST_USERNAME,
                     // Used for preset does not exist
-                    "test3", 3, 0, TEST_USERNAME
+                    "test3", 3, 0, TEST_USERNAME,
+                    // Used for rating change
+                    "test4", 2, 0, TEST_USERNAME
                 ]
             );
         });
@@ -103,6 +119,37 @@ describe("Challenge endpoints", function(){
                 "options", "difficulties", "stages", "levels",
                 "maxScores", "playerAccessories", "playerUpgradeValues"
             ]);
+        });
+
+        it("Rating decreases but last rating remains the same", async function(){
+            await connection.query(
+                `UPDATE ${tables.bullgame} SET rating = ?, last_rating = ? WHERE username = ?;`,
+                [1000, 1000, TEST_USERNAME]
+            );
+
+            const res = await chai.request(server).post("/challenge/get").auth(TEST_TOKEN, {type: "bearer"})
+            .send({key: "test4"});
+            expect(res).to.have.status(200);
+
+            const [results] = await connection.query(`SELECT rating, last_rating FROM ${tables.bullgame} WHERE username = ?;`, [TEST_USERNAME]);
+            expect(results[0].rating).to.equal(940);
+            expect(results[0].last_rating).to.equal(1000);
+        });
+
+        it("Rating should not change when failing to get a challenge", async function(){
+            await connection.query(
+                `UPDATE ${tables.bullgame} SET rating = ?, last_rating = ? WHERE username = ?;`,
+                [2000, 2000, TEST_USERNAME]
+            );
+
+            const res = await chai.request(server).post("/challenge/get").auth(TEST_TOKEN, {type: "bearer"})
+            .send({});
+            expect(res).to.have.status(404);
+            expect(res.text).to.equal("Challenge not found.");
+
+            const [results] = await connection.query(`SELECT rating, last_rating FROM ${tables.bullgame} WHERE username = ?;`, [TEST_USERNAME]);
+            expect(results[0].rating).to.equal(2000);
+            expect(results[0].last_rating).to.equal(2000);
         });
 
         it("Challenge already accepted", async function(){

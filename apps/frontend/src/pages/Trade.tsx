@@ -1,4 +1,7 @@
-import { Box, Button, Drawer, DrawerBody, DrawerContent, DrawerFooter, Flex, FormControl, FormLabel, HStack, Icon, IconButton, Image, Input, Menu, MenuButton, MenuItem, MenuList, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Radio, RadioGroup, ScaleFade, Select, SimpleGrid, SlideFade, Slider, SliderFilledTrack, SliderThumb, SliderTrack, Spinner, Stack, Text, useDisclosure, useToast } from '@chakra-ui/react'
+import {
+    Box, Button, Drawer, DrawerBody, DrawerContent, DrawerFooter, Flex, FormControl, FormLabel, HStack, Icon, IconButton, Image, Input,
+    Menu, MenuButton, MenuItem, MenuList, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Radio, RadioGroup,
+    ScaleFade, Select, SimpleGrid, SlideFade, Slider, SliderFilledTrack, SliderThumb, SliderTrack, Spinner, Stack, Text, useDisclosure, useToast } from '@chakra-ui/react'
 import axios from 'axios'
 import { useEffect, useState, useCallback } from 'react'
 import { FilterData, TradeData, UserTradeData } from '../types/TradeData'
@@ -108,7 +111,7 @@ export default function Trade() {
 
     useEffect(() => {
         getCost();
-    }, [offer, req, tradeLength, getCost]);
+    }, [offer, req, getCost]);
 
     useEffect(() => {
         AuthRequest<UserInfoProps>("/resources", {setState: setAllResources}, false);
@@ -123,6 +126,7 @@ export default function Trade() {
         .then((res) => {
             setBrawlerData(res.data)
         }).catch((error) => {setBrawlerData(undefined);});
+        AuthRequest<CollectionData>("/collection", {setState: setCollectionData}, false);
     }, []);
 
     useEffect(() =>  {
@@ -131,10 +135,6 @@ export default function Trade() {
             setPinData(res.data.pins)
         }).catch((error) => {setPinData(undefined);});
     }, [filter.brawler]);
-
-    useEffect(() => {
-        AuthRequest<CollectionData>("/collection", {setState: setCollectionData}, false);
-    }, []);
 
     const getTrades = useCallback(() => {
         if (username){
@@ -455,10 +455,10 @@ export default function Trade() {
                     <ModalHeader fontWeight={"normal"}>Add Pin</ModalHeader>
                     <ModalCloseButton/>
                     <ModalBody>
-                    {pickingBrawler ?
+                    {
                         <>
                         <SlideFade in={true}>
-                            <SimpleGrid spacing={3} columns={[3,4,5]}>
+                            <SimpleGrid spacing={3} columns={[3,4,5]} display={pickingBrawler ? "grid" : "none"}>
                             {collectionData?.brawlers.map((brawler) => (
                                 <Flex key={brawler.name} flexDir={'column'} alignItems={'center'} userSelect={'none'}>
                                     <Flex p={1} border={'2px solid black'} borderRadius={'lg'} bgColor={brawler.rarityColor} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'} cursor={'pointer'} onClick={() => {if (brawler.u){showPins(brawler.name)}}}>
@@ -466,7 +466,7 @@ export default function Trade() {
                                             <Image filter={!brawler.u ? 'blur(1px)' : 'none'} draggable={'false'} borderRadius={'20%'} src={`${cdn}/image/${brawler.i}`} fallback={<Spinner/>}/>                                                                                
                                         </Box>
                                         {!brawler.u && <Box w={'100%'} h={'100%'} bgColor={'rgba(0, 0, 0, 0.5)'} pos={'absolute'} top={0} borderRadius={'lg'}/>}
-                                        {(!brawler.u) && <Icon as={RiLock2Line}  pos={'absolute'} fontSize={'25px'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}></Icon>}
+                                        {!brawler.u && <Icon as={RiLock2Line} pos={'absolute'} fontSize={'25px'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}></Icon>}
                                         
                                     </Flex>
                                     <Text>{brawler.displayName}</Text>
@@ -474,35 +474,34 @@ export default function Trade() {
                             ))}
                             </SimpleGrid>
                         </SlideFade>
-                        </>
-                        :
-                        <>
-                        <IconButton as={ArrowBackIcon} aria-label="choose brawler" onClick={() => {toggleScreen(true)}} cursor={'pointer'}/>
-                        <ScaleFade in={true}>
-                            <SimpleGrid spacing={3} columns={[3,4,5]} mt={5}>
-                            {collectionData?.brawlers.filter((brawler) => brawler.name === brawlerchoice).map((brawler) => {
-                                return brawler.pins.map((pin) => (
-                                    <Flex key={brawler.name + pin.i} flexDir={'column'} alignItems={'center'} userSelect={'none'}>
-                                        <Flex p={2} border={'2px solid black'} borderRadius={'lg'} bgColor={Object.values(collectionData?.pinRarityColors || {})[pin.r]} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'} cursor={'pointer'} onClick={() => {if (pinLocation === "offer"){ if (pin.a >= amount){addOffer({image: `${brawler.pinFilePath}${pin.i}`, r: pin.r})}} else {addReq({image: `${brawler.pinFilePath}${pin.i}`, r: pin.r})}}}>
-                                            <Image draggable={'false'} borderRadius={'20%'} src={`${cdn}/image/${brawler.pinFilePath}${pin.i}`} fallback={<Spinner/>}/>                                                                                
-                                            {(pin.a < amount && pinLocation === "offer") && <Box w={'100%'} h={'100%'} bgColor={'rgba(0, 0, 0, 0.5)'} pos={'absolute'} top={0} borderRadius={'lg'}/>}
-                                            {(pin.a < amount && pinLocation === "offer") && <Icon as={RiLock2Line}  pos={'absolute'} fontSize={'25px'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}></Icon>}                                                
-                                        </Flex>                                
-                                        <Text  fontSize={'xl'} className={'heading-2xl'}>{`${pin.a}x`}</Text>
-                                    </Flex>
-                                ));
-                            })}
-                            </SimpleGrid>
-                        </ScaleFade>
-                        <Flex flexDir={'column'} alignItems={'center'} justifyContent={'center'}>
-                        <Slider min={1} max={10} my={5} value={amount} onChange={(val) => {setAmount(val)}}>
-                            <SliderTrack bg='blue.300'>
-                                <SliderFilledTrack bg='blue.700'/>
-                            </SliderTrack>
-                            <SliderThumb bg='teal.500'/>
-                        </Slider>
-                        <Text>{`${amount}x`}</Text>
-                        </Flex>
+                        <Box display={pickingBrawler ? "none" : "block"}>
+                            <IconButton as={ArrowBackIcon} aria-label="choose brawler" onClick={() => {toggleScreen(true)}} cursor={'pointer'}/>
+                            <ScaleFade in={true}>
+                                <SimpleGrid spacing={3} columns={[3,4,5]} mt={5}>
+                                {collectionData?.brawlers.filter((brawler) => brawler.name === brawlerchoice).map((brawler) => {
+                                    return brawler.pins.map((pin) => (
+                                        <Flex key={brawler.name + pin.i} flexDir={'column'} alignItems={'center'} userSelect={'none'}>
+                                            <Flex p={2} border={'2px solid black'} borderRadius={'lg'} bgColor={Object.values(collectionData?.pinRarityColors || {})[pin.r]} flexDir={'column'} justifyContent={'center'} alignItems={'center'} pos={'relative'} cursor={'pointer'} onClick={() => {if (pinLocation === "offer"){ if (pin.a >= amount){addOffer({image: `${brawler.pinFilePath}${pin.i}`, r: pin.r})}} else {addReq({image: `${brawler.pinFilePath}${pin.i}`, r: pin.r})}}}>
+                                                <Image draggable={'false'} borderRadius={'20%'} src={`${cdn}/image/${brawler.pinFilePath}${pin.i}`} fallback={<Spinner/>}/>                                                                                
+                                                {(pin.a < amount && pinLocation === "offer") && <Box w={'100%'} h={'100%'} bgColor={'rgba(0, 0, 0, 0.5)'} pos={'absolute'} top={0} borderRadius={'lg'}/>}
+                                                {(pin.a < amount && pinLocation === "offer") && <Icon as={RiLock2Line}  pos={'absolute'} fontSize={'25px'} top={'50%'} left={'50%'} transform={'translate(-50%, -50%)'}></Icon>}                                                
+                                            </Flex>                                
+                                            <Text  fontSize={'xl'} className={'heading-2xl'}>{`${pin.a}x`}</Text>
+                                        </Flex>
+                                    ));
+                                })}
+                                </SimpleGrid>
+                            </ScaleFade>
+                            <Flex flexDir={'column'} alignItems={'center'} justifyContent={'center'}>
+                            <Slider min={1} max={10} my={5} value={amount} onChange={(val) => {setAmount(val)}}>
+                                <SliderTrack bg='blue.300'>
+                                    <SliderFilledTrack bg='blue.700'/>
+                                </SliderTrack>
+                                <SliderThumb bg='teal.500'/>
+                            </Slider>
+                            <Text>{`${amount}x`}</Text>
+                            </Flex>
+                        </Box>
                         </>
                     }
                     </ModalBody>
@@ -514,7 +513,7 @@ export default function Trade() {
 
                 <Flex flexDir={'column'} w={'100%'} justifyContent={'center'} alignItems={'center'} mt={5}>
                     <Text fontSize={'xl'}  className={'heading-2xl'}>Trade Length</Text>
-                    <Slider min={1} max={336} mt={5} value={tradeLength} onChange={(val) => {setTradeLength(val)}}>
+                    <Slider min={1} max={336} mt={5} defaultValue={tradeLength} onChangeEnd={(val) => {setTradeLength(val)}}>
                         <SliderTrack bg='skyblue'>
                             <Box position='relative' right={10} />
                             <SliderFilledTrack bg='blue.400' />

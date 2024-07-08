@@ -13,6 +13,7 @@ export default function ChallengeStart(){
     const [challengeList, setChallengeList] = useState<ChallengePreview[]>([]);
     const [challengeid, setChallengeid] = useState<number>(-1);
     const [challenge, setChallenge] = useState<ChallengeStartData | undefined>();
+    const [rating, setRating] = useState<number>(0);
 
     const toast = useToast();
 
@@ -30,6 +31,11 @@ export default function ChallengeStart(){
                     return 0;
                 });
                 setChallengeList(data);
+            }
+        }, false);
+        AuthRequest<{rating: number;}>("/challenge/rating", {
+            setState: (data) => {
+                setRating(data.rating);
             }
         }, false);
     }, []);
@@ -75,7 +81,7 @@ export default function ChallengeStart(){
                 <Flex w={"40vw"} minW={"min(20em, 80vw)"} maxW={"48em"} flexDir={"column"} bgColor={"#000000b6"} gap={"1vh"} fontSize={["md", "md", "lg"]} className={"heading-lg"} borderRadius={"lg"} p={5} my={2}>
                     <Flex flexDir={"column"} alignItems={"center"}>
                         <Text lineHeight={1}>Your Challenge Rating:</Text>
-                        <Text fontSize={"3xl"}>0</Text>
+                        <Text fontSize={"3xl"}>{rating}</Text>
                     </Flex>
                     <Text>
                         Challenge strength is the overall difficulty of a challenge that is based on how many and which types of enemies are in that challenge.

@@ -1,6 +1,7 @@
 import express from "express";
 import {DEFAULT_REPORT_COST} from "../data/constants";
-import {validateReport, getBadgeRewardPreview, extractReportGameMode, checkReportStrength, extractReportPreviewStats, extractReportData} from "../modules/accessories";
+import {validateReport, getBadgeRewardPreview, extractReportGameMode, extractReportScore, checkReportStrength, extractReportPreviewStats, extractReportData} from "../modules/accessories";
+import {getRatingChange} from "../modules/challenges";
 import {getGameReward} from "../modules/brawlbox";
 import {
     databaseErrorHandler, 
@@ -15,6 +16,7 @@ import {
     setPoints, 
     getGameProgress, 
     setGameProgress, 
+    setGameRating, 
     addReport, 
     getReport, 
     getAllReports, 
@@ -48,22 +50,29 @@ router.post<Empty, Empty, SaveReqBody>("/save", databaseErrorHandler<SaveReqBody
 
     let reportTitle = "";
     let saveToUser = "";
+    let challengeStrength = 0;
+    let ratingChange = 0;
     let isChallenge = false;
+
+    const body = {message: "", rating: 0, ratingChange: 0};
 
     if (typeof req.body.title === "string" && req.body.title.length < 50){
         reportTitle = req.body.title;
     }
 
     if (validateReport(report) === false){
-        res.status(403).send("Invalid report.");
+        body.message = "Invalid report.";
+        res.status(403).json(body);
         return;
     }
 
     const gameMode = extractReportGameMode(report[2]);
+    const score = extractReportScore(report[2]);
     if (gameMode === 0){
         // In the default game mode, no key is required and the username can be sent from the game to the server
         if (typeof inputUser !== "string" || inputUser.length === 0){
-            res.status(400).send("Username is missing.");
+            body.message = "Username is missing.";
+            res.status(400).json(body);
             return;
         }
         saveToUser = inputUser;
@@ -71,24 +80,28 @@ router.post<Empty, Empty, SaveReqBody>("/save", databaseErrorHandler<SaveReqBody
         // In all other game modes, a key is used to identify the challenge. The key is stored in the database with its
         // corresponding username so the user to save the report to can be determined using only the key.
         if (typeof key !== "string"){
-            res.status(400).send("Username is missing.");
+            body.message = "Username is missing.";
+            res.status(400).json(body);
             return;
         }
 
         // Get the username associated with the given challenge key then save the report with that username
         const challenges = await getActiveChallenge({key: key});
         if (challenges.length === 0){
-            res.status(404).send("Challenge not found.");
+            body.message = "Challenge not found.";
+            res.status(404).json(body);
             return;
         }
         if (challenges[0].accepted !== 1){
-            res.status(403).send("This challenge has not been accepted yet.");
+            body.message = "This challenge has not been accepted yet.";
+            res.status(403).json(body);
             return;
         }
 
         // Make sure the strength value in the database matches the strength value given in the report before saving it
         if (checkReportStrength(report[2], challenges[0].strength) === false){
-            res.status(403).send("Invalid report.");
+            body.message = "Invalid report.";
+            res.status(403).json(body);
             return;
         }
 
@@ -97,22 +110,31 @@ router.post<Empty, Empty, SaveReqBody>("/save", databaseErrorHandler<SaveReqBody
         // All active challenges except those with no owner are deleted once completed
         if (challenges[0].owner !== ""){
             isChallenge = true;
+            challengeStrength = challenges[0].strength;
         }
     }
 
     const results = await getGameProgress({username: saveToUser});
-
     if (results.length === 0){
-        res.status(404).send("Could not find the user.");
+        body.message = "Could not find the user.";
+        res.status(404).json(body);
         return;
     }
 
     // If the current game ended before or at the same time as the last game in the database, the current report is a
     // duplicate and should not be added to the database. The value of last_game should only ever increase.
     if (report[1] <= results[0].last_game){
-        res.status(403).send("Cannot save the same game more than once.");
+        body.message = "Cannot save the same game more than once.";
+        res.status(403).json(body);
         return;
     }
+
+    if (isChallenge === true){
+        // Rating changes when playing challenges from other players
+        ratingChange = getRatingChange(results[0].last_rating, challengeStrength, score);
+    }
+
+    const newRating = results[0].last_rating + ratingChange;
 
     await transaction(async (connection) => {
         await addReport({
@@ -128,13 +150,21 @@ router.post<Empty, Empty, SaveReqBody>("/save", databaseErrorHandler<SaveReqBody
             best_scores: results[0].best_scores,
             username: saveToUser
         }, connection);
+        await setGameRating({
+            rating: newRating,
+            last_rating: newRating,
+            username: saveToUser
+        }, connection);
 
         if (isChallenge === true && typeof key === "string"){
             await deleteActiveChallenge({key: key}, connection);
         }
     });
 
-    res.send("Score successfully saved.");
+    body.message = "Score successfully saved.";
+    body.rating = newRating;
+    body.ratingChange = ratingChange;
+    res.json(body);
 }));
 
 // Get all reports a user currently has unclaimed

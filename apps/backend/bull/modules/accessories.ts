@@ -507,7 +507,7 @@ export function getMasteryLevel(points: number): MasteryData{
         if (x >= levelImages.length - 1 || (x < levelImages.length - 1 && result.level < levelImages[x + 1].minLevel)){
             result.current.image = RESOURCE_IMAGE_DIR + levelImages[x].image + IMAGE_FILE_EXTENSION;
             result.current.color = levelImages[x].color;
-            
+
             if (x < levelImages.length - 1 && result.level + 1 >= levelImages[x + 1].minLevel){
                 // Next mastery level meets the minimum level required for the next image
                 result.next.image = RESOURCE_IMAGE_DIR + levelImages[x + 1].image + IMAGE_FILE_EXTENSION;
@@ -649,6 +649,16 @@ export function extractReportGameMode(data: number[]): number{
         return -1;
     }
     return data[format.mode[0]];
+}
+
+export function extractReportScore(data: number[]): number{
+    // Gets the score from a valid report
+    const format = REPORT_FORMAT;
+
+    if (data.length !== format.length[1] - format.length[0]){
+        return -1;
+    }
+    return data[format.player[0]];
 }
 
 export function checkReportStrength(data: number[], expectedStrength: number): boolean{

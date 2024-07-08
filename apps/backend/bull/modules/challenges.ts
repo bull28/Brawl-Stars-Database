@@ -476,6 +476,32 @@ export function getChallengeStrength(data: ChallengeData): number{
     return Math.floor((60 + totalEnemies) * totalWeight / totalEnemies * (100 + stats + diff) / 100);
 }
 
+export function getRatingChange(playerRating: number, challengeRating: number, score: number): number{
+    let change = 0;
+    if (score < 0){
+        change = -60;
+    } else if (score < 300){
+        change = -60 + score / 5;
+    } else if (score < 450){
+        change = (score - 300) / 10;
+    } else if (score < 540){
+        change = 15 + (score - 450) / 3;
+    } else if (score < 570){
+        change = 45 + (score - 540) * 3 / 10;
+    } else if (score < 600){
+        change = 54 + (score - 570) / 5;
+    } else{
+        change = 60;
+    }
+
+    // Do not allow the rating to become negative
+    if (playerRating + change < 0){
+        change = playerRating * -1;
+    }
+
+    return Math.floor(change);
+}
+
 export function getStaticGameMod(key: string, masteryLevel: number, accessories: DatabaseAccessories): ChallengeGameMod | undefined{
     const upgrades = getPlayerUpgrades(masteryLevel).offense;
     const playerAccessories = accessories.filter((value) => typeof value === "string");
@@ -496,7 +522,7 @@ export function getStaticGameMod(key: string, masteryLevel: number, accessories:
                 gearsReward: stageData[x].gearsReward + (x < gearsRewards.length ? gearsRewards[x] : 0)
             });
         }
-        
+
         return {
             options: {startingGears: upgrades.startingGears, bonusResources: false, maxAccessories: upgrades.maxAccessories},
             difficulties: staticChallenges.expertLevels.difficulties,

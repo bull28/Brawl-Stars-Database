@@ -1,7 +1,7 @@
 import {expect} from "chai";
 import accessoryList from "../../bull/data/accessories_data.json";
 import staticChallenges from "../../bull/data/challenges_data.json";
-import {getChallengeUpgrades, createChallengeData, getChallengeStrength, getStaticGameMod, getKeyGameMod} from "../../bull/modules/challenges";
+import {getChallengeUpgrades, createChallengeData, getChallengeStrength, getRatingChange, getStaticGameMod, getKeyGameMod} from "../../bull/modules/challenges";
 import {UserWaves, ChallengeData} from "../../bull/types";
 
 describe("Challenges module", function(){
@@ -75,6 +75,27 @@ describe("Challenges module", function(){
             {level: 3, enemies: ["amber"]}, {level: 3, enemies: ["amber"]}
         ];
         expect(getChallengeStrength(challenge)).to.equal(6750);
+    });
+
+    it("Calculate the change in rating after completing a challenge", function(){
+        expect(getRatingChange(1000, 1000, -1)).to.equal(-60);
+        expect(getRatingChange(1000, 1000, 0)).to.equal(-60);
+        expect(getRatingChange(1000, 1000, 1)).to.equal(-60);
+        expect(getRatingChange(1000, 1000, 5)).to.equal(-59);
+        expect(getRatingChange(1000, 1000, 299)).to.equal(-1);
+        expect(getRatingChange(1000, 1000, 300)).to.equal(0);
+        expect(getRatingChange(1000, 1000, 310)).to.equal(1);
+        expect(getRatingChange(1000, 1000, 450)).to.equal(15);
+        expect(getRatingChange(1000, 1000, 453)).to.equal(16);
+        expect(getRatingChange(1000, 1000, 540)).to.equal(45);
+        expect(getRatingChange(1000, 1000, 570)).to.equal(54);
+        expect(getRatingChange(1000, 1000, 575)).to.equal(55);
+        expect(getRatingChange(1000, 1000, 599)).to.equal(59);
+        expect(getRatingChange(1000, 1000, 600)).to.equal(60);
+        expect(getRatingChange(1000, 1000, 601)).to.equal(60);
+        expect(getRatingChange(20, 20, 150)).to.equal(-20);
+        expect(getRatingChange(0, 0, 150)).to.equal(0);
+        expect(getRatingChange(-69, -69, 420)).to.equal(69);
     });
 
     it("Create a game modification object for a static challenge", function(){

@@ -875,13 +875,15 @@ export async function viewTradeAll(values: TradeViewAllValues): Promise<TradeVie
 
 
 interface GameProgressResult extends RowDataPacket{
+    rating: number;
+    last_rating: number;
     last_game: number;
     badges: string;
     best_scores: string;
 }
 export async function getGameProgress(values: UsernameValues): Promise<GameProgressResult[]>{
     return queryDatabase<GameProgressResult[]>(pool, [values.username], true,
-        `SELECT last_game, badges, best_scores FROM ${tables.bullgame} WHERE username = ?;`);
+        `SELECT rating, last_rating, last_game, badges, best_scores FROM ${tables.bullgame} WHERE username = ?;`);
 }
 
 
@@ -896,6 +898,23 @@ export async function setGameProgress(values: GameProgressValues, connection?: P
         values.last_game, values.badges, values.best_scores, values.username
     ];
     const query = `UPDATE ${tables.bullgame} SET last_game = ?, badges = ?, best_scores = ? WHERE username = ?;`;
+    if (connection !== undefined){
+        return transactionUpdate(connection, valuesArray, false, query);
+    }
+    return updateDatabase(pool, valuesArray, false, query);
+}
+
+
+interface GameRatingValues{
+    rating: number;
+    last_rating: number;
+    username: string;
+}
+export async function setGameRating(values: GameRatingValues, connection?: PoolConnection): Promise<ResultSetHeader>{
+    const valuesArray = [
+        values.rating, values.last_rating, values.username
+    ];
+    const query = `UPDATE ${tables.bullgame} SET rating = ?, last_rating = ? WHERE username = ?;`;
     if (connection !== undefined){
         return transactionUpdate(connection, valuesArray, false, query);
     }
@@ -984,11 +1003,12 @@ export async function getResourcesAndProgress(values: UsernameValues): Promise<R
 interface BeforeAccessoryResult extends RowDataPacket{
     points: number;
     accessories: string;
+    rating: number;
     badges: string;
 }
 export async function beforeAccessory(values: UsernameValues): Promise<BeforeAccessoryResult[]>{
-    return queryDatabase<ResourcesProgressResult[]>(pool, [values.username, values.username], false,
-        `SELECT U.points, U.accessories, G.badges FROM ${tables.users} U, ${tables.bullgame} G WHERE U.username = ? AND G.username = ?;`);
+    return queryDatabase<BeforeAccessoryResult[]>(pool, [values.username, values.username], false,
+        `SELECT U.points, U.accessories, G.rating, G.badges FROM ${tables.users} U, ${tables.bullgame} G WHERE U.username = ? AND G.username = ?;`);
 }
 
 
@@ -1038,9 +1058,13 @@ export async function getActiveChallenge(values: ActiveChallengeValues): Promise
 }
 
 
-export async function acceptActiveChallenge(values: ActiveChallengeValues): Promise<ResultSetHeader>{
-    return updateDatabase(pool, [values.key], false,
-        `UPDATE ${tables.activechallenges} SET accepted = 1 WHERE active_key = ?;`);
+export async function acceptActiveChallenge(values: ActiveChallengeValues, connection?: PoolConnection): Promise<ResultSetHeader>{
+    const valuesArray = [values.key];
+    const query = `UPDATE ${tables.activechallenges} SET accepted = 1 WHERE active_key = ?;`;
+    if (connection !== undefined){
+        return transactionUpdate(connection, valuesArray, false, query);
+    }
+    return updateDatabase(pool, valuesArray, false, query);
 }
 
 

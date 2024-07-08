@@ -15,6 +15,12 @@ const reportMode2 = sampleGameReport.slice();
 // Game mode = 2, strength = 1000
 reportMode2[0] = 2;
 reportMode2[1] = 1000;
+// Score = 600
+const reportWin = reportMode2.slice();
+reportWin[2] = 600;
+// Score = 0
+const reportLoss = reportMode2.slice();
+reportLoss[2] = 0;
 
 describe("Game Report endpoints", function(){
     let connection: Connection;
@@ -55,10 +61,16 @@ describe("Game Report endpoints", function(){
                 (?, ?, ?, ?),
                 (?, ?, ?, ?),
                 (?, ?, ?, ?),
+                (?, ?, ?, ?),
+                (?, ?, ?, ?),
                 (?, ?, ?, ?);`,
                 [
                     // Used for the valid report
                     "test1", 1, 1, TEST_USERNAME,
+                    // Used for win rating change
+                    "testwin", 1, 1, TEST_USERNAME,
+                    // Used for loss rating change
+                    "testloss", 1, 1, TEST_USERNAME,
                     // Used for challenge not accepted
                     "test2", 1, 0, "",
                     // Used for strength not matching
@@ -70,52 +82,97 @@ describe("Game Report endpoints", function(){
         });
 
         it("Valid report from classic mode", async function(){
+            await connection.query(
+                `UPDATE ${tables.bullgame} SET rating = ?, last_rating = ? WHERE username = ?;`,
+                [940, 1000, TEST_USERNAME]
+            );
+
             const res = await chai.request(server).post("/report/save").auth(TEST_TOKEN, {type: "bearer"})
             .send({username: TEST_USERNAME, report: [GAME_VERSION, END_TIME++, reportMode0]});
             expect(res).to.have.status(200);
-            expect(res.text).to.equal("Score successfully saved.");
+            expect(res.body).to.be.an("object");
+            expect(res.body).to.have.keys(["message", "rating", "ratingChange"]);
+
+            // Rating should not change in classic mode
+            expect(res.body.message).to.equal("Score successfully saved.");
+            expect(res.body.rating).to.equal(1000);
+            expect(res.body.ratingChange).to.equal(0);
         });
 
         it("Valid report from challenge", async function(){
             const res = await chai.request(server).post("/report/save").auth(TEST_TOKEN, {type: "bearer"})
             .send({key: "test1", report: [GAME_VERSION, END_TIME++, reportMode2]});
             expect(res).to.have.status(200);
-            expect(res.text).to.equal("Score successfully saved.");
+            expect(res.body).to.be.an("object");
+            expect(res.body).to.have.keys(["message", "rating", "ratingChange"]);
+
+            expect(res.body.message).to.equal("Score successfully saved.");
+        });
+
+        it("Rating increases after saving a game win", async function(){
+            await connection.query(
+                `UPDATE ${tables.bullgame} SET rating = ?, last_rating = ? WHERE username = ?;`,
+                [940, 1000, TEST_USERNAME]
+            );
+
+            const res = await chai.request(server).post("/report/save").auth(TEST_TOKEN, {type: "bearer"})
+            .send({key: "testwin", report: [GAME_VERSION, END_TIME++, reportWin]});
+            expect(res).to.have.status(200);
+
+            // Last rating was 1000 so that should be used in the rating change calculation, not 940 (current rating)
+            expect(res.body.message).to.equal("Score successfully saved.");
+            expect(res.body.rating).to.equal(1060);
+            expect(res.body.ratingChange).to.equal(60);
+        });
+
+        it("Rating decreases after saving a game loss", async function(){
+            await connection.query(
+                `UPDATE ${tables.bullgame} SET rating = ?, last_rating = ? WHERE username = ?;`,
+                [940, 1000, TEST_USERNAME]
+            );
+
+            const res = await chai.request(server).post("/report/save").auth(TEST_TOKEN, {type: "bearer"})
+            .send({key: "testloss", report: [GAME_VERSION, END_TIME++, reportLoss]});
+            expect(res).to.have.status(200);
+
+            expect(res.body.message).to.equal("Score successfully saved.");
+            expect(res.body.rating).to.equal(940);
+            expect(res.body.ratingChange).to.equal(-60);
         });
 
         it("Invalid report", async function(){
             const res = await chai.request(server).post("/report/save").auth(TEST_TOKEN, {type: "bearer"})
             .send({username: TEST_USERNAME, report: [0]});
             expect(res).to.have.status(403);
-            expect(res.text).to.equal("Invalid report.");
+            expect(res.body.message).to.equal("Invalid report.");
         });
 
         it("No username provided", async function(){
             const res = await chai.request(server).post("/report/save").auth(TEST_TOKEN, {type: "bearer"})
             .send({report: [GAME_VERSION, END_TIME++, reportMode0]});
             expect(res).to.have.status(400);
-            expect(res.text).to.equal("Username is missing.");
+            expect(res.body.message).to.equal("Username is missing.");
         });
 
         it("Challenge from report not accepted", async function(){
             const res = await chai.request(server).post("/report/save").auth(TEST_TOKEN, {type: "bearer"})
             .send({key: "test2", report: [GAME_VERSION, END_TIME++, reportMode2]});
             expect(res).to.have.status(403);
-            expect(res.text).to.equal("This challenge has not been accepted yet.");
+            expect(res.body.message).to.equal("This challenge has not been accepted yet.");
         });
 
         it("Challenge strength does not match report", async function(){
             const res = await chai.request(server).post("/report/save").auth(TEST_TOKEN, {type: "bearer"})
             .send({key: "test3", report: [GAME_VERSION, END_TIME++, reportMode2]});
             expect(res).to.have.status(403);
-            expect(res.text).to.equal("Invalid report.");
+            expect(res.body.message).to.equal("Invalid report.");
         });
 
         it("User who started the challenge does not exist", async function(){
             const res = await chai.request(server).post("/report/save").auth(TEST_TOKEN, {type: "bearer"})
             .send({key: "test4", report: [GAME_VERSION, END_TIME++, reportMode2]});
             expect(res).to.have.status(404);
-            expect(res.text).to.equal("Could not find the user.");
+            expect(res.body.message).to.equal("Could not find the user.");
         });
 
         it("Same report already saved", async function(){
@@ -126,13 +183,13 @@ describe("Game Report endpoints", function(){
             const res1 = await chai.request(server).post("/report/save").auth(TEST_TOKEN, {type: "bearer"})
             .send({username: TEST_USERNAME, report: [GAME_VERSION, time, reportMode0]});
             expect(res1).to.have.status(200);
-            expect(res1.text).to.equal("Score successfully saved.");
+            expect(res1.body.message).to.equal("Score successfully saved.");
 
             // The second attempt should fail
             const res2 = await chai.request(server).post("/report/save").auth(TEST_TOKEN, {type: "bearer"})
             .send({username: TEST_USERNAME, report: [GAME_VERSION, time, reportMode0]});
             expect(res2).to.have.status(403);
-            expect(res2.text).to.equal("Cannot save the same game more than once.");
+            expect(res2.body.message).to.equal("Cannot save the same game more than once.");
         });
     });
 
