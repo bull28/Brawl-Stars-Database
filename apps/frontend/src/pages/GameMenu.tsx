@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, Link as RouterLink} from "react-router-dom";
 import {Flex, Box, Text, Button, Link, useToast} from "@chakra-ui/react";
 import {AxiosError} from "axios";
 import AuthRequest from "../helpers/AuthRequest";
@@ -25,7 +25,6 @@ export default function GameMenu(){
         AuthRequest<MasteryData>("/accessory/mastery", {setState: (data) => {
             setMastery(data);
             setLoggedIn(true);
-            //setNotLoggedIn(false);
 
             AuthRequest<Record<string, unknown>[]>("/report/all", {setState: (data1) => {
                 // The type of this value does not matter, only the length is used
@@ -33,7 +32,6 @@ export default function GameMenu(){
             }}, false);
         }, fallback: (error) => {
             setLoggedIn(false);
-            //setNotLoggedIn(true);
             const e = error as AxiosError;
             if (e.response !== undefined && e.response.status !== 400 && e.response.status !== 401){
                 const message = e.response.data;
@@ -75,7 +73,7 @@ export default function GameMenu(){
                             <Text>You are currently not logged in.</Text>
                             <Text>You can still play the game but you need to be logged in to earn rewards from playing.</Text>
                             <Link color={"blue.300"} href={`${api}/bullgame`}>Click here to play while logged out</Link>
-                            <Link color={"blue.300"} onClick={() => navigate("/login")}>Click here to login</Link>
+                            <Link as={RouterLink} color={"blue.300"} to={`/login?${new URLSearchParams({next: "/bullgame"})}`}>Click here to login</Link>
                         </Flex>
                     }
                 </Flex>

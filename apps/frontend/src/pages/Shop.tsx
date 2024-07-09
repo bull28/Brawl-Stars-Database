@@ -1,6 +1,6 @@
 import { Box, Flex, Image, Link, ScaleFade, SimpleGrid, Text } from '@chakra-ui/react'
 import { useState, useEffect, useCallback } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link as RouterLink } from 'react-router-dom'
 import { BsEmojiLaughing, BsPalette, BsPerson } from 'react-icons/bs'
 import { MdOutlineGeneratingTokens } from 'react-icons/md'
 import { BiLandscape } from 'react-icons/bi'
@@ -45,8 +45,6 @@ export default function Shop() {
     const [initialTimeLeftms, setNewInitialTime] = useState<number>(((86400 + (new Date(new Date().getFullYear(), 0, 1).getTimezoneOffset() - new Date().getTimezoneOffset()) * 60 - new Date().getHours() * 3600 - new Date().getMinutes() * 60 - new Date().getSeconds()) % 86400) * 1000);
     const [secondsLeft, updateSecondsLeft] = useState<number>(Math.floor(initialTimeLeftms / 1000));
 
-    const navigate = useNavigate();
-
     const getItems = useCallback(() => {
         AuthRequest<ShopData[]>("/shop", {setState: (items: ShopData[]) => {
             const sortedItems: ShopItemCategories = {
@@ -58,9 +56,10 @@ export default function Shop() {
                 scenes: {name: "Scenes", search: "scene", icon: <BiLandscape color={'black'}/>, items: []}
             };
     
+            let featuredItem: ShopData | undefined;
             for (let x = 0; x < items.length; x++){
                 if (items[x].name === "featuredItem"){
-                    setFeatured(items[x]);
+                    featuredItem = items[x];
                 } else{
                     for (let y in sortedItems){
                         if (items[x].name.toLowerCase().includes(sortedItems[y as keyof ShopItemCategories].search)){
@@ -69,13 +68,12 @@ export default function Shop() {
                     }
                 }
             }
+            setFeatured(featuredItem);
             
             setItems(sortedItems);
         }, fallback: () => setLoggedIn(false)});      
         AuthRequest<UserInfoProps>("/resources", {setState: setUserInfo}, false);
     }, [setUserInfo]);
-
-    //const organizeData = useCallback(, []);
 
     useEffect(() => {        
         const id = setTimeout(() => {
@@ -89,7 +87,6 @@ export default function Shop() {
                     updateSecondsLeft(timeLeft);
                 }
                 if (initialTimeLeftms - elapsed < -1000){
-                    //window.location.reload();
                     getItems();
                     setNewInitialTime(86400000);
                     return {
@@ -172,7 +169,7 @@ export default function Shop() {
                 <Flex flexDir={'column'} alignItems={'center'} w={'100%'} h={'100%'} justifyContent={'center'} pos={'absolute'}>
                     <Flex flexDir={'column'} alignItems={'center'} justifyContent={'center'} bgColor={'lightskyblue'} border={'2px solid'} borderColor={'blue.500'} borderRadius={'lg'} p={5}>
                         <Text fontSize={'2xl'} className={'heading-2xl'} >Please Login to View the Shop</Text>
-                        <Link fontSize={'2xl'} className={'heading-xl'} color={'blue.300'} onClick={() => navigate("/login")}>Click here to login</Link>
+                        <Link as={RouterLink} fontSize={'2xl'} className={'heading-xl'} color={'blue.300'} to={`/login?${new URLSearchParams({next: "/shop"})}`}>Click here to login</Link>
                     </Flex>
                 </Flex>
             }

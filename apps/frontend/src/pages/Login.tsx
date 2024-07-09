@@ -1,6 +1,6 @@
-import {useState} from "react";
+import {useState, useMemo} from "react";
 import axios from 'axios';
-import {Link as RouterLink, useNavigate} from 'react-router-dom';
+import {Link as RouterLink, useNavigate, useSearchParams} from 'react-router-dom';
 import {Flex, Box, FormControl, FormLabel, Input, FormHelperText, Text, Alert, AlertIcon, AlertDescription, Link, InputGroup, InputLeftElement, useColorMode} from '@chakra-ui/react';
 import {BsFillPersonFill} from 'react-icons/bs';
 import {RiKeyFill} from 'react-icons/ri';
@@ -12,11 +12,13 @@ function Login(){
     const [username, setUsername] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [invalidlogin, setInvalidlogin] = useState<boolean>(false);
-    const [errorCode, setErrorCode] = useState<200 | 400 | 401 | 500>(200)
+    const [errorCode, setErrorCode] = useState<200 | 400 | 401 | 500>(200);
+    const nextRouteMatch = useMemo(() => new RegExp(/^\/[A-Za-z0-9/_-]+$/), []);
     
     const { colorMode } = useColorMode()
 
     const navigate = useNavigate();
+    const [params] = useSearchParams();
 
     const errorMessages = {
         200: "",
@@ -25,7 +27,7 @@ function Login(){
         500: "The Server Encountered an Error. Please Try Again Later."
     }
 
-    const handleLogin = async (e: any) => {
+    const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault()
         
         axios.post(`${api}/login`, {username: username, password: password})
@@ -33,7 +35,13 @@ function Login(){
                 changeToken(res.data.username, res.data.token);
                 document.dispatchEvent(new CustomEvent("reloadaudio"));
                 setInvalidlogin(false);
-                navigate('/');
+
+                const nextRoute = params.get("next");
+                if (nextRoute !== null && nextRoute.match(nextRouteMatch) !== null){
+                    navigate(nextRoute);
+                } else{
+                    navigate("/");
+                }
             })
             .catch(function(error) {
                 if (error.response){
