@@ -121,8 +121,8 @@ describe("Game Report endpoints", function(){
 
             // Last rating was 1000 so that should be used in the rating change calculation, not 940 (current rating)
             expect(res.body.message).to.equal("Score successfully saved.");
-            expect(res.body.rating).to.equal(1060);
-            expect(res.body.ratingChange).to.equal(60);
+            expect(res.body.rating).to.equal(1120);
+            expect(res.body.ratingChange).to.equal(120);
         });
 
         it("Rating decreases after saving a game loss", async function(){
@@ -136,8 +136,8 @@ describe("Game Report endpoints", function(){
             expect(res).to.have.status(200);
 
             expect(res.body.message).to.equal("Score successfully saved.");
-            expect(res.body.rating).to.equal(940);
-            expect(res.body.ratingChange).to.equal(-60);
+            expect(res.body.rating).to.equal(880);
+            expect(res.body.ratingChange).to.equal(-120);
         });
 
         it("Invalid report", async function(){

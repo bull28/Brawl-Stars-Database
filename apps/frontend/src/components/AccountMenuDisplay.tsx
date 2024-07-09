@@ -10,9 +10,10 @@ interface Props{
     username: string;
     token: string;
     toggleRemove: boolean;
+    onUpdate: () => void;
 }
 
-export default function AccountMenuDisplay({ username, token, toggleRemove }: Props) {
+export default function AccountMenuDisplay({ username, token, toggleRemove, onUpdate }: Props) {
     const [data, setData] = useState<UserInfoProps>()
 
     const toast = useToast()
@@ -25,7 +26,7 @@ export default function AccountMenuDisplay({ username, token, toggleRemove }: Pr
     const switchUser = () => {
         if (username !== localStorage.getItem('username')){
             localStorage.setItem('username', username)
-            window.location.reload()
+            onUpdate();
         } else {
             toast({description: 'Already on this account!', status: 'error', duration: 3000, isClosable: true})
         }
@@ -39,11 +40,10 @@ export default function AccountMenuDisplay({ username, token, toggleRemove }: Pr
         localStorage.setItem('tokens', JSON.stringify(temp))
 
         if (username === localStorage.getItem('username')){
-            localStorage.setItem('username', "")
+            localStorage.removeItem('username');
         }
 
-        window.location.reload()
-        
+        onUpdate();
     }
 
     return (

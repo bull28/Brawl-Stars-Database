@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { MdOutlineLogout } from 'react-icons/md'
 import { Flex, Text, Menu,
     MenuButton,
@@ -56,7 +56,7 @@ function parseTokens(text: string | null): TokenStorage{
 
 
 export default function AccountDisplay() {
-    const [data, setData] = useState<UserInfoProps>()
+    const [data, setData] = useState<UserInfoProps | undefined>()
     const [tokenData, setTokenData] = useState<TokenStorage>({})
     const [removing, toggleRemoving] = useState<boolean>(false)
     const [invalid, setInvalid] = useState<boolean>(false)
@@ -65,22 +65,35 @@ export default function AccountDisplay() {
 
     const navigate = useNavigate()
 
-    
-    useEffect(() => {
+    const loadAccount = useCallback(() => {
         AuthRequest<UserInfoProps>("/resources", {setState: setData, fallback: (e) => {
             const error = e as AxiosError;
-            if (error.response !== void 0 && error.response.status === 404){
-                setInvalid(true);
+            if (error.response !== undefined){
+                if (error.response.status === 404){
+                    setInvalid(true);
+                } else if (error.response.status === 401){
+                    setData(undefined);
+                }
             }
         }}, false);
         setTokenData(parseTokens(localStorage.getItem("tokens")));
-    }, [])
+    }, []);
+
+    const logOut = () => {
+        localStorage.removeItem('username');
+        document.dispatchEvent(new CustomEvent("reloadaudio"));
+        setData(undefined);
+    };
+    
+    useEffect(() => {
+        loadAccount();
+    }, [loadAccount]);
 
 
     return (
-    <Flex flexDir={'column'} justifyContent={'center'} alignItems={'center'} textAlign={'center'}>
-        {invalid === true ?<Button fontSize={"lg"} className={"heading-lg"} color={"#fff"} onClick={() => {localStorage.removeItem('username'); navigate('/')}}>Log out</Button> : <></>}
-        {data !== void 0 ?
+    <>
+    {data !== undefined ? <Flex flexDir={'column'} justifyContent={'center'} alignItems={'center'} textAlign={'center'}>
+        {invalid && <Button fontSize={"lg"} className={"heading-lg"} color={"#fff"} onClick={logOut}>Log out</Button>}
         <Menu autoSelect={false} closeOnSelect={false}>
             <MenuButton>
                 <Flex justifyContent={'center'} alignItems={'center'} borderRadius={'50%'} border={(data.avatarColor !== 'rainbow') ? `3px solid ${data.avatarColor}` : ''} animation={(data.avatarColor === 'rainbow') ? `${RainbowBorder()} 12s infinite` : ''}>
@@ -134,11 +147,10 @@ export default function AccountDisplay() {
                 <MenuItem icon={<BsPerson fontSize={'22px'}/>} onClick={() => {navigate('/account')}}>Account</MenuItem>
                 <MenuItem icon={<BsCollection fontSize={'22px'}/>} onClick={() => {navigate('/collection')}}>Collection</MenuItem>
                 <MenuItem icon={<HiOutlineSwitchHorizontal fontSize={'22px'}/>} onClick={onOpen}>Switch Accounts</MenuItem>
-                <MenuItem icon={<MdOutlineLogout fontSize={'22px'}/>} onClick={() => {localStorage.removeItem('username'); navigate('/')}}>Log Out</MenuItem>
+                <MenuItem icon={<MdOutlineLogout fontSize={'22px'}/>} onClick={logOut}>Log Out</MenuItem>
                 
             </MenuList>
         </Menu>
-        : <></>}
         <Tooltip label='Tokens are used to open Brawl Boxes and purchase rewards from Bullgame. Collect them by visiting the website regularly!' placement={'bottom-start'}>
             {invalid === false ?
                 <Flex justifyContent={'center'} alignItems={'center'} textAlign={'center'} mt={1}> 
@@ -160,7 +172,7 @@ export default function AccountDisplay() {
                 <DrawerBody sx={scrollStyle}>
                     {Object.keys(tokenData).map((token) => (
                         <div key={token}>
-                            <AccountMenuDisplay username={token} token={tokenData[token]} toggleRemove={removing}/>
+                            <AccountMenuDisplay username={token} token={tokenData[token]} toggleRemove={removing} onUpdate={() => {loadAccount(); document.dispatchEvent(new CustomEvent("reloadaudio"));}}/>
                         </div>
                     ))}
                 </DrawerBody>
@@ -179,5 +191,9 @@ export default function AccountDisplay() {
             </DrawerContent>
         </Drawer>
     </Flex>
-    )
+    :
+    <Button onClick={() => navigate("/login")} fontWeight={"normal"} fontSize={"lg"} className={"heading-lg"} color={"#fff"}>Log In</Button>
+    }
+    </>
+    );
 }

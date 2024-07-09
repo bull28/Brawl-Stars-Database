@@ -1,4 +1,4 @@
-import { Flex, Text, Image, Box, SimpleGrid, Button, Tooltip } from '@chakra-ui/react';
+import { Flex, Text, Image, Box, SimpleGrid, Tooltip } from '@chakra-ui/react';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import AccountDisplay from '../components/AccountDisplay';
@@ -19,12 +19,6 @@ const SmallTile = ({ link, children }: {link: string, children: React.ReactNode}
 }
 
 export default function Home(){
-    const navigate = useNavigate();
-
-    const login = () => {
-        navigate('/login');
-    }
-
     return (
         <Flex flexDir={'column'} alignItems={'center'}>
             <Image w={'100vw'} h={'100vh'} position={'fixed'} objectFit={'cover'} src={(!isSun()) ? require('../assets/backroundnight.webp') : require('../assets/backround.webp')} zIndex={-1}/>
@@ -33,10 +27,7 @@ export default function Home(){
                 <Text mr={3} fontSize={'xl'} className={'heading-xl'} color={'pink.400'}>{`${new Date().getHours()}:${String(new Date().getMinutes()).length === 2 ? new Date().getMinutes() : "0"+new Date().getMinutes()}`}</Text>
                 <Tooltip label={`don't ask where this is from...`}>{(!isSun()) ? <Image src={require('../assets/moon.webp')} w={'70px'} mr={5}/> : <Box w={'70px'} h={'70px'} bgColor={'white'} mr={5}></Box>}</Tooltip>
             </Flex>
-            {localStorage.getItem('username') ? 
-                <AccountDisplay/> :
-                <Button onClick={login} fontWeight={"normal"} fontSize={"lg"} className={"heading-lg"} color={"#fff"}>Log In</Button>
-            }        
+            <AccountDisplay/>
             </Flex>
             <Flex w={'100%'} flexDir={'column'} textAlign={'center'} justifyContent={'center'} alignItems={'center'}>
             

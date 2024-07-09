@@ -17,15 +17,15 @@ function itemFontSize(length: number): {size: string[]; class: string;}{
     if (length >= 20){
         return {size: ["xs", "sm", "md", "md", "md", "lg"], class: "heading-lg"};
     } else if (length >= 15){
-        return {size: ["sm", "md", "lg", "lg", "lg", "lg"], class: "heading-lg"};
+        return {size: ["sm", "md", "lg"], class: "heading-lg"};
     }
-    return {size: ["md", "lg", "xl", "xl", "xl", "xl"], class: "heading-xl"};
+    return {size: ["md", "lg", "xl"], class: "heading-xl"};
 }
 
-export default function ShopItem({data, coins, isFeatured, timeLeftString}: {data: ShopData, coins: number, isFeatured?: boolean, timeLeftString: string}) {
+export default function ShopItem({data, coins, isFeatured, timeLeftString, onBuyItem}: {data: ShopData, coins: number, isFeatured?: boolean, timeLeftString: string; onBuyItem: () => void;}) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [accepted, setAccepted] = useState<boolean>()  
-    const [purchaseData, setPurchaseData] = useState<PurchaseData>()
+    const [purchaseData, setPurchaseData] = useState<PurchaseData | undefined>()
 
     const navigate = useNavigate()
 
@@ -66,7 +66,7 @@ export default function ShopItem({data, coins, isFeatured, timeLeftString}: {dat
                         </ModalBody>
     
                         <ModalFooter>
-                            <Button className={'heading-md'} mr={3} color={'#fff'} onClick={(accepted) ? () => {window.location.reload()} : onClose}>Close</Button>
+                            <Button className={'heading-md'} mr={3} color={'#fff'} onClick={(accepted) ? () => {onBuyItem(); onClose(); setAccepted(false); setPurchaseData(undefined);} : onClose}>Close</Button>
                             {accepted ? 
                                 <Button className={'heading-md'} mr={3} onClick={() => {navigate('/collection')}}>
                                     View Collection
@@ -138,7 +138,7 @@ export default function ShopItem({data, coins, isFeatured, timeLeftString}: {dat
                         </ModalBody>
     
                         <ModalFooter>
-                            <Button className={'heading-md'} mr={3} color={'#fff'} onClick={(accepted) ? () => {window.location.reload()} : onClose}>Close</Button>
+                            <Button className={'heading-md'} mr={3} color={'#fff'} onClick={(accepted) ? () => {onBuyItem(); onClose(); setAccepted(false); setPurchaseData(undefined);} : onClose}>Close</Button>
                             {accepted ? 
                                 <></>
                                 :

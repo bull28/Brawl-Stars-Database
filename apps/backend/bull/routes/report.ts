@@ -50,7 +50,7 @@ router.post<Empty, Empty, SaveReqBody>("/save", databaseErrorHandler<SaveReqBody
 
     let reportTitle = "";
     let saveToUser = "";
-    let challengeStrength = 0;
+    let strength = 0;
     let ratingChange = 0;
     let isChallenge = false;
 
@@ -110,7 +110,7 @@ router.post<Empty, Empty, SaveReqBody>("/save", databaseErrorHandler<SaveReqBody
         // All active challenges except those with no owner are deleted once completed
         if (challenges[0].owner !== ""){
             isChallenge = true;
-            challengeStrength = challenges[0].strength;
+            strength = challenges[0].strength;
         }
     }
 
@@ -131,7 +131,7 @@ router.post<Empty, Empty, SaveReqBody>("/save", databaseErrorHandler<SaveReqBody
 
     if (isChallenge === true){
         // Rating changes when playing challenges from other players
-        ratingChange = getRatingChange(results[0].last_rating, challengeStrength, score);
+        ratingChange = getRatingChange(results[0].last_rating, strength, score);
     }
 
     const newRating = results[0].last_rating + ratingChange;

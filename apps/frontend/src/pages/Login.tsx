@@ -30,16 +30,15 @@ function Login(){
         
         axios.post(`${api}/login`, {username: username, password: password})
             .then(res => {
-                navigate('/')
-                
-                changeToken(res.data.username, res.data.token)
-
+                changeToken(res.data.username, res.data.token);
+                document.dispatchEvent(new CustomEvent("reloadaudio"));
                 setInvalidlogin(false);
+                navigate('/');
             })
             .catch(function(error) {
                 if (error.response){
                     setInvalidlogin(true);
-                    setErrorCode(error.response.status)
+                    setErrorCode(error.response.status);
                 }
             })
 

@@ -18,7 +18,7 @@ interface PinData {
     rarityValue: number;
 }
 
-export default function TradeCard({ data }: {data: TradeData}) {
+export default function TradeCard({ data, onUpdate }: {data: TradeData; onUpdate: () => void;}) {
     const [tradeComplete, setCompletion] = useState<boolean>(false);
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [received, setReceived] = useState<PinData[]>();
@@ -42,7 +42,8 @@ export default function TradeCard({ data }: {data: TradeData}) {
     const refreshPage = () => {
         onClose();
         if (tradeComplete){
-            window.location.reload();
+            //window.location.reload();
+            onUpdate();
         }
         
     }

@@ -77,25 +77,66 @@ describe("Challenges module", function(){
         expect(getChallengeStrength(challenge)).to.equal(6750);
     });
 
-    it("Calculate the change in rating after completing a challenge", function(){
-        expect(getRatingChange(1000, 1000, -1)).to.equal(-60);
-        expect(getRatingChange(1000, 1000, 0)).to.equal(-60);
-        expect(getRatingChange(1000, 1000, 1)).to.equal(-60);
-        expect(getRatingChange(1000, 1000, 5)).to.equal(-59);
-        expect(getRatingChange(1000, 1000, 299)).to.equal(-1);
-        expect(getRatingChange(1000, 1000, 300)).to.equal(0);
-        expect(getRatingChange(1000, 1000, 310)).to.equal(1);
-        expect(getRatingChange(1000, 1000, 450)).to.equal(15);
-        expect(getRatingChange(1000, 1000, 453)).to.equal(16);
-        expect(getRatingChange(1000, 1000, 540)).to.equal(45);
-        expect(getRatingChange(1000, 1000, 570)).to.equal(54);
-        expect(getRatingChange(1000, 1000, 575)).to.equal(55);
-        expect(getRatingChange(1000, 1000, 599)).to.equal(59);
-        expect(getRatingChange(1000, 1000, 600)).to.equal(60);
-        expect(getRatingChange(1000, 1000, 601)).to.equal(60);
-        expect(getRatingChange(20, 20, 150)).to.equal(-20);
-        expect(getRatingChange(0, 0, 150)).to.equal(0);
-        expect(getRatingChange(-69, -69, 420)).to.equal(69);
+    describe("Calculate the change in rating after completing a challenge", function(){
+        it("Equal rating and strength", function(){
+            expect(getRatingChange(1000, 1000, -1)).to.equal(-120);
+            expect(getRatingChange(1000, 1000, 0)).to.equal(-120);
+            expect(getRatingChange(1000, 1000, 1)).to.equal(-120);
+            expect(getRatingChange(1000, 1000, 3)).to.equal(-119);
+            expect(getRatingChange(1000, 1000, 299)).to.equal(-1);
+            expect(getRatingChange(1000, 1000, 300)).to.equal(0);
+            expect(getRatingChange(1000, 1000, 305)).to.equal(1);
+            expect(getRatingChange(1000, 1000, 450)).to.equal(30);
+            expect(getRatingChange(1000, 1000, 452)).to.equal(31);
+            expect(getRatingChange(1000, 1000, 540)).to.equal(90);
+            expect(getRatingChange(1000, 1000, 570)).to.equal(108);
+            expect(getRatingChange(1000, 1000, 573)).to.equal(109);
+            expect(getRatingChange(1000, 1000, 599)).to.equal(119);
+            expect(getRatingChange(1000, 1000, 600)).to.equal(120);
+            expect(getRatingChange(1000, 1000, 601)).to.equal(120);
+        });
+
+        it("Loss on harder challenge", function(){
+            expect(getRatingChange(20000, 20001, 0)).to.equal(-120);
+            expect(getRatingChange(20000, 21000, 0)).to.equal(-108);
+            expect(getRatingChange(20000, 25000, 0)).to.equal(-60);
+            expect(getRatingChange(20000, 30000, 0)).to.equal(-40);
+            expect(getRatingChange(20000, 40000, 0)).to.equal(-40);
+        });
+
+        it("Win on harder challenge", function(){
+            expect(getRatingChange(20000, 20001, 600)).to.equal(120);
+            expect(getRatingChange(20000, 21000, 600)).to.equal(144);
+            expect(getRatingChange(20000, 25000, 600)).to.equal(240);
+            expect(getRatingChange(20000, 30000, 600)).to.equal(600);
+            expect(getRatingChange(20000, 40000, 600)).to.equal(600);
+        });
+
+        it("Loss on easier challenge", function(){
+            expect(getRatingChange(20000, 19999, 0)).to.equal(-121);
+            expect(getRatingChange(20000, 19000, 0)).to.equal(-144);
+            expect(getRatingChange(20000, 15000, 0)).to.equal(-240);
+            expect(getRatingChange(20000, 10000, 0)).to.equal(-600);
+            expect(getRatingChange(20000, 0, 0)).to.equal(-600);
+        });
+
+        it("Win on easier challenge", function(){
+            expect(getRatingChange(20000, 19999, 600)).to.equal(119);
+            expect(getRatingChange(20000, 19000, 600)).to.equal(108);
+            expect(getRatingChange(20000, 15000, 600)).to.equal(60);
+            expect(getRatingChange(20000, 10000, 600)).to.equal(40);
+            expect(getRatingChange(20000, 0, 600)).to.equal(40);
+        });
+
+        it("Loss when close to 0 rating", function(){
+            expect(getRatingChange(50, 50, 0)).to.equal(-50);
+            expect(getRatingChange(50, -9950, 0)).to.equal(-50);
+            expect(getRatingChange(50, 10050, 0)).to.equal(-40);
+            expect(getRatingChange(0, 0, 0)).to.equal(0);
+            expect(getRatingChange(0, -10000, 0)).to.equal(0);
+            expect(getRatingChange(0, 10000, 0)).to.equal(0);
+            expect(getRatingChange(-69, -69, 420)).to.equal(69);
+        });
     });
 
     it("Create a game modification object for a static challenge", function(){

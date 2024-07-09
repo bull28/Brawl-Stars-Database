@@ -1128,7 +1128,7 @@ interface ChallengeAllResult extends RowDataPacket{
 }
 export async function getAllChallenges(values: UsernameValues): Promise<ChallengeAllResult[]>{
     return queryDatabase<ChallengeAllResult[]>(pool, [values.username, ""], true,
-        `SELECT challengeid, username, preset, strength FROM ${tables.challenges} WHERE username = ? OR preset <> ?;`);
+        `SELECT challengeid, username, preset, strength FROM ${tables.challenges};`);
 }
 
 

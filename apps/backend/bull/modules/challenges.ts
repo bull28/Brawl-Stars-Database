@@ -477,21 +477,47 @@ export function getChallengeStrength(data: ChallengeData): number{
 }
 
 export function getRatingChange(playerRating: number, challengeRating: number, score: number): number{
+    // Determine the base rating change based on the player's score. A score of 300 or higher is considered a win.
     let change = 0;
     if (score < 0){
-        change = -60;
+        change = -120;
     } else if (score < 300){
-        change = -60 + score / 5;
+        change = -120 + score * 2 / 5;
     } else if (score < 450){
-        change = (score - 300) / 10;
+        change = (score - 300) / 5;
     } else if (score < 540){
-        change = 15 + (score - 450) / 3;
+        change = 30 + (score - 450) * 2 / 3;
     } else if (score < 570){
-        change = 45 + (score - 540) * 3 / 10;
+        change = 90 + (score - 540) * 3 / 5;
     } else if (score < 600){
-        change = 54 + (score - 570) / 5;
+        change = 108 + (score - 570) * 2 / 5;
     } else{
-        change = 60;
+        change = 120;
+    }
+
+    // Adjust the rating change based on the difference between the player rating and challenge strength
+    const diff = Math.min(10000, Math.abs(challengeRating - playerRating));
+    const expected = diff < 5000 ? (12 * diff / 1000) : (60 + 4 * (diff - 5000) / 1000);
+    const unexpected = diff < 5000 ? (24 * diff / 1000) : (120 + 72 * (diff - 5000) / 1000);
+
+    // It is expected that the player will win easier challenges and lose harder challenges. If this is not the case,
+    // the player's rating will change by a larger amount.
+    if (playerRating < challengeRating){
+        if (score < 300){
+            // Player lost a harder challenge
+            change += expected;
+        } else{
+            // Player won a harder challenge
+            change += unexpected;
+        }
+    } else if (playerRating > challengeRating){
+        if (score < 300){
+            // Player lost an easier challenge
+            change -= unexpected;
+        } else{
+            // Player won an easier challenge
+            change -= expected;
+        }
     }
 
     // Do not allow the rating to become negative

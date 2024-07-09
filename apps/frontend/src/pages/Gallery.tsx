@@ -1,5 +1,6 @@
 import { Button, Flex, Image, Text, Link, SimpleGrid, VStack } from "@chakra-ui/react";
 import { useEffect, useState, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import AuthRequest from "../helpers/AuthRequest";
 import {CosmeticData, ThemeProps} from "../types/CosmeticData";
 import {scrollStyle} from "../themes/scrollbar";
@@ -29,6 +30,8 @@ export default function Gallery() {
     const [cosmetics, setCosmetics] = useState<CosmeticData | undefined>(undefined);
     const [loggedIn, setLoggedIn] = useState<boolean | undefined>();
     const [preview, setPreview] = useState<boolean>(false);
+
+    const navigate = useNavigate();
 
     const updateCosmeticItem = (cosmetics: CosmeticData, key: string, value: string): CosmeticData => {
         const newCosmetics: CosmeticData = {
@@ -84,8 +87,7 @@ export default function Gallery() {
             },
             errorToastMessage: "Something Went Wrong!",
             callback: () => {
-                const event = new CustomEvent("updatecosmetics", {detail: cosmetics});
-                document.dispatchEvent(event);
+                document.dispatchEvent(new CustomEvent("reloadaudio"));
             }
         });
     };
@@ -141,7 +143,7 @@ export default function Gallery() {
             <Flex flexDir={"column"} alignItems={"center"} w={"100vw"} h={"100vh"} justifyContent={"center"} pos={"absolute"} zIndex={-1}>
                 <Flex flexDir={"column"} alignItems={"center"} justifyContent={"center"} bgColor={"lightskyblue"} border={"2px solid"} borderColor={"blue.500"} borderRadius={"lg"} p={5}>
                 <Text fontSize={"2xl"} className={"heading-2xl"} >Please login to view the Gallery</Text>
-                <Link fontSize={"2xl"} className={"heading-xl"} color={"blue.300"} href="/login">Click here to login</Link>
+                <Link fontSize={"2xl"} className={"heading-xl"} color={"blue.300"} onClick={() => navigate("/login")}>Click here to login</Link>
                 </Flex>
             </Flex>
         }

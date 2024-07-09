@@ -1,5 +1,6 @@
 import { Box, Flex, Image, Link, ScaleFade, SimpleGrid, Text } from '@chakra-ui/react'
 import { useState, useEffect, useCallback } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { BsEmojiLaughing, BsPalette, BsPerson } from 'react-icons/bs'
 import { MdOutlineGeneratingTokens } from 'react-icons/md'
 import { BiLandscape } from 'react-icons/bi'
@@ -44,30 +45,37 @@ export default function Shop() {
     const [initialTimeLeftms, setNewInitialTime] = useState<number>(((86400 + (new Date(new Date().getFullYear(), 0, 1).getTimezoneOffset() - new Date().getTimezoneOffset()) * 60 - new Date().getHours() * 3600 - new Date().getMinutes() * 60 - new Date().getSeconds()) % 86400) * 1000);
     const [secondsLeft, updateSecondsLeft] = useState<number>(Math.floor(initialTimeLeftms / 1000));
 
-    const organizeData = useCallback((items: ShopData[]) => {
-        const sortedItems: ShopItemCategories = {
-            currency: {name: "Currency", search: "credit", icon: <MdOutlineGeneratingTokens color={'black'}/>, items: []},
-            brawlers: {name: "Brawlers", search: "brawler", icon: <BsPerson color={'black'}/>, items: []},
-            accessories: {name: "Accessories", search: "accessory", icon: <BsPerson color={'black'}/>, items: []},
-            avatars: {name: "Avatars", search: "avatar", icon: <BsEmojiLaughing color={'black'}/>, items: []},
-            themes: {name: "Themes", search: "theme", icon: <BsPalette color={'black'}/>, items: []},
-            scenes: {name: "Scenes", search: "scene", icon: <BiLandscape color={'black'}/>, items: []}
-        };
+    const navigate = useNavigate();
 
-        for (let x = 0; x < items.length; x++){
-            if (items[x].name === "featuredItem"){
-                setFeatured(items[x]);
-            } else{
-                for (let y in sortedItems){
-                    if (items[x].name.toLowerCase().includes(sortedItems[y as keyof ShopItemCategories].search)){
-                        sortedItems[y as keyof ShopItemCategories].items.push(items[x]);
+    const getItems = useCallback(() => {
+        AuthRequest<ShopData[]>("/shop", {setState: (items: ShopData[]) => {
+            const sortedItems: ShopItemCategories = {
+                currency: {name: "Currency", search: "credit", icon: <MdOutlineGeneratingTokens color={'black'}/>, items: []},
+                brawlers: {name: "Brawlers", search: "brawler", icon: <BsPerson color={'black'}/>, items: []},
+                accessories: {name: "Accessories", search: "accessory", icon: <BsPerson color={'black'}/>, items: []},
+                avatars: {name: "Avatars", search: "avatar", icon: <BsEmojiLaughing color={'black'}/>, items: []},
+                themes: {name: "Themes", search: "theme", icon: <BsPalette color={'black'}/>, items: []},
+                scenes: {name: "Scenes", search: "scene", icon: <BiLandscape color={'black'}/>, items: []}
+            };
+    
+            for (let x = 0; x < items.length; x++){
+                if (items[x].name === "featuredItem"){
+                    setFeatured(items[x]);
+                } else{
+                    for (let y in sortedItems){
+                        if (items[x].name.toLowerCase().includes(sortedItems[y as keyof ShopItemCategories].search)){
+                            sortedItems[y as keyof ShopItemCategories].items.push(items[x]);
+                        }
                     }
                 }
             }
-        }
-        
-        setItems(sortedItems);
-    }, []);
+            
+            setItems(sortedItems);
+        }, fallback: () => setLoggedIn(false)});      
+        AuthRequest<UserInfoProps>("/resources", {setState: setUserInfo}, false);
+    }, [setUserInfo]);
+
+    //const organizeData = useCallback(, []);
 
     useEffect(() => {        
         const id = setTimeout(() => {
@@ -81,7 +89,8 @@ export default function Shop() {
                     updateSecondsLeft(timeLeft);
                 }
                 if (initialTimeLeftms - elapsed < -1000){
-                    window.location.reload();
+                    //window.location.reload();
+                    getItems();
                     setNewInitialTime(86400000);
                     return {
                         start: Date.now(),
@@ -98,12 +107,13 @@ export default function Shop() {
         return (() => {
             clearTimeout(id);
         });
-    }, [initialTimeLeftms, timer, secondsLeft]);
+    }, [initialTimeLeftms, timer, secondsLeft, getItems]);
 
     useEffect(() => {
-        AuthRequest<ShopData[]>("/shop", {setState: organizeData, fallback: () => setLoggedIn(false)});      
-        AuthRequest<UserInfoProps>("/resources", {setState: setUserInfo}, false);
-    }, [organizeData]);
+        //AuthRequest<ShopData[]>("/shop", {setState: organizeData, fallback: () => setLoggedIn(false)});      
+        //AuthRequest<UserInfoProps>("/resources", {setState: setUserInfo}, false);
+        getItems();
+    }, [getItems]);
 
     return (
         <Flex flexDir={'column'} alignItems={'center'} minH={'101vh'} pb={featuredLoaded ? '5vh' : '5vh'} transition={'padding-bottom 0.5s ease-out'}>
@@ -129,7 +139,7 @@ export default function Shop() {
                 <Flex flexDir={'column'} alignItems={'center'} pb={'5vh'} pt={'10vh'}>  
                     {featured &&
                         <ScaleFade in={true} onViewportEnter={() => setFeaturedLoaded(true)}>
-                            <ShopItem data={featured} coins={userInfo.coins} isFeatured={true} timeLeftString={EventTime({season: 0, hour: Math.floor(secondsLeft / 3600), minute: Math.floor(secondsLeft / 60) % 60, second: secondsLeft % 60, hoursPerSeason: 336, maxSeasons: 2}, 0)}/>
+                            <ShopItem data={featured} coins={userInfo.coins} isFeatured={true} timeLeftString={EventTime({season: 0, hour: Math.floor(secondsLeft / 3600), minute: Math.floor(secondsLeft / 60) % 60, second: secondsLeft % 60, hoursPerSeason: 336, maxSeasons: 2}, 0)} onBuyItem={() => getItems()}/>
                         </ScaleFade>
                     }
                 </Flex>
@@ -147,7 +157,7 @@ export default function Shop() {
                                         </Flex>                        
                                         <SimpleGrid columns={[2, 3, 4, 5, 6, 7]} spacing={3}>
                                             {value.items.map((item) => (
-                                                <ScaleFade key={item.name} in={true}><ShopItem data={item} coins={userInfo.coins} timeLeftString={""}/></ScaleFade>
+                                                <ScaleFade key={item.name} in={true}><ShopItem data={item} coins={userInfo.coins} timeLeftString={""} onBuyItem={() => getItems()}/></ScaleFade>
                                             ))}
                                         </SimpleGrid>
                                     </Flex>
@@ -162,7 +172,7 @@ export default function Shop() {
                 <Flex flexDir={'column'} alignItems={'center'} w={'100%'} h={'100%'} justifyContent={'center'} pos={'absolute'}>
                     <Flex flexDir={'column'} alignItems={'center'} justifyContent={'center'} bgColor={'lightskyblue'} border={'2px solid'} borderColor={'blue.500'} borderRadius={'lg'} p={5}>
                         <Text fontSize={'2xl'} className={'heading-2xl'} >Please Login to View the Shop</Text>
-                        <Link fontSize={'2xl'} className={'heading-xl'} color={'blue.300'} href="/login">Click here to login</Link>
+                        <Link fontSize={'2xl'} className={'heading-xl'} color={'blue.300'} onClick={() => navigate("/login")}>Click here to login</Link>
                     </Flex>
                 </Flex>
             }

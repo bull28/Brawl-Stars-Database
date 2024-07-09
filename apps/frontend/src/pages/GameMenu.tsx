@@ -75,7 +75,7 @@ export default function GameMenu(){
                             <Text>You are currently not logged in.</Text>
                             <Text>You can still play the game but you need to be logged in to earn rewards from playing.</Text>
                             <Link color={"blue.300"} href={`${api}/bullgame`}>Click here to play while logged out</Link>
-                            <Link color={"blue.300"} href={"/login"}>Click here to login</Link>
+                            <Link color={"blue.300"} onClick={() => navigate("/login")}>Click here to login</Link>
                         </Flex>
                     }
                 </Flex>

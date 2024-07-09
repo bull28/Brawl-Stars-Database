@@ -69,6 +69,17 @@ export default function Trade() {
     const { isOpen: isOpen2, onOpen: onOpen2, onClose: onClose2 } = useDisclosure()
     const { isOpen: isOpen3, onOpen: onOpen3, onClose: onClose3 } = useDisclosure()
 
+    const resetTradeCreate = () => {
+        setTradeLength(48);
+        setTradeCost(undefined);
+        setOffer([]);
+        setReq([]);
+        toggleScreen(true);
+        setBrawlerChoice(undefined);
+        setAmount(1);
+        setPinLocation("offer");
+    };
+
     const updateResults = useCallback(() => {
         axios.post(`${api}/trade/all`, filter)
         .then((res) => {
@@ -76,9 +87,14 @@ export default function Trade() {
         }).catch((error) => {});
     }, [filter]);
 
-    const setAllResources = useCallback((data: UserInfoProps) => {
-        setResources(data);
-        setUsername(data.username);
+    const setAllResources = useCallback(() => {
+        AuthRequest<UserInfoProps>("/resources", {setState: (data) => {
+            setResources(data);
+            setUsername(data.username);
+        }}, false);
+        AuthRequest<CollectionData>("/collection", {setState: (data) => {
+            setCollectionData(data);
+        }}, false);
     }, []);
 
     const getCost = useCallback(() => {
@@ -114,7 +130,7 @@ export default function Trade() {
     }, [offer, req, getCost]);
 
     useEffect(() => {
-        AuthRequest<UserInfoProps>("/resources", {setState: setAllResources}, false);
+        setAllResources();
     }, [setAllResources]);
     
     useEffect(() => {
@@ -126,7 +142,6 @@ export default function Trade() {
         .then((res) => {
             setBrawlerData(res.data)
         }).catch((error) => {setBrawlerData(undefined);});
-        AuthRequest<CollectionData>("/collection", {setState: setCollectionData}, false);
     }, []);
 
     useEffect(() =>  {
@@ -225,7 +240,11 @@ export default function Trade() {
             getCost: false
         }, {headers: {"Authorization": `Bearer ${getToken()}`}})
         .then(() => {
-            window.location.reload()
+            //window.location.reload()
+            updateResults();
+            setAllResources();
+            onClose2();
+            resetTradeCreate();
         })
         .catch((error) => {
             toast({title: 'Invalid Trade Request', description: error.response.data, status: 'error', duration: 3000, isClosable: true})
@@ -399,7 +418,12 @@ export default function Trade() {
                     </DrawerContent>
                 </Drawer>
             <SimpleGrid columns={[1,1,2,2,3]} spacing={3}>
-                {results?.filter((trade) => (trade.creator.username.toLowerCase().includes(filter.username.toLowerCase()) && !(trade.timeLeft === 0))).map((trade) => <Flex key={trade.tradeid}><ScaleFade in={true}><TradeCard data={trade}/></ScaleFade></Flex>)}
+                {results?.filter((trade) => (trade.creator.username.toLowerCase().includes(filter.username.toLowerCase()) && !(trade.timeLeft === 0))).map((trade) => <Flex key={trade.tradeid}><ScaleFade in={true}><TradeCard data={trade} onUpdate={() => {
+                    updateResults();
+                    setAllResources();
+                    onClose();
+                    resetTradeCreate();
+                }}/></ScaleFade></Flex>)}
             </SimpleGrid>
         </Flex>
 

@@ -39,21 +39,20 @@ export default function AudioPlayer() {
         }
     }, [audio]);
 
-    const updateAudio = useCallback((event: Event) => {
-        const cosmetics = ((event as CustomEvent).detail as CosmeticData);
-        setAudioSrc(cosmetics);
+    const loadAudio = useCallback(() => {
+        AuthRequest<CosmeticData>("/cosmetic", {setState: setAudioSrc}, false);
     }, [setAudioSrc]);
     
     useEffect(() => {
-        AuthRequest<CosmeticData>("/cosmetic", {setState: setAudioSrc}, false);
-    }, [setAudioSrc]);
+        loadAudio();
+    }, [loadAudio]);
 
     useEffect(() => {
-        document.addEventListener("updatecosmetics", updateAudio);
+        document.addEventListener("reloadaudio", loadAudio);
         return () => {
-            document.removeEventListener("updatecosmetics", updateAudio);
+            document.removeEventListener("reloadaudio", loadAudio);
         };
-    }, [updateAudio]);
+    }, [loadAudio]);
     
     return (
         <Flex pos={["relative", "relative", "fixed"]} right={0} bottom={0} float={["right", "right", "none"]}>

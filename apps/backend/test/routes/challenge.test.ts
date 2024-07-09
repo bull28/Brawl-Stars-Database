@@ -132,7 +132,7 @@ describe("Challenge endpoints", function(){
             expect(res).to.have.status(200);
 
             const [results] = await connection.query(`SELECT rating, last_rating FROM ${tables.bullgame} WHERE username = ?;`, [TEST_USERNAME]);
-            expect(results[0].rating).to.equal(940);
+            expect(results[0].rating).to.equal(880);
             expect(results[0].last_rating).to.equal(1000);
         });
 
