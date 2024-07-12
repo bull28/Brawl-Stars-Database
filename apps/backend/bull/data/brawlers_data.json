@@ -2929,9 +2929,9 @@
                 },
                 "image": "bulldudeviking_remake_orange.webp",
                 "model": {
-                    "geometry": "",
-                    "winAnimation": "",
-                    "loseAnimation": ""
+                    "geometry": "bulldudeviking_remake_orange.glb",
+                    "winAnimation": "bulldudeviking_remake_orange_win.glb",
+                    "loseAnimation": "bulldudeviking_remake_orange_lose.glb"
                 },
                 "rating": 0
             },
@@ -2963,7 +2963,7 @@
                 },
                 "image": "bulldudegreek.webp",
                 "model": {
-                    "geometry": "",
+                    "geometry": "bulldudegreek.glb",
                     "winAnimation": "",
                     "loseAnimation": ""
                 },
@@ -14026,9 +14026,9 @@
                 },
                 "image": "snipergreek.webp",
                 "model": {
-                    "geometry": "",
-                    "winAnimation": "",
-                    "loseAnimation": ""
+                    "geometry": "snipergreek.glb",
+                    "winAnimation": "snipergreek_win.glb",
+                    "loseAnimation": "snipergreek_lose.glb"
                 },
                 "rating": 0
             }
@@ -15717,9 +15717,9 @@
                 },
                 "image": "baseballgamer_remake.webp",
                 "model": {
-                    "geometry": "",
-                    "winAnimation": "",
-                    "loseAnimation": ""
+                    "geometry": "baseballgamer_remake.glb",
+                    "winAnimation": "baseballgamer_remake_win.glb",
+                    "loseAnimation": "baseballgamer_remake_lose.glb"
                 },
                 "rating": 0
             }
@@ -18401,9 +18401,9 @@
                 },
                 "image": "cannongirldeepsea.webp",
                 "model": {
-                    "geometry": "",
-                    "winAnimation": "",
-                    "loseAnimation": ""
+                    "geometry": "cannongirldeepsea.glb",
+                    "winAnimation": "cannongirldeepsea_win.glb",
+                    "loseAnimation": "cannongirldeepsea_lose.glb"
                 },
                 "rating": 0
             }
@@ -26326,9 +26326,9 @@
                 },
                 "image": "wallydeepsea.webp",
                 "model": {
-                    "geometry": "",
-                    "winAnimation": "",
-                    "loseAnimation": ""
+                    "geometry": "wallydeepsea.glb",
+                    "winAnimation": "wallydeepsea_win.glb",
+                    "loseAnimation": "wallydeepsea_lose.glb"
                 },
                 "rating": 0
             }
@@ -33104,9 +33104,9 @@
                 },
                 "image": "cocoonervirus.webp",
                 "model": {
-                    "geometry": "",
-                    "winAnimation": "",
-                    "loseAnimation": ""
+                    "geometry": "cocoonervirus.glb",
+                    "winAnimation": "cocoonervirus_win.glb",
+                    "loseAnimation": "cocoonervirus_lose.glb"
                 },
                 "rating": 0
             },
@@ -37222,9 +37222,9 @@
                 },
                 "image": "firedudemake.webp",
                 "model": {
-                    "geometry": "",
-                    "winAnimation": "",
-                    "loseAnimation": ""
+                    "geometry": "firedudemake.glb",
+                    "winAnimation": "firedudemake_win.glb",
+                    "loseAnimation": "firedudemake_lose.glb"
                 },
                 "rating": 0
             }
@@ -38810,9 +38810,9 @@
                 },
                 "image": "duelistodin.webp",
                 "model": {
-                    "geometry": "",
-                    "winAnimation": "",
-                    "loseAnimation": ""
+                    "geometry": "duelistodin.glb",
+                    "winAnimation": "duelistodin_win.glb",
+                    "loseAnimation": "duelistodin_lose.glb"
                 },
                 "rating": 0
             },
