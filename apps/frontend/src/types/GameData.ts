@@ -55,6 +55,37 @@ export interface ChallengeStartData{
     enemies: string[];
 }
 
+export interface GameUpgrades{
+    offense: {
+        startingPower: number;
+        startingGears: number;
+        powerPerStage: number;
+        gearsPerStage: number;
+        maxExtraPower: number;
+        maxExtraGears: number;
+        maxAccessories: number;
+        health: number;
+        damage: number;
+        healing: number;
+        speed: number;
+        ability: number;
+        lifeSteal: number;
+    };
+    defense: {
+        difficulty: number;
+        maxEnemies: number[];
+        enemyStats: number[];
+        waves: number[][];
+    };
+    enemies: {
+        name: string;
+        displayName: string;
+        image: string;
+        value: number;
+        maxCount: number;
+    }[];
+}
+
 export interface Enemy{
     name: string;
     displayName: string;

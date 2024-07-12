@@ -5,42 +5,14 @@ import {AxiosError} from "axios";
 import Draggable from "../components/Draggable";
 import Droppable from "../components/Droppable";
 import AuthRequest from "../helpers/AuthRequest";
+import {GameUpgrades} from "../types/GameData";
 import BackButton from "../components/BackButton";
 import cdn from "../helpers/CDNRoute";
 
-interface Upgrades{
-    offense: {
-        startingPower: number;
-        startingGears: number;
-        powerPerStage: number;
-        gearsPerStage: number;
-        maxAccessories: number;
-        health: number;
-        damage: number;
-        healing: number;
-        speed: number;
-        ability: number;
-        lifeSteal: number;
-    };
-    defense: {
-        difficulty: number;
-        maxEnemies: number[];
-        enemyStats: number[];
-        waves: number[][];
-    };
-    enemies: {
-        name: string;
-        displayName: string;
-        image: string;
-        value: number;
-        maxCount: number;
-    }[];
-}
-
 export default function ChallengeStart(){
-    const [enemies, setEnemies] = useState<Upgrades["enemies"]>([]);
+    const [enemies, setEnemies] = useState<GameUpgrades["enemies"]>([]);
     const [enemyMap, setEnemyMap] = useState<Map<string, number>>(new Map());
-    const [defense, setDefense] = useState<Upgrades["defense"]>({difficulty: 0, maxEnemies: [], enemyStats: [], waves: []});
+    const [defense, setDefense] = useState<GameUpgrades["defense"]>({difficulty: 0, maxEnemies: [], enemyStats: [], waves: []});
 
     const [activeDisplay, setActiveDisplay] = useState<string | undefined>();
     const [selected, setSelected] = useState<Record<string, Record<string, number>>>({});
@@ -48,7 +20,7 @@ export default function ChallengeStart(){
     const toast = useToast();
 
     useEffect(() => {
-        AuthRequest<Upgrades>("/challenge/upgrades", {setState: (data) => {
+        AuthRequest<GameUpgrades>("/challenge/upgrades", {setState: (data) => {
             data.enemies.sort((a, b) => a.value - b.value);
 
             const map = new Map<string, number>();
