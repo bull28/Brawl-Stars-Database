@@ -373,7 +373,7 @@ const badgeList = [
     {name: "darryl", category: "player", index: 3, coins: [0, 0]},
     {name: "tara", category: "player", index: 4, coins: [0, 0]},
     {name: "piper", category: "player", index: 5, coins: [0, 0]},
-    {name: "crow", category: "player", index: 6, coins: [0, 0]},
+    {name: "lily", category: "player", index: 6, coins: [0, 0]},
     {name: "stu", category: "player", index: 7, coins: [0, 0]},
     {name: "maisie", category: "player", index: 8, coins: [0, 0]},
     {name: "oldtown", category: "location", index: 2, coins: [0, 0]},

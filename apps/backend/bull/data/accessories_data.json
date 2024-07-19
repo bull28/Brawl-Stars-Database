@@ -200,8 +200,8 @@
         "description": "Increases stats when playing as Piper.", "unlock": "Win with Piper.", "badges": 100
     },
     {
-        "name": "crow", "category": "player", "displayName": "Crow's Daggers",
-        "description": "Increases stats when playing as Crow.", "unlock": "Win with Crow.", "badges": 100
+        "name": "lily", "category": "player", "displayName": "Lily's Plant",
+        "description": "Increases stats when playing as Lily.", "unlock": "Win with Lily.", "badges": 100
     },
     {
         "name": "stu", "category": "player", "displayName": "Stu's Wheel",
