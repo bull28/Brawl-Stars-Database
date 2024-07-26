@@ -34,7 +34,7 @@ function getCostText(skin: SkinData): string{
 
 function getReleaseDate(release: SkinData["release"]): string{
     const date = new Date(release.year, release.month - 1);
-    const text = Date.now() > date.getTime() ? "Released" : "Will be released";
+    const text = Date.now() > date.getTime() ? "Released" : "Expected to release";
     return `${text} ${date.toLocaleString("default", {month: "long"})} ${release.year}`;
 }
 
@@ -135,7 +135,7 @@ export default function SkinView({brawler, skin}: SkinViewProps){
                         {(data.features.length > 0) &&
                         <>
                             <Divider my={2}/>
-                            <Text fontSize={"lg"} mb={1}>Extra Features</Text>
+                            <Text fontSize={"lg"} mb={1}>Custom Features</Text>
                             {data.features.map((feature) => (
                                 <Text ml={1} key={feature}>&#x2022; {feature}</Text>
                             ))}

@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
-import {Flex, Text, SimpleGrid, Image, Stack, keyframes} from "@chakra-ui/react";
-import {useParams} from "react-router-dom";
+import {Flex, Text, SimpleGrid, Image, Stack, Link, keyframes} from "@chakra-ui/react";
+import {ExternalLinkIcon} from "@chakra-ui/icons";
+import {useParams, Link as RouterLink} from "react-router-dom";
 import axios, {AxiosResponse} from "axios";
 import {animateScroll} from "react-scroll";
 import SkinView from "../components/SkinView";
@@ -84,11 +85,11 @@ export default function Brawler(){
                             </Flex>
                         ))}
                     </SimpleGrid>
-                    {/*localStorage.getItem("username") ? 
-                        <Link href={`/collection?brawler=${data.name}`} color={"#fff"} fontSize={"lg"} className={"heading-lg"}>{`View ${data.displayName} Collection `}<ExternalLinkIcon mx={"2px"}/></Link>
-                        :
-                        <Text color={"#fff"} fontSize={"lg"} className={"heading-lg"}><Link color={"blue.400"} href="/login">Log In</Link> To View Collection</Text>
-                    */}
+                    {localStorage.getItem("username") && 
+                        <Link as={RouterLink} to={`/collection?brawler=${data.name}`} color={"#fff"} fontSize={"lg"} className={"heading-lg"}>{`View ${data.displayName} Collection `}<ExternalLinkIcon mx={"2px"}/></Link>
+                        //:
+                        //<Text color={"#fff"} fontSize={"lg"} className={"heading-lg"}><Link color={"blue.400"} href="/login">Log In</Link> To View Collection</Text>
+                    }
                 </Flex>
             </Stack>
             <SimpleGrid spacing={[4, 3, 5, 5, 5]} columns={[1, 2, 2, 3, 4]} bgColor={"blue.900"} pt={"3vh"} w={"100%"} px={[1, 2, 4, 6, 6]}>{(data.skins).map((skin) => (

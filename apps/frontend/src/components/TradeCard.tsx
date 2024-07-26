@@ -6,6 +6,7 @@ import { HiOutlineSwitchHorizontal } from 'react-icons/hi'
 import { getToken } from '../helpers/AuthRequest'
 import { RainbowBorder } from '../themes/animations'
 import { TradeData } from '../types/TradeData'
+import {Link as RouterLink} from "react-router-dom";
 import {scrollStyle} from "../themes/scrollbar";
 import EventTime from "../helpers/EventTime";
 import cdn from "../helpers/CDNRoute";
@@ -163,7 +164,7 @@ export default function TradeCard({ data, onUpdate }: {data: TradeData; onUpdate
                         {!tradeComplete ? <><Text>{`Created By: ${data.creator.username}`}</Text><Image w={'50px'} ml={2} borderRadius={'50%'} animation={(data.creator.avatarColor === 'rainbow') ? `${RainbowBorder()} 12s infinite` : ''} border={(data?.creator.avatarColor !== 'rainbow') ? `3px solid ${data?.creator.avatarColor}` : ''} src={`${cdn}/image/${data.creator.avatar}`}/></> : 
                         
                         <Flex bgColor={'#f99ff9'} p={2} borderRadius={'lg'}>
-                            <Link fontSize={'lg'} href={`/collection`}  className={'heading-md'}>View Collection <ExternalLinkIcon mx={'2px'}/></Link>
+                            <Link as={RouterLink} fontSize={'lg'} to={`/collection`} className={'heading-md'}>View Collection <ExternalLinkIcon mx={'2px'}/></Link>
                         </Flex>      
                         }
                     </ModalFooter>

@@ -4,6 +4,7 @@ import { HiOutlineSwitchHorizontal } from 'react-icons/hi'
 import AuthRequest from '../helpers/AuthRequest'
 import { PinObject, UserTradeData } from '../types/TradeData'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
+import {Link as RouterLink} from "react-router-dom";
 import {UserInfoProps} from '../types/AccountData'
 import EventTime from "../helpers/EventTime";
 import {scrollStyle} from "../themes/scrollbar";
@@ -167,7 +168,7 @@ export default function MyTrades() {
                     ))}
                     </SimpleGrid>
                     <Flex justifyContent={'center'}>
-                        <Link p={3} borderRadius={'lg'} my={5} bgColor={'#a9e8da'} fontSize={'lg'} href={`/collection`} className={'heading-md'}>View Collection <ExternalLinkIcon mx={'2px'}/></Link>
+                        <Link as={RouterLink} p={3} borderRadius={'lg'} my={5} bgColor={'#a9e8da'} fontSize={'lg'} to={`/collection`} className={'heading-md'}>View Collection <ExternalLinkIcon mx={'2px'}/></Link>
                     </Flex>
                 </ModalBody>
 

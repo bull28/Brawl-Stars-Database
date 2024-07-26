@@ -3,7 +3,7 @@ import { useEffect, useState, useCallback } from 'react'
 import { CollectionData } from '../types/CollectionData'
 import { RiLock2Line } from 'react-icons/ri'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams, Link as RouterLink } from 'react-router-dom'
 import { BrawlBoxData } from '../types/BrawlBoxData'
 import BrawlBoxDisplay from '../components/BrawlBoxDisplay'
 import TokenDisplay from '../components/TokenDisplay'
@@ -156,7 +156,7 @@ export default function Collection() {
                                 <Center flexDir={'column'} mt={3}>
                                     {!brawler.u && <Tooltip label={'Unlock By Opening Boxes'}><Tag colorScheme={'red'} my={2}>Unlock This Brawler To Collect Pins</Tag></Tooltip>}
                                     <Text mb={'30px'}  className={'heading-sm'}>{`Total ${brawler.displayName} Pins: ${brawler.pinCopies}`}</Text>
-                                    <Link href={`/brawlers/${brawler.name}`}  className={'heading-sm'}>View Brawler Page <ExternalLinkIcon mx={'2px'}/></Link>
+                                    <Link as={RouterLink} to={`/brawlers/${brawler.name}`} className={'heading-sm'}>View Brawler Page <ExternalLinkIcon mx={'2px'}/></Link>
                                 </Center>
                             </AccordionPanel>
                             </>
