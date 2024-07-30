@@ -1,7 +1,7 @@
 import {expect} from "chai";
 import allSkins from "../../bull/data/brawlers_data.json";
 import {PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR, SKIN_IMAGE_DIR, SKINGROUP_ICON_DIR, SKINGROUP_IMAGE_DIR, MASTERY_IMAGE_DIR} from "../../bull/data/constants";
-import {getBrawler, getSkin, getBrawlerData, getSkinData} from "../../bull/modules/skins";
+import {getBrawler, getSkin, getBrawlerData, getSkinData, skinSearch} from "../../bull/modules/skins";
 
 describe("Brawlers and Skins module", function(){
     it("Must contain at least 82 brawlers", function(){
@@ -91,5 +91,158 @@ describe("Brawlers and Skins module", function(){
         expect(pinData.rarity.value).to.equal(pin.rarity.value);
         expect(pinData.rarity.name).to.equal(pin.rarity.name);
         expect(pinData.rarity.color).to.equal(pin.rarity.color);
+    });
+
+    describe("Skin search", function(){
+        const skinMap = new Map<string, typeof allSkins[number]["skins"][number]>();
+
+        before(function(){
+            for (let i = 0; i < allSkins.length; i++){
+                for (let j = 0; j < allSkins[i].skins.length; j++){
+                    skinMap.set(allSkins[i].skins[j].name, allSkins[i].skins[j]);
+                }
+            }
+        });
+
+        it("Checking a search result", function(){
+            const data = skinMap.get("bulldudebarbking")!;
+            const results = skinSearch(allSkins, {query: "Barbarian King Bull"});
+            const resultData = results.find((value) => value.name === "bulldudebarbking")!;
+            expect(data !== undefined && resultData !== undefined).to.be.true;
+
+            expect(data.groups).to.have.lengthOf.at.least(1);
+            expect(resultData).to.be.an("object");
+            expect(resultData).to.have.keys(["name", "brawler", "displayName", "image", "background"]);
+
+            expect(resultData.name).to.equal(data.name);
+            expect(resultData.brawler).to.equal("bull");
+            expect(resultData.displayName).to.equal(data.displayName);
+            // Image directory is intentionally not included here to reduce the object size for large searches
+            expect(resultData.image).to.equal(data.image);
+            expect(resultData.background).to.equal(data.groups[0].image);
+        });
+
+        it("No filters", function(){
+            // When searching with no filters, all skins should be returned
+            let skinCount = 0;
+            for (let x = 0; x < allSkins.length; x++){
+                skinCount += allSkins[x].skins.length;
+            }
+            const results = skinSearch(allSkins, {});
+            expect(results).to.have.lengthOf(skinCount);
+        });
+
+        it("Minimum cost", function(){
+            const results = skinSearch(allSkins, {minCost: 149});
+            const filtered = results.filter((value) => {
+                const data = skinMap.get(value.name);
+                return data !== undefined && data.cost >= 149;
+            });
+            expect(results.length).to.equal(filtered.length);
+        });
+
+        it("Maximum cost", function(){
+            const results = skinSearch(allSkins, {maxCost: 149});
+            const filtered = results.filter((value) => {
+                const data = skinMap.get(value.name);
+                return data !== undefined && data.cost <= 149;
+            });
+            expect(results.length).to.equal(filtered.length);
+        });
+
+        it("Single skin group", function(){
+            const results = skinSearch(allSkins, {groups: ["Brawl Pass"]});
+            const filtered = results.filter((value) => {
+                const data = skinMap.get(value.name);
+                return data !== undefined && data.groups.find(
+                    (group) => group.name === "Brawl Pass"
+                ) !== undefined;
+            });
+            expect(results.length).to.equal(filtered.length);
+        });
+
+        it("Multiple skin groups", function(){
+            const results = skinSearch(allSkins, {groups: ["Brawl Pass", "True Gold"]});
+            const filtered = results.filter((value) => {
+                const data = skinMap.get(value.name);
+                return data !== undefined && data.groups.find(
+                    (group) => group.name === "Brawl Pass" || group.name === "True Gold"
+                ) !== undefined;
+            });
+            expect(results.length).to.equal(filtered.length);
+        });
+
+        it("Available for Bling", function(){
+            const results1 = skinSearch(allSkins, {bling: true});
+            const filtered1 = results1.filter((value) => {
+                const data = skinMap.get(value.name);
+                return data !== undefined && data.costBling > 0;
+            });
+            expect(results1.length).to.equal(filtered1.length);
+
+            const results2 = skinSearch(allSkins, {bling: false});
+            const filtered2 = results2.filter((value) => {
+                const data = skinMap.get(value.name);
+                return data !== undefined && data.costBling <= 0;
+            });
+            expect(results2.length).to.equal(filtered2.length);
+        });
+
+        it("Limited skins", function(){
+            const results1 = skinSearch(allSkins, {limited: true});
+            const filtered1 = results1.filter((value) => {
+                const data = skinMap.get(value.name);
+                return data !== undefined && data.limited === true;
+            });
+            expect(results1.length).to.equal(filtered1.length);
+
+            const results2 = skinSearch(allSkins, {limited: false});
+            const filtered2 = results2.filter((value) => {
+                const data = skinMap.get(value.name);
+                return data !== undefined && data.limited === false;
+            });
+            expect(results2.length).to.equal(filtered2.length);
+        });
+
+        it("Start release date", function(){
+            const results = skinSearch(allSkins, {startDate: {month: 7, year: 2022}});
+            const filtered = results.filter((value) => {
+                const data = skinMap.get(value.name);
+                return data !== undefined && data.release.year * 12 + data.release.month >= 2022 * 12 + 7;
+            });
+            expect(results.length).to.equal(filtered.length);
+        });
+
+        it("End release date", function(){
+            const results = skinSearch(allSkins, {endDate: {month: 7, year: 2022}});
+            const filtered = results.filter((value) => {
+                const data = skinMap.get(value.name);
+                return data !== undefined && data.release.year * 12 + data.release.month <= 2022 * 12 + 7;
+            });
+            expect(results.length).to.equal(filtered.length);
+        });
+
+        it("Search query", function(){
+            const query = "Bull";
+            const results = skinSearch(allSkins, {query: query});
+            const filtered = results.filter((value) => {
+                const data = skinMap.get(value.name);
+                return data !== undefined && data.displayName.includes(query);
+            });
+            expect(results.length).to.equal(filtered.length);
+        });
+
+        it("Maximum cost less than minimum cost", function(){
+            const results = skinSearch(allSkins, {minCost: 149, maxCost: 79});
+            expect(results).to.have.lengthOf(0);
+        });
+
+        it("End date before start date", function(){
+            const results = skinSearch(allSkins, {
+                startDate: {month: 7, year: 2023},
+                endDate: {month: 7, year: 2022}
+            });
+            expect(results).to.have.lengthOf(0);
+        });
     });
 });

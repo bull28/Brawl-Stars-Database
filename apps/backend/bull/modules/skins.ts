@@ -1,12 +1,12 @@
 import {PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR, SKIN_IMAGE_DIR, SKIN_MODEL_DIR, SKINGROUP_ICON_DIR, SKINGROUP_IMAGE_DIR, MASTERY_IMAGE_DIR} from "../data/constants";
-import {Brawler, Skin, BrawlerData, SkinData, ModelData} from "../types";
+import {Brawler, Skin, BrawlerData, ModelData, SkinData, SkinSearchFilters, SkinSearchResult} from "../types";
 
 function skinModelExists(brawlerName: string, model: ModelData): ModelData{
     let key: keyof ModelData;
     for (key in model){
         if (model[key].path !== ""){
             model[key].exists = true;
-            model[key].path = SKIN_MODEL_DIR + brawlerName + "/" + model[key].path;
+            model[key].path = `${SKIN_MODEL_DIR}${brawlerName}/${model[key].path}`;
         } else{
             model[key].exists = false;
         }
@@ -67,7 +67,7 @@ export function getBrawlerData(brawler: Brawler): BrawlerData{
         for (let x = 0; x < brawler.pins.length; x++){
             const thisPin = brawler.pins[x];
             brawlerPins.push({
-                image: PIN_IMAGE_DIR + brawlerName + "/" + thisPin.image,
+                image: `${PIN_IMAGE_DIR}${brawlerName}/${thisPin.image}`,
                 rarity: {
                     value: thisPin.rarity.value,
                     name: thisPin.rarity.name,
@@ -134,7 +134,7 @@ export function getSkinData(skin: Skin, brawlerName: string): SkinData{
             year: skin.release.year
         },
         rating: skin.rating,
-        image: SKIN_IMAGE_DIR + brawlerName + "/" + skin.image,
+        image: `${SKIN_IMAGE_DIR}${brawlerName}/${skin.image}`,
         model: skinModelExists(brawlerName, {
             geometry: {
                 exists: false,
@@ -152,4 +152,79 @@ export function getSkinData(skin: Skin, brawlerName: string): SkinData{
     }
 
     return skinData;
+}
+
+/**
+ * Checks whether a skin matches a given filter and should be included in the skin search results.
+ * @param skin skin to check
+ * @param filters filter to match
+ * @returns whether to include the skin in the results
+ */
+function skinMatchesFilters(skin: Skin, filters: SkinSearchFilters): boolean{
+    if (filters === undefined){
+        return true;
+    }
+    const {minCost, maxCost, groups, bling, limited, startDate, endDate, query} = filters;
+
+    if (minCost !== undefined && skin.cost < minCost){
+        return false;
+    }
+    if (maxCost !== undefined && skin.cost > maxCost){
+        return false;
+    }
+    if (groups !== undefined){
+        let hasGroup = false;
+        for (let x = 0; x < skin.groups.length; x++){
+            if (groups.includes(skin.groups[x].name) === true){
+                hasGroup = true;
+            }
+        }
+        if (hasGroup === false){
+            return false;
+        }
+    }
+    if (bling !== undefined && skin.costBling > 0 !== bling){
+        return false;
+    }
+    if (limited !== undefined && skin.limited !== limited){
+        return false;
+    }
+    if (startDate !== undefined){
+        if (skin.release.year * 12 + skin.release.month < startDate.year * 12 + startDate.month){
+            return false;
+        }
+    }
+    if (endDate !== undefined){
+        if (skin.release.year * 12 + skin.release.month > endDate.year * 12 + endDate.month){
+            return false;
+        }
+    }
+    if (query !== undefined && skin.displayName.toLowerCase().includes(query.toLowerCase()) === false){
+        return false;
+    }
+
+    return true;
+}
+
+export function skinSearch(allSkins: Brawler[], filters: SkinSearchFilters): SkinSearchResult[]{
+    const results: SkinSearchResult[] = [];
+
+    for (let i = 0; i < allSkins.length; i++){
+        const brawler = allSkins[i];
+        for (let j = 0; j < brawler.skins.length; j++){
+            const skin = brawler.skins[j];
+
+            if (skinMatchesFilters(skin, filters) === true){
+                results.push({
+                    name: skin.name,
+                    brawler: brawler.name,
+                    displayName: skin.displayName,
+                    image: skin.image,
+                    background: skin.groups.length > 0 ? skin.groups[0].image : ""
+                });
+            }
+        }
+    }
+
+    return results;
 }

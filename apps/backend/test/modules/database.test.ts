@@ -1,10 +1,7 @@
 import {expect} from "chai";
-import {Connection, Pool} from "mysql2/promise";
+import {Pool} from "mysql2/promise";
 import * as db from "../../bull/modules/database";
-import {createConnection, closeConnection, createPool, closePool, tokens} from "../database_setup";
-
-const TEST_TOKEN = tokens.database;
-const TEST_USERNAME = "database";
+import {createPool, closePool} from "../database_setup";
 
 const parseError = `["definitely not a parse error//////////""}[:}]'`;
 

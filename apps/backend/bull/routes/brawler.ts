@@ -1,10 +1,13 @@
 import express from "express";
 import allSkins from "../data/brawlers_data.json";
 import {PORTRAIT_IMAGE_DIR, SKIN_MODEL_DIR} from "../data/constants";
-import {getBrawler, getSkin, getBrawlerData, getSkinData} from "../modules/skins";
-import {BrawlerPreview, BrawlerModelData} from "../types";
+import {getBrawler, getSkin, getBrawlerData, getSkinData, skinSearch} from "../modules/skins";
+import {Empty, BrawlerPreview, BrawlerModelData, SkinSearchFilters, SkinSearchResult} from "../types";
 
 const router = express.Router();
+
+
+type SkinSearchRes = string | {imagePath: string; backgroundPath: string; results: SkinSearchResult[]};
 
 
 // Get the entire list of brawlers
@@ -90,6 +93,26 @@ router.get("/models", (req, res) => {
         });
     }
     res.json(allModels);
+});
+
+// Search for skins using a search filter
+router.post<Empty, SkinSearchRes, {filters: SkinSearchFilters;}>("/skinsearch", (req, res) => {
+    const filters = req.body.filters;
+    if (typeof filters !== "object" || Array.isArray(filters) === true){
+        res.status(400).send("Invalid filters object.");
+        return;
+    }
+    if (Array.isArray(filters.groups) === true && filters.groups.length > 5){
+        res.status(400).send("Too many skin groups selected. Select at most 5.");
+        return;
+    }
+
+    const results = skinSearch(allSkins, filters);
+    res.json({
+        imagePath: "",
+        backgroundPath: "",
+        results: results
+    });
 });
 
 export default router;

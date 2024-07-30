@@ -122,6 +122,37 @@ export interface SkinData{
     model: ModelData;
 }
 
+/**
+ * All filters that can be applied when searching for skins
+ */
+export type SkinSearchFilters = Partial<{
+    query: string;
+    minCost: number;
+    maxCost: number;
+    groups: string[];
+    bling: boolean;
+    limited: boolean;
+    startDate: {
+        month: number;
+        year: number;
+    };
+    endDate: {
+        month: number;
+        year: number;
+    };
+}>;
+
+/**
+ * One skin in a result of a skin search
+ */
+export interface SkinSearchResult{
+    name: string;
+    brawler: string;
+    displayName: string;
+    image: string;
+    background: string;
+}
+
 //------------------------------------------------------------------------------------------------//
 //                                            Pin Types                                           //
 //------------------------------------------------------------------------------------------------//

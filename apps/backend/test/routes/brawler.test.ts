@@ -70,4 +70,26 @@ describe("Brawlers and Skins endpoints", function(){
             }
         }
     });
+
+    describe("/skinsearch", function(){
+        it("Valid search", async function(){
+            const res = await chai.request(server).post("/skinsearch").send({filters: {}});
+            expect(res).to.have.status(200);
+            expect(res.body).to.be.an("object");
+            expect(res.body).to.have.keys(["imagePath", "backgroundPath", "results"]);
+        });
+
+        it("Invalid filters object", async function(){
+            const res = await chai.request(server).post("/skinsearch").send({filters: []});
+            expect(res).to.have.status(400);
+            expect(res.text).to.equal("Invalid filters object.");
+        });
+
+        it("Too many skin groups", async function(){
+            const res = await chai.request(server).post("/skinsearch")
+            .send({filters: {groups: ["1", "2", "3", "4", "5", "6"]}});
+            expect(res).to.have.status(400);
+            expect(res.text).to.equal("Too many skin groups selected. Select at most 5.");
+        });
+    });
 });
