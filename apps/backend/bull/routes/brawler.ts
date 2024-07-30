@@ -1,6 +1,6 @@
 import express from "express";
 import allSkins from "../data/brawlers_data.json";
-import {PORTRAIT_IMAGE_DIR, SKIN_MODEL_DIR} from "../data/constants";
+import {PORTRAIT_IMAGE_DIR, SKIN_IMAGE_DIR, SKIN_MODEL_DIR, SKINGROUP_IMAGE_DIR} from "../data/constants";
 import {getBrawler, getSkin, getBrawlerData, getSkinData, skinSearch} from "../modules/skins";
 import {Empty, BrawlerPreview, BrawlerModelData, SkinSearchFilters, SkinSearchResult} from "../types";
 
@@ -109,8 +109,8 @@ router.post<Empty, SkinSearchRes, {filters: SkinSearchFilters;}>("/skinsearch", 
 
     const results = skinSearch(allSkins, filters);
     res.json({
-        imagePath: "",
-        backgroundPath: "",
+        imagePath: SKIN_IMAGE_DIR,
+        backgroundPath: SKINGROUP_IMAGE_DIR,
         results: results
     });
 });

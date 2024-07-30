@@ -95,6 +95,9 @@ const config = {
             ".draggable-enemy-box": {
                 width: "5em", height: "5em", borderRadius: "0.5em", display: "flex", alignItems: "center", justifyContent: "center", backgroundColor: "#4000ff", cursor: "pointer", overflow: "hidden"
             },
+            ".skinsearch-form-control": {
+                marginBottom: "0.5em"
+            },
             "*": {
                 caretColor: "transparent"
             }

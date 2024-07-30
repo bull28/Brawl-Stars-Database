@@ -1,6 +1,6 @@
 import {expect} from "chai";
 import allSkins from "../../bull/data/brawlers_data.json";
-import {PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR, SKIN_IMAGE_DIR, SKINGROUP_ICON_DIR, SKINGROUP_IMAGE_DIR, MASTERY_IMAGE_DIR} from "../../bull/data/constants";
+import {PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR, SKIN_IMAGE_DIR, SKINGROUP_ICON_DIR, SKINGROUP_IMAGE_DIR, SKIN_RARITY_ICON_DIR, MASTERY_IMAGE_DIR} from "../../bull/data/constants";
 import {getBrawler, getSkin, getBrawlerData, getSkinData, skinSearch} from "../../bull/modules/skins";
 
 describe("Brawlers and Skins module", function(){
@@ -49,9 +49,11 @@ describe("Brawlers and Skins module", function(){
 
         expect(skinData).to.be.an("object");
         expect(skinData).to.have.keys([
-            "name", "displayName", "cost", "currency", "costBling", "requires",
+            "name", "displayName", "cost", "currency", "costBling", "rarity", "requires",
             "features", "groups", "limited", "unlock", "release", "rating", "image", "model"
         ]);
+        expect(skinData.rarity).to.have.keys(["value", "name", "icon"]);
+        expect(skinData.release).to.have.keys(["month", "year"]);
         expect(skinData.model).to.have.keys(["geometry", "winAnimation", "loseAnimation"]);
 
         expect(skinData.name).to.equal(skin.name);
@@ -59,6 +61,9 @@ describe("Brawlers and Skins module", function(){
         expect(skinData.cost).to.equal(skin.cost);
         expect(skinData.currency).to.equal(skin.currency);
         expect(skinData.costBling).to.equal(skin.costBling);
+        expect(skinData.rarity.value).to.equal(skin.rarity.value);
+        expect(skinData.rarity.name).to.equal(skin.rarity.name);
+        expect(skinData.rarity.icon).to.equal(SKIN_RARITY_ICON_DIR + skin.rarity.icon);
         expect(skinData.requires).to.equal(skin.requires);
         expect(skinData.limited).to.equal(skin.limited);
         expect(skinData.unlock).to.equal(skin.unlock);
@@ -123,13 +128,25 @@ describe("Brawlers and Skins module", function(){
         });
 
         it("No filters", function(){
-            // When searching with no filters, all skins should be returned
+            // When searching with no filters, all non-default skins should be returned
             let skinCount = 0;
             for (let x = 0; x < allSkins.length; x++){
                 skinCount += allSkins[x].skins.length;
+                if (allSkins[x].defaultSkin !== "" && allSkins[x].skins.length > 0){
+                    skinCount -= 1;
+                }
             }
             const results = skinSearch(allSkins, {});
             expect(results).to.have.lengthOf(skinCount);
+        });
+
+        it("Skin rarity", function(){
+            const results = skinSearch(allSkins, {rarity: 2});
+            const filtered = results.filter((value) => {
+                const data = skinMap.get(value.name);
+                return data !== undefined && data.rarity.value === 2;
+            });
+            expect(results.length).to.equal(filtered.length);
         });
 
         it("Minimum cost", function(){

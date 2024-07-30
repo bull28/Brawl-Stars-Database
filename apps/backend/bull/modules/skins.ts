@@ -1,4 +1,4 @@
-import {PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR, SKIN_IMAGE_DIR, SKIN_MODEL_DIR, SKINGROUP_ICON_DIR, SKINGROUP_IMAGE_DIR, MASTERY_IMAGE_DIR} from "../data/constants";
+import {PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR, SKIN_IMAGE_DIR, SKIN_MODEL_DIR, SKINGROUP_ICON_DIR, SKINGROUP_IMAGE_DIR, SKIN_RARITY_ICON_DIR, MASTERY_IMAGE_DIR} from "../data/constants";
 import {Brawler, Skin, BrawlerData, ModelData, SkinData, SkinSearchFilters, SkinSearchResult} from "../types";
 
 function skinModelExists(brawlerName: string, model: ModelData): ModelData{
@@ -124,6 +124,11 @@ export function getSkinData(skin: Skin, brawlerName: string): SkinData{
         cost: skin.cost,
         currency: skin.currency,
         costBling: skin.costBling,
+        rarity: {
+            value: skin.rarity.value,
+            name: skin.rarity.name,
+            icon: skin.rarity.icon !== "" ? SKIN_RARITY_ICON_DIR + skin.rarity.icon : ""
+        },
         requires: skin.requires,
         features: skinFeatures,
         groups: skinGroups,
@@ -164,8 +169,11 @@ function skinMatchesFilters(skin: Skin, filters: SkinSearchFilters): boolean{
     if (filters === undefined){
         return true;
     }
-    const {minCost, maxCost, groups, bling, limited, startDate, endDate, query} = filters;
+    const {query, rarity, minCost, maxCost, groups, bling, limited, startDate, endDate} = filters;
 
+    if (rarity !== undefined && skin.rarity.value !== rarity){
+        return false;
+    }
     if (minCost !== undefined && skin.cost < minCost){
         return false;
     }
@@ -214,7 +222,7 @@ export function skinSearch(allSkins: Brawler[], filters: SkinSearchFilters): Ski
         for (let j = 0; j < brawler.skins.length; j++){
             const skin = brawler.skins[j];
 
-            if (skinMatchesFilters(skin, filters) === true){
+            if (skinMatchesFilters(skin, filters) === true && skin.name !== brawler.defaultSkin){
                 results.push({
                     name: skin.name,
                     brawler: brawler.name,

@@ -111,6 +111,7 @@ export interface SkinData{
     cost: Skin["cost"];
     currency: Skin["currency"];
     costBling: Skin["costBling"];
+    rarity: Skin["rarity"];
     requires: Skin["requires"];
     features: Skin["features"];
     groups: Skin["groups"];
@@ -127,6 +128,7 @@ export interface SkinData{
  */
 export type SkinSearchFilters = Partial<{
     query: string;
+    rarity: number;
     minCost: number;
     maxCost: number;
     groups: string[];

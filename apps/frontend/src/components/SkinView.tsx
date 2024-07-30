@@ -99,7 +99,12 @@ export default function SkinView({brawler, skin}: SkinViewProps){
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay/>
                 <ModalContent p={[1, 3]}>
-                    <ModalHeader fontWeight={"normal"} fontSize={"2xl"} className={"heading-2xl"} color={"#fff"}>{data.displayName}</ModalHeader>
+                    <ModalHeader fontWeight={"normal"} fontSize={"2xl"} className={"heading-2xl"} color={"#fff"}>
+                        <Flex alignItems={"center"}>
+                            <Image src={`${cdn}/image/${data.rarity.icon}`} h={"1.5em"} mr={"0.25em"}/>
+                            <Text>{data.displayName}</Text>
+                        </Flex>
+                    </ModalHeader>
                     <ModalCloseButton/>
                     <Divider/>
                     <ModalBody className={"heading-xl"} color={"#fff"}>

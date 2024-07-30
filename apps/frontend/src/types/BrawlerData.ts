@@ -42,6 +42,11 @@ export interface SkinData{
     cost: number;
     currency: string;
     costBling: number;
+    rarity: {
+        value: number;
+        name: string;
+        icon: string;
+    };
     requires: string;
     features: string[];
     limited: boolean;
@@ -62,4 +67,34 @@ export interface SkinData{
         winAnimation: {exists: boolean, path: string};
         loseAnimation: {exists: boolean, path: string};
     };
+}
+
+export type SkinSearchFilters = Partial<{
+    query: string;
+    rarity: number;
+    minCost: number;
+    maxCost: number;
+    groups: string[];
+    bling: boolean;
+    limited: boolean;
+    startDate: {
+        month: number;
+        year: number;
+    };
+    endDate: {
+        month: number;
+        year: number;
+    };
+}>;
+
+export interface SkinSearchResult{
+    imagePath: string;
+    backgroundPath: string;
+    results: {
+        name: string;
+        brawler: string;
+        displayName: string;
+        image: string;
+        background: string;
+    }[];
 }

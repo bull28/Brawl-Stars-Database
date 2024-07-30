@@ -26,6 +26,8 @@ const MAP_CYCLES_PER_SEASON = 7;
 const next_season_time = (((86400*365) * (2024-1970)) + (13*86400) + (175*86400) + (8*3600));
 const first_season_time = next_season_time % SEASON_SECONDS;
 
+const mapSearchMatch = new RegExp(/[^\w\s\.']/g);
+
 export class SeasonTime{
     season: number;
     hour: number;
@@ -474,21 +476,16 @@ export function getMapData(eventList: EventSlot[], mapName: string, currentTime:
 }
 
 export function searchForMapName(eventList: EventSlot[], search: string): MapSearchPreview[]{
-    const result: MapSearchPreview[] = [];
     const exactMatch: MapSearchPreview[] = [];
     const startsWith: MapSearchPreview[] = [];
     const onlyContains: MapSearchPreview[] = [];
 
-    const query = search.toLowerCase();
+    const query = search.toLowerCase().replace(mapSearchMatch, "");
 
     for (const event of eventList){
         for (const mode of event.gameModes){
             for (const map of mode.maps){
                 const thisMapName = map.displayName.toLowerCase();
-
-                // Some characters like "." are special parameters to the string search so they may produce unintended
-                // results. Check whether the query is actually in the string before adding it. The queryIndex only
-                // determines the order they are added in.
                 const queryIndex = thisMapName.search(query);
 
                 if (thisMapName.includes(query) === true){
@@ -512,15 +509,7 @@ export function searchForMapName(eventList: EventSlot[], search: string): MapSea
     }
 
     // Search results which are closest to the query first will appear earlier in the result array
-    for (const x of exactMatch){
-        result.push(x);
-    } for (const x of startsWith){
-        result.push(x);
-    } for (const x of onlyContains){
-        result.push(x);
-    }
-
-    return result;
+    return exactMatch.concat(startsWith, onlyContains);
 }
 
 /**

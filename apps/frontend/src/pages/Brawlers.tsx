@@ -40,7 +40,10 @@ export default function Brawlers(){
         <Flex w={"100%"} flexDir={"column"} alignItems={"center"}>
             <BackButton/>
             <Text fontSize={"4xl"} className={"heading-4xl"}>Brawlers</Text>
-            <Button fontSize={"xl"} className={"heading-xl"} my={3} onClick={() => navigate("/brawlers/modelviewer")}>3D Model Viewer</Button>
+            <Flex my={3} flexDir={"column"}>
+                <Button fontSize={"xl"} className={"heading-xl"} onClick={() => navigate("/brawlers/modelviewer")}>3D Model Viewer</Button>
+                <Button fontSize={"xl"} className={"heading-xl"} onClick={() => navigate("/brawlers/skinsearch")}>Skin Search</Button>
+            </Flex>
             <Flex w={"95%"} mt={5} mb={[3, 4, 5, 6, 8, 10]} justifyContent={"center"} onLoad={loadImage}>
                 <SimpleGrid columns={[2, 3, 4, 5, 6, 7]} spacing={[3, 4, 5, 6, 8, 10]}>
                     {brawlers.map((brawler) =>

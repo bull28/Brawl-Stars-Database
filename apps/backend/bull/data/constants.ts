@@ -5,6 +5,7 @@ export const SKIN_IMAGE_DIR = "skins/";
 export const SKIN_MODEL_DIR = "models/";
 export const SKINGROUP_IMAGE_DIR = "skingroups/backgrounds/";
 export const SKINGROUP_ICON_DIR = "skingroups/icons/";
+export const SKIN_RARITY_ICON_DIR = "skingroups/rarities/";
 export const MASTERY_IMAGE_DIR = "mastery/";
 export const PIN_IMAGE_DIR = "pins/";
 export const GAMEMODE_IMAGE_DIR = "gamemodes/";
