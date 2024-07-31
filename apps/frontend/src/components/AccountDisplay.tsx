@@ -22,7 +22,7 @@ import { HiOutlineSwitchHorizontal } from 'react-icons/hi'
 import { BsPerson, BsCollection } from 'react-icons/bs'
 import {UserInfoProps} from '../types/AccountData'
 import AccountMenuDisplay from './AccountMenuDisplay'
-import AuthRequest from '../helpers/AuthRequest'
+import AuthRequest, {getToken} from '../helpers/AuthRequest'
 import { useNavigate } from 'react-router-dom'
 import { RainbowBorder } from '../themes/animations'
 import {displayShort, displayLong} from '../helpers/LargeNumberDisplay'
@@ -66,6 +66,9 @@ export default function AccountDisplay() {
     const navigate = useNavigate()
 
     const loadAccount = useCallback(() => {
+        if (getToken() === undefined){
+            return;
+        }
         AuthRequest<UserInfoProps>("/resources", {setState: setData, fallback: (e) => {
             const error = e as AxiosError;
             if (error.response !== undefined){

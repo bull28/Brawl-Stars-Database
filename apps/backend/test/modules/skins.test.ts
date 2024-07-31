@@ -61,9 +61,15 @@ describe("Brawlers and Skins module", function(){
         expect(skinData.cost).to.equal(skin.cost);
         expect(skinData.currency).to.equal(skin.currency);
         expect(skinData.costBling).to.equal(skin.costBling);
+
         expect(skinData.rarity.value).to.equal(skin.rarity.value);
         expect(skinData.rarity.name).to.equal(skin.rarity.name);
-        expect(skinData.rarity.icon).to.equal(SKIN_RARITY_ICON_DIR + skin.rarity.icon);
+        if (skin.rarity.icon !== ""){
+            expect(skinData.rarity.icon).to.equal(SKIN_RARITY_ICON_DIR + skin.rarity.icon);
+        } else{
+            expect(skinData.rarity.icon).to.equal("");
+        }
+
         expect(skinData.requires).to.equal(skin.requires);
         expect(skinData.limited).to.equal(skin.limited);
         expect(skinData.unlock).to.equal(skin.unlock);

@@ -95,6 +95,22 @@ router.get("/models", (req, res) => {
     res.json(allModels);
 });
 
+// Get the list of all skin groups
+router.get("/skingroups", (req, res) => {
+    const groups = new Set<string>();
+    for (let i = 0; i < allSkins.length; i++){
+        const brawler = allSkins[i];
+        for (let j = 0; j < brawler.skins.length; j++){
+            const skin = brawler.skins[j];
+            for (let g = 0; g < skin.groups.length; g++){
+                groups.add(skin.groups[g].name);
+            }
+        }
+    }
+    groups.delete("");
+    res.json(Array.from(groups));
+});
+
 // Search for skins using a search filter
 router.post<Empty, SkinSearchRes, {filters: SkinSearchFilters;}>("/skinsearch", (req, res) => {
     const filters = req.body.filters;

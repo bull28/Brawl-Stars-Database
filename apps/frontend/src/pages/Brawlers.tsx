@@ -31,7 +31,7 @@ export default function Brawlers(){
         .then((res) => {
             setBrawlers(res.data);
         })
-        .catch((error) => {
+        .catch(() => {
             setBrawlers([]);
         });
     }, []);

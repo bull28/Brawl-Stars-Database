@@ -22,7 +22,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -92,7 +92,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -205,7 +205,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Shelly",
                 "features": [
@@ -242,7 +242,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -964,7 +964,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -1148,7 +1148,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Nita",
                 "features": [
@@ -1185,7 +1185,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -1277,14 +1277,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Ranked",
-                        "image": "bg_ranked.webp",
-                        "icon": "icon_ranked.webp"
-                    },
-                    {
                         "name": "Lunar Brawl",
                         "image": "bg_lny_2020.webp",
                         "icon": "icon_lny_2020.webp"
+                    },
+                    {
+                        "name": "Ranked",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_ranked.webp"
                     }
                 ],
                 "limited": true,
@@ -1445,14 +1445,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Ranked",
-                        "image": "bg_ranked.webp",
-                        "icon": "icon_ranked.webp"
-                    },
-                    {
                         "name": "Lunar Brawl",
                         "image": "bg_lny_2020.webp",
                         "icon": "icon_lny_2020.webp"
+                    },
+                    {
+                        "name": "Ranked",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_ranked.webp"
                     }
                 ],
                 "limited": false,
@@ -1739,7 +1739,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -2150,7 +2150,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Colt",
                 "features": [
@@ -2187,7 +2187,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -2773,7 +2773,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -2955,7 +2955,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Bull",
                 "features": [
@@ -2992,7 +2992,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -3470,7 +3470,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -3732,7 +3732,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -3769,7 +3769,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Brock",
                 "features": [
@@ -4572,7 +4572,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -4720,7 +4720,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver El Primo",
                 "features": [
@@ -4757,7 +4757,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -5418,7 +5418,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -5489,7 +5489,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -5639,7 +5639,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Barley",
                 "features": [
@@ -5676,7 +5676,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -5992,7 +5992,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -6182,7 +6182,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Poco",
                 "features": [
@@ -6219,7 +6219,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -6483,7 +6483,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -6638,7 +6638,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Rosa",
                 "features": [
@@ -6675,7 +6675,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -7015,7 +7015,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -7242,7 +7242,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Jessie",
                 "features": [
@@ -7279,7 +7279,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -7584,7 +7584,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -8009,7 +8009,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Dynamike",
                 "features": [
@@ -8046,7 +8046,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -8170,14 +8170,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Ranked",
-                        "image": "bg_ranked.webp",
-                        "icon": "icon_ranked.webp"
-                    },
-                    {
                         "name": "Sands of Time",
                         "image": "bg_lantern.webp",
                         "icon": "icon_lantern.webp"
+                    },
+                    {
+                        "name": "Ranked",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_ranked.webp"
                     }
                 ],
                 "limited": false,
@@ -8519,7 +8519,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -8630,7 +8630,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Tick",
                 "features": [
@@ -8667,7 +8667,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -9084,7 +9084,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -9206,14 +9206,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Ranked",
-                        "image": "bg_ranked.webp",
-                        "icon": "icon_ranked.webp"
-                    },
-                    {
                         "name": "Outlaws",
                         "image": "bg_outlaw.webp",
                         "icon": "icon_outlaws.webp"
+                    },
+                    {
+                        "name": "Ranked",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_ranked.webp"
                     }
                 ],
                 "limited": true,
@@ -9239,7 +9239,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -9276,7 +9276,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver 8-Bit",
                 "features": [
@@ -9443,14 +9443,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Ranked",
-                        "image": "bg_ranked.webp",
-                        "icon": "icon_ranked.webp"
-                    },
-                    {
                         "name": "Outlaws",
                         "image": "bg_outlaw.webp",
                         "icon": "icon_outlaws.webp"
+                    },
+                    {
+                        "name": "Ranked",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_ranked.webp"
                     }
                 ],
                 "limited": false,
@@ -9791,7 +9791,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -9975,7 +9975,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Rico",
                 "features": [
@@ -10012,7 +10012,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -10143,14 +10143,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Ranked",
-                        "image": "bg_ranked.webp",
-                        "icon": "icon_ranked.webp"
-                    },
-                    {
                         "name": "Cartoon Studios",
                         "image": "bg_cartoon.webp",
                         "icon": "icon_cartoon.webp"
+                    },
+                    {
+                        "name": "Ranked",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_ranked.webp"
                     }
                 ],
                 "limited": false,
@@ -10621,7 +10621,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -10732,7 +10732,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Darryl",
                 "features": [
@@ -10769,7 +10769,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -10899,14 +10899,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Ranked",
-                        "image": "bg_ranked.webp",
-                        "icon": "icon_ranked.webp"
-                    },
-                    {
                         "name": "Stunt Show",
                         "image": "bg_stuntshow.webp",
                         "icon": "icon_stuntshow.webp"
+                    },
+                    {
+                        "name": "Ranked",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_ranked.webp"
                     }
                 ],
                 "limited": false,
@@ -11163,7 +11163,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -11320,14 +11320,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Ranked",
-                        "image": "bg_ranked.webp",
-                        "icon": "icon_ranked.webp"
-                    },
-                    {
                         "name": "Worst Bunch",
                         "image": "bg_villains.webp",
                         "icon": "icon_villains.webp"
+                    },
+                    {
+                        "name": "Ranked",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_ranked.webp"
                     }
                 ],
                 "limited": true,
@@ -11353,7 +11353,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Penny",
                 "features": [
@@ -11390,7 +11390,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -11482,14 +11482,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Ranked",
-                        "image": "bg_ranked.webp",
-                        "icon": "icon_ranked.webp"
-                    },
-                    {
                         "name": "Worst Bunch",
                         "image": "bg_villains.webp",
                         "icon": "icon_villains.webp"
+                    },
+                    {
+                        "name": "Ranked",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_ranked.webp"
                     }
                 ],
                 "limited": false,
@@ -11677,7 +11677,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -11942,7 +11942,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Carl",
                 "features": [
@@ -11979,7 +11979,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -12271,7 +12271,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -12394,14 +12394,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Ranked",
-                        "image": "bg_ranked.webp",
-                        "icon": "icon_ranked.webp"
-                    },
-                    {
                         "name": "Summer of Brawl",
                         "image": "bg_summer.webp",
                         "icon": "icon_summer.webp"
+                    },
+                    {
+                        "name": "Ranked",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_ranked.webp"
                     }
                 ],
                 "limited": true,
@@ -12465,7 +12465,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Jacky",
                 "features": [
@@ -12502,7 +12502,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -12589,14 +12589,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Ranked",
-                        "image": "bg_ranked.webp",
-                        "icon": "icon_ranked.webp"
-                    },
-                    {
                         "name": "Summer of Brawl",
                         "image": "bg_summer.webp",
                         "icon": "icon_summer.webp"
+                    },
+                    {
+                        "name": "Ranked",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_ranked.webp"
                     }
                 ],
                 "limited": false,
@@ -12832,7 +12832,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -12905,7 +12905,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Gus",
                 "features": [
@@ -12942,7 +12942,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -13181,7 +13181,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -13460,7 +13460,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Bo",
                 "features": [
@@ -13497,7 +13497,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -13584,14 +13584,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Ranked",
-                        "image": "bg_ranked.webp",
-                        "icon": "icon_ranked.webp"
-                    },
-                    {
                         "name": "Biodome",
                         "image": "bg_biodome.webp",
                         "icon": "icon_biodome.webp"
+                    },
+                    {
+                        "name": "Ranked",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_ranked.webp"
                     }
                 ],
                 "limited": false,
@@ -13956,7 +13956,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -14027,7 +14027,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Emz",
                 "features": [
@@ -14064,7 +14064,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -14526,7 +14526,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -14672,7 +14672,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Stu",
                 "features": [
@@ -14709,7 +14709,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -15042,7 +15042,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -15188,7 +15188,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Piper",
                 "features": [
@@ -15225,7 +15225,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -15350,14 +15350,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Ranked",
-                        "image": "bg_ranked.webp",
-                        "icon": "icon_ranked.webp"
-                    },
-                    {
                         "name": "License to Brawl",
                         "image": "bg_hub.webp",
                         "icon": "icon_hub.webp"
+                    },
+                    {
+                        "name": "Ranked",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_ranked.webp"
                     }
                 ],
                 "limited": false,
@@ -15632,7 +15632,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -15745,7 +15745,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Pam",
                 "features": [
@@ -15782,7 +15782,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -16056,7 +16056,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -16164,7 +16164,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Frank",
                 "features": [
@@ -16201,7 +16201,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -16842,7 +16842,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -17033,7 +17033,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Bibi",
                 "features": [
@@ -17070,7 +17070,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -17554,7 +17554,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -17785,7 +17785,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Bea",
                 "features": [
@@ -17822,7 +17822,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -18060,7 +18060,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -18171,7 +18171,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Nani",
                 "features": [
@@ -18208,7 +18208,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -18458,7 +18458,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -18648,7 +18648,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Edgar",
                 "features": [
@@ -18685,7 +18685,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -19178,7 +19178,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -19251,7 +19251,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Griff",
                 "features": [
@@ -19288,7 +19288,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -19538,7 +19538,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -19611,7 +19611,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Grom",
                 "features": [
@@ -19648,7 +19648,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -19961,7 +19961,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -20034,7 +20034,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Bonnie",
                 "features": [
@@ -20071,7 +20071,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -20347,7 +20347,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -20469,7 +20469,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -20506,7 +20506,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Gale",
                 "features": [
@@ -20593,14 +20593,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Ranked",
-                        "image": "bg_ranked.webp",
-                        "icon": "icon_ranked.webp"
-                    },
-                    {
                         "name": "Deep Sea League",
                         "image": "bg_deepsea.webp",
                         "icon": "icon_deepsea.webp"
+                    },
+                    {
+                        "name": "Ranked",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_ranked.webp"
                     }
                 ],
                 "limited": false,
@@ -20851,7 +20851,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -21011,7 +21011,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Colette",
                 "features": [
@@ -21048,7 +21048,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -21096,14 +21096,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Ranked",
-                        "image": "bg_ranked.webp",
-                        "icon": "icon_ranked.webp"
-                    },
-                    {
                         "name": "Brawl-o-ween",
                         "image": "bg_brawloween.webp",
                         "icon": "icon_brawloween.webp"
+                    },
+                    {
+                        "name": "Ranked",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_ranked.webp"
                     }
                 ],
                 "limited": false,
@@ -21561,7 +21561,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -21678,7 +21678,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Belle",
                 "features": [
@@ -21715,7 +21715,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -22007,7 +22007,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -22085,7 +22085,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Ash",
                 "features": [
@@ -22122,7 +22122,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -22209,14 +22209,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Ranked",
-                        "image": "bg_ranked.webp",
-                        "icon": "icon_ranked.webp"
-                    },
-                    {
                         "name": "Sugar Rush",
                         "image": "bg_candyland.webp",
                         "icon": "icon_candyland.webp"
+                    },
+                    {
+                        "name": "Ranked",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_ranked.webp"
                     }
                 ],
                 "limited": false,
@@ -22497,7 +22497,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -22614,7 +22614,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Lola",
                 "features": [
@@ -22651,7 +22651,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -22699,14 +22699,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Ranked",
-                        "image": "bg_ranked.webp",
-                        "icon": "icon_ranked.webp"
-                    },
-                    {
                         "name": "Calamity Gang",
                         "image": "bg_outlaw.webp",
                         "icon": "icon_outlaw.webp"
+                    },
+                    {
+                        "name": "Ranked",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_ranked.webp"
                     }
                 ],
                 "limited": false,
@@ -22782,14 +22782,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Ranked",
-                        "image": "bg_ranked.webp",
-                        "icon": "icon_ranked.webp"
-                    },
-                    {
                         "name": "Bizarre Circus",
                         "image": "bg_circus.webp",
                         "icon": "icon_circus.webp"
+                    },
+                    {
+                        "name": "Ranked",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_ranked.webp"
                     }
                 ],
                 "limited": true,
@@ -23088,7 +23088,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -23242,7 +23242,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Sam",
                 "features": [
@@ -23279,7 +23279,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -23571,7 +23571,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -23686,7 +23686,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Mandy",
                 "features": [
@@ -23723,7 +23723,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -23997,7 +23997,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -24156,7 +24156,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Maisie",
                 "features": [
@@ -24193,7 +24193,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -24437,7 +24437,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -24664,7 +24664,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -24779,7 +24779,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Pearl",
                 "features": [
@@ -24816,7 +24816,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -25051,7 +25051,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -25133,14 +25133,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Ranked",
-                        "image": "bg_ranked.webp",
-                        "icon": "icon_ranked.webp"
-                    },
-                    {
                         "name": "CyberBrawl",
                         "image": "bg_hacker.webp",
                         "icon": "icon_hacker.webp"
+                    },
+                    {
+                        "name": "Ranked",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_ranked.webp"
                     }
                 ],
                 "limited": false,
@@ -25166,7 +25166,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Larry & Lawrie",
                 "features": [
@@ -25203,7 +25203,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -25357,7 +25357,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -25467,7 +25467,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Angelo",
                 "features": [
@@ -25504,7 +25504,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -25667,7 +25667,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -25846,7 +25846,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -25917,7 +25917,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -26030,7 +26030,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Gold Mortis",
                 "features": [
@@ -26067,7 +26067,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Mortis",
                 "features": [
@@ -26104,7 +26104,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Mortis",
                 "features": [
@@ -26141,7 +26141,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -26645,7 +26645,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -26754,7 +26754,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Tara",
                 "features": [
@@ -26791,7 +26791,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -27137,7 +27137,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -27248,7 +27248,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Gene",
                 "features": [
@@ -27285,7 +27285,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -27549,7 +27549,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -27733,7 +27733,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -27770,7 +27770,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Max",
                 "features": [
@@ -28038,7 +28038,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -28109,7 +28109,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Mr. P",
                 "features": [
@@ -28146,7 +28146,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -28488,7 +28488,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -28713,7 +28713,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Gold Sprout",
                 "features": [
@@ -28750,7 +28750,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -28988,7 +28988,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -29033,14 +29033,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Ranked",
-                        "image": "bg_ranked.webp",
-                        "icon": "icon_ranked.webp"
-                    },
-                    {
                         "name": "Once Upon",
                         "image": "bg_onceupon.webp",
                         "icon": "icon_onceupon.webp"
+                    },
+                    {
+                        "name": "Ranked",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_ranked.webp"
                     }
                 ],
                 "limited": true,
@@ -29105,7 +29105,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Byron",
                 "features": [
@@ -29142,7 +29142,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -29266,14 +29266,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Ranked",
-                        "image": "bg_ranked.webp",
-                        "icon": "icon_ranked.webp"
-                    },
-                    {
                         "name": "Once Upon",
                         "image": "bg_onceupon.webp",
                         "icon": "icon_onceupon.webp"
+                    },
+                    {
+                        "name": "Ranked",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_ranked.webp"
                     }
                 ],
                 "limited": false,
@@ -29443,7 +29443,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -29633,7 +29633,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Squeak",
                 "features": [
@@ -29670,7 +29670,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -29927,7 +29927,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -30082,7 +30082,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Lou",
                 "features": [
@@ -30119,7 +30119,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -30167,14 +30167,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Ranked",
-                        "image": "bg_ranked.webp",
-                        "icon": "icon_ranked.webp"
-                    },
-                    {
                         "name": "Enchanted Woods",
                         "image": "bg_enchanted.webp",
                         "icon": "icon_enchanted.webp"
+                    },
+                    {
+                        "name": "Ranked",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_ranked.webp"
                     }
                 ],
                 "limited": false,
@@ -30425,7 +30425,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -30541,7 +30541,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Ruffs",
                 "features": [
@@ -30578,7 +30578,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -30900,7 +30900,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -30990,14 +30990,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Ranked",
-                        "image": "bg_ranked.webp",
-                        "icon": "icon_ranked.webp"
-                    },
-                    {
                         "name": "Starrs of Brawlywood",
                         "image": "bg_brawlywood.webp",
                         "icon": "icon_brawlywood.webp"
+                    },
+                    {
+                        "name": "Ranked",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_ranked.webp"
                     }
                 ],
                 "limited": true,
@@ -31023,7 +31023,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Buzz",
                 "features": [
@@ -31060,7 +31060,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -31357,14 +31357,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Ranked",
-                        "image": "bg_ranked.webp",
-                        "icon": "icon_ranked.webp"
-                    },
-                    {
                         "name": "Starrs of Brawlywood",
                         "image": "bg_brawlywood.webp",
                         "icon": "icon_brawlywood.webp"
+                    },
+                    {
+                        "name": "Ranked",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_ranked.webp"
                     }
                 ],
                 "limited": false,
@@ -31823,7 +31823,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -31935,7 +31935,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Fang",
                 "features": [
@@ -31972,7 +31972,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -32461,7 +32461,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -32539,7 +32539,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Eve",
                 "features": [
@@ -32576,7 +32576,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -32663,14 +32663,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Ranked",
-                        "image": "bg_ranked.webp",
-                        "icon": "icon_ranked.webp"
-                    },
-                    {
                         "name": "Godzilla",
                         "image": "bg_godzilla.webp",
                         "icon": "icon_godzilla.webp"
+                    },
+                    {
+                        "name": "Ranked",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_ranked.webp"
                     }
                 ],
                 "limited": true,
@@ -32903,7 +32903,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -32981,7 +32981,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Janet",
                 "features": [
@@ -33018,7 +33018,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -33434,7 +33434,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -33512,7 +33512,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Otis",
                 "features": [
@@ -33549,7 +33549,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -33871,7 +33871,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -33949,7 +33949,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Buster",
                 "features": [
@@ -33986,7 +33986,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -34260,7 +34260,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -34409,7 +34409,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Gray",
                 "features": [
@@ -34446,7 +34446,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -34600,7 +34600,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -34715,7 +34715,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver R-T",
                 "features": [
@@ -34752,7 +34752,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -35026,7 +35026,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -35136,7 +35136,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Willow",
                 "features": [
@@ -35173,7 +35173,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -35327,7 +35327,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -35398,7 +35398,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Doug",
                 "features": [
@@ -35435,7 +35435,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -35628,7 +35628,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -35740,7 +35740,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Chuck",
                 "features": [
@@ -35777,7 +35777,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -36003,7 +36003,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -36159,7 +36159,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Charlie",
                 "features": [
@@ -36196,7 +36196,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -36512,7 +36512,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -36663,7 +36663,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Mico",
                 "features": [
@@ -36700,7 +36700,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -36944,7 +36944,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -37026,14 +37026,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Ranked",
-                        "image": "bg_ranked.webp",
-                        "icon": "icon_ranked.webp"
-                    },
-                    {
                         "name": "Legends of Olympus",
                         "image": "bg_olympus.webp",
                         "icon": "icon_olympus.webp"
+                    },
+                    {
+                        "name": "Ranked",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_ranked.webp"
                     }
                 ],
                 "limited": false,
@@ -37059,7 +37059,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Melodie",
                 "features": [
@@ -37096,7 +37096,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -37250,7 +37250,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -37321,7 +37321,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Lily",
                 "features": [
@@ -37358,7 +37358,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -37503,7 +37503,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -37682,7 +37682,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -37868,7 +37868,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Spike",
                 "features": [
@@ -37905,7 +37905,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -38350,7 +38350,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -38579,7 +38579,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Crow",
                 "features": [
@@ -38616,7 +38616,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -39046,7 +39046,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -39193,7 +39193,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Leon",
                 "features": [
@@ -39230,7 +39230,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -39787,7 +39787,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -39935,7 +39935,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Sandy",
                 "features": [
@@ -39972,7 +39972,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -40395,7 +40395,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -40468,7 +40468,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Amber",
                 "features": [
@@ -40505,7 +40505,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -40825,7 +40825,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -40937,7 +40937,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Meg",
                 "features": [
@@ -40974,7 +40974,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -41022,14 +41022,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Ranked",
-                        "image": "bg_ranked.webp",
-                        "icon": "icon_ranked.webp"
-                    },
-                    {
                         "name": "Rumble Jungle Heroes",
                         "image": "bg_jungle.webp",
                         "icon": "icon_jungle.webp"
+                    },
+                    {
+                        "name": "Ranked",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_ranked.webp"
                     }
                 ],
                 "limited": false,
@@ -41238,7 +41238,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -41391,7 +41391,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Surge",
                 "features": [
@@ -41428,7 +41428,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -41803,7 +41803,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -41874,7 +41874,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Chester",
                 "features": [
@@ -41911,7 +41911,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -41998,14 +41998,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Ranked",
-                        "image": "bg_ranked.webp",
-                        "icon": "icon_ranked.webp"
-                    },
-                    {
                         "name": "Northern Saga",
                         "image": "bg_norsegods.webp",
                         "icon": "icon_norsegods.webp"
+                    },
+                    {
+                        "name": "Ranked",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_ranked.webp"
                     }
                 ],
                 "limited": false,
@@ -42157,7 +42157,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -42350,7 +42350,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Cordelius",
                 "features": [
@@ -42387,7 +42387,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -42640,7 +42640,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -42843,7 +42843,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Kit",
                 "features": [
@@ -42880,7 +42880,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [
@@ -43052,7 +43052,7 @@
                 "rarity": {
                     "value": 0,
                     "name": "",
-                    "icon": "icon_rarity_0.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [],
@@ -43123,7 +43123,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "True Silver Draco",
                 "features": [
@@ -43160,7 +43160,7 @@
                 "rarity": {
                     "value": 7,
                     "name": "Collectors",
-                    "icon": "icon_rarity_7.webp"
+                    "icon": ""
                 },
                 "requires": "",
                 "features": [

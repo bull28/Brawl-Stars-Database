@@ -1,11 +1,8 @@
 import axios, {AxiosResponse} from "axios";
 import {useEffect, useState} from "react";
-import {
-    Flex, Image, Text, Modal, Tooltip,
-    ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton,
-    useDisclosure, Divider, ModalOverlay, Icon
-} from "@chakra-ui/react";
+import {Flex, Image, Text, Tooltip, useDisclosure, Icon} from "@chakra-ui/react";
 import {RepeatIcon} from "@chakra-ui/icons";
+import SkinDetails, {currencyImages, getCostText} from "./SkinDetails";
 import {SkinData} from "../types/BrawlerData";
 import cdn from "../helpers/CDNRoute";
 import api from "../helpers/APIRoute";
@@ -13,29 +10,6 @@ import api from "../helpers/APIRoute";
 interface SkinViewProps{
     brawler: string;
     skin: string;
-}
-
-const currencyImages: Record<string, string> = {
-    Gems: "icon_gems.webp",
-    Coins: "icon_coins.webp",
-    ClubCoins: "icon_clubcoins.webp",
-    Bling: "icon_bling.webp"
-};
-
-function getCostText(skin: SkinData): string{
-    if (skin.cost > 0){
-        return skin.cost.toString();
-    }
-    if (skin.name.includes("default") === true){
-        return "Default";
-    }
-    return "Free";
-}
-
-function getReleaseDate(release: SkinData["release"]): string{
-    const date = new Date(release.year, release.month - 1);
-    const text = Date.now() > date.getTime() ? "Released" : "Expected to release";
-    return `${text} ${date.toLocaleString("default", {month: "long"})} ${release.year}`;
 }
 
 function getGroupBackground(groups: SkinData["groups"]): string{
@@ -61,7 +35,7 @@ export default function SkinView({brawler, skin}: SkinViewProps){
         .then((res) => {
             setData(res.data);
         })
-        .catch((error) => {});
+        .catch(() => {});
     }, [brawler, skin]);
 
     return (
@@ -96,60 +70,7 @@ export default function SkinView({brawler, skin}: SkinViewProps){
                 </Flex>
                 <Text fontSize={["sm", "md"]} className={"heading-md"}>{data.requires !== "" ? `Requires ${data.requires}` : "\u00a0"}</Text>
             </Flex>
-            <Modal isOpen={isOpen} onClose={onClose}>
-                <ModalOverlay/>
-                <ModalContent p={[1, 3]}>
-                    <ModalHeader fontWeight={"normal"} fontSize={"2xl"} className={"heading-2xl"} color={"#fff"}>
-                        <Flex alignItems={"center"}>
-                            <Image src={`${cdn}/image/${data.rarity.icon}`} h={"1.5em"} mr={"0.25em"}/>
-                            <Text>{data.displayName}</Text>
-                        </Flex>
-                    </ModalHeader>
-                    <ModalCloseButton/>
-                    <Divider/>
-                    <ModalBody className={"heading-xl"} color={"#fff"}>
-                        <Flex flexDir={"column"}>
-                            {data.groups.map((group) => (
-                            <Flex key={group.name} alignItems={"center"}>
-                                {!group.icon.includes("default") && <Image src={`${cdn}/image/${group.icon}`} w={7} mr={2}/>}
-                                <Text fontSize={"lg"}>{group.name}</Text>
-                            </Flex>
-                            ))}
-                        </Flex>
-                        <Flex wrap={"wrap"} gap={"0.375em"} mt={2}>
-                            <Text fontSize={"xl"}>Cost:</Text>
-                            <Flex alignItems={"center"}>
-                                <Text fontSize={"xl"} mr={1}>{getCostText(data)}</Text>
-                                {currencyImages.hasOwnProperty(data.currency) === true ? <Image src={`${cdn}/image/resources/${currencyImages[data.currency]}`} alt={data.currency} h={6}/> : <></>}
-                            </Flex>
-                            {(data.costBling > 0) &&
-                            <>
-                            <Text fontSize={"xl"}>or</Text>
-                            <Flex alignItems={"center"}>
-                                <Text fontSize={"xl"} mr={1}>{data.costBling}</Text>
-                                {currencyImages.hasOwnProperty("Bling") === true ? <Image src={`${cdn}/image/resources/${currencyImages["Bling"]}`} alt={"Bling"} h={6}/> : <></>}
-                            </Flex>
-                            </>
-                            }
-                        </Flex>
-                        {data.requires && <Text>{`Requires ${data.requires}`}</Text>}
-                        <Divider my={2}/>
-                        {data.release.month >= 1 && data.release.year > 0 && <Text fontSize={"lg"}>{getReleaseDate(data.release)}</Text>}
-                        {data.limited && <Text fontSize={"lg"} color={"#ffd700"}>This skin is limited</Text>}
-                        {data.unlock !== "" && <Text mt={2}>{data.unlock}</Text>}
-                        {(data.features.length > 0) &&
-                        <>
-                            <Divider my={2}/>
-                            <Text fontSize={"lg"} mb={1}>Custom Features</Text>
-                            {data.features.map((feature) => (
-                                <Text ml={1} key={feature}>&#x2022; {feature}</Text>
-                            ))}
-                        </>
-                        }
-                    </ModalBody>
-                    <ModalFooter/>
-                </ModalContent>
-            </Modal>
+            <SkinDetails data={data} isOpen={isOpen} onClose={onClose}/>
         </Flex>
     }
     </>

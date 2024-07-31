@@ -71,6 +71,12 @@ describe("Brawlers and Skins endpoints", function(){
         }
     });
 
+    it("/skingroups", async function(){
+        const res = await chai.request(server).get("/skingroups");
+        expect(res).to.have.status(200);
+        expect(res.body).to.be.an("array");
+    });
+
     describe("/skinsearch", function(){
         it("Valid search", async function(){
             const res = await chai.request(server).post("/skinsearch").send({filters: {}});
