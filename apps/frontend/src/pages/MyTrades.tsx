@@ -120,7 +120,7 @@ export default function MyTrades() {
                                     </SimpleGrid>
                                     <Flex flexDir={'column'} justifyContent={'space-evenly'} alignItems={'center'} mx={'1vw'} w={'20%'} h={'100%'}>
                                         <Flex alignItems={'center'} flexDir={['column', 'row', 'row', 'row', 'row']}>
-                                            <Image w={'30px'} h={'30px'} src={`${cdn}/image/resources/resource_trade_credits.webp`}/>
+                                            <Image w={'30px'} h={'30px'} src={`${cdn}/image/resources/currency/resource_trade_credits.webp`}/>
                                             <Text ml={1} fontSize={'2xl'}>{trade.cost}</Text>                                
                                         </Flex>
                                         <HiOutlineSwitchHorizontal fontSize={'30px'}/>

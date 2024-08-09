@@ -42,7 +42,7 @@ export default function BrawlBoxContents({boxContents, badges}: BrawlBoxContents
                                 <Text fontSize={["sm", "md"]} textIndent={"0"}>{value.unlock}</Text>
                             </Flex>
                             <Flex flex={"25%"} minW={"60px"} alignItems={"center"}>
-                                <Image src={`${cdn}/image/resources/resource_badge.webp`} h={[5, 7, 8]}/>
+                                <Image src={`${cdn}/image/resources/currency/resource_badge.webp`} h={[5, 7, 8]}/>
                                 <Text overflowWrap={"anywhere"} lineHeight={1}>{`+${value.amount}`}</Text>
                             </Flex>
                         </Flex>

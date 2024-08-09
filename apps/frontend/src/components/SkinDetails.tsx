@@ -60,14 +60,14 @@ export default function SkinDetails({data, isOpen, onClose}: SkinDetailsProps){
                         <Text fontSize={"xl"}>Cost:</Text>
                         <Flex alignItems={"center"}>
                             <Text fontSize={"xl"} mr={1}>{getCostText(data)}</Text>
-                            {currencyImages.hasOwnProperty(data.currency) === true && <Image src={`${cdn}/image/resources/${currencyImages[data.currency]}`} alt={data.currency} h={6}/>}
+                            {currencyImages.hasOwnProperty(data.currency) === true && <Image src={`${cdn}/image/resources/currency/${currencyImages[data.currency]}`} alt={data.currency} h={6}/>}
                         </Flex>
                         {(data.costBling > 0) &&
                         <>
                         <Text fontSize={"xl"}>or</Text>
                         <Flex alignItems={"center"}>
                             <Text fontSize={"xl"} mr={1}>{data.costBling}</Text>
-                            {currencyImages.hasOwnProperty("Bling") === true && <Image src={`${cdn}/image/resources/${currencyImages["Bling"]}`} alt={"Bling"} h={6}/>}
+                            {currencyImages.hasOwnProperty("Bling") === true && <Image src={`${cdn}/image/resources/currency/${currencyImages["Bling"]}`} alt={"Bling"} h={6}/>}
                         </Flex>
                         </>
                         }

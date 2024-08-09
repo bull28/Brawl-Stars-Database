@@ -1,6 +1,6 @@
 import {expect} from "chai";
 import accessoryList from "../../bull/data/accessories_data.json";
-import {IMAGE_FILE_EXTENSION, RESOURCE_IMAGE_DIR, ACCESSORY_IMAGE_DIR, GAME_GEAR_IMAGE_DIR, GAME_BRAWLER_IMAGE_DIR, gameDifficulties, gameBrawlers, gameStarPowers, gameGears} from "../../bull/data/constants";
+import {IMAGE_FILE_EXTENSION, MASTERY_LEVEL_DIR, ACCESSORY_IMAGE_DIR, GAME_GEAR_IMAGE_DIR, GAME_BRAWLER_IMAGE_DIR, gameDifficulties, gameBrawlers, gameStarPowers, gameGears} from "../../bull/data/constants";
 import {
     validateReport, 
     getMasteryLevel, 
@@ -54,8 +54,8 @@ describe("Accessories and Game Report module", function(){
         expect(mastery0).to.have.keys(["level", "points", "current", "next"]);
         expect(mastery0.current).to.have.keys(["points", "image", "color"]);
         expect(mastery0.next).to.have.keys(["points", "image", "color"]);
-        expect(mastery0.current.image).to.equal(RESOURCE_IMAGE_DIR + "mastery_empty" + IMAGE_FILE_EXTENSION);
-        expect(mastery0.next.image).to.equal(RESOURCE_IMAGE_DIR + "mastery_level_0" + IMAGE_FILE_EXTENSION);
+        expect(mastery0.current.image).to.equal(MASTERY_LEVEL_DIR + "mastery_empty" + IMAGE_FILE_EXTENSION);
+        expect(mastery0.next.image).to.equal(MASTERY_LEVEL_DIR + "mastery_level_0" + IMAGE_FILE_EXTENSION);
 
         // Negative mastery points should give the same result as 0
         expect(mastery0).to.eql(masteryBelow0);
@@ -65,24 +65,24 @@ describe("Accessories and Game Report module", function(){
         expect(mastery1.level).to.equal(1);
         expect(mastery1.current.points).to.equal(2000);
         expect(mastery1.next.points).to.equal(6000);
-        expect(mastery1.current.image).to.equal(RESOURCE_IMAGE_DIR + "mastery_level_0" + IMAGE_FILE_EXTENSION);
-        expect(mastery1.next.image).to.equal(RESOURCE_IMAGE_DIR + "mastery_level_0" + IMAGE_FILE_EXTENSION);
+        expect(mastery1.current.image).to.equal(MASTERY_LEVEL_DIR + "mastery_level_0" + IMAGE_FILE_EXTENSION);
+        expect(mastery1.next.image).to.equal(MASTERY_LEVEL_DIR + "mastery_level_0" + IMAGE_FILE_EXTENSION);
 
         // Next level changes the mastery image
         const mastery29 = getMasteryLevel(19999999);
         expect(mastery29.level).to.equal(29);
         expect(mastery29.current.points).to.equal(16000000);
         expect(mastery29.next.points).to.equal(20000000);
-        expect(mastery29.current.image).to.equal(RESOURCE_IMAGE_DIR + "mastery_level_6" + IMAGE_FILE_EXTENSION);
-        expect(mastery29.next.image).to.equal(RESOURCE_IMAGE_DIR + "mastery_level_7" + IMAGE_FILE_EXTENSION);
+        expect(mastery29.current.image).to.equal(MASTERY_LEVEL_DIR + "mastery_level_6" + IMAGE_FILE_EXTENSION);
+        expect(mastery29.next.image).to.equal(MASTERY_LEVEL_DIR + "mastery_level_7" + IMAGE_FILE_EXTENSION);
 
         // Highest mastery level
         const mastery30 = getMasteryLevel(20000000);
         expect(mastery30.level).to.equal(30);
         expect(mastery30.current.points).to.equal(20000000);
         expect(mastery30.next.points).to.equal(-1);
-        expect(mastery30.next.image).to.equal(RESOURCE_IMAGE_DIR + "mastery_level_7" + IMAGE_FILE_EXTENSION);
-        expect(mastery30.next.image).to.equal(RESOURCE_IMAGE_DIR + "mastery_level_7" + IMAGE_FILE_EXTENSION);
+        expect(mastery30.next.image).to.equal(MASTERY_LEVEL_DIR + "mastery_level_7" + IMAGE_FILE_EXTENSION);
+        expect(mastery30.next.image).to.equal(MASTERY_LEVEL_DIR + "mastery_level_7" + IMAGE_FILE_EXTENSION);
     });
 
     it("Get the preview for an accessory in brawl boxes", function(){

@@ -1,6 +1,7 @@
 import express, {NextFunction, Request, Response} from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
+import compression from "compression";
 import path from "path";
 import "dotenv/config";
 
@@ -45,6 +46,7 @@ app.use((req, res, next) => {
     });
 });
 
+app.use(["/image/bullgame", "/collection", "/skinsearch"], compression({threshold: 8192}));
 app.use("/image", express.static(path.join("assets", "images")));
 
 app.get("/", (req, res) => {

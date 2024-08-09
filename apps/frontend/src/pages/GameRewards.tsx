@@ -198,7 +198,7 @@ export default function GameRewards(){
                                         <Button w={"100%"} onClick={() => {onClose(); claimReward(reward.reportid, true);}}>
                                             <Flex fontSize={"xl"}>
                                                 <Text color={resources !== undefined && resources.tokens >= reward.cost ? "#5f5" : "#f55"}>{reward.cost}</Text>
-                                                <Image ml={1} src={`${cdn}/image/resources/resource_tokens.webp`} h={5}/>
+                                                <Image ml={1} src={`${cdn}/image/resources/currency/resource_tokens.webp`} h={5}/>
                                             </Flex>
                                         </Button>
                                     </Box>

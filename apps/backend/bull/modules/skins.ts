@@ -1,4 +1,4 @@
-import {PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR, SKIN_IMAGE_DIR, SKIN_MODEL_DIR, SKINGROUP_ICON_DIR, SKINGROUP_IMAGE_DIR, SKIN_RARITY_ICON_DIR, MASTERY_IMAGE_DIR} from "../data/constants";
+import {PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR, SKIN_IMAGE_DIR, SKIN_MODEL_DIR, SKINGROUP_ICON_DIR, SKINGROUP_IMAGE_DIR, SKIN_RARITY_ICON_DIR, MASTERY_ICON_DIR} from "../data/constants";
 import {Brawler, Skin, BrawlerData, ModelData, SkinData, SkinSearchFilters, SkinSearchResult} from "../types";
 
 function skinModelExists(brawlerName: string, model: ModelData): ModelData{
@@ -89,7 +89,7 @@ export function getBrawlerData(brawler: Brawler): BrawlerData{
         image: PORTRAIT_IMAGE_DIR + brawler.image,
         defaultSkin: brawler.defaultSkin,
         title: brawler.title,
-        masteryIcon: MASTERY_IMAGE_DIR + brawler.masteryIcon,
+        masteryIcon: MASTERY_ICON_DIR + brawler.masteryIcon,
         skins: brawlerSkins,
         pins: brawlerPins
     };

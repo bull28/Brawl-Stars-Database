@@ -55,7 +55,7 @@ export default function AccountMenuDisplay({ username, token, toggleRemove, onUp
                 <Text color={(data.avatarColor === 'rainbow') ? 'gold' : 'white'} fontSize={'xl'} className={'heading-xl'}>{data?.username}</Text>
                 <Flex maxH={'30px'} alignItems={'center'}>
                     <Text fontSize={'md'} className={'heading-md'}  mr={1}>{data?.tokens}</Text>
-                    <Image maxW={'25px'} src={`${cdn}/image/resources/resource_tokens.webp`}/>
+                    <Image maxW={'25px'} src={`${cdn}/image/resources/currency/resource_tokens.webp`}/>
                 </Flex>            
             </Flex>
         }

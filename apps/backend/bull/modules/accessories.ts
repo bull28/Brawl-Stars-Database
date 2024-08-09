@@ -1,5 +1,5 @@
 import accessoryList from "../data/accessories_data.json";
-import {RESOURCE_IMAGE_DIR, ACCESSORY_IMAGE_DIR, IMAGE_FILE_EXTENSION, GAME_GEAR_IMAGE_DIR, GAME_BRAWLER_IMAGE_DIR, gameDifficulties, gameBrawlers, gameStarPowers, gameGears} from "../data/constants";
+import {IMAGE_FILE_EXTENSION, MASTERY_LEVEL_DIR, ACCESSORY_IMAGE_DIR, GAME_GEAR_IMAGE_DIR, GAME_BRAWLER_IMAGE_DIR, gameDifficulties, gameBrawlers, gameStarPowers, gameGears} from "../data/constants";
 import {DatabaseAccessories, DatabaseBadges, BadgeReward, CollectionAccessory, AccessoryPreview, AccessoryData, MasteryData, GameReport, ReportData, ReportPreview} from "../types";
 
 // Type used by the game when calculating scores
@@ -505,12 +505,12 @@ export function getMasteryLevel(points: number): MasteryData{
         // This index contains the user's current level image and color. If the end of the array is reached without
         // finding an index then the user has the highest available image and color level.
         if (x >= levelImages.length - 1 || (x < levelImages.length - 1 && result.level < levelImages[x + 1].minLevel)){
-            result.current.image = RESOURCE_IMAGE_DIR + levelImages[x].image + IMAGE_FILE_EXTENSION;
+            result.current.image = MASTERY_LEVEL_DIR + levelImages[x].image + IMAGE_FILE_EXTENSION;
             result.current.color = levelImages[x].color;
 
             if (x < levelImages.length - 1 && result.level + 1 >= levelImages[x + 1].minLevel){
                 // Next mastery level meets the minimum level required for the next image
-                result.next.image = RESOURCE_IMAGE_DIR + levelImages[x + 1].image + IMAGE_FILE_EXTENSION;
+                result.next.image = MASTERY_LEVEL_DIR + levelImages[x + 1].image + IMAGE_FILE_EXTENSION;
                 result.next.color = levelImages[x + 1].color;
             } else{
                 // Next mastery level does not meet the minimum level or there is no next image

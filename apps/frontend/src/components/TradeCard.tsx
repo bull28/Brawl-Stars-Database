@@ -12,6 +12,8 @@ import EventTime from "../helpers/EventTime";
 import cdn from "../helpers/CDNRoute";
 import api from '../helpers/APIRoute'
 
+const tradeCreditsImage = `${cdn}/image/resources/currency/resource_trade_credits.webp`;
+
 interface PinData {
     amount: number;
     pinImage: string;
@@ -72,7 +74,7 @@ export default function TradeCard({ data, onUpdate }: {data: TradeData; onUpdate
                     </SimpleGrid>
                     <Flex flexDir={'column'} justifyContent={'space-evenly'} alignItems={'center'} mx={'1vw'} w={'20%'} h={'100%'}>
                         <Flex alignItems={'center'} flexDir={['column', 'row', 'row', 'row', 'row']}>
-                            <Image w={'30px'} src={`${cdn}/image/resources/resource_trade_credits.webp`}/>
+                            <Image w={'30px'} src={tradeCreditsImage}/>
                             <Text ml={1} fontSize={['lg', 'xl', '2xl']}>{data.cost}</Text>                                
                         </Flex>
                         <HiOutlineSwitchHorizontal fontSize={'30px'}/>
@@ -129,7 +131,7 @@ export default function TradeCard({ data, onUpdate }: {data: TradeData; onUpdate
                             <Box w={'50%'} h={'3px'} bgColor={'green'}></Box>
                         </Flex>
                         <Flex w={'100%'} justifyContent={'center'} mt={5}>
-                            <Button onClick={confirmTrade} rightIcon={<Image maxH={'40px'} src={`${cdn}/image/resources/resource_trade_credits.webp`}/>} p={8}>
+                            <Button onClick={confirmTrade} rightIcon={<Image maxH={'40px'} src={tradeCreditsImage}/>} p={8}>
                                 <Flex alignItems={'center'} justifyContent={'center'}>
                                     <Text fontSize={'3xl'} className={'heading-2xl'}  mr={2}>{data.cost}</Text>
                                 </Flex>        

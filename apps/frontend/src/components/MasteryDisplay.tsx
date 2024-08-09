@@ -15,7 +15,7 @@ export default function MasteryDisplay({data: {level, points, current, next}}: {
                 <Text fontSize={"2xl"} className={"heading-2xl"}>Bullgame Mastery</Text>
             }
             <Flex alignItems={"center"}>
-                <Image src={`${cdn}/image/resources/resource_challenge_points_200x.webp`} h={"1.5em"}/>
+                <Image src={`${cdn}/image/resources/currency/resource_challenge_points_200px.webp`} h={"1.5em"}/>
                 <Flex ml={"0.25em"} mr={"0.25em"}>
                     {(nextLevel < 0 && level > 1) ?
                         <MovingText title={`Level ${level}`} color1={"#ff6dea"} color2={"#fa00d6"} fontSize={"lg"}/>

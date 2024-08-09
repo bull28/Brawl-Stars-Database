@@ -87,7 +87,7 @@ export default function GameMenu(){
                                                     <Flex w={"60%"} minW={["100%", "10em"]} maxW={"15em"}>
                                                         <Flex alignItems={"center"} w={"90.9090909090909090%" /* This width is 1 / (1 + margin left of the bar) so the text above is aligned with the bar and not the bar + image */} pos={"relative"}>
                                                             <Flex w={"20%"}>
-                                                                <Image src={`${cdn}/image/resources/resource_badge.webp`} objectFit={"contain"} zIndex={69}/>
+                                                                <Image src={`${cdn}/image/resources/currency/resource_badge.webp`} objectFit={"contain"} zIndex={69}/>
                                                             </Flex>
                                                             <Flex pos={"absolute"} w={"100%"} justifyContent={"center"} alignItems={"center"} h={"1.5em"}>
                                                                 <Flex pos={"absolute"} w={"90%"} h={"100%"} ml={"10%"} bgColor={"#000"}>

@@ -1,5 +1,5 @@
 import allSkins from "../data/brawlers_data.json";
-import {IMAGE_FILE_EXTENSION, PIN_IMAGE_DIR, PORTRAIT_IMAGE_DIR, AVATAR_SPECIAL_DIR, THEME_SPECIAL_DIR, RESOURCE_IMAGE_DIR, themeMap} from "../data/constants";
+import {IMAGE_FILE_EXTENSION, PIN_IMAGE_DIR, PORTRAIT_IMAGE_DIR, AVATAR_SPECIAL_DIR, THEME_SPECIAL_DIR, CURRENCY_IMAGE_DIR, themeMap} from "../data/constants";
 import {getAccessoryPreview} from "../modules/accessories";
 import {Pin, UserResources, BrawlBoxDrop} from "../types";
 
@@ -133,7 +133,7 @@ export function createCoinsReward(coins: number, inventory: number = 0): BrawlBo
         rewardType: "coins",
         amount: coins,
         inventory: inventory,
-        image: RESOURCE_IMAGE_DIR + "resource_coins_200x" + IMAGE_FILE_EXTENSION,
+        image: CURRENCY_IMAGE_DIR + "resource_coins_200px" + IMAGE_FILE_EXTENSION,
         backgroundColor: "#8ca0e0",
         description: "Spend these on special avatars and other items in the shop."
     };
@@ -146,7 +146,7 @@ export function createPointsReward(points: number, inventory: number = 0): Brawl
         rewardType: "points",
         amount: points,
         inventory: inventory,
-        image: RESOURCE_IMAGE_DIR + "resource_challenge_points_200x" + IMAGE_FILE_EXTENSION,
+        image: CURRENCY_IMAGE_DIR + "resource_challenge_points_200px" + IMAGE_FILE_EXTENSION,
         backgroundColor: "#9a3df3",
         description: ""
     };
@@ -214,7 +214,7 @@ export class TokenDoublerReward extends Reward{
             rewardType: "tokenDoubler",
             amount: 0,
             inventory: 0,
-            image: RESOURCE_IMAGE_DIR + "resource_token_doubler_200x" + IMAGE_FILE_EXTENSION,
+            image: CURRENCY_IMAGE_DIR + "resource_token_doubler_200px" + IMAGE_FILE_EXTENSION,
             backgroundColor: "#00da48",
             description: ""
         };
@@ -547,7 +547,7 @@ export class WildCardPinReward extends Reward{
 
             result.displayName = rarityName + " Wild Card Pin";
             result.rewardType = "wildcard";
-            result.image = RESOURCE_IMAGE_DIR + "wildcard_pin" + IMAGE_FILE_EXTENSION;
+            result.image = CURRENCY_IMAGE_DIR + "wildcard_pin" + IMAGE_FILE_EXTENSION;
             result.backgroundColor = rarityColor;
             result.description = `This can be used in place of a Pin of ${rarityName} rarity when accepting a trade.`;
             result.inventory = resources.wild_card_pins[selectedRarity];
@@ -665,7 +665,7 @@ export class TradeCreditsReward extends Reward{
 
         result.displayName = "Trade Credits";
         result.rewardType = "tradeCredits";
-        result.image = RESOURCE_IMAGE_DIR + "resource_trade_credits_200x" + IMAGE_FILE_EXTENSION;
+        result.image = CURRENCY_IMAGE_DIR + "resource_trade_credits_200px" + IMAGE_FILE_EXTENSION;
         result.amount = this.drops[selectedIndex].value;
         result.inventory = resources.trade_credits;
         result.backgroundColor = "#389cfc";

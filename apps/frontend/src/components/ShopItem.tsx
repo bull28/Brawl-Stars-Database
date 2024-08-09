@@ -8,6 +8,8 @@ import CountUp from 'react-countup'
 import { useNavigate } from 'react-router-dom'
 import cdn from "../helpers/CDNRoute";
 
+const coinsImage = `${cdn}/image/resources/currency/resource_coins.webp`;
+
 interface PurchaseData{
     inventory: number;
     result: BrawlBoxContentsData[];
@@ -44,7 +46,7 @@ export default function ShopItem({data, coins, isFeatured, timeLeftString, onBuy
                 </Flex>
                 <Flex alignItems={'center'} mt={3}>
                     <Text fontSize={'xl'}  className={'heading-xl'}>{data.cost}</Text>
-                    <Image ml={1} maxH={'30px'} src={`${cdn}/image/resources/resource_coins.webp`}/>
+                    <Image ml={1} maxH={'30px'} src={coinsImage}/>
                 </Flex>
                 <Flex w={'100%'} justifyContent={'right'} mt={5}>
                     <Flex px={5} py={3} borderRadius={'30px'} bgColor={'lightskyblue'} alignItems={'center'} border={'2px solid'} borderColor={'blue.500'}>
@@ -72,7 +74,7 @@ export default function ShopItem({data, coins, isFeatured, timeLeftString, onBuy
                                     View Collection
                                 </Button>
                                 :
-                                <Button className={'heading-md buttonGreen'} color={(coins < data.cost) ? 'red.500' : 'white'} onClick={() => {purchase(data.name)}}>{data.cost}<Image ml={1} maxH={'25px'} src={`${cdn}/image/resources/resource_coins.webp`}/></Button>
+                                <Button className={'heading-md buttonGreen'} color={(coins < data.cost) ? 'red.500' : 'white'} onClick={() => {purchase(data.name)}}>{data.cost}<Image ml={1} maxH={'25px'} src={coinsImage}/></Button>
                             }
                         </ModalFooter>
                         </ModalContent>
@@ -100,7 +102,7 @@ export default function ShopItem({data, coins, isFeatured, timeLeftString, onBuy
                 </Flex>
                 <Flex alignItems={'center'} mt={3}>
                     <Text fontSize={['sm', 'md', 'lg', 'lg', 'lg', 'xl']} className={'heading-lg'}>{data.cost}</Text>
-                    <Image ml={1} maxH={'30px'} src={`${cdn}/image/resources/resource_coins.webp`}/>
+                    <Image ml={1} maxH={'30px'} src={coinsImage}/>
                 </Flex>
     
                 <Modal isOpen={isOpen} onClose={onClose} size={'3xl'} preserveScrollBarGap={true}>
@@ -142,7 +144,7 @@ export default function ShopItem({data, coins, isFeatured, timeLeftString, onBuy
                             {accepted ? 
                                 <></>
                                 :
-                                <Button className={'heading-md'} color={(coins < data.cost) ? 'red.500' : 'white'} onClick={() => {purchase(data.name)}}>{data.cost}<Image ml={1} maxH={'25px'} src={`${cdn}/image/resources/resource_coins.webp`}/></Button>
+                                <Button className={'heading-md'} color={(coins < data.cost) ? 'red.500' : 'white'} onClick={() => {purchase(data.name)}}>{data.cost}<Image ml={1} maxH={'25px'} src={coinsImage}/></Button>
                             }
 
                             {(( purchaseData?.result.length || 0 ) < 1) ?

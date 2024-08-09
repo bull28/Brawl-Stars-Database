@@ -705,11 +705,11 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                                         <Text fontSize={"2xl"} className={"heading-2xl"}>Rewards</Text>
                                         <Flex alignItems={"center"}>
                                             <Text fontSize={"2xl"} className={"heading-2xl"} color={"#fff"} mr={1}>{displayLong(reward.reward.coins)}</Text>
-                                            <Image src={`${cdn}/image/resources/resource_coins.webp`} h={7}/>
+                                            <Image src={`${cdn}/image/resources/currency/resource_coins.webp`} h={7}/>
                                         </Flex>
                                         <Flex alignItems={"center"} mb={3}>
                                             <Text fontSize={"2xl"} className={"heading-2xl"} color={reward.reward.bonusClaimed === true ? "#0f0" : "#fff"} mr={1}>{displayLong(reward.reward.points)}</Text>
-                                            <Image src={`${cdn}/image/resources/resource_challenge_points.webp`} h={7}/>
+                                            <Image src={`${cdn}/image/resources/currency/resource_challenge_points.webp`} h={7}/>
                                         </Flex>
                                         {reward.reward.bonusClaimed === true ?
                                             <Text fontSize={"md"} className={"heading-md"} color={"#0f0"}>Daily bonus claimed!</Text>
@@ -767,7 +767,7 @@ export default function ChallengePlayer({address, token, room, createChallenge, 
                                     {confirm.cost > 0 ? <Text mt={8} textAlign={"center"}>Warning: If you leave the page after accepting this challenge, your tokens will not be refunded.</Text> : <></>}
                                     <Button onClick={() => {confirm.action(); onCloseConfirm(); onClose();}} mt={8}>
                                         <Text fontSize={"lg"}>{confirm.cost}</Text>
-                                        <Image ml={1} src={`${cdn}/image/resources/resource_tokens.webp`} h={5}/>
+                                        <Image ml={1} src={`${cdn}/image/resources/currency/resource_tokens.webp`} h={5}/>
                                     </Button>
                                 </Flex>
                             </ModalBody>

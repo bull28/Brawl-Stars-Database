@@ -6,6 +6,8 @@ import { AxiosError } from 'axios'
 import BrawlBoxContents from "./BrawlBoxContents";
 import cdn from "../helpers/CDNRoute";
 
+const tokensImage = `${cdn}/image/resources/currency/resource_tokens.webp`;
+
 export default function BrawlBoxDisplay({data, tokens, loadResources}: {data: BrawlBoxData; tokens: number | undefined; loadResources: () => void;}){
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { isOpen: isOpen2, onOpen: onOpen2, onClose: onClose2 } = useDisclosure() //fix
@@ -42,7 +44,7 @@ export default function BrawlBoxDisplay({data, tokens, loadResources}: {data: Br
             <Image src={`${cdn}/image/${data.image}`} fallback={<Spinner/>}/>
             <Flex w={'100%'} justifyContent={'center'} alignItems={'center'} mt={3}>
                 <Text fontSize={'xl'} className={'heading-2xl'} mr={1}>{data.cost}</Text>
-                <Image w={'22px'} h={'22px'} src={`${cdn}/image/resources/resource_tokens.webp`}/>
+                <Image w={'22px'} h={'22px'} src={tokensImage}/>
             </Flex>
             <AlertDialog isOpen={isOpen} onClose={onClose} leastDestructiveRef={cancelRef}>
                 <AlertDialogOverlay>
@@ -67,7 +69,7 @@ export default function BrawlBoxDisplay({data, tokens, loadResources}: {data: Br
                             <Button className={"heading-md"} colorScheme={(tokens && (tokens < data.cost)) ? 'red' : 'green'} onClick={() => {openBox(data.name)}} ml={3}>
                                 <Flex alignItems={'center'} justifyContent={'center'} textAlign={'center'}>
                                     <Text fontSize={'lg'} mr={1}>{data.cost}</Text>
-                                    <Image src={`${cdn}/image/resources/resource_tokens.webp`} w={'22px'}/>
+                                    <Image src={tokensImage} w={'22px'}/>
                                 </Flex>
                             </Button>
                         </AlertDialogFooter>
@@ -88,7 +90,7 @@ export default function BrawlBoxDisplay({data, tokens, loadResources}: {data: Br
                                 <Text mr={[0, 3]}>Open Again</Text>
                                 <Flex alignItems={"center"}>
                                     <Text mr={[0, 0.5]}>{data.cost}</Text>
-                                    <Image src={`${cdn}/image/resources/resource_tokens.webp`} w={'22px'}/>
+                                    <Image src={tokensImage} w={'22px'}/>
                                 </Flex>
                             </Flex>
                         </Button>

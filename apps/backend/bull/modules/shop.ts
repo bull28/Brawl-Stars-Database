@@ -1,6 +1,6 @@
 import allSkins from "../data/brawlers_data.json";
 import shopItemsObject from "../data/coinsshop_data.json";
-import {themeMap, sceneMap, AVATAR_SPECIAL_DIR, IMAGE_FILE_EXTENSION, PIN_IMAGE_DIR, RESOURCE_IMAGE_DIR, THEME_SPECIAL_DIR, SCENE_IMAGE_DIR} from "../data/constants";
+import {themeMap, sceneMap, AVATAR_SPECIAL_DIR, IMAGE_FILE_EXTENSION, PIN_IMAGE_DIR, SHOP_ITEM_IMAGE_DIR, THEME_SPECIAL_DIR, SCENE_IMAGE_DIR} from "../data/constants";
 import {getAccessoryPreview} from "./accessories";
 import brawlBox from "./brawlbox";
 import {BrawlBoxDrop, UserResources, ShopItemData, CollectionData, AchievementItems, DatabaseBrawlers} from "../types";
@@ -40,7 +40,7 @@ class ShopItem{
     getDisplay(name: string): ShopItemPreview{
         let image = "";
         if (this.display.image !== ""){
-            image = RESOURCE_IMAGE_DIR + this.display.image + IMAGE_FILE_EXTENSION;
+            image = SHOP_ITEM_IMAGE_DIR + this.display.image + IMAGE_FILE_EXTENSION;
         }
 
         return {

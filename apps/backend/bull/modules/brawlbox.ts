@@ -1,4 +1,4 @@
-import {IMAGE_FILE_EXTENSION, RESOURCE_IMAGE_DIR, BRAWL_BOX_RARE_DROP} from "../data/constants";
+import {IMAGE_FILE_EXTENSION, BRAWLBOX_IMAGE_DIR, BRAWL_BOX_RARE_DROP} from "../data/constants";
 import {
     RNG, 
     createCoinsReward, 
@@ -530,7 +530,7 @@ for (const x in boxes){
             name: x,
             displayName: display.name,
             cost: boxes[x].cost,
-            image: RESOURCE_IMAGE_DIR + display.image + IMAGE_FILE_EXTENSION,
+            image: BRAWLBOX_IMAGE_DIR + display.image + IMAGE_FILE_EXTENSION,
             description: display.description,
             dropsDescription: display.dropsDescription
         });

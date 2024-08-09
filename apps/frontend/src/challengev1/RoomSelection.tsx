@@ -53,7 +53,7 @@ export default function UnitSelection({data, level, setSelected}: RoomSelectionP
                                         <Text w={"80%"} className={"heading-md"}>{`Requires Level ${value.requiredLevel}`}</Text>
                                         <Button w={"20%"} isDisabled={level < value.requiredLevel} onClick={() => {setSelected({username: value.username, acceptCost: value.acceptCost}); animateScroll.scrollToTop();}}>
                                             <Text fontSize={"lg"}>{value.acceptCost}</Text>
-                                            <Image ml={1} src={`${cdn}/image/resources/resource_tokens.webp`} h={5}/>
+                                            <Image ml={1} src={`${cdn}/image/resources/currency/resource_tokens.webp`} h={5}/>
                                         </Button>
                                     </Flex>
                                 </Flex>

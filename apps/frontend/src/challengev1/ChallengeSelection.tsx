@@ -45,11 +45,11 @@ export default function ChallengeSelection({data, level, setSelected}: Challenge
                                         <Flex w={"50%"} flexDir={"column"} alignItems={"center"} justifyContent={"center"}>
                                             <Flex alignItems={"center"}>
                                                 <Text fontSize={"lg"} className={"heading-lg"} mr={1}>{displayLong(value.reward.coins)}</Text>
-                                                <Image src={`${cdn}/image/resources/resource_coins.webp`} h={5}/>
+                                                <Image src={`${cdn}/image/resources/currency/resource_coins.webp`} h={5}/>
                                             </Flex>
                                             <Flex alignItems={"center"}>
                                                 <Text fontSize={"lg"} className={"heading-lg"} mr={1}>{displayLong(value.reward.points)}</Text>
-                                                <Image src={`${cdn}/image/resources/resource_challenge_points.webp`} h={5}/>
+                                                <Image src={`${cdn}/image/resources/currency/resource_challenge_points.webp`} h={5}/>
                                             </Flex>
                                         </Flex>
                                         {(value.reward.accessory.displayName !== "") ?
@@ -76,7 +76,7 @@ export default function ChallengeSelection({data, level, setSelected}: Challenge
                                         <Text w={"80%"} className={"heading-md"}>{`Requires Level ${value.requiredLevel}`}</Text>
                                         <Button w={"20%"} isDisabled={level < value.requiredLevel} onClick={() => {setSelected({challengeid: value.challengeid, displayName: value.displayName, acceptCost: value.acceptCost}); animateScroll.scrollToTop();}}>
                                             <Text fontSize={"lg"}>{value.acceptCost}</Text>
-                                            <Image ml={1} src={`${cdn}/image/resources/resource_tokens.webp`} h={5}/>
+                                            <Image ml={1} src={`${cdn}/image/resources/currency/resource_tokens.webp`} h={5}/>
                                         </Button>
                                     </Flex>
                                 </Flex>

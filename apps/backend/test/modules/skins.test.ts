@@ -1,6 +1,6 @@
 import {expect} from "chai";
 import allSkins from "../../bull/data/brawlers_data.json";
-import {PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR, SKIN_IMAGE_DIR, SKINGROUP_ICON_DIR, SKINGROUP_IMAGE_DIR, SKIN_RARITY_ICON_DIR, MASTERY_IMAGE_DIR} from "../../bull/data/constants";
+import {PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR, SKIN_IMAGE_DIR, SKINGROUP_ICON_DIR, SKINGROUP_IMAGE_DIR, SKIN_RARITY_ICON_DIR, MASTERY_ICON_DIR} from "../../bull/data/constants";
 import {getBrawler, getSkin, getBrawlerData, getSkinData, skinSearch} from "../../bull/modules/skins";
 
 describe("Brawlers and Skins module", function(){
@@ -41,7 +41,7 @@ describe("Brawlers and Skins module", function(){
         expect(data.image).to.equal(PORTRAIT_IMAGE_DIR + brawler.image);
         expect(data.defaultSkin).to.equal(brawler.defaultSkin);
         expect(data.title).to.equal(brawler.title);
-        expect(data.masteryIcon).to.equal(MASTERY_IMAGE_DIR + brawler.masteryIcon);
+        expect(data.masteryIcon).to.equal(MASTERY_ICON_DIR + brawler.masteryIcon);
 
         // Skin
         const skin = brawler.skins[0];

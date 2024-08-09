@@ -336,13 +336,13 @@ export default function Trade() {
                 <Flex>
                     <HStack spacing={1} alignItems={'center'} justifyContent={'center'} wrap={'wrap'}>
                         <Flex py={'15px'} px={4} h={'50px'} bgColor={'#f98f92'} justifyContent={'center'} alignItems={'center'} borderRadius={'5%'}>
-                            <Image h={'50px'} src={`${cdn}/image/resources/resource_trade_credits.webp`}/>
+                            <Image h={'50px'} src={`${cdn}/image/resources/currency/resource_trade_credits.webp`}/>
                             <Text pl={2} fontSize={'lg'} minW={'40px'} textAlign={'center'} className={'heading-lg'}>{resources.tradeCredits}</Text>
                         </Flex>
                         {resources.wildCardPins.map((wildCard) => {
                             return (
                                 <Flex key={wildCard.rarityName + wildCard.rarityColor} py={'15px'} px={4} h={'50px'} bgColor={wildCard.rarityColor} justifyContent={'center'} alignItems={'center'} borderRadius={'5%'}>
-                                    <Image h={'50px'} src={`${cdn}/image/resources/wildcard_pin.webp`}/>
+                                    <Image h={'50px'} src={`${cdn}/image/resources/currency/wildcard_pin.webp`}/>
                                     <Text pl={2} fontSize={'lg'} minW={'40px'} textAlign={'center'} className={'heading-lg'}>{wildCard.amount}</Text>
                                 </Flex>    
                             );
@@ -550,7 +550,7 @@ export default function Trade() {
 
             <ModalFooter>
                 <Button fontSize={'2xl'} p={5}  mr={3} fontWeight={'normal'} onClick={onClose2}>Cancel</Button>
-                <Button fontSize={'2xl'} p={5} fontWeight={'normal'} onClick={createTrade} rightIcon={<Image maxH={'40px'} src={`${cdn}/image/resources/resource_trade_credits.webp`}/>}>{tradeCost}</Button>
+                <Button fontSize={'2xl'} p={5} fontWeight={'normal'} onClick={createTrade} rightIcon={<Image maxH={'40px'} src={`${cdn}/image/resources/currency/resource_trade_credits.webp`}/>}>{tradeCost}</Button>
             </ModalFooter>
             </ModalContent>
         </Modal>

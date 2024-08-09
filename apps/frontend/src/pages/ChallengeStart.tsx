@@ -118,7 +118,7 @@ export default function ChallengeStart(){
                     <Text fontSize={["xl", "3xl"]} className={"heading-3xl"}>Find Challenge</Text>
                     <Flex fontSize={"xl"} className={"heading-xl"} justifyContent={"center"}>
                         <Text>100</Text>
-                        <Image ml={1} src={`${cdn}/image/resources/resource_tokens.webp`} h={5}/>
+                        <Image ml={1} src={`${cdn}/image/resources/currency/resource_tokens.webp`} h={5}/>
                     </Flex>
                 </Button>
                 </Tooltip>
