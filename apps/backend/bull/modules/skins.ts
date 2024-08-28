@@ -1,5 +1,5 @@
-import {PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR, SKIN_IMAGE_DIR, SKIN_MODEL_DIR, SKINGROUP_ICON_DIR, SKINGROUP_IMAGE_DIR, SKIN_RARITY_ICON_DIR, MASTERY_ICON_DIR} from "../data/constants";
-import {Brawler, Skin, BrawlerData, ModelData, SkinData, SkinSearchFilters, SkinSearchResult} from "../types";
+import {PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR, SKIN_IMAGE_DIR, SKIN_MODEL_DIR, SKINGROUP_ICON_DIR, SKINGROUP_IMAGE_DIR, MASTERY_ICON_DIR, CURRENCY_IMAGE_DIR, REWARD_IMAGE_DIR, skinCurrencies} from "../data/constants";
+import {Brawler, Skin, BrawlerData, SkinCost, ModelData, SkinData, SkinSearchFilters, SkinSearchResult} from "../types";
 
 function skinModelExists(brawlerName: string, model: ModelData): ModelData{
     let key: keyof ModelData;
@@ -118,16 +118,26 @@ export function getSkinData(skin: Skin, brawlerName: string): SkinData{
         });
     }
 
+    const mainCurrency: SkinCost = {amount: skin.cost, currency: "", icon: ""};
+    const blingCurrency: SkinCost = {
+        amount: skin.costBling,
+        currency: skinCurrencies["Bling"].name,
+        icon: CURRENCY_IMAGE_DIR + skinCurrencies["Bling"].image
+    };
+    if (Object.hasOwn(skinCurrencies, skin.currency) === true){
+        mainCurrency.currency = skinCurrencies[skin.currency].name;
+        mainCurrency.icon = CURRENCY_IMAGE_DIR + skinCurrencies[skin.currency].image;
+    }
+
     const skinData: SkinData = {
         name: skin.name,
         displayName: skin.displayName,
-        cost: skin.cost,
-        currency: skin.currency,
-        costBling: skin.costBling,
+        cost: mainCurrency,
+        costBling: blingCurrency,
         rarity: {
             value: skin.rarity.value,
             name: skin.rarity.name,
-            icon: skin.rarity.icon !== "" ? SKIN_RARITY_ICON_DIR + skin.rarity.icon : ""
+            icon: skin.rarity.icon !== "" ? REWARD_IMAGE_DIR + skin.rarity.icon : ""
         },
         requires: skin.requires,
         features: skinFeatures,

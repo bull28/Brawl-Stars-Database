@@ -77,6 +77,15 @@ export interface BrawlerModelData{
 export type Skin = typeof allSkins[number]["skins"][number];
 
 /**
+ * Cost of a skin and the required currency
+ */
+export interface SkinCost{
+    amount: number;
+    currency: string;
+    icon: string;
+}
+
+/**
  * Type that allows checking whether a 3D model exists before trying to load it
  */
 export interface ModelData{
@@ -108,9 +117,8 @@ export interface SkinPreview{
 export interface SkinData{
     name: Skin["name"];
     displayName: Skin["displayName"];
-    cost: Skin["cost"];
-    currency: Skin["currency"];
-    costBling: Skin["costBling"];
+    cost: SkinCost;
+    costBling: SkinCost;
     rarity: Skin["rarity"];
     requires: Skin["requires"];
     features: Skin["features"];

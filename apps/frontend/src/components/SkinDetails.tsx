@@ -11,16 +11,9 @@ interface SkinDetailsProps{
     data: SkinData;
 }
 
-export const currencyImages: Record<string, string> = {
-    Gems: "icon_gems.webp",
-    Coins: "icon_coins.webp",
-    ClubCoins: "icon_clubcoins.webp",
-    Bling: "icon_bling.webp"
-};
-
 export function getCostText(skin: SkinData): string{
-    if (skin.cost > 0){
-        return skin.cost.toString();
+    if (skin.cost.amount > 0){
+        return `${skin.cost.amount}`;
     }
     if (skin.name.includes("default") === true){
         return "Default";
@@ -60,14 +53,14 @@ export default function SkinDetails({data, isOpen, onClose}: SkinDetailsProps){
                         <Text fontSize={"xl"}>Cost:</Text>
                         <Flex alignItems={"center"}>
                             <Text fontSize={"xl"} mr={1}>{getCostText(data)}</Text>
-                            {currencyImages.hasOwnProperty(data.currency) === true && <Image src={`${cdn}/image/resources/currency/${currencyImages[data.currency]}`} alt={data.currency} h={6}/>}
+                            {data.cost.icon !== "" && <Image src={`${cdn}/image/${data.cost.icon}`} alt={data.cost.currency} h={6}/>}
                         </Flex>
-                        {(data.costBling > 0) &&
+                        {(data.costBling.amount > 0) &&
                         <>
                         <Text fontSize={"xl"}>or</Text>
                         <Flex alignItems={"center"}>
-                            <Text fontSize={"xl"} mr={1}>{data.costBling}</Text>
-                            {currencyImages.hasOwnProperty("Bling") === true && <Image src={`${cdn}/image/resources/currency/${currencyImages["Bling"]}`} alt={"Bling"} h={6}/>}
+                            <Text fontSize={"xl"} mr={1}>{data.costBling.amount}</Text>
+                            <Image src={`${cdn}/image/${data.costBling.icon}`} alt={data.costBling.currency} h={6}/>
                         </Flex>
                         </>
                         }

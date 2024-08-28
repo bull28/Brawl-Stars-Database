@@ -47,10 +47,16 @@ export const tables = {
 
 
 // Read environment variables first before connecting
+let success = true;
 
 if (process.env["DATABASE_HOST"] !== undefined){
     databaseLogin.host = process.env["DATABASE_HOST"];
-} if (process.env["DATABASE_PORT"] !== undefined){
+} else{
+    console.log("No database host provided.");
+    success = false;
+}
+
+if (process.env["DATABASE_PORT"] !== undefined){
     const portString = process.env["DATABASE_PORT"];
     if (isNaN(+portString) === false){
         databaseLogin.port = parseInt(portString);
@@ -88,15 +94,16 @@ if (process.env["DATABASE_TABLE_NAME"] !== undefined){
 
 const pool = mysql2.createPool(databaseLogin);
 
-let success = true;
 
+if (success === true){
+    pool.query("SELECT 69", []).catch((error) => {
+        if (error !== null && error !== undefined){
+            console.log("Could not connect to database.");
+            success = false;
+        }
+    });
+}
 
-pool.query("SELECT 69", []).catch((error) => {
-    if (error !== null && error !== undefined){
-        console.log("Could not connect to database.");
-        success = false;
-    }
-});
 
 process.on("SIGINT", async () => {
     try{

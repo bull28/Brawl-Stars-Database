@@ -1,6 +1,6 @@
 import {expect} from "chai";
 import allSkins from "../../bull/data/brawlers_data.json";
-import {PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR, SKIN_IMAGE_DIR, SKINGROUP_ICON_DIR, SKINGROUP_IMAGE_DIR, SKIN_RARITY_ICON_DIR, MASTERY_ICON_DIR} from "../../bull/data/constants";
+import {PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR, SKIN_IMAGE_DIR, SKINGROUP_ICON_DIR, SKINGROUP_IMAGE_DIR, MASTERY_ICON_DIR, REWARD_IMAGE_DIR} from "../../bull/data/constants";
 import {getBrawler, getSkin, getBrawlerData, getSkinData, skinSearch} from "../../bull/modules/skins";
 
 describe("Brawlers and Skins module", function(){
@@ -49,23 +49,24 @@ describe("Brawlers and Skins module", function(){
 
         expect(skinData).to.be.an("object");
         expect(skinData).to.have.keys([
-            "name", "displayName", "cost", "currency", "costBling", "rarity", "requires",
+            "name", "displayName", "cost", "costBling", "rarity", "requires",
             "features", "groups", "limited", "unlock", "release", "rating", "image", "model"
         ]);
+        expect(skinData.cost).to.have.keys(["amount", "currency", "icon"]);
+        expect(skinData.costBling).to.have.keys(["amount", "currency", "icon"]);
         expect(skinData.rarity).to.have.keys(["value", "name", "icon"]);
         expect(skinData.release).to.have.keys(["month", "year"]);
         expect(skinData.model).to.have.keys(["geometry", "winAnimation", "loseAnimation"]);
 
         expect(skinData.name).to.equal(skin.name);
         expect(skinData.displayName).to.equal(skin.displayName);
-        expect(skinData.cost).to.equal(skin.cost);
-        expect(skinData.currency).to.equal(skin.currency);
-        expect(skinData.costBling).to.equal(skin.costBling);
+        expect(skinData.cost.amount).to.equal(skin.cost);
+        expect(skinData.costBling.amount).to.equal(skin.costBling);
 
         expect(skinData.rarity.value).to.equal(skin.rarity.value);
         expect(skinData.rarity.name).to.equal(skin.rarity.name);
         if (skin.rarity.icon !== ""){
-            expect(skinData.rarity.icon).to.equal(SKIN_RARITY_ICON_DIR + skin.rarity.icon);
+            expect(skinData.rarity.icon).to.equal(REWARD_IMAGE_DIR + skin.rarity.icon);
         } else{
             expect(skinData.rarity.icon).to.equal("");
         }

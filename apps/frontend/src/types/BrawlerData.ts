@@ -4,6 +4,12 @@ interface Rarity{
     color: string;
 }
 
+interface Cost{
+    amount: number;
+    currency: string;
+    icon: string;
+}
+
 export interface BrawlerData{
     name: string;
     displayName: string;
@@ -39,9 +45,8 @@ export interface ModelFiles{
 export interface SkinData{
     name: string;
     displayName: string;
-    cost: number;
-    currency: string;
-    costBling: number;
+    cost: Cost;
+    costBling: Cost;
     rarity: {
         value: number;
         name: string;

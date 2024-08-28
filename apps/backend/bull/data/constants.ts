@@ -5,7 +5,6 @@ export const SKIN_IMAGE_DIR = "skins/";
 export const SKIN_MODEL_DIR = "models/";
 export const SKINGROUP_IMAGE_DIR = "skingroups/backgrounds/";
 export const SKINGROUP_ICON_DIR = "skingroups/icons/";
-export const SKIN_RARITY_ICON_DIR = "skingroups/rarities/";
 export const MASTERY_ICON_DIR = "mastery/";
 export const PIN_IMAGE_DIR = "pins/";
 export const GAMEMODE_IMAGE_DIR = "gamemodes/";
@@ -15,6 +14,7 @@ export const BRAWLBOX_IMAGE_DIR = "resources/boxes/";
 export const CURRENCY_IMAGE_DIR = "resources/currency/";
 export const MASTERY_LEVEL_DIR = "resources/mastery/";
 export const SHOP_ITEM_IMAGE_DIR = "resources/shop/";
+export const REWARD_IMAGE_DIR = "resources/rewards/";
 export const AVATAR_IMAGE_DIR = "avatars/";
 export const AVATAR_SPECIAL_DIR = "avatars/special/";
 export const THEME_IMAGE_DIR = "themes/";
@@ -36,6 +36,13 @@ export const DEFAULT_REPORT_COST = 200;
 export const CHALLENGE_REPORT_COST = 100;
 
 export const BRAWL_BOX_RARE_DROP = 0.2;
+
+export const skinCurrencies: Record<string, {name: string; image: string;}> = {
+    "Gems": {name: "Gems", image: "icon_gems" + IMAGE_FILE_EXTENSION},
+    "Coins": {name: "Coins", image: "icon_coins" + IMAGE_FILE_EXTENSION},
+    "ClubCoins": {name: "Club Coins", image: "icon_clubcoins" + IMAGE_FILE_EXTENSION},
+    "Bling": {name: "Bling", image: "icon_bling" + IMAGE_FILE_EXTENSION}
+};
 
 export const themeMap = new Map<string, string>([
     ["default", "Default"],

@@ -56,7 +56,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -129,7 +129,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -168,7 +168,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -279,7 +279,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -316,7 +316,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -353,7 +353,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -390,7 +390,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -434,7 +434,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -471,7 +471,7 @@
                 "rarity": {
                     "value": 4,
                     "name": "Mythic",
-                    "icon": "icon_rarity_4.webp"
+                    "icon": "skin_rarity_4.webp"
                 },
                 "requires": "",
                 "features": [
@@ -510,7 +510,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -554,7 +554,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "Shelly Dancer",
                 "features": [
@@ -598,7 +598,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "Shelly Dancer",
                 "features": [
@@ -642,7 +642,7 @@
                 "rarity": {
                     "value": 4,
                     "name": "Mythic",
-                    "icon": "icon_rarity_4.webp"
+                    "icon": "skin_rarity_4.webp"
                 },
                 "requires": "",
                 "features": [
@@ -681,7 +681,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -720,7 +720,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -998,7 +998,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -1035,7 +1035,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -1072,7 +1072,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -1112,7 +1112,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -1222,7 +1222,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -1267,7 +1267,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -1310,7 +1310,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -1354,7 +1354,7 @@
                 "rarity": {
                     "value": 5,
                     "name": "Legendary",
-                    "icon": "icon_rarity_5.webp"
+                    "icon": "skin_rarity_5.webp"
                 },
                 "requires": "",
                 "features": [
@@ -1395,7 +1395,7 @@
                 "rarity": {
                     "value": 4,
                     "name": "Mythic",
-                    "icon": "icon_rarity_4.webp"
+                    "icon": "skin_rarity_4.webp"
                 },
                 "requires": "",
                 "features": [
@@ -1434,7 +1434,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -1773,7 +1773,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -1809,7 +1809,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -1847,7 +1847,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -1883,7 +1883,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -1921,7 +1921,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -1960,7 +1960,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -2002,7 +2002,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -2039,7 +2039,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -2076,7 +2076,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -2113,7 +2113,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -2224,7 +2224,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -2262,7 +2262,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -2306,7 +2306,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -2345,7 +2345,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -2389,7 +2389,7 @@
                 "rarity": {
                     "value": 5,
                     "name": "Legendary",
-                    "icon": "icon_rarity_5.webp"
+                    "icon": "skin_rarity_5.webp"
                 },
                 "requires": "",
                 "features": [
@@ -2430,7 +2430,7 @@
                 "rarity": {
                     "value": 5,
                     "name": "Legendary",
-                    "icon": "icon_rarity_5.webp"
+                    "icon": "skin_rarity_5.webp"
                 },
                 "requires": "Mecha Colt",
                 "features": [
@@ -2471,7 +2471,7 @@
                 "rarity": {
                     "value": 5,
                     "name": "Legendary",
-                    "icon": "icon_rarity_5.webp"
+                    "icon": "skin_rarity_5.webp"
                 },
                 "requires": "Mecha Colt",
                 "features": [
@@ -2807,7 +2807,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -2844,7 +2844,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -2880,7 +2880,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "Touchdown Bull",
                 "features": [
@@ -2916,7 +2916,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -3029,7 +3029,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -3069,7 +3069,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -3113,7 +3113,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -3152,7 +3152,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -3191,7 +3191,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -3230,7 +3230,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -3269,7 +3269,7 @@
                 "rarity": {
                     "value": 4,
                     "name": "Mythic",
-                    "icon": "icon_rarity_4.webp"
+                    "icon": "skin_rarity_4.webp"
                 },
                 "requires": "",
                 "features": [
@@ -3504,7 +3504,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -3542,7 +3542,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -3578,7 +3578,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -3616,7 +3616,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -3653,7 +3653,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -3695,7 +3695,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -3806,7 +3806,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -3850,7 +3850,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -3887,7 +3887,7 @@
                 "rarity": {
                     "value": 4,
                     "name": "Mythic",
-                    "icon": "icon_rarity_4.webp"
+                    "icon": "skin_rarity_4.webp"
                 },
                 "requires": "",
                 "features": [
@@ -3926,7 +3926,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -3965,7 +3965,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -4009,7 +4009,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -4048,7 +4048,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -4087,7 +4087,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -4126,7 +4126,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -4165,7 +4165,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -4204,7 +4204,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -4248,7 +4248,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -4292,7 +4292,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -4606,7 +4606,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -4644,7 +4644,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -4682,7 +4682,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -4794,7 +4794,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -4832,7 +4832,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -4869,7 +4869,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -4906,7 +4906,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -4943,7 +4943,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -4982,7 +4982,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -5021,7 +5021,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -5060,7 +5060,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -5098,7 +5098,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -5142,7 +5142,7 @@
                 "rarity": {
                     "value": 4,
                     "name": "Mythic",
-                    "icon": "icon_rarity_4.webp"
+                    "icon": "skin_rarity_4.webp"
                 },
                 "requires": "",
                 "features": [
@@ -5181,7 +5181,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -5452,7 +5452,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -5528,7 +5528,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -5566,7 +5566,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -5603,7 +5603,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "Wizard Barley",
                 "features": [
@@ -5713,7 +5713,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -5752,7 +5752,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -5791,7 +5791,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -6026,7 +6026,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -6063,7 +6063,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -6100,7 +6100,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -6142,7 +6142,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -6256,7 +6256,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -6300,7 +6300,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -6517,7 +6517,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -6555,7 +6555,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -6594,7 +6594,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -6712,7 +6712,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -6751,7 +6751,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -7049,7 +7049,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -7088,7 +7088,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -7126,7 +7126,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "Dragon Knight Jessie",
                 "features": [
@@ -7165,7 +7165,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -7204,7 +7204,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -7316,7 +7316,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -7355,7 +7355,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -7392,7 +7392,7 @@
                 "rarity": {
                     "value": 4,
                     "name": "Mythic",
-                    "icon": "icon_rarity_4.webp"
+                    "icon": "skin_rarity_4.webp"
                 },
                 "requires": "",
                 "features": [
@@ -7618,7 +7618,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -7655,7 +7655,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -7692,7 +7692,7 @@
                 "rarity": {
                     "value": 5,
                     "name": "Legendary",
-                    "icon": "icon_rarity_5.webp"
+                    "icon": "skin_rarity_5.webp"
                 },
                 "requires": "",
                 "features": [
@@ -7732,7 +7732,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -7771,7 +7771,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -7814,7 +7814,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -7853,7 +7853,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -7892,7 +7892,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -7931,7 +7931,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -7970,7 +7970,7 @@
                 "rarity": {
                     "value": 4,
                     "name": "Mythic",
-                    "icon": "icon_rarity_4.webp"
+                    "icon": "skin_rarity_4.webp"
                 },
                 "requires": "",
                 "features": [
@@ -8083,7 +8083,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -8120,7 +8120,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -8159,7 +8159,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -8203,7 +8203,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -8553,7 +8553,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -8591,7 +8591,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -8704,7 +8704,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -8742,7 +8742,7 @@
                 "rarity": {
                     "value": 4,
                     "name": "Mythic",
-                    "icon": "icon_rarity_4.webp"
+                    "icon": "skin_rarity_4.webp"
                 },
                 "requires": "",
                 "features": [
@@ -8781,7 +8781,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -8825,7 +8825,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -8869,7 +8869,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -9118,7 +9118,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -9154,7 +9154,7 @@
                 "rarity": {
                     "value": 5,
                     "name": "Legendary",
-                    "icon": "icon_rarity_5.webp"
+                    "icon": "skin_rarity_5.webp"
                 },
                 "requires": "",
                 "features": [
@@ -9194,7 +9194,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -9313,7 +9313,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -9352,7 +9352,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -9391,7 +9391,7 @@
                 "rarity": {
                     "value": 5,
                     "name": "Legendary",
-                    "icon": "icon_rarity_5.webp"
+                    "icon": "skin_rarity_5.webp"
                 },
                 "requires": "",
                 "features": [
@@ -9432,7 +9432,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -9825,7 +9825,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -9862,7 +9862,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -9899,7 +9899,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -9935,7 +9935,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -10049,7 +10049,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -10088,7 +10088,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -10132,7 +10132,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -10176,7 +10176,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -10213,7 +10213,7 @@
                 "rarity": {
                     "value": 6,
                     "name": "Hypercharge",
-                    "icon": "icon_rarity_6.webp"
+                    "icon": "skin_rarity_6.webp"
                 },
                 "requires": "",
                 "features": [
@@ -10259,7 +10259,7 @@
                 "rarity": {
                     "value": 6,
                     "name": "Hypercharge",
-                    "icon": "icon_rarity_6.webp"
+                    "icon": "skin_rarity_6.webp"
                 },
                 "requires": "",
                 "features": [
@@ -10305,7 +10305,7 @@
                 "rarity": {
                     "value": 6,
                     "name": "Hypercharge",
-                    "icon": "icon_rarity_6.webp"
+                    "icon": "skin_rarity_6.webp"
                 },
                 "requires": "",
                 "features": [
@@ -10655,7 +10655,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -10693,7 +10693,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -10806,7 +10806,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -10849,7 +10849,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -10888,7 +10888,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -10932,7 +10932,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -10971,7 +10971,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -11197,7 +11197,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -11235,7 +11235,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -11273,7 +11273,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "Bunny Penny",
                 "features": [
@@ -11310,7 +11310,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -11427,7 +11427,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -11471,7 +11471,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -11711,7 +11711,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -11748,7 +11748,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -11784,7 +11784,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -11821,7 +11821,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -11859,7 +11859,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "Captain Carl",
                 "features": [
@@ -11898,7 +11898,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -12016,7 +12016,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -12060,7 +12060,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -12099,7 +12099,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -12305,7 +12305,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -12342,7 +12342,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -12382,7 +12382,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -12427,7 +12427,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -12539,7 +12539,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -12578,7 +12578,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -12622,7 +12622,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -12866,7 +12866,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -12979,7 +12979,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -13016,7 +13016,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -13215,7 +13215,7 @@
                 "rarity": {
                     "value": 5,
                     "name": "Legendary",
-                    "icon": "icon_rarity_5.webp"
+                    "icon": "skin_rarity_5.webp"
                 },
                 "requires": "",
                 "features": [
@@ -13255,7 +13255,7 @@
                 "rarity": {
                     "value": 5,
                     "name": "Legendary",
-                    "icon": "icon_rarity_5.webp"
+                    "icon": "skin_rarity_5.webp"
                 },
                 "requires": "Mecha Bo",
                 "features": [
@@ -13295,7 +13295,7 @@
                 "rarity": {
                     "value": 5,
                     "name": "Legendary",
-                    "icon": "icon_rarity_5.webp"
+                    "icon": "skin_rarity_5.webp"
                 },
                 "requires": "Mecha Bo",
                 "features": [
@@ -13335,7 +13335,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -13379,7 +13379,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -13423,7 +13423,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -13534,7 +13534,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -13573,7 +13573,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -13617,7 +13617,7 @@
                 "rarity": {
                     "value": 4,
                     "name": "Mythic",
-                    "icon": "icon_rarity_4.webp"
+                    "icon": "skin_rarity_4.webp"
                 },
                 "requires": "Brother Bo",
                 "features": [
@@ -13656,7 +13656,7 @@
                 "rarity": {
                     "value": 4,
                     "name": "Mythic",
-                    "icon": "icon_rarity_4.webp"
+                    "icon": "skin_rarity_4.webp"
                 },
                 "requires": "",
                 "features": [
@@ -13990,7 +13990,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -14101,7 +14101,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -14140,7 +14140,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -14184,7 +14184,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -14223,7 +14223,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -14267,7 +14267,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -14311,7 +14311,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -14560,7 +14560,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -14596,7 +14596,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -14633,7 +14633,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -14746,7 +14746,7 @@
                 "rarity": {
                     "value": 5,
                     "name": "Legendary",
-                    "icon": "icon_rarity_5.webp"
+                    "icon": "skin_rarity_5.webp"
                 },
                 "requires": "",
                 "features": [
@@ -14787,7 +14787,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -15076,7 +15076,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -15112,7 +15112,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -15150,7 +15150,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -15262,7 +15262,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -15300,7 +15300,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -15339,7 +15339,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -15383,7 +15383,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -15422,7 +15422,7 @@
                 "rarity": {
                     "value": 4,
                     "name": "Mythic",
-                    "icon": "icon_rarity_4.webp"
+                    "icon": "skin_rarity_4.webp"
                 },
                 "requires": "",
                 "features": [
@@ -15666,7 +15666,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -15705,7 +15705,7 @@
                 "rarity": {
                     "value": 5,
                     "name": "Legendary",
-                    "icon": "icon_rarity_5.webp"
+                    "icon": "skin_rarity_5.webp"
                 },
                 "requires": "",
                 "features": [
@@ -15819,7 +15819,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -16090,7 +16090,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -16126,7 +16126,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -16238,7 +16238,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -16277,7 +16277,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -16321,7 +16321,7 @@
                 "rarity": {
                     "value": 4,
                     "name": "Mythic",
-                    "icon": "icon_rarity_4.webp"
+                    "icon": "skin_rarity_4.webp"
                 },
                 "requires": "",
                 "features": [
@@ -16360,7 +16360,7 @@
                 "rarity": {
                     "value": 5,
                     "name": "Legendary",
-                    "icon": "icon_rarity_5.webp"
+                    "icon": "skin_rarity_5.webp"
                 },
                 "requires": "",
                 "features": [
@@ -16401,7 +16401,7 @@
                 "rarity": {
                     "value": 5,
                     "name": "Legendary",
-                    "icon": "icon_rarity_5.webp"
+                    "icon": "skin_rarity_5.webp"
                 },
                 "requires": "",
                 "features": [
@@ -16442,7 +16442,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -16479,7 +16479,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -16876,7 +16876,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -16915,7 +16915,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -16958,7 +16958,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -16996,7 +16996,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -17107,7 +17107,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -17146,7 +17146,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -17183,7 +17183,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -17222,7 +17222,7 @@
                 "rarity": {
                     "value": 5,
                     "name": "Legendary",
-                    "icon": "icon_rarity_5.webp"
+                    "icon": "skin_rarity_5.webp"
                 },
                 "requires": "",
                 "features": [
@@ -17263,7 +17263,7 @@
                 "rarity": {
                     "value": 4,
                     "name": "Mythic",
-                    "icon": "icon_rarity_4.webp"
+                    "icon": "skin_rarity_4.webp"
                 },
                 "requires": "",
                 "features": [
@@ -17588,7 +17588,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -17624,7 +17624,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -17664,7 +17664,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -17703,7 +17703,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -17742,7 +17742,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -17859,7 +17859,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -18094,7 +18094,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -18131,7 +18131,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -18245,7 +18245,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -18284,7 +18284,7 @@
                 "rarity": {
                     "value": 4,
                     "name": "Mythic",
-                    "icon": "icon_rarity_4.webp"
+                    "icon": "skin_rarity_4.webp"
                 },
                 "requires": "",
                 "features": [
@@ -18492,7 +18492,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -18531,7 +18531,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -18570,7 +18570,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -18609,7 +18609,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -18722,7 +18722,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -18759,7 +18759,7 @@
                 "rarity": {
                     "value": 5,
                     "name": "Legendary",
-                    "icon": "icon_rarity_5.webp"
+                    "icon": "skin_rarity_5.webp"
                 },
                 "requires": "",
                 "features": [
@@ -18800,7 +18800,7 @@
                 "rarity": {
                     "value": 5,
                     "name": "Legendary",
-                    "icon": "icon_rarity_5.webp"
+                    "icon": "skin_rarity_5.webp"
                 },
                 "requires": "Mecha Edgar",
                 "features": [
@@ -18839,7 +18839,7 @@
                 "rarity": {
                     "value": 5,
                     "name": "Legendary",
-                    "icon": "icon_rarity_5.webp"
+                    "icon": "skin_rarity_5.webp"
                 },
                 "requires": "Mecha Edgar",
                 "features": [
@@ -18878,7 +18878,7 @@
                 "rarity": {
                     "value": 4,
                     "name": "Mythic",
-                    "icon": "icon_rarity_4.webp"
+                    "icon": "skin_rarity_4.webp"
                 },
                 "requires": "",
                 "features": [
@@ -19212,7 +19212,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -19325,7 +19325,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -19364,7 +19364,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -19572,7 +19572,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -19685,7 +19685,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -19724,7 +19724,7 @@
                 "rarity": {
                     "value": 4,
                     "name": "Mythic",
-                    "icon": "icon_rarity_4.webp"
+                    "icon": "skin_rarity_4.webp"
                 },
                 "requires": "",
                 "features": [
@@ -19995,7 +19995,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -20108,7 +20108,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -20145,7 +20145,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -20182,7 +20182,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -20381,7 +20381,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -20425,7 +20425,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -20543,7 +20543,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -20582,7 +20582,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -20885,7 +20885,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -20929,7 +20929,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -20967,7 +20967,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -21085,7 +21085,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -21129,7 +21129,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -21173,7 +21173,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -21217,7 +21217,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -21261,7 +21261,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -21595,7 +21595,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -21639,7 +21639,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -21752,7 +21752,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -22041,7 +22041,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -22159,7 +22159,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -22198,7 +22198,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -22242,7 +22242,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -22531,7 +22531,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -22575,7 +22575,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -22688,7 +22688,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -22732,7 +22732,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -22771,7 +22771,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -22815,7 +22815,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -23122,7 +23122,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -23166,7 +23166,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -23205,7 +23205,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -23316,7 +23316,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -23605,7 +23605,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -23649,7 +23649,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -23760,7 +23760,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -24031,7 +24031,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -24068,7 +24068,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -24112,7 +24112,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -24471,7 +24471,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -24508,7 +24508,7 @@
                 "rarity": {
                     "value": 4,
                     "name": "Mythic",
-                    "icon": "icon_rarity_4.webp"
+                    "icon": "skin_rarity_4.webp"
                 },
                 "requires": "",
                 "features": [
@@ -24698,7 +24698,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -24735,7 +24735,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -25085,7 +25085,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -25122,7 +25122,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -25391,7 +25391,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -25428,7 +25428,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -25701,7 +25701,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -25880,7 +25880,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -25953,7 +25953,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -25990,7 +25990,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -26178,7 +26178,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -26215,7 +26215,7 @@
                 "rarity": {
                     "value": 5,
                     "name": "Legendary",
-                    "icon": "icon_rarity_5.webp"
+                    "icon": "skin_rarity_5.webp"
                 },
                 "requires": "",
                 "features": [
@@ -26255,7 +26255,7 @@
                 "rarity": {
                     "value": 5,
                     "name": "Legendary",
-                    "icon": "icon_rarity_5.webp"
+                    "icon": "skin_rarity_5.webp"
                 },
                 "requires": "Mecha Mortis",
                 "features": [
@@ -26295,7 +26295,7 @@
                 "rarity": {
                     "value": 5,
                     "name": "Legendary",
-                    "icon": "icon_rarity_5.webp"
+                    "icon": "skin_rarity_5.webp"
                 },
                 "requires": "Mecha Mortis",
                 "features": [
@@ -26335,7 +26335,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -26374,7 +26374,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -26679,7 +26679,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -26715,7 +26715,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -26828,7 +26828,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -26867,7 +26867,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -26906,7 +26906,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -26945,7 +26945,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -27171,7 +27171,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -27207,7 +27207,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -27322,7 +27322,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -27361,7 +27361,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -27583,7 +27583,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -27619,7 +27619,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -27656,7 +27656,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -27695,7 +27695,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -27807,7 +27807,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -27846,7 +27846,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "Leopard Max",
                 "features": [
@@ -28072,7 +28072,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -28183,7 +28183,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -28222,7 +28222,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -28261,7 +28261,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -28300,7 +28300,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -28522,7 +28522,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -28559,7 +28559,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -28598,7 +28598,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -28636,7 +28636,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -28674,7 +28674,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -28787,7 +28787,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -29022,7 +29022,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -29066,7 +29066,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -29179,7 +29179,7 @@
                 "rarity": {
                     "value": 4,
                     "name": "Mythic",
-                    "icon": "icon_rarity_4.webp"
+                    "icon": "skin_rarity_4.webp"
                 },
                 "requires": "",
                 "features": [
@@ -29218,7 +29218,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -29255,7 +29255,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -29477,7 +29477,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -29516,7 +29516,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -29555,7 +29555,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -29594,7 +29594,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -29707,7 +29707,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -29746,7 +29746,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -29961,7 +29961,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -30005,7 +30005,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -30044,7 +30044,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -30156,7 +30156,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -30459,7 +30459,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -30503,7 +30503,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -30615,7 +30615,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -30654,7 +30654,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -30934,7 +30934,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -30959,7 +30959,7 @@
                 "limited": true,
                 "unlock": "Reward from Brawl Pass Season 7 tier 70",
                 "release": {
-                    "month": 8,
+                    "month": 6,
                     "year": 2021
                 },
                 "image": "ropedudepunk.webp",
@@ -30979,7 +30979,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -31097,7 +31097,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -31136,7 +31136,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -31173,7 +31173,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -31217,7 +31217,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "Fenrir Buzz",
                 "features": [
@@ -31261,7 +31261,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "Fenrir Buzz",
                 "features": [
@@ -31305,7 +31305,7 @@
                 "rarity": {
                     "value": 6,
                     "name": "Hypercharge",
-                    "icon": "icon_rarity_6.webp"
+                    "icon": "skin_rarity_6.webp"
                 },
                 "requires": "",
                 "features": [
@@ -31346,7 +31346,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -31390,7 +31390,7 @@
                 "rarity": {
                     "value": 6,
                     "name": "Hypercharge",
-                    "icon": "icon_rarity_6.webp"
+                    "icon": "skin_rarity_6.webp"
                 },
                 "requires": "",
                 "features": [
@@ -31431,7 +31431,7 @@
                 "rarity": {
                     "value": 6,
                     "name": "Hypercharge",
-                    "icon": "icon_rarity_6.webp"
+                    "icon": "skin_rarity_6.webp"
                 },
                 "requires": "",
                 "features": [
@@ -31857,7 +31857,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -31896,7 +31896,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -32009,7 +32009,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -32053,7 +32053,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -32092,7 +32092,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -32131,7 +32131,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -32170,7 +32170,7 @@
                 "rarity": {
                     "value": 4,
                     "name": "Mythic",
-                    "icon": "icon_rarity_4.webp"
+                    "icon": "skin_rarity_4.webp"
                 },
                 "requires": "",
                 "features": [
@@ -32495,7 +32495,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -32613,7 +32613,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -32652,7 +32652,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -32937,7 +32937,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -33055,7 +33055,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -33092,7 +33092,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -33131,7 +33131,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -33170,7 +33170,7 @@
                 "rarity": {
                     "value": 4,
                     "name": "Mythic",
-                    "icon": "icon_rarity_4.webp"
+                    "icon": "skin_rarity_4.webp"
                 },
                 "requires": "",
                 "features": [
@@ -33468,7 +33468,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -33586,7 +33586,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -33625,7 +33625,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -33905,7 +33905,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -34023,7 +34023,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -34294,7 +34294,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -34331,7 +34331,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -34370,7 +34370,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "Detective Gray",
                 "features": [
@@ -34634,7 +34634,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -34678,7 +34678,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -34789,7 +34789,7 @@
                 "rarity": {
                     "value": 4,
                     "name": "Mythic",
-                    "icon": "icon_rarity_4.webp"
+                    "icon": "skin_rarity_4.webp"
                 },
                 "requires": "",
                 "features": [
@@ -35060,7 +35060,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -35097,7 +35097,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -35361,7 +35361,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -35472,7 +35472,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -35662,7 +35662,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -35699,7 +35699,7 @@
                 "rarity": {
                     "value": 5,
                     "name": "Legendary",
-                    "icon": "icon_rarity_5.webp"
+                    "icon": "skin_rarity_5.webp"
                 },
                 "requires": "",
                 "features": [
@@ -36037,7 +36037,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -36081,7 +36081,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -36118,7 +36118,7 @@
                 "rarity": {
                     "value": 5,
                     "name": "Legendary",
-                    "icon": "icon_rarity_5.webp"
+                    "icon": "skin_rarity_5.webp"
                 },
                 "requires": "",
                 "features": [
@@ -36546,7 +36546,7 @@
                 "rarity": {
                     "value": 5,
                     "name": "Legendary",
-                    "icon": "icon_rarity_5.webp"
+                    "icon": "skin_rarity_5.webp"
                 },
                 "requires": "",
                 "features": [
@@ -36587,7 +36587,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -36624,7 +36624,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -36978,7 +36978,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -37015,7 +37015,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -37284,7 +37284,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -37537,7 +37537,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -37716,7 +37716,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -37753,7 +37753,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -37792,7 +37792,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -37829,7 +37829,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -37942,7 +37942,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -37980,7 +37980,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -38019,7 +38019,7 @@
                 "rarity": {
                     "value": 5,
                     "name": "Legendary",
-                    "icon": "icon_rarity_5.webp"
+                    "icon": "skin_rarity_5.webp"
                 },
                 "requires": "",
                 "features": [
@@ -38059,7 +38059,7 @@
                 "rarity": {
                     "value": 4,
                     "name": "Mythic",
-                    "icon": "icon_rarity_4.webp"
+                    "icon": "skin_rarity_4.webp"
                 },
                 "requires": "",
                 "features": [
@@ -38384,7 +38384,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -38421,7 +38421,7 @@
                 "rarity": {
                     "value": 5,
                     "name": "Legendary",
-                    "icon": "icon_rarity_5.webp"
+                    "icon": "skin_rarity_5.webp"
                 },
                 "requires": "",
                 "features": [
@@ -38459,7 +38459,7 @@
                 "rarity": {
                     "value": 5,
                     "name": "Legendary",
-                    "icon": "icon_rarity_5.webp"
+                    "icon": "skin_rarity_5.webp"
                 },
                 "requires": "",
                 "features": [
@@ -38499,7 +38499,7 @@
                 "rarity": {
                     "value": 5,
                     "name": "Legendary",
-                    "icon": "icon_rarity_5.webp"
+                    "icon": "skin_rarity_5.webp"
                 },
                 "requires": "Mecha Crow",
                 "features": [
@@ -38539,7 +38539,7 @@
                 "rarity": {
                     "value": 5,
                     "name": "Legendary",
-                    "icon": "icon_rarity_5.webp"
+                    "icon": "skin_rarity_5.webp"
                 },
                 "requires": "Mecha Crow",
                 "features": [
@@ -38653,7 +38653,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -38692,7 +38692,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -39080,7 +39080,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -39117,7 +39117,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -39156,7 +39156,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -39267,7 +39267,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -39306,7 +39306,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -39345,7 +39345,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -39382,7 +39382,7 @@
                 "rarity": {
                     "value": 4,
                     "name": "Mythic",
-                    "icon": "icon_rarity_4.webp"
+                    "icon": "skin_rarity_4.webp"
                 },
                 "requires": "",
                 "features": [
@@ -39421,7 +39421,7 @@
                 "rarity": {
                     "value": 5,
                     "name": "Legendary",
-                    "icon": "icon_rarity_5.webp"
+                    "icon": "skin_rarity_5.webp"
                 },
                 "requires": "",
                 "features": [
@@ -39462,7 +39462,7 @@
                 "rarity": {
                     "value": 5,
                     "name": "Legendary",
-                    "icon": "icon_rarity_5.webp"
+                    "icon": "skin_rarity_5.webp"
                 },
                 "requires": "Mecha Leon",
                 "features": [
@@ -39503,7 +39503,7 @@
                 "rarity": {
                     "value": 5,
                     "name": "Legendary",
-                    "icon": "icon_rarity_5.webp"
+                    "icon": "skin_rarity_5.webp"
                 },
                 "requires": "Mecha Leon",
                 "features": [
@@ -39821,7 +39821,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -39857,7 +39857,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -39896,7 +39896,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -40009,7 +40009,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -40048,7 +40048,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -40092,7 +40092,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -40136,7 +40136,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -40180,7 +40180,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -40429,7 +40429,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -40542,7 +40542,7 @@
                 "rarity": {
                     "value": 5,
                     "name": "Legendary",
-                    "icon": "icon_rarity_5.webp"
+                    "icon": "skin_rarity_5.webp"
                 },
                 "requires": "",
                 "features": [
@@ -40583,7 +40583,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -40859,7 +40859,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -40898,7 +40898,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -41011,7 +41011,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -41055,7 +41055,7 @@
                 "rarity": {
                     "value": 4,
                     "name": "Mythic",
-                    "icon": "icon_rarity_4.webp"
+                    "icon": "skin_rarity_4.webp"
                 },
                 "requires": "",
                 "features": [
@@ -41272,7 +41272,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -41314,7 +41314,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -41352,7 +41352,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -41465,7 +41465,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -41509,7 +41509,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -41548,7 +41548,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -41837,7 +41837,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -41948,7 +41948,7 @@
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
-                    "icon": "icon_rarity_2.webp"
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -41987,7 +41987,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -42191,7 +42191,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -42228,7 +42228,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -42272,7 +42272,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -42311,7 +42311,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -42674,7 +42674,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -42718,7 +42718,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
@@ -42755,7 +42755,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -42799,7 +42799,7 @@
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
-                    "icon": "icon_rarity_3.webp"
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -43086,7 +43086,7 @@
                 "rarity": {
                     "value": 1,
                     "name": "Rare",
-                    "icon": "icon_rarity_1.webp"
+                    "icon": "skin_rarity_1.webp"
                 },
                 "requires": "",
                 "features": [
