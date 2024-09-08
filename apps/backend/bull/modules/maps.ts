@@ -16,10 +16,10 @@ import {
     RewardStackTimes
 } from "../types";
 
-// Last updated: Brawl Pass Season 28
-export const MAP_CYCLE_HOURS = 576;
-const MAP_CYCLE_SECONDS = 2073600;
-const SEASON_SECONDS = 14515200;
+// Last updated: Brawl Pass Season 30
+export const MAP_CYCLE_HOURS = 2880;
+const MAP_CYCLE_SECONDS = 10368000;
+const SEASON_SECONDS = 72576000;
 const MAP_CYCLES_PER_SEASON = 7;
 
 // 6/24/2024 8:00 UTC is the beginning of a map cycle

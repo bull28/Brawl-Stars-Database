@@ -4319,6 +4319,117 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "rocketgirl_original",
+                "displayName": "Fresh Cut Brock",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 0,
+                    "name": "",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "",
+                        "image": "bg_default.webp",
+                        "icon": "icon_default.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Automatically unlocked with Brock",
+                "release": {
+                    "month": 8,
+                    "year": 2024
+                },
+                "image": "rocketgirl_original.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "rocketgirloriginal_gold",
+                "displayName": "True Gold Fresh Cut Brock",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 0,
+                    "name": "",
+                    "icon": ""
+                },
+                "requires": "True Gold Brock",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Gold",
+                        "image": "bg_gold.webp",
+                        "icon": "icon_gold.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 8,
+                    "year": 2024
+                },
+                "image": "rocketgirloriginal_gold.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "rocketgirloriginal_silver",
+                "displayName": "True Silver Fresh Cut Brock",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 0,
+                    "name": "",
+                    "icon": ""
+                },
+                "requires": "True Silver Brock",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Silver",
+                        "image": "bg_silver.webp",
+                        "icon": "icon_silver.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 8,
+                    "year": 2024
+                },
+                "image": "rocketgirloriginal_silver.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -5210,6 +5321,82 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "luchadorsb",
+                "displayName": "SpongeBob El Primo",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "SpongeBob",
+                        "image": "bg_default.webp",
+                        "icon": "icon_spongebob.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward for collecting 400000 Krusty Kash during the SpongeBob event",
+                "release": {
+                    "month": 9,
+                    "year": 2024
+                },
+                "image": "luchadorsb.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "luchadorvampire",
+                "displayName": "Vamprimo",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "icon": "skin_rarity_1.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl-o-ween",
+                        "image": "bg_brawloween.webp",
+                        "icon": "icon_brawloween.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "release": {
+                    "month": 10,
+                    "year": 2024
+                },
+                "image": "luchadorvampire.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -5387,6 +5574,15 @@
             {
                 "name": "elprimo_overcharge",
                 "image": "elprimo_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "elprimo_spongebob",
+                "image": "elprimo_spongebob.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -6329,6 +6525,43 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "deadmariachionceupon",
+                "displayName": "Possessed Poco",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "Once Upon",
+                        "image": "bg_onceupon.webp",
+                        "icon": "icon_onceupon.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 8,
+                    "year": 2024
+                },
+                "image": "deadmariachionceupon.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -6452,6 +6685,24 @@
             {
                 "name": "poco_starrpark",
                 "image": "poco_starrpark.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "poco_overcharge",
+                "image": "poco_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "poco_onceupon",
+                "image": "poco_onceupon.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -6989,6 +7240,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "rosa_summer",
+                "image": "rosa_summer.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -7421,6 +7681,45 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "mechanicsb",
+                "displayName": "Sandy Jessie",
+                "cost": 79,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 2,
+                    "name": "Super Rare",
+                    "icon": "skin_rarity_2.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "SpongeBob",
+                        "image": "bg_default.webp",
+                        "icon": "icon_spongebob.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Available in the Krusty Krab during the SpongeBob event",
+                "release": {
+                    "month": 9,
+                    "year": 2024
+                },
+                "image": "mechanicsb.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -7553,6 +7852,24 @@
             {
                 "name": "jessie_norsegods",
                 "image": "jessie_norsegods.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "jessie_spongebob",
+                "image": "jessie_spongebob.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "jessie_reddragon",
+                "image": "jessie_reddragon.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -8230,6 +8547,45 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "tntdudezombie",
+                "displayName": "Decaying Dynamike",
+                "cost": 79,
+                "currency": "Gems",
+                "costBling": 2750,
+                "rarity": {
+                    "value": 2,
+                    "name": "Super Rare",
+                    "icon": "skin_rarity_2.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl-o-ween",
+                        "image": "bg_brawloween.webp",
+                        "icon": "icon_brawloween.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "release": {
+                    "month": 10,
+                    "year": 2024
+                },
+                "image": "tntdudezombie.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -8488,6 +8844,24 @@
             {
                 "name": "dynamike_psg",
                 "image": "dynamike_psg.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "dynamike_brawloween",
+                "image": "dynamike_brawloween.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "dynamike_snowtel",
+                "image": "dynamike_snowtel.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -8903,6 +9277,45 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "clusterbombdudesb",
+                "displayName": "Mr. Krabs Tick",
+                "cost": 79,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 2,
+                    "name": "Super Rare",
+                    "icon": "skin_rarity_2.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "SpongeBob",
+                        "image": "bg_default.webp",
+                        "icon": "icon_spongebob.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Available in the Krusty Krab during the SpongeBob event",
+                "release": {
+                    "month": 9,
+                    "year": 2024
+                },
+                "image": "clusterbombdudesb.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -9053,6 +9466,15 @@
             {
                 "name": "tick_overcharge",
                 "image": "tick_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "tick_spongebob",
+                "image": "tick_spongebob.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -10229,11 +10651,6 @@
                         "name": "Royals",
                         "image": "bg_onceupon.webp",
                         "icon": "icon_royals.webp"
-                    },
-                    {
-                        "name": "Ranked",
-                        "image": "bg_ranked.webp",
-                        "icon": "icon_ranked.webp"
                     }
                 ],
                 "limited": false,
@@ -10275,11 +10692,6 @@
                         "name": "Royals",
                         "image": "bg_onceupon.webp",
                         "icon": "icon_royals.webp"
-                    },
-                    {
-                        "name": "Ranked",
-                        "image": "bg_ranked.webp",
-                        "icon": "icon_ranked.webp"
                     }
                 ],
                 "limited": false,
@@ -10321,11 +10733,6 @@
                         "name": "Royals",
                         "image": "bg_onceupon.webp",
                         "icon": "icon_royals.webp"
-                    },
-                    {
-                        "name": "Ranked",
-                        "image": "bg_ranked.webp",
-                        "icon": "icon_ranked.webp"
                     }
                 ],
                 "limited": false,
@@ -10335,6 +10742,43 @@
                     "year": 2024
                 },
                 "image": "trickshotdudeking_remakepurple.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "trickshotduderedjacket",
+                "displayName": "Redjacket Rico",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "icon": "skin_rarity_1.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "Misc",
+                        "image": "bg_default.webp",
+                        "icon": "icon_misc.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 8,
+                    "year": 2024
+                },
+                "image": "trickshotduderedjacket.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -11000,6 +11444,45 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "barrelbotsb",
+                "displayName": "Plankton Darryl",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "SpongeBob",
+                        "image": "bg_default.webp",
+                        "icon": "icon_spongebob.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Available in the Krusty Krab during the SpongeBob event",
+                "release": {
+                    "month": 9,
+                    "year": 2024
+                },
+                "image": "barrelbotsb.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -11132,6 +11615,24 @@
             {
                 "name": "darryl_candyland",
                 "image": "darryl_candyland.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "darryl_spongebob",
+                "image": "darryl_spongebob.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "darryl_lny",
+                "image": "darryl_lny.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -13045,6 +13546,45 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "soulcollectorzombie",
+                "displayName": "Gruesome Gus",
+                "cost": 79,
+                "currency": "Gems",
+                "costBling": 2750,
+                "rarity": {
+                    "value": 2,
+                    "name": "Super Rare",
+                    "icon": "skin_rarity_2.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl-o-ween",
+                        "image": "bg_brawloween.webp",
+                        "icon": "icon_brawloween.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "release": {
+                    "month": 10,
+                    "year": 2024
+                },
+                "image": "soulcollectorzombie.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -13150,6 +13690,15 @@
             {
                 "name": "gus_line",
                 "image": "gus_line.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "gus_brawloween",
+                "image": "gus_brawloween.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -15848,6 +16397,45 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "minigundudezombie",
+                "displayName": "Putrid Pam",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl-o-ween",
+                        "image": "bg_brawloween.webp",
+                        "icon": "icon_brawloween.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "release": {
+                    "month": 10,
+                    "year": 2024
+                },
+                "image": "minigundudezombie.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -16029,6 +16617,15 @@
                     "value": 2,
                     "name": "Epic",
                     "color": "#b116ec"
+                }
+            },
+            {
+                "name": "pam_brawloween",
+                "image": "pam_brawloween.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
                 }
             }
         ]
@@ -18313,6 +18910,45 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "controlleronceupon",
+                "displayName": "Knightmare Nani",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Once Upon",
+                        "image": "bg_onceupon.webp",
+                        "icon": "icon_onceupon.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 10,
+                    "year": 2024
+                },
+                "image": "controlleronceupon.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -18427,6 +19063,24 @@
             {
                 "name": "nani_line",
                 "image": "nani_line.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "nani_overcharge",
+                "image": "nani_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "nani_onceupon",
+                "image": "nani_onceupon.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -21290,6 +21944,43 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "percentercursed",
+                "displayName": "Cuckoo Colette",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "icon": "skin_rarity_1.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl-o-ween",
+                        "image": "bg_brawloween.webp",
+                        "icon": "icon_brawloween.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "release": {
+                    "month": 10,
+                    "year": 2024
+                },
+                "image": "percentercursed.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -21781,6 +22472,55 @@
                     "loseAnimation": "electrosnipercoral_lose.glb"
                 },
                 "rating": 0
+            },
+            {
+                "name": "electrosniperscmake",
+                "displayName": "Dragoon Belle",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Worst Bunch",
+                        "image": "bg_villains.webp",
+                        "icon": "icon_villains.webp"
+                    },
+                    {
+                        "name": "Ranked",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_ranked.webp"
+                    },
+                    {
+                        "name": "Supercell Make",
+                        "image": "bg_default.webp",
+                        "icon": "icon_sc_make.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Available in Ranked Starr Drops",
+                "release": {
+                    "month": 9,
+                    "year": 2024
+                },
+                "image": "electrosniperscmake.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -21976,6 +22716,15 @@
             {
                 "name": "belle_overcharge",
                 "image": "belle_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "belle_make",
+                "image": "belle_make.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -22792,7 +23541,7 @@
                         "icon": "icon_ranked.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "Available in Ranked Starr Drops",
                 "release": {
                     "month": 11,
@@ -23789,6 +24538,50 @@
                     "loseAnimation": "beamerharvest_lose.glb"
                 },
                 "rating": 0
+            },
+            {
+                "name": "beameronceupon",
+                "displayName": "Malicious Mandy",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Once Upon",
+                        "image": "bg_onceupon.webp",
+                        "icon": "icon_onceupon.webp"
+                    },
+                    {
+                        "name": "Ranked",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_ranked.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Available in Ranked Starr Drops",
+                "release": {
+                    "month": 10,
+                    "year": 2024
+                },
+                "image": "beameronceupon.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -23971,6 +24764,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "mandy_ranked",
+                "image": "mandy_ranked.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -24133,7 +24935,7 @@
                         "icon": "icon_wasteland.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "Available in Ranked Starr Drops",
                 "release": {
                     "month": 9,
@@ -24537,6 +25339,45 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "fishtankharvest",
+                "displayName": "Moon Guardian Hank",
+                "cost": 79,
+                "currency": "Gems",
+                "costBling": 2750,
+                "rarity": {
+                    "value": 2,
+                    "name": "Super Rare",
+                    "icon": "skin_rarity_2.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Lunar Stories",
+                        "image": "bg_lunarevent.webp",
+                        "icon": "icon_lunarevent.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 9,
+                    "year": 2024
+                },
+                "image": "fishtankharvest.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -24633,6 +25474,15 @@
             {
                 "name": "hank_wasteland",
                 "image": "hank_wasteland.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "hank_lunarevent",
+                "image": "hank_lunarevent.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -24843,6 +25693,45 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "cookeronceupon",
+                "displayName": "Dark Keep Pearl",
+                "cost": 79,
+                "currency": "Gems",
+                "costBling": 2750,
+                "rarity": {
+                    "value": 2,
+                    "name": "Super Rare",
+                    "icon": "skin_rarity_2.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Once Upon",
+                        "image": "bg_onceupon.webp",
+                        "icon": "icon_onceupon.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 10,
+                    "year": 2024
+                },
+                "image": "cookeronceupon.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -25020,6 +25909,15 @@
             {
                 "name": "pearl_overcharge",
                 "image": "pearl_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "pearl_onceupon",
+                "image": "pearl_onceupon.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -25728,6 +26626,80 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "paintergold",
+                "displayName": "True Gold Berry",
+                "cost": 25000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 7,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "True Silver Berry",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Gold",
+                        "image": "bg_gold.webp",
+                        "icon": "icon_gold.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 8,
+                    "year": 2024
+                },
+                "image": "paintergold.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "paintersilver",
+                "displayName": "True Silver Berry",
+                "cost": 10000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 7,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Silver",
+                        "image": "bg_silver.webp",
+                        "icon": "icon_silver.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 8,
+                    "year": 2024
+                },
+                "image": "paintersilver.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -26351,7 +27323,7 @@
                         "icon": "icon_wf.webp"
                     }
                 ],
-                "limited": false,
+                "limited": true,
                 "unlock": "",
                 "release": {
                     "month": 11,
@@ -26395,6 +27367,138 @@
                     "year": 2024
                 },
                 "image": "undertakergala.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "undertakersb",
+                "displayName": "Squidward Mortis",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    },
+                    {
+                        "name": "SpongeBob",
+                        "image": "bg_default.webp",
+                        "icon": "icon_spongebob.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from Brawl Pass Season 30 tier 50",
+                "release": {
+                    "month": 9,
+                    "year": 2024
+                },
+                "image": "undertakersb.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "undertakersbpink",
+                "displayName": "Pink Squidward Mortis",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    },
+                    {
+                        "name": "SpongeBob",
+                        "image": "bg_default.webp",
+                        "icon": "icon_spongebob.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from Brawl Pass Plus Season 30 tier 46",
+                "release": {
+                    "month": 9,
+                    "year": 2024
+                },
+                "image": "undertakersbpink.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "undertakersbblue",
+                "displayName": "Blue Squidward Mortis",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    },
+                    {
+                        "name": "SpongeBob",
+                        "image": "bg_default.webp",
+                        "icon": "icon_spongebob.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from Brawl Pass Plus Season 30 tier 48",
+                "release": {
+                    "month": 9,
+                    "year": 2024
+                },
+                "image": "undertakersbblue.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -26614,6 +27718,42 @@
             {
                 "name": "mortis_lantern",
                 "image": "mortis_lantern.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "mortis_overcharge",
+                "image": "mortis_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "mortis_spongebob",
+                "image": "mortis_spongebob.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "mortis_spongebobpink",
+                "image": "mortis_spongebobpink.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "mortis_spongebobblue",
+                "image": "mortis_spongebobblue.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -27106,6 +28246,15 @@
             {
                 "name": "tara_outlaws",
                 "image": "tara_outlaws.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "tara_overcharge",
+                "image": "tara_overcharge.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -28457,6 +29606,15 @@
             {
                 "name": "mrp_goldenweek_02",
                 "image": "mrp_goldenweek_02.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "mrp_make",
+                "image": "mrp_make.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -29896,6 +31054,15 @@
             {
                 "name": "squeak_university",
                 "image": "squeak_university.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "squeak_overcharge",
+                "image": "squeak_overcharge.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -31462,6 +32629,45 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "ropedudesb",
+                "displayName": "Buzz Patrick",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "SpongeBob",
+                        "image": "bg_default.webp",
+                        "icon": "icon_spongebob.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Available in the Krusty Krab during the SpongeBob event",
+                "release": {
+                    "month": 9,
+                    "year": 2024
+                },
+                "image": "ropedudesb.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -31792,6 +32998,15 @@
             {
                 "name": "buzz_godzillablack",
                 "image": "buzz_godzillablack.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "buzz_spongebob",
+                "image": "buzz_spongebob.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -32199,6 +33414,45 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "kickerdudeworldfinal",
+                "displayName": "The Fans' Fang",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "BSC 2024",
+                        "image": "bg_wf.webp",
+                        "icon": "icon_wf.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "release": {
+                    "month": 10,
+                    "year": 2024
+                },
+                "image": "kickerdudeworldfinal.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -32430,6 +33684,15 @@
             {
                 "name": "fang_hacker",
                 "image": "fang_hacker.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "fang_worldfinal",
+                "image": "fang_worldfinal.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -32673,7 +33936,7 @@
                         "icon": "icon_ranked.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "Available in Ranked Starr Drops",
                 "release": {
                     "month": 5,
@@ -37564,6 +38827,80 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "crabgold",
+                "displayName": "True Gold Clancy",
+                "cost": 25000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 7,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "True Silver Clancy",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Gold",
+                        "image": "bg_gold.webp",
+                        "icon": "icon_gold.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 8,
+                    "year": 2024
+                },
+                "image": "crabgold.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "crabsilver",
+                "displayName": "True Silver Clancy",
+                "cost": 10000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 7,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Silver",
+                        "image": "bg_silver.webp",
+                        "icon": "icon_silver.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 8,
+                    "year": 2024
+                },
+                "image": "crabsilver.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -37651,6 +38988,185 @@
             {
                 "name": "clancy_facepalm",
                 "image": "clancy_facepalm.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            }
+        ]
+    },
+    {
+        "name": "moe",
+        "displayName": "Moe",
+        "rarity": {
+            "value": 4,
+            "name": "Mythic",
+            "color": "#fe0521"
+        },
+        "image": "portrait_moe.webp",
+        "defaultSkin": "diggerdefault",
+        "title": "Cheesy",
+        "masteryIcon": "mastery_icon_moe.webp",
+        "description": "Moe is a blind rat, found living in the Starr Park sewers by Grom, who then quickly adopted him! Now part of Starr Park's maintenance team, Moe uses his special digging machine, Driller, to traverse the sewer tunnels... and also cause a bit of destruction throughout the park, much to Ash's dismay.",
+        "skins": [
+            {
+                "name": "diggerdefault",
+                "displayName": "Moe",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 0,
+                    "name": "",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [],
+                "groups": [
+                    {
+                        "name": "",
+                        "image": "bg_default.webp",
+                        "icon": "icon_default.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 9,
+                    "year": 2024
+                },
+                "image": "diggerdefault.webp",
+                "model": {
+                    "geometry": "diggerdefault.glb",
+                    "winAnimation": "diggerdefault_win.glb",
+                    "loseAnimation": "diggerdefault_lose.glb"
+                },
+                "rating": 0
+            },
+            {
+                "name": "diggerrare",
+                "displayName": "Monterey Moe",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "icon": "skin_rarity_1.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "Starry Meal",
+                        "image": "bg_default.webp",
+                        "icon": "icon_meal.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Included in the Moe early access bundle",
+                "release": {
+                    "month": 9,
+                    "year": 2024
+                },
+                "image": "diggerrare.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "name": "moe_default",
+                "image": "moe_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "moe_happy",
+                "image": "moe_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "moe_sad",
+                "image": "moe_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "moe_angry",
+                "image": "moe_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "moe_gg",
+                "image": "moe_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "moe_clap",
+                "image": "moe_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "moe_thanks",
+                "image": "moe_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "moe_sweat",
+                "image": "moe_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "moe_special",
+                "image": "moe_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "moe_facepalm",
+                "image": "moe_facepalm.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -38721,6 +40237,45 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "crowharvest",
+                "displayName": "Moon Guardian Crow",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Lunar Stories",
+                        "image": "bg_lunarevent.webp",
+                        "icon": "icon_lunarevent.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 9,
+                    "year": 2024
+                },
+                "image": "crowharvest.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -39019,6 +40574,15 @@
                     "value": 2,
                     "name": "Epic",
                     "color": "#b116ec"
+                }
+            },
+            {
+                "name": "crow_lunarevent",
+                "image": "crow_lunarevent.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
                 }
             }
         ]
@@ -39761,6 +41325,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "leon_summer",
+                "image": "leon_summer.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -40369,6 +41942,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "sandy_lantern",
+                "image": "sandy_lantern.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -40798,6 +42380,15 @@
                     "value": 2,
                     "name": "Epic",
                     "color": "#b116ec"
+                }
+            },
+            {
+                "name": "amber_make",
+                "image": "amber_make.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
                 }
             }
         ]
@@ -41577,6 +43168,136 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "powerleveleronceupon",
+                "displayName": "Skeletal Surge",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "Once Upon",
+                        "image": "bg_onceupon.webp",
+                        "icon": "icon_onceupon.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from Brawl Pass Season 31 tier 50",
+                "release": {
+                    "month": 10,
+                    "year": 2024
+                },
+                "image": "powerleveleronceupon.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "powerleveleronceupon_red",
+                "displayName": "Villainous Skeletal Surge",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Once Upon",
+                        "image": "bg_onceupon.webp",
+                        "icon": "icon_onceupon.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from Brawl Pass Plus Season 31 tier 46",
+                "release": {
+                    "month": 10,
+                    "year": 2024
+                },
+                "image": "powerleveleronceupon_red.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "powerleveleronceupon_gold",
+                "displayName": "Anti-hero Skeletal Surge",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Once Upon",
+                        "image": "bg_onceupon.webp",
+                        "icon": "icon_onceupon.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from Brawl Pass Plus Season 31 tier 48",
+                "release": {
+                    "month": 10,
+                    "year": 2024
+                },
+                "image": "powerleveleronceupon_gold.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -41772,6 +43493,42 @@
             {
                 "name": "surge_maxforce",
                 "image": "surge_maxforce.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "surge_overcharge",
+                "image": "surge_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "surge_onceupon",
+                "image": "surge_onceupon.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "surge_onceupon_red",
+                "image": "surge_onceupon_red.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "surge_onceupon_gold",
+                "image": "surge_onceupon_gold.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -42021,6 +43778,45 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "jesterharvest",
+                "displayName": "Moon Guardian Chester",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Lunar Stories",
+                        "image": "bg_lunarevent.webp",
+                        "icon": "icon_lunarevent.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 9,
+                    "year": 2024
+                },
+                "image": "jesterharvest.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -42126,6 +43922,15 @@
             {
                 "name": "chester_ranked",
                 "image": "chester_ranked.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "chester_lunarevent",
+                "image": "chester_lunarevent.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -42907,6 +44712,45 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "attacheronceupon",
+                "displayName": "LockpicKit",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Once Upon",
+                        "image": "bg_onceupon.webp",
+                        "icon": "icon_onceupon.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 10,
+                    "year": 2024
+                },
+                "image": "attacheronceupon.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -43021,6 +44865,15 @@
             {
                 "name": "kit_boxerdark",
                 "image": "kit_boxerdark.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "kit_onceupon",
+                "image": "kit_onceupon.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -43187,6 +45040,47 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "dragonrideronceupon",
+                "displayName": "Dread Knight Draco",
+                "cost": 299,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 5,
+                    "name": "Legendary",
+                    "icon": "skin_rarity_5.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Voice",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Once Upon",
+                        "image": "bg_onceupon.webp",
+                        "icon": "icon_onceupon.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 10,
+                    "year": 2024
+                },
+                "image": "dragonrideronceupon.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -43274,6 +45168,266 @@
             {
                 "name": "draco_facepalm",
                 "image": "draco_facepalm.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "draco_onceupon_default",
+                "image": "draco_onceupon_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "draco_onceupon_happy",
+                "image": "draco_onceupon_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "draco_onceupon_sad",
+                "image": "draco_onceupon_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "draco_onceupon_angry",
+                "image": "draco_onceupon_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "draco_onceupon_gg",
+                "image": "draco_onceupon_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "draco_onceupon_clap",
+                "image": "draco_onceupon_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "draco_onceupon_thanks",
+                "image": "draco_onceupon_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "draco_onceupon_sweat",
+                "image": "draco_onceupon_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "draco_onceupon_special",
+                "image": "draco_onceupon_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            }
+        ]
+    },
+    {
+        "name": "kenji",
+        "displayName": "Kenji",
+        "rarity": {
+            "value": 5,
+            "name": "Legendary",
+            "color": "#fdf11e"
+        },
+        "image": "portrait_kenji.webp",
+        "defaultSkin": "samuraidefault",
+        "title": "Samurai",
+        "masteryIcon": "mastery_icon_kenji.webp",
+        "description": "This highly skilled sushi chef has a wholesome life running his restaurant in Starr Park, but it feels like he's trying to hide something about his past... though his sushi tastes so good, nobody cares!",
+        "skins": [
+            {
+                "name": "samuraidefault",
+                "displayName": "Kenji",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 0,
+                    "name": "",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [],
+                "groups": [
+                    {
+                        "name": "",
+                        "image": "bg_default.webp",
+                        "icon": "icon_default.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 10,
+                    "year": 2024
+                },
+                "image": "samuraidefault.webp",
+                "model": {
+                    "geometry": "samuraidefault.glb",
+                    "winAnimation": "samuraidefault_win.glb",
+                    "loseAnimation": "samuraidefault_lose.glb"
+                },
+                "rating": 0
+            },
+            {
+                "name": "samurairare",
+                "displayName": "Fruit Samurai Kenji",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "icon": "skin_rarity_1.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "Misc",
+                        "image": "bg_default.webp",
+                        "icon": "icon_misc.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Included in the Kenji early access bundle",
+                "release": {
+                    "month": 10,
+                    "year": 2024
+                },
+                "image": "samurairare.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "name": "kenji_default",
+                "image": "kenji_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "kenji_happy",
+                "image": "kenji_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "kenji_sad",
+                "image": "kenji_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "kenji_angry",
+                "image": "kenji_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "kenji_gg",
+                "image": "kenji_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "kenji_clap",
+                "image": "kenji_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "kenji_thanks",
+                "image": "kenji_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "kenji_sweat",
+                "image": "kenji_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "kenji_special",
+                "image": "kenji_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "kenji_facepalm",
+                "image": "kenji_facepalm.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
