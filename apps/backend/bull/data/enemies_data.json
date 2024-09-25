@@ -418,8 +418,8 @@
     },
     "mrp": {
         "displayName": "Mr. P",
-        "image": "mrp/mrp_goldenweek.webp",
-        "fullImage": "mrp/spawnerdudedaruma.webp",
+        "image": "mrp/mrp_make.webp",
+        "fullImage": "mrp/spawnerdudemake.webp",
         "description": "Spawns 2 porters that protect Mr. P from all damage while they are active.",
         "strengthTier": "Defeating the porters will deactivate them for less time.",
         "value": 12,

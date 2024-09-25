@@ -7,7 +7,7 @@
         "test": "SET NODE_ENV=test&& mocha -r tsx -r dotenv/config -r chai/register-expect.js -r ./test/fixtures.ts --exit --recursive ./test/**/*.ts",
         "frank": "nodemon --exec \"swc bull -d build --copy-files --strip-leading-paths -C module.type=commonjs\" -e ts,json --watch bull",
         "piper": "tsc && nodemon ./build/index.js",
-        "dev": "nodemon ./build/index.js",
+        "dev": "nodemon ./build/index.js --delay 100ms",
         "build": "tsc",
         "start": "SET NODE_ENV=production&& node ./build/index.js"
     },

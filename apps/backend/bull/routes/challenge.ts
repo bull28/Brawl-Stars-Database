@@ -119,6 +119,14 @@ router.post<Empty, Empty, ChallengeKeyReqBody>("/get", databaseErrorHandler<Chal
             res.status(404).send("Challenge not found.");
             return;
         }
+
+        // The game needs the username because it now automatically saves the player's score after they finish
+        if (mod.options !== undefined){
+            mod.options.username = results[0].accepted_by;
+        } else{
+            mod.options = {username: results[0].accepted_by}
+        }
+
         res.json(mod);
         return;
     }

@@ -148,7 +148,9 @@ describe("Challenges module", function(){
             "playerAccessories", "playerUpgradeValues"
         ]);
 
-        expect(challenge1.options).to.eql({startingGears: 4, bonusResources: false, maxAccessories: 5});
+        expect(challenge1.options).to.eql({
+            username: "", startingGears: 4, bonusResources: false, maxAccessories: 5
+        });
         expect(challenge1.difficulties).to.eql(staticChallenges.expertLevels.difficulties);
         expect(challenge1.levels).to.eql(staticChallenges.expertLevels.levels);
         expect(challenge1.playerUpgradeValues).to.eql(staticChallenges.expertLevels.playerUpgradeValues);

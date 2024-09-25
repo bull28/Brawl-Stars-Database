@@ -550,7 +550,12 @@ export function getStaticGameMod(key: string, masteryLevel: number, accessories:
         }
 
         return {
-            options: {startingGears: upgrades.startingGears, bonusResources: false, maxAccessories: upgrades.maxAccessories},
+            options: {
+                username: "",
+                startingGears: upgrades.startingGears,
+                bonusResources: false,
+                maxAccessories: upgrades.maxAccessories
+            },
             difficulties: staticChallenges.expertLevels.difficulties,
             stages: stages,
             levels: staticChallenges.expertLevels.levels,

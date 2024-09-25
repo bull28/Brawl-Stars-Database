@@ -891,6 +891,7 @@ export interface ChallengeData{
  */
 export interface ChallengeGameMod{
     options?: Partial<{
+        username: string;
         key: string;
         gameMode: number;
         strength: number;

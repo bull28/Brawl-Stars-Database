@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import {useState, useEffect, useRef} from "react";
 import {useNavigate, Link as RouterLink} from "react-router-dom";
 import {
     Flex, Box, Text, Button, Link, useToast,
@@ -7,7 +7,7 @@ import {
 import {AxiosError} from "axios";
 import AuthRequest from "../helpers/AuthRequest";
 import MasteryDisplay from "../components/MasteryDisplay";
-import {MasteryData} from "../types/AccountData";
+import {MasteryData, UserInfoProps} from "../types/AccountData";
 import {GameUpgrades} from "../types/GameData";
 import BackButton from "../components/BackButton";
 import api from "../helpers/APIRoute";
@@ -21,11 +21,14 @@ export default function GameMenu(){
     });
     const [upgrades, setUpgrades] = useState<GameUpgrades | undefined>();
     const [loggedIn, setLoggedIn] = useState<boolean | undefined>();
+    const [username, setUsername] = useState<string>("");
     const [rewardCount, setRewardCount] = useState<number>(0);
 
     const navigate = useNavigate();
     const toast = useToast();
     const {isOpen, onOpen, onClose} = useDisclosure();
+
+    const formRef = useRef<HTMLFormElement>(null);
 
     const getPowerCubesText = (enemyStats: GameUpgrades["defense"]["enemyStats"]): string => {
         if (enemyStats.length < 1){
@@ -39,9 +42,30 @@ export default function GameMenu(){
         return `${minPower} - ${maxPower}`;
     };
 
+    const submitForm = () => {
+        //window.location.href = `${api}/bullgame`;
+        if (formRef.current === null || username === ""){
+            toast({
+                title: "Error Starting Game",
+                description: "Classic mode is currently not available.",
+                status: "error",
+                duration: 3000,
+                isClosable: true
+            });
+            return;
+        }
+        const data = formRef.current.data;
+        if (data instanceof HTMLInputElement){
+            data.value = JSON.stringify({options: {username: username}});
+            formRef.current.submit();
+        }
+    };
+
     useEffect(() => {
-        AuthRequest<MasteryData>("/accessory/mastery", {setState: (data) => {
-            setMastery(data);
+        //AuthRequest<MasteryData>("/accessory/mastery", {setState: (data) => {
+        AuthRequest<UserInfoProps>("/resources", {setState: (data) => {
+            setUsername(data.username);
+            setMastery(data.mastery);
             setLoggedIn(true);
 
             AuthRequest<Record<string, unknown>[]>("/report/all", {setState: (data1) => {
@@ -80,7 +104,7 @@ export default function GameMenu(){
                     {loggedIn === true &&
                         <>
                         <Flex flexDir={"column"} alignItems={"center"} fontSize={"lg"} gap={1}>
-                            <Button minW={["50%", "20em"]} bgColor={"gray.800"} _hover={{"backgroundColor": "gray.600"}} fontSize={"inherit"} onClick={() => window.location.href = `${api}/bullgame`}>Play Classic Mode</Button>
+                            <Button minW={["50%", "20em"]} bgColor={"gray.800"} _hover={{"backgroundColor": "gray.600"}} fontSize={"inherit"} onClick={submitForm}>Play Classic Mode</Button>
                             <Button minW={["50%", "20em"]} bgColor={"gray.800"} _hover={{"backgroundColor": "gray.600"}} fontSize={"inherit"} onClick={() => navigate("/bullgame/challenges")}>Play Challenge</Button>
                             <Button minW={["50%", "20em"]} bgColor={"gray.800"} _hover={{"backgroundColor": "gray.600"}} fontSize={"inherit"} onClick={() => navigate("/bullgame/createchallenge")}>Create Challenge</Button>
                             <Button minW={["50%", "20em"]} bgColor={"gray.800"} _hover={{"backgroundColor": "gray.600"}} fontSize={"inherit"} onClick={() => navigate("/bullgame/rewards")}>{`Claim Rewards ${rewardCount > 0 ? `(${rewardCount})` : ""}`}</Button>
@@ -147,6 +171,9 @@ export default function GameMenu(){
                     </ModalFooter>
                 </ModalContent>
             </Modal>
+            <form action={`${api}/bullgame`} method={"post"} style={{display: "none"}} ref={formRef}>
+                <input type={"hidden"} name={"data"}/>
+            </form>
         </Flex>
     );
 }
