@@ -491,7 +491,7 @@
         "displayName": "Colette",
         "image": "colette/colette_ranked.webp",
         "fullImage": "colette/percenterinspector.webp",
-        "description": "Damage that Colette receives is capped at 5% of its maximum health per attack.",
+        "description": "For each attack, any damage it deals that is above 5% of Colette's max health is reduced by 50%.",
         "strengthTier": "Dashes more often and uses more attacks after every dash.",
         "value": 12,
         "health": 4800,
