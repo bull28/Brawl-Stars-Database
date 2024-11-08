@@ -16,12 +16,12 @@
                 },
                 "maps": [
                     {
-                        "name": "final-four",
-                        "displayName": "Final Four",
+                        "name": "acid-lakes",
+                        "displayName": "Acid Lakes",
                         "gameMode": "showdown",
                         "powerLeagueMap": false,
-                        "image": "final-four.webp",
-                        "bannerImage": "mortuaryshowdown.webp"
+                        "image": "acid-lakes.webp",
+                        "bannerImage": "canyonshowdown.webp"
                     },
                     {
                         "name": "flying-fantasies",
@@ -29,7 +29,7 @@
                         "gameMode": "showdown",
                         "powerLeagueMap": false,
                         "image": "flying-fantasies.webp",
-                        "bannerImage": "canyonshowdown.webp"
+                        "bannerImage": "madevilmanor.webp"
                     },
                     {
                         "name": "sunset-vista",
@@ -37,7 +37,7 @@
                         "gameMode": "showdown",
                         "powerLeagueMap": false,
                         "image": "sunset-vista.webp",
-                        "bannerImage": "canyonshowdown.webp"
+                        "bannerImage": "madevilmanor.webp"
                     },
                     {
                         "name": "rockwall-brawl",
@@ -77,7 +77,7 @@
                         "gameMode": "showdown",
                         "powerLeagueMap": false,
                         "image": "cavern-churn.webp",
-                        "bannerImage": "canyonshowdown.webp"
+                        "bannerImage": "madevilmanor.webp"
                     },
                     {
                         "name": "dark-passage",
@@ -104,12 +104,12 @@
                         "bannerImage": "mortuaryshowdown.webp"
                     },
                     {
-                        "name": "fiftyfive",
-                        "displayName": "FiftyFive",
+                        "name": "island-invasion",
+                        "displayName": "Island Invasion",
                         "gameMode": "showdown",
                         "powerLeagueMap": false,
-                        "image": "fiftyfive.webp",
-                        "bannerImage": "mortuaryshowdown.webp"
+                        "image": "island-invasion.webp",
+                        "bannerImage": "canyonshowdown.webp"
                     }
                 ]
             }
@@ -148,12 +148,12 @@
                         "bannerImage": "grassfield.webp"
                     },
                     {
-                        "name": "retina",
-                        "displayName": "Retina",
+                        "name": "weak-foot",
+                        "displayName": "Weak Foot",
                         "gameMode": "brawlball",
                         "powerLeagueMap": false,
-                        "image": "retina.webp",
-                        "bannerImage": "grassfield.webp"
+                        "image": "weak-foot.webp",
+                        "bannerImage": "bbarena.webp"
                     },
                     {
                         "name": "sneaky-fields",
@@ -220,11 +220,11 @@
                         "bannerImage": "grassfield.webp"
                     },
                     {
-                        "name": "offside-trap",
-                        "displayName": "Offside Trap",
+                        "name": "razzle-dazzle",
+                        "displayName": "Razzle Dazzle",
                         "gameMode": "brawlball",
                         "powerLeagueMap": false,
-                        "image": "offside-trap.webp",
+                        "image": "razzle-dazzle.webp",
                         "bannerImage": "grassfield.webp"
                     }
                 ]
@@ -285,7 +285,7 @@
                         "gameMode": "gemgrab",
                         "powerLeagueMap": false,
                         "image": "rustic-arcade.webp",
-                        "bannerImage": "canyon.webp"
+                        "bannerImage": "bandstand.webp"
                     },
                     {
                         "name": "sneaky-sneak",
@@ -293,7 +293,7 @@
                         "gameMode": "gemgrab",
                         "powerLeagueMap": false,
                         "image": "sneaky-sneak.webp",
-                        "bannerImage": "spongebob.webp"
+                        "bannerImage": "madevilmanor.webp"
                     },
                     {
                         "name": "undermine",
@@ -301,7 +301,7 @@
                         "gameMode": "gemgrab",
                         "powerLeagueMap": true,
                         "image": "undermine.webp",
-                        "bannerImage": "mortuary.webp"
+                        "bannerImage": "madevilmanor.webp"
                     },
                     {
                         "name": "acute-angle",
@@ -312,19 +312,19 @@
                         "bannerImage": "ghostmetro.webp"
                     },
                     {
-                        "name": "ahead-of-the-curve",
-                        "displayName": "Ahead of the Curve",
+                        "name": "corkscrew",
+                        "displayName": "Corkscrew",
                         "gameMode": "gemgrab",
                         "powerLeagueMap": false,
-                        "image": "ahead-of-the-curve.webp",
-                        "bannerImage": "castlecourtyard.webp"
+                        "image": "corkscrew.webp",
+                        "bannerImage": "bandstand.webp"
                     },
                     {
-                        "name": "bear-trap",
-                        "displayName": "Bear Trap",
+                        "name": "pineapple-plaza",
+                        "displayName": "Pineapple Plaza",
                         "gameMode": "gemgrab",
                         "powerLeagueMap": false,
-                        "image": "bear-trap.webp",
+                        "image": "pineapple-plaza.webp",
                         "bannerImage": "mortuary.webp"
                     },
                     {
@@ -333,7 +333,7 @@
                         "gameMode": "gemgrab",
                         "powerLeagueMap": true,
                         "image": "double-swoosh.webp",
-                        "bannerImage": "spongebob.webp"
+                        "bannerImage": "odditiesshop.webp"
                     },
                     {
                         "name": "gem-fort",
@@ -341,7 +341,7 @@
                         "gameMode": "gemgrab",
                         "powerLeagueMap": false,
                         "image": "gem-fort.webp",
-                        "bannerImage": "castlecourtyard.webp"
+                        "bannerImage": "odditiesshop.webp"
                     }
                 ]
             }
@@ -465,7 +465,7 @@
                         "gameMode": "hotzone",
                         "powerLeagueMap": true,
                         "image": "open-business.webp",
-                        "bannerImage": "castlecourtyard.webp"
+                        "bannerImage": "odditiesshop.webp"
                     },
                     {
                         "name": "parallel-plays",
@@ -473,15 +473,15 @@
                         "gameMode": "hotzone",
                         "powerLeagueMap": true,
                         "image": "parallel-plays.webp",
-                        "bannerImage": "spongebob.webp"
+                        "bannerImage": "bandstand.webp"
                     },
                     {
-                        "name": "misty-meadows",
-                        "displayName": "Misty Meadows",
+                        "name": "rush",
+                        "displayName": "Rush",
                         "gameMode": "hotzone",
                         "powerLeagueMap": false,
-                        "image": "misty-meadows.webp",
-                        "bannerImage": "castlecourtyard.webp"
+                        "image": "rush.webp",
+                        "bannerImage": "grassfield.webp"
                     },
                     {
                         "name": "ring-of-fire",
@@ -500,12 +500,12 @@
                         "bannerImage": "mortuary.webp"
                     },
                     {
-                        "name": "local-businesses",
-                        "displayName": "Local Businesses",
+                        "name": "from-dusk-till-dawn",
+                        "displayName": "From Dusk till Dawn",
                         "gameMode": "hotzone",
                         "powerLeagueMap": false,
-                        "image": "local-businesses.webp",
-                        "bannerImage": "spongebob.webp"
+                        "image": "from-dusk-till-dawn.webp",
+                        "bannerImage": "mortuary.webp"
                     }
                 ]
             },
@@ -525,7 +525,7 @@
                         "gameMode": "heist",
                         "powerLeagueMap": true,
                         "image": "hot-potato.webp",
-                        "bannerImage": "castlecourtyard.webp"
+                        "bannerImage": "madevilmanor.webp"
                     },
                     {
                         "name": "kaboom-canyon",
@@ -544,11 +544,11 @@
                         "bannerImage": "mortuary.webp"
                     },
                     {
-                        "name": "diamond-dome",
-                        "displayName": "Diamond Dome",
+                        "name": "electric-storm",
+                        "displayName": "Electric Storm",
                         "gameMode": "heist",
                         "powerLeagueMap": false,
-                        "image": "diamond-dome.webp",
+                        "image": "electric-storm.webp",
                         "bannerImage": "ghostmetro.webp"
                     },
                     {
@@ -557,7 +557,7 @@
                         "gameMode": "heist",
                         "powerLeagueMap": false,
                         "image": "secret-or-mystery.webp",
-                        "bannerImage": "spongebob.webp"
+                        "bannerImage": "bandstand.webp"
                     },
                     {
                         "name": "bridge-too-far",
@@ -565,7 +565,7 @@
                         "gameMode": "heist",
                         "powerLeagueMap": true,
                         "image": "bridge-too-far.webp",
-                        "bannerImage": "castlecourtyard.webp"
+                        "bannerImage": "odditiesshop.webp"
                     }
                 ]
             }
@@ -593,7 +593,7 @@
                         "gameMode": "knockout",
                         "powerLeagueMap": false,
                         "image": "four-levels.webp",
-                        "bannerImage": "mine.webp"
+                        "bannerImage": "odditiesshop.webp"
                     },
                     {
                         "name": "goldarm-gulch",
@@ -609,7 +609,7 @@
                         "gameMode": "knockout",
                         "powerLeagueMap": false,
                         "image": "hard-lane.webp",
-                        "bannerImage": "castlecourtyard.webp"
+                        "bannerImage": "odditiesshop.webp"
                     },
                     {
                         "name": "island-hopping",
@@ -617,7 +617,7 @@
                         "gameMode": "knockout",
                         "powerLeagueMap": false,
                         "image": "island-hopping.webp",
-                        "bannerImage": "spongebob.webp"
+                        "bannerImage": "madevilmanor.webp"
                     },
                     {
                         "name": "new-horizons",
@@ -649,7 +649,7 @@
                         "gameMode": "knockout",
                         "powerLeagueMap": true,
                         "image": "belles-rock.webp",
-                        "bannerImage": "castlecourtyard.webp"
+                        "bannerImage": "odditiesshop.webp"
                     },
                     {
                         "name": "between-the-rivers",
@@ -657,15 +657,15 @@
                         "gameMode": "knockout",
                         "powerLeagueMap": false,
                         "image": "between-the-rivers.webp",
-                        "bannerImage": "castlecourtyard.webp"
+                        "bannerImage": "odditiesshop.webp"
                     },
                     {
-                        "name": "deep-end",
-                        "displayName": "Deep End",
+                        "name": "gratitude",
+                        "displayName": "Gratitude",
                         "gameMode": "knockout",
                         "powerLeagueMap": false,
-                        "image": "deep-end.webp",
-                        "bannerImage": "spongebob.webp"
+                        "image": "gratitude.webp",
+                        "bannerImage": "madevilmanor.webp"
                     },
                     {
                         "name": "sunset-spar",
@@ -681,7 +681,7 @@
                         "gameMode": "knockout",
                         "powerLeagueMap": true,
                         "image": "flaring-phoenix.webp",
-                        "bannerImage": "canyon.webp"
+                        "bannerImage": "bandstand.webp"
                     }
                 ]
             }
@@ -704,84 +704,68 @@
                 },
                 "maps": [
                     {
-                        "name": "tiger-trap",
-                        "displayName": "Tiger Trap",
+                        "name": "mantis-claw",
+                        "displayName": "Mantis Claw",
                         "gameMode": "duels",
                         "powerLeagueMap": false,
-                        "image": "tiger-trap.webp",
-                        "bannerImage": "ghostmetro.webp"
-                    },
-                    {
-                        "name": "no-surrender",
-                        "displayName": "No Surrender",
-                        "gameMode": "duels",
-                        "powerLeagueMap": false,
-                        "image": "no-surrender.webp",
-                        "bannerImage": "castlecourtyard.webp"
-                    },
-                    {
-                        "name": "shrouding-serpent",
-                        "displayName": "Shrouding Serpent",
-                        "gameMode": "duels",
-                        "powerLeagueMap": false,
-                        "image": "shrouding-serpent.webp",
-                        "bannerImage": "canyon.webp"
-                    },
-                    {
-                        "name": "block-and-counter",
-                        "displayName": "Block and Counter",
-                        "gameMode": "duels",
-                        "powerLeagueMap": false,
-                        "image": "block-and-counter.webp",
+                        "image": "mantis-claw.webp",
                         "bannerImage": "mortuary.webp"
                     },
                     {
-                        "name": "warriors-way",
-                        "displayName": "Warrior's Way",
+                        "name": "line-of-defense",
+                        "displayName": "Line of Defense",
                         "gameMode": "duels",
                         "powerLeagueMap": false,
-                        "image": "warriors-way.webp",
-                        "bannerImage": "castlecourtyard.webp"
+                        "image": "line-of-defense.webp",
+                        "bannerImage": "bandstand.webp"
                     },
                     {
-                        "name": "duelists-destiny",
-                        "displayName": "Duelist's Destiny",
+                        "name": "too-cool-for-summer",
+                        "displayName": "Too cool for Summer",
                         "gameMode": "duels",
                         "powerLeagueMap": false,
-                        "image": "duelists-destiny.webp",
-                        "bannerImage": "spongebob.webp"
-                    },
-                    {
-                        "name": "meadow-of-the-crane",
-                        "displayName": "Meadow of the Crane",
-                        "gameMode": "duels",
-                        "powerLeagueMap": false,
-                        "image": "meadow-of-the-crane.webp",
+                        "image": "too-cool-for-summer.webp",
                         "bannerImage": "ghostmetro.webp"
                     },
                     {
-                        "name": "ninja-checkmate",
-                        "displayName": "Ninja Checkmate",
+                        "name": "zen-garden",
+                        "displayName": "Zen Garden",
                         "gameMode": "duels",
                         "powerLeagueMap": false,
-                        "image": "ninja-checkmate.webp",
-                        "bannerImage": "mine.webp"
-                    },
-                    {
-                        "name": "rigid-ravines",
-                        "displayName": "Rigid Ravines",
-                        "gameMode": "duels",
-                        "powerLeagueMap": false,
-                        "image": "rigid-ravines.webp",
+                        "image": "zen-garden.webp",
                         "bannerImage": "mortuary.webp"
                     },
                     {
-                        "name": "monkey-maze",
-                        "displayName": "Monkey Maze",
+                        "name": "swimming-skills",
+                        "displayName": "Swimming Skills",
                         "gameMode": "duels",
                         "powerLeagueMap": false,
-                        "image": "monkey-maze.webp",
-                        "bannerImage": "castlecourtyard.webp"
+                        "image": "swimming-skills.webp",
+                        "bannerImage": "bandstand.webp"
+                    },
+                    {
+                        "name": "tangled-shrubs",
+                        "displayName": "Tangled Shrubs",
+                        "gameMode": "duels",
+                        "powerLeagueMap": false,
+                        "image": "tangled-shrubs.webp",
+                        "bannerImage": "ghostmetro.webp"
+                    },
+                    {
+                        "name": "breaks",
+                        "displayName": "Breaks",
+                        "gameMode": "duels",
+                        "powerLeagueMap": false,
+                        "image": "breaks.webp",
+                        "bannerImage": "madevilmanor.webp"
+                    },
+                    {
+                        "name": "pillars-of-doom",
+                        "displayName": "Pillars of Doom",
+                        "gameMode": "duels",
+                        "powerLeagueMap": false,
+                        "image": "pillars-of-doom.webp",
+                        "bannerImage": "odditiesshop.webp"
                     }
                 ]
             }
@@ -864,7 +848,7 @@
                         "gameMode": "bountyranked",
                         "powerLeagueMap": true,
                         "image": "shooting-star.webp",
-                        "bannerImage": "spongebob.webp"
+                        "bannerImage": "odditiesshop.webp"
                     },
                     {
                         "name": "canal-grande",
@@ -872,7 +856,7 @@
                         "gameMode": "bountyranked",
                         "powerLeagueMap": true,
                         "image": "canal-grande.webp",
-                        "bannerImage": "castlecourtyard.webp"
+                        "bannerImage": "mortuary.webp"
                     },
                     {
                         "name": "hideout",
@@ -880,7 +864,7 @@
                         "gameMode": "bountyranked",
                         "powerLeagueMap": true,
                         "image": "hideout.webp",
-                        "bannerImage": "ghostmetro.webp"
+                        "bannerImage": "canyon.webp"
                     },
                     {
                         "name": "snake-prairie",

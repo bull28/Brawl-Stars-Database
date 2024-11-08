@@ -4,8 +4,8 @@ import {PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR, SKIN_IMAGE_DIR, SKINGROUP_ICON_DIR, S
 import {getBrawler, getSkin, getBrawlerData, getSkinData, skinSearch} from "../../bull/modules/skins";
 
 describe("Brawlers and Skins module", function(){
-    it("Must contain at least 84 brawlers", function(){
-        expect(allSkins).to.have.lengthOf.at.least(84);
+    it("Must contain at least 86 brawlers", function(){
+        expect(allSkins).to.have.lengthOf.at.least(86);
     });
 
     it("Get brawler and skin objects directly from the data file", function(){

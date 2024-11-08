@@ -185,8 +185,8 @@ describe("Events, Game Modes, and Maps module", function(){
             // Current: [0, 2, 0, 0], Last claim: [0, 7, 0, 0]
             const reward = getRewardStacks(
                 new Date(2024, 5, 24, 3, 0).getTime(),
-                new Date(2022, 2, 7, 7, 0).getTime()// 120 day season
-                //new Date(2024, 0, 8, 7, 0).getTime()// 24 day season
+                //new Date(2022, 2, 7, 7, 0).getTime()// 120 day season
+                new Date(2024, 0, 8, 7, 0).getTime()// 24 day season
             );
             // maxSeasons * hoursPerSeason is the maximum number of stacks
             expect(reward.stacks).to.equal(Math.floor(reward.nextStack.maxSeasons * reward.nextStack.hoursPerSeason / 6 - 1));

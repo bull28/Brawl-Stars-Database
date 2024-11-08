@@ -313,7 +313,7 @@
     },
     {
         "name": "mastery6", "category": "", "displayName": "Legendary Medal",
-        "description": "Gain more coins from rewards.", "unlock": "Rewarded at Mastery Level 25.", "badges": 1
+        "description": "Gain more coins from rewards.", "unlock": "Rewarded at Mastery Level 24.", "badges": 1
     },
     {
         "name": "mastery7", "category": "", "displayName": "Masters Medal",

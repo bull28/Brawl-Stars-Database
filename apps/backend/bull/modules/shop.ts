@@ -574,7 +574,7 @@ export function getAchievementItems(resources: UserResources, collection: Collec
         accessories.add("mastery4");
     } if (level >= 20){
         accessories.add("mastery5");
-    } if (level >= 25){
+    } if (level >= 24){
         accessories.add("mastery6");
     } if (level >= 30){
         accessories.add("mastery7");

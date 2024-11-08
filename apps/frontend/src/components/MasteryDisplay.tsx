@@ -7,18 +7,19 @@ import cdn from "../helpers/CDNRoute";
 export default function MasteryDisplay({data: {level, points, current, next}}: {data: MasteryData;}){
     const {points: currentLevel, image: currentImage, color: currentColor} = current;
     const {points: nextLevel, image: nextImage, color: nextColor} = next;
+    const isMaxLevel = nextLevel < 0 && level > 1;
     return (
-        <Flex bgColor={"blue.800"} w={["90vw", "90vw", "32em"]} maxW={"32em"} flexDir={"column"} alignItems={"center"} p={"0.5em"} border={(nextLevel < 0 && level > 1) ? "0.25em solid #d852ff" : "0.25em solid #000"}>
-            {(nextLevel < 0 && level > 1) ?
-                <MovingText title={"Bullgame Mastery"} color1={"#ff6dea"} color2={"#fa00d6"} fontSize={"2xl"}/>
+        <Flex bgColor={"blue.800"} w={["90vw", "90vw", "32em"]} maxW={"32em"} flexDir={"column"} alignItems={"center"} p={"0.5em"} border={isMaxLevel ? "0.25em solid #a9ffd2" : "0.25em solid #000"}>
+            {isMaxLevel ?
+                <MovingText title={"Bullgame Mastery"} colors={["#f9e6ff", "#e2a3ff", "#fffe98", "#c2f3f2"]} fontSize={"2xl"}/>
                 :
                 <Text fontSize={"2xl"} className={"heading-2xl"}>Bullgame Mastery</Text>
             }
             <Flex alignItems={"center"}>
                 <Image src={`${cdn}/image/resources/currency/resource_challenge_points_200px.webp`} h={"1.5em"}/>
                 <Flex ml={"0.25em"} mr={"0.25em"}>
-                    {(nextLevel < 0 && level > 1) ?
-                        <MovingText title={`Level ${level}`} color1={"#ff6dea"} color2={"#fa00d6"} fontSize={"lg"}/>
+                    {isMaxLevel ?
+                        <MovingText title={`Level ${level}`} colors={["#f9e6ff", "#e2a3ff", "#fffe98", "#c2f3f2"]} fontSize={"lg"}/>
                         :
                         <Text fontSize={"lg"} className={"heading-lg"}>{`Level ${level}`}</Text>
                     }
@@ -48,7 +49,10 @@ export default function MasteryDisplay({data: {level, points, current, next}}: {
                         </Flex>
                         <Flex pos={"absolute"} w={"100%"} justifyContent={"center"} alignItems={"center"} h={["2em", "2.5em"]}>
                             <Flex pos={"absolute"} w={"80%"} h={"100%"} bgColor={"#000"}>
-                                <Flex pos={"absolute"} w={(nextLevel > 0 && nextLevel > currentLevel) ? `${Math.max(0, Math.min(1, (points - currentLevel) / (nextLevel - currentLevel))) * 100}%` : "100%"} h={"100%"} bgColor={"#8000f0"}/>
+                                <Flex pos={"absolute"} w={(nextLevel > 0 && nextLevel > currentLevel) ? `${Math.max(0, Math.min(1, (points - currentLevel) / (nextLevel - currentLevel))) * 100}%` : "100%"} h={"100%"} flexDir={"column"}>
+                                    <Flex bgColor={isMaxLevel ? "#2ff4fd" : "#9800ff"} flex={1}/>
+                                    <Flex bgColor={isMaxLevel ? "#2ce0fe" : "#8000ff"} flex={1}/>
+                                </Flex>
                             </Flex>
                         </Flex>
                         <Flex pos={"absolute"} w={"100%"} justifyContent={"center"} alignItems={"center"} h={["2em", "2.5em"]}>

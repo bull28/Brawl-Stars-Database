@@ -2361,9 +2361,9 @@
                         "icon": "icon_sc_make.webp"
                     },
                     {
-                        "name": "Misc",
+                        "name": "Angels vs. Demons",
                         "image": "bg_default.webp",
-                        "icon": "icon_misc.webp"
+                        "icon": "icon_angeldemons.webp"
                     }
                 ],
                 "limited": false,
@@ -2496,6 +2496,44 @@
                     "year": 2024
                 },
                 "image": "gunslingermechapurple.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "gunslingerdarkangelchroma",
+                "displayName": "Light Angel Colt",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Angels vs. Demons",
+                        "image": "bg_default.webp",
+                        "icon": "icon_angeldemons.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 11,
+                    "year": 2024
+                },
+                "image": "gunslingerdarkangelchroma.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -2742,6 +2780,15 @@
             {
                 "name": "colt_player",
                 "image": "colt_player.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "colt_angeldemons",
+                "image": "colt_angeldemons.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -6540,7 +6587,9 @@
                 "requires": "",
                 "features": [
                     "Brawler Model",
-                    "Texture"
+                    "Texture",
+                    "Animations",
+                    "Effects"
                 ],
                 "groups": [
                     {
@@ -7031,6 +7080,50 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "rosatoon",
+                "displayName": "Sugarplum Rosa",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Cartoon Studios",
+                        "image": "bg_cartoon.webp",
+                        "icon": "icon_cartoon.webp"
+                    },
+                    {
+                        "name": "Ranked",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_ranked.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 12,
+                    "year": 2024
+                },
+                "image": "rosatoon.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -7244,6 +7337,15 @@
             {
                 "name": "rosa_summer",
                 "image": "rosa_summer.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "rosa_ranked",
+                "image": "rosa_ranked.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -7832,8 +7934,8 @@
                 }
             },
             {
-                "name": "jessie_knight",
-                "image": "jessie_knight.webp",
+                "name": "jessie_onceupon",
+                "image": "jessie_onceupon.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -7870,6 +7972,15 @@
             {
                 "name": "jessie_reddragon",
                 "image": "jessie_reddragon.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "jessie_brawloween",
+                "image": "jessie_brawloween.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -10187,6 +10298,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "8bit_overcharge",
+                "image": "8bit_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -10767,9 +10887,9 @@
                 ],
                 "groups": [
                     {
-                        "name": "Misc",
+                        "name": "City Troubles",
                         "image": "bg_default.webp",
-                        "icon": "icon_misc.webp"
+                        "icon": "icon_city.webp"
                     }
                 ],
                 "limited": false,
@@ -11034,6 +11154,24 @@
             {
                 "name": "rico_animals",
                 "image": "rico_animals.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "rico_lantern",
+                "image": "rico_lantern.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "rico_brawlywood",
+                "image": "rico_brawlywood.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -11638,6 +11776,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "darryl_overcharge",
+                "image": "darryl_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -12147,6 +12294,15 @@
             {
                 "name": "penny_ranked_02",
                 "image": "penny_ranked_02.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "penny_overcharge",
+                "image": "penny_overcharge.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -13939,18 +14095,18 @@
                 ],
                 "groups": [
                     {
-                        "name": "Flaming",
-                        "image": "bg_phoenix.webp",
-                        "icon": "icon_phoenix.webp"
-                    },
-                    {
                         "name": "Supercell Make",
                         "image": "bg_default.webp",
                         "icon": "icon_sc_make.webp"
+                    },
+                    {
+                        "name": "Angels vs. Demons",
+                        "image": "bg_default.webp",
+                        "icon": "icon_angeldemons.webp"
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Available in Demonic Starr Drops",
                 "release": {
                     "month": 10,
                     "year": 2020
@@ -14894,6 +15050,45 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "mummydemon",
+                "displayName": "Demon Emz",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Angels vs. Demons",
+                        "image": "bg_default.webp",
+                        "icon": "icon_angeldemons.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Available in Demonic Starr Drops",
+                "release": {
+                    "month": 11,
+                    "year": 2024
+                },
+                "image": "mummydemon.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -15044,6 +15239,15 @@
             {
                 "name": "emz_greekred",
                 "image": "emz_greekred.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "emz_angeldemons",
+                "image": "emz_angeldemons.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -15560,6 +15764,15 @@
             {
                 "name": "stu_brawlidays",
                 "image": "stu_brawlidays.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "stu_overcharge",
+                "image": "stu_overcharge.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -18859,7 +19072,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Available in Angelic Starr Drops",
                 "release": {
                     "month": 4,
                     "year": 2023
@@ -19561,6 +19774,129 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "enragerangel",
+                "displayName": "Dark Angel Edgar",
+                "cost": 499,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 6,
+                    "name": "Hypercharge",
+                    "icon": "skin_rarity_6.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Voice",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Angels vs. Demons",
+                        "image": "bg_default.webp",
+                        "icon": "icon_angeldemons.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Available in Angelic Starr Drops",
+                "release": {
+                    "month": 11,
+                    "year": 2024
+                },
+                "image": "enragerangel.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "enragerangelchroma1",
+                "displayName": "Lightbearer Edgar",
+                "cost": 499,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 6,
+                    "name": "Hypercharge",
+                    "icon": "skin_rarity_6.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Voice",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Angels vs. Demons",
+                        "image": "bg_default.webp",
+                        "icon": "icon_angeldemons.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Available in Angelic Starr Drops",
+                "release": {
+                    "month": 11,
+                    "year": 2024
+                },
+                "image": "enragerangelchroma1.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "enragerangelchroma2",
+                "displayName": "Nightbringer Edgar",
+                "cost": 499,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 6,
+                    "name": "Hypercharge",
+                    "icon": "skin_rarity_6.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Voice",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Angels vs. Demons",
+                        "image": "bg_default.webp",
+                        "icon": "icon_angeldemons.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Available in Angelic Starr Drops",
+                "release": {
+                    "month": 11,
+                    "year": 2024
+                },
+                "image": "enragerangelchroma2.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -19801,6 +20137,105 @@
             {
                 "name": "edgar_lantern",
                 "image": "edgar_lantern.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "edgar_angel_default",
+                "image": "edgar_angel_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "edgar_angel_happy",
+                "image": "edgar_angel_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "edgar_angel_sad",
+                "image": "edgar_angel_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "edgar_angel_angry",
+                "image": "edgar_angel_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "edgar_angel_gg",
+                "image": "edgar_angel_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "edgar_angel_clap",
+                "image": "edgar_angel_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "edgar_angel_thanks",
+                "image": "edgar_angel_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "edgar_angel_sweat",
+                "image": "edgar_angel_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "edgar_angel_special",
+                "image": "edgar_angel_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "edgar_angelchroma1",
+                "image": "edgar_angelchroma1.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "edgar_angelchroma2",
+                "image": "edgar_angelchroma2.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -20777,7 +21212,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Available in Angelic Starr Drops",
                 "release": {
                     "month": 7,
                     "year": 2023
@@ -21959,7 +22394,9 @@
                 "requires": "",
                 "features": [
                     "Brawler Model",
-                    "Texture"
+                    "Texture",
+                    "Animations",
+                    "Effects"
                 ],
                 "groups": [
                     {
@@ -21975,6 +22412,44 @@
                     "year": 2024
                 },
                 "image": "percentercursed.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "percenterchromademonred",
+                "displayName": "Impie Colette",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Angels vs. Demons",
+                        "image": "bg_default.webp",
+                        "icon": "icon_angeldemons.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Available in Demonic Starr Drops",
+                "release": {
+                    "month": 11,
+                    "year": 2024
+                },
+                "image": "percenterchromademonred.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -22221,6 +22696,15 @@
             {
                 "name": "colette_lny",
                 "image": "colette_lny.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "colette_angeldemons",
+                "image": "colette_angeldemons.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -23020,6 +23504,45 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "knighttoon",
+                "displayName": "Be Less Ash",
+                "cost": 79,
+                "currency": "Gems",
+                "costBling": 2750,
+                "rarity": {
+                    "value": 2,
+                    "name": "Super Rare",
+                    "icon": "skin_rarity_2.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Cartoon Studios",
+                        "image": "bg_cartoon.webp",
+                        "icon": "icon_cartoon.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 12,
+                    "year": 2024
+                },
+                "image": "knighttoon.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -23215,6 +23738,15 @@
             {
                 "name": "ash_ranked",
                 "image": "ash_ranked.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "ash_cartoon",
+                "image": "ash_cartoon.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -23587,6 +24119,43 @@
                     "year": 2023
                 },
                 "image": "duplicatorcholachroma.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "duplicatorflightattendant",
+                "displayName": "High Flyer Lola",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "icon": "skin_rarity_1.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "City Troubles",
+                        "image": "bg_default.webp",
+                        "icon": "icon_city.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 11,
+                    "year": 2024
+                },
+                "image": "duplicatorflightattendant.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -25022,6 +25591,136 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "maisietoon",
+                "displayName": "Bizarre Maisie",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Cartoon Studios",
+                        "image": "bg_cartoon.webp",
+                        "icon": "icon_cartoon.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from Brawl Pass Season 33 tier 50",
+                "release": {
+                    "month": 12,
+                    "year": 2024
+                },
+                "image": "maisietoon.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "maisietoonchroma1",
+                "displayName": "Requiem Maisie",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Cartoon Studios",
+                        "image": "bg_cartoon.webp",
+                        "icon": "icon_cartoon.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from Brawl Pass Plus Season 33 tier 46",
+                "release": {
+                    "month": 12,
+                    "year": 2024
+                },
+                "image": "maisietoonchroma1.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "maisietoonchroma2",
+                "displayName": "Platinum Maisie",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Cartoon Studios",
+                        "image": "bg_cartoon.webp",
+                        "icon": "icon_cartoon.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from Brawl Pass Plus Season 33 tier 48",
+                "release": {
+                    "month": 12,
+                    "year": 2024
+                },
+                "image": "maisietoonchroma2.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -25213,6 +25912,33 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "maisie_toon",
+                "image": "maisie_toon.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "maisie_toonchroma1",
+                "image": "maisie_toonchroma1.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "maisie_toonchroma2",
+                "image": "maisie_toonchroma2.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -25372,6 +26098,80 @@
                     "year": 2024
                 },
                 "image": "fishtankharvest.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "fishtankgold",
+                "displayName": "True Gold Hank",
+                "cost": 25000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 7,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "True Silver Hank",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Gold",
+                        "image": "bg_gold.webp",
+                        "icon": "icon_gold.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 10,
+                    "year": 2024
+                },
+                "image": "fishtankgold.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "fishtanksilver",
+                "displayName": "True Silver Hank",
+                "cost": 10000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 7,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Silver",
+                        "image": "bg_silver.webp",
+                        "icon": "icon_silver.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 10,
+                    "year": 2024
+                },
+                "image": "fishtanksilver.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -26128,6 +26928,136 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "twinsangel",
+                "displayName": "Angel Larry & Lawrie",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    },
+                    {
+                        "name": "Angels vs. Demons",
+                        "image": "bg_default.webp",
+                        "icon": "icon_angeldemons.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from Brawl Pass Season 32 tier 50",
+                "release": {
+                    "month": 12,
+                    "year": 2024
+                },
+                "image": "twinsangel.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "twinsangelchroma1",
+                "displayName": "Radiant Larry & Lawrie",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    },
+                    {
+                        "name": "Angels vs. Demons",
+                        "image": "bg_default.webp",
+                        "icon": "icon_angeldemons.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from Brawl Pass Plus Season 32 tier 46",
+                "release": {
+                    "month": 11,
+                    "year": 2024
+                },
+                "image": "twinsangelchroma1.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "twinsangelchroma2",
+                "displayName": "Dark Angel Larry & Lawrie",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    },
+                    {
+                        "name": "Angels vs. Demons",
+                        "image": "bg_default.webp",
+                        "icon": "icon_angeldemons.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from Brawl Pass Plus Season 32 tier 48",
+                "release": {
+                    "month": 11,
+                    "year": 2024
+                },
+                "image": "twinsangelchroma2.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -26224,6 +27154,33 @@
             {
                 "name": "twins_ranked",
                 "image": "twins_ranked.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "twins_angel",
+                "image": "twins_angel.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "twins_angelchroma1",
+                "image": "twins_angelchroma1.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "twins_angelchroma2",
+                "image": "twins_angelchroma2.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -26343,7 +27300,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Available in Angelic Starr Drops",
                 "release": {
                     "month": 7,
                     "year": 2024
@@ -26787,6 +27744,185 @@
             {
                 "name": "berry_facepalm",
                 "image": "berry_facepalm.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            }
+        ]
+    },
+    {
+        "name": "shade",
+        "displayName": "Shade",
+        "rarity": {
+            "value": 3,
+            "name": "Epic",
+            "color": "#b116ec"
+        },
+        "image": "portrait_shade.webp",
+        "defaultSkin": "ghostdefault",
+        "title": "Ghosted",
+        "masteryIcon": "mastery_icon_shade.webp",
+        "description": "Not much is known about this mysterious pile of clothes, other than the fact it has some cool sunglasses. Discovered by Gus, Shade was given a name and now the two spooky Brawlers haunt the Ghost Station together.",
+        "skins": [
+            {
+                "name": "ghostdefault",
+                "displayName": "Shade",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 0,
+                    "name": "",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [],
+                "groups": [
+                    {
+                        "name": "",
+                        "image": "bg_default.webp",
+                        "icon": "icon_default.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 12,
+                    "year": 2024
+                },
+                "image": "ghostdefault.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "ghostswag",
+                "displayName": "Cinema Shade",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "icon": "skin_rarity_1.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "",
+                        "image": "bg_default.webp",
+                        "icon": "icon_default.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Included in the Shade early access bundle",
+                "release": {
+                    "month": 12,
+                    "year": 2024
+                },
+                "image": "ghostswag.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "name": "shade_default",
+                "image": "shade_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "shade_happy",
+                "image": "shade_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "shade_sad",
+                "image": "shade_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "shade_angry",
+                "image": "shade_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "shade_gg",
+                "image": "shade_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "shade_clap",
+                "image": "shade_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "shade_thanks",
+                "image": "shade_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "shade_sweat",
+                "image": "shade_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "shade_special",
+                "image": "shade_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "shade_facepalm",
+                "image": "shade_facepalm.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -27505,6 +28641,129 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "undertakerdemon",
+                "displayName": "Demon Mortis",
+                "cost": 499,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 6,
+                    "name": "Hypercharge",
+                    "icon": "skin_rarity_6.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Voice",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Angels vs. Demons",
+                        "image": "bg_default.webp",
+                        "icon": "icon_angeldemons.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Available in Demonic Starr Drops",
+                "release": {
+                    "month": 11,
+                    "year": 2024
+                },
+                "image": "undertakerdemon.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "undertakerdemonchroma1",
+                "displayName": "Devilish Mortis",
+                "cost": 499,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 6,
+                    "name": "Hypercharge",
+                    "icon": "skin_rarity_6.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Voice",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Angels vs. Demons",
+                        "image": "bg_default.webp",
+                        "icon": "icon_angeldemons.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Available in Demonic Starr Drops",
+                "release": {
+                    "month": 11,
+                    "year": 2024
+                },
+                "image": "undertakerdemonchroma1.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "undertakerdemonchroma2",
+                "displayName": "Lambent Mortis",
+                "cost": 499,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 6,
+                    "name": "Hypercharge",
+                    "icon": "skin_rarity_6.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Voice",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Angels vs. Demons",
+                        "image": "bg_default.webp",
+                        "icon": "icon_angeldemons.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Available in Demonic Starr Drops",
+                "release": {
+                    "month": 11,
+                    "year": 2024
+                },
+                "image": "undertakerdemonchroma2.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -27759,6 +29018,105 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "mortis_demon_default",
+                "image": "mortis_demon_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "mortis_demon_happy",
+                "image": "mortis_demon_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "mortis_demon_sad",
+                "image": "mortis_demon_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "mortis_demon_angry",
+                "image": "mortis_demon_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "mortis_demon_gg",
+                "image": "mortis_demon_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "mortis_demon_clap",
+                "image": "mortis_demon_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "mortis_demon_thanks",
+                "image": "mortis_demon_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "mortis_demon_sweat",
+                "image": "mortis_demon_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "mortis_demon_special",
+                "image": "mortis_demon_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "mortis_demonchroma1",
+                "image": "mortis_demonchroma1.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "mortis_demonchroma2",
+                "image": "mortis_demonchroma2.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -27833,7 +29191,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Available in Angelic Starr Drops",
                 "release": {
                     "month": 8,
                     "year": 2019
@@ -28544,6 +29902,44 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "hookdudeangel",
+                "displayName": "Angel Gene",
+                "cost": 79,
+                "currency": "Gems",
+                "costBling": 2750,
+                "rarity": {
+                    "value": 2,
+                    "name": "Super Rare",
+                    "icon": "skin_rarity_2.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Angels vs. Demons",
+                        "image": "bg_default.webp",
+                        "icon": "icon_angeldemons.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 11,
+                    "year": 2024
+                },
+                "image": "hookdudeangel.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -28667,6 +30063,15 @@
             {
                 "name": "gene_overcharge",
                 "image": "gene_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "gene_angeldemons",
+                "image": "gene_angeldemons.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -29024,6 +30429,45 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "speedyangel",
+                "displayName": "Angel Max",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Angels vs. Demons",
+                        "image": "bg_default.webp",
+                        "icon": "icon_angeldemons.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Available in Angelic Starr Drops",
+                "release": {
+                    "month": 11,
+                    "year": 2024
+                },
+                "image": "speedyangel.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -29156,6 +30600,15 @@
             {
                 "name": "max_line",
                 "image": "max_line.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "max_angeldemons",
+                "image": "max_angeldemons.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -31357,6 +32810,45 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "icedudetoon",
+                "displayName": "Rude Lou",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Cartoon Studios",
+                        "image": "bg_cartoon.webp",
+                        "icon": "icon_cartoon.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 12,
+                    "year": 2024
+                },
+                "image": "icedudetoon.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -31561,6 +33053,15 @@
             {
                 "name": "lou_meal",
                 "image": "lou_meal.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "lou_cartoon",
+                "image": "lou_cartoon.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -31850,6 +33351,43 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "ruffscoock",
+                "displayName": "Sous Chef Ruffs",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "icon": "skin_rarity_1.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "Starry Meal",
+                        "image": "bg_default.webp",
+                        "icon": "icon_meal.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 11,
+                    "year": 2024
+                },
+                "image": "ruffscoock.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -32036,6 +33574,15 @@
             {
                 "name": "ruffs_pirates",
                 "image": "ruffs_pirates.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "ruffs_overcharge",
+                "image": "ruffs_overcharge.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -34917,6 +36464,82 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "silencerdemon",
+                "displayName": "Demon Otis",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Angels vs. Demons",
+                        "image": "bg_default.webp",
+                        "icon": "icon_angeldemons.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Available in Demonic Starr Drops",
+                "release": {
+                    "month": 11,
+                    "year": 2024
+                },
+                "image": "silencerdemon.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "silencersewer",
+                "displayName": "Rusty Otis",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "icon": "skin_rarity_1.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "Wasteland",
+                        "image": "bg_default.webp",
+                        "icon": "icon_wasteland.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 11,
+                    "year": 2024
+                },
+                "image": "silencersewer.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -35103,6 +36726,24 @@
             {
                 "name": "otis_worldfinals",
                 "image": "otis_worldfinals.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "otis_overcharge",
+                "image": "otis_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "otis_angeldemons",
+                "image": "otis_angeldemons.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -35919,7 +37560,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Reward from Brawl Pass Season 17 tier 70",
+                "unlock": "Reward from Brawl Pass Season 17 tier 70 or from Demonic Starr Drops",
                 "release": {
                     "month": 3,
                     "year": 2023
@@ -36463,6 +38104,45 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "puppeteerdemon",
+                "displayName": "Demon Willow",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Angels vs. Demons",
+                        "image": "bg_default.webp",
+                        "icon": "icon_angeldemons.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Available in Demonic Starr Drops",
+                "release": {
+                    "month": 11,
+                    "year": 2024
+                },
+                "image": "puppeteerdemon.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -36559,6 +38239,15 @@
             {
                 "name": "willow_wasteland",
                 "image": "willow_wasteland.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "willow_angeldemons",
+                "image": "willow_angeldemons.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -36940,7 +38629,7 @@
                     }
                 ],
                 "limited": true,
-                "unlock": "Included in the Chuck early access bundle",
+                "unlock": "Included in the Chuck early access bundle or from Demonic Starr Drops",
                 "release": {
                     "month": 10,
                     "year": 2023
@@ -38648,6 +40337,50 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "ambusherangel",
+                "displayName": "Angel Lily",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Ranked",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_ranked.webp"
+                    },
+                    {
+                        "name": "Angels vs. Demons",
+                        "image": "bg_default.webp",
+                        "icon": "icon_angeldemons.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Available in Ranked Starr Drops",
+                "release": {
+                    "month": 11,
+                    "year": 2024
+                },
+                "image": "ambusherangel.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -38740,6 +40473,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "lily_ranked",
+                "image": "lily_ranked.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -38809,9 +40551,9 @@
                 ],
                 "groups": [
                     {
-                        "name": "Misc",
+                        "name": "City Troubles",
                         "image": "bg_default.webp",
-                        "icon": "icon_misc.webp"
+                        "icon": "icon_city.webp"
                     }
                 ],
                 "limited": false,
@@ -39080,6 +40822,80 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "diggergold",
+                "displayName": "True Gold Moe",
+                "cost": 25000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 7,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "True Silver Moe",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Gold",
+                        "image": "bg_gold.webp",
+                        "icon": "icon_gold.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 10,
+                    "year": 2024
+                },
+                "image": "diggergold.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "diggersilver",
+                "displayName": "True Silver Moe",
+                "cost": 10000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 7,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Silver",
+                        "image": "bg_silver.webp",
+                        "icon": "icon_silver.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 10,
+                    "year": 2024
+                },
+                "image": "diggersilver.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -39167,6 +40983,185 @@
             {
                 "name": "moe_facepalm",
                 "image": "moe_facepalm.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            }
+        ]
+    },
+    {
+        "name": "juju",
+        "displayName": "Juju",
+        "rarity": {
+            "value": 4,
+            "name": "Mythic",
+            "color": "#fe0521"
+        },
+        "image": "portrait_juju.webp",
+        "defaultSkin": "voodoodefault",
+        "title": "Hexed",
+        "masteryIcon": "mastery_icon_juju.webp",
+        "description": "Juju owns the Oddities Shop and is followed everywhere by her \"pet\" voodoo doll, Gris-Gris (pronounced Gregory). Although she can control the elements, Juju is also a talented toymaker who makes dolls to sell to Starr Park's many visitors.",
+        "skins": [
+            {
+                "name": "voodoodefault",
+                "displayName": "Juju",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 0,
+                    "name": "",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [],
+                "groups": [
+                    {
+                        "name": "",
+                        "image": "bg_default.webp",
+                        "icon": "icon_default.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 11,
+                    "year": 2024
+                },
+                "image": "voodoodefault.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "voodoorare",
+                "displayName": "Unlucky Juju",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "icon": "skin_rarity_1.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "",
+                        "image": "bg_default.webp",
+                        "icon": "icon_default.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Included in the Juju early access bundle",
+                "release": {
+                    "month": 11,
+                    "year": 2024
+                },
+                "image": "voodoorare.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "name": "juju_default",
+                "image": "juju_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "juju_happy",
+                "image": "juju_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "juju_sad",
+                "image": "juju_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "juju_angry",
+                "image": "juju_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "juju_gg",
+                "image": "juju_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "juju_clap",
+                "image": "juju_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "juju_thanks",
+                "image": "juju_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "juju_sweat",
+                "image": "juju_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "juju_special",
+                "image": "juju_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "juju_facepalm",
+                "image": "juju_facepalm.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -41643,7 +43638,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Available in Angelic Starr Drops",
                 "release": {
                     "month": 5,
                     "year": 2024
@@ -43183,7 +45178,9 @@
                 "requires": "",
                 "features": [
                     "Brawler Model",
-                    "Texture"
+                    "Texture",
+                    "Animations",
+                    "Effects"
                 ],
                 "groups": [
                     {
@@ -44219,6 +46216,47 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "duelisttoon",
+                "displayName": "Paper Cordelius",
+                "cost": 299,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 5,
+                    "name": "Legendary",
+                    "icon": "skin_rarity_5.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Voice",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Cartoon Studios",
+                        "image": "bg_cartoon.webp",
+                        "icon": "icon_cartoon.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 12,
+                    "year": 2024
+                },
+                "image": "duelisttoon.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -44418,6 +46456,87 @@
                     "value": 3,
                     "name": "Legendary",
                     "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "cordelius_cartoon_default",
+                "image": "cordelius_cartoon_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "cordelius_cartoon_happy",
+                "image": "cordelius_cartoon_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "cordelius_cartoon_sad",
+                "image": "cordelius_cartoon_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "cordelius_cartoon_angry",
+                "image": "cordelius_cartoon_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "cordelius_cartoon_gg",
+                "image": "cordelius_cartoon_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "cordelius_cartoon_clap",
+                "image": "cordelius_cartoon_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "cordelius_cartoon_thanks",
+                "image": "cordelius_cartoon_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "cordelius_cartoon_sweat",
+                "image": "cordelius_cartoon_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "cordelius_cartoon_special",
+                "image": "cordelius_cartoon_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
                 }
             }
         ]
@@ -44954,7 +47073,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Included in the Draco early access bundle",
+                "unlock": "Included in the Draco early access bundle or from Demonic Starr Drops",
                 "release": {
                     "month": 6,
                     "year": 2024
@@ -45323,9 +47442,9 @@
                 ],
                 "groups": [
                     {
-                        "name": "Misc",
+                        "name": "Starry Meal",
                         "image": "bg_default.webp",
-                        "icon": "icon_misc.webp"
+                        "icon": "icon_meal.webp"
                     }
                 ],
                 "limited": false,
@@ -45335,6 +47454,80 @@
                     "year": 2024
                 },
                 "image": "samurairare.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "samuraigold",
+                "displayName": "True Gold Kenji",
+                "cost": 25000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 7,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "True Silver Kenji",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Gold",
+                        "image": "bg_gold.webp",
+                        "icon": "icon_gold.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 10,
+                    "year": 2024
+                },
+                "image": "samuraigold.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "samuraisilver",
+                "displayName": "True Silver Kenji",
+                "cost": 10000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 7,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Silver",
+                        "image": "bg_silver.webp",
+                        "icon": "icon_silver.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 10,
+                    "year": 2024
+                },
+                "image": "samuraisilver.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",

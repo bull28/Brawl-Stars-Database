@@ -406,8 +406,9 @@ const levelImages = [
     {minLevel: 12, color: "#ffef49", image: "mastery_level_3"},
     {minLevel: 16, color: "#33ffff", image: "mastery_level_4"},
     {minLevel: 20, color: "#ff00ff", image: "mastery_level_5"},
-    {minLevel: 25, color: "#f75363", image: "mastery_level_6"},
-    {minLevel: 30, color: "#a67fff", image: "mastery_level_7"}
+    {minLevel: 24, color: "#f75363", image: "mastery_level_6"},
+    {minLevel: 28, color: "#a67fff", image: "mastery_level_7"},
+    {minLevel: 30, color: "#3afc9f", image: "mastery_level_8"}
 ];
 
 const pointsRewards = [
