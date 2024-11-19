@@ -441,12 +441,15 @@ export type DatabaseWildCard = number[];
 
 /**
  * Represents either a request to set cosmetics or the result of getting cosmetics
+ * 
+ * When representing a set request, the extra property is not used
  */
 export interface DatabaseCosmetics{
     background: string;
     icon: string;
     music: string;
     scene: string;
+    extra: string;
 }
 
 /**

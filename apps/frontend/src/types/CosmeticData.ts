@@ -3,6 +3,7 @@ export interface CosmeticData{
     icon: string;
     music: string;
     scene: string;
+    extra: string;
 }
 
 export interface ThemeProps{

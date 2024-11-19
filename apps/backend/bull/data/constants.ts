@@ -67,6 +67,7 @@ export const themeMap = new Map<string, string>([
     ["love_swamp", "Swamp of Love"],
     ["melodie", "Melodie"],
     ["madevil", "Mad Evil Manor"],
+    ["darkonceupon", "Dark Once Upon"],
     ["yellow_face", "\u00a0"]
 ]);
 

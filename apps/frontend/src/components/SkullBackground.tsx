@@ -4,35 +4,32 @@ import AuthRequest from "../helpers/AuthRequest";
 import {CosmeticData} from "../types/CosmeticData";
 import cdn from "../helpers/CDNRoute";
 
-export default function SkullBackground({bg, icon}: {bg?: string; icon?: string;}){
+export default function SkullBackground({bg, icon, extra}: {bg?: string; icon?: string; extra?: string;}){
     const [cosmetics, setCosmetics] = useState<CosmeticData | undefined>();
     const [extraImage, setExtraImage] = useState<string>("");
 
     const updateBackground = useCallback((event: Event) => {
         const cosmetics = ((event as CustomEvent).detail as CosmeticData);
         setCosmetics(cosmetics);
-        AuthRequest<{extra: string;}>(`/cosmetic/extra?${new URLSearchParams({background: cosmetics.background})}`, {
-            setState: (data2) => {setExtraImage(data2.extra);}
-        }, false);
     }, []);
 
     useEffect(() => {
         if (bg && icon){
-            setCosmetics({background: bg, icon: icon, music: "", scene: ""});
-            AuthRequest<{extra: string;}>(`/cosmetic/extra?${new URLSearchParams({background: bg})}`, {
+            setCosmetics({background: bg, icon: icon, music: "", scene: "", extra: ""});
+
+            const name = bg.split("/");
+            const cosmeticName = name[name.length - 1].split("_")[0];
+            AuthRequest<{extra: string;}>(`/cosmetic/search/${cosmeticName}`, {
                 setState: (data) => {setExtraImage(data.extra);}
             }, false);
         } else {
             AuthRequest<CosmeticData>("/cosmetic", {
                 setState: (data) => {
                     setCosmetics(data);
-                    AuthRequest<{extra: string;}>(`/cosmetic/extra?${new URLSearchParams({background: data.background})}`, {
-                        setState: (data2) => {setExtraImage(data2.extra);}
-                    }, false);
                 }
             }, false);
         }
-    }, [bg, icon]);
+    }, [bg, icon, extra]);
 
     useEffect(() => {
         document.addEventListener("updatecosmetics", updateBackground);

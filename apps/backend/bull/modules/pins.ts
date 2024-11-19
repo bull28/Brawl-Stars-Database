@@ -349,6 +349,28 @@ export function getThemes(allThemes: ThemeList, allScenes: SceneList, userThemes
 }
 
 /**
+ * Some newer themes have extra objects in the background. If the selected theme has extra objects, return the image
+ * file containing the objects associated with that background.
+ * @param allThemes object containing all free and special themes
+ * @param backgroundFile name of the background file
+ * @returns image file or empty string if the background has no extra objects
+ */
+function getExtraBackground(allThemes: ThemeList, backgroundFile: string): string{
+    const extraFileName = backgroundFile.replace(THEME_IMAGE_DIR, "").replace("_background", "_extra");
+    let extra: string | undefined;
+    if (extraFileName.includes("free/") === true){
+        extra = allThemes.free.find((value) => value.includes(extraFileName));
+    } else if (extraFileName.includes("special/") === true){
+        extra = allThemes.special.find((value) => value.includes(extraFileName));
+    }
+
+    if (extra !== undefined){
+        return THEME_IMAGE_DIR + extra;
+    }
+    return "";
+}
+
+/**
  * Searches the list of themes and scenes to match cosmetic names from the database to the actual cosmetics. If
  * cosmeticsData is not provided or is empty, the default cosmetics will be returned.
  * @param allThemes object containing all free and special themes
@@ -357,7 +379,7 @@ export function getThemes(allThemes: ThemeList, allScenes: SceneList, userThemes
  * @returns object containing file names of the cosmetics
  */
 export function getCosmetics(allThemes: ThemeList, allScenes: SceneList, cosmeticsData: DatabaseCosmetics): DatabaseCosmetics{
-    const setCosmetics: DatabaseCosmetics = {background: "", icon: "", music: "", scene: ""};
+    const setCosmetics: DatabaseCosmetics = {background: "", icon: "", music: "", scene: "", extra: ""};
 
     // First, get the list of all default cosmetics
     const defaultThemes = allThemes.free.filter((value) => value.includes("default_"));
@@ -385,15 +407,21 @@ export function getCosmetics(allThemes: ThemeList, allScenes: SceneList, cosmeti
                 let result: string | undefined;
                 if (cosmeticsData[k].includes("free/") === true){
                     result = allThemes.free.find((value) => value.includes(cosmeticsData[k]));
-                } else{
+                } else if (cosmeticsData[k].includes("special/") === true){
                     result = allThemes.special.find((value) => value.includes(cosmeticsData[k]));
+                }
+
+                if (x === "background"){
+                    // The extra objects should only be provided with its associated background. Requests for a specific
+                    // extra file will not return it unless it matches the provided background.
+                    setCosmetics.extra = getExtraBackground(allThemes, cosmeticsData[x]);
                 }
 
                 if (result !== undefined){
                     setCosmetics[x] = THEME_IMAGE_DIR + result;
                 }
             } else if (x === "scene"){
-                const result = allScenes.find((value) => value.includes(cosmeticsData[k]));
+                const result = allScenes.find((value) => value.includes(cosmeticsData[k]) && !value.includes("preview"));
                 if (result !== undefined){
                     setCosmetics[x] = SCENE_IMAGE_DIR + result;
                 }
@@ -405,25 +433,21 @@ export function getCosmetics(allThemes: ThemeList, allScenes: SceneList, cosmeti
 }
 
 /**
- * Some newer themes have extra objects in the background. If the selected theme has extra objects, return the image
- * file containing the objects associated with that background.
- * @param allThemes object containing all free and special themes
- * @param backgroundFile name of the background file
- * @returns image file or empty string if the background has no extra objects
+ * Applies the given file name to the correct property of a cosmetics object and adds the image file path.
+ * @param cosmetics object to apply file name to
+ * @param file file name
  */
-export function getExtraBackground(allThemes: ThemeList, backgroundFile: string): string{
-    const extraFileName = backgroundFile.replace(THEME_IMAGE_DIR, "").replace("_background", "_extra");
-    let extra: string | undefined;
-    if (extraFileName.includes("free/") === true){
-        extra = allThemes.free.find((value) => value.includes(extraFileName));
-    } else if (extraFileName.includes("special/") === true){
-        extra = allThemes.special.find((value) => value.includes(extraFileName));
+export function applyImageFiles(cosmetics: DatabaseCosmetics, file: string): void{
+    const resultFile = THEME_IMAGE_DIR + file;
+    if (file.includes("_background") === true){
+        cosmetics.background = resultFile;
+    } else if (file.includes("_icon") === true){
+        cosmetics.icon = resultFile;
+    } else if (file.includes("_music") === true){
+        cosmetics.music = resultFile;
+    } else if (file.includes("_extra") === true){
+        cosmetics.extra = resultFile;
     }
-
-    if (extra !== undefined){
-        return THEME_IMAGE_DIR + extra;
-    }
-    return "";
 }
 
 /**

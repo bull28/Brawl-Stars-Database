@@ -3,7 +3,7 @@ import allSkins from "../data/brawlers_data.json";
 import {HOURS_PER_REWARD, TOKENS_PER_REWARD, MAX_REWARD_STACK, AVATAR_IMAGE_DIR, THEME_IMAGE_DIR, SCENE_IMAGE_DIR} from "../data/constants";
 import {signToken, validateToken, hashPassword, checkPassword} from "../modules/authenticate";
 import {freeAvatarFiles, specialAvatarFiles, freeThemeFiles, specialThemeFiles, sceneFiles} from "../modules/fileloader";
-import {getAvatars, getCosmetics, getExtraBackground, getThemes} from "../modules/pins";
+import {getAvatars, getCosmetics, applyImageFiles, getThemes} from "../modules/pins";
 import {getRewardStacks} from "../modules/maps";
 import {
     loginErrorHandler, 
@@ -232,7 +232,14 @@ router.get("/cosmetic", databaseErrorHandler(async (req, res) => {
             const username = validateToken(token);
             if (username !== ""){
                 const results = await getActiveCosmetics({username: username});
-                res.json(getCosmetics(allThemes, allScenes, results[0]));
+                const cosmeticsData = {
+                    background: results[0].background,
+                    icon: results[0].icon,
+                    music: results[0].music,
+                    scene: results[0].scene,
+                    extra: ""
+                };
+                res.json(getCosmetics(allThemes, allScenes, cosmeticsData));
                 return;
             }
         }
@@ -240,27 +247,14 @@ router.get("/cosmetic", databaseErrorHandler(async (req, res) => {
 
     // Getting cosmetics with no token will return the default when no user is logged in
     res.json(getCosmetics(allThemes, allScenes, {
-        background: "", icon: "", music: "", scene: ""
+        background: "", icon: "", music: "", scene: "", extra: ""
     }));
 }));
 
-// Get the extra background image for a background cosmetic
-router.get<Empty, string | {extra: string;}, Empty, DatabaseCosmetics>("/cosmetic/extra", (req, res) => {
-    if (typeof req.query.background !== "string"){
-        res.status(400).send("Invalid background file.");
-        return;
-    }
-
-    const extra = getExtraBackground(allThemes, req.query.background);
-    res.json({extra: extra});
-});
-
 // Set a user's active cosmetic items
 router.post<Empty, Empty, CosmeticReqBody>("/cosmetic", loginErrorHandler<CosmeticReqBody>(async (req, res, username) => {
-    // This object stores a validated copy of the user's request to change cosmetics
-    const setCosmetics: DatabaseCosmetics = {
-        background: "", icon: "", music: "", scene: ""
-    };
+    // This object stores a validated copy of the request to change cosmetics. The extra property is not used here.
+    const setCosmetics: DatabaseCosmetics = {background: "", icon: "", music: "", scene: "", extra: ""};
 
     // Try to read which cosmetics the user wants to set
     // If req.body.setCosmetics is not formatted correctly or is some other data type then an error will be sent here.
@@ -344,6 +338,32 @@ router.post<Empty, Empty, CosmeticReqBody>("/cosmetic", loginErrorHandler<Cosmet
     res.json(setCosmetics);
     return;
 }));
+
+// Search for the files associated with a theme by its name
+router.get<{name: string}>("/cosmetic/search/:name", (req, res) => {
+    const name = req.params.name;
+    if (typeof name !== "string"){
+        res.status(400).send("Invalid theme name.");
+        return;
+    }
+
+    const result: DatabaseCosmetics = {background: "", icon: "", music: "", scene: "", extra: ""};
+
+    for (let x = 0; x < allThemes.free.length; x++){
+        const file = allThemes.free[x];
+        if (file.includes(`/${name}_`) === true){
+            applyImageFiles(result, file);
+        }
+    }
+    for (let x = 0; x < allThemes.special.length; x++){
+        const file = allThemes.special[x];
+        if (file.includes(`/${name}_`) === true){
+            applyImageFiles(result, file);
+        }
+    }
+
+    res.json(result);
+});
 
 // Claim any available tokens and/or get the time until tokens are available again
 router.post<Empty, Empty, ClaimTokensReqBody>("/claimtokens", loginErrorHandler<ClaimTokensReqBody>(async (req, res, username) => {

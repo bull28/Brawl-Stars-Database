@@ -3,7 +3,7 @@ import allSkins from "../../bull/data/brawlers_data.json";
 import accessoryList from "../../bull/data/accessories_data.json";
 import {IMAGE_FILE_EXTENSION, AVATAR_IMAGE_DIR, THEME_IMAGE_DIR, SCENE_IMAGE_DIR, themeMap, sceneMap} from "../../bull/data/constants";
 import {freeAvatarFiles, specialAvatarFiles, freeThemeFiles, specialThemeFiles, sceneFiles} from "../../bull/modules/fileloader";
-import {formatCollectionData, getAvatars, getThemes, getCosmetics, getExtraBackground, getCollectionScore} from "../../bull/modules/pins";
+import {formatCollectionData, getAvatars, getThemes, getCosmetics, applyImageFiles, getCollectionScore} from "../../bull/modules/pins";
 import {AvatarList, ThemeList, SceneList} from "../../bull/types";
 
 const allAvatars: AvatarList = {free: freeAvatarFiles, special: specialAvatarFiles};
@@ -186,54 +186,73 @@ describe("Collection module", function(){
             background: THEME_IMAGE_DIR + allThemes.free.find((value) => value.includes("default_background")),
             icon: THEME_IMAGE_DIR + allThemes.free.find((value) => value.includes("default_icon")),
             music: THEME_IMAGE_DIR + allThemes.free.find((value) => value.includes("default_music")),
-            scene: ""
+            scene: "",
+            extra: ""
         };
         const specialTheme = {
             background: THEME_IMAGE_DIR + allThemes.special.find((value) => value.includes("darkmas_background")),
             icon: THEME_IMAGE_DIR + allThemes.special.find((value) => value.includes("stuntshow_icon")),
             music: THEME_IMAGE_DIR + allThemes.special.find((value) => value.includes("deepsea_music")),
-            scene: SCENE_IMAGE_DIR + allScenes.find((value) => value.includes("retropolis_preview")),
+            scene: SCENE_IMAGE_DIR + allScenes.find((value) => value.includes("retropolis_scene")),
+            extra: THEME_IMAGE_DIR + allThemes.special.find((value) => value.includes("darkmas_extra"))
         };
 
         // Default cosmetics
-        expect(getCosmetics(allThemes, allScenes, {background: "", icon: "", music: "", scene: ""})).to.eql(defaultTheme);
+        expect(getCosmetics(allThemes, allScenes, {background: "", icon: "", music: "", scene: "", extra: ""})).to.eql(defaultTheme);
         // Invalid cosmetics (should return default)
         expect(getCosmetics(allThemes, allScenes, {
             background: "not background",
             icon: "not icon",
             music: "not music",
-            scene: "not scene"
+            scene: "not scene",
+            extra: "not extra"
         })).to.eql(defaultTheme);
-        // Special cosmetics
+        // Special cosmetics (should be able to find the extra file using the background)
         expect(getCosmetics(allThemes, allScenes, {
             background: "special/darkmas_background",
             icon: "special/stuntshow_icon",
             music: "special/deepsea_music",
-            scene: "retropolis"
+            scene: "retropolis",
+            extra: ""
         })).to.eql(specialTheme);
         // Mix of default and special cosmetics
         expect(getCosmetics(allThemes, allScenes, {
             background: "",
             icon: "special/stuntshow_icon",
             music: "free/default_music",
-            scene: "retropolis"
+            scene: "",
+            extra: ""
         })).to.eql({
             background: defaultTheme.background,
             icon: specialTheme.icon,
             music: defaultTheme.music,
-            scene: specialTheme.scene
+            scene: defaultTheme.scene,
+            extra: defaultTheme.extra
         });
     });
 
-    it("Get the extra background file for a theme", function(){
-        const hasExtraFile = allThemes.special.find((value) => value.includes("love_swamp_background"))!;
-        const hasNoExtraFile = allThemes.special.find((value) => value.includes("mecha_background"))!;
+    it("Apply a file to the correct property of a cosmetics object", function(){
+        const cosmetics = {background: "", icon: "", music: "", scene: "", extra: ""};
 
-        expect(hasExtraFile).to.be.a("string");
-        expect(hasNoExtraFile).to.be.a("string");
+        applyImageFiles(cosmetics, "test_background");
+        expect(cosmetics.background).to.equal(THEME_IMAGE_DIR + "test_background");
 
-        expect(getExtraBackground(allThemes, hasExtraFile)).to.equal(THEME_IMAGE_DIR + hasExtraFile.replace("_background", "_extra"));
-        expect(getExtraBackground(allThemes, hasNoExtraFile)).to.equal("");
+        applyImageFiles(cosmetics, "test_icon");
+        expect(cosmetics.icon).to.equal(THEME_IMAGE_DIR + "test_icon");
+
+        applyImageFiles(cosmetics, "test_music");
+        expect(cosmetics.music).to.equal(THEME_IMAGE_DIR + "test_music");
+
+        applyImageFiles(cosmetics, "test_extra");
+        expect(cosmetics.extra).to.equal(THEME_IMAGE_DIR + "test_extra");
+
+        expect(cosmetics).to.eql({
+            background: THEME_IMAGE_DIR + "test_background",
+            icon: THEME_IMAGE_DIR + "test_icon",
+            music: THEME_IMAGE_DIR + "test_music",
+            scene: "",
+            extra: THEME_IMAGE_DIR + "test_extra"
+        });
     });
 
     it("Calculate the score for a collection", function(){

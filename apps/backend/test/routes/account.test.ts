@@ -1,7 +1,7 @@
 import chai, {expect} from "chai";
 import "chai-http";
 import {Connection} from "mysql2/promise";
-import {IMAGE_FILE_EXTENSION, AVATAR_IMAGE_DIR, THEME_SPECIAL_DIR, SCENE_IMAGE_DIR, TOKENS_PER_REWARD, MAX_REWARD_STACK} from "../../bull/data/constants";
+import {IMAGE_FILE_EXTENSION, AVATAR_IMAGE_DIR, THEME_IMAGE_DIR, THEME_SPECIAL_DIR, SCENE_IMAGE_DIR, TOKENS_PER_REWARD, MAX_REWARD_STACK} from "../../bull/data/constants";
 import {freeAvatarFiles, specialAvatarFiles} from "../../bull/modules/fileloader";
 import {hashPassword, checkPassword} from "../../bull/modules/authenticate";
 import server from "../../bull/index";
@@ -197,15 +197,6 @@ describe("Account endpoints", function(){
         expect(res).to.have.status(200);
     });
 
-    it("/cosmetic/extra", async function(){
-        const res = await chai.request(server).get("/cosmetic/extra").query({
-            background: THEME_SPECIAL_DIR + "love_swamp_background" + IMAGE_FILE_EXTENSION
-        });
-        expect(res).to.have.status(200);
-        expect(res.body.extra).to.be.a("string");
-        expect(res.body.extra).to.have.lengthOf.at.least(1);
-    });
-
     describe("/cosmetic POST", function(){
         it("Valid cosmetics", async function(){
             const res = await chai.request(server).post("/cosmetic").send({
@@ -213,12 +204,13 @@ describe("Account endpoints", function(){
                     background: THEME_SPECIAL_DIR + "retro_background" + IMAGE_FILE_EXTENSION,
                     icon: THEME_SPECIAL_DIR + "retro_icon" + IMAGE_FILE_EXTENSION,
                     music: THEME_SPECIAL_DIR + "retro_music.ogg",
-                    scene: SCENE_IMAGE_DIR + "giftshop_scene.glb"
+                    scene: SCENE_IMAGE_DIR + "giftshop_scene.glb",
+                    extra: ""
                 }
             }).auth(TEST_TOKEN, {type: "bearer"});
 
             expect(res).to.have.status(200);
-            expect(res.body).to.have.keys(["background", "icon", "music", "scene"]);
+            expect(res.body).to.have.keys(["background", "icon", "music", "scene", "extra"]);
             expect(res.body.background).to.include("retro_background");
             expect(res.body.icon).to.include("retro_icon");
             expect(res.body.music).to.include("retro_music");
@@ -232,11 +224,50 @@ describe("Account endpoints", function(){
                     icon: "icon",
                     music: "music",
                     scene: "scene"
+                    // No extra is provided (this is correct, it should work without it)
                 }
             }).auth(TEST_TOKEN, {type: "bearer"});
 
             expect(res).to.have.status(403);
             expect(res.text).to.equal("You are not allowed to use one or more of those cosmetics.");
+        });
+    });
+
+    describe("/cosmetic/search/:name", function(){
+        it("Free theme", async function(){
+            const res = await chai.request(server).get("/cosmetic/search/default");
+            expect(res).to.have.status(200);
+            expect(res.body).to.eql({
+                background: THEME_IMAGE_DIR + "free/default_background" + IMAGE_FILE_EXTENSION,
+                icon: THEME_IMAGE_DIR + "free/default_icon" + IMAGE_FILE_EXTENSION,
+                music: THEME_IMAGE_DIR + "free/default_music.ogg",
+                scene: "",
+                extra: ""
+            });
+        });
+
+        it("Special theme", async function(){
+            const res = await chai.request(server).get("/cosmetic/search/deepsea");
+            expect(res).to.have.status(200);
+            expect(res.body).to.eql({
+                background: THEME_SPECIAL_DIR + "deepsea_background" + IMAGE_FILE_EXTENSION,
+                icon: THEME_SPECIAL_DIR + "deepsea_icon" + IMAGE_FILE_EXTENSION,
+                music: THEME_SPECIAL_DIR + "deepsea_music.ogg",
+                scene: "",
+                extra: THEME_SPECIAL_DIR + "deepsea_extra" + IMAGE_FILE_EXTENSION
+            });
+        });
+
+        it("Theme does not exist", async function(){
+            const res = await chai.request(server).get("/cosmetic/search/o");
+            expect(res).to.have.status(200);
+            expect(res.body).to.eql({
+                background: "",
+                icon: "",
+                music: "",
+                scene: "",
+                extra: ""
+            });
         });
     });
 

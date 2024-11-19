@@ -760,7 +760,8 @@ export class ThemeReward extends Reward{
                 {value: "waterpark", weight: 1},
                 {value: "love_swamp", weight: 1},
                 {value: "melodie", weight: 1},
-                {value: "madevil", weight: 1}
+                {value: "madevil", weight: 1},
+                {value: "darkonceupon", weight: 1}
             ];
         }
 

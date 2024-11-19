@@ -36,7 +36,8 @@ export default function Gallery() {
             background: cosmetics.background,
             icon: cosmetics.icon,
             music: cosmetics.music,
-            scene: cosmetics.scene
+            scene: cosmetics.scene,
+            extra: ""
         };
 
         if (newCosmetics.hasOwnProperty(key)){
