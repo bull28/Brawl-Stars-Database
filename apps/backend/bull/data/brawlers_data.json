@@ -4963,7 +4963,7 @@
                 "groups": [
                     {
                         "name": "Wasteland",
-                        "image": "bg_default.webp",
+                        "image": "bg_wasteland.webp",
                         "icon": "icon_wasteland.webp"
                     }
                 ],
@@ -5390,7 +5390,7 @@
                 "groups": [
                     {
                         "name": "SpongeBob",
-                        "image": "bg_default.webp",
+                        "image": "bg_spongebob.webp",
                         "icon": "icon_spongebob.webp"
                     }
                 ],
@@ -5819,7 +5819,7 @@
                 "groups": [
                     {
                         "name": "Starry Meal",
-                        "image": "bg_default.webp",
+                        "image": "bg_meal.webp",
                         "icon": "icon_meal.webp"
                     }
                 ],
@@ -7805,7 +7805,7 @@
                 "groups": [
                     {
                         "name": "SpongeBob",
-                        "image": "bg_default.webp",
+                        "image": "bg_spongebob.webp",
                         "icon": "icon_spongebob.webp"
                     }
                 ],
@@ -8093,7 +8093,7 @@
                 "groups": [
                     {
                         "name": "Starry Meal",
-                        "image": "bg_default.webp",
+                        "image": "bg_meal.webp",
                         "icon": "icon_meal.webp"
                     }
                 ],
@@ -8410,7 +8410,7 @@
                 "groups": [
                     {
                         "name": "Wasteland",
-                        "image": "bg_default.webp",
+                        "image": "bg_wasteland.webp",
                         "icon": "icon_wasteland.webp"
                     }
                 ],
@@ -9410,7 +9410,7 @@
                 "groups": [
                     {
                         "name": "SpongeBob",
-                        "image": "bg_default.webp",
+                        "image": "bg_spongebob.webp",
                         "icon": "icon_spongebob.webp"
                     }
                 ],
@@ -11604,7 +11604,7 @@
                 "groups": [
                     {
                         "name": "SpongeBob",
-                        "image": "bg_default.webp",
+                        "image": "bg_spongebob.webp",
                         "icon": "icon_spongebob.webp"
                     }
                 ],
@@ -16909,7 +16909,7 @@
                 "groups": [
                     {
                         "name": "Skull Cave Clan",
-                        "image": "bg_default.webp",
+                        "image": "bg_cave.webp",
                         "icon": "icon_cave.webp"
                     }
                 ],
@@ -17301,7 +17301,7 @@
                 "groups": [
                     {
                         "name": "Skull Cave Clan",
-                        "image": "bg_default.webp",
+                        "image": "bg_cave.webp",
                         "icon": "icon_cave.webp"
                     }
                 ],
@@ -23404,7 +23404,7 @@
                 "groups": [
                     {
                         "name": "Starry Meal",
-                        "image": "bg_default.webp",
+                        "image": "bg_meal.webp",
                         "icon": "icon_meal.webp"
                     }
                 ],
@@ -24152,7 +24152,7 @@
                 "limited": false,
                 "unlock": "",
                 "release": {
-                    "month": 11,
+                    "month": 12,
                     "year": 2024
                 },
                 "image": "duplicatorflightattendant.webp",
@@ -25494,14 +25494,14 @@
                 ],
                 "groups": [
                     {
+                        "name": "Wasteland",
+                        "image": "bg_wasteland.webp",
+                        "icon": "icon_wasteland.webp"
+                    },
+                    {
                         "name": "Ranked",
                         "image": "bg_ranked.webp",
                         "icon": "icon_ranked.webp"
-                    },
-                    {
-                        "name": "Wasteland",
-                        "image": "bg_default.webp",
-                        "icon": "icon_wasteland.webp"
                     }
                 ],
                 "limited": false,
@@ -25594,7 +25594,7 @@
             },
             {
                 "name": "maisietoon",
-                "displayName": "Bizarre Maisie",
+                "displayName": "Amazing Maisie",
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
@@ -25638,7 +25638,7 @@
             },
             {
                 "name": "maisietoonchroma1",
-                "displayName": "Requiem Maisie",
+                "displayName": "Fuchsia Maisie",
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
@@ -25681,7 +25681,7 @@
             },
             {
                 "name": "maisietoonchroma2",
-                "displayName": "Platinum Maisie",
+                "displayName": "Titanium Maisie",
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
@@ -26048,7 +26048,7 @@
                 "groups": [
                     {
                         "name": "Wasteland",
-                        "image": "bg_default.webp",
+                        "image": "bg_wasteland.webp",
                         "icon": "icon_wasteland.webp"
                     }
                 ],
@@ -28530,14 +28530,14 @@
                 ],
                 "groups": [
                     {
+                        "name": "SpongeBob",
+                        "image": "bg_spongebob.webp",
+                        "icon": "icon_spongebob.webp"
+                    },
+                    {
                         "name": "Brawl Pass",
                         "image": "bg_default.webp",
                         "icon": "icon_brawlpass.webp"
-                    },
-                    {
-                        "name": "SpongeBob",
-                        "image": "bg_default.webp",
-                        "icon": "icon_spongebob.webp"
                     }
                 ],
                 "limited": true,
@@ -28574,14 +28574,14 @@
                 ],
                 "groups": [
                     {
+                        "name": "SpongeBob",
+                        "image": "bg_spongebob.webp",
+                        "icon": "icon_spongebob.webp"
+                    },
+                    {
                         "name": "Brawl Pass",
                         "image": "bg_default.webp",
                         "icon": "icon_brawlpass.webp"
-                    },
-                    {
-                        "name": "SpongeBob",
-                        "image": "bg_default.webp",
-                        "icon": "icon_spongebob.webp"
                     }
                 ],
                 "limited": true,
@@ -28618,14 +28618,14 @@
                 ],
                 "groups": [
                     {
+                        "name": "SpongeBob",
+                        "image": "bg_spongebob.webp",
+                        "icon": "icon_spongebob.webp"
+                    },
+                    {
                         "name": "Brawl Pass",
                         "image": "bg_default.webp",
                         "icon": "icon_brawlpass.webp"
-                    },
-                    {
-                        "name": "SpongeBob",
-                        "image": "bg_default.webp",
-                        "icon": "icon_spongebob.webp"
                     }
                 ],
                 "limited": true,
@@ -32675,7 +32675,7 @@
                 "groups": [
                     {
                         "name": "Starry Meal",
-                        "image": "bg_default.webp",
+                        "image": "bg_meal.webp",
                         "icon": "icon_meal.webp"
                     }
                 ],
@@ -33371,14 +33371,14 @@
                 "groups": [
                     {
                         "name": "Starry Meal",
-                        "image": "bg_default.webp",
+                        "image": "bg_meal.webp",
                         "icon": "icon_meal.webp"
                     }
                 ],
                 "limited": false,
                 "unlock": "",
                 "release": {
-                    "month": 11,
+                    "month": 12,
                     "year": 2024
                 },
                 "image": "ruffscoock.webp",
@@ -34198,7 +34198,7 @@
                 "groups": [
                     {
                         "name": "SpongeBob",
-                        "image": "bg_default.webp",
+                        "image": "bg_spongebob.webp",
                         "icon": "icon_spongebob.webp"
                     }
                 ],
@@ -36523,14 +36523,14 @@
                 "groups": [
                     {
                         "name": "Wasteland",
-                        "image": "bg_default.webp",
+                        "image": "bg_wasteland.webp",
                         "icon": "icon_wasteland.webp"
                     }
                 ],
                 "limited": false,
                 "unlock": "",
                 "release": {
-                    "month": 11,
+                    "month": 12,
                     "year": 2024
                 },
                 "image": "silencersewer.webp",
@@ -38013,7 +38013,7 @@
                 "groups": [
                     {
                         "name": "Wasteland",
-                        "image": "bg_default.webp",
+                        "image": "bg_wasteland.webp",
                         "icon": "icon_wasteland.webp"
                     }
                 ],
@@ -40805,7 +40805,7 @@
                 "groups": [
                     {
                         "name": "Starry Meal",
-                        "image": "bg_default.webp",
+                        "image": "bg_meal.webp",
                         "icon": "icon_meal.webp"
                     }
                 ],
@@ -46086,7 +46086,7 @@
                 "groups": [
                     {
                         "name": "Wasteland",
-                        "image": "bg_default.webp",
+                        "image": "bg_wasteland.webp",
                         "icon": "icon_wasteland.webp"
                     }
                 ],
@@ -47443,7 +47443,7 @@
                 "groups": [
                     {
                         "name": "Starry Meal",
-                        "image": "bg_default.webp",
+                        "image": "bg_meal.webp",
                         "icon": "icon_meal.webp"
                     }
                 ],

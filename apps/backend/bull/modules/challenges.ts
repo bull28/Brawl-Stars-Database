@@ -90,7 +90,7 @@ const offenseUpgrades: {[k in keyof PlayerUpgrades["offense"]]: [number, number]
     damage: [[0, 100]],
     healing: [[0, 100]],
     speed: [[0, 0]],
-    ability: [[0, 1]],
+    ability: [[0, 0]],
     lifeSteal: [[0, 0]]
 };
 const defenseUpgradesOdd: (Pick<PlayerUpgrades["defense"], "difficulty" | "enemyStats">)[] = [
@@ -587,7 +587,7 @@ export function getStaticGameMod(key: string, masteryLevel: number, accessories:
                     destination: 0
                 }],
                 maxScores: {completion: 300, time: 150, destination: 0, health: 50, gear: 0, enemy: 0},
-                playerUpgradeValues: {healing: {value: [200, 0.02]}, lifeSteal: {value: [100, 0.02]}}
+                playerUpgradeValues: {healing: {value: [200, 50]}, lifeSteal: {value: [100, 50]}}
             };
         }
     }
@@ -727,12 +727,12 @@ export function getKeyGameMod(key: string, masteryLevel: number, accessories: Da
         },
         playerAccessories: playerAccessories,
         playerUpgradeValues: {
-            health: {value: [upgrades.health, 0.08]},
-            damage: {value: [upgrades.damage, 0.08]},
-            healing: {value: [upgrades.healing, 0.02]},
+            health: {value: [upgrades.health, 12.5]},
+            damage: {value: [upgrades.damage, 12.5]},
+            healing: {value: [upgrades.healing, 50]},
             speed: {value: [upgrades.speed, 1]},
-            ability: {value: [upgrades.ability, -10]},
-            lifeSteal: {value: [upgrades.lifeSteal, 0.02]}
+            ability: {value: [upgrades.ability, 20]},
+            lifeSteal: {value: [upgrades.lifeSteal, 50]}
         }
     };
 }

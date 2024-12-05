@@ -9,7 +9,7 @@ describe("Challenges module", function(){
         const offenseMinLevel = {
             startingPower: 0, startingGears: 3, powerPerStage: 0, gearsPerStage: 0,
             maxExtraPower: 0, maxExtraGears: 0, maxAccessories: 0,
-            health: 100, damage: 100, healing: 100, speed: 0, ability: 1, lifeSteal: 0
+            health: 100, damage: 100, healing: 100, speed: 0, ability: 0, lifeSteal: 0
         };
         const defenseMinLevel = {
             difficulty: 0, maxEnemies: [12], enemyStats: [100],
@@ -18,7 +18,7 @@ describe("Challenges module", function(){
         const offenseMaxLevel = {
             startingPower: 0, startingGears: 4, powerPerStage: 56, gearsPerStage: 4,
             maxExtraPower: 180, maxExtraGears: 12, maxAccessories: 5,
-            health: 100, damage: 100, healing: 100, speed: 0, ability: 1, lifeSteal: 0
+            health: 100, damage: 100, healing: 100, speed: 0, ability: 0, lifeSteal: 0
         };
         const defenseMaxLevel = {
             difficulty: 3, maxEnemies: [40, 48, 64, 88], enemyStats: [125.0, 200.0, 250.0, 300.0],
@@ -215,9 +215,9 @@ describe("Challenges module", function(){
         expect(challenge1.playerAccessories![0]).to.equal(accessoryList[0].name);
 
         expect(challenge1.playerUpgradeValues).to.eql({
-            health: {value: [100, 0.08]}, damage: {value: [100, 0.08]},
-            healing: {value: [100, 0.02]}, speed: {value: [0, 1]},
-            ability: {value: [1, -10]}, lifeSteal: {value: [0, 0.02]}
+            health: {value: [100, 12.5]}, damage: {value: [100, 12.5]},
+            healing: {value: [100, 50]}, speed: {value: [0, 1]},
+            ability: {value: [0, 20]}, lifeSteal: {value: [0, 50]}
         });
     });
 

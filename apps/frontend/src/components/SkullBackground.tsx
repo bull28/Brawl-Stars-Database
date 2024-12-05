@@ -4,7 +4,7 @@ import AuthRequest from "../helpers/AuthRequest";
 import {CosmeticData} from "../types/CosmeticData";
 import cdn from "../helpers/CDNRoute";
 
-export default function SkullBackground({bg, icon, extra}: {bg?: string; icon?: string; extra?: string;}){
+export default function SkullBackground({bg, icon}: {bg?: string; icon?: string}){
     const [cosmetics, setCosmetics] = useState<CosmeticData | undefined>();
     const [extraImage, setExtraImage] = useState<string>("");
 
@@ -26,10 +26,11 @@ export default function SkullBackground({bg, icon, extra}: {bg?: string; icon?: 
             AuthRequest<CosmeticData>("/cosmetic", {
                 setState: (data) => {
                     setCosmetics(data);
+                    setExtraImage(data.extra);
                 }
             }, false);
         }
-    }, [bg, icon, extra]);
+    }, [bg, icon]);
 
     useEffect(() => {
         document.addEventListener("updatecosmetics", updateBackground);

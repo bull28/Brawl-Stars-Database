@@ -204,7 +204,7 @@ export default function SkinSearch(){
                     </FormControl>
                     <Flex w={"100%"} gap={[0, 5]} flexDir={["column", "row"]}>
                         <Box flex={1}>
-                            <Text userSelect={"none"}>Released After</Text>
+                            <Text userSelect={"none"}>Released After or During</Text>
                             <Flex>
                                 <FormControl className={"skinsearch-form-control"}>
                                     <Select name={"startMonth"} placeholder={"Month"}>{months.map((value, index) =>
@@ -221,7 +221,7 @@ export default function SkinSearch(){
                             </Flex>
                         </Box>
                         <Box flex={1}>
-                            <Text userSelect={"none"}>Released Before</Text>
+                            <Text userSelect={"none"}>Released Before or During</Text>
                             <Flex>
                                 <FormControl className={"skinsearch-form-control"}>
                                     <Select name={"endMonth"} placeholder={"Month"}>{months.map((value, index) =>
