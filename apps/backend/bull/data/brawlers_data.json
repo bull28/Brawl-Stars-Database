@@ -698,7 +698,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Mega Boxes during the Classic Brawl event",
+                "unlock": "Available in Mega Boxes",
                 "release": {
                     "month": 7,
                     "year": 2024
@@ -735,7 +735,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Mega Boxes during the Classic Brawl event",
+                "unlock": "Available in Mega Boxes",
                 "release": {
                     "month": 7,
                     "year": 2024
@@ -1013,7 +1013,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Mega Boxes during the Classic Brawl event",
+                "unlock": "Available in Mega Boxes",
                 "release": {
                     "month": 6,
                     "year": 2017
@@ -1245,7 +1245,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in the Krusty Krab during the SpongeBob event",
+                "unlock": "Available in the Krusty Krab",
                 "release": {
                     "month": 7,
                     "year": 2021
@@ -1332,7 +1332,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Reward from Brawl Pass Season 16 tier 1",
+                "unlock": "Reward from Brawl Pass Season 16 tier 1 or Presents",
                 "release": {
                     "month": 1,
                     "year": 2023
@@ -1462,6 +1462,84 @@
                     "year": 2024
                 },
                 "image": "shamandragon_black.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "shamanstarrforce",
+                "displayName": "Runner Nita",
+                "cost": 79,
+                "currency": "Gems",
+                "costBling": 2750,
+                "rarity": {
+                    "value": 2,
+                    "name": "Super Rare",
+                    "icon": "skin_rarity_2.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "StarrForce Assemble",
+                        "image": "bg_starrforce.webp",
+                        "icon": "icon_starrforce.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Available in Pizza Planet",
+                "release": {
+                    "month": 1,
+                    "year": 2025
+                },
+                "image": "shamanstarrforce.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "shamanchristmas",
+                "displayName": "Reinbear Nita",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawlidays",
+                        "image": "bg_brawlidays.webp",
+                        "icon": "icon_brawlidays.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Available in Presents",
+                "release": {
+                    "month": 12,
+                    "year": 2024
+                },
+                "image": "shamanchristmas.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -1713,6 +1791,24 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "nita_starrforce",
+                "image": "nita_starrforce.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "nita_brawlidays",
+                "image": "nita_brawlidays.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -1787,7 +1883,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Mega Boxes during the Classic Brawl event",
+                "unlock": "Available in Mega Boxes",
                 "release": {
                     "month": 6,
                     "year": 2017
@@ -2528,12 +2624,90 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Available in Angelic Starr Drops",
                 "release": {
                     "month": 11,
                     "year": 2024
                 },
                 "image": "gunslingerdarkangelchroma.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "gunslingerwoody",
+                "displayName": "Woody Colt",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Toy Story",
+                        "image": "bg_toystory.webp",
+                        "icon": "icon_toystory.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "release": {
+                    "month": 12,
+                    "year": 2024
+                },
+                "image": "gunslingerwoody.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "gunslingerroyalagent",
+                "displayName": "Jade Agent Colt",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "icon": "skin_rarity_1.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Bountiful Harvest",
+                        "image": "bg_lunarevent.webp",
+                        "icon": "icon_harvest.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 1,
+                    "year": 2025
+                },
+                "image": "gunslingerroyalagent.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -2794,6 +2968,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "colt_toystory",
+                "image": "colt_toystory.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -2869,7 +3052,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Mega Boxes during the Classic Brawl event",
+                "unlock": "Available in Mega Boxes",
                 "release": {
                     "month": 6,
                     "year": 2017
@@ -3088,13 +3271,13 @@
                 ],
                 "groups": [
                     {
-                        "name": "Lunar Brawl",
-                        "image": "bg_lny_2020.webp",
-                        "icon": "icon_lny_2020.webp"
+                        "name": "StarrForce Assemble",
+                        "image": "bg_starrforce.webp",
+                        "icon": "icon_starrforce.webp"
                     }
                 ],
-                "limited": true,
-                "unlock": "",
+                "limited": false,
+                "unlock": "Available in Pizza Planet",
                 "release": {
                     "month": 2,
                     "year": 2021
@@ -3294,7 +3477,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Mega Boxes during the Classic Brawl event",
+                "unlock": "Available in Mega Boxes",
                 "release": {
                     "month": 6,
                     "year": 2024
@@ -3567,7 +3750,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in the Krusty Krab during the SpongeBob event",
+                "unlock": "Available in the Krusty Krab",
                 "release": {
                     "month": 6,
                     "year": 2017
@@ -4073,7 +4256,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Monster Eggs during the Godzilla event",
+                "unlock": "Available in Monster Eggs",
                 "release": {
                     "month": 4,
                     "year": 2024
@@ -4112,7 +4295,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Monster Eggs during the Godzilla event",
+                "unlock": "Available in Monster Eggs",
                 "release": {
                     "month": 4,
                     "year": 2024
@@ -4151,7 +4334,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Monster Eggs during the Godzilla event",
+                "unlock": "Available in Monster Eggs",
                 "release": {
                     "month": 4,
                     "year": 2024
@@ -4190,7 +4373,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Monster Eggs during the Godzilla event",
+                "unlock": "Available in Monster Eggs",
                 "release": {
                     "month": 4,
                     "year": 2024
@@ -4229,7 +4412,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Monster Eggs during the Godzilla event",
+                "unlock": "Available in Monster Eggs",
                 "release": {
                     "month": 4,
                     "year": 2024
@@ -4354,7 +4537,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Mega Boxes during the Classic Brawl event",
+                "unlock": "Available in Mega Boxes",
                 "release": {
                     "month": 7,
                     "year": 2024
@@ -4780,7 +4963,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Mega Boxes during the Classic Brawl event",
+                "unlock": "Available in Mega Boxes",
                 "release": {
                     "month": 6,
                     "year": 2017
@@ -4818,7 +5001,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Mega Boxes during the Classic Brawl event",
+                "unlock": "Available in Mega Boxes",
                 "release": {
                     "month": 7,
                     "year": 2017
@@ -5710,7 +5893,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Mega Boxes during the Classic Brawl event",
+                "unlock": "Available in Mega Boxes",
                 "release": {
                     "month": 6,
                     "year": 2017
@@ -6611,6 +6794,50 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "deadmariachigoodrandoms",
+                "displayName": "Quit Playing Poco",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "The Good Randoms",
+                        "image": "bg_goodrandoms.webp",
+                        "icon": "icon_goodrandoms.webp"
+                    },
+                    {
+                        "name": "Ranked",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_ranked.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Available in Ranked Starr Drops",
+                "release": {
+                    "month": 2,
+                    "year": 2025
+                },
+                "image": "deadmariachigoodrandoms.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -6757,6 +6984,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "poco_ranked",
+                "image": "poco_ranked.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -6872,7 +7108,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in the Krusty Krab during the SpongeBob event",
+                "unlock": "Available in the Krusty Krab",
                 "release": {
                     "month": 7,
                     "year": 2021
@@ -7428,7 +7664,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Mega Boxes during the Classic Brawl event",
+                "unlock": "Available in Mega Boxes",
                 "release": {
                     "month": 6,
                     "year": 2018
@@ -7466,7 +7702,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in the Krusty Krab during the SpongeBob event",
+                "unlock": "Available in the Krusty Krab",
                 "release": {
                     "month": 6,
                     "year": 2018
@@ -7732,7 +7968,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Available in Presents",
                 "release": {
                     "month": 2,
                     "year": 2024
@@ -7810,12 +8046,51 @@
                     }
                 ],
                 "limited": true,
-                "unlock": "Available in the Krusty Krab during the SpongeBob event",
+                "unlock": "Available in the Krusty Krab",
                 "release": {
                     "month": 9,
                     "year": 2024
                 },
                 "image": "mechanicsb.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "mechanicjessie",
+                "displayName": "Jessie Jessie",
+                "cost": 79,
+                "currency": "Gems",
+                "costBling": 2750,
+                "rarity": {
+                    "value": 2,
+                    "name": "Super Rare",
+                    "icon": "skin_rarity_2.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Toy Story",
+                        "image": "bg_toystory.webp",
+                        "icon": "icon_toystory.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "release": {
+                    "month": 12,
+                    "year": 2024
+                },
+                "image": "mechanicjessie.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -7986,6 +8261,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "jessie_toystory",
+                "image": "jessie_toystory.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -8138,7 +8422,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Monster Eggs during the Godzilla event",
+                "unlock": "Available in Monster Eggs",
                 "release": {
                     "month": 7,
                     "year": 2019
@@ -8646,7 +8930,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Mega Boxes during the Classic Brawl event",
+                "unlock": "Available in Mega Boxes",
                 "release": {
                     "month": 7,
                     "year": 2024
@@ -8691,6 +8975,84 @@
                     "year": 2024
                 },
                 "image": "tntdudezombie.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "tntguybrawlentine",
+                "displayName": "Romantic Dynamike",
+                "cost": 79,
+                "currency": "Gems",
+                "costBling": 2750,
+                "rarity": {
+                    "value": 2,
+                    "name": "Super Rare",
+                    "icon": "skin_rarity_2.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "My Brawlentine",
+                        "image": "bg_brawlentines.webp",
+                        "icon": "icon_brawlentines.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 2,
+                    "year": 2025
+                },
+                "image": "tntguybrawlentine.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "tntdudechristmas",
+                "displayName": "Sugar Bomb Mike",
+                "cost": 79,
+                "currency": "Gems",
+                "costBling": 2750,
+                "rarity": {
+                    "value": 2,
+                    "name": "Super Rare",
+                    "icon": "skin_rarity_2.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawlidays",
+                        "image": "bg_brawlidays.webp",
+                        "icon": "icon_brawlidays.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Available in Presents",
+                "release": {
+                    "month": 12,
+                    "year": 2024
+                },
+                "image": "tntdudechristmas.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -8978,6 +9340,24 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "dynamike_brawlentines",
+                "image": "dynamike_brawlentines.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "dynamike_brawlidays",
+                "image": "dynamike_brawlidays.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -9054,7 +9434,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Monster Eggs during the Godzilla event",
+                "unlock": "Available in Monster Eggs",
                 "release": {
                     "month": 7,
                     "year": 2020
@@ -9093,7 +9473,7 @@
                     }
                 ],
                 "limited": true,
-                "unlock": "",
+                "unlock": "Available in Presents",
                 "release": {
                     "month": 12,
                     "year": 2020
@@ -9415,7 +9795,7 @@
                     }
                 ],
                 "limited": true,
-                "unlock": "Available in the Krusty Krab during the SpongeBob event",
+                "unlock": "Available in the Krusty Krab",
                 "release": {
                     "month": 9,
                     "year": 2024
@@ -9665,7 +10045,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Available in Presents",
                 "release": {
                     "month": 8,
                     "year": 2019
@@ -9699,12 +10079,12 @@
                 ],
                 "groups": [
                     {
-                        "name": "Lunar Brawl",
-                        "image": "bg_lny_2020.webp",
-                        "icon": "icon_lny_2020.webp"
+                        "name": "CyberBrawl",
+                        "image": "bg_hacker.webp",
+                        "icon": "icon_hacker.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "",
                 "release": {
                     "month": 2,
@@ -9937,13 +10317,13 @@
                 ],
                 "groups": [
                     {
-                        "name": "Lunar Brawl",
-                        "image": "bg_lny_2020.webp",
-                        "icon": "icon_lny_2020.webp"
+                        "name": "CyberBrawl",
+                        "image": "bg_hacker.webp",
+                        "icon": "icon_hacker.webp"
                     }
                 ],
-                "limited": true,
-                "unlock": "",
+                "limited": false,
+                "unlock": "Available in Pizza Planet",
                 "release": {
                     "month": 2,
                     "year": 2024
@@ -10733,7 +11113,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Mega Boxes during the Classic Brawl event",
+                "unlock": "Available in Mega Boxes",
                 "release": {
                     "month": 7,
                     "year": 2024
@@ -10815,7 +11195,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Mega Boxes during the Classic Brawl event",
+                "unlock": "Available in Mega Boxes",
                 "release": {
                     "month": 7,
                     "year": 2024
@@ -10856,7 +11236,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Mega Boxes during the Classic Brawl event",
+                "unlock": "Available in Mega Boxes",
                 "release": {
                     "month": 7,
                     "year": 2024
@@ -11398,9 +11778,9 @@
                 ],
                 "groups": [
                     {
-                        "name": "Lunar Brawl",
-                        "image": "bg_lny_2020.webp",
-                        "icon": "icon_lny_2020.webp"
+                        "name": "StarrForce Assemble",
+                        "image": "bg_starrforce.webp",
+                        "icon": "icon_starrforce.webp"
                     },
                     {
                         "name": "Brawl Pass",
@@ -11570,7 +11950,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Available in Presents",
                 "release": {
                     "month": 1,
                     "year": 2023
@@ -11609,12 +11989,50 @@
                     }
                 ],
                 "limited": true,
-                "unlock": "Available in the Krusty Krab during the SpongeBob event",
+                "unlock": "Available in the Krusty Krab",
                 "release": {
                     "month": 9,
                     "year": 2024
                 },
                 "image": "barrelbotsb.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "barrelbottoy",
+                "displayName": "Pop-up Darryl",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "icon": "skin_rarity_1.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Come Play With Us!",
+                        "image": "bg_toystory.webp",
+                        "icon": "icon_toys.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Available in Presents",
+                "release": {
+                    "month": 12,
+                    "year": 2024
+                },
+                "image": "barrelbottoy.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -12141,12 +12559,89 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Ranked Starr Drops",
+                "unlock": "Available in Ranked Starr Drops or Pizza Planet",
                 "release": {
                     "month": 4,
                     "year": 2024
                 },
                 "image": "artillerydudesmuggler_orange.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "artillerygalcyber",
+                "displayName": "Robo Penny",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "icon": "skin_rarity_1.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "CyberBrawl",
+                        "image": "bg_hacker.webp",
+                        "icon": "icon_hacker.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 12,
+                    "year": 2024
+                },
+                "image": "artillerygalcyber.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "artillerygaltoy",
+                "displayName": "Pop Penny",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Come Play With Us!",
+                        "image": "bg_toystory.webp",
+                        "icon": "icon_toys.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Available in Presents",
+                "release": {
+                    "month": 12,
+                    "year": 2024
+                },
+                "image": "artillerygaltoy.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -12303,6 +12798,15 @@
             {
                 "name": "penny_overcharge",
                 "image": "penny_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "penny_toys",
+                "image": "penny_toys.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -13017,7 +13521,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Monster Eggs during the Godzilla event",
+                "unlock": "Available in Monster Eggs",
                 "release": {
                     "month": 8,
                     "year": 2020
@@ -13100,7 +13604,7 @@
                     }
                 ],
                 "limited": true,
-                "unlock": "",
+                "unlock": "Available in Presents",
                 "release": {
                     "month": 12,
                     "year": 2021
@@ -14256,7 +14760,7 @@
                     }
                 ],
                 "limited": true,
-                "unlock": "",
+                "unlock": "Available in Presents",
                 "release": {
                     "month": 12,
                     "year": 2021
@@ -14384,6 +14888,45 @@
                     "year": 2023
                 },
                 "image": "bowdudehinduchroma.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "bowdudebrawlentine",
+                "displayName": "Cupid Bo",
+                "cost": 79,
+                "currency": "Gems",
+                "costBling": 2750,
+                "rarity": {
+                    "value": 2,
+                    "name": "Super Rare",
+                    "icon": "skin_rarity_2.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "My Brawlentine",
+                        "image": "bg_brawlentines.webp",
+                        "icon": "icon_brawlentines.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 2,
+                    "year": 2025
+                },
+                "image": "bowdudebrawlentine.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -14634,6 +15177,15 @@
                     "value": 2,
                     "name": "Epic",
                     "color": "#b116ec"
+                }
+            },
+            {
+                "name": "bo_brawlentines",
+                "image": "bo_brawlentines.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
                 }
             }
         ]
@@ -15557,12 +16109,51 @@
                     }
                 ],
                 "limited": true,
-                "unlock": "",
+                "unlock": "Available in Presents",
                 "release": {
                     "month": 12,
                     "year": 2023
                 },
                 "image": "rollerchristmas.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "rollergoodrandoms",
+                "displayName": "Woodriver Stu",
+                "cost": 79,
+                "currency": "Gems",
+                "costBling": 2750,
+                "rarity": {
+                    "value": 2,
+                    "name": "Super Rare",
+                    "icon": "skin_rarity_2.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "The Good Randoms",
+                        "image": "bg_goodrandoms.webp",
+                        "icon": "icon_goodrandoms.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 2,
+                    "year": 2025
+                },
+                "image": "rollergoodrandoms.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -15773,6 +16364,15 @@
             {
                 "name": "stu_overcharge",
                 "image": "stu_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "stu_goodrandoms",
+                "image": "stu_goodrandoms.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -16445,7 +17045,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in the Krusty Krab during the SpongeBob event",
+                "unlock": "Available in the Krusty Krab",
                 "release": {
                     "month": 6,
                     "year": 2020
@@ -16914,7 +17514,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Mega Boxes during the Classic Brawl event",
+                "unlock": "Available in Mega Boxes",
                 "release": {
                     "month": 6,
                     "year": 2018
@@ -17065,7 +17665,7 @@
                     }
                 ],
                 "limited": true,
-                "unlock": "",
+                "unlock": "Available in Presents",
                 "release": {
                     "month": 12,
                     "year": 2020
@@ -17191,7 +17791,7 @@
                 "limited": true,
                 "unlock": "Only obtainable from the Supercell store",
                 "release": {
-                    "month": 3,
+                    "month": 12,
                     "year": 2024
                 },
                 "image": "hammerdudeclashkingchromared.webp",
@@ -17232,7 +17832,7 @@
                 "limited": true,
                 "unlock": "Only obtainable from the Supercell store",
                 "release": {
-                    "month": 3,
+                    "month": 12,
                     "year": 2024
                 },
                 "image": "hammerdudeclashkingchromablue.webp",
@@ -17267,7 +17867,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in the Krusty Krab during the SpongeBob event",
+                "unlock": "Available in the Krusty Krab",
                 "release": {
                     "month": 6,
                     "year": 2024
@@ -17306,7 +17906,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Mega Boxes during the Classic Brawl event",
+                "unlock": "Available in Mega Boxes",
                 "release": {
                     "month": 6,
                     "year": 2024
@@ -17697,12 +18297,12 @@
                 ],
                 "groups": [
                     {
-                        "name": "Lunar Brawl",
-                        "image": "bg_lny_2020.webp",
-                        "icon": "icon_lny_2020.webp"
+                        "name": "Gaming",
+                        "image": "bg_lny_2023.webp",
+                        "icon": "icon_gaming.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "",
                 "release": {
                     "month": 1,
@@ -17784,7 +18384,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Monster Eggs during the Godzilla event",
+                "unlock": "Available in Monster Eggs",
                 "release": {
                     "month": 3,
                     "year": 2021
@@ -17971,7 +18571,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Available in Presents",
                 "release": {
                     "month": 5,
                     "year": 2023
@@ -18010,7 +18610,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in the Krusty Krab during the SpongeBob event",
+                "unlock": "Available in the Krusty Krab",
                 "release": {
                     "month": 8,
                     "year": 2023
@@ -18084,9 +18684,9 @@
                 ],
                 "groups": [
                     {
-                        "name": "Lunar Brawl",
-                        "image": "bg_lny_2020.webp",
-                        "icon": "icon_lny_2020.webp"
+                        "name": "Gaming",
+                        "image": "bg_lny_2023.webp",
+                        "icon": "icon_gaming.webp"
                     }
                 ],
                 "limited": false,
@@ -18100,6 +18700,45 @@
                     "geometry": "baseballgamer_remake.glb",
                     "winAnimation": "baseballgamer_remake_win.glb",
                     "loseAnimation": "baseballgamer_remake_lose.glb"
+                },
+                "rating": 0
+            },
+            {
+                "name": "baseballbopeep",
+                "displayName": "Bo Peep Bibi",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Toy Story",
+                        "image": "bg_toystory.webp",
+                        "icon": "icon_toystory.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "release": {
+                    "month": 12,
+                    "year": 2024
+                },
+                "image": "baseballbopeep.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
                 },
                 "rating": 0
             }
@@ -18338,6 +18977,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "bibi_toystory",
+                "image": "bibi_toystory.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -18452,7 +19100,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Monster Eggs during the Godzilla event",
+                "unlock": "Available in Monster Eggs",
                 "release": {
                     "month": 7,
                     "year": 2020
@@ -18686,7 +19334,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Available in Pizza Planet",
                 "release": {
                     "month": 6,
                     "year": 2024
@@ -18919,7 +19567,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Available in Presents",
                 "release": {
                     "month": 8,
                     "year": 2020
@@ -19454,7 +20102,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Available in Pizza Planet",
                 "release": {
                     "month": 3,
                     "year": 2022
@@ -19604,7 +20252,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Monster Eggs during the Godzilla event",
+                "unlock": "Available in Monster Eggs",
                 "release": {
                     "month": 5,
                     "year": 2023
@@ -20318,7 +20966,7 @@
                     }
                 ],
                 "limited": true,
-                "unlock": "",
+                "unlock": "Available in Presents",
                 "release": {
                     "month": 12,
                     "year": 2021
@@ -20425,12 +21073,12 @@
                 ],
                 "groups": [
                     {
-                        "name": "Lunar Brawl",
-                        "image": "bg_lny_2020.webp",
-                        "icon": "icon_lny_2020.webp"
+                        "name": "Gaming",
+                        "image": "bg_lny_2023.webp",
+                        "icon": "icon_gaming.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "",
                 "release": {
                     "month": 1,
@@ -20470,7 +21118,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in the Krusty Krab during the SpongeBob event",
+                "unlock": "Available in the Krusty Krab",
                 "release": {
                     "month": 8,
                     "year": 2023
@@ -21101,7 +21749,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Available in Pizza Planet",
                 "release": {
                     "month": 6,
                     "year": 2022
@@ -21212,7 +21860,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Angelic Starr Drops",
+                "unlock": "Available in Angelic Starr Drops or Presents",
                 "release": {
                     "month": 7,
                     "year": 2023
@@ -21298,6 +21946,45 @@
                     "geometry": "cannongirldeepsea.glb",
                     "winAnimation": "cannongirldeepsea_win.glb",
                     "loseAnimation": "cannongirldeepsea_lose.glb"
+                },
+                "rating": 0
+            },
+            {
+                "name": "cannongirlchristmas",
+                "displayName": "Reindeer Bonnie",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawlidays",
+                        "image": "bg_brawlidays.webp",
+                        "icon": "icon_brawlidays.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "release": {
+                    "month": 12,
+                    "year": 2024
+                },
+                "image": "cannongirlchristmas.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
                 },
                 "rating": 0
             }
@@ -21405,6 +22092,15 @@
             {
                 "name": "bonnie_deepsea",
                 "image": "bonnie_deepsea.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "bonnie_brawlidays",
+                "image": "bonnie_brawlidays.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -21536,7 +22232,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Available in Presents",
                 "release": {
                     "month": 12,
                     "year": 2020
@@ -21699,6 +22395,44 @@
                     "year": 2024
                 },
                 "image": "blowerdeepsea.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "blowerastronaut",
+                "displayName": "Galactic Gale",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "icon": "skin_rarity_1.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Misc",
+                        "image": "bg_default.webp",
+                        "icon": "icon_misc.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 12,
+                    "year": 2024
+                },
+                "image": "blowerastronaut.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -22028,13 +22762,13 @@
                 ],
                 "groups": [
                     {
-                        "name": "Lunar Brawl",
-                        "image": "bg_lny_2020.webp",
-                        "icon": "icon_lny_2020.webp"
+                        "name": "StarrForce Assemble",
+                        "image": "bg_starrforce.webp",
+                        "icon": "icon_starrforce.webp"
                     }
                 ],
-                "limited": true,
-                "unlock": "",
+                "limited": false,
+                "unlock": "Available in Pizza Planet",
                 "release": {
                     "month": 2,
                     "year": 2021
@@ -22944,7 +23678,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in the Krusty Krab during the SpongeBob event",
+                "unlock": "Available in the Krusty Krab",
                 "release": {
                     "month": 7,
                     "year": 2022
@@ -22993,7 +23727,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Ranked Starr Drops",
+                "unlock": "Available in Ranked Starr Drops or Pizza Planet",
                 "release": {
                     "month": 9,
                     "year": 2024
@@ -23453,7 +24187,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Available in Presents",
                 "release": {
                     "month": 1,
                     "year": 2023
@@ -23492,7 +24226,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Available in Presents",
                 "release": {
                     "month": 12,
                     "year": 2022
@@ -23507,7 +24241,7 @@
             },
             {
                 "name": "knighttoon",
-                "displayName": "Be Less Ash",
+                "displayName": "Ash Boy",
                 "cost": 79,
                 "currency": "Gems",
                 "costBling": 2750,
@@ -23752,6 +24486,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "ash_overcharge",
+                "image": "ash_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -23873,7 +24616,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Available in Pizza Planet",
                 "release": {
                     "month": 6,
                     "year": 2022
@@ -24162,6 +24905,45 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "duplicatorgiftstoy",
+                "displayName": "Loopy Lola",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Come Play With Us!",
+                        "image": "bg_toystory.webp",
+                        "icon": "icon_toys.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Available in Presents",
+                "release": {
+                    "month": 12,
+                    "year": 2024
+                },
+                "image": "duplicatorgiftstoy.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -24380,6 +25162,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "lola_toys",
+                "image": "lola_toys.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -24501,7 +25292,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Available in Presents",
                 "release": {
                     "month": 12,
                     "year": 2022
@@ -24538,7 +25329,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Available in Presents",
                 "release": {
                     "month": 2,
                     "year": 2023
@@ -25417,7 +26208,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Available in Pizza Planet",
                 "release": {
                     "month": 5,
                     "year": 2023
@@ -25647,7 +26438,7 @@
                     "name": "Epic",
                     "icon": "skin_rarity_3.webp"
                 },
-                "requires": "",
+                "requires": "Amazing Maisie",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -25690,7 +26481,7 @@
                     "name": "Epic",
                     "icon": "skin_rarity_3.webp"
                 },
-                "requires": "",
+                "requires": "Amazing Maisie",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -26014,7 +26805,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in the Krusty Krab during the SpongeBob event",
+                "unlock": "Available in the Krusty Krab",
                 "release": {
                     "month": 6,
                     "year": 2023
@@ -26798,7 +27589,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Included in the Larry & Lawrie early access bundle",
+                "unlock": "Included in the Larry & Lawrie early access bundle or in Presents",
                 "release": {
                     "month": 2,
                     "year": 2024
@@ -26842,7 +27633,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Ranked Starr Drops",
+                "unlock": "Available in Ranked Starr Drops or Pizza Planet",
                 "release": {
                     "month": 6,
                     "year": 2024
@@ -26984,7 +27775,7 @@
                     "name": "Epic",
                     "icon": "skin_rarity_3.webp"
                 },
-                "requires": "",
+                "requires": "Angel Larry & Lawrie",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -27027,7 +27818,7 @@
                     "name": "Epic",
                     "icon": "skin_rarity_3.webp"
                 },
-                "requires": "",
+                "requires": "Angel Larry & Lawrie",
                 "features": [
                     "Brawler Model",
                     "Texture",
@@ -27657,6 +28448,45 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "painterstarrforce",
+                "displayName": "Star Horse Berry",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "StarrForce Assemble",
+                        "image": "bg_starrforce.webp",
+                        "icon": "icon_starrforce.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Available in Pizza Planet",
+                "release": {
+                    "month": 1,
+                    "year": 2025
+                },
+                "image": "painterstarrforce.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -27749,6 +28579,24 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "berry_overcharge",
+                "image": "berry_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "berry_starrforce",
+                "image": "berry_starrforce.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -27818,9 +28666,9 @@
                 ],
                 "groups": [
                     {
-                        "name": "",
+                        "name": "City Troubles",
                         "image": "bg_default.webp",
-                        "icon": "icon_default.webp"
+                        "icon": "icon_city.webp"
                     }
                 ],
                 "limited": false,
@@ -27932,6 +28780,187 @@
         ]
     },
     {
+        "name": "meeple",
+        "displayName": "Meeple",
+        "rarity": {
+            "value": 3,
+            "name": "Epic",
+            "color": "#b116ec"
+        },
+        "image": "portrait_meeple.webp",
+        "defaultSkin": "meepledefault",
+        "title": "Cheater",
+        "masteryIcon": "mastery_icon_meeple.webp",
+        "description": "Meeple knows the rules to every board game in existence and if you break them... Well let's just say you don't want to break them. They hate cheaters and those who don't follow the rules. There's one exception to the rules... Meeple themselves!",
+        "skins": [
+            {
+                "name": "meepledefault",
+                "displayName": "Meeple",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 0,
+                    "name": "",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [],
+                "groups": [
+                    {
+                        "name": "",
+                        "image": "bg_default.webp",
+                        "icon": "icon_default.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 1,
+                    "year": 2025
+                },
+                "image": "meepledefault.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "meeplebowling",
+                "displayName": "Strike Meeple",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "icon": "skin_rarity_1.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Come Play With Us!",
+                        "image": "bg_toystory.webp",
+                        "icon": "icon_toys.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 1,
+                    "year": 2025
+                },
+                "image": "meeplebowling.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "name": "meeple_default",
+                "image": "meeple_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "meeple_happy",
+                "image": "meeple_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "meeple_sad",
+                "image": "meeple_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "meeple_angry",
+                "image": "meeple_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "meeple_gg",
+                "image": "meeple_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "meeple_clap",
+                "image": "meeple_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "meeple_thanks",
+                "image": "meeple_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "meeple_sweat",
+                "image": "meeple_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "meeple_special",
+                "image": "meeple_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "meeple_facepalm",
+                "image": "meeple_facepalm.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            }
+        ]
+    },
+    {
         "name": "mortis",
         "displayName": "Mortis",
         "rarity": {
@@ -28003,7 +29032,7 @@
                     }
                 ],
                 "limited": true,
-                "unlock": "Available in Mega Boxes during the Classic Brawl event",
+                "unlock": "Available in Mega Boxes",
                 "release": {
                     "month": 9,
                     "year": 2018
@@ -28301,7 +29330,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in the Krusty Krab during the SpongeBob event",
+                "unlock": "Available in the Krusty Krab",
                 "release": {
                     "month": 6,
                     "year": 2021
@@ -29460,7 +30489,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Available in Pizza Planet",
                 "release": {
                     "month": 4,
                     "year": 2024
@@ -29928,12 +30957,50 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Available in Angelic Starr Drops",
                 "release": {
                     "month": 11,
                     "year": 2024
                 },
                 "image": "hookdudeangel.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "hookdudemonkey",
+                "displayName": "Jungle Gene",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "icon": "skin_rarity_1.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Sands of Time",
+                        "image": "bg_lantern.webp",
+                        "icon": "icon_lantern.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 12,
+                    "year": 2024
+                },
+                "image": "hookdudemonkey.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -30188,7 +31255,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Monster Eggs during the Godzilla event",
+                "unlock": "Available in Monster Eggs",
                 "release": {
                     "month": 7,
                     "year": 2020
@@ -31148,7 +32215,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in the Krusty Krab during the SpongeBob event",
+                "unlock": "Available in the Krusty Krab",
                 "release": {
                     "month": 5,
                     "year": 2020
@@ -31302,7 +32369,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Available in Pizza Planet",
                 "release": {
                     "month": 3,
                     "year": 2022
@@ -31694,7 +32761,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Available in Pizza Planet",
                 "release": {
                     "month": 6,
                     "year": 2022
@@ -31844,7 +32911,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in the Krusty Krab during the SpongeBob event",
+                "unlock": "Available in the Krusty Krab",
                 "release": {
                     "month": 6,
                     "year": 2024
@@ -32105,7 +33172,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Monster Eggs during the Godzilla event",
+                "unlock": "Available in Monster Eggs",
                 "release": {
                     "month": 11,
                     "year": 2022
@@ -32138,13 +33205,13 @@
                 ],
                 "groups": [
                     {
-                        "name": "Misc",
-                        "image": "bg_default.webp",
-                        "icon": "icon_misc.webp"
+                        "name": "Come Play With Us!",
+                        "image": "bg_toystory.webp",
+                        "icon": "icon_toys.webp"
                     }
                 ],
                 "limited": false,
-                "unlock": "Available for 2500 Club Coins before October 2023",
+                "unlock": "Available for 2500 Club Coins before October 2023 or in Presents",
                 "release": {
                     "month": 11,
                     "year": 2021
@@ -33138,9 +34205,9 @@
                 ],
                 "groups": [
                     {
-                        "name": "Lunar Brawl",
-                        "image": "bg_lny_2020.webp",
-                        "icon": "icon_lny_2020.webp"
+                        "name": "StarrForce Assemble",
+                        "image": "bg_starrforce.webp",
+                        "icon": "icon_starrforce.webp"
                     },
                     {
                         "name": "Brawl Pass",
@@ -33828,7 +34895,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Available in Presents",
                 "release": {
                     "month": 1,
                     "year": 2023
@@ -33865,7 +34932,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Monster Eggs during the Godzilla event",
+                "unlock": "Available in Monster Eggs",
                 "release": {
                     "month": 5,
                     "year": 2023
@@ -34123,7 +35190,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Monster Eggs during the Godzilla event",
+                "unlock": "Available in Monster Eggs",
                 "release": {
                     "month": 4,
                     "year": 2024
@@ -34164,7 +35231,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Monster Eggs during the Godzilla event",
+                "unlock": "Available in Monster Eggs",
                 "release": {
                     "month": 4,
                     "year": 2024
@@ -34203,12 +35270,51 @@
                     }
                 ],
                 "limited": true,
-                "unlock": "Available in the Krusty Krab during the SpongeBob event",
+                "unlock": "Available in the Krusty Krab",
                 "release": {
                     "month": 9,
                     "year": 2024
                 },
                 "image": "ropedudesb.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "ropedudegoodrandoms",
+                "displayName": "Bye Bye Buzz",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "The Good Randoms",
+                        "image": "bg_goodrandoms.webp",
+                        "icon": "icon_goodrandoms.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 2,
+                    "year": 2025
+                },
+                "image": "ropedudegoodrandoms.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -34559,6 +35665,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "buzz_goodrandoms",
+                "image": "buzz_goodrandoms.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -34675,7 +35790,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in the Krusty Krab during the SpongeBob event",
+                "unlock": "Available in the Krusty Krab",
                 "release": {
                     "month": 7,
                     "year": 2022
@@ -34949,7 +36064,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Available in Pizza Planet",
                 "release": {
                     "month": 6,
                     "year": 2024
@@ -35440,7 +36555,7 @@
                     }
                 ],
                 "limited": true,
-                "unlock": "",
+                "unlock": "Available in Pizza Planet",
                 "release": {
                     "month": 1,
                     "year": 2023
@@ -35490,6 +36605,45 @@
                     "year": 2024
                 },
                 "image": "fleagodzilla.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "fleastarrforce",
+                "displayName": "Extraterrestrial Eve",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "StarrForce Assemble",
+                        "image": "bg_starrforce.webp",
+                        "icon": "icon_starrforce.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Available in Pizza Planet",
+                "release": {
+                    "month": 1,
+                    "year": 2025
+                },
+                "image": "fleastarrforce.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -35682,6 +36836,24 @@
             {
                 "name": "eve_ranked",
                 "image": "eve_ranked.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "eve_overcharge",
+                "image": "eve_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "eve_starrforce",
+                "image": "eve_starrforce.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -35880,7 +37052,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Monster Eggs during the Godzilla event",
+                "unlock": "Available in Monster Eggs",
                 "release": {
                     "month": 11,
                     "year": 2022
@@ -36003,6 +37175,45 @@
                     "year": 2023
                 },
                 "image": "jetpackgirlmoon.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "jetpackgirlchristmas",
+                "displayName": "Jolly Janet",
+                "cost": 79,
+                "currency": "Gems",
+                "costBling": 2750,
+                "rarity": {
+                    "value": 2,
+                    "name": "Super Rare",
+                    "icon": "skin_rarity_2.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawlidays",
+                        "image": "bg_brawlidays.webp",
+                        "icon": "icon_brawlidays.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "release": {
+                    "month": 12,
+                    "year": 2024
+                },
+                "image": "jetpackgirlchristmas.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -36213,6 +37424,24 @@
             {
                 "name": "janet_lunarevent",
                 "image": "janet_lunarevent.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "janet_overcharge",
+                "image": "janet_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "janet_brawlidays",
+                "image": "janet_brawlidays.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -37377,6 +38606,45 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "doormanstarrforce",
+                "displayName": "Gigantophis Gray",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "StarrForce Assemble",
+                        "image": "bg_starrforce.webp",
+                        "icon": "icon_starrforce.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Available in Pizza Planet",
+                "release": {
+                    "month": 1,
+                    "year": 2025
+                },
+                "image": "doormanstarrforce.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -37478,6 +38746,24 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "gray_overcharge",
+                "image": "gray_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "gray_starrforce",
+                "image": "gray_starrforce.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -37560,7 +38846,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Reward from Brawl Pass Season 17 tier 70 or from Demonic Starr Drops",
+                "unlock": "Reward from Brawl Pass Season 17 tier 70 or Demonic Starr Drops",
                 "release": {
                     "month": 3,
                     "year": 2023
@@ -37597,7 +38883,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Monster Eggs during the Godzilla event",
+                "unlock": "Available in Monster Eggs",
                 "release": {
                     "month": 3,
                     "year": 2023
@@ -39048,7 +40334,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Monster Eggs during the Godzilla event",
+                "unlock": "Available in Monster Eggs",
                 "release": {
                     "month": 11,
                     "year": 2023
@@ -39089,7 +40375,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Available in Pizza Planet",
                 "release": {
                     "month": 6,
                     "year": 2024
@@ -39593,7 +40879,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Available in Presents",
                 "release": {
                     "month": 12,
                     "year": 2023
@@ -40075,6 +41361,138 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "axejugglergoodrandoms",
+                "displayName": "Pop Melodie",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "The Good Randoms",
+                        "image": "bg_goodrandoms.webp",
+                        "icon": "icon_goodrandoms.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from Brawl Pass Season 35 tier 50",
+                "release": {
+                    "month": 2,
+                    "year": 2025
+                },
+                "image": "axejugglergoodrandoms.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "axejugglergoodrandomschroma1",
+                "displayName": "Blackgreen Melodie",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "Pop Melodie",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "The Good Randoms",
+                        "image": "bg_goodrandoms.webp",
+                        "icon": "icon_goodrandoms.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from Brawl Pass Plus Season 35 tier 46",
+                "release": {
+                    "month": 2,
+                    "year": 2025
+                },
+                "image": "axejugglergoodrandomschroma1.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "axejugglergoodrandomschroma2",
+                "displayName": "Redwhite Melodie",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "Pop Melodie",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "The Good Randoms",
+                        "image": "bg_goodrandoms.webp",
+                        "icon": "icon_goodrandoms.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from Brawl Pass Plus Season 35 tier 48",
+                "release": {
+                    "month": 2,
+                    "year": 2025
+                },
+                "image": "axejugglergoodrandomschroma2.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -40171,6 +41589,42 @@
             {
                 "name": "melodie_ranked",
                 "image": "melodie_ranked.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "melodie_overcharge",
+                "image": "melodie_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "melodie_goodrandoms",
+                "image": "melodie_goodrandoms.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "melodie_goodrandomschroma1",
+                "image": "melodie_goodrandomschroma1.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "melodie_goodrandomschroma2",
+                "image": "melodie_goodrandomschroma2.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -40896,6 +42350,50 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "diggerstarrforce",
+                "displayName": "Moon Driller Moe",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "StarrForce Assemble",
+                        "image": "bg_starrforce.webp",
+                        "icon": "icon_starrforce.webp"
+                    },
+                    {
+                        "name": "Ranked",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_ranked.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Available in Ranked Starr Drops",
+                "release": {
+                    "month": 1,
+                    "year": 2025
+                },
+                "image": "diggerstarrforce.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -40983,6 +42481,15 @@
             {
                 "name": "moe_facepalm",
                 "image": "moe_facepalm.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "moe_ranked",
+                "image": "moe_ranked.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -41171,6 +42678,187 @@
         ]
     },
     {
+        "name": "ollie",
+        "displayName": "Ollie",
+        "rarity": {
+            "value": 4,
+            "name": "Mythic",
+            "color": "#fe0521"
+        },
+        "image": "portrait_ollie.webp",
+        "defaultSkin": "skaterdefault",
+        "title": "Based",
+        "masteryIcon": "mastery_icon_ollie.webp",
+        "description": "Ollie rides his customized hoverboard around Starr Park, grinding rails and causing trouble! A fan of old school hip hop, Ollie blasts his favorite tunes wherever he goes. His music is infectious... literally. Brawlers can't help but dance when they hear it.",
+        "skins": [
+            {
+                "name": "skaterdefault",
+                "displayName": "Ollie",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 0,
+                    "name": "",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [],
+                "groups": [
+                    {
+                        "name": "",
+                        "image": "bg_default.webp",
+                        "icon": "icon_default.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 2,
+                    "year": 2025
+                },
+                "image": "skaterdefault.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "skaterrapper",
+                "displayName": "Ollie-G",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "icon": "skin_rarity_1.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "City Troubles",
+                        "image": "bg_default.webp",
+                        "icon": "icon_city.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Included in the Ollie early access bundle",
+                "release": {
+                    "month": 2,
+                    "year": 2025
+                },
+                "image": "skaterrapper.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "name": "ollie_default",
+                "image": "ollie_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "ollie_happy",
+                "image": "ollie_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "ollie_sad",
+                "image": "ollie_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "ollie_angry",
+                "image": "ollie_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "ollie_gg",
+                "image": "ollie_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "ollie_clap",
+                "image": "ollie_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "ollie_thanks",
+                "image": "ollie_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "ollie_sweat",
+                "image": "ollie_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "ollie_special",
+                "image": "ollie_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "ollie_facepalm",
+                "image": "ollie_facepalm.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            }
+        ]
+    },
+    {
         "name": "spike",
         "displayName": "Spike",
         "rarity": {
@@ -41242,7 +42930,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Mega Boxes during the Classic Brawl event",
+                "unlock": "Available in Mega Boxes",
                 "release": {
                     "month": 6,
                     "year": 2017
@@ -41281,7 +42969,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Monster Eggs during the Godzilla event",
+                "unlock": "Available in Monster Eggs",
                 "release": {
                     "month": 7,
                     "year": 2019
@@ -41351,13 +43039,13 @@
                 ],
                 "groups": [
                     {
-                        "name": "Lunar Brawl",
-                        "image": "bg_lny_2020.webp",
-                        "icon": "icon_lny_2020.webp"
+                        "name": "StarrForce Assemble",
+                        "image": "bg_starrforce.webp",
+                        "icon": "icon_starrforce.webp"
                     }
                 ],
-                "limited": true,
-                "unlock": "",
+                "limited": false,
+                "unlock": "Available in Pizza Planet",
                 "release": {
                     "month": 2,
                     "year": 2021
@@ -41469,7 +43157,7 @@
                     }
                 ],
                 "limited": true,
-                "unlock": "",
+                "unlock": "Available in Presents",
                 "release": {
                     "month": 12,
                     "year": 2021
@@ -41910,7 +43598,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Mega Boxes during the Classic Brawl event",
+                "unlock": "Available in Mega Boxes",
                 "release": {
                     "month": 6,
                     "year": 2017
@@ -42265,6 +43953,45 @@
                     "year": 2024
                 },
                 "image": "crowharvest.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "crowmaverick",
+                "displayName": "Maverick Crow",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "icon": "skin_rarity_1.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Misc",
+                        "image": "bg_default.webp",
+                        "icon": "icon_misc.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "release": {
+                    "month": 12,
+                    "year": 2024
+                },
+                "image": "crowmaverick.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -42654,7 +44381,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in the Krusty Krab during the SpongeBob event",
+                "unlock": "Available in the Krusty Krab",
                 "release": {
                     "month": 8,
                     "year": 2019
@@ -42843,7 +44570,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in the Krusty Krab during the SpongeBob event",
+                "unlock": "Available in the Krusty Krab",
                 "release": {
                     "month": 7,
                     "year": 2021
@@ -43093,6 +44820,45 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "ninjachampionship",
+                "displayName": "World Finals Leon",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "BSC 2024",
+                        "image": "bg_wf.webp",
+                        "icon": "icon_wf.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "release": {
+                    "month": 12,
+                    "year": 2024
+                },
+                "image": "ninjachampionship.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -43324,6 +45090,15 @@
             {
                 "name": "leon_summer",
                 "image": "leon_summer.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "leon_worldfinals",
+                "image": "leon_worldfinals.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -44138,7 +45913,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Available in Presents",
                 "release": {
                     "month": 12,
                     "year": 2022
@@ -44462,7 +46237,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Available in Pizza Planet",
                 "release": {
                     "month": 4,
                     "year": 2022
@@ -44658,7 +46433,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in the Krusty Krab during the SpongeBob event",
+                "unlock": "Available in the Krusty Krab",
                 "release": {
                     "month": 8,
                     "year": 2023
@@ -44910,13 +46685,13 @@
                 ],
                 "groups": [
                     {
-                        "name": "Misc",
-                        "image": "bg_default.webp",
-                        "icon": "icon_misc.webp"
+                        "name": "Come Play With Us!",
+                        "image": "bg_toystory.webp",
+                        "icon": "icon_toys.webp"
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Available in Presents",
                 "release": {
                     "month": 6,
                     "year": 2021
@@ -45073,7 +46848,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in the Krusty Krab during the SpongeBob event",
+                "unlock": "Available in the Krusty Krab",
                 "release": {
                     "month": 8,
                     "year": 2023
@@ -45151,7 +46926,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Available in Monster Eggs during the Godzilla event",
+                "unlock": "Available in Monster Eggs or Presents",
                 "release": {
                     "month": 4,
                     "year": 2024
@@ -45289,6 +47064,45 @@
                     "year": 2024
                 },
                 "image": "powerleveleronceupon_gold.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "powerlevelerbuzz",
+                "displayName": "Surge Lightyear",
+                "cost": 299,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 5,
+                    "name": "Legendary",
+                    "icon": "skin_rarity_5.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Toy Story",
+                        "image": "bg_toystory.webp",
+                        "icon": "icon_toystory.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Free during the Pizza Planet event",
+                "release": {
+                    "month": 1,
+                    "year": 2025
+                },
+                "image": "powerlevelerbuzz.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -45530,6 +47344,87 @@
                     "value": 3,
                     "name": "Legendary",
                     "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "surge_buzz_default",
+                "image": "surge_buzz_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "surge_buzz_happy",
+                "image": "surge_buzz_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "surge_buzz_sad",
+                "image": "surge_buzz_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "surge_buzz_angry",
+                "image": "surge_buzz_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "surge_buzz_gg",
+                "image": "surge_buzz_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "surge_buzz_clap",
+                "image": "surge_buzz_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "surge_buzz_thanks",
+                "image": "surge_buzz_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "surge_buzz_sweat",
+                "image": "surge_buzz_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "surge_buzz_special",
+                "image": "surge_buzz_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
                 }
             }
         ]
@@ -46052,7 +47947,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Reward from Brawl Pass Season 19 tier 70",
+                "unlock": "Reward from Brawl Pass Season 19 tier 70 or Pizza Planet",
                 "release": {
                     "month": 7,
                     "year": 2023
@@ -46870,6 +48765,44 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "attachertoy",
+                "displayName": "Cuddly Kit",
+                "cost": 79,
+                "currency": "Gems",
+                "costBling": 2750,
+                "rarity": {
+                    "value": 2,
+                    "name": "Super Rare",
+                    "icon": "skin_rarity_2.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Come Play With Us!",
+                        "image": "bg_toystory.webp",
+                        "icon": "icon_toys.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Available in Presents",
+                "release": {
+                    "month": 12,
+                    "year": 2024
+                },
+                "image": "attachertoy.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -46993,6 +48926,15 @@
             {
                 "name": "kit_onceupon",
                 "image": "kit_onceupon.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "kit_toys",
+                "image": "kit_toys.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -47534,6 +49476,138 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "samuraistarrforce",
+                "displayName": "Hebi Kenji",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "StarrForce Assemble",
+                        "image": "bg_starrforce.webp",
+                        "icon": "icon_starrforce.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from Brawl Pass Season 34 tier 50",
+                "release": {
+                    "month": 1,
+                    "year": 2025
+                },
+                "image": "samuraistarrforce.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "samuraistarrforcechroma1",
+                "displayName": "Mamushi Kenji",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "Hebi Kenji",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "StarrForce Assemble",
+                        "image": "bg_starrforce.webp",
+                        "icon": "icon_starrforce.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from Brawl Pass Plus Season 34 tier 46",
+                "release": {
+                    "month": 1,
+                    "year": 2025
+                },
+                "image": "samuraistarrforcechroma1.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "samuraistarrforcechroma2",
+                "displayName": "Aodaisho Kenji",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "Hebi Kenji",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "StarrForce Assemble",
+                        "image": "bg_starrforce.webp",
+                        "icon": "icon_starrforce.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from Brawl Pass Plus Season 34 tier 48",
+                "release": {
+                    "month": 1,
+                    "year": 2025
+                },
+                "image": "samuraistarrforcechroma2.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -47621,6 +49695,33 @@
             {
                 "name": "kenji_facepalm",
                 "image": "kenji_facepalm.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "kenji_starrforce",
+                "image": "kenji_starrforce.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "kenji_starrforcechroma1",
+                "image": "kenji_starrforcechroma1.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "kenji_starrforcechroma2",
+                "image": "kenji_starrforcechroma2.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",

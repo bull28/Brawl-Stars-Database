@@ -130,8 +130,8 @@
                     {"names": [["jacky"]], "multiple": [], "delay": 1},
                     {"names": [["mrp"]], "multiple": [], "delay": 5, "maxEnemies": 1}
                 ],
-                "background": "snowtel",
-                "displayName": "Snowtel",
+                "background": "deepsea",
+                "displayName": "Deep Sea",
                 "stages": [2, 3],
                 "destination": 6
             },
@@ -308,7 +308,7 @@
             "shelly", "colt", "rt", "elprimo", "8bit", "belle", "jessie", "eve", "mortis", "frank",
             "jacky", "mrp", "bea", "colette", "lola", "bibi", "mandy", "ash", "pearl", "leon",
             "bonnie", "amber", "max", "meg", "spike", "gus", "emz", "darryl", "tara", "piper",
-            "lily", "stu", "maisie", "oldtown", "biodome", "ghoststation", "snowtel", "giftshop", "retropolis", "candyland",
+            "lily", "stu", "maisie", "oldtown", "biodome", "ghoststation", "deepsea", "giftshop", "retropolis", "candyland",
             "rumblejungle", "stuntshow", "supercity", "arcade", "wins", "enemies", "challenges", "nomove", "noupgrades", "nodamage",
             "fastwin", "perfect1", "perfect2", "mastery1", "mastery2", "mastery3", "mastery4", "mastery5", "mastery6", "mastery7"
         ]
@@ -356,11 +356,11 @@
         },
         {
             "enemy": "jacky",
-            "background": "snowtel"
+            "background": "deepsea"
         },
         {
             "enemy": "mrp",
-            "background": "snowtel"
+            "background": "deepsea"
         },
         {
             "enemy": "bea",

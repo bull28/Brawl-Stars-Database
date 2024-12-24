@@ -394,8 +394,8 @@
     },
     "jacky": {
         "displayName": "Jacky",
-        "image": "jacky/jacky_brawlidays.webp",
-        "fullImage": "jacky/drillergift.webp",
+        "image": "jacky/jacky_deepsea.webp",
+        "fullImage": "jacky/drillerdeepsea.webp",
         "description": "Receives less damage if you are not within its attack range.",
         "strengthTier": "Damage taken is reduced by a larger amount when out of range.",
         "value": 10,

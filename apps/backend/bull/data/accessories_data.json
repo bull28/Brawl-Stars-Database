@@ -224,8 +224,8 @@
         "description": "Gain extra power points for each level completed.", "unlock": "Complete levels at Ghost Station.", "badges": 250
     },
     {
-        "name": "snowtel", "category": "location", "displayName": "Lou's Ice Cream",
-        "description": "When using the ability, remove all active fire damage and damage marks.", "unlock": "Complete levels at Snowtel.", "badges": 250
+        "name": "deepsea", "category": "location", "displayName": "Clancy's Tokens",
+        "description": "Using the ability increases life steal for the rest of the level.", "unlock": "Complete levels at Deep Sea.", "badges": 250
     },
     {
         "name": "giftshop", "category": "location", "displayName": "Gift Shop Shirt",

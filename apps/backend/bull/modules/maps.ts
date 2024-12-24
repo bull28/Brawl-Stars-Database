@@ -17,9 +17,9 @@ import {
 } from "../types";
 
 // Last updated: Brawl Pass Season 32
-export const MAP_CYCLE_HOURS = 576;
-const MAP_CYCLE_SECONDS = 2073600;
-const SEASON_SECONDS = 14515200;
+export const MAP_CYCLE_HOURS = 864;
+const MAP_CYCLE_SECONDS = 3110400;
+const SEASON_SECONDS = 21772800;
 const MAP_CYCLES_PER_SEASON = 7;
 
 // 6/24/2024 8:00 UTC is the beginning of a map cycle

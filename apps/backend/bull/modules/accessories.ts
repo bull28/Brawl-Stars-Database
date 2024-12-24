@@ -379,7 +379,7 @@ const badgeList = [
     {name: "oldtown", category: "location", index: 2, coins: [0, 0]},
     {name: "biodome", category: "location", index: 3, coins: [0, 0]},
     {name: "ghoststation", category: "location", index: 4, coins: [0, 0]},
-    {name: "snowtel", category: "location", index: 5, coins: [0, 0]},
+    {name: "deepsea", category: "location", index: 5, coins: [0, 0]},
     {name: "giftshop", category: "location", index: 6, coins: [0, 0]},
     {name: "retropolis", category: "location", index: 7, coins: [0, 0]},
     {name: "candyland", category: "location", index: 8, coins: [0, 0]},

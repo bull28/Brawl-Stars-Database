@@ -52,7 +52,7 @@ const destinations: {levelid: number; weight: number; background: string; displa
         {levelid: 4, weight: 1, background: "ghostmetro", displayName: "Ghost Station"},
     ],
     [
-        {levelid: 5, weight: 3, background: "snowtel", displayName: "Snowtel"},
+        {levelid: 5, weight: 3, background: "deepsea", displayName: "Deep Sea"},
         {levelid: 6, weight: 3, background: "giftshop", displayName: "Gift Shop"},
         {levelid: 7, weight: 2, background: "retropolis", displayName: "Retropolis"},
         {levelid: 8, weight: 2, background: "candystand", displayName: "Candyland"},
