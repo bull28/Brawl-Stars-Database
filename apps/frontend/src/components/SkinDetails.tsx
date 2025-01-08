@@ -70,6 +70,14 @@ export default function SkinDetails({data, isOpen, onClose}: SkinDetailsProps){
                     {data.release.month >= 1 && data.release.year > 0 && <Text fontSize={"lg"}>{getReleaseDate(data.release)}</Text>}
                     {data.limited && <Text fontSize={"lg"} color={"#ffd700"}>This skin is limited</Text>}
                     {data.unlock !== "" && <Text mt={2}>{data.unlock}</Text>}
+                    {data.foundIn.length > 0 &&
+                    <>
+                        <Text fontSize={"lg"} mt={2}>Can be found in</Text>
+                        {data.foundIn.map((value) =>
+                            <Text key={value} ml={1}>&#x2022; {value}</Text>
+                        )}
+                    </>
+                    }
                     {(data.features.length > 0) &&
                     <>
                         <Divider my={2}/>

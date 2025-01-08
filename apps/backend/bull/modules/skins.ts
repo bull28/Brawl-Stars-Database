@@ -144,6 +144,7 @@ export function getSkinData(skin: Skin, brawlerName: string): SkinData{
         groups: skinGroups,
         limited: skin.limited,
         unlock: skin.unlock,
+        foundIn: skin.foundIn,
         release: {
             month: skin.release.month,
             year: skin.release.year
@@ -179,7 +180,7 @@ function skinMatchesFilters(skin: Skin, filters: SkinSearchFilters): boolean{
     if (filters === undefined){
         return true;
     }
-    const {query, rarity, minCost, maxCost, groups, bling, limited, startDate, endDate} = filters;
+    const {query, rarity, minCost, maxCost, groups, foundIn, bling, limited, startDate, endDate} = filters;
 
     if (rarity !== undefined && skin.rarity.value !== rarity){
         return false;
@@ -200,6 +201,9 @@ function skinMatchesFilters(skin: Skin, filters: SkinSearchFilters): boolean{
         if (hasGroup === false){
             return false;
         }
+    }
+    if (foundIn !== undefined && skin.foundIn.includes(foundIn) === false){
+        return false;
     }
     if (bling !== undefined && skin.costBling > 0 !== bling){
         return false;

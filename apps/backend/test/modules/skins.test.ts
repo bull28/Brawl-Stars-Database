@@ -50,7 +50,7 @@ describe("Brawlers and Skins module", function(){
         expect(skinData).to.be.an("object");
         expect(skinData).to.have.keys([
             "name", "displayName", "cost", "costBling", "rarity", "requires",
-            "features", "groups", "limited", "unlock", "release", "rating", "image", "model"
+            "features", "groups", "limited", "unlock", "foundIn", "release", "rating", "image", "model"
         ]);
         expect(skinData.cost).to.have.keys(["amount", "currency", "icon"]);
         expect(skinData.costBling).to.have.keys(["amount", "currency", "icon"]);
@@ -74,6 +74,7 @@ describe("Brawlers and Skins module", function(){
         expect(skinData.requires).to.equal(skin.requires);
         expect(skinData.limited).to.equal(skin.limited);
         expect(skinData.unlock).to.equal(skin.unlock);
+        expect(skinData.foundIn).to.equal(skin.foundIn);
         expect(skinData.release.month).to.equal(skin.release.month);
         expect(skinData.release.year).to.equal(skin.release.year);
         expect(skinData.rating).to.equal(skin.rating);
@@ -191,6 +192,17 @@ describe("Brawlers and Skins module", function(){
                 const data = skinMap.get(value.name);
                 return data !== undefined && data.groups.find(
                     (group) => group.name === "Brawl Pass" || group.name === "True Gold"
+                ) !== undefined;
+            });
+            expect(results.length).to.equal(filtered.length);
+        });
+
+        it("Skin rewarded from", function(){
+            const results = skinSearch(allSkins, {foundIn: "Monster Eggs"});
+            const filtered = results.filter((value) => {
+                const data = skinMap.get(value.name);
+                return data !== undefined && data.foundIn.find(
+                    (reward) => reward === "Monster Eggs"
                 ) !== undefined;
             });
             expect(results.length).to.equal(filtered.length);

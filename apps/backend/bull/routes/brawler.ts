@@ -111,6 +111,21 @@ router.get("/skingroups", (req, res) => {
     res.json(Array.from(groups));
 });
 
+// Get all sources that skins can be found in
+router.get("/skinfoundin", (req, res) => {
+    const rewards = new Set<string>();
+    for (let i = 0; i < allSkins.length; i++){
+        const brawler = allSkins[i];
+        for (let j = 0; j < brawler.skins.length; j++){
+            const skin = brawler.skins[j];
+            for (let r = 0; r < skin.foundIn.length; r++){
+                rewards.add(skin.foundIn[r]);
+            }
+        }
+    }
+    res.json(Array.from(rewards));
+});
+
 // Search for skins using a search filter
 router.post<Empty, SkinSearchRes, {filters: SkinSearchFilters;}>("/skinsearch", (req, res) => {
     const filters = req.body.filters;

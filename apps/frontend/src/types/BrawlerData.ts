@@ -61,6 +61,7 @@ export interface SkinData{
         icon: string;
     }[];
     unlock: string;
+    foundIn: string[];
     release: {
         month: number;
         year: number;
@@ -80,6 +81,7 @@ export type SkinSearchFilters = Partial<{
     minCost: number;
     maxCost: number;
     groups: string[];
+    foundIn: string;
     bling: boolean;
     limited: boolean;
     startDate: {

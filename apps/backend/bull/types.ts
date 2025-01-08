@@ -125,6 +125,7 @@ export interface SkinData{
     groups: Skin["groups"];
     limited: Skin["limited"];
     unlock: Skin["unlock"];
+    foundIn: Skin["foundIn"];
     release: Skin["release"];
     rating: Skin["rating"];
     image: Skin["image"];
@@ -140,6 +141,7 @@ export type SkinSearchFilters = Partial<{
     minCost: number;
     maxCost: number;
     groups: string[];
+    foundIn: string;
     bling: boolean;
     limited: boolean;
     startDate: {

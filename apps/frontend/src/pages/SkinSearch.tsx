@@ -16,6 +16,7 @@ export default function SkinSearch(){
     const resultsPerPage = 40;
 
     const [skinGroups, setSkinGroups] = useState<string[]>([]);
+    const [skinRewards, setSkinRewards] = useState<string[]>([]);
     const [imagePath, setImagePath] = useState<string>("");
     const [backgroundPath, setBackgroundPath] = useState<string>("");
     const [results, setResults] = useState<SkinSearchResult["results"]>([]);
@@ -47,7 +48,7 @@ export default function SkinSearch(){
 
         const target = event.target;
         if (target instanceof HTMLFormElement){
-            const {query, skinGroup, startMonth, startYear, endMonth, endYear} = target;
+            const {query, skinGroup, skinReward, startMonth, startYear, endMonth, endYear} = target;
             if (query !== undefined){
                 filters.query = query.value;
             }
@@ -69,6 +70,12 @@ export default function SkinSearch(){
                 const groupIndex = parseInt(skinGroup.value);
                 if (groupIndex >= 0 && groupIndex < skinGroups.length){
                     filters.groups = [skinGroups[groupIndex]];
+                }
+            }
+            if (skinReward !== undefined){
+                const rewardIndex = parseInt(skinReward.value);
+                if (rewardIndex >= 0 && rewardIndex < skinRewards.length){
+                    filters.foundIn = skinRewards[rewardIndex];
                 }
             }
             if (startMonth !== undefined && startYear !== undefined){
@@ -102,9 +109,9 @@ export default function SkinSearch(){
             return;
         }
 
-        const {query, skinGroup, startMonth, startYear, endMonth, endYear} = formRef.current;
+        const {query, skinGroup, skinReward, startMonth, startYear, endMonth, endYear} = formRef.current;
 
-        for (const x of [query, skinGroup, startMonth, startYear, endMonth, endYear]){
+        for (const x of [query, skinGroup, skinReward, startMonth, startYear, endMonth, endYear]){
             if (x !== undefined){
                 x.value = "";
             }
@@ -140,6 +147,14 @@ export default function SkinSearch(){
             setSkinGroups(groups);
         })
         .catch(() => setSkinGroups([]));
+
+        axios.get<{}, AxiosResponse<string[]>>(`${api}/skinfoundin`)
+        .then((res) => {
+            const rewards = res.data;
+            rewards.sort();
+            setSkinRewards(rewards);
+        })
+        .catch(() => setSkinRewards([]));
     }, []);
 
     const months: string[] = [];
@@ -199,6 +214,12 @@ export default function SkinSearch(){
                     <FormControl className={"skinsearch-form-control"}>
                         <FormLabel m={0}>Skin Group</FormLabel>
                         <Select name={"skinGroup"} placeholder={"Any Group"}>{skinGroups.map((value, index) =>
+                            <option key={value} value={`${index}`}>{value}</option>
+                        )}</Select>
+                    </FormControl>
+                    <FormControl className={"skinsearch-form-control"}>
+                        <FormLabel m={0}>Can be found in</FormLabel>
+                        <Select name={"skinReward"} placeholder={"Anywhere"}>{skinRewards.map((value, index) =>
                             <option key={value} value={`${index}`}>{value}</option>
                         )}</Select>
                     </FormControl>
