@@ -208,7 +208,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -246,7 +246,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -546,7 +546,7 @@
                         "icon": "icon_brawlpass.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "Reward from Brawl Pass Season 24 tier 50",
                 "foundIn": [],
                 "release": {
@@ -591,7 +591,7 @@
                         "icon": "icon_brawlpass.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "Reward from Brawl Pass Plus Season 24 tier 46",
                 "foundIn": [],
                 "release": {
@@ -636,7 +636,7 @@
                         "icon": "icon_brawlpass.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "Reward from Brawl Pass Plus Season 24 tier 48",
                 "foundIn": [],
                 "release": {
@@ -963,6 +963,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "shelly_onceupon",
+                "image": "shelly_onceupon.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -1178,7 +1187,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -1216,7 +1225,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -2093,7 +2102,7 @@
                     }
                 ],
                 "limited": true,
-                "unlock": "Only obtainable for $4.99 USD from the shop during the 2020 World Finals",
+                "unlock": "Only obtainable for 4.99 USD from the shop during the 2020 World Finals",
                 "foundIn": [],
                 "release": {
                     "month": 11,
@@ -2309,7 +2318,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -2347,7 +2356,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -2757,13 +2766,13 @@
             {
                 "name": "gunslingerroyalagent",
                 "displayName": "Jade Agent Colt",
-                "cost": 29,
+                "cost": 149,
                 "currency": "Gems",
-                "costBling": 1000,
+                "costBling": 5000,
                 "rarity": {
-                    "value": 1,
-                    "name": "Rare",
-                    "icon": "skin_rarity_1.webp"
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -2774,12 +2783,12 @@
                 ],
                 "groups": [
                     {
-                        "name": "Bountiful Harvest",
-                        "image": "bg_lunarevent.webp",
-                        "icon": "icon_harvest.webp"
+                        "name": "Lunar Brawl",
+                        "image": "bg_lny_2020.webp",
+                        "icon": "icon_lny_2020.webp"
                     }
                 ],
-                "limited": false,
+                "limited": true,
                 "unlock": "",
                 "foundIn": [],
                 "release": {
@@ -2787,6 +2796,191 @@
                     "year": 2025
                 },
                 "image": "gunslingerroyalagent.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "gunslinger2025rankedprogrsesionskinlevel1",
+                "displayName": "Astral Colt I",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 7,
+                    "name": "Pro",
+                    "icon": "skin_rarity_7.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model"
+                ],
+                "groups": [
+                    {
+                        "name": "Pro Pass",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_propass.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Reward from free track of Brawl Cup 2025 Pro Pass",
+                "foundIn": [],
+                "release": {
+                    "month": 2,
+                    "year": 2025
+                },
+                "image": "gunslinger2025rankedprogrsesionskinlevel1.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "gunslinger2025rankedprogrsesionskinlevel4",
+                "displayName": "Astral Colt IV",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 7,
+                    "name": "Pro",
+                    "icon": "skin_rarity_7.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model"
+                ],
+                "groups": [
+                    {
+                        "name": "Pro Pass",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_propass.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Reward from free track of Brawl Cup 2025 Pro Pass",
+                "foundIn": [],
+                "release": {
+                    "month": 2,
+                    "year": 2025
+                },
+                "image": "gunslinger2025rankedprogrsesionskinlevel4.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "gunslinger2025rankedprogrsesionskinlevel9",
+                "displayName": "Ultra Astral Colt",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 7,
+                    "name": "Pro",
+                    "icon": "skin_rarity_7.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model"
+                ],
+                "groups": [
+                    {
+                        "name": "Pro Pass",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_propass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from paid track of Brawl Cup 2025 Pro Pass",
+                "foundIn": [],
+                "release": {
+                    "month": 2,
+                    "year": 2025
+                },
+                "image": "gunslinger2025rankedprogrsesionskinlevel9.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "gunslinger2025rankedprogrsesionskinlevel10",
+                "displayName": "Guardian Colt",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 7,
+                    "name": "Pro",
+                    "icon": "skin_rarity_7.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model"
+                ],
+                "groups": [
+                    {
+                        "name": "Pro Pass",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_propass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from paid track of Brawl Cup 2025 Pro Pass",
+                "foundIn": [],
+                "release": {
+                    "month": 2,
+                    "year": 2025
+                },
+                "image": "gunslinger2025rankedprogrsesionskinlevel10.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "gunslinger2025rankedprogrsesionskinlevel11",
+                "displayName": "Hyperion Colt",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 7,
+                    "name": "Pro",
+                    "icon": "skin_rarity_7.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model"
+                ],
+                "groups": [
+                    {
+                        "name": "Pro Pass",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_propass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from paid track of Brawl Cup 2025 Pro Pass",
+                "foundIn": [],
+                "release": {
+                    "month": 2,
+                    "year": 2025
+                },
+                "image": "gunslinger2025rankedprogrsesionskinlevel11.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -3056,6 +3250,105 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "colt_ranked_default",
+                "image": "colt_ranked_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "colt_ranked_happy",
+                "image": "colt_ranked_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "colt_ranked_sad",
+                "image": "colt_ranked_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "colt_ranked_angry",
+                "image": "colt_ranked_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "colt_ranked_gg",
+                "image": "colt_ranked_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "colt_ranked_clap",
+                "image": "colt_ranked_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "colt_ranked_thanks",
+                "image": "colt_ranked_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "colt_ranked_sweat",
+                "image": "colt_ranked_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "colt_ranked_special",
+                "image": "colt_ranked_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "colt_rankedlevel10",
+                "image": "colt_rankedlevel10.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "colt_rankedlevel11",
+                "image": "colt_rankedlevel11.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -3269,7 +3562,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -3307,7 +3600,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -3773,6 +4066,24 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "bull_lny",
+                "image": "bull_lny.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "bull_brawlywood",
+                "image": "bull_brawlywood.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -4069,7 +4380,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -4107,7 +4418,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -5028,6 +5339,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "brock_lny",
+                "image": "brock_lny.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -5208,7 +5528,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -5246,7 +5566,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -5984,6 +6304,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "elprimo_rudo",
+                "image": "elprimo_rudo.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -6237,7 +6566,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -6275,7 +6604,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -6790,7 +7119,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -6828,7 +7157,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -7014,7 +7343,7 @@
                         "icon": "icon_ranked.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "",
                 "foundIn": [
                     "Ranked Starr Drops"
@@ -7370,7 +7699,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -7408,7 +7737,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -8054,7 +8383,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -8092,7 +8421,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -8290,7 +8619,7 @@
                 "displayName": "Jessie Jessie",
                 "cost": 79,
                 "currency": "Gems",
-                "costBling": 2750,
+                "costBling": -1,
                 "rarity": {
                     "value": 2,
                     "name": "Super Rare",
@@ -8959,7 +9288,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -8997,7 +9326,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -9757,7 +10086,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -9795,7 +10124,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -10430,7 +10759,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -10468,7 +10797,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -11190,7 +11519,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -11228,7 +11557,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -11458,7 +11787,7 @@
                         "icon": "icon_royals.webp"
                     }
                 ],
-                "limited": false,
+                "limited": true,
                 "unlock": "Reward for opening 10 Mega Boxes during the Classic Brawl event",
                 "foundIn": [
                     "Mega Boxes"
@@ -11502,7 +11831,7 @@
                         "icon": "icon_royals.webp"
                     }
                 ],
-                "limited": false,
+                "limited": true,
                 "unlock": "",
                 "foundIn": [
                     "Mega Boxes"
@@ -11546,7 +11875,7 @@
                         "icon": "icon_royals.webp"
                     }
                 ],
-                "limited": false,
+                "limited": true,
                 "unlock": "",
                 "foundIn": [
                     "Mega Boxes"
@@ -11594,6 +11923,46 @@
                     "year": 2024
                 },
                 "image": "trickshotduderedjacket.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "trickshotdudeaprilfools",
+                "displayName": "Egg Rico",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "April Fool's",
+                        "image": "bg_default.webp",
+                        "icon": "icon_aprilfools.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2025
+                },
+                "image": "trickshotdudeaprilfools.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -11872,6 +12241,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "rico_aprilfools",
+                "image": "rico_aprilfools.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -12010,7 +12388,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -12048,7 +12426,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -12536,6 +12914,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "darryl_goldenball",
+                "image": "darryl_goldenball.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -12755,7 +13142,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -12793,7 +13180,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -13459,7 +13846,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -13497,7 +13884,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -13650,6 +14037,51 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "whirlwindsupercellmake",
+                "displayName": "Insector Carl",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl Unite",
+                        "image": "bg_superheroes.webp",
+                        "icon": "icon_superheroes.webp"
+                    },
+                    {
+                        "name": "Supercell Make",
+                        "image": "bg_default.webp",
+                        "icon": "icon_sc_make.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2025
+                },
+                "image": "whirlwindsupercellmake.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -13764,6 +14196,24 @@
             {
                 "name": "carl_lantern",
                 "image": "carl_lantern.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "carl_overcharge",
+                "image": "carl_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "carl_make",
+                "image": "carl_make.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -13996,7 +14446,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -14034,7 +14484,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -14445,7 +14895,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -14483,7 +14933,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -14618,7 +15068,7 @@
                     }
                 ],
                 "limited": true,
-                "unlock": "",
+                "unlock": "Reward for completing the Gruesome Challenge",
                 "foundIn": [
                     "Dead Boxes"
                 ],
@@ -14947,9 +15397,9 @@
                 ],
                 "groups": [
                     {
-                        "name": "Sands of Time",
-                        "image": "bg_lantern.webp",
-                        "icon": "icon_lantern.webp"
+                        "name": "Dark Sands",
+                        "image": "bg_darksands.webp",
+                        "icon": "icon_darksands.webp"
                     },
                     {
                         "name": "Supercell Make",
@@ -15064,7 +15514,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -15102,7 +15552,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -15593,6 +16043,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "bo_overcharge",
+                "image": "bo_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -15690,7 +16149,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -15728,7 +16187,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -16400,7 +16859,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -16438,7 +16897,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -16984,7 +17443,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -17022,7 +17481,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -17555,7 +18014,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -17593,7 +18052,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -17699,6 +18158,46 @@
                     "year": 2024
                 },
                 "image": "minigundudezombie.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "minigundudeaprilfools",
+                "displayName": "Egg Pam",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "April Fool's",
+                        "image": "bg_default.webp",
+                        "icon": "icon_aprilfools.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2025
+                },
+                "image": "minigundudeaprilfools.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -17896,6 +18395,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "pam_aprilfools",
+                "image": "pam_aprilfools.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -18033,7 +18541,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -18071,7 +18579,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -18394,6 +18902,141 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "hammerdudesandsoftimes",
+                "displayName": "Mummified Frank",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Dark Sands",
+                        "image": "bg_darksands.webp",
+                        "icon": "icon_darksands.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from Brawl Pass Season 36 tier 50",
+                "foundIn": [],
+                "release": {
+                    "month": 3,
+                    "year": 2025
+                },
+                "image": "hammerdudesandsoftimes.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "hammerdudesandsoftimesdark",
+                "displayName": "Charcoal Frank",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "Mummified Frank",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Dark Sands",
+                        "image": "bg_darksands.webp",
+                        "icon": "icon_darksands.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from Brawl Pass Plus Season 36 tier 48",
+                "foundIn": [],
+                "release": {
+                    "month": 3,
+                    "year": 2025
+                },
+                "image": "hammerdudesandsoftimesdark.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "hammerdudesandsoftimeslight",
+                "displayName": "Papyrus Frank",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "Mummified Frank",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Dark Sands",
+                        "image": "bg_darksands.webp",
+                        "icon": "icon_darksands.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from Brawl Pass Plus Season 36 tier 46",
+                "foundIn": [],
+                "release": {
+                    "month": 3,
+                    "year": 2025
+                },
+                "image": "hammerdudesandsoftimeslight.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -18702,6 +19345,33 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "frank_sandsoftimes",
+                "image": "frank_sandsoftimes.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "frank_sandsoftimeslight",
+                "image": "frank_sandsoftimeslight.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "frank_sandsoftimesdark",
+                "image": "frank_sandsoftimesdark.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -18926,7 +19596,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -18964,7 +19634,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -19204,7 +19874,7 @@
                 "displayName": "Bo Peep Bibi",
                 "cost": 149,
                 "currency": "Gems",
-                "costBling": 5000,
+                "costBling": -1,
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
@@ -19232,6 +19902,141 @@
                     "year": 2024
                 },
                 "image": "baseballbopeep.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "baseballvillain",
+                "displayName": "Justice Smasher Bibi",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl Unite",
+                        "image": "bg_superheroes.webp",
+                        "icon": "icon_superheroes.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from Brawl Pass Season 37 tier 50",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2025
+                },
+                "image": "baseballvillain.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "baseballvillainchromapink",
+                "displayName": "Injustice Smasher Bibi",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "Justice Smasher Bibi",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl Unite",
+                        "image": "bg_superheroes.webp",
+                        "icon": "icon_superheroes.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from Brawl Pass Plus Season 37 tier 46",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2025
+                },
+                "image": "baseballvillainchromapink.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "baseballvillainchromablue",
+                "displayName": "Virtue Smasher Bibi",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "Justice Smasher Bibi",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl Unite",
+                        "image": "bg_superheroes.webp",
+                        "icon": "icon_superheroes.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from Brawl Pass Plus Season 37 tier 48",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2025
+                },
+                "image": "baseballvillainchromablue.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -19478,6 +20283,33 @@
             {
                 "name": "bibi_toystory",
                 "image": "bibi_toystory.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "bibi_villain",
+                "image": "bibi_villain.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "bibi_villainblue",
+                "image": "bibi_villainblue.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "bibi_villainpink",
+                "image": "bibi_villainpink.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -19746,7 +20578,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -19784,7 +20616,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -20002,6 +20834,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "bea_overcharge",
+                "image": "bea_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -20142,7 +20983,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -20180,7 +21021,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -20690,7 +21531,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -20728,7 +21569,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -20988,7 +21829,7 @@
                         "icon": "icon_angeldemons.webp"
                     }
                 ],
-                "limited": false,
+                "limited": true,
                 "unlock": "",
                 "foundIn": [
                     "Angelic Starr Drops"
@@ -21032,7 +21873,7 @@
                         "icon": "icon_angeldemons.webp"
                     }
                 ],
-                "limited": false,
+                "limited": true,
                 "unlock": "",
                 "foundIn": [
                     "Angelic Starr Drops"
@@ -21076,7 +21917,7 @@
                         "icon": "icon_angeldemons.webp"
                     }
                 ],
-                "limited": false,
+                "limited": true,
                 "unlock": "",
                 "foundIn": [
                     "Angelic Starr Drops"
@@ -21537,7 +22378,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -21575,7 +22416,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -21905,7 +22746,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -21943,7 +22784,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -22049,6 +22890,51 @@
                     "year": 2023
                 },
                 "image": "crossbomberhindu.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "crossbombersupercellmake",
+                "displayName": "Protector Grom",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl Unite",
+                        "image": "bg_superheroes.webp",
+                        "icon": "icon_superheroes.webp"
+                    },
+                    {
+                        "name": "Supercell Make",
+                        "image": "bg_default.webp",
+                        "icon": "icon_sc_make.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2025
+                },
+                "image": "crossbombersupercellmake.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -22237,6 +23123,24 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "grom_overcharge",
+                "image": "grom_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "grom_make",
+                "image": "grom_make.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -22338,7 +23242,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -22376,7 +23280,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -22835,7 +23739,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -22873,7 +23777,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -23428,7 +24332,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -23466,7 +24370,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -23775,8 +24679,7 @@
                 "requires": "",
                 "features": [
                     "Brawler Model",
-                    "Texture",
-                    "Effects"
+                    "Texture"
                 ],
                 "groups": [
                     {
@@ -24199,7 +25102,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -24237,7 +25140,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -24356,6 +25259,44 @@
                     "year": 2024
                 },
                 "image": "electrosniperscmake.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "electrosniperrare",
+                "displayName": "Beach Belle",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "icon": "skin_rarity_1.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "Summer of Brawl",
+                        "image": "bg_summer.webp",
+                        "icon": "icon_summer.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 3,
+                    "year": 2025
+                },
+                "image": "electrosniperrare.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -24675,7 +25616,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -24713,7 +25654,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -24906,6 +25847,46 @@
                     "year": 2024
                 },
                 "image": "knighttoon.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "knightsupercellstore",
+                "displayName": "P.E.K.K.A.S.H",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 0,
+                    "name": "",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Clash Stories",
+                        "image": "bg_claship.webp",
+                        "icon": "icon_claship.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Only obtainable from Supercell ID rewards",
+                "foundIn": [],
+                "release": {
+                    "month": 3,
+                    "year": 2025
+                },
+                "image": "knightsupercellstore.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -25130,6 +26111,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "ash_claship",
+                "image": "ash_claship.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -25276,7 +26266,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -25314,7 +26304,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -25823,6 +26813,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "lola_overcharge",
+                "image": "lola_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -26009,7 +27008,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -26047,7 +27046,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -26111,6 +27110,51 @@
                     "year": 2023
                 },
                 "image": "weaponthrowerdarkcircus.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "weaponthrowersupercellmake",
+                "displayName": "Spectaculor Sam",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl Unite",
+                        "image": "bg_superheroes.webp",
+                        "icon": "icon_superheroes.webp"
+                    },
+                    {
+                        "name": "Supercell Make",
+                        "image": "bg_default.webp",
+                        "icon": "icon_sc_make.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2025
+                },
+                "image": "weaponthrowersupercellmake.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -26317,6 +27361,24 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "sam_overcharge",
+                "image": "sam_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "sam_make",
+                "image": "sam_make.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -26459,7 +27521,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -26497,7 +27559,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -26608,6 +27670,46 @@
                     "year": 2024
                 },
                 "image": "beameronceupon.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "beamercarnival",
+                "displayName": "Carnaval Mandy",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawlnaval",
+                        "image": "bg_carnaval.webp",
+                        "icon": "icon_carnaval.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 2,
+                    "year": 2025
+                },
+                "image": "beamercarnival.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -26805,6 +27907,24 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "mandy_overcharge",
+                "image": "mandy_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "mandy_carnival",
+                "image": "mandy_carnival.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -26996,7 +28116,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -27034,7 +28154,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -27594,7 +28714,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -27632,7 +28752,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -27767,6 +28887,15 @@
             {
                 "name": "hank_lunarevent",
                 "image": "hank_lunarevent.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "hank_overcharge",
+                "image": "hank_overcharge.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -27914,7 +29043,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -27952,7 +29081,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -28360,7 +29489,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -28398,7 +29527,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -28463,7 +29592,7 @@
                 "unlock": "Reward from Brawl Pass Season 32 tier 50",
                 "foundIn": [],
                 "release": {
-                    "month": 12,
+                    "month": 11,
                     "year": 2024
                 },
                 "image": "twinsangel.webp",
@@ -28828,7 +29957,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -28866,7 +29995,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -29103,7 +30232,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -29141,7 +30270,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -29412,6 +30541,82 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "ghostgold",
+                "displayName": "True Gold Shade",
+                "cost": 25000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 8,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "True Silver Shade",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Gold",
+                        "image": "bg_gold.webp",
+                        "icon": "icon_gold.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 2,
+                    "year": 2025
+                },
+                "image": "ghostgold.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "ghostsilver",
+                "displayName": "True Silver Shade",
+                "cost": 10000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 8,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Silver",
+                        "image": "bg_silver.webp",
+                        "icon": "icon_silver.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 2,
+                    "year": 2025
+                },
+                "image": "ghostsilver.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -29595,6 +30800,122 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "meeplesandsoftimes",
+                "displayName": "Mystic Meeple",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Dark Sands",
+                        "image": "bg_darksands.webp",
+                        "icon": "icon_darksands.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 3,
+                    "year": 2025
+                },
+                "image": "meeplesandsoftimes.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "meeplegold",
+                "displayName": "True Gold Meeple",
+                "cost": 25000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 8,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "True Silver Meeple",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Gold",
+                        "image": "bg_gold.webp",
+                        "icon": "icon_gold.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 2,
+                    "year": 2025
+                },
+                "image": "meeplegold.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "meeplesilver",
+                "displayName": "True Silver Meeple",
+                "cost": 10000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 8,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Silver",
+                        "image": "bg_silver.webp",
+                        "icon": "icon_silver.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 2,
+                    "year": 2025
+                },
+                "image": "meeplesilver.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -29682,6 +31003,15 @@
             {
                 "name": "meeple_facepalm",
                 "image": "meeple_facepalm.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "meeple_darksands",
+                "image": "meeple_darksands.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -29902,7 +31232,7 @@
                 "currency": "",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -29978,7 +31308,7 @@
                 "currency": "",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -30450,7 +31780,7 @@
                         "icon": "icon_angeldemons.webp"
                     }
                 ],
-                "limited": false,
+                "limited": true,
                 "unlock": "",
                 "foundIn": [
                     "Demonic Starr Drops"
@@ -30494,7 +31824,7 @@
                         "icon": "icon_angeldemons.webp"
                     }
                 ],
-                "limited": false,
+                "limited": true,
                 "unlock": "",
                 "foundIn": [
                     "Demonic Starr Drops"
@@ -30538,7 +31868,7 @@
                         "icon": "icon_angeldemons.webp"
                     }
                 ],
-                "limited": false,
+                "limited": true,
                 "unlock": "",
                 "foundIn": [
                     "Demonic Starr Drops"
@@ -31045,7 +32375,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -31083,7 +32413,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -32146,7 +33476,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -32184,7 +33514,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -32579,7 +33909,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -32617,7 +33947,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -32951,6 +34281,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "mrp_overcharge",
+                "image": "mrp_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -33210,7 +34549,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -33248,7 +34587,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -33610,7 +34949,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -33648,7 +34987,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -34158,7 +35497,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -34196,7 +35535,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -34298,6 +35637,46 @@
                     "year": 2024
                 },
                 "image": "stickybomboffice.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "stickybombsandsoftimes",
+                "displayName": "Scarab Squeak",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Dark Sands",
+                        "image": "bg_darksands.webp",
+                        "icon": "icon_darksands.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 3,
+                    "year": 2025
+                },
+                "image": "stickybombsandsoftimes.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -34436,6 +35815,15 @@
             {
                 "name": "squeak_overcharge",
                 "image": "squeak_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "squeak_darksands",
+                "image": "squeak_darksands.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -34624,7 +36012,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -34662,7 +36050,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -35140,7 +36528,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -35178,7 +36566,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -35320,6 +36708,46 @@
                     "year": 2024
                 },
                 "image": "ruffscoock.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "ruffssandsoftimes",
+                "displayName": "Ruffesses II",
+                "cost": 79,
+                "currency": "Gems",
+                "costBling": 2750,
+                "rarity": {
+                    "value": 2,
+                    "name": "Super Rare",
+                    "icon": "skin_rarity_2.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Dark Sands",
+                        "image": "bg_darksands.webp",
+                        "icon": "icon_darksands.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 3,
+                    "year": 2025
+                },
+                "image": "ruffssandsoftimes.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -35526,6 +36954,24 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "ruffs_darksands",
+                "image": "ruffs_darksands.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "ruffs_outlaws",
+                "image": "ruffs_outlaws.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -35676,7 +37122,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -35714,7 +37160,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -35857,7 +37303,7 @@
                         "icon": "icon_brawlpass.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "Reward from Brawl Pass Season 25 tier 50",
                 "foundIn": [],
                 "release": {
@@ -35902,7 +37348,7 @@
                         "icon": "icon_brawlpass.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "Reward from Brawl Pass Plus Season 25 tier 46",
                 "foundIn": [],
                 "release": {
@@ -35947,7 +37393,7 @@
                         "icon": "icon_brawlpass.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "Reward from Brawl Pass Plus Season 25 tier 48",
                 "foundIn": [],
                 "release": {
@@ -35989,7 +37435,7 @@
                         "icon": "icon_godzilla.webp"
                     }
                 ],
-                "limited": false,
+                "limited": true,
                 "unlock": "Reward for collecting 1250 Monster Eggs during the Godzilla event",
                 "foundIn": [
                     "Monster Eggs"
@@ -36080,7 +37526,7 @@
                         "icon": "icon_godzilla.webp"
                     }
                 ],
-                "limited": false,
+                "limited": true,
                 "unlock": "",
                 "foundIn": [
                     "Monster Eggs"
@@ -36124,7 +37570,7 @@
                         "icon": "icon_godzilla.webp"
                     }
                 ],
-                "limited": false,
+                "limited": true,
                 "unlock": "",
                 "foundIn": [
                     "Monster Eggs"
@@ -36716,7 +38162,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -36754,7 +38200,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -37027,6 +38473,44 @@
                     "year": 2024
                 },
                 "image": "kickerdudeworldfinal.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "kickerduderare",
+                "displayName": "First Mate Fang",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "icon": "skin_rarity_1.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "Outlaws",
+                        "image": "bg_outlaw.webp",
+                        "icon": "icon_outlaws.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 3,
+                    "year": 2025
+                },
+                "image": "kickerduderare.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -37382,7 +38866,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -37420,7 +38904,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -37575,6 +39059,44 @@
                     "year": 2025
                 },
                 "image": "fleastarrforce.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "flearare",
+                "displayName": "Cored Eve",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "icon": "skin_rarity_1.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "Starry Meal",
+                        "image": "bg_meal.webp",
+                        "icon": "icon_meal.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 3,
+                    "year": 2025
+                },
+                "image": "flearare.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -37894,7 +39416,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -37932,7 +39454,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -38023,9 +39545,9 @@
                 ],
                 "groups": [
                     {
-                        "name": "Vibing",
-                        "image": "bg_music.webp",
-                        "icon": "icon_music.webp"
+                        "name": "The Good Randoms",
+                        "image": "bg_goodrandoms.webp",
+                        "icon": "icon_goodrandoms.webp"
                     }
                 ],
                 "limited": false,
@@ -38156,6 +39678,51 @@
                     "year": 2024
                 },
                 "image": "jetpackgirlchristmas.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "jetpackgirlsupercellmake",
+                "displayName": "Firewing Janet",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl Unite",
+                        "image": "bg_superheroes.webp",
+                        "icon": "icon_superheroes.webp"
+                    },
+                    {
+                        "name": "Supercell Make",
+                        "image": "bg_default.webp",
+                        "icon": "icon_sc_make.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2025
+                },
+                "image": "jetpackgirlsupercellmake.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -38389,6 +39956,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "janet_make",
+                "image": "janet_make.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -38461,9 +40037,9 @@
                 ],
                 "groups": [
                     {
-                        "name": "Sands of Time",
-                        "image": "bg_lantern.webp",
-                        "icon": "icon_lantern.webp"
+                        "name": "Dark Sands",
+                        "image": "bg_darksands.webp",
+                        "icon": "icon_darksands.webp"
                     },
                     {
                         "name": "Brawl Pass",
@@ -38493,7 +40069,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -38531,7 +40107,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -39036,7 +40612,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -39074,7 +40650,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -39138,6 +40714,51 @@
                     "year": 2023
                 },
                 "image": "shieldtankcroc.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "shieldtanksupercellmake",
+                "displayName": "Equilibrium Buster",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl Unite",
+                        "image": "bg_superheroes.webp",
+                        "icon": "icon_superheroes.webp"
+                    },
+                    {
+                        "name": "Supercell Make",
+                        "image": "bg_default.webp",
+                        "icon": "icon_sc_make.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2025
+                },
+                "image": "shieldtanksupercellmake.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -39326,6 +40947,24 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "buster_overcharge",
+                "image": "buster_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "buster_make",
+                "image": "buster_make.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -39503,7 +41142,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -39541,7 +41180,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -39878,7 +41517,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -39916,7 +41555,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -40305,7 +41944,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -40343,7 +41982,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -40622,7 +42261,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -40660,7 +42299,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -40973,7 +42612,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -41011,7 +42650,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -41035,6 +42674,51 @@
                     "year": 2024
                 },
                 "image": "conductorsilver.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "conductorsupercellmake",
+                "displayName": "Electroid Chuck",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl Unite",
+                        "image": "bg_superheroes.webp",
+                        "icon": "icon_superheroes.webp"
+                    },
+                    {
+                        "name": "Supercell Make",
+                        "image": "bg_default.webp",
+                        "icon": "icon_sc_make.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2025
+                },
+                "image": "conductorsupercellmake.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -41213,6 +42897,15 @@
                     "value": 2,
                     "name": "Epic",
                     "color": "#b116ec"
+                }
+            },
+            {
+                "name": "chuck_make",
+                "image": "chuck_make.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
                 }
             }
         ]
@@ -41402,7 +43095,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -41440,7 +43133,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -41914,7 +43607,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -41952,7 +43645,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -42317,7 +44010,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -42355,7 +44048,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -42754,7 +44447,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -42792,7 +44485,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -42853,7 +44546,7 @@
                         "icon": "icon_angeldemons.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "",
                 "foundIn": [
                     "Ranked Starr Drops"
@@ -43067,7 +44760,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -43105,7 +44798,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -43324,7 +45017,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -43362,7 +45055,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -43423,7 +45116,7 @@
                         "icon": "icon_ranked.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "",
                 "foundIn": [
                     "Ranked Starr Drops"
@@ -43610,9 +45303,9 @@
                 ],
                 "groups": [
                     {
-                        "name": "",
+                        "name": "Misc",
                         "image": "bg_default.webp",
-                        "icon": "icon_default.webp"
+                        "icon": "icon_misc.webp"
                     }
                 ],
                 "limited": false,
@@ -43623,6 +45316,122 @@
                     "year": 2024
                 },
                 "image": "voodoorare.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "voodoosandsoftimes",
+                "displayName": "Queen Juju",
+                "cost": 79,
+                "currency": "Gems",
+                "costBling": 2750,
+                "rarity": {
+                    "value": 2,
+                    "name": "Super Rare",
+                    "icon": "skin_rarity_2.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Dark Sands",
+                        "image": "bg_darksands.webp",
+                        "icon": "icon_darksands.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 3,
+                    "year": 2025
+                },
+                "image": "voodoosandsoftimes.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "voodoogold",
+                "displayName": "True Gold Juju",
+                "cost": 25000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 8,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "True Silver Juju",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Gold",
+                        "image": "bg_gold.webp",
+                        "icon": "icon_gold.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 2,
+                    "year": 2025
+                },
+                "image": "voodoogold.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "voodoosilver",
+                "displayName": "True Silver Juju",
+                "cost": 10000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 8,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Silver",
+                        "image": "bg_silver.webp",
+                        "icon": "icon_silver.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 2,
+                    "year": 2025
+                },
+                "image": "voodoosilver.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -43721,6 +45530,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "juju_darksands",
+                "image": "juju_darksands.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -43806,6 +45624,122 @@
                     "year": 2025
                 },
                 "image": "skaterrapper.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "skatersandsoftimes",
+                "displayName": "Pharaollie",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Dark Sands",
+                        "image": "bg_darksands.webp",
+                        "icon": "icon_darksands.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 3,
+                    "year": 2025
+                },
+                "image": "skatersandsoftimes.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "skatergold",
+                "displayName": "True Gold Ollie",
+                "cost": 25000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 8,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "True Silver Ollie",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Gold",
+                        "image": "bg_gold.webp",
+                        "icon": "icon_gold.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 2,
+                    "year": 2025
+                },
+                "image": "skatergold.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "skatersilver",
+                "displayName": "True Silver Ollie",
+                "cost": 10000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 8,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Silver",
+                        "image": "bg_silver.webp",
+                        "icon": "icon_silver.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 2,
+                    "year": 2025
+                },
+                "image": "skatersilver.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -43899,6 +45833,377 @@
             {
                 "name": "ollie_facepalm",
                 "image": "ollie_facepalm.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "ollie_darksands",
+                "image": "ollie_darksands.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            }
+        ]
+    },
+    {
+        "name": "finx",
+        "displayName": "Finx",
+        "rarity": {
+            "value": 4,
+            "name": "Mythic",
+            "color": "#fe0521"
+        },
+        "image": "portrait_finx.webp",
+        "defaultSkin": "chronomancerdefault",
+        "title": "Waste of time",
+        "masteryIcon": "mastery_icon_finx.webp",
+        "description": "The owner of Starr Park's escape room, Finx is meant to help visitors complete tasks. Instead, he uses his time controlling abilities to cause mischief! Also, he LOVES cats.",
+        "skins": [
+            {
+                "name": "chronomancerdefault",
+                "displayName": "Finx",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 0,
+                    "name": "",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [],
+                "groups": [
+                    {
+                        "name": "",
+                        "image": "bg_default.webp",
+                        "icon": "icon_default.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 3,
+                    "year": 2025
+                },
+                "image": "chronomancerdefault.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "chronomancerrare",
+                "displayName": "Jurassic Finx",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "icon": "skin_rarity_1.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "Misc",
+                        "image": "bg_default.webp",
+                        "icon": "icon_misc.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Included in the Finx early access bundle",
+                "foundIn": [],
+                "release": {
+                    "month": 3,
+                    "year": 2025
+                },
+                "image": "chronomancerrare.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "name": "finx_default",
+                "image": "finx_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "finx_happy",
+                "image": "finx_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "finx_sad",
+                "image": "finx_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "finx_angry",
+                "image": "finx_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "finx_gg",
+                "image": "finx_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "finx_clap",
+                "image": "finx_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "finx_thanks",
+                "image": "finx_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "finx_sweat",
+                "image": "finx_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "finx_special",
+                "image": "finx_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "finx_facepalm",
+                "image": "finx_facepalm.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            }
+        ]
+    },
+    {
+        "name": "lumi",
+        "displayName": "Lumi",
+        "rarity": {
+            "value": 4,
+            "name": "Mythic",
+            "color": "#fe0521"
+        },
+        "image": "portrait_lumi.webp",
+        "defaultSkin": "morningstardefault",
+        "title": "Headbanger",
+        "masteryIcon": "mastery_icon_lumi.webp",
+        "description": "A passionate metalhead and a talented drummer, Lumi traded her drumsticks for morning stars when she got her job at Starr Park. She controls elements of ice and fire, which reflects her shy nature and her burning passion for music!",
+        "skins": [
+            {
+                "name": "morningstardefault",
+                "displayName": "Lumi",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 0,
+                    "name": "",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [],
+                "groups": [
+                    {
+                        "name": "",
+                        "image": "bg_default.webp",
+                        "icon": "icon_default.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2025
+                },
+                "image": "morningstardefault.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "morningstarrare",
+                "displayName": "Dark Knight Lumi",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "icon": "skin_rarity_1.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "Misc",
+                        "image": "bg_default.webp",
+                        "icon": "icon_misc.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Included in the Lumi early access bundle",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2025
+                },
+                "image": "morningstarrare.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "name": "lumi_default",
+                "image": "lumi_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "lumi_happy",
+                "image": "lumi_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "lumi_sad",
+                "image": "lumi_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "lumi_angry",
+                "image": "lumi_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "lumi_gg",
+                "image": "lumi_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "lumi_clap",
+                "image": "lumi_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "lumi_thanks",
+                "image": "lumi_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "lumi_sweat",
+                "image": "lumi_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "lumi_special",
+                "image": "lumi_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "lumi_facepalm",
+                "image": "lumi_facepalm.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -44852,7 +47157,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -44890,7 +47195,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -45565,7 +47870,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -45603,7 +47908,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -46382,7 +48687,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -46420,7 +48725,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -46935,7 +49240,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -46973,7 +49278,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -47090,6 +49395,44 @@
                     "geometry": "firedudemake.glb",
                     "winAnimation": "firedudemake_win.glb",
                     "loseAnimation": "firedudemake_lose.glb"
+                },
+                "rating": 0
+            },
+            {
+                "name": "fireduderare",
+                "displayName": "Fiendish Amber",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "icon": "skin_rarity_1.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "Angels vs. Demons",
+                        "image": "bg_default.webp",
+                        "icon": "icon_angeldemons.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 3,
+                    "year": 2025
+                },
+                "image": "fireduderare.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
                 },
                 "rating": 0
             }
@@ -47424,7 +49767,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -47462,7 +49805,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -47709,6 +50052,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "meg_overcharge",
+                "image": "meg_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -47892,7 +50244,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -47930,7 +50282,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -48255,7 +50607,7 @@
                 "unlock": "Free during the Pizza Planet event",
                 "foundIn": [],
                 "release": {
-                    "month": 1,
+                    "month": 2,
                     "year": 2025
                 },
                 "image": "powerlevelerbuzz.webp",
@@ -48582,6 +50934,15 @@
                     "name": "Epic",
                     "color": "#b116ec"
                 }
+            },
+            {
+                "name": "surge_brawlywood",
+                "image": "surge_brawlywood.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -48681,7 +51042,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -48719,7 +51080,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -48876,6 +51237,46 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "jesteruno",
+                "displayName": "UNO Chester",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Uno",
+                        "image": "bg_uno.webp",
+                        "icon": "icon_uno.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2025
+                },
+                "image": "jesteruno.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -48990,6 +51391,24 @@
             {
                 "name": "chester_lunarevent",
                 "image": "chester_lunarevent.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "chester_overcharge",
+                "image": "chester_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "chester_uno",
+                "image": "chester_uno.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -49219,7 +51638,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -49257,7 +51676,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -49842,7 +52261,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -49880,7 +52299,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -50227,7 +52646,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -50265,7 +52684,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -50607,7 +53026,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },
@@ -50645,7 +53064,7 @@
                 "currency": "Coins",
                 "costBling": -1,
                 "rarity": {
-                    "value": 7,
+                    "value": 8,
                     "name": "Collectors",
                     "icon": ""
                 },

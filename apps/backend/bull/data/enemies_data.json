@@ -348,7 +348,7 @@
         "displayName": "Mortis",
         "image": "mortis/mortis_mecha_default.webp",
         "fullImage": "mortis/undertakermecha.webp",
-        "description": "Dashes towards you with its attacks and deals damage to you if you get hit by a dash.",
+        "description": "Dashes towards you with its attacks and deals damage if you get hit by a dash.",
         "strengthTier": "Gains movement speed and starts with more dashes.",
         "value": 10,
         "health": 5400,
@@ -363,7 +363,7 @@
                 "reload": 1.1,
                 "knockback": 0,
                 "fireDamage": 0,
-                "description": "Mortis dashes towards you when using this attack."
+                "description": "Mortis dashes a short distance when using this attack."
             }
         ],
         "enemies": []
@@ -372,7 +372,7 @@
         "displayName": "Frank",
         "image": "frank/frank_make.webp",
         "fullImage": "frank/hammerdudeknight.webp",
-        "description": "Deals damage in a wide area and stuns you if you get hit by an attack.",
+        "description": "Attacks cover a wide area, dealing the same damage at all ranges.",
         "strengthTier": "Gains movement speed and stuns for a longer duration.",
         "value": 12,
         "health": 8000,
@@ -380,14 +380,25 @@
         "attacks": [
             {
                 "displayName": "Default Attack",
-                "minDamage": 600,
+                "minDamage": 200,
                 "maxDamage": 600,
                 "damageType": 0,
                 "range": 60,
-                "reload": 3.2,
+                "reload": 1.8,
                 "knockback": 0,
                 "fireDamage": 0,
-                "description": "Shoots 7 projectiles in a cone pattern, dealing the same amount of damage at all ranges."
+                "description": "Shoots 5 projectiles in a cone pattern. Reloads faster the lower Frank is in health."
+            },
+            {
+                "displayName": "Stun Attack",
+                "minDamage": 600,
+                "maxDamage": 600,
+                "damageType": 0,
+                "range": 70,
+                "reload": 7.2,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": "Shoots 9 projectiles in a cone pattern that stun you if they hit. Used once every 4 attacks."
             }
         ],
         "enemies": []
@@ -491,7 +502,7 @@
         "displayName": "Colette",
         "image": "colette/colette_ranked.webp",
         "fullImage": "colette/percenterinspector.webp",
-        "description": "For each attack, any damage it deals that is above 5% of Colette's max health is reduced by 50%.",
+        "description": "For each attack against Colette, any damage it deals that is above 5% of Colette's max health is reduced by 50%.",
         "strengthTier": "Dashes more often and uses more attacks after every dash.",
         "value": 12,
         "health": 4800,
