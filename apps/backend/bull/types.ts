@@ -949,6 +949,7 @@ export interface ChallengeGameMod{
         enemy: number;
     };
     playerAccessories?: string[];
+    playerUpgradeTiers?: Record<string, number>;
     playerUpgradeValues?: Partial<GameModUpgradeValues>;
 }
 

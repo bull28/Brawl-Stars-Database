@@ -18,7 +18,7 @@ import {DatabaseBadges, GameReport} from "../../bull/types";
 import {sampleGameReport, GAME_VERSION} from "../database_setup";
 
 const REPORT_FORMAT = {
-    mode: [0, 2], player: [2, 6], gears: [6, 8], accessories: [8, 13], score: [13, 19],
+    mode: [0, 1], player: [1, 6], gears: [6, 8], accessories: [8, 13], score: [13, 19],
     achievements: [19, 26], upgrades: [26, 32], stats: [32, 40], visited: [40, 48],
     levels: [48, 96], enemies: [96, 126], length: [0, 126]
 };
@@ -28,9 +28,9 @@ for (let x = 0; x < REPORT_FORMAT.length[1]; x++){
     emptyReport.push(0);
 }
 
-// Score = 500, Difficulty 2, Player 3 (Darryl), Star Power 2, Enemies Defeated = 600
+// Score = 500, Difficulty 2, Player 3 (Darryl), Upgrade Tier 0, Star Power 2, Enemies Defeated = 600
 // Gears 1 and 2 (Health and Shield), First 5 Accessories
-const previewReport = [0, 0, 500, 1, 3, 2, 1, 2, 0, 1, 2, 3, 4, 300, 150, 0, 50, 0, 0, 0, 600];
+const previewReport = [0, 500, 1, 3, 0, 2, 1, 2, 0, 1, 2, 3, 4, 300, 150, 0, 50, 0, 0, 0, 600];
 for (let x = previewReport.length; x < REPORT_FORMAT.length[1]; x++){
     if (x >= 40 && x <= 47){
         previewReport.push(x - 40);
@@ -177,11 +177,12 @@ describe("Accessories and Game Report module", function(){
         const report = emptyReport.slice();
 
         expect(checkReportStrength(report, 0)).to.equal(true);
-        expect(checkReportStrength(report, 69)).to.equal(true);
-        report[1] = 69;
-        expect(checkReportStrength(report, 69)).to.equal(true);
-        expect(checkReportStrength(report, 70)).to.equal(false);
-        expect(checkReportStrength([], 0)).to.equal(false);
+        // Challenge strength is no longer included in the report as of version 82
+        // expect(checkReportStrength(report, 69)).to.equal(true);
+        // report[1] = 69;
+        // expect(checkReportStrength(report, 69)).to.equal(true);
+        // expect(checkReportStrength(report, 70)).to.equal(false);
+        // expect(checkReportStrength([], 0)).to.equal(false);
     });
 
     it("Display the correct preview information from a game report", function(){
@@ -333,9 +334,9 @@ describe("Accessories and Game Report module", function(){
         });
 
         it("Star Power not 1 or 2", function(){
-            invalid[p + 3] = 3;
+            invalid[p + 4] = 3;
             expect(validateReport(invalidVersion)).to.be.false;
-            invalid[p + 3] = valid[p + 3];
+            invalid[p + 4] = valid[p + 4];
         });
 
         it("Total enemies more than 1000", function(){

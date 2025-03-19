@@ -22,7 +22,7 @@ interface Accessory{
 }
 
 const REPORT_FORMAT = {
-    mode: [0, 2], player: [2, 6], gears: [6, 8], accessories: [8, 13], score: [13, 19],
+    mode: [0, 1], player: [1, 6], gears: [6, 8], accessories: [8, 13], score: [13, 19],
     achievements: [19, 26], upgrades: [26, 32], stats: [32, 40], visited: [40, 48],
     levels: [48, 96], enemies: [96, 126], length: [0, 126]
 };
@@ -141,7 +141,7 @@ function getFinalScore(reports: number[], enemyCounts: number[]): number[]{
     score.destination = Math.min(maxScores.destination, Math.floor(score.destination));
     score.gear = Math.min(maxScores.gear, Math.floor(score.gear));
     score.enemy = Math.min(maxScores.enemy, Math.max(0, totalEnemyBonus));
-    score.health = Math.min(maxScores.health, Math.max(0, Math.floor(maxScores.health - totalHealthPenalty + 30)));
+    score.health = Math.min(maxScores.health, Math.max(0, Math.floor(maxScores.health - totalHealthPenalty + Math.min(40, stages.length * 4))));
 
     return [score.completion, score.time, score.destination, score.health, score.gear, score.enemy];
 }
@@ -155,13 +155,13 @@ function getFinalScore(reports: number[], enemyCounts: number[]): number[]{
  * @returns false if the report is definitely invalid, true if it is reasonable enough
  */
 export function validateReport(report: GameReport): boolean{
-    // Last updated: version 77
+    // Last updated: version 82
 
     if (report.length !== 3){
         // Invalid report length
         return false;
     }
-    if (report[0] < 77){
+    if (report[0] < 82){
         // Old report version
         return false;
     }
@@ -213,8 +213,14 @@ export function validateReport(report: GameReport): boolean{
         return false;
     }
 
+    // The tier must be at least 0
+    const tier = data[format.player[0] + 3];
+    if (tier < 0){
+        return false;
+    }
+
     // The star power must be between 1 and 2
-    const starPower = data[format.player[0] + 3];
+    const starPower = data[format.player[0] + 4];
     if (starPower < 1 || starPower > 2){
         return false;
     }
@@ -664,12 +670,14 @@ export function extractReportScore(data: number[]): number{
 
 export function checkReportStrength(data: number[], expectedStrength: number): boolean{
     // Checks whether the challenge strength in a report matches the given value or is 0 (no reward)
-    const format = REPORT_FORMAT;
+    // Challenge strength is no longer included in the report as of version 82
+    return true;
+    // const format = REPORT_FORMAT;
 
-    if (data.length !== format.length[1] - format.length[0]){
-        return false;
-    }
-    return data[format.mode[0] + 1] === expectedStrength || data[format.mode[0] + 1] === 0;
+    // if (data.length !== format.length[1] - format.length[0]){
+    //     return false;
+    // }
+    // return data[format.mode[0] + 1] === expectedStrength || data[format.mode[0] + 1] === 0;
 }
 
 export function extractReportPreviewStats(data: number[]): ReportPreview["stats"] | undefined{
@@ -695,7 +703,7 @@ export function extractReportPreviewStats(data: number[]): ReportPreview["stats"
 
     // The index is always 1 less than the star power number, star power 0 means no star power used
     const starPower = {displayName: "No Star Power", image: ""};
-    const spIndex = data[p + 3] - 1;
+    const spIndex = data[p + 4] - 1;
     if (spIndex >= 0 && spIndex < gameStarPowers.length){
         // Star power images are stored in the same directory as gear images
         starPower.displayName = gameStarPowers[spIndex].displayName;
@@ -808,7 +816,8 @@ export function extractReportData(data: number[]): ReportData | undefined{
     } else if (gameMode === 2){
         // For challenges, mastery rewards depend on the overall strength of the challenge
         // Badge rewards depend on the enemy strength tier (this value is stored in the difficulty)
-        points = getStrengthReward(data[format.mode[0] + 1]);
+        //points = getStrengthReward(data[format.mode[0] + 1]);
+        points = getStrengthReward(0);
         badgeMultiplier = 200 + difficulty * 200;
     }
     points = Math.floor(points * data[p] * pointsMultiplier / 100);
@@ -924,7 +933,7 @@ export function extractReportData(data: number[]): ReportData | undefined{
         player: {
             difficulty: difficulty,
             brawler: data[p + 2],
-            starPower: data[p + 3],
+            starPower: data[p + 4],
             gears: data.slice(format.gears[0], format.gears[1]),
             accessories: accs
         },

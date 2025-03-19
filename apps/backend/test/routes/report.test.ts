@@ -14,13 +14,13 @@ const reportMode0 = sampleGameReport.slice();
 const reportMode2 = sampleGameReport.slice();
 // Game mode = 2, strength = 1000
 reportMode2[0] = 2;
-reportMode2[1] = 1000;
+//reportMode2[1] = 1000;
 // Score = 600
 const reportWin = reportMode2.slice();
-reportWin[2] = 600;
+reportWin[1] = 600;
 // Score = 0
 const reportLoss = reportMode2.slice();
-reportLoss[2] = 0;
+reportLoss[1] = 0;
 
 describe("Game Report endpoints", function(){
     let connection: Connection;
@@ -161,12 +161,13 @@ describe("Game Report endpoints", function(){
             expect(res.body.message).to.equal("This challenge has not been accepted yet.");
         });
 
-        it("Challenge strength does not match report", async function(){
-            const res = await chai.request(server).post("/report/save").auth(TEST_TOKEN, {type: "bearer"})
-            .send({key: "test3", report: [GAME_VERSION, END_TIME++, reportMode2]});
-            expect(res).to.have.status(403);
-            expect(res.body.message).to.equal("Invalid report.");
-        });
+        // Challenge strength is no longer included in the report as of version 82
+        // it("Challenge strength does not match report", async function(){
+        //     const res = await chai.request(server).post("/report/save").auth(TEST_TOKEN, {type: "bearer"})
+        //     .send({key: "test3", report: [GAME_VERSION, END_TIME++, reportMode2]});
+        //     expect(res).to.have.status(403);
+        //     expect(res.body.message).to.equal("Invalid report.");
+        // });
 
         it("User who started the challenge does not exist", async function(){
             const res = await chai.request(server).post("/report/save").auth(TEST_TOKEN, {type: "bearer"})

@@ -23,8 +23,8 @@ export const tokens = {
 };
 
 export const sampleGameReport = [
-    0, 0, // Game Mode
-    500, 5, 0, 1, // Player
+    0, // Game Mode
+    500, 5, 0, 0, 1, // Player
     0, 1, // Gears
     -1, -1, -1, -1, -1, // Accessories
     300, 150, 0, 50, 0, 0, // Overall Score
@@ -44,7 +44,7 @@ export const sampleGameReport = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 ];
-export const GAME_VERSION = 77;
+export const GAME_VERSION = 82;
 
 export async function createConnection(): Promise<Connection>{
     if (process.env["NODE_ENV"] !== "test"){
