@@ -1,5 +1,6 @@
 import { ExternalLinkIcon } from '@chakra-ui/icons'
-import { Flex, Text, SimpleGrid, Image, useDisclosure, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Box, Link, keyframes, useToast } from '@chakra-ui/react'
+import {keyframes} from "@emotion/react";
+import { Flex, Text, SimpleGrid, Image, useDisclosure, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Box, Link, useToast } from '@chakra-ui/react'
 import axios from 'axios'
 import { useState } from 'react'
 import { HiOutlineSwitchHorizontal } from 'react-icons/hi'

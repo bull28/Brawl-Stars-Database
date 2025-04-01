@@ -1,4 +1,5 @@
-import {Flex, Image, keyframes} from "@chakra-ui/react";
+import {Flex, Image} from "@chakra-ui/react";
+import {keyframes} from "@emotion/react";
 import {useState, useEffect, useCallback} from "react"
 import AuthRequest from "../helpers/AuthRequest";
 import {CosmeticData} from "../types/CosmeticData";

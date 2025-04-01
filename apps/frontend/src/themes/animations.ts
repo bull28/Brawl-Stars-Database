@@ -1,4 +1,4 @@
-import { keyframes } from '@chakra-ui/react'
+import {keyframes} from "@emotion/react";
 
 export function GoldText(){
     return keyframes`

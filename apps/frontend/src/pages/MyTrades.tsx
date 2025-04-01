@@ -1,4 +1,5 @@
-import { Box, Button, Divider, Flex, Image, keyframes, Link, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, ScaleFade, SimpleGrid, Text, useDisclosure, Stack } from '@chakra-ui/react'
+import { Box, Button, Divider, Flex, Image, Link, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, ScaleFade, SimpleGrid, Text, useDisclosure, Stack } from '@chakra-ui/react'
+import {keyframes} from "@emotion/react";
 import { useEffect, useState, useCallback } from 'react'
 import { HiOutlineSwitchHorizontal } from 'react-icons/hi'
 import AuthRequest from '../helpers/AuthRequest'

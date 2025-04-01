@@ -1,4 +1,5 @@
-import {Flex, Text, Image, SimpleGrid, keyframes} from "@chakra-ui/react";
+import {Flex, Text, Image, SimpleGrid} from "@chakra-ui/react";
+import {keyframes} from "@emotion/react";
 import CountUp from "react-countup";
 import {displayLong} from "../helpers/LargeNumberDisplay";
 import {BrawlBoxContentsData, BrawlBoxBadgesData} from "../types/BrawlBoxData";

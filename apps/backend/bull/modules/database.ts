@@ -68,27 +68,27 @@ if (process.env["DATABASE_PORT"] !== undefined){
 }
 
 if (process.env["NODE_ENV"] === "test"){
-    if (process.env["TEST_DATABASE_NAME"] !== undefined){
-        databaseLogin.database = process.env["TEST_DATABASE_NAME"];
+    if (process.env["V1_TEST_DATABASE_NAME"] !== undefined){
+        databaseLogin.database = process.env["V1_TEST_DATABASE_NAME"];
     }
-} else if (process.env["DATABASE_NAME"] !== undefined){
-    databaseLogin.database = process.env["DATABASE_NAME"];
+} else if (process.env["V1_DATABASE_NAME"] !== undefined){
+    databaseLogin.database = process.env["V1_DATABASE_NAME"];
 }
 
-if (process.env["DATABASE_TABLE_NAME"] !== undefined){
-    tables.users = process.env["DATABASE_TABLE_NAME"];
-} if (process.env["DATABASE_TRADE_TABLE_NAME"] !== undefined){
-    tables.trades = process.env["DATABASE_TRADE_TABLE_NAME"];
-} if (process.env["DATABASE_COSMETIC_TABLE_NAME"] !== undefined){
-    tables.cosmetics = process.env["DATABASE_COSMETIC_TABLE_NAME"];
-} if (process.env["DATABASE_GAME_TABLE_NAME"] !== undefined){
-    tables.bullgame = process.env["DATABASE_GAME_TABLE_NAME"];
-} if (process.env["DATABASE_REPORT_TABLE_NAME"] !== undefined){
-    tables.reports = process.env["DATABASE_REPORT_TABLE_NAME"];
-} if (process.env["DATABASE_CHALLENGE_TABLE_NAME"] !== undefined){
-    tables.challenges = process.env["DATABASE_CHALLENGE_TABLE_NAME"];
-} if (process.env["DATABASE_ACTIVE_TABLE_NAME"] !== undefined){
-    tables.activechallenges = process.env["DATABASE_ACTIVE_TABLE_NAME"];
+if (process.env["V1_TABLE_NAME"] !== undefined){
+    tables.users = process.env["V1_TABLE_NAME"];
+} if (process.env["V1_TRADE_TABLE_NAME"] !== undefined){
+    tables.trades = process.env["V1_TRADE_TABLE_NAME"];
+} if (process.env["V1_COSMETIC_TABLE_NAME"] !== undefined){
+    tables.cosmetics = process.env["V1_COSMETIC_TABLE_NAME"];
+} if (process.env["V1_GAME_TABLE_NAME"] !== undefined){
+    tables.bullgame = process.env["V1_GAME_TABLE_NAME"];
+} if (process.env["V1_REPORT_TABLE_NAME"] !== undefined){
+    tables.reports = process.env["V1_REPORT_TABLE_NAME"];
+} if (process.env["V1_CHALLENGE_TABLE_NAME"] !== undefined){
+    tables.challenges = process.env["V1_CHALLENGE_TABLE_NAME"];
+} if (process.env["V1_ACTIVE_TABLE_NAME"] !== undefined){
+    tables.activechallenges = process.env["V1_ACTIVE_TABLE_NAME"];
 }
 
 

@@ -7,7 +7,7 @@ import {Empty} from "../types";
 const router = express.Router();
 
 
-const rootPath = path.join(__dirname, "../..", GAME_ASSETS_DIR);
+const rootPath = path.resolve(GAME_ASSETS_DIR);
 
 
 interface BullgameReqBody{
@@ -17,7 +17,7 @@ interface BullgameReqBody{
 
 // Get the classic game with no modifications
 router.get("/", (req, res) => {
-    res.sendFile(path.join(rootPath, "index.html"));
+    res.sendFile(path.join(rootPath, "index_bull.html"));
 });
 
 // Get a modified version of the game
@@ -44,7 +44,7 @@ router.post<Empty, string, BullgameReqBody>("/", async (req, res) => {
     let text = "";
 
     try{
-        text = await fs.readFile(path.join(rootPath, "custom.html"), {encoding: "utf-8"});
+        text = await fs.readFile(path.join(rootPath, "custom_bull.html"), {encoding: "utf-8"});
     } catch (error){
         res.status(500).send("An error occurred while setting up the game.");
         return;
@@ -56,6 +56,9 @@ router.post<Empty, string, BullgameReqBody>("/", async (req, res) => {
 
 // Get a custom level from a file
 router.get<{level: string;}>("/:level", async (req, res) => {
+    res.sendFile(path.join(rootPath, "index_bull.html"));
+    return;
+
     const levelName = req.params.level;
 
     if (levelName === undefined || levelName === ""){

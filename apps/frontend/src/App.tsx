@@ -60,7 +60,7 @@ function App(){
 
     return (
     <div className="app">
-        <BrowserRouter>
+        <BrowserRouter future={{v7_relativeSplatPath: false, v7_startTransition: false}}>
             <Routes>
                 <Route path="/" element={<Suspense fallback={<></>}><Home/></Suspense>}/>
                 <Route path="/account" element={<Suspense fallback={<></>}><Account/></Suspense>}/>

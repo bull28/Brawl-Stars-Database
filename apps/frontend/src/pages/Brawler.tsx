@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
-import {Flex, Text, SimpleGrid, Image, Stack, Link, keyframes} from "@chakra-ui/react";
+import {Flex, Text, SimpleGrid, Image, Stack, Link} from "@chakra-ui/react";
+import {keyframes} from "@emotion/react";
 import {ExternalLinkIcon} from "@chakra-ui/icons";
 import {useParams, Link as RouterLink} from "react-router-dom";
 import axios, {AxiosResponse} from "axios";

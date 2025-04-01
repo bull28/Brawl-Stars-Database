@@ -108,15 +108,15 @@ function getFinalScore(reports: number[], enemyCounts: number[]): number[]{
             const t = Math.max(0.5, report.timeSpent / 1000);
             let multiplier = 0;
             if (t < 0.75){
-                multiplier = ((-2156/481*(t-0.5))*(t-0.5) - 423/1924)*(t-0.5) + 1.5;
+                multiplier = ((-872/481*(t-0.5))*(t-0.5) - 263/1924)*(t-0.5) + 1.25;
             } else if (t < 1){
-                multiplier = ((3084/481*(t-0.75) -1617/481)*(t-0.75) - 510/481)*(t-0.75) + 1.375;
+                multiplier = ((512/481*(t-0.75) -654/481)*(t-0.75) - 917/1924)*(t-0.75) + 1.1875;
             } else if (t < 1.5){
-                multiplier = ((-355/481*(t-1) + 696/481)*(t-1) - 2961/1924)*(t-1) + 1;
+                multiplier = ((457/481*(t-1) - 270/481)*(t-1) - 1841/1924)*(t-1) + 1;
             } else if (t < 2){
-                multiplier = ((-47/481*(t-1.5) + 327/962)*(t-1.5) - 621/962)*(t-1.5) + 0.5;
+                multiplier = ((-243/481*(t-1.5) + 831/962)*(t-1.5) - 775/962)*(t-1.5) + 0.5;
             } else if (t < 3){
-                multiplier = ((-31/481*(t-2) + 93/481)*(t-2) - 729/1924)*(t-2) + 0.25;
+                multiplier = ((-17/481*(t-2) + 51/481)*(t-2) - 617/1924)*(t-2) + 0.25;
             }
             score.time += stages[x].time * multiplier;
         } else{

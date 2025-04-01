@@ -1,6 +1,6 @@
 export const IMAGE_FILE_EXTENSION = ".webp";
-export const ASSETS_ROOT_DIR = "assets/images/";
-export const GAME_ASSETS_DIR = "assets/images/bullgame";
+export const ASSETS_ROOT_DIR = "assets/";
+export const GAME_ASSETS_DIR = "assets/bullgame";
 export const PORTRAIT_IMAGE_DIR = "portraits/";
 export const SKIN_IMAGE_DIR = "skins/";
 export const SKIN_MODEL_DIR = "models/";

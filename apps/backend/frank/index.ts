@@ -1,0 +1,83 @@
+import express, {NextFunction, Request, Response} from "express";
+import cors from "cors";
+import compression from "compression";
+import path from "path";
+import "dotenv/config";
+
+import {ASSETS_ROOT_DIR} from "./data/constants";
+import brawlers from "./routes/brawlers";
+import events from "./routes/events";
+import account from "./routes/account";
+import report from "./routes/report";
+import challenge from "./routes/challenges";
+import accessory from "./routes/accessories";
+import resources from "./routes/resources";
+import bullgame from "./routes/bullgame";
+
+const app = express();
+app.disable("x-powered-by");
+let port = 6969;
+
+if (process.env["PORT"] !== undefined){
+    const portString = process.env["PORT"];
+    if (!isNaN(+portString)){
+        port = parseInt(portString);
+    }
+}
+if (process.env["NODE_ENV"] === "test" && process.env["TEST_PORT"] !== undefined){
+    const portString = process.env["TEST_PORT"];
+    if (!isNaN(+portString)){
+        port = parseInt(portString);
+    }
+}
+
+app.use(cors());
+app.use(express.urlencoded({extended: false}));
+
+app.use((req, res, next) => {
+    (express.json())(req, res, (error) => {
+        if (error !== undefined){
+            res.status(400).send("Incorrectly formatted json.");
+            return;
+        }
+        if (typeof req.body !== "object" || req.body === null){
+            req.body = {};
+        }
+        next();
+    });
+});
+
+app.use(["/static/bullgame", "/enemies"], compression({threshold: 8192}));
+app.use("/static", express.static(path.resolve(ASSETS_ROOT_DIR)));
+
+app.get("/", (req, res) => {
+    res.send("FRANK API");
+});
+
+app.use("/", brawlers);
+app.use("/", events);
+app.use("/", account);
+app.use("/report", report);
+app.use("/challenges", challenge);
+app.use("/accessories", accessory);
+app.use("/", resources);
+app.use("/bullgame", bullgame);
+
+// Error handler
+app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
+    console.error(error.stack);
+    next();
+});
+
+app.use((req: Request, res: Response, next: NextFunction) => {
+    res.status(404).send("Not Found");
+});
+
+app.listen(port, (error) => {
+    if (error !== undefined){
+        console.error(error);
+    }
+    console.log(port);
+});
+
+export default app;

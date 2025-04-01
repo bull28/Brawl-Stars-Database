@@ -1,15 +1,15 @@
 {
     "compilerOptions": {
         "target": "es2022",
-        "module": "commonjs",
-        "lib": ["es2023", "dom"],
+        "module": "nodenext",
+        "lib": ["es2023"],
         "outDir": "build",
-        "rootDir": "bull",
+        "rootDir": ".",
         "esModuleInterop": true,
         "skipLibCheck": true,
         "removeComments": true,
         "resolveJsonModule": true,
-        "strict": true,        
+        "strict": true,
         "exactOptionalPropertyTypes": true,
         "noFallthroughCasesInSwitch": true,
         "noImplicitReturns": true,
@@ -17,6 +17,6 @@
         "forceConsistentCasingInFileNames": true
     },
     "include": [
-        "./bull/**/*"
+        "./bull/**/*", "./frank/**/*"
     ]
 }

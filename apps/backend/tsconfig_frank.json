@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "target": "es2022",
+        "module": "nodenext",
+        "lib": ["es2023"],
+        "outDir": "build/frank",
+        "rootDir": "frank",
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "removeComments": true,
+        "resolveJsonModule": true,
+        "strict": true,
+        "exactOptionalPropertyTypes": true,
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitReturns": true,
+        "noPropertyAccessFromIndexSignature": true,
+        "forceConsistentCasingInFileNames": true
+    },
+    "include": [
+        "./frank/**/*"
+    ]
+}
