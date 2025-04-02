@@ -47,23 +47,23 @@ router.get<EventsParams, string | CurrentEventsData, Empty, TimeQuery>("/events/
     
         res.json(activeEvents);
         return;
-    } else{
-        if (isValidTimeQuery(hourString, minuteString, secondString) === false){
-            res.status(400).send("Invalid input.");
-            return;
-        }
+    }
 
-        if (timeSetting === "seasontime"){
-            time = addSeasonTimes(
-                new SeasonTime(0, 0, 0, 0), 
-                new SeasonTime(0, parseInt(hourString), parseInt(minuteString), parseInt(secondString))
-            );
-        } else if (timeSetting === "later"){
-            time = addSeasonTimes(
-                currentTime,
-                new SeasonTime(0, parseInt(hourString), parseInt(minuteString), parseInt(secondString))
-            );
-        }
+    if (isValidTimeQuery(hourString, minuteString, secondString) === false){
+        res.status(400).send("Invalid input.");
+        return;
+    }
+
+    if (timeSetting === "seasontime"){
+        time = addSeasonTimes(
+            new SeasonTime(0, 0, 0, 0), 
+            new SeasonTime(0, parseInt(hourString), parseInt(minuteString), parseInt(secondString))
+        );
+    } else if (timeSetting === "later"){
+        time = addSeasonTimes(
+            currentTime,
+            new SeasonTime(0, parseInt(hourString), parseInt(minuteString), parseInt(secondString))
+        );
     }
 
     if (time === undefined){

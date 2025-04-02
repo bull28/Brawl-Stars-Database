@@ -50,19 +50,21 @@ describe("Brawlers and Skins endpoints", function(){
         });
     });
 
-    it("/skingroups", async function(){
-        const res = await chai.request(server).get("/skingroups");
+    it("/skinsearch GET", async function(){
+        const res = await chai.request(server).get("/skinsearch");
         expect(res).to.have.status(200);
-        expect(res.body).to.be.an("array");
+        expect(res.body).to.be.an("object");
+        expect(res.body).to.have.keys(["groups", "foundIn"]);
+
+        for (let x = 0; x < res.body.groups.length; x++){
+            expect(res.body.groups[x]).to.have.keys(["name", "displayName"]);
+        }
+        for (let x = 0; x < res.body.foundIn.length; x++){
+            expect(res.body.foundIn[x]).to.be.a.string;
+        }
     });
 
-    it("/skinfoundin", async function(){
-        const res = await chai.request(server).get("/skinfoundin");
-        expect(res).to.have.status(200);
-        expect(res.body).to.be.an("array");
-    });
-
-    describe("/skinsearch", function(){
+    describe("/skinsearch POST", function(){
         it("Valid search", async function(){
             const res = await chai.request(server).post("/skinsearch").send({filters: {}});
             expect(res).to.have.status(200);

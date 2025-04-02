@@ -1,7 +1,8 @@
 import {expect} from "chai";
 import allSkins from "../../../frank/data/brawlers_data.json";
-import {PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR, SKIN_IMAGE_DIR, SKINGROUP_ICON_DIR, SKINGROUP_IMAGE_DIR, MASTERY_ICON_DIR, REWARD_IMAGE_DIR} from "../../../frank/data/constants";
-import {getBrawler, getSkin, getBrawlerData, getSkinData, skinSearch} from "../../../frank/modules/brawlers_module";
+import skinGroups from "../../../frank/data/skingroups_data.json";
+import {IMAGE_FILE_EXTENSION, PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR, SKIN_IMAGE_DIR, SKINGROUP_ICON_DIR, SKINGROUP_IMAGE_DIR, MASTERY_ICON_DIR, REWARD_IMAGE_DIR} from "../../../frank/data/constants";
+import {rarities, getBrawler, getSkin, getBrawlerData, getSkinData, skinSearch} from "../../../frank/modules/brawlers_module";
 
 describe("Brawlers and Skins module", function(){
     it("Must contain exactly 90 brawlers", function(){
@@ -9,10 +10,10 @@ describe("Brawlers and Skins module", function(){
     });
 
     it("Get brawler and skin objects directly from the data file", function(){
-        expect(getBrawler(allSkins, "NOT BULL")).to.be.undefined;
+        expect(getBrawler("NOT BULL")).to.be.undefined;
 
         // Surely they don't remove bull from the game...
-        const data = getBrawler(allSkins, "bull")!;
+        const data = getBrawler("bull")!;
         expect(data).to.be.an("object");
         expect(getSkin(data, "bulldudebarbking")).to.be.an("object");
         expect(getSkin(data, "NOT A BULL SKIN")).to.be.undefined;
@@ -62,10 +63,10 @@ describe("Brawlers and Skins module", function(){
         expect(skinData.cost.amount).to.equal(skin.cost);
         expect(skinData.costBling.amount).to.equal(skin.costBling);
 
-        expect(skinData.rarity.value).to.equal(skin.rarity.value);
-        expect(skinData.rarity.name).to.equal(skin.rarity.name);
-        if (skin.rarity.icon !== ""){
-            expect(skinData.rarity.icon).to.equal(REWARD_IMAGE_DIR + skin.rarity.icon);
+        expect(skinData.rarity.value).to.equal(rarities.skins[skin.rarity].value);
+        expect(skinData.rarity.name).to.equal(rarities.skins[skin.rarity].name);
+        if (rarities.skins[skin.rarity].icon !== ""){
+            expect(skinData.rarity.icon).to.equal(REWARD_IMAGE_DIR + rarities.skins[skin.rarity].icon + IMAGE_FILE_EXTENSION);
         } else{
             expect(skinData.rarity.icon).to.equal("");
         }
@@ -74,18 +75,18 @@ describe("Brawlers and Skins module", function(){
         expect(skinData.limited).to.equal(skin.limited);
         expect(skinData.unlock).to.equal(skin.unlock);
         expect(skinData.foundIn).to.equal(skin.foundIn);
-        expect(skinData.release.month).to.equal(skin.release.month);
-        expect(skinData.release.year).to.equal(skin.release.year);
+        expect(skinData.release.month).to.equal(skin.release[1]);
+        expect(skinData.release.year).to.equal(skin.release[0]);
         expect(skinData.rating).to.equal(skin.rating);
-        expect(skinData.image).to.equal(`${SKIN_IMAGE_DIR}${brawler.name}/${skin.image}`);
+        expect(skinData.image).to.equal(`${SKIN_IMAGE_DIR}${brawler.name}/${skin.name}${IMAGE_FILE_EXTENSION}`);
         expect(skinData.features).to.be.an("array");
 
         expect(skinData.groups).to.be.an("array");
         expect(skinData.groups).to.have.lengthOf(skin.groups.length);
         for (let x = 0; x < skinData.groups.length; x++){
-            expect(skinData.groups[x].name).to.equal(skin.groups[x].name);
-            expect(skinData.groups[x].image).to.equal(SKINGROUP_IMAGE_DIR + skin.groups[x].image);
-            expect(skinData.groups[x].icon).to.equal(SKINGROUP_ICON_DIR + skin.groups[x].icon);
+            expect(skinData.groups[x].name).to.equal(skinGroups[skin.groups[x]].name);
+            expect(skinData.groups[x].image).to.equal(SKINGROUP_IMAGE_DIR + skinGroups[skin.groups[x]].image + IMAGE_FILE_EXTENSION);
+            expect(skinData.groups[x].icon).to.equal(SKINGROUP_ICON_DIR + skinGroups[skin.groups[x]].icon + IMAGE_FILE_EXTENSION);
         }
 
         // Pins
@@ -95,10 +96,10 @@ describe("Brawlers and Skins module", function(){
         expect(pinData).to.have.keys(["image", "rarity"]);
         expect(pinData.rarity).to.have.keys(["value", "name", "color"]);
 
-        expect(pinData.image).to.equal(`${PIN_IMAGE_DIR}${brawler.name}/${pin.image}`);
-        expect(pinData.rarity.value).to.equal(pin.rarity.value);
-        expect(pinData.rarity.name).to.equal(pin.rarity.name);
-        expect(pinData.rarity.color).to.equal(pin.rarity.color);
+        expect(pinData.image).to.equal(`${PIN_IMAGE_DIR}${brawler.name}/${pin.name}${IMAGE_FILE_EXTENSION}`);
+        expect(pinData.rarity.value).to.equal(rarities.pins[pin.rarity].value);
+        expect(pinData.rarity.name).to.equal(rarities.pins[pin.rarity].name);
+        expect(pinData.rarity.color).to.equal(rarities.pins[pin.rarity].color);
     });
 
     describe("Skin search", function(){
@@ -114,7 +115,7 @@ describe("Brawlers and Skins module", function(){
 
         it("Checking a search result", function(){
             const data = skinMap.get("bulldudebarbking")!;
-            const results = skinSearch(allSkins, {query: "Barbarian King Bull"});
+            const results = skinSearch({query: "Barbarian King Bull"});
             const resultData = results.find((value) => value.name === "bulldudebarbking")!;
             expect(data !== undefined && resultData !== undefined).to.be.true;
 
@@ -126,8 +127,8 @@ describe("Brawlers and Skins module", function(){
             expect(resultData.brawler).to.equal("bull");
             expect(resultData.displayName).to.equal(data.displayName);
             // Image directory is intentionally not included here to reduce the object size for large searches
-            expect(resultData.image).to.equal(data.image);
-            expect(resultData.background).to.equal(data.groups[0].image);
+            expect(resultData.image).to.equal(data.name + IMAGE_FILE_EXTENSION);
+            expect(resultData.background).to.equal(skinGroups[data.groups[0]].image + IMAGE_FILE_EXTENSION);
         });
 
         it("No filters", function(){
@@ -139,21 +140,21 @@ describe("Brawlers and Skins module", function(){
                     skinCount -= 1;
                 }
             }
-            const results = skinSearch(allSkins, {});
+            const results = skinSearch({});
             expect(results).to.have.lengthOf(skinCount);
         });
 
         it("Skin rarity", function(){
-            const results = skinSearch(allSkins, {rarity: 2});
+            const results = skinSearch({rarity: 2});
             const filtered = results.filter((value) => {
                 const data = skinMap.get(value.name);
-                return data !== undefined && data.rarity.value === 2;
+                return data !== undefined && data.rarity === 2;
             });
             expect(results.length).to.equal(filtered.length);
         });
 
         it("Minimum cost", function(){
-            const results = skinSearch(allSkins, {minCost: 149});
+            const results = skinSearch({minCost: 149});
             const filtered = results.filter((value) => {
                 const data = skinMap.get(value.name);
                 return data !== undefined && data.cost >= 149;
@@ -162,7 +163,7 @@ describe("Brawlers and Skins module", function(){
         });
 
         it("Maximum cost", function(){
-            const results = skinSearch(allSkins, {maxCost: 149});
+            const results = skinSearch({maxCost: 149});
             const filtered = results.filter((value) => {
                 const data = skinMap.get(value.name);
                 return data !== undefined && data.cost <= 149;
@@ -171,29 +172,29 @@ describe("Brawlers and Skins module", function(){
         });
 
         it("Single skin group", function(){
-            const results = skinSearch(allSkins, {groups: ["Brawl Pass"]});
+            const results = skinSearch({groups: ["Brawl Pass"]});
             const filtered = results.filter((value) => {
                 const data = skinMap.get(value.name);
                 return data !== undefined && data.groups.find(
-                    (group) => group.name === "Brawl Pass"
+                    (group) => skinGroups[group].name === "Brawl Pass"
                 ) !== undefined;
             });
             expect(results.length).to.equal(filtered.length);
         });
 
         it("Multiple skin groups", function(){
-            const results = skinSearch(allSkins, {groups: ["Brawl Pass", "True Gold"]});
+            const results = skinSearch({groups: ["Brawl Pass", "True Gold"]});
             const filtered = results.filter((value) => {
                 const data = skinMap.get(value.name);
                 return data !== undefined && data.groups.find(
-                    (group) => group.name === "Brawl Pass" || group.name === "True Gold"
+                    (group) => skinGroups[group].name === "Brawl Pass" || skinGroups[group].name === "True Gold"
                 ) !== undefined;
             });
             expect(results.length).to.equal(filtered.length);
         });
 
         it("Skin rewarded from", function(){
-            const results = skinSearch(allSkins, {foundIn: "Monster Eggs"});
+            const results = skinSearch({foundIn: "Monster Eggs"});
             const filtered = results.filter((value) => {
                 const data = skinMap.get(value.name);
                 return data !== undefined && data.foundIn.find(
@@ -204,14 +205,14 @@ describe("Brawlers and Skins module", function(){
         });
 
         it("Available for Bling", function(){
-            const results1 = skinSearch(allSkins, {bling: true});
+            const results1 = skinSearch({bling: true});
             const filtered1 = results1.filter((value) => {
                 const data = skinMap.get(value.name);
                 return data !== undefined && data.costBling > 0;
             });
             expect(results1.length).to.equal(filtered1.length);
 
-            const results2 = skinSearch(allSkins, {bling: false});
+            const results2 = skinSearch({bling: false});
             const filtered2 = results2.filter((value) => {
                 const data = skinMap.get(value.name);
                 return data !== undefined && data.costBling <= 0;
@@ -220,14 +221,14 @@ describe("Brawlers and Skins module", function(){
         });
 
         it("Limited skins", function(){
-            const results1 = skinSearch(allSkins, {limited: true});
+            const results1 = skinSearch({limited: true});
             const filtered1 = results1.filter((value) => {
                 const data = skinMap.get(value.name);
                 return data !== undefined && data.limited === true;
             });
             expect(results1.length).to.equal(filtered1.length);
 
-            const results2 = skinSearch(allSkins, {limited: false});
+            const results2 = skinSearch({limited: false});
             const filtered2 = results2.filter((value) => {
                 const data = skinMap.get(value.name);
                 return data !== undefined && data.limited === false;
@@ -236,26 +237,26 @@ describe("Brawlers and Skins module", function(){
         });
 
         it("Start release date", function(){
-            const results = skinSearch(allSkins, {startDate: {month: 7, year: 2022}});
+            const results = skinSearch({startDate: {month: 7, year: 2022}});
             const filtered = results.filter((value) => {
                 const data = skinMap.get(value.name);
-                return data !== undefined && data.release.year * 12 + data.release.month >= 2022 * 12 + 7;
+                return data !== undefined && data.release[0] * 12 + data.release[1] >= 2022 * 12 + 7;
             });
             expect(results.length).to.equal(filtered.length);
         });
 
         it("End release date", function(){
-            const results = skinSearch(allSkins, {endDate: {month: 7, year: 2022}});
+            const results = skinSearch({endDate: {month: 7, year: 2022}});
             const filtered = results.filter((value) => {
                 const data = skinMap.get(value.name);
-                return data !== undefined && data.release.year * 12 + data.release.month <= 2022 * 12 + 7;
+                return data !== undefined && data.release[0] * 12 + data.release[1] <= 2022 * 12 + 7;
             });
             expect(results.length).to.equal(filtered.length);
         });
 
         it("Search query", function(){
             const query = "Bull";
-            const results = skinSearch(allSkins, {query: query});
+            const results = skinSearch({query: query});
             const filtered = results.filter((value) => {
                 const data = skinMap.get(value.name);
                 return data !== undefined && data.displayName.includes(query);
@@ -264,12 +265,12 @@ describe("Brawlers and Skins module", function(){
         });
 
         it("Maximum cost less than minimum cost", function(){
-            const results = skinSearch(allSkins, {minCost: 149, maxCost: 79});
+            const results = skinSearch({minCost: 149, maxCost: 79});
             expect(results).to.have.lengthOf(0);
         });
 
         it("End date before start date", function(){
-            const results = skinSearch(allSkins, {
+            const results = skinSearch({
                 startDate: {month: 7, year: 2023},
                 endDate: {month: 7, year: 2022}
             });

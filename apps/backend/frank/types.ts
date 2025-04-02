@@ -1,6 +1,3 @@
-import allSkins from "./data/brawlers_data.json";
-import eventList from "./data/maps_data.json";
-
 //------------------------------------------------------------------------------------------------//
 
 /**
@@ -11,40 +8,57 @@ export type Empty = Record<string, never>;
 //------------------------------------------------------------------------------------------------//
 
 /**
- * Attributes of a brawler from the data file
+ * Display for a brawler's rarity
  */
-export type Brawler = typeof allSkins[number];
+interface BrawlerRarity{
+    value: number;
+    name: string;
+    color: string;
+}
 
 /**
  * Summary of brawler data
  */
 export interface BrawlerPreview{
-    name: Brawler["name"];
-    displayName: Brawler["displayName"];
-    rarity: Brawler["rarity"];
-    image: Brawler["image"];
+    name: string;
+    displayName: string;
+    rarity: BrawlerRarity;
+    image: string;
 }
 
 /**
  * Full brawler data sent to the user
  */
 export interface BrawlerData{
-    name: Brawler["name"];
-    displayName: Brawler["displayName"];
-    rarity: Brawler["rarity"];
-    description: Brawler["description"];
-    image: Brawler["image"];
-    defaultSkin: Brawler["defaultSkin"];
-    title: Brawler["title"];
-    masteryIcon: Brawler["masteryIcon"];
+    name: string;
+    displayName: string;
+    rarity: BrawlerRarity;
+    description: string;
+    image: string;
+    defaultSkin: string;
+    title: string;
+    masteryIcon: string;
     skins: SkinPreview[];
     pins: PinPreview[];
 }
 
 /**
- * Attributes of a skin from the data file
+ * Display for a skin's rarity
  */
-export type Skin = typeof allSkins[number]["skins"][number];
+interface SkinRarity{
+    value: number;
+    name: string;
+    icon: string;
+}
+
+/**
+ * Display information for a skin group
+ */
+export interface SkinGroup{
+    name: string;
+    image: string;
+    icon: string;
+}
 
 /**
  * Cost of a skin and the required currency
@@ -59,28 +73,36 @@ export interface SkinCost{
  * Summary of skin data
  */
 export interface SkinPreview{
-    name: Skin["name"];
-    displayName: Skin["displayName"];
+    name: string;
+    displayName: string;
 }
 
 /**
  * Full skin data sent to the user
  */
 export interface SkinData{
-    name: Skin["name"];
-    displayName: Skin["displayName"];
+    name: string;
+    displayName: string;
     cost: SkinCost;
     costBling: SkinCost;
-    rarity: Skin["rarity"];
-    requires: Skin["requires"];
-    features: Skin["features"];
-    groups: Skin["groups"];
-    limited: Skin["limited"];
-    unlock: Skin["unlock"];
-    foundIn: Skin["foundIn"];
-    release: Skin["release"];
-    rating: Skin["rating"];
-    image: Skin["image"];
+    rarity: SkinRarity;
+    requires: string;
+    features: string[];
+    groups: SkinGroup[];
+    limited: boolean;
+    unlock: string;
+    foundIn: string[];
+    release: {month: number; year: number;};
+    rating: number;
+    image: string;
+}
+
+/**
+ * Possible option for a group in a skin search
+ */
+export interface SkinSearchGroup{
+    name: string;
+    displayName: string;
 }
 
 /**
@@ -117,54 +139,48 @@ export interface SkinSearchResult{
 }
 
 /**
- * Attributes of a pin from the data file
+ * Display for a pin's rarity
  */
-type Pin = typeof allSkins[number]["pins"][number];
+type PinRarity = BrawlerRarity;
 
 /**
  * Summary of pin data
  */
 export interface PinPreview{
-    image: Pin["image"];
-    rarity: Pin["rarity"];
+    image: string;
+    rarity: PinRarity;
 }
 
 //------------------------------------------------------------------------------------------------//
-
-/**
- * Attributes of a game mode from the data file
- */
-export type GameModeAttributes = typeof eventList[number]["gameModes"][number];
 
 /**
  * Display properties of a game mode
  * 
  * This type is used with a game mode, where the name already exists in the object
  */
-export type GameModeDisplay = typeof eventList[number]["gameModes"][number]["data"];
+export interface GameModeDisplay{
+    image: string;
+    backgroundColor: string;
+    textColor: string;
+}
 
 /**
  * Summary of game mode data
  */
 export interface GameModePreview{
-    name: GameModeAttributes["name"];
-    displayName: GameModeAttributes["displayName"];
+    name: string;
+    displayName: string;
 }
 
 /**
  * Full game mode data sent to the user
  */
 export interface GameModeData{
-    name: GameModeAttributes["name"];
-    displayName: GameModeAttributes["displayName"];
+    name: string;
+    displayName: string;
     data: GameModeDisplay;
     maps: MapPreview[];
 }
-
-/**
- * Attributes of a map from the data file
- */
-export type MapAttributes = typeof eventList[number]["gameModes"][number]["maps"][number];
 
 /**
  * Display properties but with the name included
@@ -172,16 +188,13 @@ export type MapAttributes = typeof eventList[number]["gameModes"][number]["maps"
  * This type is used with a map, where the game mode's name does not already exist in the object
  */
 export interface GameModeMapDisplay extends GameModeDisplay{
-    name: GameModeAttributes["name"];
+    name: string;
 }
 
 /**
  * Summary of map data
  */
-export interface MapPreview{
-    name: MapAttributes["name"];
-    displayName: MapAttributes["displayName"];
-}
+export type MapPreview = GameModePreview;
 
 /**
  * Summary of map data, used when not nested in a game mode object
@@ -203,12 +216,12 @@ export interface NextStartTimes{
  * Full map data sent to the user
  */
 export interface MapData{
-    name: MapAttributes["name"];
-    displayName: MapAttributes["displayName"];
+    name: string;
+    displayName: string;
     gameMode: GameModeMapDisplay;
-    powerLeagueMap: MapAttributes["powerLeagueMap"];
-    image: MapAttributes["image"];
-    bannerImage: MapAttributes["bannerImage"];
+    powerLeagueMap: boolean;
+    image: string;
+    bannerImage: string;
     times: NextStartTimes;
 }
 
@@ -232,14 +245,14 @@ interface SeasonTimeData{
  */
 export interface EventData{
     gameMode: {
-        name: GameModeAttributes["name"];
-        displayName: GameModeAttributes["displayName"];
+        name: string;
+        displayName: string;
         data: GameModeDisplay;
     };
     map: {
-        name: MapAttributes["name"];
-        displayName: MapAttributes["displayName"];
-        bannerImage: MapAttributes["bannerImage"];
+        name: string;
+        displayName: string;
+        bannerImage: string;
     };
 }
 
@@ -472,7 +485,7 @@ export interface PlayerUpgrades{
     maxExtraPower: number;
     maxExtraGears: number;
     maxAccessories: number;
-};
+}
 
 /**
  * Information shown to the user when selecting a challenge to start

@@ -1,8 +1,7 @@
 import express from "express";
-import allSkins from "../data/brawlers_data.json";
-import {PORTRAIT_IMAGE_DIR, SKIN_IMAGE_DIR, SKINGROUP_IMAGE_DIR} from "../data/constants";
-import {getBrawler, getSkin, getBrawlerData, getSkinData, skinSearch} from "../modules/brawlers_module";
-import {Empty, BrawlerPreview, SkinSearchFilters, SkinSearchResult} from "../types";
+import {SKIN_IMAGE_DIR, SKINGROUP_IMAGE_DIR} from "../data/constants";
+import {getBrawler, getSkin, getBrawlerList, getBrawlerData, getSkinData, getSkinGroupList, getSkinSources, skinSearch} from "../modules/brawlers_module";
+import {Empty, SkinSearchFilters, SkinSearchResult} from "../types";
 
 const router = express.Router();
 
@@ -11,20 +10,7 @@ type SkinSearchRes = string | {imagePath: string; backgroundPath: string; result
 
 // Get the entire list of brawlers
 router.get("/brawlers", (req, res) => {
-    const allBrawlers: BrawlerPreview[] = [];
-    for (let x = 0; x < allSkins.length; x++){
-        const brawler = allSkins[x] as BrawlerPreview;
-        allBrawlers.push({
-            name: brawler.name,
-            displayName: brawler.displayName,
-            rarity: {
-                value: brawler.rarity.value,
-                name: brawler.rarity.name,
-                color: brawler.rarity.color
-            },
-            image: PORTRAIT_IMAGE_DIR + brawler.image
-        });
-    }
+    const allBrawlers = getBrawlerList();
     res.json(allBrawlers);
 });
 
@@ -32,7 +18,7 @@ router.get("/brawlers", (req, res) => {
 router.get("/brawlers/:brawler", (req, res) => {
     const brawlerName = req.params.brawler;
 
-    const brawler = getBrawler(allSkins, brawlerName);
+    const brawler = getBrawler(brawlerName);
     if (brawler === undefined){
         res.status(404).send("Brawler not found.");
         return;
@@ -48,7 +34,7 @@ router.get("/skins/:brawler/:skin", (req, res) => {
     const brawlerName = req.params.brawler;
     const skinName = req.params.skin;
 
-    const brawler = getBrawler(allSkins, brawlerName);
+    const brawler = getBrawler(brawlerName);
     if (brawler === undefined){
         res.status(404).send("Brawler or skin not found.");
         return;
@@ -65,35 +51,14 @@ router.get("/skins/:brawler/:skin", (req, res) => {
     res.json(skinData);
 });
 
-// Get the list of all skin groups
-router.get("/skingroups", (req, res) => {
-    const groups = new Set<string>();
-    for (let i = 0; i < allSkins.length; i++){
-        const brawler = allSkins[i];
-        for (let j = 0; j < brawler.skins.length; j++){
-            const skin = brawler.skins[j];
-            for (let g = 0; g < skin.groups.length; g++){
-                groups.add(skin.groups[g].name);
-            }
-        }
-    }
-    groups.delete("");
-    res.json(Array.from(groups));
-});
-
-// Get all sources that skins can be found in
-router.get("/skinfoundin", (req, res) => {
-    const rewards = new Set<string>();
-    for (let i = 0; i < allSkins.length; i++){
-        const brawler = allSkins[i];
-        for (let j = 0; j < brawler.skins.length; j++){
-            const skin = brawler.skins[j];
-            for (let r = 0; r < skin.foundIn.length; r++){
-                rewards.add(skin.foundIn[r]);
-            }
-        }
-    }
-    res.json(Array.from(rewards));
+// Get all variable skin search options (skin groups and sources that skins can be found in)
+router.get("/skinsearch", (req, res) => {
+    const groups = getSkinGroupList();
+    const foundIn = getSkinSources();
+    res.json({
+        groups: groups,
+        foundIn: foundIn
+    });
 });
 
 // Search for skins using a search filter
@@ -108,7 +73,7 @@ router.post<Empty, SkinSearchRes, {filters: SkinSearchFilters;}>("/skinsearch", 
         return;
     }
 
-    const results = skinSearch(allSkins, filters);
+    const results = skinSearch(filters);
     res.json({
         imagePath: SKIN_IMAGE_DIR,
         backgroundPath: SKINGROUP_IMAGE_DIR,

@@ -101,7 +101,9 @@ router.post<Empty, Empty, SaveReqBody>("/", databaseErrorHandler<SaveReqBody>(as
     resources.mastery += masteryReward;
 
     // Add coins
-    const coinsReward = Math.floor((reportData.coins[0] + (reportData.coins[1] - reportData.coins[0]) / 2) * coinsMultiplier);
+    const coinsReward = Math.floor(
+        (reportData.coins[0] + (reportData.coins[1] - reportData.coins[0] + 1) * Math.random()) * coinsMultiplier
+    );
     resources.coins += coinsReward;
 
     // Add badges

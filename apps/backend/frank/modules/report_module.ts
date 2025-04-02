@@ -636,7 +636,7 @@ export function challengeRewards(challengeid: string, difficulty: number, win: b
     }
 
     let mastery = challenge.config.baseLossMastery;
-    let coins = challenge.config.baseCoins;
+    const coins = challenge.config.baseCoins;
     if (win === true){
         mastery = challenge.config.baseWinMastery;
     }

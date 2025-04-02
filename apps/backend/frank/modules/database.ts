@@ -275,7 +275,6 @@ export async function deleteActiveChallenge(values: DeleteChallengeValues): Prom
     await transaction(async (connection) => {
         const key = values.key;
         const resources = values.resources;
-        const characters = charactersToBuffer(resources.characters);
         const accessories = accessoriesToBuffer(resources.accessories);
         // If a key was provided then this game report was from a challenge
         if (key !== undefined){

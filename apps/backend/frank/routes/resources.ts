@@ -1,8 +1,7 @@
 import express from "express";
-import {Empty} from "../types";
 import {getNextTier, getMasteryLevel, findUserCharacter, getEnemyList, getCharacterPreview, getCharacterData} from "../modules/resources_module";
 import {loginErrorHandler, getResources, setResources} from "../modules/database";
-import {CharacterPreview, CharacterStatus} from "../types";
+import {Empty, CharacterPreview, CharacterStatus} from "../types";
 
 const router = express.Router();
 

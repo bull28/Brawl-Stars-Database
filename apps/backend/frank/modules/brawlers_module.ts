@@ -1,5 +1,11 @@
+import allSkins from "../data/brawlers_data.json";
+import skinGroups from "../data/skingroups_data.json";
 import {IMAGE_FILE_EXTENSION, PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR, SKIN_IMAGE_DIR, SKINGROUP_ICON_DIR, SKINGROUP_IMAGE_DIR, MASTERY_ICON_DIR, CURRENCY_IMAGE_DIR, REWARD_IMAGE_DIR} from "../data/constants";
-import {Brawler, Skin, BrawlerData, SkinCost, SkinData, SkinSearchFilters, SkinSearchResult} from "../types";
+import {BrawlerPreview, BrawlerData, SkinCost, SkinData, SkinSearchGroup, SkinSearchFilters, SkinSearchResult} from "../types";
+
+type Brawler = typeof allSkins[number];
+type Skin = typeof allSkins[number]["skins"][number];
+type SkinGroupKey = keyof typeof skinGroups;
 
 const skinCurrencies: Record<string, {name: string; image: string;}> = {
     "Gems": {name: "Gems", image: "icon_gems" + IMAGE_FILE_EXTENSION},
@@ -8,7 +14,37 @@ const skinCurrencies: Record<string, {name: string; image: string;}> = {
     "Bling": {name: "Bling", image: "icon_bling" + IMAGE_FILE_EXTENSION}
 };
 
-export function getBrawler(allSkins: Brawler[], name: string): Brawler | undefined{
+export const rarities = {
+    brawlers: [
+        {value: 0, name: "Starting Brawler", color: "#94d6f4"},
+        {value: 1, name: "Rare", color: "#2edd1b"},
+        {value: 2, name: "Super Rare", color: "#0087fa"},
+        {value: 3, name: "Epic", color: "#b116ec"},
+        {value: 4, name: "Mythic", color: "#fe0521"},
+        {value: 5, name: "Legendary", color: "#fdf11e"},
+        {value: 6, name: "Chromatic", color: "#f87628"}
+    ],
+    skins: [
+        {value: 0, name: "", icon: ""},
+        {value: 1, name: "Rare", icon: "skin_rarity_1"},
+        {value: 2, name: "Super Rare", icon: "skin_rarity_2"},
+        {value: 3, name: "Epic", icon: "skin_rarity_3"},
+        {value: 4, name: "Mythic", icon: "skin_rarity_4"},
+        {value: 5, name: "Legendary", icon: "skin_rarity_5"},
+        {value: 6, name: "Hypercharge", icon: "skin_rarity_6"},
+        {value: 7, name: "Pro", icon: "skin_rarity_7"},
+        {value: 8, name: "Collectors", icon: ""}
+    ],
+    pins: [
+        {value: 0, name: "Common", color: "#94d6f4"},
+        {value: 1, name: "Rare", color: "#2edd1b"},
+        {value: 2, name: "Epic", color: "#b116ec"},
+        {value: 3, name: "Legendary", color: "#fdf11e"},
+        {value: 4, name: "Custom", color: "#f87628"}
+    ]
+};
+
+export function getBrawler(name: string): Brawler | undefined{
     for (let x = 0; x < allSkins.length; x++){
         if (Object.hasOwn(allSkins[x], "name") === true){
             if (allSkins[x].name === name){
@@ -30,6 +66,28 @@ export function getSkin(brawler: Brawler, skinName: string): Skin | undefined{
         }
     }
     return undefined;
+}
+
+export function getBrawlerList(): BrawlerPreview[]{
+    const allBrawlers: BrawlerPreview[] = [];
+    const maxRarity = rarities.brawlers.length - 1;
+
+    for (let x = 0; x < allSkins.length; x++){
+        const brawler = allSkins[x];
+        const rarity = rarities.brawlers[Math.min(maxRarity, brawler.rarity)];
+        allBrawlers.push({
+            name: brawler.name,
+            displayName: brawler.displayName,
+            rarity: {
+                value: rarity.value,
+                name: rarity.name,
+                color: rarity.color
+            },
+            image: PORTRAIT_IMAGE_DIR + brawler.image
+        });
+    }
+
+    return allBrawlers;
 }
 
 /**
@@ -56,16 +114,20 @@ export function getBrawlerData(brawler: Brawler): BrawlerData{
         }
     }
 
+    const brawlerRarity = rarities.brawlers[Math.min(rarities.brawlers.length - 1, brawler.rarity)];
+    const maxPinRarity = rarities.pins.length - 1;
+
     const brawlerPins: BrawlerData["pins"] = [];
     if (Object.hasOwn(brawler, "pins") === true){
         for (let x = 0; x < brawler.pins.length; x++){
             const thisPin = brawler.pins[x];
+            const rarity = rarities.pins[Math.min(maxPinRarity, thisPin.rarity)];
             brawlerPins.push({
-                image: `${PIN_IMAGE_DIR}${brawlerName}/${thisPin.image}`,
+                image: `${PIN_IMAGE_DIR}${brawlerName}/${thisPin.name}${IMAGE_FILE_EXTENSION}`,
                 rarity: {
-                    value: thisPin.rarity.value,
-                    name: thisPin.rarity.name,
-                    color: thisPin.rarity.color
+                    value: rarity.value,
+                    name: rarity.name,
+                    color: rarity.color
                 }
             });
         }
@@ -75,9 +137,9 @@ export function getBrawlerData(brawler: Brawler): BrawlerData{
         name: brawler.name,
         displayName: brawler.displayName,
         rarity: {
-            value: brawler.rarity.value,
-            name: brawler.rarity.name,
-            color: brawler.rarity.color
+            value: brawlerRarity.value,
+            name: brawlerRarity.name,
+            color: brawlerRarity.color
         },
         description: brawler.description,
         image: PORTRAIT_IMAGE_DIR + brawler.image,
@@ -103,13 +165,18 @@ export function getSkinData(skin: Skin, brawlerName: string): SkinData{
         skinFeatures.push(skin.features[x]);
     }
 
-    const skinGroups: Skin["groups"] = [];
+    const skinRarity = rarities.skins[Math.min(rarities.skins.length - 1, skin.rarity)];
+
+    const groups: SkinData["groups"] = [];
     for (let x = 0; x < skin.groups.length; x++){
-        skinGroups.push({
-            name: skin.groups[x].name,
-            image: SKINGROUP_IMAGE_DIR + skin.groups[x].image,
-            icon: SKINGROUP_ICON_DIR + skin.groups[x].icon
-        });
+        if (Object.hasOwn(skinGroups, skin.groups[x]) === true){
+            const groupValue = skinGroups[skin.groups[x] as SkinGroupKey];
+            groups.push({
+                name: groupValue.name,
+                image: SKINGROUP_IMAGE_DIR + groupValue.image + IMAGE_FILE_EXTENSION,
+                icon: SKINGROUP_ICON_DIR + groupValue.icon + IMAGE_FILE_EXTENSION
+            });
+        }
     }
 
     const mainCurrency: SkinCost = {amount: skin.cost, currency: "", icon: ""};
@@ -129,22 +196,22 @@ export function getSkinData(skin: Skin, brawlerName: string): SkinData{
         cost: mainCurrency,
         costBling: blingCurrency,
         rarity: {
-            value: skin.rarity.value,
-            name: skin.rarity.name,
-            icon: skin.rarity.icon !== "" ? REWARD_IMAGE_DIR + skin.rarity.icon : ""
+            value: skinRarity.value,
+            name: skinRarity.name,
+            icon: skinRarity.icon !== "" ? REWARD_IMAGE_DIR + skinRarity.icon + IMAGE_FILE_EXTENSION : ""
         },
         requires: skin.requires,
         features: skinFeatures,
-        groups: skinGroups,
+        groups: groups,
         limited: skin.limited,
         unlock: skin.unlock,
         foundIn: skin.foundIn,
         release: {
-            month: skin.release.month,
-            year: skin.release.year
+            month: skin.release[1],
+            year: skin.release[0]
         },
         rating: skin.rating,
-        image: `${SKIN_IMAGE_DIR}${brawlerName}/${skin.image}`
+        image: `${SKIN_IMAGE_DIR}${brawlerName}/${skin.name}${IMAGE_FILE_EXTENSION}`
     }
 
     return skinData;
@@ -162,7 +229,7 @@ function skinMatchesFilters(skin: Skin, filters: SkinSearchFilters): boolean{
     }
     const {query, rarity, minCost, maxCost, groups, foundIn, bling, limited, startDate, endDate} = filters;
 
-    if (rarity !== undefined && skin.rarity.value !== rarity){
+    if (rarity !== undefined && skin.rarity !== rarity){
         return false;
     }
     if (minCost !== undefined && skin.cost < minCost){
@@ -174,7 +241,7 @@ function skinMatchesFilters(skin: Skin, filters: SkinSearchFilters): boolean{
     if (groups !== undefined){
         let hasGroup = false;
         for (let x = 0; x < skin.groups.length; x++){
-            if (groups.includes(skin.groups[x].name) === true){
+            if (groups.includes(skin.groups[x]) === true){
                 hasGroup = true;
             }
         }
@@ -192,12 +259,12 @@ function skinMatchesFilters(skin: Skin, filters: SkinSearchFilters): boolean{
         return false;
     }
     if (startDate !== undefined){
-        if (skin.release.year * 12 + skin.release.month < startDate.year * 12 + startDate.month){
+        if (skin.release[0] * 12 + skin.release[1] < startDate.year * 12 + startDate.month){
             return false;
         }
     }
     if (endDate !== undefined){
-        if (skin.release.year * 12 + skin.release.month > endDate.year * 12 + endDate.month){
+        if (skin.release[0] * 12 + skin.release[1] > endDate.year * 12 + endDate.month){
             return false;
         }
     }
@@ -208,7 +275,33 @@ function skinMatchesFilters(skin: Skin, filters: SkinSearchFilters): boolean{
     return true;
 }
 
-export function skinSearch(allSkins: Brawler[], filters: SkinSearchFilters): SkinSearchResult[]{
+export function getSkinGroupList(): SkinSearchGroup[]{
+    const groups: SkinSearchGroup[] = [];
+    for (const x in skinGroups){
+        const groupValue = skinGroups[x as SkinGroupKey];
+        groups.push({
+            name: x,
+            displayName: x === "ranked" ? "Power League " : groupValue.name
+        });
+    }
+    return groups;
+}
+
+export function getSkinSources(): string[]{
+    const rewards = new Set<string>();
+    for (let i = 0; i < allSkins.length; i++){
+        const brawler = allSkins[i];
+        for (let j = 0; j < brawler.skins.length; j++){
+            const skin = brawler.skins[j];
+            for (let r = 0; r < skin.foundIn.length; r++){
+                rewards.add(skin.foundIn[r]);
+            }
+        }
+    }
+    return Array.from(rewards);
+}
+
+export function skinSearch(filters: SkinSearchFilters): SkinSearchResult[]{
     const results: SkinSearchResult[] = [];
 
     for (let i = 0; i < allSkins.length; i++){
@@ -217,12 +310,16 @@ export function skinSearch(allSkins: Brawler[], filters: SkinSearchFilters): Ski
             const skin = brawler.skins[j];
 
             if (skinMatchesFilters(skin, filters) === true && skin.name !== brawler.defaultSkin){
+                let background = "";
+                if (skin.groups.length > 0 && Object.hasOwn(skinGroups, skin.groups[0]) === true){
+                    background = skinGroups[skin.groups[0] as SkinGroupKey].image + IMAGE_FILE_EXTENSION;
+                }
                 results.push({
                     name: skin.name,
                     brawler: brawler.name,
                     displayName: skin.displayName,
-                    image: skin.image,
-                    background: skin.groups.length > 0 ? skin.groups[0].image : ""
+                    image: skin.name + IMAGE_FILE_EXTENSION,
+                    background: background
                 });
             }
         }

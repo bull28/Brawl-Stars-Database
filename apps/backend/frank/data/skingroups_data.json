@@ -1,0 +1,462 @@
+{
+    "_": {
+        "name": "",
+        "image": "bg_default",
+        "icon": "icon_default"
+    },
+    "retro": {
+        "name": "Retropolis Nights",
+        "image": "bg_retro",
+        "icon": "icon_retro"
+    },
+    "brawlentines": {
+        "name": "My Brawlentine",
+        "image": "bg_brawlentines",
+        "icon": "icon_brawlentines"
+    },
+    "goldenweek": {
+        "name": "The Golden Kawaii",
+        "image": "bg_goldenweek",
+        "icon": "icon_goldenweek"
+    },
+    "pirates": {
+        "name": "Tales of the Sea",
+        "image": "bg_pirates",
+        "icon": "icon_pirates"
+    },
+    "brawloween": {
+        "name": "Brawl-o-ween",
+        "image": "bg_brawloween",
+        "icon": "icon_brawloween"
+    },
+    "line": {
+        "name": "BROWN & FRIENDS",
+        "image": "bg_default",
+        "icon": "icon_line"
+    },
+    "anniversary2019": {
+        "name": "Anniversary 2019",
+        "image": "bg_default",
+        "icon": "icon_anniversary"
+    },
+    "psg": {
+        "name": "PSG",
+        "image": "bg_psg",
+        "icon": "icon_psg"
+    },
+    "sc_make": {
+        "name": "Supercell Make",
+        "image": "bg_default",
+        "icon": "icon_sc_make"
+    },
+    "china": {
+        "name": "The Red",
+        "image": "bg_default",
+        "icon": "icon_china"
+    },
+    "brawlpass": {
+        "name": "Brawl Pass",
+        "image": "bg_default",
+        "icon": "icon_brawlpass"
+    },
+    "gold": {
+        "name": "True Gold",
+        "image": "bg_gold",
+        "icon": "icon_gold"
+    },
+    "silver": {
+        "name": "True Silver",
+        "image": "bg_silver",
+        "icon": "icon_silver"
+    },
+    "wf_2020": {
+        "name": "BSC 2020",
+        "image": "bg_wf",
+        "icon": "icon_wf"
+    },
+    "anniversary2020": {
+        "name": "Anniversary 2020",
+        "image": "bg_default",
+        "icon": "icon_anniversary"
+    },
+    "brawlidays": {
+        "name": "Brawlidays",
+        "image": "bg_brawlidays",
+        "icon": "icon_brawlidays"
+    },
+    "ranked": {
+        "name": "Ranked",
+        "image": "bg_ranked",
+        "icon": "icon_ranked"
+    },
+    "lantern": {
+        "name": "Sands of Time",
+        "image": "bg_lantern",
+        "icon": "icon_lantern"
+    },
+    "laml": {
+        "name": "Latin America Master League",
+        "image": "bg_psg",
+        "icon": "icon_laml"
+    },
+    "punk": {
+        "name": "THE BAD RANDOMS",
+        "image": "bg_punk",
+        "icon": "icon_punk"
+    },
+    "c1a": {
+        "name": "The Mega",
+        "image": "bg_c1a",
+        "icon": "icon_c1a"
+    },
+    "brawlywood": {
+        "name": "Starrs of Brawlywood",
+        "image": "bg_brawlywood",
+        "icon": "icon_brawlywood"
+    },
+    "wf_2021": {
+        "name": "BSC 2021",
+        "image": "bg_wf",
+        "icon": "icon_wf"
+    },
+    "anniversary2021": {
+        "name": "Anniversary 2021",
+        "image": "bg_default",
+        "icon": "icon_anniversary"
+    },
+    "biodome": {
+        "name": "Biodome",
+        "image": "bg_biodome",
+        "icon": "icon_biodome"
+    },
+    "stuntshow": {
+        "name": "Stunt Show",
+        "image": "bg_stuntshow",
+        "icon": "icon_stuntshow"
+    },
+    "villains": {
+        "name": "Worst Bunch",
+        "image": "bg_villains",
+        "icon": "icon_villains"
+    },
+    "deepsea": {
+        "name": "Deep Sea League",
+        "image": "bg_deepsea",
+        "icon": "icon_deepsea"
+    },
+    "bt21": {
+        "name": "BT21",
+        "image": "bg_bt21",
+        "icon": "icon_bt21"
+    },
+    "calamity": {
+        "name": "Calamity Gang",
+        "image": "bg_outlaw",
+        "icon": "icon_outlaw"
+    },
+    "mecha": {
+        "name": "Mecha Squad",
+        "image": "bg_mecha",
+        "icon": "icon_mecha"
+    },
+    "lastbox": {
+        "name": "The Omega",
+        "image": "bg_c1a",
+        "icon": "icon_lastbox"
+    },
+    "wf_2022": {
+        "name": "BSC 2022",
+        "image": "bg_wf",
+        "icon": "icon_wf"
+    },
+    "darkmas": {
+        "name": "Dark Winter Tales",
+        "image": "bg_darkmas",
+        "icon": "icon_darkmas"
+    },
+    "wc_2022": {
+        "name": "World Champions 2022",
+        "image": "bg_wf",
+        "icon": "icon_wf"
+    },
+    "anniversary2022": {
+        "name": "Anniversary 2022",
+        "image": "bg_anniversary2022",
+        "icon": "icon_anniversary"
+    },
+    "candyland": {
+        "name": "Sugar Rush",
+        "image": "bg_candyland",
+        "icon": "icon_candyland"
+    },
+    "hub": {
+        "name": "License to Brawl",
+        "image": "bg_hub",
+        "icon": "icon_hub"
+    },
+    "masks": {
+        "name": "The Ayakashi Clan",
+        "image": "bg_masks",
+        "icon": "icon_masks"
+    },
+    "bunny_brigade": {
+        "name": "Bunny Brigade",
+        "image": "bg_bunny_brigade",
+        "icon": "icon_bunny_brigade"
+    },
+    "ranked_old": {
+        "name": "Ranked",
+        "image": "bg_ranked",
+        "icon": "icon_ranked"
+    },
+    "olympus": {
+        "name": "Legends of Olympus",
+        "image": "bg_olympus",
+        "icon": "icon_olympus"
+    },
+    "jungle": {
+        "name": "Rumble Jungle Heroes",
+        "image": "bg_jungle",
+        "icon": "icon_jungle"
+    },
+    "claship": {
+        "name": "Clash Stories",
+        "image": "bg_claship",
+        "icon": "icon_claship"
+    },
+    "lunarevent": {
+        "name": "Lunar Stories",
+        "image": "bg_lunarevent",
+        "icon": "icon_lunarevent"
+    },
+    "summer": {
+        "name": "Summer of Brawl",
+        "image": "bg_summer",
+        "icon": "icon_summer"
+    },
+    "onceupon": {
+        "name": "Once Upon",
+        "image": "bg_onceupon",
+        "icon": "icon_onceupon"
+    },
+    "lny": {
+        "name": "Lunar Brawl",
+        "image": "bg_lny_2020",
+        "icon": "icon_lny_2020"
+    },
+    "enchanted": {
+        "name": "Enchanted Woods",
+        "image": "bg_enchanted",
+        "icon": "icon_enchanted"
+    },
+    "cursed": {
+        "name": "Cursed Pirates",
+        "image": "bg_cursed",
+        "icon": "icon_cursed"
+    },
+    "goldenball": {
+        "name": "Golden Brawl Ball",
+        "image": "bg_goldenball",
+        "icon": "icon_goldenball"
+    },
+    "phoenix": {
+        "name": "Flaming",
+        "image": "bg_phoenix",
+        "icon": "icon_phoenix"
+    },
+    "wasteland": {
+        "name": "Wasteland",
+        "image": "bg_wasteland",
+        "icon": "icon_wasteland"
+    },
+    "university": {
+        "name": "Brawl Academy",
+        "image": "bg_university",
+        "icon": "icon_university"
+    },
+    "harvestfestival": {
+        "name": "Bountiful Harvest",
+        "image": "bg_lunarevent",
+        "icon": "icon_harvest"
+    },
+    "outlaws": {
+        "name": "Outlaws",
+        "image": "bg_outlaw",
+        "icon": "icon_outlaws"
+    },
+    "circus": {
+        "name": "Bizarre Circus",
+        "image": "bg_circus",
+        "icon": "icon_circus"
+    },
+    "hindu": {
+        "name": "Warrior's Journey",
+        "image": "bg_hindu",
+        "icon": "icon_hindu"
+    },
+    "wf_2023": {
+        "name": "BSC 2023",
+        "image": "bg_wf",
+        "icon": "icon_wf"
+    },
+    "cartoon": {
+        "name": "Cartoon Studios",
+        "image": "bg_cartoon",
+        "icon": "icon_cartoon"
+    },
+    "carnaval": {
+        "name": "Brawlnaval",
+        "image": "bg_carnaval",
+        "icon": "icon_carnaval"
+    },
+    "superbowl": {
+        "name": "Super Brawl",
+        "image": "bg_superbowl",
+        "icon": "icon_superbowl"
+    },
+    "starrpark": {
+        "name": "Starr Park Origins",
+        "image": "bg_default",
+        "icon": "icon_starrpark"
+    },
+    "meal": {
+        "name": "Starry Meal",
+        "image": "bg_meal",
+        "icon": "icon_meal"
+    },
+    "giftshop": {
+        "name": "Gift Shop",
+        "image": "bg_giftshop",
+        "icon": "icon_giftshop"
+    },
+    "wc_2023": {
+        "name": "World Champions 2023",
+        "image": "bg_wf",
+        "icon": "icon_wf"
+    },
+    "norsegods": {
+        "name": "Northern Saga",
+        "image": "bg_norsegods",
+        "icon": "icon_norsegods"
+    },
+    "babyshark": {
+        "name": "Baby Shark",
+        "image": "bg_babyshark",
+        "icon": "icon_babyshark"
+    },
+    "aprilfools": {
+        "name": "April Fool's",
+        "image": "bg_default",
+        "icon": "icon_aprilfools"
+    },
+    "godzilla": {
+        "name": "Godzilla",
+        "image": "bg_godzilla",
+        "icon": "icon_godzilla"
+    },
+    "hacker": {
+        "name": "CyberBrawl",
+        "image": "bg_hacker",
+        "icon": "icon_hacker"
+    },
+    "squad": {
+        "name": "Squad Busters",
+        "image": "bg_default",
+        "icon": "icon_squad"
+    },
+    "maxforce": {
+        "name": "Max Force",
+        "image": "bg_maxforce",
+        "icon": "icon_maxforce"
+    },
+    "city": {
+        "name": "City Troubles",
+        "image": "bg_default",
+        "icon": "icon_city"
+    },
+    "music": {
+        "name": "Vibing",
+        "image": "bg_music",
+        "icon": "icon_music"
+    },
+    "misc": {
+        "name": "Misc",
+        "image": "bg_default",
+        "icon": "icon_misc"
+    },
+    "royals": {
+        "name": "Royals",
+        "image": "bg_onceupon",
+        "icon": "icon_royals"
+    },
+    "gaming": {
+        "name": "Gaming",
+        "image": "bg_lny_2023",
+        "icon": "icon_gaming"
+    },
+    "animals": {
+        "name": "Animal Kingdom",
+        "image": "bg_jungle",
+        "icon": "icon_animals"
+    },
+    "cave": {
+        "name": "Skull Cave Clan",
+        "image": "bg_cave",
+        "icon": "icon_cave"
+    },
+    "spongebob": {
+        "name": "SpongeBob",
+        "image": "bg_spongebob",
+        "icon": "icon_spongebob"
+    },
+    "wf_2024": {
+        "name": "BSC 2024",
+        "image": "bg_wf",
+        "icon": "icon_wf"
+    },
+    "angeldemons": {
+        "name": "Angels vs. Demons",
+        "image": "bg_default",
+        "icon": "icon_angeldemons"
+    },
+    "toystory": {
+        "name": "Toy Story",
+        "image": "bg_toystory",
+        "icon": "icon_toystory"
+    },
+    "starrforce": {
+        "name": "StarrForce Assemble",
+        "image": "bg_starrforce",
+        "icon": "icon_starrforce"
+    },
+    "goodrandoms": {
+        "name": "The Good Randoms",
+        "image": "bg_goodrandoms",
+        "icon": "icon_goodrandoms"
+    },
+    "toys": {
+        "name": "Come Play With Us!",
+        "image": "bg_toystory",
+        "icon": "icon_toys"
+    },
+    "darksands": {
+        "name": "Dark Sands",
+        "image": "bg_darksands",
+        "icon": "icon_darksands"
+    },
+    "superheroes": {
+        "name": "Brawl Unite",
+        "image": "bg_superheroes",
+        "icon": "icon_superheroes"
+    },
+    "uno": {
+        "name": "Uno",
+        "image": "bg_uno",
+        "icon": "icon_uno"
+    },
+    "propass": {
+        "name": "Pro Pass",
+        "image": "bg_ranked",
+        "icon": "icon_propass"
+    }
+}

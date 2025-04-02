@@ -69,7 +69,7 @@ app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
     next();
 });
 
-app.use((req: Request, res: Response, next: NextFunction) => {
+app.use((req: Request, res: Response) => {
     res.status(404).send("Not Found");
 });
 

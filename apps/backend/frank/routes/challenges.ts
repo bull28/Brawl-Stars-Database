@@ -16,7 +16,7 @@ interface ChallengeStartReqBody{
 }
 
 // Get all challenges that can be started
-router.get("/", loginErrorHandler(async (req, res, username) => {
+router.get("/", loginErrorHandler(async (req, res) => {
     const challenges = getChallengeList();
     res.json(challenges);
 }));

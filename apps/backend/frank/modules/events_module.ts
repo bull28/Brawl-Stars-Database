@@ -1,19 +1,9 @@
 import eventList from "../data/maps_data.json";
 import {GAMEMODE_IMAGE_DIR, MAP_IMAGE_DIR, MAP_BANNER_DIR} from "../data/constants";
-import {
-    GameModeAttributes, 
-    MapAttributes, 
-    GameModeDisplay, 
-    GameModeData, 
-    MapPreview, 
-    NextStartTimes, 
-    MapData, 
-    MapSearchPreview, 
-    EventData, 
-    CurrentEvent, 
-    CurrentEventsData, 
-    GameModeMapDisplay
-} from "../types";
+import {GameModeDisplay, GameModeData, MapPreview, NextStartTimes, MapData, MapSearchPreview, EventData, CurrentEvent, CurrentEventsData, GameModeMapDisplay} from "../types";
+
+type GameModeAttributes = typeof eventList[number]["gameModes"][number];
+type MapAttributes = typeof eventList[number]["gameModes"][number]["maps"][number];
 
 // Last updated: Brawl Pass Season 36
 export const MAP_CYCLE_HOURS = 3456;
@@ -25,7 +15,7 @@ const MAP_CYCLES_PER_SEASON = 7;
 const next_season_time = (((86400*365) * (2024-1970)) + (13*86400) + (175*86400) + (8*3600));
 const first_season_time = next_season_time % SEASON_SECONDS;
 
-const mapSearchMatch = new RegExp(/[^\w\s\.']/g);
+const mapSearchMatch = new RegExp(/[^\w\s.']/g);
 
 export class SeasonTime{
     season: number;
