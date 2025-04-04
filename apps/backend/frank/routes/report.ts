@@ -102,7 +102,7 @@ router.post<Empty, Empty, SaveReqBody>("/", databaseErrorHandler<SaveReqBody>(as
 
     // Add coins
     const coinsReward = Math.floor(
-        (reportData.coins[0] + (reportData.coins[1] - reportData.coins[0] + 1) * Math.random()) * coinsMultiplier
+        Math.floor(reportData.coins[0] + (reportData.coins[1] - reportData.coins[0] + 1) * Math.random()) * coinsMultiplier
     );
     resources.coins += coinsReward;
 

@@ -48,12 +48,17 @@ export function validateToken(token: string): string{
 
 export async function hashPassword(password: string): Promise<string>{
     return new Promise((resolve, reject) => {
-        const salt = randomBytes(saltBytes).toString("hex");
-        scrypt(password, salt, hashLength, {cost: hashCost}, (error, passwordHash) => {
+        randomBytes(saltBytes, (error, buffer) => {
             if (error !== null){
                 reject(error);
             }
-            resolve(`${passwordHash.toString("hex")}${hashSplit}${salt}`);
+            const salt = buffer.toString("hex");
+            scrypt(password, salt, hashLength, {cost: hashCost}, (error, passwordHash) => {
+                if (error !== null){
+                    reject(error);
+                }
+                resolve(`${passwordHash.toString("hex")}${hashSplit}${salt}`);
+            });
         });
     });
 }

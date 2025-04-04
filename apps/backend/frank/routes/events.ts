@@ -124,7 +124,6 @@ router.get("/maps/:map", (req, res) => {
     res.json(mapData);
 });
 
-
 // Search for a specific map by its name
 router.get<Empty, MapSearchPreview[], Empty, MapSearchQuery>("/mapsearch", (req, res) => {
     const search = req.query.search;

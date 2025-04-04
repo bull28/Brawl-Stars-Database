@@ -5,6 +5,73 @@ interface ChallengePreset{
     gameMod: ChallengeGameMod;
 }
 
+const classicChallenge = {
+    difficulties: [
+        {
+            difficultyid: 0,
+            name: "Difficulty 1",
+            countTier: 0,
+            strengthTier: 0,
+            healthBonusReq: 0.4,
+            timePerEnemy: 0.8,
+            enemyStats: [100.0, 112.5, 137.5, 162.5]
+        },
+        {
+            difficultyid: 1,
+            name: "Difficulty 2",
+            countTier: 1,
+            strengthTier: 0,
+            healthBonusReq: 0.45,
+            timePerEnemy: 0.75,
+            enemyStats: [100.0, 112.5, 137.5, 175.0]
+        },
+        {
+            difficultyid: 2,
+            name: "Difficulty 3",
+            countTier: 1,
+            strengthTier: 1,
+            healthBonusReq: 0.45,
+            timePerEnemy: 0.7,
+            enemyStats: [125.0, 150.0, 187.5, 225.0]
+            
+        },
+        {
+            difficultyid: 3,
+            name: "Difficulty 4",
+            countTier: 2,
+            strengthTier: 1,
+            healthBonusReq: 0.5,
+            timePerEnemy: 0.6,
+            enemyStats: [150.0, 200.0, 262.5, 325.0]
+        },
+        {
+            difficultyid: 4,
+            name: "Difficulty 5",
+            countTier: 3,
+            strengthTier: 2,
+            healthBonusReq: 0.5,
+            timePerEnemy: 0.6,
+            enemyStats: [175.0, 237.5, 312.5, 400.0]
+        },
+        {
+            difficultyid: 5,
+            name: "Difficulty 6",
+            countTier: 4,
+            strengthTier: 3,
+            healthBonusReq: 0.6,
+            timePerEnemy: 0.5,
+            enemyStats: [200.0, 275.0, 375.0, 500.0]
+        }
+    ],
+    stages: [
+        {completion: 30, time: 30, powerReward: 25, gearsReward: 1},
+        {completion: 60, time: 40, powerReward: 40, gearsReward: 1},
+        {completion: 90, time: 50, powerReward: 55, gearsReward: 1},
+        {completion: 120, time: 60, powerReward: 0, gearsReward: 0}
+    ],
+    maxScores: {completion: 300, time: 180, destination: 0, health: 90, gear: 30, enemy: 0}
+};
+
 const challenges = new Map<string, ChallengePreset>([
     ["default", {
         config: {
@@ -58,8 +125,7 @@ const challenges = new Map<string, ChallengePreset>([
         gameMod: {
             options: {
                 gameMode: 0,
-                addBonusEnemies: true,
-                bonusResources: false
+                addBonusEnemies: true
             },
             difficulties: [
                 {
@@ -343,46 +409,27 @@ const challenges = new Map<string, ChallengePreset>([
                 }
             }
         }
-    }]
-]);
-
-if (process.env["NODE_ENV"] === "test"){
-    challenges.set("test", {
+    }],
+    ["classic1", {
         config: {
-            displayName: "Test Challenge",
-            baseWinMastery: [3, 6],
-            baseLossMastery: [2, 4],
-            baseCoins: [2, 2]
+            displayName: "Classic Part 1",
+            baseWinMastery: [2, 3, 5, 9, 20, 60],
+            baseLossMastery: [2, 3, 5, 7, 10, 15],
+            baseCoins: [1, 1, 1.25, 1.5, 1.75, 2.5]
         },
         gameMod: {
-            options: {
-                gameMode: 0,
-                bonusResources: false
-            },
-            difficulties: [
-                {
-                    difficultyid: 6,
-                    name: "Test Difficulty",
-                    countTier: 0,
-                    strengthTier: 2,
-                    healthBonusReq: 0.5,
-                    timePerEnemy: 0.75,
-                    enemyStats: [100.0, 125.0, 150.0]
-                }
-            ],
-            stages: [
-                {completion: 100, time: 50, powerReward: 15, gearsReward: 1},
-                {completion: 100, time: 50, powerReward: 25, gearsReward: 1},
-                {completion: 100, time: 50, powerReward: 0, gearsReward: 0}
-            ],
+            difficulties: classicChallenge.difficulties,
+            stages: classicChallenge.stages,
+            maxScores: classicChallenge.maxScores,
             levels: [
                 {
                     levelid: 0,
                     waves: [
                         {names: [["firstmeteor"]], multiple: []},
-                        {names: [], multiple: [{name: "meteor", count: [1]}, {name: "meleerobot", count: [1]}], delay: 1},
-                        {names: [["shelly", "colt"]], multiple: [], delay: 2, maxEnemies: 10},
-                        {names: [[], [], ["rt"]], multiple: [{name: "rangedrobot", count: [0, 1]}, {name: "fastrobot", count: [0, 1]}], delay: 5, maxEnemies: 2}
+                        {names: [], multiple: [{name: "meteor", count: [1]}, {name: "meleerobot", count: [1, 2]}], delay: 1},
+                        {names: [], multiple: [{name: "rangedrobot", count: [0, 0, 1]}, {name: "fastrobot", count: [0, 0, 0, 1]}], delay: 5, maxEnemies: 10},
+                        {names: [["shelly"]], multiple: [], delay: 1},
+                        {names: [[], [], [], [], ["colt"]], multiple: [], delay: 1}
                     ],
                     background: "entrance",
                     displayName: "Starr Park Entrance",
@@ -390,64 +437,192 @@ if (process.env["NODE_ENV"] === "test"){
                     destination: 0
                 },
                 {
-                    levelid: 1,
+                    levelid: 2,
                     waves: [
-                        {names: [], multiple: [{name: "meleerobot", count: [0, 0, 1]}, {name: "rangedrobot", count: [0, 2]}, {name: "fastrobot", count: [2]}]},
-                        {names: [["shelly", "colt"]], multiple: [], delay: 5, maxEnemies: 10},
-                        {names: [[], [], ["r10"]], multiple: [], delay: 5, maxEnemies: 2},
-                        {names: [["rt", "elprimo"]], multiple: [], delay: 1}
+                        {names: [], multiple: [{name: "meteor", count: [1]}, {name: "rangedrobot", count: [0, 2]}, {name: "fastrobot", count: [1]}]},
+                        {names: [], multiple: [{name: "r2", count: [0, 0, 3, 6]}], delay: 7, maxEnemies: 10},
+                        {names: [[], [], [], [], ["r4"]], multiple: [{name: "r2", count: [0, 0, 0, 0, 4]}], delay: 12, maxEnemies: 6},
+                        {names: [["8bit"]], multiple: [], delay: 1},
+                        {names: [["belle"]], multiple: [], delay: 1}
                     ],
-                    background: "hub",
-                    displayName: "Starr Park Hub",
+                    background: "oldtown",
+                    displayName: "Old Town",
                     stages: [1, 1],
                     destination: 0
                 },
                 {
-                    levelid: 2,
+                    levelid: 4,
                     waves: [
-                        {names: [], multiple: [{name: "meteor", count: [3]}, {name: "r2", count: [2]}]},
-                        {names: [[], ["r8"], ["r4"]], multiple: [], delay: 4, maxEnemies: 10},
-                        {names: [["r12"], [], ["r8"]], multiple: [], delay: 6, maxEnemies: 2},
-                        {names: [["8bit"]], multiple: [], delay: 1},
-                        {names: [["belle"]], multiple: [], delay: 4, maxEnemies: 1}
+                        {names: [], multiple: [{name: "meteor", count: [0, 0, 0, 2]}, {name: "meleerobot", count: [0, 1]}, {name: "rangedrobot", count: [1]}, {name: "fastrobot", count: [0, 1]}]},
+                        {names: [], multiple: [{name: "r2", count: [0, 0, 4, 7]}], delay: 8, maxEnemies: 10},
+                        {names: [[], [], [], [], ["r6"]], multiple: [{name: "r2", count: [0, 0, 0, 0, 3]}], delay: 14, maxEnemies: 6},
+                        {names: [["mortis"]], multiple: [], delay: 1},
+                        {names: [["frank"]], multiple: [], delay: 1}
                     ],
-                    background: "oldtown",
-                    displayName: "Old Town",
+                    background: "ghostmetro",
+                    displayName: "Ghost Station",
                     stages: [2, 2],
                     destination: 0
+                },
+                {
+                    levelid: 7,
+                    waves: [
+                        {names: [[], ["r6"]], multiple: [{name: "meleerobot", count: [1]}, {name: "r2", count: [0, 0, 0, 1]}]},
+                        {names: [[], [], [], ["r8"]], multiple: [{name: "meteor", count: [0, 0, 0, 0, 3]}], delay: 10, maxEnemies: 10},
+                        {names: [[], [], ["r4"], [], ["r9"]], multiple: [{name: "r2", count: [0, 0, 3]}], delay: 11, maxEnemies: 4},
+                        {names: [["lola"]], multiple: [], delay: 1},
+                        {names: [["bibi"]], multiple: [], delay: 1}
+                    ],
+                    background: "retropolis",
+                    displayName: "Retropolis",
+                    stages: [3, 3],
+                    destination: 0
                 }
-            ],
-            maxScores: {
-                completion: 300, time: 150, destination: 0, health: 50, gear: 0, enemy: 0
-            },
-            playerUpgradeValues: {
-                health: {
-                    cost: [3, 3, 3, 3, 4],
-                    maxLevel: 5
-                },
-                damage: {
-                    cost: [3, 3, 3, 3, 4],
-                    maxLevel: 5
-                },
-                healing: {
-                    cost: [4, 4, 5],
-                    maxLevel: 3
-                },
-                speed: {
-                    cost: [5, 6, 8],
-                    maxLevel: 3
-                },
-                ability: {
-                    cost: [6, 10, 14],
-                    maxLevel: 3
-                },
-                lifeSteal: {
-                    cost: [6, 8, 10],
-                    maxLevel: 3
-                }
-            }
+            ]
         }
-    });
-}
+    }],
+    ["classic2", {
+        config: {
+            displayName: "Classic Part 2",
+            baseWinMastery: [4, 6, 9, 18, 40, 120],
+            baseLossMastery: [4, 6, 9, 12, 16, 20],
+            baseCoins: [1, 1, 1.25, 1.5, 1.75, 2.5]
+        },
+        gameMod: {
+            difficulties: classicChallenge.difficulties,
+            stages: classicChallenge.stages,
+            maxScores: classicChallenge.maxScores,
+            levels: [
+                {
+                    levelid: 1,
+                    waves: [
+                        {names: [], multiple: [{name: "meteor", count: [2, 2, 4]}, {name: "rangedrobot", count: [0, 0, 1]}]},
+                        {names: [], multiple: [{name: "meleerobot", count: [0, 1, 1, 1, 2]}, {name: "rangedrobot", count: [1]}], delay: 6, maxEnemies: 10},
+                        {names: [["colt"]], multiple: [{name: "fastrobot", count: [0, 0, 0, 2]}], delay: 6, maxEnemies: 3},
+                        {names: [["rt"]], multiple: [], delay: 1},
+                        {names: [[], [], [], [], ["elprimo"]], multiple: [], delay: 1}
+                    ],
+                    background: "hub",
+                    displayName: "Starr Park Hub",
+                    stages: [0, 0],
+                    destination: 0
+                },
+                {
+                    levelid: 3,
+                    waves: [
+                        {names: [], multiple: [{name: "meteor", count: [1, 3]}, {name: "rangedrobot", count: [0, 1]}, {name: "fastrobot", count: [1]}]},
+                        {names: [], multiple: [{name: "r2", count: [0, 0, 3, 7]}], delay: 7, maxEnemies: 10},
+                        {names: [[], [], [], [], ["r6"]], multiple: [{name: "r2", count: [0, 0, 0, 0, 3]}], delay: 14, maxEnemies: 6},
+                        {names: [["jessie"]], multiple: [], delay: 1},
+                        {names: [["eve"]], multiple: [], delay: 1}
+                    ],
+                    background: "biodome",
+                    displayName: "Biodome",
+                    stages: [1, 1],
+                    destination: 0
+                },
+                {
+                    levelid: 5,
+                    waves: [
+                        {names: [], multiple: [{name: "meteor", count: [0, 0, 0, 2]}, {name: "meleerobot", count: [0, 1]}, {name: "rangedrobot", count: [1, 2]}, {name: "fastrobot", count: [1, 2]}]},
+                        {names: [], multiple: [{name: "r2", count: [0, 0, 4, 7]}], delay: 12, maxEnemies: 10},
+                        {names: [[], [], [], [], ["r6"]], multiple: [{name: "r2", count: [0, 0, 0, 0, 3]}], delay: 14, maxEnemies: 7},
+                        {names: [["jacky"]], multiple: [], delay: 1},
+                        {names: [["mrp"]], multiple: [], delay: 1}
+                    ],
+                    background: "deepsea",
+                    displayName: "Deep Sea",
+                    stages: [2, 2],
+                    destination: 0
+                },
+                {
+                    levelid: 9,
+                    waves: [
+                        {names: [[], ["r8"]], multiple: [{name: "rangedrobot", count: [2]}, {name: "fastrobot", count: [1]}]},
+                        {names: [[], [], [], ["r9"]], multiple: [{name: "meteor", count: [0, 0, 0, 1]}, {name: "r2", count: [0, 0, 0, 0, 1]}], delay: 14, maxEnemies: 10},
+                        {names: [[], [], ["r6"], [], ["r12"]], multiple: [{name: "r2", count: [0, 0, 3]}], delay: 12, maxEnemies: 3},
+                        {names: [["pearl"]], multiple: [], delay: 1},
+                        {names: [["leon"]], multiple: [], delay: 1}
+                    ],
+                    background: "rumblejungle",
+                    displayName: "Rumble Jungle",
+                    stages: [3, 3],
+                    destination: 0
+                }
+            ]
+        }
+    }],
+    ["classic3", {
+        config: {
+            displayName: "Classic Part 3",
+            baseWinMastery: [6, 9, 14, 28, 60, 180],
+            baseLossMastery: [6, 9, 14, 20, 27, 36],
+            baseCoins: [1, 1, 1.25, 1.5, 1.75, 2.5]
+        },
+        gameMod: {
+            difficulties: classicChallenge.difficulties,
+            stages: classicChallenge.stages,
+            maxScores: classicChallenge.maxScores,
+            levels: [
+                {
+                    levelid: 6,
+                    waves: [
+                        {names: [], multiple: [{name: "meteor", count: [0, 0, 0, 2]}, {name: "meleerobot", count: [1, 2]}, {name: "rangedrobot", count: [1, 2]}, {name: "fastrobot", count: [1, 2]}]},
+                        {names: [[], [], [], ["r4"]], multiple: [{name: "r2", count: [0, 0, 4, 5]}], delay: 14, maxEnemies: 10},
+                        {names: [[], [], [], [], ["r8"]], multiple: [{name: "r2", count: [0, 0, 0, 0, 3]}], delay: 14, maxEnemies: 6},
+                        {names: [["bea"]], multiple: [], delay: 1},
+                        {names: [["colette"]], multiple: [], delay: 1}
+                    ],
+                    background: "giftshop",
+                    displayName: "Gift Shop",
+                    stages: [0, 0],
+                    destination: 0
+                },
+                {
+                    levelid: 8,
+                    waves: [
+                        {names: [[], ["r6"]], multiple: [{name: "rangedrobot", count: [2]}, {name: "fastrobot", count: [1]}]},
+                        {names: [[], [], [], ["r8"]], multiple: [{name: "r2", count: [0, 0, 0, 1, 2]}], delay: 12, maxEnemies: 10},
+                        {names: [[], [], ["r4"], [], ["r10"]], multiple: [{name: "r2", count: [0, 0, 3]}], delay: 12, maxEnemies: 3},
+                        {names: [["mandy"]], multiple: [], delay: 1},
+                        {names: [["ash"]], multiple: [], delay: 1}
+                    ],
+                    background: "candystand",
+                    displayName: "Candyland",
+                    stages: [1, 1],
+                    destination: 0
+                },
+                {
+                    levelid: 10,
+                    waves: [
+                        {names: [[], ["r6"]], multiple: [{name: "fastrobot", count: [1, 2]}]},
+                        {names: [[], [], [], ["r9"]], multiple: [{name: "meteor", count: [0, 0, 0, 3]}, {name: "r2", count: [0, 0, 0, 0, 2]}], delay: 10, maxEnemies: 10},
+                        {names: [[], [], ["r8"], [], ["r12"]], multiple: [{name: "r2", count: [0, 0, 2]}], delay: 16, maxEnemies: 6},
+                        {names: [["bonnie"]], multiple: [], delay: 1},
+                        {names: [["amber"]], multiple: [], delay: 1}
+                    ],
+                    background: "stuntshow",
+                    displayName: "Stunt Show",
+                    stages: [2, 2],
+                    destination: 0
+                },
+                {
+                    levelid: 11,
+                    waves: [
+                        {names: [[], ["r8"]], multiple: [{name: "fastrobot", count: [2]}, {name: "r2", count: [0, 0, 0, 0, 2]}]},
+                        {names: [[], [], [], ["r10"], ["r4"]], multiple: [{name: "r2", count: [0, 0, 0, 1, 3]}], delay: 16, maxEnemies: 10},
+                        {names: [[], [], ["r9"], [], ["r12"]], multiple: [{name: "meteor", count: [0, 0, 3]}], delay: 20, maxEnemies: 5},
+                        {names: [["max"]], multiple: [], delay: 1},
+                        {names: [["meg"]], multiple: [], delay: 1}
+                    ],
+                    background: "minicity",
+                    displayName: "Super City",
+                    stages: [3, 3],
+                    destination: 0
+                }
+            ]
+        }
+    }]
+]);
 
 export default challenges;

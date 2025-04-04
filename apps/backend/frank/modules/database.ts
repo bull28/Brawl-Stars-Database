@@ -16,7 +16,7 @@ export function databaseErrorHandler<R = Empty, Q = Query, P = ParamsDictionary>
             const errorData = getErrorMessage(reason);
             res.status(errorData.status).send(errorData.message);
         });
-    }
+    };
 }
 
 export function loginErrorHandler<R = Empty, Q = Query, P = ParamsDictionary>(callback: UsernameCallback<R, Q, P>): ExpressCallback<R, Q, P>{
@@ -42,7 +42,7 @@ export function loginErrorHandler<R = Empty, Q = Query, P = ParamsDictionary>(ca
             const errorData = getErrorMessage(reason);
             res.status(errorData.status).send(errorData.message);
         });
-    }
+    };
 }
 
 

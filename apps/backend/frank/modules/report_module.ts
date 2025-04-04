@@ -496,6 +496,7 @@ export function extractReportData(data: number[]): ReportData | undefined{
         // For challenges, mastery rewards depend on the base mastery stored in the challenge config
         // Badge rewards depend on the enemy strength tier (this value is stored in the difficulty)
         points = 1;
+        baseCoins = 1;
         badgeMultiplier = 200 + difficulty * 200;
     }
     points = Math.floor(points * data[p] * pointsMultiplier / 100);

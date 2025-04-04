@@ -212,7 +212,7 @@ export function getSkinData(skin: Skin, brawlerName: string): SkinData{
         },
         rating: skin.rating,
         image: `${SKIN_IMAGE_DIR}${brawlerName}/${skin.name}${IMAGE_FILE_EXTENSION}`
-    }
+    };
 
     return skinData;
 }

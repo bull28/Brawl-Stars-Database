@@ -142,7 +142,6 @@ export function getErrorMessage(error: Error): {status: number; message: string;
  * Queries the database with the given prepared statement and values. Returns a promise that resolves to the result if
  * successful, or throws the error from the database if unsuccessful. This function should only be used when the query
  * returns results.
- * @param connection database connection
  * @param values prepared statement values
  * @param allowEmptyResults whether or not to allow an empty results array (true) or throw an error (false)
  * @param query sql query string
@@ -164,7 +163,6 @@ export async function queryDatabase<Result>(values: (string | number | Uint8Arra
  * Executes an update to the database with the given prepared statement and values. Returns a promise that resolves to a
  * result set header if successful, or throws the error from the database if unsuccessful. This function should only be
  * used when the query does not return results.
- * @param connection database connection
  * @param values prepared statement values
  * @param allowNoUpdate whether or not to allow updating no rows (true) or to throw an error (false)
  * @param query sql query string
