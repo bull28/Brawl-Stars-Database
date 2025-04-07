@@ -83,15 +83,10 @@ if (success === true){
 }
 
 
-process.on("SIGINT", async () => {
-    try{
-        await pool.end();
-        console.log("Database connection ended");
-    } catch(error){
-        throw new Error("ASH THREW YOUR CONNECTION IN THE TRASH ! ! !");
-    }
-    process.kill(process.pid, "SIGINT");
-});
+export async function endConnection(): Promise<void>{
+    await pool.end();
+    console.log("Database connection ended");
+}
 
 
 function isDatabaseError(error: Error): error is mysql2.QueryError{

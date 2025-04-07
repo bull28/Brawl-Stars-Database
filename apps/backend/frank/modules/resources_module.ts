@@ -1,5 +1,6 @@
 import characterList from "../data/characters_data.json";
 import enemyList from "../data/enemies_data.json";
+import {findName} from "./utils";
 import {IMAGE_FILE_EXTENSION, SKIN_IMAGE_DIR, PIN_IMAGE_DIR, MASTERY_LEVEL_DIR, TIER_IMAGE_DIR, CHARACTER_IMAGE_DIR} from "../data/constants";
 import {UserCharacter, MasteryData, CharacterPreview, CharacterStatus, EnemyData} from "../types";
 
@@ -74,34 +75,8 @@ function upgradeTierIndex(tier: number): {index: number; upgrades: number;}{
     };
 }
 
-function findCharacter(name: string): number{
-    let index = indexMap.get(name);
-    if (index !== undefined && characterList[index].name === name){
-        return index;
-    }
-
-    index = -1;
-    for (let x = 0; x < characterList.length; x++){
-        if (characterList[x].name === name){
-            index = x;
-        }
-    }
-    return index;
-}
-
 export function findUserCharacter(userCharacters: UserCharacter[], name: string): number{
-    let index = indexMap.get(name);
-    if (index !== undefined && index < userCharacters.length && userCharacters[index].name === name){
-        return index;
-    }
-
-    index = -1;
-    for (let x = 0; x < userCharacters.length; x++){
-        if (userCharacters[x].name === name){
-            index = x;
-        }
-    }
-    return index;
+    return findName(userCharacters, name, indexMap);
 }
 
 export function getNextTier(tier: number): number{
@@ -203,7 +178,7 @@ export function getEnemyList(): EnemyData[]{
 }
 
 export function getCharacterPreview(character: UserCharacter): CharacterPreview | undefined{
-    const index = findCharacter(character.name);
+    const index = findName(characterList, character.name, indexMap);
     if (index < 0){
         return undefined;
     }
@@ -226,7 +201,7 @@ export function getCharacterPreview(character: UserCharacter): CharacterPreview 
 }
 
 export function getCharacterData(character: UserCharacter): CharacterStatus | undefined{
-    const index = findCharacter(character.name);
+    const index = findName(characterList, character.name, indexMap);
     if (index < 0){
         return undefined;
     }

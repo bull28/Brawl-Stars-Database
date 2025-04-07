@@ -5,6 +5,7 @@ import path from "path";
 import "dotenv/config";
 
 import {ASSETS_ROOT_DIR} from "./data/constants";
+import {endConnection} from "./modules/database_access";
 import brawlers from "./routes/brawlers";
 import events from "./routes/events";
 import account from "./routes/account";
@@ -73,11 +74,45 @@ app.use((req: Request, res: Response) => {
     res.status(404).send("Not Found");
 });
 
-app.listen(port, (error) => {
+const server = app.listen(port, (error) => {
     if (error !== undefined){
         console.error(error);
     }
     console.log(port);
 });
+
+async function closeServer(): Promise<void>{
+    let exitError = false;
+
+    try{
+        await (new Promise<void>((resolve, reject) => {
+            server.close((error) => {
+                if (error !== undefined){
+                    reject(error);
+                }
+                resolve();
+            });
+            server.closeAllConnections();
+        }));
+        console.log("Server closed");
+    } catch (error){
+        exitError = true;
+        console.log(error);
+    }
+
+    try{
+        await endConnection();
+    } catch (error){
+        exitError = true;
+        console.log(error);
+    }
+
+    if (exitError === true){
+        process.exit(1);
+    }
+}
+
+process.on("SIGINT", closeServer);
+process.on("SIGTERM", closeServer);
 
 export default app;

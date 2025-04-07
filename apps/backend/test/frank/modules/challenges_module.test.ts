@@ -50,7 +50,7 @@ describe("Challenges module", function(){
         expect(challenge1.playerUpgradeValues).to.eql(preset.playerUpgradeValues);
 
         const stages = challenge1.stages!;
-        expect(stages.map((value) => value.powerReward)).to.eql([15 + 56, 25 + 56, 0]);
+        expect(stages.map((value) => value.powerReward)).to.eql([15 + 28, 25 + 28, 0]);
         expect(stages.map((value) => value.gearsReward)).to.eql([2 + 3, 2 + 3, 0]);
 
         expect(challenge1.playerUpgradeTiers).to.be.an("object");

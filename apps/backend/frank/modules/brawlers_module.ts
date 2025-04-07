@@ -1,11 +1,17 @@
 import allSkins from "../data/brawlers_data.json";
 import skinGroups from "../data/skingroups_data.json";
 import {IMAGE_FILE_EXTENSION, PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR, SKIN_IMAGE_DIR, SKINGROUP_ICON_DIR, SKINGROUP_IMAGE_DIR, MASTERY_ICON_DIR, CURRENCY_IMAGE_DIR, REWARD_IMAGE_DIR} from "../data/constants";
+import {findName} from "./utils";
 import {BrawlerPreview, BrawlerData, SkinCost, SkinData, SkinSearchGroup, SkinSearchFilters, SkinSearchResult} from "../types";
 
 type Brawler = typeof allSkins[number];
 type Skin = typeof allSkins[number]["skins"][number];
 type SkinGroupKey = keyof typeof skinGroups;
+
+const indexMap = new Map<string, number>();
+for (let x = 0; x < allSkins.length; x++){
+    indexMap.set(allSkins[x].name, x);
+}
 
 const skinCurrencies: Record<string, {name: string; image: string;}> = {
     "Gems": {name: "Gems", image: "icon_gems" + IMAGE_FILE_EXTENSION},
@@ -45,27 +51,19 @@ export const rarities = {
 };
 
 export function getBrawler(name: string): Brawler | undefined{
-    for (let x = 0; x < allSkins.length; x++){
-        if (Object.hasOwn(allSkins[x], "name") === true){
-            if (allSkins[x].name === name){
-                return allSkins[x];
-            }
-        }
+    const index = findName(allSkins, name, indexMap);
+    if (index < 0){
+        return undefined;
     }
-    return undefined;
+    return allSkins[index];
 }
 
 export function getSkin(brawler: Brawler, skinName: string): Skin | undefined{
-    if (Object.hasOwn(brawler, "skins") === true){
-        for (let x = 0; x < brawler.skins.length; x++){
-            if (Object.hasOwn(brawler.skins[x], "name") === true){
-                if (brawler.skins[x].name === skinName){
-                    return brawler.skins[x];
-                }
-            }
-        }
+    const index = findName(brawler.skins, skinName);
+    if (index < 0){
+        return undefined;
     }
-    return undefined;
+    return brawler.skins[index];
 }
 
 export function getBrawlerList(): BrawlerPreview[]{

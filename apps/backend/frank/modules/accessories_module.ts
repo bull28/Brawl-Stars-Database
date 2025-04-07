@@ -1,5 +1,6 @@
 import accessoryList from "../data/accessories_data.json";
 import {IMAGE_FILE_EXTENSION, ACCESSORY_IMAGE_DIR} from "../data/constants";
+import {findName} from "./utils";
 import {getMasteryLevel} from "../modules/resources_module";
 import {UserAccessory, AccessoryPreview, AccessoryData, ShopAccessory, ShopAccessoryPreview} from "../types";
 
@@ -52,40 +53,8 @@ function accessoryImageName(name: string): string{
     return `${ACCESSORY_IMAGE_DIR}accessory_${name}${IMAGE_FILE_EXTENSION}`;
 }
 
-function findAccessory(name: string): AccessoryConfig | undefined{
-    // Returns accessory with given name
-    let index = indexMap.get(name);
-    if (index !== undefined && accessories[index].name === name){
-        return accessories[index];
-    }
-
-    // If the accessory was not found in the map, do a normal search
-    index = -1;
-    for (let x = 0; x < accessories.length; x++){
-        if (accessories[x].name === name){
-            index = x;
-        }
-    }
-    if (index < 0){
-        return undefined;
-    }
-    return accessories[index];
-}
-
 export function findUserAccessory(userAccessories: UserAccessory[], name: string): number{
-    // Returns index of name in userAccessories, -1 if not found
-    let index = indexMap.get(name);
-    if (index !== undefined && index < userAccessories.length && userAccessories[index].name === name){
-        return index;
-    }
-
-    index = -1;
-    for (let x = 0; x < userAccessories.length; x++){
-        if (userAccessories[x].name === name){
-            index = x;
-        }
-    }
-    return index;
+    return findName(userAccessories, name, indexMap);
 }
 
 export function getAccessoryData(userAccessories: UserAccessory[]): AccessoryData[]{
@@ -125,10 +94,11 @@ export function getAccessoryData(userAccessories: UserAccessory[]): AccessoryDat
 }
 
 export function getAccessoryPreview(name: string): AccessoryPreview | undefined{
-    const a = findAccessory(name);
-    if (a === undefined){
+    const index = findName(accessories, name, indexMap);
+    if (index < 0){
         return undefined;
     }
+    const a = accessories[index];
 
     return {
         displayName: a.displayName,
@@ -142,12 +112,12 @@ export function getShopItems(userAccessories: UserAccessory[], mastery: number):
     const level = getMasteryLevel(mastery).level;
 
     accessoryShop.forEach((value, key) => {
-        const a = findAccessory(key);
-        const u = findUserAccessory(userAccessories, key);
-        if (a !== undefined && level >= value.masteryReq && u >= 0 && userAccessories[u].unlocked === false){
+        const i = findName(accessories, key, indexMap);
+        const u = findName(userAccessories, key, indexMap);
+        if (i >= 0 && u >= 0 && level >= value.masteryReq && userAccessories[u].unlocked === false){
             items.push({
                 name: key,
-                displayName: a.displayName,
+                displayName: accessories[i].displayName,
                 image: accessoryImageName(key),
                 cost: value.cost
             });
@@ -158,13 +128,13 @@ export function getShopItems(userAccessories: UserAccessory[], mastery: number):
 }
 
 export function accessoryClaimCost(progress: UserAccessory, mastery: number): number{
-    const a = findAccessory(progress.name);
-    if (a === undefined){
+    const index = findName(accessories, progress.name, indexMap);
+    if (index < 0){
         return -1;
     }
 
     // User has enough badges and can claim without spending any coins
-    if (progress.unlocked || progress.badges >= a.badges){
+    if (progress.unlocked || progress.badges >= accessories[index].badges){
         return 0;
     }
 
