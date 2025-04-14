@@ -16,7 +16,7 @@ reportMode2[0] = 2;
 
 // Expected rewards from reports
 const report0Mastery = reportMode0[1] * 240;
-const report0Coins = 800;
+const report0Coins = 1600;
 const report2Mastery = reportMode2[1] * 6;
 const report2Coins = 0;
 

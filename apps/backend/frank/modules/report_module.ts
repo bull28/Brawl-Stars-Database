@@ -38,32 +38,32 @@ const SCORE_CONSTANTS = {
 };
 
 const badgeList = [
-    {name: "meteor", category: "enemy", index: 0, coins: [4, 4]},
-    {name: "robot", category: "enemy", index: 1, coins: [8, 8]},
-    {name: "shelly", category: "enemy", index: 2, coins: [15, 17]},
-    {name: "colt", category: "enemy", index: 3, coins: [23, 25]},
-    {name: "rt", category: "enemy", index: 4, coins: [25, 27]},
-    {name: "elprimo", category: "enemy", index: 5, coins: [30, 34]},
-    {name: "8bit", category: "enemy", index: 6, coins: [32, 36]},
-    {name: "belle", category: "enemy", index: 7, coins: [34, 38]},
-    {name: "jessie", category: "enemy", index: 8, coins: [36, 40]},
-    {name: "eve", category: "enemy", index: 9, coins: [38, 42]},
-    {name: "mortis", category: "enemy", index: 10, coins: [40, 44]},
-    {name: "frank", category: "enemy", index: 11, coins: [48, 52]},
-    {name: "jacky", category: "enemy", index: 12, coins: [42, 46]},
-    {name: "mrp", category: "enemy", index: 13, coins: [50, 54]},
-    {name: "bea", category: "enemy", index: 14, coins: [52, 56]},
-    {name: "colette", category: "enemy", index: 15, coins: [54, 58]},
-    {name: "lola", category: "enemy", index: 16, coins: [66, 74]},
-    {name: "bibi", category: "enemy", index: 17, coins: [68, 76]},
-    {name: "mandy", category: "enemy", index: 18, coins: [70, 78]},
-    {name: "ash", category: "enemy", index: 19, coins: [86, 94]},
-    {name: "pearl", category: "enemy", index: 20, coins: [72, 80]},
-    {name: "leon", category: "enemy", index: 21, coins: [106, 118]},
-    {name: "bonnie", category: "enemy", index: 22, coins: [92, 100]},
-    {name: "amber", category: "enemy", index: 23, coins: [136, 152]},
-    {name: "max", category: "enemy", index: 24, coins: [114, 126]},
-    {name: "meg", category: "enemy", index: 25, coins: [170, 190]},
+    {name: "meteor", category: "enemy", index: 0, coins: [8, 8]},
+    {name: "robot", category: "enemy", index: 1, coins: [16, 16]},
+    {name: "shelly", category: "enemy", index: 2, coins: [30, 34]},
+    {name: "colt", category: "enemy", index: 3, coins: [46, 50]},
+    {name: "rt", category: "enemy", index: 4, coins: [50, 54]},
+    {name: "elprimo", category: "enemy", index: 5, coins: [60, 68]},
+    {name: "8bit", category: "enemy", index: 6, coins: [64, 72]},
+    {name: "belle", category: "enemy", index: 7, coins: [68, 76]},
+    {name: "jessie", category: "enemy", index: 8, coins: [72, 80]},
+    {name: "eve", category: "enemy", index: 9, coins: [76, 84]},
+    {name: "mortis", category: "enemy", index: 10, coins: [80, 88]},
+    {name: "frank", category: "enemy", index: 11, coins: [96, 104]},
+    {name: "jacky", category: "enemy", index: 12, coins: [84, 92]},
+    {name: "mrp", category: "enemy", index: 13, coins: [100, 108]},
+    {name: "bea", category: "enemy", index: 14, coins: [104, 112]},
+    {name: "colette", category: "enemy", index: 15, coins: [108, 116]},
+    {name: "lola", category: "enemy", index: 16, coins: [132, 148]},
+    {name: "bibi", category: "enemy", index: 17, coins: [136, 152]},
+    {name: "mandy", category: "enemy", index: 18, coins: [140, 156]},
+    {name: "ash", category: "enemy", index: 19, coins: [172, 188]},
+    {name: "pearl", category: "enemy", index: 20, coins: [144, 160]},
+    {name: "leon", category: "enemy", index: 21, coins: [212, 236]},
+    {name: "bonnie", category: "enemy", index: 22, coins: [184, 200]},
+    {name: "amber", category: "enemy", index: 23, coins: [272, 304]},
+    {name: "max", category: "enemy", index: 24, coins: [228, 252]},
+    {name: "meg", category: "enemy", index: 25, coins: [340, 380]},
     {name: "siegebase", category: "enemy", index: 28, coins: [0, 0]},
     {name: "spike", category: "player", index: 0, coins: [0, 0]},
     {name: "gus", category: "player", index: 1, coins: [0, 0]},
@@ -100,8 +100,8 @@ const pointsRewards = [
     [80, 320, 800]
 ];
 
-const coinsRewards = [1, 1, 1.25, 1.25, 1.5, 2, 2, 3, 3, 4];
-const bossCoins = [100, 150, 200, 300, 500, 800, 500, 800, 1000, 1600];
+const coinsRewards = [1, 1, 1.25, 1.25, 1.5, 2, 2, 3, 4, 5];
+const bossCoins = [200, 300, 400, 600, 1000, 1600, 1000, 1600, 2400, 4000];
 
 function convertLevelReports(reports: number[]): ScorePerformance[]{
     // Number of stages and number of score categories per stage

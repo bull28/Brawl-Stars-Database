@@ -66,7 +66,7 @@ describe("Game Report module", function(){
         });
 
         expect(preview.enemies).to.equal(600);
-        expect(preview.coins).to.eql([150, 150]);
+        expect(preview.coins).to.eql([300, 300]);
         expect(preview.badges).to.be.a("map");
         expect(preview.badges).to.include.keys(["darryl", "wins", "enemies"]);
 

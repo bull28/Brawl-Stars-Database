@@ -57,7 +57,7 @@ const upgradeTiers = [
         upgradeCosts: [42000, 44800, 48400, 53200, 59200, 66400, 76000, 88000, 102000, 120000], tierUpCost: 200000, masteryReq: 25
     },
     {
-        base: 300.0, scaling: 0, startLevel: 60, maxUpgrades: 0, name: "Masters", color: "#ffffff", image: "tier_masters",
+        base: 300.0, scaling: 0, startLevel: 60, maxUpgrades: 0, name: "Masters", color: "#ffcc00", image: "tier_masters",
         upgradeCosts: [0], tierUpCost: 0, masteryReq: 30
     }
 ];
