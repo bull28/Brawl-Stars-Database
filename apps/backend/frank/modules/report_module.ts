@@ -154,7 +154,7 @@ function getFinalScore(reports: number[], enemyCounts: number[]): number[]{
                 success = false;
             }
 
-            totalHealthPenalty += Math.min(40, report.healthPenalty / 500);
+            totalHealthPenalty += Math.min(80, report.healthPenalty / 250);
 
             if (report.totalValue <= 0){
                 score.completion += stages[x].completion;
@@ -195,18 +195,19 @@ function getFinalScore(reports: number[], enemyCounts: number[]): number[]{
             totalEnemyBonus += bonusEnemies[x].score;
         }
     }
+    const penaltyPercent = 100 - totalHealthPenalty + Math.min(80, stages.length * 8);
     score.completion = Math.min(maxScores.completion, Math.floor(score.completion));
     score.time = Math.min(maxScores.time, Math.floor(score.time));
     score.destination = Math.min(maxScores.destination, Math.floor(score.destination));
     score.gear = Math.min(maxScores.gear, Math.floor(score.gear));
     score.enemy = Math.min(maxScores.enemy, Math.max(0, totalEnemyBonus));
-    score.health = Math.min(maxScores.health, Math.max(0, Math.floor(maxScores.health - totalHealthPenalty + Math.min(40, stages.length * 4))));
+    score.health = Math.min(maxScores.health, Math.max(0, Math.floor(maxScores.health * penaltyPercent / 100)));
 
     return [score.completion, score.time, score.destination, score.health, score.gear, score.enemy];
 }
 
 export function validateReport(report: GameReport): number{
-    // Last updated: version 83
+    // Last updated: version 86
 
     if (Array.isArray(report) === false){
         // Invalid report type
@@ -220,12 +221,12 @@ export function validateReport(report: GameReport): number{
         // Invalid report types
         return 3;
     }
-    if (report[0] < 83){
+    if (report[0] < 86){
         // Old report version
         return 4;
     }
     const timeSinceSave = Date.now() - report[1];
-    if (timeSinceSave < 0 || timeSinceSave > 7200000){
+    if (timeSinceSave < -60000 || timeSinceSave > 7200000){
         // Invalid report time
         return 5;
     }

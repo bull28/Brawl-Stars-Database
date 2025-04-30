@@ -15,7 +15,7 @@ interface SaveReqBody{
 
 // Save a game report
 router.post<Empty, Empty, SaveReqBody>("/", databaseErrorHandler<SaveReqBody>(async (req, res) => {
-    const body = {message: "", mastery: 0, coins: 0};
+    const body = {message: "", status: 0, mastery: 0, coins: 0};
 
     const inputUser = req.body.username;
     const key = req.body.key;
@@ -25,8 +25,10 @@ router.post<Empty, Empty, SaveReqBody>("/", databaseErrorHandler<SaveReqBody>(as
     let masteryMultiplier = 0;
     let coinsMultiplier = 0;
 
-    if (validateReport(report) !== 0){
+    const reportStatus = validateReport(report);
+    if (reportStatus !== 0){
         body.message = "Invalid report.";
+        body.status = reportStatus;
         res.status(403).json(body);
         return;
     }

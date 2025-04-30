@@ -132,7 +132,7 @@ describe("Game Report module", function(){
         });
 
         it("Invalid report time", function(){
-            expect(validateReport([VERSION, TIME + 120000, valid])).to.equal(5);
+            expect(validateReport([VERSION, TIME + 180000, valid])).to.equal(5);
             expect(validateReport([VERSION, TIME - 86400000, valid])).to.equal(5);
         });
 

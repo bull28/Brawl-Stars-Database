@@ -69,7 +69,7 @@ describe("Game Report endpoints", function(){
             .send({username: TEST_USERNAME, report: [GAME_VERSION, END_TIME++, reportMode0]});
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("object");
-            expect(res.body).to.have.keys(["message", "coins", "mastery"]);
+            expect(res.body).to.have.keys(["message", "status", "coins", "mastery"]);
             expect(res.body.message).to.equal("Score successfully saved.");
             expect(res.body.mastery).to.equal(report0Mastery);
             expect(res.body.coins).to.equal(report0Coins);
@@ -91,7 +91,7 @@ describe("Game Report endpoints", function(){
             .send({username: "ignore", key: "test1", report: [GAME_VERSION, END_TIME++, reportMode2]});
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("object");
-            expect(res.body).to.have.keys(["message", "coins", "mastery"]);
+            expect(res.body).to.have.keys(["message", "status", "coins", "mastery"]);
             expect(res.body.message).to.equal("Score successfully saved.");
             expect(res.body.mastery).to.equal(report2Mastery);
             expect(res.body.coins).to.equal(report2Coins);

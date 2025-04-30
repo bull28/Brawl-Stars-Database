@@ -43,7 +43,7 @@ export const sampleGameReport = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 ];
-export const GAME_VERSION = 83;
+export const GAME_VERSION = 86;
 
 // This challenge is only for testing and should not be playable by real users
 challengeList.set("test", {
