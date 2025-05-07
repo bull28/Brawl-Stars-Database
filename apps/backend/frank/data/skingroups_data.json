@@ -458,5 +458,15 @@
         "name": "Pro Pass",
         "image": "bg_ranked",
         "icon": "icon_propass"
+    },
+    "kaiju": {
+        "name": "Kaiju Invasion",
+        "image": "bg_kaiju",
+        "icon": "icon_kaiju"
+    },
+    "feudaljapan": {
+        "name": "Battle for Katana Kingdom",
+        "image": "bg_feudaljapan",
+        "icon": "icon_feudaljapan"
     }
 }

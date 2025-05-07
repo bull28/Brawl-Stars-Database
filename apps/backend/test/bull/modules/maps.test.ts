@@ -185,7 +185,8 @@ describe("Events, Game Modes, and Maps module", function(){
             // Current: [0, 2, 0, 0], Last claim: [0, 7, 0, 0]
             const reward = getRewardStacks(
                 new Date(2024, 5, 24, 3, 0).getTime(),
-                new Date(2021, 8, 20, 7, 0).getTime()// 144 day season
+                new Date(2018, 0, 15, 8, 0).getTime()// 336 day season
+                //new Date(2021, 8, 20, 7, 0).getTime()// 144 day season
                 //new Date(2022, 2, 7, 7, 0).getTime()// 120 day season
                 //new Date(2023, 9, 16, 8, 0).getTime()// 36 day season
                 //new Date(2024, 0, 8, 7, 0).getTime()// 24 day season

@@ -28,7 +28,8 @@ export const rarities = {
         {value: 3, name: "Epic", color: "#b116ec"},
         {value: 4, name: "Mythic", color: "#fe0521"},
         {value: 5, name: "Legendary", color: "#fdf11e"},
-        {value: 6, name: "Chromatic", color: "#f87628"}
+        {value: 6, name: "Ultra Legendary", color: "#f87628"},
+        {value: 7, name: "Chromatic", color: "#f87628"}
     ],
     skins: [
         {value: 0, name: "", icon: ""},

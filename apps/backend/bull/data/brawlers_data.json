@@ -2081,7 +2081,7 @@
                 "displayName": "Challenger Colt",
                 "cost": 149,
                 "currency": "Gems",
-                "costBling": 5000,
+                "costBling": -1,
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
@@ -3349,6 +3349,33 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "colt_pirates",
+                "image": "colt_pirates.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "colt_lny",
+                "image": "colt_lny.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "colt_lny_02",
+                "image": "colt_lny_02.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -3920,6 +3947,44 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "bullguyrare",
+                "displayName": "Kansai Dragon Bull",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "icon": "skin_rarity_1.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "Retropolis Nights",
+                        "image": "bg_retro.webp",
+                        "icon": "icon_retro.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 5,
+                    "year": 2025
+                },
+                "image": "bullguyrare.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -4079,6 +4144,15 @@
             {
                 "name": "bull_brawlywood",
                 "image": "bull_brawlywood.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "bull_animals",
+                "image": "bull_animals.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -4644,7 +4718,7 @@
                         "icon": "icon_brawlpass.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "Reward from Brawl Pass Season 27 tier 50",
                 "foundIn": [],
                 "release": {
@@ -4899,7 +4973,7 @@
                         "icon": "icon_brawlpass.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "Reward from Brawl Pass Plus Season 27 tier 48",
                 "foundIn": [],
                 "release": {
@@ -4944,7 +5018,7 @@
                         "icon": "icon_brawlpass.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "Reward from Brawl Pass Plus Season 27 tier 46",
                 "foundIn": [],
                 "release": {
@@ -7514,6 +7588,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "poco_giftshop",
+                "image": "poco_giftshop.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -7888,6 +7971,44 @@
                     "year": 2024
                 },
                 "image": "rosatoon.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "rosarare",
+                "displayName": "Sunflowerosa",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "icon": "skin_rarity_1.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "Misc",
+                        "image": "bg_default.webp",
+                        "icon": "icon_misc.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 5,
+                    "year": 2025
+                },
+                "image": "rosarare.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -8457,7 +8578,7 @@
                 "displayName": "Cat Burglar Jessie",
                 "cost": 149,
                 "currency": "Gems",
-                "costBling": 5000,
+                "costBling": -1,
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
@@ -8821,6 +8942,15 @@
             {
                 "name": "jessie_toystory",
                 "image": "jessie_toystory.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "jessie_summer",
+                "image": "jessie_summer.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -9639,6 +9769,44 @@
                     "year": 2024
                 },
                 "image": "tntdudechristmas.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "tntguyrare",
+                "displayName": "Firecracker Wizard Mike",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "icon": "skin_rarity_1.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "Once Upon",
+                        "image": "bg_onceupon.webp",
+                        "icon": "icon_onceupon.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 5,
+                    "year": 2025
+                },
+                "image": "tntguyrare.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -10569,6 +10737,15 @@
             {
                 "name": "tick_spongebob",
                 "image": "tick_spongebob.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "tick_maxforce",
+                "image": "tick_maxforce.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -14219,6 +14396,24 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "carl_claship",
+                "image": "carl_claship.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "carl_line",
+                "image": "carl_line.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -14853,7 +15048,7 @@
                 "displayName": "World Champion Gus",
                 "cost": 149,
                 "currency": "Gems",
-                "costBling": 5000,
+                "costBling": -1,
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
@@ -15197,6 +15392,15 @@
             {
                 "name": "gus_brawloween",
                 "image": "gus_brawloween.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "gus_overcharge",
+                "image": "gus_overcharge.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -17717,6 +17921,141 @@
                     "loseAnimation": "snipergreek_lose.glb"
                 },
                 "rating": 0
+            },
+            {
+                "name": "sniperjapan",
+                "displayName": "Kasa-obake Piper",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Battle for Katana Kingdom",
+                        "image": "bg_feudaljapan.webp",
+                        "icon": "icon_feudaljapan.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from Brawl Pass Season 38 tier 50",
+                "foundIn": [],
+                "release": {
+                    "month": 5,
+                    "year": 2025
+                },
+                "image": "sniperjapan.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "sniperjapanchromablue",
+                "displayName": "Yokai Piper",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "Kasa-obake Piper",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Battle for Katana Kingdom",
+                        "image": "bg_feudaljapan.webp",
+                        "icon": "icon_feudaljapan.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from Brawl Pass Plus Season 38 tier 46",
+                "foundIn": [],
+                "release": {
+                    "month": 5,
+                    "year": 2025
+                },
+                "image": "sniperjapanchromablue.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "sniperjapanchromagreen",
+                "displayName": "Tsukumogami Piper",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "Kasa-obake Piper",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Battle for Katana Kingdom",
+                        "image": "bg_feudaljapan.webp",
+                        "icon": "icon_feudaljapan.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from Brawl Pass Plus Season 38 tier 48",
+                "foundIn": [],
+                "release": {
+                    "month": 5,
+                    "year": 2025
+                },
+                "image": "sniperjapanchromagreen.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -17867,6 +18206,33 @@
             {
                 "name": "piper_olympus",
                 "image": "piper_olympus.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "piper_japan",
+                "image": "piper_japan.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "piper_japanchromablue",
+                "image": "piper_japanchromablue.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "piper_japanchromagreen",
+                "image": "piper_japanchromagreen.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -21933,6 +22299,141 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "enragerkaiju",
+                "displayName": "Shin Edgar",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Kaiju Invasion",
+                        "image": "bg_kaiju.webp",
+                        "icon": "icon_kaiju.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from Brawl Pass Season 39 tier 50",
+                "foundIn": [],
+                "release": {
+                    "month": 6,
+                    "year": 2025
+                },
+                "image": "enragerkaiju.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "enragerkaijuchroma1",
+                "displayName": "Drift Edgar",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "Shin Edgar",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Kaiju Invasion",
+                        "image": "bg_kaiju.webp",
+                        "icon": "icon_kaiju.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from Brawl Pass Plus Season 39 tier 46",
+                "foundIn": [],
+                "release": {
+                    "month": 6,
+                    "year": 2025
+                },
+                "image": "enragerkaijuchroma1.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "enragerkaijuchroma2",
+                "displayName": "Masked Edgar",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "Shin Edgar",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Kaiju Invasion",
+                        "image": "bg_kaiju.webp",
+                        "icon": "icon_kaiju.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from Brawl Pass Plus Season 39 tier 48",
+                "foundIn": [],
+                "release": {
+                    "month": 6,
+                    "year": 2025
+                },
+                "image": "enragerkaijuchroma2.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -22277,6 +22778,33 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "edgar_kaiju",
+                "image": "edgar_kaiju.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "edgar_kaijuchroma1",
+                "image": "edgar_kaijuchroma1.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "edgar_kaijuchroma2",
+                "image": "edgar_kaijuchroma2.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -22528,6 +23056,46 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "assaultshotgunkaiju",
+                "displayName": "Intergalactic Griff",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Kaiju Invasion",
+                        "image": "bg_kaiju.webp",
+                        "icon": "icon_kaiju.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 6,
+                    "year": 2025
+                },
+                "image": "assaultshotgunkaiju.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -22642,6 +23210,24 @@
             {
                 "name": "griff_cursed",
                 "image": "griff_cursed.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "griff_overcharge",
+                "image": "griff_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "griff_kaiju",
+                "image": "griff_kaiju.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -22900,13 +23486,13 @@
             {
                 "name": "crossbombersupercellmake",
                 "displayName": "Protector Grom",
-                "cost": 199,
+                "cost": 149,
                 "currency": "Gems",
-                "costBling": -1,
+                "costBling": 5000,
                 "rarity": {
-                    "value": 4,
-                    "name": "Mythic",
-                    "icon": "skin_rarity_4.webp"
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
                 },
                 "requires": "",
                 "features": [
@@ -22935,6 +23521,44 @@
                     "year": 2025
                 },
                 "image": "crossbombersupercellmake.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "crossbomberrare",
+                "displayName": "Grombin Hood",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "icon": "skin_rarity_1.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "Once Upon",
+                        "image": "bg_onceupon.webp",
+                        "icon": "icon_onceupon.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 5,
+                    "year": 2025
+                },
+                "image": "crossbomberrare.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -24704,6 +25328,46 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "percenterkaiju",
+                "displayName": "Tokusatsu Colette",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Kaiju Invasion",
+                        "image": "bg_kaiju.webp",
+                        "icon": "icon_kaiju.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 6,
+                    "year": 2025
+                },
+                "image": "percenterkaiju.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -24953,6 +25617,15 @@
             {
                 "name": "colette_angeldemons",
                 "image": "colette_angeldemons.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "colette_kaiju",
+                "image": "colette_kaiju.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -25857,13 +26530,13 @@
             {
                 "name": "knightsupercellstore",
                 "displayName": "P.E.K.K.A.S.H",
-                "cost": 0,
-                "currency": "",
-                "costBling": -1,
+                "cost": 79,
+                "currency": "Gems",
+                "costBling": 2750,
                 "rarity": {
-                    "value": 0,
-                    "name": "",
-                    "icon": ""
+                    "value": 2,
+                    "name": "Super Rare",
+                    "icon": "skin_rarity_2.webp"
                 },
                 "requires": "",
                 "features": [
@@ -25879,14 +26552,94 @@
                         "icon": "icon_claship.webp"
                     }
                 ],
-                "limited": false,
+                "limited": true,
                 "unlock": "Only obtainable from Supercell ID rewards",
                 "foundIn": [],
                 "release": {
-                    "month": 3,
+                    "month": 5,
                     "year": 2025
                 },
                 "image": "knightsupercellstore.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "knightrare",
+                "displayName": "Sandcastle Ash",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "icon": "skin_rarity_1.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "Summer of Brawl",
+                        "image": "bg_summer.webp",
+                        "icon": "icon_summer.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 5,
+                    "year": 2025
+                },
+                "image": "knightrare.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "knightjapan",
+                "displayName": "Shinobi Ash",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "The Ayakashi Clan",
+                        "image": "bg_masks.webp",
+                        "icon": "icon_masks.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [
+                    "Sushi Rolls"
+                ],
+                "release": {
+                    "month": 5,
+                    "year": 2025
+                },
+                "image": "knightjapan.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -26115,6 +26868,15 @@
             {
                 "name": "ash_claship",
                 "image": "ash_claship.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "ash_masks",
+                "image": "ash_masks.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -27716,6 +28478,46 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "beamerscstore",
+                "displayName": "Witch Mandy",
+                "cost": 79,
+                "currency": "Gems",
+                "costBling": 2750,
+                "rarity": {
+                    "value": 2,
+                    "name": "Super Rare",
+                    "icon": "skin_rarity_2.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Clash Stories",
+                        "image": "bg_claship.webp",
+                        "icon": "icon_claship.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 5,
+                    "year": 2025
+                },
+                "image": "beamerscstore.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -27920,6 +28722,15 @@
             {
                 "name": "mandy_carnival",
                 "image": "mandy_carnival.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "mandy_claship",
+                "image": "mandy_claship.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -30025,6 +30836,48 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "insectmanjapan",
+                "displayName": "Tengu Angelo",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Battle for Katana Kingdom",
+                        "image": "bg_feudaljapan.webp",
+                        "icon": "icon_feudaljapan.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [
+                    "Sushi Rolls"
+                ],
+                "release": {
+                    "month": 5,
+                    "year": 2025
+                },
+                "image": "insectmanjapan.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -30130,6 +30983,15 @@
             {
                 "name": "angelo_olympus",
                 "image": "angelo_olympus.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "angelo_feudaljapan",
+                "image": "angelo_feudaljapan.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -30617,6 +31479,46 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "ghostgraffiti",
+                "displayName": "Street Shade",
+                "cost": 79,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 2,
+                    "name": "Super Rare",
+                    "icon": "skin_rarity_2.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "BSC 2024",
+                        "image": "bg_wf.webp",
+                        "icon": "icon_wf.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 5,
+                    "year": 2025
+                },
+                "image": "ghostgraffiti.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -30704,6 +31606,15 @@
             {
                 "name": "shade_facepalm",
                 "image": "shade_facepalm.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "shade_graffiti",
+                "image": "shade_graffiti.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -32237,6 +33148,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "mortis_claship",
+                "image": "mortis_claship.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -32605,6 +33525,48 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "blackholejapan",
+                "displayName": "Shukuteki Tara",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Battle for Katana Kingdom",
+                        "image": "bg_feudaljapan.webp",
+                        "icon": "icon_feudaljapan.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [
+                    "Sushi Rolls"
+                ],
+                "release": {
+                    "month": 5,
+                    "year": 2025
+                },
+                "image": "blackholejapan.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -32746,6 +33708,15 @@
             {
                 "name": "tara_overcharge",
                 "image": "tara_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "tara_feudaljapan",
+                "image": "tara_feudaljapan.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -33882,9 +34853,9 @@
                 ],
                 "groups": [
                     {
-                        "name": "City Troubles",
-                        "image": "bg_default.webp",
-                        "icon": "icon_city.webp"
+                        "name": "License to Brawl",
+                        "image": "bg_hub.webp",
+                        "icon": "icon_hub.webp"
                     }
                 ],
                 "limited": false,
@@ -34657,6 +35628,48 @@
                     "loseAnimation": "wallydeepsea_lose.glb"
                 },
                 "rating": 0
+            },
+            {
+                "name": "wallyjapan",
+                "displayName": "Tanuki Sprout",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Battle for Katana Kingdom",
+                        "image": "bg_feudaljapan.webp",
+                        "icon": "icon_feudaljapan.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [
+                    "Sushi Rolls"
+                ],
+                "release": {
+                    "month": 5,
+                    "year": 2025
+                },
+                "image": "wallyjapan.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -34798,6 +35811,15 @@
             {
                 "name": "sprout_deepsea",
                 "image": "sprout_deepsea.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "sprout_feudaljapan",
+                "image": "sprout_feudaljapan.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -35829,6 +36851,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "squeak_toys",
+                "image": "squeak_toys.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -36161,6 +37192,44 @@
                     "year": 2024
                 },
                 "image": "icedudetoon.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "iceduderare",
+                "displayName": "Bandito Lou",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "icon": "skin_rarity_1.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "Outlaws",
+                        "image": "bg_outlaw.webp",
+                        "icon": "icon_outlaws.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 5,
+                    "year": 2025
+                },
+                "image": "iceduderare.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -38445,7 +39514,7 @@
                 "displayName": "The Fans' Fang",
                 "cost": 149,
                 "currency": "Gems",
-                "costBling": 5000,
+                "costBling": -1,
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
@@ -41252,6 +42321,48 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "doormanjapan",
+                "displayName": "Wanderer Gray",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Battle for Katana Kingdom",
+                        "image": "bg_feudaljapan.webp",
+                        "icon": "icon_feudaljapan.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [
+                    "Sushi Rolls"
+                ],
+                "release": {
+                    "month": 5,
+                    "year": 2025
+                },
+                "image": "doormanjapan.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -41366,6 +42477,15 @@
             {
                 "name": "gray_starrforce",
                 "image": "gray_starrforce.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "gray_feudaljapan",
+                "image": "gray_feudaljapan.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -42159,6 +43279,15 @@
             {
                 "name": "willow_angeldemons",
                 "image": "willow_angeldemons.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "willow_overcharge",
+                "image": "willow_overcharge.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -43675,6 +44804,46 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "leaperkaiju",
+                "displayName": "Monstro Mico",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Kaiju Invasion",
+                        "image": "bg_kaiju.webp",
+                        "icon": "icon_kaiju.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 6,
+                    "year": 2025
+                },
+                "image": "leaperkaiju.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -43861,6 +45030,15 @@
             {
                 "name": "mico_overcharge",
                 "image": "mico_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "mico_kaiju",
+                "image": "mico_kaiju.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -44663,6 +45841,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "lily_overcharge",
+                "image": "lily_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -44828,6 +46015,46 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "crabkaiju",
+                "displayName": "Kaiju Clancy",
+                "cost": 79,
+                "currency": "Gems",
+                "costBling": 2750,
+                "rarity": {
+                    "value": 2,
+                    "name": "Super Rare",
+                    "icon": "skin_rarity_2.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Kaiju Invasion",
+                        "image": "bg_kaiju.webp",
+                        "icon": "icon_kaiju.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 6,
+                    "year": 2025
+                },
+                "image": "crabkaiju.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -44915,6 +46142,24 @@
             {
                 "name": "clancy_facepalm",
                 "image": "clancy_facepalm.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "clancy_overcharge",
+                "image": "clancy_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "clancy_kaiju",
+                "image": "clancy_kaiju.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -45936,6 +47181,223 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "chronomancerkaiju",
+                "displayName": "Mecha Finx",
+                "cost": 299,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 5,
+                    "name": "Legendary",
+                    "icon": "skin_rarity_5.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Voice",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Mecha Squad",
+                        "image": "bg_mecha.webp",
+                        "icon": "icon_mecha.webp"
+                    },
+                    {
+                        "name": "Kaiju Invasion",
+                        "image": "bg_kaiju.webp",
+                        "icon": "icon_kaiju.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 6,
+                    "year": 2025
+                },
+                "image": "chronomancerkaiju.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "chronomancerkaijuchromawhite",
+                "displayName": "Crimson Tyfinx",
+                "cost": 49,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 5,
+                    "name": "Legendary",
+                    "icon": "skin_rarity_5.webp"
+                },
+                "requires": "Mecha Finx",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Voice",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Mecha Squad",
+                        "image": "bg_mecha.webp",
+                        "icon": "icon_mecha.webp"
+                    },
+                    {
+                        "name": "Kaiju Invasion",
+                        "image": "bg_kaiju.webp",
+                        "icon": "icon_kaiju.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 6,
+                    "year": 2025
+                },
+                "image": "chronomancerkaijuchromawhite.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "chronomancerkaijuchromagreen",
+                "displayName": "Mecha Chief Finx",
+                "cost": 49,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 5,
+                    "name": "Legendary",
+                    "icon": "skin_rarity_5.webp"
+                },
+                "requires": "Mecha Finx",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Voice",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Mecha Squad",
+                        "image": "bg_mecha.webp",
+                        "icon": "icon_mecha.webp"
+                    },
+                    {
+                        "name": "Kaiju Invasion",
+                        "image": "bg_kaiju.webp",
+                        "icon": "icon_kaiju.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 6,
+                    "year": 2025
+                },
+                "image": "chronomancerkaijuchromagreen.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "chronomancergold",
+                "displayName": "True Gold Finx",
+                "cost": 25000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 8,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "True Silver Finx",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Gold",
+                        "image": "bg_gold.webp",
+                        "icon": "icon_gold.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2025
+                },
+                "image": "chronomancergold.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "chronomancersilver",
+                "displayName": "True Silver Finx",
+                "cost": 10000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 8,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Silver",
+                        "image": "bg_silver.webp",
+                        "icon": "icon_silver.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2025
+                },
+                "image": "chronomancersilver.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -46028,6 +47490,105 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "finx_kaiju_default",
+                "image": "finx_kaiju_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "finx_kaiju_happy",
+                "image": "finx_kaiju_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "finx_kaiju_sad",
+                "image": "finx_kaiju_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "finx_kaiju_angry",
+                "image": "finx_kaiju_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "finx_kaiju_gg",
+                "image": "finx_kaiju_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "finx_kaiju_clap",
+                "image": "finx_kaiju_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "finx_kaiju_thanks",
+                "image": "finx_kaiju_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "finx_kaiju_sweat",
+                "image": "finx_kaiju_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "finx_kaiju_special",
+                "image": "finx_kaiju_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "finx_kaijuchromawhite",
+                "image": "finx_kaijuchromawhite.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "finx_kaijuchromagreen",
+                "image": "finx_kaijuchromagreen.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -46098,9 +47659,9 @@
                 ],
                 "groups": [
                     {
-                        "name": "Misc",
-                        "image": "bg_default.webp",
-                        "icon": "icon_misc.webp"
+                        "name": "Once Upon",
+                        "image": "bg_onceupon.webp",
+                        "icon": "icon_onceupon.webp"
                     }
                 ],
                 "limited": false,
@@ -46111,6 +47672,82 @@
                     "year": 2025
                 },
                 "image": "morningstarrare.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "morningstargold",
+                "displayName": "True Gold Lumi",
+                "cost": 25000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 8,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "True Silver Lumi",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Gold",
+                        "image": "bg_gold.webp",
+                        "icon": "icon_gold.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2025
+                },
+                "image": "morningstargold.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "morningstarsilver",
+                "displayName": "True Silver Lumi",
+                "cost": 10000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 8,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Silver",
+                        "image": "bg_silver.webp",
+                        "icon": "icon_silver.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2025
+                },
+                "image": "morningstarsilver.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -46204,6 +47841,187 @@
             {
                 "name": "lumi_facepalm",
                 "image": "lumi_facepalm.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            }
+        ]
+    },
+    {
+        "name": "jae",
+        "displayName": "Jae-yong",
+        "rarity": {
+            "value": 4,
+            "name": "Mythic",
+            "color": "#fe0521"
+        },
+        "image": "portrait_jae.webp",
+        "defaultSkin": "alternatordefault",
+        "title": "Amor Fati",
+        "masteryIcon": "mastery_icon_jae.webp",
+        "description": "By day, Jae-yong is your average office worker. By night, he is a karaoke GOD... or so he thinks. The jury is still out on his singing skills.",
+        "skins": [
+            {
+                "name": "alternatordefault",
+                "displayName": "Jae-yong",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 0,
+                    "name": "",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [],
+                "groups": [
+                    {
+                        "name": "",
+                        "image": "bg_default.webp",
+                        "icon": "icon_default.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 5,
+                    "year": 2025
+                },
+                "image": "alternatordefault.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "alternator29gem",
+                "displayName": "Jammin' Jae",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "icon": "skin_rarity_1.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "Vibing",
+                        "image": "bg_music.webp",
+                        "icon": "icon_music.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Included in the Jae-yong early access bundle",
+                "foundIn": [],
+                "release": {
+                    "month": 5,
+                    "year": 2025
+                },
+                "image": "alternator29gem.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "name": "jae_default",
+                "image": "jae_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "jae_happy",
+                "image": "jae_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "jae_sad",
+                "image": "jae_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "jae_angry",
+                "image": "jae_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "jae_gg",
+                "image": "jae_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "jae_clap",
+                "image": "jae_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "jae_thanks",
+                "image": "jae_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "jae_sweat",
+                "image": "jae_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "jae_special",
+                "image": "jae_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "jae_facepalm",
+                "image": "jae_facepalm.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -47693,6 +49511,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "crow_white",
+                "image": "crow_white.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -48232,7 +50059,7 @@
                 "displayName": "World Finals Leon",
                 "cost": 149,
                 "currency": "Gems",
-                "costBling": 5000,
+                "costBling": -1,
                 "rarity": {
                     "value": 3,
                     "name": "Epic",
@@ -48506,6 +50333,15 @@
             {
                 "name": "leon_worldfinals",
                 "image": "leon_worldfinals.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "leon_summer_02",
+                "image": "leon_summer_02.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -49626,6 +51462,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "amber_overcharge",
+                "image": "amber_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -49918,6 +51763,44 @@
                     "year": 2023
                 },
                 "image": "mechadudepirate.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "mechaduderare",
+                "displayName": "Whisked Meg",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "icon": "skin_rarity_1.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "Starry Meal",
+                        "image": "bg_meal.webp",
+                        "icon": "icon_meal.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 5,
+                    "year": 2025
+                },
+                "image": "mechaduderare.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -50617,6 +52500,44 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "powerlevelerrare",
+                "displayName": "Secret Surgevice",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "icon": "skin_rarity_1.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "License to Brawl",
+                        "image": "bg_hub.webp",
+                        "icon": "icon_hub.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 5,
+                    "year": 2025
+                },
+                "image": "powerlevelerrare.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -51258,7 +53179,7 @@
                 ],
                 "groups": [
                     {
-                        "name": "Uno",
+                        "name": "UNO",
                         "image": "bg_uno.webp",
                         "icon": "icon_uno.webp"
                     }
@@ -53229,6 +55150,89 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "samuraijapan",
+                "displayName": "Cursed Kenji",
+                "cost": 299,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 5,
+                    "name": "Legendary",
+                    "icon": "skin_rarity_5.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Battle for Katana Kingdom",
+                        "image": "bg_feudaljapan.webp",
+                        "icon": "icon_feudaljapan.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward for collecting 120 Sushi during the Katana Kingdom event",
+                "foundIn": [],
+                "release": {
+                    "month": 5,
+                    "year": 2025
+                },
+                "image": "samuraijapan.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "samuraijapanovercharge",
+                "displayName": "Oni Kenji",
+                "cost": 499,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 6,
+                    "name": "Hypercharge",
+                    "icon": "skin_rarity_6.webp"
+                },
+                "requires": "Cursed Kenji",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Voice",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Battle for Katana Kingdom",
+                        "image": "bg_feudaljapan.webp",
+                        "icon": "icon_feudaljapan.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward for collecting 200 Sushi during the Katana Kingdom event",
+                "foundIn": [],
+                "release": {
+                    "month": 5,
+                    "year": 2025
+                },
+                "image": "samuraijapanovercharge.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -53343,6 +55347,376 @@
             {
                 "name": "kenji_starrforcechroma2",
                 "image": "kenji_starrforcechroma2.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "kenji_overcharge",
+                "image": "kenji_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "kenji_japan_default",
+                "image": "kenji_japan_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "kenji_japan_happy",
+                "image": "kenji_japan_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "kenji_japan_sad",
+                "image": "kenji_japan_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "kenji_japan_angry",
+                "image": "kenji_japan_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "kenji_japan_gg",
+                "image": "kenji_japan_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "kenji_japan_clap",
+                "image": "kenji_japan_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "kenji_japan_thanks",
+                "image": "kenji_japan_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "kenji_japan_sweat",
+                "image": "kenji_japan_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "kenji_japan_special",
+                "image": "kenji_japan_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            }
+        ]
+    },
+    {
+        "name": "kaze",
+        "displayName": "Kaze",
+        "rarity": {
+            "value": 6,
+            "name": "Ultra Legendary",
+            "color": "#f87628"
+        },
+        "image": "portrait_kaze.webp",
+        "defaultSkin": "geishadefault",
+        "title": "Ninja",
+        "masteryIcon": "mastery_icon_kaze.webp",
+        "description": "Kaze was raised to be a living weapon by her parents, but this was not the life she wanted. After escaping to Starr Park with Kenji, she can now live how she wants. However, she is still torn between the two aspects of her life, being a humble geisha and a deadly ninja.",
+        "skins": [
+            {
+                "name": "geishadefault",
+                "displayName": "Kaze",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 0,
+                    "name": "",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [],
+                "groups": [
+                    {
+                        "name": "",
+                        "image": "bg_default.webp",
+                        "icon": "icon_default.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 6,
+                    "year": 2025
+                },
+                "image": "geishadefault.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "geisharare",
+                "displayName": "Fruity Kaze",
+                "cost": 29,
+                "currency": "Gems",
+                "costBling": 1000,
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "icon": "skin_rarity_1.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "Starry Meal",
+                        "image": "bg_meal.webp",
+                        "icon": "icon_meal.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Included in the Kaze early access bundle",
+                "foundIn": [],
+                "release": {
+                    "month": 6,
+                    "year": 2025
+                },
+                "image": "geisharare.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "name": "kaze_default",
+                "image": "kaze_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "kaze_happy",
+                "image": "kaze_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "kaze_sad",
+                "image": "kaze_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "kaze_angry",
+                "image": "kaze_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "kaze_gg",
+                "image": "kaze_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "kaze_clap",
+                "image": "kaze_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "kaze_thanks",
+                "image": "kaze_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "kaze_sweat",
+                "image": "kaze_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "kaze_special",
+                "image": "kaze_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "kaze_facepalm",
+                "image": "kaze_facepalm.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "kaze_assassin_default",
+                "image": "kaze_assassin_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "kaze_assassin_happy",
+                "image": "kaze_assassin_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "kaze_assassin_sad",
+                "image": "kaze_assassin_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "kaze_assassin_angry",
+                "image": "kaze_assassin_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "kaze_assassin_gg",
+                "image": "kaze_assassin_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "kaze_assassin_clap",
+                "image": "kaze_assassin_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "kaze_assassin_thanks",
+                "image": "kaze_assassin_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "kaze_assassin_sweat",
+                "image": "kaze_assassin_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "kaze_assassin_special",
+                "image": "kaze_assassin_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "kaze_assassin_facepalm",
+                "image": "kaze_assassin_facepalm.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "kaze_overcharge",
+                "image": "kaze_overcharge.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",

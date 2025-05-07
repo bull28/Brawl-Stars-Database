@@ -5,11 +5,11 @@ import {GameModeDisplay, GameModeData, MapPreview, NextStartTimes, MapData, MapS
 type GameModeAttributes = typeof eventList[number]["gameModes"][number];
 type MapAttributes = typeof eventList[number]["gameModes"][number]["maps"][number];
 
-// Last updated: Brawl Pass Season 36
-export const MAP_CYCLE_HOURS = 3456;
-const MAP_CYCLE_SECONDS = 12441600;
-const SEASON_SECONDS = 87091200;
-const MAP_CYCLES_PER_SEASON = 7;
+// Last updated: Brawl Pass Season 38
+export const MAP_CYCLE_HOURS = 8064;
+const MAP_CYCLE_SECONDS = 29030400;
+const SEASON_SECONDS = 58060800;
+const MAP_CYCLES_PER_SEASON = 2;
 
 // 6/24/2024 8:00 UTC is the beginning of a map cycle
 const next_season_time = (((86400*365) * (2024-1970)) + (13*86400) + (175*86400) + (8*3600));
