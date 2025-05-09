@@ -493,6 +493,7 @@ export interface PlayerUpgrades{
 export interface ChallengePreview{
     challengeid: string;
     displayName: string;
+    recommendedLvl: number;
 }
 
 /**
@@ -500,9 +501,11 @@ export interface ChallengePreview{
  */
 export interface ChallengeConfig{
     displayName: string;
+    recommendedLvl: number;
     baseWinMastery: number[];
     baseLossMastery: number[];
     baseCoins: number[];
+    baseBadges: number[];
 }
 
 type GameModUpgradeValues = {

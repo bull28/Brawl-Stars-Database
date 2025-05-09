@@ -24,6 +24,7 @@ router.post<Empty, Empty, SaveReqBody>("/", databaseErrorHandler<SaveReqBody>(as
     let saveToUser = "";
     let masteryMultiplier = 0;
     let coinsMultiplier = 0;
+    let badgeMultiplier = 0;
 
     const reportStatus = validateReport(report);
     if (reportStatus !== 0){
@@ -64,6 +65,7 @@ router.post<Empty, Empty, SaveReqBody>("/", databaseErrorHandler<SaveReqBody>(as
         const rewards = challengeRewards(challenge.challengeid, reportData.player.difficulty, reportData.score.win);
         masteryMultiplier = rewards.mastery;
         coinsMultiplier = rewards.coins;
+        badgeMultiplier = rewards.badges;
     } else if (gameMode === 0){
         if (typeof inputUser !== "string" || inputUser.length === 0){
             body.message = "Username is missing.";
@@ -74,6 +76,7 @@ router.post<Empty, Empty, SaveReqBody>("/", databaseErrorHandler<SaveReqBody>(as
         saveToUser = inputUser;
         masteryMultiplier = 1;
         coinsMultiplier = 1;
+        badgeMultiplier = 1;
     } else{
         body.message = "Username is missing.";
         res.status(400).json(body);
@@ -84,7 +87,7 @@ router.post<Empty, Empty, SaveReqBody>("/", databaseErrorHandler<SaveReqBody>(as
     let resources: UserResources;
     try{
         resources = await getResources({username: saveToUser});
-    } catch (error){
+    } catch (_){
         body.message = "User who started this game was not found.";
         res.status(404).json(body);
         return;
@@ -113,7 +116,7 @@ router.post<Empty, Empty, SaveReqBody>("/", databaseErrorHandler<SaveReqBody>(as
     for (let x = 0; x < resources.accessories.length; x++){
         const badgeReward = badges.get(resources.accessories[x].name);
         if (badgeReward !== undefined){
-            resources.accessories[x].badges += badgeReward;
+            resources.accessories[x].badges += Math.floor(badgeReward * badgeMultiplier);
         }
     }
 

@@ -12,6 +12,7 @@ interface ScorePerformance{
 interface ChallengeRewardResult{
     mastery: number;
     coins: number;
+    badges: number;
 }
 
 const REPORT_FORMAT = {
@@ -494,11 +495,9 @@ export function extractReportData(data: number[]): ReportData | undefined{
             badgeMultiplier = 600 + difficulty * 200 - 1200;
         }
     } else if (gameMode === 2){
-        // For challenges, mastery rewards depend on the base mastery stored in the challenge config
-        // Badge rewards depend on the enemy strength tier (this value is stored in the difficulty)
+        // For challenges, mastery, coins, and badges rewards depend on the base mastery stored in the challenge config
         points = 1;
         baseCoins = 1;
-        badgeMultiplier = 200 + difficulty * 200;
     }
     points = Math.floor(points * data[p] * pointsMultiplier / 100);
 
@@ -634,17 +633,19 @@ export function extractReportData(data: number[]): ReportData | undefined{
 export function challengeRewards(challengeid: string, difficulty: number, win: boolean): ChallengeRewardResult{
     const challenge = challengeList.get(challengeid);
     if (challenge === undefined || difficulty < 0){
-        return {mastery: 0, coins: 0};
+        return {mastery: 0, coins: 0, badges: 0};
     }
 
     let mastery = challenge.config.baseLossMastery;
     const coins = challenge.config.baseCoins;
+    const badges = challenge.config.baseBadges;
     if (win === true){
         mastery = challenge.config.baseWinMastery;
     }
 
     return {
         mastery: mastery[Math.min(mastery.length - 1, difficulty)],
-        coins: coins[Math.min(coins.length - 1, difficulty)]
+        coins: coins[Math.min(coins.length - 1, difficulty)],
+        badges: badges[Math.min(badges.length - 1, difficulty)]
     };
 }

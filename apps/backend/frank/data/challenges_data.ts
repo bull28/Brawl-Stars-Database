@@ -76,9 +76,11 @@ const challenges = new Map<string, ChallengePreset>([
     ["default", {
         config: {
             displayName: "Default Challenge",
-            baseWinMastery: [1],
-            baseLossMastery: [1],
-            baseCoins: [1]
+            recommendedLvl: 0,
+            baseWinMastery: [0],
+            baseLossMastery: [0],
+            baseCoins: [0],
+            baseBadges: [0]
         },
         gameMod: {
             options: {},
@@ -118,9 +120,11 @@ const challenges = new Map<string, ChallengePreset>([
     ["expert", {
         config: {
             displayName: "Expert Levels",
+            recommendedLvl: 12,
             baseWinMastery: [1, 1, 1, 1],
             baseLossMastery: [1, 1, 1, 1],
-            baseCoins: [1, 1, 1, 1]
+            baseCoins: [1, 1, 1, 1],
+            baseBadges: [1, 1, 1, 1]
         },
         gameMod: {
             options: {
@@ -413,9 +417,11 @@ const challenges = new Map<string, ChallengePreset>([
     ["classic1", {
         config: {
             displayName: "Classic Part 1",
+            recommendedLvl: 0,
             baseWinMastery: [2, 3, 5, 9, 20, 60],
             baseLossMastery: [2, 3, 5, 7, 10, 15],
-            baseCoins: [1, 1, 1.25, 1.5, 1.75, 2.5]
+            baseCoins: [1, 1, 1.25, 1.5, 1.75, 2.5],
+            baseBadges: [2, 3, 4, 5, 6, 8]
         },
         gameMod: {
             difficulties: classicChallenge.difficulties,
@@ -484,9 +490,11 @@ const challenges = new Map<string, ChallengePreset>([
     ["classic2", {
         config: {
             displayName: "Classic Part 2",
+            recommendedLvl: 6,
             baseWinMastery: [4, 6, 9, 18, 40, 120],
             baseLossMastery: [4, 6, 9, 12, 16, 20],
-            baseCoins: [1, 1, 1.25, 1.5, 1.75, 2.5]
+            baseCoins: [1, 1, 1.25, 1.5, 1.75, 2.5],
+            baseBadges: [2, 3, 4, 5, 6, 8]
         },
         gameMod: {
             difficulties: classicChallenge.difficulties,
@@ -555,9 +563,11 @@ const challenges = new Map<string, ChallengePreset>([
     ["classic3", {
         config: {
             displayName: "Classic Part 3",
+            recommendedLvl: 10,
             baseWinMastery: [6, 9, 14, 28, 60, 180],
             baseLossMastery: [6, 9, 14, 20, 27, 36],
-            baseCoins: [1, 1, 1.25, 1.5, 1.75, 2.5]
+            baseCoins: [1, 1, 1.25, 1.5, 1.75, 2.5],
+            baseBadges: [2, 3, 4, 5, 6, 8]
         },
         gameMod: {
             difficulties: classicChallenge.difficulties,

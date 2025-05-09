@@ -41,7 +41,7 @@ export function validateToken(token: string): string{
             return "";
         }
         return data.username;
-    } catch (error){
+    } catch (_){
         return "";
     }
 }

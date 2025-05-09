@@ -51,7 +51,8 @@ challengeList.set("test", {
         displayName: "Test Challenge",
         baseWinMastery: [3, 6],
         baseLossMastery: [2, 4],
-        baseCoins: [2, 2]
+        baseCoins: [2, 2],
+        baseBadges: [2, 3]
     },
     gameMod: {
         options: {

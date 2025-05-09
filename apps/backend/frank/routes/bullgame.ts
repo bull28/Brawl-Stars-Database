@@ -36,7 +36,7 @@ router.post<Empty, string, BullgameReqBody>("/", async (req, res) => {
         }
 
         gameMod = JSON.stringify(gameModObject);
-    } catch (error){
+    } catch (_){
         res.status(403).send("Invalid game modification provided.");
         return;
     }
@@ -45,7 +45,7 @@ router.post<Empty, string, BullgameReqBody>("/", async (req, res) => {
 
     try{
         text = await fs.readFile(path.join(rootPath, "custom.html"), {encoding: "utf-8"});
-    } catch (error){
+    } catch (_){
         res.status(500).send("An error occurred while setting up the game.");
         return;
     }
@@ -67,7 +67,7 @@ router.get<{level: string;}>("/:level", async (req, res) => {
 
     try{
         await fs.access(fileName, fs.constants.R_OK);
-    } catch (error){
+    } catch (_){
         res.status(404).send("Could not find the level.");
         return;
     }

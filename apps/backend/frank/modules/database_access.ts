@@ -47,7 +47,7 @@ if (process.env["DATABASE_HOST"] !== undefined){
 
 if (process.env["DATABASE_PORT"] !== undefined){
     const portString = process.env["DATABASE_PORT"];
-    if (isNaN(+portString) === false){
+    if (isNaN(Number(portString)) === false){
         databaseLogin.port = parseInt(portString);
     }
 } if (process.env["DATABASE_USER"] !== undefined){
@@ -225,7 +225,7 @@ export async function transaction(callback: (connection: PoolConnection) => Prom
             pool.releaseConnection(connection);
             throw error;
         }
-    } catch(error){
+    } catch (_){
         throw new Error("Could not connect to database.");
     }
 }

@@ -21,13 +21,13 @@ let port = 6969;
 
 if (process.env["PORT"] !== undefined){
     const portString = process.env["PORT"];
-    if (!isNaN(+portString)){
+    if (!isNaN(Number(portString))){
         port = parseInt(portString);
     }
 }
 if (process.env["NODE_ENV"] === "test" && process.env["TEST_PORT"] !== undefined){
     const portString = process.env["TEST_PORT"];
-    if (!isNaN(+portString)){
+    if (!isNaN(Number(portString))){
         port = parseInt(portString);
     }
 }

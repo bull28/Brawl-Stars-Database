@@ -84,7 +84,8 @@ export function getChallengeList(): ChallengePreview[]{
     challengeList.forEach((value, key) => {
         challenges.push({
             challengeid: key,
-            displayName: value.config.displayName
+            displayName: value.config.displayName,
+            recommendedLvl: value.config.recommendedLvl
         });
     });
     return challenges;

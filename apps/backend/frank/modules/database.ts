@@ -12,8 +12,8 @@ type UsernameCallback<R, Q, P> = (req: Request<P, Empty, R, Q>, res: Response, u
 
 export function databaseErrorHandler<R = Empty, Q = Query, P = ParamsDictionary>(callback: ExpressCallback<R, Q, P>): ExpressCallback<R, Q, P>{
     return (req: Request<P, Empty, R, Q>, res: Response, next: NextFunction) => {
-        Promise.resolve(callback(req, res, next)).catch((reason) => {
-            const errorData = getErrorMessage(reason);
+        Promise.resolve(callback(req, res, next)).catch((reason: unknown) => {
+            const errorData = getErrorMessage(reason as Error);
             res.status(errorData.status).send(errorData.message);
         });
     };
@@ -38,8 +38,8 @@ export function loginErrorHandler<R = Empty, Q = Query, P = ParamsDictionary>(ca
             return;
         }
 
-        Promise.resolve(callback(req, res, username, next)).catch((reason) => {
-            const errorData = getErrorMessage(reason);
+        Promise.resolve(callback(req, res, username, next)).catch((reason: unknown) => {
+            const errorData = getErrorMessage(reason as Error);
             res.status(errorData.status).send(errorData.message);
         });
     };

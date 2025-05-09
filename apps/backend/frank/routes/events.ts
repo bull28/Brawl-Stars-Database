@@ -36,7 +36,7 @@ router.get<EventsParams, string | CurrentEventsData, Empty, TimeQuery>("/events/
     let time: SeasonTime | undefined;
 
     if (timeSetting === "worldtime"){
-        if (isNaN(+secondString) === true){
+        if (isNaN(Number(secondString)) === true){
             res.status(400).send("Invalid input.");
             return;
         }

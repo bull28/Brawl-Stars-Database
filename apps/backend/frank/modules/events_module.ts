@@ -303,11 +303,11 @@ export function mod(x: number, y: number): number{
 
 export function isValidTimeQuery(hour: string, minute: string, second: string): boolean{
     let valid = true;
-    if (isNaN(+hour) === true || hour === ""){
+    if (isNaN(Number(hour)) === true || hour === ""){
         valid = false;
-    } if (isNaN(+minute) === true || minute === ""){
+    } if (isNaN(Number(minute)) === true || minute === ""){
         valid = false;
-    } if (isNaN(+second) === true || second === ""){
+    } if (isNaN(Number(second)) === true || second === ""){
         valid = false;
     }
     return valid;

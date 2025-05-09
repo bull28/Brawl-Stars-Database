@@ -73,7 +73,7 @@ export function getAccessoryData(userAccessories: UserAccessory[]): AccessoryDat
     for (let x = 0; x < accessories.length; x++){
         const a = accessories[x];
 
-        const badgeCount = badges.has(a.name) ? badges.get(a.name)! : 0;
+        const badgeCount = badges.get(a.name) ?? 0;
 
         collection.push({
             name: a.name,
