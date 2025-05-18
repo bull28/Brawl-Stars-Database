@@ -28505,7 +28505,7 @@
                     }
                 ],
                 "limited": true,
-                "unlock": "",
+                "unlock": "Only obtainable from Supercell ID rewards",
                 "foundIn": [],
                 "release": {
                     "month": 5,
@@ -55178,7 +55178,7 @@
                     }
                 ],
                 "limited": true,
-                "unlock": "Reward for collecting 120 Sushi during the Katana Kingdom event",
+                "unlock": "Reward for collecting 100 Sushi during the Katana Kingdom event",
                 "foundIn": [],
                 "release": {
                     "month": 5,

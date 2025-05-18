@@ -82,9 +82,15 @@ export function challengeExists(challengeid: string): boolean{
 export function getChallengeList(): ChallengePreview[]{
     const challenges: ChallengePreview[] = [];
     challengeList.forEach((value, key) => {
+        let stages = 8;
+        if (value.gameMod.stages !== undefined){
+            stages = value.gameMod.stages.length;
+        }
+
         challenges.push({
             challengeid: key,
             displayName: value.config.displayName,
+            stages: stages,
             recommendedLvl: value.config.recommendedLvl
         });
     });

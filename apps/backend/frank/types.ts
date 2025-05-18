@@ -493,6 +493,7 @@ export interface PlayerUpgrades{
 export interface ChallengePreview{
     challengeid: string;
     displayName: string;
+    stages: number;
     recommendedLvl: number;
 }
 

@@ -93,12 +93,9 @@ const challenges = new Map<string, ChallengePreset>([
                 timePerEnemy: 2/3,
                 enemyStats: [100]
             }],
-            stages: [{
-                completion: 300,
-                time: 150,
-                powerReward: 0,
-                gearsReward: 0
-            }],
+            stages: [
+                {completion: 300, time: 150, powerReward: 0, gearsReward: 0}
+            ],
             levels: [{
                 levelid: 0,
                 waves: [],
@@ -107,14 +104,44 @@ const challenges = new Map<string, ChallengePreset>([
                 stages: [0, 0],
                 destination: 0
             }],
-            maxScores: {
-                completion: 300,
-                time: 150,
-                destination: 0,
-                health: 90,
-                gear: 30,
-                enemy: 0
-            }
+            maxScores: {completion: 300, time: 150, destination: 0, health: 90, gear: 30, enemy: 0}
+        }
+    }],
+    ["tutorial", {
+        config: {
+            displayName: "Beginner Challenge",
+            recommendedLvl: 0,
+            baseWinMastery: [0],
+            baseLossMastery: [0],
+            baseCoins: [0],
+            baseBadges: [0]
+        },
+        gameMod: {
+            options: {
+                gameMode: 1,
+                maxAccessories: 0,
+                startingPower: 0,
+                startingGears: 3,
+                bonusResources: false
+            },
+            difficulties: [
+                {
+                    difficultyid: 0,
+                    name: "Difficulty 1",
+                    countTier: 0,
+                    strengthTier: 0,
+                    healthBonusReq: 0.5,
+                    timePerEnemy: 1,
+                    enemyStats: [100.0, 112.5, 125.0, 137.5]
+                }
+            ],
+            stages: [
+                {completion: 40, time: 0, powerReward: 14, gearsReward: 1.5},
+                {completion: 60, time: 0, powerReward: 21, gearsReward: 1.5},
+                {completion: 80, time: 0, powerReward: 28, gearsReward: 1.5},
+                {completion: 120, time: 0, powerReward: 0, gearsReward: 0}
+            ],
+            maxScores: {completion: 300, time: 0, destination: 0, health: 0, gear: 0, enemy: 0}
         }
     }],
     ["expert", {

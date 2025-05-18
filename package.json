@@ -24,9 +24,6 @@
   "homepage": "https://github.com/bull28/Brawl-Stars-Database#readme",
   "workspaces": [
     "packages/*",
-    "apps/*"
-  ],
-  "dependencies": {
-    "turbo": "^1.10.12"
-  }
+    "\u2800apps/*"
+  ]
 }

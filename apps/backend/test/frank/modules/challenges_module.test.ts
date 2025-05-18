@@ -11,7 +11,13 @@ describe("Challenges module", function(){
         expect(challenges).to.have.lengthOf(challengeList.size);
 
         for (let x = 0; x < challenges.length; x++){
+            expect(challenges[x]).to.have.keys(["challengeid", "displayName", "stages", "recommendedLvl"]);
             expect(challengeList.has(challenges[x].challengeid)).to.be.true;
+
+            const data = challengeList.get(challenges[x].challengeid)!;
+            expect(challenges[x].displayName).to.equal(data.config.displayName);
+            expect(challenges[x].recommendedLvl).to.equal(data.config.recommendedLvl);
+            expect(challenges[x].stages).to.equal(data.gameMod.stages !== undefined ? data.gameMod.stages.length : 8);
         }
     });
 
