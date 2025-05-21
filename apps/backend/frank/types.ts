@@ -275,6 +275,9 @@ export interface CurrentEventsData{
 
 //------------------------------------------------------------------------------------------------//
 
+/**
+ * Includes a token and the name of the user who requested it
+ */
 export interface UserTokenResult{
     token: string;
     username: string;

@@ -110,11 +110,22 @@ describe("Account endpoints", function(){
         });
 
         it("Username and password are too long", async function(){
-            const username = "///////////////////////////////";
+            const username = "bulldarrylelprimofrankash";
             const password = "/////////////////////////////////////////////////////////////////////////////////////////////////////";
             const res = await chai.request(server).post("/signup").send({username: username, password: password});
             expect(res).to.have.status(400);
-            expect(res.text).to.equal("Username or password is too long. Maximum username length is 30 and password length is 100.");
+            expect(res.text).to.equal("Username or password is too long. Maximum username length is 20 and password length is 100.");
+
+            const [results] = await connection.query(`SELECT username from ${tables.users} WHERE username = ?;`, [username]);
+            expect(results).to.have.lengthOf(0);
+        });
+
+        it("Username contains invalid characters", async function(){
+            const username = " \u00a0\u200b\u2800\u3164Otis";
+            const password = "password";
+            const res = await chai.request(server).post("/signup").send({username: username, password: password});
+            expect(res).to.have.status(400);
+            expect(res.text).to.equal("Username can only contain letters, numbers, and underscores.");
 
             const [results] = await connection.query(`SELECT username from ${tables.users} WHERE username = ?;`, [username]);
             expect(results).to.have.lengthOf(0);

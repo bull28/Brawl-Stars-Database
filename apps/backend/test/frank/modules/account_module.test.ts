@@ -9,11 +9,11 @@ describe("Account module", function(){
         expect(signed).to.have.property("username", "test");
 
         it("Valid token", function(){
-            expect(validateToken(signed.token)).to.equal("test");
+            expect(validateToken(signed.token)).to.eql({username: "test", status: 0});
         });
 
         it("Invalid token", function(){
-            expect(validateToken("not a valid token")).to.equal("");
+            expect(validateToken("not a valid token")).to.eql({username: "", status: 3});
         });
     });
 

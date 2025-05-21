@@ -17,6 +17,9 @@ interface UpdateReqBody{
     menuTheme?: string;
 }
 
+// Usernames must match this pattern
+const validUsername = new RegExp(/^[A-Za-z0-9_]+$/);
+
 // Validates a user's token
 router.get("/authenticate", loginErrorHandler(async (req, res, username) => {
     const login = await userLogin({username: username});
@@ -72,12 +75,16 @@ router.post<Empty, Empty, LoginReqBody>("/signup", databaseErrorHandler<LoginReq
         return;
     }
 
-    if (username.length > 30 || password.length > 100){
-        res.status(400).send("Username or password is too long. Maximum username length is 30 and password length is 100.");
+    if (username.length > 20 || password.length > 100){
+        res.status(400).send("Username or password is too long. Maximum username length is 20 and password length is 100.");
         return;
     }
     if (username.length < 2 || password.length < 3){
         res.status(400).send("Username or password is too short. Minimum username length is 2 and password length is 3.");
+        return;
+    }
+    if (validUsername.test(username) === false){
+        res.status(400).send("Username can only contain letters, numbers, and underscores.");
         return;
     }
 
@@ -99,8 +106,9 @@ router.post<Empty, Empty, UpdateReqBody>("/update", loginErrorHandler<UpdateReqB
     const newTheme = req.body.menuTheme;
 
     if (typeof newPassword !== "string" && typeof newTheme !== "string"){
-        const userInfo = signToken(currentUsername);
-        res.json(userInfo);
+        //const userInfo = signToken(currentUsername);
+        //res.json(userInfo);
+        res.send("Account successfully updated.");
         return;
     }
     if (newPassword !== undefined && newPassword.length < 3){
@@ -147,8 +155,9 @@ router.post<Empty, Empty, UpdateReqBody>("/update", loginErrorHandler<UpdateReqB
         username: currentUsername
     });
 
-    const userInfo = signToken(currentUsername);
-    res.json(userInfo);
+    //const userInfo = signToken(currentUsername);
+    //res.json(userInfo);
+    res.send("Account successfully updated.");
 }));
 
 

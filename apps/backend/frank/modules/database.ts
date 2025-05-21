@@ -31,14 +31,18 @@ export function loginErrorHandler<R = Empty, Q = Query, P = ParamsDictionary>(ca
             return;
         }
 
-        const username = validateToken(token);
+        const validateResult = validateToken(token);
 
-        if (username === ""){
+        if (validateResult.status === 2){
+            res.status(401).send("Token is expired.");
+            return;
+        }
+        if (validateResult.status !== 0){
             res.status(401).send("Invalid token.");
             return;
         }
 
-        Promise.resolve(callback(req, res, username, next)).catch((reason: unknown) => {
+        Promise.resolve(callback(req, res, validateResult.username, next)).catch((reason: unknown) => {
             const errorData = getErrorMessage(reason as Error);
             res.status(errorData.status).send(errorData.message);
         });

@@ -8,6 +8,11 @@ declare module "jsonwebtoken"{
     }
 }
 
+interface ValidateTokenResult{
+    username: string;
+    status: number;
+}
+
 let secret: jsonwebtoken.Secret = "THE KING WINS AGAIN";
 const saltBytes = 32;
 const hashLength = 64;
@@ -19,30 +24,32 @@ if (process.env["TOKEN_SECRET"] !== undefined){
 }
 
 export function signToken(username: string): UserTokenResult{
-    const user: UsernameJwtPayload = {
-        "username": username
-    };
+    const user: UsernameJwtPayload = {username: username};
 
-    const token = jsonwebtoken.sign(user, secret);
+    const token = jsonwebtoken.sign(user, secret, {expiresIn: 604800});
 
-    const userInfo: UserTokenResult = {
-        "token": token,
-        "username": username
-    };
+    const userInfo: UserTokenResult = {token: token, username: username};
 
     return userInfo;
 }
 
-export function validateToken(token: string): string{
+export function validateToken(token: string): ValidateTokenResult{
     try{
         const data = jsonwebtoken.verify(token, secret) as UsernameJwtPayload;
 
         if (data.username === undefined){
-            return "";
+            return {username: "", status: 1};
         }
-        return data.username;
-    } catch (_){
-        return "";
+        return {username: data.username, status: 0};
+    } catch (e){
+        const error = e as Error;
+        if (error.name === "TokenExpiredError"){
+            return {username: "", status: 2};
+        }
+        if (error.name === "JsonWebTokenError"){
+            return {username: "", status: 3};
+        }
+        return {username: "", status: 4};
     }
 }
 

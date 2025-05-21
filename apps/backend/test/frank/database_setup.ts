@@ -52,7 +52,8 @@ challengeList.set("test", {
         baseWinMastery: [3, 6],
         baseLossMastery: [2, 4],
         baseCoins: [2, 2],
-        baseBadges: [2, 3]
+        baseBadges: [2, 3],
+        recommendedLvl: 0
     },
     gameMod: {
         options: {
