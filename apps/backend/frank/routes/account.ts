@@ -6,6 +6,10 @@ import {Empty} from "../types";
 const router = express.Router();
 
 
+interface AuthReqBody{
+    menuTheme: string;
+}
+
 interface LoginReqBody{
     username: string;
     password: string;
@@ -21,7 +25,12 @@ interface UpdateReqBody{
 const validUsername = new RegExp(/^[A-Za-z0-9_]+$/);
 
 // Validates a user's token
-router.get("/authenticate", loginErrorHandler(async (req, res, username) => {
+router.get("/authenticate", loginErrorHandler<Empty, AuthReqBody>(async (req, res, username) => {
+    if (req.query.menuTheme === undefined){
+        res.json({username: username});
+        return;
+    }
+
     const login = await userLogin({username: username});
     if (login === undefined){
         res.status(401).send("Invalid token.");

@@ -48,6 +48,14 @@ describe("Account endpoints", function(){
             const res = await chai.request(server).get("/authenticate").auth(TEST_TOKEN, {type: "bearer"});
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("object");
+            expect(res.body).to.have.keys(["username"]);
+            expect(res.body.username).to.equal(TEST_USERNAME);
+        });
+
+        it("Valid token with menu theme", async function(){
+            const res = await chai.request(server).get("/authenticate").query({menuTheme: ""}).auth(TEST_TOKEN, {type: "bearer"});
+            expect(res).to.have.status(200);
+            expect(res.body).to.be.an("object");
             expect(res.body).to.have.keys(["username", "menuTheme"]);
             expect(res.body.username).to.equal(TEST_USERNAME);
             expect(res.body.menuTheme).to.equal(TEST_THEME);
