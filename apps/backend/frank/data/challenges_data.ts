@@ -441,6 +441,118 @@ const challenges = new Map<string, ChallengePreset>([
             }
         }
     }],
+    ["boss", {
+        config: {
+            displayName: "Boss Fight",
+            recommendedLvl: 0,
+            baseWinMastery: [],
+            baseLossMastery: [],
+            baseCoins: [],
+            baseBadges: []
+        },
+        gameMod: {
+            options: {},
+            difficulties: [
+                {
+                    difficultyid: 6,
+                    name: "Difficulty 7",
+                    countTier: 0,
+                    strengthTier: 2,
+                    healthBonusReq: 0.5,
+                    timePerEnemy: 0.75,
+                    enemyStats: [412.5, 450.0]
+                },
+                {
+                    difficultyid: 7,
+                    name: "Difficulty 8",
+                    countTier: 0,
+                    strengthTier: 3,
+                    healthBonusReq: 0.5,
+                    timePerEnemy: 0.75,
+                    enemyStats: [550.0, 575.0],
+                },
+                {
+                    difficultyid: 8,
+                    name: "Difficulty 9",
+                    countTier: 1,
+                    strengthTier: 3,
+                    healthBonusReq: 0.5,
+                    timePerEnemy: 0.7,
+                    enemyStats: [762.5, 800.0],
+                },
+                {
+                    difficultyid: 9,
+                    name: "Difficulty 10",
+                    countTier: 2,
+                    strengthTier: 4,
+                    healthBonusReq: 0.5,
+                    timePerEnemy: 0.6666666666666666,
+                    enemyStats: [1125.0, 1200.0],
+                }
+            ],
+            stages: [
+                {completion: 0, time: 0, powerReward: 30, gearsReward: 0},
+                {completion: 300, time: 180, powerReward: 0, gearsReward: 0}
+            ],
+            maxScores: {completion: 300, time: 180, destination: 0, health: 90, gear: 30, enemy: 0},
+            levels: [
+                {
+                    levelid: 0,
+                    waves: [
+                        {names: [["firstmeteor"]], multiple: []}
+                    ],
+                    background: "entrance",
+                    displayName: "Starr Park Entrance",
+                    stages: [0, 0],
+                    destination: 0
+                },
+                {
+                    levelid: 13,
+                    waves: [
+                        {names: [["bull"]], multiple: []}
+                    ],
+                    background: "rooftop",
+                    displayName: "Rooftop",
+                    stages: [1, 1],
+                    destination: 0
+                }
+            ],
+            playerUpgradeValues: {
+                health: {
+                    value: [300, 12.5],
+                    cost: [9, 10, 12, 14],
+                    maxLevel: 4
+                },
+                damage: {
+                    value: [300, 12.5],
+                    cost: [9, 10, 12, 14],
+                    maxLevel: 4
+                },
+                healing: {
+                    value: [1000, 50],
+                    cost: [18, 22],
+                    maxLevel: 2
+                },
+                speed: {
+                    value: [7, 1],
+                    cost: [30],
+                    maxLevel: 1
+                    //cost: [5, 6, 8, 10, 13, 16, 22, 30],
+                    //maxLevel: 8
+                },
+                ability: {
+                    value: [100, 20],
+                    cost: [48],
+                    maxLevel: 1
+                },
+                lifeSteal: {
+                    value: [250, 50],
+                    cost: [32],
+                    maxLevel: 1
+                }
+            }
+        }
+    }],
     ["classic1", {
         config: {
             displayName: "Classic Part 1",
