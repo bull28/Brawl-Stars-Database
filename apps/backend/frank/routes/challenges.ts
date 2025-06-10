@@ -1,14 +1,15 @@
 import express from "express";
 import {randomUUID} from "crypto";
-import {challengeExists, getChallengeList, getStaticGameMod} from "../modules/challenges_module";
+import {challengeExists, getChallengeList, validateUserGameMod, getStaticGameMod} from "../modules/challenges_module";
 import {databaseErrorHandler, loginErrorHandler, getResources, getActiveChallenge, acceptActiveChallenge, replaceActiveChallenge} from "../modules/database";
-import {Empty} from "../types";
+import {Empty, UserSetGameMod} from "../types";
 
 const router = express.Router();
 
 
 interface ChallengeKeyReqBody{
     key: string;
+    settings: UserSetGameMod;
 }
 
 interface ChallengeStartReqBody{
@@ -29,6 +30,10 @@ router.post<Empty, Empty, ChallengeKeyReqBody>("/get", databaseErrorHandler<Chal
         return;
     }
 
+    // Only add the game preferences settings to the game modification if the object is valid
+    const settings = req.body.settings;
+    const prefs: UserSetGameMod = validateUserGameMod(settings) ? settings : {};
+
     // Get the challenge ID from the active challenge record
     const challenge = await getActiveChallenge({key: key});
 
@@ -44,7 +49,7 @@ router.post<Empty, Empty, ChallengeKeyReqBody>("/get", databaseErrorHandler<Chal
     const resources = await getResources({username: challenge.accepted_by});
 
     // Using the challenge ID, get the game modification object for that challenge
-    const mod = getStaticGameMod(challenge.challengeid, key, resources);
+    const mod = getStaticGameMod(challenge.challengeid, key, resources, prefs);
     if (mod === undefined){
         res.status(404).send("Challenge not found");
         return;

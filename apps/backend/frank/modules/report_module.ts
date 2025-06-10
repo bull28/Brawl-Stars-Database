@@ -644,8 +644,8 @@ export function challengeRewards(challengeid: string, difficulty: number, win: b
     }
 
     return {
-        mastery: mastery[Math.min(mastery.length - 1, difficulty)],
-        coins: coins[Math.min(coins.length - 1, difficulty)],
-        badges: badges[Math.min(badges.length - 1, difficulty)]
+        mastery: mastery.length > 0 ? mastery[Math.min(mastery.length - 1, difficulty)] : 0,
+        coins: coins.length > 0 ? coins[Math.min(coins.length - 1, difficulty)] : 0,
+        badges: badges.length > 0 ? badges[Math.min(badges.length - 1, difficulty)] : 0
     };
 }

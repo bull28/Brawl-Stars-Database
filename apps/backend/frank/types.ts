@@ -580,6 +580,17 @@ export interface ChallengeGameMod{
     playerAccessories?: string[];
     playerUpgradeTiers?: Record<string, number>;
     playerUpgradeValues?: Partial<GameModUpgradeValues>;
+    playerSkins?: string[];
+}
+
+/**
+ * Game modification options that can be directly set by the user
+ * 
+ * Only includes cosmetic preferences, not gameplay options
+ */
+export interface UserSetGameMod{
+    playerSkins?: string[];
+    hiddenBrawlers?: string[];
 }
 
 //------------------------------------------------------------------------------------------------//

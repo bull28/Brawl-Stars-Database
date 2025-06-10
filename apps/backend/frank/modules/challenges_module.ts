@@ -1,6 +1,6 @@
 import challengeList from "../data/challenges_data";
 import {getMasteryLevel} from "../modules/resources_module";
-import {UserResources, PlayerUpgrades, ChallengePreview, ChallengeGameMod} from "../types";
+import {UserResources, PlayerUpgrades, ChallengePreview, ChallengeGameMod, UserSetGameMod} from "../types";
 
 const challengeUpgrades: {[k in keyof PlayerUpgrades]: [number, number][]} = {
     startingPower: [[0, 0]],
@@ -97,9 +97,48 @@ export function getChallengeList(): ChallengePreview[]{
     return challenges;
 }
 
-export function getStaticGameMod(challengeid: string, key: string, resources: UserResources): ChallengeGameMod | undefined{
+export function validateUserGameMod(prefs: UserSetGameMod): boolean{
+    if (typeof prefs !== "object" || prefs === null || Array.isArray(prefs) === true){
+        return false;
+    }
+
+    let valid = true;
+
+    // If the skins are provided, they must be an array of strings
+    const playerSkins = prefs.playerSkins;
+    if (playerSkins !== undefined){
+        if (Array.isArray(playerSkins) === true){
+            for (let x = 0; x < playerSkins.length; x++){
+                if (typeof playerSkins[x] !== "string"){
+                    valid = false;
+                }
+            }
+        } else{
+            return false;
+        }
+    }
+
+    // If the hidden brawlers are provided, they must be an array of strings
+    const hiddenBrawlers = prefs.hiddenBrawlers;
+    if (hiddenBrawlers !== undefined){
+        if (Array.isArray(hiddenBrawlers) === true){
+            for (let x = 0; x < hiddenBrawlers.length; x++){
+                if (typeof hiddenBrawlers[x] !== "string"){
+                    valid = false;
+                }
+            }
+        } else{
+            return false;
+        }
+    }
+
+    return valid;
+}
+
+export function getStaticGameMod(challengeid: string, key: string, resources: UserResources, prefs?: UserSetGameMod): ChallengeGameMod | undefined{
     // Options, difficulties, stages, levels, max scores, and player upgrade values are copied from the challenge data
     // Player accessories, player upgrade tiers, and player upgrade values are added in later
+    // The user can optionally specify cosmetic preferences (menu theme, model skins) to include
     const data = challengeList.get(challengeid);
     if (data === undefined){
         return undefined;
@@ -180,6 +219,10 @@ export function getStaticGameMod(challengeid: string, key: string, resources: Us
 
     if (challenge.playerUpgradeValues !== undefined){
         gameMod.playerUpgradeValues = challenge.playerUpgradeValues;
+    }
+
+    if (prefs !== undefined && prefs.playerSkins !== undefined){
+        gameMod.playerSkins = prefs.playerSkins;
     }
 
     return gameMod;

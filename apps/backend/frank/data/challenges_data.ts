@@ -444,8 +444,8 @@ const challenges = new Map<string, ChallengePreset>([
     ["boss", {
         config: {
             displayName: "Boss Fight",
-            recommendedLvl: 0,
-            baseWinMastery: [],
+            recommendedLvl: 4,
+            baseWinMastery: [1, 2, 3, 4, 5, 6, 8, 15, 25, 40],
             baseLossMastery: [],
             baseCoins: [],
             baseBadges: []
@@ -453,6 +453,15 @@ const challenges = new Map<string, ChallengePreset>([
         gameMod: {
             options: {},
             difficulties: [
+                {
+                    difficultyid: 3,
+                    name: "Difficulty 4",
+                    countTier: 0,
+                    strengthTier: 1,
+                    healthBonusReq: 0.45,
+                    timePerEnemy: 0.8,
+                    enemyStats: [300.0, 300.0]
+                },
                 {
                     difficultyid: 6,
                     name: "Difficulty 7",
@@ -472,18 +481,9 @@ const challenges = new Map<string, ChallengePreset>([
                     enemyStats: [550.0, 575.0],
                 },
                 {
-                    difficultyid: 8,
-                    name: "Difficulty 9",
-                    countTier: 1,
-                    strengthTier: 3,
-                    healthBonusReq: 0.5,
-                    timePerEnemy: 0.7,
-                    enemyStats: [762.5, 800.0],
-                },
-                {
                     difficultyid: 9,
                     name: "Difficulty 10",
-                    countTier: 2,
+                    countTier: 0,
                     strengthTier: 4,
                     healthBonusReq: 0.5,
                     timePerEnemy: 0.6666666666666666,
@@ -491,7 +491,7 @@ const challenges = new Map<string, ChallengePreset>([
                 }
             ],
             stages: [
-                {completion: 0, time: 0, powerReward: 30, gearsReward: 0},
+                {completion: 0, time: 0, powerReward: 0, gearsReward: 0},
                 {completion: 300, time: 180, powerReward: 0, gearsReward: 0}
             ],
             maxScores: {completion: 300, time: 180, destination: 0, health: 90, gear: 30, enemy: 0},
@@ -520,34 +520,32 @@ const challenges = new Map<string, ChallengePreset>([
             playerUpgradeValues: {
                 health: {
                     value: [300, 12.5],
-                    cost: [9, 10, 12, 14],
+                    cost: [5, 5, 6, 7],
                     maxLevel: 4
                 },
                 damage: {
                     value: [300, 12.5],
-                    cost: [9, 10, 12, 14],
+                    cost: [5, 5, 6, 7],
                     maxLevel: 4
                 },
                 healing: {
                     value: [1000, 50],
-                    cost: [18, 22],
+                    cost: [9, 11],
                     maxLevel: 2
                 },
                 speed: {
                     value: [7, 1],
-                    cost: [30],
+                    cost: [15],
                     maxLevel: 1
-                    //cost: [5, 6, 8, 10, 13, 16, 22, 30],
-                    //maxLevel: 8
                 },
                 ability: {
                     value: [100, 20],
-                    cost: [48],
+                    cost: [24],
                     maxLevel: 1
                 },
                 lifeSteal: {
                     value: [250, 50],
-                    cost: [32],
+                    cost: [16],
                     maxLevel: 1
                 }
             }

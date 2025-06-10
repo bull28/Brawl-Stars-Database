@@ -2,7 +2,8 @@ import {expect} from "chai";
 import accessoryList from "../../../frank/data/accessories_data.json";
 import characterList from "../../../frank/data/characters_data.json";
 import challengeList from "../../../frank/data/challenges_data";
-import {getChallengeList, getStaticGameMod} from "../../../frank/modules/challenges_module";
+import {getChallengeList, validateUserGameMod, getStaticGameMod} from "../../../frank/modules/challenges_module";
+import {UserSetGameMod} from "../../../frank/types";
 
 describe("Challenges module", function(){
     it("Get the list of all challenges", function(){
@@ -19,6 +20,16 @@ describe("Challenges module", function(){
             expect(challenges[x].recommendedLvl).to.equal(data.config.recommendedLvl);
             expect(challenges[x].stages).to.equal(data.gameMod.stages !== undefined ? data.gameMod.stages.length : 8);
         }
+    });
+
+    it("Validate a user's game preferences object", function(){
+        expect(validateUserGameMod({})).to.be.true;
+        expect(validateUserGameMod({playerSkins: []})).to.be.true;
+        expect(validateUserGameMod({playerSkins: ["1", "2", "3"], hiddenBrawlers: ["bull", "darryl"]})).to.be.true;
+        expect(validateUserGameMod({playerSkins: ["1", "2", "3"], otherProperty: []} as unknown as UserSetGameMod)).to.be.true;
+        expect(validateUserGameMod({playerSkins: "123"} as unknown as UserSetGameMod)).to.be.false;
+        expect(validateUserGameMod([] as unknown as UserSetGameMod)).to.be.false;
+        expect(validateUserGameMod(null as unknown as UserSetGameMod)).to.be.false;
     });
 
     it("Create a game modification object for a static challenge", function(){

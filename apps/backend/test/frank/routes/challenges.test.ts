@@ -41,12 +41,15 @@ describe("Challenge endpoints", function(){
             await connection.query(
                 `INSERT INTO ${tables.challenges} (active_key, challengeid, accepted, accepted_by) VALUES
                 (?, ?, ?, ?),
+                (?, ?, ?, ?),
                 (?, ?, ?, ?);`,
                 [
                     // Used for valid challenge
                     "test1", TEST_CHALLENGE_ID, 0, TEST_USERNAME,
                     // Used for challenge already accepted
                     "test2", TEST_CHALLENGE_ID, 1, TEST_USERNAME_ACCEPT,
+                    // Used for challenge with user preferences
+                    "test3", TEST_CHALLENGE_ID, 0, TEST_USERNAME
                 ]
             );
         });
@@ -85,6 +88,30 @@ describe("Challenge endpoints", function(){
             expect(results[0].challengeid).to.equal(TEST_CHALLENGE_ID);
             expect(results[0].accepted).to.equal(1);
             expect(results[0].accepted_by).to.equal(TEST_USERNAME_ACCEPT);
+        });
+
+        it("Challenge with user preferences", async function(){
+            const skins = ["belle_coral", "mandy_harvest", "amber_rollerskates"];
+
+            const res = await chai.request(server).post("/challenges/get").auth(TEST_TOKEN, {type: "bearer"})
+            .send({key: "test3", settings: {playerSkins: skins}});
+
+            expect(res).to.have.status(200);
+            expect(res.body).to.be.an("object");
+            expect(res.body).to.include.keys([
+                "options", "difficulties", "stages", "levels",
+                "maxScores", "playerAccessories", "playerUpgradeTiers",
+                "playerUpgradeValues", "playerSkins"
+            ]);
+            expect(res.body.playerSkins).to.eql(skins);
+
+            const [results] = await connection.query(
+                `SELECT challengeid, accepted, accepted_by FROM ${tables.challenges} WHERE active_key = ?;`, ["test3"]
+            );
+            expect(results).to.have.lengthOf(1);
+            expect(results[0].challengeid).to.equal(TEST_CHALLENGE_ID);
+            expect(results[0].accepted).to.equal(1);
+            expect(results[0].accepted_by).to.equal(TEST_USERNAME);
         });
 
         it("Challenge key not provided", async function(){
