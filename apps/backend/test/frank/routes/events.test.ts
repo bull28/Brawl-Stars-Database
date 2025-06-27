@@ -1,6 +1,7 @@
 import chai, {expect} from "chai";
 import "chai-http";
 import server from "../../../frank/index";
+import {createError} from "../../../frank/modules/utils";
 import {events} from "../../../frank/modules/events_module";
 
 describe("Game Modes and Maps endpoints", function(){
@@ -11,7 +12,7 @@ describe("Game Modes and Maps endpoints", function(){
         expect(res.body).to.have.keys(["time", "events"]);
     });
 
-    describe("/events/seasontime", async function(){
+    describe("/events/seasontime", function(){
         it("Valid season time query", async function(){
             const res = await chai.request(server).get("/events/seasontime").query({hour: 0, minute: 0, second: 0});
             expect(res).to.have.status(200);
@@ -20,23 +21,23 @@ describe("Game Modes and Maps endpoints", function(){
         it("Missing some values", async function(){
             const res = await chai.request(server).get("/events/seasontime").query({hour: 0});
             expect(res).to.have.status(400);
-            expect(res.text).to.equal("Invalid input.");
+            expect(res.body).to.eql(createError("EventsInvalidSeasonTime"));
         });
 
         it("Invalid inputs", async function(){
             const res = await chai.request(server).get("/events/seasontime").query({hour: "", minute: "", second: ""});
             expect(res).to.have.status(400);
-            expect(res.text).to.equal("Invalid input.");
+            expect(res.body).to.eql(createError("EventsInvalidSeasonTime"));
         });
 
         it("Missing entire query", async function(){
             const res = await chai.request(server).get("/events/seasontime");
             expect(res).to.have.status(400);
-            expect(res.text).to.equal("Invalid input.");
+            expect(res.body).to.eql(createError("EventsInvalidSeasonTime"));
         });
     });
 
-    describe("/events/later", async function(){
+    describe("/events/later", function(){
         it("Valid season time query", async function(){
             const res = await chai.request(server).get("/events/later").query({hour: 0, minute: 0, second: 0});
             expect(res).to.have.status(200);
@@ -45,23 +46,23 @@ describe("Game Modes and Maps endpoints", function(){
         it("Missing some values", async function(){
             const res = await chai.request(server).get("/events/later").query({hour: 0});
             expect(res).to.have.status(400);
-            expect(res.text).to.equal("Invalid input.");
+            expect(res.body).to.eql(createError("EventsInvalidSeasonTime"));
         });
 
         it("Invalid inputs", async function(){
             const res = await chai.request(server).get("/events/later").query({hour: "", minute: "", second: ""});
             expect(res).to.have.status(400);
-            expect(res.text).to.equal("Invalid input.");
+            expect(res.body).to.eql(createError("EventsInvalidSeasonTime"));
         });
 
         it("Missing entire query", async function(){
             const res = await chai.request(server).get("/events/later");
             expect(res).to.have.status(400);
-            expect(res.text).to.equal("Invalid input.");
+            expect(res.body).to.eql(createError("EventsInvalidSeasonTime"));
         });
     });
 
-    describe("/event/worldtime", async function(){
+    describe("/events/worldtime", function(){
         it("Valid world time query", async function(){
             const res = await chai.request(server).get("/events/worldtime").query({second: 1700000000000});
             expect(res).to.have.status(200);
@@ -70,15 +71,21 @@ describe("Game Modes and Maps endpoints", function(){
         it("Invalid input", async function(){
             const res = await chai.request(server).get("/events/worldtime").query({second: true});
             expect(res).to.have.status(400);
-            expect(res.text).to.equal("Invalid input.");
+            expect(res.body).to.eql(createError("EventsInvalidWorldTime"));
         });
 
         it("Missing entire query", async function(){
             const res = await chai.request(server).get("/events/worldtime");
             expect(res).to.have.status(400);
-            expect(res.text).to.equal("Invalid input.");
+            expect(res.body).to.eql(createError("EventsInvalidWorldTime"));
         });
     });
+
+    it("/events/bull", async function(){
+        const res = await chai.request(server).get("/events/bull").query({hour: 0, minute: 0, second: 0});
+        expect(res).to.have.status(400);
+        expect(res.body).to.eql(createError("EventsInvalidSetting"));
+    })
 
     it("/gamemodes", async function(){
         const res = await chai.request(server).get("/gamemodes");
@@ -99,7 +106,7 @@ describe("Game Modes and Maps endpoints", function(){
         it("Game mode does not exist", async function(){
             const res = await chai.request(server).get("/gamemodes/not-a-gamemode");
             expect(res).to.have.status(404);
-            expect(res.text).to.equal("Game mode not found.");
+            expect(res.body).to.eql(createError("GameModesNotFound"));
         });
     });
 
@@ -112,7 +119,7 @@ describe("Game Modes and Maps endpoints", function(){
         it("Map does not exist", async function(){
             const res = await chai.request(server).get("/maps/not-a-map");
             expect(res).to.have.status(404);
-            expect(res.text).to.equal("Map not found.");
+            expect(res.body).to.eql(createError("MapsNotFound"));
         });
     });
 

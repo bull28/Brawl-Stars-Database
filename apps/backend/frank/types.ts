@@ -5,6 +5,16 @@
  */
 export type Empty = Record<string, never>;
 
+/**
+ * Format of error responses returned by endpoints
+ */
+export interface ApiError{
+    error: {
+        title: string;
+        detail: string;
+    };
+}
+
 //------------------------------------------------------------------------------------------------//
 
 /**

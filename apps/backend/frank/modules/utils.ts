@@ -1,3 +1,6 @@
+import errors from "../data/errors.json";
+import {ApiError} from "../types";
+
 interface NameArray{
     name: string;
 }
@@ -25,4 +28,15 @@ export function findName<T extends NameArray>(array: T[], name: string, lookup?:
         return -1;
     }
     return i;
+}
+
+export function createError(code: keyof typeof errors): ApiError{
+    if (Object.hasOwn(errors, code) === false){
+        return {error: errors.GeneralServerError};
+    }
+    return {error: errors[code]};
+}
+
+export function createCustomError(title: string, detail: string): ApiError{
+    return {error: {title, detail}};
 }

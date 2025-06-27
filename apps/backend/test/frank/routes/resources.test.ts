@@ -3,6 +3,7 @@ import "chai-http";
 import {Connection} from "mysql2/promise";
 import characterList from "../../../frank/data/characters_data.json";
 import server from "../../../frank/index";
+import {createError} from "../../../frank/modules/utils";
 import {tables} from "../../../frank/modules/database_access";
 import {createConnection, closeConnection, tokens} from "../database_setup";
 
@@ -138,7 +139,7 @@ describe("User Resources endpoints", function(){
             const res = await chai.request(server).post("/characters/upgrade").auth(TEST_TOKEN, {type: "bearer"})
             .send({character: "not a character"});
             expect(res).to.have.status(404);
-            expect(res.text).to.equal("Brawler not found.");
+            expect(res.body).to.eql(createError("CharactersNotFound"));
         });
 
         it("Not enough coins", async function(){
@@ -147,7 +148,7 @@ describe("User Resources endpoints", function(){
             const res = await chai.request(server).post("/characters/upgrade").auth(TEST_TOKEN, {type: "bearer"})
             .send({character: name});
             expect(res).to.have.status(403);
-            expect(res.text).to.equal("You do not have enough coins to upgrade this brawler.");
+            expect(res.body).to.eql(createError("CharactersCannotAfford"));
 
             const [results] = await connection.query(
                 `SELECT coins, characters FROM ${tables.users} WHERE username = ?;`, [TEST_USERNAME]
@@ -166,7 +167,7 @@ describe("User Resources endpoints", function(){
             const res = await chai.request(server).post("/characters/upgrade").auth(TEST_TOKEN, {type: "bearer"})
             .send({character: name});
             expect(res).to.have.status(403);
-            expect(res.text).to.equal("You do not meet the requirements to upgrade this brawler.");
+            expect(res.body).to.eql(createError("CharactersUpgradeDenied"));
 
             const [results] = await connection.query(
                 `SELECT coins, characters FROM ${tables.users} WHERE username = ?;`, [TEST_USERNAME]
@@ -186,7 +187,7 @@ describe("User Resources endpoints", function(){
             const res = await chai.request(server).post("/characters/upgrade").auth(TEST_TOKEN, {type: "bearer"})
             .send({character: name});
             expect(res).to.have.status(403);
-            expect(res.text).to.equal("Brawler is already at maximum level.");
+            expect(res.body).to.eql(createError("CharactersMaxLevel"));
 
             const [results] = await connection.query(
                 `SELECT coins, characters FROM ${tables.users} WHERE username = ?;`, [TEST_USERNAME]

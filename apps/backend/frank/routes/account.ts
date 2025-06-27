@@ -1,4 +1,5 @@
 import express from "express";
+import {createError} from "../modules/utils";
 import {signToken, hashPassword, checkPassword} from "../modules/account_module";
 import {databaseErrorHandler, loginErrorHandler, userLogin, createNewUser, updateAccount} from "../modules/database";
 import {Empty} from "../types";
@@ -33,7 +34,7 @@ router.get("/authenticate", loginErrorHandler<Empty, AuthReqBody>(async (req, re
 
     const login = await userLogin({username: username});
     if (login === undefined){
-        res.status(401).send("Invalid token.");
+        res.status(401).json(createError("GeneralTokenInvalid"));
         return;
     }
 
@@ -49,24 +50,24 @@ router.post<Empty, Empty, LoginReqBody>("/login", databaseErrorHandler<LoginReqB
     const password = req.body.password;
 
     if (typeof username !== "string" || typeof password !== "string"){
-        res.status(400).send("Username or password is missing.");
+        res.status(400).json(createError("LoginMissing"));
         return;
     }
     const login = await userLogin({username: username});
 
     if (login === undefined){
         // This actually means the account was not found but telling the user may reveal more information than needed
-        res.status(401).send("Incorrect username or password.");
+        res.status(401).json(createError("LoginIncorrect"));
         return;
     }
     if (typeof login.password !== "string"){
-        res.status(500).send("Database is not set up properly.");
+        res.status(500).json(createError("GeneralServerError"));
         return;
     }
 
     const match = await checkPassword(login.password, password);
     if (match === false){
-        res.status(401).send("Incorrect username or password.");
+        res.status(401).json(createError("LoginIncorrect"));
         return;
     }
 
@@ -80,20 +81,20 @@ router.post<Empty, Empty, LoginReqBody>("/signup", databaseErrorHandler<LoginReq
     const password = req.body.password;
 
     if ((typeof username === "string" && typeof password === "string") === false){
-        res.status(400).send("Username or password is missing.");
+        res.status(400).json(createError("LoginMissing"));
         return;
     }
 
     if (username.length > 20 || password.length > 100){
-        res.status(400).send("Username or password is too long. Maximum username length is 20 and password length is 100.");
+        res.status(400).json(createError("SignupLongUsername"));
         return;
     }
     if (username.length < 2 || password.length < 3){
-        res.status(400).send("Username or password is too short. Minimum username length is 2 and password length is 3.");
+        res.status(400).json(createError("SignupShortUsername"));
         return;
     }
     if (validUsername.test(username) === false){
-        res.status(400).send("Username can only contain letters, numbers, and underscores.");
+        res.status(400).json(createError("SignupInvalidUsername"));
         return;
     }
 
@@ -121,7 +122,7 @@ router.post<Empty, Empty, UpdateReqBody>("/update", loginErrorHandler<UpdateReqB
         return;
     }
     if (newPassword !== undefined && newPassword.length < 3){
-        res.status(400).send("New password is too short. Minimum password length is 3.");
+        res.status(400).json(createError("UpdateShortPassword"));
         return;
     }
 
@@ -130,7 +131,7 @@ router.post<Empty, Empty, UpdateReqBody>("/update", loginErrorHandler<UpdateReqB
 
     const login = await userLogin({username: currentUsername});
     if (login === undefined){
-        res.status(404).send("Incorrect username or password.");
+        res.status(404).json(createError("LoginIncorrect"));
         return;
     }
 
@@ -142,13 +143,13 @@ router.post<Empty, Empty, UpdateReqBody>("/update", loginErrorHandler<UpdateReqB
 
     if (newPassword !== undefined){
         if (currentPassword === undefined){
-            res.status(400).send("Current password is required to change password.");
+            res.status(400).json(createError("UpdateMissing"));
             return;
         }
 
         const match = await checkPassword(login.password, currentPassword);
         if (match === false){
-            res.status(401).send("Current password is incorrect.");
+            res.status(401).json(createError("UpdateIncorrect"));
             return;
         }
 

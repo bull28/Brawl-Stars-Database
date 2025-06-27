@@ -3,6 +3,7 @@ import "chai-http";
 import {Connection} from "mysql2/promise";
 import accessoryList from "../../../frank/data/accessories_data.json";
 import server from "../../../frank/index";
+import {createError} from "../../../frank/modules/utils";
 import {tables} from "../../../frank/modules/database_access";
 import {createConnection, closeConnection, tokens} from "../database_setup";
 
@@ -141,7 +142,7 @@ describe("Accessory endpoints", function(){
             const res = await chai.request(server).post("/accessories/claim").auth(TEST_TOKEN, {type: "bearer"})
             .send({accessory: accessory.name});
             expect(res).to.have.status(403);
-            expect(res.text).to.equal("You do not meet the requirements to claim this accessory.");
+            expect(res.body).to.eql(createError("AccessoriesClaimDenied"));
 
             const [results] = await connection.query(
                 `SELECT accessories FROM ${tables.users} WHERE username = ?;`, [TEST_USERNAME]
@@ -157,7 +158,7 @@ describe("Accessory endpoints", function(){
             const res = await chai.request(server).post("/accessories/claim").auth(TEST_TOKEN, {type: "bearer"})
             .send({accessory: accessory.name});
             expect(res).to.have.status(403);
-            expect(res.text).to.equal("You have already unlocked this accessory.");
+            expect(res.body).to.eql(createError("AccessoriesAlreadyUnlocked"));
 
             const [results] = await connection.query(
                 `SELECT accessories FROM ${tables.users} WHERE username = ?;`, [TEST_USERNAME]
@@ -173,7 +174,7 @@ describe("Accessory endpoints", function(){
             const res = await chai.request(server).post("/accessories/claim").auth(TEST_TOKEN, {type: "bearer"})
             .send({accessory: accessory.name});
             expect(res).to.have.status(403);
-            expect(res.text).to.equal("You do not meet the requirements to claim this accessory.");
+            expect(res.body).to.eql(createError("AccessoriesClaimDenied"));
 
             const [results] = await connection.query(
                 `SELECT accessories FROM ${tables.users} WHERE username = ?;`, [TEST_USERNAME]
@@ -192,7 +193,7 @@ describe("Accessory endpoints", function(){
             const res = await chai.request(server).post("/accessories/claim").auth(TEST_TOKEN, {type: "bearer"})
             .send({accessory: shopItem.name, buyFromShop: true});
             expect(res).to.have.status(403);
-            expect(res.text).to.equal("You do not meet the requirements to claim this accessory.");
+            expect(res.body).to.eql(createError("AccessoriesClaimDenied"));
 
             const [results] = await connection.query(
                 `SELECT accessories FROM ${tables.users} WHERE username = ?;`, [TEST_USERNAME]
@@ -211,7 +212,7 @@ describe("Accessory endpoints", function(){
             const res = await chai.request(server).post("/accessories/claim").auth(TEST_TOKEN, {type: "bearer"})
             .send({accessory: shopItem.name, buyFromShop: true});
             expect(res).to.have.status(403);
-            expect(res.text).to.equal("You do not have enough coins to buy this accessory.");
+            expect(res.body).to.eql(createError("AccessoriesCannotAfford"));
 
             const [results] = await connection.query(
                 `SELECT accessories FROM ${tables.users} WHERE username = ?;`, [TEST_USERNAME]
@@ -224,14 +225,14 @@ describe("Accessory endpoints", function(){
             const res = await chai.request(server).post("/accessories/claim").auth(TEST_TOKEN, {type: "bearer"})
             .send({accessory: "not an accessory"});
             expect(res).to.have.status(404);
-            expect(res.text).to.equal("Accessory not found.");
+            expect(res.body).to.eql(createError("AccessoriesNotFound"));
         });
 
         it("No accessory provided", async function(){
             const res = await chai.request(server).post("/accessories/claim").auth(TEST_TOKEN, {type: "bearer"})
             .send({});
             expect(res).to.have.status(400);
-            expect(res.text).to.equal("Accessory to claim is missing.");
+            expect(res.body).to.eql(createError("AccessoriesClaimMissing"));
         });
     });
 });

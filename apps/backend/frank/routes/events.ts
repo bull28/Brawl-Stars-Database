@@ -1,6 +1,7 @@
 import express from "express";
+import {createError} from "../modules/utils";
 import {events, SeasonTime, realToTime, getAllEvents, addSeasonTimes, isValidTimeQuery, getModeData, getMapData, searchForMapName} from "../modules/events_module";
-import {Empty, CurrentEventsData, GameModePreview, MapSearchPreview} from "../types";
+import {Empty, ApiError, CurrentEventsData, GameModePreview, MapSearchPreview} from "../types";
 
 const router = express.Router();
 
@@ -19,7 +20,7 @@ interface MapSearchQuery{
     search: string;
 }
 
-router.get<EventsParams, string | CurrentEventsData, Empty, TimeQuery>("/events/:time", (req, res) => {
+router.get<EventsParams, ApiError | CurrentEventsData, Empty, TimeQuery>("/events/:time", (req, res) => {
     const timeSetting = req.params.time;
     const currentTime = realToTime(Date.now());
 
@@ -37,7 +38,7 @@ router.get<EventsParams, string | CurrentEventsData, Empty, TimeQuery>("/events/
 
     if (timeSetting === "worldtime"){
         if (isNaN(Number(secondString)) === true){
-            res.status(400).send("Invalid input.");
+            res.status(400).json(createError("EventsInvalidWorldTime"));
             return;
         }
     
@@ -50,7 +51,7 @@ router.get<EventsParams, string | CurrentEventsData, Empty, TimeQuery>("/events/
     }
 
     if (isValidTimeQuery(hourString, minuteString, secondString) === false){
-        res.status(400).send("Invalid input.");
+        res.status(400).json(createError("EventsInvalidSeasonTime"));
         return;
     }
 
@@ -67,7 +68,7 @@ router.get<EventsParams, string | CurrentEventsData, Empty, TimeQuery>("/events/
     }
 
     if (time === undefined){
-        res.status(400).send("Unknown time setting.");
+        res.status(400).json(createError("EventsInvalidSetting"));
         return;
     }
 
@@ -104,7 +105,7 @@ router.get("/gamemodes/:gamemode", (req, res) => {
 
     const gameModeData = getModeData(events, gameMode);
     if (gameModeData === undefined){
-        res.status(404).send("Game mode not found.");
+        res.status(404).json(createError("GameModesNotFound"));
         return;
     }
 
@@ -117,7 +118,7 @@ router.get("/maps/:map", (req, res) => {
 
     const mapData = getMapData(events, map, realToTime(Date.now()));
     if (mapData === undefined){
-        res.status(404).send("Map not found.");
+        res.status(404).json(createError("MapsNotFound"));
         return;
     }
 

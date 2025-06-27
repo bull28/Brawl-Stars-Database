@@ -1,0 +1,158 @@
+{
+    "GeneralNotFound": {
+        "title": "Not found",
+        "detail": "Not found"
+    },
+    "GeneralTokenMissing": {
+        "title": "Token is missing",
+        "detail": "A token must be provided in the 'Authorization' header to access this endpoint."
+    },
+    "GeneralTokenInvalid": {
+        "title": "Token is invalid",
+        "detail": "The token provided for authorization is invalid. Try logging in again to obtain a valid token."
+    },
+    "GeneralTokenExpired": {
+        "title": "Token is expired",
+        "detail": "The token provided for authorization is expired. Try logging in again to obtain a valid token."
+    },
+    "GeneralInvalidJson": {
+        "title": "Incorrectly formatted JSON",
+        "detail": "The request body is incorrectly formatted. Ensure it is valid JSON."
+    },
+    "GeneralServerError": {
+        "title": "Unexpected Server error",
+        "detail": "An unexpected error occurred."
+    },
+    "BrawlersNotFound": {
+        "title": "Brawler not found",
+        "detail": "The brawler ID provided does not match any brawlers."
+    },
+    "SkinsNotFound": {
+        "title": "Skin not found",
+        "detail": "The skin ID provided does not match any of the brawler's skins."
+    },
+    "SkinSearchInvalidFilters": {
+        "title": "Invalid filters object",
+        "detail": "The search filters provided has an invalid type. It must be an object."
+    },
+    "SkinSearchTooManyGroups": {
+        "title": "Too many skin groups selected",
+        "detail": "The search filters provided includes too many skin group choices. Select at most 5."
+    },
+    "EventsInvalidSeasonTime": {
+        "title": "Invalid time input",
+        "detail": "The world time setting requires a 'second' parameter that should be a number."
+    },
+    "EventsInvalidWorldTime": {
+        "title": "Invalid time input",
+        "detail": "The season time and later settings require 'hour', 'minute', and 'second' parameters that should all be numbers."
+    },
+    "EventsInvalidSetting": {
+        "title": "Invalid time setting",
+        "detail": "The time setting provided is invalid. Valid settings are 'current', 'worldtime', 'seasontime', or 'later'."
+    },
+    "GameModesNotFound": {
+        "title": "Game mode not found",
+        "detail": "The game mode ID provided does not match any game modes."
+    },
+    "MapsNotFound": {
+        "title": "Map not found",
+        "detail": "The map ID provided does not match any maps."
+    },
+    "LoginMissing": {
+        "title": "Username or password is missing",
+        "detail": "The username and password must be in the 'username' and 'password' properties."
+    },
+    "LoginIncorrect": {
+        "title": "Incorrect username or password",
+        "detail": "Failed to authenticate. Ensure the provided username and password are correct."
+    },
+    "SignupLongUsername": {
+        "title": "Username or password is too long",
+        "detail": "Maximum username length is 20 and maximum password length is 100."
+    },
+    "SignupShortUsername": {
+        "title": "Username or password is too short",
+        "detail": "Minimum username length is 2 and minimum password length is 3."
+    },
+    "SignupInvalidUsername": {
+        "title": "Invalid username",
+        "detail": "One or more characters in the provided username are not allowed. Use only letters, numbers, and underscores."
+    },
+    "UpdateShortPassword": {
+        "title": "Password is too short",
+        "detail": "New password is too short. Minimum password length is 3."
+    },
+    "UpdateMissing": {
+        "title": "Current password is missing",
+        "detail": "To change passwords, the current password must be provided in the 'currentPassword' property."
+    },
+    "UpdateIncorrect": {
+        "title": "Current password is incorrect",
+        "detail": "The current password provided does not match the account's password."
+    },
+    "AccessoriesClaimMissing": {
+        "title": "Accessory to claim is missing",
+        "detail": "The accessory ID to claim must be in the 'accessory' property."
+    },
+    "AccessoriesNotFound": {
+        "title": "Accessory not found",
+        "detail": "The accessory ID provided does not match any accessories."
+    },
+    "AccessoriesAlreadyUnlocked": {
+        "title": "Accessory already unlocked",
+        "detail": "The accessory to claim has already been unlocked. Accessories can only be claimed once."
+    },
+    "AccessoriesClaimDenied": {
+        "title": "Not allowed to claim Accessory",
+        "detail": "You do not meet the requirements to claim this accessory."
+    },
+    "AccessoriesShopDenied": {
+        "title": "Not allowed to claim Accessory",
+        "detail": "The accessory to claim is only available from the shop. Set the 'buyFromShop' property to true to buy this accessory."
+    },
+    "AccessoriesCannotAfford": {
+        "title": "Cannot afford to buy Accessory",
+        "detail": "You do not have enough coins to buy this accessory."
+    },
+    "CharactersMissing": {
+        "title": "Brawler is missing",
+        "detail": "The character ID of the brawler to upgrade must be in the 'character' property."
+    },
+    "CharactersNotFound": {
+        "title": "Brawler not found",
+        "detail": "The character ID provided does not match any brawlers that can be upgraded."
+    },
+    "CharactersCannotAfford": {
+        "title": "Cannot afford to upgrade",
+        "detail": "You do not have enough coins to upgrade this brawler."
+    },
+    "CharactersUpgradeDenied": {
+        "title": "Not allowed to upgrade",
+        "detail": "You do not meet the requirements to upgrade this brawler."
+    },
+    "CharactersMaxLevel": {
+        "title": "Already at max level",
+        "detail": "Brawler is already at maximum level and cannot be upgraded any further."
+    },
+    "ChallengesGetMissing": {
+        "title": "Challenge key is missing",
+        "detail": "The key for the challenge to play should be in the 'key' property."
+    },
+    "ChallengesGetNotFound": {
+        "title": "Challenge not found",
+        "detail": "The key provided does not match any active challenge."
+    },
+    "ChallengesAccepted": {
+        "title": "Challenge already started",
+        "detail": "This challenge has already been played. To play again, go back then start the challenge again."
+    },
+    "ChallengesStartMissing": {
+        "title": "Challenge ID is missing",
+        "detail": "The challenge ID to start should be in the 'challengeid' property."
+    },
+    "ChallengesStartNotFound": {
+        "title": "Challenge does not exist",
+        "detail": "The challenge ID provided does not match any challenges that can be started."
+    }
+}

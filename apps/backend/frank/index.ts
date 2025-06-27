@@ -5,6 +5,7 @@ import path from "path";
 import "dotenv/config";
 
 import {ASSETS_ROOT_DIR} from "./data/constants";
+import {createError} from "./modules/utils";
 import {endConnection} from "./modules/database_access";
 import brawlers from "./routes/brawlers";
 import events from "./routes/events";
@@ -38,7 +39,8 @@ app.use(express.urlencoded({extended: false}));
 app.use((req, res, next) => {
     (express.json())(req, res, (error) => {
         if (error !== undefined){
-            res.status(400).send("Incorrectly formatted json.");
+            //res.status(400).send("Incorrectly formatted json.");
+            res.status(400).json(createError("GeneralInvalidJson"));
             return;
         }
         if (typeof req.body !== "object" || req.body === null){
@@ -71,7 +73,7 @@ app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
 });
 
 app.use((req: Request, res: Response) => {
-    res.status(404).send("Not Found");
+    res.status(404).json(createError("GeneralNotFound"));
 });
 
 const server = app.listen(port, (error) => {

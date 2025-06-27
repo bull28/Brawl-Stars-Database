@@ -1,5 +1,6 @@
 import express from "express";
 import {randomUUID} from "crypto";
+import {createError} from "../modules/utils";
 import {challengeExists, getChallengeList, validateUserGameMod, getStaticGameMod} from "../modules/challenges_module";
 import {databaseErrorHandler, loginErrorHandler, getResources, getActiveChallenge, acceptActiveChallenge, replaceActiveChallenge} from "../modules/database";
 import {Empty, UserSetGameMod} from "../types";
@@ -26,7 +27,7 @@ router.get("/", loginErrorHandler(async (req, res) => {
 router.post<Empty, Empty, ChallengeKeyReqBody>("/get", databaseErrorHandler<ChallengeKeyReqBody>(async (req, res) => {
     const key = req.body.key;
     if (typeof key !== "string"){
-        res.status(400).send("No Challenge specified.");
+        res.status(400).json(createError("ChallengesGetMissing"));
         return;
     }
 
@@ -38,11 +39,11 @@ router.post<Empty, Empty, ChallengeKeyReqBody>("/get", databaseErrorHandler<Chal
     const challenge = await getActiveChallenge({key: key});
 
     if (challenge === undefined){
-        res.status(404).send("Challenge not found.");
+        res.status(404).json(createError("ChallengesGetNotFound"));
         return;
     }
     if (challenge.accepted !== 0){
-        res.status(403).send("This challenge has already been accepted.");
+        res.status(403).json(createError("ChallengesAccepted"));
         return;
     }
 
@@ -51,7 +52,7 @@ router.post<Empty, Empty, ChallengeKeyReqBody>("/get", databaseErrorHandler<Chal
     // Using the challenge ID, get the game modification object for that challenge
     const mod = getStaticGameMod(challenge.challengeid, key, resources, prefs);
     if (mod === undefined){
-        res.status(404).send("Challenge not found");
+        res.status(404).json(createError("ChallengesGetNotFound"));
         return;
     }
 
@@ -65,13 +66,13 @@ router.post<Empty, Empty, ChallengeKeyReqBody>("/get", databaseErrorHandler<Chal
 router.post<Empty, Empty, ChallengeStartReqBody>("/start", loginErrorHandler<ChallengeStartReqBody>(async (req, res, username) => {
     const challengeid = req.body.challengeid;
     if (typeof challengeid !== "string"){
-        res.status(400).send("Invalid challenge ID.");
+        res.status(400).json(createError("ChallengesStartMissing"));
         return;
     }
 
     // Check that the challenge id is valid
     if (challengeExists(challengeid) === false){
-        res.status(404).send("Challenge does not exist.");
+        res.status(404).json(createError("ChallengesStartNotFound"));
         return;
     }
 

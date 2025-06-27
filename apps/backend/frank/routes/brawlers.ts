@@ -1,12 +1,13 @@
 import express from "express";
 import {SKIN_IMAGE_DIR, SKINGROUP_IMAGE_DIR} from "../data/constants";
+import {createError} from "../modules/utils";
 import {getBrawler, getSkin, getBrawlerList, getBrawlerData, getSkinData, getSkinGroupList, getSkinSources, skinSearch} from "../modules/brawlers_module";
-import {Empty, SkinSearchFilters, SkinSearchResult} from "../types";
+import {Empty, ApiError, SkinSearchFilters, SkinSearchResult} from "../types";
 
 const router = express.Router();
 
 
-type SkinSearchRes = string | {imagePath: string; backgroundPath: string; results: SkinSearchResult[]};
+type SkinSearchRes = {imagePath: string; backgroundPath: string; results: SkinSearchResult[]};
 
 // Get the entire list of brawlers
 router.get("/brawlers", (req, res) => {
@@ -20,7 +21,7 @@ router.get("/brawlers/:brawler", (req, res) => {
 
     const brawler = getBrawler(brawlerName);
     if (brawler === undefined){
-        res.status(404).send("Brawler not found.");
+        res.status(404).json(createError("BrawlersNotFound"));
         return;
     }
 
@@ -36,13 +37,13 @@ router.get("/skins/:brawler/:skin", (req, res) => {
 
     const brawler = getBrawler(brawlerName);
     if (brawler === undefined){
-        res.status(404).send("Brawler or skin not found.");
+        res.status(404).json(createError("BrawlersNotFound"));
         return;
     }
 
     const skin = getSkin(brawler, skinName);
     if (skin === undefined){
-        res.status(404).send("Skin not found.");
+        res.status(404).json(createError("SkinsNotFound"));
         return;
     }
 
@@ -62,14 +63,14 @@ router.get("/skinsearch", (req, res) => {
 });
 
 // Search for skins using a search filter
-router.post<Empty, SkinSearchRes, {filters: SkinSearchFilters;}>("/skinsearch", (req, res) => {
+router.post<Empty, ApiError | SkinSearchRes, {filters: SkinSearchFilters;}>("/skinsearch", (req, res) => {
     const filters = req.body.filters;
     if (typeof filters !== "object" || Array.isArray(filters) === true){
-        res.status(400).send("Invalid filters object.");
+        res.status(400).json(createError("SkinSearchInvalidFilters"));
         return;
     }
     if (Array.isArray(filters.groups) === true && filters.groups.length > 5){
-        res.status(400).send("Too many skin groups selected. Select at most 5.");
+        res.status(400).json(createError("SkinSearchTooManyGroups"));
         return;
     }
 

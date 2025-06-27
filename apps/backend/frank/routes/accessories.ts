@@ -1,4 +1,5 @@
 import express from "express";
+import {createError} from "../modules/utils";
 import {findUserAccessory, getAccessoryData, getAccessoryPreview, getShopItems, accessoryClaimCost} from "../modules/accessories_module";
 import {loginErrorHandler, getResources, setResources} from "../modules/database";
 import {Empty} from "../types";
@@ -34,7 +35,7 @@ router.post<Empty, Empty, ClaimAccessoryReqBody>("/claim", loginErrorHandler<Cla
     const name = req.body.accessory;
     let buy = false;
     if (typeof name !== "string"){
-        res.status(400).send("Accessory to claim is missing.");
+        res.status(400).json(createError("AccessoriesClaimMissing"));
         return;
     }
     if (req.body.buyFromShop === true){
@@ -47,27 +48,30 @@ router.post<Empty, Empty, ClaimAccessoryReqBody>("/claim", loginErrorHandler<Cla
     if (index < 0){
         // Accessory either does not exist or is not in the user's resources: this should not happen unless there was a
         // problem storing the data
-        res.status(404).send("Accessory not found.");
+        res.status(404).json(createError("AccessoriesNotFound"));
         return;
     }
 
     const accessory = resources.accessories[index];
     if (accessory.unlocked === true){
-        res.status(403).send("You have already unlocked this accessory.");
+        res.status(403).json(createError("AccessoriesAlreadyUnlocked"));
         return;
     }
 
     const cost = accessoryClaimCost(accessory, resources.mastery);
-    if (cost < 0 || (cost > 0 && buy === false)){
-        // Either the user does not have the mastery requirement to buy the shop item or a shop item for this accessory
-        // does exist but the user does not want to buy it
-        res.status(403).send("You do not meet the requirements to claim this accessory.");
+    if (cost < 0){
+        // The user does not have the mastery requirement to buy the shop item
+        res.status(403).json(createError("AccessoriesClaimDenied"));
         return;
     }
-
+    if (cost > 0 && buy === false){
+        // A shop item for this accessory does exist but the user does not want to buy it
+        res.status(403).json(createError("AccessoriesShopDenied"));
+        return;
+    }
     if (cost > 0 && resources.coins < cost){
         // User is buying an accessory and cannot afford it
-        res.status(403).send("You do not have enough coins to buy this accessory.");
+        res.status(403).json(createError("AccessoriesCannotAfford"));
         return;
     }
 

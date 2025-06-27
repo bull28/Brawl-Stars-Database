@@ -2,6 +2,7 @@ import {Request, Response, NextFunction} from "express";
 import {Query, ParamsDictionary} from "express-serve-static-core";
 import accessoryList from "../data/accessories_data.json";
 import characterList from "../data/characters_data.json";
+import {createError, createCustomError} from "../modules/utils";
 import {tables, getErrorMessage, queryDatabase, updateDatabase, transactionUpdate, transaction} from "./database_access";
 import {validateToken} from "./account_module";
 import {Empty, UserCharacter, UserAccessory, UserResources} from "../types";
@@ -14,7 +15,7 @@ export function databaseErrorHandler<R = Empty, Q = Query, P = ParamsDictionary>
     return (req: Request<P, Empty, R, Q>, res: Response, next: NextFunction) => {
         Promise.resolve(callback(req, res, next)).catch((reason: unknown) => {
             const errorData = getErrorMessage(reason as Error);
-            res.status(errorData.status).send(errorData.message);
+            res.status(errorData.status).json(createCustomError("Error", errorData.message));
         });
     };
 }
@@ -22,29 +23,29 @@ export function databaseErrorHandler<R = Empty, Q = Query, P = ParamsDictionary>
 export function loginErrorHandler<R = Empty, Q = Query, P = ParamsDictionary>(callback: UsernameCallback<R, Q, P>): ExpressCallback<R, Q, P>{
     return (req: Request<P, Empty, R, Q>, res: Response, next: NextFunction) => {
         if (typeof req.headers.authorization !== "string"){
-            res.status(400).send("Token is missing.");
+            res.status(400).json(createError("GeneralTokenMissing"));
             return;
         }
         const [authType, token] = req.headers.authorization.split(" ");
         if (authType.toLowerCase() !== "bearer" || token === undefined){
-            res.status(400).send("Token is missing.");
+            res.status(400).json(createError("GeneralTokenMissing"));
             return;
         }
 
         const validateResult = validateToken(token);
 
         if (validateResult.status === 2){
-            res.status(401).send("Token is expired.");
+            res.status(401).json(createError("GeneralTokenExpired"));
             return;
         }
         if (validateResult.status !== 0){
-            res.status(401).send("Invalid token.");
+            res.status(401).json(createError("GeneralTokenInvalid"));
             return;
         }
 
         Promise.resolve(callback(req, res, validateResult.username, next)).catch((reason: unknown) => {
             const errorData = getErrorMessage(reason as Error);
-            res.status(errorData.status).send(errorData.message);
+            res.status(errorData.status).json(createCustomError("Error", errorData.message));
         });
     };
 }

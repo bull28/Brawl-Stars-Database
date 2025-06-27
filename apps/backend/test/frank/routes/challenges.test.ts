@@ -2,6 +2,7 @@ import chai, {expect} from "chai";
 import "chai-http";
 import {Connection} from "mysql2/promise";
 import server from "../../../frank/index";
+import {createError} from "../../../frank/modules/utils";
 import {tables} from "../../../frank/modules/database_access";
 import {createConnection, closeConnection, tokens} from "../database_setup";
 
@@ -78,7 +79,7 @@ describe("Challenge endpoints", function(){
             const res = await chai.request(server).post("/challenges/get").auth(TEST_TOKEN, {type: "bearer"})
             .send({key: "test2"});
             expect(res).to.have.status(403);
-            expect(res.text).to.equal("This challenge has already been accepted.");
+            expect(res.body).to.eql(createError("ChallengesAccepted"));
 
             // Should not change the existing accepted by username
             const [results] = await connection.query(
@@ -118,14 +119,14 @@ describe("Challenge endpoints", function(){
             const res = await chai.request(server).post("/challenges/get").auth(TEST_TOKEN, {type: "bearer"})
             .send({});
             expect(res).to.have.status(400);
-            expect(res.text).to.equal("No Challenge specified.");
+            expect(res.body).to.eql(createError("ChallengesGetMissing"));
         });
 
         it("Challenge with key does not exist", async function(){
             const res = await chai.request(server).post("/challenges/get").auth(TEST_TOKEN, {type: "bearer"})
             .send({key: "not-a-challenge"});
             expect(res).to.have.status(404);
-            expect(res.text).to.equal("Challenge not found.");
+            expect(res.body).to.eql(createError("ChallengesGetNotFound"));
         });
     });
 
@@ -155,7 +156,7 @@ describe("Challenge endpoints", function(){
             const res = await chai.request(server).post("/challenges/start").auth(TEST_TOKEN, {type: "bearer"})
             .send({challengeid: true});
             expect(res).to.have.status(400);
-            expect(res.text).to.equal("Invalid challenge ID.");
+            expect(res.body).to.eql(createError("ChallengesStartMissing"));
 
             const [results] = await connection.query(`SELECT challengeid FROM ${tables.challenges} WHERE active_key = ?;`, [res.body.key]);
             expect(results).to.have.lengthOf(0);
@@ -165,7 +166,7 @@ describe("Challenge endpoints", function(){
             const res = await chai.request(server).post("/challenges/start").auth(TEST_TOKEN, {type: "bearer"})
             .send({challengeid: "not a challenge"});
             expect(res).to.have.status(404);
-            expect(res.text).to.equal("Challenge does not exist.");
+            expect(res.body).to.eql(createError("ChallengesStartNotFound"));
 
             const [results] = await connection.query(`SELECT challengeid FROM ${tables.challenges} WHERE active_key = ?;`, [res.body.key]);
             expect(results).to.have.lengthOf(0);
