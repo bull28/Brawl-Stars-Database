@@ -20,6 +20,10 @@ interface MapSearchQuery{
     search: string;
 }
 
+interface MapSearchResult{
+    results: MapSearchPreview[];
+}
+
 router.get<EventsParams, ApiError | CurrentEventsData, Empty, TimeQuery>("/events/:time", (req, res) => {
     const timeSetting = req.params.time;
     const currentTime = realToTime(Date.now());
@@ -96,7 +100,7 @@ router.get("/gamemodes", (req, res) => {
         }
     }
 
-    res.json(allGameModes);
+    res.json({gamemodes: allGameModes});
 });
 
 // Get data for a game mode, including its list of maps and icon
@@ -126,16 +130,16 @@ router.get("/maps/:map", (req, res) => {
 });
 
 // Search for a specific map by its name
-router.get<Empty, MapSearchPreview[], Empty, MapSearchQuery>("/mapsearch", (req, res) => {
+router.get<Empty, MapSearchResult, Empty, MapSearchQuery>("/mapsearch", (req, res) => {
     const search = req.query.search;
 
     if (typeof search !== "string"){
-        res.json([]);
+        res.json({results: []});
         return;
     }
 
     const searchResult = searchForMapName(events, search);
-    res.json(searchResult);
+    res.json({results: searchResult});
 });
 
 

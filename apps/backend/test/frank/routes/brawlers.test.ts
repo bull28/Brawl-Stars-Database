@@ -10,10 +10,11 @@ describe("Brawlers and Skins endpoints", function(){
     it("/brawlers", async function(){
         const res = await chai.request(server).get("/brawlers");
         expect(res).to.have.status(200);
-        expect(res.body).to.be.an("array");
-        expect(res.body).to.have.lengthOf(allSkins.length);
+        expect(res.body).to.be.an("object");
+        expect(res.body.brawlers).to.be.an("array");
+        expect(res.body.brawlers).to.have.lengthOf(allSkins.length);
 
-        const images = res.body.filter((value: BrawlerPreview) => 
+        const images = res.body.brawlers.filter((value: BrawlerPreview) => 
             value.image.startsWith(PORTRAIT_IMAGE_DIR) && value.image.endsWith(IMAGE_FILE_EXTENSION)
         );
         expect(images).to.have.lengthOf(allSkins.length);

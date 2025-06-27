@@ -90,10 +90,11 @@ describe("Game Modes and Maps endpoints", function(){
     it("/gamemodes", async function(){
         const res = await chai.request(server).get("/gamemodes");
         expect(res).to.have.status(200);
-        expect(res.body).to.be.an("array");
+        expect(res.body).to.be.an("object");
+        expect(res.body.gamemodes).to.be.an("array");
 
-        for (let x = 0; x < res.body.length; x++){
-            expect(res.body[x]).to.have.keys(["name", "displayName"]);
+        for (let x = 0; x < res.body.gamemodes.length; x++){
+            expect(res.body.gamemodes[x]).to.have.keys(["name", "displayName"]);
         }
     });
 
@@ -127,15 +128,17 @@ describe("Game Modes and Maps endpoints", function(){
         it("Valid search query", async function(){
             const res = await chai.request(server).get("/mapsearch").query({"search": "a"});
             expect(res).to.have.status(200);
-            expect(res.body).to.be.an("array");
-            expect(res.body).to.have.lengthOf.at.least(1);
+            expect(res.body).to.be.an("object");
+            expect(res.body.results).to.be.an("array");
+            expect(res.body.results).to.have.lengthOf.at.least(1);
         });
 
         it("No search query provided", async function(){
             const res = await chai.request(server).get("/mapsearch");
             expect(res).to.have.status(200);
-            expect(res.body).to.be.an("array");
-            expect(res.body).to.be.empty;
+            expect(res.body).to.be.an("object");
+            expect(res.body.results).to.be.an("array");
+            expect(res.body.results).to.be.empty;
         });
     });
 });

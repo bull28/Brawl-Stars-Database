@@ -178,6 +178,7 @@ describe("Account endpoints", function(){
             const res = await chai.request(server).post("/update").auth(TEST_TOKEN_UPDATE, {type: "bearer"})
             .send({menuTheme: newTheme});
             expect(res).to.have.status(200);
+            expect(res.body.message).to.equal("Account successfully updated.");
 
             const [results] = await connection.query(
                 `SELECT password, menu_theme from ${tables.users} WHERE username = ?;`, [TEST_USERNAME_UPDATE]
@@ -190,6 +191,7 @@ describe("Account endpoints", function(){
             const res = await chai.request(server).post("/update").auth(TEST_TOKEN_UPDATE, {type: "bearer"})
             .send({currentPassword: TEST_PASSWORD, newPassword: newPassword});
             expect(res).to.have.status(200);
+            expect(res.body.message).to.equal("Account successfully updated.");
 
             const [results] = await connection.query(
                 `SELECT password, menu_theme from ${tables.users} WHERE username = ?;`, [TEST_USERNAME_UPDATE]
@@ -203,6 +205,7 @@ describe("Account endpoints", function(){
             const res = await chai.request(server).post("/update").auth(TEST_TOKEN_UPDATE, {type: "bearer"})
             .send({currentPassword: TEST_PASSWORD, newPassword: newPassword, menuTheme: newTheme});
             expect(res).to.have.status(200);
+            expect(res.body.message).to.equal("Account successfully updated.");
 
             const [results] = await connection.query(
                 `SELECT password, menu_theme from ${tables.users} WHERE username = ?;`, [TEST_USERNAME_UPDATE]
@@ -216,6 +219,7 @@ describe("Account endpoints", function(){
             const res = await chai.request(server).post("/update").auth(TEST_TOKEN_UPDATE, {type: "bearer"})
             .send({currentPassword: TEST_PASSWORD});
             expect(res).to.have.status(200);
+            expect(res.body.message).to.equal("Account successfully updated.");
 
             const [results] = await connection.query(
                 `SELECT password, menu_theme from ${tables.users} WHERE username = ?;`, [TEST_USERNAME_UPDATE]

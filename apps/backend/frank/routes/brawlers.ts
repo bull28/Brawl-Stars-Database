@@ -12,7 +12,7 @@ type SkinSearchRes = {imagePath: string; backgroundPath: string; results: SkinSe
 // Get the entire list of brawlers
 router.get("/brawlers", (req, res) => {
     const allBrawlers = getBrawlerList();
-    res.json(allBrawlers);
+    res.json({brawlers: allBrawlers});
 });
 
 // Get data for a brawler, including their skins and portrait
@@ -56,10 +56,7 @@ router.get("/skins/:brawler/:skin", (req, res) => {
 router.get("/skinsearch", (req, res) => {
     const groups = getSkinGroupList();
     const foundIn = getSkinSources();
-    res.json({
-        groups: groups,
-        foundIn: foundIn
-    });
+    res.json({groups: groups, foundIn: foundIn});
 });
 
 // Search for skins using a search filter

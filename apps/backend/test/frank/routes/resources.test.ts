@@ -38,7 +38,8 @@ describe("User Resources endpoints", function(){
         // This endpoint does not require a user logged in
         const res = await chai.request(server).get("/enemies");
         expect(res).to.have.status(200);
-        expect(res.body).to.be.an("array");
+        expect(res.body).to.be.an("object");
+        expect(res.body.enemies).to.be.an("array");
     });
 
     it("/resources", async function(){
@@ -74,11 +75,12 @@ describe("User Resources endpoints", function(){
         const res = await chai.request(server).get("/characters").auth(TEST_TOKEN, {type: "bearer"});
 
         expect(res).to.have.status(200);
-        expect(res.body).to.be.an("array");
-        expect(res.body).to.have.lengthOf(characterList.length);
+        expect(res.body).to.be.an("object");
+        expect(res.body.characters).to.be.an("array");
+        expect(res.body.characters).to.have.lengthOf(characterList.length);
 
-        expect(res.body[0].current.tier.level).to.equal(40);
-        expect(res.body[0].next.tier.level).to.equal(40);
+        expect(res.body.characters[0].current.tier.level).to.equal(40);
+        expect(res.body.characters[0].next.tier.level).to.equal(40);
     });
 
     describe("/characters/upgrade", function(){

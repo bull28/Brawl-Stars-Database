@@ -54,7 +54,7 @@ app.use(["/static/bullgame", "/enemies"], compression({threshold: 8192}));
 app.use("/static", express.static(path.resolve(ASSETS_ROOT_DIR)));
 
 app.get("/", (req, res) => {
-    res.send("FRANK API");
+    res.set({"Content-Type": "text/plain"}).send("FRANK API");
 });
 
 app.use("/", brawlers);

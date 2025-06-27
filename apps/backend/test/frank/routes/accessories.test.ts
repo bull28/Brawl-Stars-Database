@@ -31,14 +31,17 @@ describe("Accessory endpoints", function(){
     it("/accessories", async function(){
         const res = await chai.request(server).get("/accessories").auth(TEST_TOKEN, {type: "bearer"});
         expect(res).to.have.status(200);
-        expect(res.body).to.be.an("array");
-        expect(res.body).to.have.lengthOf(accessoryList.length);
+        expect(res.body).to.be.an("object");
+        expect(res.body.accessories).to.be.an("array");
+        expect(res.body.accessories).to.have.lengthOf(accessoryList.length);
     });
 
     it("/accessories/shop", async function(){
         const res = await chai.request(server).get("/accessories/shop").auth(TEST_TOKEN, {type: "bearer"});
         expect(res).to.have.status(200);
-        expect(res.body).to.be.an("array");
+        expect(res.body).to.be.an("object");
+        expect(res.body.items).to.be.an("array");
+        expect(res.body.items).to.have.lengthOf.at.least(1);
     });
 
     describe("/accessories/claim", function(){

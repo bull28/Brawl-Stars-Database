@@ -33,7 +33,8 @@ describe("Challenge endpoints", function(){
         const res = await chai.request(server).get("/challenges").auth(TEST_TOKEN, {type: "bearer"});
 
         expect(res).to.have.status(200);
-        expect(res.body).to.be.an("array");
+        expect(res.body).to.be.an("object");
+        expect(res.body.challenges).to.be.an("array");
     });
 
     describe("/challenges/get", function(){

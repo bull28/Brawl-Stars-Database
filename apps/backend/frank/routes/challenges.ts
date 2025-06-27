@@ -20,7 +20,7 @@ interface ChallengeStartReqBody{
 // Get all challenges that can be started
 router.get("/", loginErrorHandler(async (req, res) => {
     const challenges = getChallengeList();
-    res.json(challenges);
+    res.json({challenges: challenges});
 }));
 
 // Get game modification data for an active challenge

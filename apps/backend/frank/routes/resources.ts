@@ -14,7 +14,7 @@ interface UpgradeCharacterReqBody{
 // Get the list of all game enemies
 router.get("/enemies", (req, res) => {
     const enemies = getEnemyList();
-    res.json(enemies);
+    res.json({enemies: enemies});
 });
 
 // Get current coins, mastery points, and character tiers
@@ -50,7 +50,7 @@ router.get("/characters", loginErrorHandler(async (req, res, username) => {
         }
     }
 
-    res.json(characters);
+    res.json({characters: characters});
 }));
 
 // Upgrade a character

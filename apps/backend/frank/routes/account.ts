@@ -118,7 +118,7 @@ router.post<Empty, Empty, UpdateReqBody>("/update", loginErrorHandler<UpdateReqB
     if (typeof newPassword !== "string" && typeof newTheme !== "string"){
         //const userInfo = signToken(currentUsername);
         //res.json(userInfo);
-        res.send("Account successfully updated.");
+        res.json({message: "Account successfully updated."});
         return;
     }
     if (newPassword !== undefined && newPassword.length < 3){
@@ -167,7 +167,7 @@ router.post<Empty, Empty, UpdateReqBody>("/update", loginErrorHandler<UpdateReqB
 
     //const userInfo = signToken(currentUsername);
     //res.json(userInfo);
-    res.send("Account successfully updated.");
+    res.json({message: "Account successfully updated."});
 }));
 
 

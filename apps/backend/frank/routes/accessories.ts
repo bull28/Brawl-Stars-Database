@@ -18,7 +18,7 @@ router.get("/", loginErrorHandler(async (req, res, username) => {
 
     const data = getAccessoryData(resources.accessories);
 
-    res.json(data);
+    res.json({accessories: data});
 }));
 
 // Get all accessories that can be bought with coins
@@ -27,7 +27,7 @@ router.get("/shop", loginErrorHandler(async (req, res, username) => {
 
     const items = getShopItems(resources.accessories, resources.mastery);
 
-    res.json(items);
+    res.json({items: items});
 }));
 
 // Claim an accessory using collected badges or buy it with coins
