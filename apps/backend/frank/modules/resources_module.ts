@@ -58,6 +58,10 @@ const upgradeTiers = [
     },
     {
         base: 300.0, scaling: 0, startLevel: 60, maxUpgrades: 0, name: "Masters", color: "#ffcc00", image: "tier_masters",
+        upgradeCosts: [0], tierUpCost: 300000, masteryReq: 30
+    },
+    {
+        base: 300.0, scaling: 0, startLevel: 60, maxUpgrades: 0, name: "Pro", color: "#3afc9f", image: "tier_pro",
         upgradeCosts: [0], tierUpCost: 0, masteryReq: 30
     }
 ];

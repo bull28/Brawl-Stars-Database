@@ -180,7 +180,7 @@ describe("User Resources endpoints", function(){
         });
 
         it("Already maximum level", async function(){
-            view.setUint16(index, 0x600, true);
+            view.setUint16(index, 0x700, true);
             await connection.query(
                 `UPDATE ${tables.users} SET mastery = ?, coins = ?, characters = ? WHERE username = ?;`,
                 [initialMastery, initialCoins, Buffer.from(buffer), TEST_USERNAME]
@@ -196,7 +196,7 @@ describe("User Resources endpoints", function(){
             );
             const characters = new DataView(Uint8Array.from(results[0].characters).buffer);
             expect(results[0].coins).to.equal(initialCoins);
-            expect(characters.getUint16(index * 2, true)).to.equal(0x600);
+            expect(characters.getUint16(index * 2, true)).to.equal(0x700);
         });
     });
 });

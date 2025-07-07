@@ -73,11 +73,11 @@
     },
     {
         "name": "brawlbox6", "category": "", "displayName": "Buster's Projector",
-        "description": "The ability charges faster when out of combat.", "unlock": "Buy from the Shop.", "badges": 1
+        "description": "The super charges faster when out of combat.", "unlock": "Buy from the Shop.", "badges": 1
     },
     {
-        "name": "brawlbox7", "category": "", "displayName": "Ability Juice",
-        "description": "The ability charges past a full charge.", "unlock": "Buy from the Shop.", "badges": 1
+        "name": "brawlbox7", "category": "", "displayName": "Super Juice",
+        "description": "The super charges past a full charge.", "unlock": "Buy from the Shop.", "badges": 1
     },
     {
         "name": "shelly", "category": "enemy", "displayName": "Shelly's Shotgun",
@@ -225,7 +225,7 @@
     },
     {
         "name": "deepsea", "category": "location", "displayName": "Clancy's Tokens",
-        "description": "Using the ability increases life steal for the rest of the level.", "unlock": "Complete levels at Deep Sea.", "badges": 250
+        "description": "Using the super increases life steal for the rest of the level.", "unlock": "Complete levels at Deep Sea.", "badges": 250
     },
     {
         "name": "giftshop", "category": "location", "displayName": "Gift Shop Shirt",
@@ -245,7 +245,7 @@
     },
     {
         "name": "stuntshow", "category": "location", "displayName": "Janet's Microphone",
-        "description": "Increases ability reload speed.", "unlock": "Complete levels at Stunt Show.", "badges": 250
+        "description": "Increases super reload speed.", "unlock": "Complete levels at Stunt Show.", "badges": 250
     },
     {
         "name": "supercity", "category": "location", "displayName": "Surge's Energy Drink",
@@ -269,7 +269,7 @@
     },
     {
         "name": "nomove", "category": "", "displayName": "Charlie's Cocoon",
-        "description": "When at low health, take less damage.", "unlock": "Win without moving. Abilities are allowed.", "badges": 1
+        "description": "When at low health, take less damage.", "unlock": "Win without moving. Supers are allowed.", "badges": 1
     },
     {
         "name": "noupgrades", "category": "", "displayName": "Bling Stack",
@@ -281,7 +281,7 @@
     },
     {
         "name": "fastwin", "category": "", "displayName": "Fang's Shoe",
-        "description": "When defeating an enemy, partially recharge the ability.", "unlock": "Win in under 90 seconds.", "badges": 1
+        "description": "When defeating an enemy, partially recharge the super.", "unlock": "Win in under 90 seconds.", "badges": 1
     },
     {
         "name": "perfect1", "category": "", "displayName": "Championship Trophy",

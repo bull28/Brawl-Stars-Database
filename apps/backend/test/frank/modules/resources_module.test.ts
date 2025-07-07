@@ -27,7 +27,8 @@ describe("User Resources module", function(){
         expect(getNextTier(-1000)).to.equal(0x001);
         expect(getNextTier(0x009)).to.equal(0x00a);
         expect(getNextTier(0x00a)).to.equal(0x100);
-        expect(getNextTier(0x600)).to.equal(0x600);
+        expect(getNextTier(0x600)).to.equal(0x700);
+        expect(getNextTier(0x700)).to.equal(0x700);
     });
 
     it("Get the preview data for a character", function(){
@@ -153,6 +154,19 @@ describe("User Resources module", function(){
             expect(tier60.current.tier.level).to.equal(60);
             expect(checkStats(tier60.current.stats, character.stats, 300)).to.be.true;
 
+            expect(tier60.next.tier.level).to.equal(60);
+            expect(checkStats(tier60.next.stats, character.stats, 300)).to.be.true;
+
+            expect(tier60.upgrade.cost).to.equal(300000);
+            expect(tier60.upgrade.masteryReq).to.equal(30);
+        });
+
+        it("Highest upgrade tier with hypercharge", function(){
+            const tier60 = getCharacterData({name: name, tier: 0x700})!;
+
+            expect(tier60.current.tier.level).to.equal(60);
+            expect(checkStats(tier60.current.stats, character.stats, 300)).to.be.true;
+
             expect(tier60.next.tier.level).to.equal(-1);
             expect(checkStats(tier60.next.stats, character.stats, 300)).to.be.true;
 
@@ -193,7 +207,7 @@ describe("User Resources module", function(){
         });
 
         it("Above highest upgrade tier", function(){
-            const tier60 = getCharacterData({name: name, tier: 0x600});
+            const tier60 = getCharacterData({name: name, tier: 0x700});
             const tierAbove60 = getCharacterData({name: name, tier: 0x1b39});
             expect(tier60).to.eql(tierAbove60);
         });
