@@ -468,5 +468,15 @@
         "name": "Battle for Katana Kingdom",
         "image": "bg_feudaljapan",
         "icon": "icon_feudaljapan"
+    },
+    "darkgreek": {
+        "name": "Legends of Hades",
+        "image": "bg_darkgreek",
+        "icon": "icon_darkgreek"
+    },
+    "fantasy": {
+        "name": "Knights!",
+        "image": "bg_fantasy",
+        "icon": "icon_fantasy"
     }
 }

@@ -259,11 +259,11 @@ describe("Brawlers and Skins module", function(){
         });
 
         it("Search query", function(){
-            const query = "Bull";
+            const query = "bull";
             const results = skinSearch(allSkins, {query: query});
             const filtered = results.filter((value) => {
                 const data = skinMap.get(value.name);
-                return data !== undefined && data.displayName.includes(query);
+                return data !== undefined && data.displayName.toLowerCase().includes(query);
             });
             expect(results.length).to.equal(filtered.length);
         });
