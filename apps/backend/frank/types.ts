@@ -12,6 +12,7 @@ export interface ApiError{
     error: {
         title: string;
         detail: string;
+        userDetail: string;
     };
 }
 

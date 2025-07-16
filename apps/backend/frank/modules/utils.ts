@@ -37,6 +37,6 @@ export function createError(code: keyof typeof errors): ApiError{
     return {error: errors[code]};
 }
 
-export function createCustomError(title: string, detail: string): ApiError{
-    return {error: {title, detail}};
+export function createCustomError(title: string, detail: string, userDetail: string): ApiError{
+    return {error: {title, detail, userDetail}};
 }

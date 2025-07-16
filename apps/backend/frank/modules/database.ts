@@ -15,7 +15,7 @@ export function databaseErrorHandler<R = Empty, Q = Query, P = ParamsDictionary>
     return (req: Request<P, Empty, R, Q>, res: Response, next: NextFunction) => {
         Promise.resolve(callback(req, res, next)).catch((reason: unknown) => {
             const errorData = getErrorMessage(reason as Error);
-            res.status(errorData.status).json(createCustomError("Error", errorData.message));
+            res.status(errorData.status).json(createCustomError("Error", errorData.message, errorData.message));
         });
     };
 }
@@ -45,7 +45,7 @@ export function loginErrorHandler<R = Empty, Q = Query, P = ParamsDictionary>(ca
 
         Promise.resolve(callback(req, res, validateResult.username, next)).catch((reason: unknown) => {
             const errorData = getErrorMessage(reason as Error);
-            res.status(errorData.status).json(createCustomError("Error", errorData.message));
+            res.status(errorData.status).json(createCustomError("Error", errorData.message, errorData.message));
         });
     };
 }

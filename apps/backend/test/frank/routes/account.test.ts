@@ -148,7 +148,7 @@ describe("Account endpoints", function(){
 
             const res2 = await chai.request(server).post("/signup").send({username: TEST_USERNAME_DUPLICATE, password: TEST_PASSWORD});
             expect(res2).to.have.status(401);
-            expect(res2.body).to.eql({error: {title: "Error", detail: "Username is already taken."}});
+            expect(res2.body).to.eql({error: {title: "Error", detail: "Username is already taken.", userDetail: "Username is already taken."}});
 
             const [results] = await connection.query(`SELECT username from ${tables.users} WHERE username = ?;`, [TEST_USERNAME_DUPLICATE]);
             expect(results).to.have.lengthOf(1);
