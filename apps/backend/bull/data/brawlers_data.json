@@ -8930,7 +8930,7 @@
                 "unlock": "Only obtainable from Supercell ID rewards",
                 "foundIn": [],
                 "release": {
-                    "month": 7,
+                    "month": 9,
                     "year": 2025
                 },
                 "image": "mechanicscstore.webp",
@@ -25036,7 +25036,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Reward for completing the Icarus Bonnie Skin Challenge",
                 "foundIn": [],
                 "release": {
                     "month": 7,
@@ -41053,10 +41053,8 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
-                "foundIn": [
-                    "Demonic Starr Drops"
-                ],
+                "unlock": "Reward for opening 100 Demonic Starr Drops during the 2025 Demons event",
+                "foundIn": [],
                 "release": {
                     "month": 8,
                     "year": 2025
@@ -43352,10 +43350,8 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
-                "foundIn": [
-                    "Angelic Starr Drops"
-                ],
+                "unlock": "Reward for opening 100 Angelic Starr Drops during the 2025 Angels event",
+                "foundIn": [],
                 "release": {
                     "month": 7,
                     "year": 2025
@@ -56688,10 +56684,10 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Reward for completing the Guismo Kit Skin Challenge",
                 "foundIn": [],
                 "release": {
-                    "month": 7,
+                    "month": 8,
                     "year": 2025
                 },
                 "image": "attacherrarechroma3.webp",
@@ -56726,10 +56722,10 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Reward for completing the Mariano Kit Skin Challenge",
                 "foundIn": [],
                 "release": {
-                    "month": 7,
+                    "month": 8,
                     "year": 2025
                 },
                 "image": "attacherrarechroma4.webp",
@@ -56802,7 +56798,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Reward for completing the Yuki Kit Skin Challenge",
                 "foundIn": [],
                 "release": {
                     "month": 7,

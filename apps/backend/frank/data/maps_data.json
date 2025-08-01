@@ -199,7 +199,7 @@
                         "name": "backyard-bowl",
                         "displayName": "Backyard Bowl",
                         "gameMode": "brawlball",
-                        "powerLeagueMap": true,
+                        "powerLeagueMap": false,
                         "image": "backyard-bowl.webp",
                         "bannerImage": "grassfield.webp"
                     },
@@ -231,7 +231,7 @@
                         "name": "pinhole-punt",
                         "displayName": "Pinhole Punt",
                         "gameMode": "brawlball",
-                        "powerLeagueMap": true,
+                        "powerLeagueMap": false,
                         "image": "pinhole-punt.webp",
                         "bannerImage": "grassfield.webp"
                     },
@@ -323,7 +323,7 @@
                         "name": "crystal-arcade",
                         "displayName": "Crystal Arcade",
                         "gameMode": "gemgrab",
-                        "powerLeagueMap": false,
+                        "powerLeagueMap": true,
                         "image": "crystal-arcade.webp",
                         "bannerImage": "hub.webp"
                     },
@@ -339,7 +339,7 @@
                         "name": "deathcap-trap",
                         "displayName": "Deathcap Trap",
                         "gameMode": "gemgrab",
-                        "powerLeagueMap": false,
+                        "powerLeagueMap": true,
                         "image": "deathcap-trap.webp",
                         "bannerImage": "canyon.webp"
                     },
