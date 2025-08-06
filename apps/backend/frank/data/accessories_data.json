@@ -289,7 +289,7 @@
     },
     {
         "name": "perfect2", "category": "", "displayName": "Hypercharged Token",
-        "description": "Increases health, damage, healing, speed, and life steal.", "unlock": "Get a score of 600 on difficulty 10.", "badges": 1
+        "description": "Reduces the number of enemies required to charge a Hypercharge.", "unlock": "Get a score of 600 on difficulty 10.", "badges": 1
     },
     {
         "name": "mastery1", "category": "", "displayName": "Bronze Medal",

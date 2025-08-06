@@ -9990,6 +9990,44 @@
                 "rating": 0
             },
             {
+                "name": "tntguyprogressionskinlevel1",
+                "displayName": "Occultist Dynamike I",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 7,
+                    "name": "Pro",
+                    "icon": "skin_rarity_7.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "Pro Pass",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_propass.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Reward from free track of Last Chance Qualifier 2025 Pro Pass",
+                "foundIn": [],
+                "release": {
+                    "month": 7,
+                    "year": 2025
+                },
+                "image": "tntguyprogressionskinlevel1.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
                 "name": "tntguyprogressionskinlevel4",
                 "displayName": "Haunted Dynamike I",
                 "cost": 0,
@@ -10148,44 +10186,6 @@
                     "year": 2025
                 },
                 "image": "tntguyprogressionskinlevel11.webp",
-                "model": {
-                    "geometry": "",
-                    "winAnimation": "",
-                    "loseAnimation": ""
-                },
-                "rating": 0
-            },
-            {
-                "name": "tntguyprogressionskinlevel1",
-                "displayName": "Occultist Dynamike I",
-                "cost": 0,
-                "currency": "",
-                "costBling": -1,
-                "rarity": {
-                    "value": 7,
-                    "name": "Pro",
-                    "icon": "skin_rarity_7.webp"
-                },
-                "requires": "",
-                "features": [
-                    "Brawler Model",
-                    "Texture"
-                ],
-                "groups": [
-                    {
-                        "name": "Pro Pass",
-                        "image": "bg_ranked.webp",
-                        "icon": "icon_propass.webp"
-                    }
-                ],
-                "limited": false,
-                "unlock": "Reward from free track of Last Chance Qualifier 2025 Pro Pass",
-                "foundIn": [],
-                "release": {
-                    "month": 7,
-                    "year": 2025
-                },
-                "image": "tntguyprogressionskinlevel1.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
