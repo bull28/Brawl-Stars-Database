@@ -2,7 +2,7 @@ import {expect} from "chai";
 import characterList from "../../../frank/data/characters_data.json";
 import {IMAGE_FILE_EXTENSION, SKIN_IMAGE_DIR, PIN_IMAGE_DIR, MASTERY_LEVEL_DIR, TIER_IMAGE_DIR, CHARACTER_IMAGE_DIR} from "../../../frank/data/constants";
 import {getEnemyList, getNextTier, getMasteryLevel, getCharacterPreview, getCharacterData} from "../../../frank/modules/resources_module";
-import {CharacterStatus} from "../../../frank/types";
+import {CharacterHyperStats, CharacterStatus} from "../../../frank/types";
 
 describe("User Resources module", function(){
     it("Get the list of all enemies", function(){
@@ -27,7 +27,11 @@ describe("User Resources module", function(){
         expect(getNextTier(-1000)).to.equal(0x001);
         expect(getNextTier(0x009)).to.equal(0x00a);
         expect(getNextTier(0x00a)).to.equal(0x100);
-        expect(getNextTier(0x600)).to.equal(0x700);
+        expect(getNextTier(0x30a)).to.equal(0x30b);
+        expect(getNextTier(0x30f)).to.equal(0x400);
+        expect(getNextTier(0x50f)).to.equal(0x510);
+        expect(getNextTier(0x514)).to.equal(0x600);
+        expect(getNextTier(0x614)).to.equal(0x700);
         expect(getNextTier(0x700)).to.equal(0x700);
     });
 
@@ -111,6 +115,17 @@ describe("User Resources module", function(){
             return valid;
         }
 
+        function hcStatsDiff(stats1: CharacterHyperStats, stats2: CharacterHyperStats): Partial<CharacterHyperStats>{
+            // Returns stats2 - stats1
+            const diff: Partial<CharacterHyperStats> = {};
+            for (const x in stats2){
+                if (Object.hasOwn(stats1, x) && stats1[x] !== stats2[x]){
+                    diff[x] = stats2[x] - stats1[x];
+                }
+            }
+            return diff;
+        }
+
         let index = 0;
         const i = characterList.findIndex((value) => value.name === "darryl");
         if (i > 0){
@@ -127,12 +142,14 @@ describe("User Resources module", function(){
             expect(tier0.current).to.be.an("object");
             expect(tier0.next).to.be.an("object");
             expect(tier0.upgrade).to.be.an("object");
-            expect(tier0.current).to.have.keys(["tier", "stats"]);
-            expect(tier0.next).to.have.keys(["tier", "stats"]);
+            expect(tier0.current).to.have.keys(["tier", "stats", "hcStats"]);
+            expect(tier0.next).to.have.keys(["tier", "stats", "hcStats"]);
             expect(tier0.current.tier).to.have.keys(["level", "name", "image", "color"]);
             expect(tier0.next.tier).to.have.keys(["level", "name", "image", "color"]);
             expect(tier0.current.stats).to.have.keys(["health", "damage", "healing", "lifeSteal"]);
             expect(tier0.next.stats).to.have.keys(["health", "damage", "healing", "lifeSteal"]);
+            expect(tier0.current.hcStats).to.have.keys(["damage", "speed", "duration", "charge", "level"]);
+            expect(tier0.next.hcStats).to.have.keys(["damage", "speed", "duration", "charge", "level"]);
             expect(tier0.upgrade).to.have.keys(["cost", "masteryReq", "badgesReq"]);
             expect(tier0.otherStats).to.have.keys(["reload", "speed", "range", "targets"]);
 
@@ -149,29 +166,18 @@ describe("User Resources module", function(){
         });
 
         it("Highest upgrade tier", function(){
-            const tier60 = getCharacterData({name: name, tier: 0x600})!;
+            const tier100 = getCharacterData({name: name, tier: 0x700})!;
 
-            expect(tier60.current.tier.level).to.equal(60);
-            expect(checkStats(tier60.current.stats, character.stats, 300)).to.be.true;
+            expect(tier100.current.tier.level).to.equal(100);
+            expect(checkStats(tier100.current.stats, character.stats, 300)).to.be.true;
 
-            expect(tier60.next.tier.level).to.equal(60);
-            expect(checkStats(tier60.next.stats, character.stats, 300)).to.be.true;
+            expect(tier100.next.tier.level).to.equal(-1);
+            expect(checkStats(tier100.next.stats, character.stats, 300)).to.be.true;
 
-            expect(tier60.upgrade.cost).to.equal(300000);
-            expect(tier60.upgrade.masteryReq).to.equal(30);
-        });
+            expect(hcStatsDiff(tier100.current.hcStats, tier100.next.hcStats)).to.eql({});
 
-        it("Highest upgrade tier with hypercharge", function(){
-            const tier60 = getCharacterData({name: name, tier: 0x700})!;
-
-            expect(tier60.current.tier.level).to.equal(60);
-            expect(checkStats(tier60.current.stats, character.stats, 300)).to.be.true;
-
-            expect(tier60.next.tier.level).to.equal(-1);
-            expect(checkStats(tier60.next.stats, character.stats, 300)).to.be.true;
-
-            expect(tier60.upgrade.cost).to.equal(0);
-            expect(tier60.upgrade.masteryReq).to.equal(30);
+            expect(tier100.upgrade.cost).to.equal(0);
+            expect(tier100.upgrade.masteryReq).to.equal(30);
         });
 
         it("Next level is a normal upgrade", function(){
@@ -188,16 +194,48 @@ describe("User Resources module", function(){
         });
 
         it("Next level is a tier up", function(){
-            const tier60 = getCharacterData({name: name, tier: 0x50a})!;
+            const tier60 = getCharacterData({name: name, tier: 0x40f})!;
 
             expect(tier60.current.tier.level).to.equal(60);
-            expect(checkStats(tier60.current.stats, character.stats, 290)).to.be.true;
+            expect(checkStats(tier60.current.stats, character.stats, 242.5)).to.be.true;
 
             expect(tier60.next.tier.level).to.equal(60);
-            expect(checkStats(tier60.next.stats, character.stats, 300)).to.be.true;
+            expect(checkStats(tier60.next.stats, character.stats, 250)).to.be.true;
 
-            expect(tier60.upgrade.cost).to.equal(200000);
-            expect(tier60.upgrade.masteryReq).to.equal(30);
+            expect(tier60.upgrade.cost).to.equal(64000);
+            expect(tier60.upgrade.masteryReq).to.equal(25);
+        });
+
+        it("Next level unlocks hypercharge", function(){
+            const tier80 = getCharacterData({name: name, tier: 0x514})!;
+
+            expect(tier80.current.tier.level).to.equal(80);
+            expect(checkStats(tier80.current.stats, character.stats, 290)).to.be.true;
+            expect(tier80.current.hcStats.level).to.equal(0);
+
+            expect(tier80.next.tier.level).to.equal(80);
+            expect(checkStats(tier80.next.stats, character.stats, 300)).to.be.true;
+            expect(tier80.next.hcStats.level).to.equal(1);
+
+            expect(tier80.upgrade.cost).to.equal(240000);
+            expect(tier80.upgrade.masteryReq).to.equal(30);
+        });
+
+        it("Next level improves hypercharge", function(){
+            const tier80 = getCharacterData({name: name, tier: 0x600})!;
+
+            expect(tier80.current.tier.level).to.equal(80);
+            expect(checkStats(tier80.current.stats, character.stats, 300)).to.be.true;
+            expect(tier80.current.hcStats.level).to.equal(1);
+
+            expect(tier80.next.tier.level).to.equal(81);
+            expect(checkStats(tier80.next.stats, character.stats, 300)).to.be.true;
+            expect(tier80.next.hcStats.level).to.equal(1);
+
+            expect(hcStatsDiff(tier80.current.hcStats, tier80.next.hcStats)).to.eql({damage: 5});
+
+            expect(tier80.upgrade.cost).to.equal(96000);
+            expect(tier80.upgrade.masteryReq).to.equal(30);
         });
 
         it("Negative upgrade tier", function(){
@@ -207,9 +245,9 @@ describe("User Resources module", function(){
         });
 
         it("Above highest upgrade tier", function(){
-            const tier60 = getCharacterData({name: name, tier: 0x700});
-            const tierAbove60 = getCharacterData({name: name, tier: 0x1b39});
-            expect(tier60).to.eql(tierAbove60);
+            const tier100 = getCharacterData({name: name, tier: 0x700});
+            const tierAbove100 = getCharacterData({name: name, tier: 0x1b39});
+            expect(tier100).to.eql(tierAbove100);
         });
 
         it("Character does not exist", function(){

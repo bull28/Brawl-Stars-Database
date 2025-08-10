@@ -66,7 +66,7 @@ describe("User Resources endpoints", function(){
     });
 
     it("/characters", async function(){
-        view.setUint16(0, 0x30a, true);
+        view.setUint16(0, 0x30f, true);
         await connection.query(
             `UPDATE ${tables.users} SET characters = ? WHERE username = ?;`,
             [Buffer.from(buffer), TEST_USERNAME]
@@ -79,8 +79,8 @@ describe("User Resources endpoints", function(){
         expect(res.body.characters).to.be.an("array");
         expect(res.body.characters).to.have.lengthOf(characterList.length);
 
-        expect(res.body.characters[0].current.tier.level).to.equal(40);
-        expect(res.body.characters[0].next.tier.level).to.equal(40);
+        expect(res.body.characters[0].current.tier.level).to.equal(45);
+        expect(res.body.characters[0].next.tier.level).to.equal(45);
     });
 
     describe("/characters/upgrade", function(){
@@ -90,8 +90,8 @@ describe("User Resources endpoints", function(){
 
         const initialCoins = 1000000;
         const initialMastery = 20000000;
-        const normalCost = 4540;
-        const tierUpCost = 18000;
+        const normalCost = 3920;
+        const tierUpCost = 22000;
 
         beforeEach(async function(){
             view.setUint16(index, 0x302, true);
@@ -118,7 +118,7 @@ describe("User Resources endpoints", function(){
         });
 
         it("Successful tier up", async function(){
-            view.setUint16(index, 0x30a, true);
+            view.setUint16(index, 0x30f, true);
             await connection.query(
                 `UPDATE ${tables.users} SET mastery = ?, coins = ?, characters = ? WHERE username = ?;`,
                 [initialMastery, initialCoins, Buffer.from(buffer),TEST_USERNAME]
@@ -127,7 +127,7 @@ describe("User Resources endpoints", function(){
             const res = await chai.request(server).post("/characters/upgrade").auth(TEST_TOKEN, {type: "bearer"})
             .send({character: name});
             expect(res).to.have.status(200);
-            expect(res.body.current.tier.level).to.equal(40);
+            expect(res.body.current.tier.level).to.equal(45);
 
             const [results] = await connection.query(
                 `SELECT coins, characters FROM ${tables.users} WHERE username = ?;`, [TEST_USERNAME]

@@ -2,7 +2,7 @@ import characterList from "../data/characters_data.json";
 import enemyList from "../data/enemies_data.json";
 import {findName} from "./utils";
 import {IMAGE_FILE_EXTENSION, SKIN_IMAGE_DIR, PIN_IMAGE_DIR, MASTERY_LEVEL_DIR, TIER_IMAGE_DIR, CHARACTER_IMAGE_DIR} from "../data/constants";
-import {UserCharacter, MasteryData, CharacterPreview, CharacterStatus, EnemyData} from "../types";
+import {UserCharacter, MasteryData, CharacterPreview, CharacterHyperStats, CharacterStatus, EnemyData} from "../types";
 
 const indexMap = new Map<string, number>();
 for (let x = 0; x < characterList.length; x++){
@@ -33,38 +33,54 @@ const levelImages = [
 
 const upgradeTiers = [
     {
-        base: 100.0, scaling: 2, startLevel: 0, maxUpgrades: 10, name: "Bronze", color: "#ff9900", image: "tier_bronze",
-        upgradeCosts: [250, 260, 280, 300, 320, 350, 380, 410, 450, 500], tierUpCost: 1500, masteryReq: 4
+        base: 100.0, scaling: 2, hyper: -1, hyperScaling: 0, startLevel: 0, maxUpgrades: 10,
+        name: "Bronze", color: "#ff9900", image: "tier_bronze", tierUpCost: 1500, masteryReq: 4,
+        upgradeCosts: [250, 260, 280, 300, 320, 350, 380, 410, 450, 500]
     },
     {
-        base: 125.0, scaling: 2, startLevel: 10, maxUpgrades: 10, name: "Silver", color: "#c9c6f1", image: "tier_silver",
-        upgradeCosts: [600, 640, 680, 740, 800, 880, 960, 1060, 1160, 1280], tierUpCost: 3200, masteryReq: 8
+        base: 125.0, scaling: 2, hyper: -1, hyperScaling: 0, startLevel: 10, maxUpgrades: 10,
+        name: "Silver", color: "#c9c6f1", image: "tier_silver", tierUpCost: 3200, masteryReq: 8,
+        upgradeCosts: [600, 640, 680, 740, 800, 880, 960, 1060, 1160, 1280]
     },
     {
-        base: 150.0, scaling: 2, startLevel: 20, maxUpgrades: 10, name: "Gold", color: "#ffef49", image: "tier_gold",
-        upgradeCosts: [1600, 1680, 1780, 1900, 2040, 2200, 2400, 2660, 2940, 3300], tierUpCost: 7500, masteryReq: 12
+        base: 150.0, scaling: 2, hyper: -1, hyperScaling: 0, startLevel: 20, maxUpgrades: 10,
+        name: "Gold", color: "#ffef49", image: "tier_gold", tierUpCost: 8000, masteryReq: 12,
+        upgradeCosts: [1600, 1680, 1780, 1900, 2040, 2200, 2400, 2640, 2920, 3240]
     },
     {
-        base: 175.0, scaling: 3, startLevel: 30, maxUpgrades: 10, name: "Diamond", color: "#33ffff", image: "tier_diamond",
-        upgradeCosts: [4000, 4240, 4540, 4900, 5380, 6000, 6760, 7640, 8640, 9900], tierUpCost: 18000, masteryReq: 16
+        base: 175.0, scaling: 2, hyper: -1, hyperScaling: 0, startLevel: 30, maxUpgrades: 15,
+        name: "Diamond", color: "#33ffff", image: "tier_diamond", tierUpCost: 22000, masteryReq: 16,
+        upgradeCosts: [3600, 3760, 3920, 4100, 4280, 4480, 4680, 4900, 5140, 5400, 5680, 6000, 6360, 6760, 7200]
     },
     {
-        base: 212.5, scaling: 3, startLevel: 40, maxUpgrades: 10, name: "Mythic", color: "#ff00ff", image: "tier_mythic",
-        upgradeCosts: [12000, 12600, 13400, 14600, 16200, 18200, 20800, 24000, 28200, 34000], tierUpCost: 56000, masteryReq: 20
+        base: 212.5, scaling: 2, hyper: -1, hyperScaling: 0, startLevel: 45, maxUpgrades: 15,
+        name: "Mythic", color: "#ff00ff", image: "tier_mythic", tierUpCost: 64000, masteryReq: 20,
+        upgradeCosts: [10000, 10400, 10800, 11300, 11800, 12400, 13100, 13900, 14800, 15800, 17000, 18400, 20200, 22400, 25000],
     },
     {
-        base: 250.0, scaling: 4, startLevel: 50, maxUpgrades: 10, name: "Legendary", color: "#f75363", image: "tier_legendary",
-        upgradeCosts: [42000, 44800, 48400, 53200, 59200, 66400, 76000, 88000, 102000, 120000], tierUpCost: 200000, masteryReq: 25
+        base: 250.0, scaling: 2, hyper: -1, hyperScaling: 0, startLevel: 60, maxUpgrades: 20,
+        name: "Legendary", color: "#f75363", image: "tier_legendary", tierUpCost: 240000, masteryReq: 25,
+        upgradeCosts: [32000, 33000, 34000, 35200, 36400, 37800, 39400, 41200, 43200, 45400, 47800, 50400, 53200, 56400, 60000, 64200, 69200, 75000, 81800, 90000]
     },
     {
-        base: 300.0, scaling: 0, startLevel: 60, maxUpgrades: 0, name: "Masters", color: "#ffcc00", image: "tier_masters",
-        upgradeCosts: [0], tierUpCost: 300000, masteryReq: 30
+        base: 300.0, scaling: 0, hyper: 0, hyperScaling: 1, startLevel: 80, maxUpgrades: 20,
+        name: "Masters", color: "#ffcc00", image: "tier_masters", tierUpCost: 360000, masteryReq: 30,
+        upgradeCosts: [96000, 97000, 98000, 99000, 100000, 102000, 104000, 106000, 108000, 110000, 112000, 114000, 116000, 118000, 120000, 124000, 128000, 132000, 136000, 140000]
     },
     {
-        base: 300.0, scaling: 0, startLevel: 60, maxUpgrades: 0, name: "Pro", color: "#3afc9f", image: "tier_pro",
-        upgradeCosts: [0], tierUpCost: 0, masteryReq: 30
+        base: 300.0, scaling: 0, hyper: 20, hyperScaling: 0, startLevel: 100, maxUpgrades: 0,
+        name: "Pro", color: "#3afc9f", image: "tier_pro", tierUpCost: 0, masteryReq: 30,
+        upgradeCosts: [0]
     }
 ];
+
+const hyperUpgrades = {
+    damage: {base: 20, scaling: 5, unlockLevel: 1},
+    speed: {base: 4, scaling: 1, unlockLevel: 2},
+    duration: {base: 10, scaling: 0.5, unlockLevel: 3},
+    charge: {base: 0, scaling: 6.25, unlockLevel: 4},
+    level: {base: 1, scaling: 1, unlockLevel: 5}
+};
 
 function upgradeTierIndex(tier: number): {index: number; upgrades: number;}{
     if (tier < 0){
@@ -77,6 +93,19 @@ function upgradeTierIndex(tier: number): {index: number; upgrades: number;}{
         index: Math.min(upgradeTiers.length - 1, index),
         upgrades: Math.min(config.maxUpgrades, upgrades)
     };
+}
+
+function getHyperStats(upgrades: number): CharacterHyperStats{
+    const stats: CharacterHyperStats = {damage: 0, speed: 0, duration: 0, charge: 0, level: 0};
+    if (upgrades < 0){
+        return stats;
+    }
+
+    for (const x in hyperUpgrades){
+        const key = x as keyof CharacterHyperStats;
+        stats[key] = hyperUpgrades[key].base + Math.floor(1 + (upgrades - hyperUpgrades[key].unlockLevel) / 5) * hyperUpgrades[key].scaling;
+    }
+    return stats;
 }
 
 export function findUserCharacter(userCharacters: UserCharacter[], name: string): number{
@@ -234,11 +263,15 @@ export function getCharacterData(character: UserCharacter): CharacterStatus | un
 
     const multiplier = tierConfig.base + tierConfig.scaling * t.upgrades;
     let nextMultiplier = multiplier;
+    const currentHyper = tierConfig.hyper + tierConfig.hyperScaling * t.upgrades;
+    let nextHyper = currentHyper;
+
     if (t.index < upgradeTiers.length - 1){
         if (t.upgrades >= tierConfig.maxUpgrades){
             // Next level is a tier up
             const next = upgradeTiers[t.index + 1];
             nextMultiplier = next.base;
+            nextHyper = next.hyper;
 
             nextTier.level = next.startLevel;
             nextTier.name = next.name;
@@ -250,6 +283,8 @@ export function getCharacterData(character: UserCharacter): CharacterStatus | un
         } else{
             // Next level is a normal upgrade
             nextMultiplier = multiplier + tierConfig.scaling;
+            nextHyper = currentHyper + tierConfig.hyperScaling;
+
             nextTier.level = tierData.level + 1;
 
             upgradeCost.cost = tierConfig.upgradeCosts[Math.min(tierConfig.upgradeCosts.length - 1, t.upgrades)];
@@ -275,7 +310,8 @@ export function getCharacterData(character: UserCharacter): CharacterStatus | un
                 damage: damage * multiplier / 100,
                 healing: healing * multiplier / 100,
                 lifeSteal: lifeSteal * multiplier / 100
-            }
+            },
+            hcStats: getHyperStats(currentHyper)
         },
         next: {
             tier: nextTier,
@@ -284,7 +320,8 @@ export function getCharacterData(character: UserCharacter): CharacterStatus | un
                 damage: damage * nextMultiplier / 100,
                 healing: healing * nextMultiplier / 100,
                 lifeSteal: lifeSteal * nextMultiplier / 100
-            }
+            },
+            hcStats: getHyperStats(nextHyper)
         },
         upgrade: upgradeCost,
         otherStats: {

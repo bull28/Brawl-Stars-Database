@@ -363,6 +363,7 @@ export interface CharacterPreview{
 
 type CharacterStats = {[k in "health" | "damage" | "healing" | "lifeSteal"]: number};
 type CharacterOtherStats = {[k in "reload" | "speed" | "range" | "targets"]: number};
+export type CharacterHyperStats = {[k in "damage" | "speed" | "duration" | "charge" | "level"]: number};
 
 /**
  * Full data for a user's character
@@ -374,10 +375,12 @@ export interface CharacterStatus{
     current: {
         tier: UpgradeTier;
         stats: CharacterStats;
+        hcStats: CharacterHyperStats;
     };
     next: {
         tier: UpgradeTier;
         stats: CharacterStats;
+        hcStats: CharacterHyperStats;
     };
     upgrade: {
         cost: number;
