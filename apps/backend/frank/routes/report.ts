@@ -34,15 +34,19 @@ router.post<Empty, Empty, SaveReqBody>("/", databaseErrorHandler<SaveReqBody>(as
         return;
     }
 
-    const reportData = extractReportData(report[2]);
+    const reportData = extractReportData(report);
     if (reportData === undefined){
         body.message = "Invalid report.";
         res.status(403).json(body);
         return;
     }
 
+    // Last updated: version 90
+    // The report's timestamp is the number of seconds after the version was released. To ensure the value stored in the
+    // database is always increasing, add the time of the version's release to the report timestamp.
+    const endTime = report[1] + 1755586800;
+
     const gameMode = reportData.gameMode;
-    const endTime = report[1];
     if (typeof key === "string"){
         // In all other game modes, a key is used to identify the challenge. The key is stored in the database with its
         // corresponding username so the user to save the report to can be determined using only the key.
@@ -106,8 +110,9 @@ router.post<Empty, Empty, SaveReqBody>("/", databaseErrorHandler<SaveReqBody>(as
     resources.mastery += masteryReward;
 
     // Add coins
+    const r = (reportData.coins[1] - reportData.coins[0] + 1) / 2;
     const coinsReward = Math.floor(
-        Math.floor(reportData.coins[0] + (reportData.coins[1] - reportData.coins[0] + 1) * Math.random()) * coinsMultiplier
+        Math.floor(reportData.coins[0] + r * Math.random() + r * Math.random()) * coinsMultiplier
     );
     resources.coins += coinsReward;
 

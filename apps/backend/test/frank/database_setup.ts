@@ -21,13 +21,15 @@ export const tokens = {
     challenges: signToken("challenges").token,
 };
 
+export const GAME_VERSION = (90 << 16) + 132;
 export const sampleGameReport = [
+    GAME_VERSION, 1, // Version
     0, // Game Mode
     500, 5, 0, 0, 1, // Player
     0, 1, // Gears
-    -1, -1, -1, -1, -1, // Accessories
+    -1, -1, -1, -1, -1, -1, -1, -1, // Accessories
     300, 150, 0, 50, 0, 0, // Overall Score
-    600000, 567, 0, 0, 1, 0, 0, // Achievements
+    600000, 567, 0, 0, 0, 1, 0, 0, // Achievements
     16, 16, 10, 7, 5, 6, // Upgrades
     8, 10, 12, 15, 18, 21, 24, 24, // Enemy Stats
     0, 1, 2, 3, 7, 8, 12, 13, // Visited Levels
@@ -43,7 +45,6 @@ export const sampleGameReport = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 ];
-export const GAME_VERSION = 86;
 
 // This challenge is only for testing and should not be playable by real users
 challengeList.set("test", {

@@ -16,9 +16,9 @@ interface ChallengeRewardResult{
 }
 
 const REPORT_FORMAT = {
-    mode: [0, 1], player: [1, 6], gears: [6, 8], accessories: [8, 13], score: [13, 19],
-    achievements: [19, 26], upgrades: [26, 32], stats: [32, 40], visited: [40, 48],
-    levels: [48, 96], enemies: [96, 126], length: [0, 126]
+    version: [0, 2], mode: [2, 3], player: [3, 8], gears: [8, 10], accessories: [10, 18],
+    score: [18, 24], achievements: [24, 32], upgrades: [32, 38], stats: [38, 46],
+    visited: [46, 54], levels: [54, 102], enemies: [102, 132], length: [0, 132]
 };
 const SCORE_CONSTANTS = {
     stages: [
@@ -208,38 +208,16 @@ function getFinalScore(reports: number[], enemyCounts: number[]): number[]{
 }
 
 export function validateReport(report: GameReport): number{
-    // Last updated: version 86
+    // Last updated: version 90
 
     if (Array.isArray(report) === false){
         // Invalid report type
         return 1;
     }
-    if (report.length !== 3){
-        // Invalid report length
-        return 2;
-    }
-    if (typeof report[0] !== "number" || typeof report[1] !== "number" || Array.isArray(report[2]) === false){
-        // Invalid report types
-        return 3;
-    }
-    if (report[0] < 86){
-        // Old report version
-        return 4;
-    }
-    const timeSinceSave = Date.now() - report[1];
-    if (timeSinceSave < -60000 || timeSinceSave > 7200000){
-        // Invalid report time
-        return 5;
-    }
 
-    const data = report[2];
+    const data = report;// report[2] was the data object but data is now all in one array
     const format = REPORT_FORMAT;
     let valid = true;
-
-    if (data.length !== format.length[1] - format.length[0]){
-        // Invalid data length
-        return 6;
-    }
 
     // All values in the report data must be integers
     for (let x = 0; x < data.length; x++){
@@ -249,8 +227,43 @@ export function validateReport(report: GameReport): number{
     }
     if (valid === false){
         // Must return early because all other comparisons with the data require it to be integers
-        return 7;
+        return 2;
     }
+
+    // The first number contains major version (16 bits), minor version (4 bits), and report length (12 bits)
+    if ((report[0] >> 16) < 90){
+        // Old report version
+        return 3;
+    }
+
+    if (report[1] <= 0){
+        // Invalid report time
+        return 4;
+    }
+
+    if (data.length !== format.length[1] - format.length[0]){
+        // Data length does not match the expected length for this version's format
+        return 5;
+    }
+
+    if (data.length !== (report[0] & 4095)){
+        // Data length does not match length in version
+        return 6;
+    }
+
+    // if (report.length !== 3){
+    //     // Invalid report length
+    //     return 2;
+    // }
+    // if (typeof report[0] !== "number" || typeof report[1] !== "number" || Array.isArray(report[2]) === false){
+    //     // Invalid report types
+    //     return 3;
+    // }
+    // const timeSinceSave = Date.now() - report[1];
+    // if (timeSinceSave < -60000 || timeSinceSave > 7200000){
+    //     // Invalid report time
+    //     return 5;
+    // }
 
     // These are simple checks that determine whether report data is definitely invalid. The upper bounds on the checks
     // are intentionally high so valid but rare cases are not rejected. Values above the upper bounds have no chance of
@@ -260,37 +273,37 @@ export function validateReport(report: GameReport): number{
     // The game mode must be 0 or 2
     const gameMode = data[format.mode[0]];
     if (gameMode !== 0 && gameMode !== 2){
-        return 8;
+        return 7;
     }
 
     // The difficulty must be between 0 and 9
     const difficulty = data[format.player[0] + 1];
     if (difficulty < 0 || difficulty > 9){
-        return 9;
+        return 8;
     }
 
     // The character must be at least 0
     const character = data[format.player[0] + 2];
     if (character < 0){
-        return 10;
+        return 9;
     }
 
     // The tier must be at least 0
     const tier = data[format.player[0] + 3];
     if (tier < 0){
-        return 11;
+        return 10;
     }
 
     // The star power must be between 1 and 2
     const starPower = data[format.player[0] + 4];
     if (starPower < 1 || starPower > 2){
-        return 12;
+        return 11;
     }
 
     // The total enemies defeated cannot be more than 1000
     const enemiesDefeated = data[format.achievements[0] + 1];
     if (enemiesDefeated > 1000){
-        return 13;
+        return 12;
     }
 
     // The enemy stats multiplier must not be decreasing for each level
@@ -305,14 +318,14 @@ export function validateReport(report: GameReport): number{
         }
     }
     if (valid === false){
-        return 14;
+        return 13;
     }
 
     // The visited levels must be unique and only certain values are allowed at certain indexes
     const visited = data.slice(format.visited[0], format.visited[1]);
     const visitedAllowed = [[0], [1], [2, 3, 4, 5], [3, 4, 5, 6], [7, 8, 9, 10], [8, 9, 10, 11], [12], [13]];
     if (visited.length < visitedAllowed.length){
-        return 6;
+        return 5;
     }
     let hasLost = false;
     for (let x = 0; x < visited.length; x++){
@@ -338,7 +351,7 @@ export function validateReport(report: GameReport): number{
         }
     }
     if (valid === false){
-        return 15;
+        return 14;
     }
 
     // The meteor and robot enemies should not be defeated more than 80 times
@@ -360,7 +373,7 @@ export function validateReport(report: GameReport): number{
         }
     }
     if (valid === false){
-        return 16;
+        return 15;
     }
 
     if (gameMode === 0){
@@ -372,11 +385,16 @@ export function validateReport(report: GameReport): number{
             }
         }
         if (valid === false){
-            return 17;
+            return 16;
         }
 
         // Character upgrades are not allowed on difficulty 5 or lower
         if (tier > 0 && difficulty <= 5){
+            return 17;
+        }
+
+        // Hypercharges are not allowed on difficulty 5 or lower
+        if (data[format.achievements[0] + 3] > 0){
             return 18;
         }
 
@@ -418,7 +436,7 @@ export function validateReport(report: GameReport): number{
     //return valid;
 }
 
-export function extractReportData(data: number[]): ReportData | undefined{
+export function extractReportData(data: GameReport): ReportData | undefined{
     // Gets a report object that the server uses, this object is not shown to the user
     const format = REPORT_FORMAT;
     const p = format.player[0];

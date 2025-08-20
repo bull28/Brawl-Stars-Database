@@ -59,7 +59,7 @@ describe("Challenges module", function(){
             startingGears: 4,
             bonusResources: false,
             addBonusEnemies: false,
-            maxAccessories: 5,
+            maxAccessories: 25,
             menuTheme: "retropolis"
         });
         expect(challenge1.difficulties).to.eql(preset.difficulties);

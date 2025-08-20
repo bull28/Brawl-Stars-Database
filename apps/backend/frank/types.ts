@@ -424,7 +424,7 @@ export interface EnemyData{
 /**
  * Player stats report obtained from the game
  */
-export type GameReport = [number, number, number[]];
+export type GameReport = number[];
 
 /**
  * Data from a game report required to update progress

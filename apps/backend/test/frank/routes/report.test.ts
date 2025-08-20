@@ -9,8 +9,8 @@ const TEST_TOKEN = tokens.report;
 const TEST_USERNAME = "report";
 const TEST_CHALLENGE_ID = "test";
 
-const reportMode0 = sampleGameReport.slice();
-const reportMode2 = sampleGameReport.slice();
+const reportMode0 = sampleGameReport.slice(2);
+const reportMode2 = sampleGameReport.slice(2);
 // Game mode = 2
 reportMode2[0] = 2;
 
@@ -40,7 +40,7 @@ describe("Game Report endpoints", function(){
 
     describe("/report", function(){
         // Report end times must be increasing
-        let END_TIME = Date.now() - 60000;
+        let END_TIME = 1;
 
         before(async function(){
             await connection.query(`DELETE FROM ${tables.challenges};`);
@@ -66,7 +66,7 @@ describe("Game Report endpoints", function(){
             );
 
             const res = await chai.request(server).post("/report").auth(TEST_TOKEN, {type: "bearer"})
-            .send({username: TEST_USERNAME, report: [GAME_VERSION, END_TIME++, reportMode0]});
+            .send({username: TEST_USERNAME, report: [GAME_VERSION, END_TIME++].concat(reportMode0)});
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("object");
             expect(res.body).to.have.keys(["message", "status", "coins", "mastery"]);
@@ -88,7 +88,7 @@ describe("Game Report endpoints", function(){
             );
 
             const res = await chai.request(server).post("/report").auth(TEST_TOKEN, {type: "bearer"})
-            .send({username: "ignore", key: "test1", report: [GAME_VERSION, END_TIME++, reportMode2]});
+            .send({username: "ignore", key: "test1", report: [GAME_VERSION, END_TIME++].concat(reportMode2)});
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("object");
             expect(res.body).to.have.keys(["message", "status", "coins", "mastery"]);
@@ -112,35 +112,35 @@ describe("Game Report endpoints", function(){
 
         it("No username provided", async function(){
             const res = await chai.request(server).post("/report").auth(TEST_TOKEN, {type: "bearer"})
-            .send({report: [GAME_VERSION, END_TIME++, reportMode0]});
+            .send({report: [GAME_VERSION, END_TIME++].concat(reportMode0)});
             expect(res).to.have.status(400);
             expect(res.body.message).to.equal("Username is missing.");
         });
 
         it("No challenge key provided", async function(){
             const res = await chai.request(server).post("/report").auth(TEST_TOKEN, {type: "bearer"})
-            .send({report: [GAME_VERSION, END_TIME++, reportMode2]});
+            .send({report: [GAME_VERSION, END_TIME++].concat(reportMode2)});
             expect(res).to.have.status(400);
             expect(res.body.message).to.equal("Username is missing.");
         });
 
         it("Challenge from report not accepted", async function(){
             const res = await chai.request(server).post("/report").auth(TEST_TOKEN, {type: "bearer"})
-            .send({key: "test2", report: [GAME_VERSION, END_TIME++, reportMode2]});
+            .send({key: "test2", report: [GAME_VERSION, END_TIME++].concat(reportMode2)});
             expect(res).to.have.status(403);
             expect(res.body.message).to.equal("This challenge has not been accepted yet.");
         });
 
         it("User does not exist for classic mode report", async function(){
             const res = await chai.request(server).post("/report").auth(TEST_TOKEN, {type: "bearer"})
-            .send({username: "ignore", report: [GAME_VERSION, END_TIME++, reportMode0]});
+            .send({username: "ignore", report: [GAME_VERSION, END_TIME++].concat(reportMode0)});
             expect(res).to.have.status(404);
             expect(res.body.message).to.equal("User who started this game was not found.");
         });
 
         it("User does not exist for challenge report", async function(){
             const res = await chai.request(server).post("/report").auth(TEST_TOKEN, {type: "bearer"})
-            .send({key: "test3", report: [GAME_VERSION, END_TIME++, reportMode2]});
+            .send({key: "test3", report: [GAME_VERSION, END_TIME++].concat(reportMode2)});
             expect(res).to.have.status(404);
             expect(res.body.message).to.equal("User who started this game was not found.");
         });
@@ -155,13 +155,13 @@ describe("Game Report endpoints", function(){
 
             // The first attempt should succeed
             const res1 = await chai.request(server).post("/report").auth(TEST_TOKEN, {type: "bearer"})
-            .send({username: TEST_USERNAME, report: [GAME_VERSION, time, reportMode0]});
+            .send({username: TEST_USERNAME, report: [GAME_VERSION, time].concat(reportMode0)});
             expect(res1).to.have.status(200);
             expect(res1.body.message).to.equal("Score successfully saved.");
 
             // The second attempt should fail
             const res2 = await chai.request(server).post("/report").auth(TEST_TOKEN, {type: "bearer"})
-            .send({username: TEST_USERNAME, report: [GAME_VERSION, time, reportMode0]});
+            .send({username: TEST_USERNAME, report: [GAME_VERSION, time].concat(reportMode0)});
             expect(res2).to.have.status(403);
             expect(res2.body.message).to.equal("Cannot save the same game more than once.");
 
@@ -175,7 +175,7 @@ describe("Game Report endpoints", function(){
 
         it("Content type not json", async function(){
             const res = await chai.request(server).post("/report").auth(TEST_TOKEN, {type: "bearer"})
-            .send(JSON.stringify([GAME_VERSION, END_TIME++, reportMode0])).set("Content-Type", "text/plain");
+            .send(JSON.stringify([GAME_VERSION, END_TIME++].concat(reportMode0))).set("Content-Type", "text/plain");
             //console.log(res.text);
             expect(res).to.have.status(403);
             expect(res.body.message).to.equal("Invalid report.");
