@@ -394,7 +394,7 @@ export function validateReport(report: GameReport): number{
         }
 
         // Hypercharges are not allowed on difficulty 5 or lower
-        if (data[format.achievements[0] + 3] > 0){
+        if (data[format.achievements[0] + 3] > 0 && difficulty <= 5){
             return 18;
         }
 
