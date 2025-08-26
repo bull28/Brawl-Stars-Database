@@ -323,7 +323,7 @@
                         "name": "crystal-arcade",
                         "displayName": "Crystal Arcade",
                         "gameMode": "gemgrab",
-                        "powerLeagueMap": true,
+                        "powerLeagueMap": false,
                         "image": "crystal-arcade.webp",
                         "bannerImage": "hub.webp"
                     },
@@ -339,7 +339,7 @@
                         "name": "deathcap-trap",
                         "displayName": "Deathcap Trap",
                         "gameMode": "gemgrab",
-                        "powerLeagueMap": true,
+                        "powerLeagueMap": false,
                         "image": "deathcap-trap.webp",
                         "bannerImage": "canyon.webp"
                     },
@@ -903,7 +903,7 @@
                         "name": "new-horizons",
                         "displayName": "New Horizons",
                         "gameMode": "knockout",
-                        "powerLeagueMap": false,
+                        "powerLeagueMap": true,
                         "image": "new-horizons.webp",
                         "bannerImage": "stuntshow.webp"
                     },
@@ -967,7 +967,7 @@
                         "name": "flowing-springs",
                         "displayName": "Flowing Springs",
                         "gameMode": "knockout",
-                        "powerLeagueMap": false,
+                        "powerLeagueMap": true,
                         "image": "flowing-springs.webp",
                         "bannerImage": "katanakingdom.webp"
                     },

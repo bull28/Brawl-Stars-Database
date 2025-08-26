@@ -114,7 +114,7 @@
                 "reload": 1.5,
                 "knockback": 0,
                 "fireDamage": 0,
-                "description": "Shoots 5 small projectiles in a cone pattern, dealing more damage at short range."
+                "description": "Shoots 5 small projectiles in a cone pattern."
             }
         ],
         "enemies": []
@@ -682,7 +682,7 @@
                 "reload": 1.3,
                 "knockback": 0,
                 "fireDamage": 0,
-                "description": "Shoots 6 projectiles towards the direction you are moving instead of your current location."
+                "description": ""
             },
             {
                 "displayName": "Explosion Attack",
@@ -745,14 +745,14 @@
             },
             {
                 "displayName": "Air Attack",
-                "minDamage": 20,
-                "maxDamage": 20,
+                "minDamage": 15,
+                "maxDamage": 15,
                 "damageType": 1,
                 "range": 80,
                 "reload": 5,
                 "knockback": 0,
                 "fireDamage": 0,
-                "description": "Shot from the air down to the ground. A red circle will appear where this attack will land."
+                "description": "Shot from the air down to the ground, applying a 1.25x damage mark for 4 seconds if it hits."
             }
         ],
         "enemies": [
@@ -821,7 +821,7 @@
                 "reload": 0.5,
                 "knockback": 0,
                 "fireDamage": 800,
-                "description": "Shoots 3 to 5 large projectiles in a cone pattern, dealing more damage at short range. This attack can be dodged by moving between the projectiles."
+                "description": "Shoots 3 to 5 large projectiles in a cone pattern. This attack can be dodged by moving between the projectiles."
             }
         ],
         "enemies": []
@@ -831,7 +831,7 @@
         "image": "max/max_special.webp",
         "fullImage": "max/speedytracksuit.webp",
         "description": "Every few seconds, Max dashes in the direction it is moving or teleports to a random location around you. Also teleports away if it is cornered or too far away from you.",
-        "strengthTier": "Dodges more unpredictably, teleports more often, dashes more often, and gains movement speed.",
+        "strengthTier": "Dodges more unpredictably, teleports more often, dashes more often, gains movement speed, and has a chance to predict your movement.",
         "value": 24,
         "health": 6400,
         "speed": 20,
@@ -999,7 +999,7 @@
                 "reload": 1.2,
                 "knockback": 0,
                 "fireDamage": 0,
-                "description": "Shoots 3 small projectiles in a cone pattern, dealing more damage at short range."
+                "description": "Shoots 3 small projectiles in a cone pattern."
             },
             {
                 "displayName": "Pull Attack",
@@ -1044,30 +1044,29 @@
                 "knockback": 0,
                 "fireDamage": 240,
                 "description": "When a green square appears on the ground, stay in the square or this attack will be used on you."
+            },
+            {
+                "displayName": "Laser Attack",
+                "minDamage": 40,
+                "maxDamage": 800,
+                "damageType": 0,
+                "range": 10,
+                "reload": 2,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": "Deals constant, unavoidable damage that increases over time."
             }
         ],
         "enemies": [
             {
                 "count": 4,
                 "displayName": "Bull Laser",
-                "description": "Stationary turret spawned by Bull. Defeating the laser will temporarily deactivate it and reset its damage to the minimum when it becomes active again.",
+                "description": "Stationary turret that increases the damage of Bull's Laser Attack while active. Defeating this turret temporarily deactivates it then resets its damage to the minimum when it becomes active again.",
                 "strengthTier": "",
                 "value": 1,
                 "health": 600,
                 "speed": 0,
-                "attacks": [
-                    {
-                        "displayName": "Default Attack",
-                        "minDamage": 40,
-                        "maxDamage": 200,
-                        "damageType": 0,
-                        "range": 10,
-                        "reload": 2,
-                        "knockback": 0,
-                        "fireDamage": 0,
-                        "description": "Deals constant, unavoidable damage that increases over time."
-                    }
-                ]
+                "attacks": []
             },
             {
                 "count": 1,
