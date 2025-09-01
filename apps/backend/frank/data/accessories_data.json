@@ -132,20 +132,28 @@
         "description": "Deal more damage to and receive less damage from Bea.", "unlock": "Defeat Bea enemies.", "badges": 500
     },
     {
+        "name": "lola", "category": "enemy", "displayName": "Lola's Scarf",
+        "description": "Deal more damage to and receive less damage from Lola.", "unlock": "Defeat Lola enemies.", "badges": 500
+    },
+    {
+        "name": "bo", "category": "enemy", "displayName": "Bo's Quiver",
+        "description": "Deal more damage to and receive less damage from Bo.", "unlock": "Defeat Bo enemies.", "badges": 500
+    },
+    {
         "name": "colette", "category": "enemy", "displayName": "Colette's Scrapbook",
         "description": "Deal more damage to and receive less damage from Colette.", "unlock": "Defeat Colette enemies.", "badges": 500
     },
     {
-        "name": "lola", "category": "enemy", "displayName": "Lola's Scarf",
-        "description": "Deal more damage to and receive less damage from Lola.", "unlock": "Defeat Lola enemies.", "badges": 500
+        "name": "mandy", "category": "enemy", "displayName": "Mandy's Candy Dispenser",
+        "description": "Deal more damage to and receive less damage from Mandy.", "unlock": "Defeat Mandy enemies.", "badges": 500
     },
     {
         "name": "bibi", "category": "enemy", "displayName": "Bibi's Bat",
         "description": "Deal more damage to and receive less damage from Bibi.", "unlock": "Defeat Bibi enemies.", "badges": 500
     },
     {
-        "name": "mandy", "category": "enemy", "displayName": "Mandy's Candy Dispenser",
-        "description": "Deal more damage to and receive less damage from Mandy.", "unlock": "Defeat Mandy enemies.", "badges": 500
+        "name": "chester", "category": "enemy", "displayName": "Chester's Box",
+        "description": "Deal more damage to and receive less damage from Chester.", "unlock": "Defeat Chester enemies.", "badges": 500
     },
     {
         "name": "ash", "category": "enemy", "displayName": "Ash's Broom",
@@ -166,6 +174,14 @@
     {
         "name": "amber", "category": "enemy", "displayName": "Amber's Fire Staff",
         "description": "Deal more damage to and receive less damage from Amber.", "unlock": "Defeat Amber enemies.", "badges": 500
+    },
+    {
+        "name": "melodie", "category": "enemy", "displayName": "Melodie's Note",
+        "description": "Deal more damage to and receive less damage from Melodie.", "unlock": "Defeat Melodie enemies.", "badges": 500
+    },
+    {
+        "name": "kaze", "category": "enemy", "displayName": "Kaze's Fan",
+        "description": "Deal more damage to and receive less damage from Kaze.", "unlock": "Defeat Kaze enemies.", "badges": 500
     },
     {
         "name": "max", "category": "enemy", "displayName": "Max's Energy Drink",
@@ -317,6 +333,10 @@
     },
     {
         "name": "mastery7", "category": "", "displayName": "Masters Medal",
+        "description": "Gain more coins from rewards.", "unlock": "Free in the Shop at Mastery Level 30.", "badges": 1
+    },
+    {
+        "name": "mastery8", "category": "", "displayName": "Pro Medal",
         "description": "Gain more coins from rewards.", "unlock": "Free in the Shop at Mastery Level 30.", "badges": 1
     }
 ]

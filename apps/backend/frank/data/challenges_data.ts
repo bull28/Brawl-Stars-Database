@@ -295,7 +295,7 @@ const challenges = new Map<string, ChallengePreset>([
                         {names: [["r12"]], multiple: []},
                         {names: [["r9", "r9"]], multiple: [], delay: 6, maxEnemies: 10},
                         {names: [[], ["r10"], ["r16"]], multiple: [], delay: 9, maxEnemies: 2},
-                        {names: [["bea"]], multiple: [], delay: 1},
+                        {names: [["bo"]], multiple: [], delay: 1},
                         {names: [["colette"]], multiple: [], delay: 6, maxEnemies: 1}
                     ],
                     background: "giftshop",
@@ -309,7 +309,7 @@ const challenges = new Map<string, ChallengePreset>([
                         {names: [["r10"]], multiple: []},
                         {names: [["r9", "r9"]], multiple: [], delay: 5, maxEnemies: 10},
                         {names: [[], ["r12"], ["r16"]], multiple: [], delay: 9, maxEnemies: 2},
-                        {names: [["lola"]], multiple: [], delay: 1},
+                        {names: [["mandy"]], multiple: [], delay: 1},
                         {names: [["bibi"]], multiple: [], delay: 8, maxEnemies: 1}
                     ],
                     background: "retropolis",
@@ -323,7 +323,7 @@ const challenges = new Map<string, ChallengePreset>([
                         {names: [["r12"]], multiple: []},
                         {names: [["r4", "r6", "r10"]], multiple: [], delay: 6, maxEnemies: 10},
                         {names: [[], ["r12"], ["r16"]], multiple: [], delay: 10, maxEnemies: 2},
-                        {names: [["mandy"]], multiple: [], delay: 1},
+                        {names: [["chester"]], multiple: [], delay: 1},
                         {names: [["ash"]], multiple: [], delay: 8, maxEnemies: 1}
                     ],
                     background: "candystand",
@@ -613,7 +613,7 @@ const challenges = new Map<string, ChallengePreset>([
                         {names: [[], ["r6"]], multiple: [{name: "meleerobot", count: [1]}, {name: "r2", count: [0, 0, 0, 1]}]},
                         {names: [[], [], [], ["r8"]], multiple: [{name: "meteor", count: [0, 0, 0, 0, 3]}], delay: 10, maxEnemies: 10},
                         {names: [[], [], ["r4"], [], ["r9"]], multiple: [{name: "r2", count: [0, 0, 3]}], delay: 11, maxEnemies: 4},
-                        {names: [["lola"]], multiple: [], delay: 1},
+                        {names: [["mandy"]], multiple: [], delay: 1},
                         {names: [["bibi"]], multiple: [], delay: 1}
                     ],
                     background: "retropolis",
@@ -717,7 +717,7 @@ const challenges = new Map<string, ChallengePreset>([
                         {names: [], multiple: [{name: "meteor", count: [0, 0, 0, 2]}, {name: "meleerobot", count: [1, 2]}, {name: "rangedrobot", count: [1, 2]}, {name: "fastrobot", count: [1, 2]}]},
                         {names: [[], [], [], ["r4"]], multiple: [{name: "r2", count: [0, 0, 4, 5]}], delay: 14, maxEnemies: 10},
                         {names: [[], [], [], [], ["r8"]], multiple: [{name: "r2", count: [0, 0, 0, 0, 3]}], delay: 14, maxEnemies: 6},
-                        {names: [["bea"]], multiple: [], delay: 1},
+                        {names: [["bo"]], multiple: [], delay: 1},
                         {names: [["colette"]], multiple: [], delay: 1}
                     ],
                     background: "giftshop",
@@ -731,7 +731,7 @@ const challenges = new Map<string, ChallengePreset>([
                         {names: [[], ["r6"]], multiple: [{name: "rangedrobot", count: [2]}, {name: "fastrobot", count: [1]}]},
                         {names: [[], [], [], ["r8"]], multiple: [{name: "r2", count: [0, 0, 0, 1, 2]}], delay: 12, maxEnemies: 10},
                         {names: [[], [], ["r4"], [], ["r10"]], multiple: [{name: "r2", count: [0, 0, 3]}], delay: 12, maxEnemies: 3},
-                        {names: [["mandy"]], multiple: [], delay: 1},
+                        {names: [["chester"]], multiple: [], delay: 1},
                         {names: [["ash"]], multiple: [], delay: 1}
                     ],
                     background: "candystand",

@@ -6,7 +6,7 @@ import {sampleGameReport, GAME_VERSION} from "../database_setup";
 const REPORT_FORMAT = {
     version: [0, 2], mode: [2, 3], player: [3, 8], gears: [8, 10], accessories: [10, 18],
     score: [18, 24], achievements: [24, 32], upgrades: [32, 38], stats: [38, 46],
-    visited: [46, 54], levels: [54, 102], enemies: [102, 132], length: [0, 132]
+    visited: [46, 54], levels: [54, 102], enemies: [102, 135], length: [0, 135]
 };
 
 const emptyReport: number[] = [];
@@ -212,9 +212,9 @@ describe("Game Report module", function(){
             expect(validateReport(invalid)).to.equal(15);
             invalid[format.enemies[0] + 2] = valid[format.enemies[0] + 2];
 
-            invalid[format.enemies[0] + 26] = 2;
+            invalid[format.enemies[0] + 30] = 2;
             expect(validateReport(invalid)).to.equal(15);
-            invalid[format.enemies[0] + 26] = valid[format.enemies[0] + 26];
+            invalid[format.enemies[0] + 30] = valid[format.enemies[0] + 26];
         });
 
         it("Accessories used on difficulty 5 or lower", function(){
@@ -265,9 +265,9 @@ describe("Game Report module", function(){
             invalid[l + 5] = valid[l + 5];
 
             // The enemy at this index is a bonus enemy and will increase the score if defeated
-            invalid[format.enemies[0] + 26] = 1;
+            invalid[format.enemies[0] + 30] = 1;
             expect(validateReport(invalid)).to.equal(20);
-            invalid[format.enemies[0] + 26] = valid[format.enemies[0] + 26];
+            invalid[format.enemies[0] + 30] = valid[format.enemies[0] + 30];
 
             invalid[l + 4] = 100000;
             invalid[l + 10] = 100000;

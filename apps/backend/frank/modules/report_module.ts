@@ -18,7 +18,7 @@ interface ChallengeRewardResult{
 const REPORT_FORMAT = {
     version: [0, 2], mode: [2, 3], player: [3, 8], gears: [8, 10], accessories: [10, 18],
     score: [18, 24], achievements: [24, 32], upgrades: [32, 38], stats: [38, 46],
-    visited: [46, 54], levels: [54, 102], enemies: [102, 132], length: [0, 132]
+    visited: [46, 54], levels: [54, 102], enemies: [102, 135], length: [0, 135]
 };
 const SCORE_CONSTANTS = {
     stages: [
@@ -33,8 +33,8 @@ const SCORE_CONSTANTS = {
     ],
     maxScores: {completion: 300, time: 150, destination: 50, health: 50, gear: 30, enemy: 20},
     bonusEnemies: [
-        {name: "hank", index: 26, score: 6},
-        {name: "buster", index: 27, score: 14}
+        {name: "hank", index: 30, score: 6},
+        {name: "buster", index: 31, score: 14}
     ]
 };
 
@@ -53,19 +53,23 @@ const badgeList = [
     {name: "frank", category: "enemy", index: 11, coins: [96, 104]},
     {name: "jacky", category: "enemy", index: 12, coins: [84, 92]},
     {name: "mrp", category: "enemy", index: 13, coins: [100, 108]},
-    {name: "bea", category: "enemy", index: 14, coins: [104, 112]},
-    {name: "colette", category: "enemy", index: 15, coins: [108, 116]},
-    {name: "lola", category: "enemy", index: 16, coins: [132, 148]},
-    {name: "bibi", category: "enemy", index: 17, coins: [136, 152]},
-    {name: "mandy", category: "enemy", index: 18, coins: [140, 156]},
-    {name: "ash", category: "enemy", index: 19, coins: [172, 188]},
-    {name: "pearl", category: "enemy", index: 20, coins: [144, 160]},
-    {name: "leon", category: "enemy", index: 21, coins: [212, 236]},
-    {name: "bonnie", category: "enemy", index: 22, coins: [184, 200]},
-    {name: "amber", category: "enemy", index: 23, coins: [272, 304]},
-    {name: "max", category: "enemy", index: 24, coins: [228, 252]},
-    {name: "meg", category: "enemy", index: 25, coins: [340, 380]},
-    {name: "siegebase", category: "enemy", index: 28, coins: [0, 0]},
+    {name: "bea", category: "enemy", index: 14, coins: [88, 96]},
+    {name: "lola", category: "enemy", index: 15, coins: [104, 112]},
+    {name: "bo", category: "enemy", index: 16, coins: [108, 116]},
+    {name: "colette", category: "enemy", index: 17, coins: [112, 120]},
+    {name: "mandy", category: "enemy", index: 18, coins: [132, 148]},
+    {name: "bibi", category: "enemy", index: 19, coins: [136, 152]},
+    {name: "chester", category: "enemy", index: 20, coins: [140, 156]},
+    {name: "ash", category: "enemy", index: 21, coins: [172, 188]},
+    {name: "pearl", category: "enemy", index: 22, coins: [144, 160]},
+    {name: "leon", category: "enemy", index: 23, coins: [212, 236]},
+    {name: "bonnie", category: "enemy", index: 24, coins: [184, 200]},
+    {name: "amber", category: "enemy", index: 25, coins: [272, 304]},
+    {name: "melodie", category: "enemy", index: 26, coins: [244, 268]},
+    {name: "kaze", category: "enemy", index: 27, coins: [336, 368]},
+    {name: "max", category: "enemy", index: 28, coins: [228, 252]},
+    {name: "meg", category: "enemy", index: 29, coins: [340, 380]},
+    //{name: "siegebase", category: "enemy", index: 28, coins: [0, 0]},
     {name: "spike", category: "player", index: 0, coins: [0, 0]},
     {name: "gus", category: "player", index: 1, coins: [0, 0]},
     {name: "emz", category: "player", index: 2, coins: [0, 0]},
@@ -208,7 +212,7 @@ function getFinalScore(reports: number[], enemyCounts: number[]): number[]{
 }
 
 export function validateReport(report: GameReport): number{
-    // Last updated: version 90
+    // Last updated: version 93
 
     if (Array.isArray(report) === false){
         // Invalid report type
@@ -231,7 +235,7 @@ export function validateReport(report: GameReport): number{
     }
 
     // The first number contains major version (16 bits), minor version (4 bits), and report length (12 bits)
-    if ((report[0] >> 16) < 90){
+    if ((report[0] >> 16) < 93){
         // Old report version
         return 3;
     }
@@ -358,7 +362,7 @@ export function validateReport(report: GameReport): number{
     // The brawler enemies should not be defeated more than 12 times
     // The special (boss and bonus) enemies should not be defeated more than once
     const brawlerOffset = format.enemies[0] + 2;
-    const specialOffset = format.enemies[0] + 26;
+    const specialOffset = format.enemies[0] + 30;
     for (let x = format.enemies[0]; x < format.enemies[1]; x++){
         if (x < brawlerOffset){
             if (data[x] > 80){
@@ -469,13 +473,13 @@ export function extractReportData(data: GameReport): ReportData | undefined{
     let badgeMultiplier = 100;
     let pointsMultiplier = 100;
     let coinsMultiplier = 100;
-    if (accs.includes(66) === true){
+    if (accs.includes(70) === true){
         pointsMultiplier = 120;
     }
-    const coinsAccs = [102, 104, 106, 110, 115, 120, 125];
-    // Accessories increasing coins are from 73 to 79. These do not stack so only the last accessory checked is used.
+    const coinsAccs = [102, 104, 106, 110, 115, 120, 125, 130];
+    // Accessories increasing coins are from 77 to 84. These do not stack so only the last accessory checked is used.
     for (let x = 0; x < coinsAccs.length; x++){
-        if (accs.includes(73 + x) === true){
+        if (accs.includes(77 + x) === true){
             coinsMultiplier = coinsAccs[x];
         }
     }

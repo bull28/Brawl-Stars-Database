@@ -387,7 +387,7 @@
                 "reload": 1.8,
                 "knockback": 0,
                 "fireDamage": 0,
-                "description": "Shoots 5 projectiles in a cone pattern. Reloads faster the lower Frank is in health."
+                "description": "Shoots 5 projectiles in a cone pattern. Reloads faster the lower health Frank has."
             },
             {
                 "displayName": "Stun Attack",
@@ -478,16 +478,16 @@
         "displayName": "Bea",
         "image": "bea/bea_make.webp",
         "fullImage": "bea/beesniperarchvillain.webp",
-        "description": "Deals more damage the more times its attacks hit you, up to a maximum of 3x damage.",
+        "description": "Deals more damage the more times its attacks hit you, up to a maximum of 2x damage.",
         "strengthTier": "Requires fewer hits against you to reach maximum damage.",
-        "value": 12,
-        "health": 5400,
+        "value": 10,
+        "health": 4800,
         "speed": 16,
         "attacks": [
             {
                 "displayName": "Default Attack",
                 "minDamage": 200,
-                "maxDamage": 600,
+                "maxDamage": 400,
                 "damageType": 0,
                 "range": 90,
                 "reload": 1,
@@ -497,6 +497,100 @@
             }
         ],
         "enemies": []
+    },
+    "lola": {
+        "displayName": "Lola",
+        "image": "lola/lola_villains.webp",
+        "fullImage": "lola/duplicatorvillain.webp",
+        "description": "Spawns a clone of itself that also attacks you. Defeating the real Lola will remove the clone.",
+        "strengthTier": "Makes it harder to tell which Lola is real.",
+        "value": 12,
+        "health": 5000,
+        "speed": 10,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 264,
+                "maxDamage": 264,
+                "damageType": 0,
+                "range": 50,
+                "reload": 1.2,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": ""
+            }
+        ],
+        "enemies": [
+            {
+                "count": 1,
+                "displayName": "Lola Clone",
+                "description": "",
+                "strengthTier": "",
+                "value": 0,
+                "health": 5000,
+                "speed": 10,
+                "attacks": [
+                    {
+                        "displayName": "Default Attack",
+                        "minDamage": 264,
+                        "maxDamage": 264,
+                        "damageType": 0,
+                        "range": 50,
+                        "reload": 1.2,
+                        "knockback": 0,
+                        "fireDamage": 0,
+                        "description": ""
+                    }
+                ]
+            }
+        ]
+    },
+    "bo": {
+        "displayName": "Bo",
+        "image": "bo/bo_fantasy.webp",
+        "fullImage": "bo/bowdudefantasy.webp",
+        "description": "Places a mine nearby every few seconds, up to a maximum of 2 active mines at once.",
+        "strengthTier": "Places mines more often that also stun you for longer.",
+        "value": 12,
+        "health": 5600,
+        "speed": 14,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 456,
+                "maxDamage": 456,
+                "damageType": 0,
+                "range": 75,
+                "reload": 1.4,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": ""
+            }
+        ],
+        "enemies": [
+            {
+                "count": 2,
+                "displayName": "Bo Mine",
+                "description": "After being placed, becomes hidden and will explode if you get too close.",
+                "strengthTier": "",
+                "value": 0,
+                "health": 1,
+                "speed": 75,
+                "attacks": [
+                    {
+                        "displayName": "Explosion Attack",
+                        "minDamage": 600,
+                        "maxDamage": 600,
+                        "damageType": 0,
+                        "range": 16,
+                        "reload": 6,
+                        "knockback": 30,
+                        "fireDamage": 0,
+                        "description": "Deals some knockback and stuns you. Once used, the mine becomes inactive until Bo places it again."
+                    }
+                ]
+            }
+        ]
     },
     "colette": {
         "displayName": "Colette",
@@ -533,52 +627,29 @@
         ],
         "enemies": []
     },
-    "lola": {
-        "displayName": "Lola",
-        "image": "lola/lola_villains.webp",
-        "fullImage": "lola/duplicatorvillain.webp",
-        "description": "Spawns a clone of itself that also attacks you. Defeating the real Lola will remove the clone.",
-        "strengthTier": "Makes it harder to tell which Lola is real.",
+    "mandy": {
+        "displayName": "Mandy",
+        "image": "mandy/mandy_lavaqueen_default.webp",
+        "fullImage": "mandy/beamerlavaqueen.webp",
+        "description": "Has very long range and receives less damage if you are not standing still.",
+        "strengthTier": "Time between attacks becomes more variable but the average damage per second remains the same.",
         "value": 16,
-        "health": 6600,
-        "speed": 10,
+        "health": 6000,
+        "speed": 0,
         "attacks": [
             {
                 "displayName": "Default Attack",
-                "minDamage": 360,
-                "maxDamage": 360,
+                "minDamage": 1200,
+                "maxDamage": 1200,
                 "damageType": 0,
-                "range": 50,
-                "reload": 1.2,
+                "range": 160,
+                "reload": 2.4,
                 "knockback": 0,
                 "fireDamage": 0,
                 "description": ""
             }
         ],
-        "enemies": [
-            {
-                "count": 1,
-                "displayName": "Lola Clone",
-                "description": "",
-                "strengthTier": "",
-                "value": 0,
-                "health": 6600,
-                "speed": 10,
-                "attacks": [
-                    {
-                        "displayName": "Default Attack",
-                        "minDamage": 360,
-                        "maxDamage": 360,
-                        "damageType": 0,
-                        "range": 50,
-                        "reload": 1.2,
-                        "knockback": 0,
-                        "fireDamage": 0,
-                        "description": ""
-                    }
-                ]
-            }
-        ]
+        "enemies": []
     },
     "bibi": {
         "displayName": "Bibi",
@@ -615,26 +686,59 @@
         ],
         "enemies": []
     },
-    "mandy": {
-        "displayName": "Mandy",
-        "image": "mandy/mandy_lavaqueen_default.webp",
-        "fullImage": "mandy/beamerlavaqueen.webp",
-        "description": "Has very long range and receives less damage if you are not standing still.",
-        "strengthTier": "Time between attacks becomes more variable but the average damage per second remains the same.",
+    "chester": {
+        "displayName": "Chester",
+        "image": "chester/chester_default.webp",
+        "fullImage": "chester/jesterdefault.webp",
+        "description": "Uses a random one of its super attacks every few seconds.",
+        "strengthTier": "Uses supers more often and has a chance to skip the 1-projectile attack in its attack cycle.",
         "value": 16,
-        "health": 6000,
-        "speed": 0,
+        "health": 6600,
+        "speed": 18,
         "attacks": [
             {
                 "displayName": "Default Attack",
-                "minDamage": 1200,
-                "maxDamage": 1200,
+                "minDamage": 160,
+                "maxDamage": 640,
                 "damageType": 0,
-                "range": 160,
-                "reload": 2.4,
+                "range": 55,
+                "reload": 1.3,
                 "knockback": 0,
                 "fireDamage": 0,
-                "description": ""
+                "description": "Cycles between shooting 1, 2, 3, and 4 projectiles at once."
+            },
+            {
+                "displayName": "Spray Super Attack",
+                "minDamage": 80,
+                "maxDamage": 80,
+                "damageType": 0,
+                "range": 80,
+                "reload": 1,
+                "knockback": 0,
+                "fireDamage": 320,
+                "description": "Shoots 5 projectiles in a cone pattern, dealing damage over time for 4 seconds."
+            },
+            {
+                "displayName": "Stun Super Attack",
+                "minDamage": 280,
+                "maxDamage": 280,
+                "damageType": 0,
+                "range": 70,
+                "reload": 1,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": "Stuns you for 1 second and applies a 2x damage mark for 1.5 seconds."
+            },
+            {
+                "displayName": "Bomb Super Attack",
+                "minDamage": 360,
+                "maxDamage": 720,
+                "damageType": 0,
+                "range": 60,
+                "reload": 1,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": "Projectile explodes when hitting you or at its maximum range, dealing its damage a second time."
             }
         ],
         "enemies": []
@@ -670,7 +774,7 @@
         "description": "Has a heat bar that increases damage when it is filled. Heat increases slowly when Pearl is not attacking but decreases every time Pearl attacks.",
         "strengthTier": "Heat increases faster and decreases slower.",
         "value": 16,
-        "health": 7200,
+        "health": 7000,
         "speed": 14,
         "attacks": [
             {
@@ -826,6 +930,111 @@
         ],
         "enemies": []
     },
+    "melodie": {
+        "displayName": "Melodie",
+        "image": "melodie/melodie_ranked.webp",
+        "fullImage": "melodie/axejugglergreek.webp",
+        "description": "Dashes towards you frequently and has 3 notes orbiting around it. At 3/5 health, receives a 75% shield and notes can be damaged. Defeat all notes to remove the shield.",
+        "strengthTier": "Dashes more often and gains movement speed at lower health.",
+        "value": 24,
+        "health": 8400,
+        "speed": 12,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 320,
+                "maxDamage": 320,
+                "damageType": 0,
+                "range": 65,
+                "reload": 0.9,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": "Deals an additional 5% of your max health as damage if you are standing next to Melodie."
+            }
+        ],
+        "enemies": [
+            {
+                "count": 3,
+                "displayName": "Melodie Note",
+                "description": "Cannot be damaged until Melodie is below 3/5 of its max health.",
+                "strengthTier": "",
+                "value": 0,
+                "health": 800,
+                "speed": 1,
+                "attacks": [
+                    {
+                        "displayName": "Default Attack",
+                        "minDamage": 288,
+                        "maxDamage": 288,
+                        "damageType": 0,
+                        "range": 4,
+                        "reload": 0.6666666666666666,
+                        "knockback": 0,
+                        "fireDamage": 0,
+                        "description": "This attack's damage per second varies because it is only used when you get hit by the note."
+                    }
+                ]
+            }
+        ]
+    },
+    "kaze": {
+        "displayName": "Kaze",
+        "image": "kaze/kaze_default.webp",
+        "fullImage": "kaze/geishadefault.webp",
+        "description": "Switches between geisha and ninja forms, each having different attacks. At 3/5 health, a critical zone appears around the geisha form that reduces your damage if you attack from outside of it.",
+        "strengthTier": "Geisha attacks do more damage, critical zone blocks more damage, and ninja teleports and dashes are used more often.",
+        "value": 32,
+        "health": 12800,
+        "speed": 16,
+        "attacks": [
+            {
+                "displayName": "Geisha Default Attack",
+                "minDamage": 400,
+                "maxDamage": 1080,
+                "damageType": 0,
+                "range": 20,
+                "reload": 1,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": "This attack's damage increases the lower health Kaze has and the higher the difficulty is."
+            }
+        ],
+        "enemies": [
+            {
+                "count": 1,
+                "displayName": "Kaze Ninja",
+                "description": "Shares the same health as the geisha form and occasionally teleports behind you. Starting at 2/5 health, receives a shield every few seconds that blocks the next 1 - 4 hits.",
+                "strengthTier": "",
+                "value": 0,
+                "health": 12800,
+                "speed": 16,
+                "attacks": [
+                    {
+                        "displayName": "Ninja Default Attack",
+                        "minDamage": 480,
+                        "maxDamage": 480,
+                        "damageType": 0,
+                        "range": 50,
+                        "reload": 1.5,
+                        "knockback": 0,
+                        "fireDamage": 0,
+                        "description": ""
+                    },
+                    {
+                        "displayName": "Dash Attack",
+                        "minDamage": 640,
+                        "maxDamage": 640,
+                        "damageType": 0,
+                        "range": 70,
+                        "reload": 7.5,
+                        "knockback": 0,
+                        "fireDamage": 0,
+                        "description": "Dashes once towards you. If below 2/5 health, dashes another two times in an X pattern."
+                    }
+                ]
+            }
+        ]
+    },
     "max": {
         "displayName": "Max",
         "image": "max/max_special.webp",
@@ -956,30 +1165,6 @@
         ],
         "enemies": []
     },
-    "siegebase": {
-        "displayName": "Siege Base",
-        "image": "",
-        "fullImage": "",
-        "description": "Spawns bolts around it that can be picked up. Picking up bolts increases both the damage the Siege Base receives from you and the damage it deals to you.",
-        "strengthTier": "",
-        "value": 0,
-        "health": 24000,
-        "speed": 0,
-        "attacks": [
-            {
-                "displayName": "Default Attack",
-                "minDamage": 192,
-                "maxDamage": 480,
-                "damageType": 0,
-                "range": 100,
-                "reload": 0.8,
-                "knockback": 0,
-                "fireDamage": 0,
-                "description": "Shot towards the direction you are moving instead of your current location. Deals more damage the more bolts you have picked up."
-            }
-        ],
-        "enemies": []
-    },
     "bull": {
         "displayName": "Bull",
         "image": "bull/bull_hub.webp",
@@ -993,7 +1178,7 @@
             {
                 "displayName": "Default Attack",
                 "minDamage": 480,
-                "maxDamage": 480,
+                "maxDamage": 600,
                 "damageType": 0,
                 "range": 75,
                 "reload": 1.2,

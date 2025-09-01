@@ -21,7 +21,7 @@ export const tokens = {
     challenges: signToken("challenges").token,
 };
 
-export const GAME_VERSION = (90 << 16) + 132;
+export const GAME_VERSION = (93 << 16) + 135;
 export const sampleGameReport = [
     GAME_VERSION, 1, // Version
     0, // Game Mode
@@ -41,9 +41,9 @@ export const sampleGameReport = [
     80, 80, 1000, 0, 0, 0,
     115, 115, 1000, 0, 0, 0,
     144, 144, 1000, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, // Enemies
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, // Enemies
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 ];
 
 // This challenge is only for testing and should not be playable by real users
