@@ -89,7 +89,7 @@ describe("User Resources endpoints", function(){
         const name = characterList[0].name;
 
         const initialCoins = 1000000;
-        const initialMastery = 20000000;
+        const initialMastery = 120000000;
         const normalCost = 3920;
         const tierUpCost = 22000;
 

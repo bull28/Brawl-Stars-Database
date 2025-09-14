@@ -9,13 +9,35 @@ for (let x = 0; x < characterList.length; x++){
     indexMap.set(characterList[x].name, x);
 }
 
+// const masteryLevels = [
+//            0,     2000,     6000,    10000,    20000,    30000,
+//        40000,    60000,    80000,   120000,   180000,   240000,
+//       300000,   400000,   500000,   600000,   800000,  1000000,
+//      1200000,  1500000,  1800000,  2400000,  3000000,  4000000,
+//      5000000,  6000000,  8000000, 10000000, 12000000, 16000000,
+//     20000000,       -1
+// ];
+// const masteryLevels = [
+//         0, 2.0e3, 6.0e3, 1.0e4, 2.0e4, 3.0e4,
+//     4.0e4, 6.0e4, 8.0e4, 1.2e5, 1.8e5, 2.4e5,
+//     3.0e5, 4.0e5, 5.0e5, 6.0e5, 8.0e5, 1.0e6,
+//     1.2e6, 1.5e6, 1.8e6, 2.4e6, 3.0e6, 4.0e6,
+//     5.0e6, 6.0e6, 8.0e6, 1.0e7, 1.2e7, 1.6e7,
+//     2.0e7, 2.5e7, 3.0e7, 3.6e7, 4.2e7, 5.0e7,
+//     5.8e7, 6.8e7, 8.0e7, 9.6e7, 1.2e8,    -1
+// ];
 const masteryLevels = [
-           0,     2000,     6000,    10000,    20000,    30000,
-       40000,    60000,    80000,   120000,   180000,   240000,
-      300000,   400000,   500000,   600000,   800000,  1000000,
-     1200000,  1500000,  1800000,  2400000,  3000000,  4000000,
-     5000000,  6000000,  8000000, 10000000, 12000000, 16000000,
-    20000000,       -1
+        0, 2.0e3, 6.0e3, 1.0e4, 2.0e4, 3.0e4,
+    4.0e4, 6.0e4, 8.0e4, 1.2e5, 1.8e5, 2.4e5,
+    3.0e5, 4.0e5, 5.0e5, 6.0e5, 8.0e5, 1.0e6,
+    1.2e6, 1.5e6, 1.8e6, 2.4e6, 3.0e6, 4.0e6,
+    5.0e6, 6.0e6, 8.0e6, 1.0e7, 1.2e7, 1.6e7,
+    2.0e7, 2.5e7, 3.0e7, 3.6e7, 4.2e7, 5.0e7,
+    5.8e7, 6.8e7, 8.0e7, 9.6e7, 1.2e8, 1.5e8,
+    1.8e8, 2.1e8, 2.4e8, 2.8e8, 3.2e8, 3.6e8,
+    4.0e8, 4.5e8, 5.0e8, 5.5e8, 6.0e8, 6.5e8,
+    7.0e8, 7.5e8, 8.0e8, 8.5e8, 9.0e8, 9.5e8,
+    1.0e9,    -1
 ];
 
 const levelImages = [
@@ -27,8 +49,8 @@ const levelImages = [
     {minLevel: 16, color: "#33ffff", image: "mastery_level_4"},
     {minLevel: 20, color: "#ff00ff", image: "mastery_level_5"},
     {minLevel: 25, color: "#f75363", image: "mastery_level_6"},
-    //{minLevel: 28, color: "#a67fff", image: "mastery_level_7"},
-    {minLevel: 30, color: "#3afc9f", image: "mastery_level_8"}
+    {minLevel: 30, color: "#a67fff", image: "mastery_level_7"},
+    {minLevel: 35, color: "#3afc9f", image: "mastery_level_8"}
 ];
 
 const upgradeTiers = [
@@ -69,7 +91,7 @@ const upgradeTiers = [
     },
     {
         base: 300.0, scaling: 0, hyper: 20, hyperScaling: 0, startLevel: 100, maxUpgrades: 0,
-        name: "Pro", color: "#3afc9f", image: "tier_pro", tierUpCost: 0, masteryReq: 30,
+        name: "Pro", color: "#3afc9f", image: "tier_pro", tierUpCost: 0, masteryReq: 35,
         upgradeCosts: [0]
     }
 ];

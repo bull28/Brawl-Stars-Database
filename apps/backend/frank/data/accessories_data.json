@@ -337,6 +337,6 @@
     },
     {
         "name": "mastery8", "category": "", "displayName": "Pro Medal",
-        "description": "Gain more coins from rewards.", "unlock": "Free in the Shop at Mastery Level 30.", "badges": 1
+        "description": "Gain more coins from rewards.", "unlock": "Free in the Shop at Mastery Level 35.", "badges": 1
     }
 ]

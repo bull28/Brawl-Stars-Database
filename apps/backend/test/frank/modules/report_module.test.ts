@@ -171,8 +171,10 @@ describe("Game Report module", function(){
             invalid[p + 3] = valid[p + 3];
         });
 
-        it("Star Power not 1 or 2", function(){
-            invalid[p + 4] = 3;
+        it("Star Power not between 0 and 3", function(){
+            invalid[p + 4] = 4;
+            expect(validateReport(invalid)).to.equal(11);
+            invalid[p + 4] = -1;
             expect(validateReport(invalid)).to.equal(11);
             invalid[p + 4] = valid[p + 4];
         });

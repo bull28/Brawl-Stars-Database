@@ -212,7 +212,7 @@ function getFinalScore(reports: number[], enemyCounts: number[]): number[]{
 }
 
 export function validateReport(report: GameReport): number{
-    // Last updated: version 93
+    // Last updated: version 94
 
     if (Array.isArray(report) === false){
         // Invalid report type
@@ -235,7 +235,7 @@ export function validateReport(report: GameReport): number{
     }
 
     // The first number contains major version (16 bits), minor version (4 bits), and report length (12 bits)
-    if ((report[0] >> 16) < 93){
+    if ((report[0] >> 16) < 94){
         // Old report version
         return 3;
     }
@@ -298,9 +298,9 @@ export function validateReport(report: GameReport): number{
         return 10;
     }
 
-    // The star power must be between 1 and 2
+    // The star power must be between 0 and 3
     const starPower = data[format.player[0] + 4];
-    if (starPower < 1 || starPower > 2){
+    if (starPower < 0 || starPower > 3){
         return 11;
     }
 
