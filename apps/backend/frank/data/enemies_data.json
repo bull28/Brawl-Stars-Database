@@ -214,8 +214,8 @@
         "attacks": [
             {
                 "displayName": "Default Attack",
-                "minDamage": 320,
-                "maxDamage": 320,
+                "minDamage": 288,
+                "maxDamage": 288,
                 "damageType": 0,
                 "range": 75,
                 "reload": 0.9,
@@ -727,7 +727,7 @@
                 "reload": 1,
                 "knockback": 0,
                 "fireDamage": 0,
-                "description": "Stuns you for 1 second and applies a 2x damage mark for 1.5 seconds."
+                "description": "Stuns you for 1 second."
             },
             {
                 "displayName": "Bomb Super Attack",
@@ -921,7 +921,7 @@
                 "minDamage": 240,
                 "maxDamage": 400,
                 "damageType": 0,
-                "range": 88,
+                "range": 75,
                 "reload": 0.5,
                 "knockback": 0,
                 "fireDamage": 800,
@@ -989,7 +989,7 @@
         "attacks": [
             {
                 "displayName": "Geisha Default Attack",
-                "minDamage": 400,
+                "minDamage": 320,
                 "maxDamage": 1080,
                 "damageType": 0,
                 "range": 20,
@@ -1047,14 +1047,14 @@
         "attacks": [
             {
                 "displayName": "Default Attack",
-                "minDamage": 1280,
+                "minDamage": 640,
                 "maxDamage": 1280,
                 "damageType": 0,
                 "range": 60,
                 "reload": 1.6,
                 "knockback": 0,
                 "fireDamage": 0,
-                "description": ""
+                "description": "Deals more damage the longer it has been since Max last hit you."
             }
         ],
         "enemies": []
@@ -1171,8 +1171,8 @@
         "fullImage": "bull/bulldudealleycat.webp",
         "description": "Boss fight consists of multiple phases, depending on the difficulty. Can spawn enemies and create strike zones that deal damage if you are not standing in the correct location.",
         "strengthTier": "Increases health, uses more attacks, gains movement speed, and adds more phases to the fight. Stats and attacks currently shown are for the highest difficulty.",
-        "value": 150,
-        "health": 48000,
+        "value": 160,
+        "health": 60000,
         "speed": 16,
         "attacks": [
             {

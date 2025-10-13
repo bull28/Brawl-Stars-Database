@@ -17,8 +17,8 @@ interface ChallengeRewardResult{
 
 const REPORT_FORMAT = {
     version: [0, 2], mode: [2, 3], player: [3, 8], gears: [8, 10], accessories: [10, 18],
-    score: [18, 24], achievements: [24, 32], upgrades: [32, 38], stats: [38, 46],
-    visited: [46, 54], levels: [54, 102], enemies: [102, 135], length: [0, 135]
+    score: [18, 24], achievements: [24, 32], upgrades: [32, 39], stats: [39, 47],
+    visited: [47, 55], levels: [55, 103], enemies: [103, 136], length: [0, 136]
 };
 const SCORE_CONSTANTS = {
     stages: [
@@ -212,7 +212,7 @@ function getFinalScore(reports: number[], enemyCounts: number[]): number[]{
 }
 
 export function validateReport(report: GameReport): number{
-    // Last updated: version 94
+    // Last updated: version 96
 
     if (Array.isArray(report) === false){
         // Invalid report type
@@ -235,7 +235,7 @@ export function validateReport(report: GameReport): number{
     }
 
     // The first number contains major version (16 bits), minor version (4 bits), and report length (12 bits)
-    if ((report[0] >> 16) < 94){
+    if ((report[0] >> 16) < 96){
         // Old report version
         return 3;
     }
@@ -404,7 +404,7 @@ export function validateReport(report: GameReport): number{
 
         // The upgrades cannot be more than each upgrade type limit
         const upgrades = data.slice(format.upgrades[0], format.upgrades[1]);
-        const maxUpgrades = difficulty >= 6 ? [20, 20, 12, 8, 6, 7] : [16, 16, 10, 7, 5, 6];
+        const maxUpgrades = difficulty >= 6 ? [20, 16, 10, 10, 8, 14, 6] : [16, 12, 7, 7, 6, 10, 5];
         if (upgrades.length < maxUpgrades.length){
             return 6;
         }

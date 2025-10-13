@@ -21,7 +21,7 @@ export const tokens = {
     challenges: signToken("challenges").token,
 };
 
-export const GAME_VERSION = (94 << 16) + 135;
+export const GAME_VERSION = (96 << 16) + 136;
 export const sampleGameReport = [
     GAME_VERSION, 1, // Version
     0, // Game Mode
@@ -30,7 +30,7 @@ export const sampleGameReport = [
     -1, -1, -1, -1, -1, -1, -1, -1, // Accessories
     300, 150, 0, 50, 0, 0, // Overall Score
     600000, 567, 0, 0, 0, 1, 0, 0, // Achievements
-    16, 16, 10, 7, 5, 6, // Upgrades
+    16, 12, 7, 7, 6, 10, 5, // Upgrades
     8, 10, 12, 15, 18, 21, 24, 24, // Enemy Stats
     0, 1, 2, 3, 7, 8, 12, 13, // Visited Levels
     20, 20, 1000, 0, 0, 0, // Level Reports

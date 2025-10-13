@@ -57,6 +57,7 @@ describe("Challenges module", function(){
             gameName: "Test Challenge",
             startingPower: 0,
             startingGears: 4,
+            startingHyper: 0,
             bonusResources: false,
             addBonusEnemies: false,
             maxAccessories: 25,

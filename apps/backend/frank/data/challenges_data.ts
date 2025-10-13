@@ -193,7 +193,7 @@ const challenges = new Map<string, ChallengePreset>([
                     strengthTier: 4,
                     healthBonusReq: 0.5,
                     timePerEnemy: 0.6666666666666666,
-                    enemyStats: [300.0, 450.0, 600.0, 750.0, 862.5, 975.0, 1125.0, 1200.0]
+                    enemyStats: [300.0, 450.0, 600.0, 750.0, 875.0, 1000.0, 1175.0, 1250.0]
                 }
             ],
             stages: [
@@ -415,28 +415,32 @@ const challenges = new Map<string, ChallengePreset>([
             ],
             playerUpgradeValues: {
                 health: {
-                    cost: [3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 10, 12, 14],
+                    cost: [3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 10, 10, 11],
                     maxLevel: 20
                 },
                 damage: {
-                    cost: [3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 10, 12, 14],
-                    maxLevel: 20
+                    cost: [4, 4, 4, 5, 5, 6, 7, 7, 8, 9, 10, 11, 12, 13, 15, 16],
+                    maxLevel: 16
                 },
                 healing: {
-                    cost: [4, 4, 5, 6, 7, 8, 9, 10, 12, 15, 18, 22],
-                    maxLevel: 12
-                },
-                speed: {
-                    cost: [5, 6, 8, 10, 13, 16, 22, 30],
-                    maxLevel: 8
-                },
-                ability: {
-                    cost: [6, 10, 14, 20, 30, 48],
-                    maxLevel: 6
+                    cost: [5, 6, 7, 8, 10, 11, 13, 16, 19, 23],
+                    maxLevel: 10
                 },
                 lifeSteal: {
-                    cost: [6, 8, 10, 14, 18, 24, 32],
-                    maxLevel: 7
+                    cost: [5, 6, 7, 8, 10, 11, 13, 16, 19, 23],
+                    maxLevel: 10
+                },
+                speed: {
+                    cost: [6, 7, 8, 10, 13, 16, 19, 24],
+                    maxLevel: 8
+                },
+                combo: {
+                    cost: [3, 4, 4, 5, 5, 6, 7, 8, 8, 10, 11, 12, 14, 15],
+                    maxLevel: 14
+                },
+                ability: {
+                    cost: [9, 12, 15, 19, 25, 31],
+                    maxLevel: 6
                 }
             }
         }
@@ -451,7 +455,9 @@ const challenges = new Map<string, ChallengePreset>([
             baseBadges: []
         },
         gameMod: {
-            options: {},
+            options: {
+                startingHyper: 200
+            },
             difficulties: [
                 {
                     difficultyid: 3,
@@ -478,7 +484,7 @@ const challenges = new Map<string, ChallengePreset>([
                     strengthTier: 3,
                     healthBonusReq: 0.5,
                     timePerEnemy: 0.75,
-                    enemyStats: [550.0, 575.0],
+                    enemyStats: [550.0, 600.0],
                 },
                 {
                     difficultyid: 9,
@@ -487,7 +493,7 @@ const challenges = new Map<string, ChallengePreset>([
                     strengthTier: 4,
                     healthBonusReq: 0.5,
                     timePerEnemy: 0.6666666666666666,
-                    enemyStats: [1125.0, 1200.0],
+                    enemyStats: [1175.0, 1250.0],
                 }
             ],
             stages: [
@@ -524,28 +530,33 @@ const challenges = new Map<string, ChallengePreset>([
                     maxLevel: 4
                 },
                 damage: {
-                    value: [300, 12.5],
-                    cost: [5, 5, 6, 7],
+                    value: [250, 12.5],
+                    cost: [6, 6, 6, 6],
                     maxLevel: 4
                 },
                 healing: {
-                    value: [1000, 50],
-                    cost: [9, 11],
+                    value: [500, 50],
+                    cost: [7, 8],
                     maxLevel: 2
                 },
-                speed: {
-                    value: [7, 1],
-                    cost: [15],
+                lifeSteal: {
+                    value: [500, 50],
+                    cost: [7, 8],
                     maxLevel: 1
+                },
+                speed: {
+                    value: [6, 2],
+                    cost: [10, 12],
+                    maxLevel: 1
+                },
+                combo: {
+                    value: [650, 50],
+                    cost: [6, 6, 6],
+                    maxLevel: 2
                 },
                 ability: {
                     value: [100, 20],
                     cost: [24],
-                    maxLevel: 1
-                },
-                lifeSteal: {
-                    value: [250, 50],
-                    cost: [16],
                     maxLevel: 1
                 }
             }

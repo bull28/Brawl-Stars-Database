@@ -5,8 +5,8 @@ import {sampleGameReport, GAME_VERSION} from "../database_setup";
 
 const REPORT_FORMAT = {
     version: [0, 2], mode: [2, 3], player: [3, 8], gears: [8, 10], accessories: [10, 18],
-    score: [18, 24], achievements: [24, 32], upgrades: [32, 38], stats: [38, 46],
-    visited: [46, 54], levels: [54, 102], enemies: [102, 135], length: [0, 135]
+    score: [18, 24], achievements: [24, 32], upgrades: [32, 39], stats: [39, 47],
+    visited: [47, 55], levels: [55, 103], enemies: [103, 136], length: [0, 136]
 };
 
 const emptyReport: number[] = [];
@@ -74,7 +74,7 @@ describe("Game Report module", function(){
         const format = REPORT_FORMAT;
         // Achievements nomove, noupgrades, nodamage, fastwin, perfect1
         report2[format.achievements[0] + 4] = 0;
-        for (let x = 0; x < 6; x++){
+        for (let x = 0; x < 7; x++){
             report2[format.upgrades[0] + x] = 0;
         }
         report2[format.achievements[0]] = 89999;

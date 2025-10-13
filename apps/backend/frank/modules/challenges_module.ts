@@ -11,7 +11,8 @@ const challengeUpgrades: {[k in keyof PlayerUpgrades]: [number, number][]} = {
         [ 7,  4], [ 9,  5], [11,  6],
         [13,  7], [15,  9], [17, 11],
         [19, 13], [21, 15], [23, 18],
-        [25, 21], [27, 24], [29, 28]
+        [25, 21], [27, 24], [29, 28],
+        //[31, 30], [33, 32], [35, 35]
     ],
     gearsPerStage: [[0, 0], [4, 1], [16, 2], [24, 3], [28, 4]],
     maxExtraPower: [
@@ -20,7 +21,8 @@ const challengeUpgrades: {[k in keyof PlayerUpgrades]: [number, number][]} = {
         [ 7,  12], [ 9,  18], [11,  24],
         [13,  30], [15,  42], [17,  60],
         [19,  78], [21,  90], [23, 108],
-        [25, 126], [27, 150], [29, 180]
+        [25, 126], [27, 150], [29, 180],
+        //[31, 196], [33, 216], [35, 240]
     ],
     maxExtraGears: [[0, 0], [4, 1], [12, 2], [16, 4], [24, 6], [26, 9], [28, 12]],
     maxAccessories: [[0, 0], [6, 10], [14, 15], [22, 20], [30, 25]]
@@ -153,6 +155,7 @@ export function getStaticGameMod(challengeid: string, key: string, resources: Us
         gameName: data.config.displayName,
         startingPower: upgrades.startingPower,
         startingGears: upgrades.startingGears,
+        startingHyper: 0,
         bonusResources: false,
         addBonusEnemies: false,
         maxAccessories: upgrades.maxAccessories,
@@ -166,13 +169,15 @@ export function getStaticGameMod(challengeid: string, key: string, resources: Us
 
     if (srcOptions !== undefined){
         // These are all the options that static challenges are able to set
-        const {gameMode, startingPower, startingGears, addBonusEnemies, maxAccessories} = srcOptions;
+        const {gameMode, startingPower, startingGears, startingHyper, addBonusEnemies, maxAccessories} = srcOptions;
         if (gameMode !== undefined){
             options.gameMode = gameMode;
         } if (startingPower !== undefined){
             options.startingPower = startingPower;
         } if (startingGears !== undefined){
             options.startingGears = startingGears;
+        } if (startingHyper !== undefined){
+            options.startingHyper = startingHyper;
         } if (addBonusEnemies !== undefined){
             options.addBonusEnemies = addBonusEnemies;
         } if (maxAccessories !== undefined){

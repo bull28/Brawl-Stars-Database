@@ -527,7 +527,7 @@ export interface ChallengeConfig{
 }
 
 type GameModUpgradeValues = {
-    [k in "health" | "damage" | "healing" | "speed" | "ability" | "lifeSteal"]: {
+    [k in "health" | "damage" | "healing" | "lifeSteal" | "speed" | "combo" | "ability"]: {
         value?: [number, number];
         cost?: number[];
         maxLevel?: number;
@@ -545,6 +545,7 @@ export interface ChallengeGameMod{
         gameName: string;
         startingPower: number;
         startingGears: number;
+        startingHyper: number;
         bonusResources: boolean;
         addBonusEnemies: boolean;
         maxAccessories: number;
