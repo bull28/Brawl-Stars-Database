@@ -398,6 +398,7 @@ export interface EnemyData{
     displayName: string;
     image: string;
     fullImage: string;
+    enemyClass: string;
     description: string;
     strengthTier: string;
     value: number;
@@ -416,7 +417,7 @@ export interface EnemyData{
     }[];
     enemies: ({
         count: number;
-    } & Omit<EnemyData, "name" | "image" | "fullImage" | "enemies">)[];
+    } & Omit<EnemyData, "name" | "image" | "fullImage" | "enemyClass" | "enemies">)[];
 }
 
 //------------------------------------------------------------------------------------------------//

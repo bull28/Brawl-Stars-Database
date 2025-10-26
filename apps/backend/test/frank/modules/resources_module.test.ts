@@ -12,8 +12,8 @@ describe("User Resources module", function(){
 
         for (let x = 0; x < enemies.length; x++){
             expect(enemies[x]).to.have.keys([
-                "name", "displayName", "image", "fullImage", "description", "strengthTier",
-                "value", "health", "speed", "attacks", "enemies"
+                "name", "displayName", "image", "fullImage", "enemyClass", "description",
+                "strengthTier", "value", "health", "speed", "attacks", "enemies"
             ]);
             const validImage =
                 (enemies[x].image.startsWith(PIN_IMAGE_DIR) || enemies[x].image === "") &&

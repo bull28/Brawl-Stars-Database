@@ -219,6 +219,7 @@ export function getEnemyList(): EnemyData[]{
             displayName: data.displayName,
             image: (data.image !== "" ? PIN_IMAGE_DIR + data.image : ""),
             fullImage: (data.fullImage !== "" ? SKIN_IMAGE_DIR + data.fullImage : ""),
+            enemyClass: data.enemyClass,
             description: data.description,
             strengthTier: data.strengthTier,
             value: data.value,
