@@ -478,5 +478,20 @@
         "name": "Knights!",
         "image": "bg_fantasy",
         "icon": "icon_fantasy"
+    },
+    "subway": {
+        "name": "Subway Surfers",
+        "image": "bg_subway",
+        "icon": "icon_default"
+    },
+    "street": {
+        "name": "Streetwear",
+        "image": "bg_subway",
+        "icon": "icon_street"
+    },
+    "carreta": {
+        "name": "Carreta",
+        "image": "bg_carreta",
+        "icon": "icon_carreta"
     }
 }

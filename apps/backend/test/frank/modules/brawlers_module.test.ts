@@ -5,8 +5,8 @@ import {IMAGE_FILE_EXTENSION, PORTRAIT_IMAGE_DIR, PIN_IMAGE_DIR, SKIN_IMAGE_DIR,
 import {rarities, getBrawler, getSkin, getBrawlerData, getSkinData, skinSearch} from "../../../frank/modules/brawlers_module";
 
 describe("Brawlers and Skins module", function(){
-    it("Must contain exactly 94 brawlers", function(){
-        expect(allSkins).to.have.lengthOf(94);
+    it("Must contain exactly 96 brawlers", function(){
+        expect(allSkins).to.have.lengthOf(96);
     });
 
     it("Get brawler and skin objects directly from the data file", function(){
