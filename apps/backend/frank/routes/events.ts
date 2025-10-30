@@ -1,7 +1,7 @@
 import express from "express";
 import {createError} from "../modules/utils";
-import {events, SeasonTime, realToTime, getAllEvents, addSeasonTimes, isValidTimeQuery, getModeData, getMapData, searchForMapName} from "../modules/events_module";
-import {Empty, ApiError, CurrentEventsData, GameModePreview, MapSearchPreview} from "../types";
+import {getMapData, getModeData, searchForMapName, getAllModes, getCurrentEvents} from "../modules/events_module";
+import {Empty, ApiError, MapSearchPreview, CurrentEvents} from "../types";
 
 const router = express.Router();
 
@@ -24,82 +24,35 @@ interface MapSearchResult{
     results: MapSearchPreview[];
 }
 
-router.get<EventsParams, ApiError | CurrentEventsData, Empty, TimeQuery>("/events/:time", (req, res) => {
+router.get<EventsParams, ApiError | CurrentEvents, Empty, TimeQuery>("/events/:time", (req, res) => {
     const timeSetting = req.params.time;
-    const currentTime = realToTime(Date.now());
+    const currentTime = Date.now();
 
-    const hourString = req.query.hour;
-    const minuteString = req.query.minute;
     const secondString = req.query.second;
 
     if (timeSetting === "current"){
-        const activeEvents = getAllEvents(events, currentTime);
+        const activeEvents = getCurrentEvents(currentTime);
         res.json(activeEvents);
         return;
-    }
-
-    let time: SeasonTime | undefined;
-
-    if (timeSetting === "worldtime"){
+    } else if (timeSetting === "worldtime"){
         if (isNaN(Number(secondString)) === true){
             res.status(400).json(createError("EventsInvalidWorldTime"));
             return;
         }
-    
-        const time = realToTime(parseInt(secondString) * 1000);
-    
-        const activeEvents = getAllEvents(events, time);
-    
+
+        const time = parseInt(secondString) * 1000;
+
+        const activeEvents = getCurrentEvents(time);
         res.json(activeEvents);
         return;
     }
 
-    if (isValidTimeQuery(hourString, minuteString, secondString) === false){
-        res.status(400).json(createError("EventsInvalidSeasonTime"));
-        return;
-    }
-
-    if (timeSetting === "seasontime"){
-        time = addSeasonTimes(
-            new SeasonTime(0, 0, 0, 0), 
-            new SeasonTime(0, parseInt(hourString), parseInt(minuteString), parseInt(secondString))
-        );
-    } else if (timeSetting === "later"){
-        time = addSeasonTimes(
-            currentTime,
-            new SeasonTime(0, parseInt(hourString), parseInt(minuteString), parseInt(secondString))
-        );
-    }
-
-    if (time === undefined){
-        res.status(400).json(createError("EventsInvalidSetting"));
-        return;
-    }
-
-    const activeEvents = getAllEvents(events, time);
-    res.json(activeEvents);
+    res.status(400).json(createError("EventsInvalidSetting"));
 });
 
 // Get the entire list of game modes
 router.get("/gamemodes", (req, res) => {
-    const allGameModes: GameModePreview[] = [];
-    const alreadyChecked = new Set<string>();
-
-    for (let x = 0; x < events.length; x++){
-        for (let y = 0; y < events[x].gameModes.length; y++){
-            const gameMode = events[x].gameModes[y];
-            if (Object.hasOwn(gameMode, "name") === true && 
-            Object.hasOwn(gameMode, "displayName") === true &&
-            alreadyChecked.has(gameMode.name) === false){
-                alreadyChecked.add(gameMode.name);
-                allGameModes.push({
-                    name: gameMode.name,
-                    displayName: gameMode.displayName
-                });
-            }
-        }
-    }
-
+    const allGameModes = getAllModes();
     res.json({gamemodes: allGameModes});
 });
 
@@ -107,7 +60,7 @@ router.get("/gamemodes", (req, res) => {
 router.get("/gamemodes/:gamemode", (req, res) => {
     const gameMode = req.params.gamemode;
 
-    const gameModeData = getModeData(events, gameMode);
+    const gameModeData = getModeData(gameMode);
     if (gameModeData === undefined){
         res.status(404).json(createError("GameModesNotFound"));
         return;
@@ -120,7 +73,7 @@ router.get("/gamemodes/:gamemode", (req, res) => {
 router.get("/maps/:map", (req, res) => {
     const map = req.params.map;
 
-    const mapData = getMapData(events, map, realToTime(Date.now()));
+    const mapData = getMapData(map, Date.now());
     if (mapData === undefined){
         res.status(404).json(createError("MapsNotFound"));
         return;
@@ -138,7 +91,7 @@ router.get<Empty, MapSearchResult, Empty, MapSearchQuery>("/mapsearch", (req, re
         return;
     }
 
-    const searchResult = searchForMapName(events, search);
+    const searchResult = searchForMapName(search);
     res.json({results: searchResult});
 });
 

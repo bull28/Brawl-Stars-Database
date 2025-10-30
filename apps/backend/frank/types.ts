@@ -165,6 +165,11 @@ export interface PinPreview{
 //------------------------------------------------------------------------------------------------//
 
 /**
+ * Representation of the time in an event slot
+ */
+export type SeasonTime = number;
+
+/**
  * Display properties of a game mode
  * 
  * This type is used with a game mode, where the name already exists in the object
@@ -215,40 +220,16 @@ export interface MapSearchPreview extends MapPreview{
 }
 
 /**
- * Contains the times that a map will become active
- */
-export interface NextStartTimes{
-    all: SeasonTimeData[];
-    next: SeasonTimeData;
-    duration: SeasonTimeData;
-}
-
-/**
  * Full map data sent to the user
  */
 export interface MapData{
     name: string;
     displayName: string;
     gameMode: GameModeMapDisplay;
-    powerLeagueMap: boolean;
+    rankedMap: boolean;
     image: string;
     bannerImage: string;
-    times: NextStartTimes;
-}
-
-/**
- * Copy of SeasonTime attributes, used only to define other types
- * 
- * This is defined here to avoid maps importing this file and this file importing maps
- */
-interface SeasonTimeData{
-    season: number;
-    hour: number;
-    minute: number;
-    second: number;
-    hoursPerSeason: number;
-    maxSeasons: number;
-    convertToSeconds: () => number;
+    nextStart: SeasonTime;
 }
 
 /**
@@ -270,18 +251,19 @@ export interface EventData{
 /**
  * Represents the state of an event slot at a particular time
  */
-export interface CurrentEvent{
+interface EventSlotState{
     current: EventData;
     upcoming: EventData;
-    timeLeft: SeasonTimeData;
+    timeLeft: SeasonTime;
 }
 
 /**
  * Full current event data sent to the user
  */
-export interface CurrentEventsData{
-    time: SeasonTimeData;
-    events: CurrentEvent[];
+export interface CurrentEvents{
+    time: SeasonTime;
+    valid: boolean;
+    events: EventSlotState[];
 }
 
 //------------------------------------------------------------------------------------------------//

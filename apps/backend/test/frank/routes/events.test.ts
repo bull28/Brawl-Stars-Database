@@ -9,57 +9,7 @@ describe("Game Modes and Maps endpoints", function(){
         const res = await chai.request(server).get("/events/current");
         expect(res).to.have.status(200);
         expect(res.body).to.be.an("object");
-        expect(res.body).to.have.keys(["time", "events"]);
-    });
-
-    describe("/events/seasontime", function(){
-        it("Valid season time query", async function(){
-            const res = await chai.request(server).get("/events/seasontime").query({hour: 0, minute: 0, second: 0});
-            expect(res).to.have.status(200);
-        });
-
-        it("Missing some values", async function(){
-            const res = await chai.request(server).get("/events/seasontime").query({hour: 0});
-            expect(res).to.have.status(400);
-            expect(res.body).to.eql(createError("EventsInvalidSeasonTime"));
-        });
-
-        it("Invalid inputs", async function(){
-            const res = await chai.request(server).get("/events/seasontime").query({hour: "", minute: "", second: ""});
-            expect(res).to.have.status(400);
-            expect(res.body).to.eql(createError("EventsInvalidSeasonTime"));
-        });
-
-        it("Missing entire query", async function(){
-            const res = await chai.request(server).get("/events/seasontime");
-            expect(res).to.have.status(400);
-            expect(res.body).to.eql(createError("EventsInvalidSeasonTime"));
-        });
-    });
-
-    describe("/events/later", function(){
-        it("Valid season time query", async function(){
-            const res = await chai.request(server).get("/events/later").query({hour: 0, minute: 0, second: 0});
-            expect(res).to.have.status(200);
-        });
-
-        it("Missing some values", async function(){
-            const res = await chai.request(server).get("/events/later").query({hour: 0});
-            expect(res).to.have.status(400);
-            expect(res.body).to.eql(createError("EventsInvalidSeasonTime"));
-        });
-
-        it("Invalid inputs", async function(){
-            const res = await chai.request(server).get("/events/later").query({hour: "", minute: "", second: ""});
-            expect(res).to.have.status(400);
-            expect(res.body).to.eql(createError("EventsInvalidSeasonTime"));
-        });
-
-        it("Missing entire query", async function(){
-            const res = await chai.request(server).get("/events/later");
-            expect(res).to.have.status(400);
-            expect(res.body).to.eql(createError("EventsInvalidSeasonTime"));
-        });
+        expect(res.body).to.have.keys(["time", "valid", "events"]);
     });
 
     describe("/events/worldtime", function(){
@@ -113,7 +63,7 @@ describe("Game Modes and Maps endpoints", function(){
 
     describe("/maps/:map", function(){
         it("Map exists", async function(){
-            const res = await chai.request(server).get(`/maps/${events[0].gameModes[0].maps[0].name}`);
+            const res = await chai.request(server).get(`/maps/${events[0].rotation[0].name}`);
             expect(res).to.have.status(200);
         });
 
