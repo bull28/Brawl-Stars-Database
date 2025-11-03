@@ -61,7 +61,7 @@
     },
     {
         "name": "brawlbox3", "category": "", "displayName": "Doug's Hot Dog",
-        "description": "Once per level when at low health, heal a large amount of health.", "unlock": "Buy from the Shop.", "badges": 1
+        "description": "Once per level when at low health, heal to full health.", "unlock": "Buy from the Shop.", "badges": 1
     },
     {
         "name": "brawlbox4", "category": "", "displayName": "Angelo's Bow",
@@ -144,24 +144,24 @@
         "description": "Deal more damage to Damage Dealer enemies.", "unlock": "Defeat Colette enemies.", "badges": 500
     },
     {
-        "name": "mandy", "category": "enemy", "displayName": "Mandy's Candy Dispenser",
-        "description": "Deal more damage to Marksman enemies.", "unlock": "Defeat Mandy enemies.", "badges": 500
+        "name": "pearl", "category": "enemy", "displayName": "Pearl's Cookie",
+        "description": "Receive less damage from Damage Dealer enemies.", "unlock": "Defeat Pearl enemies.", "badges": 500
     },
     {
         "name": "bibi", "category": "enemy", "displayName": "Bibi's Bat",
         "description": "Receive less damage from Tank enemies.", "unlock": "Defeat Bibi enemies.", "badges": 500
     },
     {
+        "name": "mandy", "category": "enemy", "displayName": "Mandy's Candy Dispenser",
+        "description": "Deal more damage to Marksman enemies.", "unlock": "Defeat Mandy enemies.", "badges": 500
+    },
+    {
         "name": "chester", "category": "enemy", "displayName": "Chester's Box",
-        "description": "Receive less damage from Damage Dealer enemies.", "unlock": "Defeat Chester enemies.", "badges": 500
+        "description": "Deal more damage to Damage Dealer enemies.", "unlock": "Defeat Chester enemies.", "badges": 500
     },
     {
-        "name": "ash", "category": "enemy", "displayName": "Ash's Broom",
-        "description": "Deal more damage to Tank enemies.", "unlock": "Defeat Ash enemies.", "badges": 500
-    },
-    {
-        "name": "pearl", "category": "enemy", "displayName": "Pearl's Cookie",
-        "description": "Receive less damage from Damage Dealer enemies.", "unlock": "Defeat Pearl enemies.", "badges": 500
+        "name": "ollie", "category": "enemy", "displayName": "Ollie's Skateboard",
+        "description": "Deal more damage to Tank enemies.", "unlock": "Defeat Ollie enemies.", "badges": 500
     },
     {
         "name": "leon", "category": "enemy", "displayName": "Leon's Lollipop",
@@ -229,7 +229,7 @@
     },
     {
         "name": "oldtown", "category": "location", "displayName": "Barley's Bottle",
-        "description": "After a few seconds at full health, gain a shield.", "unlock": "Complete levels at Old Town.", "badges": 250
+        "description": "After not taking damage for a few seconds, gain a shield.", "unlock": "Complete levels at Old Town.", "badges": 250
     },
     {
         "name": "biodome", "category": "location", "displayName": "Rosa's Gloves",
@@ -237,7 +237,7 @@
     },
     {
         "name": "ghoststation", "category": "location", "displayName": "Train Tickets",
-        "description": "Gain extra power points for each level completed.", "unlock": "Complete levels at Ghost Station.", "badges": 250
+        "description": "Receive more power points when completing a level.", "unlock": "Complete levels at Ghost Station.", "badges": 250
     },
     {
         "name": "deepsea", "category": "location", "displayName": "Clancy's Tokens",
@@ -246,6 +246,10 @@
     {
         "name": "giftshop", "category": "location", "displayName": "Gift Shop Shirt",
         "description": "Increases health, speed, and life steal.", "unlock": "Complete levels at Gift Shop.", "badges": 250
+    },
+    {
+        "name": "enchantedforest", "category": "location", "displayName": "Mysterious Mushroom",
+        "description": "Every few seconds, heal health for each hit recently received.", "unlock": "Complete levels at Enchanted Forest", "badges": 250
     },
     {
         "name": "retropolis", "category": "location", "displayName": "Neon Light",
@@ -261,11 +265,15 @@
     },
     {
         "name": "stuntshow", "category": "location", "displayName": "Janet's Microphone",
-        "description": "Increases super reload speed.", "unlock": "Complete levels at Stunt Show.", "badges": 250
+        "description": "Increases charge rate of the super.", "unlock": "Complete levels at Stunt Show.", "badges": 250
     },
     {
         "name": "supercity", "category": "location", "displayName": "Surge's Energy Drink",
         "description": "For the first few seconds of each level, gain speed and damage.", "unlock": "Complete levels at Super City.", "badges": 250
+    },
+    {
+        "name": "odditiesshop", "category": "location", "displayName": "Cursed Book",
+        "description": "The combo gains a speed and reload buff.", "unlock": "Complete levels at Oddities Shop", "badges": 250
     },
     {
         "name": "arcade", "category": "location", "displayName": "Arcade Machine",
@@ -273,7 +281,7 @@
     },
     {
         "name": "wins", "category": "", "displayName": "Bull's Shotgun",
-        "description": "Increases attack reload speed.", "unlock": "Win in any difficulty.", "badges": 100
+        "description": "Increases attack reload.", "unlock": "Win in any difficulty.", "badges": 100
     },
     {
         "name": "enemies", "category": "", "displayName": "Omega Box",
@@ -289,7 +297,7 @@
     },
     {
         "name": "noupgrades", "category": "", "displayName": "Bling Stack",
-        "description": "The first gear activation in each level does not consume a gear token.", "unlock": "Win without purchasing upgrades or using gears.", "badges": 1
+        "description": "Receive 1 extra gear token when completing a level.", "unlock": "Win without purchasing upgrades or using gears.", "badges": 1
     },
     {
         "name": "nodamage", "category": "", "displayName": "Poco's Guitar",
@@ -300,12 +308,16 @@
         "description": "When defeating an enemy, partially recharge the super.", "unlock": "Win in under 90 seconds.", "badges": 1
     },
     {
+        "name": "usecombo", "category": "", "displayName": "Meeple's Dice",
+        "description": "Increases charge rate of the combo.", "unlock": "Win while using at least 20 max level combos.", "badges": 1
+    },
+    {
         "name": "perfect1", "category": "", "displayName": "Championship Trophy",
         "description": "Increases game score.", "unlock": "Get a score of 600 on difficulty 6.", "badges": 1
     },
     {
         "name": "perfect2", "category": "", "displayName": "Hypercharged Token",
-        "description": "Increases the charge rate of Hypercharge.", "unlock": "Get a score of 600 on difficulty 10.", "badges": 1
+        "description": "Increases charge rate of Hypercharge.", "unlock": "Get a score of 600 on difficulty 10.", "badges": 1
     },
     {
         "name": "mastery1", "category": "", "displayName": "Bronze Medal",

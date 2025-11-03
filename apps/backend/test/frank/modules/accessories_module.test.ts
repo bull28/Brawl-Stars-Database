@@ -4,8 +4,8 @@ import {IMAGE_FILE_EXTENSION, ACCESSORY_IMAGE_DIR} from "../../../frank/data/con
 import {getAccessoryPreview, getAccessoryData, getShopItems, accessoryClaimCost} from "../../../frank/modules/accessories_module";
 
 describe("Accessories module", function(){
-    it("Must contain exactly 85 accessories", function(){
-        expect(accessoryList).to.have.lengthOf(85);
+    it("Must contain exactly 88 accessories", function(){
+        expect(accessoryList).to.have.lengthOf(88);
     });
 
     it("Get the preview for an accessory", function(){

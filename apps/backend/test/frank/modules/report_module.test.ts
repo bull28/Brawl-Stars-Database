@@ -5,8 +5,8 @@ import {sampleGameReport, GAME_VERSION} from "../database_setup";
 
 const REPORT_FORMAT = {
     version: [0, 2], mode: [2, 3], player: [3, 8], gears: [8, 10], accessories: [10, 18],
-    score: [18, 24], achievements: [24, 32], upgrades: [32, 39], stats: [39, 47],
-    visited: [47, 55], levels: [55, 103], enemies: [103, 136], length: [0, 136]
+    score: [18, 24], achievements: [24, 33], upgrades: [33, 40], stats: [40, 48],
+    visited: [48, 56], levels: [56, 104], enemies: [104, 137], length: [0, 137]
 };
 
 const emptyReport: number[] = [];
@@ -73,7 +73,7 @@ describe("Game Report module", function(){
         const report2 = sampleGameReport.slice();
         const format = REPORT_FORMAT;
         // Achievements nomove, noupgrades, nodamage, fastwin, perfect1
-        report2[format.achievements[0] + 4] = 0;
+        report2[format.achievements[0] + 6] = 0;
         for (let x = 0; x < 7; x++){
             report2[format.upgrades[0] + x] = 0;
         }
@@ -232,9 +232,9 @@ describe("Game Report module", function(){
         });
 
         it("Hypercharges used on difficulty 5 or lower", function(){
-            invalid[format.achievements[0] + 3] = 1;
+            invalid[format.achievements[0] + 4] = 1;
             expect(validateReport(invalid)).to.equal(18);
-            invalid[format.achievements[0] + 3] = valid[format.achievements[0] + 3];
+            invalid[format.achievements[0] + 4] = valid[format.achievements[0] + 4];
         });
 
         it("In-game upgrades are not between 0 and max level", function(){

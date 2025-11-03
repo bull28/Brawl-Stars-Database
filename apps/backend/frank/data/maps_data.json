@@ -450,12 +450,12 @@
                 "bannerImage": "subwaysurfers.webp"
             },
             {
-                "name": "a-balled-about-minced-cutlets",
-                "displayName": "A Balled About Minced Cutlets",
+                "name": "a-ballad-about-minced-cutlets",
+                "displayName": "A Ballad About Minced Cutlets",
                 "gameMode": 0,
                 "rankedMap": false,
-                "image": "a-balled-about-minced-cutlets.webp",
-                "bannerImage": "default.webp"
+                "image": "a-ballad-about-minced-cutlets.webp",
+                "bannerImage": "subwaysurfers.webp"
             },
             {
                 "name": "goldarm-gulch",

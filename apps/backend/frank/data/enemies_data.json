@@ -82,7 +82,7 @@
         "description": "Quickly follows you and has a short-ranged attack.",
         "strengthTier": "",
         "value": 2,
-        "health": 1000,
+        "health": 1040,
         "speed": 22,
         "attacks": [
             {
@@ -647,27 +647,38 @@
         ],
         "enemies": []
     },
-    "mandy": {
-        "displayName": "Mandy",
-        "image": "mandy/mandy_lavaqueen_default.webp",
-        "fullImage": "mandy/beamerlavaqueen.webp",
-        "enemyClass": "Marksman",
-        "description": "Has very long range and receives less damage if you are not standing still.",
-        "strengthTier": "Time between attacks becomes more variable but the average damage per second remains the same.",
+    "pearl": {
+        "displayName": "Pearl",
+        "image": "pearl/pearl_deepsea_default.webp",
+        "fullImage": "pearl/cookerdeepsea.webp",
+        "enemyClass": "Damage Dealer",
+        "description": "Has a heat bar that increases damage when it is filled. Heat increases slowly when Pearl is not attacking but decreases every time Pearl attacks.",
+        "strengthTier": "Heat increases faster and decreases slower.",
         "value": 16,
-        "health": 6000,
-        "speed": 0,
+        "health": 7000,
+        "speed": 14,
         "attacks": [
             {
                 "displayName": "Default Attack",
-                "minDamage": 1200,
-                "maxDamage": 1200,
+                "minDamage": 576,
+                "maxDamage": 1008,
                 "damageType": 0,
-                "range": 160,
-                "reload": 2.4,
+                "range": 75,
+                "reload": 1.3,
                 "knockback": 0,
                 "fireDamage": 0,
                 "description": ""
+            },
+            {
+                "displayName": "Explosion Attack",
+                "minDamage": 1600,
+                "maxDamage": 1600,
+                "damageType": 0,
+                "range": 15,
+                "reload": 0,
+                "knockback": 80,
+                "fireDamage": 0,
+                "description": "Deals damage in an explosion when Pearl is defeated."
             }
         ],
         "enemies": []
@@ -708,6 +719,54 @@
         ],
         "enemies": []
     },
+    "mandy": {
+        "displayName": "Mandy",
+        "image": "mandy/mandy_lavaqueen_default.webp",
+        "fullImage": "mandy/beamerlavaqueen.webp",
+        "enemyClass": "Marksman",
+        "description": "Receives less damage if you are not standing still. Every few seconds, shoots a super candy towards your location.",
+        "strengthTier": "Time between attacks becomes more variable, projectiles move faster, and super candy deals more damage.",
+        "value": 16,
+        "health": 6600,
+        "speed": 20,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 1000,
+                "maxDamage": 1000,
+                "damageType": 0,
+                "range": 160,
+                "reload": 2.307692307692308,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": ""
+            }
+        ],
+        "enemies": [
+            {
+                "count": 1,
+                "displayName": "Super Candy",
+                "description": "Hitting this with your attack will deflect it back towards Mandy, dealing damage if it hits.",
+                "strengthTier": "",
+                "value": 0,
+                "health": 1,
+                "speed": 100,
+                "attacks": [
+                    {
+                        "displayName": "Default Attack",
+                        "minDamage": 400,
+                        "maxDamage": 1200,
+                        "damageType": 0,
+                        "range": 100,
+                        "reload": 4.5,
+                        "knockback": 0,
+                        "fireDamage": 0,
+                        "description": "Deals more damage to both you and Mandy the farther the candy travels."
+                    }
+                ]
+            }
+        ]
+    },
     "chester": {
         "displayName": "Chester",
         "image": "chester/chester_default.webp",
@@ -715,14 +774,14 @@
         "enemyClass": "Damage Dealer",
         "description": "Uses a random one of its super attacks every few seconds.",
         "strengthTier": "Uses supers more often and has a chance to skip the 1-projectile attack in its attack cycle.",
-        "value": 16,
-        "health": 6600,
+        "value": 20,
+        "health": 7800,
         "speed": 18,
         "attacks": [
             {
                 "displayName": "Default Attack",
-                "minDamage": 160,
-                "maxDamage": 640,
+                "minDamage": 176,
+                "maxDamage": 704,
                 "damageType": 0,
                 "range": 55,
                 "reload": 1.3,
@@ -732,13 +791,13 @@
             },
             {
                 "displayName": "Spray Super Attack",
-                "minDamage": 80,
-                "maxDamage": 80,
+                "minDamage": 96,
+                "maxDamage": 96,
                 "damageType": 0,
                 "range": 80,
                 "reload": 1,
                 "knockback": 0,
-                "fireDamage": 320,
+                "fireDamage": 384,
                 "description": "Shoots 5 projectiles in a cone pattern, dealing damage over time for 4 seconds."
             },
             {
@@ -766,63 +825,38 @@
         ],
         "enemies": []
     },
-    "ash": {
-        "displayName": "Ash",
-        "image": "ash/ash_default.webp",
-        "fullImage": "ash/knightdefault.webp",
+    "ollie": {
+        "displayName": "Ollie",
+        "image": "ollie/ollie_default.webp",
+        "fullImage": "ollie/skaterdefault.webp",
         "enemyClass": "Tank",
-        "description": "Has a rage bar that increases its speed and damage when it is filled. Dealing damage to Ash increases its rage but not dealing damage to Ash slowly decreases its rage.",
-        "strengthTier": "Rage increases faster and decreases slower.",
-        "value": 20,
+        "description": "Every few seconds, dashes forward and hypnotizes you if you are nearby. While hypnotized, you will slowly move towards Ollie.",
+        "strengthTier": "Gains movement speed while following you, hypnotizes more often, and hypnotize lasts longer.",
+        "value": 16,
         "health": 9000,
         "speed": 12,
         "attacks": [
             {
                 "displayName": "Default Attack",
-                "minDamage": 440,
-                "maxDamage": 880,
+                "minDamage": 560,
+                "maxDamage": 560,
                 "damageType": 0,
-                "range": 30,
-                "reload": 1.5,
-                "knockback": 0,
-                "fireDamage": 0,
-                "description": ""
-            }
-        ],
-        "enemies": []
-    },
-    "pearl": {
-        "displayName": "Pearl",
-        "image": "pearl/pearl_deepsea_default.webp",
-        "fullImage": "pearl/cookerdeepsea.webp",
-        "enemyClass": "Damage Dealer",
-        "description": "Has a heat bar that increases damage when it is filled. Heat increases slowly when Pearl is not attacking but decreases every time Pearl attacks.",
-        "strengthTier": "Heat increases faster and decreases slower.",
-        "value": 16,
-        "health": 7000,
-        "speed": 14,
-        "attacks": [
-            {
-                "displayName": "Default Attack",
-                "minDamage": 576,
-                "maxDamage": 1008,
-                "damageType": 0,
-                "range": 75,
-                "reload": 1.3,
+                "range": 45,
+                "reload": 1.9,
                 "knockback": 0,
                 "fireDamage": 0,
                 "description": ""
             },
             {
-                "displayName": "Explosion Attack",
-                "minDamage": 1600,
-                "maxDamage": 1600,
+                "displayName": "Hypnotize Attack",
+                "minDamage": 320,
+                "maxDamage": 320,
                 "damageType": 0,
-                "range": 15,
-                "reload": 0,
-                "knockback": 80,
+                "range": 25,
+                "reload": 6.5,
+                "knockback": 0,
                 "fireDamage": 0,
-                "description": "Deals damage in an explosion when Pearl is defeated."
+                "description": "Deals damage in an area at the start of each hypnotize attack."
             }
         ],
         "enemies": []
@@ -1019,8 +1053,8 @@
         "attacks": [
             {
                 "displayName": "Geisha Default Attack",
-                "minDamage": 320,
-                "maxDamage": 1080,
+                "minDamage": 300,
+                "maxDamage": 900,
                 "damageType": 0,
                 "range": 20,
                 "reload": 1,
@@ -1059,7 +1093,7 @@
                         "reload": 7.5,
                         "knockback": 0,
                         "fireDamage": 0,
-                        "description": "Dashes once towards you. If below 2/5 health, dashes another two times in an X pattern."
+                        "description": "Dashes once towards you. If Kaze is below 2/5 health, dashes another two times in an X pattern."
                     }
                 ]
             }

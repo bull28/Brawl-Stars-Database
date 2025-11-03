@@ -44,7 +44,7 @@ router.post<Empty, Empty, SaveReqBody>("/", databaseErrorHandler<SaveReqBody>(as
     // Last updated: version 96
     // The report's timestamp is the number of seconds after the version was released. To ensure the value stored in the
     // database is always increasing, add the time of the version's release to the report timestamp.
-    const endTime = report[1] + 1760320800;
+    const endTime = report[1] + 1761912000;
 
     const gameMode = reportData.gameMode;
     if (typeof key === "string"){

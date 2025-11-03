@@ -17,8 +17,8 @@ interface ChallengeRewardResult{
 
 const REPORT_FORMAT = {
     version: [0, 2], mode: [2, 3], player: [3, 8], gears: [8, 10], accessories: [10, 18],
-    score: [18, 24], achievements: [24, 32], upgrades: [32, 39], stats: [39, 47],
-    visited: [47, 55], levels: [55, 103], enemies: [103, 136], length: [0, 136]
+    score: [18, 24], achievements: [24, 33], upgrades: [33, 40], stats: [40, 48],
+    visited: [48, 56], levels: [56, 104], enemies: [104, 137], length: [0, 137]
 };
 const SCORE_CONSTANTS = {
     stages: [
@@ -57,11 +57,11 @@ const badgeList = [
     {name: "lola", category: "enemy", index: 15, coins: [104, 112]},
     {name: "bo", category: "enemy", index: 16, coins: [108, 116]},
     {name: "colette", category: "enemy", index: 17, coins: [112, 120]},
-    {name: "mandy", category: "enemy", index: 18, coins: [132, 148]},
+    {name: "pearl", category: "enemy", index: 18, coins: [132, 148]},
     {name: "bibi", category: "enemy", index: 19, coins: [136, 152]},
-    {name: "chester", category: "enemy", index: 20, coins: [140, 156]},
-    {name: "ash", category: "enemy", index: 21, coins: [172, 188]},
-    {name: "pearl", category: "enemy", index: 22, coins: [144, 160]},
+    {name: "mandy", category: "enemy", index: 20, coins: [140, 156]},
+    {name: "chester", category: "enemy", index: 21, coins: [172, 188]},
+    {name: "ollie", category: "enemy", index: 22, coins: [144, 160]},
     {name: "leon", category: "enemy", index: 23, coins: [212, 236]},
     {name: "bonnie", category: "enemy", index: 24, coins: [184, 200]},
     {name: "amber", category: "enemy", index: 25, coins: [272, 304]},
@@ -89,7 +89,9 @@ const badgeList = [
     {name: "rumblejungle", category: "location", index: 9, coins: [0, 0]},
     {name: "stuntshow", category: "location", index: 10, coins: [0, 0]},
     {name: "supercity", category: "location", index: 11, coins: [0, 0]},
-    {name: "arcade", category: "location", index: 12, coins: [0, 0]}
+    {name: "arcade", category: "location", index: 12, coins: [0, 0]},
+    {name: "enchantedforest", category: "location", index: 14, coins: [0, 0]},
+    {name: "odditiesshop", category: "location", index: 15, coins: [0, 0]}
 ];
 
 const pointsRewards = [
@@ -212,7 +214,7 @@ function getFinalScore(reports: number[], enemyCounts: number[]): number[]{
 }
 
 export function validateReport(report: GameReport): number{
-    // Last updated: version 96
+    // Last updated: version 97
 
     if (Array.isArray(report) === false){
         // Invalid report type
@@ -235,7 +237,7 @@ export function validateReport(report: GameReport): number{
     }
 
     // The first number contains major version (16 bits), minor version (4 bits), and report length (12 bits)
-    if ((report[0] >> 16) < 96){
+    if ((report[0] >> 16) < 97){
         // Old report version
         return 3;
     }
@@ -327,7 +329,7 @@ export function validateReport(report: GameReport): number{
 
     // The visited levels must be unique and only certain values are allowed at certain indexes
     const visited = data.slice(format.visited[0], format.visited[1]);
-    const visitedAllowed = [[0], [1], [2, 3, 4, 5], [3, 4, 5, 6], [7, 8, 9, 10], [8, 9, 10, 11], [12], [13]];
+    const visitedAllowed = [[0], [1], [2, 3, 4, 5], [3, 4, 5, 6], [7, 8, 9, 10], [8, 9, 10, 11], [12, 14, 15], [13]];
     if (visited.length < visitedAllowed.length){
         return 5;
     }
@@ -398,7 +400,7 @@ export function validateReport(report: GameReport): number{
         }
 
         // Hypercharges are not allowed on difficulty 5 or lower
-        if (data[format.achievements[0] + 3] > 0 && difficulty <= 5){
+        if (data[format.achievements[0] + 4] > 0 && difficulty <= 5){
             return 18;
         }
 
@@ -473,13 +475,13 @@ export function extractReportData(data: GameReport): ReportData | undefined{
     let badgeMultiplier = 100;
     let pointsMultiplier = 100;
     let coinsMultiplier = 100;
-    if (accs.includes(70) === true){
+    if (accs.includes(72) === true){
         pointsMultiplier = 120;
     }
     const coinsAccs = [102, 104, 106, 110, 115, 120, 125, 130];
-    // Accessories increasing coins are from 77 to 84. These do not stack so only the last accessory checked is used.
+    // Accessories increasing coins are from 80 to 87. These do not stack so only the last accessory checked is used.
     for (let x = 0; x < coinsAccs.length; x++){
-        if (accs.includes(77 + x) === true){
+        if (accs.includes(80 + x) === true){
             coinsMultiplier = coinsAccs[x];
         }
     }
@@ -588,7 +590,7 @@ export function extractReportData(data: GameReport): ReportData | undefined{
             badges.set("default5", 1);
         }
         // Win without moving
-        if (data[a + 4] === 0){
+        if (data[a + 6] === 0){
             badges.set("nomove", 1);
         }
         // Win without purchasing upgrades or using gears
@@ -605,12 +607,16 @@ export function extractReportData(data: GameReport): ReportData | undefined{
             }
         }
         // Win without taking any damage
-        if (data[a + 3] === 0){
+        if (data[a + 5] === 0){
             badges.set("nodamage", 1);
         }
         // Win in under 90 seconds
         if (data[a] < 90000){
             badges.set("fastwin", 1);
+        }
+        // Win while using at least 20 max level combos
+        if (data[a + 3] >= 20){
+            badges.set("usecombo", 1);
         }
         // Get a perfect score
         if (data[p] >= 600){
