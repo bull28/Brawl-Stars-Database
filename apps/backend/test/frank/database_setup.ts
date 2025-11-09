@@ -21,7 +21,7 @@ export const tokens = {
     challenges: signToken("challenges").token,
 };
 
-export const GAME_VERSION = (97 << 16) + 137;
+export const GAME_VERSION = (99 << 16) + 137;
 export const sampleGameReport = [
     GAME_VERSION, 1, // Version
     0, // Game Mode
@@ -69,12 +69,12 @@ challengeList.set("test", {
                 strengthTier: 2,
                 healthBonusReq: 0.5,
                 timePerEnemy: 0.75,
-                enemyStats: [100.0, 125.0, 150.0]
+                enemyStats: [8, 10, 12]
             }
         ],
         stages: [
-            {completion: 100, time: 50, powerReward: 15, gearsReward: 1},
-            {completion: 100, time: 50, powerReward: 25, gearsReward: 1},
+            {completion: 100, time: 50, powerReward: 15, gearsReward: 100},
+            {completion: 100, time: 50, powerReward: 25, gearsReward: 100},
             {completion: 100, time: 50, powerReward: 0, gearsReward: 0}
         ],
         levels: [
@@ -88,7 +88,7 @@ challengeList.set("test", {
                 ],
                 background: "entrance",
                 displayName: "Starr Park Entrance",
-                stages: [0, 0],
+                stages: [0],
                 destination: 0
             },
             {
@@ -101,7 +101,7 @@ challengeList.set("test", {
                 ],
                 background: "hub",
                 displayName: "Starr Park Hub",
-                stages: [1, 1],
+                stages: [1],
                 destination: 0
             },
             {
@@ -115,7 +115,7 @@ challengeList.set("test", {
                 ],
                 background: "oldtown",
                 displayName: "Old Town",
-                stages: [2, 2],
+                stages: [2],
                 destination: 0
             }
         ],

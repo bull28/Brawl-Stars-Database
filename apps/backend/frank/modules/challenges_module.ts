@@ -196,7 +196,7 @@ export function getStaticGameMod(challengeid: string, key: string, resources: Us
                 completion: srcStages[x].completion,
                 time: srcStages[x].time,
                 powerReward: srcStages[x].powerReward + powerRewards[x],
-                gearsReward: srcStages[x].gearsReward + gearsRewards[x]
+                gearsReward: srcStages[x].gearsReward + gearsRewards[x] * 100
             });
         }
         gameMod.stages = stages;

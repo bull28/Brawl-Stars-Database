@@ -14,7 +14,7 @@ const classicChallenge = {
             strengthTier: 0,
             healthBonusReq: 0.4,
             timePerEnemy: 0.8,
-            enemyStats: [100.0, 112.5, 137.5, 162.5]
+            enemyStats: [8, 9, 11, 13]
         },
         {
             difficultyid: 1,
@@ -23,7 +23,7 @@ const classicChallenge = {
             strengthTier: 0,
             healthBonusReq: 0.45,
             timePerEnemy: 0.75,
-            enemyStats: [100.0, 112.5, 137.5, 175.0]
+            enemyStats: [8, 9, 11, 14]
         },
         {
             difficultyid: 2,
@@ -32,7 +32,7 @@ const classicChallenge = {
             strengthTier: 1,
             healthBonusReq: 0.45,
             timePerEnemy: 0.7,
-            enemyStats: [125.0, 150.0, 187.5, 225.0]
+            enemyStats: [10, 12, 15, 18]
             
         },
         {
@@ -42,7 +42,7 @@ const classicChallenge = {
             strengthTier: 1,
             healthBonusReq: 0.5,
             timePerEnemy: 0.6,
-            enemyStats: [150.0, 200.0, 262.5, 325.0]
+            enemyStats: [12, 16, 21, 26]
         },
         {
             difficultyid: 4,
@@ -51,7 +51,7 @@ const classicChallenge = {
             strengthTier: 2,
             healthBonusReq: 0.5,
             timePerEnemy: 0.6,
-            enemyStats: [175.0, 237.5, 312.5, 400.0]
+            enemyStats: [14, 19, 25, 32]
         },
         {
             difficultyid: 5,
@@ -60,13 +60,13 @@ const classicChallenge = {
             strengthTier: 3,
             healthBonusReq: 0.6,
             timePerEnemy: 0.5,
-            enemyStats: [200.0, 275.0, 375.0, 500.0]
+            enemyStats: [16, 22, 30, 40]
         }
     ],
     stages: [
-        {completion: 30, time: 30, powerReward: 25, gearsReward: 1},
-        {completion: 60, time: 40, powerReward: 40, gearsReward: 1},
-        {completion: 90, time: 50, powerReward: 55, gearsReward: 1},
+        {completion: 30, time: 30, powerReward: 25, gearsReward: 100},
+        {completion: 60, time: 40, powerReward: 40, gearsReward: 100},
+        {completion: 90, time: 50, powerReward: 55, gearsReward: 100},
         {completion: 120, time: 60, powerReward: 0, gearsReward: 0}
     ],
     maxScores: {completion: 300, time: 180, destination: 0, health: 90, gear: 30, enemy: 0}
@@ -91,7 +91,7 @@ const challenges = new Map<string, ChallengePreset>([
                 strengthTier: 0,
                 healthBonusReq: 0.6,
                 timePerEnemy: 2/3,
-                enemyStats: [100]
+                enemyStats: [8]
             }],
             stages: [
                 {completion: 300, time: 150, powerReward: 0, gearsReward: 0}
@@ -101,7 +101,7 @@ const challenges = new Map<string, ChallengePreset>([
                 waves: [],
                 background: "entrance",
                 displayName: "Level 1",
-                stages: [0, 0],
+                stages: [0],
                 destination: 0
             }],
             maxScores: {completion: 300, time: 150, destination: 0, health: 90, gear: 30, enemy: 0}
@@ -132,13 +132,13 @@ const challenges = new Map<string, ChallengePreset>([
                     strengthTier: 0,
                     healthBonusReq: 0.5,
                     timePerEnemy: 1,
-                    enemyStats: [100.0, 112.5, 125.0, 137.5]
+                    enemyStats: [8, 9, 10, 11]
                 }
             ],
             stages: [
-                {completion: 40, time: 0, powerReward: 14, gearsReward: 1.5},
-                {completion: 60, time: 0, powerReward: 21, gearsReward: 1.5},
-                {completion: 80, time: 0, powerReward: 28, gearsReward: 1.5},
+                {completion: 40, time: 0, powerReward: 14, gearsReward: 150},
+                {completion: 60, time: 0, powerReward: 21, gearsReward: 150},
+                {completion: 80, time: 0, powerReward: 28, gearsReward: 150},
                 {completion: 120, time: 0, powerReward: 0, gearsReward: 0}
             ],
             maxScores: {completion: 300, time: 0, destination: 0, health: 0, gear: 0, enemy: 0}
@@ -166,7 +166,7 @@ const challenges = new Map<string, ChallengePreset>([
                     strengthTier: 2,
                     healthBonusReq: 0.5,
                     timePerEnemy: 0.75,
-                    enemyStats: [150.0, 187.5, 225.0, 262.5, 300.0, 350.0, 412.5, 450.0]
+                    enemyStats: [12, 15, 18, 21, 24, 28, 33, 36]
                 },
                 {
                     difficultyid: 7,
@@ -175,7 +175,7 @@ const challenges = new Map<string, ChallengePreset>([
                     strengthTier: 3,
                     healthBonusReq: 0.5,
                     timePerEnemy: 0.75,
-                    enemyStats: [175.0, 250.0, 287.5, 325.0, 387.5, 462.5, 550.0, 575.0]
+                    enemyStats: [14, 20, 23, 26, 31, 37, 44, 46]
                 },
                 {
                     difficultyid: 8,
@@ -184,7 +184,7 @@ const challenges = new Map<string, ChallengePreset>([
                     strengthTier: 3,
                     healthBonusReq: 0.5,
                     timePerEnemy: 0.7,
-                    enemyStats: [225.0, 300.0, 387.5, 475.0, 562.5, 650.0, 762.5, 800.0]
+                    enemyStats: [18, 24, 31, 38, 45, 52, 61, 64]
                 },
                 {
                     difficultyid: 9,
@@ -193,17 +193,17 @@ const challenges = new Map<string, ChallengePreset>([
                     strengthTier: 4,
                     healthBonusReq: 0.5,
                     timePerEnemy: 0.6666666666666666,
-                    enemyStats: [300.0, 450.0, 600.0, 750.0, 875.0, 1000.0, 1175.0, 1250.0]
+                    enemyStats: [24, 36, 48, 60, 70, 80, 94, 100]
                 }
             ],
             stages: [
-                {completion: 10, time: 0, powerReward: 15, gearsReward: 1},
-                {completion: 15, time: 15, powerReward: 25, gearsReward: 1},
-                {completion: 20, time: 15, powerReward: 35, gearsReward: 1},
-                {completion: 30, time: 20, powerReward: 45, gearsReward: 1},
-                {completion: 45, time: 20, powerReward: 60, gearsReward: 1},
-                {completion: 60, time: 25, powerReward: 80, gearsReward: 1},
-                {completion: 60, time: 25, powerReward: 100, gearsReward: 1},
+                {completion: 10, time: 0, powerReward: 15, gearsReward: 100},
+                {completion: 15, time: 15, powerReward: 25, gearsReward: 100},
+                {completion: 20, time: 15, powerReward: 35, gearsReward: 100},
+                {completion: 30, time: 20, powerReward: 45, gearsReward: 100},
+                {completion: 45, time: 20, powerReward: 60, gearsReward: 100},
+                {completion: 60, time: 25, powerReward: 80, gearsReward: 100},
+                {completion: 60, time: 25, powerReward: 100, gearsReward: 100},
                 {completion: 60, time: 30, powerReward: 0, gearsReward: 0}
             ],
             levels: [
@@ -217,7 +217,7 @@ const challenges = new Map<string, ChallengePreset>([
                     ],
                     background: "entrance",
                     displayName: "Starr Park Entrance",
-                    stages: [0, 0],
+                    stages: [0],
                     destination: 0
                 },
                 {
@@ -230,7 +230,7 @@ const challenges = new Map<string, ChallengePreset>([
                     ],
                     background: "hub",
                     displayName: "Starr Park Hub",
-                    stages: [1, 1],
+                    stages: [1],
                     destination: 0
                 },
                 {
@@ -244,7 +244,7 @@ const challenges = new Map<string, ChallengePreset>([
                     ],
                     background: "oldtown",
                     displayName: "Old Town",
-                    stages: [2, 2],
+                    stages: [2],
                     destination: 0
                 },
                 {
@@ -300,7 +300,7 @@ const challenges = new Map<string, ChallengePreset>([
                     ],
                     background: "giftshop",
                     displayName: "Gift Shop",
-                    stages: [3, 3],
+                    stages: [3],
                     destination: 8
                 },
                 {
@@ -314,7 +314,7 @@ const challenges = new Map<string, ChallengePreset>([
                     ],
                     background: "retropolis",
                     displayName: "Retropolis",
-                    stages: [4, 4],
+                    stages: [4],
                     destination: 0
                 },
                 {
@@ -370,7 +370,7 @@ const challenges = new Map<string, ChallengePreset>([
                     ],
                     background: "minicity",
                     displayName: "Super City",
-                    stages: [5, 5],
+                    stages: [5],
                     destination: 20
                 },
                 {
@@ -399,7 +399,7 @@ const challenges = new Map<string, ChallengePreset>([
                     ],
                     background: "arcade",
                     displayName: "Arcade",
-                    stages: [6, 6],
+                    stages: [6],
                     destination: 0
                 },
                 {
@@ -409,7 +409,7 @@ const challenges = new Map<string, ChallengePreset>([
                     ],
                     background: "rooftop",
                     displayName: "Rooftop",
-                    stages: [7, 7],
+                    stages: [7],
                     destination: 0
                 }
             ],
@@ -466,7 +466,7 @@ const challenges = new Map<string, ChallengePreset>([
                     strengthTier: 1,
                     healthBonusReq: 0.45,
                     timePerEnemy: 0.8,
-                    enemyStats: [300.0, 300.0]
+                    enemyStats: [24, 24]
                 },
                 {
                     difficultyid: 6,
@@ -475,7 +475,7 @@ const challenges = new Map<string, ChallengePreset>([
                     strengthTier: 2,
                     healthBonusReq: 0.5,
                     timePerEnemy: 0.75,
-                    enemyStats: [412.5, 450.0]
+                    enemyStats: [33, 36]
                 },
                 {
                     difficultyid: 7,
@@ -484,7 +484,7 @@ const challenges = new Map<string, ChallengePreset>([
                     strengthTier: 3,
                     healthBonusReq: 0.5,
                     timePerEnemy: 0.75,
-                    enemyStats: [550.0, 600.0],
+                    enemyStats: [44, 48],
                 },
                 {
                     difficultyid: 9,
@@ -493,7 +493,7 @@ const challenges = new Map<string, ChallengePreset>([
                     strengthTier: 4,
                     healthBonusReq: 0.5,
                     timePerEnemy: 0.6666666666666666,
-                    enemyStats: [1175.0, 1250.0],
+                    enemyStats: [94, 100],
                 }
             ],
             stages: [
@@ -509,7 +509,7 @@ const challenges = new Map<string, ChallengePreset>([
                     ],
                     background: "entrance",
                     displayName: "Starr Park Entrance",
-                    stages: [0, 0],
+                    stages: [0],
                     destination: 0
                 },
                 {
@@ -519,7 +519,7 @@ const challenges = new Map<string, ChallengePreset>([
                     ],
                     background: "rooftop",
                     displayName: "Rooftop",
-                    stages: [1, 1],
+                    stages: [1],
                     destination: 0
                 }
             ],
@@ -587,7 +587,7 @@ const challenges = new Map<string, ChallengePreset>([
                     ],
                     background: "entrance",
                     displayName: "Starr Park Entrance",
-                    stages: [0, 0],
+                    stages: [0],
                     destination: 0
                 },
                 {
@@ -601,7 +601,7 @@ const challenges = new Map<string, ChallengePreset>([
                     ],
                     background: "oldtown",
                     displayName: "Old Town",
-                    stages: [1, 1],
+                    stages: [1],
                     destination: 0
                 },
                 {
@@ -615,7 +615,7 @@ const challenges = new Map<string, ChallengePreset>([
                     ],
                     background: "ghostmetro",
                     displayName: "Ghost Station",
-                    stages: [2, 2],
+                    stages: [2],
                     destination: 0
                 },
                 {
@@ -629,7 +629,7 @@ const challenges = new Map<string, ChallengePreset>([
                     ],
                     background: "retropolis",
                     displayName: "Retropolis",
-                    stages: [3, 3],
+                    stages: [3],
                     destination: 0
                 }
             ]
@@ -660,7 +660,7 @@ const challenges = new Map<string, ChallengePreset>([
                     ],
                     background: "hub",
                     displayName: "Starr Park Hub",
-                    stages: [0, 0],
+                    stages: [0],
                     destination: 0
                 },
                 {
@@ -674,7 +674,7 @@ const challenges = new Map<string, ChallengePreset>([
                     ],
                     background: "biodome",
                     displayName: "Biodome",
-                    stages: [1, 1],
+                    stages: [1],
                     destination: 0
                 },
                 {
@@ -688,7 +688,7 @@ const challenges = new Map<string, ChallengePreset>([
                     ],
                     background: "deepsea",
                     displayName: "Deep Sea",
-                    stages: [2, 2],
+                    stages: [2],
                     destination: 0
                 },
                 {
@@ -702,7 +702,7 @@ const challenges = new Map<string, ChallengePreset>([
                     ],
                     background: "rumblejungle",
                     displayName: "Rumble Jungle",
-                    stages: [3, 3],
+                    stages: [3],
                     destination: 0
                 }
             ]
@@ -733,7 +733,7 @@ const challenges = new Map<string, ChallengePreset>([
                     ],
                     background: "giftshop",
                     displayName: "Gift Shop",
-                    stages: [0, 0],
+                    stages: [0],
                     destination: 0
                 },
                 {
@@ -747,7 +747,7 @@ const challenges = new Map<string, ChallengePreset>([
                     ],
                     background: "candystand",
                     displayName: "Candyland",
-                    stages: [1, 1],
+                    stages: [1],
                     destination: 0
                 },
                 {
@@ -761,7 +761,7 @@ const challenges = new Map<string, ChallengePreset>([
                     ],
                     background: "stuntshow",
                     displayName: "Stunt Show",
-                    stages: [2, 2],
+                    stages: [2],
                     destination: 0
                 },
                 {
@@ -775,7 +775,7 @@ const challenges = new Map<string, ChallengePreset>([
                     ],
                     background: "minicity",
                     displayName: "Super City",
-                    stages: [3, 3],
+                    stages: [3],
                     destination: 0
                 }
             ]

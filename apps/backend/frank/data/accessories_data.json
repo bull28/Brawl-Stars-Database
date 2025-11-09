@@ -37,11 +37,11 @@
     },
     {
         "name": "shop5", "category": "", "displayName": "Iron Wall",
-        "description": "Knockback from enemies is less effective.", "unlock": "Buy from the Shop.", "badges": 1
+        "description": "Knockbacks and slows from enemies are less effective.", "unlock": "Buy from the Shop.", "badges": 1
     },
     {
         "name": "shop6", "category": "", "displayName": "Pam's Healing Station",
-        "description": "Increases healing from all sources.", "unlock": "Buy from the Shop.", "badges": 1
+        "description": "Receive less damage from all sources.", "unlock": "Buy from the Shop.", "badges": 1
     },
     {
         "name": "shop7", "category": "", "displayName": "Nani's Drone",
@@ -193,39 +193,39 @@
     },
     {
         "name": "spike", "category": "player", "displayName": "Spike's Cactus",
-        "description": "Increases stats when playing as Spike.", "unlock": "Win with Spike.", "badges": 100
+        "description": "All healing and damage buffs are increased when playing as Spike.", "unlock": "Win with Spike.", "badges": 100
     },
     {
         "name": "gus", "category": "player", "displayName": "Gus's Balloon",
-        "description": "Increases stats when playing as Gus.", "unlock": "Win with Gus.", "badges": 100
+        "description": "All healing is increased when playing as Gus.", "unlock": "Win with Gus.", "badges": 100
     },
     {
         "name": "emz", "category": "player", "displayName": "Emz's Spray",
-        "description": "Increases stats when playing as Emz.", "unlock": "Win with Emz.", "badges": 100
+        "description": "All damage buffs are stronger when playing as Emz.", "unlock": "Win with Emz.", "badges": 100
     },
     {
         "name": "darryl", "category": "player", "displayName": "Darryl's Barrel",
-        "description": "Increases stats when playing as Darryl.", "unlock": "Win with Darryl.", "badges": 100
+        "description": "All healing is increased when playing as Darryl.", "unlock": "Win with Darryl.", "badges": 100
     },
     {
         "name": "tara", "category": "player", "displayName": "Tara's Cards",
-        "description": "Increases stats when playing as Tara.", "unlock": "Win with Tara.", "badges": 100
+        "description": "All healing is increased when playing as Tara.", "unlock": "Win with Tara.", "badges": 100
     },
     {
         "name": "piper", "category": "player", "displayName": "Piper's Umbrella",
-        "description": "Increases stats when playing as Piper.", "unlock": "Win with Piper.", "badges": 100
+        "description": "All damage buffs are stronger when playing as Piper.", "unlock": "Win with Piper.", "badges": 100
     },
     {
         "name": "lily", "category": "player", "displayName": "Lily's Plant",
-        "description": "Increases stats when playing as Lily.", "unlock": "Win with Lily.", "badges": 100
+        "description": "All damage buffs are stronger when playing as Lily.", "unlock": "Win with Lily.", "badges": 100
     },
     {
         "name": "stu", "category": "player", "displayName": "Stu's Wheel",
-        "description": "Increases stats when playing as Stu.", "unlock": "Win with Stu.", "badges": 100
+        "description": "Super charges faster from all sources when playing as Stu.", "unlock": "Win with Stu.", "badges": 100
     },
     {
         "name": "maisie", "category": "player", "displayName": "Maisie's Metal Arm",
-        "description": "Increases stats when playing as Maisie.", "unlock": "Win with Maisie.", "badges": 100
+        "description": "Super charges faster from all sources when playing as Maisie.", "unlock": "Win with Maisie.", "badges": 100
     },
     {
         "name": "oldtown", "category": "location", "displayName": "Barley's Bottle",
@@ -253,7 +253,7 @@
     },
     {
         "name": "retropolis", "category": "location", "displayName": "Neon Light",
-        "description": "Damage marks from enemies are less effective.", "unlock": "Complete levels at Retropolis.", "badges": 250
+        "description": "Fire damage and damage marks from enemies are less effective.", "unlock": "Complete levels at Retropolis.", "badges": 250
     },
     {
         "name": "candyland", "category": "location", "displayName": "Starr Candy",

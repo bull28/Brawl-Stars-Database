@@ -69,7 +69,7 @@ describe("Challenges module", function(){
 
         const stages = challenge1.stages!;
         expect(stages.map((value) => value.powerReward)).to.eql([15 + 28, 25 + 28, 0]);
-        expect(stages.map((value) => value.gearsReward)).to.eql([2 + 3, 2 + 3, 0]);
+        expect(stages.map((value) => value.gearsReward)).to.eql([200 + 300, 200 + 300, 0]);
 
         expect(challenge1.playerUpgradeTiers).to.be.an("object");
         expect(challenge1.playerUpgradeTiers).to.include.keys([resources.characters[0].name]);
