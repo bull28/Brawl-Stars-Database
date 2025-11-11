@@ -37,7 +37,11 @@ describe("Challenges module", function(){
             mastery: 20000000,
             coins: 0,
             characters: [{name: characterList[0].name, tier: 0x600}],
-            accessories: [{name: accessoryList[0].name, badges: 0, unlocked: true}],
+            accessories: [
+                {name: accessoryList[0].name, badges: 0, unlocked: true},
+                {name: accessoryList[1].name, badges: 0, unlocked: false},
+                {name: accessoryList[2].name, badges: 0, unlocked: true}
+            ],
             last_save: 0,
             menu_theme: "retropolis"
         };
@@ -76,6 +80,7 @@ describe("Challenges module", function(){
         expect(challenge1.playerUpgradeTiers![resources.characters[0].name]).to.equal(resources.characters[0].tier);
 
         expect(challenge1.playerAccessories).to.be.an("array");
-        expect(challenge1.playerAccessories![0]).to.equal(accessoryList[0].name);
+        expect(challenge1.playerAccessories).to.have.lengthOf(Math.ceil(accessoryList.length / 8));
+        expect(challenge1.playerAccessories![0]).to.equal(5);
     });
 });

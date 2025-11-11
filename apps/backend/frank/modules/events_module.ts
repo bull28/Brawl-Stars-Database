@@ -155,8 +155,8 @@ const mapSearchMatch = new RegExp(/[^\w\s.']/g);
 
 // Time that the current map rotation should be valid during. If the current time is outside this range, the user should
 // be warned that the map rotation was likely changed and the data returned to them may be inaccurate.
-const seasonStart = 1760342400;
-const seasonEnd = 1761638400;
+const seasonStart = 1761552000;
+const seasonEnd = 1764662400;
 
 
 function applyGameModeDisplay(display: GameModeDisplay): GameModeDisplay{

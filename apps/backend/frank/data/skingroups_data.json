@@ -419,6 +419,11 @@
         "image": "bg_default",
         "icon": "icon_angeldemons"
     },
+    "usa": {
+        "name": "Freedom!",
+        "image": "bg_usa",
+        "icon": "icon_usa"
+    },
     "toystory": {
         "name": "Toy Story",
         "image": "bg_toystory",
@@ -493,5 +498,15 @@
         "name": "Carreta",
         "image": "bg_carreta",
         "icon": "icon_carreta"
+    },
+    "strangerthings": {
+        "name": "Stranger Things",
+        "image": "bg_strangerthings",
+        "icon": "icon_strangerthings"
+    },
+    "gym": {
+        "name": "Gym Rats",
+        "image": "bg_gym",
+        "icon": "icon_gym"
     }
 }

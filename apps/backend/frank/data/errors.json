@@ -61,7 +61,7 @@
     },
     "EventsInvalidSetting": {
         "title": "Invalid time setting",
-        "detail": "The time setting provided is invalid. Valid settings are 'current', 'worldtime', 'seasontime', or 'later'.\"",
+        "detail": "The time setting provided is invalid. Valid settings are 'current' or 'worldtime'.",
         "userDetail": "Invalid time setting"
     },
     "GameModesNotFound": {

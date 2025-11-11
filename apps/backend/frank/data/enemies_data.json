@@ -801,6 +801,17 @@
                 "description": "Shoots 5 projectiles in a cone pattern, dealing damage over time for 4 seconds."
             },
             {
+                "displayName": "Slow Super Attack",
+                "minDamage": 96,
+                "maxDamage": 96,
+                "damageType": 0,
+                "range": 80,
+                "reload": 1,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": "Shoots 5 projectiles in a cone pattern, slowing you by 25% for 4 seconds."
+            },
+            {
                 "displayName": "Stun Super Attack",
                 "minDamage": 280,
                 "maxDamage": 280,
@@ -917,7 +928,7 @@
                 "reload": 5,
                 "knockback": 0,
                 "fireDamage": 0,
-                "description": "Shot from the air down to the ground, applying a 1.25x damage mark for 3 seconds if it hits."
+                "description": "Shot from the air down to the ground, applying a 1.25x damage mark for 2 seconds if it hits."
             }
         ],
         "enemies": [
@@ -1101,7 +1112,7 @@
     },
     "max": {
         "displayName": "Max",
-        "image": "max/max_special.webp",
+        "image": "max/max_maxforce.webp",
         "fullImage": "max/speedytracksuit.webp",
         "enemyClass": "Assassin",
         "description": "Every few seconds, Max dashes in the direction it is moving or teleports to a random location around you. Also teleports away if it is cornered or too far away from you.",

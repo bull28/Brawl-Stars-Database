@@ -1,3 +1,4 @@
+import accessoryList from "../data/accessories_data.json";
 import challengeList from "../data/challenges_data";
 import {getMasteryLevel} from "../modules/resources_module";
 import {UserResources, PlayerUpgrades, ChallengePreview, ChallengeGameMod, UserSetGameMod} from "../types";
@@ -208,10 +209,14 @@ export function getStaticGameMod(challengeid: string, key: string, resources: Us
         gameMod.maxScores = challenge.maxScores;
     }
 
-    const playerAccessories: string[] = [];
+    const playerAccessories: number[] = [];
+    const len = Math.ceil(accessoryList.length / 8);
+    for (let x = 0; x < len; x++){
+        playerAccessories.push(0);
+    }
     for (let x = 0; x < resources.accessories.length; x++){
         if (resources.accessories[x].unlocked === true){
-            playerAccessories.push(resources.accessories[x].name);
+            playerAccessories[x >> 3] |= (1 << (x & 7));
         }
     }
     gameMod.playerAccessories = playerAccessories;

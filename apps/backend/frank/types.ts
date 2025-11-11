@@ -575,7 +575,7 @@ export interface ChallengeGameMod{
         gear: number;
         enemy: number;
     };
-    playerAccessories?: string[];
+    playerAccessories?: number[];
     playerUpgradeTiers?: Record<string, number>;
     playerUpgradeValues?: Partial<GameModUpgradeValues>;
     playerSkins?: string[];
