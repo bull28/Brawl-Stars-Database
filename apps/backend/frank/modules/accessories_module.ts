@@ -47,7 +47,7 @@ const accessoryShop = new Map<string, ShopAccessory>([
     ["mastery5", {cost: 0, masteryReq: 20}],
     ["mastery6", {cost: 0, masteryReq: 25}],
     ["mastery7", {cost: 0, masteryReq: 30}],
-    ["mastery8", {cost: 0, masteryReq: 35}]
+    ["mastery8", {cost: 0, masteryReq: 36}]
 ]);
 
 function accessoryImageName(name: string): string{

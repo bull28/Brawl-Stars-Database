@@ -64,7 +64,7 @@ describe("Challenges module", function(){
             startingHyper: 0,
             bonusResources: false,
             addBonusEnemies: false,
-            maxAccessories: 25,
+            maxAccessories: 30,
             menuTheme: "retropolis"
         });
         expect(challenge1.difficulties).to.eql(preset.difficulties);

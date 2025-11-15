@@ -64,8 +64,8 @@ const classicChallenge = {
         }
     ],
     stages: [
-        {completion: 30, time: 30, powerReward: 25, gearsReward: 100},
-        {completion: 60, time: 40, powerReward: 40, gearsReward: 100},
+        {completion: 30, time: 30, powerReward: 20, gearsReward: 100},
+        {completion: 60, time: 40, powerReward: 35, gearsReward: 100},
         {completion: 90, time: 50, powerReward: 55, gearsReward: 100},
         {completion: 120, time: 60, powerReward: 0, gearsReward: 0}
     ],
@@ -197,13 +197,13 @@ const challenges = new Map<string, ChallengePreset>([
                 }
             ],
             stages: [
-                {completion: 10, time: 0, powerReward: 15, gearsReward: 100},
-                {completion: 15, time: 15, powerReward: 25, gearsReward: 100},
-                {completion: 20, time: 15, powerReward: 35, gearsReward: 100},
-                {completion: 30, time: 20, powerReward: 45, gearsReward: 100},
-                {completion: 45, time: 20, powerReward: 60, gearsReward: 100},
-                {completion: 60, time: 25, powerReward: 80, gearsReward: 100},
-                {completion: 60, time: 25, powerReward: 100, gearsReward: 100},
+                {completion: 10, time: 0, powerReward: 10, gearsReward: 100},
+                {completion: 15, time: 15, powerReward: 20, gearsReward: 100},
+                {completion: 20, time: 15, powerReward: 30, gearsReward: 100},
+                {completion: 30, time: 20, powerReward: 42, gearsReward: 100},
+                {completion: 45, time: 20, powerReward: 56, gearsReward: 100},
+                {completion: 60, time: 25, powerReward: 72, gearsReward: 100},
+                {completion: 60, time: 25, powerReward: 90, gearsReward: 100},
                 {completion: 60, time: 30, powerReward: 0, gearsReward: 0}
             ],
             levels: [
@@ -497,7 +497,7 @@ const challenges = new Map<string, ChallengePreset>([
                 }
             ],
             stages: [
-                {completion: 0, time: 0, powerReward: 0, gearsReward: 0},
+                {completion: 0, time: 0, powerReward: 10, gearsReward: 0},
                 {completion: 300, time: 180, powerReward: 0, gearsReward: 0}
             ],
             maxScores: {completion: 300, time: 180, destination: 0, health: 90, gear: 30, enemy: 0},
@@ -525,24 +525,24 @@ const challenges = new Map<string, ChallengePreset>([
             ],
             playerUpgradeValues: {
                 health: {
-                    value: [300, 12.5],
-                    cost: [5, 5, 6, 7],
-                    maxLevel: 4
+                    value: [275, 12.5],
+                    cost: [5, 5, 6, 6, 6, 6],
+                    maxLevel: 6
                 },
                 damage: {
-                    value: [250, 12.5],
-                    cost: [6, 6, 6, 6],
-                    maxLevel: 4
+                    value: [225, 12.5],
+                    cost: [5, 5, 6, 6, 6, 6],
+                    maxLevel: 6
                 },
                 healing: {
-                    value: [500, 50],
-                    cost: [7, 8],
-                    maxLevel: 2
+                    value: [450, 50],
+                    cost: [7, 8, 10],
+                    maxLevel: 3
                 },
                 lifeSteal: {
-                    value: [500, 50],
-                    cost: [7, 8],
-                    maxLevel: 1
+                    value: [450, 50],
+                    cost: [7, 8, 10],
+                    maxLevel: 3
                 },
                 speed: {
                     value: [6, 2],
@@ -550,9 +550,9 @@ const challenges = new Map<string, ChallengePreset>([
                     maxLevel: 1
                 },
                 combo: {
-                    value: [650, 50],
-                    cost: [6, 6, 6],
-                    maxLevel: 2
+                    value: [600, 50],
+                    cost: [5, 6, 6, 6],
+                    maxLevel: 4
                 },
                 ability: {
                     value: [100, 20],

@@ -4,9 +4,9 @@ import {GameReport} from "../../../frank/types";
 import {sampleGameReport, GAME_VERSION} from "../database_setup";
 
 const REPORT_FORMAT = {
-    version: [0, 2], mode: [2, 3], player: [3, 8], gears: [8, 10], accessories: [10, 18],
-    score: [18, 24], achievements: [24, 33], upgrades: [33, 40], stats: [40, 48],
-    visited: [48, 56], levels: [56, 104], enemies: [104, 137], length: [0, 137]
+    version: [0, 2], mode: [2, 3], player: [3, 8], gears: [8, 10], accessories: [10, 20],
+    score: [20, 26], achievements: [26, 35], upgrades: [35, 42], stats: [42, 50],
+    visited: [50, 58], levels: [58, 106], enemies: [106, 139], length: [0, 139]
 };
 
 const emptyReport: number[] = [];
@@ -16,7 +16,7 @@ for (let x = 0; x < REPORT_FORMAT.length[1]; x++){
 
 // Score = 500, Difficulty 2, Player 3 (Darryl), Upgrade Tier 0, Star Power 2, Enemies Defeated = 600
 // Gears 1 and 2 (Health and Shield), First 5 Accessories
-const previewReport = [0, 0, 0, 500, 1, 3, 0, 2, 1, 2, 0, 1, 2, 3, 4, -1, -1, -1, 300, 150, 0, 50, 0, 0, 0, 600];
+const previewReport = [0, 0, 0, 500, 1, 3, 0, 2, 1, 2, 0, 1, 2, 3, 4, -1, -1, -1, -1, -1, 300, 150, 0, 50, 0, 0, 0, 600];
 for (let x = previewReport.length; x < REPORT_FORMAT.length[1]; x++){
     if (x >= 40 && x <= 47){
         previewReport.push(x - 40);
@@ -57,7 +57,7 @@ describe("Game Report module", function(){
         expect(preview.player.brawler).to.equal(3);
         expect(preview.player.starPower).to.equal(2);
         expect(preview.player.gears).to.eql([1, 2]);
-        expect(preview.player.accessories).to.eql([0, 1, 2, 3, 4, -1, -1, -1]);
+        expect(preview.player.accessories).to.eql([0, 1, 2, 3, 4, -1, -1, -1, -1, -1]);
 
         expect(preview.score.win).to.be.true;
         expect(preview.score.total).to.equal(500);

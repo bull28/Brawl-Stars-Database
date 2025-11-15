@@ -233,7 +233,7 @@
     },
     {
         "name": "biodome", "category": "location", "displayName": "Rosa's Gloves",
-        "description": "When at full health, deal more damage.", "unlock": "Complete levels at Biodome.", "badges": 250
+        "description": "When close to maximum health, deal more damage.", "unlock": "Complete levels at Biodome.", "badges": 250
     },
     {
         "name": "ghoststation", "category": "location", "displayName": "Train Tickets",
@@ -297,7 +297,7 @@
     },
     {
         "name": "noupgrades", "category": "", "displayName": "Bling Stack",
-        "description": "Receive 1 extra gear token when completing a level.", "unlock": "Win without purchasing upgrades or using gears.", "badges": 1
+        "description": "Receive 1 extra gear scrap when completing a level.", "unlock": "Win without purchasing upgrades or using gears.", "badges": 1
     },
     {
         "name": "nodamage", "category": "", "displayName": "Poco's Guitar",
@@ -349,6 +349,6 @@
     },
     {
         "name": "mastery8", "category": "", "displayName": "Pro Medal",
-        "description": "Gain more coins from rewards.", "unlock": "Free in the Shop at Mastery Level 35.", "badges": 1
+        "description": "Gain more coins from rewards.", "unlock": "Free in the Shop at Mastery Level 36.", "badges": 1
     }
 ]

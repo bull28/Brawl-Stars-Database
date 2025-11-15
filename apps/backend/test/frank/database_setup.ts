@@ -21,13 +21,13 @@ export const tokens = {
     challenges: signToken("challenges").token,
 };
 
-export const GAME_VERSION = (99 << 16) + 137;
+export const GAME_VERSION = (99 << 16) + 139;
 export const sampleGameReport = [
     GAME_VERSION, 1, // Version
     0, // Game Mode
     500, 5, 0, 0, 1, // Player
     0, 1, // Gears
-    -1, -1, -1, -1, -1, -1, -1, -1, // Accessories
+    -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, // Accessories
     300, 150, 0, 50, 0, 0, // Overall Score
     600000, 567, 0, 0, 0, 0, 1, 0, 0, // Achievements
     16, 12, 7, 7, 6, 10, 5, // Upgrades

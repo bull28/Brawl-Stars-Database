@@ -26,7 +26,7 @@ const challengeUpgrades: {[k in keyof PlayerUpgrades]: [number, number][]} = {
         //[31, 196], [33, 216], [35, 240]
     ],
     maxExtraGears: [[0, 0], [4, 1], [12, 2], [16, 4], [24, 6], [26, 9], [28, 12]],
-    maxAccessories: [[0, 0], [6, 10], [14, 15], [22, 20], [30, 25]]
+    maxAccessories: [[0, 0], [6, 6], [10, 12], [14, 18], [22, 24], [30, 30]]
 };
 
 function getPlayerUpgrades(masteryLevel: number): PlayerUpgrades{

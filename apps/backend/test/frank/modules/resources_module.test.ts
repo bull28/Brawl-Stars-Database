@@ -177,7 +177,7 @@ describe("User Resources module", function(){
             expect(hcStatsDiff(tier100.current.hcStats, tier100.next.hcStats)).to.eql({});
 
             expect(tier100.upgrade.cost).to.equal(0);
-            expect(tier100.upgrade.masteryReq).to.equal(35);
+            expect(tier100.upgrade.masteryReq).to.equal(36);
         });
 
         it("Next level is a normal upgrade", function(){

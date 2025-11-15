@@ -1426,7 +1426,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Gigi Boxes"
+                ],
                 "release": {
                     "month": 11,
                     "year": 2023
@@ -1603,6 +1605,142 @@
                     "year": 2024
                 },
                 "image": "shamanchristmas.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "shamanstrangeovercharge",
+                "displayName": "Dustin Nita",
+                "cost": 499,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 6,
+                    "name": "Hypercharge",
+                    "icon": "skin_rarity_6.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Voice",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Stranger Things",
+                        "image": "bg_strangerthings.webp",
+                        "icon": "icon_strangerthings.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward for opening 60 Card Packs during the Stranger Things event",
+                "foundIn": [],
+                "release": {
+                    "month": 11,
+                    "year": 2025
+                },
+                "image": "shamanstrangeovercharge.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "shamanstrangeoverchargechroma1",
+                "displayName": "80's Dustin Nita",
+                "cost": 499,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 6,
+                    "name": "Hypercharge",
+                    "icon": "skin_rarity_6.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Voice",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Stranger Things",
+                        "image": "bg_strangerthings.webp",
+                        "icon": "icon_strangerthings.webp"
+                    },
+                    {
+                        "name": "",
+                        "image": "bg_default.webp",
+                        "icon": "icon_default.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 11,
+                    "year": 2025
+                },
+                "image": "shamanstrangeoverchargechroma1.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "shamanstrangeoverchargechroma2",
+                "displayName": "Future Dustin Nita",
+                "cost": 499,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 6,
+                    "name": "Hypercharge",
+                    "icon": "skin_rarity_6.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Voice",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Stranger Things",
+                        "image": "bg_strangerthings.webp",
+                        "icon": "icon_strangerthings.webp"
+                    },
+                    {
+                        "name": "",
+                        "image": "bg_default.webp",
+                        "icon": "icon_default.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 11,
+                    "year": 2025
+                },
+                "image": "shamanstrangeoverchargechroma2.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -1876,6 +2014,105 @@
             {
                 "name": "nita_animals",
                 "image": "nita_animals.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "nita_strangeovercharge_default",
+                "image": "nita_strangeovercharge_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "nita_strangeovercharge_happy",
+                "image": "nita_strangeovercharge_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "nita_strangeovercharge_sad",
+                "image": "nita_strangeovercharge_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "nita_strangeovercharge_angry",
+                "image": "nita_strangeovercharge_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "nita_strangeovercharge_gg",
+                "image": "nita_strangeovercharge_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "nita_strangeovercharge_clap",
+                "image": "nita_strangeovercharge_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "nita_strangeovercharge_thanks",
+                "image": "nita_strangeovercharge_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "nita_strangeovercharge_sweat",
+                "image": "nita_strangeovercharge_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "nita_strangeovercharge_special",
+                "image": "nita_strangeovercharge_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "nita_strangeoverchargechroma1",
+                "image": "nita_strangeoverchargechroma1.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "nita_strangeoverchargechroma2",
+                "image": "nita_strangeoverchargechroma2.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -2598,7 +2835,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Mecha Boxes"
+                ],
                 "release": {
                     "month": 4,
                     "year": 2024
@@ -2640,7 +2879,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Mecha Boxes"
+                ],
                 "release": {
                     "month": 4,
                     "year": 2024
@@ -2682,7 +2923,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Mecha Boxes"
+                ],
                 "release": {
                     "month": 4,
                     "year": 2024
@@ -4059,6 +4302,48 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "bullguystrange",
+                "displayName": "Hopper Bull",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Stranger Things",
+                        "image": "bg_strangerthings.webp",
+                        "icon": "icon_strangerthings.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [
+                    "Card Packs"
+                ],
+                "release": {
+                    "month": 11,
+                    "year": 2025
+                },
+                "image": "bullguystrange.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -4236,6 +4521,33 @@
             {
                 "name": "bull_angeldemons",
                 "image": "bull_angeldemons.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "bull_strangerthings",
+                "image": "bull_strangerthings.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "bull_superbowl",
+                "image": "bull_superbowl.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "bull_superbowl_02",
+                "image": "bull_superbowl_02.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -6527,6 +6839,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "elprimo_wasteland",
+                "image": "elprimo_wasteland.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -7494,7 +7815,9 @@
                 ],
                 "limited": false,
                 "unlock": "Reward from Brawl Pass Season 14 tier 1",
-                "foundIn": [],
+                "foundIn": [
+                    "Gigi Boxes"
+                ],
                 "release": {
                     "month": 9,
                     "year": 2022
@@ -7575,7 +7898,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Ziggy Boxes"
+                    "Ziggy Boxes",
+                    "Card Packs"
                 ],
                 "release": {
                     "month": 8,
@@ -8391,7 +8715,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Card Packs"
+                ],
                 "release": {
                     "month": 9,
                     "year": 2023
@@ -9277,10 +9603,136 @@
                 "unlock": "Only obtainable from Supercell ID rewards",
                 "foundIn": [],
                 "release": {
-                    "month": 9,
+                    "month": 12,
                     "year": 2025
                 },
                 "image": "mechanicscstore.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "mechanicmecha",
+                "displayName": "Mecha Jessie",
+                "cost": 299,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 5,
+                    "name": "Legendary",
+                    "icon": "skin_rarity_5.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Mecha Squad",
+                        "image": "bg_mecha.webp",
+                        "icon": "icon_mecha.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [
+                    "Mecha Boxes"
+                ],
+                "release": {
+                    "month": 12,
+                    "year": 2025
+                },
+                "image": "mechanicmecha.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "mechanicmechachromaorange",
+                "displayName": "Shining Mecha Jessie",
+                "cost": 49,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 5,
+                    "name": "Legendary",
+                    "icon": "skin_rarity_5.webp"
+                },
+                "requires": "Mecha Jessie",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Mecha Squad",
+                        "image": "bg_mecha.webp",
+                        "icon": "icon_mecha.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [
+                    "Mecha Boxes"
+                ],
+                "release": {
+                    "month": 12,
+                    "year": 2025
+                },
+                "image": "mechanicmechachromaorange.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "mechanicmechachromapink",
+                "displayName": "Bubblegum Mecha Jessie",
+                "cost": 49,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 5,
+                    "name": "Legendary",
+                    "icon": "skin_rarity_5.webp"
+                },
+                "requires": "Mecha Jessie",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Mecha Squad",
+                        "image": "bg_mecha.webp",
+                        "icon": "icon_mecha.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [
+                    "Mecha Boxes"
+                ],
+                "release": {
+                    "month": 12,
+                    "year": 2025
+                },
+                "image": "mechanicmechachromapink.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -9473,6 +9925,105 @@
             {
                 "name": "jessie_claship",
                 "image": "jessie_claship.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "jessie_mecha_default",
+                "image": "jessie_mecha_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "jessie_mecha_happy",
+                "image": "jessie_mecha_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "jessie_mecha_sad",
+                "image": "jessie_mecha_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "jessie_mecha_angry",
+                "image": "jessie_mecha_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "jessie_mecha_gg",
+                "image": "jessie_mecha_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "jessie_mecha_clap",
+                "image": "jessie_mecha_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "jessie_mecha_thanks",
+                "image": "jessie_mecha_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "jessie_mecha_sweat",
+                "image": "jessie_mecha_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "jessie_mecha_special",
+                "image": "jessie_mecha_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "jessie_mechachromaorange",
+                "image": "jessie_mechachromaorange.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "jessie_mechachromapink",
+                "image": "jessie_mechachromapink.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -12062,7 +12613,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Gigi Boxes"
+                ],
                 "release": {
                     "month": 7,
                     "year": 2023
@@ -14747,6 +15300,46 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "artillerygalspc",
+                "displayName": "Archer Queen Penny",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Clash Stories",
+                        "image": "bg_claship.webp",
+                        "icon": "icon_claship.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Only obtainable from Supercell ID rewards",
+                "foundIn": [],
+                "release": {
+                    "month": 12,
+                    "year": 2025
+                },
+                "image": "artillerygalspc.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -14915,6 +15508,15 @@
             {
                 "name": "penny_university",
                 "image": "penny_university.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "penny_claship",
+                "image": "penny_claship.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -16614,6 +17216,48 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "soulcollectorstrange",
+                "displayName": "Will Gus",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Stranger Things",
+                        "image": "bg_strangerthings.webp",
+                        "icon": "icon_strangerthings.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [
+                    "Card Packs"
+                ],
+                "release": {
+                    "month": 11,
+                    "year": 2025
+                },
+                "image": "soulcollectorstrange.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -16751,6 +17395,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "gus_strangerthings",
+                "image": "gus_strangerthings.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -16831,7 +17484,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Mecha Boxes"
+                ],
                 "release": {
                     "month": 7,
                     "year": 2019
@@ -16872,7 +17527,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Mecha Boxes"
+                ],
                 "release": {
                     "month": 6,
                     "year": 2019
@@ -16913,7 +17570,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Mecha Boxes"
+                ],
                 "release": {
                     "month": 6,
                     "year": 2019
@@ -17840,7 +18499,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Card Packs"
+                ],
                 "release": {
                     "month": 3,
                     "year": 2020
@@ -18953,7 +19614,7 @@
                         "icon": "icon_street.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "",
                 "foundIn": [
                     "Boom Boxes"
@@ -19770,6 +20431,138 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "snipermechaovercharge",
+                "displayName": "Mecha Lotus Piper",
+                "cost": 499,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 6,
+                    "name": "Hypercharge",
+                    "icon": "skin_rarity_6.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Voice",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Mecha Squad",
+                        "image": "bg_mecha.webp",
+                        "icon": "icon_mecha.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [
+                    "Mecha Boxes"
+                ],
+                "release": {
+                    "month": 12,
+                    "year": 2025
+                },
+                "image": "snipermechaovercharge.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "snipermechaoverchargered",
+                "displayName": "Mecha Rose Piper",
+                "cost": 499,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 6,
+                    "name": "Hypercharge",
+                    "icon": "skin_rarity_6.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Voice",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Mecha Squad",
+                        "image": "bg_mecha.webp",
+                        "icon": "icon_mecha.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [
+                    "Mecha Boxes"
+                ],
+                "release": {
+                    "month": 12,
+                    "year": 2025
+                },
+                "image": "snipermechaoverchargered.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "snipermechaoverchargepink",
+                "displayName": "Mecha Petal Piper",
+                "cost": 499,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 6,
+                    "name": "Hypercharge",
+                    "icon": "skin_rarity_6.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Voice",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Mecha Squad",
+                        "image": "bg_mecha.webp",
+                        "icon": "icon_mecha.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [
+                    "Mecha Boxes"
+                ],
+                "release": {
+                    "month": 12,
+                    "year": 2025
+                },
+                "image": "snipermechaoverchargepink.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -19947,6 +20740,105 @@
             {
                 "name": "piper_japanchromagreen",
                 "image": "piper_japanchromagreen.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "piper_mechaovercharge_default",
+                "image": "piper_mechaovercharge_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "piper_mechaovercharge_happy",
+                "image": "piper_mechaovercharge_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "piper_mechaovercharge_sad",
+                "image": "piper_mechaovercharge_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "piper_mechaovercharge_angry",
+                "image": "piper_mechaovercharge_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "piper_mechaovercharge_gg",
+                "image": "piper_mechaovercharge_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "piper_mechaovercharge_clap",
+                "image": "piper_mechaovercharge_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "piper_mechaovercharge_thanks",
+                "image": "piper_mechaovercharge_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "piper_mechaovercharge_sweat",
+                "image": "piper_mechaovercharge_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "piper_mechaovercharge_special",
+                "image": "piper_mechaovercharge_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "piper_mechaoverchargered",
+                "image": "piper_mechaoverchargered.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "piper_mechaoverchargepink",
+                "image": "piper_mechaoverchargepink.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -20482,6 +21374,24 @@
             {
                 "name": "pam_aprilfools",
                 "image": "pam_aprilfools.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "pam_overcharge",
+                "image": "pam_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "pam_summer",
+                "image": "pam_summer.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -21457,6 +22367,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "frank_music",
+                "image": "frank_music.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -21623,7 +22542,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Monster Eggs"
+                    "Monster Eggs",
+                    "Card Packs"
                 ],
                 "release": {
                     "month": 3,
@@ -23610,7 +24530,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Pizza Planet"
+                    "Pizza Planet",
+                    "Card Packs"
                 ],
                 "release": {
                     "month": 3,
@@ -23809,7 +24730,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Mecha Boxes"
+                ],
                 "release": {
                     "month": 10,
                     "year": 2023
@@ -23849,7 +24772,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Mecha Boxes"
+                ],
                 "release": {
                     "month": 10,
                     "year": 2023
@@ -23889,7 +24814,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Mecha Boxes"
+                ],
                 "release": {
                     "month": 10,
                     "year": 2023
@@ -26330,7 +27257,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Card Packs"
+                ],
                 "release": {
                     "month": 11,
                     "year": 2021
@@ -27148,7 +28077,8 @@
                 "unlock": "",
                 "foundIn": [
                     "Dead Boxes",
-                    "Pumpkin Boxes"
+                    "Pumpkin Boxes",
+                    "Card Packs"
                 ],
                 "release": {
                     "month": 10,
@@ -28312,7 +29242,9 @@
                 ],
                 "limited": false,
                 "unlock": "Available for 2500 Club Coins before October 2023",
-                "foundIn": [],
+                "foundIn": [
+                    "Card Packs"
+                ],
                 "release": {
                     "month": 10,
                     "year": 2022
@@ -29057,7 +29989,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Gigi Boxes"
+                ],
                 "release": {
                     "month": 9,
                     "year": 2022
@@ -29143,7 +30077,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Ranked Starr Drops"
+                    "Ranked Starr Drops",
+                    "Gigi Boxes"
                 ],
                 "release": {
                     "month": 11,
@@ -29798,7 +30733,10 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Card Packs",
+                    "Gigi Boxes"
+                ],
                 "release": {
                     "month": 11,
                     "year": 2023
@@ -30452,6 +31390,141 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "beamermecha",
+                "displayName": "Mecha Mandy",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Mecha Squad",
+                        "image": "bg_mecha.webp",
+                        "icon": "icon_mecha.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from Brawl Pass Season 45 tier 50",
+                "foundIn": [],
+                "release": {
+                    "month": 12,
+                    "year": 2025
+                },
+                "image": "beamermecha.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "beamermechayellow",
+                "displayName": "Mecha Wasp Mandy",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Mecha Squad",
+                        "image": "bg_mecha.webp",
+                        "icon": "icon_mecha.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from Brawl Pass Plus Season 45 tier 46",
+                "foundIn": [],
+                "release": {
+                    "month": 12,
+                    "year": 2025
+                },
+                "image": "beamermechayellow.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "beamermechapurple",
+                "displayName": "Mecha Shade Mandy",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Mecha Squad",
+                        "image": "bg_mecha.webp",
+                        "icon": "icon_mecha.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from Brawl Pass Plus Season 45 tier 48",
+                "foundIn": [],
+                "release": {
+                    "month": 12,
+                    "year": 2025
+                },
+                "image": "beamermechapurple.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -30665,6 +31738,33 @@
             {
                 "name": "mandy_claship",
                 "image": "mandy_claship.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "mandy_mecha",
+                "image": "mandy_mecha.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "mandy_mechayellow",
+                "image": "mandy_mechayellow.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "mandy_mechapurple",
+                "image": "mandy_mechapurple.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -31553,7 +32653,7 @@
                         "icon": "icon_street.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "",
                 "foundIn": [
                     "Boom Boxes"
@@ -33289,6 +34389,48 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "painterstrange",
+                "displayName": "Scoops Ahoy Berry",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Stranger Things",
+                        "image": "bg_strangerthings.webp",
+                        "icon": "icon_strangerthings.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [
+                    "Card Packs"
+                ],
+                "release": {
+                    "month": 11,
+                    "year": 2025
+                },
+                "image": "painterstrange.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -33403,6 +34545,15 @@
             {
                 "name": "berry_darkgreek",
                 "image": "berry_darkgreek.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "berry_strangerthings",
+                "image": "berry_strangerthings.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -34736,7 +35887,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Mecha Boxes"
+                ],
                 "release": {
                     "month": 10,
                     "year": 2022
@@ -34777,7 +35930,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Mecha Boxes"
+                ],
                 "release": {
                     "month": 10,
                     "year": 2022
@@ -34818,7 +35973,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Mecha Boxes"
+                ],
                 "release": {
                     "month": 10,
                     "year": 2022
@@ -37677,6 +38834,46 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "spawnerdudegym",
+                "displayName": "Gym Rat Mr. P",
+                "cost": 79,
+                "currency": "Gems",
+                "costBling": 2750,
+                "rarity": {
+                    "value": 2,
+                    "name": "Super Rare",
+                    "icon": "skin_rarity_2.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Gym Rats",
+                        "image": "bg_gym.webp",
+                        "icon": "icon_gym.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 12,
+                    "year": 2025
+                },
+                "image": "spawnerdudegym.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -37818,6 +39015,15 @@
             {
                 "name": "mrp_overcharge",
                 "image": "mrp_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "mrp_gym",
+                "image": "mrp_gym.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -38061,7 +39267,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Pizza Planet"
+                    "Pizza Planet",
+                    "Card Packs"
                 ],
                 "release": {
                     "month": 3,
@@ -38629,7 +39836,10 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Card Packs",
+                    "Gigi Boxes"
+                ],
                 "release": {
                     "month": 11,
                     "year": 2023
@@ -39239,7 +40449,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Card Packs"
+                ],
                 "release": {
                     "month": 9,
                     "year": 2023
@@ -39647,7 +40859,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Card Packs"
+                ],
                 "release": {
                     "month": 8,
                     "year": 2021
@@ -41443,7 +42657,7 @@
                 "unlock": "Only obtainable from Supercell ID rewards",
                 "foundIn": [],
                 "release": {
-                    "month": 9,
+                    "month": 12,
                     "year": 2025
                 },
                 "image": "ropedudespc.webp",
@@ -43436,7 +44650,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Gigi Boxes"
+                ],
                 "release": {
                     "month": 7,
                     "year": 2023
@@ -44180,7 +45396,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Card Packs"
+                ],
                 "release": {
                     "month": 12,
                     "year": 2024
@@ -44727,7 +45945,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Card Packs"
+                ],
                 "release": {
                     "month": 9,
                     "year": 2025
@@ -45979,7 +47199,10 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Card Packs",
+                    "Gigi Boxes"
+                ],
                 "release": {
                     "month": 4,
                     "year": 2023
@@ -47202,7 +48425,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Monster Eggs"
+                    "Monster Eggs",
+                    "Gigi Boxes"
                 ],
                 "release": {
                     "month": 11,
@@ -47329,6 +48553,46 @@
                     "year": 2024
                 },
                 "image": "cocoonersilver.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "cocoonergym",
+                "displayName": "Workout Charlie",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Gym Rats",
+                        "image": "bg_gym.webp",
+                        "icon": "icon_gym.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 12,
+                    "year": 2025
+                },
+                "image": "cocoonergym.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -47597,6 +48861,15 @@
                     "value": 2,
                     "name": "Epic",
                     "color": "#b116ec"
+                }
+            },
+            {
+                "name": "charlie_gym",
+                "image": "charlie_gym.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
                 }
             }
         ]
@@ -48436,6 +49709,46 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "axejugglergym",
+                "displayName": "Pump It Melodie",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Gym Rats",
+                        "image": "bg_gym.webp",
+                        "icon": "icon_gym.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 12,
+                    "year": 2025
+                },
+                "image": "axejugglergym.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -48568,6 +49881,15 @@
             {
                 "name": "melodie_goodrandomschroma2",
                 "image": "melodie_goodrandomschroma2.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "melodie_gym",
+                "image": "melodie_gym.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -49660,7 +50982,9 @@
                 ],
                 "limited": false,
                 "unlock": "Included in the Juju early access bundle",
-                "foundIn": [],
+                "foundIn": [
+                    "Gigi Boxes"
+                ],
                 "release": {
                     "month": 11,
                     "year": 2024
@@ -50391,7 +51715,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Mecha Boxes"
+                ],
                 "release": {
                     "month": 6,
                     "year": 2025
@@ -50438,7 +51764,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Mecha Boxes"
+                ],
                 "release": {
                     "month": 6,
                     "year": 2025
@@ -50485,7 +51813,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Mecha Boxes"
+                ],
                 "release": {
                     "month": 6,
                     "year": 2025
@@ -50983,6 +52313,141 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "morningstarstrange",
+                "displayName": "Eleven Lumi",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Stranger Things",
+                        "image": "bg_strangerthings.webp",
+                        "icon": "icon_strangerthings.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from Brawl Pass Season 44 tier 50",
+                "foundIn": [],
+                "release": {
+                    "month": 11,
+                    "year": 2025
+                },
+                "image": "morningstarstrange.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "morningstarstrangechromapink",
+                "displayName": "Retro Eleven Lumi",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Stranger Things",
+                        "image": "bg_strangerthings.webp",
+                        "icon": "icon_strangerthings.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from Brawl Pass Plus Season 44 tier 46",
+                "foundIn": [],
+                "release": {
+                    "month": 11,
+                    "year": 2025
+                },
+                "image": "morningstarstrangechromapink.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "morningstarstrangechromared",
+                "displayName": "Thrilled Eleven Lumi",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Stranger Things",
+                        "image": "bg_strangerthings.webp",
+                        "icon": "icon_strangerthings.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from Brawl Pass Plus Season 44 tier 48",
+                "foundIn": [],
+                "release": {
+                    "month": 11,
+                    "year": 2025
+                },
+                "image": "morningstarstrangechromared.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -51088,6 +52553,33 @@
             {
                 "name": "lumi_darkgreek",
                 "image": "lumi_darkgreek.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "lumi_strange",
+                "image": "lumi_strange.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "lumi_strangechromapink",
+                "image": "lumi_strangechromapink.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "lumi_strangechromared",
+                "image": "lumi_strangechromared.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -51550,7 +53042,7 @@
                         "icon": "icon_street.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "",
                 "foundIn": [
                     "Boom Boxes"
@@ -51658,6 +53150,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "alli_overcharge",
+                "image": "alli_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -51733,7 +53234,7 @@
                         "icon": "icon_street.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "",
                 "foundIn": [
                     "Mina Boxes"
@@ -51770,9 +53271,9 @@
                 ],
                 "groups": [
                     {
-                        "name": "",
-                        "image": "bg_default.webp",
-                        "icon": "icon_default.webp"
+                        "name": "Vibing",
+                        "image": "bg_music.webp",
+                        "icon": "icon_music.webp"
                     }
                 ],
                 "limited": false,
@@ -51812,9 +53313,9 @@
                 ],
                 "groups": [
                     {
-                        "name": "",
-                        "image": "bg_default.webp",
-                        "icon": "icon_default.webp"
+                        "name": "Vibing",
+                        "image": "bg_music.webp",
+                        "icon": "icon_music.webp"
                     }
                 ],
                 "limited": false,
@@ -51854,9 +53355,9 @@
                 ],
                 "groups": [
                     {
-                        "name": "",
-                        "image": "bg_default.webp",
-                        "icon": "icon_default.webp"
+                        "name": "Vibing",
+                        "image": "bg_music.webp",
+                        "icon": "icon_music.webp"
                     }
                 ],
                 "limited": false,
@@ -51869,6 +53370,82 @@
                     "year": 2025
                 },
                 "image": "dancer199gemchroma2.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "dancergold",
+                "displayName": "True Gold Mina",
+                "cost": 25000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 8,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "True Silver Mina",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Gold",
+                        "image": "bg_gold.webp",
+                        "icon": "icon_gold.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 10,
+                    "year": 2025
+                },
+                "image": "dancergold.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "dancersilver",
+                "displayName": "True Silver Mina",
+                "cost": 10000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 8,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Silver",
+                        "image": "bg_silver.webp",
+                        "icon": "icon_silver.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 10,
+                    "year": 2025
+                },
+                "image": "dancersilver.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -51989,6 +53566,15 @@
             {
                 "name": "mina_199gemchroma2",
                 "image": "mina_199gemchroma2.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "mina_overcharge",
+                "image": "mina_overcharge.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -52171,6 +53757,82 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "furygold",
+                "displayName": "True Gold Ziggy",
+                "cost": 25000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 8,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "True Silver Ziggy",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Gold",
+                        "image": "bg_gold.webp",
+                        "icon": "icon_gold.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 10,
+                    "year": 2025
+                },
+                "image": "furygold.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "furysilver",
+                "displayName": "True Silver Ziggy",
+                "cost": 10000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 8,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Silver",
+                        "image": "bg_silver.webp",
+                        "icon": "icon_silver.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 10,
+                    "year": 2025
+                },
+                "image": "furysilver.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -52285,6 +53947,287 @@
             {
                 "name": "ziggy_199gemchroma2",
                 "image": "ziggy_199gemchroma2.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "ziggy_overcharge",
+                "image": "ziggy_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            }
+        ]
+    },
+    {
+        "name": "gigi",
+        "displayName": "Gigi",
+        "rarity": {
+            "value": 4,
+            "name": "Mythic",
+            "color": "#fe0521"
+        },
+        "image": "portrait_gigi.webp",
+        "defaultSkin": "daredevildefault",
+        "title": "Strung Up",
+        "masteryIcon": "mastery_icon_gigi.webp",
+        "description": "A cursed puppet who brings an unsettling vibe, Gigi and her bonded magician's glove are never found apart. You can find her in the Oddities Shop, dancing between the bookshelves.",
+        "skins": [
+            {
+                "name": "daredevildefault",
+                "displayName": "Gigi",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 0,
+                    "name": "",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [],
+                "groups": [
+                    {
+                        "name": "",
+                        "image": "bg_default.webp",
+                        "icon": "icon_default.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 11,
+                    "year": 2025
+                },
+                "image": "daredevildefault.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "daredevilscarecrow",
+                "displayName": "Scarecrow Gigi",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "",
+                        "image": "bg_default.webp",
+                        "icon": "icon_default.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [
+                    "Gigi Boxes"
+                ],
+                "release": {
+                    "month": 11,
+                    "year": 2025
+                },
+                "image": "daredevilscarecrow.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "daredevilscarecrow199gemchroma1",
+                "displayName": "Autumn Scarecrow Gigi",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "",
+                        "image": "bg_default.webp",
+                        "icon": "icon_default.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [
+                    "Gigi Boxes"
+                ],
+                "release": {
+                    "month": 11,
+                    "year": 2025
+                },
+                "image": "daredevilscarecrow199gemchroma1.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "daredevilscarecrow199gemchroma2",
+                "displayName": "Winter Scarecrow Gigi",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "",
+                        "image": "bg_default.webp",
+                        "icon": "icon_default.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [
+                    "Gigi Boxes"
+                ],
+                "release": {
+                    "month": 11,
+                    "year": 2025
+                },
+                "image": "daredevilscarecrow199gemchroma2.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "name": "gigi_default",
+                "image": "gigi_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "gigi_happy",
+                "image": "gigi_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "gigi_sad",
+                "image": "gigi_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "gigi_angry",
+                "image": "gigi_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "gigi_gg",
+                "image": "gigi_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "gigi_clap",
+                "image": "gigi_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "gigi_thanks",
+                "image": "gigi_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "gigi_sweat",
+                "image": "gigi_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "gigi_special",
+                "image": "gigi_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "gigi_facepalm",
+                "image": "gigi_facepalm.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "gigi_box",
+                "image": "gigi_box.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -53185,7 +55128,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Mecha Boxes"
+                ],
                 "release": {
                     "month": 7,
                     "year": 2019
@@ -53226,7 +55171,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Mecha Boxes"
+                ],
                 "release": {
                     "month": 6,
                     "year": 2019
@@ -53267,7 +55214,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Mecha Boxes"
+                ],
                 "release": {
                     "month": 6,
                     "year": 2019
@@ -53423,7 +55372,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Gigi Boxes"
+                ],
                 "release": {
                     "month": 9,
                     "year": 2022
@@ -53496,14 +55447,16 @@
                 ],
                 "groups": [
                     {
-                        "name": "Misc",
-                        "image": "bg_default.webp",
-                        "icon": "icon_misc.webp"
+                        "name": "Freedom!",
+                        "image": "bg_usa.webp",
+                        "icon": "icon_usa.webp"
                     }
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Card Packs"
+                ],
                 "release": {
                     "month": 12,
                     "year": 2024
@@ -54434,7 +56387,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Mecha Boxes"
+                ],
                 "release": {
                     "month": 4,
                     "year": 2024
@@ -54476,7 +56431,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Mecha Boxes"
+                ],
                 "release": {
                     "month": 4,
                     "year": 2024
@@ -54518,7 +56475,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Mecha Boxes"
+                ],
                 "release": {
                     "month": 4,
                     "year": 2024
@@ -54594,7 +56553,7 @@
                         "icon": "icon_street.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "Reward for winning 92 matches during the Mega Train event",
                 "foundIn": [],
                 "release": {
@@ -54602,6 +56561,210 @@
                     "year": 2025
                 },
                 "image": "ninjagraffitispecial.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "ninjapropassprogressionskinlevel1",
+                "displayName": "Tiger Leon I",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 7,
+                    "name": "Pro",
+                    "icon": "skin_rarity_7.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "Pro Pass",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_propass.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Reward from free track of World Finals 2025 Pro Pass",
+                "foundIn": [],
+                "release": {
+                    "month": 11,
+                    "year": 2025
+                },
+                "image": "ninjapropassprogressionskinlevel1.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "ninjapropassprogressionskinlevel4",
+                "displayName": "Tiger Leon IV",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 7,
+                    "name": "Pro",
+                    "icon": "skin_rarity_7.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Pro Pass",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_propass.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Reward from free track of World Finals 2025 Pro Pass",
+                "foundIn": [],
+                "release": {
+                    "month": 11,
+                    "year": 2025
+                },
+                "image": "ninjapropassprogressionskinlevel4.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "ninjapropassprogressionskinlevel9",
+                "displayName": "Shadow Tiger Leon",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 7,
+                    "name": "Pro",
+                    "icon": "skin_rarity_7.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Voice",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Pro Pass",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_propass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from paid track of World Finals 2025 Pro Pass",
+                "foundIn": [],
+                "release": {
+                    "month": 11,
+                    "year": 2025
+                },
+                "image": "ninjapropassprogressionskinlevel9.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "ninjapropassprogressionskinlevel10",
+                "displayName": "White Tiger Leon",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 7,
+                    "name": "Pro",
+                    "icon": "skin_rarity_7.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Voice",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Pro Pass",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_propass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from paid track of World Finals 2025 Pro Pass",
+                "foundIn": [],
+                "release": {
+                    "month": 11,
+                    "year": 2025
+                },
+                "image": "ninjapropassprogressionskinlevel10.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "ninjapropassprogressionskinlevel11",
+                "displayName": "Stalking Tiger Leon",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 7,
+                    "name": "Pro",
+                    "icon": "skin_rarity_7.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Voice",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Pro Pass",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_propass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from paid track of World Finals 2025 Pro Pass",
+                "foundIn": [],
+                "release": {
+                    "month": 11,
+                    "year": 2025
+                },
+                "image": "ninjapropassprogressionskinlevel11.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -54857,6 +57020,105 @@
             {
                 "name": "leon_summer_02",
                 "image": "leon_summer_02.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "leon_ranked_default",
+                "image": "leon_ranked_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "leon_ranked_happy",
+                "image": "leon_ranked_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "leon_ranked_sad",
+                "image": "leon_ranked_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "leon_ranked_angry",
+                "image": "leon_ranked_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "leon_ranked_gg",
+                "image": "leon_ranked_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "leon_ranked_clap",
+                "image": "leon_ranked_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "leon_ranked_thanks",
+                "image": "leon_ranked_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "leon_ranked_sweat",
+                "image": "leon_ranked_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "leon_ranked_special",
+                "image": "leon_ranked_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "leon_rankedlevel10",
+                "image": "leon_rankedlevel10.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "leon_rankedlevel11",
+                "image": "leon_rankedlevel11.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -57723,6 +59985,15 @@
                     "name": "Epic",
                     "color": "#b116ec"
                 }
+            },
+            {
+                "name": "surge_toys",
+                "image": "surge_toys.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -57919,7 +60190,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Gigi Boxes"
+                ],
                 "release": {
                     "month": 7,
                     "year": 2023
@@ -58322,7 +60595,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Card Packs"
+                ],
                 "release": {
                     "month": 7,
                     "year": 2023
@@ -59693,7 +61968,8 @@
                 "limited": false,
                 "unlock": "Included in the Draco early access bundle",
                 "foundIn": [
-                    "Demonic Starr Drops"
+                    "Demonic Starr Drops",
+                    "Card Packs"
                 ],
                 "release": {
                     "month": 6,
@@ -59820,6 +62096,48 @@
                     "year": 2024
                 },
                 "image": "dragonrideronceupon.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "dragonriderstrange",
+                "displayName": "Eddie Draco",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Stranger Things",
+                        "image": "bg_strangerthings.webp",
+                        "icon": "icon_strangerthings.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [
+                    "Card Packs"
+                ],
+                "release": {
+                    "month": 11,
+                    "year": 2025
+                },
+                "image": "dragonriderstrange.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -60003,6 +62321,15 @@
             {
                 "name": "draco_overcharge",
                 "image": "draco_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "draco_strangerthings",
+                "image": "draco_strangerthings.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -60429,6 +62756,48 @@
                     "year": 2025
                 },
                 "image": "samuraijapanoverchargechroma1.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "samuraijapanoverchargechroma2",
+                "displayName": "Manga Kenji",
+                "cost": 499,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 6,
+                    "name": "Hypercharge",
+                    "icon": "skin_rarity_6.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Voice",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Battle for Katana Kingdom",
+                        "image": "bg_feudaljapan.webp",
+                        "icon": "icon_feudaljapan.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Free during the Scary Doors event",
+                "foundIn": [],
+                "release": {
+                    "month": 10,
+                    "year": 2025
+                },
+                "image": "samuraijapanoverchargechroma2.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
