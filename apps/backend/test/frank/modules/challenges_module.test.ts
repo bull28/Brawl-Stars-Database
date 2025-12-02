@@ -64,6 +64,7 @@ describe("Challenges module", function(){
             startingHyper: 0,
             bonusResources: false,
             addBonusEnemies: false,
+            unlockStarPowers: true,
             maxAccessories: 30,
             menuTheme: "retropolis"
         });

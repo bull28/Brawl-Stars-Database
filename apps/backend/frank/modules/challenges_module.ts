@@ -159,6 +159,7 @@ export function getStaticGameMod(challengeid: string, key: string, resources: Us
         startingHyper: 0,
         bonusResources: false,
         addBonusEnemies: false,
+        unlockStarPowers: true,
         maxAccessories: upgrades.maxAccessories,
         menuTheme: resources.menu_theme
     };
@@ -170,7 +171,7 @@ export function getStaticGameMod(challengeid: string, key: string, resources: Us
 
     if (srcOptions !== undefined){
         // These are all the options that static challenges are able to set
-        const {gameMode, startingPower, startingGears, startingHyper, addBonusEnemies, maxAccessories} = srcOptions;
+        const {gameMode, startingPower, startingGears, startingHyper, addBonusEnemies, unlockStarPowers, maxAccessories} = srcOptions;
         if (gameMode !== undefined){
             options.gameMode = gameMode;
         } if (startingPower !== undefined){
@@ -181,6 +182,8 @@ export function getStaticGameMod(challengeid: string, key: string, resources: Us
             options.startingHyper = startingHyper;
         } if (addBonusEnemies !== undefined){
             options.addBonusEnemies = addBonusEnemies;
+        } if (unlockStarPowers !== undefined){
+            options.unlockStarPowers = unlockStarPowers;
         } if (maxAccessories !== undefined){
             options.maxAccessories = maxAccessories;
         }

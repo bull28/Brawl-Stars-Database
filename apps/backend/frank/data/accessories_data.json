@@ -61,7 +61,7 @@
     },
     {
         "name": "brawlbox3", "category": "", "displayName": "Doug's Hot Dog",
-        "description": "Once per level when at low health, heal to full health.", "unlock": "Buy from the Shop.", "badges": 1
+        "description": "Once in a while when at low health, heal to full health.", "unlock": "Buy from the Shop.", "badges": 1
     },
     {
         "name": "brawlbox4", "category": "", "displayName": "Angelo's Bow",
@@ -229,7 +229,7 @@
     },
     {
         "name": "oldtown", "category": "location", "displayName": "Barley's Bottle",
-        "description": "After not taking damage for a few seconds, gain a shield.", "unlock": "Complete levels at Old Town.", "badges": 250
+        "description": "After not taking damage for a few seconds, get a shield.", "unlock": "Complete levels at Old Town.", "badges": 250
     },
     {
         "name": "biodome", "category": "location", "displayName": "Rosa's Gloves",

@@ -531,6 +531,7 @@ export interface ChallengeGameMod{
         startingHyper: number;
         bonusResources: boolean;
         addBonusEnemies: boolean;
+        unlockStarPowers: boolean;
         maxAccessories: number;
         maxReportLevels: number;
         menuTheme: string;

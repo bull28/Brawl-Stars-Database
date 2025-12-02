@@ -9600,10 +9600,10 @@
                     }
                 ],
                 "limited": true,
-                "unlock": "Only obtainable from Supercell ID rewards",
+                "unlock": "Only obtainable for 2000 points from Supercell ID rewards",
                 "foundIn": [],
                 "release": {
-                    "month": 12,
+                    "month": 11,
                     "year": 2025
                 },
                 "image": "mechanicscstore.webp",
@@ -15327,10 +15327,10 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "Only obtainable from Supercell ID rewards",
+                "unlock": "Only obtainable for 2000 points from Supercell ID rewards",
                 "foundIn": [],
                 "release": {
-                    "month": 12,
+                    "month": 11,
                     "year": 2025
                 },
                 "image": "artillerygalspc.webp",
@@ -38861,10 +38861,10 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Reward for completing the Mr. P's Gym Rat Challenge",
                 "foundIn": [],
                 "release": {
-                    "month": 12,
+                    "month": 11,
                     "year": 2025
                 },
                 "image": "spawnerdudegym.webp",
@@ -42654,10 +42654,10 @@
                     }
                 ],
                 "limited": true,
-                "unlock": "Only obtainable from Supercell ID rewards",
+                "unlock": "Free during Black Friday 2025",
                 "foundIn": [],
                 "release": {
-                    "month": 12,
+                    "month": 11,
                     "year": 2025
                 },
                 "image": "ropedudespc.webp",
@@ -48589,7 +48589,7 @@
                 "unlock": "",
                 "foundIn": [],
                 "release": {
-                    "month": 12,
+                    "month": 11,
                     "year": 2025
                 },
                 "image": "cocoonergym.webp",
@@ -49739,7 +49739,7 @@
                 "unlock": "",
                 "foundIn": [],
                 "release": {
-                    "month": 12,
+                    "month": 11,
                     "year": 2025
                 },
                 "image": "axejugglergym.webp",
