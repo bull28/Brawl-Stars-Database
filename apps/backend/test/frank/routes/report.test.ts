@@ -3,11 +3,11 @@ import "chai-http";
 import {Connection} from "mysql2/promise";
 import server from "../../../frank/index";
 import {tables} from "../../../frank/modules/database_access";
-import {createConnection, closeConnection, tokens, sampleGameReport, GAME_VERSION} from "../database_setup";
+import {GAME_VERSION, TEST_STATIC_ID, createConnection, closeConnection, tokens, sampleGameReport} from "../database_setup";
 
 const TEST_TOKEN = tokens.report;
 const TEST_USERNAME = "report";
-const TEST_CHALLENGE_ID = "test";
+const TEST_CHALLENGE_ID = TEST_STATIC_ID;
 
 const reportMode0 = sampleGameReport.slice(2);
 const reportMode2 = sampleGameReport.slice(2);

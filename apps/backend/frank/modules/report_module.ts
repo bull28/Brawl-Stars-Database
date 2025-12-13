@@ -1,4 +1,3 @@
-import challengeList from "../data/challenges_data";
 import {GameReport, ReportData} from "../types";
 
 interface ScorePerformance{
@@ -8,11 +7,6 @@ interface ScorePerformance{
     destination: number;
     healthPenalty: number;
     gearScore: number;
-}
-interface ChallengeRewardResult{
-    mastery: number;
-    coins: number;
-    badges: number;
 }
 
 const REPORT_FORMAT = {
@@ -655,25 +649,5 @@ export function extractReportData(data: GameReport): ReportData | undefined{
         coins: [minCoins, maxCoins],
         points: points,
         badges: badges
-    };
-}
-
-export function challengeRewards(challengeid: string, difficulty: number, win: boolean): ChallengeRewardResult{
-    const challenge = challengeList.get(challengeid);
-    if (challenge === undefined || difficulty < 0){
-        return {mastery: 0, coins: 0, badges: 0};
-    }
-
-    let mastery = challenge.config.baseLossMastery;
-    const coins = challenge.config.baseCoins;
-    const badges = challenge.config.baseBadges;
-    if (win === true){
-        mastery = challenge.config.baseWinMastery;
-    }
-
-    return {
-        mastery: mastery.length > 0 ? mastery[Math.min(mastery.length - 1, difficulty)] : 0,
-        coins: coins.length > 0 ? coins[Math.min(coins.length - 1, difficulty)] : 0,
-        badges: badges.length > 0 ? badges[Math.min(badges.length - 1, difficulty)] : 0
     };
 }

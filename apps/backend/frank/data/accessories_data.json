@@ -73,7 +73,7 @@
     },
     {
         "name": "brawlbox6", "category": "", "displayName": "Buster's Projector",
-        "description": "The super charges faster when out of combat.", "unlock": "Buy from the Shop.", "badges": 1
+        "description": "The super charges faster when not attacking.", "unlock": "Buy from the Shop.", "badges": 1
     },
     {
         "name": "brawlbox7", "category": "", "displayName": "Super Juice",
@@ -293,7 +293,7 @@
     },
     {
         "name": "nomove", "category": "", "displayName": "Charlie's Cocoon",
-        "description": "When at low health, take less damage.", "unlock": "Win without moving. Supers are allowed.", "badges": 1
+        "description": "When at low health, receive less damage.", "unlock": "Win without moving. Supers are allowed.", "badges": 1
     },
     {
         "name": "noupgrades", "category": "", "displayName": "Bling Stack",
@@ -301,7 +301,7 @@
     },
     {
         "name": "nodamage", "category": "", "displayName": "Poco's Guitar",
-        "description": "Increases healing when out of combat.", "unlock": "Win without taking any damage.", "badges": 1
+        "description": "Increases healing when not attacking.", "unlock": "Win without taking any damage.", "badges": 1
     },
     {
         "name": "fastwin", "category": "", "displayName": "Fang's Shoe",

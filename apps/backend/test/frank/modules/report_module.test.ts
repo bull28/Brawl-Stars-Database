@@ -1,5 +1,5 @@
 import {expect} from "chai";
-import {validateReport, extractReportData, challengeRewards} from "../../../frank/modules/report_module";
+import {validateReport, extractReportData} from "../../../frank/modules/report_module";
 import {GameReport} from "../../../frank/types";
 import {sampleGameReport, GAME_VERSION} from "../database_setup";
 
@@ -26,18 +26,6 @@ for (let x = previewReport.length; x < REPORT_FORMAT.length[1]; x++){
 }
 
 describe("Game Report module", function(){
-    it("Get the correct mastery and coins multipliers from a challenge", function(){
-        expect(challengeRewards("test", 0, true)).to.eql({mastery: 3, coins: 2, badges: 2});
-        expect(challengeRewards("test", 1, true)).to.eql({mastery: 6, coins: 2, badges: 3});
-        expect(challengeRewards("test", 2, true)).to.eql({mastery: 6, coins: 2, badges: 3});
-        expect(challengeRewards("test", -1, true)).to.eql({mastery: 0, coins: 0, badges: 0});
-        expect(challengeRewards("test", 0, false)).to.eql({mastery: 2, coins: 2, badges: 2});
-        expect(challengeRewards("test", 1, false)).to.eql({mastery: 4, coins: 2, badges: 3});
-        expect(challengeRewards("test", 2, false)).to.eql({mastery: 4, coins: 2, badges: 3});
-        expect(challengeRewards("test", -1, false)).to.eql({mastery: 0, coins: 0, badges: 0});
-        expect(challengeRewards("not a challenge", 0, true)).to.eql({mastery: 0, coins: 0, badges: 0});
-    });
-
     it("Extract the data from a game report required to give rewards", function(){
         // Same test data as extractReportPreviewStats is used for this function
         expect(extractReportData([])).to.be.undefined;

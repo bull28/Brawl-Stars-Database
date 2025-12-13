@@ -1,7 +1,8 @@
 import accessoryList from "../data/accessories_data.json";
-import challengeList from "../data/challenges_data";
 import {getMasteryLevel} from "../modules/resources_module";
-import {UserResources, PlayerUpgrades, ChallengePreview, ChallengeGameMod, UserSetGameMod} from "../types";
+import {UserResources, PlayerUpgrades, ChallengePreview, ChallengeGameMod, UserSetGameMod, ChallengeRewardResult, ChallengeCategory} from "../types";
+import StaticChallenge from "./static_challenges_module";
+import RandomChallenge from "./random_challenges_module";
 
 const challengeUpgrades: {[k in keyof PlayerUpgrades]: [number, number][]} = {
     startingPower: [[0, 0]],
@@ -28,6 +29,21 @@ const challengeUpgrades: {[k in keyof PlayerUpgrades]: [number, number][]} = {
     maxExtraGears: [[0, 0], [4, 1], [12, 2], [16, 4], [24, 6], [26, 9], [28, 12]],
     maxAccessories: [[0, 0], [6, 6], [10, 12], [14, 18], [22, 24], [30, 30]]
 };
+
+const handlers: ChallengeCategory[] = [
+    new StaticChallenge(), new RandomChallenge()
+];
+const challengeidMap = new Map<string, number>();
+for (let x = 0; x < handlers.length; x++){
+    initHandler(handlers[x], x);
+}
+
+function initHandler(handler: ChallengeCategory, index: number): void{
+    const challengeList = handler.getChallengeList();
+    for (let x = 0; x < challengeList.length; x++){
+        challengeidMap.set(challengeList[x].challengeid, index);
+    }
+}
 
 function getPlayerUpgrades(masteryLevel: number): PlayerUpgrades{
     const upgrades: PlayerUpgrades = {
@@ -78,28 +94,6 @@ function stageResourceRewards(stages: number, rewardPerStage: number, maxExtraRe
     return rewards;
 }
 
-export function challengeExists(challengeid: string): boolean{
-    return challengeList.has(challengeid);
-}
-
-export function getChallengeList(): ChallengePreview[]{
-    const challenges: ChallengePreview[] = [];
-    challengeList.forEach((value, key) => {
-        let stages = 8;
-        if (value.gameMod.stages !== undefined){
-            stages = value.gameMod.stages.length;
-        }
-
-        challenges.push({
-            challengeid: key,
-            displayName: value.config.displayName,
-            stages: stages,
-            recommendedLvl: value.config.recommendedLvl
-        });
-    });
-    return challenges;
-}
-
 export function validateUserGameMod(prefs: UserSetGameMod): boolean{
     if (typeof prefs !== "object" || prefs === null || Array.isArray(prefs) === true){
         return false;
@@ -138,78 +132,59 @@ export function validateUserGameMod(prefs: UserSetGameMod): boolean{
     return valid;
 }
 
-export function getStaticGameMod(challengeid: string, key: string, resources: UserResources, prefs?: UserSetGameMod): ChallengeGameMod | undefined{
-    // Options, difficulties, stages, levels, max scores, and player upgrade values are copied from the challenge data
-    // Player accessories, player upgrade tiers, and player upgrade values are added in later
-    // The user can optionally specify cosmetic preferences (menu theme, model skins) to include
-    const data = challengeList.get(challengeid);
-    if (data === undefined){
+export function challengeExists(challengeid: string): boolean{
+    return challengeidMap.has(challengeid);
+}
+
+export function getChallengeList(): ChallengePreview[]{
+    let challenges: ChallengePreview[] = [];
+    for (let x = 0; x < handlers.length; x++){
+        challenges = challenges.concat(handlers[x].getChallengeList());
+    }
+    return challenges;
+}
+
+export function getGameMod(challengeid: string, key: string, resources: UserResources, prefs?: UserSetGameMod): ChallengeGameMod | undefined{
+    const i = challengeidMap.get(challengeid);
+    if (i === undefined || i >= handlers.length){
         return undefined;
     }
-    const challenge = data.gameMod;
+
+    // The corresponding challenge handler will provide the starting object for the challenge. Then, change any values
+    // that depend on the player's upgrades before sending the response.
+    const gameMod = handlers[i].getGameMod(challengeid);
+    if (gameMod === undefined){
+        return undefined;
+    }
+
+    const options = gameMod.options;
+    const stages = gameMod.stages;
 
     const upgrades = getPlayerUpgrades(getMasteryLevel(resources.mastery).level);
 
-    const options: ChallengeGameMod["options"] = {
-        key: key,
-        gameMode: 2,
-        gameName: data.config.displayName,
-        startingPower: upgrades.startingPower,
-        startingGears: upgrades.startingGears,
-        startingHyper: 0,
-        bonusResources: false,
-        addBonusEnemies: false,
-        unlockStarPowers: true,
-        maxAccessories: upgrades.maxAccessories,
-        menuTheme: resources.menu_theme
-    };
-    const stages: ChallengeGameMod["stages"] = [];
-    const srcOptions = challenge.options;
-    const srcStages = challenge.stages;
-
-    const gameMod: ChallengeGameMod = {options: options};
-
-    if (srcOptions !== undefined){
-        // These are all the options that static challenges are able to set
-        const {gameMode, startingPower, startingGears, startingHyper, addBonusEnemies, unlockStarPowers, maxAccessories} = srcOptions;
-        if (gameMode !== undefined){
-            options.gameMode = gameMode;
-        } if (startingPower !== undefined){
-            options.startingPower = startingPower;
-        } if (startingGears !== undefined){
-            options.startingGears = startingGears;
-        } if (startingHyper !== undefined){
-            options.startingHyper = startingHyper;
-        } if (addBonusEnemies !== undefined){
-            options.addBonusEnemies = addBonusEnemies;
-        } if (unlockStarPowers !== undefined){
-            options.unlockStarPowers = unlockStarPowers;
-        } if (maxAccessories !== undefined){
-            options.maxAccessories = maxAccessories;
+    if (options !== undefined){
+        const {startingPower, startingGears, startingHyper, maxAccessories} = options;
+        if (startingPower === undefined){
+            options.startingPower = upgrades.startingPower;
+        } if (startingGears === undefined){
+            options.startingGears = upgrades.startingGears;
+        } if (startingHyper === undefined){
+            options.startingHyper = 0;
+        } if (maxAccessories === undefined){
+            options.maxAccessories = upgrades.maxAccessories;
         }
+
+        options.key = key;
+        options.unlockStarPowers = true;
+        options.menuTheme = resources.menu_theme;
     }
-    if (challenge.difficulties !== undefined){
-        gameMod.difficulties = challenge.difficulties;
-    }
-    if (srcStages !== undefined){
-        // Stages need to be modified with the extra power points / gears from player upgrades
-        const powerRewards = stageResourceRewards(srcStages.length, upgrades.powerPerStage, upgrades.maxExtraPower);
-        const gearsRewards = stageResourceRewards(srcStages.length, upgrades.gearsPerStage, upgrades.maxExtraGears);
-        for (let x = 0; x < srcStages.length; x++){
-            stages.push({
-                completion: srcStages[x].completion,
-                time: srcStages[x].time,
-                powerReward: srcStages[x].powerReward + powerRewards[x],
-                gearsReward: srcStages[x].gearsReward + gearsRewards[x] * 100
-            });
+    if (stages !== undefined){
+        const powerRewards = stageResourceRewards(stages.length, upgrades.powerPerStage, upgrades.maxExtraPower);
+        const gearsRewards = stageResourceRewards(stages.length, upgrades.gearsPerStage, upgrades.maxExtraGears);
+        for (let x = 0; x < stages.length; x++){
+            stages[x].powerReward += powerRewards[x];
+            stages[x].gearsReward += gearsRewards[x] * 100;
         }
-        gameMod.stages = stages;
-    }
-    if (challenge.levels !== undefined){
-        gameMod.levels = challenge.levels;
-    }
-    if (challenge.maxScores !== undefined){
-        gameMod.maxScores = challenge.maxScores;
     }
 
     const playerAccessories: number[] = [];
@@ -230,13 +205,18 @@ export function getStaticGameMod(challengeid: string, key: string, resources: Us
     }
     gameMod.playerUpgradeTiers = playerUpgradeTiers;
 
-    if (challenge.playerUpgradeValues !== undefined){
-        gameMod.playerUpgradeValues = challenge.playerUpgradeValues;
-    }
-
     if (prefs !== undefined && prefs.playerSkins !== undefined){
         gameMod.playerSkins = prefs.playerSkins;
     }
 
     return gameMod;
+}
+
+export function getRewards(challengeid: string, difficulty: number, win: boolean): ChallengeRewardResult{
+    const i = challengeidMap.get(challengeid);
+    if (i === undefined || i >= handlers.length){
+        return {mastery: 0, coins: 0, badges: 0};
+    }
+
+    return handlers[i].getRewards(challengeid, difficulty, win);
 }

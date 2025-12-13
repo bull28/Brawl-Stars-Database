@@ -592,6 +592,25 @@ export interface UserSetGameMod{
     hiddenBrawlers?: string[];
 }
 
+/**
+ * Multipliers for each type of reward the player can receive from a challenge
+ */
+export interface ChallengeRewardResult{
+    mastery: number;
+    coins: number;
+    badges: number;
+}
+
+/**
+ * Defines the operations that the handler for a challenge category must support
+ */
+export interface ChallengeCategory{
+    challengeExists: (challengeid: string) => boolean;
+    getChallengeList: () => ChallengePreview[];
+    getGameMod: (challengeid: string) => ChallengeGameMod | undefined;
+    getRewards: (challengeid: string, difficulty: number, win: boolean) => ChallengeRewardResult;
+}
+
 //------------------------------------------------------------------------------------------------//
 
 /**

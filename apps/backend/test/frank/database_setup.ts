@@ -1,5 +1,6 @@
 import mysql2, {Connection, ConnectionOptions, Pool} from "mysql2/promise";
-import challengeList from "../../frank/data/challenges_data";
+import staticChallenges from "../../frank/data/static_challenges_data";
+import randomChallenges from "../../frank/data/random_challenges_data";
 import {signToken} from "../../frank/modules/account_module";
 import {databaseLogin, tables} from "../../frank/modules/database_access";
 
@@ -46,10 +47,13 @@ export const sampleGameReport = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 ];
 
+export const TEST_STATIC_ID = "statictest";
+export const TEST_RANDOM_ID = "randomtest";
+
 // This challenge is only for testing and should not be playable by real users
-challengeList.set("test", {
+staticChallenges.set(TEST_STATIC_ID, {
     config: {
-        displayName: "Test Challenge",
+        displayName: "Test Static Challenge",
         baseWinMastery: [3, 6],
         baseLossMastery: [2, 4],
         baseCoins: [2, 2],
@@ -149,6 +153,20 @@ challengeList.set("test", {
             }
         }
     }
+});
+
+randomChallenges.set(TEST_RANDOM_ID, {
+    config: {
+        displayName: "Test Random Challenge", recommendedLvl: 0,
+        baseWinMastery: [3], baseLossMastery: [2], baseCoins: [2], baseBadges: [2]
+    },
+    difficulty: {
+        strengthTier: 0, healthBonusReq: 0, timePerEnemy: 1,
+        completion: [30, 30, 30, 30, 30, 30, 30, 30, 30, 30],
+        time: [18, 18, 18, 18, 18, 18, 18, 18, 18, 18]
+    },
+    waves: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    options: {level: 0, power: 10, accs: 2}
 });
 
 export async function createConnection(): Promise<Connection>{

@@ -4,12 +4,12 @@ import {Connection} from "mysql2/promise";
 import server from "../../../frank/index";
 import {createError} from "../../../frank/modules/utils";
 import {tables} from "../../../frank/modules/database_access";
-import {createConnection, closeConnection, tokens} from "../database_setup";
+import {TEST_STATIC_ID, createConnection, closeConnection, tokens} from "../database_setup";
 
 const TEST_TOKEN = tokens.challenges;
 const TEST_USERNAME = "challenge";
 const TEST_USERNAME_ACCEPT = "challengeAccept";
-const TEST_CHALLENGE_ID = "test";
+const TEST_CHALLENGE_ID = TEST_STATIC_ID;
 
 describe("Challenge endpoints", function(){
     let connection: Connection;

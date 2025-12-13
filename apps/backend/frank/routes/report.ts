@@ -1,5 +1,6 @@
 import express from "express";
-import {validateReport, extractReportData, challengeRewards} from "../modules/report_module";
+import {validateReport, extractReportData} from "../modules/report_module";
+import {getRewards} from "../modules/challenges_module";
 import {databaseErrorHandler, getActiveChallenge, getResources, deleteActiveChallenge} from "../modules/database";
 import {Empty, UserResources, GameReport} from "../types";
 
@@ -66,7 +67,7 @@ router.post<Empty, Empty, SaveReqBody>("/", databaseErrorHandler<SaveReqBody>(as
 
         saveToUser = challenge.accepted_by;
 
-        const rewards = challengeRewards(challenge.challengeid, reportData.player.difficulty, reportData.score.win);
+        const rewards = getRewards(challenge.challengeid, reportData.player.difficulty, reportData.score.win);
         masteryMultiplier = rewards.mastery;
         coinsMultiplier = rewards.coins;
         badgeMultiplier = rewards.badges;

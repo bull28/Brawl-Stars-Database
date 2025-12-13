@@ -1,6 +1,6 @@
 import {ChallengeConfig, ChallengeGameMod} from "../types";
 
-interface ChallengePreset{
+interface StaticPreset{
     config: ChallengeConfig;
     gameMod: ChallengeGameMod;
 }
@@ -72,7 +72,7 @@ const classicChallenge = {
     maxScores: {completion: 300, time: 180, destination: 0, health: 90, gear: 30, enemy: 0}
 };
 
-const challenges = new Map<string, ChallengePreset>([
+const challenges = new Map<string, StaticPreset>([
     ["default", {
         config: {
             displayName: "Default Challenge",
@@ -423,12 +423,12 @@ const challenges = new Map<string, ChallengePreset>([
                     maxLevel: 16
                 },
                 healing: {
-                    cost: [5, 6, 7, 8, 10, 11, 13, 16, 19, 23],
-                    maxLevel: 10
+                    cost: [4, 5, 6, 6, 8, 9, 10, 12, 14, 16, 19],
+                    maxLevel: 11
                 },
                 lifeSteal: {
-                    cost: [5, 6, 7, 8, 10, 11, 13, 16, 19, 23],
-                    maxLevel: 10
+                    cost: [4, 5, 6, 6, 8, 9, 10, 12, 14, 16, 19],
+                    maxLevel: 11
                 },
                 speed: {
                     cost: [6, 7, 8, 10, 13, 16, 19, 24],
@@ -535,12 +535,12 @@ const challenges = new Map<string, ChallengePreset>([
                     maxLevel: 6
                 },
                 healing: {
-                    value: [450, 50],
+                    value: [500, 50],
                     cost: [7, 8, 10],
                     maxLevel: 3
                 },
                 lifeSteal: {
-                    value: [450, 50],
+                    value: [500, 50],
                     cost: [7, 8, 10],
                     maxLevel: 3
                 },
