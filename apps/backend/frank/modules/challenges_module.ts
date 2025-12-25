@@ -1,5 +1,5 @@
 import accessoryList from "../data/accessories_data.json";
-import {getMasteryLevel} from "../modules/resources_module";
+import {getMasteryLevel, characterMasteryReq} from "../modules/resources_module";
 import {UserResources, PlayerUpgrades, ChallengePreview, ChallengeGameMod, UserSetGameMod, ChallengeRewardResult, ChallengeCategory} from "../types";
 import StaticChallenge from "./static_challenges_module";
 import RandomChallenge from "./random_challenges_module";
@@ -160,7 +160,8 @@ export function getGameMod(challengeid: string, key: string, resources: UserReso
     const options = gameMod.options;
     const stages = gameMod.stages;
 
-    const upgrades = getPlayerUpgrades(getMasteryLevel(resources.mastery).level);
+    const masteryLevel = getMasteryLevel(resources.mastery).level;
+    const upgrades = getPlayerUpgrades(masteryLevel);
 
     if (options !== undefined){
         const {startingPower, startingGears, startingHyper, maxAccessories} = options;
@@ -175,7 +176,7 @@ export function getGameMod(challengeid: string, key: string, resources: UserReso
         }
 
         options.key = key;
-        options.unlockStarPowers = true;
+        options.classicUnlocks = false;
         options.menuTheme = resources.menu_theme;
     }
     if (stages !== undefined){
@@ -201,7 +202,12 @@ export function getGameMod(challengeid: string, key: string, resources: UserReso
 
     const playerUpgradeTiers: Record<string, number> = {};
     for (let x = 0; x < resources.characters.length; x++){
-        playerUpgradeTiers[resources.characters[x].name] = resources.characters[x].tier;
+        const name = resources.characters[x].name;
+        if (masteryLevel >= characterMasteryReq(name)){
+            playerUpgradeTiers[name] = resources.characters[x].tier;
+        } else{
+            playerUpgradeTiers[name] = -1;
+        }
     }
     gameMod.playerUpgradeTiers = playerUpgradeTiers;
 

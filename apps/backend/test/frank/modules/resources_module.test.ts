@@ -1,7 +1,7 @@
 import {expect} from "chai";
 import characterList from "../../../frank/data/characters_data.json";
 import {IMAGE_FILE_EXTENSION, SKIN_IMAGE_DIR, PIN_IMAGE_DIR, MASTERY_LEVEL_DIR, TIER_IMAGE_DIR, CHARACTER_IMAGE_DIR} from "../../../frank/data/constants";
-import {getEnemyList, getNextTier, getMasteryLevel, getCharacterPreview, getCharacterData} from "../../../frank/modules/resources_module";
+import {getEnemyList, getNextTier, getMasteryLevel, characterMasteryReq, getCharacterPreview, getCharacterData} from "../../../frank/modules/resources_module";
 import {CharacterHyperStats, CharacterStatus} from "../../../frank/types";
 
 describe("User Resources module", function(){
@@ -35,6 +35,13 @@ describe("User Resources module", function(){
         expect(getNextTier(0x700)).to.equal(0x700);
     });
 
+    it("Get the required mastery level to use a character", function(){
+        for (let x = 0; x < characterList.length; x++){
+            expect(characterMasteryReq(characterList[x].name)).to.equal(characterList[x].masteryReq);
+        }
+        expect(characterMasteryReq("not a character")).to.equal(0);
+    });
+
     it("Get the preview data for a character", function(){
         let index = 0;
         const i = characterList.findIndex((value) => value.name === "darryl");
@@ -46,7 +53,7 @@ describe("User Resources module", function(){
 
         const preview = getCharacterPreview({name: character.name, tier: 0x100})!;
         expect(preview).to.be.an("object");
-        expect(preview).to.have.keys(["name", "displayName", "image", "tier"]);
+        expect(preview).to.have.keys(["name", "displayName", "image", "masteryReq", "tier"]);
         expect(preview.tier).to.be.an("object");
         expect(preview.tier).to.have.keys(["level", "name", "image", "color"]);
 
@@ -138,19 +145,21 @@ describe("User Resources module", function(){
         it("Lowest upgrade tier", function(){
             const tier0 = getCharacterData({name: name, tier: 0x000})!;
             expect(tier0).to.be.an("object");
-            expect(tier0).to.have.keys(["name", "displayName", "image", "current", "next", "upgrade", "otherStats"]);
+            expect(tier0).to.have.keys(["name", "displayName", "image", "masteryReq", "current", "next", "upgrade", "otherStats"]);
             expect(tier0.current).to.be.an("object");
             expect(tier0.next).to.be.an("object");
             expect(tier0.upgrade).to.be.an("object");
-            expect(tier0.current).to.have.keys(["tier", "stats", "hcStats"]);
-            expect(tier0.next).to.have.keys(["tier", "stats", "hcStats"]);
+            expect(tier0.current).to.have.keys(["tier", "stats", "unlocks", "hcStats"]);
+            expect(tier0.next).to.have.keys(["tier", "stats", "unlocks", "hcStats"]);
             expect(tier0.current.tier).to.have.keys(["level", "name", "image", "color"]);
             expect(tier0.next.tier).to.have.keys(["level", "name", "image", "color"]);
             expect(tier0.current.stats).to.have.keys(["health", "damage", "healing", "lifeSteal"]);
             expect(tier0.next.stats).to.have.keys(["health", "damage", "healing", "lifeSteal"]);
-            expect(tier0.current.hcStats).to.have.keys(["damage", "speed", "duration", "charge", "level"]);
-            expect(tier0.next.hcStats).to.have.keys(["damage", "speed", "duration", "charge", "level"]);
-            expect(tier0.upgrade).to.have.keys(["cost", "masteryReq", "badgesReq"]);
+            expect(tier0.current.unlocks).to.have.keys(["gears", "starPowers", "hcLevel"]);
+            expect(tier0.next.unlocks).to.have.keys(["gears", "starPowers", "hcLevel"]);
+            expect(tier0.current.hcStats).to.have.keys(["healing", "damage", "speed", "duration", "charge"]);
+            expect(tier0.next.hcStats).to.have.keys(["healing", "damage", "speed", "duration", "charge"]);
+            expect(tier0.upgrade).to.have.keys(["cost", "masteryReq"]);
             expect(tier0.otherStats).to.have.keys(["reload", "speed", "range", "targets"]);
 
             expect(tier0.current.tier.level).to.equal(0);
@@ -198,9 +207,11 @@ describe("User Resources module", function(){
 
             expect(tier60.current.tier.level).to.equal(60);
             expect(checkStats(tier60.current.stats, character.stats, 242.5)).to.be.true;
+            expect(tier60.current.unlocks.starPowers).to.equal(2);
 
             expect(tier60.next.tier.level).to.equal(60);
             expect(checkStats(tier60.next.stats, character.stats, 250)).to.be.true;
+            expect(tier60.next.unlocks.starPowers).to.equal(3);
 
             expect(tier60.upgrade.cost).to.equal(64000);
             expect(tier60.upgrade.masteryReq).to.equal(25);
@@ -211,11 +222,11 @@ describe("User Resources module", function(){
 
             expect(tier80.current.tier.level).to.equal(80);
             expect(checkStats(tier80.current.stats, character.stats, 290)).to.be.true;
-            expect(tier80.current.hcStats.level).to.equal(0);
+            expect(tier80.current.unlocks.hcLevel).to.equal(0);
 
             expect(tier80.next.tier.level).to.equal(80);
             expect(checkStats(tier80.next.stats, character.stats, 300)).to.be.true;
-            expect(tier80.next.hcStats.level).to.equal(1);
+            expect(tier80.next.unlocks.hcLevel).to.equal(1);
 
             expect(tier80.upgrade.cost).to.equal(240000);
             expect(tier80.upgrade.masteryReq).to.equal(30);
@@ -226,16 +237,33 @@ describe("User Resources module", function(){
 
             expect(tier80.current.tier.level).to.equal(80);
             expect(checkStats(tier80.current.stats, character.stats, 300)).to.be.true;
-            expect(tier80.current.hcStats.level).to.equal(1);
+            expect(tier80.current.unlocks.hcLevel).to.equal(1);
 
             expect(tier80.next.tier.level).to.equal(81);
             expect(checkStats(tier80.next.stats, character.stats, 300)).to.be.true;
-            expect(tier80.next.hcStats.level).to.equal(1);
+            expect(tier80.next.unlocks.hcLevel).to.equal(1);
 
-            expect(hcStatsDiff(tier80.current.hcStats, tier80.next.hcStats)).to.eql({damage: 5});
+            expect(hcStatsDiff(tier80.current.hcStats, tier80.next.hcStats)).to.eql({healing: 5});
 
             expect(tier80.upgrade.cost).to.equal(96000);
             expect(tier80.upgrade.masteryReq).to.equal(30);
+        });
+
+        it("Next level is the max level", function(){
+            const tier100 = getCharacterData({name: name, tier: 0x614})!;
+
+            expect(tier100.current.tier.level).to.equal(100);
+            expect(checkStats(tier100.current.stats, character.stats, 300)).to.be.true;
+            expect(tier100.current.unlocks.hcLevel).to.equal(1);
+
+            expect(tier100.next.tier.level).to.equal(100);
+            expect(checkStats(tier100.next.stats, character.stats, 300)).to.be.true;
+            expect(tier100.next.unlocks.hcLevel).to.equal(2);
+
+            expect(hcStatsDiff(tier100.current.hcStats, tier100.next.hcStats)).to.eql({});
+
+            expect(tier100.upgrade.cost).to.equal(360000);
+            expect(tier100.upgrade.masteryReq).to.equal(36);
         });
 
         it("Negative upgrade tier", function(){

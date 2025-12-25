@@ -111,14 +111,14 @@ const challenges = new Map<string, StaticPreset>([
         config: {
             displayName: "Beginner Challenge",
             recommendedLvl: 0,
-            baseWinMastery: [0],
+            baseWinMastery: [10],
             baseLossMastery: [0],
             baseCoins: [0],
             baseBadges: [0]
         },
         gameMod: {
             options: {
-                gameMode: 1,
+                //gameMode: 1,
                 maxAccessories: 0,
                 startingPower: 0,
                 startingGears: 3,
@@ -566,7 +566,7 @@ const challenges = new Map<string, StaticPreset>([
         config: {
             displayName: "Classic Part 1",
             recommendedLvl: 0,
-            baseWinMastery: [2, 3, 5, 9, 20, 60],
+            baseWinMastery: [4, 6, 9, 15, 30, 60],
             baseLossMastery: [2, 3, 5, 7, 10, 15],
             baseCoins: [1, 1, 1.25, 1.5, 1.75, 2.5],
             baseBadges: [2, 3, 4, 5, 6, 8]
@@ -639,7 +639,7 @@ const challenges = new Map<string, StaticPreset>([
         config: {
             displayName: "Classic Part 2",
             recommendedLvl: 6,
-            baseWinMastery: [4, 6, 9, 18, 40, 120],
+            baseWinMastery: [8, 12, 18, 30, 60, 120],
             baseLossMastery: [4, 6, 9, 12, 16, 20],
             baseCoins: [1, 1, 1.25, 1.5, 1.75, 2.5],
             baseBadges: [2, 3, 4, 5, 6, 8]
@@ -712,7 +712,7 @@ const challenges = new Map<string, StaticPreset>([
         config: {
             displayName: "Classic Part 3",
             recommendedLvl: 10,
-            baseWinMastery: [6, 9, 14, 28, 60, 180],
+            baseWinMastery: [12, 18, 27, 45, 90, 180],
             baseLossMastery: [6, 9, 14, 20, 27, 36],
             baseCoins: [1, 1, 1.25, 1.5, 1.75, 2.5],
             baseBadges: [2, 3, 4, 5, 6, 8]

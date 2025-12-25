@@ -78,7 +78,7 @@ describe("Challenges module", function(){
             startingHyper: 0,
             bonusResources: false,
             addBonusEnemies: false,
-            unlockStarPowers: true,
+            classicUnlocks: false,
             maxAccessories: 30,
             menuTheme: "retropolis"
         });
@@ -118,7 +118,7 @@ describe("Challenges module", function(){
             startingHyper: 0,
             bonusResources: false,
             addBonusEnemies: false,
-            unlockStarPowers: true,
+            classicUnlocks: false,
             maxAccessories: 30,
             menuTheme: "retropolis"
         });

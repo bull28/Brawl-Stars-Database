@@ -83,7 +83,7 @@ router.post<Empty, Empty, UpgradeCharacterReqBody>("/characters/upgrade", loginE
 
     // Check mastery level requirement
     const mastery = getMasteryLevel(resources.mastery);
-    if (mastery.level < character.upgrade.masteryReq){
+    if (mastery.level < character.masteryReq || mastery.level < character.upgrade.masteryReq){
         res.status(403).json(createError("CharactersUpgradeDenied"));
         return;
     }

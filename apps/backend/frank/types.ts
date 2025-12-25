@@ -340,12 +340,24 @@ export interface CharacterPreview{
     name: string;
     displayName: string;
     image: string;
+    masteryReq: number;
     tier: UpgradeTier;
 }
 
-type CharacterStats = {[k in "health" | "damage" | "healing" | "lifeSteal"]: number};
+type CharacterCombatStats = {[k in "health" | "damage" | "healing" | "lifeSteal"]: number};
 type CharacterOtherStats = {[k in "reload" | "speed" | "range" | "targets"]: number};
-export type CharacterHyperStats = {[k in "damage" | "speed" | "duration" | "charge" | "level"]: number};
+export type CharacterUnlockStats = {[k in "gears" | "starPowers" | "hcLevel"]: number};
+export type CharacterHyperStats = {[k in "healing" | "damage" | "speed" | "duration" | "charge"]: number};
+
+/**
+ * Stats that change when a character is upgraded
+ */
+interface CharacterStats{
+    tier: UpgradeTier;
+    stats: CharacterCombatStats;
+    unlocks: CharacterUnlockStats;
+    hcStats: CharacterHyperStats;
+}
 
 /**
  * Full data for a user's character
@@ -354,20 +366,13 @@ export interface CharacterStatus{
     name: string;
     displayName: string;
     image: string;
-    current: {
-        tier: UpgradeTier;
-        stats: CharacterStats;
-        hcStats: CharacterHyperStats;
-    };
-    next: {
-        tier: UpgradeTier;
-        stats: CharacterStats;
-        hcStats: CharacterHyperStats;
-    };
+    masteryReq: number;
+    current: CharacterStats;
+    next: CharacterStats;
     upgrade: {
         cost: number;
         masteryReq: number;
-        badgesReq: number;
+        //badgesReq: number;
     };
     otherStats: CharacterOtherStats;
 }
@@ -531,7 +536,7 @@ export interface ChallengeGameMod{
         startingHyper: number;
         bonusResources: boolean;
         addBonusEnemies: boolean;
-        unlockStarPowers: boolean;
+        classicUnlocks: boolean;
         maxAccessories: number;
         maxReportLevels: number;
         menuTheme: string;

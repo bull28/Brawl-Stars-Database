@@ -98,32 +98,32 @@ interface RandomPreset{
 const presets = new Map<string, RandomPreset>([
     ["random1", {
         config: {
-            displayName: "Random Challenge - Tier 1", recommendedLvl: 8,
-            baseWinMastery: [2], baseLossMastery: [2], baseCoins: [1.25], baseBadges: [2]
+            displayName: "Random Challenge - Tier 1", recommendedLvl: 6,
+            baseWinMastery: [6], baseLossMastery: [3], baseCoins: [1.25], baseBadges: [2]
         },
         difficulty: {
             strengthTier: 0, healthBonusReq: 0.3, timePerEnemy: 0.7,
             completion: [150, 150], time: [90, 90]
         },
         waves: [0, 1],
-        options: {level: 8, power: 4, accs: 0}
+        options: {level: 6, power: 3, accs: 0}
     }],
     ["random2", {
         config: {
-            displayName: "Random Challenge - Tier 2", recommendedLvl: 16,
-            baseWinMastery: [25], baseLossMastery: [20], baseCoins: [1.75], baseBadges: [4]
+            displayName: "Random Challenge - Tier 2", recommendedLvl: 14,
+            baseWinMastery: [36], baseLossMastery: [20], baseCoins: [1.75], baseBadges: [4]
         },
         difficulty: {
             strengthTier: 1, healthBonusReq: 0.45, timePerEnemy: 0.7,
             completion: [75, 100, 125], time: [60, 60, 60]
         },
         waves: [2, 3, 5],
-        options: {level: 16, power: 10, accs: 18}
+        options: {level: 14, power: 8, accs: 18}
     }],
     ["random3", {
         config: {
             displayName: "Random Challenge - Tier 3", recommendedLvl: 22,
-            baseWinMastery: [100], baseLossMastery: [60], baseCoins: [2.5], baseBadges: [7]
+            baseWinMastery: [120], baseLossMastery: [60], baseCoins: [2.5], baseBadges: [7]
         },
         difficulty: {
             strengthTier: 2, healthBonusReq: 0.5, timePerEnemy: 0.7,
@@ -135,7 +135,7 @@ const presets = new Map<string, RandomPreset>([
     ["random4", {
         config: {
             displayName: "Random Challenge - Tier 4", recommendedLvl: 26,
-            baseWinMastery: [200], baseLossMastery: [100], baseCoins: [4], baseBadges: [10]
+            baseWinMastery: [240], baseLossMastery: [120], baseCoins: [4], baseBadges: [10]
         },
         difficulty: {
             strengthTier: 3, healthBonusReq: 0.55, timePerEnemy: 0.7,
@@ -147,7 +147,7 @@ const presets = new Map<string, RandomPreset>([
     ["random5", {
         config: {
             displayName: "Random Challenge - Tier 5", recommendedLvl: 30,
-            baseWinMastery: [360], baseLossMastery: [180], baseCoins: [5], baseBadges: [12]
+            baseWinMastery: [400], baseLossMastery: [200], baseCoins: [5], baseBadges: [12]
         },
         difficulty: {
             strengthTier: 4, healthBonusReq: 0.6, timePerEnemy: 0.7,

@@ -27,8 +27,8 @@ describe("Game Report endpoints", function(){
         connection = await createConnection();
 
         await connection.query(
-            `INSERT INTO ${tables.users} (username, password, characters, accessories) VALUES (?, ?, ?, ?);`,
-            [TEST_USERNAME, "", Buffer.alloc(1), Buffer.alloc(1)]
+            `INSERT INTO ${tables.users} (username, password, mastery, characters, accessories) VALUES (?, ?, ?, ?, ?);`,
+            [TEST_USERNAME, "", 20000000, Buffer.alloc(1), Buffer.alloc(1)]
         );
     });
 

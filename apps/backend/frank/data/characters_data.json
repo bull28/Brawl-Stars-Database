@@ -1,46 +1,46 @@
 [
     {
-        "name": "spike", "displayName": "Spike", "image": "icon_spike",
+        "name": "spike", "displayName": "Spike", "image": "icon_spike", "masteryReq": 0,
         "stats": {"health": 4000, "damage": 200, "healing": 96, "lifeSteal": 32},
         "otherStats": {"reload": 0.4, "speed": 20, "range": 50, "targets": 1}
     },
     {
-        "name": "gus", "displayName": "Gus", "image": "icon_gus",
+        "name": "gus", "displayName": "Gus", "image": "icon_gus", "masteryReq": 2,
         "stats": {"health": 6000, "damage": 120, "healing": 160, "lifeSteal": 16},
         "otherStats": {"reload": 0.3, "speed": 18, "range": 72, "targets": 1}
     },
     {
-        "name": "emz", "displayName": "Emz", "image": "icon_emz",
+        "name": "emz", "displayName": "Emz", "image": "icon_emz", "masteryReq": 5,
         "stats": {"health": 4800, "damage": 160, "healing": 128, "lifeSteal": 48},
         "otherStats": {"reload": 0.5, "speed": 19, "range": 64, "targets": 5}
     },
     {
-        "name": "darryl", "displayName": "Darryl", "image": "icon_darryl",
+        "name": "darryl", "displayName": "Darryl", "image": "icon_darryl", "masteryReq": 7,
         "stats": {"health": 7200, "damage": 800, "healing": 72, "lifeSteal": 80},
         "otherStats": {"reload": 0.8, "speed": 17, "range": 32, "targets": 2}
     },
     {
-        "name": "tara", "displayName": "Tara", "image": "icon_tara",
+        "name": "tara", "displayName": "Tara", "image": "icon_tara", "masteryReq": 9,
         "stats": {"health": 3600, "damage": 288, "healing": 112, "lifeSteal": 72},
         "otherStats": {"reload": 0.6, "speed": 22, "range": 40, "targets": 3}
     },
     {
-        "name": "piper", "displayName": "Piper", "image": "icon_piper",
+        "name": "piper", "displayName": "Piper", "image": "icon_piper", "masteryReq": 11,
         "stats": {"health": 2400, "damage": 480, "healing": 72, "lifeSteal": 48},
         "otherStats": {"reload": 0.6, "speed": 21, "range": 90, "targets": 1}
     },
     {
-        "name": "lily", "displayName": "Lily", "image": "icon_lily",
+        "name": "lily", "displayName": "Lily", "image": "icon_lily", "masteryReq": 13,
         "stats": {"health": 3000, "damage": 560, "healing": 80, "lifeSteal": 56},
         "otherStats": {"reload": 1, "speed": 23, "range": 25, "targets": 1}
     },
     {
-        "name": "stu", "displayName": "Stu", "image": "icon_stu",
+        "name": "stu", "displayName": "Stu", "image": "icon_stu", "masteryReq": 15,
         "stats": {"health": 3200, "damage": 448, "healing": 112, "lifeSteal": 48},
         "otherStats": {"reload": 0.7, "speed": 18, "range": 45, "targets": 2}
     },
     {
-        "name": "maisie", "displayName": "Maisie", "image": "icon_maisie",
+        "name": "maisie", "displayName": "Maisie", "image": "icon_maisie", "masteryReq": 17,
         "stats": {"health": 5600, "damage": 240, "healing": 80, "lifeSteal": 64},
         "otherStats": {"reload": 0.5, "speed": 22, "range": 60, "targets": 4}
     }

@@ -107,7 +107,10 @@ router.post<Empty, Empty, SaveReqBody>("/", databaseErrorHandler<SaveReqBody>(as
     }
 
     // Add mastery
-    const masteryReward = reportData.points * masteryMultiplier;
+    // Mastery gained from a single challenge is capped at 40% of the user's current mastery to prevent them from
+    // skipping too many levels at once.
+    const maxMastery = Math.max(10000, Math.floor(resources.mastery * 2 / 5));
+    const masteryReward = Math.min(maxMastery, reportData.points * masteryMultiplier);
     resources.mastery += masteryReward;
 
     // Add coins
