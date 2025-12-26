@@ -1168,7 +1168,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Glowbert Boxes"
+                ],
                 "release": {
                     "month": 1,
                     "year": 2020
@@ -1679,11 +1681,6 @@
                         "name": "Stranger Things",
                         "image": "bg_strangerthings.webp",
                         "icon": "icon_strangerthings.webp"
-                    },
-                    {
-                        "name": "",
-                        "image": "bg_default.webp",
-                        "icon": "icon_default.webp"
                     }
                 ],
                 "limited": true,
@@ -1726,11 +1723,6 @@
                         "name": "Stranger Things",
                         "image": "bg_strangerthings.webp",
                         "icon": "icon_strangerthings.webp"
-                    },
-                    {
-                        "name": "",
-                        "image": "bg_default.webp",
-                        "icon": "icon_default.webp"
                     }
                 ],
                 "limited": true,
@@ -4048,7 +4040,9 @@
                 ],
                 "limited": false,
                 "unlock": "Available for 2500 Club Coins before October 2023",
-                "foundIn": [],
+                "foundIn": [
+                    "Glowbert Boxes"
+                ],
                 "release": {
                     "month": 3,
                     "year": 2022
@@ -4633,7 +4627,8 @@
                 "unlock": "",
                 "foundIn": [
                     "Mega Boxes",
-                    "Krusty Krab"
+                    "Krusty Krab",
+                    "Pierce Boxes"
                 ],
                 "release": {
                     "month": 6,
@@ -5588,6 +5583,46 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "rocketgirlsteampunk",
+                "displayName": "Boss Brock",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Steampunk",
+                        "image": "bg_steampunk.webp",
+                        "icon": "icon_steampunk.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 1,
+                    "year": 2026
+                },
+                "image": "rocketgirlsteampunk.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -5819,6 +5854,15 @@
             {
                 "name": "brock_lny",
                 "image": "brock_lny.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "brock_steampunk",
+                "image": "brock_steampunk.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -6372,7 +6416,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Love Boxes"
+                ],
                 "release": {
                     "month": 2,
                     "year": 2022
@@ -7570,7 +7616,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Love Boxes"
+                ],
                 "release": {
                     "month": 2,
                     "year": 2019
@@ -8513,7 +8561,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Krusty Krab"
+                    "Krusty Krab",
+                    "Pierce Boxes"
                 ],
                 "release": {
                     "month": 7,
@@ -8675,7 +8724,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Glowbert Boxes"
+                ],
                 "release": {
                     "month": 3,
                     "year": 2022
@@ -9438,7 +9489,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Presents"
+                    "Presents",
+                    "Love Boxes"
                 ],
                 "release": {
                     "month": 2,
@@ -9630,7 +9682,8 @@
                     "Brawler Model",
                     "Texture",
                     "Animations",
-                    "Effects"
+                    "Effects",
+                    "Takedown"
                 ],
                 "groups": [
                     {
@@ -10795,7 +10848,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Love Boxes"
+                ],
                 "release": {
                     "month": 2,
                     "year": 2025
@@ -13784,6 +13839,141 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "trickshotbrawlentine",
+                "displayName": "Heartbroken Rico",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "My Brawlentine",
+                        "image": "bg_brawlentines.webp",
+                        "icon": "icon_brawlentines.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 2,
+                    "year": 2026
+                },
+                "image": "trickshotbrawlentine.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "trickshotbrawlentinechroma1",
+                "displayName": "Breakup Rico",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "My Brawlentine",
+                        "image": "bg_brawlentines.webp",
+                        "icon": "icon_brawlentines.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 2,
+                    "year": 2026
+                },
+                "image": "trickshotbrawlentinechroma1.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "trickshotbrawlentinechroma2",
+                "displayName": "Revenge Rico",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "My Brawlentine",
+                        "image": "bg_brawlentines.webp",
+                        "icon": "icon_brawlentines.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 2,
+                    "year": 2026
+                },
+                "image": "trickshotbrawlentinechroma2.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -14069,6 +14259,33 @@
             {
                 "name": "rico_brawloween",
                 "image": "rico_brawloween.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "rico_brawlentine",
+                "image": "rico_brawlentine.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "rico_brawlentinechroma1",
+                "image": "rico_brawlentinechroma1.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "rico_brawlentinechroma2",
+                "image": "rico_brawlentinechroma2.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -17985,7 +18202,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Love Boxes"
+                ],
                 "release": {
                     "month": 2,
                     "year": 2025
@@ -19630,6 +19849,141 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "rollersteampunk",
+                "displayName": "Steampunk Stu",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Steampunk",
+                        "image": "bg_steampunk.webp",
+                        "icon": "icon_steampunk.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 1,
+                    "year": 2026
+                },
+                "image": "rollersteampunk.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "rollersteampunkchroma1",
+                "displayName": "Crime Lord Stu",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Steampunk",
+                        "image": "bg_steampunk.webp",
+                        "icon": "icon_steampunk.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 1,
+                    "year": 2026
+                },
+                "image": "rollersteampunkchroma1.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "rollersteampunkchroma2",
+                "displayName": "Iced Out Stu",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Steampunk",
+                        "image": "bg_steampunk.webp",
+                        "icon": "icon_steampunk.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 1,
+                    "year": 2026
+                },
+                "image": "rollersteampunkchroma2.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -19848,6 +20202,33 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "stu_steampunk",
+                "image": "stu_steampunk.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "stu_steampunkchroma1",
+                "image": "stu_steampunkchroma1.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "stu_steampunkchroma2",
+                "image": "stu_steampunkchroma2.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -20002,7 +20383,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Love Boxes"
+                ],
                 "release": {
                     "month": 2,
                     "year": 2020
@@ -20924,7 +21307,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Krusty Krab"
+                    "Krusty Krab",
+                    "Pierce Boxes"
                 ],
                 "release": {
                     "month": 6,
@@ -21842,7 +22226,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Krusty Krab"
+                    "Krusty Krab",
+                    "Pierce Boxes"
                 ],
                 "release": {
                     "month": 6,
@@ -22782,7 +23167,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Krusty Krab"
+                    "Krusty Krab",
+                    "Glowbert Boxes"
                 ],
                 "release": {
                     "month": 8,
@@ -23400,7 +23786,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Glowbert Boxes"
+                ],
                 "release": {
                     "month": 1,
                     "year": 2020
@@ -24233,6 +24621,46 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "controllerxmas",
+                "displayName": "Snow Globe Nani",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawlidays",
+                        "image": "bg_brawlidays.webp",
+                        "icon": "icon_brawlidays.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Free during Brawlidays 2025",
+                "foundIn": [],
+                "release": {
+                    "month": 12,
+                    "year": 2025
+                },
+                "image": "controllerxmas.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -24365,6 +24793,15 @@
             {
                 "name": "nani_onceupon",
                 "image": "nani_onceupon.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "nani_brawlidays",
+                "image": "nani_brawlidays.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -25744,7 +26181,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Krusty Krab"
+                    "Krusty Krab",
+                    "Glowbert Boxes"
                 ],
                 "release": {
                     "month": 8,
@@ -27357,6 +27795,141 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "blowersteampunk",
+                "displayName": "Steampunk Gale",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Steampunk",
+                        "image": "bg_steampunk.webp",
+                        "icon": "icon_steampunk.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 1,
+                    "year": 2026
+                },
+                "image": "blowersteampunk.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "blowersteampunkchroma1",
+                "displayName": "Fancy Man Gale",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Steampunk",
+                        "image": "bg_steampunk.webp",
+                        "icon": "icon_steampunk.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 1,
+                    "year": 2026
+                },
+                "image": "blowersteampunkchroma1.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "blowersteampunkchroma2",
+                "displayName": "Dapper Gale",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Steampunk",
+                        "image": "bg_steampunk.webp",
+                        "icon": "icon_steampunk.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 1,
+                    "year": 2026
+                },
+                "image": "blowersteampunkchroma2.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -27561,6 +28134,33 @@
             {
                 "name": "gale_brawlywood",
                 "image": "gale_brawlywood.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "gale_steampunk",
+                "image": "gale_steampunk.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "gale_steampunkchroma1",
+                "image": "gale_steampunkchroma1.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "gale_steampunkchroma2",
+                "image": "gale_steampunkchroma2.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -28558,7 +29158,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Glowbert Boxes"
+                ],
                 "release": {
                     "month": 4,
                     "year": 2022
@@ -28767,7 +29369,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Pierce Boxes"
+                ],
                 "release": {
                     "month": 3,
                     "year": 2025
@@ -30616,7 +31220,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Presents"
+                    "Presents",
+                    "Love Boxes"
                 ],
                 "release": {
                     "month": 2,
@@ -30787,6 +31392,46 @@
                     "year": 2025
                 },
                 "image": "weaponthrowersupercellmake.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "weaponthrowersteampunk",
+                "displayName": "Peaky Sam",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Steampunk",
+                        "image": "bg_steampunk.webp",
+                        "icon": "icon_steampunk.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 1,
+                    "year": 2026
+                },
+                "image": "weaponthrowersteampunk.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -31006,6 +31651,15 @@
             {
                 "name": "sam_make",
                 "image": "sam_make.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "sam_steampunk",
+                "image": "sam_steampunk.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -33535,7 +34189,7 @@
                         "icon": "icon_angeldemons.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "Reward from Brawl Pass Season 32 tier 50",
                 "foundIn": [],
                 "release": {
@@ -33579,7 +34233,7 @@
                         "icon": "icon_angeldemons.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "Reward from Brawl Pass Plus Season 32 tier 46",
                 "foundIn": [],
                 "release": {
@@ -33623,7 +34277,7 @@
                         "icon": "icon_angeldemons.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "Reward from Brawl Pass Plus Season 32 tier 48",
                 "foundIn": [],
                 "release": {
@@ -34023,6 +34677,141 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "insectmanbrawlentine",
+                "displayName": "Brawlentine's Angelo",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "My Brawlentine",
+                        "image": "bg_brawlentines.webp",
+                        "icon": "icon_brawlentines.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 2,
+                    "year": 2026
+                },
+                "image": "insectmanbrawlentine.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "insectmanbrawlentinechroma1",
+                "displayName": "Adonis Angelo",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "My Brawlentine",
+                        "image": "bg_brawlentines.webp",
+                        "icon": "icon_brawlentines.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 2,
+                    "year": 2026
+                },
+                "image": "insectmanbrawlentinechroma1.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "insectmanbrawlentinechroma2",
+                "displayName": "Snatched Angelo",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "My Brawlentine",
+                        "image": "bg_brawlentines.webp",
+                        "icon": "icon_brawlentines.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 2,
+                    "year": 2026
+                },
+                "image": "insectmanbrawlentinechroma2.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -34137,6 +34926,33 @@
             {
                 "name": "angelo_feudaljapan",
                 "image": "angelo_feudaljapan.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "angelo_brawlentine",
+                "image": "angelo_brawlentine.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "angelo_brawlentinechroma1",
+                "image": "angelo_brawlentinechroma1.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "angelo_brawlentinechroma2",
+                "image": "angelo_brawlentinechroma2.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -34767,6 +35583,49 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "ghostbrawlentine",
+                "displayName": "Brawlentine's Bear Shade",
+                "cost": 299,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 5,
+                    "name": "Legendary",
+                    "icon": "skin_rarity_5.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "My Brawlentine",
+                        "image": "bg_brawlentines.webp",
+                        "icon": "icon_brawlentines.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [
+                    "Love Boxes"
+                ],
+                "release": {
+                    "month": 2,
+                    "year": 2026
+                },
+                "image": "ghostbrawlentine.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -34876,6 +35735,87 @@
                     "value": 3,
                     "name": "Legendary",
                     "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "shade_brawlentine_default",
+                "image": "shade_brawlentine_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "shade_brawlentine_happy",
+                "image": "shade_brawlentine_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "shade_brawlentine_sad",
+                "image": "shade_brawlentine_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "shade_brawlentine_angry",
+                "image": "shade_brawlentine_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "shade_brawlentine_gg",
+                "image": "shade_brawlentine_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "shade_brawlentine_clap",
+                "image": "shade_brawlentine_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "shade_brawlentine_thanks",
+                "image": "shade_brawlentine_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "shade_brawlentine_sweat",
+                "image": "shade_brawlentine_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "shade_brawlentine_special",
+                "image": "shade_brawlentine_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
                 }
             }
         ]
@@ -35269,7 +36209,9 @@
                 ],
                 "limited": false,
                 "unlock": "Included in the Trunk early access bundle",
-                "foundIn": [],
+                "foundIn": [
+                    "Pierce Boxes"
+                ],
                 "release": {
                     "month": 8,
                     "year": 2025
@@ -35845,7 +36787,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Krusty Krab"
+                    "Krusty Krab",
+                    "Pierce Boxes"
                 ],
                 "release": {
                     "month": 6,
@@ -38346,6 +39289,46 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "speedyesports",
+                "displayName": "World Championship Max",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "BSC 2025",
+                        "image": "bg_wf.webp",
+                        "icon": "icon_wf.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 12,
+                    "year": 2025
+                },
+                "image": "speedyesports.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -38496,6 +39479,15 @@
             {
                 "name": "max_maxforce",
                 "image": "max_maxforce.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "max_worldfinals",
+                "image": "max_worldfinals.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -38737,7 +39729,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Glowbert Boxes"
+                ],
                 "release": {
                     "month": 3,
                     "year": 2022
@@ -39107,7 +40101,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Krusty Krab"
+                    "Krusty Krab",
+                    "Pierce Boxes"
                 ],
                 "release": {
                     "month": 5,
@@ -39268,7 +40263,8 @@
                 "unlock": "",
                 "foundIn": [
                     "Pizza Planet",
-                    "Card Packs"
+                    "Card Packs",
+                    "Glowbert Boxes"
                 ],
                 "release": {
                     "month": 3,
@@ -39878,7 +40874,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Krusty Krab"
+                    "Krusty Krab",
+                    "Pierce Boxes"
                 ],
                 "release": {
                     "month": 6,
@@ -40541,6 +41538,48 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "stickybombbrawlentine",
+                "displayName": "Love Potion Squeak",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "My Brawlentine",
+                        "image": "bg_brawlentines.webp",
+                        "icon": "icon_brawlentines.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [
+                    "Love Boxes"
+                ],
+                "release": {
+                    "month": 2,
+                    "year": 2026
+                },
+                "image": "stickybombbrawlentine.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -40696,6 +41735,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "squeak_brawlentines",
+                "image": "squeak_brawlentines.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -40820,7 +41868,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Love Boxes"
+                ],
                 "release": {
                     "month": 2,
                     "year": 2021
@@ -42178,7 +43228,8 @@
                 "unlock": "",
                 "foundIn": [
                     "Presents",
-                    "Pumpkin Boxes"
+                    "Pumpkin Boxes",
+                    "Pierce Boxes"
                 ],
                 "release": {
                     "month": 1,
@@ -45397,7 +46448,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Card Packs"
+                    "Card Packs",
+                    "Glowbert Boxes"
                 ],
                 "release": {
                     "month": 12,
@@ -47242,7 +48294,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Glowbert Boxes"
+                ],
                 "release": {
                     "month": 9,
                     "year": 2023
@@ -47372,6 +48426,46 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "puppeteerlny",
+                "displayName": "Lunar Lotus Willow",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Lunar Brawl",
+                        "image": "bg_lny_2020.webp",
+                        "icon": "icon_lny_2020.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 1,
+                    "year": 2026
+                },
+                "image": "puppeteerlny.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -47486,6 +48580,15 @@
             {
                 "name": "willow_overcharge",
                 "image": "willow_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "willow_lny",
+                "image": "willow_lny.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -47724,7 +48827,9 @@
                 ],
                 "limited": false,
                 "unlock": "Available for 10 Coins during the Quest for Quests event",
-                "foundIn": [],
+                "foundIn": [
+                    "Pierce Boxes"
+                ],
                 "release": {
                     "month": 8,
                     "year": 2025
@@ -49972,7 +51077,9 @@
                 ],
                 "limited": false,
                 "unlock": "Included in the Lily early access bundle",
-                "foundIn": [],
+                "foundIn": [
+                    "Glowbert Boxes"
+                ],
                 "release": {
                     "month": 5,
                     "year": 2024
@@ -53058,6 +54165,48 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "stalkerbrawlentine",
+                "displayName": "Baddie Alli",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "My Brawlentine",
+                        "image": "bg_brawlentines.webp",
+                        "icon": "icon_brawlentines.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [
+                    "Love Boxes"
+                ],
+                "release": {
+                    "month": 2,
+                    "year": 2026
+                },
+                "image": "stalkerbrawlentine.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -53154,6 +54303,15 @@
             {
                 "name": "alli_overcharge",
                 "image": "alli_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "alli_brawlentines",
+                "image": "alli_brawlentines.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -54027,16 +55185,18 @@
                 "requires": "",
                 "features": [
                     "Brawler Model",
-                    "Texture"
+                    "Texture",
+                    "Animations",
+                    "Effects"
                 ],
                 "groups": [
                     {
-                        "name": "",
-                        "image": "bg_default.webp",
-                        "icon": "icon_default.webp"
+                        "name": "Brawl-o-ween",
+                        "image": "bg_brawloween.webp",
+                        "icon": "icon_brawloween.webp"
                     }
                 ],
-                "limited": false,
+                "limited": true,
                 "unlock": "",
                 "foundIn": [
                     "Gigi Boxes"
@@ -54067,16 +55227,18 @@
                 "requires": "",
                 "features": [
                     "Brawler Model",
-                    "Texture"
+                    "Texture",
+                    "Animations",
+                    "Effects"
                 ],
                 "groups": [
                     {
-                        "name": "",
-                        "image": "bg_default.webp",
-                        "icon": "icon_default.webp"
+                        "name": "Brawl-o-ween",
+                        "image": "bg_brawloween.webp",
+                        "icon": "icon_brawloween.webp"
                     }
                 ],
-                "limited": false,
+                "limited": true,
                 "unlock": "",
                 "foundIn": [
                     "Gigi Boxes"
@@ -54107,16 +55269,18 @@
                 "requires": "",
                 "features": [
                     "Brawler Model",
-                    "Texture"
+                    "Texture",
+                    "Animations",
+                    "Effects"
                 ],
                 "groups": [
                     {
-                        "name": "",
-                        "image": "bg_default.webp",
-                        "icon": "icon_default.webp"
+                        "name": "Brawl-o-ween",
+                        "image": "bg_brawloween.webp",
+                        "icon": "icon_brawloween.webp"
                     }
                 ],
-                "limited": false,
+                "limited": true,
                 "unlock": "",
                 "foundIn": [
                     "Gigi Boxes"
@@ -54126,6 +55290,82 @@
                     "year": 2025
                 },
                 "image": "daredevilscarecrow199gemchroma2.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "daredevilgold",
+                "displayName": "True Gold Gigi",
+                "cost": 25000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 8,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "True Silver Gigi",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Gold",
+                        "image": "bg_gold.webp",
+                        "icon": "icon_gold.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 12,
+                    "year": 2025
+                },
+                "image": "daredevilgold.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "daredevilsilver",
+                "displayName": "True Silver Gigi",
+                "cost": 10000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 8,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Silver",
+                        "image": "bg_silver.webp",
+                        "icon": "icon_silver.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 12,
+                    "year": 2025
+                },
+                "image": "daredevilsilver.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -54228,6 +55468,194 @@
             {
                 "name": "gigi_box",
                 "image": "gigi_box.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "gigi_199gem",
+                "image": "gigi_199gem.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "gigi_199gemchroma1",
+                "image": "gigi_199gemchroma1.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "gigi_199gemchroma2",
+                "image": "gigi_199gemchroma2.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "gigi_overcharge",
+                "image": "gigi_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            }
+        ]
+    },
+    {
+        "name": "glowbert",
+        "displayName": "Glowbert",
+        "rarity": {
+            "value": 4,
+            "name": "Mythic",
+            "color": "#fe0521"
+        },
+        "image": "portrait_glowbert.webp",
+        "defaultSkin": "menderdefault",
+        "title": "Sleeps with the fishes",
+        "masteryIcon": "mastery_icon_glowbert.webp",
+        "description": "A marine biologist working at the Starr Park aquarium, Glowbert is obsessed with sea life, wanting to introduce it to as many visitors as he can. Although he might seem a bit creepy, he's actually a nice guy! Maybe.",
+        "skins": [
+            {
+                "name": "menderdefault",
+                "displayName": "Glowbert",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 0,
+                    "name": "",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [],
+                "groups": [
+                    {
+                        "name": "",
+                        "image": "bg_default.webp",
+                        "icon": "icon_default.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 1,
+                    "year": 2026
+                },
+                "image": "menderdefault.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "name": "glowbert_default",
+                "image": "glowbert_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "glowbert_happy",
+                "image": "glowbert_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "glowbert_sad",
+                "image": "glowbert_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "glowbert_angry",
+                "image": "glowbert_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "glowbert_gg",
+                "image": "glowbert_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "glowbert_clap",
+                "image": "glowbert_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "glowbert_thanks",
+                "image": "glowbert_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "glowbert_sweat",
+                "image": "glowbert_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "glowbert_special",
+                "image": "glowbert_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "glowbert_facepalm",
+                "image": "glowbert_facepalm.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "glowbert_box",
+                "image": "glowbert_box.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -56221,7 +57649,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Krusty Krab"
+                    "Krusty Krab",
+                    "Pierce Boxes"
                 ],
                 "release": {
                     "month": 7,
@@ -56302,7 +57731,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Glowbert Boxes"
+                ],
                 "release": {
                     "month": 5,
                     "year": 2023
@@ -58074,7 +59505,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Presents"
+                    "Presents",
+                    "Pierce Boxes"
                 ],
                 "release": {
                     "month": 12,
@@ -58704,7 +60136,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Krusty Krab"
+                    "Krusty Krab",
+                    "Glowbert Boxes"
                 ],
                 "release": {
                     "month": 8,
@@ -60684,7 +62117,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Glowbert Boxes"
+                ],
                 "release": {
                     "month": 9,
                     "year": 2023
@@ -63013,6 +64448,320 @@
                     "name": "Epic",
                     "color": "#b116ec"
                 }
+            },
+            {
+                "name": "kenji_japanoverchargechroma1",
+                "image": "kenji_japanoverchargechroma1.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            }
+        ]
+    },
+    {
+        "name": "pierce",
+        "displayName": "Pierce",
+        "rarity": {
+            "value": 5,
+            "name": "Legendary",
+            "color": "#fdf11e"
+        },
+        "image": "portrait_pierce.webp",
+        "defaultSkin": "bulletstormdefault",
+        "title": "Peed in the pool",
+        "masteryIcon": "mastery_icon_pierce.webp",
+        "description": "You know pool lifeguards? Pierce is one of those. Except he shoots people instead of saving them. OK maybe he isn't like a lifeguard at all. When Buzz decides there has been too much pee in the pool, he calls in Pierce to 'clean up'.",
+        "skins": [
+            {
+                "name": "bulletstormdefault",
+                "displayName": "Pierce",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 0,
+                    "name": "",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [],
+                "groups": [
+                    {
+                        "name": "",
+                        "image": "bg_default.webp",
+                        "icon": "icon_default.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 12,
+                    "year": 2025
+                },
+                "image": "bulletstormdefault.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "bulletstorm199gem",
+                "displayName": "Pierce: Vampire Hunter",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Misc",
+                        "image": "bg_default.webp",
+                        "icon": "icon_misc.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [
+                    "Pierce Boxes"
+                ],
+                "release": {
+                    "month": 12,
+                    "year": 2025
+                },
+                "image": "bulletstorm199gem.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "bulletstorm199gemchroma1",
+                "displayName": "Edgy Pierce",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Misc",
+                        "image": "bg_default.webp",
+                        "icon": "icon_misc.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [
+                    "Pierce Boxes"
+                ],
+                "release": {
+                    "month": 12,
+                    "year": 2025
+                },
+                "image": "bulletstorm199gemchroma1.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "bulletstorm199gemchroma2",
+                "displayName": "High Stakes Pierce",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Misc",
+                        "image": "bg_default.webp",
+                        "icon": "icon_misc.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [
+                    "Pierce Boxes"
+                ],
+                "release": {
+                    "month": 12,
+                    "year": 2025
+                },
+                "image": "bulletstorm199gemchroma2.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "name": "pierce_default",
+                "image": "pierce_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "pierce_happy",
+                "image": "pierce_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "pierce_sad",
+                "image": "pierce_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "pierce_angry",
+                "image": "pierce_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "pierce_gg",
+                "image": "pierce_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "pierce_clap",
+                "image": "pierce_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "pierce_thanks",
+                "image": "pierce_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "pierce_sweat",
+                "image": "pierce_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "pierce_special",
+                "image": "pierce_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "pierce_facepalm",
+                "image": "pierce_facepalm.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "pierce_box",
+                "image": "pierce_box.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "pierce_199gem",
+                "image": "pierce_199gem.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "pierce_199gemchroma1",
+                "image": "pierce_199gemchroma1.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "pierce_199gemchroma2",
+                "image": "pierce_199gemchroma2.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -63022,7 +64771,7 @@
         "rarity": {
             "value": 6,
             "name": "Ultra Legendary",
-            "color": "#f87628"
+            "color": "#e1fb2a"
         },
         "image": "portrait_kaze.webp",
         "defaultSkin": "geishadefault",
@@ -63172,6 +64921,47 @@
                     "year": 2025
                 },
                 "image": "geishasilver.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "geishasteampunk",
+                "displayName": "Clockwork Kaze",
+                "cost": 299,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 5,
+                    "name": "Legendary",
+                    "icon": "skin_rarity_5.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Steampunk",
+                        "image": "bg_steampunk.webp",
+                        "icon": "icon_steampunk.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 1,
+                    "year": 2026
+                },
+                "image": "geishasteampunk.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -63364,6 +65154,87 @@
             {
                 "name": "kaze_overcharge",
                 "image": "kaze_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "kaze_steampunk_default",
+                "image": "kaze_steampunk_default.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "kaze_steampunk_happy",
+                "image": "kaze_steampunk_happy.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "kaze_steampunk_sad",
+                "image": "kaze_steampunk_sad.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "kaze_steampunk_angry",
+                "image": "kaze_steampunk_angry.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "kaze_steampunk_gg",
+                "image": "kaze_steampunk_gg.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "kaze_steampunk_clap",
+                "image": "kaze_steampunk_clap.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "kaze_steampunk_thanks",
+                "image": "kaze_steampunk_thanks.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "kaze_steampunk_sweat",
+                "image": "kaze_steampunk_sweat.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "kaze_steampunk_special",
+                "image": "kaze_steampunk_special.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",

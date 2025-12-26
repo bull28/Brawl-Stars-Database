@@ -508,5 +508,15 @@
         "name": "Gym Rats",
         "image": "bg_gym",
         "icon": "icon_gym"
+    },
+    "steampunk": {
+        "name": "Steampunk",
+        "image": "bg_steampunk",
+        "icon": "icon_steampunk"
+    },
+    "wf_2025": {
+        "name": "BSC 2025",
+        "image": "bg_wf",
+        "icon": "icon_wf"
     }
 }
