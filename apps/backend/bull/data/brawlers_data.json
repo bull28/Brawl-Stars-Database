@@ -32714,7 +32714,7 @@
                         "icon": "icon_brawlpass.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "Reward from Brawl Pass Season 33 tier 50",
                 "foundIn": [],
                 "release": {
@@ -32758,7 +32758,7 @@
                         "icon": "icon_brawlpass.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "Reward from Brawl Pass Plus Season 33 tier 46",
                 "foundIn": [],
                 "release": {
@@ -32802,7 +32802,7 @@
                         "icon": "icon_brawlpass.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "Reward from Brawl Pass Plus Season 33 tier 48",
                 "foundIn": [],
                 "release": {
@@ -35569,7 +35569,7 @@
                         "icon": "icon_wf.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "",
                 "foundIn": [],
                 "release": {
@@ -36475,7 +36475,7 @@
                         "icon": "icon_retro.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "",
                 "foundIn": [
                     "Mega Boxes",
@@ -51886,7 +51886,7 @@
                         "icon": "icon_ranked.webp"
                     }
                 ],
-                "limited": false,
+                "limited": true,
                 "unlock": "",
                 "foundIn": [
                     "Ranked Starr Drops"
@@ -55196,7 +55196,7 @@
                         "icon": "icon_brawloween.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "",
                 "foundIn": [
                     "Gigi Boxes"
@@ -55238,7 +55238,7 @@
                         "icon": "icon_brawloween.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "",
                 "foundIn": [
                     "Gigi Boxes"
@@ -55280,7 +55280,7 @@
                         "icon": "icon_brawloween.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "",
                 "foundIn": [
                     "Gigi Boxes"
@@ -56972,7 +56972,7 @@
                         "icon": "icon_brawlpass.webp"
                     }
                 ],
-                "limited": false,
+                "limited": true,
                 "unlock": "Reward from Brawl Pass Plus Season 43 tier 46",
                 "foundIn": [],
                 "release": {
@@ -57017,7 +57017,7 @@
                         "icon": "icon_brawlpass.webp"
                     }
                 ],
-                "limited": false,
+                "limited": true,
                 "unlock": "Reward from Brawl Pass Plus Season 43 tier 48",
                 "foundIn": [],
                 "release": {
@@ -64771,7 +64771,7 @@
         "rarity": {
             "value": 6,
             "name": "Ultra Legendary",
-            "color": "#e1fb2a"
+            "color": "#e1fa29"
         },
         "image": "portrait_kaze.webp",
         "defaultSkin": "geishadefault",

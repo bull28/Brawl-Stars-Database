@@ -539,6 +539,7 @@ export interface ChallengeGameMod{
         classicUnlocks: boolean;
         maxAccessories: number;
         maxReportLevels: number;
+        upgradesAtStart: boolean;
         menuTheme: string;
     }>;
     difficulties?: {

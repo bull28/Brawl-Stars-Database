@@ -58,7 +58,7 @@ export default class StaticChallenge implements ChallengeCategory{
 
         if (srcOptions !== undefined){
             // These are all the options that static challenges are able to set
-            const {gameMode, startingPower, startingGears, startingHyper, addBonusEnemies, classicUnlocks, maxAccessories} = srcOptions;
+            const {gameMode, startingPower, startingGears, startingHyper, addBonusEnemies, classicUnlocks, maxAccessories, upgradesAtStart} = srcOptions;
             if (gameMode !== undefined){
                 options.gameMode = gameMode;
             } if (startingPower !== undefined){
@@ -73,6 +73,8 @@ export default class StaticChallenge implements ChallengeCategory{
                 options.classicUnlocks = classicUnlocks;
             } if (maxAccessories !== undefined){
                 options.maxAccessories = maxAccessories;
+            } if (upgradesAtStart !== undefined){
+                options.upgradesAtStart = upgradesAtStart;
             }
         }
         if (challenge.difficulties !== undefined){

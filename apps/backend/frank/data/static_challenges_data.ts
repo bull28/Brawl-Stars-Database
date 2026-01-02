@@ -456,7 +456,10 @@ const challenges = new Map<string, StaticPreset>([
         },
         gameMod: {
             options: {
-                startingHyper: 200
+                startingPower: 40,
+                startingGears: 8,
+                startingHyper: 200,
+                upgradesAtStart: true
             },
             difficulties: [
                 {
@@ -466,7 +469,7 @@ const challenges = new Map<string, StaticPreset>([
                     strengthTier: 1,
                     healthBonusReq: 0.45,
                     timePerEnemy: 0.8,
-                    enemyStats: [24, 24]
+                    enemyStats: [24]
                 },
                 {
                     difficultyid: 6,
@@ -475,7 +478,7 @@ const challenges = new Map<string, StaticPreset>([
                     strengthTier: 2,
                     healthBonusReq: 0.5,
                     timePerEnemy: 0.75,
-                    enemyStats: [33, 36]
+                    enemyStats: [36]
                 },
                 {
                     difficultyid: 7,
@@ -484,7 +487,7 @@ const challenges = new Map<string, StaticPreset>([
                     strengthTier: 3,
                     healthBonusReq: 0.5,
                     timePerEnemy: 0.75,
-                    enemyStats: [44, 48],
+                    enemyStats: [48],
                 },
                 {
                     difficultyid: 9,
@@ -493,25 +496,14 @@ const challenges = new Map<string, StaticPreset>([
                     strengthTier: 4,
                     healthBonusReq: 0.5,
                     timePerEnemy: 0.6666666666666666,
-                    enemyStats: [94, 100],
+                    enemyStats: [100],
                 }
             ],
             stages: [
-                {completion: 0, time: 0, powerReward: 10, gearsReward: 0},
                 {completion: 300, time: 180, powerReward: 0, gearsReward: 0}
             ],
             maxScores: {completion: 300, time: 180, destination: 0, health: 90, gear: 30, enemy: 0},
             levels: [
-                {
-                    levelid: 0,
-                    waves: [
-                        {names: [["firstmeteor"]], multiple: []}
-                    ],
-                    background: "entrance",
-                    displayName: "Starr Park Entrance",
-                    stages: [0],
-                    destination: 0
-                },
                 {
                     levelid: 13,
                     waves: [
@@ -519,7 +511,7 @@ const challenges = new Map<string, StaticPreset>([
                     ],
                     background: "rooftop",
                     displayName: "Rooftop",
-                    stages: [1],
+                    stages: [0],
                     destination: 0
                 }
             ],
