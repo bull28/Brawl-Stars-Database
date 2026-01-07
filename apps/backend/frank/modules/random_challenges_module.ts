@@ -451,6 +451,7 @@ export default class RandomChallenge implements ChallengeCategory{
 
         return {
             options: options,
+            unlocks: {},
             difficulties: [difficulty],
             stages: stages,
             levels: levels,

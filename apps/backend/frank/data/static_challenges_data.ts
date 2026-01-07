@@ -119,10 +119,12 @@ const challenges = new Map<string, StaticPreset>([
         gameMod: {
             options: {
                 //gameMode: 1,
+                bonusResources: false
+            },
+            unlocks: {
                 maxAccessories: 0,
                 startingPower: 0,
-                startingGears: 3,
-                bonusResources: false
+                startingGears: 3
             },
             difficulties: [
                 {
@@ -323,7 +325,7 @@ const challenges = new Map<string, StaticPreset>([
                         {names: [["r12"]], multiple: []},
                         {names: [["r4", "r6", "r10"]], multiple: [], delay: 6, maxEnemies: 10},
                         {names: [[], ["r12"], ["r16"]], multiple: [], delay: 10, maxEnemies: 2},
-                        {names: [["mandy"]], multiple: [], delay: 1},
+                        {names: [["brock"]], multiple: [], delay: 1},
                         {names: [["chester"]], multiple: [], delay: 8, maxEnemies: 1}
                     ],
                     background: "candystand",
@@ -456,10 +458,12 @@ const challenges = new Map<string, StaticPreset>([
         },
         gameMod: {
             options: {
+                upgradesAtStart: true
+            },
+            unlocks: {
                 startingPower: 40,
                 startingGears: 8,
-                startingHyper: 200,
-                upgradesAtStart: true
+                startingHyper: 200
             },
             difficulties: [
                 {
@@ -734,7 +738,7 @@ const challenges = new Map<string, StaticPreset>([
                         {names: [[], ["r6"]], multiple: [{name: "rangedrobot", count: [2]}, {name: "fastrobot", count: [1]}]},
                         {names: [[], [], [], ["r8"]], multiple: [{name: "r2", count: [0, 0, 0, 1, 2]}], delay: 12, maxEnemies: 10},
                         {names: [[], [], ["r4"], [], ["r10"]], multiple: [{name: "r2", count: [0, 0, 3]}], delay: 12, maxEnemies: 3},
-                        {names: [["mandy"]], multiple: [], delay: 1},
+                        {names: [["brock"]], multiple: [], delay: 1},
                         {names: [["chester"]], multiple: [], delay: 1}
                     ],
                     background: "candystand",

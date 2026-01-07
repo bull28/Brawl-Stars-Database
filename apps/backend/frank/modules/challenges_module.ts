@@ -158,26 +158,35 @@ export function getGameMod(challengeid: string, key: string, resources: UserReso
     }
 
     const options = gameMod.options;
+    const unlocks = gameMod.unlocks;
     const stages = gameMod.stages;
 
     const masteryLevel = getMasteryLevel(resources.mastery).level;
     const upgrades = getPlayerUpgrades(masteryLevel);
 
     if (options !== undefined){
-        const {startingPower, startingGears, startingHyper, maxAccessories} = options;
+        options.key = key;
+        options.menuTheme = resources.menu_theme;
+    }
+    if (unlocks !== undefined){
+        const {maxAccessories, startingPower, startingGears, startingHyper, gearSlots, starPowers} = unlocks;
+        // If these values are set by the challenge, use them. Otherwise, use the player's upgrades.
         if (startingPower === undefined){
-            options.startingPower = upgrades.startingPower;
+            unlocks.startingPower = upgrades.startingPower;
         } if (startingGears === undefined){
-            options.startingGears = upgrades.startingGears;
+            unlocks.startingGears = upgrades.startingGears;
         } if (startingHyper === undefined){
-            options.startingHyper = 0;
+            unlocks.startingHyper = 0;
         } if (maxAccessories === undefined){
-            options.maxAccessories = upgrades.maxAccessories;
+            unlocks.maxAccessories = upgrades.maxAccessories;
         }
 
-        options.key = key;
-        options.classicUnlocks = false;
-        options.menuTheme = resources.menu_theme;
+        // By default, gear slots and star power selection are not modified in static challenges.
+        if (gearSlots === undefined){
+            unlocks.gearSlots = 0;
+        } if (starPowers === undefined){
+            unlocks.starPowers = -1;
+        }
     }
     if (stages !== undefined){
         const powerRewards = stageResourceRewards(stages.length, upgrades.powerPerStage, upgrades.maxExtraPower);

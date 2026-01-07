@@ -5,8 +5,8 @@ import {sampleGameReport, GAME_VERSION} from "../database_setup";
 
 const REPORT_FORMAT = {
     version: [0, 2], mode: [2, 3], player: [3, 8], gears: [8, 10], accessories: [10, 20],
-    score: [20, 26], achievements: [26, 35], upgrades: [35, 42], stats: [42, 50],
-    visited: [50, 58], levels: [58, 106], enemies: [106, 139], length: [0, 139]
+    score: [20, 26], achievements: [26, 33], resources: [33, 36], upgrades: [36, 43],
+    stats: [43, 51], visited: [51, 59], levels: [59, 107], enemies: [107, 140], length: [0, 140]
 };
 
 const emptyReport: number[] = [];
@@ -18,8 +18,8 @@ for (let x = 0; x < REPORT_FORMAT.length[1]; x++){
 // Gears 1 and 2 (Health and Shield), First 5 Accessories
 const previewReport = [0, 0, 0, 500, 1, 3, 0, 2, 1, 2, 0, 1, 2, 3, 4, -1, -1, -1, -1, -1, 300, 150, 0, 50, 0, 0, 0, 600];
 for (let x = previewReport.length; x < REPORT_FORMAT.length[1]; x++){
-    if (x >= 40 && x <= 47){
-        previewReport.push(x - 40);
+    if (x >= 43 && x <= 50){
+        previewReport.push(x - 43);
     } else{
         previewReport.push(0);
     }

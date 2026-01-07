@@ -719,13 +719,13 @@
         ],
         "enemies": []
     },
-    "mandy": {
-        "displayName": "Mandy",
-        "image": "mandy/mandy_lavaqueen_default.webp",
-        "fullImage": "mandy/beamerlavaqueen.webp",
+    "brock": {
+        "displayName": "Brock",
+        "image": "brock/brock_steampunk.webp",
+        "fullImage": "brock/rocketgirlsteampunk.webp",
         "enemyClass": "Marksman",
-        "description": "Receives less damage if you are not standing still. Every few seconds, shoots a super candy towards your location.",
-        "strengthTier": "Time between attacks becomes more variable, projectiles move faster, and super candy deals more damage.",
+        "description": "Receives less damage if you are not standing still. Every few seconds, shoots a large rocket towards your location.",
+        "strengthTier": "Time between attacks becomes more variable, projectiles move faster, and large rocket deals more damage.",
         "value": 16,
         "health": 6600,
         "speed": 20,
@@ -745,8 +745,8 @@
         "enemies": [
             {
                 "count": 1,
-                "displayName": "Super Candy",
-                "description": "Hitting this with your attack will deflect it back towards Mandy, dealing damage if it hits.",
+                "displayName": "Rocket Attack",
+                "description": "Hitting this with your attack will deflect it back towards Brock, dealing damage if it hits.",
                 "strengthTier": "",
                 "value": 0,
                 "health": 1,
@@ -761,7 +761,7 @@
                         "reload": 4.5,
                         "knockback": 0,
                         "fireDamage": 0,
-                        "description": "Deals more damage to both you and Mandy the farther the candy travels."
+                        "description": "Deals more damage to both you and Brock the farther the rocket travels."
                     }
                 ]
             }
@@ -1194,27 +1194,27 @@
             }
         ]
     },
-    "hank": {
-        "displayName": "Hank",
-        "image": "hank/hank_default.webp",
-        "fullImage": "hank/fishtankdefault.webp",
+    "mico": {
+        "displayName": "Mico",
+        "image": "mico/mico_default.webp",
+        "fullImage": "mico/leaperdefault.webp",
         "enemyClass": "Bonus",
-        "description": "Spins a bubble around itself for a few seconds before releasing it. Gives bonus score if defeated before releasing 2 bubbles.",
+        "description": "Runs and jumps around randomly. Gives bonus score if defeated within 20 seconds.",
         "strengthTier": "",
         "value": 0,
         "health": 3200,
         "speed": 10,
         "attacks": [
             {
-                "displayName": "Default Attack",
-                "minDamage": 800,
-                "maxDamage": 800,
+                "displayName": "Jump Attack",
+                "minDamage": 400,
+                "maxDamage": 400,
                 "damageType": 0,
-                "range": 1,
-                "reload": 6,
+                "range": 10,
+                "reload": 2,
                 "knockback": 0,
                 "fireDamage": 0,
-                "description": "Charges up a bubble while spinning around then releases it, dealing damage in a random direction."
+                "description": "Deals damage when landing from the jump."
             }
         ],
         "enemies": []

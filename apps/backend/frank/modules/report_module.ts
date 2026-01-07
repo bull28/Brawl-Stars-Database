@@ -11,8 +11,8 @@ interface ScorePerformance{
 
 const REPORT_FORMAT = {
     version: [0, 2], mode: [2, 3], player: [3, 8], gears: [8, 10], accessories: [10, 20],
-    score: [20, 26], achievements: [26, 35], upgrades: [35, 42], stats: [42, 50],
-    visited: [50, 58], levels: [58, 106], enemies: [106, 139], length: [0, 139]
+    score: [20, 26], achievements: [26, 33], resources: [33, 36], upgrades: [36, 43],
+    stats: [43, 51], visited: [51, 59], levels: [59, 107], enemies: [107, 140], length: [0, 140]
 };
 const SCORE_CONSTANTS = {
     stages: [
@@ -27,7 +27,7 @@ const SCORE_CONSTANTS = {
     ],
     maxScores: {completion: 300, time: 150, destination: 50, health: 50, gear: 30, enemy: 20},
     bonusEnemies: [
-        {name: "hank", index: 30, score: 6},
+        {name: "mico", index: 30, score: 6},
         {name: "buster", index: 31, score: 14}
     ]
 };
@@ -53,7 +53,7 @@ const badgeList = [
     {name: "colette", category: "enemy", index: 17, coins: [112, 120]},
     {name: "pearl", category: "enemy", index: 18, coins: [132, 148]},
     {name: "bibi", category: "enemy", index: 19, coins: [136, 152]},
-    {name: "mandy", category: "enemy", index: 20, coins: [140, 156]},
+    {name: "brock", category: "enemy", index: 20, coins: [140, 156]},
     {name: "chester", category: "enemy", index: 21, coins: [172, 188]},
     {name: "ollie", category: "enemy", index: 22, coins: [144, 160]},
     {name: "leon", category: "enemy", index: 23, coins: [212, 236]},
@@ -208,7 +208,7 @@ function getFinalScore(reports: number[], enemyCounts: number[]): number[]{
 }
 
 export function validateReport(report: GameReport): number{
-    // Last updated: version 100
+    // Last updated: version 101
 
     if (Array.isArray(report) === false){
         // Invalid report type
@@ -231,7 +231,7 @@ export function validateReport(report: GameReport): number{
     }
 
     // The first number contains major version (16 bits), minor version (4 bits), and report length (12 bits)
-    if ((report[0] >> 16) < 100){
+    if ((report[0] >> 16) < 101){
         // Old report version
         return 3;
     }

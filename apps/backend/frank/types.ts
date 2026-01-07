@@ -531,16 +531,20 @@ export interface ChallengeGameMod{
         key: string;
         gameMode: number;
         gameName: string;
-        startingPower: number;
-        startingGears: number;
-        startingHyper: number;
         bonusResources: boolean;
         addBonusEnemies: boolean;
-        classicUnlocks: boolean;
-        maxAccessories: number;
         maxReportLevels: number;
         upgradesAtStart: boolean;
         menuTheme: string;
+    }>;
+    unlocks?: Partial<{
+        maxAccessories: number;
+        startingPower: number;
+        startingGears: number;
+        startingHyper: number;
+        gearSlots: number;
+        gears: number;
+        starPowers: number;
     }>;
     difficulties?: {
         difficultyid: number;

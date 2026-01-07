@@ -65,7 +65,7 @@ describe("Challenges module", function(){
 
         expect(challenge1).to.be.an("object");
         expect(challenge1).to.include.keys([
-            "options", "difficulties", "stages", "levels",
+            "options", "unlocks", "difficulties", "stages", "levels", "maxScores",
             "playerAccessories", "playerUpgradeTiers", "playerUpgradeValues"
         ]);
 
@@ -73,14 +73,17 @@ describe("Challenges module", function(){
             key: "key",
             gameMode: options.gameMode,
             gameName: "Test Static Challenge",
+            bonusResources: false,
+            addBonusEnemies: false,
+            menuTheme: "retropolis"
+        });
+        expect(challenge1.unlocks).to.eql({
+            maxAccessories: 30,
             startingPower: 0,
             startingGears: 4,
             startingHyper: 0,
-            bonusResources: false,
-            addBonusEnemies: false,
-            classicUnlocks: false,
-            maxAccessories: 30,
-            menuTheme: "retropolis"
+            gearSlots: 0,
+            starPowers: -1
         });
         expect(challenge1.difficulties).to.eql(preset.difficulties);
         expect(challenge1.levels).to.eql(preset.levels);
@@ -105,7 +108,7 @@ describe("Challenges module", function(){
 
         expect(challenge1).to.be.an("object");
         expect(challenge1).to.include.keys([
-            "options", "difficulties", "stages", "levels", "maxScores",
+            "options", "unlocks", "difficulties", "stages", "levels", "maxScores",
             "playerAccessories", "playerUpgradeTiers"
         ]);
 
@@ -113,14 +116,18 @@ describe("Challenges module", function(){
             key: "key",
             gameMode: 2,
             gameName: "Test Random Challenge",
+            bonusResources: false,
+            addBonusEnemies: false,
+            menuTheme: "retropolis"
+        });
+
+        expect(challenge1.unlocks).to.eql({
+            maxAccessories: 30,
             startingPower: 0,
             startingGears: 4,
             startingHyper: 0,
-            bonusResources: false,
-            addBonusEnemies: false,
-            classicUnlocks: false,
-            maxAccessories: 30,
-            menuTheme: "retropolis"
+            gearSlots: 0,
+            starPowers: -1
         });
 
         const presetDiff = preset.difficulty;

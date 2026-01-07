@@ -50,31 +50,45 @@ export default class StaticChallenge implements ChallengeCategory{
             //maxAccessories: upgrades.maxAccessories,
             //menuTheme: resources.menu_theme
         };
+        const unlocks: ChallengeGameMod["unlocks"] = {};
         const stages: ChallengeGameMod["stages"] = [];
         const srcOptions = challenge.options;
+        const srcUnlocks = challenge.unlocks;
         const srcStages = challenge.stages;
 
-        const gameMod: ChallengeGameMod = {options: options};
+        const gameMod: ChallengeGameMod = {options: options, unlocks: unlocks};
 
         if (srcOptions !== undefined){
             // These are all the options that static challenges are able to set
-            const {gameMode, startingPower, startingGears, startingHyper, addBonusEnemies, classicUnlocks, maxAccessories, upgradesAtStart} = srcOptions;
+            const {gameMode, addBonusEnemies, upgradesAtStart} = srcOptions;
             if (gameMode !== undefined){
                 options.gameMode = gameMode;
-            } if (startingPower !== undefined){
-                options.startingPower = startingPower;
-            } if (startingGears !== undefined){
-                options.startingGears = startingGears;
-            } if (startingHyper !== undefined){
-                options.startingHyper = startingHyper;
             } if (addBonusEnemies !== undefined){
                 options.addBonusEnemies = addBonusEnemies;
-            } if (classicUnlocks !== undefined){
-                options.classicUnlocks = classicUnlocks;
-            } if (maxAccessories !== undefined){
-                options.maxAccessories = maxAccessories;
             } if (upgradesAtStart !== undefined){
                 options.upgradesAtStart = upgradesAtStart;
+            }
+        }
+        if (srcUnlocks !== undefined){
+            // const {maxAccessories, startingPower, startingGears, startingHyper, gears, starPowers} = srcUnlocks;
+            // if (maxAccessories !== undefined){
+            //     unlocks.maxAccessories = maxAccessories;
+            // } if (startingPower !== undefined){
+            //     unlocks.startingPower = startingPower;
+            // } if (startingGears !== undefined){
+            //     unlocks.startingGears = startingGears;
+            // } if (startingHyper !== undefined){
+            //     unlocks.startingHyper = startingHyper;
+            // } if (gears !== undefined){
+            //     unlocks.gears = gears;
+            // } if (starPowers !== undefined){
+            //     unlocks.starPowers = starPowers;
+            // }
+            for (const x in srcUnlocks){
+                const key = x as keyof Required<ChallengeGameMod>["unlocks"];
+                if (srcUnlocks[key] !== undefined){
+                    unlocks[key] = srcUnlocks[key];
+                }
             }
         }
         if (challenge.difficulties !== undefined){

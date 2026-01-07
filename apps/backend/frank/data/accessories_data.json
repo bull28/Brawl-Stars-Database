@@ -48,7 +48,7 @@
         "description": "Increases attack range.", "unlock": "Buy from the Shop.", "badges": 1
     },
     {
-        "name": "shop8", "category": "", "displayName": "Brock's Rocket Launcher",
+        "name": "shop8", "category": "", "displayName": "Finx's Time Staff",
         "description": "Increases projectile speed.", "unlock": "Buy from the Shop.", "badges": 1
     },
     {
@@ -152,8 +152,8 @@
         "description": "Receive less damage from Tank enemies.", "unlock": "Defeat Bibi enemies.", "badges": 500
     },
     {
-        "name": "mandy", "category": "enemy", "displayName": "Mandy's Candy Dispenser",
-        "description": "Deal more damage to Marksman enemies.", "unlock": "Defeat Mandy enemies.", "badges": 500
+        "name": "brock", "category": "enemy", "displayName": "Brock's Rocket Launcher",
+        "description": "Deal more damage to Marksman enemies.", "unlock": "Defeat Brock enemies.", "badges": 500
     },
     {
         "name": "chester", "category": "enemy", "displayName": "Chester's Box",
@@ -228,6 +228,18 @@
         "description": "Super charges faster from all sources when playing as Maisie.", "unlock": "Win with Maisie.", "badges": 100
     },
     {
+        "name": "shade", "category": "player", "displayName": "Shade's Keychain",
+        "description": "All healing is increased when playing as Shade.", "unlock": "Win with Shade.", "badges": 100
+    },
+    {
+        "name": "mandy", "category": "player", "displayName": "Mandy's Candy Dispenser",
+        "description": "All damage buffs are stronger when playing as Mandy.", "unlock": "Win with Mandy.", "badges": 100
+    },
+    {
+        "name": "hank", "category": "player", "displayName": "Hank's Helmet",
+        "description": "All healing and damage buffs are increased when playing as Hank.", "unlock": "Win with Hank.", "badges": 100
+    },
+    {
         "name": "oldtown", "category": "location", "displayName": "Barley's Bottle",
         "description": "After not taking damage for a few seconds, get a shield.", "unlock": "Complete levels at Old Town.", "badges": 250
     },
@@ -290,6 +302,10 @@
     {
         "name": "challenges", "category": "", "displayName": "Starr Drop",
         "description": "Gain more mastery points from rewards.", "unlock": "Complete challenges.", "badges": 100
+    },
+    {
+        "name": "trials", "category": "", "displayName": "Heist Safe",
+        "description": "Receiving damage charges the super.", "unlock": "This accessory will be released later.", "badges": 100
     },
     {
         "name": "nomove", "category": "", "displayName": "Charlie's Cocoon",

@@ -21,7 +21,7 @@ const enemyList: {name: string; value: number;}[] = [
     {name: "colette", value: 12},
     {name: "pearl", value: 16},
     {name: "bibi", value: 16},
-    {name: "mandy", value: 16},
+    {name: "brock", value: 16},
     {name: "ollie", value: 16},
     {name: "chester", value: 20},
     {name: "bonnie", value: 20},
