@@ -166,7 +166,19 @@ randomChallenges.set(TEST_RANDOM_ID, {
         completion: [30, 30, 30, 30, 30, 30, 30, 30, 30, 30],
         time: [18, 18, 18, 18, 18, 18, 18, 18, 18, 18]
     },
-    waves: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    stages: [
+        [{index: 0}],
+        [{index: 1}],
+        [{index: 2}],
+        [{index: 3}],
+        [{index: 4}],
+        [{index: 5}],
+        [{index: 6}],
+        [{index: 7}],
+        [{index: 8}],
+        [{index: 9}]
+    ],
+    location: 0,
     options: {level: 0, power: 10, accs: 2}
 });
 

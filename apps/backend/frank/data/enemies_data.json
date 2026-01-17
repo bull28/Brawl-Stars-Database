@@ -401,7 +401,7 @@
                 "reload": 1.8,
                 "knockback": 0,
                 "fireDamage": 0,
-                "description": "Shoots 5 projectiles in a cone pattern. Reloads faster the lower health Frank has."
+                "description": "Shoots 5 projectiles in a cone pattern. Reloads faster the less health Frank has."
             },
             {
                 "displayName": "Stun Attack",
@@ -1071,7 +1071,7 @@
                 "reload": 1,
                 "knockback": 0,
                 "fireDamage": 0,
-                "description": "This attack's damage increases the lower health Kaze has and the higher the difficulty is."
+                "description": "This attack's damage increases the less health Kaze has and the higher the difficulty is."
             }
         ],
         "enemies": [
@@ -1211,7 +1211,7 @@
                 "maxDamage": 400,
                 "damageType": 0,
                 "range": 10,
-                "reload": 2,
+                "reload": 2.5,
                 "knockback": 0,
                 "fireDamage": 0,
                 "description": "Deals damage when landing from the jump."
@@ -1240,6 +1240,31 @@
                 "knockback": 0,
                 "fireDamage": 0,
                 "description": "Only used when Buster is attacked."
+            }
+        ],
+        "enemies": []
+    },
+    "siegebase": {
+        "displayName": "Siege Base",
+        "image": "",
+        "fullImage": "",
+        "enemyClass": "Bonus",
+        "description": "Receives 50% less damage if you are not within its range. Every 1/4 of max health lost, receives a shield that blocks the next 8 hits but decays by 1 hit every second.",
+        "strengthTier": "Increases shield strength between phases and reload speed when at low health.",
+        "value": 1,
+        "health": 24000,
+        "speed": 0,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 360,
+                "maxDamage": 864,
+                "damageType": 0,
+                "range": 80,
+                "reload": 1.2,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": "Reloads faster the less health the Siege Base has and the higher the difficulty is."
             }
         ],
         "enemies": []

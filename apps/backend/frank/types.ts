@@ -572,6 +572,8 @@ export interface ChallengeGameMod{
             delay?: number;
             maxEnemies?: number;
             onDifficulty?: number;
+            winCon?: boolean;
+            spawnRegion?: string;
         }[];
         background: string;
         displayName: string;

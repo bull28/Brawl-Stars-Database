@@ -1,22 +1,16 @@
-import presets, {enemyList, locationList, locationWeights, levelTiers, masteryStats} from "../data/random_challenges_data";
+import presets, {RandomPreset, enemyList, locationList, locationWeights, levelTiers, masteryStats} from "../data/random_challenges_data";
 import {ChallengePreview, ChallengeGameMod, ChallengeRewardResult, ChallengeCategory} from "../types";
 
-type WaveResult = {
-    names: string[][];
-    multiple: {
-        name: string;
-        count: number[];
-    }[];
-    delay?: number;
-    maxEnemies?: number;
-    onDifficulty?: number;
-}[];
+type WaveResult = Required<ChallengeGameMod>["levels"][number]["waves"];
 
 interface RandomWaveOptions{
     waves: number[];
     weights: number[];
-    maxEnemies: number;
     delayFactor: number;
+    includeEmpty: boolean;
+    maxEnemies: number;
+    winCon: boolean;
+    spawnRegion: string;
 }
 
 type Enemy = [string, number];
@@ -101,7 +95,7 @@ function getEnemyStats(base: number, stages: number, power: number, accs: number
     return stats;
 }
 
-function createWaves(targets: number[], maxEnemies: number, weights: number[]): {values: number[]; enemies: Enemy[][];}{
+function createWaves(targets: number[], weights: number[]): {values: number[]; enemies: Enemy[][];}{
     let totalValue = 0;
     let maxValue = 0;
     let enemyCount = 0;
@@ -131,7 +125,7 @@ function createWaves(targets: number[], maxEnemies: number, weights: number[]): 
     }
 
     let w = 0;
-    while (w < targets.length && enemyCount < maxEnemies){
+    while (w < targets.length && enemyCount < 25){
         const enemy = enemyList[RNG(tempDist)];
 
         if (shouldAddEnemy(maxValue, totalValue, totalValue + enemy.value) === true){
@@ -250,10 +244,9 @@ function splitWaves(values: number[], targets: number[], enemies: Enemy[][], sta
 function generateRandomWaves(params: RandomWaveOptions): WaveResult{
     const wavesData = params.waves;
     const weights = params.weights;
-    const maxEnemies = params.maxEnemies;
     const delay = Math.max(0, params.delayFactor);
 
-    if (wavesData.length <= 0 || weights.length <= 0 || maxEnemies <= 0){
+    if (wavesData.length <= 0 || weights.length <= 0){
         return [];
     }
 
@@ -262,7 +255,7 @@ function generateRandomWaves(params: RandomWaveOptions): WaveResult{
         targets.push(wavesData[x]);
     }
 
-    const {values, enemies} = createWaves(targets, maxEnemies, weights);
+    const {values, enemies} = createWaves(targets, weights);
 
     // Move enemies between waves to get the values of each wave as close to the targets as possible
     let correction = 0;
@@ -301,15 +294,22 @@ function generateRandomWaves(params: RandomWaveOptions): WaveResult{
         }
     }
 
-    const waves: Required<ChallengeGameMod>["levels"][number]["waves"] = [];
-    for (let x = 0; x < enemies.length; x++){
+    const waves: WaveResult = [];
+    const maxWave = enemies.length + (params.includeEmpty === true ? 1 : 0);
+
+    for (let x = 0; x < maxWave; x++){
         const names: string[] = [];
-        for (let y = 0; y < enemies[x].length; y++){
-            names.push(enemies[x][y][0]);
+        if (x < enemies.length){
+            for (let y = 0; y < enemies[x].length; y++){
+                names.push(enemies[x][y][0]);
+            }
         }
 
         let maxEnemies = 0;
-        if (x > 1){
+        if (params.maxEnemies >= 0){
+            //maxEnemies = Math.max(maxEnemies, params.maxEnemies);
+            maxEnemies = params.maxEnemies;
+        } else if (x > 1){
             // From the 3rd wave onward, it can only start if at least 1 enemy from the previous 2 waves was defeated
             maxEnemies = enemies[x - 2].length + enemies[x - 1].length - 1;
         } else if (x > 0){
@@ -319,12 +319,85 @@ function generateRandomWaves(params: RandomWaveOptions): WaveResult{
 
         waves.push({
             names: [names], multiple: [],
-            delay: (x > 0 ? Math.floor(values[x - 1] * delay) : 0),
-            maxEnemies: maxEnemies
+            delay: (x > 0 ? Math.ceil(values[x - 1] * delay) : 0),
+            maxEnemies: maxEnemies,
+            winCon: params.winCon,
+            spawnRegion: params.spawnRegion
         });
     }
 
     return waves;
+}
+
+function generateMultipleWaves(stageWaves: RandomPreset["stages"][number]): WaveResult{
+    const wavesData: WaveResult = [];
+    let prevDelay = 0;
+    let prevMaxEnemies = 0;
+
+    // Generate random waves from multiple enemy distributions then combine them together
+    for (let i = 0; i < stageWaves.length; i++){
+        const stageData = stageWaves[i];
+        const tierData = levelTiers[Math.max(0, Math.min(levelTiers.length - 1, stageData.index))];
+        const repeat = stageData.repeat ?? 1;
+        const includeEmpty = (stageWaves.length > 1 && i < stageWaves.length - 1) || repeat > 1;
+
+        const addWaves = generateRandomWaves({
+            waves: tierData.waves,
+            weights: tierData.weights,
+            delayFactor: tierData.delayFactor,
+            includeEmpty: includeEmpty,
+            maxEnemies: stageData.maxEnemies ?? -1,
+            winCon: stageData.winCon ?? false,
+            spawnRegion: stageData.spawnRegion ?? ""
+        });
+
+        for (let r = 0; r < repeat; r++){
+            const firstDelay = prevDelay;
+            const firstMaxEnemies = prevMaxEnemies;
+            let addCount = addWaves.length;
+
+            // For all distributions except the last, generate an extra empty wave with the delay that the next wave would
+            // have. Then, set the delay for the first wave of the next distribution to the extra wave's delay.
+            const lastWave = addWaves[addCount - 1];
+            if (includeEmpty === true && lastWave.names[0].length === 0){
+                prevDelay = lastWave.delay ?? 0;
+                prevMaxEnemies = lastWave.maxEnemies ?? 0;
+                addCount -= 1;
+            }
+
+            for (let j = 0; j < addCount; j++){
+                const nextWave: WaveResult[number] = {
+                    names: addWaves[j].names,
+                    multiple: addWaves[j].multiple,
+                    delay: addWaves[j].delay ?? 1,
+                    maxEnemies: addWaves[j].maxEnemies ?? 0,
+                };
+
+                if (j === 0){
+                    if (stageData.waveWait === true && r === 0){
+                        // waveWait requires the wave to wait for all current enemies to be defeated before continuing
+                        nextWave.delay = 1;
+                        nextWave.maxEnemies = 0;
+                    } else{
+                        // If not waiting, the wave starts at the time determined by the previous wave's enemies
+                        nextWave.delay = firstDelay;
+                        nextWave.maxEnemies = firstMaxEnemies;
+                    }
+                }
+                if (addWaves[j].winCon === true){
+                    nextWave.winCon = true;
+                }
+                const s = addWaves[j].spawnRegion;
+                if (s !== undefined && s !== ""){
+                    nextWave.spawnRegion = s;
+                }
+
+                wavesData.push(nextWave);
+            }
+        }
+    }
+
+    return wavesData;
 }
 
 export default class RandomChallenge implements ChallengeCategory{
@@ -344,7 +417,7 @@ export default class RandomChallenge implements ChallengeCategory{
             challenges.push({
                 challengeid: key,
                 displayName: value.config.displayName,
-                stages: value.waves.length,
+                stages: value.stages.length,
                 recommendedLvl: value.config.recommendedLvl
             });
         });
@@ -361,9 +434,9 @@ export default class RandomChallenge implements ChallengeCategory{
 
         const completion = data.difficulty.completion;
         const time = data.difficulty.time;
-        const waves = data.waves;
+        const stageWaves = data.stages;
 
-        const stageCount = Math.min(completion.length, time.length, waves.length);
+        const stageCount = Math.min(completion.length, time.length, stageWaves.length);
         if (stageCount <= 0){
             return {};
         }
@@ -407,8 +480,9 @@ export default class RandomChallenge implements ChallengeCategory{
 
         const levelIndexes: number[] = [];
         const tempDist: number[] = [];
+        const locationIndex = Math.min(locationWeights.length - 1, data.location);
         for (let x = 0; x < locationList.length; x++){
-            tempDist.push(locationWeights[x]);
+            tempDist.push(locationWeights[locationIndex][x]);
         }
         for (let x = 0; x < stageCount; x++){
             const i = RNG(tempDist);
@@ -424,13 +498,14 @@ export default class RandomChallenge implements ChallengeCategory{
         for (let x = 0; x < stageCount; x++){
             const levelData = locationList[levelIndexes[x]];
 
-            const tierData = levelTiers[Math.max(0, Math.min(levelTiers.length - 1, waves[x]))];
-            const wavesData = generateRandomWaves({
-                waves: tierData.waves,
-                maxEnemies: tierData.maxEnemies,
-                weights: tierData.weights,
-                delayFactor: tierData.delayFactor
-            });
+            //const tierData = levelTiers[Math.max(0, Math.min(levelTiers.length - 1, waves[x]))];
+            // const wavesData = generateRandomWaves({
+            //     waves: tierData.waves,
+            //     maxEnemies: tierData.maxEnemies,
+            //     weights: tierData.weights,
+            //     delayFactor: tierData.delayFactor
+            // });
+            const wavesData = generateMultipleWaves(stageWaves[x]);
 
             stages.push({
                 completion: completion[x], time: time[x],

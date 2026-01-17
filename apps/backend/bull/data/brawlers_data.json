@@ -8120,7 +8120,7 @@
                     }
                 ],
                 "limited": true,
-                "unlock": "",
+                "unlock": "Free during the RandomBS event",
                 "foundIn": [
                     "Boom Boxes"
                 ],
@@ -26061,7 +26061,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Free after claiming 100 shop offers during the RandomBS event",
                 "foundIn": [],
                 "release": {
                     "month": 8,

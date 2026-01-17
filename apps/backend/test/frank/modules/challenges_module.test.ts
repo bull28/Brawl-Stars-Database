@@ -41,7 +41,7 @@ describe("Challenges module", function(){
             if (randomData !== undefined){
                 expect(challenges[x].displayName).to.equal(randomData.config.displayName);
                 expect(challenges[x].recommendedLvl).to.equal(randomData.config.recommendedLvl);
-                expect(challenges[x].stages).to.equal(randomData.waves.length);
+                expect(challenges[x].stages).to.equal(randomData.stages.length);
             }
 
             expect(staticData !== undefined || randomData !== undefined).to.be.true;
@@ -155,7 +155,7 @@ describe("Challenges module", function(){
             powerReward: 280, gearsReward: 1200
         });
 
-        expect(challenge1.levels).to.have.lengthOf(preset.waves.length);
+        expect(challenge1.levels).to.have.lengthOf(preset.stages.length);
         for (let x = 0; x < challenge1.levels.length; x++){
             expect(challenge1.levels[x]).to.have.keys(["levelid", "waves", "background", "displayName", "stages", "destination"]);
             expect(challenge1.levels[x].stages[0]).to.equal(x);

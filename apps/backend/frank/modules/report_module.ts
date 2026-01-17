@@ -147,6 +147,7 @@ function getFinalScore(reports: number[], enemyCounts: number[]): number[]{
     let success = true;
     let totalHealthPenalty = 0;
     let totalEnemyBonus = 0;
+    const maxHealthPenalty = Math.max(80, 200 - stages.length * 40);
     for (let x = 0; x < stages.length; x++){
         if (x < levelReports.length){
             const report = levelReports[x];
@@ -155,7 +156,7 @@ function getFinalScore(reports: number[], enemyCounts: number[]): number[]{
                 success = false;
             }
 
-            totalHealthPenalty += Math.min(80, report.healthPenalty / 250);
+            totalHealthPenalty += Math.min(maxHealthPenalty, report.healthPenalty / 250);
 
             if (report.totalValue <= 0){
                 score.completion += stages[x].completion;
