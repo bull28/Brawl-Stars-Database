@@ -724,7 +724,7 @@
         "image": "brock/brock_steampunk.webp",
         "fullImage": "brock/rocketgirlsteampunk.webp",
         "enemyClass": "Marksman",
-        "description": "Receives less damage if you are not standing still. Every few seconds, shoots a large rocket towards your location.",
+        "description": "Starts with a shield that reduces damage taken by 40%. Every few seconds, shoots a large rocket towards your location.",
         "strengthTier": "Time between attacks becomes more variable, projectiles move faster, and large rocket deals more damage.",
         "value": 16,
         "health": 6600,
@@ -746,7 +746,7 @@
             {
                 "count": 1,
                 "displayName": "Rocket Attack",
-                "description": "Hitting this with your attack will deflect it back towards Brock, dealing damage if it hits.",
+                "description": "Hitting this with your attack will deflect it back towards Brock, dealing damage and temporarily disabling the shield if it hits.",
                 "strengthTier": "",
                 "value": 0,
                 "health": 1,

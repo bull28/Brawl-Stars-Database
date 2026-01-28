@@ -441,8 +441,14 @@ export interface ReportData{
     };
     enemies: number;
     coins: [number, number];
-    points: number;
+    mastery: number;
     badges: Map<string, number>;
+    achievements: Set<string>;
+    multipliers: {
+        coins: number;
+        mastery: number;
+        badges: number;
+    };
 }
 
 /**

@@ -1,23 +1,23 @@
 [
     {
         "name": "default1", "category": "", "displayName": "Supply Drop",
-        "description": "Increases health and damage.", "unlock": "Win on difficulty 1.", "badges": 1
+        "description": "Increases health and damage.", "unlock": "Win on Classic Mode difficulty 1.", "badges": 1
     },
     {
         "name": "default2", "category": "", "displayName": "Green Supply Drop",
-        "description": "Increases health and damage.", "unlock": "Win on difficulty 2.", "badges": 1
+        "description": "Increases health and damage.", "unlock": "Win on Classic Mode difficulty 2.", "badges": 1
     },
     {
         "name": "default3", "category": "", "displayName": "Red Supply Drop",
-        "description": "Increases health and damage.", "unlock": "Win on difficulty 2.", "badges": 1
+        "description": "Increases health and damage.", "unlock": "Win on Classic Mode difficulty 2.", "badges": 1
     },
     {
         "name": "default4", "category": "", "displayName": "Defensive Potion",
-        "description": "Increases health and healing.", "unlock": "Win on difficulty 3.", "badges": 1
+        "description": "Increases health and healing.", "unlock": "Win on Classic Mode difficulty 3.", "badges": 1
     },
     {
         "name": "default5", "category": "", "displayName": "Offensive Potion",
-        "description": "Increases damage and speed.", "unlock": "Win on difficulty 3.", "badges": 1
+        "description": "Increases damage and speed.", "unlock": "Win on Classic Mode difficulty 3.", "badges": 1
     },
     {
         "name": "shop1", "category": "", "displayName": "Healing Potion",
@@ -41,7 +41,7 @@
     },
     {
         "name": "shop6", "category": "", "displayName": "Pam's Healing Station",
-        "description": "Receive less damage from all sources.", "unlock": "Buy from the Shop.", "badges": 1
+        "description": "Increases protection.", "unlock": "Buy from the Shop.", "badges": 1
     },
     {
         "name": "shop7", "category": "", "displayName": "Nani's Drone",
@@ -81,23 +81,23 @@
     },
     {
         "name": "shelly", "category": "enemy", "displayName": "Shelly's Shotgun",
-        "description": "Deal more damage to and receive less damage from Damage Dealer enemies.", "unlock": "Defeat Shelly enemies.", "badges": 500
+        "description": "Deal more damage to and receive more protection from Damage Dealer enemies.", "unlock": "Defeat Shelly enemies.", "badges": 500
     },
     {
         "name": "colt", "category": "enemy", "displayName": "Colt's Revolvers",
-        "description": "Receive less damage from Marksman enemies.", "unlock": "Defeat Colt enemies.", "badges": 500
+        "description": "Receive more protection from Marksman enemies.", "unlock": "Defeat Colt enemies.", "badges": 500
     },
     {
         "name": "rt", "category": "enemy", "displayName": "R-T's Camera",
-        "description": "Deal more damage to and receive less damage from Controller enemies.", "unlock": "Defeat R-T enemies.", "badges": 500
+        "description": "Deal more damage to and receive more protection from Controller enemies.", "unlock": "Defeat R-T enemies.", "badges": 500
     },
     {
         "name": "elprimo", "category": "enemy", "displayName": "El Primo's Belt",
-        "description": "Deal more damage to and receive less damage from Tank enemies.", "unlock": "Defeat El Primo enemies.", "badges": 500
+        "description": "Deal more damage to and receive more protection from Tank enemies.", "unlock": "Defeat El Primo enemies.", "badges": 500
     },
     {
         "name": "8bit", "category": "enemy", "displayName": "8-Bit's Turret",
-        "description": "Receive less damage from Damage Dealer enemies.", "unlock": "Defeat 8-Bit enemies.", "badges": 500
+        "description": "Receive more protection from Damage Dealer enemies.", "unlock": "Defeat 8-Bit enemies.", "badges": 500
     },
     {
         "name": "belle", "category": "enemy", "displayName": "Belle's Rifle",
@@ -105,7 +105,7 @@
     },
     {
         "name": "jessie", "category": "enemy", "displayName": "Jessie's Backpack",
-        "description": "Receive less damage from Controller enemies.", "unlock": "Defeat Jessie enemies.", "badges": 500
+        "description": "Receive more protection from Controller enemies.", "unlock": "Defeat Jessie enemies.", "badges": 500
     },
     {
         "name": "eve", "category": "enemy", "displayName": "Eve's Spaceship",
@@ -113,7 +113,7 @@
     },
     {
         "name": "mortis", "category": "enemy", "displayName": "Mortis's Shovel",
-        "description": "Receive less damage from Assassin enemies.", "unlock": "Defeat Mortis enemies.", "badges": 500
+        "description": "Receive more protection from Assassin enemies.", "unlock": "Defeat Mortis enemies.", "badges": 500
     },
     {
         "name": "frank", "category": "enemy", "displayName": "Frank's Hammer",
@@ -121,19 +121,19 @@
     },
     {
         "name": "jacky", "category": "enemy", "displayName": "Jacky's Drill",
-        "description": "Receive less damage from Tank enemies.", "unlock": "Defeat Jacky enemies.", "badges": 500
+        "description": "Receive more protection from Tank enemies.", "unlock": "Defeat Jacky enemies.", "badges": 500
     },
     {
         "name": "mrp", "category": "enemy", "displayName": "Mr. P's Suitcase",
-        "description": "Receive less damage from Controller enemies.", "unlock": "Defeat Mr. P enemies.", "badges": 500
+        "description": "Receive more protection from Controller enemies.", "unlock": "Defeat Mr. P enemies.", "badges": 500
     },
     {
         "name": "bea", "category": "enemy", "displayName": "Bea's Bee",
-        "description": "Receive less damage from Marksman enemies.", "unlock": "Defeat Bea enemies.", "badges": 500
+        "description": "Receive more protection from Marksman enemies.", "unlock": "Defeat Bea enemies.", "badges": 500
     },
     {
         "name": "lola", "category": "enemy", "displayName": "Lola's Scarf",
-        "description": "Deal more damage to and receive less damage from Controller enemies.", "unlock": "Defeat Lola enemies.", "badges": 500
+        "description": "Deal more damage to and receive more protection from Controller enemies.", "unlock": "Defeat Lola enemies.", "badges": 500
     },
     {
         "name": "bo", "category": "enemy", "displayName": "Bo's Quiver",
@@ -145,11 +145,11 @@
     },
     {
         "name": "pearl", "category": "enemy", "displayName": "Pearl's Cookie",
-        "description": "Receive less damage from Damage Dealer enemies.", "unlock": "Defeat Pearl enemies.", "badges": 500
+        "description": "Receive more protection from Damage Dealer enemies.", "unlock": "Defeat Pearl enemies.", "badges": 500
     },
     {
         "name": "bibi", "category": "enemy", "displayName": "Bibi's Bat",
-        "description": "Receive less damage from Tank enemies.", "unlock": "Defeat Bibi enemies.", "badges": 500
+        "description": "Receive more protection from Tank enemies.", "unlock": "Defeat Bibi enemies.", "badges": 500
     },
     {
         "name": "brock", "category": "enemy", "displayName": "Brock's Rocket Launcher",
@@ -169,19 +169,19 @@
     },
     {
         "name": "bonnie", "category": "enemy", "displayName": "Bonnie's Cannon",
-        "description": "Deal more damage to and receive less damage from Marksman enemies.", "unlock": "Defeat Bonnie enemies.", "badges": 500
+        "description": "Deal more damage to and receive more protection from Marksman enemies.", "unlock": "Defeat Bonnie enemies.", "badges": 500
     },
     {
         "name": "amber", "category": "enemy", "displayName": "Amber's Fire Staff",
-        "description": "Deal more damage to and receive less damage from Damage Dealer enemies.", "unlock": "Defeat Amber enemies.", "badges": 500
+        "description": "Deal more damage to and receive more protection from Damage Dealer enemies.", "unlock": "Defeat Amber enemies.", "badges": 500
     },
     {
         "name": "melodie", "category": "enemy", "displayName": "Melodie's Note",
-        "description": "Receive less damage from Assassin enemies.", "unlock": "Defeat Melodie enemies.", "badges": 500
+        "description": "Receive more protection from Assassin enemies.", "unlock": "Defeat Melodie enemies.", "badges": 500
     },
     {
         "name": "kaze", "category": "enemy", "displayName": "Kaze's Fan",
-        "description": "Deal more damage to and receive less damage from Assassin enemies.", "unlock": "Defeat Kaze enemies.", "badges": 500
+        "description": "Deal more damage to and receive more protection from Assassin enemies.", "unlock": "Defeat Kaze enemies.", "badges": 500
     },
     {
         "name": "max", "category": "enemy", "displayName": "Max's Energy Drink",
@@ -189,7 +189,7 @@
     },
     {
         "name": "meg", "category": "enemy", "displayName": "Meg's Mech",
-        "description": "Deal more damage to and receive less damage from Tank enemies.", "unlock": "Defeat Meg enemies.", "badges": 500
+        "description": "Deal more damage to and receive more protection from Tank enemies.", "unlock": "Defeat Meg enemies.", "badges": 500
     },
     {
         "name": "spike", "category": "player", "displayName": "Spike's Cactus",
@@ -297,7 +297,7 @@
     },
     {
         "name": "enemies", "category": "", "displayName": "Omega Box",
-        "description": "Increases the chance to receive rare drops from brawl box rewards.", "unlock": "Defeat enemies.", "badges": 50000
+        "description": "Gain more badges from rewards.", "unlock": "Defeat enemies.", "badges": 50000
     },
     {
         "name": "challenges", "category": "", "displayName": "Starr Drop",
@@ -309,31 +309,31 @@
     },
     {
         "name": "nomove", "category": "", "displayName": "Charlie's Cocoon",
-        "description": "When at low health, receive less damage.", "unlock": "Win without moving. Supers are allowed.", "badges": 1
+        "description": "When at low health, receive more protection.", "unlock": "Win Classic Mode without moving. Supers are allowed.", "badges": 1
     },
     {
         "name": "noupgrades", "category": "", "displayName": "Bling Stack",
-        "description": "Receive 1 extra gear scrap when completing a level.", "unlock": "Win without purchasing upgrades or using gears.", "badges": 1
+        "description": "Receive 1 extra gear scrap when completing a level.", "unlock": "Win Classic Mode without purchasing upgrades or using gears.", "badges": 1
     },
     {
         "name": "nodamage", "category": "", "displayName": "Poco's Guitar",
-        "description": "Increases healing when not attacking.", "unlock": "Win without taking any damage.", "badges": 1
+        "description": "Increases healing when not attacking.", "unlock": "Win Classic Mode without taking any damage.", "badges": 1
     },
     {
         "name": "fastwin", "category": "", "displayName": "Fang's Shoe",
-        "description": "When defeating an enemy, partially recharge the super.", "unlock": "Win in under 90 seconds.", "badges": 1
+        "description": "When defeating an enemy, partially recharge the super.", "unlock": "Win Classic Mode in under 90 seconds.", "badges": 1
     },
     {
         "name": "usecombo", "category": "", "displayName": "Meeple's Dice",
-        "description": "Increases charge rate of the combo.", "unlock": "Win while using at least 20 max level combos.", "badges": 1
+        "description": "Increases charge rate of the combo.", "unlock": "Win Classic Mode while using at least 20 max level combos.", "badges": 1
     },
     {
         "name": "perfect1", "category": "", "displayName": "Championship Trophy",
-        "description": "Increases game score.", "unlock": "Get a score of 600 on difficulty 6.", "badges": 1
+        "description": "Increases game score.", "unlock": "Get a score of 600 on Classic Mode difficulty 6.", "badges": 1
     },
     {
         "name": "perfect2", "category": "", "displayName": "Hypercharged Token",
-        "description": "Increases charge rate of Hypercharge.", "unlock": "Get a score of 600 on difficulty 10.", "badges": 1
+        "description": "Increases charge rate of Hypercharge.", "unlock": "Get a score of 600 on Classic Mode difficulty 10.", "badges": 1
     },
     {
         "name": "mastery1", "category": "", "displayName": "Bronze Medal",
@@ -352,19 +352,19 @@
         "description": "Gain more coins from rewards.", "unlock": "Free in the Shop at Mastery Level 16.", "badges": 1
     },
     {
-        "name": "mastery5", "category": "", "displayName": "Mythic Medal",
+        "name": "mastery5", "category": "", "displayName": "Amethyst Medal",
         "description": "Gain more coins from rewards.", "unlock": "Free in the Shop at Mastery Level 20.", "badges": 1
     },
     {
-        "name": "mastery6", "category": "", "displayName": "Legendary Medal",
+        "name": "mastery6", "category": "", "displayName": "Ruby Medal",
         "description": "Gain more coins from rewards.", "unlock": "Free in the Shop at Mastery Level 25.", "badges": 1
     },
     {
-        "name": "mastery7", "category": "", "displayName": "Masters Medal",
+        "name": "mastery7", "category": "", "displayName": "Citrine Medal",
         "description": "Gain more coins from rewards.", "unlock": "Free in the Shop at Mastery Level 30.", "badges": 1
     },
     {
-        "name": "mastery8", "category": "", "displayName": "Pro Medal",
+        "name": "mastery8", "category": "", "displayName": "Emerald Medal",
         "description": "Gain more coins from rewards.", "unlock": "Free in the Shop at Mastery Level 36.", "badges": 1
     }
 ]

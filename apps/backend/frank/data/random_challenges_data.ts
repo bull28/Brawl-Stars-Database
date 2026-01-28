@@ -279,7 +279,7 @@ const presets = new Map<string, RandomPreset>([
     }],
     ["siege1", {
         config: {
-            displayName: "Siege Battle - Tier 1", recommendedLvl: 16,
+            displayName: "Siege Challenge - Tier 1", recommendedLvl: 16,
             baseWinMastery: [20], baseLossMastery: [10], baseCoins: [2], baseBadges: [5]
         },
         difficulty: {
@@ -297,7 +297,7 @@ const presets = new Map<string, RandomPreset>([
     }],
     ["siege2", {
         config: {
-            displayName: "Siege Battle - Tier 2", recommendedLvl: 30,
+            displayName: "Siege Challenge - Tier 2", recommendedLvl: 30,
             baseWinMastery: [120], baseLossMastery: [60], baseCoins: [4], baseBadges: [10]
         },
         difficulty: {

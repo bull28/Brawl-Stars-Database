@@ -23,9 +23,9 @@ router.post<Empty, Empty, SaveReqBody>("/", databaseErrorHandler<SaveReqBody>(as
     const report = req.body.report;
 
     let saveToUser = "";
-    let masteryMultiplier = 0;
-    let coinsMultiplier = 0;
-    let badgeMultiplier = 0;
+    let baseMastery = 0;
+    let baseCoins = 0;
+    let baseBadges = 0;
 
     const reportStatus = validateReport(report);
     if (reportStatus !== 0){
@@ -42,10 +42,10 @@ router.post<Empty, Empty, SaveReqBody>("/", databaseErrorHandler<SaveReqBody>(as
         return;
     }
 
-    // Last updated: version 101
+    // Last updated: version 102
     // The report's timestamp is the number of seconds after the version was released. To ensure the value stored in the
     // database is always increasing, add the time of the version's release to the report timestamp.
-    const endTime = report[1] + 1767600000;
+    const endTime = report[1] + 1768982400;
 
     const gameMode = reportData.gameMode;
     if (typeof key === "string"){
@@ -68,9 +68,9 @@ router.post<Empty, Empty, SaveReqBody>("/", databaseErrorHandler<SaveReqBody>(as
         saveToUser = challenge.accepted_by;
 
         const rewards = getRewards(challenge.challengeid, reportData.player.difficulty, reportData.score.win);
-        masteryMultiplier = rewards.mastery;
-        coinsMultiplier = rewards.coins;
-        badgeMultiplier = rewards.badges;
+        baseMastery = rewards.mastery;
+        baseCoins = rewards.coins;
+        baseBadges = rewards.badges;
     } else if (gameMode === 0){
         if (typeof inputUser !== "string" || inputUser.length === 0){
             body.message = "Username is missing.";
@@ -79,9 +79,9 @@ router.post<Empty, Empty, SaveReqBody>("/", databaseErrorHandler<SaveReqBody>(as
         }
 
         saveToUser = inputUser;
-        masteryMultiplier = 1;
-        coinsMultiplier = 1;
-        badgeMultiplier = 1;
+        baseMastery = 1;
+        baseCoins = 1;
+        baseBadges = 1;
     } else{
         body.message = "Username is missing.";
         res.status(400).json(body);
@@ -110,22 +110,34 @@ router.post<Empty, Empty, SaveReqBody>("/", databaseErrorHandler<SaveReqBody>(as
     // Mastery gained from a single challenge is capped at 40% of the user's current mastery to prevent them from
     // skipping too many levels at once.
     const maxMastery = Math.max(10000, Math.floor(resources.mastery * 2 / 5));
-    const masteryReward = Math.min(maxMastery, reportData.points * masteryMultiplier);
+    const masteryReward = Math.min(
+        maxMastery, Math.floor(reportData.mastery * baseMastery * reportData.multipliers.mastery / 100)
+    );
     resources.mastery += masteryReward;
 
     // Add coins
-    const r = (reportData.coins[1] - reportData.coins[0] + 1) / 2;
-    const coinsReward = Math.floor(
-        Math.floor(reportData.coins[0] + r * Math.random() + r * Math.random()) * coinsMultiplier
-    );
+    const r0 = Math.floor(reportData.coins[0] * reportData.multipliers.coins / 100);
+    const r1 = Math.floor(reportData.coins[1] * reportData.multipliers.coins / 100);
+    const r = (r1 - r0 + 1) / 2;
+    const coinsReward = Math.floor(Math.floor(r0 + r * Math.random() + r * Math.random()) * baseCoins);
     resources.coins += coinsReward;
 
     // Add badges
     const badges = reportData.badges;
+    const achievements = reportData.achievements;
     for (let x = 0; x < resources.accessories.length; x++){
-        const badgeReward = badges.get(resources.accessories[x].name);
-        if (badgeReward !== undefined){
-            resources.accessories[x].badges += Math.floor(badgeReward * badgeMultiplier);
+        const accessory = resources.accessories[x];
+        const badgesReward = badges.get(accessory.name);
+        if (badgesReward !== undefined){
+            if (accessory.name === "enemies"){
+                accessory.badges += Math.floor(badgesReward);
+            } else{
+                accessory.badges += Math.floor(
+                    badgesReward * baseBadges * reportData.multipliers.badges / 100
+                );
+            }
+        } else if (achievements.has(accessory.name) === true){
+            accessory.badges += 1;
         }
     }
 

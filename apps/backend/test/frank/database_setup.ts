@@ -22,7 +22,7 @@ export const tokens = {
     challenges: signToken("challenges").token,
 };
 
-export const GAME_VERSION = (101 << 16) + 140;
+export const GAME_VERSION = (102 << 16) + 140;
 export const sampleGameReport = [
     GAME_VERSION, 1, // Version
     0, // Game Mode

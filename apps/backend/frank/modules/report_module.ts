@@ -166,20 +166,18 @@ function getFinalScore(reports: number[], enemyCounts: number[]): number[]{
             score.destination += report.destination;
             score.gear += report.gearScore;
 
-            const t = Math.max(0.5, report.timeSpent / 1000);
+            const t = Math.max(2, report.timeSpent / 250);
             let multiplier = 0;
-            if (t < 0.75){
-                multiplier = ((-872/481*(t-0.5))*(t-0.5) - 263/1924)*(t-0.5) + 1.25;
-            } else if (t < 1){
-                multiplier = ((512/481*(t-0.75) -654/481)*(t-0.75) - 917/1924)*(t-0.75) + 1.1875;
-            } else if (t < 1.5){
-                multiplier = ((457/481*(t-1) - 270/481)*(t-1) - 1841/1924)*(t-1) + 1;
-            } else if (t < 2){
-                multiplier = ((-243/481*(t-1.5) + 831/962)*(t-1.5) - 775/962)*(t-1.5) + 0.5;
-            } else if (t < 3){
-                multiplier = ((-17/481*(t-2) + 51/481)*(t-2) - 617/1924)*(t-2) + 0.25;
+            if (t < 3){
+                multiplier = ((-1*(t-2))*(t-2) - 2)*(t-2) + 60;
+            } else if (t < 4){
+                multiplier = ((-1*(t-3) - 3)*(t-3) - 5)*(t-3) + 57;
+            } else if (t < 6){
+                multiplier = ((2*(t-4) - 6)*(t-4) - 14)*(t-4) + 48;
+            } else if (t < 8){
+                multiplier = ((-1*(t-6) + 6)*(t-6) - 14)*(t-6) + 12;
             }
-            score.time += stages[x].time * multiplier;
+            score.time += Math.round(stages[x].time * multiplier * 6.25e7 / 3) / 1e9;
         } else{
             success = false;
         }
@@ -209,7 +207,7 @@ function getFinalScore(reports: number[], enemyCounts: number[]): number[]{
 }
 
 export function validateReport(report: GameReport): number{
-    // Last updated: version 101
+    // Last updated: version 102
 
     if (Array.isArray(report) === false){
         // Invalid report type
@@ -232,7 +230,7 @@ export function validateReport(report: GameReport): number{
     }
 
     // The first number contains major version (16 bits), minor version (4 bits), and report length (12 bits)
-    if ((report[0] >> 16) < 101){
+    if ((report[0] >> 16) < 102){
         // Old report version
         return 3;
     }
@@ -251,20 +249,6 @@ export function validateReport(report: GameReport): number{
         // Data length does not match length in version
         return 6;
     }
-
-    // if (report.length !== 3){
-    //     // Invalid report length
-    //     return 2;
-    // }
-    // if (typeof report[0] !== "number" || typeof report[1] !== "number" || Array.isArray(report[2]) === false){
-    //     // Invalid report types
-    //     return 3;
-    // }
-    // const timeSinceSave = Date.now() - report[1];
-    // if (timeSinceSave < -60000 || timeSinceSave > 7200000){
-    //     // Invalid report time
-    //     return 5;
-    // }
 
     // These are simple checks that determine whether report data is definitely invalid. The upper bounds on the checks
     // are intentionally high so valid but rare cases are not rejected. Values above the upper bounds have no chance of
@@ -401,7 +385,7 @@ export function validateReport(report: GameReport): number{
 
         // The upgrades cannot be more than each upgrade type limit
         const upgrades = data.slice(format.upgrades[0], format.upgrades[1]);
-        const maxUpgrades = difficulty >= 6 ? [20, 16, 10, 10, 8, 14, 6] : [16, 12, 7, 7, 6, 10, 5];
+        const maxUpgrades = difficulty >= 6 ? [20, 16, 11, 11, 8, 14, 6] : [16, 12, 8, 8, 6, 10, 5];
         if (upgrades.length < maxUpgrades.length){
             return 6;
         }
@@ -467,23 +451,28 @@ export function extractReportData(data: GameReport): ReportData | undefined{
     }
 
     // Certain accessories increase the amount of coins and mastery points given
-    let badgeMultiplier = 100;
     let pointsMultiplier = 100;
     let coinsMultiplier = 100;
-    if (accs.includes(72) === true){
-        pointsMultiplier = 120;
+    let badgesMultiplier = 100;
+    if (accs.includes(74) === true){
+        badgesMultiplier = 150;
     }
-    const coinsAccs = [102, 104, 106, 110, 115, 120, 125, 130];
-    // Accessories increasing coins are from 80 to 87. These do not stack so only the last accessory checked is used.
+    if (accs.includes(75) === true){
+        pointsMultiplier = 150;
+    }
+    //const coinsAccs = [2, 4, 6, 10, 15, 20, 25, 30];
+    const coinsAccs = [6, 8, 12, 15, 20, 24, 30, 40];
+    // Accessories increasing coins are from 84 to 91
     for (let x = 0; x < coinsAccs.length; x++){
-        if (accs.includes(80 + x) === true){
-            coinsMultiplier = coinsAccs[x];
+        if (accs.includes(84 + x) === true){
+            coinsMultiplier += coinsAccs[x];
         }
     }
 
     let points = 0;
     let baseCoins = 0;
     let bonusCoins = 0;
+    let baseBadges = 1;
     if (gameMode === 0){
         // The number of points given is based on the difficulty. If the player lost, the points will be decreased
         // depending on how early in the game they lost.
@@ -507,22 +496,26 @@ export function extractReportData(data: GameReport): ReportData | undefined{
         }
         // More enemy, player, and location badges are given on higher difficulty
         if (difficulty <= 4){
-            badgeMultiplier = 200 + difficulty * 100;
+            baseBadges = 2 + difficulty;
         } else if (difficulty === 5){
-            badgeMultiplier = 800;
+            baseBadges = 8;
         } else{
-            badgeMultiplier = 600 + difficulty * 200 - 1200;
+            baseBadges = difficulty * 2 - 6;
         }
     } else if (gameMode === 2){
         // For challenges, mastery, coins, and badges rewards depend on the base mastery stored in the challenge config
         points = 1;
         baseCoins = 1;
     }
-    points = Math.floor(points * data[p] * pointsMultiplier / 100);
+    //points = Math.floor(points * data[p] * pointsMultiplier / 100);
+    points = Math.floor(points * data[p]);
 
     let minCoins = 0;
     let maxCoins = 0;
+    // All badges in this map are affected by the difficulty multiplier
     const badges = new Map<string, number>();
+    // All accessories in this set will only receive 1 badge
+    const achievements = new Set<string>();
 
     for (let x = 0; x < badgeList.length; x++){
         const b = badgeList[x];
@@ -543,7 +536,7 @@ export function extractReportData(data: GameReport): ReportData | undefined{
         }
 
         if (badgeCount > 0 && difficulty >= 0){
-            badges.set(b.name, Math.floor(badgeCount * badgeMultiplier / 100));
+            badges.set(b.name, Math.floor(badgeCount * baseBadges));
         }
 
         if (b.coins[0] <= b.coins[1]){
@@ -552,18 +545,20 @@ export function extractReportData(data: GameReport): ReportData | undefined{
             maxCoins += b.coins[1] * badgeCount;
         }
     }
-    minCoins = Math.floor((minCoins * baseCoins + bonusCoins) * coinsMultiplier / 100);
-    maxCoins = Math.floor((maxCoins * baseCoins + bonusCoins) * coinsMultiplier / 100);
+    //minCoins = Math.floor((minCoins * baseCoins + bonusCoins) * coinsMultiplier / 100);
+    //maxCoins = Math.floor((maxCoins * baseCoins + bonusCoins) * coinsMultiplier / 100);
+    minCoins = Math.floor(minCoins * baseCoins + bonusCoins);
+    maxCoins = Math.floor(maxCoins * baseCoins + bonusCoins);
 
     // Achivement badges depend on the values in the achievements section of the report
 
     // Win 100 times on any difficulty
     if (win === true){
         // If the completion score is maxed, the player won
-        badges.set("wins", 1);
+        achievements.add("wins");
         // Win challenges
         if (gameMode === 2){
-            badges.set("challenges", 1);
+            achievements.add("challenges");
         }
     }
     // Defeat 50000 enemies
@@ -576,17 +571,17 @@ export function extractReportData(data: GameReport): ReportData | undefined{
     if (gameMode === 0 && win === true){
         // Win on difficulties 1, 2, or 3
         if (difficulty === 0){
-            badges.set("default1", 1);
+            achievements.add("default1");
         } else if (difficulty === 1){
-            badges.set("default2", 1);
-            badges.set("default3", 1);
+            achievements.add("default2");
+            achievements.add("default3");
         } else if (difficulty === 2){
-            badges.set("default4", 1);
-            badges.set("default5", 1);
+            achievements.add("default4");
+            achievements.add("default5");
         }
         // Win without moving
         if (data[a + 6] === 0){
-            badges.set("nomove", 1);
+            achievements.add("nomove");
         }
         // Win without purchasing upgrades or using gears
         if (data[a + 2] === 0){
@@ -598,28 +593,28 @@ export function extractReportData(data: GameReport): ReportData | undefined{
                 }
             }
             if (upgraded === false){
-                badges.set("noupgrades", 1);
+                achievements.add("noupgrades");
             }
         }
         // Win without taking any damage
         if (data[a + 5] === 0){
-            badges.set("nodamage", 1);
+            achievements.add("nodamage");
         }
         // Win in under 90 seconds
         if (data[a] < 90000){
-            badges.set("fastwin", 1);
+            achievements.add("fastwin");
         }
         // Win while using at least 20 max level combos
         if (data[a + 3] >= 20){
-            badges.set("usecombo", 1);
+            achievements.add("usecombo");
         }
         // Get a perfect score
         if (data[p] >= 600){
             // Get a score of 600 on difficulties 6 or 10
             if (difficulty === 5){
-                badges.set("perfect1", 1);
+                achievements.add("perfect1");
             } else if (difficulty === 9){
-                badges.set("perfect2", 1);
+                achievements.add("perfect2");
             }
         }
     }
@@ -647,8 +642,14 @@ export function extractReportData(data: GameReport): ReportData | undefined{
             }
         },
         enemies: enemiesDefeated,
+        mastery: points,
         coins: [minCoins, maxCoins],
-        points: points,
-        badges: badges
+        badges: badges,
+        achievements: achievements,
+        multipliers: {
+            mastery: pointsMultiplier,
+            coins: coinsMultiplier,
+            badges: badgesMultiplier
+        }
     };
 }

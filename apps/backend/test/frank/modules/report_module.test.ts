@@ -26,55 +26,87 @@ for (let x = previewReport.length; x < REPORT_FORMAT.length[1]; x++){
 }
 
 describe("Game Report module", function(){
-    it("Extract the data from a game report required to give rewards", function(){
+    describe("Extract the data from a game report required to give rewards", function(){
         // Same test data as extractReportPreviewStats is used for this function
-        expect(extractReportData([])).to.be.undefined;
-        const preview = extractReportData(previewReport)!;
+        const format = REPORT_FORMAT;
 
-        expect(preview).to.be.an("object");
-        expect(preview).to.have.keys([
-            "gameMode", "player", "score", "enemies",
-            "coins", "points", "badges"
-        ]);
-        expect(preview.player).to.have.keys(["difficulty", "brawler", "upgradeTier", "starPower", "gears", "accessories"]);
-        expect(preview.score).to.have.keys(["win", "total", "categories"]);
-        expect(preview.score.categories).to.have.keys(["completion", "time", "destination", "health", "gear", "enemy"]);
+        it("Valid report", function(){
+            const preview = extractReportData(previewReport)!;
 
-        expect(preview.gameMode).to.equal(0);
-        expect(preview.player.difficulty).to.equal(1);
-        expect(preview.player.brawler).to.equal(3);
-        expect(preview.player.starPower).to.equal(2);
-        expect(preview.player.gears).to.eql([1, 2]);
-        expect(preview.player.accessories).to.eql([0, 1, 2, 3, 4, -1, -1, -1, -1, -1]);
+            expect(preview).to.be.an("object");
+            expect(preview).to.have.keys([
+                "gameMode", "player", "score", "enemies",
+                "coins", "mastery", "badges", "achievements", "multipliers"
+            ]);
+            expect(preview.player).to.have.keys(["difficulty", "brawler", "upgradeTier", "starPower", "gears", "accessories"]);
+            expect(preview.score).to.have.keys(["win", "total", "categories"]);
+            expect(preview.score.categories).to.have.keys(["completion", "time", "destination", "health", "gear", "enemy"]);
 
-        expect(preview.score.win).to.be.true;
-        expect(preview.score.total).to.equal(500);
-        expect(preview.score.categories).to.eql({
-            completion: 300, time: 150, destination: 0, health: 50, gear: 0, enemy: 0
+            expect(preview.gameMode).to.equal(0);
+            expect(preview.player.difficulty).to.equal(1);
+            expect(preview.player.brawler).to.equal(3);
+            expect(preview.player.starPower).to.equal(2);
+            expect(preview.player.gears).to.eql([1, 2]);
+            expect(preview.player.accessories).to.eql([0, 1, 2, 3, 4, -1, -1, -1, -1, -1]);
+
+            expect(preview.score.win).to.be.true;
+            expect(preview.score.total).to.equal(500);
+            expect(preview.score.categories).to.eql({
+                completion: 300, time: 150, destination: 0, health: 50, gear: 0, enemy: 0
+            });
+
+            expect(preview.enemies).to.equal(600);
+            expect(preview.coins).to.eql([300, 300]);
+            expect(preview.badges).to.be.a("map");
+            expect(preview.badges).to.include.keys(["darryl", "enemies"]);
+            expect(preview.achievements).to.include.all.keys("wins");
+
+            expect(preview.multipliers.mastery).to.equal(100);
+            expect(preview.multipliers.coins).to.equal(100);
+            expect(preview.multipliers.badges).to.equal(100);
         });
 
-        expect(preview.enemies).to.equal(600);
-        expect(preview.coins).to.eql([300, 300]);
-        expect(preview.badges).to.be.a("map");
-        expect(preview.badges).to.include.keys(["darryl", "wins", "enemies"]);
+        it("Empty report", function(){
+            expect(extractReportData([])).to.be.undefined;
+        });
 
-        const report2 = sampleGameReport.slice();
-        const format = REPORT_FORMAT;
-        // Achievements nomove, noupgrades, nodamage, fastwin, perfect1
-        report2[format.achievements[0] + 6] = 0;
-        for (let x = 0; x < 7; x++){
-            report2[format.upgrades[0] + x] = 0;
-        }
-        report2[format.achievements[0]] = 89999;
-        report2[format.player[0]] = 600;
-        const preview2 = extractReportData(report2)!;
-        expect(preview2.badges).to.include.keys(["nomove", "noupgrades", "nodamage", "fastwin", "perfect1"]);
+        it("Achievements in game mode 0 should be given", function(){
+            const report2 = sampleGameReport.slice();
+            // Achievements nomove, noupgrades, nodamage, fastwin, perfect1
+            report2[format.achievements[0] + 6] = 0;
+            for (let x = 0; x < 7; x++){
+                report2[format.upgrades[0] + x] = 0;
+            }
+            report2[format.achievements[0]] = 89999;
+            report2[format.player[0]] = 600;
+            const preview2 = extractReportData(report2)!;
+            expect(preview2.badges).to.not.include.keys(["nomove", "noupgrades", "nodamage", "fastwin", "perfect1"]);
+            expect(preview2.achievements).to.include.all.keys("nomove", "noupgrades", "nodamage", "fastwin", "perfect1");
+        });
 
-        // Should not include achievements from above because they are only obtainable in game mode 0
-        report2[format.mode[0]] = 2;
-        const preview3 = extractReportData(report2)!;
-        expect(preview3.badges).to.include.keys(["challenges"]);
-        expect(preview3.badges).to.not.include.keys(["nomove", "noupgrades", "nodamage", "fastwin", "perfect1"]);
+        it("Achievements in another game mode should not be given", function(){
+            const report2 = sampleGameReport.slice();
+            // Should not include achievements from above because they are only obtainable in game mode 0
+            report2[format.mode[0]] = 2;
+            const preview3 = extractReportData(report2)!;
+            expect(preview3.badges).to.not.include.keys(["challenges", "nomove", "noupgrades", "nodamage", "fastwin", "perfect1"]);
+            expect(preview3.achievements).to.include.all.keys("challenges");
+            expect(preview3.achievements).to.not.include.all.keys("nomove", "noupgrades", "nodamage", "fastwin", "perfect1");
+        });
+
+        it("Reward multipliers correctly stack", function(){
+            const report2 = sampleGameReport.slice();
+            report2[format.mode[0]] = 0;
+            report2[format.player[0] + 1] = 1;
+            const newAccs = [74, 75, 84, 85, 91];
+            for (let x = 0; x < newAccs.length; x++){
+                report2[format.accessories[0] + x] = newAccs[x];
+            }
+            const preview4 = extractReportData(report2)!;
+            expect(preview4.multipliers.mastery).to.equal(150);
+            expect(preview4.multipliers.coins).to.equal(154);
+            expect(preview4.multipliers.badges).to.equal(150);
+        });
     });
 
     describe("Identifying invalid reports", function(){
