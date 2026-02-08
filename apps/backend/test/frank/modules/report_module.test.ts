@@ -4,9 +4,9 @@ import {GameReport} from "../../../frank/types";
 import {sampleGameReport, GAME_VERSION} from "../database_setup";
 
 const REPORT_FORMAT = {
-    version: [0, 2], mode: [2, 3], player: [3, 8], gears: [8, 10], accessories: [10, 20],
-    score: [20, 26], achievements: [26, 33], resources: [33, 36], upgrades: [36, 43],
-    stats: [43, 51], visited: [51, 59], levels: [59, 107], enemies: [107, 140], length: [0, 140]
+    version: [0, 2], mode: [2, 3], player: [3, 8], gears: [8, 10], accessories: [10, 22],
+    score: [22, 28], achievements: [28, 36], resources: [36, 39], upgrades: [39, 46],
+    stats: [46, 54], visited: [54, 62], levels: [62, 110], enemies: [110, 143], length: [0, 143]
 };
 
 const emptyReport: number[] = [];
@@ -16,10 +16,10 @@ for (let x = 0; x < REPORT_FORMAT.length[1]; x++){
 
 // Score = 500, Difficulty 2, Player 3 (Darryl), Upgrade Tier 0, Star Power 2, Enemies Defeated = 600
 // Gears 1 and 2 (Health and Shield), First 5 Accessories
-const previewReport = [0, 0, 0, 500, 1, 3, 0, 2, 1, 2, 0, 1, 2, 3, 4, -1, -1, -1, -1, -1, 300, 150, 0, 50, 0, 0, 0, 600];
+const previewReport = [0, 0, 0, 500, 1, 3, 0, 2, 1, 2, 31, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 300, 150, 0, 50, 0, 0, 11, 0, 600];
 for (let x = previewReport.length; x < REPORT_FORMAT.length[1]; x++){
-    if (x >= 43 && x <= 50){
-        previewReport.push(x - 43);
+    if (x >= REPORT_FORMAT.stats[0] && x < REPORT_FORMAT.stats[1]){
+        previewReport.push(x - REPORT_FORMAT.stats[0]);
     } else{
         previewReport.push(0);
     }
@@ -47,7 +47,7 @@ describe("Game Report module", function(){
             expect(preview.player.brawler).to.equal(3);
             expect(preview.player.starPower).to.equal(2);
             expect(preview.player.gears).to.eql([1, 2]);
-            expect(preview.player.accessories).to.eql([0, 1, 2, 3, 4, -1, -1, -1, -1, -1]);
+            expect(preview.player.accessories).to.eql([0, 1, 2, 3, 4]);
 
             expect(preview.score.win).to.be.true;
             expect(preview.score.total).to.equal(500);
@@ -73,11 +73,11 @@ describe("Game Report module", function(){
         it("Achievements in game mode 0 should be given", function(){
             const report2 = sampleGameReport.slice();
             // Achievements nomove, noupgrades, nodamage, fastwin, perfect1
-            report2[format.achievements[0] + 6] = 0;
+            report2[format.achievements[0] + 7] = 0;
             for (let x = 0; x < 7; x++){
                 report2[format.upgrades[0] + x] = 0;
             }
-            report2[format.achievements[0]] = 89999;
+            report2[format.achievements[0] + 1] = 89999;
             report2[format.player[0]] = 600;
             const preview2 = extractReportData(report2)!;
             expect(preview2.badges).to.not.include.keys(["nomove", "noupgrades", "nodamage", "fastwin", "perfect1"]);
@@ -89,8 +89,8 @@ describe("Game Report module", function(){
             // Should not include achievements from above because they are only obtainable in game mode 0
             report2[format.mode[0]] = 2;
             const preview3 = extractReportData(report2)!;
-            expect(preview3.badges).to.not.include.keys(["challenges", "nomove", "noupgrades", "nodamage", "fastwin", "perfect1"]);
-            expect(preview3.achievements).to.include.all.keys("challenges");
+            expect(preview3.badges).to.not.include.keys(["challenges", "wins", "nomove", "noupgrades", "nodamage", "fastwin", "perfect1"]);
+            expect(preview3.achievements).to.include.all.keys("challenges", "wins");
             expect(preview3.achievements).to.not.include.all.keys("nomove", "noupgrades", "nodamage", "fastwin", "perfect1");
         });
 
@@ -100,7 +100,8 @@ describe("Game Report module", function(){
             report2[format.player[0] + 1] = 1;
             const newAccs = [74, 75, 84, 85, 91];
             for (let x = 0; x < newAccs.length; x++){
-                report2[format.accessories[0] + x] = newAccs[x];
+                //report2[format.accessories[0] + x] = newAccs[x];
+                report2[format.accessories[0] + (newAccs[x] >> 3)] |= (1 << (newAccs[x] & 7));
             }
             const preview4 = extractReportData(report2)!;
             expect(preview4.multipliers.mastery).to.equal(150);
@@ -200,9 +201,9 @@ describe("Game Report module", function(){
         });
 
         it("Total enemies more than 1000", function(){
-            invalid[format.achievements[0] + 1] = 1001;
+            invalid[format.achievements[0] + 2] = 1001;
             expect(validateReport(invalid)).to.equal(12);
-            invalid[format.achievements[0] + 1] = valid[format.achievements[0] + 1];
+            invalid[format.achievements[0] + 2] = valid[format.achievements[0] + 2];
         });
 
         it("Enemy stats decreasing for each level", function(){
@@ -240,7 +241,7 @@ describe("Game Report module", function(){
         });
 
         it("Accessories used on difficulty 5 or lower", function(){
-            invalid[format.accessories[0]] = 0;
+            invalid[format.accessories[0]] = 1;
             expect(validateReport(invalid)).to.equal(16);
             invalid[format.accessories[0]] = valid[format.accessories[0]];
         });
@@ -252,9 +253,9 @@ describe("Game Report module", function(){
         });
 
         it("Hypercharges used on difficulty 5 or lower", function(){
-            invalid[format.achievements[0] + 4] = 1;
+            invalid[format.achievements[0] + 5] = 1;
             expect(validateReport(invalid)).to.equal(18);
-            invalid[format.achievements[0] + 4] = valid[format.achievements[0] + 4];
+            invalid[format.achievements[0] + 5] = valid[format.achievements[0] + 5];
         });
 
         it("In-game upgrades are not between 0 and max level", function(){

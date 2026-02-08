@@ -9,10 +9,15 @@ interface ScorePerformance{
     gearScore: number;
 }
 
+// const REPORT_FORMAT = {
+//     version: [0, 2], mode: [2, 3], player: [3, 8], gears: [8, 10], accessories: [10, 20],
+//     score: [20, 26], achievements: [26, 33], resources: [33, 36], upgrades: [36, 43],
+//     stats: [43, 51], visited: [51, 59], levels: [59, 107], enemies: [107, 140], length: [0, 140]
+// };
 const REPORT_FORMAT = {
-    version: [0, 2], mode: [2, 3], player: [3, 8], gears: [8, 10], accessories: [10, 20],
-    score: [20, 26], achievements: [26, 33], resources: [33, 36], upgrades: [36, 43],
-    stats: [43, 51], visited: [51, 59], levels: [59, 107], enemies: [107, 140], length: [0, 140]
+    version: [0, 2], mode: [2, 3], player: [3, 8], gears: [8, 10], accessories: [10, 22],
+    score: [22, 28], achievements: [28, 36], resources: [36, 39], upgrades: [39, 46],
+    stats: [46, 54], visited: [54, 62], levels: [62, 110], enemies: [110, 143], length: [0, 143]
 };
 const SCORE_CONSTANTS = {
     stages: [
@@ -131,6 +136,17 @@ function convertLevelReports(reports: number[]): ScorePerformance[]{
         }
     }
     return converted;
+}
+
+function convertAccessories(reportAccs: number[]): number[]{
+    const indexes: number[] = [];
+    const maxIndex = reportAccs.length * 8;
+    for (let x = 0; x < maxIndex; x++){
+        if (((reportAccs[x >> 3] >> (x & 7)) & 1) === 1){
+            indexes.push(x);
+        }
+    }
+    return indexes;
 }
 
 function getFinalScore(reports: number[], enemyCounts: number[]): number[]{
@@ -286,7 +302,7 @@ export function validateReport(report: GameReport): number{
     }
 
     // The total enemies defeated cannot be more than 1000
-    const enemiesDefeated = data[format.achievements[0] + 1];
+    const enemiesDefeated = data[format.achievements[0] + 2];
     if (enemiesDefeated > 1000){
         return 12;
     }
@@ -363,7 +379,7 @@ export function validateReport(report: GameReport): number{
 
     if (gameMode === 0){
         // Accessories are not allowed on difficulty 5 or lower
-        const accs = data.slice(format.accessories[0], format.accessories[1]);
+        const accs = convertAccessories(data.slice(format.accessories[0], format.accessories[1]));
         for (let x = 0; x < accs.length; x++){
             if (accs[x] >= 0 && difficulty <= 5){
                 valid = false;
@@ -379,7 +395,7 @@ export function validateReport(report: GameReport): number{
         }
 
         // Hypercharges are not allowed on difficulty 5 or lower
-        if (data[format.achievements[0] + 4] > 0 && difficulty <= 5){
+        if (data[format.achievements[0] + 5] > 0 && difficulty <= 5){
             return 18;
         }
 
@@ -433,11 +449,11 @@ export function extractReportData(data: GameReport): ReportData | undefined{
     }
 
     const enemies = data.slice(format.enemies[0], format.enemies[1]);
-    const win = data[s] >= SCORE_CONSTANTS.maxScores.completion;
     const difficulty = data[p + 1];
-    const enemiesDefeated = data[a + 1];
+    const enemiesDefeated = data[a + 2];
     const gameMode = data[format.mode[0]];
-    const accs = data.slice(format.accessories[0], format.accessories[1]);
+    const win = (gameMode === 0 && data[s] >= SCORE_CONSTANTS.maxScores.completion) || ((data[a] & 1) === 1);
+    const accs = convertAccessories(data.slice(format.accessories[0], format.accessories[1]));
 
     const visited = data.slice(format.visited[0], format.visited[1]);
     const stages = convertLevelReports(data.slice(format.levels[0], format.levels[1]));
@@ -580,11 +596,11 @@ export function extractReportData(data: GameReport): ReportData | undefined{
             achievements.add("default5");
         }
         // Win without moving
-        if (data[a + 6] === 0){
+        if (data[a + 7] === 0){
             achievements.add("nomove");
         }
         // Win without purchasing upgrades or using gears
-        if (data[a + 2] === 0){
+        if (data[a + 3] === 0){
             // First, check if the player used gears. If they did not use any, check upgrade levels.
             let upgraded = false;
             for (let x = format.upgrades[0]; x < format.upgrades[1]; x++){
@@ -597,15 +613,15 @@ export function extractReportData(data: GameReport): ReportData | undefined{
             }
         }
         // Win without taking any damage
-        if (data[a + 5] === 0){
+        if (data[a + 6] === 0){
             achievements.add("nodamage");
         }
         // Win in under 90 seconds
-        if (data[a] < 90000){
+        if (data[a + 1] < 90000){
             achievements.add("fastwin");
         }
         // Win while using at least 20 max level combos
-        if (data[a + 3] >= 20){
+        if (data[a + 4] >= 20){
             achievements.add("usecombo");
         }
         // Get a perfect score
