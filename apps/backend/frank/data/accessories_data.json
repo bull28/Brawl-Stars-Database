@@ -17,7 +17,7 @@
     },
     {
         "name": "default5", "category": "", "displayName": "Offensive Potion",
-        "description": "Increases damage and speed.", "unlock": "Win on Classic Mode difficulty 3.", "badges": 1
+        "description": "Increases damage and critical damage.", "unlock": "Win on Classic Mode difficulty 3.", "badges": 1
     },
     {
         "name": "shop1", "category": "", "displayName": "Healing Potion",
@@ -28,8 +28,8 @@
         "description": "Increases life steal.", "unlock": "Buy from the Shop.", "badges": 1
     },
     {
-        "name": "shop3", "category": "", "displayName": "Speed Potion",
-        "description": "Increases speed.", "unlock": "Buy from the Shop.", "badges": 1
+        "name": "shop3", "category": "", "displayName": "Critical Potion",
+        "description": "Increases critical damage.", "unlock": "Buy from the Shop.", "badges": 1
     },
     {
         "name": "shop4", "category": "", "displayName": "Combo Potion",
@@ -245,7 +245,7 @@
     },
     {
         "name": "biodome", "category": "location", "displayName": "Rosa's Gloves",
-        "description": "When close to maximum health, deal more damage.", "unlock": "Complete levels at Biodome.", "badges": 250
+        "description": "Increases critical chance when close to maximum health.", "unlock": "Complete levels at Biodome.", "badges": 250
     },
     {
         "name": "ghoststation", "category": "location", "displayName": "Train Tickets",
@@ -257,7 +257,7 @@
     },
     {
         "name": "giftshop", "category": "location", "displayName": "Gift Shop Shirt",
-        "description": "Increases health, speed, and life steal.", "unlock": "Complete levels at Gift Shop.", "badges": 250
+        "description": "Increases health, critical damage, and life steal.", "unlock": "Complete levels at Gift Shop.", "badges": 250
     },
     {
         "name": "enchantedforest", "category": "location", "displayName": "Mysterious Mushroom",

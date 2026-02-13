@@ -421,28 +421,32 @@ const challenges = new Map<string, StaticPreset>([
                     maxLevel: 20
                 },
                 damage: {
-                    cost: [4, 4, 4, 5, 5, 6, 7, 7, 8, 9, 10, 11, 12, 13, 15, 16],
-                    maxLevel: 16
+                    cost: [4, 5, 6, 6, 7, 8, 9, 10, 12, 13, 15, 17, 19, 21],
+                    maxLevel: 14
                 },
                 healing: {
-                    cost: [4, 5, 6, 6, 8, 9, 10, 12, 14, 16, 19],
-                    maxLevel: 11
+                    cost: [5, 6, 7, 9, 10, 13, 15, 19],
+                    maxLevel: 8
                 },
                 lifeSteal: {
-                    cost: [4, 5, 6, 6, 8, 9, 10, 12, 14, 16, 19],
-                    maxLevel: 11
+                    cost: [5, 6, 7, 9, 10, 13, 15, 19],
+                    maxLevel: 8
                 },
-                speed: {
-                    cost: [6, 7, 8, 10, 13, 16, 19, 24],
+                critical: {
+                    cost: [5, 6, 7, 9, 10, 13, 15, 19],
                     maxLevel: 8
                 },
                 combo: {
-                    cost: [3, 4, 4, 5, 5, 6, 7, 8, 8, 10, 11, 12, 14, 15],
-                    maxLevel: 14
+                    cost: [5, 6, 7, 9, 10, 13, 15, 19],
+                    maxLevel: 8
+                },
+                speed: {
+                    cost: [7, 9, 11, 15, 18, 23, 29],
+                    maxLevel: 7
                 },
                 ability: {
-                    cost: [9, 12, 15, 19, 25, 31],
-                    maxLevel: 6
+                    cost: [12, 16, 22, 30, 40],
+                    maxLevel: 5
                 }
             }
         }
@@ -526,32 +530,37 @@ const challenges = new Map<string, StaticPreset>([
                     maxLevel: 6
                 },
                 damage: {
-                    value: [225, 12.5],
+                    value: [175, 12.5],
                     cost: [5, 5, 6, 6, 6, 6],
                     maxLevel: 6
                 },
                 healing: {
-                    value: [500, 50],
+                    value: [350, 50],
                     cost: [7, 8, 10],
                     maxLevel: 3
                 },
                 lifeSteal: {
-                    value: [500, 50],
+                    value: [350, 50],
+                    cost: [7, 8, 10],
+                    maxLevel: 3
+                },
+                critical: {
+                    value: [350, 50],
+                    cost: [7, 8, 10],
+                    maxLevel: 3
+                },
+                combo: {
+                    value: [350, 50],
                     cost: [7, 8, 10],
                     maxLevel: 3
                 },
                 speed: {
-                    value: [6, 2],
+                    value: [5, 2],
                     cost: [10, 12],
                     maxLevel: 1
                 },
-                combo: {
-                    value: [600, 50],
-                    cost: [5, 6, 6, 6],
-                    maxLevel: 4
-                },
                 ability: {
-                    value: [100, 20],
+                    value: [80, 20],
                     cost: [24],
                     maxLevel: 1
                 }
