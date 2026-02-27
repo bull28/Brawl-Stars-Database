@@ -1,370 +1,370 @@
 [
     {
-        "name": "default1", "category": "", "displayName": "Supply Drop",
+        "name": "default1", "category": "", "displayName": "Supply Drop", "cost": 3,
         "description": "Increases health and damage.", "unlock": "Win on Classic Mode difficulty 1.", "badges": 1
     },
     {
-        "name": "default2", "category": "", "displayName": "Green Supply Drop",
+        "name": "default2", "category": "", "displayName": "Green Supply Drop", "cost": 4,
         "description": "Increases health and damage.", "unlock": "Win on Classic Mode difficulty 2.", "badges": 1
     },
     {
-        "name": "default3", "category": "", "displayName": "Red Supply Drop",
+        "name": "default3", "category": "", "displayName": "Red Supply Drop", "cost": 4,
         "description": "Increases health and damage.", "unlock": "Win on Classic Mode difficulty 2.", "badges": 1
     },
     {
-        "name": "default4", "category": "", "displayName": "Defensive Potion",
+        "name": "default4", "category": "", "displayName": "Defensive Potion", "cost": 4,
         "description": "Increases health and healing.", "unlock": "Win on Classic Mode difficulty 3.", "badges": 1
     },
     {
-        "name": "default5", "category": "", "displayName": "Offensive Potion",
+        "name": "default5", "category": "", "displayName": "Offensive Potion", "cost": 4,
         "description": "Increases damage and critical damage.", "unlock": "Win on Classic Mode difficulty 3.", "badges": 1
     },
     {
-        "name": "shop1", "category": "", "displayName": "Healing Potion",
+        "name": "shop1", "category": "", "displayName": "Healing Potion", "cost": 5,
         "description": "Increases healing.", "unlock": "Buy from the Shop.", "badges": 1
     },
     {
-        "name": "shop2", "category": "", "displayName": "Life Steal Potion",
+        "name": "shop2", "category": "", "displayName": "Life Steal Potion", "cost": 5,
         "description": "Increases life steal.", "unlock": "Buy from the Shop.", "badges": 1
     },
     {
-        "name": "shop3", "category": "", "displayName": "Critical Potion",
+        "name": "shop3", "category": "", "displayName": "Critical Potion", "cost": 5,
         "description": "Increases critical damage.", "unlock": "Buy from the Shop.", "badges": 1
     },
     {
-        "name": "shop4", "category": "", "displayName": "Combo Potion",
+        "name": "shop4", "category": "", "displayName": "Combo Potion", "cost": 5,
         "description": "Increases combo damage.", "unlock": "Buy from the Shop.", "badges": 1
     },
     {
-        "name": "shop5", "category": "", "displayName": "Iron Wall",
+        "name": "shop5", "category": "", "displayName": "Iron Wall", "cost": 4,
         "description": "Knockbacks and slows from enemies are less effective.", "unlock": "Buy from the Shop.", "badges": 1
     },
     {
-        "name": "shop6", "category": "", "displayName": "Pam's Healing Station",
+        "name": "shop6", "category": "", "displayName": "Pam's Healing Station", "cost": 6,
         "description": "Increases protection.", "unlock": "Buy from the Shop.", "badges": 1
     },
     {
-        "name": "shop7", "category": "", "displayName": "Nani's Drone",
+        "name": "shop7", "category": "", "displayName": "Nani's Drone", "cost": 4,
         "description": "Increases attack range.", "unlock": "Buy from the Shop.", "badges": 1
     },
     {
-        "name": "shop8", "category": "", "displayName": "Finx's Time Staff",
+        "name": "shop8", "category": "", "displayName": "Finx's Time Staff", "cost": 4,
         "description": "Increases projectile speed.", "unlock": "Buy from the Shop.", "badges": 1
     },
     {
-        "name": "brawlbox1", "category": "", "displayName": "Healing Skull",
+        "name": "brawlbox1", "category": "", "displayName": "Healing Skull", "cost": 6,
         "description": "When defeating an enemy, restore some health.", "unlock": "Buy from the Shop.", "badges": 1
     },
     {
-        "name": "brawlbox2", "category": "", "displayName": "Sam's Knuckle Busters",
+        "name": "brawlbox2", "category": "", "displayName": "Sam's Knuckle Busters", "cost": 6,
         "description": "Every few seconds, restore some missing health.", "unlock": "Buy from the Shop.", "badges": 1
     },
     {
-        "name": "brawlbox3", "category": "", "displayName": "Doug's Hot Dog",
+        "name": "brawlbox3", "category": "", "displayName": "Doug's Hot Dog", "cost": 5,
         "description": "Once in a while when at low health, heal to full health.", "unlock": "Buy from the Shop.", "badges": 1
     },
     {
-        "name": "brawlbox4", "category": "", "displayName": "Angelo's Bow",
+        "name": "brawlbox4", "category": "", "displayName": "Angelo's Bow", "cost": 5,
         "description": "Attacks deal extra damage every second for a few seconds.", "unlock": "Buy from the Shop.", "badges": 1
     },
     {
-        "name": "brawlbox5", "category": "", "displayName": "Power Skull",
+        "name": "brawlbox5", "category": "", "displayName": "Power Skull", "cost": 6,
         "description": "When defeating an enemy, increase the next attack's damage.", "unlock": "Buy from the Shop.", "badges": 1
     },
     {
-        "name": "brawlbox6", "category": "", "displayName": "Buster's Projector",
+        "name": "brawlbox6", "category": "", "displayName": "Buster's Projector", "cost": 4,
         "description": "The super charges faster when not attacking.", "unlock": "Buy from the Shop.", "badges": 1
     },
     {
-        "name": "brawlbox7", "category": "", "displayName": "Super Juice",
+        "name": "brawlbox7", "category": "", "displayName": "Super Juice", "cost": 5,
         "description": "The super charges past a full charge.", "unlock": "Buy from the Shop.", "badges": 1
     },
     {
-        "name": "shelly", "category": "enemy", "displayName": "Shelly's Shotgun",
+        "name": "shelly", "category": "enemy", "displayName": "Shelly's Shotgun", "cost": 3,
         "description": "Deal more damage to and receive more protection from Damage Dealer enemies.", "unlock": "Defeat Shelly enemies.", "badges": 500
     },
     {
-        "name": "colt", "category": "enemy", "displayName": "Colt's Revolvers",
+        "name": "colt", "category": "enemy", "displayName": "Colt's Revolvers", "cost": 3,
         "description": "Receive more protection from Marksman enemies.", "unlock": "Defeat Colt enemies.", "badges": 500
     },
     {
-        "name": "rt", "category": "enemy", "displayName": "R-T's Camera",
+        "name": "rt", "category": "enemy", "displayName": "R-T's Camera", "cost": 3,
         "description": "Deal more damage to and receive more protection from Controller enemies.", "unlock": "Defeat R-T enemies.", "badges": 500
     },
     {
-        "name": "elprimo", "category": "enemy", "displayName": "El Primo's Belt",
+        "name": "elprimo", "category": "enemy", "displayName": "El Primo's Belt", "cost": 3,
         "description": "Deal more damage to and receive more protection from Tank enemies.", "unlock": "Defeat El Primo enemies.", "badges": 500
     },
     {
-        "name": "8bit", "category": "enemy", "displayName": "8-Bit's Turret",
+        "name": "8bit", "category": "enemy", "displayName": "8-Bit's Turret", "cost": 3,
         "description": "Receive more protection from Damage Dealer enemies.", "unlock": "Defeat 8-Bit enemies.", "badges": 500
     },
     {
-        "name": "belle", "category": "enemy", "displayName": "Belle's Rifle",
+        "name": "belle", "category": "enemy", "displayName": "Belle's Rifle", "cost": 3,
         "description": "Deal more damage to Marksman enemies.", "unlock": "Defeat Belle enemies.", "badges": 500
     },
     {
-        "name": "jessie", "category": "enemy", "displayName": "Jessie's Backpack",
+        "name": "jessie", "category": "enemy", "displayName": "Jessie's Backpack", "cost": 3,
         "description": "Receive more protection from Controller enemies.", "unlock": "Defeat Jessie enemies.", "badges": 500
     },
     {
-        "name": "eve", "category": "enemy", "displayName": "Eve's Spaceship",
+        "name": "eve", "category": "enemy", "displayName": "Eve's Spaceship", "cost": 3,
         "description": "Deal more damage to Controller enemies.", "unlock": "Defeat Eve enemies.", "badges": 500
     },
     {
-        "name": "mortis", "category": "enemy", "displayName": "Mortis's Shovel",
+        "name": "mortis", "category": "enemy", "displayName": "Mortis's Shovel", "cost": 3,
         "description": "Receive more protection from Assassin enemies.", "unlock": "Defeat Mortis enemies.", "badges": 500
     },
     {
-        "name": "frank", "category": "enemy", "displayName": "Frank's Hammer",
+        "name": "frank", "category": "enemy", "displayName": "Frank's Hammer", "cost": 3,
         "description": "Deal more damage to Tank enemies.", "unlock": "Defeat Frank enemies.", "badges": 500
     },
     {
-        "name": "jacky", "category": "enemy", "displayName": "Jacky's Drill",
+        "name": "jacky", "category": "enemy", "displayName": "Jacky's Drill", "cost": 3,
         "description": "Receive more protection from Tank enemies.", "unlock": "Defeat Jacky enemies.", "badges": 500
     },
     {
-        "name": "mrp", "category": "enemy", "displayName": "Mr. P's Suitcase",
+        "name": "mrp", "category": "enemy", "displayName": "Mr. P's Suitcase", "cost": 4,
         "description": "Receive more protection from Controller enemies.", "unlock": "Defeat Mr. P enemies.", "badges": 500
     },
     {
-        "name": "bea", "category": "enemy", "displayName": "Bea's Bee",
+        "name": "bea", "category": "enemy", "displayName": "Bea's Bee", "cost": 4,
         "description": "Receive more protection from Marksman enemies.", "unlock": "Defeat Bea enemies.", "badges": 500
     },
     {
-        "name": "lola", "category": "enemy", "displayName": "Lola's Scarf",
+        "name": "lola", "category": "enemy", "displayName": "Lola's Scarf", "cost": 5,
         "description": "Deal more damage to and receive more protection from Controller enemies.", "unlock": "Defeat Lola enemies.", "badges": 500
     },
     {
-        "name": "bo", "category": "enemy", "displayName": "Bo's Quiver",
+        "name": "bo", "category": "enemy", "displayName": "Bo's Quiver", "cost": 4,
         "description": "Deal more damage to Controller enemies.", "unlock": "Defeat Bo enemies.", "badges": 500
     },
     {
-        "name": "colette", "category": "enemy", "displayName": "Colette's Scrapbook",
+        "name": "colette", "category": "enemy", "displayName": "Colette's Scrapbook", "cost": 3,
         "description": "Deal more damage to Damage Dealer enemies.", "unlock": "Defeat Colette enemies.", "badges": 500
     },
     {
-        "name": "pearl", "category": "enemy", "displayName": "Pearl's Cookie",
+        "name": "pearl", "category": "enemy", "displayName": "Pearl's Cookie", "cost": 4,
         "description": "Receive more protection from Damage Dealer enemies.", "unlock": "Defeat Pearl enemies.", "badges": 500
     },
     {
-        "name": "bibi", "category": "enemy", "displayName": "Bibi's Bat",
+        "name": "bibi", "category": "enemy", "displayName": "Bibi's Bat", "cost": 4,
         "description": "Receive more protection from Tank enemies.", "unlock": "Defeat Bibi enemies.", "badges": 500
     },
     {
-        "name": "brock", "category": "enemy", "displayName": "Brock's Rocket Launcher",
+        "name": "brock", "category": "enemy", "displayName": "Brock's Rocket Launcher", "cost": 4,
         "description": "Deal more damage to Marksman enemies.", "unlock": "Defeat Brock enemies.", "badges": 500
     },
     {
-        "name": "chester", "category": "enemy", "displayName": "Chester's Box",
+        "name": "chester", "category": "enemy", "displayName": "Chester's Box", "cost": 4,
         "description": "Deal more damage to Damage Dealer enemies.", "unlock": "Defeat Chester enemies.", "badges": 500
     },
     {
-        "name": "ollie", "category": "enemy", "displayName": "Ollie's Skateboard",
+        "name": "ollie", "category": "enemy", "displayName": "Ollie's Skateboard", "cost": 4,
         "description": "Deal more damage to Tank enemies.", "unlock": "Defeat Ollie enemies.", "badges": 500
     },
     {
-        "name": "leon", "category": "enemy", "displayName": "Leon's Lollipop",
+        "name": "leon", "category": "enemy", "displayName": "Leon's Lollipop", "cost": 3,
         "description": "Deal more damage to Assassin enemies.", "unlock": "Defeat Leon enemies.", "badges": 500
     },
     {
-        "name": "bonnie", "category": "enemy", "displayName": "Bonnie's Cannon",
+        "name": "bonnie", "category": "enemy", "displayName": "Bonnie's Cannon", "cost": 5,
         "description": "Deal more damage to and receive more protection from Marksman enemies.", "unlock": "Defeat Bonnie enemies.", "badges": 500
     },
     {
-        "name": "amber", "category": "enemy", "displayName": "Amber's Fire Staff",
+        "name": "amber", "category": "enemy", "displayName": "Amber's Fire Staff", "cost": 5,
         "description": "Deal more damage to and receive more protection from Damage Dealer enemies.", "unlock": "Defeat Amber enemies.", "badges": 500
     },
     {
-        "name": "melodie", "category": "enemy", "displayName": "Melodie's Note",
+        "name": "melodie", "category": "enemy", "displayName": "Melodie's Note", "cost": 4,
         "description": "Receive more protection from Assassin enemies.", "unlock": "Defeat Melodie enemies.", "badges": 500
     },
     {
-        "name": "kaze", "category": "enemy", "displayName": "Kaze's Fan",
+        "name": "kaze", "category": "enemy", "displayName": "Kaze's Fan", "cost": 5,
         "description": "Deal more damage to and receive more protection from Assassin enemies.", "unlock": "Defeat Kaze enemies.", "badges": 500
     },
     {
-        "name": "max", "category": "enemy", "displayName": "Max's Energy Drink",
+        "name": "max", "category": "enemy", "displayName": "Max's Energy Drink", "cost": 4,
         "description": "Deal more damage to Assassin enemies.", "unlock": "Defeat Max enemies.", "badges": 500
     },
     {
-        "name": "meg", "category": "enemy", "displayName": "Meg's Mech",
+        "name": "meg", "category": "enemy", "displayName": "Meg's Mech", "cost": 5,
         "description": "Deal more damage to and receive more protection from Tank enemies.", "unlock": "Defeat Meg enemies.", "badges": 500
     },
     {
-        "name": "spike", "category": "player", "displayName": "Spike's Cactus",
+        "name": "spike", "category": "player", "displayName": "Spike's Cactus", "cost": 6,
         "description": "All healing and damage buffs are increased when playing as Spike.", "unlock": "Win with Spike.", "badges": 100
     },
     {
-        "name": "gus", "category": "player", "displayName": "Gus's Balloon",
+        "name": "gus", "category": "player", "displayName": "Gus's Balloon", "cost": 6,
         "description": "All healing is increased when playing as Gus.", "unlock": "Win with Gus.", "badges": 100
     },
     {
-        "name": "emz", "category": "player", "displayName": "Emz's Spray",
+        "name": "emz", "category": "player", "displayName": "Emz's Spray", "cost": 6,
         "description": "All damage buffs are stronger when playing as Emz.", "unlock": "Win with Emz.", "badges": 100
     },
     {
-        "name": "darryl", "category": "player", "displayName": "Darryl's Barrel",
+        "name": "darryl", "category": "player", "displayName": "Darryl's Barrel", "cost": 6,
         "description": "All healing is increased when playing as Darryl.", "unlock": "Win with Darryl.", "badges": 100
     },
     {
-        "name": "tara", "category": "player", "displayName": "Tara's Cards",
+        "name": "tara", "category": "player", "displayName": "Tara's Cards", "cost": 6,
         "description": "All healing is increased when playing as Tara.", "unlock": "Win with Tara.", "badges": 100
     },
     {
-        "name": "piper", "category": "player", "displayName": "Piper's Umbrella",
+        "name": "piper", "category": "player", "displayName": "Piper's Umbrella", "cost": 6,
         "description": "All damage buffs are stronger when playing as Piper.", "unlock": "Win with Piper.", "badges": 100
     },
     {
-        "name": "lily", "category": "player", "displayName": "Lily's Plant",
+        "name": "lily", "category": "player", "displayName": "Lily's Plant", "cost": 6,
         "description": "All damage buffs are stronger when playing as Lily.", "unlock": "Win with Lily.", "badges": 100
     },
     {
-        "name": "stu", "category": "player", "displayName": "Stu's Wheel",
+        "name": "stu", "category": "player", "displayName": "Stu's Wheel", "cost": 6,
         "description": "Super charges faster from all sources when playing as Stu.", "unlock": "Win with Stu.", "badges": 100
     },
     {
-        "name": "maisie", "category": "player", "displayName": "Maisie's Metal Arm",
+        "name": "maisie", "category": "player", "displayName": "Maisie's Metal Arm", "cost": 6,
         "description": "Super charges faster from all sources when playing as Maisie.", "unlock": "Win with Maisie.", "badges": 100
     },
     {
-        "name": "shade", "category": "player", "displayName": "Shade's Keychain",
+        "name": "shade", "category": "player", "displayName": "Shade's Keychain", "cost": 6,
         "description": "All healing is increased when playing as Shade.", "unlock": "Win with Shade.", "badges": 100
     },
     {
-        "name": "mandy", "category": "player", "displayName": "Mandy's Candy Dispenser",
+        "name": "mandy", "category": "player", "displayName": "Mandy's Candy Dispenser", "cost": 6,
         "description": "All damage buffs are stronger when playing as Mandy.", "unlock": "Win with Mandy.", "badges": 100
     },
     {
-        "name": "hank", "category": "player", "displayName": "Hank's Helmet",
+        "name": "hank", "category": "player", "displayName": "Hank's Helmet", "cost": 6,
         "description": "All healing and damage buffs are increased when playing as Hank.", "unlock": "Win with Hank.", "badges": 100
     },
     {
-        "name": "oldtown", "category": "location", "displayName": "Barley's Bottle",
+        "name": "oldtown", "category": "location", "displayName": "Barley's Bottle", "cost": 5,
         "description": "After not taking damage for a few seconds, get a shield.", "unlock": "Complete levels at Old Town.", "badges": 250
     },
     {
-        "name": "biodome", "category": "location", "displayName": "Rosa's Gloves",
+        "name": "biodome", "category": "location", "displayName": "Rosa's Gloves", "cost": 5,
         "description": "Increases critical chance when close to maximum health.", "unlock": "Complete levels at Biodome.", "badges": 250
     },
     {
-        "name": "ghoststation", "category": "location", "displayName": "Train Tickets",
+        "name": "ghoststation", "category": "location", "displayName": "Train Tickets", "cost": 5,
         "description": "Receive more power points when completing a level.", "unlock": "Complete levels at Ghost Station.", "badges": 250
     },
     {
-        "name": "deepsea", "category": "location", "displayName": "Clancy's Tokens",
+        "name": "deepsea", "category": "location", "displayName": "Clancy's Tokens", "cost": 5,
         "description": "Using the super increases life steal for the rest of the level.", "unlock": "Complete levels at Deep Sea.", "badges": 250
     },
     {
-        "name": "giftshop", "category": "location", "displayName": "Gift Shop Shirt",
+        "name": "giftshop", "category": "location", "displayName": "Gift Shop Shirt", "cost": 6,
         "description": "Increases health, critical damage, and life steal.", "unlock": "Complete levels at Gift Shop.", "badges": 250
     },
     {
-        "name": "enchantedforest", "category": "location", "displayName": "Mysterious Mushroom",
+        "name": "enchantedforest", "category": "location", "displayName": "Mysterious Mushroom", "cost": 6,
         "description": "Every few seconds, heal health for each hit recently received.", "unlock": "Complete levels at Enchanted Forest", "badges": 250
     },
     {
-        "name": "retropolis", "category": "location", "displayName": "Neon Light",
+        "name": "retropolis", "category": "location", "displayName": "Neon Light", "cost": 4,
         "description": "Fire damage and damage marks from enemies are less effective.", "unlock": "Complete levels at Retropolis.", "badges": 250
     },
     {
-        "name": "candyland", "category": "location", "displayName": "Starr Candy",
+        "name": "candyland", "category": "location", "displayName": "Starr Candy", "cost": 5,
         "description": "When defeating an enemy, gain speed for a few seconds.", "unlock": "Complete levels at Candyland.", "badges": 250
     },
     {
-        "name": "rumblejungle", "category": "location", "displayName": "Nita's Bear Hat",
+        "name": "rumblejungle", "category": "location", "displayName": "Nita's Bear Hat", "cost": 6,
         "description": "Increases damage, healing, and combo damage.", "unlock": "Complete levels at Rumble Jungle.", "badges": 250
     },
     {
-        "name": "stuntshow", "category": "location", "displayName": "Janet's Microphone",
+        "name": "stuntshow", "category": "location", "displayName": "Janet's Microphone", "cost": 6,
         "description": "Increases charge rate of the super.", "unlock": "Complete levels at Stunt Show.", "badges": 250
     },
     {
-        "name": "supercity", "category": "location", "displayName": "Surge's Energy Drink",
+        "name": "supercity", "category": "location", "displayName": "Surge's Energy Drink", "cost": 5,
         "description": "For the first few seconds of each level, gain speed and damage.", "unlock": "Complete levels at Super City.", "badges": 250
     },
     {
-        "name": "odditiesshop", "category": "location", "displayName": "Cursed Book",
+        "name": "odditiesshop", "category": "location", "displayName": "Cursed Book", "cost": 6,
         "description": "The combo gains a speed and reload buff.", "unlock": "Complete levels at Oddities Shop", "badges": 250
     },
     {
-        "name": "arcade", "category": "location", "displayName": "Arcade Machine",
+        "name": "arcade", "category": "location", "displayName": "Arcade Machine", "cost": 6,
         "description": "Defeating enemies increases damage for the rest of the level.", "unlock": "Complete levels at Arcade.", "badges": 250
     },
     {
-        "name": "wins", "category": "", "displayName": "Bull's Shotgun",
+        "name": "wins", "category": "", "displayName": "Bull's Shotgun", "cost": 6,
         "description": "Increases attack reload.", "unlock": "Win in any difficulty.", "badges": 100
     },
     {
-        "name": "enemies", "category": "", "displayName": "Omega Box",
+        "name": "enemies", "category": "", "displayName": "Omega Box", "cost": 7,
         "description": "Gain more badges from rewards.", "unlock": "Defeat enemies.", "badges": 50000
     },
     {
-        "name": "challenges", "category": "", "displayName": "Starr Drop",
+        "name": "challenges", "category": "", "displayName": "Starr Drop", "cost": 7,
         "description": "Gain more mastery points from rewards.", "unlock": "Complete challenges.", "badges": 100
     },
     {
-        "name": "trials", "category": "", "displayName": "Heist Safe",
+        "name": "trials", "category": "", "displayName": "Heist Safe", "cost": 6,
         "description": "Receiving damage charges the super.", "unlock": "This accessory will be released later.", "badges": 100
     },
     {
-        "name": "nomove", "category": "", "displayName": "Charlie's Cocoon",
+        "name": "nomove", "category": "", "displayName": "Charlie's Cocoon", "cost": 5,
         "description": "When at low health, receive more protection.", "unlock": "Win Classic Mode without moving. Supers are allowed.", "badges": 1
     },
     {
-        "name": "noupgrades", "category": "", "displayName": "Bling Stack",
+        "name": "noupgrades", "category": "", "displayName": "Bling Stack", "cost": 3,
         "description": "Receive 1 extra gear scrap when completing a level.", "unlock": "Win Classic Mode without purchasing upgrades or using gears.", "badges": 1
     },
     {
-        "name": "nodamage", "category": "", "displayName": "Poco's Guitar",
+        "name": "nodamage", "category": "", "displayName": "Poco's Guitar", "cost": 5,
         "description": "Increases healing when not attacking.", "unlock": "Win Classic Mode without taking any damage.", "badges": 1
     },
     {
-        "name": "fastwin", "category": "", "displayName": "Fang's Shoe",
+        "name": "fastwin", "category": "", "displayName": "Fang's Shoe", "cost": 5,
         "description": "When defeating an enemy, partially recharge the super.", "unlock": "Win Classic Mode in under 90 seconds.", "badges": 1
     },
     {
-        "name": "usecombo", "category": "", "displayName": "Meeple's Dice",
+        "name": "usecombo", "category": "", "displayName": "Meeple's Dice", "cost": 5,
         "description": "Increases charge rate of the combo.", "unlock": "Win Classic Mode while using at least 20 max level combos.", "badges": 1
     },
     {
-        "name": "perfect1", "category": "", "displayName": "Championship Trophy",
+        "name": "perfect1", "category": "", "displayName": "Championship Trophy", "cost": 7,
         "description": "Increases game score.", "unlock": "Get a score of 600 on Classic Mode difficulty 6.", "badges": 1
     },
     {
-        "name": "perfect2", "category": "", "displayName": "Hypercharged Token",
+        "name": "perfect2", "category": "", "displayName": "Hypercharged Token", "cost": 7,
         "description": "Increases charge rate of Hypercharge.", "unlock": "Get a score of 600 on Classic Mode difficulty 10.", "badges": 1
     },
     {
-        "name": "mastery1", "category": "", "displayName": "Bronze Medal",
+        "name": "mastery1", "category": "", "displayName": "Bronze Medal", "cost": 3,
         "description": "Gain more coins from rewards.", "unlock": "Free in the Shop at Mastery Level 6.", "badges": 1
     },
     {
-        "name": "mastery2", "category": "", "displayName": "Silver Medal",
+        "name": "mastery2", "category": "", "displayName": "Silver Medal", "cost": 3,
         "description": "Gain more coins from rewards.", "unlock": "Free in the Shop at Mastery Level 8.", "badges": 1
     },
     {
-        "name": "mastery3", "category": "", "displayName": "Gold Medal",
+        "name": "mastery3", "category": "", "displayName": "Gold Medal", "cost": 4,
         "description": "Gain more coins from rewards.", "unlock": "Free in the Shop at Mastery Level 12.", "badges": 1
     },
     {
-        "name": "mastery4", "category": "", "displayName": "Diamond Medal",
+        "name": "mastery4", "category": "", "displayName": "Diamond Medal", "cost": 4,
         "description": "Gain more coins from rewards.", "unlock": "Free in the Shop at Mastery Level 16.", "badges": 1
     },
     {
-        "name": "mastery5", "category": "", "displayName": "Amethyst Medal",
+        "name": "mastery5", "category": "", "displayName": "Amethyst Medal", "cost": 5,
         "description": "Gain more coins from rewards.", "unlock": "Free in the Shop at Mastery Level 20.", "badges": 1
     },
     {
-        "name": "mastery6", "category": "", "displayName": "Ruby Medal",
+        "name": "mastery6", "category": "", "displayName": "Ruby Medal", "cost": 5,
         "description": "Gain more coins from rewards.", "unlock": "Free in the Shop at Mastery Level 25.", "badges": 1
     },
     {
-        "name": "mastery7", "category": "", "displayName": "Citrine Medal",
+        "name": "mastery7", "category": "", "displayName": "Citrine Medal", "cost": 6,
         "description": "Gain more coins from rewards.", "unlock": "Free in the Shop at Mastery Level 30.", "badges": 1
     },
     {
-        "name": "mastery8", "category": "", "displayName": "Emerald Medal",
+        "name": "mastery8", "category": "", "displayName": "Emerald Medal", "cost": 7,
         "description": "Gain more coins from rewards.", "unlock": "Free in the Shop at Mastery Level 36.", "badges": 1
     }
 ]

@@ -10,6 +10,7 @@ const TEST_TOKEN = tokens.challenges;
 const TEST_USERNAME = "challenge";
 const TEST_USERNAME_ACCEPT = "challengeAccept";
 const TEST_CHALLENGE_ID = TEST_STATIC_ID;
+const TEST_CHALLENGE_MODE = 2;
 
 describe("Challenge endpoints", function(){
     let connection: Connection;
@@ -41,17 +42,17 @@ describe("Challenge endpoints", function(){
         before(async function(){
             await connection.query(`DELETE FROM ${tables.challenges};`);
             await connection.query(
-                `INSERT INTO ${tables.challenges} (active_key, challengeid, accepted, accepted_by) VALUES
-                (?, ?, ?, ?),
-                (?, ?, ?, ?),
-                (?, ?, ?, ?);`,
+                `INSERT INTO ${tables.challenges} (active_key, challengeid, gamemode, accepted, accepted_by) VALUES
+                (?, ?, ?, ?, ?),
+                (?, ?, ?, ?, ?),
+                (?, ?, ?, ?, ?);`,
                 [
                     // Used for valid challenge
-                    "test1", TEST_CHALLENGE_ID, 0, TEST_USERNAME,
+                    "test1", TEST_CHALLENGE_ID, TEST_CHALLENGE_MODE, 0, TEST_USERNAME,
                     // Used for challenge already accepted
-                    "test2", TEST_CHALLENGE_ID, 1, TEST_USERNAME_ACCEPT,
+                    "test2", TEST_CHALLENGE_ID, TEST_CHALLENGE_MODE, 1, TEST_USERNAME_ACCEPT,
                     // Used for challenge with user preferences
-                    "test3", TEST_CHALLENGE_ID, 0, TEST_USERNAME
+                    "test3", TEST_CHALLENGE_ID, TEST_CHALLENGE_MODE, 0, TEST_USERNAME
                 ]
             );
         });

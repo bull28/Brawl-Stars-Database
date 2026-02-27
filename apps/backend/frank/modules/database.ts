@@ -232,13 +232,14 @@ interface ActiveChallengeValues{
 }
 interface ActiveChallengeResult{
     challengeid: string;
+    gamemode: number;
     accepted_by: string;
     accepted: number;
 }
 
 export async function getActiveChallenge(values: ActiveChallengeValues): Promise<ActiveChallengeResult | undefined>{
     const results = await queryDatabase<ActiveChallengeResult>([values.key], true,
-        `SELECT challengeid, accepted_by, accepted FROM ${tables.challenges} WHERE active_key = ?;`
+        `SELECT challengeid, gamemode, accepted_by, accepted FROM ${tables.challenges} WHERE active_key = ?;`
     );
     if (results.length === 0){
         return undefined;
@@ -260,12 +261,13 @@ export async function acceptActiveChallenge(values: AcceptChallengeValues): Prom
 interface ReplaceChallengeValues{
     key: string;
     challengeid: string;
+    gamemode: number;
     username: string;
 }
 export async function replaceActiveChallenge(values: ReplaceChallengeValues): Promise<void>{
     await transaction(async (connection) => {
         await transactionUpdate(connection, [values.username], true, `DELETE FROM ${tables.challenges} WHERE accepted_by = ?`);
-        await transactionUpdate(connection, [values.key, values.challengeid, values.username], false, `INSERT INTO ${tables.challenges} (active_key, challengeid, accepted_by) VALUES (?, ?, ?);`);
+        await transactionUpdate(connection, [values.key, values.challengeid, values.gamemode, values.username], false, `INSERT INTO ${tables.challenges} (active_key, challengeid, gamemode, accepted_by) VALUES (?, ?, ?, ?);`);
     });
 }
 

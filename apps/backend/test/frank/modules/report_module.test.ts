@@ -1,13 +1,7 @@
 import {expect} from "chai";
-import {validateReport, extractReportData} from "../../../frank/modules/report_module";
+import {REPORT_FORMAT, validateReport, extractReportData} from "../../../frank/modules/report_module";
 import {GameReport} from "../../../frank/types";
 import {sampleGameReport, GAME_VERSION} from "../database_setup";
-
-const REPORT_FORMAT = {
-    version: [0, 2], mode: [2, 3], player: [3, 8], gears: [8, 10], accessories: [10, 22],
-    score: [22, 28], achievements: [28, 36], resources: [36, 39], upgrades: [39, 47],
-    stats: [47, 55], visited: [55, 63], levels: [63, 111], enemies: [111, 144], length: [0, 144]
-};
 
 const emptyReport: number[] = [];
 for (let x = 0; x < REPORT_FORMAT.length[1]; x++){

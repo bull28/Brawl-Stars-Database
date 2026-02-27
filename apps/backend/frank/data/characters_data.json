@@ -16,7 +16,7 @@
     },
     {
         "name": "darryl", "displayName": "Darryl", "image": "icon_darryl", "masteryReq": 7,
-        "stats": {"health": 7200, "damage": 800, "healing": 72, "lifeSteal": 80},
+        "stats": {"health": 7200, "damage": 800, "healing": 144, "lifeSteal": 80},
         "otherStats": {"reload": 0.8, "speed": 17, "range": 32, "targets": 2}
     },
     {
@@ -41,7 +41,7 @@
     },
     {
         "name": "maisie", "displayName": "Maisie", "image": "icon_maisie", "masteryReq": 17,
-        "stats": {"health": 5600, "damage": 240, "healing": 80, "lifeSteal": 64},
+        "stats": {"health": 5600, "damage": 240, "healing": 80, "lifeSteal": 72},
         "otherStats": {"reload": 0.5, "speed": 22, "range": 60, "targets": 4}
     }
 ]

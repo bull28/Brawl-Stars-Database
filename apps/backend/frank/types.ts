@@ -541,6 +541,7 @@ export interface ChallengeGameMod{
         addBonusEnemies: boolean;
         maxReportLevels: number;
         upgradesAtStart: boolean;
+        autoSelect: boolean;
         menuTheme: string;
     }>;
     unlocks?: Partial<{

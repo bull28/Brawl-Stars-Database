@@ -16,7 +16,7 @@ interface SaveReqBody{
 
 // Save a game report
 router.post<Empty, Empty, SaveReqBody>("/", databaseErrorHandler<SaveReqBody>(async (req, res) => {
-    const body = {message: "", status: 0, mastery: 0, coins: 0};
+    const body = {message: "", status: 0, path: 0, mastery: 0, coins: 0};
 
     const inputUser = req.body.username;
     const key = req.body.key;

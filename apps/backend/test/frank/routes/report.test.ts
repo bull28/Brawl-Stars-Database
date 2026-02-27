@@ -8,6 +8,7 @@ import {GAME_VERSION, TEST_STATIC_ID, createConnection, closeConnection, tokens,
 const TEST_TOKEN = tokens.report;
 const TEST_USERNAME = "report";
 const TEST_CHALLENGE_ID = TEST_STATIC_ID;
+const TEST_CHALLENGE_MODE = 2;
 
 const reportMode0 = sampleGameReport.slice(2);
 const reportMode2 = sampleGameReport.slice(2);
@@ -45,17 +46,17 @@ describe("Game Report endpoints", function(){
         before(async function(){
             await connection.query(`DELETE FROM ${tables.challenges};`);
             await connection.query(
-                `INSERT INTO ${tables.challenges} (active_key, challengeid, accepted, accepted_by) VALUES
-                (?, ?, ?, ?),
-                (?, ?, ?, ?),
-                (?, ?, ?, ?);`,
+                `INSERT INTO ${tables.challenges} (active_key, challengeid, gamemode, accepted, accepted_by) VALUES
+                (?, ?, ?, ?, ?),
+                (?, ?, ?, ?, ?),
+                (?, ?, ?, ?, ?);`,
                 [
                     // Used for the valid report
-                    "test1", TEST_CHALLENGE_ID, 1, TEST_USERNAME,
+                    "test1", TEST_CHALLENGE_ID, TEST_CHALLENGE_MODE, 1, TEST_USERNAME,
                     // Used for challenge not accepted
-                    "test2", TEST_CHALLENGE_ID, 0, "",
+                    "test2", TEST_CHALLENGE_ID, TEST_CHALLENGE_MODE, 0, "",
                     // Used for user started the challenge does not exist
-                    "test3", TEST_CHALLENGE_ID, 1, "some other user"
+                    "test3", TEST_CHALLENGE_ID, TEST_CHALLENGE_MODE, 1, "some other user"
                 ]
             );
         });
@@ -69,7 +70,7 @@ describe("Game Report endpoints", function(){
             .send({username: TEST_USERNAME, report: [GAME_VERSION, END_TIME++].concat(reportMode0)});
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("object");
-            expect(res.body).to.have.keys(["message", "status", "coins", "mastery"]);
+            expect(res.body).to.have.keys(["message", "status", "path", "coins", "mastery"]);
             expect(res.body.message).to.equal("Score successfully saved.");
             expect(res.body.mastery).to.equal(report0Mastery);
             expect(res.body.coins).to.equal(report0Coins);
@@ -91,7 +92,7 @@ describe("Game Report endpoints", function(){
             .send({username: "ignore", key: "test1", report: [GAME_VERSION, END_TIME++].concat(reportMode2)});
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("object");
-            expect(res.body).to.have.keys(["message", "status", "coins", "mastery"]);
+            expect(res.body).to.have.keys(["message", "status", "path", "coins", "mastery"]);
             expect(res.body.message).to.equal("Score successfully saved.");
             expect(res.body.mastery).to.equal(report2Mastery);
             expect(res.body.coins).to.equal(report2Coins);

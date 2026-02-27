@@ -567,6 +567,47 @@ const challenges = new Map<string, StaticPreset>([
             }
         }
     }],
+    ["bosstrials", {
+        config: {
+            displayName: "Boss Fight",
+            recommendedLvl: 30,
+            baseWinMastery: [],
+            baseLossMastery: [],
+            baseCoins: [],
+            baseBadges: []
+        },
+        gameMod: {
+            options: {},
+            unlocks: {},
+            difficulties: [
+                {
+                    difficultyid: 9,
+                    name: "Difficulty 10",
+                    countTier: 0,
+                    strengthTier: 4,
+                    healthBonusReq: 0.5,
+                    timePerEnemy: 0.6666666666666666,
+                    enemyStats: [100],
+                }
+            ],
+            stages: [
+                {completion: 300, time: 180, powerReward: 0, gearsReward: 0}
+            ],
+            maxScores: {completion: 300, time: 180, destination: 0, health: 90, gear: 30, enemy: 0},
+            levels: [
+                {
+                    levelid: 13,
+                    waves: [
+                        {names: [["bull"]], multiple: []}
+                    ],
+                    background: "rooftop",
+                    displayName: "Rooftop",
+                    stages: [0],
+                    destination: 0
+                }
+            ]
+        }
+    }],
     ["classic1", {
         config: {
             displayName: "Classic Part 1",

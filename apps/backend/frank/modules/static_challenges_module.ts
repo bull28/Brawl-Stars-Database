@@ -60,13 +60,15 @@ export default class StaticChallenge implements ChallengeCategory{
 
         if (srcOptions !== undefined){
             // These are all the options that static challenges are able to set
-            const {gameMode, addBonusEnemies, upgradesAtStart} = srcOptions;
+            const {gameMode, addBonusEnemies, upgradesAtStart, autoSelect} = srcOptions;
             if (gameMode !== undefined){
                 options.gameMode = gameMode;
             } if (addBonusEnemies !== undefined){
                 options.addBonusEnemies = addBonusEnemies;
             } if (upgradesAtStart !== undefined){
                 options.upgradesAtStart = upgradesAtStart;
+            } if (autoSelect !== undefined){
+                options.autoSelect = autoSelect;
             }
         }
         if (srcUnlocks !== undefined){

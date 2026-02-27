@@ -14,7 +14,7 @@ interface ScorePerformance{
 //     score: [20, 26], achievements: [26, 33], resources: [33, 36], upgrades: [36, 43],
 //     stats: [43, 51], visited: [51, 59], levels: [59, 107], enemies: [107, 140], length: [0, 140]
 // };
-const REPORT_FORMAT = {
+export const REPORT_FORMAT = {
     version: [0, 2], mode: [2, 3], player: [3, 8], gears: [8, 10], accessories: [10, 22],
     score: [22, 28], achievements: [28, 36], resources: [36, 39], upgrades: [39, 47],
     stats: [47, 55], visited: [55, 63], levels: [63, 111], enemies: [111, 144], length: [0, 144]

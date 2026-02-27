@@ -78,7 +78,7 @@ router.post<Empty, Empty, ChallengeStartReqBody>("/start", loginErrorHandler<Cha
 
     const key: string = randomUUID();
 
-    await replaceActiveChallenge({key: key, challengeid: challengeid, username: username});
+    await replaceActiveChallenge({key: key, challengeid: challengeid, gamemode: 2, username: username});
 
     res.json({key: key});
 }));
