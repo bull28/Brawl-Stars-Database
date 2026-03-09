@@ -9,11 +9,6 @@ interface ScorePerformance{
     gearScore: number;
 }
 
-// const REPORT_FORMAT = {
-//     version: [0, 2], mode: [2, 3], player: [3, 8], gears: [8, 10], accessories: [10, 20],
-//     score: [20, 26], achievements: [26, 33], resources: [33, 36], upgrades: [36, 43],
-//     stats: [43, 51], visited: [51, 59], levels: [59, 107], enemies: [107, 140], length: [0, 140]
-// };
 export const REPORT_FORMAT = {
     version: [0, 2], mode: [2, 3], player: [3, 8], gears: [8, 10], accessories: [10, 22],
     score: [22, 28], achievements: [28, 36], resources: [36, 39], upgrades: [39, 47],
@@ -271,9 +266,9 @@ export function validateReport(report: GameReport): number{
     // happening through normal gameplay and are guaranteed to be invalid. Many of the values here are set based on
     // various game mechanics. They need to be updated if those mechanics in the game are updated.
 
-    // The game mode must be 0 or 2
+    // The game mode must be 0, 2, or 3
     const gameMode = data[format.mode[0]];
-    if (gameMode !== 0 && gameMode !== 2){
+    if (gameMode !== 0 && gameMode !== 2 && gameMode !== 3){
         return 7;
     }
 
@@ -346,7 +341,7 @@ export function validateReport(report: GameReport): number{
                     valid = false;
                 }
             }
-        } else if (gameMode === 2 && visited[x] < 0){
+        } else if ((gameMode === 2 || gameMode === 3) && visited[x] < 0){
             // In game mode 2, there are no restrictions on which levels can be visited
             hasLost = true;
         }
@@ -518,7 +513,7 @@ export function extractReportData(data: GameReport): ReportData | undefined{
         } else{
             baseBadges = difficulty * 2 - 6;
         }
-    } else if (gameMode === 2){
+    } else if (gameMode === 2 || gameMode === 3){
         // For challenges, mastery, coins, and badges rewards depend on the base mastery stored in the challenge config
         points = 1;
         baseCoins = 1;

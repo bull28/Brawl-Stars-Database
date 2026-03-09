@@ -2,7 +2,8 @@ import {expect} from "chai";
 import characterList from "../../../frank/data/characters_data.json";
 import accessoryList from "../../../frank/data/accessories_data.json";
 import {bufferUtils} from "../../../frank/modules/database";
-import {UserCharacter, UserAccessory} from "../../../frank/types";
+import {UserCharacter, UserAccessory, TrialData} from "../../../frank/types";
+import {generateSampleTrial} from "../database_setup";
 
 describe("Database module", function(){
     it("Convert buffer to character list", function(){
@@ -124,5 +125,52 @@ describe("Database module", function(){
 
         const newAccessories = bufferUtils.bufferToAccessories(bufferUtils.accessoriesToBuffer(accessories));
         expect(accessories).to.eql(newAccessories);
+    });
+
+    it("Two-way conversion with trial", function(){
+        const trial = generateSampleTrial();
+        let totalLength = bufferUtils.TRIAL_HEADER_VALUES + bufferUtils.TRIAL_VALUE_TYPES +
+        Math.max(0, trial.maxBuilds - trial.characterBuilds.length);
+
+        for (const x in trial){
+            const value = trial[x as keyof TrialData];
+            if (Array.isArray(value) === true){
+                totalLength += value.length;
+            } else if (typeof value === "object"){
+                totalLength += Object.keys(value).length;
+            }
+        }
+
+        const buffer = bufferUtils.trialToBuffer(trial);
+        expect(buffer.byteLength).to.equal(bufferUtils.TRIAL_BYTES * totalLength);
+
+        const trial2 = bufferUtils.bufferToTrial(buffer)!;
+
+        expect(Object.keys(trial)).to.eql(Object.keys(trial2));
+        for (const x in trial2){
+            const key = x as keyof TrialData;
+            expect(trial2[key]).to.eql(trial[key]);
+        }
+    });
+
+    it("Increasing maximum character builds in a trial", function(){
+        const trial = generateSampleTrial();
+        const buffer = bufferUtils.trialToBuffer(trial);
+
+        let initialMax = trial.maxBuilds;
+        for (let x = trial.characterBuilds.length; x < initialMax; x++){
+            trial.characterBuilds.push(0);
+        }
+        trial.maxBuilds *= 2;
+
+        const buffer2 = bufferUtils.trialToBuffer(trial);
+        expect(buffer2.byteLength).to.equal(buffer.byteLength + bufferUtils.TRIAL_BYTES * initialMax);
+
+        const trial2 = bufferUtils.bufferToTrial(buffer2)!;
+        expect(trial2.maxBuilds).to.equal(trial.maxBuilds);
+        expect(trial2.characterBuilds).to.eql(trial.characterBuilds);
+
+        trial2.characterBuilds.splice(0, trial.characterBuilds.length);
+        expect(bufferUtils.trialToBuffer(trial2).byteLength).to.equal(buffer2.byteLength);
     });
 });

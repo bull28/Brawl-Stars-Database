@@ -5,7 +5,7 @@ import characterList from "../data/characters_data.json";
 import {createError, createCustomError} from "../modules/utils";
 import {tables, getErrorMessage, queryDatabase, updateDatabase, transactionUpdate, transaction} from "./database_access";
 import {validateToken} from "./account_module";
-import {Empty, UserCharacter, UserAccessory, UserResources} from "../types";
+import {Empty, UserCharacter, UserAccessory, UserResources, TrialData} from "../types";
 
 type ExpressCallback<R, Q, P> = (req: Request<P, Empty, R, Q>, res: Response, next: NextFunction) => void;
 
@@ -53,6 +53,9 @@ export function loginErrorHandler<R = Empty, Q = Query, P = ParamsDictionary>(ca
 
 const CHARACTER_BYTES = 2;
 const ACCESSORY_BYTES = 4;
+const TRIAL_BYTES = 2;
+const TRIAL_HEADER_VALUES = 5;
+const TRIAL_VALUE_TYPES = 9;
 
 function bufferToCharacters(buffer: Uint8Array): UserCharacter[]{
     const characters: UserCharacter[] = [];
@@ -129,9 +132,121 @@ function accessoriesToBuffer(accessories: UserAccessory[]): Uint8Array{
     return Buffer.from(buffer);
 }
 
+function bufferToTrial(buffer: Uint8Array): TrialData | undefined{
+    if (buffer.length < (TRIAL_HEADER_VALUES + TRIAL_VALUE_TYPES) * TRIAL_BYTES){
+        return undefined;
+    }
+
+    const array = new DataView(Uint8Array.from(buffer).buffer);
+    const header: number[] = [];
+    const values: number[][] = [];
+    const valueLengths: number[] = [];
+
+    let totalLength = TRIAL_HEADER_VALUES + TRIAL_VALUE_TYPES;
+    for (let x = 0; x < TRIAL_VALUE_TYPES; x++){
+        const l = array.getUint16((x + TRIAL_HEADER_VALUES) * TRIAL_BYTES, true);
+        totalLength += l;
+        valueLengths.push(l);
+        values.push([]);
+    }
+
+    if (buffer.length !== totalLength * TRIAL_BYTES){
+        return undefined;
+    }
+
+    for (let x = 0; x < TRIAL_HEADER_VALUES; x++){
+        header.push(array.getUint16(x * TRIAL_BYTES, true));
+    }
+
+    const trial: TrialData = {
+        trialid: header[0], level: header[1], state: header[2], progress: header[3], selected: header[4],
+        scores: [], rewards: {lastScore: 0, coins: 0, mastery: 0, badges: 0, quality: 0, specialBoxes: 0},
+        resources: {power: 0, gears: 0, accessories: 0, hyper: 0, credits: 0},
+        upgrades: {health: 0, damage: 0, healing: 0, lifeSteal: 0, critical: 0, combo: 0, speed: 0, ability: 0},
+        characterTiers: [], characterBuilds: [], accessories: [], powerups: [], maxBuilds: 0
+    };
+
+    let offset = header.length + values.length;
+    let y = 0;
+    for (let x = 0; x < values.length - 1; x++){
+        for (y = 0; y < valueLengths[x]; y++){
+            values[x].push(array.getUint16((offset + y) * TRIAL_BYTES, true));
+        }
+        offset += y;
+    }
+
+    const upgradesKeys = Object.keys(trial.upgrades) as (keyof TrialData["upgrades"])[];
+    const rewardsKeys = Object.keys(trial.rewards) as (keyof TrialData["rewards"])[];
+    const resourcesKeys = Object.keys(trial.resources) as (keyof TrialData["resources"])[];
+
+    trial.scores = values[1];
+    trial.accessories = values[4];
+    trial.powerups = values[5];
+    trial.characterTiers = values[6];
+    trial.characterBuilds = values[7];
+
+    for (y = 0; y < upgradesKeys.length; y++){
+        trial.upgrades[upgradesKeys[y]] = values[0][y];
+    }
+    for (y = 0; y < rewardsKeys.length; y++){
+        trial.rewards[rewardsKeys[y]] = values[2][y];
+    }
+    for (y = 0; y < resourcesKeys.length; y++){
+        trial.resources[resourcesKeys[y]] = values[3][y];
+    }
+    trial.maxBuilds = trial.characterBuilds.length + valueLengths[valueLengths.length - 1];
+
+    return trial;
+}
+
+function trialToBuffer(trial: TrialData): Uint8Array{
+    const header: number[] = [
+        trial.trialid, trial.level, trial.state, trial.progress, trial.selected
+    ];
+    const values: number[][] = [
+        Object.values(trial.upgrades), trial.scores, Object.values(trial.rewards), Object.values(trial.resources),
+        trial.accessories, trial.powerups, trial.characterTiers, trial.characterBuilds, []
+    ];
+
+    let totalLength = header.length + values.length;
+    let offset = totalLength;
+    const valueLengths: number[] = [];
+
+    for (let x = 0; x < values.length - 1; x++){
+        totalLength += values[x].length;
+        valueLengths.push(values[x].length);
+    }
+    const padding = Math.max(0, trial.maxBuilds - trial.characterBuilds.length);
+    totalLength += padding;
+    valueLengths.push(padding);
+
+    const buffer = new ArrayBuffer(totalLength * TRIAL_BYTES);
+    const view = new DataView(buffer);
+
+    if (values.length !== valueLengths.length){
+        return Buffer.from(buffer);
+    }
+
+    for (let x = 0; x < header.length; x++){
+        view.setUint16(x * TRIAL_BYTES, header[x], true);
+    }
+
+    let y = 0;
+    for (let x = 0; x < valueLengths.length; x++){
+        for (y = 0; y < values[x].length; y++){
+            view.setUint16((offset + y) * TRIAL_BYTES, values[x][y], true);
+        }
+        view.setUint16((x + header.length) * TRIAL_BYTES, valueLengths[x], true);
+        offset += y;
+    }
+
+    return Buffer.from(buffer);
+}
+
 export const bufferUtils = {
-    CHARACTER_BYTES, ACCESSORY_BYTES,
-    bufferToCharacters, bufferToAccessories, charactersToBuffer, accessoriesToBuffer
+    CHARACTER_BYTES, ACCESSORY_BYTES, TRIAL_BYTES, TRIAL_HEADER_VALUES, TRIAL_VALUE_TYPES,
+    bufferToCharacters, bufferToAccessories, bufferToTrial,
+    charactersToBuffer, accessoriesToBuffer, trialToBuffer
 };
 
 
@@ -290,6 +405,59 @@ export async function deleteActiveChallenge(values: DeleteChallengeValues): Prom
         // Characters are never changed after saving a report so they are not updated here
         await transactionUpdate(connection, [resources.mastery, resources.coins, Buffer.from(accessories.buffer), resources.last_save, values.username], false,
             `UPDATE ${tables.users} SET mastery = ?, coins = ?, accessories = ?, last_save = ? WHERE username = ?;`
+        );
+    });
+}
+
+
+interface TrialResult{
+    trial_data: Uint8Array;
+}
+export async function getActiveTrial(values: UsernameValues): Promise<TrialData | undefined>{
+    const results = await queryDatabase<TrialResult>([values.username], true,
+        `SELECT trial_data FROM ${tables.trials} WHERE username = ?;`
+    );
+    if (results.length === 0){
+        return undefined;
+    }
+
+    return bufferToTrial(results[0].trial_data);
+}
+
+
+interface UpdateTrialValues{
+    trial: TrialData;
+    username: string;
+    replace?: boolean;
+}
+export async function updateActiveTrial(values: UpdateTrialValues): Promise<void>{
+    const trial = trialToBuffer(values.trial);
+    await transaction(async (connection) => {
+        if (values.replace === true){
+            await transactionUpdate(connection, [values.username], true, `DELETE FROM ${tables.trials} WHERE username = ?;`);
+            await transactionUpdate(connection, [Buffer.from(trial.buffer), values.username], false,
+                `INSERT INTO ${tables.trials} (trial_data, username) VALUES (?, ?);`
+            );
+        }
+        await transactionUpdate(connection, [Buffer.from(trial.buffer), values.username], false,
+            `UPDATE ${tables.trials} SET trial_data = ? WHERE username = ?;`
+        );
+    });
+}
+
+
+interface DeleteTrialValues{
+    resources: UserResources;
+    username: string;
+}
+export async function deleteActiveTrial(values: DeleteTrialValues): Promise<void>{
+    await transaction(async (connection) => {
+        const resources = values.resources;
+        const accessories = accessoriesToBuffer(resources.accessories);
+
+        await transactionUpdate(connection, [values.username], true, `DELETE FROM ${tables.trials} WHERE username = ?;`);
+        await transactionUpdate(connection, [resources.mastery, resources.coins, Buffer.from(accessories.buffer), values.username], false,
+            `UPDATE ${tables.users} SET mastery = ?, coins = ?, accessories = ? WHERE username = ?;`
         );
     })
 }

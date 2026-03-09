@@ -51,7 +51,7 @@
     },
     "EventsInvalidSeasonTime": {
         "title": "Invalid time input",
-        "detail": "The season time and later settings require 'hour', 'minute', and 'second' parameters that should all be numbers.\"",
+        "detail": "The season time and later settings require 'hour', 'minute', and 'second' parameters that should all be numbers.",
         "userDetail": "Invalid time input"
     },
     "EventsInvalidWorldTime": {
@@ -96,7 +96,7 @@
     },
     "SignupInvalidUsername": {
         "title": "Invalid username",
-        "detail": "One or more characters in the provided username are not allowed. Use only letters, numbers, and underscores.\"",
+        "detail": "One or more characters in the provided username are not allowed. Use only letters, numbers, and underscores.",
         "userDetail": "One or more characters in the provided username are not allowed. Use only letters, numbers, and underscores."
     },
     "UpdateShortPassword": {
@@ -106,7 +106,7 @@
     },
     "UpdateMissing": {
         "title": "Current password is missing",
-        "detail": "To change passwords, the current password must be provided in the 'currentPassword' property.\"",
+        "detail": "To change passwords, the current password must be provided in the 'currentPassword' property.",
         "userDetail": "Your current password is required to change passwords."
     },
     "UpdateIncorrect": {
@@ -181,7 +181,7 @@
     },
     "ChallengesAccepted": {
         "title": "Challenge already started",
-        "detail": "This challenge has already been played. To play again, go back then start the challenge again.\"",
+        "detail": "This challenge has already been played. To play again, go back then start the challenge again.",
         "userDetail": "Challenge already started. To play again, go back then start the challenge again."
     },
     "ChallengesStartMissing": {
@@ -193,5 +193,50 @@
         "title": "Challenge does not exist",
         "detail": "The challenge ID provided does not match any challenges that can be started.",
         "userDetail": "Challenge does not exist."
+    },
+    "TrialsGetNotFound": {
+        "title": "Trial not found",
+        "detail": "You do not have a currently active trial.",
+        "userDetail": "You do not have a currently active trial."
+    },
+    "TrialsStartNotFound": {
+        "title": "Trial does not exist",
+        "detail": "The trial ID provided does not match any trials that can be started.",
+        "userDetail": "Trial does not exist."
+    },
+    "TrialsNotAllowed": {
+        "title": "Action not allowed",
+        "detail": "The requested action could not be completed in the current state of the trial.",
+        "userDetail": "You cannot perform this action right now."
+    },
+    "TrialsInvalidSelection": {
+        "title": "Invalid item selection",
+        "detail": "The 'character' property should be a number. 'accessories' and 'powerups' should be arrays of numbers.",
+        "userDetail": "Invalid item selection"
+    },
+    "TrialsItemsNotOwned": {
+        "title": "Selection not allowed",
+        "detail": "The selection is not allowed. Ensure you have at least one copy of all items and enough accessory tokens.",
+        "userDetail": "You are not allowed to select those items."
+    },
+    "TrialsInvalidItemList": {
+        "title": "Invalid item list",
+        "detail": "The 'type' property should be a string and the 'items' property should be an array of numbers.",
+        "userDetail": "Invalid item list"
+    },
+    "TrialsTooManyItems": {
+        "title": "Too many items specified",
+        "detail": "Too many items are provided. At most 10 items can be bought or sold at once.",
+        "userDetail": "Too many items specified"
+    },
+    "TrialsBuyDenied": {
+        "title": "Cannot buy items",
+        "detail": "At least one of the items provided could not be bought.",
+        "userDetail": "You do not have enough credits to buy those items."
+    },
+    "TrialsSellDenied": {
+        "title": "Cannot sell items",
+        "detail": "At least one of the items provided could not be sold.",
+        "userDetail": "You do not have enough copies of those items to sell."
     }
 }

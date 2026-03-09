@@ -1,8 +1,10 @@
 import mysql2, {Connection, ConnectionOptions, Pool} from "mysql2/promise";
 import staticChallenges from "../../frank/data/static_challenges_data";
 import randomChallenges from "../../frank/data/random_challenges_data";
+import itemList from "../../frank/data/trials_items_data.json";
 import {signToken} from "../../frank/modules/account_module";
 import {databaseLogin, tables} from "../../frank/modules/database_access";
+import {GameReport, TrialData} from "../../frank/types";
 
 const testDatabaseLogin: ConnectionOptions = {
     host: databaseLogin.host,
@@ -20,10 +22,11 @@ export const tokens = {
     accessories: signToken("accessory").token,
     resources: signToken("resources").token,
     challenges: signToken("challenges").token,
+    trials: signToken("trials").token
 };
 
-export const GAME_VERSION = (103 << 16) + 144;
-export const sampleGameReport = [
+export const GAME_VERSION = (104 << 16) + 144;
+export const sampleGameReport: GameReport = [
     GAME_VERSION, 1, // Version
     0, // Game Mode
     500, 5, 0, 0, 1, // Player
@@ -51,6 +54,7 @@ export const sampleGameReport = [
 
 export const TEST_STATIC_ID = "statictest";
 export const TEST_RANDOM_ID = "randomtest";
+export const TEST_TRIAL_ID = "trialtest";
 
 // This challenge is only for testing and should not be playable by real users
 staticChallenges.set(TEST_STATIC_ID, {
@@ -182,6 +186,33 @@ randomChallenges.set(TEST_RANDOM_ID, {
     location: 0,
     options: {level: 0, power: 10, accs: 2}
 });
+
+export function generateSampleTrial(): TrialData{
+    const accessories: TrialData["accessories"] = [];
+    const powerups: TrialData["powerups"] = [];
+    for (let x = 0; x < itemList.length; x++){
+        if (itemList[x].type === "accessory"){
+            accessories.push(0);
+        } else if (itemList[x].type === "powerup"){
+            powerups.push(0);
+        }
+    }
+    const tiers: TrialData["characterTiers"] = [
+        0x000, 0x102, 0x601, 0x300, 0x00a, 0x612, 0x405, 0x50c, 0x001, 0x20a, 0x503, 0x50a
+    ];
+    const builds: TrialData["characterBuilds"] = [
+        0x0000,// Index 0, nothing unlocked
+        0x2513,// Index 2, star powers 1, 3, gears 0, 1, 4
+        0x7e36 // Index 7, star powers 2, 3, gears 1, 2, 4, 5, accessory unlocked
+    ];
+    return {
+        trialid: 1, level: 0, state: 0, progress: 2, selected: 0, scores: [504, 550, 0, 0],
+        rewards: {lastScore: 500, coins: 25, mastery: 30, badges: 10, quality: 50, specialBoxes: 6},
+        resources: {power: 28, gears: 6, accessories: 30, hyper: 69, credits: 16},
+        upgrades: {health: 4, damage: 3, healing: 1, lifeSteal: 2, critical: 3, combo: 0, speed: 3, ability: 1},
+        characterTiers: tiers, characterBuilds: builds, accessories: accessories, powerups: powerups, maxBuilds: 10
+    };
+}
 
 export async function createConnection(): Promise<Connection>{
     if (process.env["NODE_ENV"] !== "test"){

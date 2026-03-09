@@ -2,8 +2,9 @@ import express from "express";
 import {randomUUID} from "crypto";
 import {createError} from "../modules/utils";
 import {challengeExists, getChallengeList, validateUserGameMod, getGameMod} from "../modules/challenges_module";
-import {databaseErrorHandler, loginErrorHandler, getResources, getActiveChallenge, acceptActiveChallenge, replaceActiveChallenge} from "../modules/database";
-import {Empty, UserSetGameMod} from "../types";
+import {getNextChallenge} from "../modules/trials_module";
+import {databaseErrorHandler, loginErrorHandler, getResources, getActiveChallenge, acceptActiveChallenge, replaceActiveChallenge, getActiveTrial, updateActiveTrial} from "../modules/database";
+import {Empty, ChallengeGameMod, UserSetGameMod} from "../types";
 
 const router = express.Router();
 
@@ -49,8 +50,24 @@ router.post<Empty, Empty, ChallengeKeyReqBody>("/get", databaseErrorHandler<Chal
 
     const resources = await getResources({username: challenge.accepted_by});
 
-    // Using the challenge ID, get the game modification object for that challenge
-    const mod = getGameMod(challenge.challengeid, key, resources, prefs);
+    let mod: ChallengeGameMod | undefined;
+
+    if (challenge.gamemode === 3){
+        // If the challenge is part of a trial, use the player's current trial data to create the game modification
+        const trial = await getActiveTrial({username: challenge.accepted_by});
+        if (trial === undefined){
+            res.status(404).json(createError("TrialsGetNotFound"));
+            return;
+        }
+
+        mod = getNextChallenge(trial, key, resources, prefs);
+
+        await updateActiveTrial({trial: trial, username: challenge.accepted_by});
+    } else{
+        // Using the challenge ID, get the game modification object for that challenge
+        mod = getGameMod(challenge.challengeid, key, resources, prefs);
+    }
+
     if (mod === undefined){
         res.status(404).json(createError("ChallengesGetNotFound"));
         return;

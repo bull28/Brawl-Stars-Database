@@ -305,7 +305,7 @@
     },
     {
         "name": "trials", "category": "", "displayName": "Heist Safe", "cost": 6,
-        "description": "Receiving damage charges the super.", "unlock": "This accessory will be released later.", "badges": 100
+        "description": "Receiving damage charges the super.", "unlock": "Complete trials.", "badges": 25
     },
     {
         "name": "nomove", "category": "", "displayName": "Charlie's Cocoon", "cost": 5,

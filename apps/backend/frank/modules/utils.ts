@@ -30,6 +30,29 @@ export function findName<T extends NameArray>(array: T[], name: string, lookup?:
     return i;
 }
 
+export function RNG(options: number[]): number{
+    let totalWeight = 0;
+    for (let x = 0; x < options.length; x++){
+        totalWeight += options[x];
+    }
+    if (totalWeight === 0){
+        return -1;
+    }
+    let weightRemaining = Math.random() * totalWeight;
+    let index = 0;
+    let found = false;
+    for (let x = 0; x < options.length; x++){
+        if (found === false){
+            weightRemaining -= options[x];
+            if (weightRemaining < 0){
+                index = x;
+                found = true;
+            }
+        }
+    }
+    return index;
+}
+
 export function createError(code: keyof typeof errors): ApiError{
     if (Object.hasOwn(errors, code) === false){
         return {error: errors.GeneralServerError};

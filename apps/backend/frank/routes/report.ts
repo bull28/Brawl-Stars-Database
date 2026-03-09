@@ -1,7 +1,8 @@
 import express from "express";
 import {validateReport, extractReportData} from "../modules/report_module";
 import {getRewards} from "../modules/challenges_module";
-import {databaseErrorHandler, getActiveChallenge, getResources, deleteActiveChallenge} from "../modules/database";
+import {saveChallengeReport} from "../modules/trials_module";
+import {databaseErrorHandler, getActiveChallenge, getResources, deleteActiveChallenge, getActiveTrial, updateActiveTrial} from "../modules/database";
 import {Empty, UserResources, GameReport} from "../types";
 
 const router = express.Router();
@@ -67,10 +68,33 @@ router.post<Empty, Empty, SaveReqBody>("/", databaseErrorHandler<SaveReqBody>(as
 
         saveToUser = challenge.accepted_by;
 
-        const rewards = getRewards(challenge.challengeid, reportData.player.difficulty, reportData.score.win);
-        baseMastery = rewards.mastery;
-        baseCoins = rewards.coins;
-        baseBadges = rewards.badges;
+        if (challenge.gamemode === 3){
+            const trial = await getActiveTrial({username: challenge.accepted_by});
+            if (trial === undefined){
+                body.message = "Challenge not found.";
+                res.status(404).json(body);
+                return;
+            }
+
+            const rewards = saveChallengeReport(trial, report);
+            if (rewards === undefined){
+                body.message = "Invalid report.";
+                body.status = 100;
+                res.status(403).json(body);
+                return;
+            }
+
+            await updateActiveTrial({trial: trial, username: challenge.accepted_by});
+
+            baseMastery = rewards.mastery;
+            baseCoins = rewards.coins;
+            baseBadges = rewards.badges;
+        } else{
+            const rewards = getRewards(challenge.challengeid, reportData.player.difficulty, reportData.score.win);
+            baseMastery = rewards.mastery;
+            baseCoins = rewards.coins;
+            baseBadges = rewards.badges;
+        }
     } else if (gameMode === 0){
         if (typeof inputUser !== "string" || inputUser.length === 0){
             body.message = "Username is missing.";

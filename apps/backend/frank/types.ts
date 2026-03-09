@@ -520,7 +520,10 @@ export interface ChallengeConfig{
     baseBadges: number[];
 }
 
-type GameModUpgradeValues = {
+/**
+ * Stats that can be upgraded between stages in a challenge
+ */
+export type GameModUpgradeValues = {
     [k in "health" | "damage" | "healing" | "lifeSteal" | "critical" | "combo" | "speed" | "ability"]: {
         value?: [number, number];
         cost?: number[];
@@ -549,6 +552,7 @@ export interface ChallengeGameMod{
         startingPower: number;
         startingGears: number;
         startingHyper: number;
+        gearCost: number;
         gearSlots: number;
         gears: number;
         starPowers: number;
@@ -668,6 +672,144 @@ export interface ShopAccessoryPreview{
     displayName: string;
     image: string;
     cost: number;
+}
+
+//------------------------------------------------------------------------------------------------//
+
+/**
+ * All data required to be tracked during a trial
+ */
+export interface TrialData{
+    trialid: number;
+    level: number;
+    state: number;
+    progress: number;
+    selected: number;
+    scores: number[];
+    rewards: {
+        [k in "lastScore" | "coins" | "mastery" | "badges" | "quality" | "specialBoxes"]: number;
+    };
+    resources: {
+        [k in "power" | "gears" | "accessories" | "hyper" | "credits"]: number;
+    };
+    upgrades: {
+        [k in keyof GameModUpgradeValues]: number;
+    };
+    characterTiers: number[];
+    characterBuilds: number[];
+    accessories: number[];
+    powerups: number[];
+    maxBuilds: number;
+}
+
+/**
+ * Trial data sent to the user
+ */
+export interface TrialPreview{
+    state: number;
+    displayName: string;
+    progress: number;
+    scores: TrialData["scores"];
+    resources: TrialData["resources"];
+    selected: {
+        character: number;
+        tokensUsed: number;
+        accessories: number[];
+        powerups: number[];
+    };
+    characters: {
+        index: number;
+        gears: number;
+        starPowers: number;
+        accessory: boolean;
+    }[];
+    accessories: number[];
+    powerups: number[];
+    brawlBoxes: {
+        index: number;
+        items: number;
+        rareItems: number[];
+    }[];
+}
+
+/**
+ * Visual data for a trial that does not change during gameplay
+ */
+export interface TrialDisplay{
+    sprites: {
+        image: string;
+        rowSize: number;
+    };
+    rarities: {
+        displayName: string;
+        color: string;
+        buyCost: number;
+        sellCost: number;
+    }[];
+    challenges: {
+        displayName: string;
+        stages: number;
+    }[];
+    characters: {
+        tier: UpgradeTier;
+        displayName: string;
+        sprite: number;
+        rarity: number;
+        starPowers: string[];
+    }[];
+    accessories: {
+        displayName: string;
+        description: string;
+        sprite: number;
+        rarity: number;
+        cost: number;
+    }[];
+    powerups: {
+        displayName: string;
+        description: string;
+        sprite: number;
+        rarity: number;
+    }[];
+    brawlBoxes: {
+        displayName: string;
+        description: string;
+        sprite: number;
+    }[];
+}
+
+/**
+ * Configuration for trial items
+ */
+export interface ItemConfig{
+    displayName: string;
+    type: string;
+    key: string;
+    index: number;
+    rarity: number;
+    weight: number;
+    cost: number;
+    stack: number;
+    maxCount: number;
+    description: string;
+}
+
+/**
+ * Display for each item obtained in a brawl box
+ */
+export interface ItemPreview{
+    displayName: string;
+    image: string;
+    type: string;
+    rarity: number;
+    count: number;
+}
+
+/**
+ * Information shown to the user when selecting a trial to start
+ */
+export interface TrialListEntry{
+    displayName: string;
+    challenges: number;
 }
 
 //------------------------------------------------------------------------------------------------//

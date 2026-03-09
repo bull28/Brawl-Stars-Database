@@ -1,4 +1,5 @@
 import presets, {RandomPreset, enemyList, locationList, locationWeights, levelTiers, masteryStats} from "../data/random_challenges_data";
+import {RNG} from "./utils";
 import {ChallengePreview, ChallengeGameMod, ChallengeRewardResult, ChallengeCategory} from "../types";
 
 type WaveResult = Required<ChallengeGameMod>["levels"][number]["waves"];
@@ -14,29 +15,6 @@ interface RandomWaveOptions{
 }
 
 type Enemy = [string, number];
-
-function RNG(options: number[]): number{
-    let totalWeight = 0;
-    for (let x = 0; x < options.length; x++){
-        totalWeight += options[x];
-    }
-    if (totalWeight === 0){
-        return -1;
-    }
-    let weightRemaining = Math.random() * totalWeight;
-    let index = 0;
-    let found = false;
-    for (let x = 0; x < options.length; x++){
-        if (found === false){
-            weightRemaining -= options[x];
-            if (weightRemaining < 0){
-                index = x;
-                found = true;
-            }
-        }
-    }
-    return index;
-}
 
 function findLowestIndex(values: number[], targets: number[]): number{
     let low = -1;

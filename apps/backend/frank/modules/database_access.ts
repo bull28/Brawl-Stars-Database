@@ -31,7 +31,8 @@ export const databaseLogin: mysql2.PoolOptions = {
 
 export const tables = {
     users: "users",
-    challenges: "challenges"
+    challenges: "challenges",
+    trials: "trials"
 };
 
 
@@ -67,6 +68,8 @@ if (process.env["TABLE_NAME"] !== undefined){
     tables.users = process.env["TABLE_NAME"];
 } if (process.env["CHALLENGE_TABLE_NAME"] !== undefined){
     tables.challenges = process.env["CHALLENGE_TABLE_NAME"];
+} if (process.env["TRIAL_TABLE_NAME"] !== undefined){
+    tables.trials = process.env["TRIAL_TABLE_NAME"];
 }
 
 
