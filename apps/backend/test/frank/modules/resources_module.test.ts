@@ -66,6 +66,9 @@ describe("User Resources module", function(){
     });
 
     describe("Calculate the correct level from a mastery points value", function(){
+        const masteryIcon = (x: number) =>
+            MASTERY_LEVEL_DIR + (x > 0 ? `mastery_dark_level_${x}` : "mastery_level_0") + IMAGE_FILE_EXTENSION;
+
         it("Lowest mastery level", function(){
             const mastery0 = getMasteryLevel(0);
             expect(mastery0).to.be.an("object");
@@ -73,7 +76,7 @@ describe("User Resources module", function(){
             expect(mastery0.current).to.have.keys(["points", "image", "color"]);
             expect(mastery0.next).to.have.keys(["points", "image", "color"]);
             expect(mastery0.current.image).to.equal(MASTERY_LEVEL_DIR + "mastery_empty" + IMAGE_FILE_EXTENSION);
-            expect(mastery0.next.image).to.equal(MASTERY_LEVEL_DIR + "mastery_level_0" + IMAGE_FILE_EXTENSION);
+            expect(mastery0.next.image).to.equal(masteryIcon(0));
         });
 
         it("Highest mastery level", function(){
@@ -81,8 +84,8 @@ describe("User Resources module", function(){
             expect(mastery30.level).to.equal(60);
             expect(mastery30.current.points).to.equal(1.0e9);
             expect(mastery30.next.points).to.equal(-1);
-            expect(mastery30.next.image).to.equal(MASTERY_LEVEL_DIR + "mastery_level_8" + IMAGE_FILE_EXTENSION);
-            expect(mastery30.next.image).to.equal(MASTERY_LEVEL_DIR + "mastery_level_8" + IMAGE_FILE_EXTENSION);
+            expect(mastery30.next.image).to.equal(masteryIcon(8));
+            expect(mastery30.next.image).to.equal(masteryIcon(8));
         });
 
         it("Next level has same image", function(){
@@ -90,8 +93,8 @@ describe("User Resources module", function(){
             expect(mastery1.level).to.equal(1);
             expect(mastery1.current.points).to.equal(2000);
             expect(mastery1.next.points).to.equal(6000);
-            expect(mastery1.current.image).to.equal(MASTERY_LEVEL_DIR + "mastery_level_0" + IMAGE_FILE_EXTENSION);
-            expect(mastery1.next.image).to.equal(MASTERY_LEVEL_DIR + "mastery_level_0" + IMAGE_FILE_EXTENSION);
+            expect(mastery1.current.image).to.equal(masteryIcon(0));
+            expect(mastery1.next.image).to.equal(masteryIcon(0));
         });
 
         it("Next level has different image", function(){
@@ -99,8 +102,8 @@ describe("User Resources module", function(){
             expect(mastery29.level).to.equal(29);
             expect(mastery29.current.points).to.equal(16000000);
             expect(mastery29.next.points).to.equal(20000000);
-            expect(mastery29.current.image).to.equal(MASTERY_LEVEL_DIR + "mastery_level_6" + IMAGE_FILE_EXTENSION);
-            expect(mastery29.next.image).to.equal(MASTERY_LEVEL_DIR + "mastery_level_7" + IMAGE_FILE_EXTENSION);
+            expect(mastery29.current.image).to.equal(masteryIcon(6));
+            expect(mastery29.next.image).to.equal(masteryIcon(7));
         });
 
         it("Negative mastery points", function(){
@@ -115,7 +118,8 @@ describe("User Resources module", function(){
         function checkStats(input: CharacterStatus["current"]["stats"], expected: CharacterStatus["current"]["stats"], multiplier: number): boolean{
             let valid = true;
             for (const x in input){
-                if (x !== "reload" && input[x] !== expected[x] * multiplier / 100){
+                const key = x as keyof CharacterStatus["current"]["stats"];
+                if (x !== "reload" && input[key] !== expected[key] * multiplier / 100){
                     valid = false;
                 }
             }
@@ -126,8 +130,9 @@ describe("User Resources module", function(){
             // Returns stats2 - stats1
             const diff: Partial<CharacterHyperStats> = {};
             for (const x in stats2){
-                if (Object.hasOwn(stats1, x) && stats1[x] !== stats2[x]){
-                    diff[x] = stats2[x] - stats1[x];
+                const key = x as keyof CharacterHyperStats;
+                if (Object.hasOwn(stats1, key) && stats1[key] !== stats2[key]){
+                    diff[key] = stats2[key] - stats1[key];
                 }
             }
             return diff;

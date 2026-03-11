@@ -23,6 +23,7 @@ interface TrialConfig{
 interface BrawlBoxConfig{
     displayName: string;
     description: string;
+    image: string;
     requirement: number;
     baseQuality: number;
     scoreQuality: number;
@@ -182,6 +183,7 @@ const allBoxes: BrawlBoxConfig[] = [
     {
         displayName: "Starter Box",
         description: "",
+        image: "brawlbox_starter",
         requirement: 1,
         baseQuality: 9,
         scoreQuality: 0,
@@ -193,6 +195,7 @@ const allBoxes: BrawlBoxConfig[] = [
     {
         displayName: "Big Box",
         description: "",
+        image: "brawlbox_default",
         requirement: 2,
         baseQuality: 8,
         scoreQuality: 4,
@@ -204,6 +207,7 @@ const allBoxes: BrawlBoxConfig[] = [
     {
         displayName: "Mega Box",
         description: "",
+        image: "brawlbox_mega",
         requirement: 2,
         baseQuality: 12,
         scoreQuality: 6,
@@ -215,6 +219,7 @@ const allBoxes: BrawlBoxConfig[] = [
     {
         displayName: "Brawler Box",
         description: "",
+        image: "brawlbox_brawler",
         requirement: 2,
         baseQuality: 6,
         scoreQuality: 3,
@@ -226,6 +231,7 @@ const allBoxes: BrawlBoxConfig[] = [
     {
         displayName: "Rare Box",
         description: "",
+        image: "brawlbox_rare",
         requirement: 4,
         baseQuality: 7,
         scoreQuality: 4,
@@ -237,6 +243,7 @@ const allBoxes: BrawlBoxConfig[] = [
     {
         displayName: "Ultra Box",
         description: "",
+        image: "brawlbox_ultra",
         requirement: 8,
         baseQuality: 15,
         scoreQuality: 6,
@@ -318,6 +325,17 @@ const trialUpgrades: Required<{[k in keyof GameModUpgradeValues]: Required<GameM
     }
 };
 
+const spriteConfig = {
+    imageFile: "trial_sprites",
+    rowSize: 10,
+    characterIndex: 0,
+    accessoryIndex: 40,
+    powerupIndex: 12,
+    powerPointsIndex: 24,
+    gearScrapIndex: 29,
+    accessoryTokenIndex: 33
+};
+
 for (let x = 0; x < guaranteed.length; x++){
     const weights: number[] = [];
     for (let i = 0; i < allItems.length; i++){
@@ -332,4 +350,4 @@ for (let x = 0; x < guaranteed.length; x++){
     guaranteedDraws.push(weights);
 }
 
-export {trialStates, allTrials, allCharacters, characterTiers, trialLevels, allRarities, allBoxes, guaranteedDraws, fallbackItems, gearWeights, starPowerWeights, trialUpgrades};
+export {trialStates, allTrials, allCharacters, characterTiers, trialLevels, allRarities, allBoxes, guaranteedDraws, fallbackItems, gearWeights, starPowerWeights, trialUpgrades, spriteConfig};

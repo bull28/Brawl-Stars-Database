@@ -15,5 +15,6 @@ export const CURRENCY_IMAGE_DIR = "resources/currency/";
 export const MASTERY_LEVEL_DIR = "resources/mastery/";
 export const REWARD_IMAGE_DIR = "resources/rewards/";
 export const ACCESSORY_IMAGE_DIR = "accessories/";
+export const TRIAL_IMAGE_DIR = "trials/";
 export const TIER_IMAGE_DIR = "bullgame/images/resources/";
 export const CHARACTER_IMAGE_DIR = "bullgame/images/characters/";

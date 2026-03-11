@@ -9,23 +9,6 @@ for (let x = 0; x < characterList.length; x++){
     indexMap.set(characterList[x].name, x);
 }
 
-// const masteryLevels = [
-//            0,     2000,     6000,    10000,    20000,    30000,
-//        40000,    60000,    80000,   120000,   180000,   240000,
-//       300000,   400000,   500000,   600000,   800000,  1000000,
-//      1200000,  1500000,  1800000,  2400000,  3000000,  4000000,
-//      5000000,  6000000,  8000000, 10000000, 12000000, 16000000,
-//     20000000,       -1
-// ];
-// const masteryLevels = [
-//         0, 2.0e3, 6.0e3, 1.0e4, 2.0e4, 3.0e4,
-//     4.0e4, 6.0e4, 8.0e4, 1.2e5, 1.8e5, 2.4e5,
-//     3.0e5, 4.0e5, 5.0e5, 6.0e5, 8.0e5, 1.0e6,
-//     1.2e6, 1.5e6, 1.8e6, 2.4e6, 3.0e6, 4.0e6,
-//     5.0e6, 6.0e6, 8.0e6, 1.0e7, 1.2e7, 1.6e7,
-//     2.0e7, 2.5e7, 3.0e7, 3.6e7, 4.2e7, 5.0e7,
-//     5.8e7, 6.8e7, 8.0e7, 9.6e7, 1.2e8,    -1
-// ];
 const masteryLevels = [
         0, 2.0e3, 6.0e3, 1.0e4, 2.0e4, 3.0e4,
     4.0e4, 6.0e4, 8.0e4, 1.2e5, 1.8e5, 2.4e5,
@@ -43,14 +26,14 @@ const masteryLevels = [
 const levelImages = [
     {minLevel: 0, color: "#808080", image: "mastery_empty"},
     {minLevel: 1, color: "#d67d59", image: "mastery_level_0"},
-    {minLevel: 4, color: "#ff9900", image: "mastery_level_1"},
-    {minLevel: 8, color: "#c9c6f1", image: "mastery_level_2"},
-    {minLevel: 12, color: "#ffef49", image: "mastery_level_3"},
-    {minLevel: 16, color: "#33ffff", image: "mastery_level_4"},
-    {minLevel: 20, color: "#ff00ff", image: "mastery_level_5"},
-    {minLevel: 25, color: "#f75363", image: "mastery_level_6"},
-    {minLevel: 30, color: "#a67fff", image: "mastery_level_7"},
-    {minLevel: 36, color: "#3afc9f", image: "mastery_level_8"}
+    {minLevel: 4, color: "#ff9900", image: "mastery_dark_level_1"},
+    {minLevel: 8, color: "#c9c6f1", image: "mastery_dark_level_2"},
+    {minLevel: 12, color: "#ffef49", image: "mastery_dark_level_3"},
+    {minLevel: 16, color: "#33ffff", image: "mastery_dark_level_4"},
+    {minLevel: 20, color: "#ff00ff", image: "mastery_dark_level_5"},
+    {minLevel: 25, color: "#f75363", image: "mastery_dark_level_6"},
+    {minLevel: 30, color: "#a67fff", image: "mastery_dark_level_7"},
+    {minLevel: 36, color: "#3afc9f", image: "mastery_dark_level_8"}
 ];
 
 const upgradeTiers = [

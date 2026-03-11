@@ -750,6 +750,11 @@ export interface TrialDisplay{
         displayName: string;
         stages: number;
     }[];
+    resources: {
+        key: string;
+        displayName: string;
+        sprite: number;
+    }[];
     characters: {
         tier: UpgradeTier;
         displayName: string;
@@ -773,7 +778,7 @@ export interface TrialDisplay{
     brawlBoxes: {
         displayName: string;
         description: string;
-        sprite: number;
+        image: string;
     }[];
 }
 

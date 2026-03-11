@@ -1,11 +1,11 @@
 import accessoryList from "../data/accessories_data.json";
 import itemList from "../data/trials_items_data.json";
-import {trialStates, allTrials, allCharacters, characterTiers, trialLevels, allRarities, allBoxes, guaranteedDraws, fallbackItems, gearWeights, starPowerWeights, trialUpgrades} from "../data/trials_data";
+import {trialStates, allTrials, allCharacters, characterTiers, trialLevels, allRarities, allBoxes, guaranteedDraws, fallbackItems, gearWeights, starPowerWeights, trialUpgrades, spriteConfig} from "../data/trials_data";
 import {getMasteryLevel} from "../modules/resources_module";
 import {getGameMod} from "./challenges_module";
 import {REPORT_FORMAT} from "./report_module";
 import {RNG} from "./utils";
-import {IMAGE_FILE_EXTENSION, PORTRAIT_IMAGE_DIR, CURRENCY_IMAGE_DIR, ACCESSORY_IMAGE_DIR, TIER_IMAGE_DIR} from "../data/constants";
+import {IMAGE_FILE_EXTENSION, PORTRAIT_IMAGE_DIR, CURRENCY_IMAGE_DIR, ACCESSORY_IMAGE_DIR, TRIAL_IMAGE_DIR, TIER_IMAGE_DIR} from "../data/constants";
 import {UserCharacter, UserResources, GameModUpgradeValues, ChallengeGameMod, UserSetGameMod, ChallengeRewardResult, TrialData, TrialPreview, TrialDisplay, ItemConfig, ItemPreview, TrialListEntry} from "../types";
 
 const {TRIAL_READY, TRIAL_PLAYING, TRIAL_REWARD, TRIAL_FAILED, TRIAL_COMPLETE} = trialStates;
@@ -187,7 +187,7 @@ export function getTrialDisplay(trial: TrialData): TrialDisplay{
                 image: TIER_IMAGE_DIR + tierConfig.image + IMAGE_FILE_EXTENSION, color: tierConfig.color
             },
             displayName: "",
-            sprite: 0,
+            sprite: spriteConfig.characterIndex + x,
             rarity: 0,
             starPowers: []
         });
@@ -208,13 +208,14 @@ export function getTrialDisplay(trial: TrialData): TrialDisplay{
                 }
             }
         } else if (item.type === "accessory"){
+            const ingameIndex = accessoryMapIngame.get(item.key);
             accessories.push({
-                displayName: item.displayName, sprite: 0,
+                displayName: item.displayName, sprite: spriteConfig.accessoryIndex + (ingameIndex ?? 0),
                 description: item.description, rarity: item.rarity, cost: item.cost
             });
         } else if (item.type === "powerup"){
             powerups.push({
-                displayName: item.displayName, sprite: 0,
+                displayName: item.displayName, sprite: spriteConfig.powerupIndex + Math.max(0, item.index),
                 description: item.description, rarity: item.rarity
             });
         }
@@ -222,13 +223,23 @@ export function getTrialDisplay(trial: TrialData): TrialDisplay{
 
     for (let x = 0; x < allBoxes.length; x++){
         brawlBoxes.push({
-            displayName: allBoxes[x].displayName, description: allBoxes[x].description, sprite: 0
+            displayName: allBoxes[x].displayName, description: allBoxes[x].description,
+            image: TRIAL_IMAGE_DIR + allBoxes[x].image + IMAGE_FILE_EXTENSION
         });
     }
 
     return {
-        sprites: {image: "", rowSize: 1},
-        rarities, challenges, characters, accessories, powerups, brawlBoxes
+        sprites: {
+            image: TRIAL_IMAGE_DIR + spriteConfig.imageFile + IMAGE_FILE_EXTENSION,
+            rowSize: spriteConfig.rowSize
+        },
+        rarities, challenges,
+        resources: [
+            {key: "power", displayName: "Power Points", sprite: spriteConfig.powerPointsIndex},
+            {key: "gears", displayName: "Gear Scrap", sprite: spriteConfig.gearScrapIndex},
+            {key: "accessories", displayName: "Accessory Tokens", sprite: spriteConfig.accessoryTokenIndex}
+        ],
+        characters, accessories, powerups, brawlBoxes
     };
 }
 
@@ -502,7 +513,7 @@ function addItem(trial: TrialData, item: ItemConfig): ItemPreview | undefined{
             return;
         }
         trial.powerups[item.index] = ItemValue.addStacks(trial.powerups[item.index], item.stack);
-        image = "";
+        image = TRIAL_IMAGE_DIR + item.key + IMAGE_FILE_EXTENSION;
     }
     return {displayName: item.displayName, image: image, type: item.type, rarity: item.rarity, count: item.stack};
 }
@@ -820,7 +831,7 @@ export function getNextChallenge(trial: TrialData, key: string, resources: UserR
     }
 
     const levelStats = trialLevels[Math.min(trial.level, trialLevels.length - 1)];
-    
+
     const difficulties = gameMod.difficulties;
     if (difficulties !== undefined){
         const enemyStats = config.challenges[trial.progress].enemyStats;

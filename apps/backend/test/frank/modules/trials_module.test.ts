@@ -2,7 +2,8 @@ import {expect} from "chai";
 import accessoryList from "../../../frank/data/accessories_data.json";
 import characterList from "../../../frank/data/characters_data.json";
 import itemList from "../../../frank/data/trials_items_data.json";
-import {trialStates, allTrials, allCharacters, allRarities, allBoxes, trialUpgrades} from "../../../frank/data/trials_data";
+import {trialStates, allTrials, allCharacters, allRarities, allBoxes, trialUpgrades, spriteConfig} from "../../../frank/data/trials_data";
+import {IMAGE_FILE_EXTENSION, TRIAL_IMAGE_DIR} from "../../../frank/data/constants";
 import {REPORT_FORMAT} from "../../../frank/modules/report_module";
 import {offsets, getTrialList, getTrialPreview, getTrialDisplay, startTrial, selectItems, buyItem, sellItem, addFinalReward, openBrawlBox, getAvailableBoxes, getNextChallenge, saveChallengeReport} from "../../../frank/modules/trials_module";
 import {sampleGameReport, generateSampleTrial} from "../database_setup";
@@ -83,10 +84,12 @@ describe("Trials module", function(){
         const display = getTrialDisplay(trial);
 
         expect(display).to.have.keys([
-            "sprites", "rarities", "challenges", "characters", "accessories", "powerups", "brawlBoxes"
+            "sprites", "rarities", "challenges", "resources", "characters", "accessories", "powerups", "brawlBoxes"
         ]);
 
-        expect(display.sprites).to.eql({image: "", rowSize: 1});
+        expect(display.sprites).to.eql({
+            image: TRIAL_IMAGE_DIR + spriteConfig.imageFile + IMAGE_FILE_EXTENSION, rowSize: spriteConfig.rowSize
+        });
 
         expect(display.rarities).to.eql(allRarities);
 
@@ -95,23 +98,40 @@ describe("Trials module", function(){
             displayName: value.displayName, stages: value.enemyStats.length
         })));
 
+        expect(display.resources).to.be.an("array");
+        expect(display.resources).to.have.lengthOf(3);
+        expect(display.resources[0]).to.eql({
+            key: "power", displayName: "Power Points", sprite: spriteConfig.powerPointsIndex
+        });
+        expect(display.resources[1]).to.eql({
+            key: "gears", displayName: "Gear Scrap", sprite: spriteConfig.gearScrapIndex
+        });
+        expect(display.resources[2]).to.eql({
+            key: "accessories", displayName: "Accessory Tokens", sprite: spriteConfig.accessoryTokenIndex
+        });
+
         expect(display.characters).to.be.an("array");
         expect(display.characters).to.have.lengthOf(trial.characterTiers.length);
+        for (let x = 0; x < display.characters.length; x++){
+            expect(display.characters[x].sprite).to.equal(spriteConfig.characterIndex + x)
+        }
 
+        const map = new Map(accessoryList.map((value, index) => [value.name, index]));
         const accessories = itemList.slice(accessoryOffset, accessoryOffset + trial.accessories.length);
         expect(display.accessories).to.eql(accessories.map((value) => ({
-            displayName: value.displayName, description: value.description, sprite: 0,
-            rarity: value.rarity, cost: value.cost
+            displayName: value.displayName, description: value.description,
+            sprite: spriteConfig.accessoryIndex + (map.get(value.key) ?? 0), rarity: value.rarity, cost: value.cost
         })));
 
         const powerups = itemList.slice(powerupOffset, powerupOffset + trial.powerups.length);
         expect(display.powerups).to.eql(powerups.map((value) => ({
-            displayName: value.displayName, description: value.description, sprite: 0,
-            rarity: value.rarity
+            displayName: value.displayName, description: value.description,
+            sprite: spriteConfig.powerupIndex + value.index, rarity: value.rarity
         })));
 
         expect(display.brawlBoxes).to.eql(allBoxes.map((value) => ({
-            displayName: value.displayName, description: value.description, sprite: 0
+            displayName: value.displayName, description: value.description,
+            image: TRIAL_IMAGE_DIR + value.image + IMAGE_FILE_EXTENSION
         })));
     });
 
