@@ -973,6 +973,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "shelly_psg",
+                "image": "shelly_psg.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -1739,6 +1748,46 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "shamanaprilfools",
+                "displayName": "Bruce Nita",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "April Fool's",
+                        "image": "bg_default.webp",
+                        "icon": "icon_aprilfools.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2026
+                },
+                "image": "shamanaprilfools.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -2105,6 +2154,15 @@
             {
                 "name": "nita_strangeoverchargechroma2",
                 "image": "nita_strangeoverchargechroma2.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "nita_aprilfools",
+                "image": "nita_aprilfools.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -3156,9 +3214,11 @@
                         "icon": "icon_propass.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "Reward from paid track of Brawl Cup 2025 Pro Pass",
-                "foundIn": [],
+                "foundIn": [
+                    "Ranked Starr Drops"
+                ],
                 "release": {
                     "month": 2,
                     "year": 2025
@@ -3198,9 +3258,11 @@
                         "icon": "icon_propass.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "Reward from paid track of Brawl Cup 2025 Pro Pass",
-                "foundIn": [],
+                "foundIn": [
+                    "Ranked Starr Drops"
+                ],
                 "release": {
                     "month": 2,
                     "year": 2025
@@ -3240,9 +3302,11 @@
                         "icon": "icon_propass.webp"
                     }
                 ],
-                "limited": true,
+                "limited": false,
                 "unlock": "Reward from paid track of Brawl Cup 2025 Pro Pass",
-                "foundIn": [],
+                "foundIn": [
+                    "Ranked Starr Drops"
+                ],
                 "release": {
                     "month": 2,
                     "year": 2025
@@ -3638,6 +3702,15 @@
             {
                 "name": "colt_lny_02",
                 "image": "colt_lny_02.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "colt_outlaws",
+                "image": "colt_outlaws.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -7236,9 +7309,9 @@
                 ],
                 "groups": [
                     {
-                        "name": "Once Upon",
-                        "image": "bg_onceupon.webp",
-                        "icon": "icon_onceupon.webp"
+                        "name": "Knights!",
+                        "image": "bg_fantasy.webp",
+                        "icon": "icon_fantasy.webp"
                     }
                 ],
                 "limited": false,
@@ -9164,9 +9237,9 @@
                 ],
                 "groups": [
                     {
-                        "name": "Once Upon",
-                        "image": "bg_onceupon.webp",
-                        "icon": "icon_onceupon.webp"
+                        "name": "Knights!",
+                        "image": "bg_fantasy.webp",
+                        "icon": "icon_fantasy.webp"
                     }
                 ],
                 "limited": false,
@@ -9248,9 +9321,9 @@
                 ],
                 "groups": [
                     {
-                        "name": "Once Upon",
-                        "image": "bg_onceupon.webp",
-                        "icon": "icon_onceupon.webp"
+                        "name": "Knights!",
+                        "image": "bg_fantasy.webp",
+                        "icon": "icon_fantasy.webp"
                     }
                 ],
                 "limited": false,
@@ -12815,6 +12888,46 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "arcadesandsoftime",
+                "displayName": "Canopic 8-Bit",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Dark Sands",
+                        "image": "bg_darksands.webp",
+                        "icon": "icon_darksands.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 3,
+                    "year": 2026
+                },
+                "image": "arcadesandsoftime.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -13132,6 +13245,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "8bit_darksands",
+                "image": "8bit_darksands.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -13325,7 +13447,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Najia Boxes"
+                ],
                 "release": {
                     "month": 5,
                     "year": 2020
@@ -15013,6 +15137,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "darryl_starrforce",
+                "image": "darryl_starrforce.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -16176,7 +16309,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Najia Boxes"
+                ],
                 "release": {
                     "month": 3,
                     "year": 2023
@@ -16470,6 +16605,33 @@
             {
                 "name": "carl_carreta",
                 "image": "carl_carreta.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "carl_pirates",
+                "image": "carl_pirates.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "carl_pirates_02",
+                "image": "carl_pirates_02.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "carl_summer",
+                "image": "carl_summer.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -19714,7 +19876,7 @@
                     }
                 ],
                 "limited": false,
-                "unlock": "",
+                "unlock": "Free during the Brawlentines 2026 event",
                 "foundIn": [],
                 "release": {
                     "month": 9,
@@ -21227,6 +21389,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "piper_line",
+                "image": "piper_line.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -22051,9 +22222,9 @@
                 ],
                 "groups": [
                     {
-                        "name": "Once Upon",
-                        "image": "bg_onceupon.webp",
-                        "icon": "icon_onceupon.webp"
+                        "name": "Knights!",
+                        "image": "bg_fantasy.webp",
+                        "icon": "icon_fantasy.webp"
                     },
                     {
                         "name": "Supercell Make",
@@ -22417,6 +22588,46 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "frankfairies",
+                "displayName": "Faerie Frank",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Once Upon",
+                        "image": "bg_onceupon.webp",
+                        "icon": "icon_onceupon.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2026
+                },
+                "image": "frankfairies.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -22756,6 +22967,15 @@
             {
                 "name": "frank_music",
                 "image": "frank_music.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "frank_onceupon",
+                "image": "frank_onceupon.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -23438,6 +23658,46 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "baseballsandsoftime",
+                "displayName": "Bodyguard Bibi",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Dark Sands",
+                        "image": "bg_darksands.webp",
+                        "icon": "icon_darksands.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 3,
+                    "year": 2026
+                },
+                "image": "baseballsandsoftime.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -23705,6 +23965,15 @@
             {
                 "name": "bibi_villainpink",
                 "image": "bibi_villainpink.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "bibi_darksands",
+                "image": "bibi_darksands.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -24602,9 +24871,9 @@
                 ],
                 "groups": [
                     {
-                        "name": "Once Upon",
-                        "image": "bg_onceupon.webp",
-                        "icon": "icon_onceupon.webp"
+                        "name": "Knights!",
+                        "image": "bg_fantasy.webp",
+                        "icon": "icon_fantasy.webp"
                     }
                 ],
                 "limited": false,
@@ -25293,7 +25562,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Najia Boxes"
+                ],
                 "release": {
                     "month": 3,
                     "year": 2024
@@ -26273,6 +26544,141 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "assaultshotgundragon",
+                "displayName": "Dragon Griff",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Once Upon",
+                        "image": "bg_onceupon.webp",
+                        "icon": "icon_onceupon.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2026
+                },
+                "image": "assaultshotgundragon.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "assaultshotgundragonchroma1",
+                "displayName": "Greedy Griff",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Once Upon",
+                        "image": "bg_onceupon.webp",
+                        "icon": "icon_onceupon.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2026
+                },
+                "image": "assaultshotgundragonchroma1.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "assaultshotgundragonchroma2",
+                "displayName": "Hoarder Griff",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Once Upon",
+                        "image": "bg_onceupon.webp",
+                        "icon": "icon_onceupon.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2026
+                },
+                "image": "assaultshotgundragonchroma2.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -26405,6 +26811,33 @@
             {
                 "name": "griff_kaiju",
                 "image": "griff_kaiju.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "griff_dragon",
+                "image": "griff_dragon.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "griff_dragonchroma1",
+                "image": "griff_dragonchroma1.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "griff_dragonchroma2",
+                "image": "griff_dragonchroma2.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -26743,6 +27176,47 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "crossbomberdragon",
+                "displayName": "Dragrom",
+                "cost": 299,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 5,
+                    "name": "Legendary",
+                    "icon": "skin_rarity_5.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Once Upon",
+                        "image": "bg_onceupon.webp",
+                        "icon": "icon_onceupon.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2026
+                },
+                "image": "crossbomberdragon.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -26942,6 +27416,87 @@
                     "value": 3,
                     "name": "Legendary",
                     "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "grom_dragon_default",
+                "image": "grom_dragon_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "grom_dragon_happy",
+                "image": "grom_dragon_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "grom_dragon_sad",
+                "image": "grom_dragon_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "grom_dragon_angry",
+                "image": "grom_dragon_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "grom_dragon_gg",
+                "image": "grom_dragon_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "grom_dragon_clap",
+                "image": "grom_dragon_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "grom_dragon_thanks",
+                "image": "grom_dragon_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "grom_dragon_sweat",
+                "image": "grom_dragon_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "grom_dragon_special",
+                "image": "grom_dragon_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
                 }
             }
         ]
@@ -27311,6 +27866,141 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "cannongirlfairy",
+                "displayName": "Faerie Bonnie",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Once Upon",
+                        "image": "bg_onceupon.webp",
+                        "icon": "icon_onceupon.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2026
+                },
+                "image": "cannongirlfairy.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "cannongirlfairychromablue",
+                "displayName": "Dark Faerie Bonnie",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Once Upon",
+                        "image": "bg_onceupon.webp",
+                        "icon": "icon_onceupon.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2026
+                },
+                "image": "cannongirlfairychromablue.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "cannongirlfairychromapink",
+                "displayName": "Bright Faerie Bonnie",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Once Upon",
+                        "image": "bg_onceupon.webp",
+                        "icon": "icon_onceupon.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2026
+                },
+                "image": "cannongirlfairychromapink.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -27443,6 +28133,33 @@
             {
                 "name": "bonnie_darkgreek",
                 "image": "bonnie_darkgreek.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "bonnie_fairy",
+                "image": "bonnie_fairy.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "bonnie_fairychromablue",
+                "image": "bonnie_fairychromablue.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "bonnie_fairychromapink",
+                "image": "bonnie_fairychromapink.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -32816,6 +33533,46 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "maisiedragons",
+                "displayName": "Dragon Maisie",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Once Upon",
+                        "image": "bg_onceupon.webp",
+                        "icon": "icon_onceupon.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2026
+                },
+                "image": "maisiedragons.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -33029,6 +33786,15 @@
             {
                 "name": "maisie_toonchroma2",
                 "image": "maisie_toonchroma2.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "maisie_onceupon",
+                "image": "maisie_onceupon.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -34291,6 +35057,47 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "twinssandsoftime",
+                "displayName": "Magic Lamp Larry & Lawrie",
+                "cost": 299,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 5,
+                    "name": "Legendary",
+                    "icon": "skin_rarity_5.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Dark Sands",
+                        "image": "bg_darksands.webp",
+                        "icon": "icon_darksands.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 3,
+                    "year": 2026
+                },
+                "image": "twinssandsoftime.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -34427,6 +35234,87 @@
                     "value": 3,
                     "name": "Legendary",
                     "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "twins_sandsoftime_default",
+                "image": "twins_sandsoftime_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "twins_sandsoftime_happy",
+                "image": "twins_sandsoftime_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "twins_sandsoftime_sad",
+                "image": "twins_sandsoftime_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "twins_sandsoftime_angry",
+                "image": "twins_sandsoftime_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "twins_sandsoftime_gg",
+                "image": "twins_sandsoftime_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "twins_sandsoftime_clap",
+                "image": "twins_sandsoftime_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "twins_sandsoftime_thanks",
+                "image": "twins_sandsoftime_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "twins_sandsoftime_sweat",
+                "image": "twins_sandsoftime_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "twins_sandsoftime_special",
+                "image": "twins_sandsoftime_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
                 }
             }
         ]
@@ -34725,7 +35613,7 @@
             },
             {
                 "name": "insectmanbrawlentinechroma1",
-                "displayName": "Adonis Angelo",
+                "displayName": "Brawlentine's Adonis Angelo",
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
@@ -34770,7 +35658,7 @@
             },
             {
                 "name": "insectmanbrawlentinechroma2",
-                "displayName": "Snatched Angelo",
+                "displayName": "Brawlentine's Snatched Angelo",
                 "cost": 149,
                 "currency": "Gems",
                 "costBling": 5000,
@@ -35934,7 +36822,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Najia Boxes"
+                ],
                 "release": {
                     "month": 3,
                     "year": 2025
@@ -36299,6 +37189,46 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "domainsupercellstore",
+                "displayName": "Royale Trunk",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Supercell Make",
+                        "image": "bg_default.webp",
+                        "icon": "icon_sc_make.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Only obtainable from Supercell ID rewards",
+                "foundIn": [],
+                "release": {
+                    "month": 3,
+                    "year": 2026
+                },
+                "image": "domainsupercellstore.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -36395,6 +37325,15 @@
             {
                 "name": "trunk_overcharge",
                 "image": "trunk_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "trunk_claship",
+                "image": "trunk_claship.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -36596,7 +37535,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Najia Boxes"
+                ],
                 "release": {
                     "month": 5,
                     "year": 2020
@@ -37885,7 +38826,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Angelic Starr Drops"
+                    "Angelic Starr Drops",
+                    "Najia Boxes"
                 ],
                 "release": {
                     "month": 8,
@@ -38735,7 +39677,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Najia Boxes"
+                ],
                 "release": {
                     "month": 12,
                     "year": 2024
@@ -42699,7 +43643,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Najia Boxes"
+                ],
                 "release": {
                     "month": 3,
                     "year": 2025
@@ -48295,7 +49241,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Glowbert Boxes"
+                    "Glowbert Boxes",
+                    "Najia Boxes"
                 ],
                 "release": {
                     "month": 9,
@@ -48841,6 +49788,46 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "reviversandsoftime",
+                "displayName": "Dynasty Doug",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Dark Sands",
+                        "image": "bg_darksands.webp",
+                        "icon": "icon_darksands.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 3,
+                    "year": 2026
+                },
+                "image": "reviversandsoftime.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -48955,6 +49942,15 @@
             {
                 "name": "doug_fantasy",
                 "image": "doug_fantasy.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "doug_darksands",
+                "image": "doug_darksands.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -50854,6 +51850,46 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "axejuggleraprilfools",
+                "displayName": "Inflatable Melodie",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "April Fool's",
+                        "image": "bg_default.webp",
+                        "icon": "icon_aprilfools.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2026
+                },
+                "image": "axejuggleraprilfools.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -50995,6 +52031,15 @@
             {
                 "name": "melodie_gym",
                 "image": "melodie_gym.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "melodie_aprilfools",
+                "image": "melodie_aprilfools.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -51254,6 +52299,141 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "ambushersandsoftime",
+                "displayName": "Sandstalker Lily",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Dark Sands",
+                        "image": "bg_darksands.webp",
+                        "icon": "icon_darksands.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 3,
+                    "year": 2026
+                },
+                "image": "ambushersandsoftime.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "ambushersandsoftimechromagreen",
+                "displayName": "Sandwalker Lily",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Dark Sands",
+                        "image": "bg_darksands.webp",
+                        "icon": "icon_darksands.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 3,
+                    "year": 2026
+                },
+                "image": "ambushersandsoftimechromagreen.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "ambushersandsoftimechromared",
+                "displayName": "Night Sands Lily",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Dark Sands",
+                        "image": "bg_darksands.webp",
+                        "icon": "icon_darksands.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 3,
+                    "year": 2026
+                },
+                "image": "ambushersandsoftimechromared.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -51368,6 +52548,33 @@
             {
                 "name": "lily_fantasy",
                 "image": "lily_fantasy.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "lily_sandsoftime",
+                "image": "lily_sandsoftime.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "lily_sandsoftimechromagreen",
+                "image": "lily_sandsoftimechromagreen.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "lily_sandsoftimechromared",
+                "image": "lily_sandsoftimechromared.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -52131,7 +53338,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Najia Boxes"
+                ],
                 "release": {
                     "month": 3,
                     "year": 2025
@@ -52451,7 +53660,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Najia Boxes"
+                ],
                 "release": {
                     "month": 3,
                     "year": 2025
@@ -52775,7 +53986,9 @@
                 ],
                 "limited": false,
                 "unlock": "Included in the Finx early access bundle",
-                "foundIn": [],
+                "foundIn": [
+                    "Najia Boxes"
+                ],
                 "release": {
                     "month": 3,
                     "year": 2025
@@ -53280,9 +54493,9 @@
                 ],
                 "groups": [
                     {
-                        "name": "Once Upon",
-                        "image": "bg_onceupon.webp",
-                        "icon": "icon_onceupon.webp"
+                        "name": "Knights!",
+                        "image": "bg_fantasy.webp",
+                        "icon": "icon_fantasy.webp"
                     }
                 ],
                 "limited": false,
@@ -54610,6 +55823,46 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "dancerfairies",
+                "displayName": "Faerie Mina",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Once Upon",
+                        "image": "bg_onceupon.webp",
+                        "icon": "icon_onceupon.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2026
+                },
+                "image": "dancerfairies.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -54733,6 +55986,15 @@
             {
                 "name": "mina_overcharge",
                 "image": "mina_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "mina_onceupon",
+                "image": "mina_onceupon.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -55514,7 +56776,7 @@
     },
     {
         "name": "glowbert",
-        "displayName": "Glowbert",
+        "displayName": "Glowy",
         "rarity": {
             "value": 4,
             "name": "Mythic",
@@ -55524,11 +56786,11 @@
         "defaultSkin": "menderdefault",
         "title": "Sleeps with the fishes",
         "masteryIcon": "mastery_icon_glowbert.webp",
-        "description": "A marine biologist working at the Starr Park aquarium, Glowbert is obsessed with sea life, wanting to introduce it to as many visitors as he can. Although he might seem a bit creepy, he's actually a nice guy! Maybe.",
+        "description": "A marine biologist working at the Starr Park aquarium, Glowy is obsessed with sea life, wanting to introduce it to as many visitors as he can. Although he might seem a bit creepy, he's actually a nice guy! Maybe.",
         "skins": [
             {
                 "name": "menderdefault",
-                "displayName": "Glowbert",
+                "displayName": "Glowy",
                 "cost": 0,
                 "currency": "",
                 "costBling": -1,
@@ -55554,6 +56816,122 @@
                     "year": 2026
                 },
                 "image": "menderdefault.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "mendergold",
+                "displayName": "True Gold Glowy",
+                "cost": 25000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 8,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "True Silver Glowy",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Gold",
+                        "image": "bg_gold.webp",
+                        "icon": "icon_gold.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 2,
+                    "year": 2026
+                },
+                "image": "mendergold.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "mendersilver",
+                "displayName": "True Silver Glowy",
+                "cost": 10000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 8,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Silver",
+                        "image": "bg_silver.webp",
+                        "icon": "icon_silver.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 2,
+                    "year": 2026
+                },
+                "image": "mendersilver.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "mender199gem",
+                "displayName": "Ywolg",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "April Fool's",
+                        "image": "bg_default.webp",
+                        "icon": "icon_aprilfools.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2026
+                },
+                "image": "mender199gem.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -55656,6 +57034,176 @@
             {
                 "name": "glowbert_box",
                 "image": "glowbert_box.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "glowbert_overcharge",
+                "image": "glowbert_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "glowbert_aprilfools",
+                "image": "glowbert_aprilfools.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            }
+        ]
+    },
+    {
+        "name": "najia",
+        "displayName": "Najia",
+        "rarity": {
+            "value": 4,
+            "name": "Mythic",
+            "color": "#fe0521"
+        },
+        "image": "portrait_najia.webp",
+        "defaultSkin": "redirecterdefault",
+        "title": "Venomous",
+        "masteryIcon": "mastery_icon_najia.webp",
+        "description": "Hired by Finx to make Pyramid Quest's puzzles harder, her good nature actually lead her to help those trapped by his time-warping mischief instead.",
+        "skins": [
+            {
+                "name": "redirecterdefault",
+                "displayName": "Najia",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 0,
+                    "name": "",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [],
+                "groups": [
+                    {
+                        "name": "",
+                        "image": "bg_default.webp",
+                        "icon": "icon_default.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 3,
+                    "year": 2026
+                },
+                "image": "redirecterdefault.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "name": "najia_default",
+                "image": "najia_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "najia_happy",
+                "image": "najia_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "najia_sad",
+                "image": "najia_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "najia_angry",
+                "image": "najia_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "najia_gg",
+                "image": "najia_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "najia_clap",
+                "image": "najia_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "najia_thanks",
+                "image": "najia_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "najia_sweat",
+                "image": "najia_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "najia_special",
+                "image": "najia_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "najia_facepalm",
+                "image": "najia_facepalm.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "najia_box",
+                "image": "najia_box.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -56475,7 +58023,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Mega Boxes"
+                    "Mega Boxes",
+                    "Najia Boxes"
                 ],
                 "release": {
                     "month": 6,
@@ -57031,6 +58580,210 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "crowrankedprogrsesionskinlevel1",
+                "displayName": "Dragon Crow",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 7,
+                    "name": "Pro",
+                    "icon": "skin_rarity_7.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "Pro Pass",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_propass.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Reward from free track of Brawl Cup 2026 Pro Pass",
+                "foundIn": [],
+                "release": {
+                    "month": 3,
+                    "year": 2026
+                },
+                "image": "crowrankedprogrsesionskinlevel1.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "crowrankedprogrsesionskinlevel4",
+                "displayName": "Dragon Crow IV",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 7,
+                    "name": "Pro",
+                    "icon": "skin_rarity_7.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Pro Pass",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_propass.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Reward from free track of Brawl Cup 2026 Pro Pass",
+                "foundIn": [],
+                "release": {
+                    "month": 3,
+                    "year": 2026
+                },
+                "image": "crowrankedprogrsesionskinlevel4.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "crowrankedprogrsesionskinlevel9",
+                "displayName": "Dragonkin Crow",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 7,
+                    "name": "Pro",
+                    "icon": "skin_rarity_7.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Voice",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Pro Pass",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_propass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from paid track of Brawl Cup 2026 Pro Pass",
+                "foundIn": [],
+                "release": {
+                    "month": 3,
+                    "year": 2026
+                },
+                "image": "crowrankedprogrsesionskinlevel9.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "crowrankedprogrsesionskinlevel10",
+                "displayName": "Dragonforged Crow",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 7,
+                    "name": "Pro",
+                    "icon": "skin_rarity_7.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Voice",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Pro Pass",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_propass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from paid track of Brawl Cup 2026 Pro Pass",
+                "foundIn": [],
+                "release": {
+                    "month": 3,
+                    "year": 2026
+                },
+                "image": "crowrankedprogrsesionskinlevel10.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "crowrankedprogrsesionskinlevel11",
+                "displayName": "Ghost Dragon Crow",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 7,
+                    "name": "Pro",
+                    "icon": "skin_rarity_7.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Voice",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Pro Pass",
+                        "image": "bg_ranked.webp",
+                        "icon": "icon_propass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward from paid track of Brawl Cup 2026 Pro Pass",
+                "foundIn": [],
+                "release": {
+                    "month": 3,
+                    "year": 2026
+                },
+                "image": "crowrankedprogrsesionskinlevel11.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -57370,6 +59123,105 @@
             {
                 "name": "crow_brawloweenwhite",
                 "image": "crow_brawloweenwhite.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "crow_ranked_default",
+                "image": "crow_ranked_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "crow_ranked_happy",
+                "image": "crow_ranked_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "crow_ranked_sad",
+                "image": "crow_ranked_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "crow_ranked_angry",
+                "image": "crow_ranked_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "crow_ranked_gg",
+                "image": "crow_ranked_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "crow_ranked_clap",
+                "image": "crow_ranked_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "crow_ranked_thanks",
+                "image": "crow_ranked_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "crow_ranked_sweat",
+                "image": "crow_ranked_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "crow_ranked_special",
+                "image": "crow_ranked_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "crow_rankedlevel10",
+                "image": "crow_rankedlevel10.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "crow_rankedlevel11",
+                "image": "crow_rankedlevel11.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -58631,7 +60483,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Najia Boxes"
+                ],
                 "release": {
                     "month": 9,
                     "year": 2019
@@ -60702,7 +62556,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Najia Boxes"
+                ],
                 "release": {
                     "month": 3,
                     "year": 2024
@@ -62289,6 +64145,141 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "duelistsandsoftime",
+                "displayName": "Sultan Cordelius",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Dark Sands",
+                        "image": "bg_darksands.webp",
+                        "icon": "icon_darksands.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 3,
+                    "year": 2026
+                },
+                "image": "duelistsandsoftime.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "duelistsandsoftimechroma1",
+                "displayName": "Heated Sultan Cordelius",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Dark Sands",
+                        "image": "bg_darksands.webp",
+                        "icon": "icon_darksands.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 3,
+                    "year": 2026
+                },
+                "image": "duelistsandsoftimechroma1.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "duelistsandsoftimechroma2",
+                "displayName": "Cooled Sultan Cordelius",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Dark Sands",
+                        "image": "bg_darksands.webp",
+                        "icon": "icon_darksands.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 3,
+                    "year": 2026
+                },
+                "image": "duelistsandsoftimechroma2.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -62569,6 +64560,33 @@
                     "value": 2,
                     "name": "Epic",
                     "color": "#b116ec"
+                }
+            },
+            {
+                "name": "cordelius_sandsoftime",
+                "image": "cordelius_sandsoftime.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "cordelius_sandsoftimechroma1",
+                "image": "cordelius_sandsoftimechroma1.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "cordelius_sandsoftimechroma2",
+                "image": "cordelius_sandsoftimechroma2.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
                 }
             }
         ]
@@ -63395,9 +65413,9 @@
                 ],
                 "groups": [
                     {
-                        "name": "Once Upon",
-                        "image": "bg_onceupon.webp",
-                        "icon": "icon_onceupon.webp"
+                        "name": "Knights!",
+                        "image": "bg_fantasy.webp",
+                        "icon": "icon_fantasy.webp"
                     }
                 ],
                 "limited": false,
@@ -63516,9 +65534,9 @@
                 ],
                 "groups": [
                     {
-                        "name": "Once Upon",
-                        "image": "bg_onceupon.webp",
-                        "icon": "icon_onceupon.webp"
+                        "name": "Knights!",
+                        "image": "bg_fantasy.webp",
+                        "icon": "icon_fantasy.webp"
                     }
                 ],
                 "limited": false,
@@ -64634,6 +66652,86 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "bulletstormgold",
+                "displayName": "True Gold Pierce",
+                "cost": 25000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 8,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "True Silver Pierce",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "True Gold",
+                        "image": "bg_gold.webp",
+                        "icon": "icon_gold.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 2,
+                    "year": 2026
+                },
+                "image": "bulletstormgold.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "bulletstormsilver",
+                "displayName": "True Silver Pierce",
+                "cost": 10000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 8,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "True Silver",
+                        "image": "bg_silver.webp",
+                        "icon": "icon_silver.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 2,
+                    "year": 2026
+                },
+                "image": "bulletstormsilver.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -64757,6 +66855,15 @@
             {
                 "name": "pierce_199gemchroma2",
                 "image": "pierce_199gemchroma2.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "pierce_overcharge",
+                "image": "pierce_overcharge.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -65235,6 +67342,167 @@
             {
                 "name": "kaze_steampunk_special",
                 "image": "kaze_steampunk_special.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            }
+        ]
+    },
+    {
+        "name": "sirius",
+        "displayName": "Sirius",
+        "rarity": {
+            "value": 6,
+            "name": "Ultra Legendary",
+            "color": "#e1fa29"
+        },
+        "image": "portrait_sirius.webp",
+        "defaultSkin": "shadowdemondefault",
+        "title": "The Banished",
+        "masteryIcon": "mastery_icon_sirius.webp",
+        "description": "His identity is as mysterious as his powers. He had the very first attraction at Starr Park, but rumor has it he was kicked out unfairly, and banned from ever returning. Now... he's back for REVENGE.",
+        "skins": [
+            {
+                "name": "shadowdemondefault",
+                "displayName": "Sirius",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 0,
+                    "name": "",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [],
+                "groups": [
+                    {
+                        "name": "",
+                        "image": "bg_default.webp",
+                        "icon": "icon_default.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 2,
+                    "year": 2026
+                },
+                "image": "shadowdemondefault.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "name": "sirius_default",
+                "image": "sirius_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "sirius_happy",
+                "image": "sirius_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "sirius_sad",
+                "image": "sirius_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "sirius_angry",
+                "image": "sirius_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "sirius_gg",
+                "image": "sirius_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "sirius_clap",
+                "image": "sirius_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "sirius_thanks",
+                "image": "sirius_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "sirius_sweat",
+                "image": "sirius_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "sirius_special",
+                "image": "sirius_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "sirius_facepalm",
+                "image": "sirius_facepalm.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "sirius_box",
+                "image": "sirius_box.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "sirius_overcharge",
+                "image": "sirius_overcharge.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",

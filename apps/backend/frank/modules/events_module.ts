@@ -153,10 +153,9 @@ for (let x = 0; x < eventList.length; x++){
 
 const mapSearchMatch = new RegExp(/[^\w\s.']/g);
 
-// Time that the current map rotation should be valid during. If the current time is outside this range, the user should
-// be warned that the map rotation was likely changed and the data returned to them may be inaccurate.
-const seasonStart = 1761552000;
-const seasonEnd = 1764662400;
+// Minimum time in seconds that the map rotation is valid for. If more than this time has passed, the user should be
+// warned that the map rotation was likely changed and the data returned to them may be inaccurate.
+const seasonDuration = 4838400;
 
 
 function applyGameModeDisplay(display: GameModeDisplay): GameModeDisplay{
@@ -331,6 +330,8 @@ export function getCurrentEvents(realTime: number): CurrentEvents{
     const seasonTime = realToTime(realTime);
     const allEvents: CurrentEvents["events"] = [];
 
+    let startTime = 0;
+
     for (let x = 0; x < events.length; x++){
         if (events[x].ladderEvent === true){
             allEvents.push({
@@ -338,12 +339,13 @@ export function getCurrentEvents(realTime: number): CurrentEvents{
                 upcoming: getEventData(events[x], seasonTime + events[x].eventDuration),
                 timeLeft: events[x].getTimeLeft(seasonTime)
             });
+            startTime = Math.max(startTime, events[x].startTime);
         }
     }
 
     return {
         time: seasonTime,
-        valid: seasonTime >= seasonStart && seasonTime < seasonEnd,
+        valid: seasonTime >= startTime && seasonTime < (startTime + seasonDuration),
         events: allEvents
     };
 }
