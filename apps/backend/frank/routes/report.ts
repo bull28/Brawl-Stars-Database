@@ -89,6 +89,8 @@ router.post<Empty, Empty, SaveReqBody>("/", databaseErrorHandler<SaveReqBody>(as
             baseMastery = rewards.mastery;
             baseCoins = rewards.coins;
             baseBadges = rewards.badges;
+
+            body.path = 3;
         } else{
             const rewards = getRewards(challenge.challengeid, reportData.player.difficulty, reportData.score.win);
             baseMastery = rewards.mastery;

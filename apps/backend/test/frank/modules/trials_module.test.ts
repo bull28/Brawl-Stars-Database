@@ -84,11 +84,17 @@ describe("Trials module", function(){
         const display = getTrialDisplay(trial);
 
         expect(display).to.have.keys([
-            "sprites", "rarities", "challenges", "resources", "characters", "accessories", "powerups", "brawlBoxes"
+            "sprites", "builds", "rarities", "challenges", "resources",
+            "characters", "accessories", "powerups", "brawlBoxes"
         ]);
 
         expect(display.sprites).to.eql({
             image: TRIAL_IMAGE_DIR + spriteConfig.imageFile + IMAGE_FILE_EXTENSION, rowSize: spriteConfig.rowSize
+        });
+
+        expect(display.builds).to.eql({
+            gears: {sprite: spriteConfig.gearIndex, count: 7},
+            starPowers: {sprite: spriteConfig.starPowerIndex, count: 3}
         });
 
         expect(display.rarities).to.eql(allRarities);
@@ -99,7 +105,7 @@ describe("Trials module", function(){
         })));
 
         expect(display.resources).to.be.an("array");
-        expect(display.resources).to.have.lengthOf(3);
+        expect(display.resources).to.have.lengthOf(4);
         expect(display.resources[0]).to.eql({
             key: "power", displayName: "Power Points", sprite: spriteConfig.powerPointsIndex
         });
@@ -109,11 +115,15 @@ describe("Trials module", function(){
         expect(display.resources[2]).to.eql({
             key: "accessories", displayName: "Accessory Tokens", sprite: spriteConfig.accessoryTokenIndex
         });
+        expect(display.resources[3]).to.eql({
+            key: "credits", displayName: "Credits", sprite: spriteConfig.creditsIndex
+        });
 
         expect(display.characters).to.be.an("array");
         expect(display.characters).to.have.lengthOf(trial.characterTiers.length);
         for (let x = 0; x < display.characters.length; x++){
-            expect(display.characters[x].sprite).to.equal(spriteConfig.characterIndex + x)
+            expect(display.characters[x].sprite).to.equal(spriteConfig.characterIndex + x);
+            expect(display.characters[x].accessoryIndex).to.equal(allCharacters[x].accsItemIndex);
         }
 
         const map = new Map(accessoryList.map((value, index) => [value.name, index]));

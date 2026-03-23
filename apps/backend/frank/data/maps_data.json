@@ -670,12 +670,12 @@
                 "bannerImage": "rumblejungle.webp"
             },
             {
-                "name": "coin-flip",
-                "displayName": "Coin Flip",
+                "name": "search-and-destroy",
+                "displayName": "Search and Destroy",
                 "gameMode": 1,
                 "rankedMap": false,
-                "image": "coin-flip.webp",
-                "bannerImage": "arcade.webp"
+                "image": "search-and-destroy.webp",
+                "bannerImage": "madevilmanor.webp"
             },
             {
                 "name": "shooting-star",

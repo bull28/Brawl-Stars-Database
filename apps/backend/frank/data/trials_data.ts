@@ -15,6 +15,8 @@ interface TrialConfig{
     challenges: {
         challengeid: string;
         displayName: string;
+        powerReward: number;
+        gearsReward: number;
         enemyStats: number[];
         baseMastery: number;
     }[];
@@ -63,9 +65,18 @@ const allTrials: TrialConfig[] = [
             timePerEnemy: 0.8
         },
         challenges: [
-            {challengeid: "random1", displayName: "Random Challenge - Tier 1", enemyStats: [100, 120], baseMastery: 1},
-            {challengeid: "random2", displayName: "Random Challenge - Tier 2", enemyStats: [148, 164, 178], baseMastery: 1.5},
-            {challengeid: "miniboss1", displayName: "Miniboss Challenge - Tier 1", enemyStats: [200], baseMastery: 1.5}
+            {
+                challengeid: "random1", displayName: "Random Challenge - Tier 1",
+                powerReward: 20, gearsReward: 100, enemyStats: [100, 120], baseMastery: 1
+            },
+            {
+                challengeid: "random2", displayName: "Random Challenge - Tier 2",
+                powerReward: 20, gearsReward: 100, enemyStats: [148, 164, 178], baseMastery: 1.5
+            },
+            {
+                challengeid: "miniboss1", displayName: "Miniboss Challenge - Tier 1",
+                powerReward: 20, gearsReward: 100, enemyStats: [200], baseMastery: 1.5
+            }
         ]
     },
     {
@@ -80,10 +91,22 @@ const allTrials: TrialConfig[] = [
             timePerEnemy: 0.75
         },
         challenges: [
-            {challengeid: "random2", displayName: "Random Challenge - Tier 2", enemyStats: [100, 120, 138], baseMastery: 2},
-            {challengeid: "miniboss2", displayName: "Miniboss Challenge - Tier 2", enemyStats: [164], baseMastery: 1.5},
-            {challengeid: "random3", displayName: "Random Challenge - Tier 3", enemyStats: [186, 200, 210], baseMastery: 2.5},
-            {challengeid: "siege1", displayName: "Siege Challenge - Tier 1", enemyStats: [236], baseMastery: 1.5}
+            {
+                challengeid: "random2", displayName: "Random Challenge - Tier 2",
+                powerReward: 20, gearsReward: 100, enemyStats: [100, 120, 138], baseMastery: 2
+            },
+            {
+                challengeid: "miniboss2", displayName: "Miniboss Challenge - Tier 2",
+                powerReward: 20, gearsReward: 100, enemyStats: [164], baseMastery: 1.5
+            },
+            {
+                challengeid: "random3", displayName: "Random Challenge - Tier 3",
+                powerReward: 20, gearsReward: 100, enemyStats: [186, 200, 210], baseMastery: 2.5
+            },
+            {
+                challengeid: "siege1", displayName: "Siege Challenge - Tier 1",
+                powerReward: 20, gearsReward: 100, enemyStats: [236], baseMastery: 1.5
+            }
         ]
     },
     {
@@ -98,29 +121,95 @@ const allTrials: TrialConfig[] = [
             timePerEnemy: 0.7
         },
         challenges: [
-            {challengeid: "random3", displayName: "Random Challenge - Tier 3", enemyStats: [100, 120, 138], baseMastery: 2.5},
-            {challengeid: "miniboss3", displayName: "Miniboss Challenge - Tier 3", enemyStats: [164], baseMastery: 1.5},
-            {challengeid: "random4", displayName: "Random Challenge - Tier 4", enemyStats: [186, 200, 210, 222], baseMastery: 3},
-            {challengeid: "siege2", displayName: "Siege Challenge - Tier 2", enemyStats: [238], baseMastery: 2},
-            {challengeid: "random5", displayName: "Random Challenge - Tier 5", enemyStats: [252, 261, 269, 275], baseMastery: 4},
-            {challengeid: "bosstrials", displayName: "Boss Fight", enemyStats: [300], baseMastery: 2}
+            {
+                challengeid: "random3", displayName: "Random Challenge - Tier 3",
+                powerReward: 20, gearsReward: 100, enemyStats: [100, 120, 138], baseMastery: 2.5
+            },
+            {
+                challengeid: "miniboss3", displayName: "Miniboss Challenge - Tier 3",
+                powerReward: 20, gearsReward: 100, enemyStats: [164], baseMastery: 1.5
+            },
+            {
+                challengeid: "random4", displayName: "Random Challenge - Tier 4",
+                powerReward: 20, gearsReward: 100, enemyStats: [186, 200, 210, 222], baseMastery: 3
+            },
+            {
+                challengeid: "siege2", displayName: "Siege Challenge - Tier 2",
+                powerReward: 20, gearsReward: 100, enemyStats: [238], baseMastery: 2
+            },
+            {
+                challengeid: "random5", displayName: "Random Challenge - Tier 5",
+                powerReward: 20, gearsReward: 100, enemyStats: [252, 261, 269, 275], baseMastery: 4
+            },
+            {
+                challengeid: "bosstrials", displayName: "Boss Fight",
+                powerReward: 20, gearsReward: 100, enemyStats: [300], baseMastery: 2
+            }
         ]
     }
 ];
 
 const allCharacters = [
-    {name: "spike", ingameIndex: 48, starPowers: ["", "", ""]},
-    {name: "gus", ingameIndex: 49, starPowers: ["", "", ""]},
-    {name: "emz", ingameIndex: 50, starPowers: ["", "", ""]},
-    {name: "darryl", ingameIndex: 51, starPowers: ["", "", ""]},
-    {name: "tara", ingameIndex: 52, starPowers: ["", "", ""]},
-    {name: "piper", ingameIndex: 53, starPowers: ["", "", ""]},
-    {name: "lily", ingameIndex: 54, starPowers: ["", "", ""]},
-    {name: "stu", ingameIndex: 55, starPowers: ["", "", ""]},
-    {name: "maisie", ingameIndex: 56, starPowers: ["", "", ""]},
-    {name: "shade", ingameIndex: 57, starPowers: ["", "", ""]},
-    {name: "mandy", ingameIndex: 58, starPowers: ["", "", ""]},
-    {name: "hank", ingameIndex: 59, starPowers: ["", "", ""]}
+    {name: "spike", ingameIndex: 48, accsItemIndex: 74, starPowers: [
+        "The super heals 50% more health.",
+        "Deal +15% damage if the super is fully charged.",
+        "The super has 25% longer range and pierces through enemies."
+    ]},
+    {name: "gus", ingameIndex: 49, accsItemIndex: 75, starPowers: [
+        "All shields are 25% stronger.",
+        "Deal +20% damage when a shield is active.",
+        "After hitting 4 attacks, the next attack deals +50% damage and pierces through enemies."
+    ]},
+    {name: "emz", ingameIndex: 50, accsItemIndex: 76, starPowers: [
+        "Heal for 40% of your life steal every time the super hits an enemy.",
+        "The super deals +50% damage until it hits at least 2 different enemies.",
+        "Attacks deal +25% damage to enemies that are very close."
+    ]},
+    {name: "darryl", ingameIndex: 51, accsItemIndex: 77, starPowers: [
+        "When the super ends, receive a shield worth 0.5% of max health per attack hit during the super.",
+        "Each full attack hit during the super extends its duration by 0.125 seconds.",
+        "The super roll has 50% longer range and deals 300% fire damage."
+    ]},
+    {name: "tara", ingameIndex: 52, accsItemIndex: 78, starPowers: [
+        "Increases attack range by 35%.",
+        "Receive +100% life steal when attacking the last enemy the super hit.",
+        "When defeating an enemy, gain 25% speed and 20% damage for 12 seconds."
+    ]},
+    {name: "piper", ingameIndex: 53, accsItemIndex: 79, starPowers: [
+        "The super slows nearby enemies by 70% for 5 seconds.",
+        "Attacks deal more damage the farther they travel, up to +25% at 60% of max range.",
+        "Every 4 attacks hit on an enemy increases the damage dealt to them by 12.5%, up to 50%."
+    ]},
+    {name: "lily", ingameIndex: 54, accsItemIndex: 80, starPowers: [
+        "Hitting an enemy with the super gives a shield worth 40% of max health for 2.5 seconds.",
+        "Defeating an enemy instantly reloads 1 ammo.",
+        "Increases ammo capacity and unload speed by 20%."
+    ]},
+    {name: "stu", ingameIndex: 55, accsItemIndex: 81, starPowers: [
+        "Receive dashes 50% faster and store up to 10 dashes at once.",
+        "Deal +50% damage on the next attack after using a dash. Does not stack.",
+        "When at least 5 dashes are stored, deal +25% damage."
+    ]},
+    {name: "maisie", ingameIndex: 56, accsItemIndex: 82, starPowers: [
+        "Super heals 5% of max health and recharges 25% more from enemies.",
+        "Attacks reload 15% faster, have 10% longer range, and move faster.",
+        "Super deals 50% more damage for each enemy it hits, up to a maximum of 150%."
+    ]},
+    {name: "shade", ingameIndex: 57, accsItemIndex: 83, starPowers: [
+        "Increases the duration of the super by 33%.",
+        "Receive +60% protection while the super is active.",
+        "Every 6 stomps hit during the super increases its damage by 25% for the rest of its duration, up to 100%."
+    ]},
+    {name: "mandy", ingameIndex: 58, accsItemIndex: 84, starPowers: [
+        "Receive +40% protection when not moving.",
+        "Each level up increases the super's damage by 20%.",
+        "All levels require 15% less XP to reach."
+    ]},
+    {name: "hank", ingameIndex: 59, accsItemIndex: 85, starPowers: [
+        "Super heals damage received from 1 more second.",
+        "Increases the size of the bubble by 50%.",
+        "Torpedoes deal +25% damage to enemies not right beside you."
+    ]}
 ];
 
 const characterTiers = [
@@ -138,19 +227,19 @@ const trialLevels = [
     {enemyStats:  8.00, baseMastery:  1, baseCoins: 1.00},
     {enemyStats:  8.25, baseMastery:  1, baseCoins: 1.05},
     {enemyStats:  8.50, baseMastery:  1, baseCoins: 1.05},
-    {enemyStats:  8.75, baseMastery:  1, baseCoins: 1.10},
+    {enemyStats:  8.75, baseMastery:  2, baseCoins: 1.10},
     {enemyStats:  9.00, baseMastery:  2, baseCoins: 1.10},
     {enemyStats:  9.25, baseMastery:  2, baseCoins: 1.15},
-    {enemyStats:  9.50, baseMastery:  2, baseCoins: 1.20},
-    {enemyStats:  9.75, baseMastery:  2, baseCoins: 1.25},
-    {enemyStats: 10.00, baseMastery:  3, baseCoins: 1.30},
-    {enemyStats: 10.50, baseMastery:  3, baseCoins: 1.35},
-    {enemyStats: 11.00, baseMastery:  4, baseCoins: 1.40},
-    {enemyStats: 11.50, baseMastery:  5, baseCoins: 1.45},
-    {enemyStats: 12.00, baseMastery:  6, baseCoins: 1.50},
-    {enemyStats: 12.50, baseMastery:  7, baseCoins: 1.60},
-    {enemyStats: 13.00, baseMastery:  8, baseCoins: 1.70},
-    {enemyStats: 13.50, baseMastery: 10, baseCoins: 1.80},
+    {enemyStats:  9.50, baseMastery:  3, baseCoins: 1.20},
+    {enemyStats:  9.75, baseMastery:  3, baseCoins: 1.25},
+    {enemyStats: 10.00, baseMastery:  4, baseCoins: 1.30},
+    {enemyStats: 10.50, baseMastery:  5, baseCoins: 1.35},
+    {enemyStats: 11.00, baseMastery:  6, baseCoins: 1.40},
+    {enemyStats: 11.50, baseMastery:  7, baseCoins: 1.45},
+    {enemyStats: 12.00, baseMastery:  8, baseCoins: 1.50},
+    {enemyStats: 12.50, baseMastery:  9, baseCoins: 1.60},
+    {enemyStats: 13.00, baseMastery: 10, baseCoins: 1.70},
+    {enemyStats: 13.50, baseMastery: 11, baseCoins: 1.80},
     {enemyStats: 14.00, baseMastery: 12, baseCoins: 1.90},
     {enemyStats: 14.75, baseMastery: 14, baseCoins: 2.00},
     {enemyStats: 15.50, baseMastery: 16, baseCoins: 2.10},
@@ -189,7 +278,7 @@ const allBoxes: BrawlBoxConfig[] = [
         scoreQuality: 0,
         progressQuality: 0,
         rarities: [1, 3, 9, 72],
-        guaranteed: [0],
+        guaranteed: [2],
         weights: [{itemType: "resource", multiplier: 0.25}]
     },
     {
@@ -225,7 +314,7 @@ const allBoxes: BrawlBoxConfig[] = [
         scoreQuality: 3,
         progressQuality: 0.75,
         rarities: [1, 3, 8, 24, 120],
-        guaranteed: [1, 2],
+        guaranteed: [1, 3],
         weights: [{itemType: "character", multiplier: 2}]
     },
     {
@@ -236,7 +325,7 @@ const allBoxes: BrawlBoxConfig[] = [
         baseQuality: 7,
         scoreQuality: 4,
         progressQuality: 0.75,
-        rarities: [1, 3, 6, 12, 48],
+        rarities: [1, 3, 6, 12, 36],
         guaranteed: [0],
         weights: []
     },
@@ -248,7 +337,7 @@ const allBoxes: BrawlBoxConfig[] = [
         baseQuality: 15,
         scoreQuality: 6,
         progressQuality: 0,
-        rarities: [1, 3, 6, 12, 48],
+        rarities: [1, 3, 6, 12, 36],
         guaranteed: [1],
         weights: []
     }
@@ -262,6 +351,10 @@ const guaranteed = [
     {
         itemType: "character",
         rarities: [1.6666666666666667, 2, 2.105263157894737, 3.076923076923077, 4]
+    },
+    {
+        itemType: "character",
+        rarities: [1, 1, 1, 0, 0]
     },
     {
         itemType: "powerup",
@@ -333,7 +426,10 @@ const spriteConfig = {
     powerupIndex: 12,
     powerPointsIndex: 24,
     gearScrapIndex: 29,
-    accessoryTokenIndex: 33
+    accessoryTokenIndex: 33,
+    creditsIndex: 36,
+    gearIndex: 140,
+    starPowerIndex: 147
 };
 
 for (let x = 0; x < guaranteed.length; x++){

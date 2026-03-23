@@ -189,6 +189,7 @@ export function getTrialDisplay(trial: TrialData): TrialDisplay{
             displayName: "",
             sprite: spriteConfig.characterIndex + x,
             rarity: 0,
+            accessoryIndex: allCharacters[x].accsItemIndex ?? -1,
             starPowers: []
         });
     }
@@ -233,11 +234,16 @@ export function getTrialDisplay(trial: TrialData): TrialDisplay{
             image: TRIAL_IMAGE_DIR + spriteConfig.imageFile + IMAGE_FILE_EXTENSION,
             rowSize: spriteConfig.rowSize
         },
+        builds: {
+            gears: {sprite: spriteConfig.gearIndex, count: 7},
+            starPowers: {sprite: spriteConfig.starPowerIndex, count: 3}
+        },
         rarities, challenges,
         resources: [
             {key: "power", displayName: "Power Points", sprite: spriteConfig.powerPointsIndex},
             {key: "gears", displayName: "Gear Scrap", sprite: spriteConfig.gearScrapIndex},
-            {key: "accessories", displayName: "Accessory Tokens", sprite: spriteConfig.accessoryTokenIndex}
+            {key: "accessories", displayName: "Accessory Tokens", sprite: spriteConfig.accessoryTokenIndex},
+            {key: "credits", displayName: "Credits", sprite: spriteConfig.creditsIndex}
         ],
         characters, accessories, powerups, brawlBoxes
     };
@@ -250,8 +256,10 @@ export function startTrial(trialid: number, resources: UserResources): TrialData
     const config = allTrials[trialid];
 
     // The trial's mastery level will start at the same level as the player's. Harder trials further increase the level.
-    const masteryLevel = getMasteryLevel(resources.mastery).level;
-    const trialLevel = Math.max(0, Math.min(Math.floor(masteryLevel + config.levelIncrease), trialLevels.length - 1));
+    const trialLevel = Math.max(0, Math.min(
+        Math.floor(Math.min(30, getMasteryLevel(resources.mastery).level) + config.levelIncrease),
+        trialLevels.length - 1
+    ));
 
     const scores: number[] = [];
     for (let x = 0; x < config.challenges.length; x++){
@@ -677,7 +685,7 @@ export function getNextChallenge(trial: TrialData, key: string, resources: UserR
         return;
     }
 
-    const challengeid = config.challenges[trial.progress].challengeid;
+    const challenge = config.challenges[trial.progress];
 
     trial.selected = Math.min(trial.selected, trial.characterBuilds.length - 1);
     const c = trial.selected >= 0 ? trial.characterBuilds[trial.selected] : 0;
@@ -697,7 +705,7 @@ export function getNextChallenge(trial: TrialData, key: string, resources: UserR
     // Start with the game modification object for the next challenge then modify it based on the current characters,
     // accessories, and powerups selected in the trial. Set mastery points such that the level requirement to use each
     // character is met.
-    const gameMod = getGameMod(challengeid, key, {
+    const gameMod = getGameMod(challenge.challengeid, key, {
         mastery: 20000000,
         coins: 0,
         characters: characters,
@@ -834,7 +842,7 @@ export function getNextChallenge(trial: TrialData, key: string, resources: UserR
 
     const difficulties = gameMod.difficulties;
     if (difficulties !== undefined){
-        const enemyStats = config.challenges[trial.progress].enemyStats;
+        const enemyStats = challenge.enemyStats;
 
         for (let x = 0; x < difficulties.length; x++){
             const diff = difficulties[x];
@@ -853,8 +861,8 @@ export function getNextChallenge(trial: TrialData, key: string, resources: UserR
     const stages = gameMod.stages;
     if (stages !== undefined){
         for (let x = 0; x < stages.length; x++){
-            stages[x].powerReward = 20;
-            stages[x].gearsReward = 100;
+            stages[x].powerReward = challenge.powerReward;
+            stages[x].gearsReward = challenge.gearsReward;
         }
     }
 

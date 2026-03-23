@@ -740,6 +740,12 @@ export interface TrialDisplay{
         image: string;
         rowSize: number;
     };
+    builds: {
+        [k in "gears" | "starPowers"]: {
+            sprite: number;
+            count: number;
+        };
+    };
     rarities: {
         displayName: string;
         color: string;
@@ -760,6 +766,7 @@ export interface TrialDisplay{
         displayName: string;
         sprite: number;
         rarity: number;
+        accessoryIndex: number;
         starPowers: string[];
     }[];
     accessories: {

@@ -51,7 +51,7 @@ app.use((req, res, next) => {
     });
 });
 
-app.use(["/static/bullgame", "/enemies"], compression({threshold: 8192}));
+app.use(["/static/bullgame", "/enemies", "/trials/display"], compression({threshold: 8192}));
 app.use("/static", express.static(path.resolve(ASSETS_ROOT_DIR)));
 
 app.get("/", (req, res) => {
