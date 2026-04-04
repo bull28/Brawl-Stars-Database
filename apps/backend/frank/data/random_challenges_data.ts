@@ -97,12 +97,14 @@ const levelTiers: RandomLevelConfig[] = [
 ];
 
 const masteryStats: number[] = [
-     8.00,  8.00,  8.00,  8.25,  8.50,  8.75,
-     9.00,  9.50, 10.00, 10.50, 11.00, 11.50,
-    12.00, 12.50, 13.00, 13.50, 14.00, 14.75,
-    15.50, 16.25, 17.00, 17.50, 18.25, 18.75,
-    19.25, 20.00, 21.50, 22.25, 22.75, 23.25,
-    24.00, 24.00, 24.50, 25.00, 25.00, 25.50,
+     8.00,  8.00,  8.00,  8.25,  8.25,
+     8.50,  8.75,  9.00,  9.25,  9.50,
+    10.00, 10.50, 11.00, 11.50, 11.75,
+    12.00, 12.50, 13.00, 13.50, 13.75,
+    14.00, 14.75, 15.50, 16.00, 16.50,
+    17.00, 17.75, 18.50, 19.00, 19.50,
+    20.00, 21.00, 21.75, 22.50, 23.25,
+    24.00, 24.00, 24.50, 25.00, 25.50,
     26.00
 ];
 
@@ -134,7 +136,7 @@ const presets = new Map<string, RandomPreset>([
     ["random1", {
         config: {
             displayName: "Random Challenge - Tier 1", recommendedLvl: 6,
-            baseWinMastery: [6], baseLossMastery: [3], baseCoins: [1.25], baseBadges: [2]
+            baseWinMastery: [8], baseLossMastery: [4], baseCoins: [1.5], baseBadges: [2]
         },
         difficulty: {
             strengthTier: 0, healthBonusReq: 0.3, timePerEnemy: 0.7,
@@ -149,8 +151,8 @@ const presets = new Map<string, RandomPreset>([
     }],
     ["random2", {
         config: {
-            displayName: "Random Challenge - Tier 2", recommendedLvl: 14,
-            baseWinMastery: [36], baseLossMastery: [20], baseCoins: [1.75], baseBadges: [4]
+            displayName: "Random Challenge - Tier 2", recommendedLvl: 17,
+            baseWinMastery: [48], baseLossMastery: [24], baseCoins: [2.5], baseBadges: [4]
         },
         difficulty: {
             strengthTier: 1, healthBonusReq: 0.45, timePerEnemy: 0.7,
@@ -162,12 +164,12 @@ const presets = new Map<string, RandomPreset>([
             [{index: 5}]
         ],
         location: 0,
-        options: {level: 14, power: 8, accs: 18}
+        options: {level: 17, power: 8, accs: 18}
     }],
     ["random3", {
         config: {
-            displayName: "Random Challenge - Tier 3", recommendedLvl: 22,
-            baseWinMastery: [120], baseLossMastery: [60], baseCoins: [2.5], baseBadges: [7]
+            displayName: "Random Challenge - Tier 3", recommendedLvl: 27,
+            baseWinMastery: [160], baseLossMastery: [80], baseCoins: [3.5], baseBadges: [7]
         },
         difficulty: {
             strengthTier: 2, healthBonusReq: 0.5, timePerEnemy: 0.7,
@@ -179,12 +181,12 @@ const presets = new Map<string, RandomPreset>([
             [{index: 7}]
         ],
         location: 0,
-        options: {level: 22, power: 16, accs: 24}
+        options: {level: 27, power: 16, accs: 24}
     }],
     ["random4", {
         config: {
-            displayName: "Random Challenge - Tier 4", recommendedLvl: 26,
-            baseWinMastery: [240], baseLossMastery: [120], baseCoins: [4], baseBadges: [10]
+            displayName: "Random Challenge - Tier 4", recommendedLvl: 31,
+            baseWinMastery: [360], baseLossMastery: [180], baseCoins: [6], baseBadges: [10]
         },
         difficulty: {
             strengthTier: 3, healthBonusReq: 0.55, timePerEnemy: 0.7,
@@ -197,12 +199,12 @@ const presets = new Map<string, RandomPreset>([
             [{index: 8}]
         ],
         location: 0,
-        options: {level: 28, power: 22, accs: 27}
+        options: {level: 33, power: 22, accs: 27}
     }],
     ["random5", {
         config: {
-            displayName: "Random Challenge - Tier 5", recommendedLvl: 30,
-            baseWinMastery: [400], baseLossMastery: [200], baseCoins: [5], baseBadges: [12]
+            displayName: "Random Challenge - Tier 5", recommendedLvl: 35,
+            baseWinMastery: [600], baseLossMastery: [300], baseCoins: [8], baseBadges: [12]
         },
         difficulty: {
             strengthTier: 4, healthBonusReq: 0.6, timePerEnemy: 0.7,
@@ -215,12 +217,12 @@ const presets = new Map<string, RandomPreset>([
             [{index: 9}]
         ],
         location: 0,
-        options: {level: 35, power: 28, accs: 30}
+        options: {level: 39, power: 28, accs: 30}
     }],
     ["miniboss1", {
         config: {
-            displayName: "Miniboss Challenge - Tier 1", recommendedLvl: 10,
-            baseWinMastery: [10], baseLossMastery: [5], baseCoins: [1.75], baseBadges: [4]
+            displayName: "Miniboss Challenge - Tier 1", recommendedLvl: 12,
+            baseWinMastery: [15], baseLossMastery: [6], baseCoins: [2.5], baseBadges: [4]
         },
         difficulty: {
             strengthTier: 1, healthBonusReq: 0.4, timePerEnemy: 0.6,
@@ -235,12 +237,12 @@ const presets = new Map<string, RandomPreset>([
             ]
         ],
         location: 1,
-        options: {level: 10, power: 0, accs: 12}
+        options: {level: 12, power: 0, accs: 12}
     }],
     ["miniboss2", {
         config: {
-            displayName: "Miniboss Challenge - Tier 2", recommendedLvl: 20,
-            baseWinMastery: [50], baseLossMastery: [25], baseCoins: [2.5], baseBadges: [6]
+            displayName: "Miniboss Challenge - Tier 2", recommendedLvl: 25,
+            baseWinMastery: [75], baseLossMastery: [30], baseCoins: [3.5], baseBadges: [6]
         },
         difficulty: {
             strengthTier: 2, healthBonusReq: 0.5, timePerEnemy: 0.6,
@@ -255,12 +257,12 @@ const presets = new Map<string, RandomPreset>([
             ]
         ],
         location: 1,
-        options: {level: 20, power: 0, accs: 22}
+        options: {level: 25, power: 0, accs: 22}
     }],
     ["miniboss3", {
         config: {
-            displayName: "Miniboss Challenge - Tier 3", recommendedLvl: 30,
-            baseWinMastery: [120], baseLossMastery: [60], baseCoins: [4], baseBadges: [10]
+            displayName: "Miniboss Challenge - Tier 3", recommendedLvl: 35,
+            baseWinMastery: [180], baseLossMastery: [75], baseCoins: [6], baseBadges: [10]
         },
         difficulty: {
             strengthTier: 3, healthBonusReq: 0.55, timePerEnemy: 0.6,
@@ -275,12 +277,12 @@ const presets = new Map<string, RandomPreset>([
             ]
         ],
         location: 1,
-        options: {level: 30, power: 0, accs: 30}
+        options: {level: 35, power: 0, accs: 30}
     }],
     ["siege1", {
         config: {
-            displayName: "Siege Challenge - Tier 1", recommendedLvl: 16,
-            baseWinMastery: [20], baseLossMastery: [10], baseCoins: [2], baseBadges: [5]
+            displayName: "Siege Challenge - Tier 1", recommendedLvl: 20,
+            baseWinMastery: [30], baseLossMastery: [12], baseCoins: [3], baseBadges: [5]
         },
         difficulty: {
             strengthTier: 1, healthBonusReq: 0.5, timePerEnemy: 0.5,
@@ -293,12 +295,12 @@ const presets = new Map<string, RandomPreset>([
             ]
         ],
         location: 2,
-        options: {level: 16, power: 0, accs: 0}
+        options: {level: 20, power: 0, accs: 0}
     }],
     ["siege2", {
         config: {
-            displayName: "Siege Challenge - Tier 2", recommendedLvl: 30,
-            baseWinMastery: [120], baseLossMastery: [60], baseCoins: [4], baseBadges: [10]
+            displayName: "Siege Challenge - Tier 2", recommendedLvl: 35,
+            baseWinMastery: [180], baseLossMastery: [75], baseCoins: [6], baseBadges: [10]
         },
         difficulty: {
             strengthTier: 3, healthBonusReq: 0.5, timePerEnemy: 0.5,
@@ -311,7 +313,7 @@ const presets = new Map<string, RandomPreset>([
             ]
         ],
         location: 2,
-        options: {level: 30, power: 0, accs: 0}
+        options: {level: 35, power: 0, accs: 0}
     }]
 ]);
 

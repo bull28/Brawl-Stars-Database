@@ -455,7 +455,7 @@ describe("Trials module", function(){
         }
 
         const result = saveChallengeReport(trial, report);
-        expect(result).to.eql({mastery: 1.5, coins: 1.5, badges: 6});
+        expect(result).to.eql({mastery: 1.5, coins: 2, badges: 6});
 
         expect(trial.progress).to.equal(2);
         expect(trial.scores[1]).to.equal(report[format.player[0]] + 50);

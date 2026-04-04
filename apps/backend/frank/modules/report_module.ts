@@ -95,14 +95,14 @@ const pointsRewards = [
     [24, 36, 36],
     [32, 64, 80],
     [40, 120, 240],
-    [40, 80, 120],
-    [50, 120, 200],
-    [60, 180, 300],
-    [80, 320, 800]
+    [50, 100, 160],
+    [70, 160, 280],
+    [80, 240, 400],
+    [100, 480, 1200]
 ];
 
-const coinsRewards = [1, 1, 1.25, 1.25, 1.5, 2, 2, 3, 4, 5];
-const bossCoins = [200, 300, 400, 600, 1000, 1600, 1000, 1600, 2400, 4000];
+const coinsRewards = [1, 1, 1.5, 1.5, 2, 2.5, 2.5, 4, 6, 8];
+const bossCoins = [200, 300, 400, 600, 1200, 2400, 1600, 2400, 3600, 6000];
 
 function convertLevelReports(reports: number[]): ScorePerformance[]{
     // Number of stages and number of score categories per stage
@@ -218,7 +218,7 @@ function getFinalScore(reports: number[], enemyCounts: number[]): number[]{
 }
 
 export function validateReport(report: GameReport): number{
-    // Last updated: version 103
+    // Last updated: version 104
 
     if (Array.isArray(report) === false){
         // Invalid report type
@@ -241,7 +241,7 @@ export function validateReport(report: GameReport): number{
     }
 
     // The first number contains major version (16 bits), minor version (4 bits), and report length (12 bits)
-    if ((report[0] >> 16) < 103){
+    if ((report[0] >> 16) < 104){
         // Old report version
         return 3;
     }

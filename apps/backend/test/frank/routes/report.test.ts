@@ -17,7 +17,7 @@ reportMode2[0] = 2;
 
 // Expected rewards from reports
 const report0Mastery = reportMode0[1] * 240;
-const report0Coins = 1600;
+const report0Coins = 2400;
 const report2Mastery = reportMode2[1] * 6;
 const report2Coins = 0;
 
@@ -70,9 +70,10 @@ describe("Game Report endpoints", function(){
             .send({username: TEST_USERNAME, report: [GAME_VERSION, END_TIME++].concat(reportMode0)});
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("object");
-            expect(res.body).to.have.keys(["message", "status", "path", "coins", "mastery"]);
+            expect(res.body).to.have.keys(["message", "status", "path", "coins", "masteryReward", "masteryData"]);
             expect(res.body.message).to.equal("Score successfully saved.");
-            expect(res.body.mastery).to.equal(report0Mastery);
+            expect(res.body.masteryReward).to.equal(report0Mastery);
+            expect(res.body.masteryData.points).to.equal(initial[0].mastery + report0Mastery);
             expect(res.body.coins).to.equal(report0Coins);
 
             const [results] = await connection.query(
@@ -92,9 +93,10 @@ describe("Game Report endpoints", function(){
             .send({username: "ignore", key: "test1", report: [GAME_VERSION, END_TIME++].concat(reportMode2)});
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("object");
-            expect(res.body).to.have.keys(["message", "status", "path", "coins", "mastery"]);
+            expect(res.body).to.have.keys(["message", "status", "path", "coins", "masteryReward", "masteryData"]);
             expect(res.body.message).to.equal("Score successfully saved.");
-            expect(res.body.mastery).to.equal(report2Mastery);
+            expect(res.body.masteryReward).to.equal(report2Mastery);
+            expect(res.body.masteryData.points).to.equal(initial[0].mastery + report2Mastery);
             expect(res.body.coins).to.equal(report2Coins);
 
             const [results] = await connection.query(

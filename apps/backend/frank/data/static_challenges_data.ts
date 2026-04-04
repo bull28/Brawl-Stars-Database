@@ -149,7 +149,7 @@ const challenges = new Map<string, StaticPreset>([
     ["expert", {
         config: {
             displayName: "Expert Levels",
-            recommendedLvl: 12,
+            recommendedLvl: 15,
             baseWinMastery: [1, 1, 1, 1],
             baseLossMastery: [1, 1, 1, 1],
             baseCoins: [1, 1, 1, 1],
@@ -454,8 +454,8 @@ const challenges = new Map<string, StaticPreset>([
     ["boss", {
         config: {
             displayName: "Boss Fight",
-            recommendedLvl: 4,
-            baseWinMastery: [1, 2, 3, 4, 5, 6, 8, 15, 25, 40],
+            recommendedLvl: 5,
+            baseWinMastery: [1, 2, 3, 5, 7, 9, 12, 20, 40, 60],
             baseLossMastery: [],
             baseCoins: [],
             baseBadges: []
@@ -570,7 +570,7 @@ const challenges = new Map<string, StaticPreset>([
     ["bosstrials", {
         config: {
             displayName: "Boss Fight",
-            recommendedLvl: 30,
+            recommendedLvl: 40,
             baseWinMastery: [],
             baseLossMastery: [],
             baseCoins: [],
@@ -612,9 +612,9 @@ const challenges = new Map<string, StaticPreset>([
         config: {
             displayName: "Classic Part 1",
             recommendedLvl: 0,
-            baseWinMastery: [4, 6, 9, 15, 30, 60],
-            baseLossMastery: [2, 3, 5, 7, 10, 15],
-            baseCoins: [1, 1, 1.25, 1.5, 1.75, 2.5],
+            baseWinMastery: [5, 8, 12, 20, 45, 90],
+            baseLossMastery: [2, 4, 6, 8, 10, 20],
+            baseCoins: [1, 1.25, 1.5, 2, 2.5, 3.5],
             baseBadges: [2, 3, 4, 5, 6, 8]
         },
         gameMod: {
@@ -685,9 +685,9 @@ const challenges = new Map<string, StaticPreset>([
         config: {
             displayName: "Classic Part 2",
             recommendedLvl: 6,
-            baseWinMastery: [8, 12, 18, 30, 60, 120],
-            baseLossMastery: [4, 6, 9, 12, 16, 20],
-            baseCoins: [1, 1, 1.25, 1.5, 1.75, 2.5],
+            baseWinMastery: [10, 16, 24, 40, 90, 180],
+            baseLossMastery: [4, 8, 12, 16, 20, 40],
+            baseCoins: [1, 1.25, 1.5, 2, 2.5, 3.5],
             baseBadges: [2, 3, 4, 5, 6, 8]
         },
         gameMod: {
@@ -757,10 +757,10 @@ const challenges = new Map<string, StaticPreset>([
     ["classic3", {
         config: {
             displayName: "Classic Part 3",
-            recommendedLvl: 10,
-            baseWinMastery: [12, 18, 27, 45, 90, 180],
-            baseLossMastery: [6, 9, 14, 20, 27, 36],
-            baseCoins: [1, 1, 1.25, 1.5, 1.75, 2.5],
+            recommendedLvl: 12,
+            baseWinMastery: [15, 24, 36, 60, 135, 270],
+            baseLossMastery: [6, 12, 18, 24, 30, 60],
+            baseCoins: [1, 1.25, 1.5, 2, 2.5, 3.5],
             baseBadges: [2, 3, 4, 5, 6, 8]
         },
         gameMod: {

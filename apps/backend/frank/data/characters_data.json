@@ -10,7 +10,7 @@
         "otherStats": {"reload": 0.3, "speed": 18, "range": 72, "targets": 1}
     },
     {
-        "name": "emz", "displayName": "Emz", "image": "icon_emz", "masteryReq": 5,
+        "name": "emz", "displayName": "Emz", "image": "icon_emz", "masteryReq": 4,
         "stats": {"health": 4800, "damage": 160, "healing": 128, "lifeSteal": 48},
         "otherStats": {"reload": 0.5, "speed": 19, "range": 64, "targets": 5}
     },
@@ -35,12 +35,12 @@
         "otherStats": {"reload": 1, "speed": 23, "range": 25, "targets": 1}
     },
     {
-        "name": "stu", "displayName": "Stu", "image": "icon_stu", "masteryReq": 15,
+        "name": "stu", "displayName": "Stu", "image": "icon_stu", "masteryReq": 16,
         "stats": {"health": 3200, "damage": 448, "healing": 112, "lifeSteal": 48},
         "otherStats": {"reload": 0.7, "speed": 18, "range": 45, "targets": 2}
     },
     {
-        "name": "maisie", "displayName": "Maisie", "image": "icon_maisie", "masteryReq": 17,
+        "name": "maisie", "displayName": "Maisie", "image": "icon_maisie", "masteryReq": 18,
         "stats": {"health": 5600, "damage": 240, "healing": 80, "lifeSteal": 72},
         "otherStats": {"reload": 0.5, "speed": 22, "range": 60, "targets": 4}
     }

@@ -1,9 +1,10 @@
 import express from "express";
 import {validateReport, extractReportData} from "../modules/report_module";
 import {getRewards} from "../modules/challenges_module";
+import {getMasteryLevel} from "../modules/resources_module";
 import {saveChallengeReport} from "../modules/trials_module";
 import {databaseErrorHandler, getActiveChallenge, getResources, deleteActiveChallenge, getActiveTrial, updateActiveTrial} from "../modules/database";
-import {Empty, UserResources, GameReport} from "../types";
+import {Empty, UserResources, GameReport, ReportSaveResult} from "../types";
 
 const router = express.Router();
 
@@ -17,7 +18,7 @@ interface SaveReqBody{
 
 // Save a game report
 router.post<Empty, Empty, SaveReqBody>("/", databaseErrorHandler<SaveReqBody>(async (req, res) => {
-    const body = {message: "", status: 0, path: 0, mastery: 0, coins: 0};
+    const body: ReportSaveResult = {message: "", status: 0, path: 0, coins: 0, masteryReward: 0};
 
     const inputUser = req.body.username;
     const key = req.body.key;
@@ -43,10 +44,10 @@ router.post<Empty, Empty, SaveReqBody>("/", databaseErrorHandler<SaveReqBody>(as
         return;
     }
 
-    // Last updated: version 103
+    // Last updated: version 104
     // The report's timestamp is the number of seconds after the version was released. To ensure the value stored in the
     // database is always increasing, add the time of the version's release to the report timestamp.
-    const endTime = report[1] + 1770624000;
+    const endTime = report[1] + 1775116800;
 
     const gameMode = reportData.gameMode;
     if (typeof key === "string"){
@@ -135,11 +136,14 @@ router.post<Empty, Empty, SaveReqBody>("/", databaseErrorHandler<SaveReqBody>(as
     // Add mastery
     // Mastery gained from a single challenge is capped at 40% of the user's current mastery to prevent them from
     // skipping too many levels at once.
-    const maxMastery = Math.max(10000, Math.floor(resources.mastery * 2 / 5));
+    const maxMastery = Math.max(3000, Math.floor(resources.mastery * 2 / 5));
     const masteryReward = Math.min(
         maxMastery, Math.floor(reportData.mastery * baseMastery * reportData.multipliers.mastery / 100)
     );
     resources.mastery += masteryReward;
+
+    // Show the user's updated mastery progress on the game end screen
+    const masteryData = getMasteryLevel(resources.mastery);
 
     // Add coins
     const r0 = Math.floor(reportData.coins[0] * reportData.multipliers.coins / 100);
@@ -174,8 +178,10 @@ router.post<Empty, Empty, SaveReqBody>("/", databaseErrorHandler<SaveReqBody>(as
     await deleteActiveChallenge({key: key, resources: resources, username: saveToUser});
 
     body.message = "Score successfully saved.";
-    body.mastery = masteryReward;
     body.coins = coinsReward;
+    body.masteryReward = masteryReward;
+    body.masteryData = masteryData;
+
     res.json(body);
 }));
 

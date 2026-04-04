@@ -408,7 +408,7 @@ export default class RandomChallenge implements ChallengeCategory{
             return undefined;
         }
 
-        const challengeMastery = Math.max(0, Math.min(data.options.level, masteryStats.length));
+        const challengeMastery = Math.max(0, Math.min(data.options.level, masteryStats.length - 1));
 
         const completion = data.difficulty.completion;
         const time = data.difficulty.time;

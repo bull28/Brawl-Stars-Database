@@ -66,44 +66,65 @@ describe("User Resources module", function(){
     });
 
     describe("Calculate the correct level from a mastery points value", function(){
-        const masteryIcon = (x: number) =>
-            MASTERY_LEVEL_DIR + (x > 0 ? `mastery_dark_level_${x}` : "mastery_level_0") + IMAGE_FILE_EXTENSION;
+        const masteryEmpty = MASTERY_LEVEL_DIR + "mastery_dark_empty" + IMAGE_FILE_EXTENSION;
+        const masteryPrestige = MASTERY_LEVEL_DIR + "mastery_dark_prestige" + IMAGE_FILE_EXTENSION;
+        const masteryIcon = (x: number) => MASTERY_LEVEL_DIR + `mastery_dark_level_${x}` + IMAGE_FILE_EXTENSION;
 
         it("Lowest mastery level", function(){
             const mastery0 = getMasteryLevel(0);
             expect(mastery0).to.be.an("object");
-            expect(mastery0).to.have.keys(["level", "points", "current", "next"]);
-            expect(mastery0.current).to.have.keys(["points", "image", "color"]);
-            expect(mastery0.next).to.have.keys(["points", "image", "color"]);
-            expect(mastery0.current.image).to.equal(MASTERY_LEVEL_DIR + "mastery_empty" + IMAGE_FILE_EXTENSION);
+            expect(mastery0).to.have.keys(["level", "maxLevel", "points", "current", "next"]);
+            expect(mastery0.current).to.have.keys(["points", "image", "color", "textColor"]);
+            expect(mastery0.next).to.have.keys(["points", "image", "color", "textColor"]);
+            expect(mastery0.current.image).to.equal(masteryEmpty);
             expect(mastery0.next.image).to.equal(masteryIcon(0));
         });
 
-        it("Highest mastery level", function(){
-            const mastery30 = getMasteryLevel(1.0e9);
-            expect(mastery30.level).to.equal(60);
-            expect(mastery30.current.points).to.equal(1.0e9);
-            expect(mastery30.next.points).to.equal(-1);
-            expect(mastery30.next.image).to.equal(masteryIcon(8));
-            expect(mastery30.next.image).to.equal(masteryIcon(8));
+        it("At highest mastery level", function(){
+            const mastery40 = getMasteryLevel(5.0e7);
+            expect(mastery40.level).to.equal(40);
+            expect(mastery40.points).to.equal(0);
+            expect(mastery40.current.points).to.equal(0);
+            expect(mastery40.next.points).to.equal(1.0e7);
+            expect(mastery40.current.image).to.equal(masteryPrestige);
+            expect(mastery40.next.image).to.equal(masteryPrestige);
+        });
+
+        it("Above highest mastery level", function(){
+            const mastery40 = getMasteryLevel(2.88e8);
+            expect(mastery40.level).to.equal(63);
+            expect(mastery40.points).to.equal(8.0e6);
+            expect(mastery40.current.points).to.equal(0);
+            expect(mastery40.next.points).to.equal(1.0e7);
+            expect(mastery40.current.image).to.equal(masteryPrestige);
+            expect(mastery40.next.image).to.equal(masteryPrestige);
         });
 
         it("Next level has same image", function(){
             const mastery1 = getMasteryLevel(2000);
             expect(mastery1.level).to.equal(1);
             expect(mastery1.current.points).to.equal(2000);
-            expect(mastery1.next.points).to.equal(6000);
+            expect(mastery1.next.points).to.equal(4000);
             expect(mastery1.current.image).to.equal(masteryIcon(0));
             expect(mastery1.next.image).to.equal(masteryIcon(0));
         });
 
         it("Next level has different image", function(){
-            const mastery29 = getMasteryLevel(19999999);
-            expect(mastery29.level).to.equal(29);
-            expect(mastery29.current.points).to.equal(16000000);
-            expect(mastery29.next.points).to.equal(20000000);
-            expect(mastery29.current.image).to.equal(masteryIcon(6));
-            expect(mastery29.next.image).to.equal(masteryIcon(7));
+            const mastery34 = getMasteryLevel(19999999);
+            expect(mastery34.level).to.equal(34);
+            expect(mastery34.current.points).to.equal(1.6e7);
+            expect(mastery34.next.points).to.equal(2.0e7);
+            expect(mastery34.current.image).to.equal(masteryIcon(6));
+            expect(mastery34.next.image).to.equal(masteryIcon(8));
+        });
+
+        it("Next level is the highest level", function(){
+            const mastery39 = getMasteryLevel(4.99e7);
+            expect(mastery39.level).to.equal(39);
+            expect(mastery39.current.points).to.equal(4.2e7);
+            expect(mastery39.next.points).to.equal(5.0e7);
+            expect(mastery39.current.image).to.equal(masteryIcon(8));
+            expect(mastery39.next.image).to.equal(masteryPrestige);
         });
 
         it("Negative mastery points", function(){
@@ -174,7 +195,7 @@ describe("User Resources module", function(){
             expect(checkStats(tier0.next.stats, character.stats, 102)).to.be.true;
 
             expect(tier0.upgrade.cost).to.equal(250);
-            expect(tier0.upgrade.masteryReq).to.equal(4);
+            expect(tier0.upgrade.masteryReq).to.equal(5);
 
             expect(tier0.otherStats).to.eql(character.otherStats);
         });
@@ -191,7 +212,7 @@ describe("User Resources module", function(){
             expect(hcStatsDiff(tier100.current.hcStats, tier100.next.hcStats)).to.eql({});
 
             expect(tier100.upgrade.cost).to.equal(0);
-            expect(tier100.upgrade.masteryReq).to.equal(36);
+            expect(tier100.upgrade.masteryReq).to.equal(40);
         });
 
         it("Next level is a normal upgrade", function(){
@@ -204,7 +225,7 @@ describe("User Resources module", function(){
             expect(checkStats(tier1.next.stats, character.stats, 104)).to.be.true;
 
             expect(tier1.upgrade.cost).to.equal(260);
-            expect(tier1.upgrade.masteryReq).to.equal(4);
+            expect(tier1.upgrade.masteryReq).to.equal(5);
         });
 
         it("Next level is a tier up", function(){
@@ -219,7 +240,7 @@ describe("User Resources module", function(){
             expect(tier60.next.unlocks.starPowers).to.equal(3);
 
             expect(tier60.upgrade.cost).to.equal(64000);
-            expect(tier60.upgrade.masteryReq).to.equal(25);
+            expect(tier60.upgrade.masteryReq).to.equal(30);
         });
 
         it("Next level unlocks hypercharge", function(){
@@ -234,7 +255,7 @@ describe("User Resources module", function(){
             expect(tier80.next.unlocks.hcLevel).to.equal(1);
 
             expect(tier80.upgrade.cost).to.equal(240000);
-            expect(tier80.upgrade.masteryReq).to.equal(30);
+            expect(tier80.upgrade.masteryReq).to.equal(35);
         });
 
         it("Next level improves hypercharge", function(){
@@ -251,7 +272,7 @@ describe("User Resources module", function(){
             expect(hcStatsDiff(tier80.current.hcStats, tier80.next.hcStats)).to.eql({healing: 5});
 
             expect(tier80.upgrade.cost).to.equal(96000);
-            expect(tier80.upgrade.masteryReq).to.equal(30);
+            expect(tier80.upgrade.masteryReq).to.equal(35);
         });
 
         it("Next level is the max level", function(){
@@ -268,7 +289,7 @@ describe("User Resources module", function(){
             expect(hcStatsDiff(tier100.current.hcStats, tier100.next.hcStats)).to.eql({});
 
             expect(tier100.upgrade.cost).to.equal(360000);
-            expect(tier100.upgrade.masteryReq).to.equal(36);
+            expect(tier100.upgrade.masteryReq).to.equal(40);
         });
 
         it("Negative upgrade tier", function(){

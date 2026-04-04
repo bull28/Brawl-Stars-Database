@@ -27,9 +27,9 @@ for (let x = 0; x < accessoryList.length; x++){
 const accessoryShop = new Map<string, ShopAccessory>([
     ["shop1", {cost: 1500, masteryReq: 6}],
     ["shop2", {cost: 1500, masteryReq: 6}],
-    ["shop3", {cost: 2500, masteryReq: 8}],
-    ["shop4", {cost: 2500, masteryReq: 8}],
-    ["shop5", {cost: 4000, masteryReq: 8}],
+    ["shop3", {cost: 2500, masteryReq: 6}],
+    ["shop4", {cost: 2500, masteryReq: 6}],
+    ["shop5", {cost: 4000, masteryReq: 6}],
     ["shop6", {cost: 5000, masteryReq: 10}],
     ["shop7", {cost: 6000, masteryReq: 10}],
     ["shop8", {cost: 6000, masteryReq: 10}],
@@ -41,13 +41,13 @@ const accessoryShop = new Map<string, ShopAccessory>([
     ["brawlbox6", {cost: 8000, masteryReq: 14}],
     ["brawlbox7", {cost: 9000, masteryReq: 14}],
     ["mastery1", {cost: 0, masteryReq: 6}],
-    ["mastery2", {cost: 0, masteryReq: 8}],
-    ["mastery3", {cost: 0, masteryReq: 12}],
-    ["mastery4", {cost: 0, masteryReq: 16}],
-    ["mastery5", {cost: 0, masteryReq: 20}],
-    ["mastery6", {cost: 0, masteryReq: 25}],
-    ["mastery7", {cost: 0, masteryReq: 30}],
-    ["mastery8", {cost: 0, masteryReq: 36}]
+    ["mastery2", {cost: 0, masteryReq: 10}],
+    ["mastery3", {cost: 0, masteryReq: 15}],
+    ["mastery4", {cost: 0, masteryReq: 20}],
+    ["mastery5", {cost: 0, masteryReq: 25}],
+    ["mastery6", {cost: 0, masteryReq: 30}],
+    ["mastery7", {cost: 0, masteryReq: 35}],
+    ["mastery8", {cost: 0, masteryReq: 40}]
 ]);
 
 function accessoryImageName(name: string): string{

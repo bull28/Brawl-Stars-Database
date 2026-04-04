@@ -249,6 +249,34 @@ export function getTrialDisplay(trial: TrialData): TrialDisplay{
     };
 }
 
+function getCharacterTiers(playerCharacters: UserCharacter[]): number[]{
+    const tiers: number[] = [];
+    const maxIndex = characterTiers.length - 1;
+    let minPower = playerCharacters.length > 0 ? (maxIndex + 1) * 100 : 0;
+    let maxPower = 0;
+
+    for (let x = 0; x < playerCharacters.length; x++){
+        const tierIndex = Math.min(maxIndex, playerCharacters[x].tier >> 8);
+        const powerValue = tierIndex * 100 + Math.min(1,
+            (playerCharacters[x].tier & 255) / Math.max(1, characterTiers[tierIndex].maxUpgrades)
+        ) * 80;
+        minPower = Math.min(minPower, powerValue);
+        maxPower = Math.max(maxPower, powerValue);
+        tiers.push(powerValue);
+    }
+    for (let x = playerCharacters.length; x < allCharacters.length; x++){
+        tiers.push(0);
+    }
+
+    for (let x = 0; x < tiers.length; x++){
+        const newPower = Math.max(maxPower - 60, tiers[x] + (maxPower - tiers[x]) * 2 / 5);
+        const tierIndex = Math.min(maxIndex, Math.floor(newPower / 100));
+        tiers[x] = (tierIndex << 8) | ((characterTiers[tierIndex].maxUpgrades * Math.min(80, newPower % 100) / 80) & 255);
+    }
+
+    return tiers;
+}
+
 export function startTrial(trialid: number, resources: UserResources): TrialData | undefined{
     if (trialid < 0 || trialid >= allTrials.length){
         return;
@@ -257,7 +285,7 @@ export function startTrial(trialid: number, resources: UserResources): TrialData
 
     // The trial's mastery level will start at the same level as the player's. Harder trials further increase the level.
     const trialLevel = Math.max(0, Math.min(
-        Math.floor(Math.min(30, getMasteryLevel(resources.mastery).level) + config.levelIncrease),
+        Math.floor(Math.min(35, getMasteryLevel(resources.mastery).level) + config.levelIncrease),
         trialLevels.length - 1
     ));
 
@@ -266,18 +294,7 @@ export function startTrial(trialid: number, resources: UserResources): TrialData
         scores.push(0);
     }
 
-    const tiers: number[] = [];
-    const len = Math.min(resources.characters.length, allCharacters.length);
-    let minTier = resources.characters.length > 0 ? resources.characters[0].tier : 0;
-    for (let x = 0; x < len; x++){
-        tiers.push(resources.characters[x].tier);
-        minTier = Math.min(minTier, resources.characters[x].tier);
-    }
-    // For all remaining trial characters that the player does not have available, their tiers are set to the minimum of
-    // all their characters.
-    for (let x = len; x < allCharacters.length; x++){
-        tiers.push(minTier);
-    }
+    const tiers = getCharacterTiers(resources.characters);
 
     const accessories: number[] = [];
     const powerups: number[] = [];

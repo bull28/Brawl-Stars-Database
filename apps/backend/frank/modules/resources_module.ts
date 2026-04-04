@@ -10,71 +10,72 @@ for (let x = 0; x < characterList.length; x++){
 }
 
 const masteryLevels = [
-        0, 2.0e3, 6.0e3, 1.0e4, 2.0e4, 3.0e4,
-    4.0e4, 6.0e4, 8.0e4, 1.2e5, 1.8e5, 2.4e5,
-    3.0e5, 4.0e5, 5.0e5, 6.0e5, 8.0e5, 1.0e6,
-    1.2e6, 1.5e6, 1.8e6, 2.4e6, 3.0e6, 4.0e6,
-    5.0e6, 6.0e6, 8.0e6, 1.0e7, 1.2e7, 1.6e7,
-    2.0e7, 2.5e7, 3.0e7, 3.6e7, 4.2e7, 5.0e7,
-    6.0e7, 7.2e7, 8.6e7,1.02e8, 1.2e8, 1.4e8,
-    1.6e8, 1.9e8, 2.2e8, 2.6e8, 3.0e8, 3.5e8,
-    4.0e8, 4.5e8, 5.0e8, 5.5e8, 6.0e8, 6.5e8,
-    7.0e8, 7.5e8, 8.0e8, 8.5e8, 9.0e8, 9.5e8,
-    1.0e9,    -1
+        0, 2.0e3, 4.0e3, 7.0e3, 1.0e4,
+    1.5e4, 2.0e4, 3.0e4, 4.0e4, 6.0e4,
+    8.0e4, 1.2e5, 1.6e5, 2.0e5, 2.4e5,
+    3.0e5, 3.6e5, 4.4e5, 5.2e5, 6.4e5,
+    8.0e5, 1.0e6, 1.2e6, 1.5e6, 1.8e6,
+    2.2e6, 2.6e6, 3.2e6, 4.0e6, 5.0e6,
+    6.0e6, 8.0e6, 1.0e7, 1.2e7, 1.6e7,
+    2.0e7, 2.5e7, 3.0e7, 3.6e7, 4.2e7,
+    5.0e7
 ];
 
+const prestigePoints = 1.0e7;
+
 const levelImages = [
-    {minLevel: 0, color: "#808080", image: "mastery_empty"},
-    {minLevel: 1, color: "#d67d59", image: "mastery_level_0"},
-    {minLevel: 4, color: "#ff9900", image: "mastery_dark_level_1"},
-    {minLevel: 8, color: "#c9c6f1", image: "mastery_dark_level_2"},
-    {minLevel: 12, color: "#ffef49", image: "mastery_dark_level_3"},
-    {minLevel: 16, color: "#33ffff", image: "mastery_dark_level_4"},
-    {minLevel: 20, color: "#ff00ff", image: "mastery_dark_level_5"},
-    {minLevel: 25, color: "#f75363", image: "mastery_dark_level_6"},
-    {minLevel: 30, color: "#a67fff", image: "mastery_dark_level_7"},
-    {minLevel: 36, color: "#3afc9f", image: "mastery_dark_level_8"}
+    {minLevel: 0, color: "#808080", textColor: "#808080", image: "mastery_dark_empty"},
+    {minLevel: 1, color: "#d67d59", textColor: "#d67d59", image: "mastery_dark_level_0"},
+    {minLevel: 5, color: "#ff9900", textColor: "#ffd699", image: "mastery_dark_level_1"},
+    {minLevel: 10, color: "#c9c6f1", textColor: "#e9e8f9", image: "mastery_dark_level_2"},
+    {minLevel: 15, color: "#ffef49", textColor: "#fff9b6", image: "mastery_dark_level_3"},
+    {minLevel: 20, color: "#33ffff", textColor: "#adffff", image: "mastery_dark_level_4"},
+    {minLevel: 25, color: "#ff00ff", textColor: "#ff99ff", image: "mastery_dark_level_5"},
+    {minLevel: 30, color: "#f75363", textColor: "#fcbac1", image: "mastery_dark_level_6"},
+    //{minLevel: 35, color: "#a67fff", textColor: "#dbccff", image: "mastery_dark_level_7"},
+    {minLevel: 35, color: "#3afc9f", textColor: "#b0fed9", image: "mastery_dark_level_8"},
+    {minLevel: 40, color: "#fefefe", textColor: "#ffffff", image: "mastery_dark_prestige"}
 ];
 
 const upgradeTiers = [
     {
         base: 100.0, scaling: 2, gears: 0, starPowers: 0, hcLevel: 0, startLevel: 0, maxUpgrades: 10,
-        name: "Bronze", color: "#ff9900", image: "tier_bronze", tierUpCost: 1500, masteryReq: 4,
+        name: "Bronze", color: "#ff9900", image: "tier_bronze", tierUpCost: 1500, masteryReq: 5,
         upgradeCosts: [250, 260, 280, 300, 320, 350, 380, 410, 450, 500]
     },
     {
         base: 125.0, scaling: 2, gears: 1, starPowers: 0, hcLevel: 0, startLevel: 10, maxUpgrades: 10,
-        name: "Silver", color: "#c9c6f1", image: "tier_silver", tierUpCost: 3200, masteryReq: 8,
+        name: "Silver", color: "#c9c6f1", image: "tier_silver", tierUpCost: 3200, masteryReq: 10,
         upgradeCosts: [600, 640, 680, 740, 800, 880, 960, 1060, 1160, 1280]
     },
     {
         base: 150.0, scaling: 2, gears: 1, starPowers: 1, hcLevel: 0, startLevel: 20, maxUpgrades: 10,
-        name: "Gold", color: "#ffef49", image: "tier_gold", tierUpCost: 8000, masteryReq: 12,
+        name: "Gold", color: "#ffef49", image: "tier_gold", tierUpCost: 8000, masteryReq: 15,
         upgradeCosts: [1600, 1680, 1780, 1900, 2040, 2200, 2400, 2640, 2920, 3240]
     },
     {
         base: 175.0, scaling: 2, gears: 1, starPowers: 2, hcLevel: 0, startLevel: 30, maxUpgrades: 15,
-        name: "Diamond", color: "#33ffff", image: "tier_diamond", tierUpCost: 22000, masteryReq: 16,
+        name: "Diamond", color: "#33ffff", image: "tier_diamond", tierUpCost: 22000, masteryReq: 20,
         upgradeCosts: [3600, 3760, 3920, 4100, 4280, 4480, 4680, 4900, 5140, 5400, 5680, 6000, 6360, 6760, 7200]
     },
     {
         base: 212.5, scaling: 2, gears: 2, starPowers: 2, hcLevel: 0, startLevel: 45, maxUpgrades: 15,
-        name: "Mythic", color: "#ff00ff", image: "tier_mythic", tierUpCost: 64000, masteryReq: 20,
+        name: "Mythic", color: "#ff00ff", image: "tier_mythic", tierUpCost: 64000, masteryReq: 25,
         upgradeCosts: [10000, 10400, 10800, 11300, 11800, 12400, 13100, 13900, 14800, 15800, 17000, 18400, 20200, 22400, 25000],
     },
     {
         base: 250.0, scaling: 2, gears: 2, starPowers: 3, hcLevel: 0, startLevel: 60, maxUpgrades: 20,
-        name: "Legendary", color: "#f75363", image: "tier_legendary", tierUpCost: 240000, masteryReq: 25,
+        name: "Legendary", color: "#f75363", image: "tier_legendary", tierUpCost: 240000, masteryReq: 30,
         upgradeCosts: [32000, 33000, 34000, 35200, 36400, 37800, 39400, 41200, 43200, 45400, 47800, 50400, 53200, 56400, 60000, 64200, 69200, 75000, 81800, 90000]
     },
     {
         base: 300.0, scaling: 0, gears: 2, starPowers: 3, hcLevel: 1, startLevel: 80, maxUpgrades: 20,
-        name: "Masters", color: "#ffcc00", image: "tier_masters", tierUpCost: 360000, masteryReq: 30,
+        name: "Masters", color: "#ffcc00", image: "tier_masters", tierUpCost: 360000, masteryReq: 35,
         upgradeCosts: [96000, 97000, 98000, 99000, 100000, 102000, 104000, 106000, 108000, 110000, 112000, 114000, 116000, 118000, 120000, 124000, 128000, 132000, 136000, 140000]
     },
     {
         base: 300.0, scaling: 0, gears: 2, starPowers: 3, hcLevel: 2, startLevel: 100, maxUpgrades: 0,
-        name: "Pro", color: "#3afc9f", image: "tier_pro", tierUpCost: 0, masteryReq: 36,
+        name: "Pro", color: "#3afc9f", image: "tier_pro", tierUpCost: 0, masteryReq: 40,
         upgradeCosts: [0]
     }
 ];
@@ -146,16 +147,19 @@ export function getMasteryLevel(points: number): MasteryData{
 
     const result: MasteryData = {
         level: -1,
+        maxLevel: Math.max(0, masteryLevels.length - 1),
         points: points,
         current: {
             points: 0,
             image: "",
-            color: "#000000"
+            color: "#000000",
+            textColor: "#000000"
         },
         next: {
             points: 1,
             image: "",
-            color: "#000000"
+            color: "#000000",
+            textColor: "#000000"
         }
     };
 
@@ -163,7 +167,8 @@ export function getMasteryLevel(points: number): MasteryData{
     while (x < masteryLevels.length && result.level < 0){
         // Find the first level where the user does not have enough points. That level is 1 higher than the user's
         // current level. Levels are the same as indexes in the array.
-        if (points < masteryLevels[x] || masteryLevels[x] < 0){
+        //if (points < masteryLevels[x] || masteryLevels[x] < 0){
+        if (points < masteryLevels[x]){
             if (x >= 1){
                 // Points required to get to the current level
                 result.current.points = masteryLevels[x - 1];
@@ -174,6 +179,16 @@ export function getMasteryLevel(points: number): MasteryData{
         }
         x++;
     }
+    if (result.level < 0 && x > 0){
+        // If there is no level where the user does not have enough points, the user is at the highest level.
+        x = masteryLevels.length - 1;
+        const prestige = Math.max(0, points - masteryLevels[x]);
+
+        result.level = x + Math.floor(prestige / prestigePoints);
+        result.points = prestige % prestigePoints;
+        result.current.points = 0;
+        result.next.points = prestigePoints;
+    }
 
     x = 0;
     while (x < levelImages.length && result.current.image === ""){
@@ -183,15 +198,18 @@ export function getMasteryLevel(points: number): MasteryData{
         if (x >= levelImages.length - 1 || (x < levelImages.length - 1 && result.level < levelImages[x + 1].minLevel)){
             result.current.image = MASTERY_LEVEL_DIR + levelImages[x].image + IMAGE_FILE_EXTENSION;
             result.current.color = levelImages[x].color;
+            result.current.textColor = levelImages[x].textColor;
 
             if (x < levelImages.length - 1 && result.level + 1 >= levelImages[x + 1].minLevel){
                 // Next mastery level meets the minimum level required for the next image
                 result.next.image = MASTERY_LEVEL_DIR + levelImages[x + 1].image + IMAGE_FILE_EXTENSION;
                 result.next.color = levelImages[x + 1].color;
+                result.next.textColor = levelImages[x + 1].textColor;
             } else{
                 // Next mastery level does not meet the minimum level or there is no next image
                 result.next.image = result.current.image;
                 result.next.color = result.current.color;
+                result.next.textColor = result.current.textColor;
             }
         }
         x++;

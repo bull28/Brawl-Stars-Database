@@ -320,16 +320,19 @@ export interface UpgradeTier{
  */
 export interface MasteryData{
     level: number;
+    maxLevel: number;
     points: number;
     current: {
         points: number;
         image: string;
         color: string;
+        textColor: string;
     };
     next: {
         points: number;
         image: string;
         color: string;
+        textColor: string;
     };
 }
 
@@ -452,35 +455,15 @@ export interface ReportData{
 }
 
 /**
- * Information required to show a report to the user (not used?)
+ * Object sent back to the game when saving a report
  */
-export interface ReportPreview{
-    reportid: number;
-    endTime: number;
-    cost: number;
-    title: string;
-    stats: {
-        score: number;
-        enemies: number;
-        win: boolean;
-        difficulty: string;
-        brawler: {
-            displayName: string;
-            image: string;
-        };
-        starPower: {
-            displayName: string;
-            image: string;
-        };
-        gears: {
-            displayName: string;
-            image: string;
-        }[];
-        accessories: {
-            displayName: string;
-            image: string;
-        }[];
-    };
+export interface ReportSaveResult{
+    message: string;
+    status: number;
+    path: number;
+    coins: number;
+    masteryReward: number;
+    masteryData?: MasteryData;
 }
 
 //------------------------------------------------------------------------------------------------//

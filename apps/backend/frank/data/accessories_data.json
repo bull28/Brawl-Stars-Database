@@ -341,30 +341,30 @@
     },
     {
         "name": "mastery2", "category": "", "displayName": "Silver Medal", "cost": 3,
-        "description": "Gain more coins from rewards.", "unlock": "Free in the Shop at Mastery Level 8.", "badges": 1
+        "description": "Gain more coins from rewards.", "unlock": "Free in the Shop at Mastery Level 10.", "badges": 1
     },
     {
         "name": "mastery3", "category": "", "displayName": "Gold Medal", "cost": 4,
-        "description": "Gain more coins from rewards.", "unlock": "Free in the Shop at Mastery Level 12.", "badges": 1
+        "description": "Gain more coins from rewards.", "unlock": "Free in the Shop at Mastery Level 15.", "badges": 1
     },
     {
         "name": "mastery4", "category": "", "displayName": "Diamond Medal", "cost": 4,
-        "description": "Gain more coins from rewards.", "unlock": "Free in the Shop at Mastery Level 16.", "badges": 1
-    },
-    {
-        "name": "mastery5", "category": "", "displayName": "Amethyst Medal", "cost": 5,
         "description": "Gain more coins from rewards.", "unlock": "Free in the Shop at Mastery Level 20.", "badges": 1
     },
     {
-        "name": "mastery6", "category": "", "displayName": "Ruby Medal", "cost": 5,
+        "name": "mastery5", "category": "", "displayName": "Amethyst Medal", "cost": 5,
         "description": "Gain more coins from rewards.", "unlock": "Free in the Shop at Mastery Level 25.", "badges": 1
     },
     {
-        "name": "mastery7", "category": "", "displayName": "Citrine Medal", "cost": 6,
+        "name": "mastery6", "category": "", "displayName": "Ruby Medal", "cost": 5,
         "description": "Gain more coins from rewards.", "unlock": "Free in the Shop at Mastery Level 30.", "badges": 1
     },
     {
+        "name": "mastery7", "category": "", "displayName": "Citrine Medal", "cost": 6,
+        "description": "Gain more coins from rewards.", "unlock": "Free in the Shop at Mastery Level 35.", "badges": 1
+    },
+    {
         "name": "mastery8", "category": "", "displayName": "Emerald Medal", "cost": 7,
-        "description": "Gain more coins from rewards.", "unlock": "Free in the Shop at Mastery Level 36.", "badges": 1
+        "description": "Gain more coins from rewards.", "unlock": "Free in the Shop at Mastery Level 40.", "badges": 1
     }
 ]
