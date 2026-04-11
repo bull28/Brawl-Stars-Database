@@ -501,6 +501,7 @@ export interface ChallengeConfig{
     baseLossMastery: number[];
     baseCoins: number[];
     baseBadges: number[];
+    hidden?: boolean;
 }
 
 /**
@@ -612,7 +613,7 @@ export interface ChallengeRewardResult{
  */
 export interface ChallengeCategory{
     challengeExists: (challengeid: string) => boolean;
-    getChallengeList: () => ChallengePreview[];
+    getChallengeList: (includeHidden: boolean) => ChallengePreview[];
     getGameMod: (challengeid: string) => ChallengeGameMod | undefined;
     getRewards: (challengeid: string, difficulty: number, win: boolean) => ChallengeRewardResult;
 }

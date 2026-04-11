@@ -34,7 +34,7 @@ const levelImages = [
     {minLevel: 30, color: "#f75363", textColor: "#fcbac1", image: "mastery_dark_level_6"},
     //{minLevel: 35, color: "#a67fff", textColor: "#dbccff", image: "mastery_dark_level_7"},
     {minLevel: 35, color: "#3afc9f", textColor: "#b0fed9", image: "mastery_dark_level_8"},
-    {minLevel: 40, color: "#fefefe", textColor: "#ffffff", image: "mastery_dark_prestige"}
+    {minLevel: 40, color: "#ffffff", textColor: "#ffffff", image: "mastery_dark_prestige"}
 ];
 
 const upgradeTiers = [

@@ -574,7 +574,8 @@ const challenges = new Map<string, StaticPreset>([
             baseWinMastery: [],
             baseLossMastery: [],
             baseCoins: [],
-            baseBadges: []
+            baseBadges: [],
+            hidden: true
         },
         gameMod: {
             options: {},

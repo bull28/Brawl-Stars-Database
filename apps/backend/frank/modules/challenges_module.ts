@@ -45,7 +45,7 @@ for (let x = 0; x < handlers.length; x++){
 }
 
 function initHandler(handler: ChallengeCategory, index: number): void{
-    const challengeList = handler.getChallengeList();
+    const challengeList = handler.getChallengeList(true);
     for (let x = 0; x < challengeList.length; x++){
         challengeidMap.set(challengeList[x].challengeid, index);
     }
@@ -145,7 +145,7 @@ export function challengeExists(challengeid: string): boolean{
 export function getChallengeList(): ChallengePreview[]{
     let challenges: ChallengePreview[] = [];
     for (let x = 0; x < handlers.length; x++){
-        challenges = challenges.concat(handlers[x].getChallengeList());
+        challenges = challenges.concat(handlers[x].getChallengeList(false));
     }
     return challenges;
 }

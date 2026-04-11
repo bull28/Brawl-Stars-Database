@@ -87,7 +87,7 @@ function charactersToBuffer(characters: UserCharacter[]): Uint8Array{
     }
 
     for (let x = 0; x < len; x++){
-        view.setUint16(x * CHARACTER_BYTES, characters[x].tier, true);
+        view.setUint16(x * CHARACTER_BYTES, Math.min(0xffff, characters[x].tier), true);
     }
 
     return Buffer.from(buffer);
@@ -125,7 +125,7 @@ function accessoriesToBuffer(accessories: UserAccessory[]): Uint8Array{
     }
 
     for (let x = 0; x < len; x++){
-        const progress = ((accessories[x].unlocked ? 1 : 0) << 31) | accessories[x].badges;
+        const progress = ((accessories[x].unlocked ? 1 : 0) << 31) | Math.min(0x7fffffff, accessories[x].badges);
         view.setInt32(x * ACCESSORY_BYTES, progress, true);
     }
 

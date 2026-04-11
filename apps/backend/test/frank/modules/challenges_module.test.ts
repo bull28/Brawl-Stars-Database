@@ -24,7 +24,10 @@ describe("Challenges module", function(){
     it("Get the list of all challenges", function(){
         const challenges = getChallengeList();
         expect(challenges).to.be.an("array");
-        expect(challenges).to.have.lengthOf(staticChallenges.size + randomChallenges.size);
+
+        const staticSize = Object.values(Object.fromEntries(staticChallenges)).filter((value) => value.config.hidden !== true).length;
+        const randomSize = Object.values(Object.fromEntries(randomChallenges)).filter((value) => value.config.hidden !== true).length;
+        expect(challenges).to.have.lengthOf(staticSize + randomSize);
 
         for (let x = 0; x < challenges.length; x++){
             expect(challenges[x]).to.have.keys(["challengeid", "displayName", "stages", "recommendedLvl"]);

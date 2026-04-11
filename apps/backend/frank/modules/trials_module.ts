@@ -264,8 +264,10 @@ function getCharacterTiers(playerCharacters: UserCharacter[]): number[]{
         maxPower = Math.max(maxPower, powerValue);
         tiers.push(powerValue);
     }
+
+    const avgPower = (minPower + maxPower) / 2;
     for (let x = playerCharacters.length; x < allCharacters.length; x++){
-        tiers.push(0);
+        tiers.push(avgPower);
     }
 
     for (let x = 0; x < tiers.length; x++){
@@ -461,9 +463,49 @@ export function addFinalReward(trial: TrialData, resources: UserResources): numb
         totalScore += Math.max(0, trial.scores[x] - 300);
     }
 
+    const characters = trial.characterBuilds;
+    const accessories = trial.accessories;
+    const powerups = trial.powerups;
+
+    const itemRarities: number[] = [];
+    for (let x = 0; x < allRarities.length; x++){
+        itemRarities.push(0);
+    }
+
+    for (let x = 0; x < characters.length; x++){
+        const item = itemList[characterOffset + CharacterValue.getIndex(characters[x])];
+        if (item !== undefined){
+            itemRarities[item.rarity] += 1;
+        }
+    }
+    for (let x = 0; x < accessories.length; x++){
+        const item = itemList[accessoryOffset + x];
+        if (item !== undefined){
+            itemRarities[item.rarity] += ItemValue.getInventory(accessories[x]);
+        }
+    }
+    for (let x = 0; x < powerups.length; x++){
+        const item = itemList[powerupOffset + x];
+        if (item !== undefined){
+            itemRarities[item.rarity] += ItemValue.getInventory(powerups[x]);
+        }
+    }
+
+    // Every unspent credit increases the final reward by 1%. This intends to discourage the player from selling all
+    // their items and buying the best items they can before playing the last challenge.
+    let credits = trial.resources.credits;
+    for (let x = 0; x < allRarities.length; x++){
+        credits += allRarities[x].sellCost * itemRarities[x];
+    }
+    if ((trial.rewards.specialBoxes & 8) === 8){
+        // If the ultra box was unlocked but not opened, convert it to credits
+        credits += 25;
+    }
+    credits = Math.min(100, credits);
+
     const mastery = Math.floor(
         trialLevels[Math.min(trial.level, trialLevels.length - 1)].baseMastery *
-        config.baseMastery * totalScore * (100 + trial.rewards.mastery) / 100
+        config.baseMastery * totalScore * (100 + credits + trial.rewards.mastery) / 100
     );
 
     resources.mastery += mastery;

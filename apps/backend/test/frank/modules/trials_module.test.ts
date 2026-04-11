@@ -277,6 +277,15 @@ describe("Trials module", function(){
         trial.progress = trial.scores.length;
         trial.state = trialStates.TRIAL_COMPLETE;
 
+        let rewardIncrease = trial.resources.credits;
+        for (let x = 0; x < trial.characterBuilds.length; x++){
+            rewardIncrease += allRarities[itemList[characterOffset + (trial.characterBuilds[x] >> 12)].rarity].sellCost;
+        }
+        trial.accessories[0] = 0x8081;
+        trial.powerups[0] = 0x8081;
+        rewardIncrease += allRarities[itemList[accessoryOffset].rarity].sellCost;
+        rewardIncrease += allRarities[itemList[powerupOffset].rarity].sellCost;
+
         const initialResources = {
             mastery: 0, coins: 0,
             characters: [],
@@ -287,7 +296,8 @@ describe("Trials module", function(){
         const reward = addFinalReward(trial, initialResources);
 
         expect(reward).to.equal(
-            (totalScore - 300 * trial.scores.length) * allTrials[trial.trialid].baseMastery * 160 / 100
+            (totalScore - 300 * trial.scores.length) * allTrials[trial.trialid].baseMastery *
+            (100 + trial.rewards.mastery + rewardIncrease) / 100
         );
         expect(initialResources.mastery).to.equal(reward);
         expect(initialResources.accessories[0].badges).to.equal(1);

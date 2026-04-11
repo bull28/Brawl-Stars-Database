@@ -270,7 +270,7 @@ const allRarities = [
     {displayName: "Rare", color: "#2edd1b", buyCost: 12, sellCost: 3},
     {displayName: "Super Rare", color: "#0087fa", buyCost: 24, sellCost: 5},
     {displayName: "Epic", color: "#b116ec", buyCost: 60, sellCost: 10},
-    {displayName: "Legendary", color: "#fdf11e", buyCost: 240, sellCost: 30}
+    {displayName: "Legendary", color: "#fdf11e", buyCost: 240, sellCost: 40}
 ];
 
 const allBoxes: BrawlBoxConfig[] = [
@@ -373,7 +373,7 @@ const fallbackItems: ItemConfig[] = [
     {displayName: "Credits", type: "credits", key: "credits2", index: -1, rarity: 1, weight: 1, cost: 0, stack: 3, maxCount: -1, description: "Use these to buy items of your choice."},
     {displayName: "Credits", type: "credits", key: "credits3", index: -1, rarity: 2, weight: 1, cost: 0, stack: 5, maxCount: -1, description: "Use these to buy items of your choice."},
     {displayName: "Credits", type: "credits", key: "credits4", index: -1, rarity: 3, weight: 1, cost: 0, stack: 10, maxCount: -1, description: "Use these to buy items of your choice."},
-    {displayName: "Credits", type: "credits", key: "credits5", index: -1, rarity: 4, weight: 1, cost: 0, stack: 30, maxCount: -1, description: "Use these to buy items of your choice."}
+    {displayName: "Credits", type: "credits", key: "credits5", index: -1, rarity: 4, weight: 1, cost: 0, stack: 40, maxCount: -1, description: "Use these to buy items of your choice."}
 ];
 
 const gearWeights = [2187, 1458, 1458, 972, 1458, 972, 972, 648, 1458, 972, 972, 648, 972, 648, 648, 432, 1458, 972, 972, 648, 972, 648, 648, 432, 972, 648, 648, 432, 648, 432, 432, 288, 1458, 972, 972, 648, 972, 648, 648, 432, 972, 648, 648, 432, 648, 432, 432, 288, 972, 648, 648, 432, 648, 432, 432, 288, 648, 432, 432, 288, 432, 288, 288, 192, 1458, 972, 972, 648, 972, 648, 648, 432, 972, 648, 648, 432, 648, 432, 432, 288, 972, 648, 648, 432, 648, 432, 432, 288, 648, 432, 432, 288, 432, 288, 288, 192, 972, 648, 648, 432, 648, 432, 432, 288, 648, 432, 432, 288, 432, 288, 288, 192, 648, 432, 432, 288, 432, 288, 288, 192, 432, 288, 288, 192, 288, 192, 192, 128];

@@ -389,15 +389,17 @@ export default class RandomChallenge implements ChallengeCategory{
         return this.challengeList.has(challengeid);
     }
 
-    getChallengeList(): ChallengePreview[]{
+    getChallengeList(includeHidden: boolean): ChallengePreview[]{
         const challenges: ChallengePreview[] = [];
         this.challengeList.forEach((value, key) => {
-            challenges.push({
-                challengeid: key,
-                displayName: value.config.displayName,
-                stages: value.stages.length,
-                recommendedLvl: value.config.recommendedLvl
-            });
+            if (value.config.hidden !== true || includeHidden === true){
+                challenges.push({
+                    challengeid: key,
+                    displayName: value.config.displayName,
+                    stages: value.stages.length,
+                    recommendedLvl: value.config.recommendedLvl
+                });
+            }
         });
         return challenges;
     }

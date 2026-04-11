@@ -12,20 +12,22 @@ export default class StaticChallenge implements ChallengeCategory{
         return this.challengeList.has(challengeid);
     }
 
-    getChallengeList(): ChallengePreview[]{
+    getChallengeList(includeHidden: boolean): ChallengePreview[]{
         const challenges: ChallengePreview[] = [];
         this.challengeList.forEach((value, key) => {
-            let stages = 8;
-            if (value.gameMod.stages !== undefined){
-                stages = value.gameMod.stages.length;
-            }
+            if (value.config.hidden !== true || includeHidden === true){
+                let stages = 8;
+                if (value.gameMod.stages !== undefined){
+                    stages = value.gameMod.stages.length;
+                }
 
-            challenges.push({
-                challengeid: key,
-                displayName: value.config.displayName,
-                stages: stages,
-                recommendedLvl: value.config.recommendedLvl
-            });
+                challenges.push({
+                    challengeid: key,
+                    displayName: value.config.displayName,
+                    stages: stages,
+                    recommendedLvl: value.config.recommendedLvl
+                });
+            }
         });
         return challenges;
     }
