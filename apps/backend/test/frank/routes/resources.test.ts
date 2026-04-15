@@ -1,5 +1,5 @@
-import chai, {expect} from "chai";
-import "chai-http";
+import {expect} from "chai";
+import {request} from "chai-http";
 import {Connection} from "mysql2/promise";
 import characterList from "../../../frank/data/characters_data.json";
 import server from "../../../frank/index";
@@ -36,7 +36,7 @@ describe("User Resources endpoints", function(){
 
     it("/enemies", async function(){
         // This endpoint does not require a user logged in
-        const res = await chai.request(server).get("/enemies");
+        const res = await request.execute(server).get("/enemies");
         expect(res).to.have.status(200);
         expect(res.body).to.be.an("object");
         expect(res.body.enemies).to.be.an("array");
@@ -49,7 +49,7 @@ describe("User Resources endpoints", function(){
             [20000000, 50000, Buffer.from(buffer), TEST_USERNAME]
         );
 
-        const res = await chai.request(server).get("/resources").auth(TEST_TOKEN, {type: "bearer"});
+        const res = await request.execute(server).get("/resources").auth(TEST_TOKEN, {type: "bearer"});
 
         expect(res).to.have.status(200);
         expect(res.body).to.be.an("object");
@@ -72,7 +72,7 @@ describe("User Resources endpoints", function(){
             [Buffer.from(buffer), TEST_USERNAME]
         );
 
-        const res = await chai.request(server).get("/characters").auth(TEST_TOKEN, {type: "bearer"});
+        const res = await request.execute(server).get("/characters").auth(TEST_TOKEN, {type: "bearer"});
 
         expect(res).to.have.status(200);
         expect(res.body).to.be.an("object");
@@ -104,7 +104,7 @@ describe("User Resources endpoints", function(){
         it("Successful normal upgrade", async function(){
             await connection.query(`UPDATE ${tables.users} SET coins = ? WHERE username = ?;`, [initialCoins, TEST_USERNAME]);
 
-            const res = await chai.request(server).post("/characters/upgrade").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/characters/upgrade").auth(TEST_TOKEN, {type: "bearer"})
             .send({character: name});
             expect(res).to.have.status(200);
             expect(res.body.current.tier.level).to.equal(33);
@@ -124,7 +124,7 @@ describe("User Resources endpoints", function(){
                 [initialMastery, initialCoins, Buffer.from(buffer),TEST_USERNAME]
             );
 
-            const res = await chai.request(server).post("/characters/upgrade").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/characters/upgrade").auth(TEST_TOKEN, {type: "bearer"})
             .send({character: name});
             expect(res).to.have.status(200);
             expect(res.body.current.tier.level).to.equal(45);
@@ -138,7 +138,7 @@ describe("User Resources endpoints", function(){
         });
 
         it("Character not found", async function(){
-            const res = await chai.request(server).post("/characters/upgrade").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/characters/upgrade").auth(TEST_TOKEN, {type: "bearer"})
             .send({character: "not a character"});
             expect(res).to.have.status(404);
             expect(res.body).to.eql(createError("CharactersNotFound"));
@@ -147,7 +147,7 @@ describe("User Resources endpoints", function(){
         it("Not enough coins", async function(){
             await connection.query(`UPDATE ${tables.users} SET coins = ? WHERE username = ?;`, [normalCost - 1, TEST_USERNAME]);
 
-            const res = await chai.request(server).post("/characters/upgrade").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/characters/upgrade").auth(TEST_TOKEN, {type: "bearer"})
             .send({character: name});
             expect(res).to.have.status(403);
             expect(res.body).to.eql(createError("CharactersCannotAfford"));
@@ -166,7 +166,7 @@ describe("User Resources endpoints", function(){
                 [0, initialCoins, TEST_USERNAME]
             );
 
-            const res = await chai.request(server).post("/characters/upgrade").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/characters/upgrade").auth(TEST_TOKEN, {type: "bearer"})
             .send({character: name});
             expect(res).to.have.status(403);
             expect(res.body).to.eql(createError("CharactersUpgradeDenied"));
@@ -186,7 +186,7 @@ describe("User Resources endpoints", function(){
                 [initialMastery, initialCoins, Buffer.from(buffer), TEST_USERNAME]
             );
 
-            const res = await chai.request(server).post("/characters/upgrade").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/characters/upgrade").auth(TEST_TOKEN, {type: "bearer"})
             .send({character: name});
             expect(res).to.have.status(403);
             expect(res.body).to.eql(createError("CharactersMaxLevel"));

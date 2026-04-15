@@ -1,5 +1,5 @@
-import chai, {expect} from "chai";
-import "chai-http";
+import {expect} from "chai";
+import {request} from "chai-http";
 import {Connection} from "mysql2/promise";
 import accessoryList from "../../../bull/data/accessories_data.json";
 import server from "../../../bull/index";
@@ -29,7 +29,7 @@ describe("Accessory Collection endpoints", function(){
     });
 
     it("/accessory/all", async function(){
-        const res = await chai.request(server).get("/accessory/all").auth(TEST_TOKEN, {type: "bearer"});
+        const res = await request.execute(server).get("/accessory/all").auth(TEST_TOKEN, {type: "bearer"});
         expect(res).to.have.status(200);
         expect(res.body).to.be.an("array");
         expect(res.body).to.have.lengthOf(accessoryList.length);
@@ -49,7 +49,7 @@ describe("Accessory Collection endpoints", function(){
             await connection.query(`UPDATE ${tables.bullgame} SET badges = ? WHERE username = ?`, [JSON.stringify(badges), TEST_USERNAME]);
             await connection.query(`UPDATE ${tables.users} SET accessories = ? WHERE username = ?`, [JSON.stringify([]), TEST_USERNAME]);
 
-            const res = await chai.request(server).post("/accessory/claim").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/accessory/claim").auth(TEST_TOKEN, {type: "bearer"})
             .send({accessory: accessory.name});
 
             expect(res).to.have.status(200);
@@ -62,7 +62,7 @@ describe("Accessory Collection endpoints", function(){
             await connection.query(`UPDATE ${tables.bullgame} SET badges = ? WHERE username = ?`, [JSON.stringify({}), TEST_USERNAME]);
             await connection.query(`UPDATE ${tables.users} SET accessories = ? WHERE username = ?`, [JSON.stringify([]), TEST_USERNAME]);
 
-            const res = await chai.request(server).post("/accessory/claim").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/accessory/claim").auth(TEST_TOKEN, {type: "bearer"})
             .send({accessory: accessory.name});
             expect(res).to.have.status(403);
             expect(res.text).to.equal("You do not meet the requirements to claim this accessory.");
@@ -72,7 +72,7 @@ describe("Accessory Collection endpoints", function(){
             await connection.query(`UPDATE ${tables.bullgame} SET badges = ? WHERE username = ?`, [JSON.stringify(badges), TEST_USERNAME]);
             await connection.query(`UPDATE ${tables.users} SET accessories = ? WHERE username = ?`, [JSON.stringify([accessory.name]), TEST_USERNAME]);
 
-            const res = await chai.request(server).post("/accessory/claim").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/accessory/claim").auth(TEST_TOKEN, {type: "bearer"})
             .send({accessory: accessory.name});
             expect(res).to.have.status(403);
             expect(res.text).to.equal("You have already claimed this accessory.");
@@ -80,7 +80,7 @@ describe("Accessory Collection endpoints", function(){
     });
 
     it("/accessory/mastery", async function(){
-        const res = await chai.request(server).get("/accessory/mastery").auth(TEST_TOKEN, {type: "bearer"});
+        const res = await request.execute(server).get("/accessory/mastery").auth(TEST_TOKEN, {type: "bearer"});
 
         expect(res).to.have.status(200);
         expect(res.body).to.be.an("object");

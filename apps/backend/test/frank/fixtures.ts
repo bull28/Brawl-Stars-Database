@@ -1,4 +1,4 @@
-import chai from "chai";
+import * as chai from "chai";
 import chaiHttp from "chai-http";
 import {createConnection, closeConnection, clearTables} from "./database_setup";
 

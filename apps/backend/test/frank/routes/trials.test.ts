@@ -1,5 +1,5 @@
-import chai, {expect} from "chai";
-import "chai-http";
+import {expect} from "chai";
+import {request} from "chai-http";
 import {Connection} from "mysql2/promise";
 import {trialStates} from "../../../frank/data/trials_data";
 import server from "../../../frank/index";
@@ -55,7 +55,7 @@ describe("Trial endpoints", function(){
             ["test1", TEST_CHALLENGE_ID, TEST_CHALLENGE_MODE, 0, TEST_USERNAME]
         );
 
-        const res = await chai.request(server).post("/challenges/get").auth(TEST_TOKEN, {type: "bearer"})
+        const res = await request.execute(server).post("/challenges/get").auth(TEST_TOKEN, {type: "bearer"})
         .send({key: "test1"});
 
         expect(res).to.have.status(200);
@@ -89,7 +89,7 @@ describe("Trial endpoints", function(){
             ["test1", TEST_CHALLENGE_ID, TEST_CHALLENGE_MODE, 1, TEST_USERNAME]
         );
 
-        const res = await chai.request(server).post("/report").auth(TEST_TOKEN, {type: "bearer"})
+        const res = await request.execute(server).post("/report").auth(TEST_TOKEN, {type: "bearer"})
         .send({username: "ignore", key: "test1", report: [GAME_VERSION, 1].concat(report)});
         expect(res).to.have.status(200);
         expect(res.body).to.be.an("object");
@@ -106,7 +106,7 @@ describe("Trial endpoints", function(){
     });
 
     it("/trials", async function(){
-        const res = await chai.request(server).get("/trials").auth(TEST_TOKEN, {type: "bearer"});
+        const res = await request.execute(server).get("/trials").auth(TEST_TOKEN, {type: "bearer"});
 
         expect(res).to.have.status(200);
         expect(res.body).to.be.an("object");
@@ -117,7 +117,7 @@ describe("Trial endpoints", function(){
         const trial = generateSampleTrial();
         await updateTrial(TEST_USERNAME, trial);
 
-        const res = await chai.request(server).get("/trials/state").auth(TEST_TOKEN, {type: "bearer"});
+        const res = await request.execute(server).get("/trials/state").auth(TEST_TOKEN, {type: "bearer"});
 
         expect(res).to.have.status(200);
         expect(res.body).to.be.an("object");
@@ -130,7 +130,7 @@ describe("Trial endpoints", function(){
         const trial = generateSampleTrial();
         await updateTrial(TEST_USERNAME, trial);
 
-        const res = await chai.request(server).get("/trials/display").auth(TEST_TOKEN, {type: "bearer"});
+        const res = await request.execute(server).get("/trials/display").auth(TEST_TOKEN, {type: "bearer"});
 
         expect(res).to.have.status(200);
         expect(res.body).to.be.an("object");
@@ -139,7 +139,7 @@ describe("Trial endpoints", function(){
     it("/trials/start", async function(){
         await connection.query(`DELETE FROM ${tables.trials};`);
 
-        const res = await chai.request(server).post("/trials/start").auth(TEST_TOKEN, {type: "bearer"})
+        const res = await request.execute(server).post("/trials/start").auth(TEST_TOKEN, {type: "bearer"})
         .send({trialid: 0});
 
         expect(res).to.have.status(200);
@@ -155,7 +155,7 @@ describe("Trial endpoints", function(){
     it("/trials/end", async function(){
         await connection.query(`DELETE FROM ${tables.trials};`);
 
-        const res = await chai.request(server).post("/trials/end").auth(TEST_TOKEN, {type: "bearer"})
+        const res = await request.execute(server).post("/trials/end").auth(TEST_TOKEN, {type: "bearer"})
         .send({});
 
         expect(res).to.have.status(404);
@@ -163,7 +163,7 @@ describe("Trial endpoints", function(){
 
         await updateTrial(TEST_USERNAME, generateSampleTrial());
 
-        const res2 = await chai.request(server).post("/trials/end").auth(TEST_TOKEN, {type: "bearer"})
+        const res2 = await request.execute(server).post("/trials/end").auth(TEST_TOKEN, {type: "bearer"})
         .send({});
         expect(res2).to.have.status(200);
         expect(res2.body).to.be.an("object");
@@ -181,7 +181,7 @@ describe("Trial endpoints", function(){
         });
 
         it("Valid selection", async function(){
-            const res = await chai.request(server).post("/trials/next").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/trials/next").auth(TEST_TOKEN, {type: "bearer"})
             .send({character: 1, accessories: [2, 5, 6, 8], powerups: [0]});
 
             expect(res).to.have.status(200);
@@ -198,7 +198,7 @@ describe("Trial endpoints", function(){
 
         it("Multiple selections", async function(){
             const selection = [2, 5, 6, 8];
-            const res = await chai.request(server).post("/trials/next").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/trials/next").auth(TEST_TOKEN, {type: "bearer"})
             .send({character: 1, accessories: selection, powerups: [0]});
 
             expect(res).to.have.status(200);
@@ -206,7 +206,7 @@ describe("Trial endpoints", function(){
             expect(res.body.key).to.be.a("string");
 
             const selection2 = [9, 10, 11, 12];
-            const res2 = await chai.request(server).post("/trials/next").auth(TEST_TOKEN, {type: "bearer"})
+            const res2 = await request.execute(server).post("/trials/next").auth(TEST_TOKEN, {type: "bearer"})
             .send({character: 0, accessories: selection2});
 
             expect(res2).to.have.status(200);
@@ -236,26 +236,26 @@ describe("Trial endpoints", function(){
         });
 
         it("Selection not allowed", async function(){
-            const res = await chai.request(server).post("/trials/next").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/trials/next").auth(TEST_TOKEN, {type: "bearer"})
             .send({character: 1, accessories: [69], powerups: [0]});
             expect(res).to.have.status(403);
             expect(res.body).to.eql(createError("TrialsItemsNotOwned"));
         });
 
         it("Selection not formatted correctly", async function(){
-            const res = await chai.request(server).post("/trials/next").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/trials/next").auth(TEST_TOKEN, {type: "bearer"})
             .send({character: "2", accessories: 1, powerups: [false]});
             expect(res).to.have.status(400);
             expect(res.body).to.eql(createError("TrialsInvalidSelection"));
 
-            const res2 = await chai.request(server).post("/trials/next").auth(TEST_TOKEN, {type: "bearer"})
+            const res2 = await request.execute(server).post("/trials/next").auth(TEST_TOKEN, {type: "bearer"})
             .send({character: 0, accessories: [0, 1, 2, 3, "4"], powerups: null});
             expect(res2).to.have.status(400);
             expect(res2.body).to.eql(createError("TrialsInvalidSelection"));
         });
 
         it("Selection not provided", async function(){
-            const res = await chai.request(server).post("/trials/next").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/trials/next").auth(TEST_TOKEN, {type: "bearer"})
             .send({});
 
             expect(res).to.have.status(200);
@@ -278,7 +278,7 @@ describe("Trial endpoints", function(){
             trial.rewards.specialBoxes = 0xffff;
             await updateTrial(TEST_USERNAME, trial);
 
-            const res = await chai.request(server).post("/trials/brawlbox").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/trials/brawlbox").auth(TEST_TOKEN, {type: "bearer"})
             .send({brawlboxid: 3});
 
             expect(res).to.have.status(200);
@@ -298,7 +298,7 @@ describe("Trial endpoints", function(){
             trial.rewards.specialBoxes = 0;
             await updateTrial(TEST_USERNAME, trial);
 
-            const res = await chai.request(server).post("/trials/brawlbox").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/trials/brawlbox").auth(TEST_TOKEN, {type: "bearer"})
             .send({brawlboxid: 1});
 
             expect(res).to.have.status(403);
@@ -318,7 +318,7 @@ describe("Trial endpoints", function(){
             trial.resources.credits = 10000;
             await updateTrial(TEST_USERNAME, trial);
 
-            const res = await chai.request(server).post("/trials/buy").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/trials/buy").auth(TEST_TOKEN, {type: "bearer"})
             .send({type: "accessory", items: [0, 1]});
 
             expect(res).to.have.status(200);
@@ -331,7 +331,7 @@ describe("Trial endpoints", function(){
             trial.resources.credits = 0;
             await updateTrial(TEST_USERNAME, trial);
 
-            const res = await chai.request(server).post("/trials/buy").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/trials/buy").auth(TEST_TOKEN, {type: "bearer"})
             .send({type: "accessory", items: [0, 1]});
 
             expect(res).to.have.status(403);
@@ -343,7 +343,7 @@ describe("Trial endpoints", function(){
             trial.resources.credits = 10000;
             await updateTrial(TEST_USERNAME, trial);
 
-            const res = await chai.request(server).post("/trials/buy").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/trials/buy").auth(TEST_TOKEN, {type: "bearer"})
             .send({type: "accessory", items: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]});
 
             expect(res).to.have.status(400);
@@ -355,7 +355,7 @@ describe("Trial endpoints", function(){
             trial.resources.credits = 10000;
             await updateTrial(TEST_USERNAME, trial);
 
-            const res = await chai.request(server).post("/trials/buy").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/trials/buy").auth(TEST_TOKEN, {type: "bearer"})
             .send({type: "accessory", items: 3});
 
             expect(res).to.have.status(400);
@@ -370,7 +370,7 @@ describe("Trial endpoints", function(){
             trial.accessories[1] = 0x0081;
             await updateTrial(TEST_USERNAME, trial);
 
-            const res = await chai.request(server).post("/trials/sell").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/trials/sell").auth(TEST_TOKEN, {type: "bearer"})
             .send({type: "accessory", items: [0, 1]});
 
             expect(res).to.have.status(200);
@@ -382,7 +382,7 @@ describe("Trial endpoints", function(){
             const trial = generateSampleTrial();
             await updateTrial(TEST_USERNAME, trial);
 
-            const res = await chai.request(server).post("/trials/sell").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/trials/sell").auth(TEST_TOKEN, {type: "bearer"})
             .send({type: "accessory", items: [0, 1]});
 
             expect(res).to.have.status(403);
@@ -398,7 +398,7 @@ describe("Trial endpoints", function(){
             }
             await updateTrial(TEST_USERNAME, trial);
 
-            const res = await chai.request(server).post("/trials/sell").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/trials/sell").auth(TEST_TOKEN, {type: "bearer"})
             .send({type: "accessory", items: sellItems});
 
             expect(res).to.have.status(400);
@@ -409,7 +409,7 @@ describe("Trial endpoints", function(){
             const trial = generateSampleTrial();
             await updateTrial(TEST_USERNAME, trial);
 
-            const res = await chai.request(server).post("/trials/sell").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/trials/sell").auth(TEST_TOKEN, {type: "bearer"})
             .send({type: "accessory", items: 3});
 
             expect(res).to.have.status(400);
@@ -423,7 +423,7 @@ describe("Trial endpoints", function(){
             trial.state = trialStates.TRIAL_PLAYING;
             await updateTrial(TEST_USERNAME, trial);
 
-            const res = await chai.request(server).post("/trials/next").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/trials/next").auth(TEST_TOKEN, {type: "bearer"})
             .send({});
             expect(res).to.have.status(403);
             expect(res.body).to.eql(createError("TrialsNotAllowed"));
@@ -435,7 +435,7 @@ describe("Trial endpoints", function(){
             trial.rewards.specialBoxes = 1;
             await updateTrial(TEST_USERNAME, trial);
 
-            const res = await chai.request(server).post("/trials/brawlbox").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/trials/brawlbox").auth(TEST_TOKEN, {type: "bearer"})
             .send({brawlboxid: 1});
             expect(res).to.have.status(403);
             expect(res.body).to.eql(createError("TrialsNotAllowed"));
@@ -447,12 +447,12 @@ describe("Trial endpoints", function(){
             trial.resources.credits = 10000;
             await updateTrial(TEST_USERNAME, trial);
 
-            const res = await chai.request(server).post("/trials/buy").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/trials/buy").auth(TEST_TOKEN, {type: "bearer"})
             .send({type: "powerup", items: [0]});
             expect(res).to.have.status(403);
             expect(res.body).to.eql(createError("TrialsNotAllowed"));
 
-            const res2 = await chai.request(server).post("/trials/sell").auth(TEST_TOKEN, {type: "bearer"})
+            const res2 = await request.execute(server).post("/trials/sell").auth(TEST_TOKEN, {type: "bearer"})
             .send({type: "character", items: [0]});
             expect(res2).to.have.status(403);
             expect(res2.body).to.eql(createError("TrialsNotAllowed"));

@@ -1,5 +1,5 @@
-import chai, {expect} from "chai";
-import "chai-http";
+import {expect} from "chai";
+import {request} from "chai-http";
 import {Connection} from "mysql2/promise";
 import {DEFAULT_REPORT_COST} from "../../../bull/data/constants";
 import server from "../../../bull/index";
@@ -87,7 +87,7 @@ describe("Game Report endpoints", function(){
                 [940, 1000, TEST_USERNAME]
             );
 
-            const res = await chai.request(server).post("/report/save").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/report/save").auth(TEST_TOKEN, {type: "bearer"})
             .send({username: TEST_USERNAME, report: [GAME_VERSION, END_TIME++, reportMode0]});
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("object");
@@ -100,7 +100,7 @@ describe("Game Report endpoints", function(){
         });
 
         it("Valid report from challenge", async function(){
-            const res = await chai.request(server).post("/report/save").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/report/save").auth(TEST_TOKEN, {type: "bearer"})
             .send({key: "test1", report: [GAME_VERSION, END_TIME++, reportMode2]});
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("object");
@@ -115,7 +115,7 @@ describe("Game Report endpoints", function(){
                 [940, 1000, TEST_USERNAME]
             );
 
-            const res = await chai.request(server).post("/report/save").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/report/save").auth(TEST_TOKEN, {type: "bearer"})
             .send({key: "testwin", report: [GAME_VERSION, END_TIME++, reportWin]});
             expect(res).to.have.status(200);
 
@@ -131,7 +131,7 @@ describe("Game Report endpoints", function(){
                 [940, 1000, TEST_USERNAME]
             );
 
-            const res = await chai.request(server).post("/report/save").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/report/save").auth(TEST_TOKEN, {type: "bearer"})
             .send({key: "testloss", report: [GAME_VERSION, END_TIME++, reportLoss]});
             expect(res).to.have.status(200);
 
@@ -141,21 +141,21 @@ describe("Game Report endpoints", function(){
         });
 
         it("Invalid report", async function(){
-            const res = await chai.request(server).post("/report/save").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/report/save").auth(TEST_TOKEN, {type: "bearer"})
             .send({username: TEST_USERNAME, report: [0]});
             expect(res).to.have.status(403);
             expect(res.body.message).to.equal("Invalid report.");
         });
 
         it("No username provided", async function(){
-            const res = await chai.request(server).post("/report/save").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/report/save").auth(TEST_TOKEN, {type: "bearer"})
             .send({report: [GAME_VERSION, END_TIME++, reportMode0]});
             expect(res).to.have.status(400);
             expect(res.body.message).to.equal("Username is missing.");
         });
 
         it("Challenge from report not accepted", async function(){
-            const res = await chai.request(server).post("/report/save").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/report/save").auth(TEST_TOKEN, {type: "bearer"})
             .send({key: "test2", report: [GAME_VERSION, END_TIME++, reportMode2]});
             expect(res).to.have.status(403);
             expect(res.body.message).to.equal("This challenge has not been accepted yet.");
@@ -163,14 +163,14 @@ describe("Game Report endpoints", function(){
 
         // Challenge strength is no longer included in the report as of version 82
         // it("Challenge strength does not match report", async function(){
-        //     const res = await chai.request(server).post("/report/save").auth(TEST_TOKEN, {type: "bearer"})
+        //     const res = await request.execute(server).post("/report/save").auth(TEST_TOKEN, {type: "bearer"})
         //     .send({key: "test3", report: [GAME_VERSION, END_TIME++, reportMode2]});
         //     expect(res).to.have.status(403);
         //     expect(res.body.message).to.equal("Invalid report.");
         // });
 
         it("User who started the challenge does not exist", async function(){
-            const res = await chai.request(server).post("/report/save").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/report/save").auth(TEST_TOKEN, {type: "bearer"})
             .send({key: "test4", report: [GAME_VERSION, END_TIME++, reportMode2]});
             expect(res).to.have.status(404);
             expect(res.body.message).to.equal("Could not find the user.");
@@ -181,13 +181,13 @@ describe("Game Report endpoints", function(){
             // Attempt to save the same report two times in a row
 
             // The first attempt should succeed
-            const res1 = await chai.request(server).post("/report/save").auth(TEST_TOKEN, {type: "bearer"})
+            const res1 = await request.execute(server).post("/report/save").auth(TEST_TOKEN, {type: "bearer"})
             .send({username: TEST_USERNAME, report: [GAME_VERSION, time, reportMode0]});
             expect(res1).to.have.status(200);
             expect(res1.body.message).to.equal("Score successfully saved.");
 
             // The second attempt should fail
-            const res2 = await chai.request(server).post("/report/save").auth(TEST_TOKEN, {type: "bearer"})
+            const res2 = await request.execute(server).post("/report/save").auth(TEST_TOKEN, {type: "bearer"})
             .send({username: TEST_USERNAME, report: [GAME_VERSION, time, reportMode0]});
             expect(res2).to.have.status(403);
             expect(res2.body.message).to.equal("Cannot save the same game more than once.");
@@ -206,7 +206,7 @@ describe("Game Report endpoints", function(){
         });
 
         it("User has saved reports", async function(){
-            const res = await chai.request(server).get("/report/all").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).get("/report/all").auth(TEST_TOKEN, {type: "bearer"})
 
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("array");
@@ -220,7 +220,7 @@ describe("Game Report endpoints", function(){
         });
 
         it("User does not have saved reports", async function(){
-            const res = await chai.request(server).get("/report/all").auth(TEST_TOKEN_OTHER_USER, {type: "bearer"})
+            const res = await request.execute(server).get("/report/all").auth(TEST_TOKEN_OTHER_USER, {type: "bearer"})
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("array");
             expect(res.body).to.have.lengthOf(0);
@@ -257,7 +257,7 @@ describe("Game Report endpoints", function(){
         it("Claiming all rewards", async function(){
             await connection.query(`UPDATE ${tables.users} SET tokens = ? WHERE username = ?;`, [DEFAULT_REPORT_COST, TEST_USERNAME]);
 
-            const res = await chai.request(server).post("/report/claim").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/report/claim").auth(TEST_TOKEN, {type: "bearer"})
             .send({reportid: 2, claim: true});
 
             expect(res).to.have.status(200);
@@ -271,7 +271,7 @@ describe("Game Report endpoints", function(){
         });
 
         it("Claiming mastery only", async function(){
-            const res = await chai.request(server).post("/report/claim").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/report/claim").auth(TEST_TOKEN, {type: "bearer"})
             .send({reportid: 3, claim: false});
 
             expect(res).to.have.status(200);
@@ -286,27 +286,27 @@ describe("Game Report endpoints", function(){
         });
 
         it("Report not found", async function(){
-            const res = await chai.request(server).post("/report/claim").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/report/claim").auth(TEST_TOKEN, {type: "bearer"})
             .send({reportid: 69});
             expect(res).to.have.status(404);
         });
 
         it("Invalid report ID", async function(){
-            const res = await chai.request(server).post("/report/claim").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/report/claim").auth(TEST_TOKEN, {type: "bearer"})
             .send({reportid: true});
             expect(res).to.have.status(400);
             expect(res.text).to.equal("Report ID must be a number.");
         });
 
         it("Claiming another user's report", async function(){
-            const res = await chai.request(server).post("/report/claim").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/report/claim").auth(TEST_TOKEN, {type: "bearer"})
             .send({reportid: 4});
             expect(res).to.have.status(401);
             expect(res.text).to.equal("Cannot claim rewards from another player's game!");
         });
 
         it("Report stats array has invalid length", async function(){
-            const res = await chai.request(server).post("/report/claim").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/report/claim").auth(TEST_TOKEN, {type: "bearer"})
             .send({reportid: 5});
             expect(res).to.have.status(500);
             expect(res.text).to.equal("Report data could not be loaded.");
@@ -315,7 +315,7 @@ describe("Game Report endpoints", function(){
         it("Not enough tokens", async function(){
             await connection.query(`UPDATE ${tables.users} SET tokens = ? WHERE username = ?;`, [0, TEST_USERNAME]);
 
-            const res = await chai.request(server).post("/report/claim").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/report/claim").auth(TEST_TOKEN, {type: "bearer"})
             .send({reportid: 6, claim: true});
             expect(res).to.have.status(403);
             expect(res.text).to.equal("You cannot afford to claim these rewards!");

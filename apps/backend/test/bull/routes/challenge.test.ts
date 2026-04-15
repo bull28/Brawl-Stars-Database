@@ -1,5 +1,5 @@
-import chai, {expect} from "chai";
-import "chai-http";
+import {expect} from "chai";
+import {request} from "chai-http";
 import {Connection} from "mysql2/promise";
 import {PIN_IMAGE_DIR, SKIN_IMAGE_DIR, CHALLENGE_REPORT_COST} from "../../../bull/data/constants";
 import server from "../../../bull/index";
@@ -28,7 +28,7 @@ describe("Challenge endpoints", function(){
     });
 
     it("/challenge/enemies", async function(){
-        const res = await chai.request(server).get("/challenge/enemies").auth(TEST_TOKEN, {type: "bearer"});
+        const res = await request.execute(server).get("/challenge/enemies").auth(TEST_TOKEN, {type: "bearer"});
 
         expect(res).to.have.status(200);
         expect(res.body).to.be.an("array");
@@ -46,7 +46,7 @@ describe("Challenge endpoints", function(){
     });
 
     it("/challenge/upgrades", async function(){
-        const res = await chai.request(server).get("/challenge/upgrades").auth(TEST_TOKEN, {type: "bearer"});
+        const res = await request.execute(server).get("/challenge/upgrades").auth(TEST_TOKEN, {type: "bearer"});
         expect(res).to.have.status(200);
     });
 
@@ -56,7 +56,7 @@ describe("Challenge endpoints", function(){
             [3000, 4500, TEST_USERNAME]
         );
 
-        const res = await chai.request(server).get("/challenge/rating").auth(TEST_TOKEN, {type: "bearer"});
+        const res = await request.execute(server).get("/challenge/rating").auth(TEST_TOKEN, {type: "bearer"});
         expect(res).to.have.status(200);
         expect(res.body).to.be.an("object");
         expect(res.body).to.have.keys(["rating"]);
@@ -70,7 +70,7 @@ describe("Challenge endpoints", function(){
             (?, ?, ?, ?, ?, ?);`, [1, "test-preset", "BULL", 1000, JSON.stringify([]), JSON.stringify([])]
         );
 
-        const res = await chai.request(server).get("/challenge/all").auth(TEST_TOKEN, {type: "bearer"});
+        const res = await request.execute(server).get("/challenge/all").auth(TEST_TOKEN, {type: "bearer"});
 
         expect(res).to.have.status(200);
         expect(res.body).to.be.an("array");
@@ -110,7 +110,7 @@ describe("Challenge endpoints", function(){
         });
 
         it("Valid active challenge", async function(){
-            const res = await chai.request(server).post("/challenge/get").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/challenge/get").auth(TEST_TOKEN, {type: "bearer"})
             .send({key: "test1"});
 
             expect(res).to.have.status(200);
@@ -127,7 +127,7 @@ describe("Challenge endpoints", function(){
                 [1000, 1000, TEST_USERNAME]
             );
 
-            const res = await chai.request(server).post("/challenge/get").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/challenge/get").auth(TEST_TOKEN, {type: "bearer"})
             .send({key: "test4"});
             expect(res).to.have.status(200);
 
@@ -142,7 +142,7 @@ describe("Challenge endpoints", function(){
                 [2000, 2000, TEST_USERNAME]
             );
 
-            const res = await chai.request(server).post("/challenge/get").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/challenge/get").auth(TEST_TOKEN, {type: "bearer"})
             .send({});
             expect(res).to.have.status(404);
             expect(res.text).to.equal("Challenge not found.");
@@ -153,28 +153,28 @@ describe("Challenge endpoints", function(){
         });
 
         it("Challenge already accepted", async function(){
-            const res = await chai.request(server).post("/challenge/get").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/challenge/get").auth(TEST_TOKEN, {type: "bearer"})
             .send({key: "test2"});
             expect(res).to.have.status(403);
             expect(res.text).to.equal("This challenge has already been accepted.");
         });
 
         it("Challenge key not provided", async function(){
-            const res = await chai.request(server).post("/challenge/get").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/challenge/get").auth(TEST_TOKEN, {type: "bearer"})
             .send({});
             expect(res).to.have.status(404);
             expect(res.text).to.equal("Challenge not found.");
         });
 
         it("Challenge with key does not exist", async function(){
-            const res = await chai.request(server).post("/challenge/get").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/challenge/get").auth(TEST_TOKEN, {type: "bearer"})
             .send({key: "not-a-challenge"});
             expect(res).to.have.status(404);
             expect(res.text).to.equal("Challenge not found.");
         });
 
         it("Challenge with preset does not exist", async function(){
-            const res = await chai.request(server).post("/challenge/get").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/challenge/get").auth(TEST_TOKEN, {type: "bearer"})
             .send({key: "test3"});
             expect(res).to.have.status(404);
             expect(res.text).to.equal("Challenge not found.");
@@ -190,7 +190,7 @@ describe("Challenge endpoints", function(){
                 {level: 3, enemies: ["amber"]}
             ];
 
-            const res = await chai.request(server).post("/challenge/create").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/challenge/create").auth(TEST_TOKEN, {type: "bearer"})
             .send({waves: waves});
 
             expect(res).to.have.status(200);
@@ -198,7 +198,7 @@ describe("Challenge endpoints", function(){
         });
 
         it("Challenge object missing properties", async function(){
-            const res = await chai.request(server).post("/challenge/create").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/challenge/create").auth(TEST_TOKEN, {type: "bearer"})
             .send({waves: false});
             expect(res).to.have.status(400);
             expect(res.text).to.equal("Challenge waves incorrectly formatted.");
@@ -221,7 +221,7 @@ describe("Challenge endpoints", function(){
         it("Challenge successfully started", async function(){
             await connection.query(`UPDATE ${tables.users} SET tokens = ? WHERE username = ?;`, [CHALLENGE_REPORT_COST, TEST_USERNAME]);
 
-            const res = await chai.request(server).post("/challenge/start").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/challenge/start").auth(TEST_TOKEN, {type: "bearer"})
             .send({challengeid: 4});
 
             expect(res).to.have.status(200);
@@ -236,14 +236,14 @@ describe("Challenge endpoints", function(){
         });
 
         it("Invalid challenge ID", async function(){
-            const res = await chai.request(server).post("/challenge/start").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/challenge/start").auth(TEST_TOKEN, {type: "bearer"})
             .send({challengeid: true});
             expect(res).to.have.status(400);
             expect(res.text).to.equal("Invalid challenge ID.");
         });
 
         it("Challenge does not exist", async function(){
-            const res = await chai.request(server).post("/challenge/start").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/challenge/start").auth(TEST_TOKEN, {type: "bearer"})
             .send({challengeid: 69});
             expect(res).to.have.status(404);
             expect(res.text).to.equal("Challenge does not exist.");
@@ -252,7 +252,7 @@ describe("Challenge endpoints", function(){
         it("Not enough tokens", async function(){
             await connection.query(`UPDATE ${tables.users} SET tokens = ? WHERE username = ?;`, [0, TEST_USERNAME]);
 
-            const res = await chai.request(server).post("/challenge/start").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/challenge/start").auth(TEST_TOKEN, {type: "bearer"})
             .send({challengeid: 4});
             expect(res).to.have.status(403);
             expect(res.text).to.equal("You cannot afford to start a challenge!");

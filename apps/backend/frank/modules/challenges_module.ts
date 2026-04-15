@@ -226,8 +226,21 @@ export function getGameMod(challengeid: string, key: string, resources: UserReso
     }
     gameMod.playerUpgradeTiers = playerUpgradeTiers;
 
-    if (prefs !== undefined && prefs.playerSkins !== undefined){
-        gameMod.playerSkins = prefs.playerSkins;
+    if (prefs !== undefined){
+        if (prefs.playerSkins !== undefined){
+            gameMod.playerSkins = prefs.playerSkins;
+        }
+
+        const hiddenBrawlers = prefs.hiddenBrawlers;
+        if (hiddenBrawlers !== undefined){
+            let maxTier = 0;
+            for (const x in playerUpgradeTiers){
+                maxTier = Math.max(maxTier, playerUpgradeTiers[x]);
+            }
+            for (let x = 0; x < hiddenBrawlers.length; x++){
+                playerUpgradeTiers[hiddenBrawlers[x]] = maxTier;
+            }
+        }
     }
 
     return gameMod;

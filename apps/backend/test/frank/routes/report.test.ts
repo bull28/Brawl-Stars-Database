@@ -1,5 +1,5 @@
-import chai, {expect} from "chai";
-import "chai-http";
+import {expect} from "chai";
+import {request} from "chai-http";
 import {Connection} from "mysql2/promise";
 import server from "../../../frank/index";
 import {tables} from "../../../frank/modules/database_access";
@@ -66,7 +66,7 @@ describe("Game Report endpoints", function(){
                 `SELECT mastery, coins FROM ${tables.users} WHERE username = ?;`, [TEST_USERNAME]
             );
 
-            const res = await chai.request(server).post("/report").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/report").auth(TEST_TOKEN, {type: "bearer"})
             .send({username: TEST_USERNAME, report: [GAME_VERSION, END_TIME++].concat(reportMode0)});
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("object");
@@ -89,7 +89,7 @@ describe("Game Report endpoints", function(){
                 `SELECT mastery, coins FROM ${tables.users} WHERE username = ?;`, [TEST_USERNAME]
             );
 
-            const res = await chai.request(server).post("/report").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/report").auth(TEST_TOKEN, {type: "bearer"})
             .send({username: "ignore", key: "test1", report: [GAME_VERSION, END_TIME++].concat(reportMode2)});
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("object");
@@ -107,42 +107,42 @@ describe("Game Report endpoints", function(){
         });
 
         it("Invalid report", async function(){
-            const res = await chai.request(server).post("/report").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/report").auth(TEST_TOKEN, {type: "bearer"})
             .send({username: TEST_USERNAME, report: [0]});
             expect(res).to.have.status(403);
             expect(res.body.message).to.equal("Invalid report.");
         });
 
         it("No username provided", async function(){
-            const res = await chai.request(server).post("/report").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/report").auth(TEST_TOKEN, {type: "bearer"})
             .send({report: [GAME_VERSION, END_TIME++].concat(reportMode0)});
             expect(res).to.have.status(400);
             expect(res.body.message).to.equal("Username is missing.");
         });
 
         it("No challenge key provided", async function(){
-            const res = await chai.request(server).post("/report").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/report").auth(TEST_TOKEN, {type: "bearer"})
             .send({report: [GAME_VERSION, END_TIME++].concat(reportMode2)});
             expect(res).to.have.status(400);
             expect(res.body.message).to.equal("Username is missing.");
         });
 
         it("Challenge from report not accepted", async function(){
-            const res = await chai.request(server).post("/report").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/report").auth(TEST_TOKEN, {type: "bearer"})
             .send({key: "test2", report: [GAME_VERSION, END_TIME++].concat(reportMode2)});
             expect(res).to.have.status(403);
             expect(res.body.message).to.equal("This challenge has not been accepted yet.");
         });
 
         it("User does not exist for classic mode report", async function(){
-            const res = await chai.request(server).post("/report").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/report").auth(TEST_TOKEN, {type: "bearer"})
             .send({username: "ignore", report: [GAME_VERSION, END_TIME++].concat(reportMode0)});
             expect(res).to.have.status(404);
             expect(res.body.message).to.equal("User who started this game was not found.");
         });
 
         it("User does not exist for challenge report", async function(){
-            const res = await chai.request(server).post("/report").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/report").auth(TEST_TOKEN, {type: "bearer"})
             .send({key: "test3", report: [GAME_VERSION, END_TIME++].concat(reportMode2)});
             expect(res).to.have.status(404);
             expect(res.body.message).to.equal("User who started this game was not found.");
@@ -157,13 +157,13 @@ describe("Game Report endpoints", function(){
             // Attempt to save the same report two times in a row
 
             // The first attempt should succeed
-            const res1 = await chai.request(server).post("/report").auth(TEST_TOKEN, {type: "bearer"})
+            const res1 = await request.execute(server).post("/report").auth(TEST_TOKEN, {type: "bearer"})
             .send({username: TEST_USERNAME, report: [GAME_VERSION, time].concat(reportMode0)});
             expect(res1).to.have.status(200);
             expect(res1.body.message).to.equal("Score successfully saved.");
 
             // The second attempt should fail
-            const res2 = await chai.request(server).post("/report").auth(TEST_TOKEN, {type: "bearer"})
+            const res2 = await request.execute(server).post("/report").auth(TEST_TOKEN, {type: "bearer"})
             .send({username: TEST_USERNAME, report: [GAME_VERSION, time].concat(reportMode0)});
             expect(res2).to.have.status(403);
             expect(res2.body.message).to.equal("Cannot save the same game more than once.");
@@ -177,7 +177,7 @@ describe("Game Report endpoints", function(){
         });
 
         it("Content type not json", async function(){
-            const res = await chai.request(server).post("/report").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/report").auth(TEST_TOKEN, {type: "bearer"})
             .send(JSON.stringify([GAME_VERSION, END_TIME++].concat(reportMode0))).set("Content-Type", "text/plain");
             //console.log(res.text);
             expect(res).to.have.status(403);

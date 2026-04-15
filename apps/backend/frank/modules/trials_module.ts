@@ -764,6 +764,10 @@ export function getNextChallenge(trial: TrialData, key: string, resources: UserR
     // Start with the game modification object for the next challenge then modify it based on the current characters,
     // accessories, and powerups selected in the trial. Set mastery points such that the level requirement to use each
     // character is met.
+    const trialPrefs: UserSetGameMod = {};
+    if (prefs !== undefined && prefs.playerSkins !== undefined){
+        trialPrefs.playerSkins = prefs.playerSkins.slice();
+    }
     const gameMod = getGameMod(challenge.challengeid, key, {
         mastery: 20000000,
         coins: 0,
@@ -771,7 +775,7 @@ export function getNextChallenge(trial: TrialData, key: string, resources: UserR
         accessories: [],
         last_save: 0,
         menu_theme: resources.menu_theme
-    }, prefs);
+    }, trialPrefs);
 
     if (gameMod === undefined){
         return;

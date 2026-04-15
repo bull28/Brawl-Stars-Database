@@ -1,5 +1,5 @@
-import chai, {expect} from "chai";
-import "chai-http";
+import {expect} from "chai";
+import {request} from "chai-http";
 import {Connection} from "mysql2/promise";
 import accessoryList from "../../../bull/data/accessories_data.json";
 import {IMAGE_FILE_EXTENSION, PIN_IMAGE_DIR, AVATAR_IMAGE_DIR} from "../../../bull/data/constants";
@@ -47,7 +47,7 @@ describe("Brawler Collection endpoints", function(){
             [values.avatar, values.tokens, values.tokenDoubler, values.coins, values.points, values.tradeCredits, JSON.stringify(values.wildCardPins), values.username]
         );
 
-        const res = await chai.request(server).get("/resources").auth(TEST_TOKEN, {type: "bearer"});
+        const res = await request.execute(server).get("/resources").auth(TEST_TOKEN, {type: "bearer"});
 
         expect(res).to.have.status(200);
         expect(res.body).to.be.an("object");
@@ -75,7 +75,7 @@ describe("Brawler Collection endpoints", function(){
             [JSON.stringify(accessories), TEST_USERNAME]
         );
 
-        const res = await chai.request(server).get("/collection").auth(TEST_TOKEN, {type: "bearer"});
+        const res = await request.execute(server).get("/collection").auth(TEST_TOKEN, {type: "bearer"});
         expect(res).to.have.status(200);
         expect(res.body.unlockedBrawlers).to.equal(2);
         expect(res.body.unlockedAccessories).to.equal(3);
@@ -83,7 +83,7 @@ describe("Brawler Collection endpoints", function(){
 
     describe("/brawlbox", function(){
         it("Getting brawl box names", async function(){
-            const res = await chai.request(server).get("/brawlbox").auth(TEST_TOKEN, {type: "bearer"});
+            const res = await request.execute(server).get("/brawlbox").auth(TEST_TOKEN, {type: "bearer"});
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("array");
 
@@ -97,7 +97,7 @@ describe("Brawler Collection endpoints", function(){
         it("Opening a valid box", async function(){
             await connection.query(`UPDATE ${tables.users} SET tokens = ? WHERE username = ?`, [10000, TEST_USERNAME]);
 
-            const res = await chai.request(server).post("/brawlbox").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/brawlbox").auth(TEST_TOKEN, {type: "bearer"})
             .send({boxType: "brawlBox"});
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("array");
@@ -114,21 +114,21 @@ describe("Brawler Collection endpoints", function(){
         it("Not enough tokens", async function(){
             await connection.query(`UPDATE ${tables.users} SET tokens = ? WHERE username = ?`, [0, TEST_USERNAME]);
 
-            const res = await chai.request(server).post("/brawlbox").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/brawlbox").auth(TEST_TOKEN, {type: "bearer"})
             .send({boxType: "brawlBox"});
             expect(res).to.have.status(403);
             expect(res.text).to.equal("You cannot afford to open this Box!");
         });
 
         it("Invalid brawl box name", async function(){
-            const res = await chai.request(server).post("/brawlbox").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/brawlbox").auth(TEST_TOKEN, {type: "bearer"})
             .send({boxType: "not-a-brawl-box"});
             expect(res).to.have.status(404);
             expect(res.text).to.equal("Box type does not exist.");
         });
 
         it("Missing brawl box name", async function(){
-            const res = await chai.request(server).post("/brawlbox").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/brawlbox").auth(TEST_TOKEN, {type: "bearer"})
             .send({});
             expect(res).to.have.status(400);
             expect(res.text).to.equal("No Box specified.");
@@ -137,7 +137,7 @@ describe("Brawler Collection endpoints", function(){
 
     describe("/shop", function(){
         it("Getting shop items", async function(){
-            const res = await chai.request(server).post("/shop").auth(TEST_TOKEN, {type: "bearer"});
+            const res = await request.execute(server).post("/shop").auth(TEST_TOKEN, {type: "bearer"});
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("array");
 
@@ -152,7 +152,7 @@ describe("Brawler Collection endpoints", function(){
                 [0, pin, TEST_USERNAME]
             );
 
-            const res = await chai.request(server).post("/shop").auth(TEST_TOKEN, {type: "bearer"});
+            const res = await request.execute(server).post("/shop").auth(TEST_TOKEN, {type: "bearer"});
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("array");
 
@@ -167,7 +167,7 @@ describe("Brawler Collection endpoints", function(){
                 [Date.now() + 60000, pin, TEST_USERNAME]
             );
 
-            const res = await chai.request(server).post("/shop").auth(TEST_TOKEN, {type: "bearer"});
+            const res = await request.execute(server).post("/shop").auth(TEST_TOKEN, {type: "bearer"});
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("array");
 
@@ -181,7 +181,7 @@ describe("Brawler Collection endpoints", function(){
                 [Date.now() + 60000, "", TEST_USERNAME]
             );
 
-            const res = await chai.request(server).post("/shop").auth(TEST_TOKEN, {type: "bearer"});
+            const res = await request.execute(server).post("/shop").auth(TEST_TOKEN, {type: "bearer"});
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("array");
 
@@ -194,7 +194,7 @@ describe("Brawler Collection endpoints", function(){
                 [1000000, 25, TEST_USERNAME]
             );
 
-            const res = await chai.request(server).post("/shop").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/shop").auth(TEST_TOKEN, {type: "bearer"})
             .send({item: "tradeCredits1"});
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("object");
@@ -209,7 +209,7 @@ describe("Brawler Collection endpoints", function(){
                 [0, 50, TEST_USERNAME]
             );
 
-            const res = await chai.request(server).post("/shop").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/shop").auth(TEST_TOKEN, {type: "bearer"})
             .send({item: "tradeCredits1"});
             expect(res).to.have.status(403);
             expect(res.text).to.equal("You cannot afford this item!");
@@ -221,7 +221,7 @@ describe("Brawler Collection endpoints", function(){
         });
 
         it("Invalid item name", async function(){
-            const res = await chai.request(server).post("/shop").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/shop").auth(TEST_TOKEN, {type: "bearer"})
             .send({item: "not-a-shop-item"});
             expect(res).to.have.status(404);
             expect(res.text).to.equal("Item is currently not available.");

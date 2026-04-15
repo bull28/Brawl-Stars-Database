@@ -1,5 +1,5 @@
-import chai, {expect} from "chai";
-import "chai-http";
+import {expect} from "chai";
+import {request} from "chai-http";
 import {Connection} from "mysql2/promise";
 import {hashPassword, checkPassword} from "../../../frank/modules/account_module";
 import server from "../../../frank/index";
@@ -46,7 +46,7 @@ describe("Account endpoints", function(){
 
     describe("/authenticate", function(){
         it("Valid token", async function(){
-            const res = await chai.request(server).get("/authenticate").auth(TEST_TOKEN, {type: "bearer"});
+            const res = await request.execute(server).get("/authenticate").auth(TEST_TOKEN, {type: "bearer"});
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("object");
             expect(res.body).to.have.keys(["username"]);
@@ -54,7 +54,7 @@ describe("Account endpoints", function(){
         });
 
         it("Valid token with menu theme", async function(){
-            const res = await chai.request(server).get("/authenticate").query({menuTheme: ""}).auth(TEST_TOKEN, {type: "bearer"});
+            const res = await request.execute(server).get("/authenticate").query({menuTheme: ""}).auth(TEST_TOKEN, {type: "bearer"});
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("object");
             expect(res.body).to.have.keys(["username", "menuTheme"]);
@@ -63,13 +63,13 @@ describe("Account endpoints", function(){
         });
 
         it("Invalid token", async function(){
-            const res = await chai.request(server).get("/authenticate").auth("not a valid token", {type: "bearer"});
+            const res = await request.execute(server).get("/authenticate").auth("not a valid token", {type: "bearer"});
             expect(res).to.have.status(401);
             expect(res.body).to.eql(createError("GeneralTokenInvalid"));
         });
 
         it("No token provided", async function(){
-            const res = await chai.request(server).get("/authenticate");
+            const res = await request.execute(server).get("/authenticate");
             expect(res).to.have.status(400);
             expect(res.body).to.eql(createError("GeneralTokenMissing"));
         });
@@ -77,7 +77,7 @@ describe("Account endpoints", function(){
 
     describe("/login", function(){
         it("Valid login", async function(){
-            const res = await chai.request(server).post("/login").send({username: TEST_USERNAME, password: TEST_PASSWORD});
+            const res = await request.execute(server).post("/login").send({username: TEST_USERNAME, password: TEST_PASSWORD});
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("object");
             expect(res.body).to.have.keys(["token", "username"]);
@@ -85,13 +85,13 @@ describe("Account endpoints", function(){
         });
 
         it("Incorrect username", async function(){
-            const res = await chai.request(server).post("/login").send({username: "BULL", password: "ash"});
+            const res = await request.execute(server).post("/login").send({username: "BULL", password: "ash"});
             expect(res).to.have.status(401);
             expect(res.body).to.eql(createError("LoginIncorrect"));
         });
 
         it("No username and password provided", async function(){
-            const res = await chai.request(server).post("/login").send({});
+            const res = await request.execute(server).post("/login").send({});
             expect(res).to.have.status(400);
             expect(res.body).to.eql(createError("LoginMissing"));
         });
@@ -99,7 +99,7 @@ describe("Account endpoints", function(){
 
     describe("/signup", function(){
         it("Valid signup", async function(){
-            const res = await chai.request(server).post("/signup").send({username: TEST_USERNAME_SIGNUP, password: TEST_PASSWORD});
+            const res = await request.execute(server).post("/signup").send({username: TEST_USERNAME_SIGNUP, password: TEST_PASSWORD});
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("object");
             expect(res.body).to.have.keys(["token", "username"]);
@@ -110,7 +110,7 @@ describe("Account endpoints", function(){
         });
 
         it("Username and password are too short", async function(){
-            const res = await chai.request(server).post("/signup").send({username: "/", password: "/"});
+            const res = await request.execute(server).post("/signup").send({username: "/", password: "/"});
             expect(res).to.have.status(400);
             expect(res.body).to.eql(createError("SignupShortUsername"));
 
@@ -121,7 +121,7 @@ describe("Account endpoints", function(){
         it("Username and password are too long", async function(){
             const username = "bulldarrylelprimofrankash";
             const password = "/////////////////////////////////////////////////////////////////////////////////////////////////////";
-            const res = await chai.request(server).post("/signup").send({username: username, password: password});
+            const res = await request.execute(server).post("/signup").send({username: username, password: password});
             expect(res).to.have.status(400);
             expect(res.body).to.eql(createError("SignupLongUsername"));
 
@@ -132,7 +132,7 @@ describe("Account endpoints", function(){
         it("Username contains invalid characters", async function(){
             const username = " \u00a0\u200b\u2800\u3164Otis";
             const password = "password";
-            const res = await chai.request(server).post("/signup").send({username: username, password: password});
+            const res = await request.execute(server).post("/signup").send({username: username, password: password});
             expect(res).to.have.status(400);
             expect(res.body).to.eql(createError("SignupInvalidUsername"));
 
@@ -143,10 +143,10 @@ describe("Account endpoints", function(){
         it("Username is taken", async function(){
             await connection.query(`DELETE from ${tables.users} WHERE username = ?;`, [TEST_USERNAME_DUPLICATE]);
 
-            const res1 = await chai.request(server).post("/signup").send({username: TEST_USERNAME_DUPLICATE, password: TEST_PASSWORD});
+            const res1 = await request.execute(server).post("/signup").send({username: TEST_USERNAME_DUPLICATE, password: TEST_PASSWORD});
             expect(res1).to.have.status(200);
 
-            const res2 = await chai.request(server).post("/signup").send({username: TEST_USERNAME_DUPLICATE, password: TEST_PASSWORD});
+            const res2 = await request.execute(server).post("/signup").send({username: TEST_USERNAME_DUPLICATE, password: TEST_PASSWORD});
             expect(res2).to.have.status(401);
             expect(res2.body).to.eql({error: {title: "Error", detail: "Username is already taken.", userDetail: "Username is already taken."}});
 
@@ -156,7 +156,7 @@ describe("Account endpoints", function(){
         });
 
         it("No username and password provided", async function(){
-            const res = await chai.request(server).post("/signup").send({});
+            const res = await request.execute(server).post("/signup").send({});
             expect(res).to.have.status(400);
             expect(res.body).to.eql(createError("LoginMissing"));
         });
@@ -175,7 +175,7 @@ describe("Account endpoints", function(){
         });
 
         it("Update theme only", async function(){
-            const res = await chai.request(server).post("/update").auth(TEST_TOKEN_UPDATE, {type: "bearer"})
+            const res = await request.execute(server).post("/update").auth(TEST_TOKEN_UPDATE, {type: "bearer"})
             .send({menuTheme: newTheme});
             expect(res).to.have.status(200);
             expect(res.body.message).to.equal("Account successfully updated.");
@@ -188,7 +188,7 @@ describe("Account endpoints", function(){
         });
 
         it("Update password only", async function(){
-            const res = await chai.request(server).post("/update").auth(TEST_TOKEN_UPDATE, {type: "bearer"})
+            const res = await request.execute(server).post("/update").auth(TEST_TOKEN_UPDATE, {type: "bearer"})
             .send({currentPassword: TEST_PASSWORD, newPassword: newPassword});
             expect(res).to.have.status(200);
             expect(res.body.message).to.equal("Account successfully updated.");
@@ -202,7 +202,7 @@ describe("Account endpoints", function(){
         });
 
         it("Update both theme and password", async function(){
-            const res = await chai.request(server).post("/update").auth(TEST_TOKEN_UPDATE, {type: "bearer"})
+            const res = await request.execute(server).post("/update").auth(TEST_TOKEN_UPDATE, {type: "bearer"})
             .send({currentPassword: TEST_PASSWORD, newPassword: newPassword, menuTheme: newTheme});
             expect(res).to.have.status(200);
             expect(res.body.message).to.equal("Account successfully updated.");
@@ -216,7 +216,7 @@ describe("Account endpoints", function(){
         });
 
         it("No data to update provided", async function(){
-            const res = await chai.request(server).post("/update").auth(TEST_TOKEN_UPDATE, {type: "bearer"})
+            const res = await request.execute(server).post("/update").auth(TEST_TOKEN_UPDATE, {type: "bearer"})
             .send({currentPassword: TEST_PASSWORD});
             expect(res).to.have.status(200);
             expect(res.body.message).to.equal("Account successfully updated.");
@@ -229,7 +229,7 @@ describe("Account endpoints", function(){
         });
 
         it("New password is too short", async function(){
-            const res = await chai.request(server).post("/update").auth(TEST_TOKEN_UPDATE, {type: "bearer"})
+            const res = await request.execute(server).post("/update").auth(TEST_TOKEN_UPDATE, {type: "bearer"})
             .send({currentPassword: TEST_PASSWORD, newPassword: "a"});
             expect(res).to.have.status(400);
             expect(res.body).to.eql(createError("UpdateShortPassword"));
@@ -242,7 +242,7 @@ describe("Account endpoints", function(){
         });
 
         it("Incorrect current password given when updating password", async function(){
-            const res = await chai.request(server).post("/update").auth(TEST_TOKEN_UPDATE, {type: "bearer"})
+            const res = await request.execute(server).post("/update").auth(TEST_TOKEN_UPDATE, {type: "bearer"})
             .send({currentPassword: "incorrect password", newPassword: newPassword});
             expect(res).to.have.status(401);
             expect(res.body).to.eql(createError("UpdateIncorrect"));
@@ -255,7 +255,7 @@ describe("Account endpoints", function(){
         });
 
         it("Current password not given when updating password", async function(){
-            const res = await chai.request(server).post("/update").auth(TEST_TOKEN_UPDATE, {type: "bearer"})
+            const res = await request.execute(server).post("/update").auth(TEST_TOKEN_UPDATE, {type: "bearer"})
             .send({newPassword: newPassword});
             expect(res).to.have.status(400);
             expect(res.body).to.eql(createError("UpdateMissing"));
@@ -268,7 +268,7 @@ describe("Account endpoints", function(){
         });
 
         it("Current password not given when updating password and theme", async function(){
-            const res = await chai.request(server).post("/update").auth(TEST_TOKEN_UPDATE, {type: "bearer"})
+            const res = await request.execute(server).post("/update").auth(TEST_TOKEN_UPDATE, {type: "bearer"})
             .send({newPassword: newPassword, menuTheme: newTheme});
             expect(res).to.have.status(400);
             expect(res.body).to.eql(createError("UpdateMissing"));

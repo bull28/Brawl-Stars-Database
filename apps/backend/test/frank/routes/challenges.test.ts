@@ -1,5 +1,5 @@
-import chai, {expect} from "chai";
-import "chai-http";
+import {expect} from "chai";
+import {request} from "chai-http";
 import {Connection} from "mysql2/promise";
 import server from "../../../frank/index";
 import {createError} from "../../../frank/modules/utils";
@@ -31,7 +31,7 @@ describe("Challenge endpoints", function(){
     });
 
     it("/challenges", async function(){
-        const res = await chai.request(server).get("/challenges").auth(TEST_TOKEN, {type: "bearer"});
+        const res = await request.execute(server).get("/challenges").auth(TEST_TOKEN, {type: "bearer"});
 
         expect(res).to.have.status(200);
         expect(res.body).to.be.an("object");
@@ -58,7 +58,7 @@ describe("Challenge endpoints", function(){
         });
 
         it("Valid active challenge", async function(){
-            const res = await chai.request(server).post("/challenges/get").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/challenges/get").auth(TEST_TOKEN, {type: "bearer"})
             .send({key: "test1"});
 
             expect(res).to.have.status(200);
@@ -78,7 +78,7 @@ describe("Challenge endpoints", function(){
         });
 
         it("Challenge already accepted", async function(){
-            const res = await chai.request(server).post("/challenges/get").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/challenges/get").auth(TEST_TOKEN, {type: "bearer"})
             .send({key: "test2"});
             expect(res).to.have.status(403);
             expect(res.body).to.eql(createError("ChallengesAccepted"));
@@ -96,7 +96,7 @@ describe("Challenge endpoints", function(){
         it("Challenge with user preferences", async function(){
             const skins = ["belle_coral", "mandy_harvest", "amber_rollerskates"];
 
-            const res = await chai.request(server).post("/challenges/get").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/challenges/get").auth(TEST_TOKEN, {type: "bearer"})
             .send({key: "test3", settings: {playerSkins: skins}});
 
             expect(res).to.have.status(200);
@@ -118,14 +118,14 @@ describe("Challenge endpoints", function(){
         });
 
         it("Challenge key not provided", async function(){
-            const res = await chai.request(server).post("/challenges/get").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/challenges/get").auth(TEST_TOKEN, {type: "bearer"})
             .send({});
             expect(res).to.have.status(400);
             expect(res.body).to.eql(createError("ChallengesGetMissing"));
         });
 
         it("Challenge with key does not exist", async function(){
-            const res = await chai.request(server).post("/challenges/get").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/challenges/get").auth(TEST_TOKEN, {type: "bearer"})
             .send({key: "not-a-challenge"});
             expect(res).to.have.status(404);
             expect(res.body).to.eql(createError("ChallengesGetNotFound"));
@@ -138,7 +138,7 @@ describe("Challenge endpoints", function(){
         });
 
         it("Challenge successfully started", async function(){
-            const res = await chai.request(server).post("/challenges/start").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/challenges/start").auth(TEST_TOKEN, {type: "bearer"})
             .send({challengeid: TEST_CHALLENGE_ID});
 
             expect(res).to.have.status(200);
@@ -155,7 +155,7 @@ describe("Challenge endpoints", function(){
         });
 
         it("Invalid challenge ID", async function(){
-            const res = await chai.request(server).post("/challenges/start").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/challenges/start").auth(TEST_TOKEN, {type: "bearer"})
             .send({challengeid: true});
             expect(res).to.have.status(400);
             expect(res.body).to.eql(createError("ChallengesStartMissing"));
@@ -165,7 +165,7 @@ describe("Challenge endpoints", function(){
         });
 
         it("Challenge does not exist", async function(){
-            const res = await chai.request(server).post("/challenges/start").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/challenges/start").auth(TEST_TOKEN, {type: "bearer"})
             .send({challengeid: "not a challenge"});
             expect(res).to.have.status(404);
             expect(res.body).to.eql(createError("ChallengesStartNotFound"));

@@ -1,5 +1,5 @@
-import chai, {expect} from "chai";
-import "chai-http";
+import {expect} from "chai";
+import {request} from "chai-http";
 import {Connection} from "mysql2/promise";
 import allSkins from "../../../bull/data/brawlers_data.json";
 import {IMAGE_FILE_EXTENSION, PIN_IMAGE_DIR} from "../../../bull/data/constants";
@@ -50,7 +50,7 @@ describe("Trade Modification endpoints", function(){
         });
 
         it("Valid trade", async function(){
-            const res = await chai.request(server).post("/trade/create").auth(TEST_TOKEN_CREATE, {type: "bearer"})
+            const res = await request.execute(server).post("/trade/create").auth(TEST_TOKEN_CREATE, {type: "bearer"})
             .send({offer: validOffer, request: validRequest, searchByName: true});
 
             expect(res).to.have.status(200);
@@ -59,14 +59,14 @@ describe("Trade Modification endpoints", function(){
         });
 
         it("Trade duration too long", async function(){
-            const res = await chai.request(server).post("/trade/create").auth(TEST_TOKEN_CREATE, {type: "bearer"})
+            const res = await request.execute(server).post("/trade/create").auth(TEST_TOKEN_CREATE, {type: "bearer"})
             .send({offer: validOffer, request: validRequest, searchByName: true, tradeDurationHours: 1656});
             expect(res).to.have.status(403);
             expect(res.text).to.equal("Cannot create trades outside the range of 1 - 336 hours.");
         });
 
         it("Missing offer and request", async function(){
-            const res = await chai.request(server).post("/trade/create").auth(TEST_TOKEN_CREATE, {type: "bearer"})
+            const res = await request.execute(server).post("/trade/create").auth(TEST_TOKEN_CREATE, {type: "bearer"})
             .send({searchByName: true});
             expect(res).to.have.status(400);
             expect(res.text).to.equal("Offer or request is missing.");
@@ -83,26 +83,26 @@ describe("Trade Modification endpoints", function(){
             }
             expect(invalidTrade).to.have.lengthOf.at.least(11);
 
-            const res1 = await chai.request(server).post("/trade/create").auth(TEST_TOKEN_CREATE, {type: "bearer"})
+            const res1 = await request.execute(server).post("/trade/create").auth(TEST_TOKEN_CREATE, {type: "bearer"})
             .send({offer: invalidTrade, request: [], searchByName: true});
             expect(res1).to.have.status(400);
             expect(res1.text).to.equal("Too many pins in request or offer.");
 
-            const res2 = await chai.request(server).post("/trade/create").auth(TEST_TOKEN_CREATE, {type: "bearer"})
+            const res2 = await request.execute(server).post("/trade/create").auth(TEST_TOKEN_CREATE, {type: "bearer"})
             .send({offer: [], request: invalidTrade, searchByName: true});
             expect(res2).to.have.status(400);
             expect(res2.text).to.equal("Too many pins in request or offer.");
         });
 
         it("No pins in both offer and request", async function(){
-            const res = await chai.request(server).post("/trade/create").auth(TEST_TOKEN_CREATE, {type: "bearer"})
+            const res = await request.execute(server).post("/trade/create").auth(TEST_TOKEN_CREATE, {type: "bearer"})
             .send({offer: [], request: [], searchByName: true});
             expect(res).to.have.status(400);
             expect(res.text).to.equal("Trade does not contain any pins being exchanged.");
         });
 
         it("Same pin in both offer and request", async function(){
-            const res = await chai.request(server).post("/trade/create").auth(TEST_TOKEN_CREATE, {type: "bearer"})
+            const res = await request.execute(server).post("/trade/create").auth(TEST_TOKEN_CREATE, {type: "bearer"})
             .send({offer: validOffer, request: validOffer, searchByName: true});
             expect(res).to.have.status(400);
             expect(res.text).to.equal("Cannot have the same pin in both offer and request.");
@@ -112,7 +112,7 @@ describe("Trade Modification endpoints", function(){
             const expensiveTrade = [
                 {brawler: "bull", pin: "bull_facepalm", amount: 535}
             ];
-            const res = await chai.request(server).post("/trade/create").auth(TEST_TOKEN_CREATE, {type: "bearer"})
+            const res = await request.execute(server).post("/trade/create").auth(TEST_TOKEN_CREATE, {type: "bearer"})
             .send({offer: expensiveTrade, request: validRequest, searchByName: true});
             expect(res).to.have.status(403);
             expect(res.text).to.equal("Not enough Trade Credits. Open Brawl Boxes to get more.");
@@ -122,7 +122,7 @@ describe("Trade Modification endpoints", function(){
             const notEnoughPins = [
                 {brawler: "bull", pin: "bull_default", amount: 2}
             ];
-            const res = await chai.request(server).post("/trade/create").auth(TEST_TOKEN_CREATE, {type: "bearer"})
+            const res = await request.execute(server).post("/trade/create").auth(TEST_TOKEN_CREATE, {type: "bearer"})
             .send({offer: notEnoughPins, request: validRequest, searchByName: true});
             expect(res).to.have.status(403);
             expect(res.text).to.equal("You do not have enough copies of the pins required to create this trade.");
@@ -158,7 +158,7 @@ describe("Trade Modification endpoints", function(){
         });
 
         it("Valid trade", async function(){
-            const res = await chai.request(server).post("/trade/accept").auth(TEST_TOKEN_ACCEPT, {type: "bearer"})
+            const res = await request.execute(server).post("/trade/accept").auth(TEST_TOKEN_ACCEPT, {type: "bearer"})
             .send({tradeid: 1});
 
             expect(res).to.have.status(200);
@@ -174,35 +174,35 @@ describe("Trade Modification endpoints", function(){
         });
 
         it("No trade ID provided", async function(){
-            const res = await chai.request(server).post("/trade/accept").auth(TEST_TOKEN_ACCEPT, {type: "bearer"})
+            const res = await request.execute(server).post("/trade/accept").auth(TEST_TOKEN_ACCEPT, {type: "bearer"})
             .send({});
             expect(res).to.have.status(400);
             expect(res.text).to.equal("Trade ID is missing.");
         });
 
         it("Accepting own trade", async function(){
-            const res = await chai.request(server).post("/trade/accept").auth(TEST_TOKEN_ACCEPT, {type: "bearer"})
+            const res = await request.execute(server).post("/trade/accept").auth(TEST_TOKEN_ACCEPT, {type: "bearer"})
             .send({tradeid: 2});
             expect(res).to.have.status(400);
             expect(res.text).to.equal("You cannot accept your own trade!");
         });
 
         it("Not enough trade credits", async function(){
-            const res = await chai.request(server).post("/trade/accept").auth(TEST_TOKEN_ACCEPT, {type: "bearer"})
+            const res = await request.execute(server).post("/trade/accept").auth(TEST_TOKEN_ACCEPT, {type: "bearer"})
             .send({tradeid: 3});
             expect(res).to.have.status(403);
             expect(res.text).to.equal("Not enough Trade Credits. Open Brawl Boxes to get more.");
         });
 
         it("Not enough copies of pin being requested", async function(){
-            const res = await chai.request(server).post("/trade/accept").auth(TEST_TOKEN_ACCEPT, {type: "bearer"})
+            const res = await request.execute(server).post("/trade/accept").auth(TEST_TOKEN_ACCEPT, {type: "bearer"})
             .send({tradeid: 4});
             expect(res).to.have.status(403);
             expect(res.text).to.equal("You do not have enough copies of the pins required to accept this trade.");
         });
 
         it("Accepted pin brawler not unlocked", async function(){
-            const res = await chai.request(server).post("/trade/accept").auth(TEST_TOKEN_ACCEPT, {type: "bearer"})
+            const res = await request.execute(server).post("/trade/accept").auth(TEST_TOKEN_ACCEPT, {type: "bearer"})
             .send({tradeid: 5});
             expect(res).to.have.status(403);
             expect(res.text).to.equal("You do not have the necessary brawlers unlocked to accept the trade.");
@@ -230,7 +230,7 @@ describe("Trade Modification endpoints", function(){
         });
 
         it("Complete trade", async function(){
-            const res = await chai.request(server).post("/trade/close").auth(TEST_TOKEN_CREATE, {type: "bearer"})
+            const res = await request.execute(server).post("/trade/close").auth(TEST_TOKEN_CREATE, {type: "bearer"})
             .send({tradeid: 1});
 
             expect(res).to.have.status(200);
@@ -252,7 +252,7 @@ describe("Trade Modification endpoints", function(){
             expect(pin0.rarityColor).to.equal("#000000");
         });
         it("Cancelled trade", async function(){
-            const res = await chai.request(server).post("/trade/close").auth(TEST_TOKEN_CREATE, {type: "bearer"})
+            const res = await request.execute(server).post("/trade/close").auth(TEST_TOKEN_CREATE, {type: "bearer"})
             .send({tradeid: 2});
 
             expect(res).to.have.status(200);
@@ -275,21 +275,21 @@ describe("Trade Modification endpoints", function(){
         });
 
         it("No trade ID provided", async function(){
-            const res = await chai.request(server).post("/trade/close").auth(TEST_TOKEN_CREATE, {type: "bearer"})
+            const res = await request.execute(server).post("/trade/close").auth(TEST_TOKEN_CREATE, {type: "bearer"})
             .send({});
             expect(res).to.have.status(400);
             expect(res.text).to.equal("Trade ID is missing.");
         });
 
         it("Not the creator of the trade", async function(){
-            const res = await chai.request(server).post("/trade/close").auth(TEST_TOKEN_ACCEPT, {type: "bearer"})
+            const res = await request.execute(server).post("/trade/close").auth(TEST_TOKEN_ACCEPT, {type: "bearer"})
             .send({tradeid: 3});
             expect(res).to.have.status(401);
             expect(res.text).to.equal("You did not create this trade!");
         });
 
         it("Accepted pin brawler not unlocked", async function(){
-            const res = await chai.request(server).post("/trade/close").auth(TEST_TOKEN_CREATE, {type: "bearer"})
+            const res = await request.execute(server).post("/trade/close").auth(TEST_TOKEN_CREATE, {type: "bearer"})
             .send({tradeid: 3});
             expect(res).to.have.status(403);
             expect(res.text).to.equal("You do not have the necessary brawlers unlocked to accept the trade.");

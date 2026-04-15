@@ -1,5 +1,5 @@
-import chai, {expect} from "chai";
-import "chai-http";
+import {expect} from "chai";
+import {request} from "chai-http";
 import {Connection} from "mysql2/promise";
 import {IMAGE_FILE_EXTENSION, AVATAR_IMAGE_DIR, THEME_IMAGE_DIR, THEME_SPECIAL_DIR, SCENE_IMAGE_DIR, TOKENS_PER_REWARD, MAX_REWARD_STACK} from "../../../bull/data/constants";
 import {freeAvatarFiles, specialAvatarFiles} from "../../../bull/modules/fileloader";
@@ -44,7 +44,7 @@ describe("Account endpoints", function(){
 
     describe("/login", function(){
         it("Valid login", async function(){
-            const res = await chai.request(server).post("/login").send({username: TEST_USERNAME, password: TEST_PASSWORD});
+            const res = await request.execute(server).post("/login").send({username: TEST_USERNAME, password: TEST_PASSWORD});
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("object");
             expect(res.body).to.have.keys(["token", "username"]);
@@ -52,13 +52,13 @@ describe("Account endpoints", function(){
         });
 
         it("Incorrect username", async function(){
-            const res = await chai.request(server).post("/login").send({username: "BULL", password: "ash"});
+            const res = await request.execute(server).post("/login").send({username: "BULL", password: "ash"});
             expect(res).to.have.status(401);
             expect(res.text).to.equal("Incorrect username or password.");
         });
 
         it("No username and password provided", async function(){
-            const res = await chai.request(server).post("/login").send({});
+            const res = await request.execute(server).post("/login").send({});
             expect(res).to.have.status(400);
             expect(res.text).to.equal("Username or password is missing.");
         });
@@ -66,7 +66,7 @@ describe("Account endpoints", function(){
 
     describe("/signup", function(){
         it("Valid signup", async function(){
-            const res = await chai.request(server).post("/signup").send({username: "signup", password: TEST_PASSWORD});
+            const res = await request.execute(server).post("/signup").send({username: "signup", password: TEST_PASSWORD});
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("object");
             expect(res.body).to.have.keys(["token", "username"]);
@@ -74,7 +74,7 @@ describe("Account endpoints", function(){
         });
 
         it("Username and password are too short", async function(){
-            const res = await chai.request(server).post("/signup").send({username: "/", password: "/"});
+            const res = await request.execute(server).post("/signup").send({username: "/", password: "/"});
             expect(res).to.have.status(400);
             expect(res.text).to.equal("Username or password is too short. Minimum username length is 2 and password length is 3.");
         });
@@ -82,13 +82,13 @@ describe("Account endpoints", function(){
         it("Username and password are too long", async function(){
             const username = "///////////////////////////////";
             const password = "/////////////////////////////////////////////////////////////////////////////////////////////////////";
-            const res = await chai.request(server).post("/signup").send({username: username, password: password});
+            const res = await request.execute(server).post("/signup").send({username: username, password: password});
             expect(res).to.have.status(400);
             expect(res.text).to.equal("Username or password is too long. Maximum username length is 30 and password length is 100.");
         });
 
         it("No username and password provided", async function(){
-            const res = await chai.request(server).post("/signup").send({});
+            const res = await request.execute(server).post("/signup").send({});
             expect(res).to.have.status(400);
             expect(res.text).to.equal("Username or password is missing.");
         });
@@ -108,7 +108,7 @@ describe("Account endpoints", function(){
         });
 
         it("Update avatar only", async function(){
-            const res = await chai.request(server).post("/update").auth(TEST_TOKEN_UPDATE, {type: "bearer"})
+            const res = await request.execute(server).post("/update").auth(TEST_TOKEN_UPDATE, {type: "bearer"})
             .send({newPassword: "", newAvatar: validAvatarImage});
             expect(res).to.have.status(200);
 
@@ -122,7 +122,7 @@ describe("Account endpoints", function(){
         });
 
         it("Update password only", async function(){
-            const res = await chai.request(server).post("/update").auth(TEST_TOKEN_UPDATE, {type: "bearer"})
+            const res = await request.execute(server).post("/update").auth(TEST_TOKEN_UPDATE, {type: "bearer"})
             .send({currentPassword: TEST_PASSWORD, newPassword: newPassword, newAvatar: ""});
             expect(res).to.have.status(200);
 
@@ -134,7 +134,7 @@ describe("Account endpoints", function(){
         });
 
         it("Update both avatar and password", async function(){
-            const res = await chai.request(server).post("/update").auth(TEST_TOKEN_UPDATE, {type: "bearer"})
+            const res = await request.execute(server).post("/update").auth(TEST_TOKEN_UPDATE, {type: "bearer"})
             .send({currentPassword: TEST_PASSWORD, newPassword: newPassword, newAvatar: validAvatarImage});
             expect(res).to.have.status(200);
 
@@ -147,35 +147,35 @@ describe("Account endpoints", function(){
         });
 
         it("No avatar or password provided", async function(){
-            const res = await chai.request(server).post("/update").auth(TEST_TOKEN_UPDATE, {type: "bearer"})
+            const res = await request.execute(server).post("/update").auth(TEST_TOKEN_UPDATE, {type: "bearer"})
             .send({currentPassword: TEST_PASSWORD});
             expect(res).to.have.status(400);
             expect(res.text).to.equal("New password or new avatar is missing.");
         });
 
         it("New password is too short", async function(){
-            const res = await chai.request(server).post("/update").auth(TEST_TOKEN_UPDATE, {type: "bearer"})
+            const res = await request.execute(server).post("/update").auth(TEST_TOKEN_UPDATE, {type: "bearer"})
             .send({currentPassword: TEST_PASSWORD, newPassword: "a", newAvatar: ""});
             expect(res).to.have.status(400);
             expect(res.text).to.equal("New password is too short. Minimum password length is 3.");
         });
 
         it("Incorrect current password given when updating password", async function(){
-            const res = await chai.request(server).post("/update").auth(TEST_TOKEN_UPDATE, {type: "bearer"})
+            const res = await request.execute(server).post("/update").auth(TEST_TOKEN_UPDATE, {type: "bearer"})
             .send({currentPassword: "incorrect password", newPassword: newPassword, newAvatar: ""});
             expect(res).to.have.status(401);
             expect(res.text).to.equal("Current password is incorrect.");
         });
 
         it("Current password not given when updating password", async function(){
-            const res = await chai.request(server).post("/update").auth(TEST_TOKEN_UPDATE, {type: "bearer"})
+            const res = await request.execute(server).post("/update").auth(TEST_TOKEN_UPDATE, {type: "bearer"})
             .send({newPassword: newPassword, newAvatar: ""});
             expect(res).to.have.status(400);
             expect(res.text).to.equal("Current password is required to change password.");
         });
 
         it("Not allowed to use avatar", async function(){
-            const res = await chai.request(server).post("/update").auth(TEST_TOKEN_UPDATE, {type: "bearer"})
+            const res = await request.execute(server).post("/update").auth(TEST_TOKEN_UPDATE, {type: "bearer"})
             .send({newPassword: "", newAvatar: lockedAvatarImage});
             expect(res).to.have.status(403);
             expect(res.text).to.equal("You are not allowed to use that avatar.");
@@ -183,23 +183,23 @@ describe("Account endpoints", function(){
     });
 
     it("/avatar", async function(){
-        const res = await chai.request(server).get("/avatar").auth(TEST_TOKEN, {type: "bearer"});
+        const res = await request.execute(server).get("/avatar").auth(TEST_TOKEN, {type: "bearer"});
         expect(res).to.have.status(200);
     });
 
     it("/theme", async function(){
-        const res = await chai.request(server).get("/theme").auth(TEST_TOKEN, {type: "bearer"});
+        const res = await request.execute(server).get("/theme").auth(TEST_TOKEN, {type: "bearer"});
         expect(res).to.have.status(200);
     });
 
     it("/cosmetic GET", async function(){
-        const res = await chai.request(server).get("/cosmetic").auth(TEST_TOKEN, {type: "bearer"});
+        const res = await request.execute(server).get("/cosmetic").auth(TEST_TOKEN, {type: "bearer"});
         expect(res).to.have.status(200);
     });
 
     describe("/cosmetic POST", function(){
         it("Valid cosmetics", async function(){
-            const res = await chai.request(server).post("/cosmetic").send({
+            const res = await request.execute(server).post("/cosmetic").send({
                 setCosmetics: {
                     background: THEME_SPECIAL_DIR + "retro_background" + IMAGE_FILE_EXTENSION,
                     icon: THEME_SPECIAL_DIR + "retro_icon" + IMAGE_FILE_EXTENSION,
@@ -218,7 +218,7 @@ describe("Account endpoints", function(){
         });
 
         it("Invalid cosmetics", async function(){
-            const res = await chai.request(server).post("/cosmetic").send({
+            const res = await request.execute(server).post("/cosmetic").send({
                 setCosmetics: {
                     background: "background",
                     icon: "icon",
@@ -235,7 +235,7 @@ describe("Account endpoints", function(){
 
     describe("/cosmetic/search/:name", function(){
         it("Free theme", async function(){
-            const res = await chai.request(server).get("/cosmetic/search/default");
+            const res = await request.execute(server).get("/cosmetic/search/default");
             expect(res).to.have.status(200);
             expect(res.body).to.eql({
                 background: THEME_IMAGE_DIR + "free/default_background" + IMAGE_FILE_EXTENSION,
@@ -247,7 +247,7 @@ describe("Account endpoints", function(){
         });
 
         it("Special theme", async function(){
-            const res = await chai.request(server).get("/cosmetic/search/deepsea");
+            const res = await request.execute(server).get("/cosmetic/search/deepsea");
             expect(res).to.have.status(200);
             expect(res.body).to.eql({
                 background: THEME_SPECIAL_DIR + "deepsea_background" + IMAGE_FILE_EXTENSION,
@@ -259,7 +259,7 @@ describe("Account endpoints", function(){
         });
 
         it("Theme does not exist", async function(){
-            const res = await chai.request(server).get("/cosmetic/search/o");
+            const res = await request.execute(server).get("/cosmetic/search/o");
             expect(res).to.have.status(200);
             expect(res.body).to.eql({
                 background: "",
@@ -275,7 +275,7 @@ describe("Account endpoints", function(){
         it("Get tokens available with no token doubler", async function(){
             await connection.query(`UPDATE ${tables.users} SET last_claim = ?, token_doubler = ? WHERE username = ?`, [1600000000000, 0, TEST_USERNAME]);
 
-            const res = await chai.request(server).post("/claimtokens").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/claimtokens").auth(TEST_TOKEN, {type: "bearer"})
             .send({claim: false});
 
             expect(res).to.have.status(200);
@@ -290,7 +290,7 @@ describe("Account endpoints", function(){
         it("Get tokens available with token doubler", async function(){
             await connection.query(`UPDATE ${tables.users} SET last_claim = ?, token_doubler = ? WHERE username = ?`, [1600000000000, 300, TEST_USERNAME]);
 
-            const res = await chai.request(server).post("/claimtokens").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/claimtokens").auth(TEST_TOKEN, {type: "bearer"})
             .send({claim: false});
 
             expect(res).to.have.status(200);
@@ -305,7 +305,7 @@ describe("Account endpoints", function(){
         it("Claim tokens with no token doubler", async function(){
             await connection.query(`UPDATE ${tables.users} SET last_claim = ?, token_doubler = ? WHERE username = ?`, [1600000000000, 0, TEST_USERNAME]);
 
-            const res = await chai.request(server).post("/claimtokens").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/claimtokens").auth(TEST_TOKEN, {type: "bearer"})
             .send({claim: true});
 
             expect(res).to.have.status(200);
@@ -320,7 +320,7 @@ describe("Account endpoints", function(){
         it("Claim tokens with token doubler", async function(){
             await connection.query(`UPDATE ${tables.users} SET last_claim = ?, token_doubler = ? WHERE username = ?`, [1600000000000, 300, TEST_USERNAME]);
 
-            const res = await chai.request(server).post("/claimtokens").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/claimtokens").auth(TEST_TOKEN, {type: "bearer"})
             .send({claim: true});
 
             expect(res).to.have.status(200);

@@ -1,5 +1,5 @@
-import chai, {expect} from "chai";
-import "chai-http";
+import {expect} from "chai";
+import {request} from "chai-http";
 import {Connection} from "mysql2/promise";
 import accessoryList from "../../../frank/data/accessories_data.json";
 import server from "../../../frank/index";
@@ -29,7 +29,7 @@ describe("Accessory endpoints", function(){
     });
 
     it("/accessories", async function(){
-        const res = await chai.request(server).get("/accessories").auth(TEST_TOKEN, {type: "bearer"});
+        const res = await request.execute(server).get("/accessories").auth(TEST_TOKEN, {type: "bearer"});
         expect(res).to.have.status(200);
         expect(res.body).to.be.an("object");
         expect(res.body.accessories).to.be.an("array");
@@ -37,7 +37,7 @@ describe("Accessory endpoints", function(){
     });
 
     it("/accessories/shop", async function(){
-        const res = await chai.request(server).get("/accessories/shop").auth(TEST_TOKEN, {type: "bearer"});
+        const res = await request.execute(server).get("/accessories/shop").auth(TEST_TOKEN, {type: "bearer"});
         expect(res).to.have.status(200);
         expect(res.body).to.be.an("object");
         expect(res.body.items).to.be.an("array");
@@ -73,7 +73,7 @@ describe("Accessory endpoints", function(){
                 [initialCoins, Buffer.from(buffer), TEST_USERNAME]
             );
 
-            const res = await chai.request(server).post("/accessories/claim").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/accessories/claim").auth(TEST_TOKEN, {type: "bearer"})
             .send({accessory: accessory.name});
 
             expect(res).to.have.status(200);
@@ -97,7 +97,7 @@ describe("Accessory endpoints", function(){
                 [initialMastery, initialCoins, Buffer.from(buffer), TEST_USERNAME]
             );
 
-            const res = await chai.request(server).post("/accessories/claim").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/accessories/claim").auth(TEST_TOKEN, {type: "bearer"})
             .send({accessory: shopItem.name, buyFromShop: true});
 
             expect(res).to.have.status(200);
@@ -121,7 +121,7 @@ describe("Accessory endpoints", function(){
                 [initialMastery, initialCoins, Buffer.from(buffer), TEST_USERNAME]
             );
 
-            const res = await chai.request(server).post("/accessories/claim").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/accessories/claim").auth(TEST_TOKEN, {type: "bearer"})
             .send({accessory: shopItem.name, buyFromShop: true});
 
             expect(res).to.have.status(200);
@@ -142,7 +142,7 @@ describe("Accessory endpoints", function(){
             view.setUint32(index * 4, 0x00000000, true);
             await connection.query(`UPDATE ${tables.users} SET accessories = ? WHERE username = ?;`, [Buffer.from(buffer), TEST_USERNAME]);
 
-            const res = await chai.request(server).post("/accessories/claim").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/accessories/claim").auth(TEST_TOKEN, {type: "bearer"})
             .send({accessory: accessory.name});
             expect(res).to.have.status(403);
             expect(res.body).to.eql(createError("AccessoriesClaimDenied"));
@@ -158,7 +158,7 @@ describe("Accessory endpoints", function(){
             view.setUint32(index * 4, 0x80000000, true);
             await connection.query(`UPDATE ${tables.users} SET accessories = ? WHERE username = ?;`, [Buffer.from(buffer), TEST_USERNAME]);
 
-            const res = await chai.request(server).post("/accessories/claim").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/accessories/claim").auth(TEST_TOKEN, {type: "bearer"})
             .send({accessory: accessory.name});
             expect(res).to.have.status(403);
             expect(res.body).to.eql(createError("AccessoriesAlreadyUnlocked"));
@@ -174,7 +174,7 @@ describe("Accessory endpoints", function(){
             view.setUint32(index * 4, 0x00000000, true);
             await connection.query(`UPDATE ${tables.users} SET accessories = ? WHERE username = ?;`, [Buffer.from(buffer), TEST_USERNAME]);
 
-            const res = await chai.request(server).post("/accessories/claim").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/accessories/claim").auth(TEST_TOKEN, {type: "bearer"})
             .send({accessory: accessory.name});
             expect(res).to.have.status(403);
             expect(res.body).to.eql(createError("AccessoriesClaimDenied"));
@@ -193,7 +193,7 @@ describe("Accessory endpoints", function(){
                 [0, Buffer.from(buffer), TEST_USERNAME]
             );
 
-            const res = await chai.request(server).post("/accessories/claim").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/accessories/claim").auth(TEST_TOKEN, {type: "bearer"})
             .send({accessory: shopItem.name, buyFromShop: true});
             expect(res).to.have.status(403);
             expect(res.body).to.eql(createError("AccessoriesClaimDenied"));
@@ -212,7 +212,7 @@ describe("Accessory endpoints", function(){
                 [initialMastery, 0, Buffer.from(buffer), TEST_USERNAME]
             );
 
-            const res = await chai.request(server).post("/accessories/claim").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/accessories/claim").auth(TEST_TOKEN, {type: "bearer"})
             .send({accessory: shopItem.name, buyFromShop: true});
             expect(res).to.have.status(403);
             expect(res.body).to.eql(createError("AccessoriesCannotAfford"));
@@ -225,14 +225,14 @@ describe("Accessory endpoints", function(){
         });
 
         it("Accesory does not exist.", async function(){
-            const res = await chai.request(server).post("/accessories/claim").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/accessories/claim").auth(TEST_TOKEN, {type: "bearer"})
             .send({accessory: "not an accessory"});
             expect(res).to.have.status(404);
             expect(res.body).to.eql(createError("AccessoriesNotFound"));
         });
 
         it("No accessory provided", async function(){
-            const res = await chai.request(server).post("/accessories/claim").auth(TEST_TOKEN, {type: "bearer"})
+            const res = await request.execute(server).post("/accessories/claim").auth(TEST_TOKEN, {type: "bearer"})
             .send({});
             expect(res).to.have.status(400);
             expect(res.body).to.eql(createError("AccessoriesClaimMissing"));

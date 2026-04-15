@@ -1,5 +1,5 @@
-import chai, {expect} from "chai";
-import "chai-http";
+import {expect} from "chai";
+import {request} from "chai-http";
 import {Connection} from "mysql2/promise";
 import {IMAGE_FILE_EXTENSION, PIN_IMAGE_DIR} from "../../../bull/data/constants";
 import server from "../../../bull/index";
@@ -43,7 +43,7 @@ describe("Trade Viewing endpoints", function(){
 
     describe("/trade/id", function(){
         it("Trade exists", async function(){
-            const res = await chai.request(server).get("/trade/id").query({tradeid: 1});
+            const res = await request.execute(server).get("/trade/id").query({tradeid: 1});
 
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("object");
@@ -68,12 +68,12 @@ describe("Trade Viewing endpoints", function(){
         });
 
         it("Trade does not exist", async function(){
-            const res = await chai.request(server).get("/trade/id").query({tradeid: 69});
+            const res = await request.execute(server).get("/trade/id").query({tradeid: 69});
             expect(res).to.have.status(404);
         });
 
         it("Invalid trade ID", async function(){
-            const res = await chai.request(server).get("/trade/id").query({tradeid: true});
+            const res = await request.execute(server).get("/trade/id").query({tradeid: true});
             expect(res).to.have.status(400);
             expect(res.text).to.equal("Invalid Trade ID.");
         });
@@ -81,7 +81,7 @@ describe("Trade Viewing endpoints", function(){
 
     describe("/trade/user", function(){
         it("User has trades", async function(){
-            const res = await chai.request(server).post("/trade/user").send({username: TEST_USERNAME_CREATE});
+            const res = await request.execute(server).post("/trade/user").send({username: TEST_USERNAME_CREATE});
 
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("array");
@@ -101,14 +101,14 @@ describe("Trade Viewing endpoints", function(){
         });
 
         it("User has no trades", async function(){
-            const res = await chai.request(server).post("/trade/user").send({username: TEST_USERNAME_ACCEPT});
+            const res = await request.execute(server).post("/trade/user").send({username: TEST_USERNAME_ACCEPT});
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("array");
             expect(res.body).to.have.lengthOf(0);
         });
 
         it("No username provided", async function(){
-            const res = await chai.request(server).post("/trade/user").send({});
+            const res = await request.execute(server).post("/trade/user").send({});
             expect(res).to.have.status(400);
             expect(res.text).to.equal("No username provided.");
         });
@@ -116,7 +116,7 @@ describe("Trade Viewing endpoints", function(){
 
     describe("/trade/all", function(){
         it("No search filters", async function(){
-            const res = await chai.request(server).post("/trade/all").send({});
+            const res = await request.execute(server).post("/trade/all").send({});
 
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("array");
@@ -138,7 +138,7 @@ describe("Trade Viewing endpoints", function(){
         });
 
         it("Sort by expiring soon", async function(){
-            const res = await chai.request(server).post("/trade/all").send({sortMethod: "lowtime"});
+            const res = await request.execute(server).post("/trade/all").send({sortMethod: "lowtime"});
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("array");
             expect(res.body).to.have.lengthOf(3);
@@ -146,7 +146,7 @@ describe("Trade Viewing endpoints", function(){
         });
 
         it("Sort by lowest cost", async function(){
-            const res = await chai.request(server).post("/trade/all").send({sortMethod: "lowcost"});
+            const res = await request.execute(server).post("/trade/all").send({sortMethod: "lowcost"});
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("array");
             expect(res.body).to.have.lengthOf(3);
@@ -154,7 +154,7 @@ describe("Trade Viewing endpoints", function(){
         });
 
         it("Sort by highest cost", async function(){
-            const res = await chai.request(server).post("/trade/all").send({sortMethod: "highcost"});
+            const res = await request.execute(server).post("/trade/all").send({sortMethod: "highcost"});
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("array");
             expect(res.body).to.have.lengthOf(3);
@@ -162,7 +162,7 @@ describe("Trade Viewing endpoints", function(){
         });
 
         it("Filter offer by brawler", async function(){
-            const res = await chai.request(server).post("/trade/all").send({brawler: "bull"});
+            const res = await request.execute(server).post("/trade/all").send({brawler: "bull"});
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("array");
             expect(res.body).to.have.lengthOf(1);
@@ -170,7 +170,7 @@ describe("Trade Viewing endpoints", function(){
         });
 
         it("Filter offer by pin", async function(){
-            const res = await chai.request(server).post("/trade/all").send({pin: "bull_default"});
+            const res = await request.execute(server).post("/trade/all").send({pin: "bull_default"});
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("array");
             expect(res.body).to.have.lengthOf(1);
@@ -178,7 +178,7 @@ describe("Trade Viewing endpoints", function(){
         });
 
         it("Filter matches no trades", async function(){
-            const res = await chai.request(server).post("/trade/all").send({pin: "frank_default"});
+            const res = await request.execute(server).post("/trade/all").send({pin: "frank_default"});
             expect(res).to.have.status(200);
             expect(res.body).to.be.an("array");
             expect(res.body).to.have.lengthOf(0);

@@ -20,28 +20,28 @@
     "license": "ISC",
     "dependencies": {
         "compression": "^1.8.1",
-        "cors": "^2.8.5",
-        "dotenv": "^17.2.3",
-        "express": "^5.1.0",
-        "jsonwebtoken": "^9.0.2",
-        "mysql2": "^3.15.3"
+        "cors": "^2.8.6",
+        "dotenv": "^17.4.2",
+        "express": "^5.2.1",
+        "jsonwebtoken": "^9.0.3",
+        "mysql2": "^3.22.0"
     },
     "devDependencies": {
-        "@swc/cli": "^0.7.9",
-        "@swc/core": "^1.15.1",
-        "@types/chai": "^4.3.19",
+        "@swc/cli": "^0.8.1",
+        "@swc/core": "^1.15.24",
+        "@types/chai": "^5.2.3",
         "@types/compression": "^1.8.1",
         "@types/cors": "^2.8.19",
-        "@types/express": "^5.0.5",
+        "@types/express": "^5.0.6",
         "@types/jsonwebtoken": "^9.0.10",
         "@types/mocha": "^10.0.10",
         "@types/mysql": "^2.15.27",
-        "@types/node": "^22.19.0",
-        "chai": "^4.5.0",
-        "chai-http": "^4.4.0",
+        "@types/node": "^25.6.0",
+        "chai": "^6.2.2",
+        "chai-http": "^5.1.2",
         "mocha": "^11.7.5",
-        "nodemon": "^3.1.10",
-        "tsx": "^4.20.6",
-        "typescript": "^5.9.3"
+        "nodemon": "^3.1.14",
+        "tsx": "^4.21.0",
+        "typescript": "^6.0.2"
     }
 }
