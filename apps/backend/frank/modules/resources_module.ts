@@ -39,42 +39,42 @@ const levelImages = [
 
 const upgradeTiers = [
     {
-        base: 100.0, scaling: 2, gears: 0, starPowers: 0, hcLevel: 0, startLevel: 0, maxUpgrades: 10,
+        base: 100.0, scaling: 2, gears: 0, starPowers: 0, hcDuration: 0, startLevel: 0, maxUpgrades: 10,
         name: "Bronze", color: "#ff9900", image: "tier_bronze", tierUpCost: 1500, masteryReq: 5,
         upgradeCosts: [250, 260, 280, 300, 320, 350, 380, 410, 450, 500]
     },
     {
-        base: 125.0, scaling: 2, gears: 1, starPowers: 0, hcLevel: 0, startLevel: 10, maxUpgrades: 10,
+        base: 125.0, scaling: 2, gears: 1, starPowers: 0, hcDuration: 0, startLevel: 10, maxUpgrades: 10,
         name: "Silver", color: "#c9c6f1", image: "tier_silver", tierUpCost: 3200, masteryReq: 10,
         upgradeCosts: [600, 640, 680, 740, 800, 880, 960, 1060, 1160, 1280]
     },
     {
-        base: 150.0, scaling: 2, gears: 1, starPowers: 1, hcLevel: 0, startLevel: 20, maxUpgrades: 10,
+        base: 150.0, scaling: 2, gears: 1, starPowers: 1, hcDuration: 0, startLevel: 20, maxUpgrades: 10,
         name: "Gold", color: "#ffef49", image: "tier_gold", tierUpCost: 8000, masteryReq: 15,
         upgradeCosts: [1600, 1680, 1780, 1900, 2040, 2200, 2400, 2640, 2920, 3240]
     },
     {
-        base: 175.0, scaling: 2, gears: 1, starPowers: 2, hcLevel: 0, startLevel: 30, maxUpgrades: 15,
+        base: 175.0, scaling: 2, gears: 1, starPowers: 2, hcDuration: 0, startLevel: 30, maxUpgrades: 15,
         name: "Diamond", color: "#33ffff", image: "tier_diamond", tierUpCost: 22000, masteryReq: 20,
         upgradeCosts: [3600, 3760, 3920, 4100, 4280, 4480, 4680, 4900, 5140, 5400, 5680, 6000, 6360, 6760, 7200]
     },
     {
-        base: 212.5, scaling: 2, gears: 2, starPowers: 2, hcLevel: 0, startLevel: 45, maxUpgrades: 15,
+        base: 212.5, scaling: 2, gears: 2, starPowers: 2, hcDuration: 0, startLevel: 45, maxUpgrades: 15,
         name: "Mythic", color: "#ff00ff", image: "tier_mythic", tierUpCost: 64000, masteryReq: 25,
         upgradeCosts: [10000, 10400, 10800, 11300, 11800, 12400, 13100, 13900, 14800, 15800, 17000, 18400, 20200, 22400, 25000],
     },
     {
-        base: 250.0, scaling: 2, gears: 2, starPowers: 3, hcLevel: 0, startLevel: 60, maxUpgrades: 20,
+        base: 250.0, scaling: 2, gears: 2, starPowers: 3, hcDuration: 0, startLevel: 60, maxUpgrades: 20,
         name: "Legendary", color: "#f75363", image: "tier_legendary", tierUpCost: 240000, masteryReq: 30,
         upgradeCosts: [32000, 33000, 34000, 35200, 36400, 37800, 39400, 41200, 43200, 45400, 47800, 50400, 53200, 56400, 60000, 64200, 69200, 75000, 81800, 90000]
     },
     {
-        base: 300.0, scaling: 0, gears: 2, starPowers: 3, hcLevel: 1, startLevel: 80, maxUpgrades: 20,
+        base: 300.0, scaling: 0, gears: 2, starPowers: 3, hcDuration: 8, startLevel: 80, maxUpgrades: 20,
         name: "Masters", color: "#ffcc00", image: "tier_masters", tierUpCost: 360000, masteryReq: 35,
         upgradeCosts: [96000, 97000, 98000, 99000, 100000, 102000, 104000, 106000, 108000, 110000, 112000, 114000, 116000, 118000, 120000, 124000, 128000, 132000, 136000, 140000]
     },
     {
-        base: 300.0, scaling: 0, gears: 2, starPowers: 3, hcLevel: 2, startLevel: 100, maxUpgrades: 0,
+        base: 300.0, scaling: 0, gears: 2, starPowers: 3, hcDuration: 12, startLevel: 100, maxUpgrades: 0,
         name: "Pro", color: "#3afc9f", image: "tier_pro", tierUpCost: 0, masteryReq: 40,
         upgradeCosts: [0]
     }
@@ -84,8 +84,8 @@ const hyperUpgrades = {
     healing: {base: 20, scaling: 5, unlockLevel: 1},
     damage: {base: 20, scaling: 5, unlockLevel: 2},
     speed: {base: 4, scaling: 1, unlockLevel: 3},
-    duration: {base: 10, scaling: 0.5, unlockLevel: 4},
-    charge: {base: 0, scaling: 6.25, unlockLevel: 5}
+    charge: {base: 0, scaling: 6.25, unlockLevel: 4},
+    level: {base: 1, scaling: 1, unlockLevel: 5}
 };
 
 function upgradeTierIndex(tier: number): {index: number; upgrades: number;}{
@@ -104,14 +104,14 @@ function upgradeTierIndex(tier: number): {index: number; upgrades: number;}{
 function getTierUnlocks(index: number): CharacterUnlockStats{
     const config = upgradeTiers[Math.min(upgradeTiers.length - 1, index)];
     return {
-        gears: config.gears, starPowers: config.starPowers, hcLevel: config.hcLevel
+        gears: config.gears, starPowers: config.starPowers, hcDuration: config.hcDuration
     };
 }
 
 function getHyperStats(tier: number): CharacterHyperStats{
     const hcUpgrades = Math.min(20, tier - 1536);
 
-    const stats: CharacterHyperStats = {healing: 0, damage: 0, speed: 0, duration: 0, charge: 0};
+    const stats: CharacterHyperStats = {healing: 0, damage: 0, speed: 0, charge: 0, level: 0};
     if (hcUpgrades < 0){
         return stats;
     }

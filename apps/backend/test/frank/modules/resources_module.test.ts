@@ -181,10 +181,10 @@ describe("User Resources module", function(){
             expect(tier0.next.tier).to.have.keys(["level", "name", "image", "color"]);
             expect(tier0.current.stats).to.have.keys(["health", "damage", "healing", "lifeSteal"]);
             expect(tier0.next.stats).to.have.keys(["health", "damage", "healing", "lifeSteal"]);
-            expect(tier0.current.unlocks).to.have.keys(["gears", "starPowers", "hcLevel"]);
-            expect(tier0.next.unlocks).to.have.keys(["gears", "starPowers", "hcLevel"]);
-            expect(tier0.current.hcStats).to.have.keys(["healing", "damage", "speed", "duration", "charge"]);
-            expect(tier0.next.hcStats).to.have.keys(["healing", "damage", "speed", "duration", "charge"]);
+            expect(tier0.current.unlocks).to.have.keys(["gears", "starPowers", "hcDuration"]);
+            expect(tier0.next.unlocks).to.have.keys(["gears", "starPowers", "hcDuration"]);
+            expect(tier0.current.hcStats).to.have.keys(["healing", "damage", "speed", "charge", "level"]);
+            expect(tier0.next.hcStats).to.have.keys(["healing", "damage", "speed", "charge", "level"]);
             expect(tier0.upgrade).to.have.keys(["cost", "masteryReq"]);
             expect(tier0.otherStats).to.have.keys(["reload", "speed", "range", "targets"]);
 
@@ -248,11 +248,11 @@ describe("User Resources module", function(){
 
             expect(tier80.current.tier.level).to.equal(80);
             expect(checkStats(tier80.current.stats, character.stats, 290)).to.be.true;
-            expect(tier80.current.unlocks.hcLevel).to.equal(0);
+            expect(tier80.current.unlocks.hcDuration).to.equal(0);
 
             expect(tier80.next.tier.level).to.equal(80);
             expect(checkStats(tier80.next.stats, character.stats, 300)).to.be.true;
-            expect(tier80.next.unlocks.hcLevel).to.equal(1);
+            expect(tier80.next.unlocks.hcDuration).to.equal(8);
 
             expect(tier80.upgrade.cost).to.equal(240000);
             expect(tier80.upgrade.masteryReq).to.equal(35);
@@ -263,11 +263,11 @@ describe("User Resources module", function(){
 
             expect(tier80.current.tier.level).to.equal(80);
             expect(checkStats(tier80.current.stats, character.stats, 300)).to.be.true;
-            expect(tier80.current.unlocks.hcLevel).to.equal(1);
+            expect(tier80.current.unlocks.hcDuration).to.equal(8);
 
             expect(tier80.next.tier.level).to.equal(81);
             expect(checkStats(tier80.next.stats, character.stats, 300)).to.be.true;
-            expect(tier80.next.unlocks.hcLevel).to.equal(1);
+            expect(tier80.next.unlocks.hcDuration).to.equal(8);
 
             expect(hcStatsDiff(tier80.current.hcStats, tier80.next.hcStats)).to.eql({healing: 5});
 
@@ -280,11 +280,11 @@ describe("User Resources module", function(){
 
             expect(tier100.current.tier.level).to.equal(100);
             expect(checkStats(tier100.current.stats, character.stats, 300)).to.be.true;
-            expect(tier100.current.unlocks.hcLevel).to.equal(1);
+            expect(tier100.current.unlocks.hcDuration).to.equal(8);
 
             expect(tier100.next.tier.level).to.equal(100);
             expect(checkStats(tier100.next.stats, character.stats, 300)).to.be.true;
-            expect(tier100.next.unlocks.hcLevel).to.equal(2);
+            expect(tier100.next.unlocks.hcDuration).to.equal(12);
 
             expect(hcStatsDiff(tier100.current.hcStats, tier100.next.hcStats)).to.eql({});
 

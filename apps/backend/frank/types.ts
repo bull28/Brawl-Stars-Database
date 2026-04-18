@@ -349,8 +349,8 @@ export interface CharacterPreview{
 
 type CharacterCombatStats = {[k in "health" | "damage" | "healing" | "lifeSteal"]: number};
 type CharacterOtherStats = {[k in "reload" | "speed" | "range" | "targets"]: number};
-export type CharacterUnlockStats = {[k in "gears" | "starPowers" | "hcLevel"]: number};
-export type CharacterHyperStats = {[k in "healing" | "damage" | "speed" | "duration" | "charge"]: number};
+export type CharacterUnlockStats = {[k in "gears" | "starPowers" | "hcDuration"]: number};
+export type CharacterHyperStats = {[k in "healing" | "damage" | "speed" | "charge" | "level"]: number};
 
 /**
  * Stats that change when a character is upgraded
