@@ -18,7 +18,7 @@ interface SaveReqBody{
 
 // Save a game report
 router.post<Empty, Empty, SaveReqBody>("/", databaseErrorHandler<SaveReqBody>(async (req, res) => {
-    const body: ReportSaveResult = {message: "", status: 0, path: 0, coins: 0, masteryReward: 0};
+    const body: ReportSaveResult = {message: "", status: 0, path: 0, coins: 0, trophies: 0, masteryReward: 0};
 
     const inputUser = req.body.username;
     const key = req.body.key;
@@ -171,6 +171,9 @@ router.post<Empty, Empty, SaveReqBody>("/", databaseErrorHandler<SaveReqBody>(as
         }
     }
 
+    // Trophies given are the number of badges given on the accessory with the same name as the character
+    const trophiesReward = Math.floor(reportData.trophies * baseBadges * reportData.multipliers.badges / 100);
+
     // Set last save to now
     resources.last_save = endTime;
 
@@ -179,6 +182,7 @@ router.post<Empty, Empty, SaveReqBody>("/", databaseErrorHandler<SaveReqBody>(as
 
     body.message = "Score successfully saved.";
     body.coins = coinsReward;
+    body.trophies = trophiesReward;
     body.masteryReward = masteryReward;
     body.masteryData = masteryData;
 

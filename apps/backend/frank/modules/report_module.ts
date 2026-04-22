@@ -526,6 +526,7 @@ export function extractReportData(data: GameReport): ReportData | undefined{
 
     let minCoins = 0;
     let maxCoins = 0;
+    let trophies = 0;
     // All badges in this map are affected by the difficulty multiplier
     const badges = new Map<string, number>();
     // All accessories in this set will only receive 1 badge
@@ -542,6 +543,7 @@ export function extractReportData(data: GameReport): ReportData | undefined{
         } else if (b.category === "player"){
             if (b.index === data[p + 2] && win === true){
                 badgeCount = 1;
+                trophies = baseBadges;
             }
         } else if (b.category === "location"){
             if (visitedWins.has(b.index) === true){
@@ -658,6 +660,7 @@ export function extractReportData(data: GameReport): ReportData | undefined{
         enemies: enemiesDefeated,
         mastery: points,
         coins: [minCoins, maxCoins],
+        trophies: trophies,
         badges: badges,
         achievements: achievements,
         multipliers: {

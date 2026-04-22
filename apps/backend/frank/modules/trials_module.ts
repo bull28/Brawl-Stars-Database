@@ -801,11 +801,18 @@ export function getNextChallenge(trial: TrialData, key: string, resources: UserR
     }
     // Set the player-specific accessory if the selected character build has it unlocked
     if (selAccs === true && selIndex < allCharacters.length){
-        const ingameIndex = allCharacters[selIndex].ingameIndex;
-        const m = (1 << (ingameIndex & 7));
-        if ((playerAccessories[ingameIndex >> 3] & m) !== m){
-            playerAccessories[ingameIndex >> 3] |= m;
-            ingameTokens += accessoryCostsIngame[ingameIndex];
+        let ingameIndex = -1;
+        const item = itemList[characterOffset + selIndex];
+        if (item !== undefined){
+            ingameIndex = accessoryMapIngame.get(item.key) ?? -1;
+        }
+
+        if (ingameIndex > 0){
+            const m = (1 << (ingameIndex & 7));
+            if ((playerAccessories[ingameIndex >> 3] & m) !== m){
+                playerAccessories[ingameIndex >> 3] |= m;
+                ingameTokens += accessoryCostsIngame[ingameIndex];
+            }
         }
     }
 

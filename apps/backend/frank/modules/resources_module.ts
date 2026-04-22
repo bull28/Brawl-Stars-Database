@@ -1,13 +1,22 @@
+import accessoryList from "../data/accessories_data.json";
 import characterList from "../data/characters_data.json";
 import enemyList from "../data/enemies_data.json";
 import {findName} from "./utils";
 import {IMAGE_FILE_EXTENSION, SKIN_IMAGE_DIR, PIN_IMAGE_DIR, MASTERY_LEVEL_DIR, TIER_IMAGE_DIR, CHARACTER_IMAGE_DIR} from "../data/constants";
-import {UserCharacter, MasteryData, CharacterPreview, CharacterUnlockStats, CharacterHyperStats, CharacterStatus, EnemyData} from "../types";
+import {UserCharacter, UserAccessory, MasteryData, CharacterPreview, CharacterUnlockStats, CharacterHyperStats, CharacterStatus, EnemyData} from "../types";
 
 const indexMap = new Map<string, number>();
+const badgeIndexes: number[] = [];
+
+const tempMap = new Map<string, number>();
+for (let x = 0; x < accessoryList.length; x++){
+    tempMap.set(accessoryList[x].name, x);
+}
 for (let x = 0; x < characterList.length; x++){
     indexMap.set(characterList[x].name, x);
+    badgeIndexes.push(findName(accessoryList, characterList[x].name, tempMap));
 }
+tempMap.clear();
 
 const masteryLevels = [
         0, 2.0e3, 4.0e3, 7.0e3, 1.0e4,
@@ -40,42 +49,42 @@ const levelImages = [
 const upgradeTiers = [
     {
         base: 100.0, scaling: 2, gears: 0, starPowers: 0, hcDuration: 0, startLevel: 0, maxUpgrades: 10,
-        name: "Bronze", color: "#ff9900", image: "tier_bronze", tierUpCost: 1500, masteryReq: 5,
-        upgradeCosts: [250, 260, 280, 300, 320, 350, 380, 410, 450, 500]
+        name: "Bronze", color: "#ff9900", image: "tier_bronze", tierUpCost: 500, masteryReq: 5, trophiesReq: 0,
+        upgradeCosts: [250, 265, 280, 295, 315, 335, 355, 375, 395, 420]
     },
     {
         base: 125.0, scaling: 2, gears: 1, starPowers: 0, hcDuration: 0, startLevel: 10, maxUpgrades: 10,
-        name: "Silver", color: "#c9c6f1", image: "tier_silver", tierUpCost: 3200, masteryReq: 10,
-        upgradeCosts: [600, 640, 680, 740, 800, 880, 960, 1060, 1160, 1280]
+        name: "Silver", color: "#c9c6f1", image: "tier_silver", tierUpCost: 1100, masteryReq: 10, trophiesReq: 5,
+        upgradeCosts: [550, 580, 615, 655, 695, 735, 780, 825, 875, 925]
     },
     {
         base: 150.0, scaling: 2, gears: 1, starPowers: 1, hcDuration: 0, startLevel: 20, maxUpgrades: 10,
-        name: "Gold", color: "#ffef49", image: "tier_gold", tierUpCost: 8000, masteryReq: 15,
-        upgradeCosts: [1600, 1680, 1780, 1900, 2040, 2200, 2400, 2640, 2920, 3240]
+        name: "Gold", color: "#ffef49", image: "tier_gold", tierUpCost: 2500, masteryReq: 15, trophiesReq: 10,
+        upgradeCosts: [1250, 1320, 1400, 1490, 1580, 1670, 1770, 1870, 1980, 2100]
     },
     {
         base: 175.0, scaling: 2, gears: 1, starPowers: 2, hcDuration: 0, startLevel: 30, maxUpgrades: 15,
-        name: "Diamond", color: "#33ffff", image: "tier_diamond", tierUpCost: 22000, masteryReq: 20,
-        upgradeCosts: [3600, 3760, 3920, 4100, 4280, 4480, 4680, 4900, 5140, 5400, 5680, 6000, 6360, 6760, 7200]
+        name: "Diamond", color: "#33ffff", image: "tier_diamond", tierUpCost: 7500, masteryReq: 20, trophiesReq: 20,
+        upgradeCosts: [2800, 2960, 3140, 3320, 3520, 3740, 3960, 4200, 4440, 4720, 5000, 5280, 5600, 5940, 6300]
     },
     {
         base: 212.5, scaling: 2, gears: 2, starPowers: 2, hcDuration: 0, startLevel: 45, maxUpgrades: 15,
-        name: "Mythic", color: "#ff00ff", image: "tier_mythic", tierUpCost: 64000, masteryReq: 25,
-        upgradeCosts: [10000, 10400, 10800, 11300, 11800, 12400, 13100, 13900, 14800, 15800, 17000, 18400, 20200, 22400, 25000],
+        name: "Mythic", color: "#ff00ff", image: "tier_mythic", tierUpCost: 22500, masteryReq: 25, trophiesReq: 35,
+        upgradeCosts: [8400, 8900, 9400, 10000, 10600, 11200, 11900, 12600, 13300, 14100, 15000, 15900, 16800, 17800, 18900],
     },
     {
         base: 250.0, scaling: 2, gears: 2, starPowers: 3, hcDuration: 0, startLevel: 60, maxUpgrades: 20,
-        name: "Legendary", color: "#f75363", image: "tier_legendary", tierUpCost: 240000, masteryReq: 30,
-        upgradeCosts: [32000, 33000, 34000, 35200, 36400, 37800, 39400, 41200, 43200, 45400, 47800, 50400, 53200, 56400, 60000, 64200, 69200, 75000, 81800, 90000]
+        name: "Legendary", color: "#f75363", image: "tier_legendary", tierUpCost: 90000, masteryReq: 30, trophiesReq: 60,
+        upgradeCosts: [25200, 26600, 28200, 30000, 31800, 33600, 35600, 37800, 40000, 42400, 45000, 47600, 50400, 53400, 56600, 60000, 63600, 67400, 71400, 75600]
     },
     {
         base: 300.0, scaling: 0, gears: 2, starPowers: 3, hcDuration: 8, startLevel: 80, maxUpgrades: 20,
-        name: "Masters", color: "#ffcc00", image: "tier_masters", tierUpCost: 360000, masteryReq: 35,
-        upgradeCosts: [96000, 97000, 98000, 99000, 100000, 102000, 104000, 106000, 108000, 110000, 112000, 114000, 116000, 118000, 120000, 124000, 128000, 132000, 136000, 140000]
+        name: "Masters", color: "#ffcc00", image: "tier_masters", tierUpCost: 200000, masteryReq: 35, trophiesReq: 100,
+        upgradeCosts: [100000, 102000, 104000, 107000, 110000, 113000, 116000, 119000, 122000, 125000, 128000, 131000, 134000, 137000, 140000, 144000, 148000, 152000, 156000, 160000]
     },
     {
         base: 300.0, scaling: 0, gears: 2, starPowers: 3, hcDuration: 12, startLevel: 100, maxUpgrades: 0,
-        name: "Pro", color: "#3afc9f", image: "tier_pro", tierUpCost: 0, masteryReq: 40,
+        name: "Pro", color: "#3afc9f", image: "tier_pro", tierUpCost: 0, masteryReq: 40, trophiesReq: 250,
         upgradeCosts: [0]
     }
 ];
@@ -276,7 +285,7 @@ export function getCharacterPreview(character: UserCharacter): CharacterPreview 
     };
 }
 
-export function getCharacterData(character: UserCharacter): CharacterStatus | undefined{
+export function getCharacterData(character: UserCharacter, accessories?: UserAccessory[]): CharacterStatus | undefined{
     const index = findName(characterList, character.name, indexMap);
     if (index < 0){
         return undefined;
@@ -301,9 +310,24 @@ export function getCharacterData(character: UserCharacter): CharacterStatus | un
     };
     const upgradeCost = {
         cost: 0,
-        masteryReq: 0
-        //badgesReq: 0
+        masteryReq: 0,
+        trophiesReq: 0
     };
+
+    let trophies = 0;
+    if (accessories !== undefined && index < badgeIndexes.length){
+        const accessory = accessories[badgeIndexes[index]];
+        if (accessory !== undefined && accessory.name === character.name){
+            // A character's trophy count is the number of badges on the accessory with its name
+            trophies = accessory.badges;
+        } else{
+            // If the accessory at the expected index does not match the character, search for it in the given array
+            const otherIndex = findName(accessories, character.name);
+            if (otherIndex >= 0){
+                trophies = accessories[otherIndex].badges;
+            }
+        }
+    }
 
     const multiplier = tierConfig.base + tierConfig.scaling * t.upgrades;
     let nextMultiplier = multiplier;
@@ -327,6 +351,7 @@ export function getCharacterData(character: UserCharacter): CharacterStatus | un
 
             upgradeCost.cost = tierConfig.tierUpCost;
             upgradeCost.masteryReq = next.masteryReq;
+            upgradeCost.trophiesReq = next.trophiesReq;
         } else{
             // Next level is a normal upgrade
             nextTier.level = tierData.level + 1;
@@ -335,11 +360,13 @@ export function getCharacterData(character: UserCharacter): CharacterStatus | un
 
             upgradeCost.cost = tierConfig.upgradeCosts[Math.min(tierConfig.upgradeCosts.length - 1, t.upgrades)];
             upgradeCost.masteryReq = tierConfig.masteryReq;
+            upgradeCost.trophiesReq = tierConfig.trophiesReq;
         }
     } else{
         // Indicate that there are no more levels
         nextTier.level = -1;
         upgradeCost.masteryReq = tierConfig.masteryReq;
+        upgradeCost.trophiesReq = tierConfig.trophiesReq;
     }
 
     const {health, damage, healing, lifeSteal} = config.stats;
@@ -350,6 +377,7 @@ export function getCharacterData(character: UserCharacter): CharacterStatus | un
         displayName: config.displayName,
         image: CHARACTER_IMAGE_DIR + config.image + IMAGE_FILE_EXTENSION,
         masteryReq: config.masteryReq,
+        trophies: trophies,
         current: {
             tier: tierData,
             stats: {

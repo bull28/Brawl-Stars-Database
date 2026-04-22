@@ -193,51 +193,51 @@
     },
     {
         "name": "spike", "category": "player", "displayName": "Spike's Cactus", "cost": 6,
-        "description": "All healing and damage buffs are increased when playing as Spike.", "unlock": "Win with Spike.", "badges": 100
+        "description": "All healing and damage buffs are increased when playing as Spike.", "unlock": "Collect Trophies with Spike.", "badges": 100
     },
     {
         "name": "gus", "category": "player", "displayName": "Gus's Balloon", "cost": 6,
-        "description": "All healing is increased when playing as Gus.", "unlock": "Win with Gus.", "badges": 100
+        "description": "All healing is increased when playing as Gus.", "unlock": "Collect Trophies with Gus.", "badges": 100
     },
     {
         "name": "emz", "category": "player", "displayName": "Emz's Spray", "cost": 6,
-        "description": "All damage buffs are stronger when playing as Emz.", "unlock": "Win with Emz.", "badges": 100
+        "description": "All damage buffs are stronger when playing as Emz.", "unlock": "Collect Trophies with Emz.", "badges": 100
     },
     {
         "name": "darryl", "category": "player", "displayName": "Darryl's Barrel", "cost": 6,
-        "description": "All healing is increased when playing as Darryl.", "unlock": "Win with Darryl.", "badges": 100
+        "description": "All healing is increased when playing as Darryl.", "unlock": "Collect Trophies with Darryl.", "badges": 100
     },
     {
         "name": "tara", "category": "player", "displayName": "Tara's Cards", "cost": 6,
-        "description": "All healing is increased when playing as Tara.", "unlock": "Win with Tara.", "badges": 100
+        "description": "All healing is increased when playing as Tara.", "unlock": "Collect Trophies with Tara.", "badges": 100
     },
     {
         "name": "piper", "category": "player", "displayName": "Piper's Umbrella", "cost": 6,
-        "description": "All damage buffs are stronger when playing as Piper.", "unlock": "Win with Piper.", "badges": 100
+        "description": "All damage buffs are stronger when playing as Piper.", "unlock": "Collect Trophies with Piper.", "badges": 100
     },
     {
         "name": "lily", "category": "player", "displayName": "Lily's Plant", "cost": 6,
-        "description": "All damage buffs are stronger when playing as Lily.", "unlock": "Win with Lily.", "badges": 100
+        "description": "All damage buffs are stronger when playing as Lily.", "unlock": "Collect Trophies with Lily.", "badges": 100
     },
     {
         "name": "stu", "category": "player", "displayName": "Stu's Wheel", "cost": 6,
-        "description": "Super charges faster from all sources when playing as Stu.", "unlock": "Win with Stu.", "badges": 100
+        "description": "Super charges faster from all sources when playing as Stu.", "unlock": "Collect Trophies with Stu.", "badges": 100
     },
     {
         "name": "maisie", "category": "player", "displayName": "Maisie's Metal Arm", "cost": 6,
-        "description": "Super charges faster from all sources when playing as Maisie.", "unlock": "Win with Maisie.", "badges": 100
+        "description": "Super charges faster from all sources when playing as Maisie.", "unlock": "Collect Trophies with Maisie.", "badges": 100
     },
     {
         "name": "shade", "category": "player", "displayName": "Shade's Keychain", "cost": 6,
-        "description": "All healing is increased when playing as Shade.", "unlock": "Win with Shade.", "badges": 100
+        "description": "All healing is increased when playing as Shade.", "unlock": "Collect Trophies with Shade.", "badges": 100
     },
     {
         "name": "mandy", "category": "player", "displayName": "Mandy's Candy Dispenser", "cost": 6,
-        "description": "All damage buffs are stronger when playing as Mandy.", "unlock": "Win with Mandy.", "badges": 100
+        "description": "All damage buffs are stronger when playing as Mandy.", "unlock": "Collect Trophies with Mandy.", "badges": 100
     },
     {
         "name": "hank", "category": "player", "displayName": "Hank's Helmet", "cost": 6,
-        "description": "All healing and damage buffs are increased when playing as Hank.", "unlock": "Win with Hank.", "badges": 100
+        "description": "All healing and damage buffs are increased when playing as Hank.", "unlock": "Collect Trophies with Hank.", "badges": 100
     },
     {
         "name": "oldtown", "category": "location", "displayName": "Barley's Bottle", "cost": 5,
@@ -297,7 +297,7 @@
     },
     {
         "name": "enemies", "category": "", "displayName": "Omega Box", "cost": 7,
-        "description": "Gain more badges from rewards.", "unlock": "Defeat enemies.", "badges": 50000
+        "description": "Gain more badges and trophies from rewards.", "unlock": "Defeat enemies.", "badges": 50000
     },
     {
         "name": "challenges", "category": "", "displayName": "Starr Drop", "cost": 7,

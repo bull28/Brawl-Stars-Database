@@ -1,6 +1,7 @@
 import {expect} from "chai";
 import {request} from "chai-http";
 import {Connection} from "mysql2/promise";
+import accessoryList from "../../../frank/data/accessories_data.json";
 import characterList from "../../../frank/data/characters_data.json";
 import server from "../../../frank/index";
 import {createError} from "../../../frank/modules/utils";
@@ -33,6 +34,9 @@ describe("User Resources endpoints", function(){
     for (let x = 0; x < characterList.length; x++){
         view.setUint16(x * 2, 0x209, true);
     }
+
+    const accessories = new ArrayBuffer(accessoryList.length * 4);
+    const view2 = new DataView(accessories);
 
     it("/enemies", async function(){
         // This endpoint does not require a user logged in
@@ -68,8 +72,8 @@ describe("User Resources endpoints", function(){
     it("/characters", async function(){
         view.setUint16(0, 0x30f, true);
         await connection.query(
-            `UPDATE ${tables.users} SET characters = ? WHERE username = ?;`,
-            [Buffer.from(buffer), TEST_USERNAME]
+            `UPDATE ${tables.users} SET characters = ?, accessories = ? WHERE username = ?;`,
+            [Buffer.from(buffer), Buffer.from(accessories), TEST_USERNAME]
         );
 
         const res = await request.execute(server).get("/characters").auth(TEST_TOKEN, {type: "bearer"});
@@ -84,20 +88,32 @@ describe("User Resources endpoints", function(){
     });
 
     describe("/characters/upgrade", function(){
-        const index = 0;
+        const i = Math.min(1, characterList.length - 1);
+        const name = characterList[i].name;
 
-        const name = characterList[0].name;
+        const characterIndex = i * 2;
+        const accessoryIndex = Math.max(0, accessoryList.findIndex((value) => value.name === name)) * 4;
 
         const initialCoins = 1000000;
         const initialMastery = 120000000;
-        const normalCost = 3920;
-        const tierUpCost = 22000;
+        const normalCost = 3140;
+        const tierUpCost = 7500;
+
+        async function checkCollection(coins: number, characterLevel: number): Promise<boolean>{
+            const [results] = await connection.query(
+                `SELECT coins, characters FROM ${tables.users} WHERE username = ?;`, [TEST_USERNAME]
+            );
+            const characters = new DataView(Uint8Array.from(results[0].characters).buffer);
+            expect(results[0].coins).to.equal(coins);
+            expect(characters.getUint16(characterIndex, true)).to.equal(characterLevel);
+        }
 
         beforeEach(async function(){
-            view.setUint16(index, 0x302, true);
+            view.setUint16(characterIndex, 0x302, true);
+            view2.setUint32(accessoryIndex, 500, true);
             await connection.query(
-                `UPDATE ${tables.users} SET characters = ? WHERE username = ?;`,
-                [Buffer.from(buffer), TEST_USERNAME]
+                `UPDATE ${tables.users} SET characters = ?, accessories = ? WHERE username = ?;`,
+                [Buffer.from(buffer), Buffer.from(accessories), TEST_USERNAME]
             );
         });
 
@@ -109,16 +125,11 @@ describe("User Resources endpoints", function(){
             expect(res).to.have.status(200);
             expect(res.body.current.tier.level).to.equal(33);
 
-            const [results] = await connection.query(
-                `SELECT coins, characters FROM ${tables.users} WHERE username = ?;`, [TEST_USERNAME]
-            );
-            const characters = new DataView(Uint8Array.from(results[0].characters).buffer);
-            expect(results[0].coins).to.equal(initialCoins - normalCost);
-            expect(characters.getUint16(index * 2, true)).to.equal(0x303);
+            await checkCollection(initialCoins - normalCost, 0x303);
         });
 
         it("Successful tier up", async function(){
-            view.setUint16(index, 0x30f, true);
+            view.setUint16(characterIndex, 0x30f, true);
             await connection.query(
                 `UPDATE ${tables.users} SET mastery = ?, coins = ?, characters = ? WHERE username = ?;`,
                 [initialMastery, initialCoins, Buffer.from(buffer),TEST_USERNAME]
@@ -129,12 +140,7 @@ describe("User Resources endpoints", function(){
             expect(res).to.have.status(200);
             expect(res.body.current.tier.level).to.equal(45);
 
-            const [results] = await connection.query(
-                `SELECT coins, characters FROM ${tables.users} WHERE username = ?;`, [TEST_USERNAME]
-            );
-            const characters = new DataView(Uint8Array.from(results[0].characters).buffer);
-            expect(results[0].coins).to.equal(initialCoins - tierUpCost);
-            expect(characters.getUint16(index * 2, true)).to.equal(0x400);
+            await checkCollection(initialCoins - tierUpCost, 0x400);
         });
 
         it("Character not found", async function(){
@@ -152,15 +158,10 @@ describe("User Resources endpoints", function(){
             expect(res).to.have.status(403);
             expect(res.body).to.eql(createError("CharactersCannotAfford"));
 
-            const [results] = await connection.query(
-                `SELECT coins, characters FROM ${tables.users} WHERE username = ?;`, [TEST_USERNAME]
-            );
-            const characters = new DataView(Uint8Array.from(results[0].characters).buffer);
-            expect(results[0].coins).to.equal(normalCost - 1);
-            expect(characters.getUint16(index * 2, true)).to.equal(0x302);
+            await checkCollection(normalCost - 1, 0x302);
         });
 
-        it("Requirements to upgrade not met", async function(){
+        it("Mastery level requirement not met", async function(){
             await connection.query(
                 `UPDATE ${tables.users} SET mastery = ?, coins = ? WHERE username = ?;`,
                 [0, initialCoins, TEST_USERNAME]
@@ -171,16 +172,26 @@ describe("User Resources endpoints", function(){
             expect(res).to.have.status(403);
             expect(res.body).to.eql(createError("CharactersUpgradeDenied"));
 
-            const [results] = await connection.query(
-                `SELECT coins, characters FROM ${tables.users} WHERE username = ?;`, [TEST_USERNAME]
+            await checkCollection(initialCoins, 0x302);
+        });
+
+        it("Trophy collection requirement not met", async function(){
+            view2.setUint32(accessoryIndex, 0, true);
+            await connection.query(
+                `UPDATE ${tables.users} SET coins = ?, accessories = ? WHERE username = ?;`,
+                [initialCoins, Buffer.from(accessories), TEST_USERNAME]
             );
-            const characters = new DataView(Uint8Array.from(results[0].characters).buffer);
-            expect(results[0].coins).to.equal(initialCoins);
-            expect(characters.getUint16(index * 2, true)).to.equal(0x302);
+
+            const res = await request.execute(server).post("/characters/upgrade").auth(TEST_TOKEN, {type: "bearer"})
+            .send({character: name});
+            expect(res).to.have.status(403);
+            expect(res.body).to.eql(createError("CharactersUpgradeDenied"));
+
+            await checkCollection(initialCoins, 0x302);
         });
 
         it("Already maximum level", async function(){
-            view.setUint16(index, 0x700, true);
+            view.setUint16(characterIndex, 0x700, true);
             await connection.query(
                 `UPDATE ${tables.users} SET mastery = ?, coins = ?, characters = ? WHERE username = ?;`,
                 [initialMastery, initialCoins, Buffer.from(buffer), TEST_USERNAME]
@@ -191,12 +202,7 @@ describe("User Resources endpoints", function(){
             expect(res).to.have.status(403);
             expect(res.body).to.eql(createError("CharactersMaxLevel"));
 
-            const [results] = await connection.query(
-                `SELECT coins, characters FROM ${tables.users} WHERE username = ?;`, [TEST_USERNAME]
-            );
-            const characters = new DataView(Uint8Array.from(results[0].characters).buffer);
-            expect(results[0].coins).to.equal(initialCoins);
-            expect(characters.getUint16(index * 2, true)).to.equal(0x700);
+            await checkCollection(initialCoins, 0x700);
         });
     });
 });

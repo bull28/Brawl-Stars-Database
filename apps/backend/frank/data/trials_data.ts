@@ -150,62 +150,62 @@ const allTrials: TrialConfig[] = [
 ];
 
 const allCharacters = [
-    {name: "spike", ingameIndex: 48, accsItemIndex: 74, starPowers: [
+    {name: "spike", accsItemIndex: 74, starPowers: [
         "The super heals 50% more health.",
         "Deal +15% damage if the super is fully charged.",
         "The super has 25% longer range and pierces through enemies."
     ]},
-    {name: "gus", ingameIndex: 49, accsItemIndex: 75, starPowers: [
+    {name: "gus", accsItemIndex: 75, starPowers: [
         "All shields are 25% stronger.",
         "Deal +20% damage when a shield is active.",
         "After hitting 4 attacks, the next attack deals +50% damage and pierces through enemies."
     ]},
-    {name: "emz", ingameIndex: 50, accsItemIndex: 76, starPowers: [
+    {name: "emz", accsItemIndex: 76, starPowers: [
         "Heal for 40% of your life steal every time the super hits an enemy.",
         "The super deals +50% damage until it hits at least 2 different enemies.",
         "Attacks deal +25% damage to enemies that are very close."
     ]},
-    {name: "darryl", ingameIndex: 51, accsItemIndex: 77, starPowers: [
+    {name: "darryl", accsItemIndex: 77, starPowers: [
         "When the super ends, receive a shield worth 0.5% of max health per attack hit during the super.",
         "Each full attack hit during the super extends its duration by 0.125 seconds.",
         "The super roll has 50% longer range and deals 300% fire damage."
     ]},
-    {name: "tara", ingameIndex: 52, accsItemIndex: 78, starPowers: [
+    {name: "tara", accsItemIndex: 78, starPowers: [
         "Increases attack range by 35%.",
         "Receive +100% life steal when attacking the last enemy the super hit.",
         "When defeating an enemy, gain 25% speed and 20% damage for 12 seconds."
     ]},
-    {name: "piper", ingameIndex: 53, accsItemIndex: 79, starPowers: [
+    {name: "piper", accsItemIndex: 79, starPowers: [
         "The super slows nearby enemies by 70% for 5 seconds.",
         "Attacks deal more damage the farther they travel, up to +25% at 60% of max range.",
         "Every 4 attacks hit on an enemy increases the damage dealt to them by 12.5%, up to 50%."
     ]},
-    {name: "lily", ingameIndex: 54, accsItemIndex: 80, starPowers: [
+    {name: "lily", accsItemIndex: 80, starPowers: [
         "Hitting an enemy with the super gives a shield worth 40% of max health for 2.5 seconds.",
         "Defeating an enemy instantly reloads 1 ammo.",
         "Increases ammo capacity and unload speed by 20%."
     ]},
-    {name: "stu", ingameIndex: 55, accsItemIndex: 81, starPowers: [
+    {name: "stu", accsItemIndex: 81, starPowers: [
         "Receive dashes 50% faster and store up to 10 dashes at once.",
         "Deal +50% damage on the next attack after using a dash. Does not stack.",
         "When at least 5 dashes are stored, deal +25% damage."
     ]},
-    {name: "maisie", ingameIndex: 56, accsItemIndex: 82, starPowers: [
+    {name: "maisie", accsItemIndex: 82, starPowers: [
         "Super heals 5% of max health and recharges 25% more from enemies.",
         "Attacks reload 15% faster, have 10% longer range, and move faster.",
         "Super deals 50% more damage for each enemy it hits, up to a maximum of 150%."
     ]},
-    {name: "shade", ingameIndex: 57, accsItemIndex: 83, starPowers: [
+    {name: "shade", accsItemIndex: 83, starPowers: [
         "Increases the duration of the super by 33%.",
         "Receive +60% protection while the super is active.",
         "Every 6 stomps hit during the super increases its damage by 25% for the rest of its duration, up to 100%."
     ]},
-    {name: "mandy", ingameIndex: 58, accsItemIndex: 84, starPowers: [
+    {name: "mandy", accsItemIndex: 84, starPowers: [
         "Receive +40% protection when not moving.",
         "Each level up increases the super's damage by 20%.",
         "All levels require 15% less XP to reach."
     ]},
-    {name: "hank", ingameIndex: 59, accsItemIndex: 85, starPowers: [
+    {name: "hank", accsItemIndex: 85, starPowers: [
         "Super heals damage received from 1 more second.",
         "Increases the size of the bubble by 50%.",
         "Torpedoes deal +25% damage to enemies not right beside you."

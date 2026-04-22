@@ -93,7 +93,7 @@ describe("Trial endpoints", function(){
         .send({username: "ignore", key: "test1", report: [GAME_VERSION, 1].concat(report)});
         expect(res).to.have.status(200);
         expect(res.body).to.be.an("object");
-        expect(res.body).to.have.keys(["message", "status", "path", "coins", "masteryReward", "masteryData"]);
+        expect(res.body).to.have.keys(["message", "status", "path", "coins", "trophies", "masteryReward", "masteryData"]);
         expect(res.body.message).to.equal("Score successfully saved.");
 
         const [results] = await connection.query(

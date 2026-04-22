@@ -400,7 +400,7 @@ describe("Trials module", function(){
 
         const keys = selected.map((value) => itemList[accessoryOffset + value].key);
         if (((character >> 11) & 1) === 1){
-            keys.push(accessoryList[allCharacters[characterIndex].ingameIndex].name);
+            keys.push(allCharacters[characterIndex].name);
         }
         const playerAccessories = challenge.playerAccessories!;
         for (let x = 0; x < accessoryList.length; x++){

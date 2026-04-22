@@ -169,9 +169,9 @@ describe("User Resources module", function(){
         const name = character.name;
 
         it("Lowest upgrade tier", function(){
-            const tier0 = getCharacterData({name: name, tier: 0x000})!;
+            const tier0 = getCharacterData({name: name, tier: 0x000}, [{name: name, badges: 5, unlocked: false}])!;
             expect(tier0).to.be.an("object");
-            expect(tier0).to.have.keys(["name", "displayName", "image", "masteryReq", "current", "next", "upgrade", "otherStats"]);
+            expect(tier0).to.have.keys(["name", "displayName", "image", "masteryReq", "trophies", "current", "next", "upgrade", "otherStats"]);
             expect(tier0.current).to.be.an("object");
             expect(tier0.next).to.be.an("object");
             expect(tier0.upgrade).to.be.an("object");
@@ -185,8 +185,10 @@ describe("User Resources module", function(){
             expect(tier0.next.unlocks).to.have.keys(["gears", "starPowers", "hcDuration"]);
             expect(tier0.current.hcStats).to.have.keys(["healing", "damage", "speed", "charge", "level"]);
             expect(tier0.next.hcStats).to.have.keys(["healing", "damage", "speed", "charge", "level"]);
-            expect(tier0.upgrade).to.have.keys(["cost", "masteryReq"]);
+            expect(tier0.upgrade).to.have.keys(["cost", "masteryReq", "trophiesReq"]);
             expect(tier0.otherStats).to.have.keys(["reload", "speed", "range", "targets"]);
+
+            expect(tier0.trophies).to.equal(5);
 
             expect(tier0.current.tier.level).to.equal(0);
             expect(checkStats(tier0.current.stats, character.stats, 100)).to.be.true;
@@ -196,6 +198,7 @@ describe("User Resources module", function(){
 
             expect(tier0.upgrade.cost).to.equal(250);
             expect(tier0.upgrade.masteryReq).to.equal(5);
+            expect(tier0.upgrade.trophiesReq).to.equal(0);
 
             expect(tier0.otherStats).to.eql(character.otherStats);
         });
@@ -213,6 +216,7 @@ describe("User Resources module", function(){
 
             expect(tier100.upgrade.cost).to.equal(0);
             expect(tier100.upgrade.masteryReq).to.equal(40);
+            expect(tier100.upgrade.trophiesReq).to.equal(250);
         });
 
         it("Next level is a normal upgrade", function(){
@@ -224,8 +228,9 @@ describe("User Resources module", function(){
             expect(tier1.next.tier.level).to.equal(2);
             expect(checkStats(tier1.next.stats, character.stats, 104)).to.be.true;
 
-            expect(tier1.upgrade.cost).to.equal(260);
+            expect(tier1.upgrade.cost).to.equal(265);
             expect(tier1.upgrade.masteryReq).to.equal(5);
+            expect(tier1.upgrade.trophiesReq).to.equal(0);
         });
 
         it("Next level is a tier up", function(){
@@ -239,8 +244,9 @@ describe("User Resources module", function(){
             expect(checkStats(tier60.next.stats, character.stats, 250)).to.be.true;
             expect(tier60.next.unlocks.starPowers).to.equal(3);
 
-            expect(tier60.upgrade.cost).to.equal(64000);
+            expect(tier60.upgrade.cost).to.equal(22500);
             expect(tier60.upgrade.masteryReq).to.equal(30);
+            expect(tier60.upgrade.trophiesReq).to.equal(60);
         });
 
         it("Next level unlocks hypercharge", function(){
@@ -254,8 +260,9 @@ describe("User Resources module", function(){
             expect(checkStats(tier80.next.stats, character.stats, 300)).to.be.true;
             expect(tier80.next.unlocks.hcDuration).to.equal(8);
 
-            expect(tier80.upgrade.cost).to.equal(240000);
+            expect(tier80.upgrade.cost).to.equal(90000);
             expect(tier80.upgrade.masteryReq).to.equal(35);
+            expect(tier80.upgrade.trophiesReq).to.equal(100);
         });
 
         it("Next level improves hypercharge", function(){
@@ -271,8 +278,9 @@ describe("User Resources module", function(){
 
             expect(hcStatsDiff(tier80.current.hcStats, tier80.next.hcStats)).to.eql({healing: 5});
 
-            expect(tier80.upgrade.cost).to.equal(96000);
+            expect(tier80.upgrade.cost).to.equal(100000);
             expect(tier80.upgrade.masteryReq).to.equal(35);
+            expect(tier80.upgrade.trophiesReq).to.equal(100);
         });
 
         it("Next level is the max level", function(){
@@ -288,8 +296,9 @@ describe("User Resources module", function(){
 
             expect(hcStatsDiff(tier100.current.hcStats, tier100.next.hcStats)).to.eql({});
 
-            expect(tier100.upgrade.cost).to.equal(360000);
+            expect(tier100.upgrade.cost).to.equal(200000);
             expect(tier100.upgrade.masteryReq).to.equal(40);
+            expect(tier100.upgrade.trophiesReq).to.equal(250);
         });
 
         it("Negative upgrade tier", function(){

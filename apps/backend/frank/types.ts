@@ -370,12 +370,13 @@ export interface CharacterStatus{
     displayName: string;
     image: string;
     masteryReq: number;
+    trophies: number;
     current: CharacterStats;
     next: CharacterStats;
     upgrade: {
         cost: number;
         masteryReq: number;
-        //badgesReq: number;
+        trophiesReq: number;
     };
     otherStats: CharacterOtherStats;
 }
@@ -443,8 +444,9 @@ export interface ReportData{
         };
     };
     enemies: number;
-    coins: [number, number];
     mastery: number;
+    coins: [number, number];
+    trophies: number;
     badges: Map<string, number>;
     achievements: Set<string>;
     multipliers: {
@@ -462,6 +464,7 @@ export interface ReportSaveResult{
     status: number;
     path: number;
     coins: number;
+    trophies: number;
     masteryReward: number;
     masteryData?: MasteryData;
 }

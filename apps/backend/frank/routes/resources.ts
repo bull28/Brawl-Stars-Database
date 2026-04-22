@@ -44,7 +44,7 @@ router.get("/characters", loginErrorHandler(async (req, res, username) => {
 
     const characters: CharacterStatus[] = [];
     for (let x = 0; x < resources.characters.length; x++){
-        const data = getCharacterData(resources.characters[x]);
+        const data = getCharacterData(resources.characters[x], resources.accessories);
         if (data !== undefined){
             characters.push(data);
         }
@@ -69,7 +69,7 @@ router.post<Empty, Empty, UpgradeCharacterReqBody>("/characters/upgrade", loginE
         return;
     }
 
-    const character = getCharacterData(resources.characters[index]);
+    const character = getCharacterData(resources.characters[index], resources.accessories);
     if (character === undefined){
         res.status(404).json(createError("CharactersNotFound"));
         return;
@@ -88,6 +88,12 @@ router.post<Empty, Empty, UpgradeCharacterReqBody>("/characters/upgrade", loginE
         return;
     }
 
+    // Check trophy collection requirement
+    if (character.trophies < character.upgrade.trophiesReq){
+        res.status(403).json(createError("CharactersUpgradeDenied"));
+        return;
+    }
+
     // Check if it is already max level
     if (character.next.tier.level < 0){
         res.status(403).json(createError("CharactersMaxLevel"));
@@ -98,7 +104,7 @@ router.post<Empty, Empty, UpgradeCharacterReqBody>("/characters/upgrade", loginE
     resources.characters[index].tier = getNextTier(resources.characters[index].tier);
 
     // Get new data at new level
-    const newCharacter = getCharacterData(resources.characters[index]);
+    const newCharacter = getCharacterData(resources.characters[index], resources.accessories);
 
     await setResources({resources: resources, username: username});
 

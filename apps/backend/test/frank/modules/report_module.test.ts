@@ -29,8 +29,8 @@ describe("Game Report module", function(){
 
             expect(preview).to.be.an("object");
             expect(preview).to.have.keys([
-                "gameMode", "player", "score", "enemies",
-                "coins", "mastery", "badges", "achievements", "multipliers"
+                "gameMode", "player", "score", "enemies", "mastery",
+                "coins", "trophies", "badges", "achievements", "multipliers"
             ]);
             expect(preview.player).to.have.keys(["difficulty", "brawler", "upgradeTier", "starPower", "gears", "accessories"]);
             expect(preview.score).to.have.keys(["win", "total", "categories"]);
@@ -51,6 +51,7 @@ describe("Game Report module", function(){
 
             expect(preview.enemies).to.equal(600);
             expect(preview.coins).to.eql([300, 300]);
+            expect(preview.trophies).to.equal(3);
             expect(preview.badges).to.be.a("map");
             expect(preview.badges).to.include.keys(["darryl", "enemies"]);
             expect(preview.achievements).to.include.all.keys("wins");
