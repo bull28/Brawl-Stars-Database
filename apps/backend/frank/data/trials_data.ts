@@ -383,43 +383,35 @@ const starPowerWeights = [8, 12, 12, 18, 12, 18, 18, 27];
 const trialUpgrades: Required<{[k in keyof GameModUpgradeValues]: Required<GameModUpgradeValues[k]>}> = {
     health: {
         value: [100, 12.5],
-        cost: [3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 10, 10, 11],
-        maxLevel: 20
+        cost: [3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 10, 10, 11]
     },
     damage: {
         value: [100, 12.5],
-        cost: [4, 5, 6, 6, 7, 8, 9, 10, 12, 13, 15, 17, 19, 21],
-        maxLevel: 14
+        cost: [4, 5, 6, 6, 7, 8, 9, 10, 12, 13, 15, 17, 19, 21]
     },
     healing: {
         value: [100, 50],
-        cost: [5, 6, 7, 9, 10, 13, 15, 19],
-        maxLevel: 8
+        cost: [5, 6, 7, 9, 10, 13, 15, 19]
     },
     lifeSteal: {
         value: [100, 50],
-        cost: [5, 6, 7, 9, 10, 13, 15, 19],
-        maxLevel: 8
+        cost: [5, 6, 7, 9, 10, 13, 15, 19]
     },
     critical: {
         value: [100, 50],
-        cost: [5, 6, 7, 9, 10, 13, 15, 19],
-        maxLevel: 8
+        cost: [5, 6, 7, 9, 10, 13, 15, 19]
     },
     combo: {
         value: [100, 50],
-        cost: [5, 6, 7, 9, 10, 13, 15, 19],
-        maxLevel: 8
+        cost: [5, 6, 7, 9, 10, 13, 15, 19]
     },
     speed: {
         value: [0, 1],
-        cost: [7, 9, 11, 15, 18, 23, 29],
-        maxLevel: 7
+        cost: [7, 9, 11, 15, 18, 23, 29]
     },
     ability: {
         value: [0, 20],
-        cost: [12, 16, 22, 30, 40],
-        maxLevel: 5
+        cost: [12, 16, 22, 30, 40]
     }
 };
 

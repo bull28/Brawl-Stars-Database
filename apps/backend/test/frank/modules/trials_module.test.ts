@@ -419,10 +419,9 @@ describe("Trials module", function(){
         for (const x in playerUpgradeValues){
             const key = x as keyof typeof playerUpgradeValues;
             const v = playerUpgradeValues[key]!;
-            expect(v.maxLevel).to.equal(trialUpgrades[key].maxLevel - trial.upgrades[key]);
             expect(v.value![0]).to.equal(trialUpgrades[key].value[0] + trialUpgrades[key].value[1] * trial.upgrades[key]);
             expect(v.value![1]).to.equal(trialUpgrades[key].value[1]);
-            expect(v.cost!.length).to.equal(v.maxLevel);
+            expect(v.cost!.length).to.equal(trialUpgrades[key].cost.length - trial.upgrades[key]);
         }
 
         expect(challenge.playerSkins).to.eql(["mandy_lava"]);

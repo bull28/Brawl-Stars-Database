@@ -714,7 +714,8 @@ function getChallengeUpgrades(trial: TrialData): Partial<GameModUpgradeValues>{
     for (const x in trialUpgrades){
         const key = x as keyof GameModUpgradeValues;
         const tu = trialUpgrades[key];
-        const maxLevel = Math.min(tu.maxLevel, tu.cost.length);
+        //const maxLevel = Math.min(tu.maxLevel, tu.cost.length);
+        const maxLevel = tu.cost.length;
 
         const costs: number[] = [];
         for (let x = completed[key]; x < maxLevel; x++){
@@ -723,12 +724,12 @@ function getChallengeUpgrades(trial: TrialData): Partial<GameModUpgradeValues>{
 
         upgrades[key] = {
             value: [tu.value[0] + tu.value[1] * Math.min(maxLevel, completed[key]), tu.value[1]],
-            //cost: costs,
-            maxLevel: Math.max(0, maxLevel - completed[key])
+            cost: costs
+            //maxLevel: Math.max(0, maxLevel - completed[key])
         };
-        if (costs.length > 0){
-            upgrades[key].cost = costs;
-        }
+        // if (costs.length > 0){
+        //     upgrades[key].cost = costs;
+        // }
     }
 
     return upgrades;
