@@ -2,7 +2,7 @@ import accessoryList from "../data/accessories_data.json";
 import {IMAGE_FILE_EXTENSION, ACCESSORY_IMAGE_DIR} from "../data/constants";
 import {findName} from "./utils";
 import {getMasteryLevel} from "../modules/resources_module";
-import {UserAccessory, AccessoryPreview, AccessoryData, ShopAccessory, ShopAccessoryPreview} from "../types";
+import {UserAccessory, AccessoryPreview, AccessoryData, ShopAccessoryPreview} from "../types";
 
 interface AccessoryConfig{
     name: string;
@@ -11,6 +11,12 @@ interface AccessoryConfig{
     description: string;
     unlock: string;
     badges: number;
+    masteryReq: number;
+}
+
+export interface ShopItemConfig{
+    cost: number;
+    masteryReq: number;
 }
 
 const accessories: AccessoryConfig[] = [];
@@ -18,36 +24,36 @@ const indexMap = new Map<string, number>();
 for (let x = 0; x < accessoryList.length; x++){
     const a = accessoryList[x];
     accessories.push({
-        name: a.name, category: a.category, displayName: a.displayName,
-        description: a.description, unlock: a.unlock, badges: a.badges
+        name: a.name, category: a.category, displayName: a.displayName, description: a.description,
+        unlock: a.unlock, badges: a.badges, masteryReq: a.masteryReq
     });
     indexMap.set(a.name, x);
 }
 
-const accessoryShop = new Map<string, ShopAccessory>([
-    ["shop1", {cost: 1500, masteryReq: 6}],
-    ["shop2", {cost: 1500, masteryReq: 6}],
-    ["shop3", {cost: 2500, masteryReq: 6}],
-    ["shop4", {cost: 2500, masteryReq: 6}],
-    ["shop5", {cost: 4000, masteryReq: 6}],
-    ["shop6", {cost: 5000, masteryReq: 10}],
-    ["shop7", {cost: 6000, masteryReq: 10}],
-    ["shop8", {cost: 6000, masteryReq: 10}],
-    ["brawlbox1", {cost: 25000, masteryReq: 22}],
-    ["brawlbox2", {cost: 27000, masteryReq: 22}],
-    ["brawlbox3", {cost: 12000, masteryReq: 18}],
-    ["brawlbox4", {cost: 15000, masteryReq: 18}],
-    ["brawlbox5", {cost: 30000, masteryReq: 22}],
-    ["brawlbox6", {cost: 8000, masteryReq: 14}],
-    ["brawlbox7", {cost: 9000, masteryReq: 14}],
-    ["mastery1", {cost: 0, masteryReq: 6}],
-    ["mastery2", {cost: 0, masteryReq: 10}],
-    ["mastery3", {cost: 0, masteryReq: 15}],
-    ["mastery4", {cost: 0, masteryReq: 20}],
-    ["mastery5", {cost: 0, masteryReq: 25}],
-    ["mastery6", {cost: 0, masteryReq: 30}],
-    ["mastery7", {cost: 0, masteryReq: 35}],
-    ["mastery8", {cost: 0, masteryReq: 40}]
+const accessoryShop = new Map<string, number>([
+    ["shop1", 1500],
+    ["shop2", 1500],
+    ["shop3", 2500],
+    ["shop4", 2500],
+    ["shop5", 4000],
+    ["shop6", 5000],
+    ["shop7", 6000],
+    ["shop8", 6000],
+    ["brawlbox1", 25000],
+    ["brawlbox2", 27000],
+    ["brawlbox3", 12000],
+    ["brawlbox4", 15000],
+    ["brawlbox5", 30000],
+    ["brawlbox6", 8000],
+    ["brawlbox7", 9000],
+    ["mastery1", 0],
+    ["mastery2", 0],
+    ["mastery3", 0],
+    ["mastery4", 0],
+    ["mastery5", 0],
+    ["mastery6", 0],
+    ["mastery7", 0],
+    ["mastery8", 0]
 ]);
 
 function accessoryImageName(name: string): string{
@@ -86,6 +92,7 @@ export function getAccessoryData(userAccessories: UserAccessory[]): AccessoryDat
             badge: {
                 collected: badgeCount,
                 required: a.badges,
+                masteryReq: a.masteryReq,
                 unlockMethod: a.unlock
             }
         });
@@ -115,12 +122,12 @@ export function getShopItems(userAccessories: UserAccessory[], mastery: number):
     accessoryShop.forEach((value, key) => {
         const i = findName(accessories, key, indexMap);
         const u = findName(userAccessories, key, indexMap);
-        if (i >= 0 && u >= 0 && level >= value.masteryReq && userAccessories[u].unlocked === false){
+        if (i >= 0 && u >= 0 && level >= accessories[i].masteryReq && userAccessories[u].unlocked === false){
             items.push({
                 name: key,
                 displayName: accessories[i].displayName,
                 image: accessoryImageName(key),
-                cost: value.cost
+                cost: value
             });
         }
     });
@@ -130,7 +137,9 @@ export function getShopItems(userAccessories: UserAccessory[], mastery: number):
 
 export function accessoryClaimCost(progress: UserAccessory, mastery: number): number{
     const index = findName(accessories, progress.name, indexMap);
-    if (index < 0){
+
+    // The user does not meet the mastery level requirement to claim the accessory
+    if (index < 0 || getMasteryLevel(mastery).level < accessories[index].masteryReq){
         return -1;
     }
 
@@ -141,10 +150,6 @@ export function accessoryClaimCost(progress: UserAccessory, mastery: number): nu
 
     const shopItem = accessoryShop.get(progress.name);
     // A shop item exists for this accessory and the user meets the mastery requirement to buy it
-    if (shopItem !== undefined && getMasteryLevel(mastery).level >= shopItem.masteryReq){
-        return shopItem.cost;
-    }
-
     // The user does not have enough mastery or badges
-    return -1;
+    return shopItem ?? -1;
 }

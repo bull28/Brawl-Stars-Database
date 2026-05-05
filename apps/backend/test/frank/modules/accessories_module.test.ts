@@ -34,9 +34,11 @@ describe("Accessories module", function(){
     });
 
     it("Determine the cost of claiming or buying an accessory", function(){
+        const mastery = 20000000;
+
         let index = 0;
         let shopIndex = 0;
-        const i = accessoryList.findIndex((value) => value.badges > 1);
+        const i = accessoryList.findIndex((value) => value.badges > 1 && value.masteryReq > 0);
         const s = accessoryList.findIndex((value) => value.name.includes("shop"));
         if (i > 0){
             index = i;
@@ -49,19 +51,25 @@ describe("Accessories module", function(){
         const shopItem = accessoryList[shopIndex];
 
         // Not enough badges, not claimed yet
-        expect(accessoryClaimCost({name: accessory.name, badges: 0, unlocked: false}, 0)).to.equal(-1);
+        expect(accessoryClaimCost({name: accessory.name, badges: 0, unlocked: false}, mastery)).to.equal(-1);
 
         // Not enough badges, already claimed
-        expect(accessoryClaimCost({name: accessory.name, badges: 0, unlocked: true}, 0)).to.equal(0);
+        expect(accessoryClaimCost({name: accessory.name, badges: 0, unlocked: true}, mastery)).to.equal(0);
 
         // Enough badges, not claimed yet
-        expect(accessoryClaimCost({name: accessory.name, badges: accessory.badges, unlocked: false}, 0)).to.equal(0);
+        expect(accessoryClaimCost({name: accessory.name, badges: accessory.badges, unlocked: false}, mastery)).to.equal(0);
 
         // Enough badges, already claimed
-        expect(accessoryClaimCost({name: accessory.name, badges: accessory.badges, unlocked: true}, 0)).to.equal(0);
+        expect(accessoryClaimCost({name: accessory.name, badges: accessory.badges, unlocked: true}, mastery)).to.equal(0);
+
+        // Mastery too low, enough badges
+        expect(accessoryClaimCost({name: accessory.name, badges: accessory.badges, unlocked: false}, 0)).to.equal(-1);
+
+        // Mastery too low, already claimed
+        expect(accessoryClaimCost({name: accessory.name, badges: accessory.badges, unlocked: true}, 0)).to.equal(-1);
 
         // Accessory does not exist
-        expect(accessoryClaimCost({name: "not an accessory", badges: 69, unlocked: false}, 0)).to.equal(-1);
+        expect(accessoryClaimCost({name: "not an accessory", badges: 69, unlocked: false}, mastery)).to.equal(-1);
 
         if (index === shopIndex){
             // No shop items exist;
@@ -72,25 +80,25 @@ describe("Accessories module", function(){
         expect(accessoryClaimCost({name: shopItem.name, badges: 0, unlocked: false}, 0)).to.equal(-1);
 
         // Shop item exists, mastery too low, not enough badges, already claimed
-        expect(accessoryClaimCost({name: shopItem.name, badges: 0, unlocked: true}, 0)).to.equal(0);
+        expect(accessoryClaimCost({name: shopItem.name, badges: 0, unlocked: true}, 0)).to.equal(-1);
 
         // Shop item exists, mastery too low, enough badges, not claimed
-        expect(accessoryClaimCost({name: shopItem.name, badges: shopItem.badges, unlocked: false}, 0)).to.equal(0);
+        expect(accessoryClaimCost({name: shopItem.name, badges: shopItem.badges, unlocked: false}, 0)).to.equal(-1);
 
         // Shop item exists, mastery too low, enough badges, already claimed
-        expect(accessoryClaimCost({name: shopItem.name, badges: shopItem.badges, unlocked: true}, 0)).to.equal(0);
+        expect(accessoryClaimCost({name: shopItem.name, badges: shopItem.badges, unlocked: true}, 0)).to.equal(-1);
 
         // Shop item exists, mastery high enough, not enough badges, not claimed (only case where coins can be spent)
-        expect(accessoryClaimCost({name: shopItem.name, badges: 0, unlocked: false}, 20000000)).to.be.at.least(1);
+        expect(accessoryClaimCost({name: shopItem.name, badges: 0, unlocked: false}, mastery)).to.be.at.least(1);
 
         // Shop item exists, mastery high enough, not enough badges, already claimed
-        expect(accessoryClaimCost({name: shopItem.name, badges: 0, unlocked: true}, 20000000)).to.equal(0);
+        expect(accessoryClaimCost({name: shopItem.name, badges: 0, unlocked: true}, mastery)).to.equal(0);
 
         // Shop item exists, mastery high enough, enough badges, not claimed
-        expect(accessoryClaimCost({name: shopItem.name, badges: shopItem.badges, unlocked: false}, 20000000)).to.equal(0);
+        expect(accessoryClaimCost({name: shopItem.name, badges: shopItem.badges, unlocked: false}, mastery)).to.equal(0);
 
         // Shop item exists, mastery high enough, enough badges, already claimed
-        expect(accessoryClaimCost({name: shopItem.name, badges: shopItem.badges, unlocked: true}, 20000000)).to.equal(0);
+        expect(accessoryClaimCost({name: shopItem.name, badges: shopItem.badges, unlocked: true}, mastery)).to.equal(0);
     });
 
     describe("Get the full data for an accessory", function(){
@@ -110,7 +118,7 @@ describe("Accessories module", function(){
             expect(data).to.be.an("array");
             expect(data).to.have.lengthOf(accessoryList.length);
             expect(data[index]).to.have.keys(["name", "category", "displayName", "image", "description", "unlocked", "badge"]);
-            expect(data[index].badge).to.have.keys(["collected", "required", "unlockMethod"]);
+            expect(data[index].badge).to.have.keys(["collected", "required", "masteryReq", "unlockMethod"]);
 
             expect(data[index].name).to.equal(accessory.name);
             expect(data[index].category).to.equal(accessory.category);
@@ -121,6 +129,7 @@ describe("Accessories module", function(){
 
             expect(data[index].badge.collected).to.equal(0);
             expect(data[index].badge.required).to.equal(accessory.badges);
+            expect(data[index].badge.masteryReq).to.equal(accessory.masteryReq);
             expect(data[index].badge.unlockMethod).to.equal(accessory.unlock);
         });
 

@@ -644,15 +644,14 @@ export interface AccessoryData{
     badge: {
         collected: number;
         required: number;
+        masteryReq: number;
         unlockMethod: string;
     };
 }
 
-export interface ShopAccessory{
-    cost: number;
-    masteryReq: number;
-}
-
+/**
+ * Information required to display an accessory as a shop item
+ */
 export interface ShopAccessoryPreview{
     name: string;
     displayName: string;
