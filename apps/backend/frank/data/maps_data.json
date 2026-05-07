@@ -1,6 +1,6 @@
 [
     {
-        "startTime": 1772481600,
+        "startTime": 1777320000,
         "eventDuration": 86400,
         "gameModes": [
             {
@@ -15,28 +15,28 @@
         ],
         "rotation": [
             {
-                "name": "north-park-station",
-                "displayName": "North Park Station",
-                "gameMode": 0,
-                "rankedMap": false,
-                "image": "north-park-station.webp",
-                "bannerImage": "arcade.webp"
-            },
-            {
-                "name": "twisting-vines",
-                "displayName": "Twisting Vines",
-                "gameMode": 0,
-                "rankedMap": false,
-                "image": "twisting-vines.webp",
-                "bannerImage": "mortuaryshowdown.webp"
-            },
-            {
                 "name": "safety-center",
                 "displayName": "Safety Center",
                 "gameMode": 0,
                 "rankedMap": false,
                 "image": "safety-center.webp",
                 "bannerImage": "arcade.webp"
+            },
+            {
+                "name": "kroket",
+                "displayName": "Kroket",
+                "gameMode": 0,
+                "rankedMap": false,
+                "image": "kroket.webp",
+                "bannerImage": "arcade.webp"
+            },
+            {
+                "name": "rockwall-brawl",
+                "displayName": "Rockwall Brawl",
+                "gameMode": 0,
+                "rankedMap": false,
+                "image": "rockwall-brawl.webp",
+                "bannerImage": "canyonshowdown.webp"
             },
             {
                 "name": "skull-creek",
@@ -52,7 +52,7 @@
                 "gameMode": 0,
                 "rankedMap": false,
                 "image": "makeshift-scaffolding.webp",
-                "bannerImage": "madevilmanor.webp"
+                "bannerImage": "starrtoonsstudio.webp"
             },
             {
                 "name": "molten-to-the-core",
@@ -60,7 +60,7 @@
                 "gameMode": 0,
                 "rankedMap": false,
                 "image": "molten-to-the-core.webp",
-                "bannerImage": "mortuaryshowdown.webp"
+                "bannerImage": "madevilmanor.webp"
             },
             {
                 "name": "acid-lakes",
@@ -92,15 +92,15 @@
                 "gameMode": 0,
                 "rankedMap": false,
                 "image": "starfruit-supernova.webp",
-                "bannerImage": "mortuaryshowdown.webp"
+                "bannerImage": "starrtoonsstudio.webp"
             },
             {
-                "name": "kroket",
-                "displayName": "Kroket",
+                "name": "truth",
+                "displayName": "Truth",
                 "gameMode": 0,
                 "rankedMap": false,
-                "image": "kroket.webp",
-                "bannerImage": "arcade.webp"
+                "image": "truth.webp",
+                "bannerImage": "canyonshowdown.webp"
             },
             {
                 "name": "feast-or-famine",
@@ -129,7 +129,7 @@
         ]
     },
     {
-        "startTime": 1772438400,
+        "startTime": 1777276800,
         "eventDuration": 86400,
         "gameModes": [
             {
@@ -144,12 +144,12 @@
         ],
         "rotation": [
             {
-                "name": "sneaky-fields",
-                "displayName": "Sneaky Fields",
+                "name": "match-1123581321",
+                "displayName": "Match 1123581321",
                 "gameMode": 0,
-                "rankedMap": true,
-                "image": "sneaky-fields.webp",
-                "bannerImage": "stuntshow.webp"
+                "rankedMap": false,
+                "image": "match-1123581321.webp",
+                "bannerImage": "bbarena.webp"
             },
             {
                 "name": "sunny-soccer",
@@ -165,7 +165,7 @@
                 "gameMode": 0,
                 "rankedMap": false,
                 "image": "super-beach.webp",
-                "bannerImage": "bbarena.webp"
+                "bannerImage": "grassfield.webp"
             },
             {
                 "name": "goalies",
@@ -184,11 +184,11 @@
                 "bannerImage": "grassfield.webp"
             },
             {
-                "name": "no-good-deed",
-                "displayName": "No Good Deed",
+                "name": "sneaky-fields",
+                "displayName": "Sneaky Fields",
                 "gameMode": 0,
-                "rankedMap": false,
-                "image": "no-good-deed.webp",
+                "rankedMap": true,
+                "image": "sneaky-fields.webp",
                 "bannerImage": "bbarena.webp"
             },
             {
@@ -213,7 +213,7 @@
                 "gameMode": 0,
                 "rankedMap": false,
                 "image": "beach-ball.webp",
-                "bannerImage": "stuntshow.webp"
+                "bannerImage": "grassfield.webp"
             },
             {
                 "name": "pinball-dreams",
@@ -229,22 +229,6 @@
                 "gameMode": 0,
                 "rankedMap": false,
                 "image": "pinhole-punt.webp",
-                "bannerImage": "grassfield.webp"
-            },
-            {
-                "name": "singed-earth",
-                "displayName": "Singed Earth",
-                "gameMode": 0,
-                "rankedMap": false,
-                "image": "singed-earth.webp",
-                "bannerImage": "bbarena.webp"
-            },
-            {
-                "name": "nutmeg",
-                "displayName": "Nutmeg",
-                "gameMode": 0,
-                "rankedMap": false,
-                "image": "nutmeg.webp",
                 "bannerImage": "bbarena.webp"
             },
             {
@@ -253,12 +237,28 @@
                 "gameMode": 0,
                 "rankedMap": false,
                 "image": "sidetrack.webp",
+                "bannerImage": "grassfield.webp"
+            },
+            {
+                "name": "nutmeg",
+                "displayName": "Nutmeg",
+                "gameMode": 0,
+                "rankedMap": false,
+                "image": "nutmeg.webp",
+                "bannerImage": "grassfield.webp"
+            },
+            {
+                "name": "grass-knot",
+                "displayName": "Grass Knot",
+                "gameMode": 0,
+                "rankedMap": false,
+                "image": "grass-knot.webp",
                 "bannerImage": "bbarena.webp"
             }
         ]
     },
     {
-        "startTime": 1772496000,
+        "startTime": 1777334400,
         "eventDuration": 86400,
         "gameModes": [
             {
@@ -278,7 +278,7 @@
                 "gameMode": 0,
                 "rankedMap": false,
                 "image": "picturesque.webp",
-                "bannerImage": "mine.webp"
+                "bannerImage": "hub.webp"
             },
             {
                 "name": "open-space",
@@ -305,12 +305,12 @@
                 "bannerImage": "mine.webp"
             },
             {
-                "name": "crystal-arcade",
-                "displayName": "Crystal Arcade",
+                "name": "whisper-vale",
+                "displayName": "Whisper Vale",
                 "gameMode": 0,
                 "rankedMap": false,
-                "image": "crystal-arcade.webp",
-                "bannerImage": "arcade.webp"
+                "image": "whisper-vale.webp",
+                "bannerImage": "bandstand.webp"
             },
             {
                 "name": "on-a-roll",
@@ -318,15 +318,15 @@
                 "gameMode": 0,
                 "rankedMap": false,
                 "image": "on-a-roll.webp",
-                "bannerImage": "retropolis.webp"
+                "bannerImage": "odditiesshop.webp"
             },
             {
-                "name": "deathcap-trap",
-                "displayName": "Deathcap Trap",
+                "name": "local-restaurants",
+                "displayName": "Local Restaurants",
                 "gameMode": 0,
                 "rankedMap": false,
-                "image": "deathcap-trap.webp",
-                "bannerImage": "canyon.webp"
+                "image": "local-restaurants.webp",
+                "bannerImage": "bandstand.webp"
             },
             {
                 "name": "double-swoosh",
@@ -337,12 +337,12 @@
                 "bannerImage": "madevilmanor.webp"
             },
             {
-                "name": "storage-sector",
-                "displayName": "Storage Sector",
+                "name": "deathcap-trap",
+                "displayName": "Deathcap Trap",
                 "gameMode": 0,
                 "rankedMap": false,
-                "image": "storage-sector.webp",
-                "bannerImage": "pyramidquest.webp"
+                "image": "deathcap-trap.webp",
+                "bannerImage": "canyon.webp"
             },
             {
                 "name": "snake-pit",
@@ -369,25 +369,25 @@
                 "bannerImage": "mine.webp"
             },
             {
-                "name": "fortress-fall",
-                "displayName": "Fortress Fall",
+                "name": "ancestral-roots",
+                "displayName": "Ancestral Roots",
                 "gameMode": 0,
                 "rankedMap": false,
-                "image": "fortress-fall.webp",
-                "bannerImage": "madevilmanor.webp"
+                "image": "ancestral-roots.webp",
+                "bannerImage": "pyramidquest.webp"
             },
             {
-                "name": "railroad-robbery",
-                "displayName": "Railroad Robbery",
+                "name": "crystal-arcade",
+                "displayName": "Crystal Arcade",
                 "gameMode": 0,
                 "rankedMap": false,
-                "image": "railroad-robbery.webp",
-                "bannerImage": "hub.webp"
+                "image": "crystal-arcade.webp",
+                "bannerImage": "arcade.webp"
             }
         ]
     },
     {
-        "startTime": 1772503200,
+        "startTime": 1777341600,
         "eventDuration": 86400,
         "gameModes": [
             {
@@ -402,28 +402,28 @@
         ],
         "rotation": [
             {
-                "name": "four-levels",
-                "displayName": "Four Levels",
+                "name": "chivalry",
+                "displayName": "Chivalry",
                 "gameMode": 0,
                 "rankedMap": false,
-                "image": "four-levels.webp",
-                "bannerImage": "pyramidquest.webp"
+                "image": "chivalry.webp",
+                "bannerImage": "madevilmanor.webp"
             },
             {
                 "name": "streets-with-no-name",
-                "displayName": "Streets with no Name",
+                "displayName": "Streets with No Name",
                 "gameMode": 0,
                 "rankedMap": false,
                 "image": "streets-with-no-name.webp",
                 "bannerImage": "hub.webp"
             },
             {
-                "name": "pinned-down",
-                "displayName": "Pinned Down",
+                "name": "please-remain-standing",
+                "displayName": "Please Remain Standing",
                 "gameMode": 0,
                 "rankedMap": false,
-                "image": "pinned-down.webp",
-                "bannerImage": "canyon.webp"
+                "image": "please-remain-standing.webp",
+                "bannerImage": "odditiesshop.webp"
             },
             {
                 "name": "double-decker",
@@ -434,12 +434,12 @@
                 "bannerImage": "scrapyard.webp"
             },
             {
-                "name": "chivalry",
-                "displayName": "Chivalry",
+                "name": "new-perspective",
+                "displayName": "New Perspective",
                 "gameMode": 0,
                 "rankedMap": false,
-                "image": "chivalry.webp",
-                "bannerImage": "madevilmanor.webp"
+                "image": "new-perspective.webp",
+                "bannerImage": "mortuary.webp"
             },
             {
                 "name": "konnakol",
@@ -447,7 +447,7 @@
                 "gameMode": 0,
                 "rankedMap": false,
                 "image": "konnakol.webp",
-                "bannerImage": "bizarrecircus.webp"
+                "bannerImage": "starrtoonsstudio.webp"
             },
             {
                 "name": "goldarm-gulch",
@@ -463,39 +463,15 @@
                 "gameMode": 0,
                 "rankedMap": true,
                 "image": "belles-rock.webp",
-                "bannerImage": "canyon.webp"
+                "bannerImage": "starrtoonsstudio.webp"
             },
             {
-                "name": "flaring-phoenix",
-                "displayName": "Flaring Phoenix",
-                "gameMode": 0,
-                "rankedMap": true,
-                "image": "flaring-phoenix.webp",
-                "bannerImage": "madevilmanor.webp"
-            },
-            {
-                "name": "flowing-springs",
-                "displayName": "Flowing Springs",
+                "name": "think-ahead",
+                "displayName": "Think Ahead",
                 "gameMode": 0,
                 "rankedMap": false,
-                "image": "flowing-springs.webp",
-                "bannerImage": "rumblejungle.webp"
-            },
-            {
-                "name": "opening-move",
-                "displayName": "Opening Move",
-                "gameMode": 0,
-                "rankedMap": false,
-                "image": "opening-move.webp",
-                "bannerImage": "retropolis.webp"
-            },
-            {
-                "name": "out-in-the-open",
-                "displayName": "Out in the Open",
-                "gameMode": 0,
-                "rankedMap": true,
-                "image": "out-in-the-open.webp",
-                "bannerImage": "scrapyard.webp"
+                "image": "think-ahead.webp",
+                "bannerImage": "biodome.webp"
             },
             {
                 "name": "healthy-middle-ground",
@@ -506,17 +482,41 @@
                 "bannerImage": "arcade.webp"
             },
             {
+                "name": "opening-move",
+                "displayName": "Opening Move",
+                "gameMode": 0,
+                "rankedMap": false,
+                "image": "opening-move.webp",
+                "bannerImage": "odditiesshop.webp"
+            },
+            {
+                "name": "out-in-the-open",
+                "displayName": "Out in the Open",
+                "gameMode": 0,
+                "rankedMap": true,
+                "image": "out-in-the-open.webp",
+                "bannerImage": "scrapyard.webp"
+            },
+            {
+                "name": "flaring-phoenix",
+                "displayName": "Flaring Phoenix",
+                "gameMode": 0,
+                "rankedMap": true,
+                "image": "flaring-phoenix.webp",
+                "bannerImage": "madevilmanor.webp"
+            },
+            {
                 "name": "crab-claws",
                 "displayName": "Crab Claws",
                 "gameMode": 0,
                 "rankedMap": false,
                 "image": "crab-claws.webp",
-                "bannerImage": "bazaar.webp"
+                "bannerImage": "bandstand.webp"
             }
         ]
     },
     {
-        "startTime": 1772474400,
+        "startTime": 1777312800,
         "eventDuration": 86400,
         "gameModes": [
             {
@@ -540,76 +540,12 @@
         ],
         "rotation": [
             {
-                "name": "open-business",
-                "displayName": "Open Business",
+                "name": "in-the-liminal",
+                "displayName": "In the Liminal",
                 "gameMode": 0,
-                "rankedMap": true,
-                "image": "open-business.webp",
-                "bannerImage": "scrapyard.webp"
-            },
-            {
-                "name": "perpetual-motion",
-                "displayName": "Perpetual Motion",
-                "gameMode": 1,
                 "rankedMap": false,
-                "image": "perpetual-motion.webp",
+                "image": "in-the-liminal.webp",
                 "bannerImage": "hub.webp"
-            },
-            {
-                "name": "parallel-plays",
-                "displayName": "Parallel Plays",
-                "gameMode": 0,
-                "rankedMap": true,
-                "image": "parallel-plays.webp",
-                "bannerImage": "arcade.webp"
-            },
-            {
-                "name": "aridity",
-                "displayName": "Aridity",
-                "gameMode": 1,
-                "rankedMap": false,
-                "image": "aridity.webp",
-                "bannerImage": "bazaar.webp"
-            },
-            {
-                "name": "golden-bay",
-                "displayName": "Golden Bay",
-                "gameMode": 0,
-                "rankedMap": false,
-                "image": "golden-bay.webp",
-                "bannerImage": "rumblejungle.webp"
-            },
-            {
-                "name": "tuning-fork",
-                "displayName": "Tuning Fork",
-                "gameMode": 1,
-                "rankedMap": false,
-                "image": "tuning-fork.webp",
-                "bannerImage": "scrapyard.webp"
-            },
-            {
-                "name": "tax-evasion",
-                "displayName": "Tax Evasion",
-                "gameMode": 0,
-                "rankedMap": false,
-                "image": "tax-evasion.webp",
-                "bannerImage": "hub.webp"
-            },
-            {
-                "name": "safe-zone",
-                "displayName": "Safe Zone",
-                "gameMode": 1,
-                "rankedMap": true,
-                "image": "safe-zone.webp",
-                "bannerImage": "hub.webp"
-            },
-            {
-                "name": "dueling-beetles",
-                "displayName": "Dueling Beetles",
-                "gameMode": 0,
-                "rankedMap": true,
-                "image": "dueling-beetles.webp",
-                "bannerImage": "rumblejungle.webp"
             },
             {
                 "name": "hot-potato",
@@ -625,7 +561,7 @@
                 "gameMode": 0,
                 "rankedMap": false,
                 "image": "hyacinth-house.webp",
-                "bannerImage": "madevilmanor.webp"
+                "bannerImage": "biodome.webp"
             },
             {
                 "name": "quintillion",
@@ -633,12 +569,76 @@
                 "gameMode": 1,
                 "rankedMap": false,
                 "image": "quintillion.webp",
-                "bannerImage": "bizarrecircus.webp"
+                "bannerImage": "starrtoonsstudio.webp"
+            },
+            {
+                "name": "open-business",
+                "displayName": "Open Business",
+                "gameMode": 0,
+                "rankedMap": true,
+                "image": "open-business.webp",
+                "bannerImage": "scrapyard.webp"
+            },
+            {
+                "name": "eating-good",
+                "displayName": "Eating Good!",
+                "gameMode": 1,
+                "rankedMap": false,
+                "image": "eating-good.webp",
+                "bannerImage": "scrapyard.webp"
+            },
+            {
+                "name": "parallel-plays",
+                "displayName": "Parallel Plays",
+                "gameMode": 0,
+                "rankedMap": true,
+                "image": "parallel-plays.webp",
+                "bannerImage": "arcade.webp"
+            },
+            {
+                "name": "photic-doom",
+                "displayName": "Photic Doom",
+                "gameMode": 1,
+                "rankedMap": false,
+                "image": "photic-doom.webp",
+                "bannerImage": "odditiesshop.webp"
+            },
+            {
+                "name": "golden-bay",
+                "displayName": "Golden Bay",
+                "gameMode": 0,
+                "rankedMap": false,
+                "image": "golden-bay.webp",
+                "bannerImage": "starrtoonsstudio.webp"
+            },
+            {
+                "name": "tuning-fork",
+                "displayName": "Tuning Fork",
+                "gameMode": 1,
+                "rankedMap": false,
+                "image": "tuning-fork.webp",
+                "bannerImage": "scrapyard.webp"
+            },
+            {
+                "name": "abracadabra",
+                "displayName": "Abracadabra",
+                "gameMode": 0,
+                "rankedMap": false,
+                "image": "abracadabra.webp",
+                "bannerImage": "odditiesshop.webp"
+            },
+            {
+                "name": "safe-zone",
+                "displayName": "Safe Zone",
+                "gameMode": 1,
+                "rankedMap": true,
+                "image": "safe-zone.webp",
+                "bannerImage": "hub.webp"
             }
         ]
     },
     {
-        "startTime": 1772467200,
+        "startTime": 1777305600,
         "eventDuration": 86400,
         "gameModes": [
             {
@@ -667,7 +667,7 @@
                 "gameMode": 0,
                 "rankedMap": false,
                 "image": "choral-chambers.webp",
-                "bannerImage": "rumblejungle.webp"
+                "bannerImage": "pyramidquest.webp"
             },
             {
                 "name": "search-and-destroy",
@@ -707,7 +707,7 @@
                 "gameMode": 1,
                 "rankedMap": false,
                 "image": "the-great-mighty-lou.webp",
-                "bannerImage": "bizarrecircus.webp"
+                "bannerImage": "starrtoonsstudio.webp"
             },
             {
                 "name": "dry-season",
@@ -715,14 +715,14 @@
                 "gameMode": 0,
                 "rankedMap": true,
                 "image": "dry-season.webp",
-                "bannerImage": "bazaar.webp"
+                "bannerImage": "bandstand.webp"
             },
             {
-                "name": "flaring-phoenix",
-                "displayName": "Flaring Phoenix",
+                "name": "shrouding-serpent",
+                "displayName": "Shrouding Serpent",
                 "gameMode": 1,
-                "rankedMap": true,
-                "image": "flaring-phoenix.webp",
+                "rankedMap": false,
+                "image": "shrouding-serpent.webp",
                 "bannerImage": "madevilmanor.webp"
             },
             {
@@ -739,7 +739,7 @@
                 "gameMode": 1,
                 "rankedMap": false,
                 "image": "jumpscare-lair.webp",
-                "bannerImage": "stuntshow.webp"
+                "bannerImage": "mortuary.webp"
             },
             {
                 "name": "watermelons",
@@ -747,15 +747,15 @@
                 "gameMode": 0,
                 "rankedMap": false,
                 "image": "watermelons.webp",
-                "bannerImage": "pyramidquest.webp"
+                "bannerImage": "biodome.webp"
             },
             {
-                "name": "shrouding-serpent",
-                "displayName": "Shrouding Serpent",
+                "name": "warriors-way",
+                "displayName": "Warrior's Way",
                 "gameMode": 1,
                 "rankedMap": false,
-                "image": "shrouding-serpent.webp",
-                "bannerImage": "madevilmanor.webp"
+                "image": "warriors-way.webp",
+                "bannerImage": "biodome.webp"
             },
             {
                 "name": "layer-cake",
@@ -771,12 +771,12 @@
                 "gameMode": 1,
                 "rankedMap": false,
                 "image": "paralysis-pen.webp",
-                "bannerImage": "mortuary.webp"
+                "bannerImage": "giftshop.webp"
             }
         ]
     },
     {
-        "startTime": 1772445600,
+        "startTime": 1777284000,
         "eventDuration": 86400,
         "gameModes": [
             {
@@ -790,22 +790,6 @@
             }
         ],
         "rotation": [
-            {
-                "name": "hyperspace",
-                "displayName": "Hyperspace",
-                "gameMode": 0,
-                "rankedMap": false,
-                "image": "hyperspace.webp",
-                "bannerImage": "airhockey.webp"
-            },
-            {
-                "name": "tip-toe",
-                "displayName": "Tip Toe",
-                "gameMode": 0,
-                "rankedMap": false,
-                "image": "tip-toe.webp",
-                "bannerImage": "airhockey.webp"
-            },
             {
                 "name": "cabin-fever",
                 "displayName": "Cabin Fever",
@@ -823,27 +807,52 @@
                 "bannerImage": "airhockey.webp"
             },
             {
-                "name": "slippery-slap",
-                "displayName": "Slippery Slap",
+                "name": "slippery-showdown",
+                "displayName": "Slippery Showdown",
                 "gameMode": 0,
                 "rankedMap": false,
-                "image": "slippery-slap.webp",
+                "image": "slippery-showdown.webp",
                 "bannerImage": "airhockey.webp"
             },
             {
-                "name": "h-is-for-holiday",
-                "displayName": "H is for Holiday",
+                "name": "arabesque",
+                "displayName": "Arabesque",
                 "gameMode": 0,
                 "rankedMap": false,
-                "image": "h-is-for-holiday.webp",
+                "image": "arabesque.webp",
+                "bannerImage": "airhockey.webp"
+            },
+            {
+                "name": "hyperspace",
+                "displayName": "Hyperspace",
+                "gameMode": 0,
+                "rankedMap": false,
+                "image": "hyperspace.webp",
+                "bannerImage": "airhockey.webp"
+            },
+            {
+                "name": "tip-toe",
+                "displayName": "Tip Toe",
+                "gameMode": 0,
+                "rankedMap": false,
+                "image": "tip-toe.webp",
                 "bannerImage": "airhockey.webp"
             }
         ]
     },
     {
-        "startTime": 1772452800,
+        "startTime": 1777291200,
         "eventDuration": 86400,
         "gameModes": [
+            {
+                "name": "wipeout5v5",
+                "displayName": "Wipeout 5v5",
+                "data": {
+                    "image": "wipeout5v5.webp",
+                    "backgroundColor": "#fe1bb8",
+                    "textColor": "#24d6ff"
+                }
+            },
             {
                 "name": "knockout5v5",
                 "displayName": "Knockout 5v5",
@@ -861,94 +870,85 @@
                     "backgroundColor": "#8ca0e0",
                     "textColor": "#9ab1fd"
                 }
-            },
-            {
-                "name": "wipeout5v5",
-                "displayName": "Wipeout 5v5",
-                "data": {
-                    "image": "wipeout5v5.webp",
-                    "backgroundColor": "#fe1bb8",
-                    "textColor": "#24d6ff"
-                }
             }
         ],
         "rotation": [
             {
-                "name": "rastermind",
-                "displayName": "Rastermind",
-                "gameMode": 0,
-                "rankedMap": false,
-                "image": "rastermind.webp",
-                "bannerImage": "iceislandshowdown.webp"
-            },
-            {
-                "name": "insane-streamer",
-                "displayName": "Insane Streamer",
-                "gameMode": 1,
-                "rankedMap": false,
-                "image": "insane-streamer.webp",
-                "bannerImage": "iceislandshowdown.webp"
-            },
-            {
                 "name": "slippery-road",
                 "displayName": "Slippery road",
-                "gameMode": 2,
+                "gameMode": 0,
                 "rankedMap": false,
                 "image": "slippery-road.webp",
-                "bannerImage": "iceislandshowdown.webp"
+                "bannerImage": "tropicalislandshowdown.webp"
             },
             {
                 "name": "crescendo",
                 "displayName": "Crescendo",
-                "gameMode": 0,
+                "gameMode": 1,
                 "rankedMap": false,
                 "image": "crescendo.webp",
-                "bannerImage": "bizarrecircus.webp"
+                "bannerImage": "starrtoonsstudio.webp"
             },
             {
                 "name": "siberian-stand-off",
                 "displayName": "Siberian Stand Off",
-                "gameMode": 1,
+                "gameMode": 2,
                 "rankedMap": false,
                 "image": "siberian-stand-off.webp",
-                "bannerImage": "iceislandshowdown.webp"
+                "bannerImage": "tropicalislandshowdown.webp"
             },
             {
                 "name": "icy-ice-park",
                 "displayName": "Icy ice park",
-                "gameMode": 2,
+                "gameMode": 0,
                 "rankedMap": false,
                 "image": "icy-ice-park.webp",
-                "bannerImage": "iceislandshowdown.webp"
+                "bannerImage": "tropicalislandshowdown.webp"
             },
             {
                 "name": "journey-of-a-thousand-steps",
                 "displayName": "Journey of a Thousand Steps",
-                "gameMode": 0,
+                "gameMode": 1,
                 "rankedMap": false,
                 "image": "journey-of-a-thousand-steps.webp",
-                "bannerImage": "bazaar.webp"
+                "bannerImage": "pyramidquest.webp"
             },
             {
                 "name": "stockpile-stadium",
                 "displayName": "Stockpile Stadium",
-                "gameMode": 1,
+                "gameMode": 2,
                 "rankedMap": false,
                 "image": "stockpile-stadium.webp",
-                "bannerImage": "iceislandshowdown.webp"
+                "bannerImage": "tropicalislandshowdown.webp"
             },
             {
                 "name": "frosty-tracks",
                 "displayName": "Frosty tracks",
-                "gameMode": 2,
+                "gameMode": 0,
                 "rankedMap": false,
                 "image": "frosty-tracks.webp",
-                "bannerImage": "iceislandshowdown.webp"
+                "bannerImage": "tropicalislandshowdown.webp"
+            },
+            {
+                "name": "rastermind",
+                "displayName": "Rastermind",
+                "gameMode": 1,
+                "rankedMap": false,
+                "image": "rastermind.webp",
+                "bannerImage": "tropicalislandshowdown.webp"
+            },
+            {
+                "name": "insane-streamer",
+                "displayName": "Insane Streamer",
+                "gameMode": 2,
+                "rankedMap": false,
+                "image": "insane-streamer.webp",
+                "bannerImage": "tropicalislandshowdown.webp"
             }
         ]
     },
     {
-        "startTime": 1772510400,
+        "startTime": 1777348800,
         "eventDuration": 86400,
         "gameModes": [
             {
@@ -977,7 +977,7 @@
                 "gameMode": 0,
                 "rankedMap": false,
                 "image": "palette-hangout.webp",
-                "bannerImage": "rumblejungle.webp"
+                "bannerImage": "biodome.webp"
             },
             {
                 "name": "tripledouble",
@@ -993,7 +993,7 @@
                 "gameMode": 0,
                 "rankedMap": false,
                 "image": "walking-on-hot-sand.webp",
-                "bannerImage": "bazaar.webp"
+                "bannerImage": "bandstand.webp"
             },
             {
                 "name": "pocket-pass",
@@ -1004,12 +1004,12 @@
                 "bannerImage": "rooftop.webp"
             },
             {
-                "name": "too-gimmicky-2",
-                "displayName": "Too Gimmicky 2",
+                "name": "attrition",
+                "displayName": "Attrition",
                 "gameMode": 0,
                 "rankedMap": false,
-                "image": "too-gimmicky-2.webp",
-                "bannerImage": "bizarrecircus.webp"
+                "image": "attrition.webp",
+                "bannerImage": "madevilmanor.webp"
             },
             {
                 "name": "turnover",
@@ -1025,20 +1025,20 @@
                 "gameMode": 0,
                 "rankedMap": false,
                 "image": "hello-always-ends-with-a-goodbye.webp",
-                "bannerImage": "madevilmanor.webp"
+                "bannerImage": "mortuary.webp"
             },
             {
-                "name": "slam-dunk",
-                "displayName": "Slam Dunk",
+                "name": "ball-hog",
+                "displayName": "Ball Hog",
                 "gameMode": 1,
                 "rankedMap": false,
-                "image": "slam-dunk.webp",
+                "image": "ball-hog.webp",
                 "bannerImage": "rooftop.webp"
             }
         ]
     },
     {
-        "startTime": 1772460000,
+        "startTime": 1777298400,
         "eventDuration": 86400,
         "gameModes": [
             {
@@ -1053,22 +1053,6 @@
         ],
         "rotation": [
             {
-                "name": "knockout-grounds",
-                "displayName": "Knockout Grounds",
-                "gameMode": 0,
-                "rankedMap": false,
-                "image": "knockout-grounds.webp",
-                "bannerImage": "iceislandshowdown.webp"
-            },
-            {
-                "name": "the-smackdome",
-                "displayName": "The Smackdome",
-                "gameMode": 0,
-                "rankedMap": false,
-                "image": "the-smackdome.webp",
-                "bannerImage": "mortuaryshowdown.webp"
-            },
-            {
                 "name": "arena-of-glory",
                 "displayName": "Arena of Glory",
                 "gameMode": 0,
@@ -1082,7 +1066,7 @@
                 "gameMode": 0,
                 "rankedMap": false,
                 "image": "mirage-arena.webp",
-                "bannerImage": "bazaar.webp"
+                "bannerImage": "tropicalislandshowdown.webp"
             },
             {
                 "name": "kaiju-lake",
@@ -1090,12 +1074,44 @@
                 "gameMode": 0,
                 "rankedMap": false,
                 "image": "kaiju-lake.webp",
-                "bannerImage": "iceislandshowdown.webp"
+                "bannerImage": "tropicalislandshowdown.webp"
+            },
+            {
+                "name": "crimson-divide",
+                "displayName": "Crimson Divide",
+                "gameMode": 0,
+                "rankedMap": false,
+                "image": "crimson-divide.webp",
+                "bannerImage": "pyramidquest.webp"
+            },
+            {
+                "name": "silver-highlands",
+                "displayName": "Silver Highlands",
+                "gameMode": 0,
+                "rankedMap": false,
+                "image": "silver-highlands.webp",
+                "bannerImage": "pyramidquest.webp"
+            },
+            {
+                "name": "knockout-grounds",
+                "displayName": "Knockout Grounds",
+                "gameMode": 0,
+                "rankedMap": false,
+                "image": "knockout-grounds.webp",
+                "bannerImage": "tropicalislandshowdown.webp"
+            },
+            {
+                "name": "the-smackdome",
+                "displayName": "The Smackdome",
+                "gameMode": 0,
+                "rankedMap": false,
+                "image": "the-smackdome.webp",
+                "bannerImage": "mortuaryshowdown.webp"
             }
         ]
     },
     {
-        "startTime": 1772438400,
+        "startTime": 1777276800,
         "eventDuration": 0,
         "gameModes": [
             {
@@ -1176,7 +1192,7 @@
                 "gameMode": 2,
                 "rankedMap": true,
                 "image": "bridge-too-far.webp",
-                "bannerImage": "rumblejungle.webp"
+                "bannerImage": "biodome.webp"
             },
             {
                 "name": "ring-of-fire",
@@ -1185,6 +1201,14 @@
                 "rankedMap": true,
                 "image": "ring-of-fire.webp",
                 "bannerImage": "madevilmanor.webp"
+            },
+            {
+                "name": "dueling-beetles",
+                "displayName": "Dueling Beetles",
+                "gameMode": 3,
+                "rankedMap": true,
+                "image": "dueling-beetles.webp",
+                "bannerImage": "biodome.webp"
             }
         ]
     }

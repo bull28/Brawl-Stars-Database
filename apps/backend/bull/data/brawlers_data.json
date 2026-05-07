@@ -6410,7 +6410,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Damian Boxes"
+                ],
                 "release": {
                     "month": 9,
                     "year": 2021
@@ -6749,6 +6751,48 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "luchadormha",
+                "displayName": "All Might: El Primo",
+                "cost": 299,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 5,
+                    "name": "Legendary",
+                    "icon": "skin_rarity_5.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Takedown",
+                    "Voice"
+                ],
+                "groups": [
+                    {
+                        "name": "My Hero Academia",
+                        "image": "bg_mha.webp",
+                        "icon": "icon_mha.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2026
+                },
+                "image": "luchadormha.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -6966,6 +7010,87 @@
                     "value": 3,
                     "name": "Legendary",
                     "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "elprimo_mha_default",
+                "image": "elprimo_mha_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "elprimo_mha_happy",
+                "image": "elprimo_mha_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "elprimo_mha_sad",
+                "image": "elprimo_mha_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "elprimo_mha_angry",
+                "image": "elprimo_mha_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "elprimo_mha_gg",
+                "image": "elprimo_mha_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "elprimo_mha_clap",
+                "image": "elprimo_mha_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "elprimo_mha_thanks",
+                "image": "elprimo_mha_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "elprimo_mha_sweat",
+                "image": "elprimo_mha_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "elprimo_mha_special",
+                "image": "elprimo_mha_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
                 }
             }
         ]
@@ -7316,7 +7441,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Damian Boxes"
+                ],
                 "release": {
                     "month": 9,
                     "year": 2021
@@ -8887,7 +9014,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Ranked Starr Drops"
+                    "Ranked Starr Drops",
+                    "Nova Drops"
                 ],
                 "release": {
                     "month": 12,
@@ -9245,7 +9373,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Mega Boxes"
+                    "Mega Boxes",
+                    "Damian Boxes"
                 ],
                 "release": {
                     "month": 6,
@@ -11698,7 +11827,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Monster Eggs"
+                    "Monster Eggs",
+                    "Bolt Boxes"
                 ],
                 "release": {
                     "month": 7,
@@ -11896,7 +12026,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Damian Boxes"
+                ],
                 "release": {
                     "month": 6,
                     "year": 2023
@@ -12833,7 +12965,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Ranked Starr Drops"
+                    "Ranked Starr Drops",
+                    "Bolt Boxes"
                 ],
                 "release": {
                     "month": 4,
@@ -13656,7 +13789,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Ranked Starr Drops"
+                    "Ranked Starr Drops",
+                    "Starr Nova Boxes"
                 ],
                 "release": {
                     "month": 1,
@@ -14533,7 +14667,9 @@
                 ],
                 "limited": false,
                 "unlock": "Free from the Daily Login Calendar for new players",
-                "foundIn": [],
+                "foundIn": [
+                    "Bolt Boxes"
+                ],
                 "release": {
                     "month": 3,
                     "year": 2020
@@ -14738,7 +14874,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Bolt Boxes"
+                ],
                 "release": {
                     "month": 5,
                     "year": 2022
@@ -15597,7 +15735,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Presents"
+                    "Presents",
+                    "Nova Drops"
                 ],
                 "release": {
                     "month": 12,
@@ -16394,7 +16533,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Bolt Boxes"
+                ],
                 "release": {
                     "month": 4,
                     "year": 2025
@@ -16440,6 +16581,141 @@
                     "year": 2025
                 },
                 "image": "whirlwindcarreta.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "whirlwindstrikers",
+                "displayName": "Super Ball Carl",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl Strikers",
+                        "image": "bg_strikers.webp",
+                        "icon": "icon_strikers.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 6,
+                    "year": 2026
+                },
+                "image": "whirlwindstrikers.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "whirlwindstrikerschroma1",
+                "displayName": "Striker Carl",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl Strikers",
+                        "image": "bg_strikers.webp",
+                        "icon": "icon_strikers.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 6,
+                    "year": 2026
+                },
+                "image": "whirlwindstrikerschroma1.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "whirlwindstrikerschroma2",
+                "displayName": "Kicker Carl",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl Strikers",
+                        "image": "bg_strikers.webp",
+                        "icon": "icon_strikers.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 6,
+                    "year": 2026
+                },
+                "image": "whirlwindstrikerschroma2.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -17101,6 +17377,46 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "drillerworldfinals",
+                "displayName": "Esports Jacky",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "BSC 2025",
+                        "image": "bg_wf.webp",
+                        "icon": "icon_wf.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 5,
+                    "year": 2026
+                },
+                "image": "drillerworldfinals.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -17637,6 +17953,48 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "soulcollectormha",
+                "displayName": "Tomura Shigaraki: Gus",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Takedown",
+                    "Voice"
+                ],
+                "groups": [
+                    {
+                        "name": "My Hero Academia",
+                        "image": "bg_mha.webp",
+                        "icon": "icon_mha.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2026
+                },
+                "image": "soulcollectormha.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -17783,6 +18141,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "gus_mha",
+                "image": "gus_mha.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -17864,7 +18231,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Mecha Boxes"
+                    "Mecha Boxes",
+                    "Bolt Boxes"
                 ],
                 "release": {
                     "month": 7,
@@ -19715,7 +20083,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Ziggy Boxes"
+                    "Ziggy Boxes",
+                    "Bolt Boxes"
                 ],
                 "release": {
                     "month": 8,
@@ -23471,7 +23840,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Bolt Boxes"
+                ],
                 "release": {
                     "month": 4,
                     "year": 2024
@@ -24224,7 +24595,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Starr Nova Boxes"
+                ],
                 "release": {
                     "month": 6,
                     "year": 2021
@@ -24390,6 +24763,48 @@
                     "year": 2025
                 },
                 "image": "beesniperbrawloween.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "beesniperstarrgirls",
+                "displayName": "Starr Patrol Bea",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Starr Patrol",
+                        "image": "bg_anime.webp",
+                        "icon": "icon_anime.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [
+                    "Nova Drops"
+                ],
+                "release": {
+                    "month": 5,
+                    "year": 2026
+                },
+                "image": "beesniperstarrgirls.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -24878,7 +25293,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Damian Boxes"
+                ],
                 "release": {
                     "month": 10,
                     "year": 2024
@@ -25843,6 +26260,48 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "enragerbakugo",
+                "displayName": "Bakugo: Edgar",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Takedown",
+                    "Voice"
+                ],
+                "groups": [
+                    {
+                        "name": "My Hero Academia",
+                        "image": "bg_mha.webp",
+                        "icon": "icon_mha.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2026
+                },
+                "image": "enragerbakugo.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -26209,6 +26668,15 @@
             {
                 "name": "edgar_kaijuchroma2",
                 "image": "edgar_kaijuchroma2.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "edgar_mha",
+                "image": "edgar_mha.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -29222,7 +29690,9 @@
                 ],
                 "limited": false,
                 "unlock": "Reward from Brawl Pass Season 22 tier 50",
-                "foundIn": [],
+                "foundIn": [
+                    "Starr Nova Boxes"
+                ],
                 "release": {
                     "month": 1,
                     "year": 2024
@@ -29267,7 +29737,9 @@
                 ],
                 "limited": false,
                 "unlock": "Reward from Brawl Pass Plus Season 22 tier 48",
-                "foundIn": [],
+                "foundIn": [
+                    "Starr Nova Boxes"
+                ],
                 "release": {
                     "month": 1,
                     "year": 2024
@@ -29312,7 +29784,9 @@
                 ],
                 "limited": false,
                 "unlock": "Reward from Brawl Pass Plus Season 22 tier 46",
-                "foundIn": [],
+                "foundIn": [
+                    "Starr Nova Boxes"
+                ],
                 "release": {
                     "month": 1,
                     "year": 2024
@@ -29482,6 +29956,141 @@
                     "year": 2025
                 },
                 "image": "percenterkaiju.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "percenterstarrgirls",
+                "displayName": "Void Colette",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Starr Patrol",
+                        "image": "bg_anime.webp",
+                        "icon": "icon_anime.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 5,
+                    "year": 2026
+                },
+                "image": "percenterstarrgirls.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "percenterstarrgirlschroma1",
+                "displayName": "White Dwarf Colette",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Starr Patrol",
+                        "image": "bg_anime.webp",
+                        "icon": "icon_anime.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 5,
+                    "year": 2026
+                },
+                "image": "percenterstarrgirlschroma1.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "percenterstarrgirlschroma2",
+                "displayName": "Black Hole Colette",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Starr Patrol",
+                        "image": "bg_anime.webp",
+                        "icon": "icon_anime.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 5,
+                    "year": 2026
+                },
+                "image": "percenterstarrgirlschroma2.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -30564,7 +31173,8 @@
                 "limited": false,
                 "unlock": "Available for 2500 Club Coins before October 2023",
                 "foundIn": [
-                    "Card Packs"
+                    "Card Packs",
+                    "Bolt Boxes"
                 ],
                 "release": {
                     "month": 10,
@@ -30695,7 +31305,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Nova Drops"
+                ],
                 "release": {
                     "month": 12,
                     "year": 2024
@@ -31135,14 +31747,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Brawl Pass",
-                        "image": "bg_default.webp",
-                        "icon": "icon_brawlpass.webp"
-                    },
-                    {
                         "name": "City Troubles",
                         "image": "bg_default.webp",
                         "icon": "icon_city.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
                     }
                 ],
                 "limited": true,
@@ -31523,7 +32135,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Presents"
+                    "Presents",
+                    "Nova Drops"
                 ],
                 "release": {
                     "month": 12,
@@ -32668,7 +33281,8 @@
                 "limited": false,
                 "unlock": "Given for free at Legendary 1 in Ranked Season 26",
                 "foundIn": [
-                    "Ranked Starr Drops"
+                    "Ranked Starr Drops",
+                    "Damian Boxes"
                 ],
                 "release": {
                     "month": 10,
@@ -33433,7 +34047,9 @@
                 ],
                 "limited": false,
                 "unlock": "Reward from Brawl Pass Season 33 tier 50",
-                "foundIn": [],
+                "foundIn": [
+                    "Nova Drops"
+                ],
                 "release": {
                     "month": 12,
                     "year": 2024
@@ -33477,7 +34093,9 @@
                 ],
                 "limited": false,
                 "unlock": "Reward from Brawl Pass Plus Season 33 tier 46",
-                "foundIn": [],
+                "foundIn": [
+                    "Nova Drops"
+                ],
                 "release": {
                     "month": 12,
                     "year": 2024
@@ -33521,7 +34139,9 @@
                 ],
                 "limited": false,
                 "unlock": "Reward from Brawl Pass Plus Season 33 tier 48",
-                "foundIn": [],
+                "foundIn": [
+                    "Nova Drops"
+                ],
                 "release": {
                     "month": 12,
                     "year": 2024
@@ -33919,7 +34539,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Bolt Boxes"
+                ],
                 "release": {
                     "month": 9,
                     "year": 2023
@@ -34457,7 +35079,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Bolt Boxes"
+                ],
                 "release": {
                     "month": 10,
                     "year": 2024
@@ -34945,14 +35569,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Brawl Pass",
-                        "image": "bg_default.webp",
-                        "icon": "icon_brawlpass.webp"
-                    },
-                    {
                         "name": "Angels vs. Demons",
                         "image": "bg_default.webp",
                         "icon": "icon_angeldemons.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
                     }
                 ],
                 "limited": false,
@@ -34989,14 +35613,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Brawl Pass",
-                        "image": "bg_default.webp",
-                        "icon": "icon_brawlpass.webp"
-                    },
-                    {
                         "name": "Angels vs. Demons",
                         "image": "bg_default.webp",
                         "icon": "icon_angeldemons.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
                     }
                 ],
                 "limited": false,
@@ -35033,14 +35657,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Brawl Pass",
-                        "image": "bg_default.webp",
-                        "icon": "icon_brawlpass.webp"
-                    },
-                    {
                         "name": "Angels vs. Demons",
                         "image": "bg_default.webp",
                         "icon": "icon_angeldemons.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
                     }
                 ],
                 "limited": false,
@@ -36081,7 +36705,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Damian Boxes"
+                ],
                 "release": {
                     "month": 7,
                     "year": 2025
@@ -36912,6 +37538,47 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "meeplestrikers",
+                "displayName": "Refereeple",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Adidas",
+                        "image": "bg_strikers.webp",
+                        "icon": "icon_adidas.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 6,
+                    "year": 2026
+                },
+                "image": "meeplestrikers.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -37334,6 +38001,158 @@
             {
                 "name": "trunk_claship",
                 "image": "trunk_claship.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            }
+        ]
+    },
+    {
+        "name": "bolt",
+        "displayName": "Bolt",
+        "rarity": {
+            "value": 3,
+            "name": "Epic",
+            "color": "#b116ec"
+        },
+        "image": "portrait_bolt.webp",
+        "defaultSkin": "rockdefault",
+        "title": "Baller",
+        "masteryIcon": "mastery_icon_bolt.webp",
+        "description": "Bolt is a toy from the Battle Bumperz line, designed to deal damage by rolling into things! He was built to battle, but always wanted to be a race car, so he reaches dangerous speeds to live out his dreams. Don't get in his way!",
+        "skins": [
+            {
+                "name": "rockdefault",
+                "displayName": "Bolt",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 0,
+                    "name": "",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [],
+                "groups": [
+                    {
+                        "name": "",
+                        "image": "bg_default.webp",
+                        "icon": "icon_default.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 6,
+                    "year": 2026
+                },
+                "image": "rockdefault.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "name": "bolt_default",
+                "image": "bolt_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "bolt_happy",
+                "image": "bolt_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "bolt_sad",
+                "image": "bolt_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "bolt_angry",
+                "image": "bolt_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "bolt_gg",
+                "image": "bolt_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "bolt_clap",
+                "image": "bolt_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "bolt_thanks",
+                "image": "bolt_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "bolt_sweat",
+                "image": "bolt_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "bolt_special",
+                "image": "bolt_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "bolt_facepalm",
+                "image": "bolt_facepalm.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "bolt_box",
+                "image": "bolt_box.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -39685,6 +40504,141 @@
                     "year": 2024
                 },
                 "image": "hookdudemonkey.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "hookdudestrikers",
+                "displayName": "Super Ball Gene",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl Strikers",
+                        "image": "bg_strikers.webp",
+                        "icon": "icon_strikers.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 6,
+                    "year": 2026
+                },
+                "image": "hookdudestrikers.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "hookdudestrikerschroma1",
+                "displayName": "Keeper Gene",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl Strikers",
+                        "image": "bg_strikers.webp",
+                        "icon": "icon_strikers.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 6,
+                    "year": 2026
+                },
+                "image": "hookdudestrikerschroma1.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "hookdudestrikerschroma2",
+                "displayName": "Score Stopper Gene",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl Strikers",
+                        "image": "bg_strikers.webp",
+                        "icon": "icon_strikers.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 6,
+                    "year": 2026
+                },
+                "image": "hookdudestrikerschroma2.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -42190,7 +43144,8 @@
                 "limited": false,
                 "unlock": "Available for 2500 Club Coins before October 2023",
                 "foundIn": [
-                    "Presents"
+                    "Presents",
+                    "Nova Drops"
                 ],
                 "release": {
                     "month": 11,
@@ -43018,7 +43973,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Nova Drops"
+                ],
                 "release": {
                     "month": 12,
                     "year": 2024
@@ -43062,6 +44019,50 @@
                     "year": 2025
                 },
                 "image": "iceduderare.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "icedudestrikers",
+                "displayName": "Super Striker Lou",
+                "cost": 299,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 5,
+                    "name": "Legendary",
+                    "icon": "skin_rarity_5.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Takedown",
+                    "Voice",
+                    "Sounds",
+                    "Respawn"
+                ],
+                "groups": [
+                    {
+                        "name": "Adidas",
+                        "image": "bg_strikers.webp",
+                        "icon": "icon_adidas.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 6,
+                    "year": 2026
+                },
+                "image": "icedudestrikers.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -45563,6 +46564,48 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "kickerdudemha",
+                "displayName": "Deku: Fang",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Takedown",
+                    "Voice"
+                ],
+                "groups": [
+                    {
+                        "name": "My Hero Academia",
+                        "image": "bg_mha.webp",
+                        "icon": "icon_mha.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2026
+                },
+                "image": "kickerdudemha.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -45812,6 +46855,15 @@
             {
                 "name": "fang_angeldemons",
                 "image": "fang_angeldemons.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "fang_mha",
+                "image": "fang_mha.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -46607,7 +47659,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Starr Nova Boxes"
+                ],
                 "release": {
                     "month": 4,
                     "year": 2023
@@ -46689,7 +47743,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Starr Nova Boxes"
+                ],
                 "release": {
                     "month": 9,
                     "year": 2023
@@ -46822,6 +47878,48 @@
                     "year": 2025
                 },
                 "image": "jetpackgirlsurfer.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "jetpackgirlmha",
+                "displayName": "Uravity: Janet",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Takedown",
+                    "Voice"
+                ],
+                "groups": [
+                    {
+                        "name": "My Hero Academia",
+                        "image": "bg_mha.webp",
+                        "icon": "icon_mha.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "Reward for completing the Uravity: Janet Skin Challenge",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2026
+                },
+                "image": "jetpackgirlmha.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -47068,6 +48166,15 @@
             {
                 "name": "janet_subway",
                 "image": "janet_subway.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "janet_mha",
+                "image": "janet_mha.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -47402,6 +48509,47 @@
                     "year": 2024
                 },
                 "image": "silencersewer.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "silencerstrikers",
+                "displayName": "Gridiron Otis",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Adidas",
+                        "image": "bg_strikers.webp",
+                        "icon": "icon_adidas.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 6,
+                    "year": 2026
+                },
+                "image": "silencerstrikers.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -51586,7 +52734,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Ranked Starr Drops"
+                    "Ranked Starr Drops",
+                    "Starr Nova Boxes"
                 ],
                 "release": {
                     "month": 7,
@@ -53428,6 +54577,49 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "voodoostarrgirls",
+                "displayName": "Starr Patrol Juju",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Starr Patrol",
+                        "image": "bg_anime.webp",
+                        "icon": "icon_anime.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [
+                    "Nova Drops"
+                ],
+                "release": {
+                    "month": 5,
+                    "year": 2026
+                },
+                "image": "voodoostarrgirls.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -54223,6 +55415,47 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "chronomancerstarrgirls",
+                "displayName": "Void Master Finx",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Starr Patrol",
+                        "image": "bg_anime.webp",
+                        "icon": "icon_anime.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 5,
+                    "year": 2026
+                },
+                "image": "chronomancerstarrgirls.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -54621,7 +55854,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Damian Boxes"
+                ],
                 "release": {
                     "month": 7,
                     "year": 2025
@@ -57108,6 +58343,82 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "redirectergold",
+                "displayName": "True Gold Najia",
+                "cost": 25000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 8,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "True Silver Najia",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Gold",
+                        "image": "bg_gold.webp",
+                        "icon": "icon_gold.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2026
+                },
+                "image": "redirectergold.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "redirectersilver",
+                "displayName": "True Silver Najia",
+                "cost": 10000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 8,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Silver",
+                        "image": "bg_silver.webp",
+                        "icon": "icon_silver.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2026
+                },
+                "image": "redirectersilver.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -57204,6 +58515,337 @@
             {
                 "name": "najia_box",
                 "image": "najia_box.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "najia_overcharge",
+                "image": "najia_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            }
+        ]
+    },
+    {
+        "name": "damian",
+        "displayName": "Damian",
+        "rarity": {
+            "value": 4,
+            "name": "Mythic",
+            "color": "#fe0521"
+        },
+        "image": "portrait_damian.webp",
+        "defaultSkin": "gladiatordefault",
+        "title": "The beat says YEAH!",
+        "masteryIcon": "mastery_icon_damian.webp",
+        "description": "Damian LOVES to make noise. He fronts a band with his brother, Draco, but music puts him into an uncontrollable rage, where he destroys anything in sight! His shows usually end with him smashing everything near the stage... including other Brawlers.",
+        "skins": [
+            {
+                "name": "gladiatordefault",
+                "displayName": "Damian",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 0,
+                    "name": "",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [],
+                "groups": [
+                    {
+                        "name": "",
+                        "image": "bg_default.webp",
+                        "icon": "icon_default.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2026
+                },
+                "image": "gladiatordefault.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "name": "damian_default",
+                "image": "damian_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "damian_happy",
+                "image": "damian_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "damian_sad",
+                "image": "damian_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "damian_angry",
+                "image": "damian_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "damian_gg",
+                "image": "damian_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "damian_clap",
+                "image": "damian_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "damian_thanks",
+                "image": "damian_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "damian_sweat",
+                "image": "damian_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "damian_special",
+                "image": "damian_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "damian_facepalm",
+                "image": "damian_facepalm.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "damian_box",
+                "image": "damian_box.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "damian_overcharge",
+                "image": "damian_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            }
+        ]
+    },
+    {
+        "name": "starrnova",
+        "displayName": "Starr Nova",
+        "rarity": {
+            "value": 4,
+            "name": "Mythic",
+            "color": "#fe0521"
+        },
+        "image": "portrait_starrnova.webp",
+        "defaultSkin": "magicalgirldefault",
+        "title": "Magical",
+        "masteryIcon": "mastery_icon_starrnova.webp",
+        "description": "A cosplayer who believes they are the anime character Starr Nova! This can get a bit awkward, as she believes problems in the real world can *also* be solved by hitting them with a massive sword.",
+        "skins": [
+            {
+                "name": "magicalgirldefault",
+                "displayName": "Starr Nova",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 0,
+                    "name": "",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [],
+                "groups": [
+                    {
+                        "name": "",
+                        "image": "bg_default.webp",
+                        "icon": "icon_default.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 5,
+                    "year": 2026
+                },
+                "image": "magicalgirldefault.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "name": "starrnova_default",
+                "image": "starrnova_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "starrnova_happy",
+                "image": "starrnova_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "starrnova_sad",
+                "image": "starrnova_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "starrnova_angry",
+                "image": "starrnova_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "starrnova_gg",
+                "image": "starrnova_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "starrnova_clap",
+                "image": "starrnova_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "starrnova_thanks",
+                "image": "starrnova_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "starrnova_sweat",
+                "image": "starrnova_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "starrnova_special",
+                "image": "starrnova_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "starrnova_facepalm",
+                "image": "starrnova_facepalm.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "starrnova_box",
+                "image": "starrnova_box.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "starrnova_overcharge",
+                "image": "starrnova_overcharge.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -57608,7 +59250,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Starr Nova Boxes"
+                ],
                 "release": {
                     "month": 1,
                     "year": 2024
@@ -57694,6 +59338,141 @@
                     "year": 2025
                 },
                 "image": "cactuscarreta.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "cactusstarrgirls",
+                "displayName": "Starr Patrol Spike",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Starr Patrol",
+                        "image": "bg_anime.webp",
+                        "icon": "icon_anime.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 5,
+                    "year": 2026
+                },
+                "image": "cactusstarrgirls.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "cactusstarrgirlschroma1",
+                "displayName": "Starr Scout Spike",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Starr Patrol",
+                        "image": "bg_anime.webp",
+                        "icon": "icon_anime.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 5,
+                    "year": 2026
+                },
+                "image": "cactusstarrgirlschroma1.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "cactusstarrgirlschroma2",
+                "displayName": "Starr Guardian Spike",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Starr Patrol",
+                        "image": "bg_anime.webp",
+                        "icon": "icon_anime.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 5,
+                    "year": 2026
+                },
+                "image": "cactusstarrgirlschroma2.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -61496,6 +63275,98 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "firedudestarrgirls",
+                "displayName": "Starr Patrol Amber",
+                "cost": 299,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 5,
+                    "name": "Legendary",
+                    "icon": "skin_rarity_5.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Takedown",
+                    "Voice",
+                    "Sounds",
+                    "Respawn"
+                ],
+                "groups": [
+                    {
+                        "name": "Starr Patrol",
+                        "image": "bg_anime.webp",
+                        "icon": "icon_anime.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [
+                    "Nova Drops"
+                ],
+                "release": {
+                    "month": 5,
+                    "year": 2026
+                },
+                "image": "firedudestarrgirls.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "firedudestarrgirlschroma1",
+                "displayName": "Void Amber",
+                "cost": 299,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 5,
+                    "name": "Legendary",
+                    "icon": "skin_rarity_5.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Takedown",
+                    "Voice",
+                    "Sounds",
+                    "Respawn"
+                ],
+                "groups": [
+                    {
+                        "name": "Starr Patrol",
+                        "image": "bg_anime.webp",
+                        "icon": "icon_anime.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [
+                    "Nova Drops"
+                ],
+                "release": {
+                    "month": 5,
+                    "year": 2026
+                },
+                "image": "firedudestarrgirlschroma1.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -62352,7 +64223,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Presents"
+                    "Presents",
+                    "Nova Drops"
                 ],
                 "release": {
                     "month": 6,
@@ -62861,6 +64733,47 @@
                     "year": 2025
                 },
                 "image": "powerlevelerporcelain.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "powerlevelerstrikers",
+                "displayName": "Scorekeeper Surge",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Adidas",
+                        "image": "bg_strikers.webp",
+                        "icon": "icon_adidas.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 6,
+                    "year": 2026
+                },
+                "image": "powerlevelerstrikers.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -64133,7 +66046,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Nova Drops"
+                ],
                 "release": {
                     "month": 12,
                     "year": 2024
@@ -64916,7 +66831,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Damian Boxes"
+                ],
                 "release": {
                     "month": 10,
                     "year": 2024
@@ -64956,7 +66873,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Presents"
+                    "Presents",
+                    "Nova Drops"
                 ],
                 "release": {
                     "month": 12,
@@ -64995,7 +66913,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Starr Nova Boxes"
+                ],
                 "release": {
                     "month": 7,
                     "year": 2025
@@ -65033,7 +66953,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Starr Nova Boxes"
+                ],
                 "release": {
                     "month": 7,
                     "year": 2025
@@ -65071,7 +66993,9 @@
                 ],
                 "limited": false,
                 "unlock": "Reward for completing the Guismo Kit Skin Challenge",
-                "foundIn": [],
+                "foundIn": [
+                    "Starr Nova Boxes"
+                ],
                 "release": {
                     "month": 8,
                     "year": 2025
@@ -65109,7 +67033,9 @@
                 ],
                 "limited": false,
                 "unlock": "Reward for completing the Mariano Kit Skin Challenge",
-                "foundIn": [],
+                "foundIn": [
+                    "Starr Nova Boxes"
+                ],
                 "release": {
                     "month": 8,
                     "year": 2025
@@ -65147,7 +67073,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Starr Nova Boxes"
+                ],
                 "release": {
                     "month": 7,
                     "year": 2025
@@ -65185,7 +67113,9 @@
                 ],
                 "limited": false,
                 "unlock": "Reward for completing the Yuki Kit Skin Challenge",
-                "foundIn": [],
+                "foundIn": [
+                    "Starr Nova Boxes"
+                ],
                 "release": {
                     "month": 7,
                     "year": 2025
@@ -65542,7 +67472,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Ziggy Boxes"
+                    "Ziggy Boxes",
+                    "Damian Boxes"
                 ],
                 "release": {
                     "month": 10,
@@ -67392,6 +69323,82 @@
                     "year": 2026
                 },
                 "image": "shadowdemondefault.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "shadowdemongold",
+                "displayName": "True Gold Sirius",
+                "cost": 25000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 8,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "True Silver Sirius",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Gold",
+                        "image": "bg_gold.webp",
+                        "icon": "icon_gold.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2026
+                },
+                "image": "shadowdemongold.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "shadowdemonsilver",
+                "displayName": "True Silver Sirius",
+                "cost": 10000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 8,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [
+                    "Brawler Model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Silver",
+                        "image": "bg_silver.webp",
+                        "icon": "icon_silver.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 4,
+                    "year": 2026
+                },
+                "image": "shadowdemonsilver.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",

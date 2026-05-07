@@ -518,5 +518,25 @@
         "name": "BSC 2025",
         "image": "bg_wf",
         "icon": "icon_wf"
+    },
+    "anime": {
+        "name": "Starr Patrol",
+        "image": "bg_anime",
+        "icon": "icon_anime"
+    },
+    "strikers": {
+        "name": "Brawl Strikers",
+        "image": "bg_strikers",
+        "icon": "icon_strikers"
+    },
+    "mha": {
+        "name": "My Hero Academia",
+        "image": "bg_mha",
+        "icon": "icon_mha"
+    },
+    "adidas": {
+        "name": "Adidas",
+        "image": "bg_strikers",
+        "icon": "icon_adidas"
     }
 }
