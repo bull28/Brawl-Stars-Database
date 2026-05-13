@@ -48,6 +48,7 @@ export interface BrawlerData{
     image: string;
     defaultSkin: string;
     title: string;
+    prestigeTitle: string;
     masteryIcon: string;
     skins: SkinPreview[];
     pins: PinPreview[];
@@ -100,7 +101,7 @@ export interface SkinData{
     requires: string;
     features: string[];
     groups: SkinGroup[];
-    limited: boolean;
+    availability: string;
     unlock: string;
     foundIn: string[];
     release: {month: number; year: number;};
@@ -127,7 +128,7 @@ export type SkinSearchFilters = Partial<{
     groups: string[];
     foundIn: string;
     bling: boolean;
-    limited: boolean;
+    availability: string;
     startDate: {
         month: number;
         year: number;

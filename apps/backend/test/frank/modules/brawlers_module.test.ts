@@ -28,7 +28,7 @@ describe("Brawlers and Skins module", function(){
         expect(data).to.be.an("object");
         expect(data).to.have.keys([
             "name", "displayName", "rarity", "description", "image",
-            "defaultSkin", "title", "masteryIcon", "skins", "pins"
+            "defaultSkin", "title", "prestigeTitle", "masteryIcon", "skins", "pins"
         ]);
         expect(data.rarity).to.have.keys(["value", "name", "color"]);
         expect(data.skins).to.be.an("array");
@@ -42,6 +42,7 @@ describe("Brawlers and Skins module", function(){
         expect(data.image).to.equal(PORTRAIT_IMAGE_DIR + brawler.image);
         expect(data.defaultSkin).to.equal(brawler.defaultSkin);
         expect(data.title).to.equal(brawler.title);
+        expect(data.prestigeTitle).to.equal(brawler.prestigeTitle);
         expect(data.masteryIcon).to.equal(MASTERY_ICON_DIR + brawler.masteryIcon);
 
         // Skin
@@ -51,7 +52,7 @@ describe("Brawlers and Skins module", function(){
         expect(skinData).to.be.an("object");
         expect(skinData).to.have.keys([
             "name", "displayName", "cost", "costBling", "rarity", "requires",
-            "features", "groups", "limited", "unlock", "foundIn", "release", "rating", "image"
+            "features", "groups", "availability", "unlock", "foundIn", "release", "rating", "image"
         ]);
         expect(skinData.cost).to.have.keys(["amount", "currency", "icon"]);
         expect(skinData.costBling).to.have.keys(["amount", "currency", "icon"]);
@@ -72,7 +73,7 @@ describe("Brawlers and Skins module", function(){
         }
 
         expect(skinData.requires).to.equal(skin.requires);
-        expect(skinData.limited).to.equal(skin.limited);
+        expect(skinData.availability).to.equal(skin.availability);
         expect(skinData.unlock).to.equal(skin.unlock);
         expect(skinData.foundIn).to.equal(skin.foundIn);
         expect(skinData.release.month).to.equal(skin.release[1]);
@@ -220,18 +221,18 @@ describe("Brawlers and Skins module", function(){
             expect(results2.length).to.equal(filtered2.length);
         });
 
-        it("Limited skins", function(){
-            const results1 = skinSearch({limited: true});
+        it("Skin availability", function(){
+            const results1 = skinSearch({availability: "seasonal"});
             const filtered1 = results1.filter((value) => {
                 const data = skinMap.get(value.name);
-                return data !== undefined && data.limited === true;
+                return data !== undefined && data.availability === "seasonal";
             });
             expect(results1.length).to.equal(filtered1.length);
 
-            const results2 = skinSearch({limited: false});
+            const results2 = skinSearch({availability: ""});
             const filtered2 = results2.filter((value) => {
                 const data = skinMap.get(value.name);
-                return data !== undefined && data.limited === false;
+                return data !== undefined && data.availability === "";
             });
             expect(results2.length).to.equal(filtered2.length);
         });

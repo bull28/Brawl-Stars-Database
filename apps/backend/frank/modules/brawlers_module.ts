@@ -17,7 +17,8 @@ const skinCurrencies: Record<string, {name: string; image: string;}> = {
     "Gems": {name: "Gems", image: "icon_gems" + IMAGE_FILE_EXTENSION},
     "Coins": {name: "Coins", image: "icon_coins" + IMAGE_FILE_EXTENSION},
     "ClubCoins": {name: "Club Coins", image: "icon_clubcoins" + IMAGE_FILE_EXTENSION},
-    "Bling": {name: "Bling", image: "icon_bling" + IMAGE_FILE_EXTENSION}
+    "Bling": {name: "Bling", image: "icon_bling" + IMAGE_FILE_EXTENSION},
+    "Keys": {name: "Skin Keys", image: "icon_skin_key" + IMAGE_FILE_EXTENSION}
 };
 
 export const rarities = {
@@ -144,6 +145,7 @@ export function getBrawlerData(brawler: Brawler): BrawlerData{
         image: PORTRAIT_IMAGE_DIR + brawler.image,
         defaultSkin: brawler.defaultSkin,
         title: brawler.title,
+        prestigeTitle: brawler.prestigeTitle,
         masteryIcon: MASTERY_ICON_DIR + brawler.masteryIcon,
         skins: brawlerSkins,
         pins: brawlerPins
@@ -202,7 +204,7 @@ export function getSkinData(skin: Skin, brawlerName: string): SkinData{
         requires: skin.requires,
         features: skinFeatures,
         groups: groups,
-        limited: skin.limited,
+        availability: skin.availability,
         unlock: skin.unlock,
         foundIn: skin.foundIn,
         release: {
@@ -226,7 +228,7 @@ function skinMatchesFilters(skin: Skin, filters: SkinSearchFilters): boolean{
     if (filters === undefined){
         return true;
     }
-    const {query, rarity, minCost, maxCost, groups, foundIn, bling, limited, startDate, endDate} = filters;
+    const {query, rarity, minCost, maxCost, groups, foundIn, bling, availability, startDate, endDate} = filters;
 
     if (rarity !== undefined && skin.rarity !== rarity){
         return false;
@@ -254,7 +256,7 @@ function skinMatchesFilters(skin: Skin, filters: SkinSearchFilters): boolean{
     if (bling !== undefined && skin.costBling > 0 !== bling){
         return false;
     }
-    if (limited !== undefined && skin.limited !== limited){
+    if (availability !== undefined && skin.availability !== availability){
         return false;
     }
     if (startDate !== undefined){
