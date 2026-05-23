@@ -156,7 +156,7 @@ router.post<Empty, Empty, UpdateReqBody>("/update", loginErrorHandler<UpdateReqB
         newPasswordHash = await hashPassword(newPassword);
     }
     if (newTheme !== undefined){
-        menuTheme = newTheme.slice(0, 15);
+        menuTheme = newTheme.slice(0, 19);
     }
 
     await updateAccount({

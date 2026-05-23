@@ -369,7 +369,7 @@ export function getCharacterData(character: UserCharacter, accessories?: UserAcc
         upgradeCost.trophiesReq = tierConfig.trophiesReq;
     }
 
-    const {health, damage, healing, lifeSteal} = config.stats;
+    const {health, damage, healing, lifeSteal, critical, combo} = config.stats;
     const {reload, speed, range, targets} = config.otherStats;
 
     return {
@@ -384,7 +384,9 @@ export function getCharacterData(character: UserCharacter, accessories?: UserAcc
                 health: health * multiplier / 100,
                 damage: damage * multiplier / 100,
                 healing: healing * multiplier / 100,
-                lifeSteal: lifeSteal * multiplier / 100
+                lifeSteal: lifeSteal * multiplier / 100,
+                critical: critical * multiplier / 100,
+                combo: combo * multiplier / 100
             },
             unlocks: tierUnlocks,
             hcStats: getHyperStats(character.tier)
@@ -395,7 +397,9 @@ export function getCharacterData(character: UserCharacter, accessories?: UserAcc
                 health: health * nextMultiplier / 100,
                 damage: damage * nextMultiplier / 100,
                 healing: healing * nextMultiplier / 100,
-                lifeSteal: lifeSteal * nextMultiplier / 100
+                lifeSteal: lifeSteal * nextMultiplier / 100,
+                critical: critical * nextMultiplier / 100,
+                combo: combo * nextMultiplier / 100
             },
             unlocks: nextUnlocks,
             hcStats: getHyperStats(getNextTier(character.tier))

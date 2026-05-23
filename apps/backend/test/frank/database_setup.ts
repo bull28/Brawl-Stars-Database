@@ -25,7 +25,7 @@ export const tokens = {
     trials: signToken("trials").token
 };
 
-export const GAME_VERSION = (104 << 16) + 144;
+export const GAME_VERSION = (105 << 16) + 144;
 export const sampleGameReport: GameReport = [
     GAME_VERSION, 1, // Version
     0, // Game Mode
@@ -134,28 +134,22 @@ staticChallenges.set(TEST_STATIC_ID, {
         },
         playerUpgradeValues: {
             health: {
-                cost: [3, 3, 3, 3, 4],
-                maxLevel: 5
+                cost: [3, 3, 3, 3, 4]
             },
             damage: {
-                cost: [3, 3, 3, 3, 4],
-                maxLevel: 5
+                cost: [3, 3, 3, 3, 4]
             },
             healing: {
-                cost: [4, 4, 5],
-                maxLevel: 3
+                cost: [4, 4, 5]
             },
             speed: {
-                cost: [5, 6, 8],
-                maxLevel: 3
+                cost: [5, 6, 8]
             },
             ability: {
-                cost: [6, 10, 14],
-                maxLevel: 3
+                cost: [6, 10, 14]
             },
             lifeSteal: {
-                cost: [6, 8, 10],
-                maxLevel: 3
+                cost: [6, 8, 10]
             }
         }
     }

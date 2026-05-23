@@ -348,7 +348,7 @@ export interface CharacterPreview{
     tier: UpgradeTier;
 }
 
-type CharacterCombatStats = {[k in "health" | "damage" | "healing" | "lifeSteal"]: number};
+type CharacterCombatStats = {[k in "health" | "damage" | "healing" | "lifeSteal" | "critical" | "combo"]: number};
 type CharacterOtherStats = {[k in "reload" | "speed" | "range" | "targets"]: number};
 export type CharacterUnlockStats = {[k in "gears" | "starPowers" | "hcDuration"]: number};
 export type CharacterHyperStats = {[k in "healing" | "damage" | "speed" | "charge" | "level"]: number};

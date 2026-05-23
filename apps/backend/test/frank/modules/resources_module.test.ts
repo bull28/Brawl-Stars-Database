@@ -179,8 +179,8 @@ describe("User Resources module", function(){
             expect(tier0.next).to.have.keys(["tier", "stats", "unlocks", "hcStats"]);
             expect(tier0.current.tier).to.have.keys(["level", "name", "image", "color"]);
             expect(tier0.next.tier).to.have.keys(["level", "name", "image", "color"]);
-            expect(tier0.current.stats).to.have.keys(["health", "damage", "healing", "lifeSteal"]);
-            expect(tier0.next.stats).to.have.keys(["health", "damage", "healing", "lifeSteal"]);
+            expect(tier0.current.stats).to.have.keys(["health", "damage", "healing", "lifeSteal", "critical", "combo"]);
+            expect(tier0.next.stats).to.have.keys(["health", "damage", "healing", "lifeSteal", "critical", "combo"]);
             expect(tier0.current.unlocks).to.have.keys(["gears", "starPowers", "hcDuration"]);
             expect(tier0.next.unlocks).to.have.keys(["gears", "starPowers", "hcDuration"]);
             expect(tier0.current.hcStats).to.have.keys(["healing", "damage", "speed", "charge", "level"]);
