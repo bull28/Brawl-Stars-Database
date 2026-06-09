@@ -459,5 +459,5 @@ export async function deleteActiveTrial(values: DeleteTrialValues): Promise<void
         await transactionUpdate(connection, [resources.mastery, resources.coins, Buffer.from(accessories.buffer), values.username], false,
             `UPDATE ${tables.users} SET mastery = ?, coins = ?, accessories = ? WHERE username = ?;`
         );
-    })
+    });
 }

@@ -16,5 +16,8 @@ export const MASTERY_LEVEL_DIR = "resources/mastery/";
 export const REWARD_IMAGE_DIR = "resources/rewards/";
 export const ACCESSORY_IMAGE_DIR = "accessories/";
 export const TRIAL_IMAGE_DIR = "trials/";
-export const TIER_IMAGE_DIR = "bullgame/images/resources/";
-export const CHARACTER_IMAGE_DIR = "bullgame/images/characters/";
+
+const version = process.env["ASSETS_VERSION"];
+const versionPath = version !== undefined ? `bullgame/v${version}/` : "bullgame/";
+export const TIER_IMAGE_DIR = versionPath + "images/resources/";
+export const CHARACTER_IMAGE_DIR = versionPath + "images/characters/";

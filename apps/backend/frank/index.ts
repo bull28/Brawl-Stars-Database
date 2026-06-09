@@ -22,15 +22,15 @@ app.disable("x-powered-by");
 let port = 6969;
 
 if (process.env["PORT"] !== undefined){
-    const portString = process.env["PORT"];
-    if (!isNaN(Number(portString))){
-        port = parseInt(portString);
+    const portValue = parseInt(process.env["PORT"]);
+    if (isNaN(portValue) === false){
+        port = portValue;
     }
 }
 if (process.env["NODE_ENV"] === "test" && process.env["TEST_PORT"] !== undefined){
-    const portString = process.env["TEST_PORT"];
-    if (!isNaN(Number(portString))){
-        port = parseInt(portString);
+    const portValue = parseInt(process.env["TEST_PORT"]);
+    if (isNaN(portValue) === false){
+        port = portValue;
     }
 }
 

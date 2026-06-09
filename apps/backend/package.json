@@ -24,11 +24,11 @@
         "dotenv": "^17.4.2",
         "express": "^5.2.1",
         "jsonwebtoken": "^9.0.3",
-        "mysql2": "^3.22.0"
+        "mysql2": "^3.22.4"
     },
     "devDependencies": {
         "@swc/cli": "^0.8.1",
-        "@swc/core": "^1.15.24",
+        "@swc/core": "^1.15.40",
         "@types/chai": "^5.2.3",
         "@types/compression": "^1.8.1",
         "@types/cors": "^2.8.19",
@@ -36,12 +36,12 @@
         "@types/jsonwebtoken": "^9.0.10",
         "@types/mocha": "^10.0.10",
         "@types/mysql": "^2.15.27",
-        "@types/node": "^25.6.0",
+        "@types/node": "^25.9.1",
         "chai": "^6.2.2",
         "chai-http": "^5.1.2",
-        "mocha": "^11.7.5",
+        "mocha": "^11.7.6",
         "nodemon": "^3.1.14",
-        "tsx": "^4.21.0",
-        "typescript": "^6.0.2"
+        "tsx": "^4.22.4",
+        "typescript": "^6.0.3"
     }
 }

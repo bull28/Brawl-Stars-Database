@@ -102,7 +102,7 @@
     "shelly": {
         "displayName": "Shelly",
         "image": "shelly/shelly_default.webp",
-        "fullImage": "shelly/shotgungirloldschool.webp",
+        "fullImage": "shelly/banditgirldefault.webp",
         "enemyClass": "Damage Dealer",
         "description": "Attacks with a short-ranged shotgun.",
         "strengthTier": "Gains movement speed.",
@@ -127,7 +127,7 @@
     "colt": {
         "displayName": "Colt",
         "image": "colt/colt_default.webp",
-        "fullImage": "colt/gunslingerbadass.webp",
+        "fullImage": "colt/gunslingerdefault.webp",
         "enemyClass": "Marksman",
         "description": "Occasionally receives a buff, temporarily increasing its movement and reload speed.",
         "strengthTier": "Receives the speed buff more often.",
@@ -205,7 +205,7 @@
                 "reload": 5,
                 "knockback": 50,
                 "fireDamage": 0,
-                "description": "Used 0.5x as often if you are close to El Primo but 5x as often if you are far away."
+                "description": "Used 0.5x as often if you are close to El Primo but 2.5x as often if you are far away."
             }
         ],
         "enemies": []
@@ -727,7 +727,7 @@
         "description": "Starts with a shield that reduces damage taken by 40%. Every few seconds, shoots a large rocket towards your location.",
         "strengthTier": "Time between attacks becomes more variable, projectiles move faster, and large rocket deals more damage.",
         "value": 16,
-        "health": 6600,
+        "health": 6000,
         "speed": 20,
         "attacks": [
             {
@@ -1298,7 +1298,7 @@
                 "damageType": 0,
                 "range": 110,
                 "reload": 4,
-                "knockback": 50,
+                "knockback": 63,
                 "fireDamage": 0,
                 "description": "Shoots a projectile that pulls you towards Bull."
             },
