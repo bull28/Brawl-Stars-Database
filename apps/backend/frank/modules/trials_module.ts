@@ -510,8 +510,12 @@ export function addFinalReward(trial: TrialData, resources: UserResources): numb
 
     resources.mastery += mastery;
 
+    const scoreAchievement = totalScore + trial.scores.length * 300 >= 4000;
     for (let x = 0; x < resources.accessories.length; x++){
-        if (resources.accessories[x].name === "trials"){
+        if (
+            resources.accessories[x].name === "trials" ||
+            (scoreAchievement === true && resources.accessories[x].name === "perfect3")
+        ){
             resources.accessories[x].badges += 1;
         }
     }
@@ -1032,16 +1036,16 @@ export function saveChallengeReport(trial: TrialData, report: number[]): Challen
         trial.rewards.specialBoxes |= 4;
     }
 
-    if (isItemActive(accessories, 87) === true){
+    if (isItemActive(accessories, 95) === true){
         trial.rewards.lastScore = Math.max(trial.rewards.lastScore, 600);
-    } if (isItemActive(accessories, 89) === true){
+    } if (isItemActive(accessories, 97) === true){
         trial.rewards.specialBoxes |= 8;
         trial.rewards.badges += 50;
-    } if (isItemActive(accessories, 90) === true){
+    } if (isItemActive(accessories, 98) === true){
         trial.rewards.specialBoxes |= 8;
         trial.rewards.mastery += 50;
     }
-    const coinsAccs = [28, 29, 53, 54, 72, 73, 86, 91];
+    const coinsAccs = [30, 31, 56, 57, 76, 77, 94, 99];
     const coinsRewards = [6, 8, 12, 15, 20, 24, 30, 40];
     let qualityIncrease = 0;
     for (let x = 0; x < coinsAccs.length; x++){

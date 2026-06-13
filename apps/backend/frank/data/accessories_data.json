@@ -50,9 +50,9 @@
         "badges": 1, "masteryReq": 17
     },
     {
-        "name": "shop6", "category": "", "displayName": "Pam's Healing Station", "cost": 6,
-        "description": "Increases protection.", "unlock": "Buy from the Shop.",
-        "badges": 1, "masteryReq": 19
+        "name": "shop6", "category": "", "displayName": "Jump Pad", "cost": 6,
+        "description": "Decreases the time between healing ticks.", "unlock": "Buy from the Shop.",
+        "badges": 1, "masteryReq": 17
     },
     {
         "name": "shop7", "category": "", "displayName": "Nani's Drone", "cost": 4,
@@ -70,7 +70,7 @@
         "badges": 1, "masteryReq": 24
     },
     {
-        "name": "brawlbox2", "category": "", "displayName": "Sam's Knuckle Busters", "cost": 6,
+        "name": "brawlbox2", "category": "", "displayName": "Sam's Knuckle Busters", "cost": 7,
         "description": "Every few seconds, restore some missing health.", "unlock": "Buy from the Shop.",
         "badges": 1, "masteryReq": 24
     },
@@ -92,12 +92,22 @@
     {
         "name": "brawlbox6", "category": "", "displayName": "Buster's Projector", "cost": 4,
         "description": "The super charges faster when not attacking.", "unlock": "Buy from the Shop.",
-        "badges": 1, "masteryReq": 17
+        "badges": 1, "masteryReq": 19
     },
     {
         "name": "brawlbox7", "category": "", "displayName": "Super Juice", "cost": 5,
         "description": "The super charges past a full charge.", "unlock": "Buy from the Shop.",
         "badges": 1, "masteryReq": 22
+    },
+    {
+        "name": "brawlbox8", "category": "", "displayName": "Sharpened Shuriken", "cost": 5,
+        "description": "If no enemies were recently defeated, deal more damage.", "unlock": "Buy from the Shop.",
+        "badges": 1, "masteryReq": 22
+    },
+    {
+        "name": "brawlbox9", "category": "", "displayName": "Sirius's Mask", "cost": 6,
+        "description": "When defeating an enemy, partially recharge the super.", "unlock": "Buy from the Shop.",
+        "badges": 1, "masteryReq": 24
     },
     {
         "name": "shelly", "category": "enemy", "displayName": "Shelly's Shotgun", "cost": 3,
@@ -106,7 +116,7 @@
     },
     {
         "name": "colt", "category": "enemy", "displayName": "Colt's Revolvers", "cost": 3,
-        "description": "Receive more protection from Marksman enemies.", "unlock": "Defeat Colt enemies.",
+        "description": "Deal more damage to and receive more protection from Marksman enemies.", "unlock": "Defeat Colt enemies.",
         "badges": 20, "masteryReq": 8
     },
     {
@@ -126,7 +136,7 @@
     },
     {
         "name": "belle", "category": "enemy", "displayName": "Belle's Rifle", "cost": 3,
-        "description": "Deal more damage to Marksman enemies.", "unlock": "Defeat Belle enemies.",
+        "description": "Receive more protection from Marksman enemies.", "unlock": "Defeat Belle enemies.",
         "badges": 50, "masteryReq": 14
     },
     {
@@ -141,7 +151,7 @@
     },
     {
         "name": "mortis", "category": "enemy", "displayName": "Mortis's Shovel", "cost": 3,
-        "description": "Receive more protection from Assassin enemies.", "unlock": "Defeat Mortis enemies.",
+        "description": "Deal more damage to and receive more protection from Assassin enemies.", "unlock": "Defeat Mortis enemies.",
         "badges": 50, "masteryReq": 14
     },
     {
@@ -160,8 +170,8 @@
         "badges": 50, "masteryReq": 14
     },
     {
-        "name": "bea", "category": "enemy", "displayName": "Bea's Bee", "cost": 4,
-        "description": "Receive more protection from Marksman enemies.", "unlock": "Defeat Bea enemies.",
+        "name": "bea", "category": "enemy", "displayName": "Bea's Bee", "cost": 3,
+        "description": "Deal more damage to Marksman enemies.", "unlock": "Defeat Bea enemies.",
         "badges": 50, "masteryReq": 17
     },
     {
@@ -191,7 +201,7 @@
     },
     {
         "name": "brock", "category": "enemy", "displayName": "Brock's Rocket Launcher", "cost": 4,
-        "description": "Deal more damage to Marksman enemies.", "unlock": "Defeat Brock enemies.",
+        "description": "Receive more protection from Marksman enemies.", "unlock": "Defeat Brock enemies.",
         "badges": 100, "masteryReq": 19
     },
     {
@@ -206,7 +216,17 @@
     },
     {
         "name": "leon", "category": "enemy", "displayName": "Leon's Lollipop", "cost": 3,
-        "description": "Deal more damage to Assassin enemies.", "unlock": "Defeat Leon enemies.",
+        "description": "Receive more protection from Assassin enemies.", "unlock": "Defeat Leon enemies.",
+        "badges": 100, "masteryReq": 19
+    },
+    {
+        "name": "najia", "category": "enemy", "displayName": "Najia's Jar", "cost": 4,
+        "description": "Deal more damage to Marksman enemies.", "unlock": "Defeat Najia enemies.",
+        "badges": 100, "masteryReq": 19
+    },
+    {
+        "name": "mina", "category": "enemy", "displayName": "Mina's Drum", "cost": 3,
+        "description": "Deal more damage to Assassin enemies.", "unlock": "Defeat Mina enemies.",
         "badges": 100, "masteryReq": 19
     },
     {
@@ -306,7 +326,7 @@
     },
     {
         "name": "biodome", "category": "location", "displayName": "Rosa's Gloves", "cost": 5,
-        "description": "Increases critical chance when close to maximum health.", "unlock": "Complete levels at Biodome.",
+        "description": "Using the super temporarily increases the chance to land critical hits.", "unlock": "Complete levels at Biodome.",
         "badges": 50, "masteryReq": 22
     },
     {
@@ -316,13 +336,18 @@
     },
     {
         "name": "deepsea", "category": "location", "displayName": "Clancy's Tokens", "cost": 5,
-        "description": "Using the super increases life steal for the rest of the level.", "unlock": "Complete levels at Deep Sea.",
+        "description": "The combo gains a life steal buff.", "unlock": "Complete levels at Deep Sea.",
         "badges": 50, "masteryReq": 22
     },
     {
         "name": "giftshop", "category": "location", "displayName": "Gift Shop Shirt", "cost": 6,
         "description": "Increases health, critical damage, and life steal.", "unlock": "Complete levels at Gift Shop.",
         "badges": 25, "masteryReq": 17
+    },
+    {
+        "name": "bazaar", "category": "location", "displayName": "Magic Lantern", "cost": 6,
+        "description": "Every few seconds, heal for part of the strongest hit recently received.", "unlock": "Complete levels at Bazaar.",
+        "badges": 60, "masteryReq": 24
     },
     {
         "name": "enchantedforest", "category": "location", "displayName": "Mysterious Mushroom", "cost": 6,
@@ -355,19 +380,24 @@
         "badges": 60, "masteryReq": 22
     },
     {
+        "name": "katanakingdom", "category": "location", "displayName": "Fabled Katana", "cost": 6,
+        "description": "Landing a critical hit increases damage for a few seconds.", "unlock": "Complete levels at Katana Kingdom",
+        "badges": 60, "masteryReq": 24
+    },
+    {
         "name": "odditiesshop", "category": "location", "displayName": "Cursed Book", "cost": 6,
         "description": "The combo gains a speed and reload buff.", "unlock": "Complete levels at Oddities Shop",
         "badges": 60, "masteryReq": 24
     },
     {
-        "name": "arcade", "category": "location", "displayName": "Arcade Machine", "cost": 6,
+        "name": "arcade", "category": "location", "displayName": "Arcade Machine", "cost": 7,
         "description": "Defeating enemies increases damage for the rest of the level.", "unlock": "Complete levels at Arcade.",
         "badges": 100, "masteryReq": 24
     },
     {
-        "name": "wins", "category": "", "displayName": "Bull's Shotgun", "cost": 6,
-        "description": "Increases attack reload.", "unlock": "Win in any difficulty.",
-        "badges": 100, "masteryReq": 19
+        "name": "wins", "category": "", "displayName": "Pam's Healing Station", "cost": 7,
+        "description": "Increases protection.", "unlock": "Win in any difficulty.",
+        "badges": 200, "masteryReq": 28
     },
     {
         "name": "enemies", "category": "", "displayName": "Omega Box", "cost": 7,
@@ -401,11 +431,16 @@
     },
     {
         "name": "fastwin", "category": "", "displayName": "Fang's Shoe", "cost": 5,
-        "description": "When defeating an enemy, partially recharge the super.", "unlock": "Win Classic Mode in under 90 seconds.",
+        "description": "Increases movement speed.", "unlock": "Win Classic Mode in under 90 seconds.",
         "badges": 1, "masteryReq": 22
     },
     {
-        "name": "usecombo", "category": "", "displayName": "Meeple's Dice", "cost": 5,
+        "name": "maxdamage", "category": "", "displayName": "Meeple's Dice", "cost": 5,
+        "description": "Increases the chance to land critical hits.", "unlock": "Buy from the Shop.",
+        "badges": 1, "masteryReq": 19
+    },
+    {
+        "name": "usecombo", "category": "", "displayName": "Ash's Broom", "cost": 6,
         "description": "Increases charge rate of the combo.", "unlock": "Win Classic Mode while using at least 20 max level combos.",
         "badges": 1, "masteryReq": 19
     },
@@ -418,6 +453,11 @@
         "name": "perfect2", "category": "", "displayName": "Hypercharged Token", "cost": 7,
         "description": "Increases charge rate of Hypercharge.", "unlock": "Get a score of 600 on Classic Mode difficulty 10.",
         "badges": 1, "masteryReq": 36
+    },
+    {
+        "name": "perfect3", "category": "", "displayName": "Bull's Shotgun", "cost": 7,
+        "description": "Increases attack reload.", "unlock": "Get a total score of at least 4000 in a Trial.",
+        "badges": 1, "masteryReq": 28
     },
     {
         "name": "mastery1", "category": "", "displayName": "Bronze Medal", "cost": 3,

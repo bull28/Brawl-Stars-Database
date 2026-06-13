@@ -289,11 +289,14 @@ describe("Trials module", function(){
         const initialResources = {
             mastery: 0, coins: 0,
             characters: [],
-            accessories: [{name: "trials", badges: 0, unlocked: false}],
+            accessories: [
+                {name: "trials", badges: 0, unlocked: false},
+                {name: "perfect3", badges: 0, unlocked: false}
+            ],
             last_save: 0, menu_theme: ""
         };
 
-        const reward = addFinalReward(trial, initialResources);
+        let reward = addFinalReward(trial, initialResources);
 
         expect(reward).to.equal(
             (totalScore - 300 * trial.scores.length) * allTrials[trial.trialid].baseMastery *
@@ -301,11 +304,20 @@ describe("Trials module", function(){
         );
         expect(initialResources.mastery).to.equal(reward);
         expect(initialResources.accessories[0].badges).to.equal(1);
+        expect(initialResources.accessories[1].badges).to.equal(0);
+
+        for (let x = 0; x < trial.scores.length; x++){
+            trial.scores[x] = 4000;
+        }
+        reward += addFinalReward(trial, initialResources);
+        expect(initialResources.mastery).to.equal(reward);
+        expect(initialResources.accessories[0].badges).to.equal(2);
+        expect(initialResources.accessories[1].badges).to.equal(1);
 
         trial.progress = 0;
         expect(addFinalReward(trial, initialResources)).to.equal(0);
         expect(initialResources.mastery).to.equal(reward);
-        expect(initialResources.accessories[0].badges).to.equal(1);
+        expect(initialResources.accessories[0].badges).to.equal(2);
     });
 
     it("Open a Brawl Box in a trial", function(){

@@ -10,7 +10,7 @@ for (let x = 0; x < REPORT_FORMAT.length[1]; x++){
 
 // Score = 500, Difficulty 2, Player 3 (Darryl), Upgrade Tier 0, Star Power 2, Enemies Defeated = 600
 // Gears 1 and 2 (Health and Shield), First 5 Accessories
-const previewReport = [0, 0, 0, 500, 1, 3, 0, 2, 1, 2, 31, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 300, 150, 0, 50, 0, 0, 11, 0, 600];
+const previewReport = [0, 0, 0, 500, 1, 3, 0, 2, 1, 2, 31, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 300, 150, 0, 50, 0, 0, 11, 0, 600];
 for (let x = previewReport.length; x < REPORT_FORMAT.length[1]; x++){
     if (x >= REPORT_FORMAT.stats[0] && x < REPORT_FORMAT.stats[1]){
         previewReport.push(x - REPORT_FORMAT.stats[0]);
@@ -93,7 +93,7 @@ describe("Game Report module", function(){
             const report2 = sampleGameReport.slice();
             report2[format.mode[0]] = 0;
             report2[format.player[0] + 1] = 1;
-            const newAccs = [74, 75, 84, 85, 91];
+            const newAccs = [80, 81, 92, 93, 99];
             for (let x = 0; x < newAccs.length; x++){
                 //report2[format.accessories[0] + x] = newAccs[x];
                 report2[format.accessories[0] + (newAccs[x] >> 3)] |= (1 << (newAccs[x] & 7));
@@ -230,9 +230,9 @@ describe("Game Report module", function(){
             expect(validateReport(invalid)).to.equal(15);
             invalid[format.enemies[0] + 2] = valid[format.enemies[0] + 2];
 
-            invalid[format.enemies[0] + 30] = 2;
+            invalid[format.enemies[0] + 32] = 2;
             expect(validateReport(invalid)).to.equal(15);
-            invalid[format.enemies[0] + 30] = valid[format.enemies[0] + 26];
+            invalid[format.enemies[0] + 32] = valid[format.enemies[0] + 32];
         });
 
         it("Accessories used on difficulty 5 or lower", function(){
@@ -283,9 +283,9 @@ describe("Game Report module", function(){
             invalid[l + 5] = valid[l + 5];
 
             // The enemy at this index is a bonus enemy and will increase the score if defeated
-            invalid[format.enemies[0] + 30] = 1;
+            invalid[format.enemies[0] + 32] = 1;
             expect(validateReport(invalid)).to.equal(20);
-            invalid[format.enemies[0] + 30] = valid[format.enemies[0] + 30];
+            invalid[format.enemies[0] + 32] = valid[format.enemies[0] + 32];
 
             invalid[l + 4] = 100000;
             invalid[l + 10] = 100000;

@@ -724,7 +724,7 @@
         "image": "brock/brock_steampunk.webp",
         "fullImage": "brock/rocketgirlsteampunk.webp",
         "enemyClass": "Marksman",
-        "description": "Starts with a shield that reduces damage taken by 40%. Every few seconds, shoots a large rocket towards your location.",
+        "description": "Starts with a shield that reduces damage taken by 20%. Every few seconds, shoots a large rocket towards your location.",
         "strengthTier": "Time between attacks becomes more variable, projectiles move faster, and large rocket deals more damage.",
         "value": 16,
         "health": 6000,
@@ -775,7 +775,7 @@
         "description": "Uses a random one of its super attacks every few seconds.",
         "strengthTier": "Uses supers more often and has a chance to skip the 1-projectile attack in its attack cycle.",
         "value": 20,
-        "health": 7800,
+        "health": 7600,
         "speed": 18,
         "attacks": [
             {
@@ -897,6 +897,123 @@
         ],
         "enemies": []
     },
+    "najia": {
+        "displayName": "Najia",
+        "image": "najia/najia_default.webp",
+        "fullImage": "najia/redirecterdefault.webp",
+        "enemyClass": "Marksman",
+        "description": "Every few seconds, spawns 3 snakes to defend itself. Snakes are summoned more often the closer you are to Najia.",
+        "strengthTier": "Snakes are spawned more often and move faster.",
+        "value": 20,
+        "health": 6600,
+        "speed": 14,
+        "attacks": [
+            {
+                "displayName": "Default Attack",
+                "minDamage": 360,
+                "maxDamage": 360,
+                "damageType": 0,
+                "range": 50,
+                "reload": 2.5,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": ""
+            },
+            {
+                "displayName": "Jar Attack",
+                "minDamage": 160,
+                "maxDamage": 160,
+                "damageType": 0,
+                "range": 70,
+                "reload": 2.5,
+                "knockback": 0,
+                "fireDamage": 640,
+                "description": "Shot from the position the default attack was at when it either hits you or expires."
+            }
+        ],
+        "enemies": [
+            {
+                "count": 3,
+                "displayName": "Najia Snake",
+                "description": "Loses 1/5 of its max health every second. The snake is automatically defeated after it attacks.",
+                "strengthTier": "",
+                "value": 0,
+                "health": 1120,
+                "speed": 18,
+                "attacks": [
+                    {
+                        "displayName": "Default Attack",
+                        "minDamage": 640,
+                        "maxDamage": 640,
+                        "damageType": 0,
+                        "range": 5,
+                        "reload": 0,
+                        "knockback": 0,
+                        "fireDamage": 0,
+                        "description": "Slows you for 1 second."
+                    }
+                ]
+            }
+        ]
+    },
+    "mina": {
+        "displayName": "Mina",
+        "image": "mina/mina_default.webp",
+        "fullImage": "mina/dancerdefault.webp",
+        "enemyClass": "Assassin",
+        "description": "Cycles through a sequence of 3 attacks and dashes while attacking. The sequence advances when an attack hits, but if an attack misses, the sequence resets.",
+        "strengthTier": "Attacks more frequently and is more likely to use the Hurricane attack.",
+        "value": 20,
+        "health": 7800,
+        "speed": 16,
+        "attacks": [
+            {
+                "displayName": "1st Attack",
+                "minDamage": 440,
+                "maxDamage": 440,
+                "damageType": 0,
+                "range": 60,
+                "reload": 1,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": "If this attack hits, the 2nd attack will be used next."
+            },
+            {
+                "displayName": "2nd Attack",
+                "minDamage": 660,
+                "maxDamage": 660,
+                "damageType": 0,
+                "range": 45,
+                "reload": 1,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": "If this attack hits, the 3rd attack will be used next."
+            },
+            {
+                "displayName": "3rd Attack",
+                "minDamage": 880,
+                "maxDamage": 880,
+                "damageType": 0,
+                "range": 35,
+                "reload": 1,
+                "knockback": 0,
+                "fireDamage": 0,
+                "description": "Shot after a 0.4-second delay. Regardless of whether this attack hits, the 1st attack will be used next."
+            },
+            {
+                "displayName": "Hurricane Attack",
+                "minDamage": 176,
+                "maxDamage": 176,
+                "damageType": 0,
+                "range": 80,
+                "reload": 4.8,
+                "knockback": 70,
+                "fireDamage": 0,
+                "description": "Used once every few attacks. Does not advance nor reset Mina's attack sequence."
+            }
+        ],
+        "enemies": []
+    },
     "bonnie": {
         "displayName": "Bonnie",
         "image": "bonnie/bonnie_default.webp",
@@ -921,8 +1038,8 @@
             },
             {
                 "displayName": "Air Attack",
-                "minDamage": 15,
-                "maxDamage": 15,
+                "minDamage": 5,
+                "maxDamage": 5,
                 "damageType": 1,
                 "range": 80,
                 "reload": 5,
