@@ -1341,10 +1341,10 @@
         "image": "buster/buster_default.webp",
         "fullImage": "buster/shieldtankdefault.webp",
         "enemyClass": "Bonus",
-        "description": "Has a bar with an indicator moving back and forth. Timing your attack so it hits Buster when the indicator is in the middle of the bar deals 1 damage.",
+        "description": "Has a bar with an indicator moving back and forth. Timing your attack so it hits Buster when the indicator is in the middle of the bar deals 1000 damage.",
         "strengthTier": "",
         "value": 0,
-        "health": 6,
+        "health": 6000,
         "speed": 12,
         "attacks": [
             {

@@ -2834,14 +2834,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Angels vs. Demons",
-                        "image": "bg_default.webp",
-                        "icon": "icon_angeldemons.webp"
-                    },
-                    {
                         "name": "Supercell Make",
                         "image": "bg_default.webp",
                         "icon": "icon_sc_make.webp"
+                    },
+                    {
+                        "name": "Angels vs. Demons",
+                        "image": "bg_default.webp",
+                        "icon": "icon_angeldemons.webp"
                     }
                 ],
                 "limited": false,
@@ -16930,6 +16930,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "carl_strikers",
+                "image": "carl_strikers.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -17594,6 +17603,15 @@
             {
                 "name": "jacky_fantasy",
                 "image": "jacky_fantasy.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "jacky_worldfinals",
+                "image": "jacky_worldfinals.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -18417,14 +18435,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Angels vs. Demons",
-                        "image": "bg_default.webp",
-                        "icon": "icon_angeldemons.webp"
-                    },
-                    {
                         "name": "Supercell Make",
                         "image": "bg_default.webp",
                         "icon": "icon_sc_make.webp"
+                    },
+                    {
+                        "name": "Angels vs. Demons",
+                        "image": "bg_default.webp",
+                        "icon": "icon_angeldemons.webp"
                     }
                 ],
                 "limited": false,
@@ -25002,6 +25020,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "bea_anime",
+                "image": "bea_anime.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -30389,6 +30416,15 @@
             {
                 "name": "colette_kaiju",
                 "image": "colette_kaiju.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "colette_anime_02",
+                "image": "colette_anime_02.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -37736,6 +37772,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "meeple_adidas",
+                "image": "meeple_adidas.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -40829,6 +40874,15 @@
             {
                 "name": "gene_angeldemons",
                 "image": "gene_angeldemons.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "gene_strikers",
+                "image": "gene_strikers.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -44340,6 +44394,15 @@
             {
                 "name": "lou_cartoon",
                 "image": "lou_cartoon.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "lou_adidas",
+                "image": "lou_adidas.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -48824,6 +48887,15 @@
             {
                 "name": "otis_angeldemons",
                 "image": "otis_angeldemons.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "otis_adidas",
+                "image": "otis_adidas.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -54807,6 +54879,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "juju_anime",
+                "image": "juju_anime.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -55735,6 +55816,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "finx_anime",
+                "image": "finx_anime.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -55922,14 +56012,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Legends of Hades",
-                        "image": "bg_darkgreek.webp",
-                        "icon": "icon_darkgreek.webp"
-                    },
-                    {
                         "name": "Legends of Olympus",
                         "image": "bg_olympus.webp",
                         "icon": "icon_olympus.webp"
+                    },
+                    {
+                        "name": "Legends of Hades",
+                        "image": "bg_darkgreek.webp",
+                        "icon": "icon_darkgreek.webp"
                     }
                 ],
                 "limited": false,
@@ -59814,6 +59904,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "spike_anime",
+                "image": "spike_anime.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -63670,6 +63769,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "amber_anime",
+                "image": "amber_anime.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -65287,6 +65395,15 @@
             {
                 "name": "surge_toys",
                 "image": "surge_toys.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "surge_adidas",
+                "image": "surge_adidas.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
