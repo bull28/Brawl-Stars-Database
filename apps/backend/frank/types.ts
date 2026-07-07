@@ -576,7 +576,8 @@ export interface ChallengeGameMod{
         background: string;
         displayName: string;
         stages: number[];
-        destination: number;
+        destination?: number;
+        timeLimit?: number;
     }[];
     maxScores?: {
         completion: number;

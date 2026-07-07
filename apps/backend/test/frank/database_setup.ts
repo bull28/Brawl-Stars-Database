@@ -25,7 +25,7 @@ export const tokens = {
     trials: signToken("trials").token
 };
 
-export const GAME_VERSION = (106 << 16) + 147;
+export const GAME_VERSION = (107 << 16) + 147;
 export const sampleGameReport: GameReport = [
     GAME_VERSION, 1, // Version
     0, // Game Mode

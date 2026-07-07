@@ -618,8 +618,7 @@ const challenges = new Map<string, StaticPreset>([
                     ],
                     background: "entrance",
                     displayName: "Starr Park Entrance",
-                    stages: [0],
-                    destination: 0
+                    stages: [0]
                 },
                 {
                     levelid: 2,
@@ -632,8 +631,7 @@ const challenges = new Map<string, StaticPreset>([
                     ],
                     background: "oldtown",
                     displayName: "Old Town",
-                    stages: [1],
-                    destination: 0
+                    stages: [1]
                 },
                 {
                     levelid: 4,
@@ -646,8 +644,7 @@ const challenges = new Map<string, StaticPreset>([
                     ],
                     background: "ghostmetro",
                     displayName: "Ghost Station",
-                    stages: [2],
-                    destination: 0
+                    stages: [2]
                 },
                 {
                     levelid: 7,
@@ -660,8 +657,7 @@ const challenges = new Map<string, StaticPreset>([
                     ],
                     background: "retropolis",
                     displayName: "Retropolis",
-                    stages: [3],
-                    destination: 0
+                    stages: [3]
                 }
             ]
         }
@@ -691,8 +687,7 @@ const challenges = new Map<string, StaticPreset>([
                     ],
                     background: "hub",
                     displayName: "Starr Park Hub",
-                    stages: [0],
-                    destination: 0
+                    stages: [0]
                 },
                 {
                     levelid: 3,
@@ -705,8 +700,7 @@ const challenges = new Map<string, StaticPreset>([
                     ],
                     background: "biodome",
                     displayName: "Biodome",
-                    stages: [1],
-                    destination: 0
+                    stages: [1]
                 },
                 {
                     levelid: 5,
@@ -719,8 +713,7 @@ const challenges = new Map<string, StaticPreset>([
                     ],
                     background: "deepsea",
                     displayName: "Deep Sea",
-                    stages: [2],
-                    destination: 0
+                    stages: [2]
                 },
                 {
                     levelid: 9,
@@ -733,8 +726,7 @@ const challenges = new Map<string, StaticPreset>([
                     ],
                     background: "rumblejungle",
                     displayName: "Rumble Jungle",
-                    stages: [3],
-                    destination: 0
+                    stages: [3]
                 }
             ]
         }
@@ -764,8 +756,7 @@ const challenges = new Map<string, StaticPreset>([
                     ],
                     background: "giftshop",
                     displayName: "Gift Shop",
-                    stages: [0],
-                    destination: 0
+                    stages: [0]
                 },
                 {
                     levelid: 8,
@@ -778,8 +769,7 @@ const challenges = new Map<string, StaticPreset>([
                     ],
                     background: "candystand",
                     displayName: "Candyland",
-                    stages: [1],
-                    destination: 0
+                    stages: [1]
                 },
                 {
                     levelid: 10,
@@ -792,8 +782,7 @@ const challenges = new Map<string, StaticPreset>([
                     ],
                     background: "stuntshow",
                     displayName: "Stunt Show",
-                    stages: [2],
-                    destination: 0
+                    stages: [2]
                 },
                 {
                     levelid: 11,
@@ -806,8 +795,7 @@ const challenges = new Map<string, StaticPreset>([
                     ],
                     background: "minicity",
                     displayName: "Super City",
-                    stages: [3],
-                    destination: 0
+                    stages: [3]
                 }
             ]
         }
