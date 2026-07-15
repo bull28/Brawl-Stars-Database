@@ -538,5 +538,15 @@
         "name": "Adidas",
         "image": "bg_strikers",
         "icon": "icon_adidas"
+    },
+    "nano": {
+        "name": "NanoNoodles",
+        "image": "bg_nano",
+        "icon": "icon_nano"
+    },
+    "windstock": {
+        "name": "Windstock",
+        "image": "bg_windstock",
+        "icon": "icon_windstock"
     }
 }
