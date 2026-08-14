@@ -387,7 +387,7 @@ const trialUpgrades: Required<{[k in keyof GameModUpgradeValues]: Required<GameM
     },
     damage: {
         value: [100, 12.5],
-        cost: [4, 5, 6, 6, 7, 8, 9, 10, 12, 13, 15, 17, 19, 21]
+        cost: [4, 4, 4, 5, 5, 6, 7, 7, 8, 9, 10, 11, 12, 13, 15, 16]
     },
     healing: {
         value: [100, 50],
@@ -398,16 +398,16 @@ const trialUpgrades: Required<{[k in keyof GameModUpgradeValues]: Required<GameM
         cost: [5, 6, 7, 9, 10, 13, 15, 19]
     },
     critical: {
-        value: [100, 50],
-        cost: [5, 6, 7, 9, 10, 13, 15, 19]
+        value: [100, 100],
+        cost: [6, 7, 9, 12, 16, 20]
     },
     combo: {
-        value: [100, 50],
-        cost: [5, 6, 7, 9, 10, 13, 15, 19]
+        value: [100, 100],
+        cost: [6, 7, 9, 12, 16, 20]
     },
     speed: {
         value: [0, 1],
-        cost: [7, 9, 11, 15, 18, 23, 29]
+        cost: [7, 9, 11, 14, 19, 24, 32]
     },
     ability: {
         value: [0, 20],

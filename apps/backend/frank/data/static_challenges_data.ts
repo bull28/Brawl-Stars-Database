@@ -167,7 +167,7 @@ const challenges = new Map<string, StaticPreset>([
                     countTier: 0,
                     strengthTier: 2,
                     healthBonusReq: 0.5,
-                    timePerEnemy: 0.75,
+                    timePerEnemy: 0.7,
                     enemyStats: [12, 15, 18, 21, 24, 28, 33, 36]
                 },
                 {
@@ -176,7 +176,7 @@ const challenges = new Map<string, StaticPreset>([
                     countTier: 0,
                     strengthTier: 3,
                     healthBonusReq: 0.5,
-                    timePerEnemy: 0.75,
+                    timePerEnemy: 0.7,
                     enemyStats: [14, 20, 23, 26, 31, 37, 44, 46]
                 },
                 {
@@ -185,7 +185,7 @@ const challenges = new Map<string, StaticPreset>([
                     countTier: 1,
                     strengthTier: 3,
                     healthBonusReq: 0.5,
-                    timePerEnemy: 0.7,
+                    timePerEnemy: 0.6666666666666666,
                     enemyStats: [18, 24, 31, 38, 45, 52, 61, 64]
                 },
                 {
@@ -194,7 +194,7 @@ const challenges = new Map<string, StaticPreset>([
                     countTier: 2,
                     strengthTier: 4,
                     healthBonusReq: 0.5,
-                    timePerEnemy: 0.6666666666666666,
+                    timePerEnemy: 0.625,
                     enemyStats: [24, 36, 48, 60, 70, 80, 94, 100]
                 }
             ],
@@ -202,10 +202,10 @@ const challenges = new Map<string, StaticPreset>([
                 {completion: 10, time: 0, powerReward: 10, gearsReward: 100},
                 {completion: 15, time: 15, powerReward: 20, gearsReward: 100},
                 {completion: 20, time: 15, powerReward: 30, gearsReward: 100},
-                {completion: 30, time: 20, powerReward: 42, gearsReward: 100},
-                {completion: 45, time: 20, powerReward: 56, gearsReward: 100},
-                {completion: 60, time: 25, powerReward: 72, gearsReward: 100},
-                {completion: 60, time: 25, powerReward: 90, gearsReward: 100},
+                {completion: 30, time: 20, powerReward: 40, gearsReward: 100},
+                {completion: 45, time: 20, powerReward: 52, gearsReward: 100},
+                {completion: 60, time: 25, powerReward: 66, gearsReward: 100},
+                {completion: 60, time: 25, powerReward: 82, gearsReward: 100},
                 {completion: 60, time: 30, powerReward: 0, gearsReward: 0}
             ],
             levels: [
@@ -420,7 +420,7 @@ const challenges = new Map<string, StaticPreset>([
                     cost: [3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 10, 10, 11]
                 },
                 damage: {
-                    cost: [4, 5, 6, 6, 7, 8, 9, 10, 12, 13, 15, 17, 19, 21]
+                    cost: [4, 4, 4, 5, 5, 6, 7, 7, 8, 9, 10, 11, 12, 13, 15, 16]
                 },
                 healing: {
                     cost: [5, 6, 7, 9, 10, 13, 15, 19]
@@ -429,13 +429,13 @@ const challenges = new Map<string, StaticPreset>([
                     cost: [5, 6, 7, 9, 10, 13, 15, 19]
                 },
                 critical: {
-                    cost: [5, 6, 7, 9, 10, 13, 15, 19]
+                    cost: [6, 7, 9, 12, 16, 20]
                 },
                 combo: {
-                    cost: [5, 6, 7, 9, 10, 13, 15, 19]
+                    cost: [6, 7, 9, 12, 16, 20]
                 },
                 speed: {
-                    cost: [7, 9, 11, 15, 18, 23, 29]
+                    cost: [7, 9, 11, 14, 19, 24, 32]
                 },
                 ability: {
                     cost: [12, 16, 22, 30, 40]
@@ -521,7 +521,7 @@ const challenges = new Map<string, StaticPreset>([
                     cost: [5, 5, 6, 6, 6, 6]
                 },
                 damage: {
-                    value: [175, 12.5],
+                    value: [200, 12.5],
                     cost: [5, 5, 6, 6, 6, 6]
                 },
                 healing: {
@@ -529,16 +529,16 @@ const challenges = new Map<string, StaticPreset>([
                     cost: [7, 8, 10]
                 },
                 lifeSteal: {
-                    value: [350, 50],
+                    value: [500, 100],
                     cost: [7, 8, 10]
                 },
                 critical: {
-                    value: [350, 50],
-                    cost: [7, 8, 10]
+                    value: [500, 100],
+                    cost: [11, 14]
                 },
                 combo: {
-                    value: [350, 50],
-                    cost: [7, 8, 10]
+                    value: [500, 100],
+                    cost: [11, 14]
                 },
                 speed: {
                     value: [5, 2],
