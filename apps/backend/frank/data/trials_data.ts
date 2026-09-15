@@ -152,16 +152,16 @@ const allTrials: TrialConfig[] = [
 const allCharacters = [
     {name: "spike", accsItemIndex: 82, starPowers: [
         "The super heals 50% more health.",
-        "Deal +15% damage if the super is fully charged.",
+        "Deal +15% damage when above 80% of max health.",
         "The super has 25% longer range and pierces through enemies."
     ]},
     {name: "gus", accsItemIndex: 83, starPowers: [
         "All shields are 25% stronger.",
-        "Deal +20% damage when a shield is active.",
+        "Deal +20% damage when any shield is active.",
         "After hitting 4 attacks, the next attack deals +50% damage and pierces through enemies."
     ]},
     {name: "emz", accsItemIndex: 84, starPowers: [
-        "Heal for 40% of your life steal every time the super hits an enemy.",
+        "Heal for 80% of your life steal every time the super hits an enemy.",
         "The super deals +50% damage until it hits at least 2 different enemies.",
         "Attacks deal +25% damage to enemies that are very close."
     ]},
@@ -173,7 +173,7 @@ const allCharacters = [
     {name: "tara", accsItemIndex: 86, starPowers: [
         "Increases attack range by 35%.",
         "Receive +100% life steal when attacking the last enemy the super hit.",
-        "When defeating an enemy, gain 25% speed and 20% damage for 12 seconds."
+        "Defeating an enemy grants +25% speed and +20% damage for 12 seconds."
     ]},
     {name: "piper", accsItemIndex: 87, starPowers: [
         "The super slows nearby enemies by 70% for 5 seconds.",
@@ -187,8 +187,8 @@ const allCharacters = [
     ]},
     {name: "stu", accsItemIndex: 89, starPowers: [
         "Receive dashes 50% faster and store up to 10 dashes at once.",
-        "Deal +50% damage on the next attack after using a dash. Does not stack.",
-        "When at least 5 dashes are stored, deal +25% damage."
+        "Receive +200% protection for 0.6 seconds after using a dash.",
+        "Deal +50% damage with the next attack after using a dash."
     ]},
     {name: "maisie", accsItemIndex: 90, starPowers: [
         "Super heals 5% of max health and recharges 25% more from enemies.",

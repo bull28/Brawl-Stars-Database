@@ -81,7 +81,7 @@ describe("Challenges module", function(){
             menuTheme: "retropolis"
         });
         expect(challenge1.unlocks).to.eql({
-            maxAccessories: 27,
+            maxAccessories: 25,
             startingPower: 0,
             startingGears: 4,
             startingHyper: 0,
@@ -125,7 +125,7 @@ describe("Challenges module", function(){
         });
 
         expect(challenge1.unlocks).to.eql({
-            maxAccessories: 27,
+            maxAccessories: 25,
             startingPower: 0,
             startingGears: 4,
             startingHyper: 0,

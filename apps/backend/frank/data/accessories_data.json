@@ -66,7 +66,7 @@
     },
     {
         "name": "brawlbox1", "category": "", "displayName": "Healing Skull", "cost": 6,
-        "description": "When defeating an enemy, restore some health.", "unlock": "Buy from the Shop.",
+        "description": "Defeating an enemy restores some health.", "unlock": "Buy from the Shop.",
         "badges": 1, "masteryReq": 24
     },
     {
@@ -86,12 +86,12 @@
     },
     {
         "name": "brawlbox5", "category": "", "displayName": "Power Skull", "cost": 6,
-        "description": "When defeating an enemy, increase the next attack's damage.", "unlock": "Buy from the Shop.",
+        "description": "Defeating an enemy increases the next attack's damage.", "unlock": "Buy from the Shop.",
         "badges": 1, "masteryReq": 24
     },
     {
-        "name": "brawlbox6", "category": "", "displayName": "Buster's Projector", "cost": 4,
-        "description": "The super charges faster when not attacking.", "unlock": "Buy from the Shop.",
+        "name": "brawlbox6", "category": "", "displayName": "Buster's Projector", "cost": 5,
+        "description": "Receive protection against enemies close to maximum health.", "unlock": "Buy from the Shop.",
         "badges": 1, "masteryReq": 19
     },
     {
@@ -101,162 +101,162 @@
     },
     {
         "name": "brawlbox8", "category": "", "displayName": "Sharpened Shuriken", "cost": 5,
-        "description": "If no enemies were recently defeated, deal more damage.", "unlock": "Buy from the Shop.",
+        "description": "Deal more damage if no enemies were recently defeated.", "unlock": "Buy from the Shop.",
         "badges": 1, "masteryReq": 22
     },
     {
         "name": "brawlbox9", "category": "", "displayName": "Sirius's Mask", "cost": 6,
-        "description": "When defeating an enemy, partially recharge the super.", "unlock": "Buy from the Shop.",
+        "description": "Defeating an enemy partially recharges the super.", "unlock": "Buy from the Shop.",
         "badges": 1, "masteryReq": 24
     },
     {
         "name": "shelly", "category": "enemy", "displayName": "Shelly's Shotgun", "cost": 3,
-        "description": "Deal more damage to and receive more protection from Damage Dealer enemies.", "unlock": "Defeat Shelly enemies.",
+        "description": "Gain damage and protection against Damage Dealer enemies.", "unlock": "Defeat Shelly enemies.",
         "badges": 20, "masteryReq": 8
     },
     {
         "name": "colt", "category": "enemy", "displayName": "Colt's Revolvers", "cost": 3,
-        "description": "Deal more damage to and receive more protection from Marksman enemies.", "unlock": "Defeat Colt enemies.",
+        "description": "Gain damage and protection against Marksman enemies.", "unlock": "Defeat Colt enemies.",
         "badges": 20, "masteryReq": 8
     },
     {
         "name": "rt", "category": "enemy", "displayName": "R-T's Camera", "cost": 3,
-        "description": "Deal more damage to and receive more protection from Controller enemies.", "unlock": "Defeat R-T enemies.",
+        "description": "Gain damage and protection against Controller enemies.", "unlock": "Defeat R-T enemies.",
         "badges": 20, "masteryReq": 8
     },
     {
         "name": "elprimo", "category": "enemy", "displayName": "El Primo's Belt", "cost": 3,
-        "description": "Deal more damage to and receive more protection from Tank enemies.", "unlock": "Defeat El Primo enemies.",
+        "description": "Gain damage and protection against Tank enemies.", "unlock": "Defeat El Primo enemies.",
         "badges": 20, "masteryReq": 8
     },
     {
         "name": "8bit", "category": "enemy", "displayName": "8-Bit's Turret", "cost": 3,
-        "description": "Receive more protection from Damage Dealer enemies.", "unlock": "Defeat 8-Bit enemies.",
+        "description": "Gain protection against Damage Dealer enemies.", "unlock": "Defeat 8-Bit enemies.",
         "badges": 50, "masteryReq": 14
     },
     {
         "name": "belle", "category": "enemy", "displayName": "Belle's Rifle", "cost": 3,
-        "description": "Receive more protection from Marksman enemies.", "unlock": "Defeat Belle enemies.",
+        "description": "Gain protection against Marksman enemies.", "unlock": "Defeat Belle enemies.",
         "badges": 50, "masteryReq": 14
     },
     {
         "name": "jessie", "category": "enemy", "displayName": "Jessie's Backpack", "cost": 3,
-        "description": "Receive more protection from Controller enemies.", "unlock": "Defeat Jessie enemies.",
+        "description": "Gain protection against Controller enemies.", "unlock": "Defeat Jessie enemies.",
         "badges": 50, "masteryReq": 14
     },
     {
         "name": "eve", "category": "enemy", "displayName": "Eve's Spaceship", "cost": 3,
-        "description": "Deal more damage to Controller enemies.", "unlock": "Defeat Eve enemies.",
+        "description": "Gain damage against Controller enemies.", "unlock": "Defeat Eve enemies.",
         "badges": 50, "masteryReq": 14
     },
     {
         "name": "mortis", "category": "enemy", "displayName": "Mortis's Shovel", "cost": 3,
-        "description": "Deal more damage to and receive more protection from Assassin enemies.", "unlock": "Defeat Mortis enemies.",
+        "description": "Gain damage and protection against Assassin enemies.", "unlock": "Defeat Mortis enemies.",
         "badges": 50, "masteryReq": 14
     },
     {
         "name": "frank", "category": "enemy", "displayName": "Frank's Hammer", "cost": 3,
-        "description": "Deal more damage to Tank enemies.", "unlock": "Defeat Frank enemies.",
+        "description": "Gain damage against Tank enemies.", "unlock": "Defeat Frank enemies.",
         "badges": 50, "masteryReq": 14
     },
     {
         "name": "jacky", "category": "enemy", "displayName": "Jacky's Drill", "cost": 3,
-        "description": "Receive more protection from Tank enemies.", "unlock": "Defeat Jacky enemies.",
+        "description": "Gain protection against Tank enemies.", "unlock": "Defeat Jacky enemies.",
         "badges": 50, "masteryReq": 14
     },
     {
         "name": "mrp", "category": "enemy", "displayName": "Mr. P's Suitcase", "cost": 4,
-        "description": "Receive more protection from Controller enemies.", "unlock": "Defeat Mr. P enemies.",
+        "description": "Gain protection and life steal against Controller enemies.", "unlock": "Defeat Mr. P enemies.",
         "badges": 50, "masteryReq": 14
     },
     {
         "name": "bea", "category": "enemy", "displayName": "Bea's Bee", "cost": 3,
-        "description": "Deal more damage to Marksman enemies.", "unlock": "Defeat Bea enemies.",
+        "description": "Gain damage against Marksman enemies.", "unlock": "Defeat Bea enemies.",
         "badges": 50, "masteryReq": 17
     },
     {
         "name": "lola", "category": "enemy", "displayName": "Lola's Scarf", "cost": 5,
-        "description": "Deal more damage to and receive more protection from Controller enemies.", "unlock": "Defeat Lola enemies.",
+        "description": "Gain damage, protection, and super charge against Controller enemies.", "unlock": "Defeat Lola enemies.",
         "badges": 50, "masteryReq": 17
     },
     {
         "name": "bo", "category": "enemy", "displayName": "Bo's Quiver", "cost": 4,
-        "description": "Deal more damage to Controller enemies.", "unlock": "Defeat Bo enemies.",
+        "description": "Gain damage and critical chance against Controller enemies.", "unlock": "Defeat Bo enemies.",
         "badges": 50, "masteryReq": 14
     },
     {
         "name": "colette", "category": "enemy", "displayName": "Colette's Scrapbook", "cost": 3,
-        "description": "Deal more damage to Damage Dealer enemies.", "unlock": "Defeat Colette enemies.",
+        "description": "Gain damage against Damage Dealer enemies.", "unlock": "Defeat Colette enemies.",
         "badges": 50, "masteryReq": 14
     },
     {
         "name": "pearl", "category": "enemy", "displayName": "Pearl's Cookie", "cost": 4,
-        "description": "Receive more protection from Damage Dealer enemies.", "unlock": "Defeat Pearl enemies.",
+        "description": "Gain protection and life steal against Damage Dealer enemies.", "unlock": "Defeat Pearl enemies.",
         "badges": 100, "masteryReq": 19
     },
     {
         "name": "bibi", "category": "enemy", "displayName": "Bibi's Bat", "cost": 4,
-        "description": "Receive more protection from Tank enemies.", "unlock": "Defeat Bibi enemies.",
+        "description": "Gain protection and life steal against Tank enemies.", "unlock": "Defeat Bibi enemies.",
         "badges": 100, "masteryReq": 19
     },
     {
         "name": "brock", "category": "enemy", "displayName": "Brock's Rocket Launcher", "cost": 4,
-        "description": "Receive more protection from Marksman enemies.", "unlock": "Defeat Brock enemies.",
+        "description": "Gain protection and life steal against Marksman enemies.", "unlock": "Defeat Brock enemies.",
         "badges": 100, "masteryReq": 19
     },
     {
         "name": "chester", "category": "enemy", "displayName": "Chester's Box", "cost": 4,
-        "description": "Deal more damage to Damage Dealer enemies.", "unlock": "Defeat Chester enemies.",
+        "description": "Gain damage and critical chance against Damage Dealer enemies.", "unlock": "Defeat Chester enemies.",
         "badges": 100, "masteryReq": 19
     },
     {
         "name": "ollie", "category": "enemy", "displayName": "Ollie's Skateboard", "cost": 4,
-        "description": "Deal more damage to Tank enemies.", "unlock": "Defeat Ollie enemies.",
+        "description": "Gain damage and critical chance against Tank enemies.", "unlock": "Defeat Ollie enemies.",
         "badges": 100, "masteryReq": 19
     },
     {
         "name": "leon", "category": "enemy", "displayName": "Leon's Lollipop", "cost": 3,
-        "description": "Receive more protection from Assassin enemies.", "unlock": "Defeat Leon enemies.",
+        "description": "Gain protection against Assassin enemies.", "unlock": "Defeat Leon enemies.",
         "badges": 100, "masteryReq": 19
     },
     {
         "name": "najia", "category": "enemy", "displayName": "Najia's Jar", "cost": 4,
-        "description": "Deal more damage to Marksman enemies.", "unlock": "Defeat Najia enemies.",
+        "description": "Gain damage and critical chance against Marksman enemies.", "unlock": "Defeat Najia enemies.",
         "badges": 100, "masteryReq": 19
     },
     {
         "name": "mina", "category": "enemy", "displayName": "Mina's Drum", "cost": 3,
-        "description": "Deal more damage to Assassin enemies.", "unlock": "Defeat Mina enemies.",
+        "description": "Gain damage against Assassin enemies.", "unlock": "Defeat Mina enemies.",
         "badges": 100, "masteryReq": 19
     },
     {
         "name": "bonnie", "category": "enemy", "displayName": "Bonnie's Cannon", "cost": 5,
-        "description": "Deal more damage to and receive more protection from Marksman enemies.", "unlock": "Defeat Bonnie enemies.",
+        "description": "Gain damage, protection, and super charge against Marksman enemies.", "unlock": "Defeat Bonnie enemies.",
         "badges": 200, "masteryReq": 22
     },
     {
         "name": "amber", "category": "enemy", "displayName": "Amber's Fire Staff", "cost": 5,
-        "description": "Deal more damage to and receive more protection from Damage Dealer enemies.", "unlock": "Defeat Amber enemies.",
+        "description": "Gain damage, protection, and super charge against Damage Dealer enemies.", "unlock": "Defeat Amber enemies.",
         "badges": 200, "masteryReq": 22
     },
     {
         "name": "melodie", "category": "enemy", "displayName": "Melodie's Note", "cost": 4,
-        "description": "Receive more protection from Assassin enemies.", "unlock": "Defeat Melodie enemies.",
+        "description": "Gain protection and life steal against Assassin enemies.", "unlock": "Defeat Melodie enemies.",
         "badges": 200, "masteryReq": 24
     },
     {
         "name": "kaze", "category": "enemy", "displayName": "Kaze's Fan", "cost": 5,
-        "description": "Deal more damage to and receive more protection from Assassin enemies.", "unlock": "Defeat Kaze enemies.",
+        "description": "Gain damage, protection, and super charge against Assassin enemies.", "unlock": "Defeat Kaze enemies.",
         "badges": 200, "masteryReq": 24
     },
     {
         "name": "max", "category": "enemy", "displayName": "Max's Energy Drink", "cost": 4,
-        "description": "Deal more damage to Assassin enemies.", "unlock": "Defeat Max enemies.",
+        "description": "Gain damage and critical chance against Assassin enemies.", "unlock": "Defeat Max enemies.",
         "badges": 200, "masteryReq": 24
     },
     {
         "name": "meg", "category": "enemy", "displayName": "Meg's Mech", "cost": 5,
-        "description": "Deal more damage to and receive more protection from Tank enemies.", "unlock": "Defeat Meg enemies.",
+        "description": "Gain damage, protection, and super charge against Tank enemies.", "unlock": "Defeat Meg enemies.",
         "badges": 200, "masteryReq": 24
     },
     {
@@ -326,12 +326,12 @@
     },
     {
         "name": "biodome", "category": "location", "displayName": "Rosa's Gloves", "cost": 5,
-        "description": "Using the super temporarily increases the chance to land critical hits.", "unlock": "Complete levels at Biodome.",
+        "description": "Using the super temporarily increases critical chance.", "unlock": "Complete levels at Biodome.",
         "badges": 50, "masteryReq": 22
     },
     {
         "name": "ghoststation", "category": "location", "displayName": "Train Tickets", "cost": 5,
-        "description": "Receive more power points when completing a level.", "unlock": "Complete levels at Ghost Station.",
+        "description": "Critical hits slow enemies for a short duration.", "unlock": "Complete levels at Ghost Station.",
         "badges": 25, "masteryReq": 17
     },
     {
@@ -361,7 +361,7 @@
     },
     {
         "name": "candyland", "category": "location", "displayName": "Starr Candy", "cost": 5,
-        "description": "When defeating an enemy, gain speed for a few seconds.", "unlock": "Complete levels at Candyland.",
+        "description": "Defeating an enemy grants speed for a few seconds.", "unlock": "Complete levels at Candyland.",
         "badges": 60, "masteryReq": 22
     },
     {
@@ -370,8 +370,8 @@
         "badges": 25, "masteryReq": 17
     },
     {
-        "name": "stuntshow", "category": "location", "displayName": "Janet's Microphone", "cost": 6,
-        "description": "Increases charge rate of the super.", "unlock": "Complete levels at Stunt Show.",
+        "name": "stuntshow", "category": "location", "displayName": "Janet's Microphone", "cost": 5,
+        "description": "Increases attack reload when the super is fully charged.", "unlock": "Complete levels at Stunt Show.",
         "badges": 50, "masteryReq": 19
     },
     {
@@ -381,7 +381,7 @@
     },
     {
         "name": "katanakingdom", "category": "location", "displayName": "Fabled Katana", "cost": 6,
-        "description": "Landing a critical hit increases damage for a few seconds.", "unlock": "Complete levels at Katana Kingdom",
+        "description": "Every few hits during an active combo increases its strength.", "unlock": "Complete levels at Katana Kingdom",
         "badges": 60, "masteryReq": 24
     },
     {
@@ -416,12 +416,12 @@
     },
     {
         "name": "nomove", "category": "", "displayName": "Charlie's Cocoon", "cost": 5,
-        "description": "When at low health, receive more protection.", "unlock": "Win Classic Mode without moving. Supers are allowed.",
+        "description": "Receive protection when at low health.", "unlock": "Win Classic Mode without moving. Supers are allowed.",
         "badges": 1, "masteryReq": 22
     },
     {
-        "name": "noupgrades", "category": "", "displayName": "Bling Stack", "cost": 3,
-        "description": "Receive 1 extra gear scrap when completing a level.", "unlock": "Win Classic Mode without purchasing upgrades or using gears.",
+        "name": "noupgrades", "category": "", "displayName": "Bling Stack", "cost": 6,
+        "description": "Increases super charge rate.", "unlock": "Win Classic Mode without purchasing upgrades or using gears.",
         "badges": 1, "masteryReq": 17
     },
     {
@@ -436,7 +436,7 @@
     },
     {
         "name": "maxdamage", "category": "", "displayName": "Meeple's Dice", "cost": 5,
-        "description": "Increases the chance to land critical hits.", "unlock": "Buy from the Shop.",
+        "description": "Increases critical chance.", "unlock": "Buy from the Shop.",
         "badges": 1, "masteryReq": 19
     },
     {
@@ -451,7 +451,7 @@
     },
     {
         "name": "perfect2", "category": "", "displayName": "Hypercharged Token", "cost": 7,
-        "description": "Increases charge rate of Hypercharge.", "unlock": "Get a score of 600 on Classic Mode difficulty 10.",
+        "description": "Increases Hypercharge duration and charge rate.", "unlock": "Get a score of 600 on Classic Mode difficulty 10.",
         "badges": 1, "masteryReq": 36
     },
     {

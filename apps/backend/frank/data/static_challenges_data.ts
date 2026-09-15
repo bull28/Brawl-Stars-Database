@@ -417,28 +417,28 @@ const challenges = new Map<string, StaticPreset>([
             ],
             playerUpgradeValues: {
                 health: {
-                    cost: [3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 10, 10, 11]
+                    cost: [3, 4, 4, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 10, 10, 11, 12, 13, 14]
                 },
                 damage: {
-                    cost: [4, 4, 4, 5, 5, 6, 7, 7, 8, 9, 10, 11, 12, 13, 15, 16]
+                    cost: [4, 4, 5, 5, 5, 6, 6, 7, 7, 8, 9, 9, 10, 11, 12, 12, 13, 14, 16, 17]
                 },
                 healing: {
-                    cost: [5, 6, 7, 9, 10, 13, 15, 19]
+                    cost: [3, 4, 5, 6, 6, 7, 9, 10, 12, 14]
                 },
                 lifeSteal: {
-                    cost: [5, 6, 7, 9, 10, 13, 15, 19]
+                    cost: [3, 4, 5, 6, 6, 7, 9, 10, 12, 14]
                 },
                 critical: {
-                    cost: [6, 7, 9, 12, 16, 20]
+                    cost: [3, 3, 4, 4, 5, 6, 7, 8, 9, 11]
                 },
                 combo: {
-                    cost: [6, 7, 9, 12, 16, 20]
+                    cost: [3, 3, 4, 4, 5, 6, 7, 8, 9, 11]
                 },
                 speed: {
-                    cost: [7, 9, 11, 14, 19, 24, 32]
+                    cost: [7, 9, 11, 14, 19, 24]
                 },
                 ability: {
-                    cost: [12, 16, 22, 30, 40]
+                    cost: [11, 16, 22, 31, 44]
                 }
             }
         }
@@ -521,28 +521,28 @@ const challenges = new Map<string, StaticPreset>([
                     cost: [5, 5, 6, 6, 6, 6]
                 },
                 damage: {
-                    value: [200, 12.5],
-                    cost: [5, 5, 6, 6, 6, 6]
+                    value: [275, 12.5],
+                    cost: [6, 6, 7, 7, 7, 8]
                 },
                 healing: {
-                    value: [350, 50],
-                    cost: [7, 8, 10]
+                    value: [275, 25],
+                    cost: [5, 6, 7]
                 },
                 lifeSteal: {
-                    value: [500, 100],
-                    cost: [7, 8, 10]
+                    value: [275, 25],
+                    cost: [5, 6, 7]
                 },
                 critical: {
-                    value: [500, 100],
-                    cost: [11, 14]
+                    value: [275, 25],
+                    cost: [4, 5, 6]
                 },
                 combo: {
-                    value: [500, 100],
-                    cost: [11, 14]
+                    value: [275, 25],
+                    cost: [4, 5, 6]
                 },
                 speed: {
-                    value: [5, 2],
-                    cost: [10, 12]
+                    value: [4, 2],
+                    cost: [8, 10]
                 },
                 ability: {
                     value: [80, 20],

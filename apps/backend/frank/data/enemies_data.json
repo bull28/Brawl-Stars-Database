@@ -626,7 +626,7 @@
                 "displayName": "Default Attack",
                 "minDamage": 10,
                 "maxDamage": 10,
-                "damageType": 1,
+                "damageType": 2,
                 "range": 80,
                 "reload": 0.4,
                 "knockback": 0,
@@ -635,9 +635,9 @@
             },
             {
                 "displayName": "Dash Attack",
-                "minDamage": 25,
-                "maxDamage": 25,
-                "damageType": 2,
+                "minDamage": 20,
+                "maxDamage": 20,
+                "damageType": 1,
                 "range": 50,
                 "reload": 10,
                 "knockback": 0,
@@ -973,7 +973,7 @@
                 "maxDamage": 440,
                 "damageType": 0,
                 "range": 60,
-                "reload": 1,
+                "reload": 1.2,
                 "knockback": 0,
                 "fireDamage": 0,
                 "description": "If this attack hits, the 2nd attack will be used next."
@@ -984,7 +984,7 @@
                 "maxDamage": 660,
                 "damageType": 0,
                 "range": 45,
-                "reload": 1,
+                "reload": 1.2,
                 "knockback": 0,
                 "fireDamage": 0,
                 "description": "If this attack hits, the 3rd attack will be used next."
@@ -995,7 +995,7 @@
                 "maxDamage": 880,
                 "damageType": 0,
                 "range": 35,
-                "reload": 1,
+                "reload": 1.2,
                 "knockback": 0,
                 "fireDamage": 0,
                 "description": "Shot after a 0.4-second delay. Regardless of whether this attack hits, the 1st attack will be used next."
@@ -1261,7 +1261,7 @@
         "strengthTier": "The mech gains movement speed the more it has been damaged and the toolbox moves slowly instead of being stationary.",
         "value": 36,
         "health": 2400,
-        "speed": 28,
+        "speed": 22,
         "attacks": [
             {
                 "displayName": "Default Attack",
@@ -1279,7 +1279,7 @@
             {
                 "count": 1,
                 "displayName": "Meg Mech",
-                "description": "At 2/3, 1/3, and 0 health, becomes protected from all damage. The protection can be removed by having the mech collide with the toolbox while using its charge attack.",
+                "description": "Starts with protection from all damage. If the mech collides with the toolbox while using its charge attack, the protection gets temporarily removed.",
                 "strengthTier": "",
                 "value": 0,
                 "health": 14400,

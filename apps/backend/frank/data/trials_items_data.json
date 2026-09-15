@@ -594,22 +594,22 @@
         "index": 13,
         "rarity": 0,
         "weight": 72,
-        "cost": 4,
+        "cost": 5,
         "stack": 1,
         "maxCount": -1,
-        "description": "The super charges faster when not attacking."
+        "description": "Receive protection against enemies close to maximum health."
     },
     {
-        "displayName": "Bling Stack",
+        "displayName": "Janet's Microphone",
         "type": "accessory",
-        "key": "noupgrades",
+        "key": "stuntshow",
         "index": 14,
         "rarity": 0,
         "weight": 72,
-        "cost": 3,
+        "cost": 5,
         "stack": 1,
         "maxCount": -1,
-        "description": "Receive 1 extra gear scrap when completing a level."
+        "description": "Increases attack reload when the super is fully charged."
     },
     {
         "displayName": "Shelly's Shotgun",
@@ -621,7 +621,7 @@
         "cost": 3,
         "stack": 1,
         "maxCount": -1,
-        "description": "Deal more damage to and receive more protection from Damage Dealer enemies."
+        "description": "Gain damage and protection against Damage Dealer enemies."
     },
     {
         "displayName": "R-T's Camera",
@@ -633,7 +633,7 @@
         "cost": 3,
         "stack": 1,
         "maxCount": -1,
-        "description": "Deal more damage to and receive more protection from Controller enemies."
+        "description": "Gain damage and protection against Controller enemies."
     },
     {
         "displayName": "El Primo's Belt",
@@ -645,7 +645,7 @@
         "cost": 3,
         "stack": 1,
         "maxCount": -1,
-        "description": "Deal more damage to and receive more protection from Tank enemies."
+        "description": "Gain damage and protection against Tank enemies."
     },
     {
         "displayName": "Colt's Revolvers",
@@ -657,7 +657,7 @@
         "cost": 3,
         "stack": 1,
         "maxCount": -1,
-        "description": "Deal more damage to and receive more protection from Marksman enemies."
+        "description": "Gain damage and protection against Marksman enemies."
     },
     {
         "displayName": "Mortis's Shovel",
@@ -669,7 +669,7 @@
         "cost": 3,
         "stack": 1,
         "maxCount": -1,
-        "description": "Deal more damage to and receive more protection from Assassin enemies."
+        "description": "Gain damage and protection against Assassin enemies."
     },
     {
         "displayName": "8-Bit's Turret",
@@ -681,7 +681,7 @@
         "cost": 3,
         "stack": 1,
         "maxCount": -1,
-        "description": "Receive more protection from Damage Dealer enemies."
+        "description": "Gain protection against Damage Dealer enemies."
     },
     {
         "displayName": "Jessie's Backpack",
@@ -693,7 +693,7 @@
         "cost": 3,
         "stack": 1,
         "maxCount": -1,
-        "description": "Receive more protection from Controller enemies."
+        "description": "Gain protection against Controller enemies."
     },
     {
         "displayName": "Jacky's Drill",
@@ -705,7 +705,7 @@
         "cost": 3,
         "stack": 1,
         "maxCount": -1,
-        "description": "Receive more protection from Tank enemies."
+        "description": "Gain protection against Tank enemies."
     },
     {
         "displayName": "Belle's Rifle",
@@ -717,7 +717,7 @@
         "cost": 3,
         "stack": 1,
         "maxCount": -1,
-        "description": "Receive more protection from Marksman enemies."
+        "description": "Gain protection against Marksman enemies."
     },
     {
         "displayName": "Leon's Lollipop",
@@ -729,7 +729,7 @@
         "cost": 3,
         "stack": 1,
         "maxCount": -1,
-        "description": "Receive more protection from Assassin enemies."
+        "description": "Gain protection against Assassin enemies."
     },
     {
         "displayName": "Colette's Scrapbook",
@@ -741,7 +741,7 @@
         "cost": 3,
         "stack": 1,
         "maxCount": -1,
-        "description": "Deal more damage to Damage Dealer enemies."
+        "description": "Gain damage against Damage Dealer enemies."
     },
     {
         "displayName": "Eve's Spaceship",
@@ -753,7 +753,7 @@
         "cost": 3,
         "stack": 1,
         "maxCount": -1,
-        "description": "Deal more damage to Controller enemies."
+        "description": "Gain damage against Controller enemies."
     },
     {
         "displayName": "Frank's Hammer",
@@ -765,7 +765,7 @@
         "cost": 3,
         "stack": 1,
         "maxCount": -1,
-        "description": "Deal more damage to Tank enemies."
+        "description": "Gain damage against Tank enemies."
     },
     {
         "displayName": "Bea's Bee",
@@ -777,7 +777,7 @@
         "cost": 3,
         "stack": 1,
         "maxCount": -1,
-        "description": "Deal more damage to Marksman enemies."
+        "description": "Gain damage against Marksman enemies."
     },
     {
         "displayName": "Mina's Drum",
@@ -789,7 +789,7 @@
         "cost": 3,
         "stack": 1,
         "maxCount": -1,
-        "description": "Deal more damage to Assassin enemies."
+        "description": "Gain damage against Assassin enemies."
     },
     {
         "displayName": "Bronze Medal",
@@ -837,7 +837,7 @@
         "cost": 5,
         "stack": 1,
         "maxCount": -1,
-        "description": "Increases the chance to land critical hits."
+        "description": "Increases critical chance."
     },
     {
         "displayName": "Fang's Shoe",
@@ -861,7 +861,7 @@
         "cost": 5,
         "stack": 1,
         "maxCount": -1,
-        "description": "Receive more power points when completing a level."
+        "description": "Critical hits slow enemies for a short duration."
     },
     {
         "displayName": "Barley's Bottle",
@@ -897,7 +897,7 @@
         "cost": 5,
         "stack": 1,
         "maxCount": -1,
-        "description": "When at low health, receive more protection."
+        "description": "Receive protection when at low health."
     },
     {
         "displayName": "Doug's Hot Dog",
@@ -921,7 +921,7 @@
         "cost": 5,
         "stack": 1,
         "maxCount": -1,
-        "description": "Using the super temporarily increases the chance to land critical hits."
+        "description": "Using the super temporarily increases critical chance."
     },
     {
         "displayName": "Surge's Energy Drink",
@@ -957,7 +957,7 @@
         "cost": 5,
         "stack": 1,
         "maxCount": -1,
-        "description": "If no enemies were recently defeated, deal more damage."
+        "description": "Deal more damage if no enemies were recently defeated."
     },
     {
         "displayName": "Starr Candy",
@@ -969,7 +969,7 @@
         "cost": 5,
         "stack": 1,
         "maxCount": -1,
-        "description": "When defeating an enemy, gain speed for a few seconds."
+        "description": "Defeating an enemy grants speed for a few seconds."
     },
     {
         "displayName": "Super Juice",
@@ -993,7 +993,7 @@
         "cost": 4,
         "stack": 1,
         "maxCount": -1,
-        "description": "Receive more protection from Damage Dealer enemies."
+        "description": "Gain protection and life steal against Damage Dealer enemies."
     },
     {
         "displayName": "Mr. P's Suitcase",
@@ -1005,7 +1005,7 @@
         "cost": 4,
         "stack": 1,
         "maxCount": -1,
-        "description": "Receive more protection from Controller enemies."
+        "description": "Gain protection and life steal against Controller enemies."
     },
     {
         "displayName": "Bibi's Bat",
@@ -1017,7 +1017,7 @@
         "cost": 4,
         "stack": 1,
         "maxCount": -1,
-        "description": "Receive more protection from Tank enemies."
+        "description": "Gain protection and life steal against Tank enemies."
     },
     {
         "displayName": "Brock's Rocket Launcher",
@@ -1029,7 +1029,7 @@
         "cost": 4,
         "stack": 1,
         "maxCount": -1,
-        "description": "Receive more protection from Marksman enemies."
+        "description": "Gain protection and life steal against Marksman enemies."
     },
     {
         "displayName": "Melodie's Note",
@@ -1041,7 +1041,7 @@
         "cost": 4,
         "stack": 1,
         "maxCount": -1,
-        "description": "Receive more protection from Assassin enemies."
+        "description": "Gain protection and life steal against Assassin enemies."
     },
     {
         "displayName": "Chester's Box",
@@ -1053,7 +1053,7 @@
         "cost": 4,
         "stack": 1,
         "maxCount": -1,
-        "description": "Deal more damage to Damage Dealer enemies."
+        "description": "Gain damage and critical chance against Damage Dealer enemies."
     },
     {
         "displayName": "Bo's Quiver",
@@ -1065,7 +1065,7 @@
         "cost": 4,
         "stack": 1,
         "maxCount": -1,
-        "description": "Deal more damage to Controller enemies."
+        "description": "Gain damage and critical chance against Controller enemies."
     },
     {
         "displayName": "Ollie's Skateboard",
@@ -1077,7 +1077,7 @@
         "cost": 4,
         "stack": 1,
         "maxCount": -1,
-        "description": "Deal more damage to Tank enemies."
+        "description": "Gain damage and critical chance against Tank enemies."
     },
     {
         "displayName": "Najia's Jar",
@@ -1089,7 +1089,7 @@
         "cost": 4,
         "stack": 1,
         "maxCount": -1,
-        "description": "Deal more damage to Marksman enemies."
+        "description": "Gain damage and critical chance against Marksman enemies."
     },
     {
         "displayName": "Max's Energy Drink",
@@ -1101,7 +1101,7 @@
         "cost": 4,
         "stack": 1,
         "maxCount": -1,
-        "description": "Deal more damage to Assassin enemies."
+        "description": "Gain damage and critical chance against Assassin enemies."
     },
     {
         "displayName": "Gold Medal",
@@ -1176,16 +1176,16 @@
         "description": "Increases charge rate of the combo."
     },
     {
-        "displayName": "Janet's Microphone",
+        "displayName": "Bling Stack",
         "type": "accessory",
-        "key": "stuntshow",
+        "key": "noupgrades",
         "index": 62,
         "rarity": 2,
         "weight": 72,
         "cost": 6,
         "stack": 1,
         "maxCount": -1,
-        "description": "Increases charge rate of the super."
+        "description": "Increases super charge rate."
     },
     {
         "displayName": "Healing Skull",
@@ -1197,7 +1197,7 @@
         "cost": 6,
         "stack": 1,
         "maxCount": -1,
-        "description": "When defeating an enemy, restore some health."
+        "description": "Defeating an enemy restores some health."
     },
     {
         "displayName": "Magic Lantern",
@@ -1233,7 +1233,7 @@
         "cost": 6,
         "stack": 1,
         "maxCount": -1,
-        "description": "When defeating an enemy, increase the next attack's damage."
+        "description": "Defeating an enemy increases the next attack's damage."
     },
     {
         "displayName": "Fabled Katana",
@@ -1245,7 +1245,7 @@
         "cost": 6,
         "stack": 1,
         "maxCount": -1,
-        "description": "Landing a critical hit increases damage for a few seconds."
+        "description": "Every few hits during an active combo increases its strength."
     },
     {
         "displayName": "Cursed Book",
@@ -1269,7 +1269,7 @@
         "cost": 6,
         "stack": 1,
         "maxCount": -1,
-        "description": "When defeating an enemy, partially recharge the super."
+        "description": "Defeating an enemy partially recharges the super."
     },
     {
         "displayName": "Heist Safe",
@@ -1293,7 +1293,7 @@
         "cost": 5,
         "stack": 1,
         "maxCount": -1,
-        "description": "Deal more damage to and receive more protection from Damage Dealer enemies."
+        "description": "Gain damage, protection, and super charge against Damage Dealer enemies."
     },
     {
         "displayName": "Lola's Scarf",
@@ -1305,7 +1305,7 @@
         "cost": 5,
         "stack": 1,
         "maxCount": -1,
-        "description": "Deal more damage to and receive more protection from Controller enemies."
+        "description": "Gain damage, protection, and super charge against Controller enemies."
     },
     {
         "displayName": "Meg's Mech",
@@ -1317,7 +1317,7 @@
         "cost": 5,
         "stack": 1,
         "maxCount": -1,
-        "description": "Deal more damage to and receive more protection from Tank enemies."
+        "description": "Gain damage, protection, and super charge against Tank enemies."
     },
     {
         "displayName": "Bonnie's Cannon",
@@ -1329,7 +1329,7 @@
         "cost": 5,
         "stack": 1,
         "maxCount": -1,
-        "description": "Deal more damage to and receive more protection from Marksman enemies."
+        "description": "Gain damage, protection, and super charge against Marksman enemies."
     },
     {
         "displayName": "Kaze's Fan",
@@ -1341,7 +1341,7 @@
         "cost": 5,
         "stack": 1,
         "maxCount": -1,
-        "description": "Deal more damage to and receive more protection from Assassin enemies."
+        "description": "Gain damage, protection, and super charge against Assassin enemies."
     },
     {
         "displayName": "Amethyst Medal",
@@ -1593,7 +1593,7 @@
         "cost": 6,
         "stack": 1,
         "maxCount": -1,
-        "description": "Fully charges one Hypercharge and increases its charge rate during the next challenge."
+        "description": "Fully charges one Hypercharge and increases its charge rate and duration during the next challenge."
     },
     {
         "displayName": "Omega Box",

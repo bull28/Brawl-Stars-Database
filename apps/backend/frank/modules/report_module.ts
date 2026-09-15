@@ -225,7 +225,7 @@ function getFinalScore(reports: number[], enemyCounts: number[]): number[]{
 }
 
 export function validateReport(report: GameReport): number{
-    // Last updated: version 109
+    // Last updated: version 111
 
     if (Array.isArray(report) === false){
         // Invalid report type
@@ -248,7 +248,7 @@ export function validateReport(report: GameReport): number{
     }
 
     // The first number contains major version (16 bits), minor version (4 bits), and report length (12 bits)
-    if ((report[0] >> 16) < 109){
+    if ((report[0] >> 16) < 111){
         // Old report version
         return 3;
     }
@@ -403,7 +403,7 @@ export function validateReport(report: GameReport): number{
 
         // The upgrades cannot be more than each upgrade type limit
         const upgrades = data.slice(format.upgrades[0], format.upgrades[1]);
-        const maxUpgrades = difficulty >= 6 ? [20, 16, 8, 8, 6, 6, 7, 5] : [16, 12, 6, 6, 5, 5, 5, 4];
+        const maxUpgrades = difficulty >= 6 ? [20, 20, 10, 10, 10, 10, 6, 5] : [16, 16, 8, 8, 8, 8, 5, 4];
         if (upgrades.length < maxUpgrades.length){
             return 6;
         }
