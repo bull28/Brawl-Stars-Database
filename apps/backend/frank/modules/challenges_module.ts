@@ -32,7 +32,7 @@ const challengeUpgrades: {[k in keyof PlayerUpgrades]: [number, number][]} = {
     ],
     maxAccessories: [
         [ 0,  0], [ 6,  6], [ 8,  8], [12, 10], [14, 12], [18, 14],
-        [22, 16], [26, 19], [30, 22], [34, 25], [40, 28]
+        [22, 16], [26, 18], [30, 20], [34, 22], [40, 24]
     ]
 };
 

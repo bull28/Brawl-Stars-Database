@@ -133,7 +133,7 @@ class EventSlot{
             return -1;
         }
 
-        const day = mod(this.getDay(seasonTime), this.rotation.length)
+        const day = mod(this.getDay(seasonTime), this.rotation.length);
         const daysUntilStart = mod(index - day, this.rotation.length);
 
         if (daysUntilStart <= 0){

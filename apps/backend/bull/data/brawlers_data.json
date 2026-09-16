@@ -504,7 +504,8 @@
                 "unlock": "Accidentally given for free during the Squad Busters release event",
                 "foundIn": [
                     "Dead Boxes",
-                    "Pumpkin Boxes"
+                    "Pumpkin Boxes",
+                    "Coffin Boxes"
                 ],
                 "release": {
                     "month": 10,
@@ -1450,7 +1451,8 @@
                 "unlock": "Reward from Brawl Pass Season 16 tier 1",
                 "foundIn": [
                     "Presents",
-                    "Pumpkin Boxes"
+                    "Pumpkin Boxes",
+                    "Coffin Boxes"
                 ],
                 "release": {
                     "month": 1,
@@ -1494,7 +1496,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Gigi Boxes"
+                    "Gigi Boxes",
+                    "Vince Boxes"
                 ],
                 "release": {
                     "month": 11,
@@ -2888,14 +2891,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Supercell Make",
-                        "image": "bg_default.webp",
-                        "icon": "icon_sc_make.webp"
-                    },
-                    {
                         "name": "Angels vs. Demons",
                         "image": "bg_default.webp",
                         "icon": "icon_angeldemons.webp"
+                    },
+                    {
+                        "name": "Supercell Make",
+                        "image": "bg_default.webp",
+                        "icon": "icon_sc_make.webp"
                     }
                 ],
                 "limited": false,
@@ -5123,7 +5126,8 @@
                 "unlock": "Reward for completing the Zombrock Challenge",
                 "foundIn": [
                     "Dead Boxes",
-                    "Pumpkin Boxes"
+                    "Pumpkin Boxes",
+                    "Coffin Boxes"
                 ],
                 "release": {
                     "month": 10,
@@ -5250,7 +5254,8 @@
                 "limited": false,
                 "unlock": "Reward from Brawl Pass Season 27 tier 50",
                 "foundIn": [
-                    "NanoDrops"
+                    "NanoDrops",
+                    "Cosmo Boxes"
                 ],
                 "release": {
                     "month": 6,
@@ -5507,7 +5512,8 @@
                 "limited": false,
                 "unlock": "Reward from Brawl Pass Plus Season 27 tier 48",
                 "foundIn": [
-                    "NanoDrops"
+                    "NanoDrops",
+                    "Cosmo Boxes"
                 ],
                 "release": {
                     "month": 6,
@@ -7069,7 +7075,8 @@
                 "unlock": "Reward for reaching 750 Trophies with El Primo",
                 "foundIn": [
                     "Dead Boxes",
-                    "Pumpkin Boxes"
+                    "Pumpkin Boxes",
+                    "Coffin Boxes"
                 ],
                 "release": {
                     "month": 10,
@@ -7814,7 +7821,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Damian Boxes"
+                    "Damian Boxes",
+                    "Cosmo Boxes"
                 ],
                 "release": {
                     "month": 9,
@@ -8437,7 +8445,8 @@
                 "limited": false,
                 "unlock": "Reward from Brawl Pass Season 14 tier 1",
                 "foundIn": [
-                    "Gigi Boxes"
+                    "Gigi Boxes",
+                    "Vince Boxes"
                 ],
                 "release": {
                     "month": 9,
@@ -8607,7 +8616,8 @@
                 "limited": false,
                 "unlock": "Reward for reaching 750 Trophies with Poco",
                 "foundIn": [
-                    "Pumpkin Boxes"
+                    "Pumpkin Boxes",
+                    "Coffin Boxes"
                 ],
                 "release": {
                     "month": 9,
@@ -11533,7 +11543,8 @@
                 "unlock": "",
                 "foundIn": [
                     "Dead Boxes",
-                    "Pumpkin Boxes"
+                    "Pumpkin Boxes",
+                    "Coffin Boxes"
                 ],
                 "release": {
                     "month": 10,
@@ -11778,7 +11789,9 @@
                 ],
                 "limited": true,
                 "unlock": "Reward from paid track of Last Chance Qualifier 2025 Pro Pass",
-                "foundIn": [],
+                "foundIn": [
+                    "Ranked Starr Drops"
+                ],
                 "release": {
                     "month": 7,
                     "year": 2025
@@ -11820,7 +11833,9 @@
                 ],
                 "limited": true,
                 "unlock": "Reward from paid track of Last Chance Qualifier 2025 Pro Pass",
-                "foundIn": [],
+                "foundIn": [
+                    "Ranked Starr Drops"
+                ],
                 "release": {
                     "month": 7,
                     "year": 2025
@@ -11862,7 +11877,9 @@
                 ],
                 "limited": true,
                 "unlock": "Reward from paid track of Last Chance Qualifier 2025 Pro Pass",
-                "foundIn": [],
+                "foundIn": [
+                    "Ranked Starr Drops"
+                ],
                 "release": {
                     "month": 7,
                     "year": 2025
@@ -12810,7 +12827,8 @@
                 "limited": true,
                 "unlock": "",
                 "foundIn": [
-                    "Pumpkin Boxes"
+                    "Pumpkin Boxes",
+                    "Coffin Boxes"
                 ],
                 "release": {
                     "month": 10,
@@ -14667,7 +14685,8 @@
                 "limited": true,
                 "unlock": "",
                 "foundIn": [
-                    "Pumpkin Boxes"
+                    "Pumpkin Boxes",
+                    "Coffin Boxes"
                 ],
                 "release": {
                     "month": 10,
@@ -15677,6 +15696,47 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "barrelbotbrawlacademy",
+                "displayName": "Trash Goblin Darryl",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl Academy",
+                        "image": "bg_university.webp",
+                        "icon": "icon_university.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 9,
+                    "year": 2026
+                },
+                "image": "barrelbotbrawlacademy.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -15863,6 +15923,15 @@
             {
                 "name": "darryl_starrforce",
                 "image": "darryl_starrforce.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "darryl_university",
+                "image": "darryl_university.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -16191,7 +16260,8 @@
                 "unlock": "Reward from Brawl Pass Season 15 tier 1",
                 "foundIn": [
                     "Dead Boxes",
-                    "Pumpkin Boxes"
+                    "Pumpkin Boxes",
+                    "Coffin Boxes"
                 ],
                 "release": {
                     "month": 11,
@@ -17161,7 +17231,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Vince Boxes"
+                ],
                 "release": {
                     "month": 10,
                     "year": 2025
@@ -17963,7 +18035,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Cosmo Boxes"
+                ],
                 "release": {
                     "month": 8,
                     "year": 2025
@@ -18464,7 +18538,8 @@
                 "unlock": "Reward for completing the Gruesome Challenge",
                 "foundIn": [
                     "Dead Boxes",
-                    "Pumpkin Boxes"
+                    "Pumpkin Boxes",
+                    "Coffin Boxes"
                 ],
                 "release": {
                     "month": 10,
@@ -19004,14 +19079,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Supercell Make",
-                        "image": "bg_default.webp",
-                        "icon": "icon_sc_make.webp"
-                    },
-                    {
                         "name": "Angels vs. Demons",
                         "image": "bg_default.webp",
                         "icon": "icon_angeldemons.webp"
+                    },
+                    {
+                        "name": "Supercell Make",
+                        "image": "bg_default.webp",
+                        "icon": "icon_sc_make.webp"
                     }
                 ],
                 "limited": false,
@@ -20738,7 +20813,8 @@
                 "unlock": "",
                 "foundIn": [
                     "Dead Boxes",
-                    "Pumpkin Boxes"
+                    "Pumpkin Boxes",
+                    "Coffin Boxes"
                 ],
                 "release": {
                     "month": 10,
@@ -22089,6 +22165,49 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "sniperbrawloween",
+                "displayName": "Bellenstein's Monster",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl-o-ween",
+                        "image": "bg_brawloween.webp",
+                        "icon": "icon_brawloween.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [
+                    "Coffin Boxes"
+                ],
+                "release": {
+                    "month": 10,
+                    "year": 2026
+                },
+                "image": "sniperbrawloween.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -22379,6 +22498,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "piper_brawloween_02",
+                "image": "piper_brawloween_02.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -22663,7 +22791,8 @@
                 "unlock": "",
                 "foundIn": [
                     "Dead Boxes",
-                    "Pumpkin Boxes"
+                    "Pumpkin Boxes",
+                    "Coffin Boxes"
                 ],
                 "release": {
                     "month": 10,
@@ -23217,7 +23346,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Cosmo Boxes"
+                ],
                 "release": {
                     "month": 2,
                     "year": 2023
@@ -24090,7 +24221,8 @@
                 "unlock": "",
                 "foundIn": [
                     "Dead Boxes",
-                    "Pumpkin Boxes"
+                    "Pumpkin Boxes",
+                    "Coffin Boxes"
                 ],
                 "release": {
                     "month": 10,
@@ -24329,7 +24461,8 @@
                 "unlock": "Reward for reaching 750 Trophies with Bibi",
                 "foundIn": [
                     "Presents",
-                    "Pumpkin Boxes"
+                    "Pumpkin Boxes",
+                    "Coffin Boxes"
                 ],
                 "release": {
                     "month": 5,
@@ -25332,7 +25465,8 @@
                 "unlock": "",
                 "foundIn": [
                     "Pizza Planet",
-                    "NanoDrops"
+                    "NanoDrops",
+                    "Cosmo Boxes"
                 ],
                 "release": {
                     "month": 6,
@@ -25374,7 +25508,8 @@
                 "limited": true,
                 "unlock": "",
                 "foundIn": [
-                    "Pumpkin Boxes"
+                    "Pumpkin Boxes",
+                    "Coffin Boxes"
                 ],
                 "release": {
                     "month": 10,
@@ -25975,6 +26110,141 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "controllerbrawlacademy",
+                "displayName": "Principal Nani",
+                "cost": 2,
+                "currency": "Keys",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl Academy",
+                        "image": "bg_university.webp",
+                        "icon": "icon_university.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 9,
+                    "year": 2026
+                },
+                "image": "controllerbrawlacademy.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "controllerbrawlacademychroma1",
+                "displayName": "Head Teacher Nani",
+                "cost": 2,
+                "currency": "Keys",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl Academy",
+                        "image": "bg_university.webp",
+                        "icon": "icon_university.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 9,
+                    "year": 2026
+                },
+                "image": "controllerbrawlacademychroma1.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "controllerbrawlacademychroma2",
+                "displayName": "Queen Nani",
+                "cost": 2,
+                "currency": "Keys",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl Academy",
+                        "image": "bg_university.webp",
+                        "icon": "icon_university.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 9,
+                    "year": 2026
+                },
+                "image": "controllerbrawlacademychroma2.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -26116,6 +26386,15 @@
             {
                 "name": "nani_brawlidays",
                 "image": "nani_brawlidays.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "nani_university",
+                "image": "nani_university.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -27777,6 +28056,51 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "assaultshotgunmake",
+                "displayName": "Gravestone Griff",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl-o-ween",
+                        "image": "bg_brawloween.webp",
+                        "icon": "icon_brawloween.webp"
+                    },
+                    {
+                        "name": "Supercell Make",
+                        "image": "bg_default.webp",
+                        "icon": "icon_sc_make.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 10,
+                    "year": 2026
+                },
+                "image": "assaultshotgunmake.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -27936,6 +28260,15 @@
             {
                 "name": "griff_dragonchroma2",
                 "image": "griff_dragonchroma2.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "griff_make",
+                "image": "griff_make.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -28139,7 +28472,8 @@
                 "unlock": "",
                 "foundIn": [
                     "Dead Boxes",
-                    "Pumpkin Boxes"
+                    "Pumpkin Boxes",
+                    "Coffin Boxes"
                 ],
                 "release": {
                     "month": 10,
@@ -30281,7 +30615,8 @@
                 "unlock": "",
                 "foundIn": [
                     "Dead Boxes",
-                    "Pumpkin Boxes"
+                    "Pumpkin Boxes",
+                    "Coffin Boxes"
                 ],
                 "release": {
                     "month": 11,
@@ -30506,7 +30841,8 @@
                 "foundIn": [
                     "Dead Boxes",
                     "Pumpkin Boxes",
-                    "Card Packs"
+                    "Card Packs",
+                    "Coffin Boxes"
                 ],
                 "release": {
                     "month": 10,
@@ -31402,6 +31738,49 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "electrosniperbrawloween",
+                "displayName": "Dr. Bellenstein",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl-o-ween",
+                        "image": "bg_brawloween.webp",
+                        "icon": "icon_brawloween.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [
+                    "Coffin Boxes"
+                ],
+                "release": {
+                    "month": 10,
+                    "year": 2026
+                },
+                "image": "electrosniperbrawloween.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -31615,6 +31994,15 @@
             {
                 "name": "belle_fantasy",
                 "image": "belle_fantasy.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "belle_brawloween",
+                "image": "belle_brawloween.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -31871,7 +32259,8 @@
                 "unlock": "",
                 "foundIn": [
                     "Presents",
-                    "Pumpkin Boxes"
+                    "Pumpkin Boxes",
+                    "Coffin Boxes"
                 ],
                 "release": {
                     "month": 1,
@@ -32625,7 +33014,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Gigi Boxes"
+                    "Gigi Boxes",
+                    "Vince Boxes"
                 ],
                 "release": {
                     "month": 9,
@@ -32715,7 +33105,8 @@
                 "unlock": "",
                 "foundIn": [
                     "Ranked Starr Drops",
-                    "Gigi Boxes"
+                    "Gigi Boxes",
+                    "Vince Boxes"
                 ],
                 "release": {
                     "month": 11,
@@ -32847,6 +33238,46 @@
                     "year": 2024
                 },
                 "image": "duplicatorgiftstoy.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "duplicatorlunarevent",
+                "displayName": "Moonlight Lola",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Lunar Stories",
+                        "image": "bg_lunarevent.webp",
+                        "icon": "icon_lunarevent.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 9,
+                    "year": 2026
+                },
+                "image": "duplicatorlunarevent.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -33084,6 +33515,15 @@
             {
                 "name": "lola_overcharge",
                 "image": "lola_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "lola_lunarevent",
+                "image": "lola_lunarevent.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -33375,7 +33815,8 @@
                 "unlock": "",
                 "foundIn": [
                     "Card Packs",
-                    "Gigi Boxes"
+                    "Gigi Boxes",
+                    "Vince Boxes"
                 ],
                 "release": {
                     "month": 11,
@@ -33421,7 +33862,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Cosmo Boxes"
+                ],
                 "release": {
                     "month": 4,
                     "year": 2025
@@ -34216,6 +34659,49 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "beameruniversity",
+                "displayName": "Academy Mandy",
+                "cost": 299,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 5,
+                    "name": "Legendary",
+                    "icon": "skin_rarity_5.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Takedown",
+                    "Voice",
+                    "Respawn effect"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl Academy",
+                        "image": "bg_university.webp",
+                        "icon": "icon_university.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 9,
+                    "year": 2026
+                },
+                "image": "beameruniversity.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -34456,6 +34942,15 @@
             {
                 "name": "mandy_mechapurple",
                 "image": "mandy_mechapurple.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "mandy_university",
+                "image": "mandy_university.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -35419,6 +35914,141 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "fishtankbrawlacademy",
+                "displayName": "Head Coach Hank",
+                "cost": 2,
+                "currency": "Keys",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl Academy",
+                        "image": "bg_university.webp",
+                        "icon": "icon_university.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 9,
+                    "year": 2026
+                },
+                "image": "fishtankbrawlacademy.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "fishtankbrawlacademychroma1",
+                "displayName": "Trainer Hank",
+                "cost": 2,
+                "currency": "Keys",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl Academy",
+                        "image": "bg_university.webp",
+                        "icon": "icon_university.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 9,
+                    "year": 2026
+                },
+                "image": "fishtankbrawlacademychroma1.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "fishtankbrawlacademychroma2",
+                "displayName": "Team Captain Hank",
+                "cost": 2,
+                "currency": "Keys",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl Academy",
+                        "image": "bg_university.webp",
+                        "icon": "icon_university.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 9,
+                    "year": 2026
+                },
+                "image": "fishtankbrawlacademychroma2.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -35542,6 +36172,15 @@
             {
                 "name": "hank_street",
                 "image": "hank_street.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "hank_university",
+                "image": "hank_university.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -36172,7 +36811,8 @@
                 "foundIn": [
                     "Ranked Starr Drops",
                     "Pizza Planet",
-                    "NanoDrops"
+                    "NanoDrops",
+                    "Cosmo Boxes"
                 ],
                 "release": {
                     "month": 6,
@@ -36282,14 +36922,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Angels vs. Demons",
-                        "image": "bg_default.webp",
-                        "icon": "icon_angeldemons.webp"
-                    },
-                    {
                         "name": "Brawl Pass",
                         "image": "bg_default.webp",
                         "icon": "icon_brawlpass.webp"
+                    },
+                    {
+                        "name": "Angels vs. Demons",
+                        "image": "bg_default.webp",
+                        "icon": "icon_angeldemons.webp"
                     }
                 ],
                 "limited": false,
@@ -36326,14 +36966,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Angels vs. Demons",
-                        "image": "bg_default.webp",
-                        "icon": "icon_angeldemons.webp"
-                    },
-                    {
                         "name": "Brawl Pass",
                         "image": "bg_default.webp",
                         "icon": "icon_brawlpass.webp"
+                    },
+                    {
+                        "name": "Angels vs. Demons",
+                        "image": "bg_default.webp",
+                        "icon": "icon_angeldemons.webp"
                     }
                 ],
                 "limited": false,
@@ -36370,14 +37010,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Angels vs. Demons",
-                        "image": "bg_default.webp",
-                        "icon": "icon_angeldemons.webp"
-                    },
-                    {
                         "name": "Brawl Pass",
                         "image": "bg_default.webp",
                         "icon": "icon_brawlpass.webp"
+                    },
+                    {
+                        "name": "Angels vs. Demons",
+                        "image": "bg_default.webp",
+                        "icon": "icon_angeldemons.webp"
                     }
                 ],
                 "limited": false,
@@ -37907,6 +38547,141 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "ghostbrawloween",
+                "displayName": "Cursed Shade",
+                "cost": 2,
+                "currency": "Keys",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl-o-ween",
+                        "image": "bg_brawloween.webp",
+                        "icon": "icon_brawloween.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 10,
+                    "year": 2026
+                },
+                "image": "ghostbrawloween.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "ghostbrawloweenchroma1",
+                "displayName": "Creepy Shade",
+                "cost": 2,
+                "currency": "Keys",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl-o-ween",
+                        "image": "bg_brawloween.webp",
+                        "icon": "icon_brawloween.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 10,
+                    "year": 2026
+                },
+                "image": "ghostbrawloweenchroma1.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "ghostbrawloweenchroma2",
+                "displayName": "Jolly Ghost Shade",
+                "cost": 2,
+                "currency": "Keys",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl-o-ween",
+                        "image": "bg_brawloween.webp",
+                        "icon": "icon_brawloween.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 10,
+                    "year": 2026
+                },
+                "image": "ghostbrawloweenchroma2.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -38097,6 +38872,15 @@
                     "value": 2,
                     "name": "Epic",
                     "color": "#b116ec"
+                }
+            },
+            {
+                "name": "shade_brawloween",
+                "image": "shade_brawloween.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
                 }
             }
         ]
@@ -38655,9 +39439,9 @@
                 ],
                 "groups": [
                     {
-                        "name": "Supercell Make",
-                        "image": "bg_default.webp",
-                        "icon": "icon_sc_make.webp"
+                        "name": "Clash Stories",
+                        "image": "bg_claship.webp",
+                        "icon": "icon_claship.webp"
                     }
                 ],
                 "limited": true,
@@ -41291,7 +42075,8 @@
                 "unlock": "",
                 "foundIn": [
                     "Dead Boxes",
-                    "Pumpkin Boxes"
+                    "Pumpkin Boxes",
+                    "Coffin Boxes"
                 ],
                 "release": {
                     "month": 10,
@@ -42158,6 +42943,47 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "speedymisc",
+                "displayName": "Xenomech Max",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Misc",
+                        "image": "bg_default.webp",
+                        "icon": "icon_misc.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 10,
+                    "year": 2026
+                },
+                "image": "speedymisc.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -42518,7 +43344,8 @@
                 "unlock": "",
                 "foundIn": [
                     "Dead Boxes",
-                    "Pumpkin Boxes"
+                    "Pumpkin Boxes",
+                    "Coffin Boxes"
                 ],
                 "release": {
                     "month": 10,
@@ -42698,6 +43525,141 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "spawnerdudebrawloween",
+                "displayName": "Fortune Teller P",
+                "cost": 2,
+                "currency": "Keys",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl-o-ween",
+                        "image": "bg_brawloween.webp",
+                        "icon": "icon_brawloween.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 10,
+                    "year": 2026
+                },
+                "image": "spawnerdudebrawloween.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "spawnerdudebrawloweenchroma1",
+                "displayName": "Mr. Psychic",
+                "cost": 2,
+                "currency": "Keys",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl-o-ween",
+                        "image": "bg_brawloween.webp",
+                        "icon": "icon_brawloween.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 10,
+                    "year": 2026
+                },
+                "image": "spawnerdudebrawloweenchroma1.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "spawnerdudebrawloweenchroma2",
+                "displayName": "Mystic P",
+                "cost": 2,
+                "currency": "Keys",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl-o-ween",
+                        "image": "bg_brawloween.webp",
+                        "icon": "icon_brawloween.webp"
+                    },
+                    {
+                        "name": "Brawl Pass",
+                        "image": "bg_default.webp",
+                        "icon": "icon_brawlpass.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 10,
+                    "year": 2026
+                },
+                "image": "spawnerdudebrawloweenchroma2.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -42848,6 +43810,15 @@
             {
                 "name": "mrp_gym",
                 "image": "mrp_gym.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "mrp_brawloween_02",
+                "image": "mrp_brawloween_02.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -43722,7 +44693,8 @@
                 "unlock": "",
                 "foundIn": [
                     "Card Packs",
-                    "Gigi Boxes"
+                    "Gigi Boxes",
+                    "Vince Boxes"
                 ],
                 "release": {
                     "month": 11,
@@ -44323,7 +45295,8 @@
                 "unlock": "",
                 "foundIn": [
                     "Dead Boxes",
-                    "Pumpkin Boxes"
+                    "Pumpkin Boxes",
+                    "Coffin Boxes"
                 ],
                 "release": {
                     "month": 10,
@@ -45832,7 +46805,8 @@
                 "limited": true,
                 "unlock": "",
                 "foundIn": [
-                    "Pumpkin Boxes"
+                    "Pumpkin Boxes",
+                    "Coffin Boxes"
                 ],
                 "release": {
                     "month": 10,
@@ -46322,7 +47296,8 @@
                 "foundIn": [
                     "Presents",
                     "Pumpkin Boxes",
-                    "Pierce Boxes"
+                    "Pierce Boxes",
+                    "Coffin Boxes"
                 ],
                 "release": {
                     "month": 1,
@@ -47419,7 +48394,8 @@
                 "unlock": "",
                 "foundIn": [
                     "Dead Boxes",
-                    "Pumpkin Boxes"
+                    "Pumpkin Boxes",
+                    "Coffin Boxes"
                 ],
                 "release": {
                     "month": 10,
@@ -48359,6 +49335,47 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "fleamoonfestival",
+                "displayName": "Moonlight Eve",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Lunar Stories",
+                        "image": "bg_lunarevent.webp",
+                        "icon": "icon_lunarevent.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 9,
+                    "year": 2026
+                },
+                "image": "fleamoonfestival.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -48563,6 +49580,15 @@
             {
                 "name": "eve_starrforce",
                 "image": "eve_starrforce.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "eve_lunarevent",
+                "image": "eve_lunarevent.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -48980,7 +50006,9 @@
                 ],
                 "limited": false,
                 "unlock": "",
-                "foundIn": [],
+                "foundIn": [
+                    "Cosmo Boxes"
+                ],
                 "release": {
                     "month": 4,
                     "year": 2025
@@ -50012,7 +51040,8 @@
                 "unlock": "Reward from Brawl Pass Season 15 tier 70",
                 "foundIn": [
                     "Dead Boxes",
-                    "Pumpkin Boxes"
+                    "Pumpkin Boxes",
+                    "Coffin Boxes"
                 ],
                 "release": {
                     "month": 11,
@@ -51272,7 +52301,8 @@
                 "limited": true,
                 "unlock": "",
                 "foundIn": [
-                    "Pumpkin Boxes"
+                    "Pumpkin Boxes",
+                    "Coffin Boxes"
                 ],
                 "release": {
                     "month": 10,
@@ -51608,7 +52638,8 @@
                 "unlock": "",
                 "foundIn": [
                     "Glowbert Boxes",
-                    "Najia Boxes"
+                    "Najia Boxes",
+                    "Vince Boxes"
                 ],
                 "release": {
                     "month": 9,
@@ -52195,6 +53226,51 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "revivermake",
+                "displayName": "Jormungandr Doug",
+                "cost": 149,
+                "currency": "Gems",
+                "costBling": 5000,
+                "rarity": {
+                    "value": 3,
+                    "name": "Epic",
+                    "icon": "skin_rarity_3.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler model",
+                    "Texture",
+                    "Animations",
+                    "Effects"
+                ],
+                "groups": [
+                    {
+                        "name": "Northern Saga",
+                        "image": "bg_norsegods.webp",
+                        "icon": "icon_norsegods.webp"
+                    },
+                    {
+                        "name": "Supercell Make",
+                        "image": "bg_default.webp",
+                        "icon": "icon_sc_make.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "Reward for completing the SC Make Skin Challenge",
+                "foundIn": [],
+                "release": {
+                    "month": 9,
+                    "year": 2026
+                },
+                "image": "revivermake.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -52323,6 +53399,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "doug_make",
+                "image": "doug_make.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -52404,7 +53489,8 @@
                 "foundIn": [
                     "Dead Boxes",
                     "Demonic Starr Drops",
-                    "Pumpkin Boxes"
+                    "Pumpkin Boxes",
+                    "Coffin Boxes"
                 ],
                 "release": {
                     "month": 10,
@@ -52574,6 +53660,49 @@
                     "year": 2025
                 },
                 "image": "conductorsupercellmake.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "conductorbrawloween",
+                "displayName": "Flame Rider Chuck",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl-o-ween",
+                        "image": "bg_brawloween.webp",
+                        "icon": "icon_brawloween.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [
+                    "Coffin Boxes"
+                ],
+                "release": {
+                    "month": 10,
+                    "year": 2026
+                },
+                "image": "conductorbrawloween.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -52771,6 +53900,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "chuck_brawloween",
+                "image": "chuck_brawloween.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -52942,7 +54080,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Pizza Planet"
+                    "Pizza Planet",
+                    "Cosmo Boxes"
                 ],
                 "release": {
                     "month": 6,
@@ -54953,6 +56092,52 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "ambushermake",
+                "displayName": "Twilight Queen Lily",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Biodome",
+                        "image": "bg_biodome.webp",
+                        "icon": "icon_biodome.webp"
+                    },
+                    {
+                        "name": "Supercell Make",
+                        "image": "bg_default.webp",
+                        "icon": "icon_sc_make.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 9,
+                    "year": 2026
+                },
+                "image": "ambushermake.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -55094,6 +56279,15 @@
             {
                 "name": "lily_sandsoftimechromared",
                 "image": "lily_sandsoftimechromared.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "lily_make",
+                "image": "lily_make.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -55913,7 +57107,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Najia Boxes"
+                    "Najia Boxes",
+                    "Vince Boxes"
                 ],
                 "release": {
                     "month": 3,
@@ -56417,6 +57612,47 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "skaterbrawlacademy",
+                "displayName": "Academy Ollie",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl Academy",
+                        "image": "bg_university.webp",
+                        "icon": "icon_university.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 9,
+                    "year": 2026
+                },
+                "image": "skaterbrawlacademy.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -56531,6 +57767,15 @@
             {
                 "name": "ollie_subway",
                 "image": "ollie_subway.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "ollie_university",
+                "image": "ollie_university.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -56651,14 +57896,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Kaiju Invasion",
-                        "image": "bg_kaiju.webp",
-                        "icon": "icon_kaiju.webp"
-                    },
-                    {
                         "name": "Mecha Squad",
                         "image": "bg_mecha.webp",
                         "icon": "icon_mecha.webp"
+                    },
+                    {
+                        "name": "Kaiju Invasion",
+                        "image": "bg_kaiju.webp",
+                        "icon": "icon_kaiju.webp"
                     }
                 ],
                 "limited": false,
@@ -56700,14 +57945,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Kaiju Invasion",
-                        "image": "bg_kaiju.webp",
-                        "icon": "icon_kaiju.webp"
-                    },
-                    {
                         "name": "Mecha Squad",
                         "image": "bg_mecha.webp",
                         "icon": "icon_mecha.webp"
+                    },
+                    {
+                        "name": "Kaiju Invasion",
+                        "image": "bg_kaiju.webp",
+                        "icon": "icon_kaiju.webp"
                     }
                 ],
                 "limited": false,
@@ -56749,14 +57994,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Kaiju Invasion",
-                        "image": "bg_kaiju.webp",
-                        "icon": "icon_kaiju.webp"
-                    },
-                    {
                         "name": "Mecha Squad",
                         "image": "bg_mecha.webp",
                         "icon": "icon_mecha.webp"
+                    },
+                    {
+                        "name": "Kaiju Invasion",
+                        "image": "bg_kaiju.webp",
+                        "icon": "icon_kaiju.webp"
                     }
                 ],
                 "limited": false,
@@ -58247,6 +59492,52 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "stalkermake",
+                "displayName": "Bone Collector Alli",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Skull Cave Clan",
+                        "image": "bg_cave.webp",
+                        "icon": "icon_cave.webp"
+                    },
+                    {
+                        "name": "Supercell Make",
+                        "image": "bg_default.webp",
+                        "icon": "icon_sc_make.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 9,
+                    "year": 2026
+                },
+                "image": "stalkermake.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -58352,6 +59643,15 @@
             {
                 "name": "alli_brawlentines",
                 "image": "alli_brawlentines.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "alli_make",
+                "image": "alli_make.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -60016,6 +61316,47 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "redirecterbrawlacademy",
+                "displayName": "Drum Major Najia",
+                "cost": 199,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 4,
+                    "name": "Mythic",
+                    "icon": "skin_rarity_4.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Takedown"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl Academy",
+                        "image": "bg_university.webp",
+                        "icon": "icon_university.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 9,
+                    "year": 2026
+                },
+                "image": "redirecterbrawlacademy.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -60126,6 +61467,15 @@
                     "name": "Legendary",
                     "color": "#fdf11e"
                 }
+            },
+            {
+                "name": "najia_university",
+                "image": "najia_university.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
             }
         ]
     },
@@ -60191,7 +61541,10 @@
                     "icon": ""
                 },
                 "requires": "True Silver Damian",
-                "features": [],
+                "features": [
+                    "Brawler model",
+                    "Texture"
+                ],
                 "groups": [
                     {
                         "name": "True Gold",
@@ -60226,7 +61579,10 @@
                     "icon": ""
                 },
                 "requires": "",
-                "features": [],
+                "features": [
+                    "Brawler model",
+                    "Texture"
+                ],
                 "groups": [
                     {
                         "name": "True Silver",
@@ -60242,6 +61598,51 @@
                     "year": 2026
                 },
                 "image": "gladiatorsilver.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "gladiatorbrawloween",
+                "displayName": "Terrornaut Damian",
+                "cost": 299,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 5,
+                    "name": "Legendary",
+                    "icon": "skin_rarity_5.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Takedown",
+                    "Voice",
+                    "Respawn effect"
+                ],
+                "groups": [
+                    {
+                        "name": "Brawl-o-ween",
+                        "image": "bg_brawloween.webp",
+                        "icon": "icon_brawloween.webp"
+                    }
+                ],
+                "limited": true,
+                "unlock": "",
+                "foundIn": [
+                    "Coffin Boxes"
+                ],
+                "release": {
+                    "month": 10,
+                    "year": 2026
+                },
+                "image": "gladiatorbrawloween.webp",
                 "model": {
                     "geometry": "",
                     "winAnimation": "",
@@ -60353,6 +61754,15 @@
             {
                 "name": "damian_overcharge",
                 "image": "damian_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "damian_brawloween",
+                "image": "damian_brawloween.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -60648,6 +62058,82 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "futuregirltruegold",
+                "displayName": "True Gold Wendy",
+                "cost": 25000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 8,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "True Silver Wendy",
+                "features": [
+                    "Brawler model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Gold",
+                        "image": "bg_gold.webp",
+                        "icon": "icon_gold.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 9,
+                    "year": 2026
+                },
+                "image": "futuregirltruegold.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "futuregirltruesilver",
+                "displayName": "True Silver Wendy",
+                "cost": 10000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 8,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [
+                    "Brawler model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Silver",
+                        "image": "bg_silver.webp",
+                        "icon": "icon_silver.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 9,
+                    "year": 2026
+                },
+                "image": "futuregirltruesilver.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -60744,6 +62230,321 @@
             {
                 "name": "wendy_box",
                 "image": "wendy_box.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "wendy_overcharge",
+                "image": "wendy_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            }
+        ]
+    },
+    {
+        "name": "cosmo",
+        "displayName": "Cosmo",
+        "rarity": {
+            "value": 4,
+            "name": "Mythic",
+            "color": "#fe0521"
+        },
+        "image": "portrait_cosmo.webp",
+        "defaultSkin": "attractordefault",
+        "title": "Out of this World",
+        "masteryIcon": "mastery_icon_cosmo.webp",
+        "description": "Cosmo is the lead astronomer at Starr Park's Observatory. Besides teaching visitors about the universe, he is constantly gazing at the stars searching for something...",
+        "prestigeTitle": "Stargazer",
+        "skins": [
+            {
+                "name": "attractordefault",
+                "displayName": "Cosmo",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 0,
+                    "name": "",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [],
+                "groups": [
+                    {
+                        "name": "",
+                        "image": "bg_default.webp",
+                        "icon": "icon_default.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 9,
+                    "year": 2026
+                },
+                "image": "attractordefault.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "name": "cosmo_default",
+                "image": "cosmo_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "cosmo_happy",
+                "image": "cosmo_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "cosmo_sad",
+                "image": "cosmo_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "cosmo_angry",
+                "image": "cosmo_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "cosmo_gg",
+                "image": "cosmo_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "cosmo_clap",
+                "image": "cosmo_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "cosmo_thanks",
+                "image": "cosmo_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "cosmo_sweat",
+                "image": "cosmo_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "cosmo_special",
+                "image": "cosmo_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "cosmo_facepalm",
+                "image": "cosmo_facepalm.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "cosmo_box",
+                "image": "cosmo_box.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            }
+        ]
+    },
+    {
+        "name": "vince",
+        "displayName": "Vince",
+        "rarity": {
+            "value": 4,
+            "name": "Mythic",
+            "color": "#fe0521"
+        },
+        "image": "portrait_vince.webp",
+        "defaultSkin": "stackerdefault",
+        "title": "Creepy",
+        "masteryIcon": "mastery_icon_vince.webp",
+        "description": "Vince tends to both the espresso machine and his many-legged friends, much to his customers' dismay. He walks slowly around his Creepy Caf\u00e9, careful not to step on any of his beloved bugs. His companions, Mocha and Doppio, follow him everywhere.",
+        "prestigeTitle": "Buggin' Out",
+        "skins": [
+            {
+                "name": "stackerdefault",
+                "displayName": "Vince",
+                "cost": 0,
+                "currency": "",
+                "costBling": -1,
+                "rarity": {
+                    "value": 0,
+                    "name": "",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [],
+                "groups": [
+                    {
+                        "name": "",
+                        "image": "bg_default.webp",
+                        "icon": "icon_default.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 10,
+                    "year": 2026
+                },
+                "image": "stackerdefault.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            }
+        ],
+        "pins": [
+            {
+                "name": "vince_default",
+                "image": "vince_default.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "vince_happy",
+                "image": "vince_happy.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "vince_sad",
+                "image": "vince_sad.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "vince_angry",
+                "image": "vince_angry.webp",
+                "rarity": {
+                    "value": 0,
+                    "name": "Common",
+                    "color": "#94d6f4"
+                }
+            },
+            {
+                "name": "vince_gg",
+                "image": "vince_gg.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "vince_clap",
+                "image": "vince_clap.webp",
+                "rarity": {
+                    "value": 1,
+                    "name": "Rare",
+                    "color": "#2edd1b"
+                }
+            },
+            {
+                "name": "vince_thanks",
+                "image": "vince_thanks.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "vince_sweat",
+                "image": "vince_sweat.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "vince_special",
+                "image": "vince_special.webp",
+                "rarity": {
+                    "value": 2,
+                    "name": "Epic",
+                    "color": "#b116ec"
+                }
+            },
+            {
+                "name": "vince_facepalm",
+                "image": "vince_facepalm.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "vince_box",
+                "image": "vince_box.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -62038,7 +63839,8 @@
                 "limited": false,
                 "unlock": "",
                 "foundIn": [
-                    "Gigi Boxes"
+                    "Gigi Boxes",
+                    "Vince Boxes"
                 ],
                 "release": {
                     "month": 9,
@@ -63233,7 +65035,8 @@
                 "limited": true,
                 "unlock": "",
                 "foundIn": [
-                    "Pumpkin Boxes"
+                    "Pumpkin Boxes",
+                    "Coffin Boxes"
                 ],
                 "release": {
                     "month": 10,
@@ -63316,7 +65119,8 @@
                 "unlock": "",
                 "foundIn": [
                     "Dead Boxes",
-                    "Pumpkin Boxes"
+                    "Pumpkin Boxes",
+                    "Coffin Boxes"
                 ],
                 "release": {
                     "month": 10,
@@ -67348,7 +69152,8 @@
                 "unlock": "Reward for reaching 750 Trophies with Chester",
                 "foundIn": [
                     "Dead Boxes",
-                    "Pumpkin Boxes"
+                    "Pumpkin Boxes",
+                    "Coffin Boxes"
                 ],
                 "release": {
                     "month": 12,
@@ -69202,6 +71007,49 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "attachermake",
+                "displayName": "Retro Kit",
+                "cost": 299,
+                "currency": "Gems",
+                "costBling": -1,
+                "rarity": {
+                    "value": 5,
+                    "name": "Legendary",
+                    "icon": "skin_rarity_5.webp"
+                },
+                "requires": "",
+                "features": [
+                    "Brawler model",
+                    "Texture",
+                    "Animations",
+                    "Effects",
+                    "Takedown",
+                    "Voice",
+                    "Respawn effect"
+                ],
+                "groups": [
+                    {
+                        "name": "Supercell Make",
+                        "image": "bg_default.webp",
+                        "icon": "icon_sc_make.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 10,
+                    "year": 2026
+                },
+                "image": "attachermake.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -69343,6 +71191,15 @@
             {
                 "name": "kit_overcharge",
                 "image": "kit_overcharge.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "kit_make",
+                "image": "kit_make.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
@@ -70212,7 +72069,8 @@
                 "limited": true,
                 "unlock": "",
                 "foundIn": [
-                    "Pumpkin Boxes"
+                    "Pumpkin Boxes",
+                    "Coffin Boxes"
                 ],
                 "release": {
                     "month": 10,
@@ -71022,6 +72880,82 @@
                     "loseAnimation": ""
                 },
                 "rating": 0
+            },
+            {
+                "name": "katanakidtruesilver",
+                "displayName": "True Silver Nori",
+                "cost": 25000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 8,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "",
+                "features": [
+                    "Brawler model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Silver",
+                        "image": "bg_silver.webp",
+                        "icon": "icon_silver.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 9,
+                    "year": 2026
+                },
+                "image": "katanakidtruesilver.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
+            },
+            {
+                "name": "katanakidtruegold",
+                "displayName": "True Gold Nori",
+                "cost": 25000,
+                "currency": "Coins",
+                "costBling": -1,
+                "rarity": {
+                    "value": 8,
+                    "name": "Collectors",
+                    "icon": ""
+                },
+                "requires": "True Silver Nori",
+                "features": [
+                    "Brawler model",
+                    "Texture"
+                ],
+                "groups": [
+                    {
+                        "name": "True Gold",
+                        "image": "bg_gold.webp",
+                        "icon": "icon_gold.webp"
+                    }
+                ],
+                "limited": false,
+                "unlock": "",
+                "foundIn": [],
+                "release": {
+                    "month": 9,
+                    "year": 2026
+                },
+                "image": "katanakidtruegold.webp",
+                "model": {
+                    "geometry": "",
+                    "winAnimation": "",
+                    "loseAnimation": ""
+                },
+                "rating": 0
             }
         ],
         "pins": [
@@ -71118,6 +73052,15 @@
             {
                 "name": "nori_box",
                 "image": "nori_box.webp",
+                "rarity": {
+                    "value": 3,
+                    "name": "Legendary",
+                    "color": "#fdf11e"
+                }
+            },
+            {
+                "name": "nori_overcharge",
+                "image": "nori_overcharge.webp",
                 "rarity": {
                     "value": 3,
                     "name": "Legendary",
