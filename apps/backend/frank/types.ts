@@ -543,6 +543,7 @@ export interface ChallengeGameMod{
         gearSlots: number;
         gears: number;
         starPowers: number;
+        hypercharge: number;
     }>;
     difficulties?: {
         difficultyid: number;

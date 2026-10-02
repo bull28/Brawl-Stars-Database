@@ -900,7 +900,8 @@ export function getNextChallenge(trial: TrialData, key: string, resources: UserR
         gearCost: 6,
         gearSlots: 2,
         gears: selGears,
-        starPowers: selSps
+        starPowers: selSps,
+        hypercharge: -1
     };
     if (gameMod.unlocks !== undefined){
         for (const x in newUnlocks){

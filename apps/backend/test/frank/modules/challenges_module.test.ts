@@ -85,8 +85,9 @@ describe("Challenges module", function(){
             startingPower: 0,
             startingGears: 4,
             startingHyper: 0,
-            gearSlots: 0,
-            starPowers: -1
+            gearSlots: -1,
+            starPowers: -1,
+            hypercharge: -1
         });
         expect(challenge1.difficulties).to.eql(preset.difficulties);
         expect(challenge1.levels).to.eql(preset.levels);
@@ -129,8 +130,9 @@ describe("Challenges module", function(){
             startingPower: 0,
             startingGears: 4,
             startingHyper: 0,
-            gearSlots: 0,
-            starPowers: -1
+            gearSlots: -1,
+            starPowers: -1,
+            hypercharge: -1
         });
 
         const presetDiff = preset.difficulty;

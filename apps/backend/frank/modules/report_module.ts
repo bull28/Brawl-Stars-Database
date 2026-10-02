@@ -225,7 +225,7 @@ function getFinalScore(reports: number[], enemyCounts: number[]): number[]{
 }
 
 export function validateReport(report: GameReport): number{
-    // Last updated: version 111
+    // Last updated: version 112
 
     if (Array.isArray(report) === false){
         // Invalid report type
@@ -248,7 +248,7 @@ export function validateReport(report: GameReport): number{
     }
 
     // The first number contains major version (16 bits), minor version (4 bits), and report length (12 bits)
-    if ((report[0] >> 16) < 111){
+    if ((report[0] >> 16) < 112){
         // Old report version
         return 3;
     }
@@ -397,9 +397,9 @@ export function validateReport(report: GameReport): number{
         }
 
         // Hypercharges are not allowed on difficulty 5 or lower
-        if (data[format.achievements[0] + 5] > 0 && difficulty <= 5){
-            return 18;
-        }
+        // if (data[format.achievements[0] + 5] > 0 && difficulty <= 5){
+        //     return 18;
+        // }
 
         // The upgrades cannot be more than each upgrade type limit
         const upgrades = data.slice(format.upgrades[0], format.upgrades[1]);

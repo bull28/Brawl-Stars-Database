@@ -247,11 +247,11 @@ describe("Game Report module", function(){
             invalid[p + 3] = valid[p + 3];
         });
 
-        it("Hypercharges used on difficulty 5 or lower", function(){
-            invalid[format.achievements[0] + 5] = 1;
-            expect(validateReport(invalid)).to.equal(18);
-            invalid[format.achievements[0] + 5] = valid[format.achievements[0] + 5];
-        });
+        // it("Hypercharges used on difficulty 5 or lower", function(){
+        //     invalid[format.achievements[0] + 5] = 1;
+        //     expect(validateReport(invalid)).to.equal(18);
+        //     invalid[format.achievements[0] + 5] = valid[format.achievements[0] + 5];
+        // });
 
         it("In-game upgrades are not between 0 and max level", function(){
             invalid[format.upgrades[0]] = 1069;

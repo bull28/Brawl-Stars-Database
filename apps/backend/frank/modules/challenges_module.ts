@@ -175,7 +175,7 @@ export function getGameMod(challengeid: string, key: string, resources: UserReso
         options.menuTheme = resources.menu_theme;
     }
     if (unlocks !== undefined){
-        const {maxAccessories, startingPower, startingGears, startingHyper, gearSlots, starPowers} = unlocks;
+        const {maxAccessories, startingPower, startingGears, startingHyper, gearSlots, starPowers, hypercharge} = unlocks;
         // If these values are set by the challenge, use them. Otherwise, use the player's upgrades.
         if (startingPower === undefined){
             unlocks.startingPower = upgrades.startingPower;
@@ -187,11 +187,13 @@ export function getGameMod(challengeid: string, key: string, resources: UserReso
             unlocks.maxAccessories = upgrades.maxAccessories;
         }
 
-        // By default, gear slots and star power selection are not modified in static challenges.
+        // By default, gear slots, star power selection, and hypercharge level are not modified in static challenges.
         if (gearSlots === undefined){
-            unlocks.gearSlots = 0;
+            unlocks.gearSlots = -1;
         } if (starPowers === undefined){
             unlocks.starPowers = -1;
+        } if (hypercharge === undefined){
+            unlocks.hypercharge = -1;
         }
     }
     if (stages !== undefined){
