@@ -32838,14 +32838,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "City Troubles",
-                        "image": "bg_default.webp",
-                        "icon": "icon_city.webp"
-                    },
-                    {
                         "name": "Brawl Pass",
                         "image": "bg_default.webp",
                         "icon": "icon_brawlpass.webp"
+                    },
+                    {
+                        "name": "City Troubles",
+                        "image": "bg_default.webp",
+                        "icon": "icon_city.webp"
                     }
                 ],
                 "limited": true,
@@ -57896,14 +57896,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Kaiju Invasion",
-                        "image": "bg_kaiju.webp",
-                        "icon": "icon_kaiju.webp"
-                    },
-                    {
                         "name": "Mecha Squad",
                         "image": "bg_mecha.webp",
                         "icon": "icon_mecha.webp"
+                    },
+                    {
+                        "name": "Kaiju Invasion",
+                        "image": "bg_kaiju.webp",
+                        "icon": "icon_kaiju.webp"
                     }
                 ],
                 "limited": false,
@@ -57945,14 +57945,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Kaiju Invasion",
-                        "image": "bg_kaiju.webp",
-                        "icon": "icon_kaiju.webp"
-                    },
-                    {
                         "name": "Mecha Squad",
                         "image": "bg_mecha.webp",
                         "icon": "icon_mecha.webp"
+                    },
+                    {
+                        "name": "Kaiju Invasion",
+                        "image": "bg_kaiju.webp",
+                        "icon": "icon_kaiju.webp"
                     }
                 ],
                 "limited": false,
@@ -57994,14 +57994,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Kaiju Invasion",
-                        "image": "bg_kaiju.webp",
-                        "icon": "icon_kaiju.webp"
-                    },
-                    {
                         "name": "Mecha Squad",
                         "image": "bg_mecha.webp",
                         "icon": "icon_mecha.webp"
+                    },
+                    {
+                        "name": "Kaiju Invasion",
+                        "image": "bg_kaiju.webp",
+                        "icon": "icon_kaiju.webp"
                     }
                 ],
                 "limited": false,
@@ -58533,14 +58533,14 @@
                 ],
                 "groups": [
                     {
-                        "name": "Legends of Olympus",
-                        "image": "bg_olympus.webp",
-                        "icon": "icon_olympus.webp"
-                    },
-                    {
                         "name": "Legends of Hades",
                         "image": "bg_darkgreek.webp",
                         "icon": "icon_darkgreek.webp"
+                    },
+                    {
+                        "name": "Legends of Olympus",
+                        "image": "bg_olympus.webp",
+                        "icon": "icon_olympus.webp"
                     }
                 ],
                 "limited": false,
