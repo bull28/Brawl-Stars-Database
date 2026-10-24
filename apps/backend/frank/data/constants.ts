@@ -19,5 +19,5 @@ export const TRIAL_IMAGE_DIR = "trials/";
 
 const version = process.env["ASSETS_VERSION"];
 const versionPath = version !== undefined ? `bullgame/v${version}/` : "bullgame/";
-export const TIER_IMAGE_DIR = versionPath + "images/resources/";
+export const TIER_IMAGE_DIR = versionPath + "images/mastery/";
 export const CHARACTER_IMAGE_DIR = versionPath + "images/characters/";

@@ -548,7 +548,6 @@ export interface ChallengeGameMod{
     difficulties?: {
         difficultyid: number;
         name: string;
-        countTier: number;
         strengthTier: number;
         healthBonusReq: number;
         timePerEnemy: number;
@@ -563,14 +562,15 @@ export interface ChallengeGameMod{
     levels?: {
         levelid: number;
         waves: {
-            names: string[][];
-            multiple: {
+            names: string[];
+            enemies: {
                 name: string;
-                count: number[];
+                count?: number;
+                minDiff?: number;
+                maxDiff?: number;
             }[];
             delay?: number;
             maxEnemies?: number;
-            onDifficulty?: number;
             winCon?: boolean;
             spawnRegion?: string;
         }[];

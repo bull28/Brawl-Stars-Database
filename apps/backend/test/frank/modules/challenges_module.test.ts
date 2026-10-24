@@ -140,7 +140,6 @@ describe("Challenges module", function(){
         expect(challenge1.difficulties[0]).to.eql({
             difficultyid: 0,
             name: `Difficulty ${presetDiff.strengthTier + 1}`,
-            countTier: 0,
             strengthTier: presetDiff.strengthTier,
             healthBonusReq: presetDiff.healthBonusReq,
             timePerEnemy: presetDiff.timePerEnemy,

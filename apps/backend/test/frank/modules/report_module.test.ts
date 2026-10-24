@@ -72,7 +72,7 @@ describe("Game Report module", function(){
             for (let x = format.upgrades[0]; x < format.upgrades[1]; x++){
                 report2[x] = 0;
             }
-            report2[format.achievements[0] + 1] = 89999;
+            report2[format.achievements[0] + 1] = 89;
             report2[format.player[0]] = 600;
             const preview2 = extractReportData(report2)!;
             expect(preview2.badges).to.not.include.keys(["nomove", "noupgrades", "nodamage", "fastwin", "perfect1"]);

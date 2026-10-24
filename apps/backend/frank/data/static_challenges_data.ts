@@ -10,7 +10,6 @@ const classicChallenge = {
         {
             difficultyid: 0,
             name: "Difficulty 1",
-            countTier: 0,
             strengthTier: 0,
             healthBonusReq: 0.4,
             timePerEnemy: 0.8,
@@ -19,7 +18,6 @@ const classicChallenge = {
         {
             difficultyid: 1,
             name: "Difficulty 2",
-            countTier: 1,
             strengthTier: 0,
             healthBonusReq: 0.45,
             timePerEnemy: 0.75,
@@ -28,7 +26,6 @@ const classicChallenge = {
         {
             difficultyid: 2,
             name: "Difficulty 3",
-            countTier: 1,
             strengthTier: 1,
             healthBonusReq: 0.45,
             timePerEnemy: 0.7,
@@ -38,7 +35,6 @@ const classicChallenge = {
         {
             difficultyid: 3,
             name: "Difficulty 4",
-            countTier: 2,
             strengthTier: 1,
             healthBonusReq: 0.5,
             timePerEnemy: 0.6,
@@ -47,7 +43,6 @@ const classicChallenge = {
         {
             difficultyid: 4,
             name: "Difficulty 5",
-            countTier: 3,
             strengthTier: 2,
             healthBonusReq: 0.5,
             timePerEnemy: 0.6,
@@ -56,7 +51,6 @@ const classicChallenge = {
         {
             difficultyid: 5,
             name: "Difficulty 6",
-            countTier: 4,
             strengthTier: 3,
             healthBonusReq: 0.6,
             timePerEnemy: 0.5,
@@ -87,7 +81,6 @@ const challenges = new Map<string, StaticPreset>([
             difficulties: [{
                 difficultyid: 0,
                 name: "Difficulty 1",
-                countTier: 0,
                 strengthTier: 0,
                 healthBonusReq: 0.6,
                 timePerEnemy: 2/3,
@@ -130,7 +123,6 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     difficultyid: 0,
                     name: "Difficulty 1",
-                    countTier: 0,
                     strengthTier: 0,
                     healthBonusReq: 0.5,
                     timePerEnemy: 1,
@@ -164,7 +156,6 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     difficultyid: 6,
                     name: "Difficulty 7",
-                    countTier: 0,
                     strengthTier: 2,
                     healthBonusReq: 0.5,
                     timePerEnemy: 0.7,
@@ -173,7 +164,6 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     difficultyid: 7,
                     name: "Difficulty 8",
-                    countTier: 0,
                     strengthTier: 3,
                     healthBonusReq: 0.5,
                     timePerEnemy: 0.7,
@@ -182,7 +172,6 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     difficultyid: 8,
                     name: "Difficulty 9",
-                    countTier: 1,
                     strengthTier: 3,
                     healthBonusReq: 0.5,
                     timePerEnemy: 0.6666666666666666,
@@ -191,7 +180,6 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     difficultyid: 9,
                     name: "Difficulty 10",
-                    countTier: 2,
                     strengthTier: 4,
                     healthBonusReq: 0.5,
                     timePerEnemy: 0.625,
@@ -212,10 +200,10 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     levelid: 0,
                     waves: [
-                        {names: [["firstmeteor"]], multiple: []},
-                        {names: [], multiple: [{name: "meteor", count: [1]}, {name: "meleerobot", count: [1]}], delay: 1},
-                        {names: [["shelly", "colt"]], multiple: [], delay: 2, maxEnemies: 10},
-                        {names: [[], [], ["rt"]], multiple: [{name: "rangedrobot", count: [0, 1]}, {name: "fastrobot", count: [0, 1]}], delay: 5, maxEnemies: 2}
+                        {names: ["firstmeteor"], enemies: []},
+                        {names: ["meteor", "meleerobot"], enemies: [], delay: 1},
+                        {names: ["shelly", "colt"], enemies: [], delay: 2, maxEnemies: 10},
+                        {names: [], enemies: [{name: "rangedrobot", minDiff: 2}, {name: "fastrobot", minDiff: 2}, {name: "rt", minDiff: 3}], delay: 5, maxEnemies: 2}
                     ],
                     background: "entrance",
                     displayName: "Starr Park Entrance",
@@ -225,10 +213,10 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     levelid: 1,
                     waves: [
-                        {names: [], multiple: [{name: "meleerobot", count: [0, 0, 1]}, {name: "rangedrobot", count: [0, 2]}, {name: "fastrobot", count: [2]}]},
-                        {names: [["shelly", "colt"]], multiple: [], delay: 5, maxEnemies: 10},
-                        {names: [[], [], ["r10"]], multiple: [], delay: 5, maxEnemies: 2},
-                        {names: [["rt", "elprimo"]], multiple: [], delay: 1}
+                        {names: [], enemies: [{name: "meleerobot", minDiff: 3}, {name: "rangedrobot", count: 2, minDiff: 2}, {name: "fastrobot", count: 2}]},
+                        {names: ["shelly", "colt"], enemies: [], delay: 5, maxEnemies: 10},
+                        {names: [], enemies: [{name: "r10", minDiff: 3}], delay: 5, maxEnemies: 2},
+                        {names: ["rt", "elprimo"], enemies: [], delay: 1}
                     ],
                     background: "hub",
                     displayName: "Starr Park Hub",
@@ -238,11 +226,11 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     levelid: 2,
                     waves: [
-                        {names: [], multiple: [{name: "meteor", count: [3]}, {name: "r2", count: [2]}]},
-                        {names: [[], ["r8"], ["r4"]], multiple: [], delay: 4, maxEnemies: 10},
-                        {names: [["r12"], [], ["r8"]], multiple: [], delay: 6, maxEnemies: 2},
-                        {names: [["8bit"]], multiple: [], delay: 1},
-                        {names: [["belle"]], multiple: [], delay: 4, maxEnemies: 1}
+                        {names: [], enemies: [{name: "meteor", count: 3}, {name: "r2", count: 2}]},
+                        {names: [], enemies: [{name: "r4", minDiff: 3}, {name: "r8", minDiff: 2}], delay: 4, maxEnemies: 10},
+                        {names: ["r12"], enemies: [{name: "r8", minDiff: 3}], delay: 6, maxEnemies: 2},
+                        {names: ["8bit"], enemies: [], delay: 1},
+                        {names: ["belle"], enemies: [], delay: 4, maxEnemies: 1}
                     ],
                     background: "oldtown",
                     displayName: "Old Town",
@@ -252,11 +240,11 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     levelid: 3,
                     waves: [
-                        {names: [], multiple: [{name: "meteor", count: [3]}, {name: "r2", count: [3]}]},
-                        {names: [[], ["r8"], ["r4"]], multiple: [], delay: 5, maxEnemies: 10},
-                        {names: [["r12"], [], ["r8"]], multiple: [], delay: 6, maxEnemies: 2},
-                        {names: [["jessie"]], multiple: [], delay: 1},
-                        {names: [["eve"]], multiple: [], delay: 5, maxEnemies: 1}
+                        {names: [], enemies: [{name: "meteor", count: 3}, {name: "r2", count: 3}]},
+                        {names: [], enemies: [{name: "r4", minDiff: 3}, {name: "r8", minDiff: 2}], delay: 5, maxEnemies: 10},
+                        {names: ["r12"], enemies: [{name: "r8", minDiff: 3}], delay: 6, maxEnemies: 2},
+                        {names: ["jessie"], enemies: [], delay: 1},
+                        {names: ["eve"], enemies: [], delay: 5, maxEnemies: 1}
                     ],
                     background: "biodome",
                     displayName: "Biodome",
@@ -266,11 +254,11 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     levelid: 4,
                     waves: [
-                        {names: [["r10"]], multiple: []},
-                        {names: [["r4", "r8"]], multiple: [], delay: 5, maxEnemies: 10},
-                        {names: [[], ["r8"], ["r9"]], multiple: [{name: "meteor", count: [0, 0, 3]}, {name: "r2", count: [0, 0, 1]}], delay: 6, maxEnemies: 2},
-                        {names: [["mortis"]], multiple: [], delay: 1},
-                        {names: [["frank"]], multiple: [], delay: 5, maxEnemies: 1}
+                        {names: ["r10"], enemies: []},
+                        {names: ["r4", "r8"], enemies: [], delay: 5, maxEnemies: 10},
+                        {names: [], enemies: [{name: "meteor", count: 3, minDiff: 3}, {name: "r2", minDiff: 3}, {name: "r8", minDiff: 2}, {name: "r9", minDiff: 3}], delay: 6, maxEnemies: 2},
+                        {names: ["mortis"], enemies: [], delay: 1},
+                        {names: ["frank"], enemies: [], delay: 5, maxEnemies: 1}
                     ],
                     background: "ghostmetro",
                     displayName: "Ghost Station",
@@ -280,11 +268,11 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     levelid: 5,
                     waves: [
-                        {names: [["r12"]], multiple: []},
-                        {names: [["r6", "r8"]], multiple: [], delay: 6, maxEnemies: 10},
-                        {names: [[], ["r8"], ["r16"]], multiple: [], delay: 7, maxEnemies: 2},
-                        {names: [["jacky"]], multiple: [], delay: 1},
-                        {names: [["mrp"]], multiple: [], delay: 5, maxEnemies: 1}
+                        {names: ["r12"], enemies: []},
+                        {names: ["r6", "r8"], enemies: [], delay: 6, maxEnemies: 10},
+                        {names: [], enemies: [{name: "r8", minDiff: 2}, {name: "r16", minDiff: 3}], delay: 7, maxEnemies: 2},
+                        {names: ["jacky"], enemies: [], delay: 1},
+                        {names: ["mrp"], enemies: [], delay: 5, maxEnemies: 1}
                     ],
                     background: "deepsea",
                     displayName: "Deep Sea",
@@ -294,11 +282,11 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     levelid: 6,
                     waves: [
-                        {names: [["r12"]], multiple: []},
-                        {names: [["r9", "r9"]], multiple: [], delay: 6, maxEnemies: 10},
-                        {names: [[], ["r10"], ["r16"]], multiple: [], delay: 9, maxEnemies: 2},
-                        {names: [["bo"]], multiple: [], delay: 1},
-                        {names: [["colette"]], multiple: [], delay: 6, maxEnemies: 1}
+                        {names: ["r12"], enemies: []},
+                        {names: ["r9", "r9"], enemies: [], delay: 6, maxEnemies: 10},
+                        {names: [], enemies: [{name: "r10", minDiff: 2}, {name: "r16", minDiff: 3}], delay: 9, maxEnemies: 2},
+                        {names: ["bo"], enemies: [], delay: 1},
+                        {names: ["colette"], enemies: [], delay: 6, maxEnemies: 1}
                     ],
                     background: "giftshop",
                     displayName: "Gift Shop",
@@ -308,11 +296,11 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     levelid: 7,
                     waves: [
-                        {names: [["r10"]], multiple: []},
-                        {names: [["r9", "r9"]], multiple: [], delay: 5, maxEnemies: 10},
-                        {names: [[], ["r12"], ["r16"]], multiple: [], delay: 9, maxEnemies: 2},
-                        {names: [["pearl"]], multiple: [], delay: 1},
-                        {names: [["bibi"]], multiple: [], delay: 8, maxEnemies: 1}
+                        {names: ["r10"], enemies: []},
+                        {names: ["r9", "r9"], enemies: [], delay: 5, maxEnemies: 10},
+                        {names: [], enemies: [{name: "r12", minDiff: 2}, {name: "r16", minDiff: 3}], delay: 9, maxEnemies: 2},
+                        {names: ["pearl"], enemies: [], delay: 1},
+                        {names: ["bibi"], enemies: [], delay: 8, maxEnemies: 1}
                     ],
                     background: "retropolis",
                     displayName: "Retropolis",
@@ -322,11 +310,11 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     levelid: 8,
                     waves: [
-                        {names: [["r12"]], multiple: []},
-                        {names: [["r4", "r6", "r10"]], multiple: [], delay: 6, maxEnemies: 10},
-                        {names: [[], ["r12"], ["r16"]], multiple: [], delay: 10, maxEnemies: 2},
-                        {names: [["brock"]], multiple: [], delay: 1},
-                        {names: [["chester"]], multiple: [], delay: 8, maxEnemies: 1}
+                        {names: ["r12"], enemies: []},
+                        {names: ["r4", "r6", "r10"], enemies: [], delay: 6, maxEnemies: 10},
+                        {names: [], enemies: [{name: "r12", minDiff: 2}, {name: "r16", minDiff: 3}], delay: 10, maxEnemies: 2},
+                        {names: ["brock"], enemies: [], delay: 1},
+                        {names: ["chester"], enemies: [], delay: 8, maxEnemies: 1}
                     ],
                     background: "candystand",
                     displayName: "Candyland",
@@ -336,11 +324,11 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     levelid: 9,
                     waves: [
-                        {names: [["r8", "r12"]], multiple: []},
-                        {names: [["r10", "r10"]], multiple: [], delay: 10, maxEnemies: 10},
-                        {names: [[], ["r12"], ["r16"]], multiple: [], delay: 10, maxEnemies: 2},
-                        {names: [["ollie"]], multiple: [], delay: 1},
-                        {names: [["leon"]], multiple: [], delay: 8, maxEnemies: 1}
+                        {names: ["r8", "r12"], enemies: []},
+                        {names: ["r10", "r10"], enemies: [], delay: 10, maxEnemies: 10},
+                        {names: [], enemies: [{name: "r12", minDiff: 2}, {name: "r16", minDiff: 3}], delay: 10, maxEnemies: 2},
+                        {names: ["ollie"], enemies: [], delay: 1},
+                        {names: ["leon"], enemies: [], delay: 8, maxEnemies: 1}
                     ],
                     background: "rumblejungle",
                     displayName: "Rumble Jungle",
@@ -350,11 +338,11 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     levelid: 10,
                     waves: [
-                        {names: [["r8", "r12"]], multiple: []},
-                        {names: [["r10", "r10"]], multiple: [], delay: 10, maxEnemies: 10},
-                        {names: [[], ["r6", "r8"], ["r16"]], multiple: [], delay: 10, maxEnemies: 2},
-                        {names: [["bonnie"]], multiple: [], delay: 1},
-                        {names: [["amber"]], multiple: [], delay: 10, maxEnemies: 1}
+                        {names: ["r8", "r12"], enemies: []},
+                        {names: ["r10", "r10"], enemies: [], delay: 10, maxEnemies: 10},
+                        {names: [], enemies: [{name: "r6", minDiff: 2}, {name: "r8", minDiff: 2}, {name: "r16", minDiff: 3}], delay: 10, maxEnemies: 2},
+                        {names: ["bonnie"], enemies: [], delay: 1},
+                        {names: ["amber"], enemies: [], delay: 10, maxEnemies: 1}
                     ],
                     background: "stuntshow",
                     displayName: "Stunt Show",
@@ -364,11 +352,11 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     levelid: 11,
                     waves: [
-                        {names: [["r10", "r10"]], multiple: []},
-                        {names: [["r12", "r16"]], multiple: [], delay: 10, maxEnemies: 10},
-                        {names: [[], ["r16"], ["r20"]], multiple: [], delay: 14, maxEnemies: 2},
-                        {names: [["max"]], multiple: [], delay: 1},
-                        {names: [["meg"]], multiple: [], delay: 12, maxEnemies: 1}
+                        {names: ["r10", "r10"], enemies: []},
+                        {names: ["r12", "r16"], enemies: [], delay: 10, maxEnemies: 10},
+                        {names: [], enemies: [{name: "r16", minDiff: 2}, {name: "r20", minDiff: 3}], delay: 14, maxEnemies: 2},
+                        {names: ["max"], enemies: [], delay: 1},
+                        {names: ["meg"], enemies: [], delay: 12, maxEnemies: 1}
                     ],
                     background: "minicity",
                     displayName: "Super City",
@@ -378,26 +366,26 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     levelid: 12,
                     waves: [
-                        {names: [["g6", "g12"]], multiple: [], "onDifficulty": 6},
-                        {names: [["g12", "g20"]], multiple: [], delay: 1, "onDifficulty": 6},
-                        {names: [["g10", "g16"]], multiple: [], delay: 1, "onDifficulty": 6},
-                        {names: [["g24"]], multiple: [], delay: 13, maxEnemies: 2, "onDifficulty": 6},
-        
-                        {names: [["g8", "g16"]], multiple: [], "onDifficulty": 7},
-                        {names: [["g12", "g20"]], multiple: [], delay: 1,"onDifficulty": 7},
-                        {names: [["g10", "g20"]], multiple: [], delay: 1, "onDifficulty": 7},
-                        {names: [["g30"]], multiple: [], delay: 15, maxEnemies: 2, "onDifficulty": 7},
-        
-                        {names: [["g8", "g16"]], multiple: [], "onDifficulty": 8},
-                        {names: [["g12", "g30"]], multiple: [], delay: 1, "onDifficulty": 8},
-                        {names: [["g10", "g20"]], multiple: [], delay: 1, "onDifficulty": 8},
-                        {names: [["g36"]], multiple: [], delay: 15, maxEnemies: 2, "onDifficulty": 8},
-        
-                        {names: [["g8", "g20"]], multiple: [], "onDifficulty": 9},
-                        {names: [["g10", "g12"]], multiple: [], delay: 1, "onDifficulty": 9},
-                        {names: [["g30"]], multiple: [], delay: 11, maxEnemies: 2, "onDifficulty": 9},
-                        {names: [["g16", "g24"]], multiple: [], delay: 1, "onDifficulty": 9},
-                        {names: [["g36"]], multiple: [], delay: 20, maxEnemies: 2, "onDifficulty": 9}
+                        {names: [], enemies: [{name: "g6", maxDiff: 0}, {name: "g12", maxDiff: 0}]},
+                        {names: [], enemies: [{name: "g12", maxDiff: 0}, {name: "g20", maxDiff: 0}], delay: 1},
+                        {names: [], enemies: [{name: "g10", maxDiff: 0}, {name: "g16", maxDiff: 0}], delay: 1},
+                        {names: [], enemies: [{name: "g24", maxDiff: 0}], delay: 13, maxEnemies: 2},
+
+                        {names: [], enemies: [{name: "g8", minDiff: 1, maxDiff: 1}, {name: "g16", minDiff: 1, maxDiff: 1}]},
+                        {names: [], enemies: [{name: "g12", minDiff: 1, maxDiff: 1}, {name: "g20", minDiff: 1, maxDiff: 1}], delay: 1},
+                        {names: [], enemies: [{name: "g10", minDiff: 1, maxDiff: 1}, {name: "g20", minDiff: 1, maxDiff: 1}], delay: 1},
+                        {names: [], enemies: [{name: "g30", minDiff: 1, maxDiff: 1}], delay: 15, maxEnemies: 2},
+
+                        {names: [], enemies: [{name: "g8", minDiff: 2, maxDiff: 2}, {name: "g16", minDiff: 2, maxDiff: 2}]},
+                        {names: [], enemies: [{name: "g12", minDiff: 2, maxDiff: 2}, {name: "g30", minDiff: 2, maxDiff: 2}], delay: 1},
+                        {names: [], enemies: [{name: "g10", minDiff: 2, maxDiff: 2}, {name: "g20", minDiff: 2, maxDiff: 2}], delay: 1},
+                        {names: [], enemies: [{name: "g36", minDiff: 2, maxDiff: 2}], delay: 15, maxEnemies: 2},
+
+                        {names: [], enemies: [{name: "g8", minDiff: 3, maxDiff: 3}, {name: "g20", minDiff: 3, maxDiff: 3}]},
+                        {names: [], enemies: [{name: "g10", minDiff: 3, maxDiff: 3}, {name: "g12", minDiff: 3, maxDiff: 3}], delay: 1},
+                        {names: [], enemies: [{name: "g30", minDiff: 3, maxDiff: 3}], delay: 11, maxEnemies: 2},
+                        {names: [], enemies: [{name: "g16", minDiff: 3, maxDiff: 3}, {name: "g24", minDiff: 3, maxDiff: 3}], delay: 1},
+                        {names: [], enemies: [{name: "g36", minDiff: 3, maxDiff: 3}], delay: 20, maxEnemies: 2}
                     ],
                     background: "arcade",
                     displayName: "Arcade",
@@ -407,7 +395,7 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     levelid: 13,
                     waves: [
-                        {names: [["bull"]], multiple: []}
+                        {names: ["bull"], enemies: []}
                     ],
                     background: "rooftop",
                     displayName: "Rooftop",
@@ -465,7 +453,6 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     difficultyid: 3,
                     name: "Difficulty 4",
-                    countTier: 0,
                     strengthTier: 1,
                     healthBonusReq: 0.45,
                     timePerEnemy: 0.8,
@@ -474,7 +461,6 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     difficultyid: 6,
                     name: "Difficulty 7",
-                    countTier: 0,
                     strengthTier: 2,
                     healthBonusReq: 0.5,
                     timePerEnemy: 0.75,
@@ -483,7 +469,6 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     difficultyid: 7,
                     name: "Difficulty 8",
-                    countTier: 0,
                     strengthTier: 3,
                     healthBonusReq: 0.5,
                     timePerEnemy: 0.75,
@@ -492,7 +477,6 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     difficultyid: 9,
                     name: "Difficulty 10",
-                    countTier: 0,
                     strengthTier: 4,
                     healthBonusReq: 0.5,
                     timePerEnemy: 0.6666666666666666,
@@ -507,7 +491,7 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     levelid: 13,
                     waves: [
-                        {names: [["bull"]], multiple: []}
+                        {names: ["bull"], enemies: []}
                     ],
                     background: "rooftop",
                     displayName: "Rooftop",
@@ -568,7 +552,6 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     difficultyid: 9,
                     name: "Difficulty 10",
-                    countTier: 0,
                     strengthTier: 4,
                     healthBonusReq: 0.5,
                     timePerEnemy: 0.6666666666666666,
@@ -583,7 +566,7 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     levelid: 13,
                     waves: [
-                        {names: [["bull"]], multiple: []}
+                        {names: ["bull"], enemies: []}
                     ],
                     background: "rooftop",
                     displayName: "Rooftop",
@@ -610,11 +593,11 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     levelid: 0,
                     waves: [
-                        {names: [["firstmeteor"]], multiple: []},
-                        {names: [], multiple: [{name: "meteor", count: [1]}, {name: "meleerobot", count: [1, 2]}], delay: 1},
-                        {names: [], multiple: [{name: "rangedrobot", count: [0, 0, 1]}, {name: "fastrobot", count: [0, 0, 0, 1]}], delay: 5, maxEnemies: 10},
-                        {names: [["shelly"]], multiple: [], delay: 1},
-                        {names: [[], [], [], [], ["colt"]], multiple: [], delay: 1}
+                        {names: ["firstmeteor"], enemies: []},
+                        {names: ["meteor", "meleerobot"], enemies: [{name: "meleerobot", minDiff: 1}], delay: 1},
+                        {names: [], enemies: [{name: "rangedrobot", minDiff: 3}, {name: "fastrobot", minDiff: 4}], delay: 5, maxEnemies: 10},
+                        {names: ["shelly"], enemies: [], delay: 1},
+                        {names: [], enemies: [{name: "colt", minDiff: 5}], delay: 1}
                     ],
                     background: "entrance",
                     displayName: "Starr Park Entrance",
@@ -623,11 +606,11 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     levelid: 2,
                     waves: [
-                        {names: [], multiple: [{name: "meteor", count: [1]}, {name: "rangedrobot", count: [0, 2]}, {name: "fastrobot", count: [1]}]},
-                        {names: [], multiple: [{name: "r2", count: [0, 0, 3, 6]}], delay: 7, maxEnemies: 10},
-                        {names: [[], [], [], [], ["r4"]], multiple: [{name: "r2", count: [0, 0, 0, 0, 4]}], delay: 12, maxEnemies: 6},
-                        {names: [["8bit"]], multiple: [], delay: 1},
-                        {names: [["belle"]], multiple: [], delay: 1}
+                        {names: ["meteor", "fastrobot"], enemies: [{name: "rangedrobot", count: 2, minDiff: 1}]},
+                        {names: [], enemies: [{name: "r2", count: 3, minDiff: 3}, {name: "r2", count: 3, minDiff: 4}], delay: 7, maxEnemies: 10},
+                        {names: [], enemies: [{name: "r2", count: 4, minDiff: 5}, {name: "r4", minDiff: 5}], delay: 12, maxEnemies: 6},
+                        {names: ["8bit"], enemies: [], delay: 1},
+                        {names: ["belle"], enemies: [], delay: 1}
                     ],
                     background: "oldtown",
                     displayName: "Old Town",
@@ -636,11 +619,11 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     levelid: 4,
                     waves: [
-                        {names: [], multiple: [{name: "meteor", count: [0, 0, 0, 2]}, {name: "meleerobot", count: [0, 1]}, {name: "rangedrobot", count: [1]}, {name: "fastrobot", count: [0, 1]}]},
-                        {names: [], multiple: [{name: "r2", count: [0, 0, 4, 7]}], delay: 8, maxEnemies: 10},
-                        {names: [[], [], [], [], ["r6"]], multiple: [{name: "r2", count: [0, 0, 0, 0, 3]}], delay: 14, maxEnemies: 6},
-                        {names: [["mortis"]], multiple: [], delay: 1},
-                        {names: [["frank"]], multiple: [], delay: 1}
+                        {names: ["rangedrobot"], enemies: [{name: "meteor", count: 2, minDiff: 4}, {name: "meleerobot", minDiff: 1}, {name: "fastrobot", minDiff: 1}]},
+                        {names: [], enemies: [{name: "r2", count: 4, minDiff: 3}, {name: "r2", count: 3, minDiff: 4}], delay: 8, maxEnemies: 10},
+                        {names: [], enemies: [{name: "r2", count: 3, minDiff: 5}, {name: "r6", minDiff: 5}], delay: 14, maxEnemies: 6},
+                        {names: ["mortis"], enemies: [], delay: 1},
+                        {names: ["frank"], enemies: [], delay: 1}
                     ],
                     background: "ghostmetro",
                     displayName: "Ghost Station",
@@ -649,11 +632,11 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     levelid: 7,
                     waves: [
-                        {names: [[], ["r6"]], multiple: [{name: "meleerobot", count: [1]}, {name: "r2", count: [0, 0, 0, 1]}]},
-                        {names: [[], [], [], ["r8"]], multiple: [{name: "meteor", count: [0, 0, 0, 0, 3]}], delay: 10, maxEnemies: 10},
-                        {names: [[], [], ["r4"], [], ["r9"]], multiple: [{name: "r2", count: [0, 0, 3]}], delay: 11, maxEnemies: 4},
-                        {names: [["pearl"]], multiple: [], delay: 1},
-                        {names: [["bibi"]], multiple: [], delay: 1}
+                        {names: [], enemies: [{name: "meleerobot"}, {name: "r2", minDiff: 4}, {name: "r6", minDiff: 1}]},
+                        {names: [], enemies: [{name: "meteor", count: 3, minDiff: 5}, {name: "r8", minDiff: 4}], delay: 10, maxEnemies: 10},
+                        {names: [], enemies: [{name: "r2", count: 3, minDiff: 3}, {name: "r4", minDiff: 3}, {name: "r9", minDiff: 5}], delay: 11, maxEnemies: 4},
+                        {names: ["pearl"], enemies: [], delay: 1},
+                        {names: ["bibi"], enemies: [], delay: 1}
                     ],
                     background: "retropolis",
                     displayName: "Retropolis",
@@ -679,11 +662,11 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     levelid: 1,
                     waves: [
-                        {names: [], multiple: [{name: "meteor", count: [2, 2, 4]}, {name: "rangedrobot", count: [0, 0, 1]}]},
-                        {names: [], multiple: [{name: "meleerobot", count: [0, 1, 1, 1, 2]}, {name: "rangedrobot", count: [1]}], delay: 6, maxEnemies: 10},
-                        {names: [["colt"]], multiple: [{name: "fastrobot", count: [0, 0, 0, 2]}], delay: 6, maxEnemies: 3},
-                        {names: [["rt"]], multiple: [], delay: 1},
-                        {names: [[], [], [], [], ["elprimo"]], multiple: [], delay: 1}
+                        {names: [], enemies: [{name: "meteor", count: 2}, {name: "meteor", count: 2, minDiff: 3}, {name: "rangedrobot", minDiff: 3}]},
+                        {names: [], enemies: [{name: "meleerobot", minDiff: 1}, {name: "meleerobot", minDiff: 5}, {name: "rangedrobot"}], delay: 6, maxEnemies: 10},
+                        {names: ["colt"], enemies: [{name: "fastrobot", count: 2, minDiff: 4}], delay: 6, maxEnemies: 3},
+                        {names: ["rt"], enemies: [], delay: 1},
+                        {names: [], enemies: [{name: "elprimo", minDiff: 5}], delay: 1}
                     ],
                     background: "hub",
                     displayName: "Starr Park Hub",
@@ -692,11 +675,11 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     levelid: 3,
                     waves: [
-                        {names: [], multiple: [{name: "meteor", count: [1, 3]}, {name: "rangedrobot", count: [0, 1]}, {name: "fastrobot", count: [1]}]},
-                        {names: [], multiple: [{name: "r2", count: [0, 0, 3, 7]}], delay: 7, maxEnemies: 10},
-                        {names: [[], [], [], [], ["r6"]], multiple: [{name: "r2", count: [0, 0, 0, 0, 3]}], delay: 14, maxEnemies: 6},
-                        {names: [["jessie"]], multiple: [], delay: 1},
-                        {names: [["eve"]], multiple: [], delay: 1}
+                        {names: ["meteor", "fastrobot"], enemies: [{name: "meteor", count: 2, minDiff: 1}, {name: "rangedrobot", minDiff: 1}]},
+                        {names: [], enemies: [{name: "r2", count: 3, minDiff: 3}, {name: "r2", count: 4, minDiff: 4}], delay: 7, maxEnemies: 10},
+                        {names: [], enemies: [{name: "r2", count: 3, minDiff: 5}, {name: "r6", minDiff: 5}], delay: 14, maxEnemies: 6},
+                        {names: ["jessie"], enemies: [], delay: 1},
+                        {names: ["eve"], enemies: [], delay: 1}
                     ],
                     background: "biodome",
                     displayName: "Biodome",
@@ -705,11 +688,11 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     levelid: 5,
                     waves: [
-                        {names: [], multiple: [{name: "meteor", count: [0, 0, 0, 2]}, {name: "meleerobot", count: [0, 1]}, {name: "rangedrobot", count: [1, 2]}, {name: "fastrobot", count: [1, 2]}]},
-                        {names: [], multiple: [{name: "r2", count: [0, 0, 4, 7]}], delay: 12, maxEnemies: 10},
-                        {names: [[], [], [], [], ["r6"]], multiple: [{name: "r2", count: [0, 0, 0, 0, 3]}], delay: 14, maxEnemies: 7},
-                        {names: [["jacky"]], multiple: [], delay: 1},
-                        {names: [["mrp"]], multiple: [], delay: 1}
+                        {names: ["rangedrobot", "fastrobot"], enemies: [{name: "meteor", count: 2, minDiff: 4}, {name: "meleerobot", minDiff: 1}, {name: "rangedrobot", minDiff: 1}, {name: "fastrobot", minDiff: 1}]},
+                        {names: [], enemies: [{name: "r2", count: 4, minDiff: 3}, {name: "r2", count: 3, minDiff: 4}], delay: 12, maxEnemies: 10},
+                        {names: [], enemies: [{name: "r2", count: 3, minDiff: 5}, {name: "r6", minDiff: 5}], delay: 14, maxEnemies: 7},
+                        {names: ["jacky"], enemies: [], delay: 1},
+                        {names: ["mrp"], enemies: [], delay: 1}
                     ],
                     background: "deepsea",
                     displayName: "Deep Sea",
@@ -718,11 +701,11 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     levelid: 9,
                     waves: [
-                        {names: [[], ["r8"]], multiple: [{name: "rangedrobot", count: [2]}, {name: "fastrobot", count: [1]}]},
-                        {names: [[], [], [], ["r9"]], multiple: [{name: "meteor", count: [0, 0, 0, 1]}, {name: "r2", count: [0, 0, 0, 0, 1]}], delay: 14, maxEnemies: 10},
-                        {names: [[], [], ["r6"], [], ["r12"]], multiple: [{name: "r2", count: [0, 0, 3]}], delay: 12, maxEnemies: 3},
-                        {names: [["ollie"]], multiple: [], delay: 1},
-                        {names: [["leon"]], multiple: [], delay: 1}
+                        {names: [], enemies: [{name: "rangedrobot", count: 2}, {name: "fastrobot"}, {name: "r8", minDiff: 1}]},
+                        {names: [], enemies: [{name: "meteor", minDiff: 4}, {name: "r2", minDiff: 5}, {name: "r9", minDiff: 4}], delay: 14, maxEnemies: 10},
+                        {names: [], enemies: [{name: "r2", count: 3, minDiff: 3}, {name: "r6", minDiff: 3}, {name: "r12", minDiff: 5}], delay: 12, maxEnemies: 3},
+                        {names: ["ollie"], enemies: [], delay: 1},
+                        {names: ["leon"], enemies: [], delay: 1}
                     ],
                     background: "rumblejungle",
                     displayName: "Rumble Jungle",
@@ -748,11 +731,11 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     levelid: 6,
                     waves: [
-                        {names: [], multiple: [{name: "meteor", count: [0, 0, 0, 2]}, {name: "meleerobot", count: [1, 2]}, {name: "rangedrobot", count: [1, 2]}, {name: "fastrobot", count: [1, 2]}]},
-                        {names: [[], [], [], ["r4"]], multiple: [{name: "r2", count: [0, 0, 4, 5]}], delay: 14, maxEnemies: 10},
-                        {names: [[], [], [], [], ["r8"]], multiple: [{name: "r2", count: [0, 0, 0, 0, 3]}], delay: 14, maxEnemies: 6},
-                        {names: [["bo"]], multiple: [], delay: 1},
-                        {names: [["colette"]], multiple: [], delay: 1}
+                        {names: ["meleerobot", "rangedrobot", "fastrobot"], enemies: [{name: "meteor", count: 2, minDiff: 4}, {name: "meleerobot", minDiff: 1}, {name: "rangedrobot", minDiff: 1}, {name: "fastrobot", minDiff: 1}]},
+                        {names: [], enemies: [{name: "r2", count: 4, minDiff: 3}, {name: "r2", minDiff: 4}, {name: "r4", minDiff: 4}], delay: 14, maxEnemies: 10},
+                        {names: [], enemies: [{name: "r2", count: 3, minDiff: 5}, {name: "r8", minDiff: 5}], delay: 14, maxEnemies: 6},
+                        {names: ["bo"], enemies: [], delay: 1},
+                        {names: ["colette"], enemies: [], delay: 1}
                     ],
                     background: "giftshop",
                     displayName: "Gift Shop",
@@ -761,11 +744,11 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     levelid: 8,
                     waves: [
-                        {names: [[], ["r6"]], multiple: [{name: "rangedrobot", count: [2]}, {name: "fastrobot", count: [1]}]},
-                        {names: [[], [], [], ["r8"]], multiple: [{name: "r2", count: [0, 0, 0, 1, 2]}], delay: 12, maxEnemies: 10},
-                        {names: [[], [], ["r4"], [], ["r10"]], multiple: [{name: "r2", count: [0, 0, 3]}], delay: 12, maxEnemies: 3},
-                        {names: [["brock"]], multiple: [], delay: 1},
-                        {names: [["chester"]], multiple: [], delay: 1}
+                        {names: [], enemies: [{name: "rangedrobot", count: 2}, {name: "fastrobot"}, {name: "r6", minDiff: 1}]},
+                        {names: [], enemies: [{name: "r2", minDiff: 4}, {name: "r2", minDiff: 5}, {name: "r8", minDiff: 4}], delay: 12, maxEnemies: 10},
+                        {names: [], enemies: [{name: "r2", count: 3, minDiff: 3}, {name: "r4", minDiff: 3}, {name: "r10", minDiff: 5}], delay: 12, maxEnemies: 3},
+                        {names: ["brock"], enemies: [], delay: 1},
+                        {names: ["chester"], enemies: [], delay: 1}
                     ],
                     background: "candystand",
                     displayName: "Candyland",
@@ -774,11 +757,11 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     levelid: 10,
                     waves: [
-                        {names: [[], ["r6"]], multiple: [{name: "fastrobot", count: [1, 2]}]},
-                        {names: [[], [], [], ["r9"]], multiple: [{name: "meteor", count: [0, 0, 0, 3]}, {name: "r2", count: [0, 0, 0, 0, 2]}], delay: 10, maxEnemies: 10},
-                        {names: [[], [], ["r8"], [], ["r12"]], multiple: [{name: "r2", count: [0, 0, 2]}], delay: 16, maxEnemies: 6},
-                        {names: [["bonnie"]], multiple: [], delay: 1},
-                        {names: [["amber"]], multiple: [], delay: 1}
+                        {names: [], enemies: [{name: "fastrobot"}, {name: "fastrobot", minDiff: 1}, {name: "r6", minDiff: 1}]},
+                        {names: [], enemies: [{name: "meteor", count: 3, minDiff: 4}, {name: "r2", count: 2, minDiff: 5}, {name: "r9", minDiff: 4}], delay: 10, maxEnemies: 10},
+                        {names: [], enemies: [{name: "r2", count: 2, minDiff: 3}, {name: "r8", minDiff: 3}, {name: "r12", minDiff: 5}], delay: 16, maxEnemies: 6},
+                        {names: ["bonnie"], enemies: [], delay: 1},
+                        {names: ["amber"], enemies: [], delay: 1}
                     ],
                     background: "stuntshow",
                     displayName: "Stunt Show",
@@ -787,11 +770,11 @@ const challenges = new Map<string, StaticPreset>([
                 {
                     levelid: 11,
                     waves: [
-                        {names: [[], ["r8"]], multiple: [{name: "fastrobot", count: [2]}, {name: "r2", count: [0, 0, 0, 0, 2]}]},
-                        {names: [[], [], [], ["r10"], ["r4"]], multiple: [{name: "r2", count: [0, 0, 0, 1, 3]}], delay: 16, maxEnemies: 10},
-                        {names: [[], [], ["r9"], [], ["r12"]], multiple: [{name: "meteor", count: [0, 0, 3]}], delay: 20, maxEnemies: 5},
-                        {names: [["max"]], multiple: [], delay: 1},
-                        {names: [["meg"]], multiple: [], delay: 1}
+                        {names: [], enemies: [{name: "fastrobot", count: 2}, {name: "r2", count: 2, minDiff: 5}, {name: "r8", minDiff: 1}]},
+                        {names: [], enemies: [{name: "r2", minDiff: 4}, {name: "r2", count: 2, minDiff: 5}, {name: "r4", minDiff: 5}, {name: "r10", minDiff: 4}], delay: 16, maxEnemies: 10},
+                        {names: [], enemies: [{name: "meteor", count: 3, minDiff: 3}, {name: "r9", minDiff: 3}, {name: "r12", minDiff: 5}], delay: 20, maxEnemies: 5},
+                        {names: ["max"], enemies: [], delay: 1},
+                        {names: ["meg"], enemies: [], delay: 1}
                     ],
                     background: "minicity",
                     displayName: "Super City",

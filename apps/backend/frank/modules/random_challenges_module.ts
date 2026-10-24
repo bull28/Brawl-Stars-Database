@@ -296,7 +296,7 @@ function generateRandomWaves(params: RandomWaveOptions): WaveResult{
         }
 
         waves.push({
-            names: [names], multiple: [],
+            names: names, enemies: [],
             delay: (x > 0 ? Math.ceil(values[x - 1] * delay) : 0),
             maxEnemies: maxEnemies,
             winCon: params.winCon,
@@ -337,7 +337,7 @@ function generateMultipleWaves(stageWaves: RandomPreset["stages"][number]): Wave
             // For all distributions except the last, generate an extra empty wave with the delay that the next wave would
             // have. Then, set the delay for the first wave of the next distribution to the extra wave's delay.
             const lastWave = addWaves[addCount - 1];
-            if (includeEmpty === true && lastWave.names[0].length === 0){
+            if (includeEmpty === true && lastWave.names.length === 0){
                 prevDelay = lastWave.delay ?? 0;
                 prevMaxEnemies = lastWave.maxEnemies ?? 0;
                 addCount -= 1;
@@ -346,7 +346,7 @@ function generateMultipleWaves(stageWaves: RandomPreset["stages"][number]): Wave
             for (let j = 0; j < addCount; j++){
                 const nextWave: WaveResult[number] = {
                     names: addWaves[j].names,
-                    multiple: addWaves[j].multiple,
+                    enemies: addWaves[j].enemies,
                     delay: addWaves[j].delay ?? 1,
                     maxEnemies: addWaves[j].maxEnemies ?? 0,
                 };
@@ -442,7 +442,6 @@ export default class RandomChallenge implements ChallengeCategory{
         const difficulty = {
             difficultyid: 0,
             name: "",
-            countTier: 0,
             strengthTier: data.difficulty.strengthTier,
             healthBonusReq: data.difficulty.healthBonusReq,
             timePerEnemy: data.difficulty.timePerEnemy,

@@ -25,7 +25,7 @@ export const tokens = {
     trials: signToken("trials").token
 };
 
-export const GAME_VERSION = (112 << 16) + 147;
+export const GAME_VERSION = (113 << 16) + 147;
 export const sampleGameReport: GameReport = [
     GAME_VERSION, 1, // Version
     0, // Game Mode
@@ -34,7 +34,7 @@ export const sampleGameReport: GameReport = [
     //-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, // Accessories
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, // Accessories
     300, 150, 0, 50, 0, 0, // Overall Score
-    11, 600000, 567, 0, 0, 0, 0, 1, // Achievements
+    11, 600, 567, 0, 0, 0, 0, 1, // Achievements
     0, 0, 0, // Resources
     16, 16, 8, 8, 8, 8, 5, 4, // Upgrades
     8, 10, 12, 15, 18, 21, 24, 24, // Enemy Stats

@@ -187,7 +187,7 @@ const allCharacters = [
     ]},
     {name: "stu", accsItemIndex: 89, starPowers: [
         "Receive dashes 50% faster and store up to 10 dashes at once.",
-        "Receive +200% protection for 0.6 seconds after using a dash.",
+        "Receive +150% protection for 0.5 seconds after using a dash.",
         "Deal +50% damage with the next attack after using a dash."
     ]},
     {name: "maisie", accsItemIndex: 90, starPowers: [
@@ -208,7 +208,7 @@ const allCharacters = [
     {name: "hank", accsItemIndex: 93, starPowers: [
         "Super heals damage received from 1 more second.",
         "Increases the size of the bubble by 50%.",
-        "Torpedoes deal +25% damage to enemies not right beside you."
+        "Every 1.2 seconds, the next torpedo hit deals +200% damage."
     ]}
 ];
 
