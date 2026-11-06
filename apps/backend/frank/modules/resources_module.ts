@@ -79,12 +79,12 @@ const upgradeTiers = [
     },
     {
         base: 300.0, scaling: 0, gears: 2, starPowers: 3, hcDuration: 8, startLevel: 80, maxUpgrades: 20,
-        name: "Masters", color: "#ffcc00", image: "tier_masters", tierUpCost: 200000, masteryReq: 35, trophiesReq: 100,
+        name: "Masters", color: "#4bfb1c", image: "tier_masters", tierUpCost: 200000, masteryReq: 35, trophiesReq: 100,
         upgradeCosts: [100000, 102000, 104000, 107000, 110000, 113000, 116000, 119000, 122000, 125000, 128000, 131000, 134000, 137000, 140000, 144000, 148000, 152000, 156000, 160000]
     },
     {
         base: 300.0, scaling: 0, gears: 2, starPowers: 3, hcDuration: 12, startLevel: 100, maxUpgrades: 0,
-        name: "Pro", color: "#3afc9f", image: "tier_pro", tierUpCost: 0, masteryReq: 40, trophiesReq: 250,
+        name: "Pro", color: "#fff3c0", image: "tier_pro", tierUpCost: 0, masteryReq: 40, trophiesReq: 250,
         upgradeCosts: [0]
     }
 ];

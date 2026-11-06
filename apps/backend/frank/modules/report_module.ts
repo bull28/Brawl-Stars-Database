@@ -225,7 +225,7 @@ function getFinalScore(reports: number[], enemyCounts: number[]): number[]{
 }
 
 export function validateReport(report: GameReport): number{
-    // Last updated: version 113
+    // Last updated: version 114
 
     if (Array.isArray(report) === false){
         // Invalid report type
@@ -248,7 +248,7 @@ export function validateReport(report: GameReport): number{
     }
 
     // The first number contains major version (16 bits), minor version (4 bits), and report length (12 bits)
-    if ((report[0] >> 16) < 113){
+    if ((report[0] >> 16) < 114){
         // Old report version
         return 3;
     }

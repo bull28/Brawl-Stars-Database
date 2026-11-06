@@ -54,9 +54,10 @@ describe("Challenges module", function(){
     it("Validate a user's game preferences object", function(){
         expect(validateUserGameMod({})).to.be.true;
         expect(validateUserGameMod({playerSkins: []})).to.be.true;
-        expect(validateUserGameMod({playerSkins: ["1", "2", "3"], hiddenBrawlers: ["bull", "darryl"]})).to.be.true;
+        expect(validateUserGameMod({antialias: true, playerSkins: ["1", "2", "3"], hiddenBrawlers: ["bull", "darryl"]})).to.be.true;
         expect(validateUserGameMod({playerSkins: ["1", "2", "3"], otherProperty: []} as unknown as UserSetGameMod)).to.be.true;
         expect(validateUserGameMod({playerSkins: "123"} as unknown as UserSetGameMod)).to.be.false;
+        expect(validateUserGameMod({antialias: 1} as unknown as UserSetGameMod)).to.be.false;
         expect(validateUserGameMod([] as unknown as UserSetGameMod)).to.be.false;
         expect(validateUserGameMod(null as unknown as UserSetGameMod)).to.be.false;
     });
@@ -173,6 +174,34 @@ describe("Challenges module", function(){
         expect(challenge1.playerAccessories).to.be.an("array");
         expect(challenge1.playerAccessories).to.have.lengthOf(Math.ceil(accessoryList.length / 8));
         expect(challenge1.playerAccessories[0]).to.equal(5);
+    });
+
+    it("Apply the user's preferences to a game modification object", function(){
+        const hiddenBrawlers = ["bull", "darryl"];
+        const prefs: UserSetGameMod = {
+            antialias: true,
+            playerSkins: ["1", "2", "3"],
+            hiddenBrawlers: hiddenBrawlers
+        };
+        const challenge1 = getGameMod(TEST_STATIC_ID, "key", resources, prefs)! as Required<ChallengeGameMod>;
+
+        expect(challenge1).to.be.an("object");
+        expect(challenge1).to.include.keys([
+            "options", "playerUpgradeTiers", "playerSkins"
+        ]);
+
+        expect(challenge1.options.antialias).to.equal(prefs.antialias);
+
+        let maxTier = 0;
+        for (let x = 0; x < resources.characters.length; x++){
+            maxTier = Math.max(maxTier, resources.characters[x].tier);
+        }
+
+        for (let x = 0; x < hiddenBrawlers.length; x++){
+            expect(challenge1.playerUpgradeTiers[hiddenBrawlers[x]]).to.equal(maxTier);
+        }
+
+        expect(challenge1.playerSkins).to.equal(prefs.playerSkins);
     });
 
     it("Get the correct mastery and coins multipliers from a challenge", function(){

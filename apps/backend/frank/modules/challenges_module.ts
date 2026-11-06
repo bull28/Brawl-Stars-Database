@@ -107,6 +107,10 @@ export function validateUserGameMod(prefs: UserSetGameMod): boolean{
 
     let valid = true;
 
+    if (prefs.antialias !== undefined && typeof prefs.antialias !== "boolean"){
+        return false;
+    }
+
     // If the skins are provided, they must be an array of strings
     const playerSkins = prefs.playerSkins;
     if (playerSkins !== undefined){
@@ -229,6 +233,10 @@ export function getGameMod(challengeid: string, key: string, resources: UserReso
     gameMod.playerUpgradeTiers = playerUpgradeTiers;
 
     if (prefs !== undefined){
+        if (prefs.antialias === true && options !== undefined){
+            options.antialias = true;
+        }
+
         if (prefs.playerSkins !== undefined){
             gameMod.playerSkins = prefs.playerSkins;
         }

@@ -527,6 +527,7 @@ export interface ChallengeGameMod{
         key: string;
         gameMode: number;
         gameName: string;
+        antialias: boolean;
         bonusResources: boolean;
         addBonusEnemies: boolean;
         maxReportLevels: number;
@@ -600,6 +601,7 @@ export interface ChallengeGameMod{
  * Only includes cosmetic preferences, not gameplay options
  */
 export interface UserSetGameMod{
+    antialias?: boolean;
     playerSkins?: string[];
     hiddenBrawlers?: string[];
 }
